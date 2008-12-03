@@ -16,6 +16,23 @@
       "revId": "e99e49d405464a6c5e35bcce683147f21b0367ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "z8911db335200603df5c59559a2208292",
+        "filename": "debuggerd/getevent.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2008-12-03T16:11:18Z",
+      "side": 1,
+      "message": "this doesn\u0027t accomplish any kind of protection against buffer overflow:\n-strncpy doesn\u0027t null-terminate the string.\n-writing the extra slash makes things worse.\n-things get worse if devlen \u003e\u003d PATH_MAX in the next strncpy.\n\nAlso, I\u0027m concerned that there\u0027s no error-checking, such that open_device or close-device might be called on a partial filename instead of having the function fail.",
+      "revId": "e99e49d405464a6c5e35bcce683147f21b0367ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
