@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "z078a340681fae6278c0b83c84e27ca90",
+        "filename": "debuggerd/getevent.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1001302
+      },
+      "writtenOn": "2008-12-03T16:11:18Z",
+      "side": 1,
+      "message": "Updated to use snprintf() in this situation.\n\nsee amended commit: http://review.source.android.com/3088\n\n\u003e this doesn\u0027t accomplish any kind of protection against buffer overflow:\n\u003e -strncpy doesn\u0027t null-terminate the string.\n\u003e -writing the extra slash makes things worse.\n\u003e -things get worse if devlen \u003e\u003d PATH_MAX in the next strncpy.\n\u003e \n\u003e Also, I\u0027m concerned that there\u0027s no error-checking, such that open_device or\n\u003e close-device might be called on a partial filename instead of having the\n\u003e function fail.\n\n",
+      "revId": "e99e49d405464a6c5e35bcce683147f21b0367ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
