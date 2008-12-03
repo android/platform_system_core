@@ -16,6 +16,23 @@
       "revId": "2043109582f3a8c0993a1d4e4420fe7dbacbbc13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "z7249c3e1fdfd6e4ced7beb1472322552",
+        "filename": "init/builtins.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001302
+      },
+      "writtenOn": "2008-12-03T16:11:14Z",
+      "side": 1,
+      "message": "Just curious, why do you always return zero?\n\nchroot may fail in so many cases, that it\u0027s better return sometimes at least -1.\n\nIf you look to do_mkdir() below, there is code block like:\n-- @207\nif (mkdir(args[1], mode)) {\n  return -errno;\n}\n--\nI think it\u0027s better do it in same way.\n(Personally, I\u0027d like \"if (mkdir() \u003d\u003d -1) {}\" more :), but anyway some error checking must be done and error - if any - throwed to higher level code)\n\nSame note is applicable for chdir.",
+      "revId": "2043109582f3a8c0993a1d4e4420fe7dbacbbc13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
