@@ -1,0 +1,259 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAcX////4\u003d",
+        "filename": "adb/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001302
+      },
+      "writtenOn": "2009-07-21T04:31:06Z",
+      "side": 1,
+      "message": "changes in lines 28-32 allows building on freebsd (linkage with pthreads). It adds platform specific files to sources also.",
+      "revId": "c0ca77afd09f80fa1ef35ddc6be51536a5a96689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX////0\u003d",
+        "filename": "adb/get_my_path_freebsd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001302
+      },
+      "writtenOn": "2009-07-21T04:31:06Z",
+      "side": 1,
+      "message": "This file purpose is same as get_my_path_linux() on Linux powered system, it follows same function declaration format (although it\u0027s rather expensive to use char exe[] in stack instead of pointer). So, it forms filename in /proc and resolves link.\n\nResult of function is always some zero-ended string, probably empty string.\n\nIt works on systems where proc filesystem is enabled, e.g. recent versions of freebsd.",
+      "revId": "c0ca77afd09f80fa1ef35ddc6be51536a5a96689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX////w\u003d",
+        "filename": "adb/usb_freebsd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001302
+      },
+      "writtenOn": "2009-07-21T04:31:06Z",
+      "side": 1,
+      "message": "usb_handle structure is used to store usb-devices related data. usb_freebsd.c differs from original usb_linux.c code in way of working with usb. Instead of polling every second and listing of /dev/usb branch in this implementation I\u0027m handling usb events (attach/dettach)",
+      "revId": "c0ca77afd09f80fa1ef35ddc6be51536a5a96689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX////A\u003d",
+        "filename": "adb/usb_freebsd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001302
+      },
+      "writtenOn": "2009-07-21T04:31:06Z",
+      "side": 1,
+      "message": "check_endpoint() tries to open endpoint, firstly in read/write access mode, falling over to read-only mode.",
+      "revId": "c0ca77afd09f80fa1ef35ddc6be51536a5a96689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX////E\u003d",
+        "filename": "adb/usb_freebsd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1001302
+      },
+      "writtenOn": "2009-07-21T04:31:06Z",
+      "side": 1,
+      "message": "USB reading and writing functions are doing exactly what function name says.",
+      "revId": "c0ca77afd09f80fa1ef35ddc6be51536a5a96689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX////I\u003d",
+        "filename": "adb/usb_freebsd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1001302
+      },
+      "writtenOn": "2009-07-21T04:31:06Z",
+      "side": 1,
+      "message": "usb_close() removes device from list and closes device file descriptor. Also it releases usb_handle",
+      "revId": "c0ca77afd09f80fa1ef35ddc6be51536a5a96689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX////M\u003d",
+        "filename": "adb/usb_freebsd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1001302
+      },
+      "writtenOn": "2009-07-21T04:31:06Z",
+      "side": 1,
+      "message": "poll_usb_event() performs polling of usb-events device.\npoll() is called with infinte timeoute to wait for event.\nSo, polling thread is sleeping most of it\u0027s working time",
+      "revId": "c0ca77afd09f80fa1ef35ddc6be51536a5a96689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX////Q\u003d",
+        "filename": "adb/usb_freebsd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1001302
+      },
+      "writtenOn": "2009-07-21T04:31:06Z",
+      "side": 1,
+      "message": "check_usb_interface() performs checking of endpoints number, endpoints caps and etc.",
+      "revId": "c0ca77afd09f80fa1ef35ddc6be51536a5a96689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX////U\u003d",
+        "filename": "adb/usb_freebsd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1001302
+      },
+      "writtenOn": "2009-07-21T04:31:06Z",
+      "side": 1,
+      "message": "register_device() adds device to list of device, known by adb",
+      "revId": "c0ca77afd09f80fa1ef35ddc6be51536a5a96689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX////Y\u003d",
+        "filename": "adb/usb_freebsd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1001302
+      },
+      "writtenOn": "2009-07-21T04:31:06Z",
+      "side": 1,
+      "message": "check_usb_device_attach() is one of the most important functions. It trys to get information about devices, check if it is Android device and open endpoints, used for reading and writing",
+      "revId": "c0ca77afd09f80fa1ef35ddc6be51536a5a96689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX////c\u003d",
+        "filename": "adb/usb_freebsd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1001302
+      },
+      "writtenOn": "2009-07-21T04:31:06Z",
+      "side": 1,
+      "message": "kiking is simple - killing of reaper_thread and closing usb device endpoints.",
+      "revId": "c0ca77afd09f80fa1ef35ddc6be51536a5a96689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX////g\u003d",
+        "filename": "adb/usb_freebsd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1001302
+      },
+      "writtenOn": "2009-07-21T04:31:06Z",
+      "side": 1,
+      "message": "check_usb_device_detach() checks if device was ever registered in adb, if yes, it is removed from devices list.",
+      "revId": "c0ca77afd09f80fa1ef35ddc6be51536a5a96689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX////k\u003d",
+        "filename": "adb/usb_freebsd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1001302
+      },
+      "writtenOn": "2009-07-21T04:31:06Z",
+      "side": 1,
+      "message": "dispatch_usb_events() is interested only in attaching and detaching devices. If we got such message, additional processing of event is performed. Otherwise, event is discarded.",
+      "revId": "c0ca77afd09f80fa1ef35ddc6be51536a5a96689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX////o\u003d",
+        "filename": "adb/usb_freebsd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1001302
+      },
+      "writtenOn": "2009-07-21T04:31:06Z",
+      "side": 1,
+      "message": "device_poll_threas() fetches usb events and passes it to dispatch_usb_events()",
+      "revId": "c0ca77afd09f80fa1ef35ddc6be51536a5a96689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAcX////s\u003d",
+        "filename": "adb/usb_freebsd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1001302
+      },
+      "writtenOn": "2009-07-21T04:31:06Z",
+      "side": 1,
+      "message": "usb_init() just starts usb events polling worker thread device_poll_thread()\n\nwell, SIGALARM handler inherited from Linux code, I\u0027m not sure it is needed.",
+      "revId": "c0ca77afd09f80fa1ef35ddc6be51536a5a96689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
