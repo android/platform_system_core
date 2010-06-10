@@ -16,6 +16,24 @@
       "revId": "c88e09cb98fb3690c3cf49f5a825532e0d9bf300",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAzX//+ws\u003d",
+        "filename": "libnetutils/dhcp_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1003988
+      },
+      "writtenOn": "2010-06-10T23:50:24Z",
+      "side": 1,
+      "message": "WifiStateTracker calls ifc_configure under static IP configuration. Otherwise it calls dhcp_do_request which starts dhcpcd. dhcpcd (or its hooks) has no permissions to modify the net.XXX properties, so we need to set them after it\u0027s done.",
+      "parentUuid": "AAAAzX//+0U\u003d",
+      "revId": "c88e09cb98fb3690c3cf49f5a825532e0d9bf300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
