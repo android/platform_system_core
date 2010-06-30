@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA0n///OE\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-06-30T09:33:19Z",
+      "side": 1,
+      "message": "Can you add a comment explaining why this needs to be 1?",
+      "revId": "da2e222805266700fccc203da9926510b2425dc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA0n///OU\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-06-30T09:33:19Z",
+      "side": 1,
+      "message": "Is it possible to use AF_INET instead of IPv4 and AF_INET6 instead of IPv6 here?",
+      "revId": "da2e222805266700fccc203da9926510b2425dc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA0n///Nk\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-06-30T09:33:19Z",
+      "side": 1,
+      "message": "What happens if the conversion from string to in6_addr fails? The function returns void, so there\u0027s no indication of error to the caller (since inet_pton does not touch its output value unless it succeeds).\n\nThis function should probably return an integer (e.g. 0 on success, -1 on failure).",
+      "revId": "da2e222805266700fccc203da9926510b2425dc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA0n///No\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-06-30T09:33:19Z",
+      "side": 1,
+      "message": "Looking at the inet_pton man page and the bionic/libc source code suggests that inet_pton returns 1 on success, 0 if the address is invalid, and -1 if the address family is invalid. Since this case cannot happen (AF_INET6 is a valid address family), just simplify the code to if (ret \u003c\u003d0) { printerr(\"inet_pton() failed: invalid address %s\\n\"); }",
+      "revId": "da2e222805266700fccc203da9926510b2425dc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA0n///OM\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-06-30T09:33:19Z",
+      "side": 1,
+      "message": "As per comments to the .h file, can you rename this to add_ipv6_route, make it take an \"int prefixlen\" parameter, and use that instead of IPv6_ADDR_LEN? You probably don\u0027t need to check that the 0 \u003c\u003d length \u003c\u003d 128, I expect the kernel will do that for you (but please make sure it does).",
+      "revId": "da2e222805266700fccc203da9926510b2425dc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA0n///Nc\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-06-30T09:33:19Z",
+      "side": 1,
+      "message": "If there is no IPv6 support in the kernel, this will fail. In that case, can you set errno to EAFNOSUPPORT? Something like this would probably work:\n\nif (ifc_ctl_sock6 \u003c 0) {\n  errno \u003d EAFNOSUPPORT;\n  return -1;\n}\n\n(Otherwise errno will end up being set to EBADF, which is not going to help debugging.)",
+      "revId": "da2e222805266700fccc203da9926510b2425dc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA0n///Ng\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-06-30T09:33:19Z",
+      "side": 1,
+      "message": "This will change errno if it fails. Perhaps you can assign errno to a temporary variable before calling ifc_close6()?",
+      "revId": "da2e222805266700fccc203da9926510b2425dc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA0n///NY\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-06-30T09:33:19Z",
+      "side": 1,
+      "message": "inet_aton only returns 0 or 1. You can remove this case.",
+      "revId": "da2e222805266700fccc203da9926510b2425dc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA0n///NU\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-06-30T09:33:19Z",
+      "side": 1,
+      "message": "This code duplicates what you have above. Can you factor it out into a common add_ipv6_route method that takes ifindex, flags, and ipv6_addr as a parameter? That method could decide whether to populate rtmsg_gateway or rtmsg_dst based on whether flags has the RTF_GATEWAY bit or not.",
+      "revId": "da2e222805266700fccc203da9926510b2425dc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA0n///NQ\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-06-30T09:33:19Z",
+      "side": 1,
+      "message": "Can you rename addr_type to family?",
+      "revId": "da2e222805266700fccc203da9926510b2425dc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
