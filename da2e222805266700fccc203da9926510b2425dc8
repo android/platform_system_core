@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAA0n///LI\u003d",
+        "filename": "include/netutils/ifc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2010-06-30T19:18:32Z",
+      "side": 1,
+      "message": "Change to accept a string address.  No need for a v4 and a v6 interface.  Actually all the in_addr_t params in the header should change to const char *.",
+      "revId": "da2e222805266700fccc203da9926510b2425dc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA0n///LE\u003d",
+        "filename": "include/netutils/ifc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2010-06-30T19:18:32Z",
+      "side": 1,
+      "message": "don\u0027t add a new function for this.",
+      "revId": "da2e222805266700fccc203da9926510b2425dc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA0n///OE\u003d",
         "filename": "libnetutils/ifc_utils.c",
         "patchSetId": 1
@@ -149,6 +183,24 @@
       "writtenOn": "2010-06-30T09:33:19Z",
       "side": 1,
       "message": "This code duplicates what you have above. Can you factor it out into a common add_ipv6_route method that takes ifindex, flags, and ipv6_addr as a parameter? That method could decide whether to populate rtmsg_gateway or rtmsg_dst based on whether flags has the RTF_GATEWAY bit or not.",
+      "revId": "da2e222805266700fccc203da9926510b2425dc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA0n///K0\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2010-06-30T19:18:32Z",
+      "side": 1,
+      "message": "Or better, even collapse it in with the v4 versions too.",
+      "parentUuid": "AAAA0n///NU\u003d",
       "revId": "da2e222805266700fccc203da9926510b2425dc8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
