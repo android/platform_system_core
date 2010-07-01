@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA0n///CQ\u003d",
+        "filename": "include/netutils/ifc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2010-07-01T21:38:48Z",
+      "side": 1,
+      "message": "Hmm.  Maybe you *should* pass an addr type at this level.  Trying to guess by parsing the string seems inefficient since we had the info before.  At some point above this (either NetworkUtils or the jni impl of NetworkUtils) you will be converting from InetAddress to a string or a byte array (see my question later in this comment.  There you can determine the type cheaply (length of array) and start passing the type.  Let\u0027s try to make that transition as late as convenient though - I\u0027d prefer the c++ NetworkUtils impl.\n\nAs for the type constant, I think Lorenzo wanted you to use a pre-existing constant for v4 and v6 rather than making new.\n\nFor a single ifc_add_host function, is it easier to work with a byte array or string?  I know you can use the inet_pton function to generate a final form from the string, but do you know the format of the output?  If the byte array is the right final form for the address we should just use that and skip the conversion.",
+      "parentUuid": "AAAA0n///Co\u003d",
+      "revId": "da2e222805266700fccc203da9926510b2425dc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA0n///LE\u003d",
         "filename": "include/netutils/ifc.h",
         "patchSetId": 1
