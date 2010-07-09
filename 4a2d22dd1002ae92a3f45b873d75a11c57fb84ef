@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA0n//+Ww\u003d",
+        "filename": "include/netutils/ifc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2010-07-09T17:46:59Z",
+      "side": 1,
+      "message": "use prefix-length instead.  If it\u0027s 128 or 32 (v6/v4) you know it\u0027s a host route.  Also use the prefix length when making a gateway route to allow more than just default gateway routes.",
+      "revId": "4a2d22dd1002ae92a3f45b873d75a11c57fb84ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA0n//+YM\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2010-07-09T17:46:59Z",
+      "side": 1,
+      "message": "This code should be removed to use the general code below.",
+      "revId": "4a2d22dd1002ae92a3f45b873d75a11c57fb84ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA0n//+YI\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2010-07-09T17:46:59Z",
+      "side": 1,
+      "message": "This code should be removed to use the general code below.",
+      "revId": "4a2d22dd1002ae92a3f45b873d75a11c57fb84ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA0n//+XM\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2010-07-09T17:46:59Z",
+      "side": 1,
+      "message": "If flags is just used to tell host-routes from default-routes I think it is redundant.  The prefix_length can tell you that (a prefix-length of 128 is a route to a host).",
+      "revId": "4a2d22dd1002ae92a3f45b873d75a11c57fb84ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA0n//+XI\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2010-07-09T17:46:59Z",
+      "side": 1,
+      "message": "I think that instead of route_type you should pass in prefix length.  Prefix Length can work for both v4 and v6: in v4 it\u0027s the size of the netmask.  This also lets us add routes to gateways other than the default.",
+      "revId": "4a2d22dd1002ae92a3f45b873d75a11c57fb84ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
