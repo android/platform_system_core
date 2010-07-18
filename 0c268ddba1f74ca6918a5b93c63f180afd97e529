@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAA2H////A\u003d",
+        "filename": "include/netutils/ifc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-07-18T17:23:55Z",
+      "side": 1,
+      "message": "For IPv4, although the default route cannot be deleted, host routes can be deleted. For IPv6, the code can add IPv6 routes, but there is no way to delete them. Is this what we want to do?",
+      "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA2H////w\u003d",
         "filename": "libnetutils/ifc_utils.c",
         "patchSetId": 3
@@ -185,6 +202,23 @@
       "writtenOn": "2010-07-18T17:17:26Z",
       "side": 1,
       "message": "Nit: sizeof(hints) is better. Also, since you\u0027ve just memset() hints to zero, there\u0027s no need to set the individual members to 0 below.",
+      "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA2H////E\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-07-18T17:23:55Z",
+      "side": 1,
+      "message": "You should probably also set hints.ai_flags to AI_NUMERICHOST, in order to avoid doing DNS lookups in case someone passes this function something that is not an IP address.",
       "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
