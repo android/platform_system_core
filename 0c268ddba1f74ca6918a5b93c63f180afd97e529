@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA3X///6M\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2010-07-26T22:42:59Z",
+      "side": 1,
+      "message": "You\u0027re currently dealing with two extreme cases: a default route doesn\u0027t need a destination as it gets \"everything not me\", and a host route doesn\u0027t need a gateway as it only gets traffic destined for itself.\n\nA gateway connecting two networks is a different story.  It has an address that\u0027s routable on the local network and an address range that\u0027s not locally routable without the gateway.  They may be totally different (ie a 192.168.0.5 gateway may sit between you and the 24.* network).  The netmask/prefix defines the size of the address space of the remote network.  To be useful, the routing table must know the address space behind the gateway (dest and netmask/prefix-length) and the addr of the gateway.",
+      "parentUuid": "AAAA3H///QU\u003d",
+      "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA0n//+S4\u003d",
         "filename": "libnetutils/ifc_utils.c",
         "patchSetId": 3
