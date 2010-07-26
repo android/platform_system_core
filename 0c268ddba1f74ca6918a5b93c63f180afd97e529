@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA3H///wI\u003d",
+        "filename": "include/netutils/ifc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1003413
+      },
+      "writtenOn": "2010-07-26T17:44:17Z",
+      "side": 1,
+      "message": "Currently this function (remove_host_route) is only accessed from removePrivateDnsRoutes. Is this even needed in IPv6? I was under the assumption that routes to DNS servers are completely handled by the kernel for IPv6.\n\nI agree that we may need to add this for the sake of completeness. But if it is not needed right away, Id like to do that as a separate change.",
+      "parentUuid": "AAAA2H////A\u003d",
+      "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA2H////w\u003d",
         "filename": "libnetutils/ifc_utils.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2010-07-18T17:17:26Z",
       "side": 1,
       "message": "Why is this constant needed? We don\u0027t use any specific metric for IPv4. If you are setting the metric to the minimum to ensure that host routes you create will be preferred above all other routes, then this is not necessary, because host routes have a prefix length of /128 and will already be preferred above other routes with shorter prefix lengths due to longest prefix matching.\n\nIf you do need the constant, then please make the V uppercase. Also, please add a comment saying why \"the lowest possible value\" is not zero.",
+      "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA3H///vY\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1003413
+      },
+      "writtenOn": "2010-07-26T17:44:17Z",
+      "side": 1,
+      "message": "Will remove this",
+      "parentUuid": "AAAA2H////w\u003d",
       "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA3H///vU\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1003413
+      },
+      "writtenOn": "2010-07-26T17:44:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAA2H////c\u003d",
+      "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA2H////o\u003d",
         "filename": "libnetutils/ifc_utils.c",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2010-07-18T17:17:26Z",
       "side": 1,
       "message": "For this to be a general \"add a route\" function, it will need three parameters in addition to the interface name: the destination address (e.g., 192.0.2.0), the prefix length (e.g., 24), and the gateway address.\n\nHowever, the function as written only takes two parameters and interprets addr as either the destination or the gateway depending on whether the mask is 32 or not. To me, this is confusing; also, it does not allow prefixes with lengths that are not 0 or 32.\n\nI would suggest you take all four parameters, put all of them into the corresponding fields in the struct rtentry, and set rt_flags based on whether prefix_length \u003d\u003d 32. Then just call the ioctl, let the kernel figure out what to do, and return whatever result code comes back. The kernel certainly has more information on the routing table than this code has. Also, I think the resulting code will be simpler.\n\nAltenatively, if we know that we\u0027ll only ever need to add either host routes and default routes, but never other routes, then this code is will work. In that case, please do add a comment to the effect that if prefix_length \u003d\u003d 32, then \"addr\" is the destination, if prefix_length \u003d\u003d 0, then \"addr\" is the gateway, and that other values of prefix_length are unsupported.\n\nSimilar comments apply to the IPv6 function.",
+      "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA3H///QU\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1003413
+      },
+      "writtenOn": "2010-07-26T17:44:17Z",
+      "side": 1,
+      "message": "The function as it stands now does handle any prefix_length. It considers prefix_length 32 as host route and all other values as gateway route. I probably did not understand why you think we handle only 0 and 32. Are you suggesting that I need to set rt_dst if prefix_length is neither 0 nor 32? \n\nI do think that I need to add an error check here to handle the case where the value is greater than 32 or less than 0. But that is a different point.",
+      "parentUuid": "AAAA2H////o\u003d",
       "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -123,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA3H///QQ\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1003413
+      },
+      "writtenOn": "2010-07-26T17:44:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAA03///7s\u003d",
+      "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA2H////Y\u003d",
         "filename": "libnetutils/ifc_utils.c",
         "patchSetId": 3
@@ -134,6 +224,24 @@
       "writtenOn": "2010-07-18T17:17:26Z",
       "side": 1,
       "message": "Can you put this next to the corresponding IPv4 code (ifc_init) so that anyone modifying the file in the future will remember to modify both codepaths at the same time? Ditto with ifc_close6 below.",
+      "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA3H///QM\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1003413
+      },
+      "writtenOn": "2010-07-26T17:44:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAA2H////Y\u003d",
       "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -157,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA3H///qs\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1003413
+      },
+      "writtenOn": "2010-07-26T17:44:17Z",
+      "side": 1,
+      "message": "It is above ifc_add_route even now.",
+      "parentUuid": "AAAA2H////U\u003d",
+      "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA2H////k\u003d",
         "filename": "libnetutils/ifc_utils.c",
         "patchSetId": 3
@@ -168,6 +294,24 @@
       "writtenOn": "2010-07-18T17:17:26Z",
       "side": 1,
       "message": "Since all ifc_init6() does is call socket(), then errno will already be EAFNOSUPPORT. So you can remove this if you want.",
+      "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA3H///qw\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1003413
+      },
+      "writtenOn": "2010-07-26T17:44:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAA2H////k\u003d",
       "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -191,6 +335,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA3H///q0\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1003413
+      },
+      "writtenOn": "2010-07-26T17:44:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAA2H////g\u003d",
+      "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA2H////Q\u003d",
         "filename": "libnetutils/ifc_utils.c",
         "patchSetId": 3
@@ -202,6 +364,24 @@
       "writtenOn": "2010-07-18T17:17:26Z",
       "side": 1,
       "message": "Nit: sizeof(hints) is better. Also, since you\u0027ve just memset() hints to zero, there\u0027s no need to set the individual members to 0 below.",
+      "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA3H///rA\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1003413
+      },
+      "writtenOn": "2010-07-26T17:44:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAA2H////Q\u003d",
       "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -225,6 +405,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA3H///q8\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1003413
+      },
+      "writtenOn": "2010-07-26T17:44:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAA2H////E\u003d",
+      "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA2H////M\u003d",
         "filename": "libnetutils/ifc_utils.c",
         "patchSetId": 3
@@ -236,6 +434,24 @@
       "writtenOn": "2010-07-18T17:17:26Z",
       "side": 1,
       "message": "Please call freeaddrinfo before returning, or the code will leak memory.",
+      "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA3H///q4\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1003413
+      },
+      "writtenOn": "2010-07-26T17:44:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAA2H////M\u003d",
       "revId": "0c268ddba1f74ca6918a5b93c63f180afd97e529",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
