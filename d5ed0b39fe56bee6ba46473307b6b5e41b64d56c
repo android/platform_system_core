@@ -156,6 +156,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA4n///44\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T06:06:02Z",
+      "side": 1,
+      "message": "My thinking was that if gw is either NULL or a string specifying a zero address (\"0.0.0.0\" for IPv4, or \"::\" etc. for IPv6), then it signifies a directly connected route (i.e., what the old code called a \"host route\"). However, it\u0027s probably more correct to do this:\n\n- If gw is NULL, don\u0027t set the RTF_GATEWAY flag.\n- If gw is not NULL, set the RTF_GATEWAY flag and set rtmsg_gateway to the address specified by gw.\n\nSo I would do the following:\n\n1. If addr is NULL or is not a valid IP address, return failure.\n2. If prefix_len \u003d\u003d 32 for IPv4, or 128 for IPv6, set the RTF_HOST flag.\n3. If gw is not NULL:\n  a. Convert gw to an IP address.\n  b. If it is not a valid IP address, or it is not of the same family (IPv4 / IPv6) as addr (e.g., an IPv4 route with an IPv6 gateway), return failure.\n  c. Set RTF_GATEWAY flag and set rtmsg_gateway to the IP address specified by gw.\n\nThe logic should be the same for IPv4 and IPv6.\n\nNote that it\u0027s possible to have a host route that is reachable through a gateway, so it\u0027s possible to have both RTF_HOST and RTF_GATEWAY set.",
+      "parentUuid": "AAAA4n///5A\u003d",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA4n///8I\u003d",
         "filename": "libnetutils/ifc_utils.c",
         "patchSetId": 5
