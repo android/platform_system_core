@@ -2,6 +2,108 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAA4n///zI\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T21:52:44Z",
+      "side": 1,
+      "message": "Nit: can you rename \"name\" to \"ifname\"?",
+      "revId": "05f453e326175f636f4218575abebf9bd77d18df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///yQ\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T21:52:44Z",
+      "side": 1,
+      "message": "Instead of saving errno, why not do:\n\n    if (result \u003c 0) {\n        if (errno \u003d\u003d EEXIST) {\n            result \u003d 0;\n        } else {\n            result \u003d -errno;\n        }\n    }\n    ifc_close();\n    return result;\n\nAlso for IPv6 below.",
+      "revId": "05f453e326175f636f4218575abebf9bd77d18df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///yI\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T21:52:44Z",
+      "side": 1,
+      "message": "return -ENXIO;",
+      "revId": "05f453e326175f636f4218575abebf9bd77d18df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///yE\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T21:52:44Z",
+      "side": 1,
+      "message": "return -errno;",
+      "revId": "05f453e326175f636f4218575abebf9bd77d18df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///x8\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T21:52:44Z",
+      "side": 1,
+      "message": "As above:\n\n    if (result \u003c 0) {\n        if (errno \u003d\u003d EEXIST) {\n            result \u003d 0;\n        } else {\n            result \u003d -errno;\n        }\n    }\n    ifc_close6();\n    return result;",
+      "revId": "05f453e326175f636f4218575abebf9bd77d18df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///xY\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T21:52:44Z",
+      "side": 1,
+      "message": "Nit: two spaces between end of line and start of comment.",
+      "revId": "05f453e326175f636f4218575abebf9bd77d18df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA4n///zU\u003d",
         "filename": "libnetutils/ifc_utils.c",
         "patchSetId": 6
@@ -13,6 +115,91 @@
       "writtenOn": "2010-08-10T20:12:33Z",
       "side": 1,
       "message": "Did not explicitly check dst for null since getaddrinfo() returns error any way if both node and service are null.",
+      "revId": "05f453e326175f636f4218575abebf9bd77d18df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///x0\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T21:52:44Z",
+      "side": 1,
+      "message": "return -EINVAL;",
+      "revId": "05f453e326175f636f4218575abebf9bd77d18df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///x4\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T21:52:44Z",
+      "side": 1,
+      "message": "return -EINVAL;",
+      "revId": "05f453e326175f636f4218575abebf9bd77d18df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///xw\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T21:52:44Z",
+      "side": 1,
+      "message": "return -EINVAL;",
+      "revId": "05f453e326175f636f4218575abebf9bd77d18df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///yU\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T21:52:44Z",
+      "side": 1,
+      "message": "Should these be just ipv4_addr.sin_addr and ipv4_gw.sin_addr instead of ipv4_addr.sin_addr.s_addr and ipv4_gw_sin_addr.s_addr?",
+      "revId": "05f453e326175f636f4218575abebf9bd77d18df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///xo\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T21:52:44Z",
+      "side": 1,
+      "message": "ret \u003d -EAFNOSUPPORT;",
       "revId": "05f453e326175f636f4218575abebf9bd77d18df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
