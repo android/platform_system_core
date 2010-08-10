@@ -192,6 +192,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA4n///3g\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T16:40:28Z",
+      "side": 1,
+      "message": "Actually, I am suggesting that the function should always require a non-null destination, but should accept a null gateway. You can always use \"0.0.0.0\" or \"::\" and a prefix length of 0 to indicate the default.\n\nSo, for IPv4 you could do:\n\n  ifc_add_route(\"wlan0\", \"0.0.0.0\", 0, \"192.168.1.254\");    // default via gateway 192.168.1.254 on wlan0\n  ifc_add_route(\"wlan0\", \"10.1.99.5\", 32, NULL);            // host 10.1.123.4 via wlan0\n  ifc_add_route(\"wlan0\", \"10.1.123.4\", 32, \"192.168.1.10\"); // host 10.1.123.4 through gateway 192.168.1.10 on wlan0\n\nIf you think it simplifies the code to never accept any null arguments, or to accept both null gateways and null addresses, that\u0027s fine too. The important thing is that RTF_GATEWAY is set iff there is a real gateway and that RTF_HOST is set iff the prefix length is the maximum (32 or 128).",
+      "parentUuid": "AAAA4n///4g\u003d",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA4n///8I\u003d",
         "filename": "libnetutils/ifc_utils.c",
         "patchSetId": 5
