@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA4n///0Y\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1004300
+      },
+      "writtenOn": "2010-08-10T19:58:08Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "AAAA4n///8k\u003d",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA4n///8g\u003d",
         "filename": "libnetutils/ifc_utils.c",
         "patchSetId": 5
@@ -47,6 +65,24 @@
       "writtenOn": "2010-08-10T00:23:09Z",
       "side": 1,
       "message": "This block would then become something like the following:\n\n    netmask \u003d get_ipv4_netmask(prefix_length);\n    init_sockaddr_in(\u0026rt.rt_genmask, netmask);\n    init_sockaddr_in(\u0026rt.rt_dst, dst);\n    rt.rt_flags \u003d RTF_UP;\n\n    if (prefix_length \u003d\u003d 32) {\n      rt.rt_flags |\u003d RTF_HOST;\n    }\n    if (gateway !\u003d 0) {\n      rt.rt_flags |\u003d RTF_GATEWAY;\n      init_sockaddr_in(\u0026rt.rt_gateway, gw);\n    }",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///0U\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1004300
+      },
+      "writtenOn": "2010-08-10T19:58:08Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "AAAA4n///8g\u003d",
       "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA4n///0Q\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1004300
+      },
+      "writtenOn": "2010-08-10T19:58:08Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "AAAA4n///8c\u003d",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA4n///8Y\u003d",
         "filename": "libnetutils/ifc_utils.c",
         "patchSetId": 5
@@ -81,6 +135,24 @@
       "writtenOn": "2010-08-10T00:23:09Z",
       "side": 1,
       "message": "And this would be:\n\n    return ifc_add_ipv4_route(name, addr, 32, 0);",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///0M\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1004300
+      },
+      "writtenOn": "2010-08-10T19:58:08Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "AAAA4n///8Y\u003d",
       "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -104,6 +176,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA4n///0I\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1004300
+      },
+      "writtenOn": "2010-08-10T19:58:08Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "AAAA4n///8U\u003d",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA4n///8Q\u003d",
         "filename": "libnetutils/ifc_utils.c",
         "patchSetId": 5
@@ -115,6 +205,24 @@
       "writtenOn": "2010-08-10T00:23:09Z",
       "side": 1,
       "message": "This will then be something like the following:\n\n    rtmsg.rtmsg_ifindex \u003d ifindex;\n    rtmsg.rtmsg_dst \u003d dst;\n    rtmsg.rtmsg_dst_len \u003d prefix_length;\n    rtmsg.rtmsg_flags \u003d RTF_UP;\n\n    if (prefix_length \u003d\u003d 128) {\n        rtmsg.rtmsg_flags |\u003d RTF_HOST;\n    }\n    if (memcmp(\u0026gw, \u0026in6addr_any, sizeof(in6addr_any)) {\n        rtmsg.rtmsg_flags |\u003d RTF_GATEWAY;\n        rtmsg.rtmsg_gateway \u003d gw;\n    }",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///0E\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1004300
+      },
+      "writtenOn": "2010-08-10T19:58:08Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "AAAA4n///8Q\u003d",
       "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -228,6 +336,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA4n///0A\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1004300
+      },
+      "writtenOn": "2010-08-10T19:58:08Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "AAAA4n///8M\u003d",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA4n///8I\u003d",
         "filename": "libnetutils/ifc_utils.c",
         "patchSetId": 5
@@ -239,6 +365,24 @@
       "writtenOn": "2010-08-10T00:23:09Z",
       "side": 1,
       "message": "Keep track of IPv4 and IPv6 gateways as well:\n\n    struct sockaddr_in ipv4_addr, ipv4_gw;\n    struct sockaddr_in6 ipv6_addr, ipv6_gw;",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///z8\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1004300
+      },
+      "writtenOn": "2010-08-10T19:58:08Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "AAAA4n///8I\u003d",
       "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -262,6 +406,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA4n///z4\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1004300
+      },
+      "writtenOn": "2010-08-10T19:58:08Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "AAAA4n///8A\u003d",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA4n///8E\u003d",
         "filename": "libnetutils/ifc_utils.c",
         "patchSetId": 5
@@ -273,6 +435,24 @@
       "writtenOn": "2010-08-10T00:23:09Z",
       "side": 1,
       "message": "Convert the gateway to a socket address as well. For convenience, if the gateway is NULL, convert it to an empty address.\n\n    if (gw \u003d\u003d NULL) {\n        if (addr_ai-\u003eai_family \u003d\u003d AF_INET6) {\n            gw \u003d \"::\";\n        }\n        if (addr_ai-\u003eai_family \u003d\u003d AF_INET) {\n            gw \u003d \"0.0.0.0\";\n        }\n    }\n\n    ret \u003d getaddrinfo(gw, NULL, \u0026hints, \u0026gw_ai);\n    if (ret !\u003d 0) {\n        printerr(\"getaddrinfo failed: invalid gateway %s\\n\", gw);\n        freeaddrinfo(addr_ai);\n        return -1;\n    }\n\n    if (addr_ai-\u003eai_family !\u003d gw_ai-\u003eai_family) {\n        printerr(\"ifc_add_route: different address families: %s and %s\\n\", addr, gw);\n        freeaddrinfo(addr_ai);\n        freeaddrinfo(gw_ai);\n        return -1;\n    }",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///z0\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1004300
+      },
+      "writtenOn": "2010-08-10T19:58:08Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "AAAA4n///8E\u003d",
       "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -296,6 +476,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA4n///zw\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1004300
+      },
+      "writtenOn": "2010-08-10T19:58:08Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "AAAA4n///78\u003d",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA4n///74\u003d",
         "filename": "libnetutils/ifc_utils.c",
         "patchSetId": 5
@@ -313,6 +511,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA4n///zs\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1004300
+      },
+      "writtenOn": "2010-08-10T19:58:08Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "AAAA4n///74\u003d",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA4n///7Y\u003d",
         "filename": "libnetutils/ifc_utils.c",
         "patchSetId": 5
@@ -324,6 +540,24 @@
       "writtenOn": "2010-08-10T00:23:09Z",
       "side": 1,
       "message": "Also:\n    freeaddrinfo(gw_ai);",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///zo\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1004300
+      },
+      "writtenOn": "2010-08-10T19:58:08Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "AAAA4n///7Y\u003d",
       "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
