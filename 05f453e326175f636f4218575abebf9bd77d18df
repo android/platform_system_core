@@ -122,6 +122,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA4n///v4\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2010-08-10T22:23:39Z",
+      "side": 1,
+      "message": "ipv4_dst",
+      "parentUuid": "AAAA4n///wo\u003d",
+      "revId": "05f453e326175f636f4218575abebf9bd77d18df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA4n///xg\u003d",
         "filename": "libnetutils/ifc_utils.c",
         "patchSetId": 6
@@ -133,6 +151,24 @@
       "writtenOn": "2010-08-10T21:55:13Z",
       "side": 1,
       "message": "ipv6_addr -\u003e ipv6_dest",
+      "revId": "05f453e326175f636f4218575abebf9bd77d18df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///v0\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2010-08-10T22:23:39Z",
+      "side": 1,
+      "message": "ipv6_dst",
+      "parentUuid": "AAAA4n///xg\u003d",
       "revId": "05f453e326175f636f4218575abebf9bd77d18df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -203,6 +239,24 @@
       "side": 1,
       "message": "Actually, thinking about it some more, I don\u0027t think we should support dst \u003d null to indicate the default route, because then we wouldn\u0027t know if it\u0027s an IPv4 or IPv6 default route.\n\nI think it\u0027s fine to mandate that the calling code always specify a destination. In the end, a route is just a destination with some associated attributes, so the destination is the most basic part of a route and must always be present. The gateway, on the other hand, may or may not be needed (so we allow it to be null).\n\nAlso, supporting null doesn\u0027t save much code in the caller: all it needs to do is pass in \"0.0.0.0\" or \"::\" instead of null.\n\nWhat do you think?",
       "parentUuid": "AAAA4n///xU\u003d",
+      "revId": "05f453e326175f636f4218575abebf9bd77d18df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///vo\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2010-08-10T22:23:39Z",
+      "side": 1,
+      "message": "Can\u0027t you tell by the addr family of the gateway?  Either can be null, but not both.  I see default and host routes as being opposite ends of the spectrum..  if we allow null gateway, I think we should allow null dst.   Symmetry is nice.",
+      "parentUuid": "AAAA4n///w0\u003d",
       "revId": "05f453e326175f636f4218575abebf9bd77d18df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
