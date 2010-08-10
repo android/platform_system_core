@@ -1,0 +1,242 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA4n///7U\u003d",
+        "filename": "include/netutils/ifc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T00:23:09Z",
+      "side": 1,
+      "message": "Add another parameter at the end specifying the gateway to use:\n\nextern int ifc_add_route(const char *name, const char *addr, int prefix_length, const char *gw);",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///8k\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T00:23:09Z",
+      "side": 1,
+      "message": "Can you add a parameter, like so?\n\nint ifc_add_ipv4_route(const char *name, in_addr_t dst, int prefix_length, in_addr_t gw) {",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///8g\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T00:23:09Z",
+      "side": 1,
+      "message": "This block would then become something like the following:\n\n    netmask \u003d get_ipv4_netmask(prefix_length);\n    init_sockaddr_in(\u0026rt.rt_genmask, netmask);\n    init_sockaddr_in(\u0026rt.rt_dst, dst);\n    rt.rt_flags \u003d RTF_UP;\n\n    if (prefix_length \u003d\u003d 32) {\n      rt.rt_flags |\u003d RTF_HOST;\n    }\n    if (gateway !\u003d 0) {\n      rt.rt_flags |\u003d RTF_GATEWAY;\n      init_sockaddr_in(\u0026rt.rt_gateway, gw);\n    }",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///8c\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T00:23:09Z",
+      "side": 1,
+      "message": "This would then be:\n\n    return ifc_add_ipv4_route(name, 0, 0, gw);",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///8Y\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T00:23:09Z",
+      "side": 1,
+      "message": "And this would be:\n\n    return ifc_add_ipv4_route(name, addr, 32, 0);",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///8U\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T00:23:09Z",
+      "side": 1,
+      "message": "Similarly to the IPv4 case above, can you make this take an extra parameter, like so?\n\nint ifc_add_ipv6_route(const char *name, struct in6_addr dst, int prefix_length, struct in6_addr gw) {",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///8Q\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T00:23:09Z",
+      "side": 1,
+      "message": "This will then be something like the following:\n\n    rtmsg.rtmsg_ifindex \u003d ifindex;\n    rtmsg.rtmsg_dst \u003d dst;\n    rtmsg.rtmsg_dst_len \u003d prefix_length;\n    rtmsg.rtmsg_flags \u003d RTF_UP;\n\n    if (prefix_length \u003d\u003d 128) {\n        rtmsg.rtmsg_flags |\u003d RTF_HOST;\n    }\n    if (memcmp(\u0026gw, \u0026in6addr_any, sizeof(in6addr_any)) {\n        rtmsg.rtmsg_flags |\u003d RTF_GATEWAY;\n        rtmsg.rtmsg_gateway \u003d gw;\n    }",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///8M\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T00:23:09Z",
+      "side": 1,
+      "message": "Add a gateway parameter:\n\nint ifc_add_route(const char *name, const char *dst, int prefix_length, const char *gw)",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///8I\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T00:23:09Z",
+      "side": 1,
+      "message": "Keep track of IPv4 and IPv6 gateways as well:\n\n    struct sockaddr_in ipv4_addr, ipv4_gw;\n    struct sockaddr_in6 ipv6_addr, ipv6_gw;",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///8A\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T00:23:09Z",
+      "side": 1,
+      "message": "Add an addrinfo structure for the gateway and rename result to addr_ai for consistency:\n\n    struct addrinfo hints, *addr_ai, *gw_ai;",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///8E\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T00:23:09Z",
+      "side": 1,
+      "message": "Convert the gateway to a socket address as well. For convenience, if the gateway is NULL, convert it to an empty address.\n\n    if (gw \u003d\u003d NULL) {\n        if (addr_ai-\u003eai_family \u003d\u003d AF_INET6) {\n            gw \u003d \"::\";\n        }\n        if (addr_ai-\u003eai_family \u003d\u003d AF_INET) {\n            gw \u003d \"0.0.0.0\";\n        }\n    }\n\n    ret \u003d getaddrinfo(gw, NULL, \u0026hints, \u0026gw_ai);\n    if (ret !\u003d 0) {\n        printerr(\"getaddrinfo failed: invalid gateway %s\\n\", gw);\n        freeaddrinfo(addr_ai);\n        return -1;\n    }\n\n    if (addr_ai-\u003eai_family !\u003d gw_ai-\u003eai_family) {\n        printerr(\"ifc_add_route: different address families: %s and %s\\n\", addr, gw);\n        freeaddrinfo(addr_ai);\n        freeaddrinfo(gw_ai);\n        return -1;\n    }",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///78\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T00:23:09Z",
+      "side": 1,
+      "message": "After this memcpy, convert the gateway to a socket address array as well:\n\n        memcpy(\u0026ipv6_addr, result-\u003eai_addr, sizeof(struct sockaddr_in6));\n        memcpy(\u0026ipv6_gw, gw_ai-\u003eai_addr, sizeof(struct sockaddr_in6));\n        ret \u003d ifc_add_ipv6_route(name, ipv6_addr.sin6_addr, prefix_length, ipv6_gw.sin6_addr);",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///74\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T00:23:09Z",
+      "side": 1,
+      "message": "And do the same for IPv4:\n\n        memcpy(\u0026ipv4_addr, result-\u003eai_addr, sizeof(struct sockaddr_in));\n        memcpy(\u0026ipv4_gw, gw_ai-\u003eai_addr, sizeof(struct sockaddr_in));\n        ret \u003d ifc_add_ipv4_route(name, ipv4_addr.sin_addr.s_addr, prefix_length, ipv4_gw.sin_addr.s_addr);",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///7Y\u003d",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2010-08-10T00:23:09Z",
+      "side": 1,
+      "message": "Also:\n    freeaddrinfo(gw_ai);",
+      "revId": "d5ed0b39fe56bee6ba46473307b6b5e41b64d56c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
