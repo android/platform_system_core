@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA7n//+wE\u003d",
+        "filename": "mksh/src/edit.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3937,
+      "author": {
+        "id": 1004692
+      },
+      "writtenOn": "2010-09-29T23:32:24Z",
+      "side": 1,
+      "message": "I would just check it.",
+      "revId": "ee617aba198247b1335ca7224b221dbe930dd93a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA7n//+wI\u003d",
+        "filename": "mksh/src/misc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1004692
+      },
+      "writtenOn": "2010-09-29T23:32:24Z",
+      "side": 1,
+      "message": "This is ok, but I prefer (for maintainability and clarity of intent) to simply say\n\n    if (setuid(...))\n        err(1, \"setuid\");",
+      "revId": "ee617aba198247b1335ca7224b221dbe930dd93a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA7n//+wU\u003d",
+        "filename": "mksh/src/var.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1004692
+      },
+      "writtenOn": "2010-09-29T23:32:24Z",
+      "side": 1,
+      "message": "I\u0027m less convinced by this assertion of safety than I am about the oktoadd(...)-type checks. Although I agree a practical attack on this code is unlikely, I see no reason not to use your existing safety checks such as oktoadd. I prefer \"obviously, definitely safe\" to \"if you check, you can see it\u0027s almost certainly safe\".\n\nAlso, can alloc return NULL? If not, good; if yes, check for that or make alloc abort or do something else appropriate.\n\nThese comments apply to the other instances of this kind of code, but I won\u0027t copy them everywhere.",
+      "revId": "ee617aba198247b1335ca7224b221dbe930dd93a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA7n//+wQ\u003d",
+        "filename": "mksh/src/var.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1004692
+      },
+      "writtenOn": "2010-09-29T23:32:24Z",
+      "side": 1,
+      "message": "Is this function used for security purposes?\n\nAny reason not to just read from /dev/random when you need secure random numbers?",
+      "revId": "ee617aba198247b1335ca7224b221dbe930dd93a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
