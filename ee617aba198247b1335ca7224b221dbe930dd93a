@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA7n//+qc\u003d",
+        "filename": "mksh/src/edit.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3937,
+      "author": {
+        "id": 1002670
+      },
+      "writtenOn": "2010-09-30T12:12:27Z",
+      "side": 1,
+      "message": "Like in the other comment (var.c:658), those are lengths of *substrings* of in-memory object, so the checks can be “proven” (probably even in a mathematical sense) to be unnecessary.",
+      "parentUuid": "AAAA7n//+wE\u003d",
+      "revId": "ee617aba198247b1335ca7224b221dbe930dd93a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA7n//+wI\u003d",
         "filename": "mksh/src/misc.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2010-09-29T23:32:24Z",
       "side": 1,
       "message": "This is ok, but I prefer (for maintainability and clarity of intent) to simply say\n\n    if (setuid(...))\n        err(1, \"setuid\");",
+      "revId": "ee617aba198247b1335ca7224b221dbe930dd93a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA7n//+qg\u003d",
+        "filename": "mksh/src/misc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002670
+      },
+      "writtenOn": "2010-09-30T12:12:27Z",
+      "side": 1,
+      "message": "No, because this is a special case for *one* out of a dozen or so supported target operating systems.",
+      "parentUuid": "AAAA7n//+wI\u003d",
       "revId": "ee617aba198247b1335ca7224b221dbe930dd93a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA7n//+qo\u003d",
+        "filename": "mksh/src/var.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1002670
+      },
+      "writtenOn": "2010-09-30T12:12:27Z",
+      "side": 1,
+      "message": "This is safe for the following reason:\nWe assume size_t is “represent[ing] the size of the largest possible object on the target platform”, where the object is in (data) memort. Both namelen and vallen are string lengths and already in memory – but not alone. (In fact, at least name is probably in memory at least two times.) Even so, being in memory with at least a handfull other bytes, which in mksh is a given, even for a machine with separate I/D spaces (although mksh only targets “systems close enough to BSD” anyway) means that the addition cannot overflow and will result in a value at least a couple of numbers below SIZE_MAX. Since the addition checks are a penalty in both code size and execution time, I prefer to not use them here when the “assertion” can be verified with a bit of thinking.\n\nThe lalloc.c routines cannot return NULL.\n\nSimilarily, I’ve added these comments to each instance where I checked those “assertions” in mind, and it took me quite some time too…",
+      "parentUuid": "AAAA7n//+wU\u003d",
+      "revId": "ee617aba198247b1335ca7224b221dbe930dd93a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA7n//+wQ\u003d",
         "filename": "mksh/src/var.c",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2010-09-29T23:32:24Z",
       "side": 1,
       "message": "Is this function used for security purposes?\n\nAny reason not to just read from /dev/random when you need secure random numbers?",
+      "revId": "ee617aba198247b1335ca7224b221dbe930dd93a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA7n//+qk\u003d",
+        "filename": "mksh/src/var.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1002670
+      },
+      "writtenOn": "2010-09-30T12:12:27Z",
+      "side": 1,
+      "message": "It’s not used for anything security related, other than to keep $RANDOM (the shell variable) around (and different for each shell instance), which is a convenience for the application. Nevertheless, it makes use of “some” system-provided entropy (arc4random* on some BSDs, ASLR on others) iff it’s cheap enough.\n\nEarlier mksh releases used arc4random() and provided an implementation of it to be used with, for example, GNU/Linux – but this is overkill and slowed things down on platforms such as m68k to a noticeable level. Furthermore, inferiour operating systems with only /dev/urandom but not /dev/arandom can suffer from entropy pool depletion very quickly, which is another reason we were asked to not drain it for things like this.",
+      "parentUuid": "AAAA7n//+wQ\u003d",
       "revId": "ee617aba198247b1335ca7224b221dbe930dd93a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
