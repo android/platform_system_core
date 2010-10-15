@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA8H///wA\u003d",
+        "filename": "init/parser.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000411
+      },
+      "writtenOn": "2010-10-15T09:00:02Z",
+      "side": 1,
+      "message": "You leave the pointer on the \\n here, so this still is going to generate two T_NEWLINE tokens (though the line number will be incremented once in your change). It would be better to do something like:\n\nif (*x \u003d\u003d \u0027\\n\u0027) {\n  state-\u003eptr \u003d x+1;\n  state-\u003eline++;\n  return T_NEWLINE;\n} else {\n  state-\u003eptrx \u003d x;\n  return T_EOF;\n}",
+      "revId": "64644f14986f7591a09d44961eb029f0ef94bfb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA8H///v8\u003d",
+        "filename": "init/parser.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000411
+      },
+      "writtenOn": "2010-10-15T09:00:02Z",
+      "side": 1,
+      "message": "this is going to skew the line number if there is a parse error in the T_TEXT that is returned by this part of the code. It is better to do the increment in the handling of state-\u003enexttoken above if it is a T_NEWLINE.",
+      "revId": "64644f14986f7591a09d44961eb029f0ef94bfb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
