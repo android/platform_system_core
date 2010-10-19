@@ -34,6 +34,24 @@
       "revId": "2b8fac0ab7a9e27516485d721892a4625d0b0769",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA8H///Sg\u003d",
+        "filename": "debuggerd/utility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000234
+      },
+      "writtenOn": "2010-10-19T18:13:25Z",
+      "side": 1,
+      "message": "In the original unwind-arm.c, rel_pc is initialized to pc and will only be converted to relative address if the mapping is found:\n\nunwind-arm.c:\n\n451     rel_pc \u003d pc;\n\n452     mi \u003d pc_to_mapinfo(map, pc, \u0026rel_pc);\n\n\nBecause of that the *rel_pc doesn\u0027t need to be initialized again in pc_to_mapinfo.\n\nI see that in the x86 version rel_pc is not initialized to pc prior to calling pc_to_mapinfo, so the explicit initialization to pc is needed in pc_to_mapinfo().\n\nNow that we multiple callsites of pc_to_mapinfo(), I think moving the initialization statement into the callee can get the code cleaner. How about:\n\n1) Move the \"*rel_pc \u003d pc\" statement out of the while loop and place it at the beginning of pc_to_mapinfo, since we want to set *rel_pc regardless of mi.\n2) Get rid of line 451 in unwind-arm.c.",
+      "parentUuid": "AAAA8H///Ss\u003d",
+      "revId": "2b8fac0ab7a9e27516485d721892a4625d0b0769",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
