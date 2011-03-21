@@ -52,6 +52,24 @@
       "revId": "6c234f901c7b4d19b754eea688e830d6cadd9e9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/X///Sg\u003d",
+        "filename": "init/ueventd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001191
+      },
+      "writtenOn": "2011-03-21T07:12:50Z",
+      "side": 1,
+      "message": "strtok() would be less efficient here. It is designed to look for more than one possible delimiter. We could just do something like:\n\nif (strncmp(name, \"androidboot.hardware\u003d\", 21)\n  strlcpy(hardware, name + 21, sizeof(hardware));",
+      "parentUuid": "AAAA/X///Ss\u003d",
+      "revId": "6c234f901c7b4d19b754eea688e830d6cadd9e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
