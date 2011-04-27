@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA/3///yU\u003d",
+        "filename": "libcutils/uevent.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1006168
+      },
+      "writtenOn": "2011-04-27T04:00:11Z",
+      "side": 1,
+      "message": "Good idea. Done.",
+      "parentUuid": "AAAA/3///yc\u003d",
+      "revId": "b285eee7253f2b6b43b1e85a5255f2a073b23737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA/3///yo\u003d",
         "filename": "libcutils/uevent.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2011-04-27T03:35:08Z",
       "side": 1,
       "message": "The documentation indicates that this method is like recv(), but the return values seem a bit odd to me.  In \"man recv\", a return value of 0 indicates that the peer performed an orderly shutdown.  Here, were using a return value of 0 to indicate an ignored message.\n\nIt would probably be better to return -1 here.  This will make this function more of a drop in replacement for recv().  (there\u0027s other parts of Android where this function would be valuable)",
+      "revId": "b285eee7253f2b6b43b1e85a5255f2a073b23737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/3///yQ\u003d",
+        "filename": "libcutils/uevent.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1006168
+      },
+      "writtenOn": "2011-04-27T04:00:11Z",
+      "side": 1,
+      "message": "The reason for returning 0 was so that SocketListener in libsysutils would continue to attempt reading on the socket even after receiving a forged message. After a bit of thinking, the original behaviour where it would close the socket is probably a bug. I\u0027ll fix that and change this code to return -1.",
+      "parentUuid": "AAAA/3///yo\u003d",
       "revId": "b285eee7253f2b6b43b1e85a5255f2a073b23737",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
