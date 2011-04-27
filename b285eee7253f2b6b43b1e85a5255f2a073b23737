@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA/3///yc\u003d",
+        "filename": "libcutils/uevent.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2011-04-27T03:35:08Z",
+      "side": 1,
+      "message": "maybe I\u0027m just being paranoid, but if any of these error checks fail, the buffer will still be populated with the potentially malicious content (even though the return value will be correct).  Someone who uses this method without checking the return value may find the buffer populated with malicious content.\n\nPerhaps it makes sense to bzero() the buffer if any of these security checks fail?",
+      "revId": "b285eee7253f2b6b43b1e85a5255f2a073b23737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/3///yo\u003d",
+        "filename": "libcutils/uevent.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2011-04-27T03:35:08Z",
+      "side": 1,
+      "message": "The documentation indicates that this method is like recv(), but the return values seem a bit odd to me.  In \"man recv\", a return value of 0 indicates that the peer performed an orderly shutdown.  Here, were using a return value of 0 to indicate an ignored message.\n\nIt would probably be better to return -1 here.  This will make this function more of a drop in replacement for recv().  (there\u0027s other parts of Android where this function would be valuable)",
+      "revId": "b285eee7253f2b6b43b1e85a5255f2a073b23737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/3///yk\u003d",
+        "filename": "libcutils/uevent.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2011-04-27T03:35:08Z",
+      "side": 1,
+      "message": "and here",
+      "revId": "b285eee7253f2b6b43b1e85a5255f2a073b23737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/3///yg\u003d",
+        "filename": "libcutils/uevent.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2011-04-27T03:35:08Z",
+      "side": 1,
+      "message": "and here",
+      "revId": "b285eee7253f2b6b43b1e85a5255f2a073b23737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
