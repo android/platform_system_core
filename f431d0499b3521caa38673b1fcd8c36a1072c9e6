@@ -16,6 +16,24 @@
       "revId": "f431d0499b3521caa38673b1fcd8c36a1072c9e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/3///oY\u003d",
+        "filename": "rootdir/etc/ueventd.goldfish.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000411
+      },
+      "writtenOn": "2011-04-28T07:52:40Z",
+      "side": 1,
+      "message": "Yes, we need this word writable. The device implements a magic i/o page that can be mmap() -ed into a user process, which can the read/write in it to communicate with the emulator,\n\nThis is how our C library can send allocation details to the emulator very quickly to implement the -memcheck option. This is also used by the VM tracing code to send quick \"method enter/exit\" events to the emulator.\n\nSimilarly, we need to be able to read()/write() to /dev/qemu_pipe from any user process.",
+      "parentUuid": "AAAA/3///ok\u003d",
+      "revId": "f431d0499b3521caa38673b1fcd8c36a1072c9e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
