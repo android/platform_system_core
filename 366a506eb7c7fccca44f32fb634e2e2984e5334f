@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAABBn///Pg\u003d",
+        "filename": "init/init.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1003152
+      },
+      "writtenOn": "2011-05-31T11:19:44Z",
+      "side": 1,
+      "message": "Why uint64_t? Capabilities are __u32 in bionic/linux",
+      "revId": "366a506eb7c7fccca44f32fb634e2e2984e5334f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAABBn///PY\u003d",
+        "filename": "init/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1003152
+      },
+      "writtenOn": "2011-05-31T11:19:44Z",
+      "side": 1,
+      "message": "(uint32_t?)",
+      "revId": "366a506eb7c7fccca44f32fb634e2e2984e5334f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAABBn///Pk\u003d",
+        "filename": "init/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1003152
+      },
+      "writtenOn": "2011-05-31T11:19:44Z",
+      "side": 1,
+      "message": "A typo in the capability would return 0, which is a valid capability (CAP_CHOWN).\n\nIt would be better to return 0xFFFFFFFF instead, perhaps? And then let the caller check this, and print out a warning?\n\n(it would\u0027ve been great to have the cap_valid macro you can find in the kernel...)",
+      "revId": "366a506eb7c7fccca44f32fb634e2e2984e5334f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAABBn///Pc\u003d",
+        "filename": "init/util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003152
+      },
+      "writtenOn": "2011-05-31T11:19:44Z",
+      "side": 1,
+      "message": "(uint32_t?)",
+      "revId": "366a506eb7c7fccca44f32fb634e2e2984e5334f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
