@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAACeX////4\u003d",
+        "filename": "libpixelflinger/fixed.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1005760
+      },
+      "writtenOn": "2012-01-31T22:10:58Z",
+      "side": 1,
+      "message": "\"shift\" variable is never negative.. \"shift\" variable can be zero. But if \"shift\" is 0, then shift-1 become -ve. -ve left shift of 0x1 results in 0x0 on ARM, but 0x80000000 on MIPS \u0026 x86. This causes artifacts during rendering (For example the teapot example in 0xBench mark shows this when used on the MIPS emulator - in some frames only)\n\nThe code does assume to rely on the value of left shift of 0x1 returning 0...",
+      "parentUuid": "AAACen////g\u003d",
+      "revId": "65026f980a6df01a7d437ce51a47de911820041e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAACen////k\u003d",
         "filename": "libpixelflinger/fixed.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-01-31T22:02:29Z",
       "side": 1,
       "message": "And if shift is negative here?",
+      "revId": "65026f980a6df01a7d437ce51a47de911820041e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAACeX////0\u003d",
+        "filename": "libpixelflinger/fixed.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1005760
+      },
+      "writtenOn": "2012-01-31T22:10:58Z",
+      "side": 1,
+      "message": "the \"shift\" variable can never be 0. so it is not needed here.",
+      "parentUuid": "AAACen////k\u003d",
       "revId": "65026f980a6df01a7d437ce51a47de911820041e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
