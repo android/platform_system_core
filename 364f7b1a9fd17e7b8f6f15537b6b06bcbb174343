@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAE73///0c\u003d",
+        "filename": "init/init.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2012-04-24T22:10:01Z",
+      "side": 1,
+      "message": "No check, so a slightly typo-ed limit name will go unnoticed.",
+      "revId": "364f7b1a9fd17e7b8f6f15537b6b06bcbb174343",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAE73///1o\u003d",
         "filename": "init/init_parser.c",
         "patchSetId": 1
@@ -31,6 +48,24 @@
       "side": 1,
       "message": "Looking through the implementation this follows the general pattern of not checking return values when parsing parameters. See e.g. decode_uid() or most of the different forms of atoi().\n\nSo this follows the general pattern of the \"parser\" over proper validation.\n\nPlease let me know if you prefer a version with this check in place. What about the atois?",
       "parentUuid": "AAAE73///1o\u003d",
+      "revId": "364f7b1a9fd17e7b8f6f15537b6b06bcbb174343",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAE73///0g\u003d",
+        "filename": "init/init_parser.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2012-04-24T22:10:01Z",
+      "side": 1,
+      "message": "I would prefer a version that doesn\u0027t silently succeed and not do what is expected.\n\nIn the decode_uid() case, the return value is actually mostly unusable and will cause init to fail later e.g. when setuid() is invoked.\n\nBut in the case of rlimit, there is no failure check anywhere.\n\nSo either check setrlimit()\u0027s return value, or check that the decoded resource isn\u0027t RLIM_NLIMITS. Complaining during parsing has the advantage that the parse_error() will provide an actionable message with filename + linenum as opposed to some much much much later error during service startup (think adb which doesn\u0027t get turned on until somebody says to).",
+      "parentUuid": "AAAE8n///9I\u003d",
       "revId": "364f7b1a9fd17e7b8f6f15537b6b06bcbb174343",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
