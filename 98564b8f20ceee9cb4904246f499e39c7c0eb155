@@ -34,6 +34,24 @@
       "revId": "98564b8f20ceee9cb4904246f499e39c7c0eb155",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAHMH///4E\u003d",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 10
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2012-07-11T11:47:42Z",
+      "side": 1,
+      "message": "The ownerships and modes were based on system/extras/tests/fstest/perm_checker.conf.\n\nThe reason for pre-creating the directories in init.rc was to allow us to label them with the correct security context (originally with an explicit restorecon, superseded by the other change to automatically set the context on all directories created by init.rc) without needing to modify both debuggerd and system_server and anything else that might create the directories.  It also seemed consistent with the general pattern of pre-creating directories with specific ownerships/modes in init.rc.\n\nHowever, I will drop these two mkdir statements unless I hear otherwise from you and look into modifying debuggerd and system_server to set the security context instead when they create the directories.",
+      "parentUuid": "AAAHJ3///sI\u003d",
+      "revId": "98564b8f20ceee9cb4904246f499e39c7c0eb155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
