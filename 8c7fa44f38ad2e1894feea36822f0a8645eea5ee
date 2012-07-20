@@ -16,6 +16,24 @@
       "revId": "8c7fa44f38ad2e1894feea36822f0a8645eea5ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAHtn////A\u003d",
+        "filename": "adb/framebuffer_service.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1011143
+      },
+      "writtenOn": "2012-07-20T14:02:45Z",
+      "side": 1,
+      "message": "Thank you for the suggestion, Colin.\n\nHowever I\u0027m slightly confused by comment from \"dalvik/libnativehelper/include/nativehelper/JNIHelp.h\":\n\n\"TEMP_FAILURE_RETRY is defined by some, but not all, versions of \u003cunistd.h\u003e. (Alas, it is not as standard as we\u0027d hoped!)\".\n\nAs we can see there, they explicitly define the macro if it is not yet defined.\n\nIn our case, the TEMP_FAILURE_RETRY macro is not defined inside \"system/core\" subproject, therefore we shoud either:\n   * [re-]define it in some header inside \"system/core\" (like done in \"dalvik/libnativehelper/include/nativehelper/JNIHelp.h\")\nor\n   * avoid using it and stay within the solution from \"Patch Set 2\" (my personal preference).\n\nLooking forward your opinion.",
+      "parentUuid": "AAAHqX////8\u003d",
+      "revId": "8c7fa44f38ad2e1894feea36822f0a8645eea5ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
