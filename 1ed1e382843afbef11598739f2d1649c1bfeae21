@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAHsH///04\u003d",
+        "filename": "rootdir/etc/init.goldfish.rc",
+        "patchSetId": 11
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2012-07-24T11:31:20Z",
+      "side": 1,
+      "message": "We could do that, but it would require making the same change over in external/sepolicy where the boolean is defined.  Up to you.",
+      "parentUuid": "AAAHs3//+4U\u003d",
+      "revId": "1ed1e382843afbef11598739f2d1649c1bfeae21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAHtH//+mE\u003d",
         "filename": "rootdir/init.rc",
         "patchSetId": 11
@@ -48,6 +66,24 @@
       "side": 1,
       "message": "scratch that, making chown do it would be sucky and ugly.\n\nIs there a way we can just do a \"restorecon_all\" at the end of the init process (before remounting root ro, and then after setting up /data) to just restore the context of everything?",
       "parentUuid": "AAAHtH//+mE\u003d",
+      "revId": "1ed1e382843afbef11598739f2d1649c1bfeae21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAHsH///00\u003d",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 11
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2012-07-24T11:31:20Z",
+      "side": 1,
+      "message": "Most of the directories are created with the right context during build (the already merged mkyaffs2image and make_ext4fs changes) or by init when it creates the directory (pending change If6af6c4887).  So we only need restorecon calls now for a few cases.  /dev and /dev/socket are created by init before policy is first loaded, so we have to restorecon them afterward.  /cache needs to be initially labeled after filesystem creation there, so we do it here much the same way as chown/chmod is applied.  /data generally shouldn\u0027t be required as the initially flashed image will be labeled already but is done here just in case it was reset, again similar to the chown/chmod situation.  Not sure what a restorecon_all would do or where it would obtain its list of directories to apply; we don\u0027t really need or want to restorecon the entire directory tree on each boot and that would be slow.",
+      "parentUuid": "AAAHtH//+kk\u003d",
       "revId": "1ed1e382843afbef11598739f2d1649c1bfeae21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
