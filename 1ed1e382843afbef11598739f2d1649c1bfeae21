@@ -87,6 +87,24 @@
       "revId": "1ed1e382843afbef11598739f2d1649c1bfeae21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAHsH///0s\u003d",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 11
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2012-07-24T12:10:36Z",
+      "side": 1,
+      "message": "One other observation: the restorecon calls need to happen as early as possible so that any files subsequently created in those directories will be labeled correctly.  So the restorecon /dev /dev/socket has to happen before ueventd starts, and the restorecon /cache and /data should occur before anything else gets created in them.",
+      "parentUuid": "AAAHsH///00\u003d",
+      "revId": "1ed1e382843afbef11598739f2d1649c1bfeae21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
