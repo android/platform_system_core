@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAHtH//+B4\u003d",
+        "filename": "rootdir/etc/init.goldfish.rc",
+        "patchSetId": 11
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2012-07-24T20:13:43Z",
+      "side": 1,
+      "message": "Are there places in the framework that reference this boolean? Or is it only ever referenced in goldfish specific stuff?",
+      "parentUuid": "AAAHsH///04\u003d",
+      "revId": "1ed1e382843afbef11598739f2d1649c1bfeae21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAHtH//+mE\u003d",
         "filename": "rootdir/init.rc",
         "patchSetId": 11
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "One other observation: the restorecon calls need to happen as early as possible so that any files subsequently created in those directories will be labeled correctly.  So the restorecon /dev /dev/socket has to happen before ueventd starts, and the restorecon /cache and /data should occur before anything else gets created in them.",
       "parentUuid": "AAAHsH///00\u003d",
+      "revId": "1ed1e382843afbef11598739f2d1649c1bfeae21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAHtH//+Bk\u003d",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 11
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2012-07-24T20:13:43Z",
+      "side": 1,
+      "message": "i see, ok.\n\nMy questions come out of the concern that it is not exactly clear while looking through these files when a restorecon is appropriate and when it isn\u0027t. I\u0027m worried, as mentioned previously, that people will not understand when and where to use it so they will either use it everywhere, nowhere, or randomly. I\u0027m trying to figure out how to make it be pretty fool-proof. Perhaps a block comment at the top of the file? Maybe something at the end of boot can walk /, /dev/, etc to make sure  things are sane and print errors if not (one-time service?) Shrug. \n\nNote that I was only referring to the ramdisk files (though elsewhere, Matt F tells me that it is done through genfscon?). I expect the emmc/disk based filesystems to already have the correct labels (outside the /data stuff you mentioned).",
+      "parentUuid": "AAAHsH///0s\u003d",
       "revId": "1ed1e382843afbef11598739f2d1649c1bfeae21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
