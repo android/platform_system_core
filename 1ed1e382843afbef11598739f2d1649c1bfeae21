@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "AAAHyX///+g\u003d",
+        "filename": "rootdir/etc/init.goldfish.rc",
+        "patchSetId": 11
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2012-07-25T12:10:25Z",
+      "side": 1,
+      "message": "It is only explicitly referenced in this file and in external/sepolicy, not in the frameworks. The SELinux java interfaces allow system apps to get the full list of booleans, which is used by the SEAndroidManager app, but it doesn\u0027t make any hardcoded references to any specific booleans.",
+      "parentUuid": "AAAHtH//+B4\u003d",
+      "revId": "1ed1e382843afbef11598739f2d1649c1bfeae21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAHtH//+mE\u003d",
         "filename": "rootdir/init.rc",
         "patchSetId": 11
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "i see, ok.\n\nMy questions come out of the concern that it is not exactly clear while looking through these files when a restorecon is appropriate and when it isn\u0027t. I\u0027m worried, as mentioned previously, that people will not understand when and where to use it so they will either use it everywhere, nowhere, or randomly. I\u0027m trying to figure out how to make it be pretty fool-proof. Perhaps a block comment at the top of the file? Maybe something at the end of boot can walk /, /dev/, etc to make sure  things are sane and print errors if not (one-time service?) Shrug. \n\nNote that I was only referring to the ramdisk files (though elsewhere, Matt F tells me that it is done through genfscon?). I expect the emmc/disk based filesystems to already have the correct labels (outside the /data stuff you mentioned).",
       "parentUuid": "AAAHsH///0s\u003d",
+      "revId": "1ed1e382843afbef11598739f2d1649c1bfeae21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAHyX///+c\u003d",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 11
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2012-07-25T12:10:25Z",
+      "side": 1,
+      "message": "The restorecon /dev and restorecon /dev/socket could be taken to init code (to the tail of selinux_load_policy) if that is preferred, maybe rolled up into the other change for labeling directories.  Has to be done after policy load and before /dev nodes start to get created by ueventd.\n\nThe restorecon of /cache, /cache/recovery, and /data closely follows the existing model for fixing up ownerships and permissions for those directories in case they were reset or (in the /cache/recovery case) created with odd permissions by the recovery system.  So I think those restorecon calls are reasonable to retain here and shouldn\u0027t confuse people.  And that\u0027s all that would be left - three restorecon calls, each closely associated with an existing chown/chmod sequence, and only for resettable partitions.\n\nrootfs doesn\u0027t get per-file labels anyway as they aren\u0027t stored in the initrd, so restorecon doesn\u0027t make much sense there.\n\nThen in the board-specific init.rc files, restorecon gets used for the factory partition as it is typically not labeled, at least presently, although that will hopefully change when devices ship with SE Android enabled.",
+      "parentUuid": "AAAHtH//+Bk\u003d",
       "revId": "1ed1e382843afbef11598739f2d1649c1bfeae21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
