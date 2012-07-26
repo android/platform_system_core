@@ -177,6 +177,24 @@
       "revId": "1ed1e382843afbef11598739f2d1649c1bfeae21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAH3n///yk\u003d",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 11
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2012-07-26T04:38:49Z",
+      "side": 1,
+      "message": "Yeah, I thnk it makes sense to do the restorecon on /dev and /dev/socket inside init right where you load the policy. I think it will be a lot clearer as doing it init.rc looks out of place for those two.\n\nRegarding the other restorecons, I think we are talking past each other a little bit. I\u0027m not questioning that the restorecons need to be done, nor am I suggesting that init.rc isn\u0027t the right place for them per-say. All of that looks good to me. My *only* concern is that as one skims through init.rc, it is not clear which mkdir/chown/chmod require a restorecon and which don\u0027t. My fear (based on experience) is that OEMs and silicon vendors are going to be confused and not do the right thing no matter how clear it seems to you (after all, you have looked at this for a long time). To be fair, I don\u0027t know what the answer is. I was trying to pick your brain to help think of a way to mitigate this issue. I guess a nice comment to say when to add things.\n\nPerhaps, separately, we should write a little tool that will run through the system and flag things that don\u0027t look like they are labeled correctly (or at all). We can then educate the users about running it to verify things are at least sane. Thoughts?",
+      "parentUuid": "AAAHyX///+c\u003d",
+      "revId": "1ed1e382843afbef11598739f2d1649c1bfeae21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
