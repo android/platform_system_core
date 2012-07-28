@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAH4n///6w\u003d",
+        "filename": "init/init.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2012-07-28T00:53:20Z",
+      "side": 1,
+      "message": "IMO I would try to avoid having strings for this stuff scattered around. why not make functions in libselinux that that can return the appropriate file to use to the caller. This way if we update file locations, we can just modify one spot. \n\nAgain, ill concede to Google\u0027s arguments if it is ok with them it is ok with me, their the ones that have to live with the code in the end.",
+      "revId": "cb687d717a2a2fe688147309eb68a84747c6866b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAH4n///6s\u003d",
+        "filename": "init/init.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2012-07-28T00:53:20Z",
+      "side": 1,
+      "message": "Why not put the audit call back in libselinux too?",
+      "revId": "cb687d717a2a2fe688147309eb68a84747c6866b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAH4n///6o\u003d",
+        "filename": "init/init.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2012-07-28T00:53:20Z",
+      "side": 1,
+      "message": "This could be changed to something like:\n\nselinux_android_setcallback()\nand hide the details from init",
+      "revId": "cb687d717a2a2fe688147309eb68a84747c6866b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
