@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAH7H///Ug\u003d",
+        "filename": "init/init.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2012-07-31T22:34:16Z",
+      "side": 1,
+      "message": "I would normally agree with you, but property service exists in one place and is something that we really should keep together in init (unlike the other stuff that was in restorecon/init/ueventd). I don\u0027t like having strings like this all over the place either, but I\u0027m a little worried about debugging the property service and not knowing what to look for.\n\nWhat I think would be useful is a function that takes a list of files and returns a handle so that you don\u0027t have to open code the while loop all over the place.\n\nAlso, the code below that loops over the policy list and does open, and then fstat, and then mmap, and then load_policy. All of that code should all be done inside the selinux library and init should just feed it the list of files/paths to try. There should be no reason to have this code in init.",
+      "parentUuid": "AAAH4n///6w\u003d",
+      "revId": "cb687d717a2a2fe688147309eb68a84747c6866b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAH4n///6s\u003d",
         "filename": "init/init.c",
         "patchSetId": 4
