@@ -16,6 +16,24 @@
       "revId": "3d7d4b6584710727e522fb0255604c1084e0371d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIEX///+s\u003d",
+        "filename": "init/signal_handler.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1003284
+      },
+      "writtenOn": "2012-08-07T07:47:09Z",
+      "side": 1,
+      "message": "Tthe Linux manual page says that sa_restorer should not be referenced but it seems that the ARM kernel saves and restores it and the x86 actually uses it.\n\nThe MIPS struct sigaction does not have a sa_restorer field.\nI think the best solution would be to use\n  memset(act, 0 , sizeof(act));\nto initialise the structure then set sa_handler and sa_flags",
+      "parentUuid": "AAAIFn////M\u003d",
+      "revId": "3d7d4b6584710727e522fb0255604c1084e0371d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
