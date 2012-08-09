@@ -34,6 +34,24 @@
       "revId": "bf3a5b222ec2de0d6a26b8beb54ef7744d2dbd7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIH3//+n4\u003d",
+        "filename": "libnetutils/dhcpclient.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2012-08-09T17:50:28Z",
+      "side": 1,
+      "message": "How is memcpy more endian friendly in this case? You are never accessing any of the bytes directly, you are just dereferencing a 4-byte opaque ptr and passing it as on opaque 4-byte blob to ntohl in the function call below. You never perform bit/byte operations on it until then. So, memcpy is superfluous here.\n\nThe only benefit to using memcpy here is that it is safer on platforms with hard alignment restrictions, as x could be unaligned here. So for that purpose, we should leave the memcpy, not for endianness.",
+      "parentUuid": "AAAIEX//+Kc\u003d",
+      "revId": "bf3a5b222ec2de0d6a26b8beb54ef7744d2dbd7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
