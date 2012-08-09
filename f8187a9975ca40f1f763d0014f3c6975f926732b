@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAIEX//+Mw\u003d",
+        "filename": "libpixelflinger/codeflinger/MIPSAssembler.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1003298
+      },
+      "writtenOn": "2012-08-09T16:29:19Z",
+      "side": 1,
+      "message": "The pragma marks/sections-names are in the original Arm code as well. They are an editor-helper, which ease code navigation in editors that support them, such as Textmate. There are emacs and vim plugins for these as well.\n\nI put them in the MIPS code for consistency with the existing code. and the convenience of the original author (as well as my own ;-)\n\nOf course, I can remove them if you prefer.",
+      "parentUuid": "AAAIE3//+uo\u003d",
+      "revId": "f8187a9975ca40f1f763d0014f3c6975f926732b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAIE3//+uY\u003d",
         "filename": "libpixelflinger/codeflinger/load_store.cpp",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2012-08-09T00:26:36Z",
       "side": 1,
       "message": "I see these macros defined in other places as well. Can\u0027t you move them to a common header?",
+      "revId": "f8187a9975ca40f1f763d0014f3c6975f926732b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIEX//+Mk\u003d",
+        "filename": "libpixelflinger/codeflinger/load_store.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003298
+      },
+      "writtenOn": "2012-08-09T16:29:19Z",
+      "side": 1,
+      "message": "Good point, these are repeated. I think that rather than move to a common header, I will remove all the big-endian code support that I added. \n\nMIPS used to support big-endian builds of Android, but we will support that going forward. So then these changes just add cruft that makes the code harder to review for you guys. I\u0027ll upload a new patchset in a few hours, after testing is complete.",
+      "parentUuid": "AAAIE3//+uY\u003d",
       "revId": "f8187a9975ca40f1f763d0014f3c6975f926732b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
