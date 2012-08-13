@@ -34,6 +34,24 @@
       "revId": "a70fd734cc518f08d2def844fe38f9aae2d8c060",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIR3///x0\u003d",
+        "filename": "sdcard/sdcard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2012-08-13T17:44:13Z",
+      "side": 1,
+      "message": "From manpage:\nIf  endptr is not NULL, strtoul() stores the address of the first invalid character in *endptr.  If there were no digits at all, strtoul() stores the original\n       value of nptr in *endptr (and returns 0).  In particular, if *nptr is not \u0027\\0\u0027 but **endptr is \u0027\\0\u0027 on return, the entire string is valid.\n\n\nNote that it defines endptr as ** in the manpage, so your \u0026endptr will always be non-null when you pass it into the function. So, it will always store an address into endptr.",
+      "parentUuid": "AAAIRn///0U\u003d",
+      "revId": "a70fd734cc518f08d2def844fe38f9aae2d8c060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
