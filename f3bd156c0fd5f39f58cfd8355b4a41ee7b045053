@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAIu3///eY\u003d",
+        "filename": "adb/commandline.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1006781
+      },
+      "writtenOn": "2012-08-20T20:46:49Z",
+      "side": 1,
+      "message": "By default, no. If, however, the user explicitly passes the \u0027-a\u0027 flag, then any host will be able to connect to their adb server. That is by design.",
+      "parentUuid": "AAAIsH///Yc\u003d",
+      "revId": "f3bd156c0fd5f39f58cfd8355b4a41ee7b045053",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAIsH///Yg\u003d",
         "filename": "adb/commandline.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2012-08-20T20:27:04Z",
       "side": 1,
       "message": "Why don\u0027t you just use adb connect instead?",
+      "revId": "f3bd156c0fd5f39f58cfd8355b4a41ee7b045053",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIu3///eM\u003d",
+        "filename": "adb/commandline.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1006781
+      },
+      "writtenOn": "2012-08-20T20:46:49Z",
+      "side": 1,
+      "message": "Because adb connect does not work for the use-case this feature was developed for (USB device-under-test on remote host).\n\nadb connect looks like this:\n            Host A                                            Host B\n -----------------------------------------            ---------------------------\n |Emulator or adbd listening on port 5555|\u003c----------\u003e|adb server\u003c---\u003eadb client|\n -----------------------------------------            ---------------------------\n\nThis feature looks like this:\n             Host A                         Host B\n -----------------------------     TCP   ------------\n |USB device \u003c---\u003e adb server|\u003c---------\u003e|adb client|\n -----------------------------           ------------\n\nNotice that in the adb connect case, it is impossible to have a USB android device on host A and an adb client on host B.",
+      "parentUuid": "AAAIsH///Yg\u003d",
       "revId": "f3bd156c0fd5f39f58cfd8355b4a41ee7b045053",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
