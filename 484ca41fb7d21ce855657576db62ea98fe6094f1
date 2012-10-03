@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAJ2n///tc\u003d",
+        "filename": "init/property_service.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2012-10-03T23:22:16Z",
+      "side": 1,
+      "message": "move below the declarations, this is hard to read. Put it after line 325",
+      "revId": "484ca41fb7d21ce855657576db62ea98fe6094f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAJ2n///s4\u003d",
+        "filename": "init/property_service.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2012-10-03T23:22:16Z",
+      "side": 1,
+      "message": "not sure how this can happen. strlen(name) is verified in property_set, so it would mean than the snprintf to tempPath  filled it up, meaning that PERSISTENT_PROPERTY_DIR + sizeof(\".temp.XXXXXX\") \u003e\u003d PATH_MAX - PROP_NAME_MAX. . If you want to be that pedantic, check the length of snprintf to tempPath as well.",
+      "revId": "484ca41fb7d21ce855657576db62ea98fe6094f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
