@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAJ2n///bw\u003d",
+        "filename": "init/property_service.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2012-10-04T17:52:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAJ2n///tc\u003d",
+      "revId": "484ca41fb7d21ce855657576db62ea98fe6094f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAJ2n///s4\u003d",
         "filename": "init/property_service.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2012-10-03T23:22:16Z",
       "side": 1,
       "message": "not sure how this can happen. strlen(name) is verified in property_set, so it would mean than the snprintf to tempPath  filled it up, meaning that PERSISTENT_PROPERTY_DIR + sizeof(\".temp.XXXXXX\") \u003e\u003d PATH_MAX - PROP_NAME_MAX. . If you want to be that pedantic, check the length of snprintf to tempPath as well.",
+      "revId": "484ca41fb7d21ce855657576db62ea98fe6094f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAJ2n///YI\u003d",
+        "filename": "init/property_service.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2012-10-04T17:52:57Z",
+      "side": 1,
+      "message": "I removed this check. This was just me being paranoid and trying to pre-emptively deal with a situation where the length check wasn\u0027t done.  But, I agree with you, it\u0027s useless futureproofing code.\n\nI changed line 351 and 352 (where the strlen is called) from an int to a size_t.  Otherwise, a strlen(name) \u003e 2G would have caused namelen to be negative, bypassing the PROP_NAME_MAX check. We accidentally detect this case on line 356.",
+      "parentUuid": "AAAJ2n///s4\u003d",
       "revId": "484ca41fb7d21ce855657576db62ea98fe6094f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
