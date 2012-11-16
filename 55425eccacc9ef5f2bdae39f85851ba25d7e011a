@@ -16,6 +16,24 @@
       "revId": "55425eccacc9ef5f2bdae39f85851ba25d7e011a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAALr3///8U\u003d",
+        "filename": "adb/adb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1000411
+      },
+      "writtenOn": "2012-11-16T11:08:10Z",
+      "side": 1,
+      "message": "This is done by snprintf().\n\nThe idea is that the format_xxx functions use the same convention that snprintf() on Posix: always perform safe truncation (i.e. always append a final zero), but return the size of the full string anyway.\n\nThis allows you to call the function twice, the first time with buffer \u003d\u003d NULL and buffer_len \u003d\u003d 0, and the function returns the number of bytes you need for the output.\n\nThe second time, you call it with buffer !\u003d NULL, and buffer_len \u003d required_size + 1, the extra 1 is required for the terminating zero (if you use required_size instead, the zero gets tucked at the end, erasing your last byte).\n\nThat\u0027s what the format_listeners code does.\n\nWe can\u0027t just return the value of snprintf() here directly because on Windows, the function is broken and will return -1 in case of truncation (yeah), and this code runs on the host.\n\nIf you prefer, I can use a different convention, but then I\u0027ll have to implement two functions: one to compute the size, and the other to do the write.",
+      "parentUuid": "AAALoH///s0\u003d",
+      "revId": "55425eccacc9ef5f2bdae39f85851ba25d7e011a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
