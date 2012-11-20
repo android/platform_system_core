@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAALyX///74\u003d",
+        "filename": "adb/adb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1000411
+      },
+      "writtenOn": "2012-11-20T14:53:01Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you mean here, but just in case:\n\nThis string is generated in the ADB server daemon, and later passed to the client, which could be running on a different machine / OS.\n\nFor Windows, the conversion from \\n to \\r\\n should be done in the client code. This actually happens through a simple printf(), which does that automatically on this platform (that\u0027s the reason why printf(\"Hello World\\n\") works correctly too).\n\nUsing \\r\\n when the daemon runs on Windows would create problems for Linux clients accessing the daemon through a SSH tunnel, for example.\n\nAlways generating \\r\\n is going to create problems for scripts and programs using the output of \"adb forward --list\" on non-Windows machines. That is, very unfortunately, a _very_ common complaint with \"adb shell\" that does just that for reasons that still elude me at the moment.",
+      "parentUuid": "AAALn3//+KQ\u003d",
+      "revId": "55425eccacc9ef5f2bdae39f85851ba25d7e011a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAALn3//+IM\u003d",
         "filename": "adb/adb.c",
         "patchSetId": 1
@@ -65,6 +83,41 @@
       "writtenOn": "2012-11-19T18:45:53Z",
       "side": 1,
       "message": "install_listener() can return -2 also and can be called with or without no_rebind.\n\n   (!no_rebind \u0026\u0026 r \u003c 0) ?",
+      "revId": "55425eccacc9ef5f2bdae39f85851ba25d7e011a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAALyX///70\u003d",
+        "filename": "adb/adb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1614,
+      "author": {
+        "id": 1000411
+      },
+      "writtenOn": "2012-11-20T14:53:01Z",
+      "side": 1,
+      "message": "install_listener returns -2 when it can\u0027t actually bind() to the address, that\u0027s handled by the \"else\" portion here, i.e. it will print \"cannot bind socket\".\n\ninstall_listener returns -1 when it cannot do one of the following:\n- detects that there is an attempt to rebind the smart socket (independent of no_rebind).\n- or detect that there is an attempt to rebind a normal socket with no_rebind \u003d\u003d 1.\n\nI thought that \"cannot rebind socket\" was generic and informative enough, but if you prefer, I can distinguish both cases (e.g. make the function return -3 or something). Let me know what you think.",
+      "parentUuid": "AAALn3//+IM\u003d",
+      "revId": "55425eccacc9ef5f2bdae39f85851ba25d7e011a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAALyX///7w\u003d",
+        "filename": "adb/commandline.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1000411
+      },
+      "writtenOn": "2012-11-20T14:53:01Z",
+      "side": 1,
+      "message": "this is what converts the \\n into \\r\\n on Windows.",
       "revId": "55425eccacc9ef5f2bdae39f85851ba25d7e011a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
