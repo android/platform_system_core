@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "AAALuX///vo\u003d",
+        "filename": "adb/adb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2012-11-20T21:35:33Z",
+      "side": 1,
+      "message": "My bad. I thought that the snprintf() was going to convert \\n like it handles LOCALE for some of the formats.",
+      "parentUuid": "AAALyX///74\u003d",
+      "revId": "55425eccacc9ef5f2bdae39f85851ba25d7e011a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAALn3//+IM\u003d",
         "filename": "adb/adb.c",
         "patchSetId": 1
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "install_listener returns -2 when it can\u0027t actually bind() to the address, that\u0027s handled by the \"else\" portion here, i.e. it will print \"cannot bind socket\".\n\ninstall_listener returns -1 when it cannot do one of the following:\n- detects that there is an attempt to rebind the smart socket (independent of no_rebind).\n- or detect that there is an attempt to rebind a normal socket with no_rebind \u003d\u003d 1.\n\nI thought that \"cannot rebind socket\" was generic and informative enough, but if you prefer, I can distinguish both cases (e.g. make the function return -3 or something). Let me know what you think.",
       "parentUuid": "AAALn3//+IM\u003d",
+      "revId": "55425eccacc9ef5f2bdae39f85851ba25d7e011a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAALuX///q0\u003d",
+        "filename": "adb/adb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1614,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2012-11-20T21:35:33Z",
+      "side": 1,
+      "message": "The 2nd bullet reads as \"rebind with no rebind\".  If the user specifically asked for no rebind, then probably the reported error should not mention rebind either.",
+      "parentUuid": "AAALyX///70\u003d",
       "revId": "55425eccacc9ef5f2bdae39f85851ba25d7e011a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
