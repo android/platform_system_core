@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "NpFhI5a4",
+        "filename": "init/devices.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2013-01-04T04:14:37Z",
+      "side": 1,
+      "message": "add_property() calloc\u0027s a struct prop_node.\nThe property is part of the prop_node and should not be freed.\nLucky that -\u003eproperty is at the start of struct prop_node.\n\nfree(\u0026(node_to_item(node, struct prop_node, plist))",
+      "revId": "e18eb08dc229809866b05078a81c625a167702c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "NpJMt7q4",
+        "filename": "init/ueventd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2013-01-04T04:14:37Z",
+      "side": 1,
+      "message": "This should probably go in something similar to handle_pending_properties()\n\nand only be called if revents has POLLIN set.",
+      "revId": "e18eb08dc229809866b05078a81c625a167702c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "NpPMkcsg",
+        "filename": "init/ueventd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2013-01-04T04:14:37Z",
+      "side": 1,
+      "message": "extra scope is not needed",
+      "revId": "e18eb08dc229809866b05078a81c625a167702c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "NpBMqPpI",
+        "filename": "init/ueventd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2013-01-04T04:14:37Z",
+      "side": 1,
+      "message": "When would prop set fail and then later succeed?\n\nIf never, then remove the prop_node in all cases.",
+      "revId": "e18eb08dc229809866b05078a81c625a167702c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
