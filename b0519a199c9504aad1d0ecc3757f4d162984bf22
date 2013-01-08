@@ -34,6 +34,24 @@
       "revId": "b0519a199c9504aad1d0ecc3757f4d162984bf22",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "N5sVEUEw",
+        "filename": "adb/adb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1000411
+      },
+      "writtenOn": "2013-01-08T18:00:26Z",
+      "side": 1,
+      "message": "Yes, it is a bug in adb, no ambiguity here, but it\u0027s really subtle, so it\u0027d be nice to have a better description of the problem, it\u0027s not really Python specific as you mention, i.e. something like:\n\n\"\"\"\nSome programs want to launch an adb command and collect its output by calling CreateProcess with inheritable stdout/stderr handles, then using read() to get its output. When this happens, the stdout/stderr handles passed to the adb client process will also be inheritable.\n\nWhen starting the adb server here, care must be taken to reset them to non-inheritable.\n\nOtherwise, something bad happens: even if the adb command completes, the calling process is stuck while read()-ing from the stdout/stderr descriptors, because they\u0027re connected to corresponding handles in the adb server process (even if the latter never uses/writes to them).\n\"\"\"\n\nThe PROC_THREAD_ATTRIBUTE_HANDLE_LIST isn\u0027t directly related to the problem, and not needed in this specific case because I don\u0027t think there are multiple threads being used in the adb client process (at least when reaching this code). It\u0027s probably better to avoid mentioning it, or add a note like \"ideally, use PROC_THREAD_ATTRIBUTE_HANDLE_LIST if running on Vista or higher\"",
+      "parentUuid": "N5qKXOvg",
+      "revId": "b0519a199c9504aad1d0ecc3757f4d162984bf22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
