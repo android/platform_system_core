@@ -1,0 +1,225 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "PwsmWCVM",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1010466
+      },
+      "writtenOn": "2013-02-11T17:31:58Z",
+      "side": 1,
+      "message": "Is this in addition to the standard behavior, or instead of ?",
+      "revId": "4635c9d567085515ca26e43b9a26bace7a062529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PwmmCXQw",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1010466
+      },
+      "writtenOn": "2013-02-11T17:31:58Z",
+      "side": 1,
+      "message": "Personal preference: I prefer to see AUDITD_MODE and AUDITD_FLAGS.  But not a big deal.",
+      "revId": "4635c9d567085515ca26e43b9a26bace7a062529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PwgmKsR4",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1010466
+      },
+      "writtenOn": "2013-02-11T17:31:58Z",
+      "side": 1,
+      "message": "May want to check for valid sizes of len.  Must be in range 0 \u003c len \u003c\u003d MAX_LOG_FILE_SIZE",
+      "revId": "4635c9d567085515ca26e43b9a26bace7a062529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PwumVzUQ",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1010466
+      },
+      "writtenOn": "2013-02-11T17:31:58Z",
+      "side": 1,
+      "message": "We don\u0027t want to write \"len\" bytes every time, or we could have a data leak where unknown garbage is written to the log file.  Instead, we need to write \"len - total_bytes\".",
+      "revId": "4635c9d567085515ca26e43b9a26bace7a062529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PwkmLGSk",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1010466
+      },
+      "writtenOn": "2013-02-11T17:31:58Z",
+      "side": 1,
+      "message": "Should be \u003c instead of !\u003d",
+      "revId": "4635c9d567085515ca26e43b9a26bace7a062529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PwimIVSo",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1010466
+      },
+      "writtenOn": "2013-02-11T17:31:58Z",
+      "side": 1,
+      "message": "Should this be total_bytes instead of bytes ?\nCurrently it assigns l-\u003etotal_bytes \u003d the last chunk written + 1",
+      "revId": "4635c9d567085515ca26e43b9a26bace7a062529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PwkmUuT4",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1010466
+      },
+      "writtenOn": "2013-02-11T17:31:58Z",
+      "side": 1,
+      "message": "Might be good to check the file size here, and rotate if it gets too big.",
+      "revId": "4635c9d567085515ca26e43b9a26bace7a062529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Pwsl-KQE",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1010466
+      },
+      "writtenOn": "2013-02-11T17:31:58Z",
+      "side": 1,
+      "message": "The following sequence of frees happens at least twice.  I\u0027s suggest making a macro or inline function.",
+      "revId": "4635c9d567085515ca26e43b9a26bace7a062529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PwumObTA",
+        "filename": "auditd/auditd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1010466
+      },
+      "writtenOn": "2013-02-11T17:31:58Z",
+      "side": 1,
+      "message": "MAX_LOG_FILE_SIZE should be defined in a header, not here.  Should be available to audit_log.c -- see my comment there.",
+      "revId": "4635c9d567085515ca26e43b9a26bace7a062529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PwomewVo",
+        "filename": "auditd/auditd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1010466
+      },
+      "writtenOn": "2013-02-11T17:31:58Z",
+      "side": 1,
+      "message": "I\u0027d prefer a comment indicating that quit is set from the signal handler.  Since it isn\u0027t set internally to the loop, the comment would be helpful.",
+      "revId": "4635c9d567085515ca26e43b9a26bace7a062529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Pwkm92bQ",
+        "filename": "auditd/libaudit.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1010466
+      },
+      "writtenOn": "2013-02-11T17:31:58Z",
+      "side": 1,
+      "message": "no \u003d\u003e now",
+      "revId": "4635c9d567085515ca26e43b9a26bace7a062529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Pwumnjag",
+        "filename": "auditd/netlink.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1010466
+      },
+      "writtenOn": "2013-02-11T17:31:58Z",
+      "side": 1,
+      "message": "Whitespace",
+      "revId": "4635c9d567085515ca26e43b9a26bace7a062529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PwqmthYw",
+        "filename": "auditd/netlink.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1010466
+      },
+      "writtenOn": "2013-02-11T17:31:58Z",
+      "side": 1,
+      "message": "do \u003d\u003e due",
+      "revId": "4635c9d567085515ca26e43b9a26bace7a062529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
