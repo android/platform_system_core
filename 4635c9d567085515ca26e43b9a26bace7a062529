@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "Pwsn6iWo",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1010466
+      },
+      "writtenOn": "2013-02-11T17:47:05Z",
+      "side": 1,
+      "message": "Also need to increment buf.",
+      "parentUuid": "PwumVzUQ",
+      "revId": "4635c9d567085515ca26e43b9a26bace7a062529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "PwkmLGSk",
         "filename": "auditd/audit_log.c",
         "patchSetId": 2
@@ -98,6 +116,23 @@
       "writtenOn": "2013-02-11T17:31:58Z",
       "side": 1,
       "message": "Should this be total_bytes instead of bytes ?\nCurrently it assigns l-\u003etotal_bytes \u003d the last chunk written + 1",
+      "revId": "4635c9d567085515ca26e43b9a26bace7a062529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Pwgn1kXg",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1010466
+      },
+      "writtenOn": "2013-02-11T17:47:05Z",
+      "side": 1,
+      "message": "Forgot to mention the first time: this depends on only one auditd running at a time and nothing else modifying the log file.  Otherwise, the log could get corrupted.  Not sure if that\u0027s too important, but it may be good to have a semaphore or some other protection of the log file to prevent multiple messages from being written at once.",
       "revId": "4635c9d567085515ca26e43b9a26bace7a062529",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
