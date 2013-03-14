@@ -1,0 +1,480 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "RrveMWu4",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "standard userspace style is 4 spaces for indent and no tabs.  in system/ we tend to mix tabs style with 4 spaces depending on the initial author, so i\u0027ll accept either way.",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvYVDYsU",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "extra line",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvSUuLvw",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "what kind of esoteric systems are you expecting this to run on?  sizeof(char) !\u003d 8 is going to break far more than this little daemon.",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvYWtoi0",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "space between if and (\nthroughout this file",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RveUntiQ",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "if errno \u003d\u003d EINTR you will add -1 to b.",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvUVOyus",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "extra line",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvcWHGso",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "much cleaner:\n\n if (bytes \u003e 0)\n   l-\u003etotal_bytes +\u003d bytes;",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvYVqgiM",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "This only gets used once, a more custom error (error writing to file %s: %s) would make more sense",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvYWRIgk",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "i don\u0027t like exit labels like this that jump backwards.  You only goto err once, maybe put the ERROR call there and goto out directly.",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RveWMlu4",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "extra line",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvUV8ivc",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "extra line",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvWVi5kw",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "it\u0027s usually better to avoid putting functions with side effects inside a condition.\n\n ret \u003d stat(logfile, \u0026log_file_stats);\n if (ret \u003c 0) {\n   ...\n }",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvYXf4sk",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "there is some tricky logic going on here with the if (ret \u003c 0) and else if (st_size), I recommend trying to make it more explicit:\n\n if (ret \u003d\u003d 0 \u0026\u0026 log_file_stats.st_size !\u003d 0)",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvaXkXqA",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "same about functions with side effects in a condition",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvUVlalE",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "return NULL, drop the goto out.",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvQX0Uk0",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "eww",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvcX.Oiw",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "double eww",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvYX4Qj8",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "return EINVAL\n\nI would recommend -EINVAL so the standard pattern of \n\n if (ret \u003c 0)\n\nis still valid",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvUUTKqY",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "same",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvWUQppg",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "same",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvQWiEjo",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "return 0",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvcWjmkI",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "delete this",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvaWyHo0",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "if is unnecessary, free accepts NULL.",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvWWVBs8",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "extra line",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvSWfDu8",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "if is unnecessary, free accepts NULL",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RveXR9qg",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "return rc",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvWW.ZlE",
+        "filename": "auditd/audit_log.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "i usually prefer using struct audit_log everywhere, as it makes it clear what is being passed around (and obvious that you shouldn\u0027t have func(struct audit_log a) instead of func(struct audit_log *a), but i\u0027ll accept either way",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvSW4bmA",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 7
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-14T22:24:49Z",
+      "side": 1,
+      "message": "does this make sense to run on all devices?  does it do anything useful if selinux is not enabled?",
+      "revId": "d01e8a43739516362796f351c0d5ca90e5034e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
