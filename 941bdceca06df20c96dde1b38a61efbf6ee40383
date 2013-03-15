@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "RvNrttUY",
+        "filename": "auditd/Android.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-15T05:00:50Z",
+      "side": 1,
+      "message": "just \"Override this in the BoardConfig.mk to change the max log filesize\"; we usually dont set build variables from the command line",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "RvM.d9Uw",
         "filename": "auditd/README",
         "patchSetId": 10
@@ -70,6 +87,23 @@
     },
     {
       "key": {
+        "uuid": "RvK.AuYA",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-15T05:00:50Z",
+      "side": 1,
+      "message": "buf is only passed in as char * (below), so just deal with buf as a char * and it simplifies the logic in this function.\n\nLike Colin said, if sizeof(char) !\u003d 8 far more drastic things will break in the system than this daemon :)",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "RvK-FGTE",
         "filename": "auditd/audit_log.c",
         "patchSetId": 10
@@ -98,6 +132,210 @@
       "writtenOn": "2013-03-15T02:21:56Z",
       "side": 1,
       "message": "this can just be a break",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvA.Q7c0",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-15T05:00:50Z",
+      "side": 1,
+      "message": "do -\u003e due",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvC.NqbI",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-15T05:00:50Z",
+      "side": 1,
+      "message": "just set l-\u003etotal_bytes once at the end of the function",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvM9xdfY",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-15T05:00:50Z",
+      "side": 1,
+      "message": "Why do we want to write again if we just had a write failure?\n\nLet\u0027s not generate more errors than we need; if write() encounters an error just print a descriptive message and clean up and exit.",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvM9a1WQ",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-15T05:00:50Z",
+      "side": 1,
+      "message": "check for error in write, log with descriptive message if encountered.",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvI9U3Tc",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-15T05:00:50Z",
+      "side": 1,
+      "message": "\"Attempt to rotate if over threshold, even in the face of errors above\"",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvE80pQg",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-15T05:00:50Z",
+      "side": 1,
+      "message": "if you opened fd with AUDIT_LOG_MODE, why does it have to be chmod-ed?",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvM8-Nec",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-15T05:00:50Z",
+      "side": 1,
+      "message": "in this function we don\u0027t have any state to clean up on the error path out, so we can just return an error code.\n\nAlso (in convention with the rest of the stuff in system/core) use negative error codes\n\nif (l \u003d\u003d NULL)\n    return -EINVAL;",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvO9EcX8",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-15T05:00:50Z",
+      "side": 1,
+      "message": "log a descriptive error message as to what went wrong",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvK9OeZk",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-15T05:00:50Z",
+      "side": 1,
+      "message": "why do you close before the next log is successfully opened? in the case where the next log fails to open, another write will give this another chance to open/rotate the log.\n\nSo first try to open the new log, then close the old log.",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvI9JPZY",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-15T05:00:50Z",
+      "side": 1,
+      "message": "log descriptive message",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvA9pzfs",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-15T05:00:50Z",
+      "side": 1,
+      "message": "extra newline above.\n\n    if (l \u003d\u003d NULL) return;",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvG9sAQ0",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-15T05:00:50Z",
+      "side": 1,
+      "message": "why does this return zero even if rc is set (e.g. in ENOMEM case)?",
       "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -172,6 +410,74 @@
     },
     {
       "key": {
+        "uuid": "RvC8UyVg",
+        "filename": "auditd/libaudit.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-15T05:00:50Z",
+      "side": 1,
+      "message": "this seems a bit of a hack.  What is the point of the libaudit.c file?  It seems like this function could go neatly into netlink.c, and this this function would be static and you wouldn\u0027t need this line.\n\nIf you expect other things to use this functionality later, we can move some of this into a separate libaudit, but that\u0027s not needed for now.",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvK8nWdM",
+        "filename": "auditd/libaudit.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-15T05:00:50Z",
+      "side": 1,
+      "message": "log a descriptive message here with what went wrong.  include __line__ if you want, but what this really needs is something like \"failed to register process for kernel audit events\"",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvO8tUbU",
+        "filename": "auditd/libaudit.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-15T05:00:50Z",
+      "side": 1,
+      "message": "because we have no state to cleanup here, we can just directly\n\n    return rc;",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvA8.reY",
+        "filename": "auditd/libaudit.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-15T05:00:50Z",
+      "side": 1,
+      "message": "just return a negative error code instead of setting errno",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "RvC-Sifc",
         "filename": "auditd/libaudit.h",
         "patchSetId": 10
@@ -183,6 +489,23 @@
       "writtenOn": "2013-03-15T02:21:56Z",
       "side": 1,
       "message": "each enum value on its own line",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvLpx2as",
+        "filename": "auditd/netlink.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-15T05:00:50Z",
+      "side": 1,
+      "message": "this seems hackish. just memset() the needed structs to 0 when they are created instead.",
       "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -319,6 +642,23 @@
       "writtenOn": "2013-03-15T02:21:56Z",
       "side": 1,
       "message": "80 char lines, descriptive error, ditto for the rest of these",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvHqbYbQ",
+        "filename": "auditd/netlink.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-15T05:00:50Z",
+      "side": 1,
+      "message": "test for this condition, and log a message if it overflows.",
       "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
