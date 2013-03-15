@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "RvCwuF-w",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-15T00:58:23Z",
+      "side": 1,
+      "message": "this if isn\u0027t doing anything useful, bytes \u003e\u003d 0 based on the check above.",
+      "revId": "0976d83832259aae943b623bfcf0da9b8fc06bda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvOyMf.4",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-15T00:58:23Z",
+      "side": 1,
+      "message": "the else on a separate line from the brace is misleading, and you are not relying on the if clause above any more, so just change this to an if.  also, space before {",
+      "revId": "0976d83832259aae943b623bfcf0da9b8fc06bda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvAyGu8k",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-03-15T00:58:23Z",
+      "side": 1,
+      "message": "the logic is unnecessarily inverted here.  l or str \u003d\u003d NULL is an error condition, so just check it and return:\n\n if (l \u003d\u003d NULL || str \u003d\u003d NULL)\n   return EINVAL;",
+      "revId": "0976d83832259aae943b623bfcf0da9b8fc06bda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
