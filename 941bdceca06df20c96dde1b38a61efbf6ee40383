@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "RvgSiFjo",
+        "filename": "auditd/Android.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-03-16T17:14:34Z",
+      "side": 1,
+      "message": "Its not that you don\u0027t its that you can... but I\u0027ll change this.",
+      "parentUuid": "RvNrttUY",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "RvM.d9Uw",
         "filename": "auditd/README",
         "patchSetId": 10
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "RvsTM-g8",
+        "filename": "auditd/README",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-03-16T17:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "RvE.yZd8",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "RvM-GVT8",
         "filename": "auditd/audit_log.c",
         "patchSetId": 10
@@ -64,6 +100,24 @@
       "writtenOn": "2013-03-15T02:21:56Z",
       "side": 1,
       "message": "if this must not be null, the first the the function should do is check for NULL, and if found, log a descriptive message and return an error",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvuTR.qg",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-03-16T17:14:34Z",
+      "side": 1,
+      "message": "Internal interface, the callers in this file must check... which they do and return an error of EINVAL.",
+      "parentUuid": "RvM-GVT8",
       "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "RvoTGBuw",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-03-16T17:14:34Z",
+      "side": 1,
+      "message": "Internal interface, the callers in this file must check... which they do and return an error of EINVAL.",
+      "parentUuid": "RvO-LEUQ",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "RvK.AuYA",
         "filename": "auditd/audit_log.c",
         "patchSetId": 10
@@ -98,6 +170,24 @@
       "writtenOn": "2013-03-15T05:00:50Z",
       "side": 1,
       "message": "buf is only passed in as char * (below), so just deal with buf as a char * and it simplifies the logic in this function.\n\nLike Colin said, if sizeof(char) !\u003d 8 far more drastic things will break in the system than this daemon :)",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvqTLAvM",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-03-16T17:14:34Z",
+      "side": 1,
+      "message": "It requires 0 overhead to do this and has no logic required to make this change. Why make such assumptions? The buffers used by read and write are void, here is some data of some length, write it. It doesn\u0027t matter the width of the data. However, the return is the number of BYTES written. So why use a data type, that in the current version of Linux and the current hardware your running on just happens to by a byte. Computing has been in the place before about making assumptions on data types. The C standard says that char \u003e\u003d 1 byte. Where is int8_t \u003d\u003d 1 byte. Just because the other code is wrong doesn\u0027t mean this should be incorrect too. Also, when char does change to something that breaks the other code, this will be the one module that keeps plugging along correctly.",
+      "parentUuid": "RvK.AuYA",
       "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -121,6 +211,24 @@
     },
     {
       "key": {
+        "uuid": "RvkTB7tE",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-03-16T17:14:34Z",
+      "side": 1,
+      "message": "My comment addressed this.",
+      "parentUuid": "RvK-FGTE",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "RvG-YgRc",
         "filename": "auditd/audit_log.c",
         "patchSetId": 10
@@ -132,6 +240,24 @@
       "writtenOn": "2013-03-15T02:21:56Z",
       "side": 1,
       "message": "this can just be a break",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvgS79l8",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-03-16T17:14:34Z",
+      "side": 1,
+      "message": "I think out is more readable...",
+      "parentUuid": "RvG-YgRc",
       "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -155,6 +281,24 @@
     },
     {
       "key": {
+        "uuid": "RvmS.alE",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-03-16T17:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "RvA.Q7c0",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "RvC.NqbI",
         "filename": "auditd/audit_log.c",
         "patchSetId": 10
@@ -166,6 +310,24 @@
       "writtenOn": "2013-03-15T05:00:50Z",
       "side": 1,
       "message": "just set l-\u003etotal_bytes once at the end of the function",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RviS4cmA",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-03-16T17:14:34Z",
+      "side": 1,
+      "message": "No, if an error occurs, then bytes will be out of sync.",
+      "parentUuid": "RvC.NqbI",
       "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -189,6 +351,24 @@
     },
     {
       "key": {
+        "uuid": "RvsRxXvY",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-03-16T17:14:34Z",
+      "side": 1,
+      "message": "You might not have an error on this write and will keep the logs cleaner, TO Radzy pointed this out and I think it was a valid suggestion. If it keeps throwing errors, then you end up with an ugly log. I think the \"attempt\" is valid.",
+      "parentUuid": "RvM9xdfY",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "RvM9a1WQ",
         "filename": "auditd/audit_log.c",
         "patchSetId": 10
@@ -200,6 +380,24 @@
       "writtenOn": "2013-03-15T05:00:50Z",
       "side": 1,
       "message": "check for error in write, log with descriptive message if encountered.",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvqRZwm4",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-03-16T17:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "RvM9a1WQ",
       "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -223,6 +421,24 @@
     },
     {
       "key": {
+        "uuid": "RvuR22us",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-03-16T17:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "RvI9U3Tc",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "RvE80pQg",
         "filename": "auditd/audit_log.c",
         "patchSetId": 10
@@ -234,6 +450,24 @@
       "writtenOn": "2013-03-15T05:00:50Z",
       "side": 1,
       "message": "if you opened fd with AUDIT_LOG_MODE, why does it have to be chmod-ed?",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvoR7ZtI",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-03-16T17:14:34Z",
+      "side": 1,
+      "message": "This was submitted by rpcraig of the SEAndroid community, he said he had issues until he added this. I also suspected it wasn\u0027t needed. I will remove.",
+      "parentUuid": "RvE80pQg",
       "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -274,6 +508,24 @@
     },
     {
       "key": {
+        "uuid": "RvmSDyos",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-03-16T17:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "RvO9EcX8",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "RvK9OeZk",
         "filename": "auditd/audit_log.c",
         "patchSetId": 10
@@ -291,6 +543,24 @@
     },
     {
       "key": {
+        "uuid": "RvqSA4oA",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-03-16T17:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "RvK9OeZk",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "RvI9JPZY",
         "filename": "auditd/audit_log.c",
         "patchSetId": 10
@@ -302,6 +572,24 @@
       "writtenOn": "2013-03-15T05:00:50Z",
       "side": 1,
       "message": "log descriptive message",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvkSGzpw",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-03-16T17:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "RvI9JPZY",
       "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -359,6 +647,24 @@
     },
     {
       "key": {
+        "uuid": "RvoRJJpY",
+        "filename": "auditd/audit_log.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-03-16T17:14:34Z",
+      "side": 1,
+      "message": "Hmmm not following you here. All the extern\u0027d functions have their descriptions in the header file, where the declaration is. Where as the static function is in the file.",
+      "parentUuid": "RvA-VTd4",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "RvG.vIXI",
         "filename": "auditd/auditd.c",
         "patchSetId": 10
@@ -370,6 +676,24 @@
       "writtenOn": "2013-03-15T02:21:56Z",
       "side": 1,
       "message": "this wont ever happen because the Android.mk already has a default",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvkQ0jgg",
+        "filename": "auditd/auditd.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-03-16T17:14:34Z",
+      "side": 1,
+      "message": "Ill change this to an error message, don\u0027t know why this needs to be fatal issue.",
+      "parentUuid": "RvG.vIXI",
       "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -421,6 +745,24 @@
       "writtenOn": "2013-03-15T05:00:50Z",
       "side": 1,
       "message": "this seems a bit of a hack.  What is the point of the libaudit.c file?  It seems like this function could go neatly into netlink.c, and this this function would be static and you wouldn\u0027t need this line.\n\nIf you expect other things to use this functionality later, we can move some of this into a separate libaudit, but that\u0027s not needed for now.",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RviQ7kvc",
+        "filename": "auditd/libaudit.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-03-16T17:14:34Z",
+      "side": 1,
+      "message": "Initially this was to a rewrite of libaudit from scratch, but I agree, just put them in the same file for now.",
+      "parentUuid": "RvC8UyVg",
       "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -506,6 +848,24 @@
       "writtenOn": "2013-03-15T05:00:50Z",
       "side": 1,
       "message": "this seems hackish. just memset() the needed structs to 0 when they are created instead.",
+      "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "RvsQofqg",
+        "filename": "auditd/netlink.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2013-03-16T17:14:34Z",
+      "side": 1,
+      "message": "Same thing as memset, but sure. On instances where the compiler doesn\u0027t have a buildin in memset, and their is a full function call for the memset (not inlined or the compiler does away with the inline), my design sheds some cycles.",
+      "parentUuid": "RvLpx2as",
       "revId": "941bdceca06df20c96dde1b38a61efbf6ee40383",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
