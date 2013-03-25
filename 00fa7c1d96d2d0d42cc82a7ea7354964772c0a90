@@ -1,0 +1,446 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "Sbsgk38E",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "move the LOG_TAG line to just above this.",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Sbsj9v-M",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "tabs",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "SbugKey4",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "move opening brace to this line.  Still mostly an empty line, and matches our existing android system style :)",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "SbuhTWxY",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "} else { all on the same line. here and elsewhere.",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "SbghRdw4",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "space between log and filename",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "SbggIlzQ",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "(ditto) opening brace on this line, tabs below",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Sbqgno8M",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "I really don\u0027t want this to be a sticking point for all of auditd.  We\u0027re not interested in added complexity to support some hypothetical future architecture support that is incompatible with the rest of the platform.  If you want to get auditd merged and continue this discussion, factor the sizeof(char) !\u003d 1 support into a second patch to get it off the table for this one.",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Sbughm64",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "Break out the error case, log on this error as well (because we could successfully get here and only reach our first error on this write, which wouldn\u0027t record an error to the SLOG).",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Sbgg6V9A",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "It\u0027d probably be a good idea to SLOG something here to indicate the audit log has been rotated.  The info level would probably be safe.\n\nIn your usage of this now, how do you monitor whether/when the audit log has rolled over?",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "SbqjqQ9s",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "Don\u0027t need to check rc again, just checked above.",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "SbmhgK.Y",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "if (l \u003d\u003d NULL)\n    return;",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "SbsiZP7s",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "Don\u0027t need the \u0027else\u0027 here, just:\n\n    if (len \u003e 0) {",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "SbmiTy5w",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "A more descriptive message would be \"Failed to allocate memory to read klog\".\n\nWith error messages, it\u0027s helpful if they\u0027re specific enough to track down the error uniquely.",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "SbiiJ03A",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "} else {",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "SbgikF-Q",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "\"Could not read kernel log length\"",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Sbihw86Q",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "\"Could not read kernel log data\"",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "SbsjnfxI",
+        "filename": "auditd/audit_log.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "check return value.",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "SjlQwjPA",
+        "filename": "auditd/auditd.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "tabs (and spaces mixed?)",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "SjjQ9EMk",
+        "filename": "auditd/auditd.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "unused variable",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "SbqgAgxA",
+        "filename": "auditd/libaudit.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "tabs",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "SjnQziP8",
+        "filename": "auditd/libaudit.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "Does type always define which member of the union is valid (or that none of them are)?  If not how do you determine which member is valid?",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "SjhQftGU",
+        "filename": "auditd/netlink.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "unused variable",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "SjvQ.eMo",
+        "filename": "auditd/netlink.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "What should this parameter be used for?  Currently it\u0027s unused.",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "SjtRDfFY",
+        "filename": "auditd/netlink.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "unused variable",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "SjrRIAHQ",
+        "filename": "auditd/netlink.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "unused variable",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "SjpRNBIQ",
+        "filename": "auditd/netlink.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1012391
+      },
+      "writtenOn": "2013-03-25T00:36:23Z",
+      "side": 1,
+      "message": "unused variable",
+      "revId": "00fa7c1d96d2d0d42cc82a7ea7354964772c0a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
