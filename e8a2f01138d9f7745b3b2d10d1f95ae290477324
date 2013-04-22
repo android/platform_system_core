@@ -16,6 +16,24 @@
       "revId": "e8a2f01138d9f7745b3b2d10d1f95ae290477324",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "TwoN-wG8",
+        "filename": "init/devices.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2013-04-22T18:57:13Z",
+      "side": 1,
+      "message": "selinux_status_updated() simply checks a sequence number in a read-only shared page mapped from the kernel by the  selinux_status_open() call to see if it has changed since the last call to selinux_status_updated().  So it is checking on every uevent but the check requires no system calls in the common case.  Implementation of selinux_status_updated() can be found in the corresponding change uploaded for external/libselinux with the same change-id since it is a dependency.\nselinux_status_open()/selinux_status_updated() will fall back to checking a NETLINK_SELINUX socket on older kernels that do not support /sys/fs/selinux/status, but that would only be true for Linux \u003c 2.6.37.",
+      "parentUuid": "TvWs11bA",
+      "revId": "e8a2f01138d9f7745b3b2d10d1f95ae290477324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
