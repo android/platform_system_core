@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "UrmMt7JU",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021729
+      },
+      "writtenOn": "2013-05-17T00:57:41Z",
+      "side": 1,
+      "message": "Elaborating on the commit:\n\nThis commit sets up the system property which is actually used by the Connectivity Service (frameworks/base/services/java/com/android/server/ConnectivityService.java).\nIt fixes an (obsolete?) convention where the dns was affected directly by the interface (i.e. \"net.eth0.dns1\u003d10.0.2.3\"),  which causes the Android Emulator (goldfish) to ignore this value, and effectively have no DNS resolving at all.\n\nAn immediate fix can be either add reference to net.eth%s.dns%s in the ConnectivityService and possibly on the dhcp code as well which would be bloated, or just stick to the apparant new convention.\n\nI chose the latter as a one line fix which gets the job done.",
+      "revId": "10888f26ca23c761d647731925b7cfabdff20365",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
