@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd1bf126_3621d8bb",
+        "filename": "adb/file_sync_service.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-06-10T23:05:47Z",
+      "side": 1,
+      "message": "this mode is always overwritten.  make mode_t mode local to this if block, since it is only used to determine is_link.",
+      "revId": "5b773ddd7cd2f4036c33fa2e71b6e64f02229e20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd1bf126_161e5c7f",
+        "filename": "adb/file_sync_service.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2013-06-10T23:05:47Z",
+      "side": 1,
+      "message": "create a new local variable unsigned int mode inside this if block, to avoid casting mode_t* to unsigned*, which will cause strange behavior if sizeof(mode_t) !\u003d sizeof(unsigned)",
+      "revId": "5b773ddd7cd2f4036c33fa2e71b6e64f02229e20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
