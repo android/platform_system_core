@@ -16,6 +16,24 @@
       "revId": "eba650bbb9d30c2d5019729a9533a258785df80d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3717b54_aded1d7d",
+        "filename": "init/devices.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2013-07-26T18:37:13Z",
+      "side": 1,
+      "message": "It is a \"fallback\" flag; 1 means fall back to using selinux netlink socket if kernel does not support the /sys/fs/selinux/status page.\nSince Linux 2.6.37 or later supports /sys/fs/selinux/status, I suppose we could just pass 0.\nIf you really want, we could add #define or an enum to selinux/avc.h and use the symbol here, but that\u0027s two patches - one for external/libselinux and one for here.",
+      "parentUuid": "530d8be8_39c54f7e",
+      "revId": "eba650bbb9d30c2d5019729a9533a258785df80d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
