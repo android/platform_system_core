@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad4bc472_87bae8ce",
+        "filename": "include/cutils/service.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-08-19T17:40:52Z",
+      "side": 1,
+      "message": "use __BEGIN_DECLS/__END_DECLS from sys/cdefs.h",
+      "revId": "17aad23531c3f2d5ecad7079fed6d6bda1a6b152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad4bc472_27a574ae",
+        "filename": "libcutils/service.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-08-19T17:40:52Z",
+      "side": 1,
+      "message": "don\u0027t use caps, make them look like #defines.",
+      "revId": "17aad23531c3f2d5ecad7079fed6d6bda1a6b152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad4bc472_476f5031",
+        "filename": "libcutils/service.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-08-19T17:40:52Z",
+      "side": 1,
+      "message": "you should at least use strlcpy/strlcat.\n\nYou can also use snprintf, but that will likely be less readable :)\n\nsnprintf(start_command, sizeof(start_command), \"%s%s%s\", service_name, args ? \":\" : \"\", args ?: \"\");",
+      "revId": "17aad23531c3f2d5ecad7079fed6d6bda1a6b152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad4bc472_6795ac29",
+        "filename": "libcutils/service.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-08-19T17:40:52Z",
+      "side": 1,
+      "message": "why not put the sched_yield in the service_wait_for_predicate() so you don\u0027t have to keep doing it before hand?",
+      "revId": "17aad23531c3f2d5ecad7079fed6d6bda1a6b152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad4bc472_67bc8cb3",
+        "filename": "libcutils/service.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-08-19T17:40:52Z",
+      "side": 1,
+      "message": "newline between declarations and code",
+      "revId": "17aad23531c3f2d5ecad7079fed6d6bda1a6b152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad4bc472_47c1901d",
+        "filename": "libcutils/service.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-08-19T17:40:52Z",
+      "side": 1,
+      "message": "newline between declarations and code",
+      "revId": "17aad23531c3f2d5ecad7079fed6d6bda1a6b152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad4bc472_87c66830",
+        "filename": "libcutils/service.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-08-19T17:40:52Z",
+      "side": 1,
+      "message": "specify the timeout in ms, and use an unsigned long",
+      "revId": "17aad23531c3f2d5ecad7079fed6d6bda1a6b152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad4bc472_2708d4a9",
+        "filename": "libcutils/service.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-08-19T17:40:52Z",
+      "side": 1,
+      "message": "the traditional way is to define USEC_PER_SEC, MSEC_PER_SEC, USEC_PER_MSEC, etc. and then use them for your operation so its clear.\n\nThen define your poll interval as a #define in terms of usecs, etc.\n\nAlso, we really should get a real polling interface to init for properties so you don\u0027t have to spin+sleep like this.",
+      "revId": "17aad23531c3f2d5ecad7079fed6d6bda1a6b152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad4bc472_4736306b",
+        "filename": "libcutils/service.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-08-19T17:40:52Z",
+      "side": 1,
+      "message": "dangerous to just pass a string ptr and hope it has enough space. I know this file is short and you can validate all the uses, but the much safer way would be to take length of the output string, and then only strlcpy() that much into it.",
+      "revId": "17aad23531c3f2d5ecad7079fed6d6bda1a6b152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad4bc472_67180ceb",
+        "filename": "libcutils/service.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-08-19T17:40:52Z",
+      "side": 1,
+      "message": "why aren\u0027t you using snprintf?",
+      "revId": "17aad23531c3f2d5ecad7079fed6d6bda1a6b152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
