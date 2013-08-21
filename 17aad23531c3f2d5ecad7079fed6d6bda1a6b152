@@ -247,6 +247,24 @@
     },
     {
       "key": {
+        "uuid": "0d25b0ee_cd6cbd78",
+        "filename": "libcutils/service.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-08-21T20:03:13Z",
+      "side": 1,
+      "message": "your poll interval is an implementation detail and sohuldn\u0027t drive the interface design. Most other polling interfaces take timeouts in milliseconds, and you should adhere to that. I don\u0027t think that anyone assumes that just because the unit is milliseconds that the timeout will be millisecond accurate.\n\nPlease go ahead and convert to milliseconds.",
+      "parentUuid": "ad4bc472_2db9d578",
+      "revId": "17aad23531c3f2d5ecad7079fed6d6bda1a6b152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad4bc472_2708d4a9",
         "filename": "libcutils/service.c",
         "patchSetId": 1
@@ -276,6 +294,24 @@
       "side": 1,
       "message": "Done.\n\nI agree that init should provide an interface where clients don\u0027t have to spin/poll for property changes. Ideally, a caller be able to block until the next property change with a timeout.\n\nThe motivation behind this file is to hide the polling so that if/when we do have a blocking interface, we can update this one function and all clients would benefit.",
       "parentUuid": "ad4bc472_2708d4a9",
+      "revId": "17aad23531c3f2d5ecad7079fed6d6bda1a6b152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d25b0ee_2d95992a",
+        "filename": "libcutils/service.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-08-21T20:03:13Z",
+      "side": 1,
+      "message": "my suggestion was to put the polling interface up top as a #define",
+      "parentUuid": "ad4bc472_ed5dfd7f",
       "revId": "17aad23531c3f2d5ecad7079fed6d6bda1a6b152",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
