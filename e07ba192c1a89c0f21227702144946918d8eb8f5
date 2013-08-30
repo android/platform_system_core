@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3239f501_c6295699",
+        "filename": "libdiskconfig/config_mbr.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-08-30T08:30:23Z",
+      "side": 1,
+      "message": "follow the convention and call it \u0027item\u0027.",
+      "revId": "e07ba192c1a89c0f21227702144946918d8eb8f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3239f501_4636e6fc",
+        "filename": "libdiskconfig/config_mbr.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-08-30T08:30:23Z",
+      "side": 1,
+      "message": "use the magic from the header.",
+      "revId": "e07ba192c1a89c0f21227702144946918d8eb8f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3239f501_0634deeb",
+        "filename": "libdiskconfig/config_mbr.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-08-30T08:30:23Z",
+      "side": 1,
+      "message": "you don\u0027t need to blank the partition table since the code in config_mbr will fill in empty partitions with 0\u0027s (see loop at line 283). The only thing you need to do is to write the magic at the end. Note that it should not be done at the beginning as you should only set the magic once you\u0027ve actually written a valid partition table.\n\nAlso, please don\u0027t hardcode the offsets here, you can easily get them from the pc_boot_record struct like the rest of the code does. For example.\n\nitem \u003d alloc_wl(2);\nitem-\u003eoffset \u003d offsetof(struct pc_boot_record, mbr_sig);\nuint16_t sig \u003d PC_BOOT_SIG;\nmemcpy(wr-\u003edata, \u0026sig, sizeof(sig));\n\nIf you are worried about endianness on the sig, you can do something like htole16(PC_BOOT_SIG), or something like that.",
+      "revId": "e07ba192c1a89c0f21227702144946918d8eb8f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3239f501_061b3e81",
+        "filename": "libdiskconfig/config_mbr.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-08-30T08:30:23Z",
+      "side": 1,
+      "message": "don\u0027t mix assignment and test. assign to temp_wr, then test temp_wr for error",
+      "revId": "e07ba192c1a89c0f21227702144946918d8eb8f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
