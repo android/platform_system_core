@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27661513_b8dbb905",
+        "filename": "libcutils/service.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-09-09T21:38:26Z",
+      "side": 1,
+      "message": "1000UL",
+      "revId": "bb04c3fa422a46ed2a36add714315065650ec92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27661513_184185b7",
+        "filename": "libcutils/service.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-09-09T21:38:26Z",
+      "side": 1,
+      "message": "SERVICE_CMD_START (or SVC_CMD_START or something), together with below changes will make things a little more consistent imho and make it easier to understand when reading the code. For instance,\n\n!strcmp(status, STOPPED_RESULT_VALUE);\n\nis a little confusing, versus\n\n!strcmp(status, SERVICE_STATUS_STOPPED)",
+      "revId": "bb04c3fa422a46ed2a36add714315065650ec92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27661513_3846c9d0",
+        "filename": "libcutils/service.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-09-09T21:38:26Z",
+      "side": 1,
+      "message": "SERVICE_CMD_STOP",
+      "revId": "bb04c3fa422a46ed2a36add714315065650ec92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27661513_d84a2dd3",
+        "filename": "libcutils/service.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-09-09T21:38:26Z",
+      "side": 1,
+      "message": "SERVICE_STATUS_PROP_PREFIX (or something like that)",
+      "revId": "bb04c3fa422a46ed2a36add714315065650ec92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27661513_b8517986",
+        "filename": "libcutils/service.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-09-09T21:38:26Z",
+      "side": 1,
+      "message": "SERVICE_STATUS_RUNNING",
+      "revId": "bb04c3fa422a46ed2a36add714315065650ec92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27661513_581e1ddf",
+        "filename": "libcutils/service.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-09-09T21:38:26Z",
+      "side": 1,
+      "message": "SERVICE_STATUS_STOPPED",
+      "revId": "bb04c3fa422a46ed2a36add714315065650ec92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27661513_98f59568",
+        "filename": "libcutils/service.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-09-09T21:38:26Z",
+      "side": 1,
+      "message": "you should check for truncation and return an error if this got truncated so the user can know whether or not their command will succeed with the intended arguments (same with strlcpy)",
+      "revId": "bb04c3fa422a46ed2a36add714315065650ec92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27661513_98a6f54f",
+        "filename": "libcutils/service.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-09-09T21:38:26Z",
+      "side": 1,
+      "message": "if timeout_ms was 0, count would be 0 but since it\u0027s unsigned, you\u0027ll be here for a while.\n\nEasiest thing to do would be to flip this to be a do {} while loop and check for (timeout_ms \u0026\u0026 count-- \u003e 0);",
+      "revId": "bb04c3fa422a46ed2a36add714315065650ec92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27661513_98bd9559",
+        "filename": "libcutils/service.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-09-09T21:38:26Z",
+      "side": 1,
+      "message": "check for overflows",
+      "revId": "bb04c3fa422a46ed2a36add714315065650ec92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
