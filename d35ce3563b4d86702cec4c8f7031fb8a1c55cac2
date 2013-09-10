@@ -52,6 +52,24 @@
       "revId": "d35ce3563b4d86702cec4c8f7031fb8a1c55cac2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c768d904_b51d607f",
+        "filename": "mkbootimg/bootimg.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1011333
+      },
+      "writtenOn": "2013-09-10T19:47:38Z",
+      "side": 1,
+      "message": "OTA updates are generated from a target files package. The boot images have not been built. Instead, during the ota_from_target_files process, mkbootimg is run to create boot images for both source and target. This is why you have to be very very very careful if you ever change mkbootimg as the boot images generated must match bit-for-bit what is already on the device.\n\nThe reason why the boot images aren\u0027t prebuilt inside the taget-files-package (as far as I can determine) is so that sign-target-files-apks can replace the key used to verify OTA updates inside the recovery console ramdisk.",
+      "parentUuid": "c768d904_35e31050",
+      "revId": "d35ce3563b4d86702cec4c8f7031fb8a1c55cac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
