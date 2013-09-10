@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27529551_4193684c",
+        "filename": "mkbootimg/bootimg.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000413
+      },
+      "writtenOn": "2013-09-10T19:18:33Z",
+      "side": 1,
+      "message": "let\u0027s add another two fields here:\n\n   uint32_t hdr_version;\n   uint32_t hdr_len;\n\nThis way we can manage future expansion. Should now set the version to 1 (maybe add a define at top and describe what the new version means), and then set len to sizeof(boot_img_hdr).\n\nThis way you can test the version in the bootloader/fastboot implementaiton thingie and go from there.",
+      "revId": "d35ce3563b4d86702cec4c8f7031fb8a1c55cac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
