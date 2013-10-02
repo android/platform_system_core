@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "21db6507_308ca8c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1025478
+      },
+      "writtenOn": "2013-10-02T22:13:14Z",
+      "side": 1,
+      "message": "Done; also mentioned change to use do/while in usb_write.",
+      "parentUuid": "819df127_c149e68e",
+      "revId": "49f57e957075322ee0c749a0284808738fca8593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21b445af_ce3c97a5",
         "filename": "fastboot/usb_linux.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-10-02T18:40:52Z",
       "side": 1,
       "message": "Make it an option.\nDefault to 1s. Unlike \"adb reboot\", fastboot isn\u0027t doing much on the other side.",
+      "revId": "49f57e957075322ee0c749a0284808738fca8593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21db6507_909a34f8",
+        "filename": "fastboot/usb_linux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1025478
+      },
+      "writtenOn": "2013-10-02T22:13:14Z",
+      "side": 1,
+      "message": "I\u0027m also a little wary of having a number hard-coded in there, but to me this seems somewhat esoteric to expose as an option. \n\nI\u0027ve also gathered some more data (2000 trials), and it turns out 1 second isn\u0027t nearly sufficient. On the Xoom it takes over 1 second 10% of the time. I\u0027ve seen it take as long as 2.4 seconds, although this is unusual; 99% of the time it takes 1.75 seconds or less.\n\nIf the timeout is too short it can lead to a subsequent command failing. If it\u0027s too long, worst case the command takes a little longer than necessary, and then only if the device fails to reboot, which is unlikely.\n\nBut given that I\u0027ve rarely seen it take over 2 seconds and never over 2.4, perhaps 5 is overkill. I\u0027ve changed it to 3 seconds, and also made it a named constant.",
+      "parentUuid": "21b445af_ce3c97a5",
       "revId": "49f57e957075322ee0c749a0284808738fca8593",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
