@@ -191,6 +191,24 @@
       "revId": "18b9686183bf3e9660b73a90f1d2780a2963ce79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e125cd90_c6536217",
+        "filename": "adb/adb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1517,
+      "author": {
+        "id": 1000411
+      },
+      "writtenOn": "2013-10-10T09:41:54Z",
+      "side": 1,
+      "message": "I\u0027m sorry, but I still don\u0027t understand. Can you give a concrete example?\n\nLet\u0027s assume a malvolent USB device that implements a custom adbd daemon that tries to attack the adb server running on the host. According to protocols.txt, the device could send an OPEN(local-id, 0, \u003cdestination\u003e) with \u003cdestination\u003e crafted  in various ways:\n\n* tcp:\u003cport\u003e, where \u003cport\u003e is adb-forwarded to a different device.\n\u003d\u003e This allows the bad device to connect directly to a different one, however, this is already possible with the existing code base, so this patch doesn\u0027t change anything.\n\nI wonder if we check for connections to tcp:5037 though, since this might give a _lot_ of control to the attacking device, but again, this is irrelevant for this specific change.\n\n* host-serial:\u003cserial\u003e:forward:\u003clocal\u003e;\u003cremote\u003e\n\u003d\u003e This asks the host ADB server to create a redirection from host \u003clocal\u003e port to \u003cremote\u003e port on a given device \u003cserial\u003e.\nThis won\u0027t work because only smart sockets can handle \u003chost-prefix\u003e commands, and they\u0027re never connected to a transport socket (from my reading of the current sources, it might be worthwhile to add some runtime checks / assertions here). Again, unrelated to this change.\n\n* reverse:forward:\u003clocal\u003e;\u003cremote\u003e\n\u003d\u003e This will ask the ADB server to bind to host port \u003clocal\u003e, and redirect connections to device port \u003cremote\u003e, i.e. this is asking for an explicit \"adb forward\" to the bad device. This won\u0027t work because \u0027reverse:\u0027 is only implemented if ADB_HOST is _not_ defined.\n\nMaybe you\u0027re thinking of something else?",
+      "parentUuid": "TXsQr-us",
+      "revId": "18b9686183bf3e9660b73a90f1d2780a2963ce79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
