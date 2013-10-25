@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dea0a80a_8ebd1bab",
+        "filename": "include/backtrace/Backtrace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2013-10-25T18:22:19Z",
+      "side": 1,
+      "message": "Since nobody else really uses this, it seems to make sense to leave it like this. Although, there is nothing preventing people from using it standalone since it\u0027s static. It does mean that pure C code can\u0027t use it, but that doesn\u0027t seem to be too bad.\n\nI guess I\u0027m kind of pedantic because I like having it part of the class so that if someone uses it outside of this code they have to call it like Backtrace::Demangle and it\u0027s really clear where it came from. Or at least a little bit clearer that it\u0027s not a local thing.",
+      "parentUuid": "9efc70ee_103c94d2",
+      "revId": "06c5e79842ce6558ed59c8e061dd41c749c006d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ee9602b_145f644d",
         "filename": "include/backtrace/backtrace.h",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "fe62ccbe_9736040e",
+        "filename": "include/backtrace/backtrace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2013-10-25T18:22:19Z",
+      "side": 1,
+      "message": "You\u0027re the one who mentioned I should use it in another change, so I blame you :)",
+      "parentUuid": "1ee9602b_145f644d",
+      "revId": "06c5e79842ce6558ed59c8e061dd41c749c006d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9efc70ee_50ca9c95",
         "filename": "libbacktrace/Backtrace.cpp",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2013-10-24T18:47:30Z",
       "side": 1,
       "message": "would snprintf be clearer?",
+      "revId": "06c5e79842ce6558ed59c8e061dd41c749c006d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be9db4d5_adcbbd6b",
+        "filename": "libbacktrace/Backtrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2013-10-25T18:22:19Z",
+      "side": 1,
+      "message": "Yeah, I was resisting the urge to create a buffer on the stack, but this twisted code makes it harder to figure out what\u0027s going on. I switched back to snprintf.",
+      "parentUuid": "9efc70ee_50ca9c95",
       "revId": "06c5e79842ce6558ed59c8e061dd41c749c006d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -104,6 +158,24 @@
     },
     {
       "key": {
+        "uuid": "1e5ec0fd_bb5f731c",
+        "filename": "libbacktrace/BacktraceThread.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2013-10-25T18:22:19Z",
+      "side": 1,
+      "message": "Yeah, I have a habit of putting these kinds of things in the class, but it\u0027s not really necessary.",
+      "parentUuid": "def26816_4decc57b",
+      "revId": "06c5e79842ce6558ed59c8e061dd41c749c006d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "def26816_6df38159",
         "filename": "libbacktrace/Corkscrew.cpp",
         "patchSetId": 1
@@ -115,6 +187,24 @@
       "writtenOn": "2013-10-24T18:47:30Z",
       "side": 1,
       "message": "yeah, i think these might usefully return std::string too.",
+      "revId": "06c5e79842ce6558ed59c8e061dd41c749c006d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe62ccbe_7749708c",
+        "filename": "libbacktrace/Corkscrew.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2013-10-25T18:22:19Z",
+      "side": 1,
+      "message": "The problem is that if Demangle and GetProcName return std::string, then I need to go through a kind of awkward step where I use the C demangle to get the value, create a string, then strdup that value later on to put it into the data structure as a char*.\n\nAt the same time, it does make more sense because at some point we could abandon the C compatability and then we wouldn\u0027t have to change this.\n\nOkay, I\u0027ll switch these to return strings.",
+      "parentUuid": "def26816_6df38159",
       "revId": "06c5e79842ce6558ed59c8e061dd41c749c006d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -138,6 +228,24 @@
     },
     {
       "key": {
+        "uuid": "fe62ccbe_d7307c13",
+        "filename": "libbacktrace/UnwindCurrent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2013-10-25T18:22:19Z",
+      "side": 1,
+      "message": "Yeah, I stole this from libcorkscrew, but the comment is clearly wrong. I\u0027ll fix it.",
+      "parentUuid": "1ee9602b_3428a8a6",
+      "revId": "06c5e79842ce6558ed59c8e061dd41c749c006d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ee9602b_cfdf2985",
         "filename": "libbacktrace/backtrace_test.cpp",
         "patchSetId": 1
@@ -155,6 +263,24 @@
     },
     {
       "key": {
+        "uuid": "3e69c4a2_7c46b557",
+        "filename": "libbacktrace/backtrace_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2013-10-25T18:22:19Z",
+      "side": 1,
+      "message": "The host C++ compiler isn\u0027t C++11 compliant yet, however, I don\u0027t use anything in this file, so I\u0027ve removed the include. I did have to add it to Backtrace.cpp for the snprintf (and the crappy define). It would be nice to have full support because I could have used some of the smaller C++11 features.",
+      "parentUuid": "1ee9602b_cfdf2985",
+      "revId": "06c5e79842ce6558ed59c8e061dd41c749c006d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ee9602b_4ff4b902",
         "filename": "libbacktrace/backtrace_testlib.c",
         "patchSetId": 1
@@ -166,6 +292,24 @@
       "writtenOn": "2013-10-24T18:47:30Z",
       "side": 1,
       "message": "what\u0027s sys/types.h for here?",
+      "revId": "06c5e79842ce6558ed59c8e061dd41c749c006d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e5ec0fd_9bbe2ff5",
+        "filename": "libbacktrace/backtrace_testlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2013-10-25T18:22:19Z",
+      "side": 1,
+      "message": "Oops, old include when I was doing something differently in this file. In fact, I don\u0027t need any of these includes, I only need stdio.h for NULL.",
+      "parentUuid": "1ee9602b_4ff4b902",
       "revId": "06c5e79842ce6558ed59c8e061dd41c749c006d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
