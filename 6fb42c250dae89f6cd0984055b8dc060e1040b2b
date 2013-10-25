@@ -1,0 +1,225 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e69c4a2_1f176b0c",
+        "filename": "include/backtrace/Backtrace.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-25T19:13:27Z",
+      "side": 1,
+      "message": "i still feel like there\u0027s way too much in this public header file. surely we don\u0027t need anything more than \"struct BacktraceImpl\" here?",
+      "revId": "6fb42c250dae89f6cd0984055b8dc060e1040b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe62ccbe_fd59df37",
+        "filename": "include/backtrace/Backtrace.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-25T19:13:27Z",
+      "side": 1,
+      "message": "can we rename this to \"function\" (both in the comment and the code)? \"Proc\" makes me think process, \"procedure\" just seems odd.",
+      "revId": "6fb42c250dae89f6cd0984055b8dc060e1040b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe62ccbe_3d4c3776",
+        "filename": "include/backtrace/Backtrace.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-25T19:13:27Z",
+      "side": 1,
+      "message": "you renamed the parameter but not the comment.",
+      "revId": "6fb42c250dae89f6cd0984055b8dc060e1040b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e5ec0fd_9ecb7d6c",
+        "filename": "include/backtrace/Backtrace.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-25T19:13:27Z",
+      "side": 1,
+      "message": "i wouldn\u0027t free a std::string if i were you :-)",
+      "revId": "6fb42c250dae89f6cd0984055b8dc060e1040b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe62ccbe_bd5f671c",
+        "filename": "include/backtrace/Backtrace.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-25T19:13:27Z",
+      "side": 1,
+      "message": "better word than \"Info\" for something that\u0027s a const char*? what exactly is this?",
+      "revId": "6fb42c250dae89f6cd0984055b8dc060e1040b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe62ccbe_7d46af57",
+        "filename": "include/backtrace/Backtrace.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-25T19:13:27Z",
+      "side": 1,
+      "message": "does this need to be public?",
+      "revId": "6fb42c250dae89f6cd0984055b8dc060e1040b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e69c4a2_3f626fb1",
+        "filename": "include/backtrace/Backtrace.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-25T19:13:27Z",
+      "side": 1,
+      "message": "(the funny thing is, a factory method like this is the kind of thing i _would_ put in Backtrace as Backtrace::Create().)",
+      "revId": "6fb42c250dae89f6cd0984055b8dc060e1040b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e5ec0fd_be2cc177",
+        "filename": "libbacktrace/Backtrace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-25T19:13:27Z",
+      "side": 1,
+      "message": "you can just \"return buf;\"",
+      "revId": "6fb42c250dae89f6cd0984055b8dc060e1040b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe62ccbe_1d1db379",
+        "filename": "libbacktrace/Backtrace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-25T19:13:27Z",
+      "side": 1,
+      "message": "this is the only tricky one :-)",
+      "revId": "6fb42c250dae89f6cd0984055b8dc060e1040b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e69c4a2_ff08f7f6",
+        "filename": "libbacktrace/Backtrace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-25T19:13:27Z",
+      "side": 1,
+      "message": "again, return \"\"; will work fine.",
+      "revId": "6fb42c250dae89f6cd0984055b8dc060e1040b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e5ec0fd_fe3639c3",
+        "filename": "libbacktrace/BacktraceThread.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-25T19:13:27Z",
+      "side": 1,
+      "message": "static?",
+      "revId": "6fb42c250dae89f6cd0984055b8dc060e1040b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e69c4a2_5ff803a4",
+        "filename": "libbacktrace/BacktraceThread.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-25T19:13:27Z",
+      "side": 1,
+      "message": "why aren\u0027t we using oldact? don\u0027t we need to put things back how they were?",
+      "revId": "6fb42c250dae89f6cd0984055b8dc060e1040b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e5ec0fd_5e5f25e8",
+        "filename": "libbacktrace/BacktraceThread.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-25T19:13:27Z",
+      "side": 1,
+      "message": "(if you\u0027re going for google3 style, there\u0027s no trailing underscore for public fields.)",
+      "revId": "6fb42c250dae89f6cd0984055b8dc060e1040b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
