@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1e5ec0fd_9e6c5dc9",
+        "filename": "include/backtrace/Backtrace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-25T18:52:06Z",
+      "side": 1,
+      "message": "that was what i don\u0027t like --- Demangle has nothing to do with Backtrace. (which is why it can be static.)\n\nif you want a namespace, add a namespace :-) alternatively, if you can make this completely private to the library, move it out of header files accessible to the rest of the world.",
+      "parentUuid": "dea0a80a_8ebd1bab",
+      "revId": "06c5e79842ce6558ed59c8e061dd41c749c006d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ee9602b_145f644d",
         "filename": "include/backtrace/backtrace.h",
         "patchSetId": 1
@@ -211,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "3e69c4a2_1f3ccba0",
+        "filename": "libbacktrace/Corkscrew.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-25T18:52:06Z",
+      "side": 1,
+      "message": "yeah, it was the call to strdup in the other code that made me think std::string and clear ownership would be a plus.",
+      "parentUuid": "fe62ccbe_7749708c",
+      "revId": "06c5e79842ce6558ed59c8e061dd41c749c006d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ee9602b_3428a8a6",
         "filename": "libbacktrace/UnwindCurrent.cpp",
         "patchSetId": 1
@@ -281,6 +317,24 @@
     },
     {
       "key": {
+        "uuid": "fe62ccbe_9ddf0386",
+        "filename": "libbacktrace/backtrace_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-25T18:52:06Z",
+      "side": 1,
+      "message": "you\u0027re right :-(\n\nhttps://cs.corp.google.com/#android/prebuilts/gcc/linux-x86/host/i686-linux-glibc2.7-4.6/sysroot/usr/include/inttypes.h\u0026q\u003d_STDC_FORMAT_MACROS%20file:sys\u0026sq\u003dpackage:%5Eandroid$\u0026l\u003d47\n\ni\u0027ll add you to the thread about this.",
+      "parentUuid": "3e69c4a2_7c46b557",
+      "revId": "06c5e79842ce6558ed59c8e061dd41c749c006d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ee9602b_4ff4b902",
         "filename": "libbacktrace/backtrace_testlib.c",
         "patchSetId": 1
@@ -310,6 +364,24 @@
       "side": 1,
       "message": "Oops, old include when I was doing something differently in this file. In fact, I don\u0027t need any of these includes, I only need stdio.h for NULL.",
       "parentUuid": "1ee9602b_4ff4b902",
+      "revId": "06c5e79842ce6558ed59c8e061dd41c749c006d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e69c4a2_7f43071f",
+        "filename": "libbacktrace/backtrace_testlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-25T18:52:06Z",
+      "side": 1,
+      "message": "i know it\u0027s available via both, but \u003cstdlib.h\u003e always seems a bit more intention revealing when all i want is NULL.",
+      "parentUuid": "1e5ec0fd_9bbe2ff5",
       "revId": "06c5e79842ce6558ed59c8e061dd41c749c006d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
