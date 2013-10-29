@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e5ec0fd_6a2b39a5",
+        "filename": "include/backtrace/Backtrace.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-29T04:04:24Z",
+      "side": 1,
+      "message": "shouldn\u0027t this actually be protected? you should only construct subclasses, right?",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e5ec0fd_4a36750d",
+        "filename": "include/backtrace/Backtrace.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-29T04:04:24Z",
+      "side": 1,
+      "message": "(should this default to something like \u003cmap_name+offset\u003e so we always have _something_ to show?)",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe62ccbe_ef367cf5",
+        "filename": "include/backtrace/Backtrace.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-29T04:04:24Z",
+      "side": 1,
+      "message": "i\u0027d move this to the top, since it\u0027s the factory method.",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e5ec0fd_8a288da8",
+        "filename": "libbacktrace/Backtrace.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-29T04:04:24Z",
+      "side": 1,
+      "message": "seems a bit weird in a .cpp file; just extern \"C\" char* ... would do.",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e49184c_a76e582e",
+        "filename": "libbacktrace/Backtrace.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-29T04:04:24Z",
+      "side": 1,
+      "message": "readable",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e49184c_878154c0",
+        "filename": "libbacktrace/Backtrace.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-29T04:04:24Z",
+      "side": 1,
+      "message": "can\u0027t help but see PRIxPTR now :-)\n\nfor stuff like error messages where i don\u0027t care too much, i\u0027ve been lazy and used %p a lot though.",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e49184c_27634847",
+        "filename": "libbacktrace/Backtrace.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-29T04:04:24Z",
+      "side": 1,
+      "message": "strerror(errno) is almost always more useful than errno.",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e49184c_076e442d",
+        "filename": "libbacktrace/Backtrace.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-29T04:04:24Z",
+      "side": 1,
+      "message": "we haven\u0027t needed the trailing \\n for years now.",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e49184c_e7e14088",
+        "filename": "libbacktrace/BacktraceThread.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-29T04:04:24Z",
+      "side": 1,
+      "message": "well, it\u0027s under \"struct names\":\n\nhttp://google-styleguide.googlecode.com/svn/trunk/cppguide.xml#Variable_Names\n\nbecause classes aren\u0027t supposed to have public data, so this must be a struct :-)",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe62ccbe_0f5570fc",
+        "filename": "libbacktrace/Corkscrew.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-29T04:04:24Z",
+      "side": 1,
+      "message": "creation",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe62ccbe_6f4c2c77",
+        "filename": "libbacktrace/UnwindCurrent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-29T04:04:24Z",
+      "side": 1,
+      "message": "nothing defines this so we could lose it.",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e49184c_87f31458",
+        "filename": "libbacktrace/UnwindCurrent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-10-29T04:04:24Z",
+      "side": 1,
+      "message": "but only for arm?\n\noh, the others are inline below. we should probably either move this down there, move those up here (or fix ucontext.h!).",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
