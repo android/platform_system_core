@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fed48c7e_cde6fd9d",
+        "filename": "include/backtrace/Backtrace.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2013-10-29T23:25:46Z",
+      "side": 1,
+      "message": "Fixed in new change.",
+      "parentUuid": "1e5ec0fd_6a2b39a5",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e5ec0fd_4a36750d",
         "filename": "include/backtrace/Backtrace.h",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2013-10-29T04:04:24Z",
       "side": 1,
       "message": "(should this default to something like \u003cmap_name+offset\u003e so we always have _something_ to show?)",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dec988ea_4cf33359",
+        "filename": "include/backtrace/Backtrace.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2013-10-29T23:25:46Z",
+      "side": 1,
+      "message": "I think that might be a bit redundant. The normal way to format a frame looks like this:\n\n#XX \u003cOFFSET_OF_PC_INTO_MAP\u003e  \u003cMAP_NAME\u003e\n\nSo the information is already there in that case. For the only other naked caller of this function (debuggerd), it really doesn\u0027t want to display anything unless there is a real match because it\u0027s scouring the stack for addresses that look like return addresses. So if there isn\u0027t a match, knowing that there isn\u0027t anything seems to make sense.",
+      "parentUuid": "1e5ec0fd_4a36750d",
       "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "fed48c7e_6d0f1183",
+        "filename": "include/backtrace/Backtrace.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2013-10-29T23:25:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe62ccbe_ef367cf5",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e5ec0fd_8a288da8",
         "filename": "libbacktrace/Backtrace.cpp",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2013-10-29T04:04:24Z",
       "side": 1,
       "message": "seems a bit weird in a .cpp file; just extern \"C\" char* ... would do.",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fed48c7e_4d0ccd8c",
+        "filename": "libbacktrace/Backtrace.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2013-10-29T23:25:46Z",
+      "side": 1,
+      "message": "Yeah, this code has moved around so many times it\u0027s starting to make me dizzy.\n\nFixed now.",
+      "parentUuid": "1e5ec0fd_8a288da8",
       "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "bec694d7_6e8423cf",
+        "filename": "libbacktrace/Backtrace.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2013-10-29T23:25:46Z",
+      "side": 1,
+      "message": "And readWord should be ReadWord too.\n\nFixed.",
+      "parentUuid": "5e49184c_a76e582e",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e49184c_878154c0",
         "filename": "libbacktrace/Backtrace.cpp",
         "patchSetId": 3
@@ -98,6 +188,24 @@
       "writtenOn": "2013-10-29T04:04:24Z",
       "side": 1,
       "message": "can\u0027t help but see PRIxPTR now :-)\n\nfor stuff like error messages where i don\u0027t care too much, i\u0027ve been lazy and used %p a lot though.",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fed48c7e_ada9092a",
+        "filename": "libbacktrace/Backtrace.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2013-10-29T23:25:46Z",
+      "side": 1,
+      "message": "%p it is the.\n\nFixed.",
+      "parentUuid": "5e49184c_878154c0",
       "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "fed48c7e_8daec52d",
+        "filename": "libbacktrace/Backtrace.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2013-10-29T23:25:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e49184c_27634847",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e49184c_076e442d",
         "filename": "libbacktrace/Backtrace.cpp",
         "patchSetId": 3
@@ -132,6 +258,24 @@
       "writtenOn": "2013-10-29T04:04:24Z",
       "side": 1,
       "message": "we haven\u0027t needed the trailing \\n for years now.",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bec694d7_ae6e1b2e",
+        "filename": "libbacktrace/Backtrace.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2013-10-29T23:25:46Z",
+      "side": 1,
+      "message": "Fixed here and everywhere else I use ALOGW.",
+      "parentUuid": "5e49184c_076e442d",
       "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "fed48c7e_6da8b11e",
+        "filename": "libbacktrace/BacktraceThread.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2013-10-29T23:25:46Z",
+      "side": 1,
+      "message": "Yeah, this is really a struct. I\u0027ll change it since I\u0027m definitely not really not using it as a class.",
+      "parentUuid": "5e49184c_e7e14088",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe62ccbe_0f5570fc",
         "filename": "libbacktrace/Corkscrew.cpp",
         "patchSetId": 3
@@ -166,6 +328,24 @@
       "writtenOn": "2013-10-29T04:04:24Z",
       "side": 1,
       "message": "creation",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dec988ea_0c9bfb0e",
+        "filename": "libbacktrace/Corkscrew.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2013-10-29T23:25:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe62ccbe_0f5570fc",
       "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -189,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "bec694d7_ceff1716",
+        "filename": "libbacktrace/UnwindCurrent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2013-10-29T23:25:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe62ccbe_6f4c2c77",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e49184c_87f31458",
         "filename": "libbacktrace/UnwindCurrent.cpp",
         "patchSetId": 3
@@ -200,6 +398,24 @@
       "writtenOn": "2013-10-29T04:04:24Z",
       "side": 1,
       "message": "but only for arm?\n\noh, the others are inline below. we should probably either move this down there, move those up here (or fix ucontext.h!).",
+      "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fed48c7e_edcca10b",
+        "filename": "libbacktrace/UnwindCurrent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2013-10-29T23:25:46Z",
+      "side": 1,
+      "message": "Pulled everything to the top where it belongs.",
+      "parentUuid": "5e49184c_87f31458",
       "revId": "17e91d44edf5e6476a477a200bcd89d4327358a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
