@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bea77522_ae0d7794",
+        "filename": "libion/tests/allocate_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2013-11-21T00:00:17Z",
+      "side": 1,
+      "message": "Here we seem to run through all the available heaps allocating w/  ION_FLAG_CACHED. However, if the SYSTEM or SYSTEM_CONTIG heaps are registered, then this will always fail (due to the ion_buffer_fault_user_mappings() checks in the system heaps allocation paths).   Is this intentional? Should the test make sure this is a sane request of the heap?",
+      "revId": "3db07210c158d2f950fe03a93c4c142f3c108261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
