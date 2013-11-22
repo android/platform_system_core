@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bea77522_178bf706",
+        "filename": "debuggerd/tombstone.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-11-22T20:06:39Z",
+      "side": 1,
+      "message": "we should probably add a macro similar to PRIxPTR but including the %08 or %016 and use it everywhere we currently have %08\u003cwhatever\u003e.",
+      "revId": "ee97440de1d0ea89977fe413fe416c2797a6011f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ed03988_efedb234",
+        "filename": "debuggerd/tombstone.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-11-22T20:06:39Z",
+      "side": 1,
+      "message": "i think we should have a word_t or equivalent to be more intention-revealing than taking advantage of the fact that long is 32-bit on our 32-bit architectures and 64-bit on our 64-bit architectures.",
+      "revId": "ee97440de1d0ea89977fe413fe416c2797a6011f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "deaa69eb_697542e0",
+        "filename": "debuggerd/utility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-11-22T20:06:39Z",
+      "side": 1,
+      "message": "should we just unconditionally format into buf and then unconditionally use buf here?\n\nalso, the comment on L76 is misleading; it should come here, _after_ we\u0027ve written to the log and before we write to activity manager. (and even then, it\u0027s a bit misleading in that it\u0027s not always true!)",
+      "revId": "ee97440de1d0ea89977fe413fe416c2797a6011f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ed03988_cf054e2b",
+        "filename": "include/backtrace/Backtrace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-11-22T20:06:39Z",
+      "side": 1,
+      "message": "yeah, this would be a good place to have a word_t.",
+      "revId": "ee97440de1d0ea89977fe413fe416c2797a6011f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bea77522_77535bca",
+        "filename": "include/corkscrew/ptrace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-11-22T20:06:39Z",
+      "side": 1,
+      "message": "libcorkscrew is no longer used for ARM, and we want to switch MIPS and x86 over to libbacktrace (which is a wrapper for libunwind), and have the 64-bit architectures be libbacktrace-only.",
+      "revId": "ee97440de1d0ea89977fe413fe416c2797a6011f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
