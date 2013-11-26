@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63dba606_f0ee202d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2013-11-26T15:31:59Z",
+      "side": 1,
+      "message": "I found this wording a bit confusing. Are you trying to say that iterating over the entries just to look at their metadata isn\u0027t as efficient as it could be?",
+      "revId": "efb6b9041f56c882c327dd57c7761f59c6b881a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43e062af_0f01451c",
+        "filename": "libziparchive/zip_archive.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2013-11-26T15:31:59Z",
+      "side": 1,
+      "message": "art wants to extract to memory, so needs an alternative to this that takes a pointer to memory and a length. I think its worth having the redundant length to make sure it matches the ZipEntry uncompressed size.\n\nalso, all logging internally should be return as error messages instead (and we sure make sure that all error returns set an error message). It seems like the allocation for the error can be on the ZipArchiveHandle and deleted on CloseArchive. alternatively you can provide a function to map from unique negative error codes to error strings.",
+      "revId": "efb6b9041f56c882c327dd57c7761f59c6b881a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43e062af_2f068935",
+        "filename": "libziparchive/zip_archive_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2013-11-26T15:31:59Z",
+      "side": 1,
+      "message": "we need some negative test cases for prior issues.",
+      "revId": "efb6b9041f56c882c327dd57c7761f59c6b881a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
