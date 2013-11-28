@@ -143,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "c3e532f4_fb6defd7",
+        "filename": "debuggerd/utility.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1011068
+      },
+      "writtenOn": "2013-11-28T09:10:09Z",
+      "side": 1,
+      "message": "I suppose we need va_copy here.\n\nHere is the manual:\nThe  functions  vprintf(),  vfprintf(),  vsprintf(), vsnprintf() are equivalent to the functions printf(), fprintf(), sprintf(), snprintf(), respectively,\n       except that they are called with a va_list instead of a variable number of arguments.  These functions do not call the va_end macro.  Because they  invoke\n       the va_arg macro, the value of ap is undefined after the call.\n\nSo all the ap used by these functions should use va_copy.",
+      "parentUuid": "630ac615_78d781de",
+      "revId": "ee97440de1d0ea89977fe413fe416c2797a6011f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ed03988_cf054e2b",
         "filename": "include/backtrace/Backtrace.h",
         "patchSetId": 1
