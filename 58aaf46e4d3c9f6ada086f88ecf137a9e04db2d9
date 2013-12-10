@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "63b7264d_56f904f4",
+        "filename": "libziparchive/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2013-12-10T17:58:53Z",
+      "side": 1,
+      "message": "Without this directive, the build system puts my test in\n\n$(TARGET_OUT)/data/nativetest/ziparchive-tests/ziparchive-tests \n\nIs that not the right place ?",
+      "parentUuid": "43eea235_6844128b",
+      "revId": "58aaf46e4d3c9f6ada086f88ecf137a9e04db2d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83e41a52_a3cbd9df",
         "filename": "libziparchive/zip_archive_test.cc",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-12-10T17:54:01Z",
       "side": 1,
       "message": "having your own main probably means you won\u0027t be runnable by the default tradefed test runner",
+      "revId": "58aaf46e4d3c9f6ada086f88ecf137a9e04db2d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3ad9efe_78fcf9e5",
+        "filename": "libziparchive/zip_archive_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2013-12-10T17:58:53Z",
+      "side": 1,
+      "message": "Hmm, all I wanted was a command line argument of my own. Is there a better way to do this ? I looked around but couldn\u0027t find a good way to do it (though I did find several tests that had their own main)\n\nI guess I could hardcode the path for the host test (assuming the test is being run from the root of the tree) and add a rule to push the data files to a known location on the device. Would that be preferable ?",
+      "parentUuid": "83e41a52_a3cbd9df",
       "revId": "58aaf46e4d3c9f6ada086f88ecf137a9e04db2d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
