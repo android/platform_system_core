@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2d299d85_4e9f7302",
+        "filename": "adb/file_sync_service.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-01-03T04:14:53Z",
+      "side": 1,
+      "message": "On line 49 and 50, we initialize UID / GID to the current user. For the shell user, the only place you can sync to is /data/local/tmp, which is not on system. As a result, the fs_config call on line 59 will never get executed, and UID / GID will remain unchanged.\n\nThe chown call executed by shell will be with uid\u003d2000, gid\u003d2000 after a successful mkdir call. As mkdir would have created the directory with the current UID/GID, subsequently calling chown with the same UID/GID should be a no-op.\n\nIs there a specific scenario you want me to test? I\u0027ve verified that adb push works correctly as shell user to /data/local/tmp. \"adb sync\" as the shell user fails as expected; the shell user isn\u0027t able to write to anything outside of /data/local/tmp.",
+      "parentUuid": "6d3f15b6_50882cc2",
+      "revId": "a4fe611aa6fd113c66ff4f5c006a65cf89fbbb29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d299d85_cebc839f",
         "filename": "adb/file_sync_service.c",
         "patchSetId": 8
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "4d441157_4f888dc2",
+        "filename": "adb/file_sync_service.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-01-03T04:14:53Z",
+      "side": 1,
+      "message": "For /data/local/tmp, uid and gid will be that of the shell user, so this will be a no-op. See above.",
+      "parentUuid": "2d299d85_cebc839f",
+      "revId": "a4fe611aa6fd113c66ff4f5c006a65cf89fbbb29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d299d85_aec93743",
         "filename": "adb/file_sync_service.c",
         "patchSetId": 8
@@ -47,6 +83,30 @@
       "writtenOn": "2014-01-03T02:46:59Z",
       "side": 1,
       "message": "did you mean fchown clears setuid?",
+      "range": {
+        "startLine": 204,
+        "startChar": 11,
+        "endLine": 204,
+        "endChar": 17
+      },
+      "revId": "a4fe611aa6fd113c66ff4f5c006a65cf89fbbb29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d441157_2f7d49fc",
+        "filename": "adb/file_sync_service.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-01-03T04:14:53Z",
+      "side": 1,
+      "message": "ya.  :-) OOPS.",
+      "parentUuid": "2d299d85_aec93743",
       "range": {
         "startLine": 204,
         "startChar": 11,
