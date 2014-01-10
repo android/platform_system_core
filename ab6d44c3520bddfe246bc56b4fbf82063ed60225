@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0dd1393f_f7e31373",
+        "filename": "debuggerd/Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-01-10T18:07:34Z",
+      "side": 1,
+      "message": "i don\u0027t really like us having two copies of this stuff; one here and one in bionic. especially now they\u0027re starting to diverge. and because they\u0027ll need to be a bit more complicated for 64-bit, and should include /system/xbin, and...\n\nshould we have a script somewhere and have both makefiles just run that?\n\nshould the \"run-on-host\" targets themselves just be replaced by scripts that call make, run the new \"install on host\" script, and then do the test-specific actions?\n\nwhat do people think?",
+      "revId": "ab6d44c3520bddfe246bc56b4fbf82063ed60225",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdcac190_5f1bfec8",
+        "filename": "debuggerd/Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-01-10T18:07:34Z",
+      "side": 1,
+      "message": "also, have i fucked up the dynamic linker? why do we need to set LD_LIBRARY_PATH? shouldn\u0027t the linker\u0027s built-in defaults cover us?",
+      "revId": "ab6d44c3520bddfe246bc56b4fbf82063ed60225",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
