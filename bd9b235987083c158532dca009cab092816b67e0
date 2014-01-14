@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd26414f_79483f77",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-01-14T18:56:29Z",
+      "side": 1,
+      "message": "if partition_wiped() executes, it has the potential to modify errno, making the strerror(errno) on line 579 print a misleading value.\n\nCan you save errno before this block to avoid the problem?",
+      "revId": "bd9b235987083c158532dca009cab092816b67e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
