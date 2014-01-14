@@ -34,6 +34,93 @@
       "revId": "15d1e158ba76615029a884cce4337393e63c0b33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed5785b2_64bd0a98",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2014-01-14T20:51:36Z",
+      "side": 1,
+      "message": "Encrypted encryptable volumes will always fail to mount. That error should be hidden until it has been determined that it was a corrupted unencrypted-encryptable volume.",
+      "parentUuid": "ad810d4e_bb679b3d",
+      "revId": "15d1e158ba76615029a884cce4337393e63c0b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed5785b2_04ca1637",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2014-01-14T20:51:36Z",
+      "side": 1,
+      "message": "Don\u0027t re-use mret. Let the compiler handle an \"int mount_errno\" or something similar.",
+      "range": {
+        "startLine": 564,
+        "startChar": 1,
+        "endLine": 564,
+        "endChar": 5
+      },
+      "revId": "15d1e158ba76615029a884cce4337393e63c0b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "addf4d7e_a202be9a",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2014-01-14T20:51:36Z",
+      "side": 1,
+      "message": "There actually should be an extra test here ...\n\n   partition_encrypted(fstab-\u003erecs[i].flag_vals-\u003ekey_loc, (fstab-\u003erecs[i].blk_device)\n\nwhich would actually go and check if the key_loc is correct.\n\nRight now, this code will think that a bad partition is an encrypted partition. Cleaning that up is on my todo list.",
+      "range": {
+        "startLine": 567,
+        "startChar": 8,
+        "endLine": 567,
+        "endChar": 11
+      },
+      "revId": "15d1e158ba76615029a884cce4337393e63c0b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed5785b2_84ce0645",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2014-01-14T20:51:36Z",
+      "side": 1,
+      "message": "\"Failed to mount an un-encryptable or wiped partition....\"",
+      "range": {
+        "startLine": 580,
+        "startChar": 19,
+        "endLine": 580,
+        "endChar": 46
+      },
+      "revId": "15d1e158ba76615029a884cce4337393e63c0b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
