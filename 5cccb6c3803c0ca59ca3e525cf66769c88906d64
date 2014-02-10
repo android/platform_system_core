@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af83c5c3_02ca6ae1",
+        "filename": "include/log/log.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2014-02-10T05:13:58Z",
+      "side": 1,
+      "message": "crap, that\u0027s not right either.\n\nwhile (0) { __ALOGV(..) } doesn\u0027t work because if (x) ALOGV(...); else ALOGV(...); gets an extra semicolon after the while (0), which breaks the if.\n\nI think this will work:\ndo { if (0) { __ALOGV(__VA_ARGS__); } } while (0)",
+      "revId": "5cccb6c3803c0ca59ca3e525cf66769c88906d64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
