@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "af2665f6_ed7c21cc",
+        "filename": "init/init.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1010099
+      },
+      "writtenOn": "2014-02-12T23:18:40Z",
+      "side": 1,
+      "message": "Will rework to use type (remap SELINUX log values to those used by klog, which unfortunately do not appear to be #define\u0027d or enum defined anywhere but just hardcoded twice in klog.h, once as a number and once as a string).  Did something similar already in the jni callback for SELinux.",
+      "parentUuid": "cff71998_ee441fd7",
+      "revId": "fbe4b44cd5dd3b99b0a20825f007311435818707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f0c0978_d2d0e20b",
         "filename": "init/init.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-02-12T22:27:35Z",
       "side": 1,
       "message": "Do we really need this? Is this something to do with the stack frame not able to pass through var args without explicitly passing the va_list?",
+      "revId": "fbe4b44cd5dd3b99b0a20825f007311435818707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f0c0978_12a1ca45",
+        "filename": "init/init.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1010099
+      },
+      "writtenOn": "2014-02-12T23:18:40Z",
+      "side": 1,
+      "message": "We need to wrap klog_write for two reasons:  remap type/level values from libselinux values to klog values and deal with difference in return value (int vs void).  Since we have to wrap it, we need to factor out a helper that takes a va_list argument as you cannot \"forward\" a stdarg call directly to the original klog_write call.",
+      "parentUuid": "4f0c0978_d2d0e20b",
       "revId": "fbe4b44cd5dd3b99b0a20825f007311435818707",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
