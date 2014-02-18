@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f8b8d70_a57e94f4",
+        "filename": "init/property_service.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-02-18T23:37:43Z",
+      "side": 1,
+      "message": "i think i need to make st_uid and st_gid have types uid_t and gid_t rather than unsigned int/unsigned long. otherwise this is still going to be broken for LP64.",
+      "revId": "c5fdf96aa5b3a3d1275964d9731a454a1942878c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf26394f_087453e6",
+        "filename": "init/util.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-02-18T23:37:43Z",
+      "side": 1,
+      "message": "this still looks wrong. maybe the cast wouldn\u0027t seem so insane if you did it at the point where you\u0027re parsing the arguments, though it\u0027s still surprising to say the least.\n\nor presumably if you declared this const char* const you\u0027d need no cast?",
+      "revId": "c5fdf96aa5b3a3d1275964d9731a454a1942878c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
