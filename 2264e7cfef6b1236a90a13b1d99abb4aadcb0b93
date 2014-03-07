@@ -22,6 +22,30 @@
       "revId": "2264e7cfef6b1236a90a13b1d99abb4aadcb0b93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dccb593b_1ffad3e1",
+        "filename": "adb/transport.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1191,
+      "author": {
+        "id": 1041495
+      },
+      "writtenOn": "2014-03-07T08:58:49Z",
+      "side": 1,
+      "message": "My man pages say:\n\n \u003e POSIX.1-2001 allows either error to be returned for this case, and does not require these constants to have the same value, so a portable application should check for both possibilities. \n\nhttp://linux.die.net/man/2/write\n\nMaybe a better solution would be:\n\n  #ifndef EWOULDBLOCK\n  #define EWOULDBLOCK EAGAIN\n  #endif\n\n?",
+      "parentUuid": "9c348108_4a0f0201",
+      "range": {
+        "startLine": 1191,
+        "startChar": 48,
+        "endLine": 1191,
+        "endChar": 59
+      },
+      "revId": "2264e7cfef6b1236a90a13b1d99abb4aadcb0b93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
