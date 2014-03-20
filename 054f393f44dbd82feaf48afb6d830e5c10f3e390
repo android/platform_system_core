@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c904999_4fc34d79",
+        "filename": "libcutils/str_parms.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1042369
+      },
+      "writtenOn": "2014-03-20T10:51:18Z",
+      "side": 1,
+      "message": "Yes, the OOM-situation you mention is valid, but not causing the double free that this patch is aiming for. Since these strings are often short they are less likely to fail.\n\nLet\u0027s await further review before deciding if it should be added here or into another patch.",
+      "parentUuid": "dc4d1911_6161726b",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 0
+      },
+      "revId": "054f393f44dbd82feaf48afb6d830e5c10f3e390",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c30f57d_19858ff1",
         "filename": "libcutils/str_parms.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2014-03-20T02:01:09Z",
       "side": 1,
       "message": "-      free(tmp_key);\n+bail: free(tmp_key);",
+      "range": {
+        "startLine": 213,
+        "startChar": 8,
+        "endLine": 213,
+        "endChar": 12
+      },
+      "revId": "054f393f44dbd82feaf48afb6d830e5c10f3e390",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc26f94e_f3ba30ea",
+        "filename": "libcutils/str_parms.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1042369
+      },
+      "writtenOn": "2014-03-20T10:51:18Z",
+      "side": 1,
+      "message": "I understand that this was just to show the concept, but personally I would try to avoid the goto. It should be possible to unconditionally free everything that is non-null, and avoid early return.\n\nAt least moving the bail-case out of the if-statement, as with err_strdup above.\n\n(Also consider if we want the ENOMEM set for that case too, or if the return value is enough.)",
+      "parentUuid": "3c30f57d_19858ff1",
       "range": {
         "startLine": 213,
         "startChar": 8,
