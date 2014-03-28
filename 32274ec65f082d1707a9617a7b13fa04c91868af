@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "d948cb7a_29d8a962",
+        "filename": "libsysutils/src/FrameworkListener.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2014-03-28T20:42:09Z",
+      "side": 1,
+      "message": "it would b enice to avoid the duplication of initializers here an in init().  Why not just call init(NULL, false)?",
+      "revId": "32274ec65f082d1707a9617a7b13fa04c91868af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d948cb7a_295f8926",
+        "filename": "logd/CommandListener.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2014-03-28T20:42:09Z",
+      "side": 1,
+      "message": "It\u0027s dangerous to do compile-time checking of userdebug builds like this.  The build server sometimes does incremental builds between userdebug and user, and the dependencies are not smart enough to know to rebuild this file.",
+      "revId": "32274ec65f082d1707a9617a7b13fa04c91868af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "194fc37f_ebede5a0",
+        "filename": "logd/LogReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2014-03-28T20:42:09Z",
+      "side": 1,
+      "message": "you could just require logd be started as root with setenforce 0 for debugging.",
+      "revId": "32274ec65f082d1707a9617a7b13fa04c91868af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b910773f_a00ddec2",
         "filename": "logd/LogReader.cpp",
         "patchSetId": 1
