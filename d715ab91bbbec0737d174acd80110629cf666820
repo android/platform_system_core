@@ -132,6 +132,30 @@
     },
     {
       "key": {
+        "uuid": "f904af03_65723cfc",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-03-28T21:18:22Z",
+      "side": 1,
+      "message": "I think Brian\u0027s approach sounds like a good idea.\n\nAfter our discussion yesterday, I started this change with the thought that centralized is better, but at that point I wasn\u0027t aware this would need parser changes. Also, Brian\u0027s suggestion gives us a bit more flexibility with respect to passing different command line arguments to 32 an 64 bit zygote etc.",
+      "parentUuid": "f94bcf71_c7ad8080",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "d715ab91bbbec0737d174acd80110629cf666820",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "194fc37f_055b92c0",
         "filename": "rootdir/init.rc",
         "patchSetId": 1
@@ -191,6 +215,30 @@
       "side": 1,
       "message": "That seems like fairly high level policy to cram through init.rc.  Can Zygote just read the properties directly?  Maybe also supporting command line arguments for debugging?",
       "parentUuid": "f904af03_45bce04b",
+      "range": {
+        "startLine": 503,
+        "startChar": 88,
+        "endLine": 503,
+        "endChar": 111
+      },
+      "revId": "d715ab91bbbec0737d174acd80110629cf666820",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f904af03_4567403c",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-03-28T21:18:22Z",
+      "side": 1,
+      "message": "Zygote could read them directly, but we need slightly different behaviour in process launched by init from those started directly from the command line (some of that can be expressed by doing different things in ZygoteInit.java / RuntimeInit.java but it might get messy).",
+      "parentUuid": "194fc37f_e8edeba0",
       "range": {
         "startLine": 503,
         "startChar": 88,
