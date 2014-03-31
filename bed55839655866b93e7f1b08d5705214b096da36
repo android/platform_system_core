@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f94bcf71_81b40dd8",
+        "filename": "logd/LogReader.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2014-03-31T18:00:59Z",
+      "side": 1,
+      "message": "I don\u0027t think we should be suggesting this, even for debugging.  The shell already has to be running as root, so logd should be able to write to /dev/socket as is.",
+      "revId": "bed55839655866b93e7f1b08d5705214b096da36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9a02f5c_1c8175a2",
+        "filename": "logd/LogReader.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2014-03-31T18:00:59Z",
+      "side": 1,
+      "message": "logd should be able to do this itself if it created the socket",
+      "revId": "bed55839655866b93e7f1b08d5705214b096da36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9a02f5c_9c16e5a4",
+        "filename": "logd/LogReader.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2014-03-31T18:00:59Z",
+      "side": 1,
+      "message": "if its 755, why do you care what the owner/group is?",
+      "revId": "bed55839655866b93e7f1b08d5705214b096da36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9a02f5c_dcceadf8",
+        "filename": "logd/LogReader.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2014-03-31T18:00:59Z",
+      "side": 1,
+      "message": "why are you bothering re-enabling selinux?  I would expect this mostly to be used to run gdb or valgrind on logd, and you probably won\u0027t care about selinux.",
+      "revId": "bed55839655866b93e7f1b08d5705214b096da36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
