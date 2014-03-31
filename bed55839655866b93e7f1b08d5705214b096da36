@@ -139,6 +139,24 @@
       "revId": "bed55839655866b93e7f1b08d5705214b096da36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9d157e4_75746256",
+        "filename": "logd/LogReader.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-03-31T21:33:45Z",
+      "side": 1,
+      "message": "Inspected regarding the dropping/annealing of privileges, and SCHED_BATCH, CAP_SYSLOG and PR_SET_KEEPCAPS had no equivalent in init. I could however, drop the setuid/setgid calls in favor of adjustments in init.rc.\n\nvalgrind usage is full of problems itself though ...\n1) turn off error checking in drop_privs in logd/main.cpp because of unknown system call warnings.\n2) Other unknown system calls breaking selinux auditd code\n3) /system/lib64/memcheck-arm64-linux is 644 and should be 755 when installed.\n\nWe have to disable logd startup as well in order to \u0027break in\u0027\n\nAfter workaround, minimal valgrind shell commands for startup:\n1) setenforce 0\n2) chmod 777 /dev/socket (if we do not drop setuid/setgid)\n3) valgrind /system/bin/logd\n\nThe provided script is to represent the pedantic startup so that all security systems are running normally, and was meant as living proof that we could start up logd in the proper context.",
+      "parentUuid": "5944db56_de43095f",
+      "revId": "bed55839655866b93e7f1b08d5705214b096da36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
