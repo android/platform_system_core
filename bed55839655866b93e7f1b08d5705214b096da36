@@ -175,6 +175,24 @@
       "revId": "bed55839655866b93e7f1b08d5705214b096da36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79db5f06_7610e81d",
+        "filename": "logd/LogReader.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-03-31T22:33:44Z",
+      "side": 1,
+      "message": "Nick had CAP_SYSLOG, left mindlessly, figured it started out its life because the kernel space logger checks this in the caller. I now need it to read the kernel dmesg buffer klogctl and then to be auditd to mine it for existing selinux audit messages to populate the log.\n\nSo, you are correct regarding the statement that we were doing some root-privilege stuff. Setting all these other fiddly bits requires root, AID_LOGD is set after they are all configured.\n\nSo, given your recant on moving setuid/setgid from logd to init; how minimalist should I be for the sample instructions to manually start logd? (one option is to completely remove them from fprintf, and merely document it in main.cpp as a comment?",
+      "parentUuid": "39ae4766_c9c1f571",
+      "revId": "bed55839655866b93e7f1b08d5705214b096da36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
