@@ -46,6 +46,53 @@
       "revId": "1c372334a27f4d9366cb8b4639096ff4894b1f98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99349308_2ae0c362",
+        "filename": "logd/LogStatistics.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2014-04-01T23:30:41Z",
+      "side": 1,
+      "message": "#define PID_MAX_LIMIT (CONFIG_BASE_SMALL ? PAGE_SIZE * 8 : \\\n(sizeof(long) \u003e 4 ? 4 * 1024 * 1024 : PID_MAX_DEFAULT))\n\nSo kernels with sizeof(long)\u003e4 will be:\n cat /proc/sys/kernel/pid_max\n   4194304\n\nJust use log10(pid)",
+      "parentUuid": "f9a74f88_19fbd7e5",
+      "range": {
+        "startLine": 421,
+        "startChar": 27,
+        "endLine": 421,
+        "endChar": 32
+      },
+      "revId": "1c372334a27f4d9366cb8b4639096ff4894b1f98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99349308_8a03cf6a",
+        "filename": "logd/LogStatistics.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2014-04-01T23:30:41Z",
+      "side": 1,
+      "message": "KISS would be to let the field go large. Truncating would require using an extra character in the format (\"%.*s\" instead of \"%*s\").",
+      "range": {
+        "startLine": 553,
+        "startChar": 22,
+        "endLine": 553,
+        "endChar": 31
+      },
+      "revId": "1c372334a27f4d9366cb8b4639096ff4894b1f98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
