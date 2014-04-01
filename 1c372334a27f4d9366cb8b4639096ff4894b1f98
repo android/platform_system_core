@@ -93,6 +93,30 @@
       "revId": "1c372334a27f4d9366cb8b4639096ff4894b1f98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9a74f88_795beb71",
+        "filename": "logd/LogStatistics.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-04-01T23:47:03Z",
+      "side": 1,
+      "message": "Letting the fields go large made it difficult (in the case of \u0027logcat -b all -S\u0027) to relate which log class id the spam was being placed into.\n\nTruncating the fields was far worse, we just would never see the name or the pid whole enough to lay blame.\n\nBy allowing overloaded fields to indent into the trailing spaces of the previous column (and enforcing field-spaces), we got the best of all worlds allowing long names to be seen in the correct columns. The above comment gives lip-service to the rationalization for the more complicated indent handling below; KISS was either one of the above (letting fields go, or be truncated) comparatively.\n\nIf I am to spin another patchset, I will fortify the comments with the above sentiment.",
+      "parentUuid": "99349308_8a03cf6a",
+      "range": {
+        "startLine": 553,
+        "startChar": 22,
+        "endLine": 553,
+        "endChar": 31
+      },
+      "revId": "1c372334a27f4d9366cb8b4639096ff4894b1f98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
