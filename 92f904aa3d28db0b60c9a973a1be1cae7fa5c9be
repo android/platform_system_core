@@ -45,6 +45,115 @@
       "revId": "92f904aa3d28db0b60c9a973a1be1cae7fa5c9be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9cb1765_8200fa1e",
+        "filename": "libcutils/str_parms.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1042369
+      },
+      "writtenOn": "2014-04-03T17:07:28Z",
+      "side": 1,
+      "message": "I assume you dropped the old_errno willingly. That\u0027s fine by me, I just wanted to make sure that anyone calling this library would not get a surprise when the behavior changed.",
+      "range": {
+        "startLine": 203,
+        "startChar": 12,
+        "endLine": 203,
+        "endChar": 13
+      },
+      "revId": "92f904aa3d28db0b60c9a973a1be1cae7fa5c9be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f913cf9e_24d81295",
+        "filename": "libcutils/str_parms.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1042369
+      },
+      "writtenOn": "2014-04-03T17:07:28Z",
+      "side": 1,
+      "message": "Since hashmapPut is a bit strange I was thinking the comment could be clearer the other way around. What do you think?\n\n// For a new key, hashmap takes ownership of both tmp_key and tmp_val",
+      "range": {
+        "startLine": 217,
+        "startChar": 11,
+        "endLine": 217,
+        "endChar": 18
+      },
+      "revId": "92f904aa3d28db0b60c9a973a1be1cae7fa5c9be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99d01311_61e21645",
+        "filename": "libcutils/str_parms.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1042369
+      },
+      "writtenOn": "2014-04-03T17:07:28Z",
+      "side": 1,
+      "message": "Strictly you may want check ERRNO too (even if it should not happen) and use \"else if\" to help reader see that it\u0027s two separate cases (with only a third case implicitly)\n\nelse if (old_val !\u003d NULL \u0026\u0026 errno !\u003d ENOMEM) {\n\nTechnically it should not matter, but logically this could help future refactoring.",
+      "range": {
+        "startLine": 220,
+        "startChar": 15,
+        "endLine": 220,
+        "endChar": 16
+      },
+      "revId": "92f904aa3d28db0b60c9a973a1be1cae7fa5c9be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9902d340_743486f5",
+        "filename": "libcutils/str_parms.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1042369
+      },
+      "writtenOn": "2014-04-03T17:07:28Z",
+      "side": 1,
+      "message": "// For an existing key, hashmap takes ownership only of tmp_val and returns ownership of old_val",
+      "range": {
+        "startLine": 221,
+        "startChar": 19,
+        "endLine": 221,
+        "endChar": 26
+      },
+      "revId": "92f904aa3d28db0b60c9a973a1be1cae7fa5c9be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9cb1765_a21dfe7b",
+        "filename": "libcutils/str_parms.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1042369
+      },
+      "writtenOn": "2014-04-03T17:07:28Z",
+      "side": 1,
+      "message": "Good test case. Did it make any difference running it twice or why so?\n\nMay also want to assert correct value (whatever that is...) of errno afterwards. (And that none of the strings failed.)",
+      "revId": "92f904aa3d28db0b60c9a973a1be1cae7fa5c9be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
