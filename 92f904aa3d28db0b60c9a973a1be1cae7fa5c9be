@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "391ac7b4_89e11db6",
+        "filename": "libcutils/str_parms.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-04-03T18:21:02Z",
+      "side": 1,
+      "message": "yeah, i did it on purpose because the rest of this code doesn\u0027t go out of its way to ensure that errno isn\u0027t clobbered transitively. but this is the first time we\u0027d be clobbering errno directly, so i\u0027ve added the errno saving/restoring back.",
+      "parentUuid": "b9cb1765_8200fa1e",
+      "range": {
+        "startLine": 203,
+        "startChar": 12,
+        "endLine": 203,
+        "endChar": 13
+      },
+      "revId": "92f904aa3d28db0b60c9a973a1be1cae7fa5c9be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f913cf9e_24d81295",
         "filename": "libcutils/str_parms.c",
         "patchSetId": 3
@@ -94,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "391ac7b4_49c3a54a",
+        "filename": "libcutils/str_parms.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-04-03T18:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f913cf9e_24d81295",
+      "range": {
+        "startLine": 217,
+        "startChar": 11,
+        "endLine": 217,
+        "endChar": 18
+      },
+      "revId": "92f904aa3d28db0b60c9a973a1be1cae7fa5c9be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99d01311_61e21645",
         "filename": "libcutils/str_parms.c",
         "patchSetId": 3
@@ -105,6 +153,30 @@
       "writtenOn": "2014-04-03T17:07:28Z",
       "side": 1,
       "message": "Strictly you may want check ERRNO too (even if it should not happen) and use \"else if\" to help reader see that it\u0027s two separate cases (with only a third case implicitly)\n\nelse if (old_val !\u003d NULL \u0026\u0026 errno !\u003d ENOMEM) {\n\nTechnically it should not matter, but logically this could help future refactoring.",
+      "range": {
+        "startLine": 220,
+        "startChar": 15,
+        "endLine": 220,
+        "endChar": 16
+      },
+      "revId": "92f904aa3d28db0b60c9a973a1be1cae7fa5c9be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5925bbed_4a34335c",
+        "filename": "libcutils/str_parms.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-04-03T18:21:02Z",
+      "side": 1,
+      "message": "i didn\u0027t like the \"else if\" but i had already wondered about moving the errno check inside the outer if and then having just \"else\", so i\u0027ve gone with that.",
+      "parentUuid": "99d01311_61e21645",
       "range": {
         "startLine": 220,
         "startChar": 15,
@@ -151,6 +223,24 @@
       "writtenOn": "2014-04-03T17:07:28Z",
       "side": 1,
       "message": "Good test case. Did it make any difference running it twice or why so?\n\nMay also want to assert correct value (whatever that is...) of errno afterwards. (And that none of the strings failed.)",
+      "revId": "92f904aa3d28db0b60c9a973a1be1cae7fa5c9be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "391ac7b4_a9621997",
+        "filename": "libcutils/str_parms.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-04-03T18:21:02Z",
+      "side": 1,
+      "message": "that was just to make it more likely i got a crash, because people don\u0027t run tests under valgrind by default.\n\nthis whole thing should be switched over to gtest so it ends up in CTS and actually run, but that\u0027s something for someone else...",
+      "parentUuid": "b9cb1765_a21dfe7b",
       "revId": "92f904aa3d28db0b60c9a973a1be1cae7fa5c9be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
