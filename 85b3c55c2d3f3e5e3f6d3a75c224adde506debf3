@@ -87,6 +87,24 @@
       "revId": "85b3c55c2d3f3e5e3f6d3a75c224adde506debf3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "797c3ff1_6b383daf",
+        "filename": "rootdir/init.zygote32.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-04-04T17:29:33Z",
+      "side": 1,
+      "message": "I think it\u0027s not very easy for the zygote to autodetect what ABIs it supports without a few manual tweaks (a single compiled zygote could support multiple ABIs)\n\nFurther, It\u0027s not just the zygote that needs to know what ABIs it supports. The system_server needs to know which ABI each zygote supports.\n\n(I suppose I could implement that by having the system_server query the ABI list from the zygote as soon as it opens the connection.)\n\nI do like Colin\u0027s idea of using ro.product.cpu.abis32 / abis64 but the issue there is that there are no *existing* BoardConfig.mk variables I could use unless I can assume that TARGET_CPU is 64 bit if TARGET_2ND_CPU is present.",
+      "parentUuid": "39c80775_4b51a5a0",
+      "revId": "85b3c55c2d3f3e5e3f6d3a75c224adde506debf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
