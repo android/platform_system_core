@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39d4872d_cc3768bf",
+        "filename": "logd/tests/logd_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-04-09T16:06:23Z",
+      "side": 1,
+      "message": "The above EXPECT is only to confirm we see the benchmark\u0027s footprint on the statistics.\n\nWe would also like to check if the SPAM filter is doing its job.\n\nWorst UID pruning will report a \u0027Now\u0027 value that is between 10-20% of the total available storage. Without worst UID filtration we would be at 80-109% obliterating all other content.\n\nfind_benchmark_spam returns the pointer to the \u0027/\u0027 under the Total field. That pointer needs to be captured and additional parsing is required at this point.\n\nIn this case of a test that checks if the UID pruning is working, the caller needs to additionally parse out the \u0027Now\u0027 field and evaluate its footprint over the size of the associated log. Given that the UID filter is currently off and under dispute, leave this lack of checking as-is, and make it part of the release of a functioning spam filter.",
+      "revId": "33838676b146b9660fa5d247eb77957dbb6c8b06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
