@@ -2,6 +2,114 @@
   "comments": [
     {
       "key": {
+        "uuid": "b9df977e_f185b2ae",
+        "filename": "logd/tests/logd_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2014-04-14T22:30:24Z",
+      "side": 1,
+      "message": "n.b.: new is guaranteed to always return a non-NULL pointer since bionic abort()s on failure and other runtimes throw std::bad_alloc",
+      "range": {
+        "startLine": 52,
+        "startChar": 30,
+        "endLine": 52,
+        "endChar": 50
+      },
+      "revId": "33838676b146b9660fa5d247eb77957dbb6c8b06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9980137b_0a3e3feb",
+        "filename": "logd/tests/logd_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2014-04-14T22:30:24Z",
+      "side": 1,
+      "message": "Maybe multiply by some reasonable factor, e.g. ret * 3 / 2?  This case happens if the statistics are growing while you\u0027re reading them, so it makes sense to anticipate some further growth.",
+      "revId": "33838676b146b9660fa5d247eb77957dbb6c8b06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79851f89_46476694",
+        "filename": "logd/tests/logd_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2014-04-14T22:30:24Z",
+      "side": 1,
+      "message": "external/gtest/include/gtest/gtest.h: In instantiation of \u0027testing::AssertionResult testing::internal::CmpHelperLT(const char*, const char*, const T1\u0026, const T2\u0026) [with T1 \u003d int; T2 \u003d long unsigned int]\u0027:\nsystem/core/logd/tests/logd_test.cpp:147:149:   required from here\nexternal/gtest/include/gtest/gtest.h:1581:145: error: comparison between signed and unsigned integer expressions [-Werror\u003dsign-compare]\n GTEST_IMPL_CMP_HELPER_(LT, \u003c);",
+      "revId": "33838676b146b9660fa5d247eb77957dbb6c8b06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9982ff7_bc804139",
+        "filename": "logd/tests/logd_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2014-04-14T22:30:24Z",
+      "side": 1,
+      "message": "popen() doesn\u0027t necessarily return NULL if it fails.  popen(\"foo\") is equivalent to running \"/bin/sh -c foo\" which can succeed even if \"foo\" doesn\u0027t exist.  (/bin/sh successfully ran and complained it couldn\u0027t find \"foo\"!)\n\nTo ensure the child actually ran, you also need to save the return value of pclose(), check that WIFEXITED(ret) is true, and that WEXITSTATUS(err) !\u003d 127.",
+      "revId": "33838676b146b9660fa5d247eb77957dbb6c8b06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9980137b_d5695cd0",
+        "filename": "logd/tests/logd_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2014-04-14T22:30:24Z",
+      "side": 1,
+      "message": "external/gtest/include/gtest/gtest.h: In instantiation of \u0027testing::AssertionResult testing::internal::CmpHelperGE(const char*, const char*, const T1\u0026, const T2\u0026) [with T1 \u003d int; T2 \u003d long unsigned int]\u0027:\nsystem/core/logd/tests/logd_test.cpp:548:179:   required from here\nexternal/gtest/include/gtest/gtest.h:1583:145: error: comparison between signed and unsigned integer expressions [-Werror\u003dsign-compare]\n GTEST_IMPL_CMP_HELPER_(GE, \u003e\u003d);",
+      "revId": "33838676b146b9660fa5d247eb77957dbb6c8b06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79851f89_063e3eeb",
+        "filename": "logd/tests/logd_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2014-04-14T22:30:24Z",
+      "side": 1,
+      "message": "external/gtest/include/gtest/gtest.h: In instantiation of \u0027testing::AssertionResult testing::internal::CmpHelperNE(const char*, const char*, const T1\u0026, const T2\u0026) [with T1 \u003d int; T2 \u003d long unsigned int]\u0027:\nsystem/core/logd/tests/logd_test.cpp:561:137:   required from here\nexternal/gtest/include/gtest/gtest.h:1577:145: error: comparison between signed and unsigned integer expressions [-Werror\u003dsign-compare]\n GTEST_IMPL_CMP_HELPER_(NE, !\u003d);",
+      "revId": "33838676b146b9660fa5d247eb77957dbb6c8b06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39d4872d_cc3768bf",
         "filename": "logd/tests/logd_test.cpp",
         "patchSetId": 3
