@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b964f7c8_83f32410",
+        "filename": "logd/tests/logd_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2014-04-15T17:04:37Z",
+      "side": 1,
+      "message": "If /data/nativetest/liblog-benchmarks/liblog-benchmarks is missing, you\u0027ll get a bunch of failures from the EXPECT_...(..., ne[...]) checks.  This came up when I built and pushed this test to my device without the benchmark app, and the cause wasn\u0027t obvious.\n\nMake this ASSERT_TRUE() and move it below the pclose() call.  Consider adding a custom error message that explains /data/nativetest/liblog-benchmarks/liblog-benchmarks failed to run.\n\nOr maybe better, print a warning that running the benchmark failed and return without error.  IMO it\u0027s a little weird to have test success depend on an external executable that you can\u0027t guarantee will be there.",
+      "range": {
+        "startLine": 583,
+        "startChar": 4,
+        "endLine": 583,
+        "endChar": 61
+      },
+      "revId": "1bdc949c705590ed42c9e213379d027466263dfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
