@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c54b7f72_8439c6c7",
+        "filename": "init/property_service.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2014-04-18T19:08:40Z",
+      "side": 1,
+      "message": "The fsync doesn\u0027t help in this position... it will be irrelevant until the rename() below succeeds and the rename is commited to disk.\nThis code needs to be more complicated and handle the directory itself to force the sync.\nAlso, checking the result of the write() AND the close() should be done: or else you end up with a property directory entry that is empty/garbage.",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 14
+      },
+      "revId": "de73a0cfdfe4e175b12da1cf38dd5d3f7c1b8d9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
