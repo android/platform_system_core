@@ -16,6 +16,24 @@
       "revId": "9644b422320ce85e8795cef9a708bc2ea64fe0b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "658813e3_8d1c6402",
+        "filename": "liblog/log_read.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-04-21T20:36:41Z",
+      "side": 1,
+      "message": "Yes, for this, I will fix it. But not for others though.\n\nIt is not statistically. I am not getting TEMP_FAILURE_RETRYable issues, the maximum size that the dgram socket will support in a single read is the issue, it is breaking the request up into several smaller reads _always_\n\nAll users of this (logcat), except for Statistics, are dealing with \u003c4KB requests which complete atomically.\n\nlogcat has no use for TEMP_FAILURE_RETRY since the interrupt causes termination of the executable so there is no return to these read/write sycalls. Daemons are the only ones that benefit from this macro.\n\njni and debuggerd uses the other readers/writers (recv above). TEMP_FAILURE_RETRY has no use here for them, though, because we also need to check EAGAIN, we have explicitly handled EINTR and EAGAIN in those cases (a separate bug, if we need to fix it, outside the scope of this change; we are investigating one that may be suspect so we do NOT want it fixed here).",
+      "parentUuid": "856c27f2_6e70f75f",
+      "revId": "9644b422320ce85e8795cef9a708bc2ea64fe0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
