@@ -52,6 +52,24 @@
       "revId": "9644b422320ce85e8795cef9a708bc2ea64fe0b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65d653dd_7751c81d",
+        "filename": "liblog/log_read.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-04-21T21:54:26Z",
+      "side": 1,
+      "message": "In reality, logcat is the only one using the API associated with controlling the user space logger. This, of course, does not block others from starting to use this interface. I am agreeing with hardening it with TEMP_FAILURE_RETRY, but am indicating that no one currently gains from the change.\n\nThe event reader code (the one that I am resisting fixing in this ticket, since there is another ticket associated with them) is used by logcat, debugger and the jni.",
+      "parentUuid": "856c27f2_b4bae059",
+      "revId": "9644b422320ce85e8795cef9a708bc2ea64fe0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
