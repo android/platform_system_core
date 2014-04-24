@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c5c1bf53_77348a01",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-04-24T22:35:22Z",
+      "side": 1,
+      "message": "ret is already defined and used and is a ssize_t, this is merely a result of good \u0027C\u0027 hygiene by not proliferating too many automatic variables. payload_length is more descriptive, it is not a total_length.",
+      "parentUuid": "c5e8dfcd_3643e8cf",
+      "revId": "838f3de3da6be1ccf2d08b4224938eb0bf1a4c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5e5abf4_0ab88360",
         "filename": "liblog/logd_write.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "659e536e_14f51a68",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-04-24T22:35:22Z",
+      "side": 1,
+      "message": "if the last iov_len \u003c what we can subtract to result in truncation, we KISS return -EINVAL. Doing it in the loop would deal with truncating the packet better I will agree.\n\nIn this KISS implementation, we have to ensure that the total length is limited, if the length comes from other fields other than the last one, we will reject the message as unworkable. min on this one iovec will *not* limit the overall length as per our goal.",
+      "parentUuid": "a5e5abf4_0ab88360",
+      "revId": "838f3de3da6be1ccf2d08b4224938eb0bf1a4c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85b427df_af116975",
         "filename": "liblog/tests/liblog_test.cpp",
         "patchSetId": 1
@@ -47,6 +83,30 @@
       "writtenOn": "2014-04-24T22:04:41Z",
       "side": 1,
       "message": "where did this number come from?",
+      "range": {
+        "startLine": 499,
+        "startChar": 27,
+        "endLine": 499,
+        "endChar": 34
+      },
+      "revId": "838f3de3da6be1ccf2d08b4224938eb0bf1a4c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5be8bc4_16cefa3f",
+        "filename": "liblog/tests/liblog_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-04-24T22:35:22Z",
+      "side": 1,
+      "message": "From the associated bug, Igor picked it as associated with a separate bug that posted a message this long and left him confused because nothing showed up in logcat (not even truncated). I like it because it is ridiculously long, longer than what even some folks would set the logd circular buffer sizes to.",
+      "parentUuid": "85b427df_af116975",
       "range": {
         "startLine": 499,
         "startChar": 27,
