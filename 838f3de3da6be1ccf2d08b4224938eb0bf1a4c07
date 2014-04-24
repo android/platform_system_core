@@ -73,6 +73,29 @@
     },
     {
       "key": {
+        "uuid": "c5e8dfcd_714d7af8",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2014-04-24T23:18:15Z",
+      "side": 1,
+      "message": "Do we care if ret overflows? The check on 209 could be skipped.\n\n(assuming the implementation-specific undefined behavior of signed overflow will lead to something reasonable like wrapping around to negative)",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 64
+      },
+      "revId": "838f3de3da6be1ccf2d08b4224938eb0bf1a4c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5e5abf4_0ab88360",
         "filename": "liblog/logd_write.c",
         "patchSetId": 1
@@ -185,6 +208,30 @@
       "side": 1,
       "message": "wouldn\u0027t 2 * LOGGER_ENTRY_MAX_PAYLOAD be a better idea?",
       "parentUuid": "a5be8bc4_16cefa3f",
+      "range": {
+        "startLine": 499,
+        "startChar": 27,
+        "endLine": 499,
+        "endChar": 34
+      },
+      "revId": "838f3de3da6be1ccf2d08b4224938eb0bf1a4c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5e5abf4_35404069",
+        "filename": "liblog/tests/liblog_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2014-04-24T23:18:15Z",
+      "side": 1,
+      "message": "In my tests using numbers slightly larger than LOGGER_ENTRY_MAX_PAYLOAD was perfectly fine (it would truncate down to LOGGER_ENTRY_MAX_PAYLOAD once it hit logcat)\n\nIt\u0027s possible that this value is related to maximum size of an atomic packet for SOCK_DGRAM instead of LOGGER_ENTRY_MAX_PAYLOAD, but I didn\u0027t investigate it that far down.",
+      "parentUuid": "85b427df_a1fc1d93",
       "range": {
         "startLine": 499,
         "startChar": 27,
