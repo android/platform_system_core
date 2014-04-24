@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5e8dfcd_3643e8cf",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-04-24T22:04:41Z",
+      "side": 1,
+      "message": "\u0027ret\u0027 is a confusing name here. \u0027total_length\u0027?",
+      "revId": "838f3de3da6be1ccf2d08b4224938eb0bf1a4c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5e5abf4_0ab88360",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-04-24T22:04:41Z",
+      "side": 1,
+      "message": "wouldn\u0027t this be clearer in the loop? i think you\u0027re trying to say \"if the last iov_len \u003e\u003d max, -EINVAL; otherwise truncate\"?\n\nthat seems weird. why not just pass min(total_length, LOGGER_ENTRY_MAX_PAYLOAD) to writev?",
+      "revId": "838f3de3da6be1ccf2d08b4224938eb0bf1a4c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85b427df_af116975",
+        "filename": "liblog/tests/liblog_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-04-24T22:04:41Z",
+      "side": 1,
+      "message": "where did this number come from?",
+      "range": {
+        "startLine": 499,
+        "startChar": 27,
+        "endLine": 499,
+        "endChar": 34
+      },
+      "revId": "838f3de3da6be1ccf2d08b4224938eb0bf1a4c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
