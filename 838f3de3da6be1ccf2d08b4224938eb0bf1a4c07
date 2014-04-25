@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "2581bb17_364866e9",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-04-25T15:37:41Z",
+      "side": 1,
+      "message": "ret will never(tm) overflow as it is a ssize_t ;-\u003e. 209 is the code that truncates the buffer, but your point does mean:\n\nif ((size_t)ret \u003e LOGGER_ENTRY_MAX_PAYLOAD)\n\nShould have been used. This code has been refactored and committed, will consider hardening CL based on this critique.",
+      "parentUuid": "c5e8dfcd_714d7af8",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 64
+      },
+      "revId": "838f3de3da6be1ccf2d08b4224938eb0bf1a4c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5e5abf4_0ab88360",
         "filename": "liblog/logd_write.c",
         "patchSetId": 1
@@ -232,6 +256,30 @@
       "side": 1,
       "message": "In my tests using numbers slightly larger than LOGGER_ENTRY_MAX_PAYLOAD was perfectly fine (it would truncate down to LOGGER_ENTRY_MAX_PAYLOAD once it hit logcat)\n\nIt\u0027s possible that this value is related to maximum size of an atomic packet for SOCK_DGRAM instead of LOGGER_ENTRY_MAX_PAYLOAD, but I didn\u0027t investigate it that far down.",
       "parentUuid": "85b427df_a1fc1d93",
+      "range": {
+        "startLine": 499,
+        "startChar": 27,
+        "endLine": 499,
+        "endChar": 34
+      },
+      "revId": "838f3de3da6be1ccf2d08b4224938eb0bf1a4c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2581bb17_d660ea61",
+        "filename": "liblog/tests/liblog_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-04-25T15:37:41Z",
+      "side": 1,
+      "message": "I want a buffer that exceeds both LOGGER_ENTRY_MAX_PAYLOAD and any inconceivable max dgram size in the network layer. There are multiple sources of truncation in each vintage of all loggers, and an equally inconsistent set of checks. I also want, should this test be used on the legacy kernel logger, to stress it to the max as well.\n\nThis test could be performed independently on any Android release, OEM submissions etc. So tailoring it for our current expected behavior and underlying mechanisms and libraries is how I got into this trouble in the first place ;-\u003e\n\nBTW, any value above 64K will meet this condition, 3266519 doubly so \u003cgrin\u003e\n\nHowever, svelte phones could choke? I will look into running this test on a hammerhead svelt to be sure, at my convenience.",
+      "parentUuid": "a5e5abf4_35404069",
       "range": {
         "startLine": 499,
         "startChar": 27,
