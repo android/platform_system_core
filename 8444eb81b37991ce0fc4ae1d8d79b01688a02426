@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2581bb17_f65deea6",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-04-25T15:48:31Z",
+      "side": 1,
+      "message": "As pointed out by Igor, do we want to worry about overflow?\n\nGiven I have switched to a size_t here, rather than a ssize_t as was used in patchset 1, I believe we are covered.",
+      "range": {
+        "startLine": 210,
+        "startChar": 12,
+        "endLine": 210,
+        "endChar": 24
+      },
+      "revId": "8444eb81b37991ce0fc4ae1d8d79b01688a02426",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5e5abf4_d5d47c7d",
         "filename": "liblog/logd_write.c",
         "patchSetId": 2
@@ -13,6 +36,29 @@
       "writtenOn": "2014-04-24T23:07:11Z",
       "side": 1,
       "message": "sorry, i\u0027m retarded. i\u0027m confusing the Java \"writev\" API with the C one. you can\u0027t do what i\u0027ve been suggesting.",
+      "revId": "8444eb81b37991ce0fc4ae1d8d79b01688a02426",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2581bb17_3696a6f8",
+        "filename": "liblog/tests/liblog_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-04-25T15:48:31Z",
+      "side": 1,
+      "message": "check if svelte releases have troubles with this. If they do, adjust to max(65536U, LOGGER_ENTRY_MAX_PAYLOAD, `cat /proc/sys/net/core/rmem_max`, `cat /proc/sys/net/core/wmem_max`, `cat /proc/sys/net/ipv*/tcp_wmem`, `cat /proc/sys/net/ipv*/tcp_rmem) + 1; a little larger than 1MB on our current crop of android phones and tablets ... but may be smaller on svelte.",
+      "range": {
+        "startLine": 499,
+        "startChar": 27,
+        "endLine": 499,
+        "endChar": 34
+      },
       "revId": "8444eb81b37991ce0fc4ae1d8d79b01688a02426",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
