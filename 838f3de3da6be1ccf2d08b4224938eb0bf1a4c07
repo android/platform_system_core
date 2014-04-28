@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "e55a43dc_ebab0561",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2014-04-28T19:03:15Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand the explanation here, could you elaborate please?\n\nMy original, and possibly flawed, interpretation of this was as follows:\n\nif newVec[i].iov_len is equal to SIZE_MAX, then adding it to ret would cause ret to overflow (even if it was a size_t; and certainly since it\u0027s a ssize_t, which has a smaller max value). \n\nOn that very academic train of thought, signed integer overflows in C lead to undefined behavior, so simply checking if it went negative is not standards-compliant.\n\n------------\n\nThat being said looking at the code paths this seems highly unlikely in practice since a variadic iov_len is always set as the strlen of iov_base; it would be quite hard to allocate 64-bits worth of usable memory by the time it gets here.",
+      "parentUuid": "2581bb17_364866e9",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 64
+      },
+      "revId": "838f3de3da6be1ccf2d08b4224938eb0bf1a4c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5e5abf4_0ab88360",
         "filename": "liblog/logd_write.c",
         "patchSetId": 1
