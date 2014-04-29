@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c5fc5fef_45030073",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-04-29T00:54:03Z",
+      "side": 1,
+      "message": "No, because len is unsigned short, truncated from the size_t value of n. The assignment with check is to ensure that we deal with truncation appropriately.\n\nAs to whether this can or can not happen, depends on how much we trust the kernel and MAX_AUDIT_MESSAGE_LENGTH in the libaudit.c library.",
+      "parentUuid": "05f3d71b_32b27824",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 156,
+        "endChar": 5
+      },
+      "revId": "75ffac9fdb289828e975096d7c3384b3e7c659f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5fc5fef_4585c0b4",
         "filename": "logd/README.property",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2014-04-29T00:50:12Z",
       "side": 1,
       "message": ", zero, or invalid (e.g. something that didn\u0027t read as a number).",
+      "revId": "75ffac9fdb289828e975096d7c3384b3e7c659f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05f3d71b_92026cd3",
+        "filename": "logd/README.property",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-04-29T00:54:03Z",
+      "side": 1,
+      "message": "Agreed, but I\u0027d prefer not to give the reader of this the option to put the string \"false\" in there, resulting in a misconception.\n\nWe know we are using atol() to parse this, but I am not going to reflect that is an option here to explore the bug that atol() represents.",
+      "parentUuid": "c5fc5fef_4585c0b4",
       "revId": "75ffac9fdb289828e975096d7c3384b3e7c659f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
