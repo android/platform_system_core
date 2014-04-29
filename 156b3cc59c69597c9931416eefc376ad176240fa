@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8508a7da_ce59e33a",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2014-04-29T01:17:31Z",
+      "side": 1,
+      "message": "In that case:\n\n   len \u003d (n \u003c\u003d USHRT_MAX) ? n : -1;",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 73
+      },
+      "revId": "156b3cc59c69597c9931416eefc376ad176240fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05f3d71b_b2ab2862",
         "filename": "logd/main.cpp",
         "patchSetId": 3
@@ -36,6 +59,30 @@
       "writtenOn": "2014-04-29T01:00:16Z",
       "side": 1,
       "message": "atol allows a string to be entered and always report false. This means a string of \"true\" for the property will be *wrong* and the \u0027administrator\u0027 would not know why without knowing the code.\n\nDo we want to consider a more intelligent parser for this?\n\nAnswer: no, KISS *only* developers are allows to set properties, and they should know what they are doing.",
+      "range": {
+        "startLine": 123,
+        "startChar": 12,
+        "endLine": 123,
+        "endChar": 26
+      },
+      "revId": "156b3cc59c69597c9931416eefc376ad176240fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8508a7da_6e37f7f9",
+        "filename": "logd/main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2014-04-29T01:17:31Z",
+      "side": 1,
+      "message": "Only allow \"true\" \"false\", not 0, ... and call it a day.\nIt would end up even matching the doc so you would not have to add an extra section as to what \"true\" and \"false\" are.",
+      "parentUuid": "05f3d71b_3261d88d",
       "range": {
         "startLine": 123,
         "startChar": 12,
