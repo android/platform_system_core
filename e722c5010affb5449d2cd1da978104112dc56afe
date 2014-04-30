@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "0afbe434_de57a5df",
+        "filename": "libcutils/ashmem-host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-04-30T19:59:41Z",
+      "side": 1,
+      "message": "I am trying to go warning free with -Wunused from the top tree, -Wno-unused-parameter is like \u0027cheating\u0027 :-}. The *main* idea is to catch any unused variables, but I am more than willing to catch all unused entities (parameters, functions, typedefs etc).\n\nThe main problem with sys/cdefs.h is that the file does not exist in the windows sdk builds (or has this been fixed?) The other problem with sys/cdefs.h we have is __unused is only defined in the bionic, and since this (and other system/core) library and execs are also built for the host/sdks I have one of two choices:\n\na) Orthogonal-named manifest\n\n#define UNUSED __attribute__((__unused__))\n\n- or -\n\nb) use bionic, but deal with non-bionic environments (host linux)\n\n#include \u003csys/cdefs.h\u003e\n. . .\n#ifndef __unused\n#define __unused __attribute__((__unused__))\n#endif\n\nI would refer to the later one as anything I put into a header (even if the header is project local) since headers never know if sys/cdefs.h has been included, the former one is used for KISS on standalone \u0027C\u0027 files.\n\nSo. which would you prefer I do, I can standardize on the approach for all (currently 9 additional CLs in-work, using these two as reference)\n\nI can audit these changes on mac and windows builds, it is easier to not audit, and stay away from sys/cdefs.h.",
+      "parentUuid": "4af15c4f_e9b62dc8",
+      "revId": "e722c5010affb5449d2cd1da978104112dc56afe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6aec607a_67a8067d",
         "filename": "libcutils/cpu_info.c",
         "patchSetId": 1
@@ -47,6 +65,24 @@
       "writtenOn": "2014-04-30T18:17:51Z",
       "side": 1,
       "message": "as long as you are rearranging headers, library headers usually go below standard headers",
+      "revId": "e722c5010affb5449d2cd1da978104112dc56afe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eaf77045_7d72d7c2",
+        "filename": "libcutils/cpu_info.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-04-30T19:59:41Z",
+      "side": 1,
+      "message": "Good catch. This was an ooops, I have been doing so in the other CLs when I feel compelled to re-arrange. I also see above that we have trailing spaces in this file (probably best to do that as a separate CL ...)",
+      "parentUuid": "6aec607a_67a8067d",
       "revId": "e722c5010affb5449d2cd1da978104112dc56afe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
