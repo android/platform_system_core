@@ -33,6 +33,24 @@
       "revId": "71c322a3ee146d72802642c17a473363f9ce8efd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5c37fc9_8e96bc68",
+        "filename": "libbacktrace/BacktraceThread.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-04-30T04:39:23Z",
+      "side": 1,
+      "message": "I moved this to BacktraceThread.h and I\u0027m using SIGRTMIN+1. However, as I understand these signals, it is recommended that SIGRTMIN be redefined to be the first unused real time signal. The man pages say that two or three are being used by glibc so the value has been modified there. It would seem we should at least resereve that first one and bump up SIGRTMIN by one. If the others are fundamental to the system, it would seem a good idea to reserve them too and bump RTMIN by three.",
+      "parentUuid": "05caf7dd_2f3ea949",
+      "revId": "71c322a3ee146d72802642c17a473363f9ce8efd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
