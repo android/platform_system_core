@@ -51,6 +51,24 @@
       "revId": "71c322a3ee146d72802642c17a473363f9ce8efd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ae7d493_c25fc29d",
+        "filename": "libbacktrace/BacktraceThread.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-04-30T16:18:36Z",
+      "side": 1,
+      "message": "huh. i did not know that. you\u0027re right:\n\nprinting the constants:\n\n  SIGRTMIN\u003d34 (__SIGRTMIN\u003d32) SIGRTMAX\u003d64 (__SIGRTMAX\u003d64)\n\nand there\u0027s a gap in kill -l\u0027s list:\n\n  ~$ kill -l\n  31) SIGSYS\t34) SIGRTMIN\t35) SIGRTMIN+1\t36) SIGRTMIN+2\t37) SIGRTMIN+3\n\n(i checked and kill will let you send signals 32 and 33. they\u0027re just not in the list.)\n\nso how about you take (__SIGRTMIN + 0), posix timers take (__SIGRTMIN + 1), libcore takes (__SIGRTMIN + 2), and we hide them behind a function like glibc does so we can take more in future if we need to. i\u0027ll document who\u0027s got who in the function implementation.\n\nif this is blocking something feel free to submit now. we\u0027ll have to switch libcore to __SIGRTMIN anyway.",
+      "parentUuid": "c5c37fc9_8e96bc68",
+      "revId": "71c322a3ee146d72802642c17a473363f9ce8efd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
