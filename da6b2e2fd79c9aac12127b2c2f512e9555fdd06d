@@ -16,6 +16,24 @@
       "revId": "da6b2e2fd79c9aac12127b2c2f512e9555fdd06d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a520423_cce6c34e",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-05-01T22:58:38Z",
+      "side": 1,
+      "message": "The fatal message without abort, how would that work? What about abusers wanting to log to ANDROID_LOG_FATAL at their pleasure?\n\n__android_log_write logs normally, but before returning, pass the copy to bionic. If another comes along, overwrite (so the last line stashed) sounds fine to me. Here we go to __builtin_trap() so nothing more happens ...",
+      "parentUuid": "0a520423_668a4e9c",
+      "revId": "da6b2e2fd79c9aac12127b2c2f512e9555fdd06d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
