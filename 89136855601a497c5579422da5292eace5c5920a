@@ -25,6 +25,53 @@
     },
     {
       "key": {
+        "uuid": "4a66bc13_0153509d",
+        "filename": "liblog/logprint.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-05-02T17:31:42Z",
+      "side": 1,
+      "message": "missed this in my audit yesterday.",
+      "parentUuid": "0a520423_f0df0de6",
+      "range": {
+        "startLine": 57,
+        "startChar": 7,
+        "endLine": 57,
+        "endChar": 13
+      },
+      "revId": "89136855601a497c5579422da5292eace5c5920a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a66bc13_41514894",
+        "filename": "liblog/logprint.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-05-02T17:31:42Z",
+      "side": 1,
+      "message": "#if 0 rather than inline (missed this in my audit yesterday \u003csigh\u003e)",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 58
+      },
+      "revId": "89136855601a497c5579422da5292eace5c5920a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a520423_90a6999a",
         "filename": "liblog/logprint.c",
         "patchSetId": 3
@@ -48,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "4a66bc13_a1c38418",
+        "filename": "liblog/logprint.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-05-02T17:31:42Z",
+      "side": 1,
+      "message": "It is when the assert resolves to nothing ... :-(\n\nI could use a define UNUSED_BY_ASSERT to make this clearer.",
+      "parentUuid": "0a520423_90a6999a",
+      "range": {
+        "startLine": 951,
+        "startChar": 12,
+        "endLine": 951,
+        "endChar": 18
+      },
+      "revId": "89136855601a497c5579422da5292eace5c5920a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a520423_50b021ce",
         "filename": "liblog/logprint.c",
         "patchSetId": 3
@@ -59,6 +130,30 @@
       "writtenOn": "2014-05-02T17:10:10Z",
       "side": 1,
       "message": "Why static?",
+      "range": {
+        "startLine": 952,
+        "startChar": 4,
+        "endLine": 952,
+        "endChar": 10
+      },
+      "revId": "89136855601a497c5579422da5292eace5c5920a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a66bc13_411ce8fc",
+        "filename": "liblog/logprint.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-05-02T17:31:42Z",
+      "side": 1,
+      "message": "x86_64 as example:\n\nw/o static: size 13257\nw/static: size 12927\n\nThe difference is that static const is placed in the initialized text (ro) segment and accessed directly from there as referenced; whereas without it is placed on the stack (and initialized by a static text segment). I view this as a compiler bug, as some compilers, and some compilers in specific architectures, will treat this in the former manner (direct access to ro segment).",
+      "parentUuid": "0a520423_50b021ce",
       "range": {
         "startLine": 952,
         "startChar": 4,
