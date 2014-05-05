@@ -141,6 +141,30 @@
       "revId": "b9d19b5ce6fe298c8c4c4c0d8cac21cd25fa0e27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aacbb83b_602b380b",
+        "filename": "libcutils/str_parms.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001100
+      },
+      "writtenOn": "2014-05-05T17:25:56Z",
+      "side": 1,
+      "message": "I\u0027d go for that. I\u0027m in favor of disabling whole library functions that are never used in windows host apps and only provide a complex re-implementation if truly useful. Otherwise you risk wasting your time writing an implementation that is never actually tested and if someone calls it later, it might be buggy and nobody knows.\n\nIf you do that, please add a HAVE_METHOD_NAME in build/core/combo/include/arch/*/AndroidConfig.h that is defined for all platforms except Windows. I\u0027d like to avoid sprinkling the code base with #ifndef _WIN32 as much as possible. It\u0027s more work to add a HAVE_xyz define but it\u0027s way more expressive of why something is missing.\n\nAlso please don\u0027t undef WIN32 (it\u0027s ok for local testing but I\u0027m always worried that would get merged by mistake).",
+      "parentUuid": "aacbb83b_8022e43c",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 6
+      },
+      "revId": "b9d19b5ce6fe298c8c4c4c0d8cac21cd25fa0e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
