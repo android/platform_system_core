@@ -52,6 +52,24 @@
       "revId": "15ae3b62b97284e626db2c66aca1377d64780dd0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2fd4b4_895aba27",
+        "filename": "debuggerd/tombstone.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-05-05T22:06:57Z",
+      "side": 1,
+      "message": "I had a fix in utility.cpp to close the fd when setting it to -1. However, the tone of the functions is that the callers handle the fd themselves, so I added the caching and close here.\n\nThe close and let it fail is not usually my style, however, it does simplify the code. I added a comment so that future readers of the code understand that closing -1 is okay and expected in some cases.",
+      "parentUuid": "8a2fd4b4_9725b637",
+      "revId": "15ae3b62b97284e626db2c66aca1377d64780dd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
