@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "8a2fd4b4_7c2d7982",
+        "filename": "debuggerd/tombstone.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-05-05T20:56:42Z",
+      "side": 1,
+      "message": "can\u0027t we remove the \"\\n\"s?",
+      "revId": "d9fcd29c89e0404921caa75f58163f2adb69045e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8aba749a_34dfbd9c",
+        "filename": "debuggerd/tombstone.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 751,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-05-05T20:56:42Z",
+      "side": 1,
+      "message": "(if not, you missed one here and below.)\n\nalso s/dump/write/ in this function\u0027s logging? to me, \"dump\" means log and \"write\" means disk, and you\u0027re talking about disk here?",
+      "revId": "d9fcd29c89e0404921caa75f58163f2adb69045e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a395c00_000326da",
         "filename": "debuggerd/tombstone.cpp",
         "patchSetId": 1
@@ -13,6 +47,24 @@
       "writtenOn": "2014-05-05T20:39:37Z",
       "side": 1,
       "message": "The if block doesn\u0027t seem like it\u0027s needed here. You could just unconditionally call close(log.amfd), since you\u0027re not checking the return value of close anyway, and calling close on a negative fd will just return EBADF.\n\n(same comment for line 770)",
+      "revId": "d9fcd29c89e0404921caa75f58163f2adb69045e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2fd4b4_7cfbb999",
+        "filename": "debuggerd/tombstone.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-05-05T20:56:42Z",
+      "side": 1,
+      "message": "yeah, if the caller doesn\u0027t care about errno i prefer to just unconditionally close too.",
+      "parentUuid": "4a395c00_000326da",
       "revId": "d9fcd29c89e0404921caa75f58163f2adb69045e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
