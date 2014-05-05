@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "8aba749a_79469388",
+        "filename": "libzipfile/centraldir.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001100
+      },
+      "writtenOn": "2014-05-05T16:59:27Z",
+      "side": 1,
+      "message": "Please don\u0027t undefine _WIN32. Why would you even do that in the first place?",
+      "revId": "6998466ffa73bfdefbb99d0679e00fa47d203935",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aacbb83b_c5523e46",
         "filename": "libzipfile/centraldir.c",
         "patchSetId": 8
@@ -13,6 +30,30 @@
       "writtenOn": "2014-05-05T16:30:21Z",
       "side": 1,
       "message": "The sdk team needs to solve this discrepancy and nullify this fragment.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 6
+      },
+      "revId": "6998466ffa73bfdefbb99d0679e00fa47d203935",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aacbb83b_8076645b",
+        "filename": "libzipfile/centraldir.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1001100
+      },
+      "writtenOn": "2014-05-05T16:59:27Z",
+      "side": 1,
+      "message": "The issue is legit.\nPlease see it the other way: there is NO %zd support for printf in the Win32 libs. So that will crash at runtime. Instead you have 2 choices:\n1- If the method is useful for a *desktop* host exec, then use %ld instead of %zd. Use #ifdef HAVE_PRINTF_ZD (see core/combo/include/arch/windows/AndroidConfig.h) to differentiate. See core/include/utils/Compat.h for an example of usage.\n2- If the method is NOT useful for a desktop/host exec (e.g. it will never be used by any sdk tool running on Windows) then deactive the whole method here and it the headers.\n\nIn this case I believe libzipfile is used by aapt on windows so please do #1.",
+      "parentUuid": "aacbb83b_c5523e46",
       "range": {
         "startLine": 166,
         "startChar": 0,
