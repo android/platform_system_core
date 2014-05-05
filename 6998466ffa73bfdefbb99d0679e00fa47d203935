@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8a2fd4b4_b1828a3c",
+        "filename": "libzipfile/centraldir.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-05-05T20:25:27Z",
+      "side": 1,
+      "message": "with cygwin builds (?), I was under the impression we had access to glibc. This same undef combination exists in multiple files.\n\nAll the other files are going to need to be audited.",
+      "parentUuid": "8aba749a_79469388",
+      "revId": "6998466ffa73bfdefbb99d0679e00fa47d203935",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aacbb83b_c5523e46",
         "filename": "libzipfile/centraldir.c",
         "patchSetId": 8
@@ -54,6 +72,30 @@
       "side": 1,
       "message": "The issue is legit.\nPlease see it the other way: there is NO %zd support for printf in the Win32 libs. So that will crash at runtime. Instead you have 2 choices:\n1- If the method is useful for a *desktop* host exec, then use %ld instead of %zd. Use #ifdef HAVE_PRINTF_ZD (see core/combo/include/arch/windows/AndroidConfig.h) to differentiate. See core/include/utils/Compat.h for an example of usage.\n2- If the method is NOT useful for a desktop/host exec (e.g. it will never be used by any sdk tool running on Windows) then deactive the whole method here and it the headers.\n\nIn this case I believe libzipfile is used by aapt on windows so please do #1.",
       "parentUuid": "aacbb83b_c5523e46",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 6
+      },
+      "revId": "6998466ffa73bfdefbb99d0679e00fa47d203935",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a346007_07f21a7b",
+        "filename": "libzipfile/centraldir.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-05-05T20:25:27Z",
+      "side": 1,
+      "message": "There was a massive (I know, emotive) undertaking for the 64-bit compile issues to replace all %d/%u and %ld/%lu with %zd/%zu format and scanf to size_t/ssize_t objects in the past two months. Similarly replacing %d/%u/%ld/%lu/%lld/%llu with PRI?XX/SCN?XX. Fortunately most resided in the ALOG formats so the impact might be small functionally in the sdk; but still not insignificant. As you see, we had %zd here *before* and was left broken until I came to the scene here. We also see that the WORD type, which is supposed to be a u32, is *not* properly handled by inttypes.h.\n\nHAVE_PRINTF_ZD is not pretty and is too coarse (given just how widespread I think this problem is). I believe this is the tip of the iceberg. I would suggest that a series of made up additions to inttypes.h need to be defined (WAG, these certainly need to be refined):\n\n               Android         Windows\nPRIuWORD       PRIu32          \"lu\"\nSCNuWORD       SCNu32          \"lu\"\nPRIdWORD       PRId32          \"ld\"\nSCNdWORD       SCNd32          \"ld\"\nPRIuSIZE       \"zu\"            \"lu\"\nPRIdSSIZE      \"zd\"            \"ld\"\nSCNuSIZE       \"zu\"            \"lu\"\nSCNdSSIZE      \"zd\"            \"ld\"\nPRIuPTRDIFF    \"tu\"            \"u\"/\"lu\"     (?)\nPRIdPTRDIFF    \"td\"            \"d\"/\"ld\"     (?)\n\nSome of these would be automatic if __WORDSIZE was defined as 32 before inttypes.h comes along, alas this can not be used as this is rather specifically requiring of a properly defined inttypes.h. Leaving only the %t \u0026 %z format strings to be filled in.",
+      "parentUuid": "aacbb83b_8076645b",
       "range": {
         "startLine": 166,
         "startChar": 0,
