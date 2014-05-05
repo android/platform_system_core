@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a395c00_000326da",
+        "filename": "debuggerd/tombstone.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-05-05T20:39:37Z",
+      "side": 1,
+      "message": "The if block doesn\u0027t seem like it\u0027s needed here. You could just unconditionally call close(log.amfd), since you\u0027re not checking the return value of close anyway, and calling close on a negative fd will just return EBADF.\n\n(same comment for line 770)",
+      "revId": "d9fcd29c89e0404921caa75f58163f2adb69045e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
