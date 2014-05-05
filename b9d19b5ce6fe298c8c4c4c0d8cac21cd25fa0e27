@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8aba749a_247c6e91",
+        "filename": "libcutils/socket_inaddr_any_server.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-05-05T17:07:58Z",
+      "side": 1,
+      "message": "yes, I saw the references to char * in other areas of code in our tree, did not know the significance of them, thanks for the catch!",
+      "parentUuid": "8a2fd4b4_6533201b",
+      "range": {
+        "startLine": 49,
+        "startChar": 44,
+        "endLine": 49,
+        "endChar": 58
+      },
+      "revId": "b9d19b5ce6fe298c8c4c4c0d8cac21cd25fa0e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a2fd4b4_e20726a3",
         "filename": "libcutils/str_parms.c",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "Not really a flaw in the toolchain; Windows\u0027s C runtime doesn\u0027t include these functions.\n\nIs str_parms ever actually used by any host code?  Otherwise I\u0027d expect breakage at link time.\n\nI prefer just disabling -Werror while investigating.  It\u0027s ugly but less ugly than silencing a legitimate warning.",
       "parentUuid": "8a2fd4b4_e20726a3",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 6
+      },
+      "revId": "b9d19b5ce6fe298c8c4c4c0d8cac21cd25fa0e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aacbb83b_8022e43c",
+        "filename": "libcutils/str_parms.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-05-05T17:07:58Z",
+      "side": 1,
+      "message": "What about removing str_parms.c from the host build? That would be a more accurate check of whether it is used (expecting a link error when I build without).\n\nDo we want to ifdef to use alternate handlers (strtok(), strdup() and malloc()+snprintf()) if the above fails?",
+      "parentUuid": "8aba749a_a40cde58",
       "range": {
         "startLine": 27,
         "startChar": 0,
