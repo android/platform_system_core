@@ -16,6 +16,24 @@
       "revId": "15ae3b62b97284e626db2c66aca1377d64780dd0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8aba749a_a7661d64",
+        "filename": "debuggerd/tombstone.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-05-05T21:42:09Z",
+      "side": 1,
+      "message": "Sorry, it made sense in my head.\n\nWhile calling dump_crash, eventually there is a call to _LOG, which makes a call to write_to_am. If write_to_am returns \u003c\u003d 0, then that function sets log-\u003eamfd \u003d -1 (without actually closing the fd). Thus you can have a non-negative log.amfd to start with, but wind up with a -1 if a write fails.\n\nThis error case happens normally if the process being dumped isn\u0027t an activity, and the activity manager close the connection.",
+      "parentUuid": "6a346007_d5857c48",
+      "revId": "15ae3b62b97284e626db2c66aca1377d64780dd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
