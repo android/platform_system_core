@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8a2fd4b4_6533201b",
+        "filename": "libcutils/socket_inaddr_any_server.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2014-05-05T16:59:20Z",
+      "side": 1,
+      "message": "This generates a warning on mingw because winsock inexplicably expects const char *.  See http://msdn.microsoft.com/en-us/library/windows/desktop/ms740476(v\u003dvs.85).aspx\n\nThe fix is to cast to const char *.  winsock gets what it wants and Berkeley sockets will still accept the more specific pointer type.",
+      "range": {
+        "startLine": 49,
+        "startChar": 44,
+        "endLine": 49,
+        "endChar": 58
+      },
+      "revId": "b9d19b5ce6fe298c8c4c4c0d8cac21cd25fa0e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a2fd4b4_e20726a3",
         "filename": "libcutils/str_parms.c",
         "patchSetId": 1
@@ -13,6 +36,30 @@
       "writtenOn": "2014-05-05T16:23:57Z",
       "side": 1,
       "message": "This is a result in a flaw in the toolset, recommend the sdk team investigate and find a way to nullify this adjustment.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 6
+      },
+      "revId": "b9d19b5ce6fe298c8c4c4c0d8cac21cd25fa0e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8aba749a_a40cde58",
+        "filename": "libcutils/str_parms.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2014-05-05T16:59:20Z",
+      "side": 1,
+      "message": "Not really a flaw in the toolchain; Windows\u0027s C runtime doesn\u0027t include these functions.\n\nIs str_parms ever actually used by any host code?  Otherwise I\u0027d expect breakage at link time.\n\nI prefer just disabling -Werror while investigating.  It\u0027s ugly but less ugly than silencing a legitimate warning.",
+      "parentUuid": "8a2fd4b4_e20726a3",
       "range": {
         "startLine": 27,
         "startChar": 0,
