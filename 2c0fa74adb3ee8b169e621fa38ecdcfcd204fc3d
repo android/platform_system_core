@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a346007_5281746f",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2014-05-06T20:36:34Z",
+      "side": 1,
+      "message": "strtol with endptr will tell you where the number ends an the multiplier begins.  ext4_utils.c has:\n\nu64 parse_num(const char *arg)\n{\n\tchar *endptr;\n\tu64 num \u003d strtoull(arg, \u0026endptr, 10);\n\tif (*endptr \u003d\u003d \u0027k\u0027 || *endptr \u003d\u003d \u0027K\u0027)\n\t\tnum *\u003d 1024LL;\n\telse if (*endptr \u003d\u003d \u0027m\u0027 || *endptr \u003d\u003d \u0027M\u0027)\n\t\tnum *\u003d 1024LL * 1024LL;\n\telse if (*endptr \u003d\u003d \u0027g\u0027 || *endptr \u003d\u003d \u0027G\u0027)\n\t\tnum *\u003d 1024LL * 1024LL * 1024LL;\n\n\treturn num;\n}",
+      "revId": "2c0fa74adb3ee8b169e621fa38ecdcfcd204fc3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a3ee8ea_21c46520",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2014-05-06T20:36:34Z",
+      "side": 1,
+      "message": "this is delicate, it will result in stack overflows if anyone adds a new log with a name longer than \"system\".  Property names are limited to PROP_NAME_MAX, just allocate a buffer of that size.",
+      "revId": "2c0fa74adb3ee8b169e621fa38ecdcfcd204fc3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
