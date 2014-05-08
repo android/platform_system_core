@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ca138c9f_d88abdc2",
+        "filename": "libbacktrace/BacktraceThread.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-05-08T21:42:10Z",
+      "side": 1,
+      "message": "You can only get here while in a lock, but I\u0027ll add a comment saying that this must only be called while holding the list mutex.",
+      "parentUuid": "aa62d821_1f69c6c3",
+      "revId": "ce1746edade4c9ac398afdac0815ee7562d3179f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ad0e00f_e1246617",
         "filename": "libbacktrace/BacktraceThread.cpp",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-05-08T21:21:25Z",
       "side": 1,
       "message": "pthread_cond_timedwait?",
+      "revId": "ce1746edade4c9ac398afdac0815ee7562d3179f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ad0e00f_e468f4c1",
+        "filename": "libbacktrace/BacktraceThread.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-05-08T21:42:10Z",
+      "side": 1,
+      "message": "I did have another version that used pthread_cond_timedwait, but it wound up being a little more complicated and required a few extra variables. I needed another mutex and two cond variables. I might have been able to get rid of one of the cond variables though.\n\nIt was also a bit tricky because the timeout for cond was a particular time in the future not just a time to wait so it required another call to get the current time.\n\nIn the end, this version just seemed a bit cleaner and easier to understand so I went with the futex.",
+      "parentUuid": "6ad0e00f_e1246617",
       "revId": "ce1746edade4c9ac398afdac0815ee7562d3179f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
