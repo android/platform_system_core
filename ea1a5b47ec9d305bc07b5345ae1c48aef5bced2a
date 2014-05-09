@@ -22,6 +22,30 @@
       "revId": "ea1a5b47ec9d305bc07b5345ae1c48aef5bced2a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eac4d062_9e178161",
+        "filename": "libutils/FileMap.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1010186
+      },
+      "writtenOn": "2014-05-09T04:19:18Z",
+      "side": 1,
+      "message": "mingw toolchain has inttypes.h which defines PR/SCN much like its *-linux-* counterpart.  It has to follow Windows libraries unfortunately some aren\u0027t C99 compatible unless __USE_MINGW_ANSI_STDIO is defined.  CLs https://android-review.googlesource.com/#/c/93919 and https://android-review.googlesource.com/#/c/93940 try to solve it.  Unfortunately DWORD isn\u0027t part of the deal.  DWORD is defined as \"unsigned long\" instead of \"unsigned int\" because in 16-bit Windows int is 16-bit, and DWORD has to be 32-bit.  Curiously that MSVC/C++ treat long as 32-bit in 64-bit land, and for it to consider \"long\" and \"int\" different between 32-/64-bit lands is annoying.  So, I am afraid all of the following are needed for -Werror, assuming -Wno-errir\u003dformat isn\u0027t an option",
+      "parentUuid": "6a346007_e72bb6b1",
+      "range": {
+        "startLine": 26,
+        "startChar": 10,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "ea1a5b47ec9d305bc07b5345ae1c48aef5bced2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
