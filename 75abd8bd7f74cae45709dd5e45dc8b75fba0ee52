@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "aa7bb835_25f2a27c",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-05-12T23:49:29Z",
+      "side": 1,
+      "message": "I have addressed this (sort of) by limiting what I request from the Settings application between 64K and 4MB. Allowing more adventurous the ability to use setprop if they need a wider range of values.\n\nWhat do you propose? I could take MemTotal: in /proc/meminfo and divide it by 16 and use that as a maximum? (eg: Manta would drop to 64Mb)",
+      "parentUuid": "aa4d7811_15ab0463",
+      "revId": "75abd8bd7f74cae45709dd5e45dc8b75fba0ee52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa7bb835_516d3440",
         "filename": "logd/LogBuffer.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-05-12T19:24:02Z",
       "side": 1,
       "message": "It seems strange to call setsize multiple times, somebody might modify setsize to do immediate preallocation or truncation in the future, and I don\u0027t see how this doesn\u0027t always end up using the second size.  Check if the highest priority property is set, if so use it, otherwise try the lower priority property.",
+      "revId": "75abd8bd7f74cae45709dd5e45dc8b75fba0ee52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa4d7811_1a300c77",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-05-12T23:49:29Z",
+      "side": 1,
+      "message": "setSize has limit-checking in it. As such, the last one with a valid value is taken. This was \u0027easy\u0027. Coded up a limit checker inline (or callout) here, it looked more complicated (but less strange). The above code for default_size is what it looked like, except nested 4 deep. I will change it, but will wait for some ideas to flow regarding the adaptive limit.",
+      "parentUuid": "aa7bb835_516d3440",
       "revId": "75abd8bd7f74cae45709dd5e45dc8b75fba0ee52",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
