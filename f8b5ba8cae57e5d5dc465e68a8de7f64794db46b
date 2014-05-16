@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca71cc8d_80815373",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2014-05-16T01:41:33Z",
+      "side": 1,
+      "message": "see comment below about how patch still leaves device in charger mode",
+      "range": {
+        "startLine": 7,
+        "startChar": 39,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "f8b5ba8cae57e5d5dc465e68a8de7f64794db46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a4e2058_45a2fc9d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2014-05-16T01:41:33Z",
+      "side": 1,
+      "message": "so far as I understand, this would be a bug in the kernel driver?  It looks like the main point of the patch is to handle not-charging states such as charging thermal shutdown etc.?",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "f8b5ba8cae57e5d5dc465e68a8de7f64794db46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a4e2058_e5b930dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2014-05-16T01:41:33Z",
+      "side": 1,
+      "message": "the patch still leaves the device in charger mode, but stops the animation (and has some other side effects for which I\u0027ve raised questions).  Is the intent to power off when in not-charging state?",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "f8b5ba8cae57e5d5dc465e68a8de7f64794db46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca71cc8d_409e5bdd",
+        "filename": "charger/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2014-05-16T01:41:33Z",
+      "side": 1,
+      "message": "is there a reason to not request suspend if not charging?  The point of this check is to avoid suspending if no charger connected, since we plan to shutdown soon.  If a charger is connected but in not-charging state then might as well suspend?",
+      "range": {
+        "startLine": 727,
+        "startChar": 44,
+        "endLine": 727,
+        "endChar": 75
+      },
+      "revId": "f8b5ba8cae57e5d5dc465e68a8de7f64794db46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca71cc8d_20e4ff6e",
+        "filename": "charger/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2014-05-16T01:41:33Z",
+      "side": 1,
+      "message": "this change doesn\u0027t seem necessary: if no chargers are online then device should not be charging.  In any case if no charger connected then should shutdown.",
+      "range": {
+        "startLine": 897,
+        "startChar": 41,
+        "endLine": 897,
+        "endChar": 73
+      },
+      "revId": "f8b5ba8cae57e5d5dc465e68a8de7f64794db46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
