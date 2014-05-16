@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa43b832_b47766e7",
+        "filename": "adb/adb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2014-05-16T21:34:17Z",
+      "side": 1,
+      "message": "this whole block seems unnecessarily open coded.  should this be an operation on the transport that is only implemented for the tcp transport?",
+      "revId": "3e02549d2bbe90bce6de277139adf3b0339979d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa43b832_14875a88",
+        "filename": "adb/adb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1634,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2014-05-16T21:34:17Z",
+      "side": 1,
+      "message": "is there a race here?  The reconnect thread may reconnect the transport right after you try to unregister it below.  There are also memory barrier issues here - ARM doesn\u0027t guarnatee that the reconnect thread will see reconnect_bail \u003d 1 in the same order as other writes in this thread.",
+      "revId": "3e02549d2bbe90bce6de277139adf3b0339979d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f01d8f5_5b228398",
+        "filename": "adb/services.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2014-05-16T21:34:17Z",
+      "side": 1,
+      "message": "a thread per reconnecting device doesn\u0027t seem necessary, why not spin up a thread as long as the list of reconnections is not empty, with proper locking to allow this to update the list while the thread is running?",
+      "revId": "3e02549d2bbe90bce6de277139adf3b0339979d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
