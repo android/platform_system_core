@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "7f3504d1_fc513691",
+        "filename": "libnetd_client/NetdClient.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1016583
+      },
+      "writtenOn": "2014-05-21T19:33:02Z",
+      "side": 1,
+      "message": "I\u0027m fine without the memory-barrier.  I agree with much of your logic.  I still feel a memory barrier would make this function more correct if one assumes it\u0027s definition to be that once the function has returned its affect is in place.   Assuming the awesome cache coherency of modern processors I feel people assume when a function completes that it\u0027s effect is heard on all cores.  Without the memory-barrier the divergence from strict adherence to this definition is minimal, so I\u0027m fine with continuing without the memory barrier.\n\nLet me explain with a little example of where a memory barrier would make things more correct given these definitions:\n\nTwo networks connect almost simultaneously.  Two threads call setNetworkForBlah() almost simultaneously to begin using these new networks.  After calling setNetworkForBlah() these two threads immediately read some hardware clock using a load instruction.  These two threads write to a log something along the lines of \"started using network X at time Y\".  Later analysis of the log assumes that things happening at later times overrule older events, so we might attribute all traffic to the last network selected.  The problem is without strict ordering of loads and stores the load of the timer may be swapped with the store to the netId, in which case we might attribute all traffic to the wrong network.\n\nAnyhow, yes, my test case is contrived and someone would be silly to not use locking or some other more proper synchronization, but a memory barrier is a simple way to not necessarily enforce that by the time the function has returned that the change has taken place, but to enforce that the by the perceivable time (i.e. reading from a clock) the functions has returned that the change has taken place.\n\nAnother way to look at this is:  If the netId were a larger struct such that it couldn\u0027t fit in sig_atomic_t, some locking would have to be used to access it, in which case the release of the lock would guarantee the ordering that a memory barrier would provide in this implementation.",
+      "parentUuid": "3f58ec40_ce2d9785",
+      "revId": "654a41b4fbff21b8d7dfc72a08de05014670fdac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa1c9852_803b07e6",
         "filename": "libnetd_client/NetdClient.cpp",
         "patchSetId": 5
