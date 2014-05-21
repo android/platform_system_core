@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ff281483_446aa7f7",
+        "filename": "include/netd_client/NetdClient.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1031429
+      },
+      "writtenOn": "2014-05-21T18:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa1c9852_a03803ea",
+      "revId": "654a41b4fbff21b8d7dfc72a08de05014670fdac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f3f0cb7_5046ece0",
         "filename": "libnetd_client/NetdClient.cpp",
         "patchSetId": 5
@@ -71,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "bf4bfc72_84bd46f2",
+        "filename": "libnetd_client/NetdClient.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1031429
+      },
+      "writtenOn": "2014-05-21T18:29:10Z",
+      "side": 1,
+      "message": "ditto :)",
+      "parentUuid": "aa1c9852_803b07e6",
+      "revId": "654a41b4fbff21b8d7dfc72a08de05014670fdac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f3f0cb7_b05e38a0",
         "filename": "libnetd_client/NetdClient.cpp",
         "patchSetId": 5
@@ -82,6 +118,30 @@
       "writtenOn": "2014-05-20T10:59:55Z",
       "side": 1,
       "message": "How come we don\u0027t have legitimate types for this?  Like:\ntypedef struct {\n  uint8_t command;\n} NetdCommandHeader;\ntypedef struct {\n  NetdCommandHeader header;\n  unsigned netId;\n} NetdNetForSocketCommand;",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 44
+      },
+      "revId": "654a41b4fbff21b8d7dfc72a08de05014670fdac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf4bfc72_04803637",
+        "filename": "libnetd_client/NetdClient.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1031429
+      },
+      "writtenOn": "2014-05-21T18:29:10Z",
+      "side": 1,
+      "message": "Done. To avoid proliferation of data types for each command, I\u0027ve coalesced the types into a single command, with a note that the netId argument is ignored for all but one. This also makes it easy on the receiving side to receive data of that type directly, instead of going through a char[] buffer.",
+      "parentUuid": "3f3f0cb7_b05e38a0",
       "range": {
         "startLine": 137,
         "startChar": 4,
