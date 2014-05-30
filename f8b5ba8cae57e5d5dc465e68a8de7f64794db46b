@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "dffef0bb_cbc7497a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1015334
+      },
+      "writtenOn": "2014-05-30T10:36:48Z",
+      "side": 1,
+      "message": "yes, to handle cases where charger is connected and not-charging. There is no point in remaining in charger-mode if we\u0027re not charging.",
+      "parentUuid": "6a4e2058_45a2fc9d",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "f8b5ba8cae57e5d5dc465e68a8de7f64794db46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a4e2058_e5b930dd",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2014-05-16T01:41:33Z",
       "side": 1,
       "message": "the patch still leaves the device in charger mode, but stops the animation (and has some other side effects for which I\u0027ve raised questions).  Is the intent to power off when in not-charging state?",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "f8b5ba8cae57e5d5dc465e68a8de7f64794db46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dffef0bb_abcc0d9f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1015334
+      },
+      "writtenOn": "2014-05-30T10:36:48Z",
+      "side": 1,
+      "message": "yes, power-off when in not-charging state.",
+      "parentUuid": "6a4e2058_e5b930dd",
       "range": {
         "startLine": 12,
         "startChar": 14,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "dffef0bb_0b6321e7",
+        "filename": "charger/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1015334
+      },
+      "writtenOn": "2014-05-30T10:36:48Z",
+      "side": 1,
+      "message": "In handle_power_supply_state, we want to shutdown if a charger is connected but is not-charging.\nHence, we don\u0027t want to suspend in this case.",
+      "parentUuid": "ca71cc8d_409e5bdd",
+      "range": {
+        "startLine": 727,
+        "startChar": 44,
+        "endLine": 727,
+        "endChar": 75
+      },
+      "revId": "f8b5ba8cae57e5d5dc465e68a8de7f64794db46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca71cc8d_20e4ff6e",
         "filename": "charger/charger.c",
         "patchSetId": 2
@@ -105,6 +177,30 @@
       "writtenOn": "2014-05-16T01:41:33Z",
       "side": 1,
       "message": "this change doesn\u0027t seem necessary: if no chargers are online then device should not be charging.  In any case if no charger connected then should shutdown.",
+      "range": {
+        "startLine": 897,
+        "startChar": 41,
+        "endLine": 897,
+        "endChar": 73
+      },
+      "revId": "f8b5ba8cae57e5d5dc465e68a8de7f64794db46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f33447f_6212d6e8",
+        "filename": "charger/charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1015334
+      },
+      "writtenOn": "2014-05-30T10:36:48Z",
+      "side": 1,
+      "message": "This is to make the behavior consistent with the Android service in which on any uevent, all of the power_supplies are parsed through.\nIn charger-mode, if an uevent from \u0027Battery\u0027 power-supply is seen, \u0027online\u0027 property of other power-supplies are not updated.  \nHence, we need this to ensure we don\u0027t remain in charger-mode without charging, if for some reason the online update/uevent is missed.",
+      "parentUuid": "ca71cc8d_20e4ff6e",
       "range": {
         "startLine": 897,
         "startChar": 41,
