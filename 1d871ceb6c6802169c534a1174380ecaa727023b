@@ -111,6 +111,70 @@
     },
     {
       "key": {
+        "uuid": "1fbfa8df_d4992d65",
+        "filename": "libutils/RefBase.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-06-02T17:57:40Z",
+      "side": 1,
+      "message": "Yes, because the above gets optimized out when ALOG_ASSERT is, but here it *is* in fact used in the code path.",
+      "parentUuid": "1fbfa8df_54075d35",
+      "revId": "1d871ceb6c6802169c534a1174380ecaa727023b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfcdbca8_f1f1df49",
+        "filename": "libutils/String16.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-06-02T17:57:40Z",
+      "side": 1,
+      "message": "Do we want to see if squashing trailing space is a small impact on this CL?",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 4
+      },
+      "revId": "1d871ceb6c6802169c534a1174380ecaa727023b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfcdbca8_716b8f31",
+        "filename": "libutils/String16.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-06-02T17:57:40Z",
+      "side": 1,
+      "message": "Because this is defined explicitly in the header, we have a problem for gnu++11 since char16_t !\u003d uint16_t and char16_t !\u003d int16_t. We likely need to create a trio of explicit constructors, one each for char16_t, int16_t and uint16_t.",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 49
+      },
+      "revId": "1d871ceb6c6802169c534a1174380ecaa727023b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fcab88f_1c935408",
         "filename": "libutils/SystemClock.cpp",
         "patchSetId": 18
