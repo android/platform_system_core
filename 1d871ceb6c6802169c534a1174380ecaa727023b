@@ -271,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "1fbfa8df_8518218f",
+        "filename": "libutils/String16.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-06-02T20:48:18Z",
+      "side": 1,
+      "message": "This means that when we adopt gnu++11, *everything* has to be switched over to gnu++11. The mangling are inherently incompatible? In addition, I checked, uint_least16_t is also !\u003d char16_t when it comes to explicitly defined methods. This might be the spirit of char16_t, but it is not the implementation of char16_t :-(\n\nWe have a bigger problem, as our trees are extremely sloppy with regards to using uint16_t and int16_t in conjunction with char16_t.\n\nif we relax the explicit constraint, there could be a lot of silently introduced copies as time progresses and sloppiness is allowed to continue.\n\nThere is a can of worms for this constructor. Outside the scope of this CL is my take.",
+      "parentUuid": "1fbfa8df_2a1482a4",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 49
+      },
+      "revId": "1d871ceb6c6802169c534a1174380ecaa727023b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fcab88f_1c935408",
         "filename": "libutils/SystemClock.cpp",
         "patchSetId": 18
