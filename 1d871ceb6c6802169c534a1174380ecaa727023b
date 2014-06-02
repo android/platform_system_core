@@ -200,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "df4350e0_3d65cf58",
+        "filename": "libutils/String16.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2014-06-02T20:31:30Z",
+      "side": 1,
+      "message": "SOP is to avoid unrelated formatting fixes, since it increases the risk of merge conflicts.",
+      "parentUuid": "bfcdbca8_f1f1df49",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 4
+      },
+      "revId": "1d871ceb6c6802169c534a1174380ecaa727023b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfcdbca8_716b8f31",
         "filename": "libutils/String16.cpp",
         "patchSetId": 18
@@ -211,6 +235,30 @@
       "writtenOn": "2014-06-02T17:57:40Z",
       "side": 1,
       "message": "Because this is defined explicitly in the header, we have a problem for gnu++11 since char16_t !\u003d uint16_t and char16_t !\u003d int16_t. We likely need to create a trio of explicit constructors, one each for char16_t, int16_t and uint16_t.",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 49
+      },
+      "revId": "1d871ceb6c6802169c534a1174380ecaa727023b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fbfa8df_2a1482a4",
+        "filename": "libutils/String16.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2014-06-02T20:31:30Z",
+      "side": 1,
+      "message": "char16_t has the same layout as uint_least16_t, which can be larger than 16 bits at the platform\u0027s discretion.  So the constructors for [u]int16_t would have to do element-by-element copies.  Better to leave this as-is and fix the clients, than to silently introduce an expensive copy.",
+      "parentUuid": "bfcdbca8_716b8f31",
       "range": {
         "startLine": 133,
         "startChar": 0,
