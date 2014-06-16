@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fc0f8c0_7d9177f7",
+        "filename": "debuggerd/tombstone.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-06-16T17:45:56Z",
+      "side": 1,
+      "message": "never use sprintf. always use snprintf instead. didn\u0027t the compiler warn you about this?\n\nhere, though, you can use __android_log_buf_print, which is like printf, instead.\n\nbut any time you see something starting with __ you should probably assume \"this isn\u0027t public API, and isn\u0027t what i\u0027m supposed to be calling\". the chain of macros in log.h is a bit of a mess, so i\u0027ll just tell you that the real public API is the ALOGI macro.",
+      "revId": "0d03b6307d2240f7420efe1923269a46e0448fcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
