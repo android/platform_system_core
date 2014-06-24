@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "048d9d44_f106e281",
+        "filename": "libcutils/arch-arm/memset32.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-06-24T02:29:12Z",
+      "side": 1,
+      "message": "As discussed, this is because of the strange definition of android_memset16. It takes a uint16_t pointer, but assumes that the length be a multiple of 2. If 1, then do nothing. And the last byte is always skipped, at least for this implementation.",
+      "parentUuid": "e489693b_2d2bada4",
+      "revId": "02418d20328f7a528a1eaf53e1df2d508173d1cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "240c6177_44f6ec74",
         "filename": "libcutils/arch-arm/memset32.S",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-06-24T00:48:35Z",
       "side": 1,
       "message": "why does this work? what if i try to android_memset16 3 uint16_ts?",
+      "revId": "02418d20328f7a528a1eaf53e1df2d508173d1cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "048d9d44_11152ea3",
+        "filename": "libcutils/arch-arm/memset32.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-06-24T02:29:12Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "240c6177_44f6ec74",
       "revId": "02418d20328f7a528a1eaf53e1df2d508173d1cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "048d9d44_5164162b",
+        "filename": "libcutils/arch-arm64/android_memset.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-06-24T02:29:12Z",
+      "side": 1,
+      "message": "Since memset and this aren\u0027t in the same library, I can\u0027t do a direct branch. I can probably do a call, and have another return, but I think it\u0027s easier just to leave this code here.",
+      "parentUuid": "240c6177_24fbe85a",
+      "revId": "02418d20328f7a528a1eaf53e1df2d508173d1cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e489693b_4df719f6",
         "filename": "libcutils/tests/MemsetTest.cpp",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2014-06-24T00:48:35Z",
       "side": 1,
       "message": "any explanation of how these were picked?",
+      "revId": "02418d20328f7a528a1eaf53e1df2d508173d1cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "048d9d44_71cd92f8",
+        "filename": "libcutils/tests/MemsetTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-06-24T02:29:12Z",
+      "side": 1,
+      "message": "I added a comment. Essentially, I want a value that doesn\u0027t have any repeating values for each byte. I accidentally had a repeat, so that\u0027s fixed now.",
+      "parentUuid": "e489693b_4df719f6",
       "revId": "02418d20328f7a528a1eaf53e1df2d508173d1cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "44a315b3_64c2323d",
+        "filename": "libcutils/tests/MemsetTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-06-24T02:29:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e489693b_2d02cd2c",
+      "revId": "02418d20328f7a528a1eaf53e1df2d508173d1cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e489693b_ad0ddd58",
         "filename": "libcutils/tests/MemsetTest.cpp",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2014-06-24T00:48:35Z",
       "side": 1,
       "message": "\"Set\" seems like an odd verb here",
+      "revId": "02418d20328f7a528a1eaf53e1df2d508173d1cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44a315b3_a4cb3a53",
+        "filename": "libcutils/tests/MemsetTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-06-24T02:29:12Z",
+      "side": 1,
+      "message": "I\u0027m not sure why I used that name. I changed to GetIncrement, since that\u0027s actually what it\u0027s doing.",
+      "parentUuid": "e489693b_ad0ddd58",
       "revId": "02418d20328f7a528a1eaf53e1df2d508173d1cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "048d9d44_91283eed",
+        "filename": "libcutils/tests/MemsetTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-06-24T02:29:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e489693b_8d102170",
+      "revId": "02418d20328f7a528a1eaf53e1df2d508173d1cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e489693b_cd0a293e",
         "filename": "libcutils/tests/MemsetTest.cpp",
         "patchSetId": 2
@@ -132,6 +258,24 @@
       "writtenOn": "2014-06-24T00:48:35Z",
       "side": 1,
       "message": "can\u0027t this just be 0xff all the time?",
+      "revId": "02418d20328f7a528a1eaf53e1df2d508173d1cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "649e596e_2b1555a3",
+        "filename": "libcutils/tests/MemsetTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-06-24T02:29:12Z",
+      "side": 1,
+      "message": "Good point, done.",
+      "parentUuid": "e489693b_cd0a293e",
       "revId": "02418d20328f7a528a1eaf53e1df2d508173d1cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
