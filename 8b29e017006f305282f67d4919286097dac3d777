@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "240d41bc_6ae8571c",
+        "filename": "liblog/logprint.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-06-26T17:24:31Z",
+      "side": 1,
+      "message": "I would prefer(tm) that the defines, if required to be defined for include files, be at the top, and if not, at the bottom. In this case, I see no reason why they be defined here, so please define them co-located with the definition of colored_output flag.\n\nThese defines conflict with the system file curses.h. Please alter the namespace, all kernel, libs and system header names, used or not, must be avoided if used locally (ask me how I felt when someone defined connect() function locally ;-\u003e in a proprietary binary-object module).",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "8b29e017006f305282f67d4919286097dac3d777",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "240d41bc_6a7e1738",
+        "filename": "liblog/logprint.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-06-26T17:24:31Z",
+      "side": 1,
+      "message": "See proposal in logcat review to merge this functionality into android_log_formatFromString().",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 1
+      },
+      "revId": "8b29e017006f305282f67d4919286097dac3d777",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "840eedb3_2d3a79b9",
+        "filename": "liblog/logprint.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-06-26T17:24:31Z",
+      "side": 1,
+      "message": "prefer use of min(prefixColorLen, prefixBufTempRemainLen - 1)\n\nYou are on your own regarding the definition in min() as it is not POSIX, and can collide with the namespace of some headers (windows); there are examples in the Android Tree dealing with this portability issue, absorb their mantra.",
+      "range": {
+        "startLine": 762,
+        "startChar": 0,
+        "endLine": 763,
+        "endChar": 51
+      },
+      "revId": "8b29e017006f305282f67d4919286097dac3d777",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4e2a51a_4c349f15",
+        "filename": "liblog/logprint.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-06-26T17:24:31Z",
+      "side": 1,
+      "message": "indent block (4-space is Android Standard).",
+      "range": {
+        "startLine": 761,
+        "startChar": 0,
+        "endLine": 765,
+        "endChar": 44
+      },
+      "revId": "8b29e017006f305282f67d4919286097dac3d777",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "240d41bc_6a6df7d2",
+        "filename": "liblog/logprint.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-06-26T17:24:31Z",
+      "side": 1,
+      "message": "NB: Pretend for a moment that you have ncurses available (it is not in Android ecosystem). Convince yourself that if some future self decided to add ncurses that you are not doing anything that makes this more difficult (the most prominent being the namespace choice of COLOR_\u003ccolours\u003e, but there may be others). Be satisfied you have future-proofed your design.",
+      "range": {
+        "startLine": 839,
+        "startChar": 67,
+        "endLine": 839,
+        "endChar": 86
+      },
+      "revId": "8b29e017006f305282f67d4919286097dac3d777",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "240d41bc_2a249fcd",
+        "filename": "liblog/logprint.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-06-26T17:24:31Z",
+      "side": 1,
+      "message": "again, use one-line min(suffixColorLen, suffixBufTmpRemainLen - 1)",
+      "range": {
+        "startLine": 840,
+        "startChar": 3,
+        "endLine": 842,
+        "endChar": 5
+      },
+      "revId": "8b29e017006f305282f67d4919286097dac3d777",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "840eedb3_6d6751a6",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-06-26T17:24:31Z",
+      "side": 1,
+      "message": "I am concerned that a minor slip up, the shift key missed, will result in all the logs being cleared. Sadly the defacto-standards leave little choice:\n\nls(1) gnu uses --color\u003d[always|never|auto] or ${LS_COLOR}\ngrep(1) gnu uses --color\u003d[always|never|auto] or ${GREP_COLOR}\ngit(1) uses --color\u003d[|always|never|auto]\n\nNone of these are an option without changing the argument parsing :-(\n\nWith my limited imagination, I propose overloading -v \u003cformat\u003e to allow additively setting with the string \"color\". This does bloat the definition of -v, but nothing says any of the settings are mutually exclusive, additive or not, so you could merely just add color as an option and we quietly remain vague.\n\nThus \u0027logcat -v color -v time\u0027 for instance, where color is parsed separately to set the color flag, and not affect other format selections.\n\nI can offer their implementation details, in order from worst to best IMHO:\n\n    case \u0027v\u0027:\n+       if (!strcasecmp(optarg, \"color\")) {\n+           setColorOutput();\n+           break;\n+       }\n        err \u003d setLogFormat(optarg);\n\n*or*\n\nmake it part of the setLogFormat(const char * formatString) function in logcat.\n\n*or*\n\nYou could move *all* of this into liblog (minus the logcat format definition in help) and allow android_log_formatFromString() to look after this all internally within logprint.c and drop adding the \u0027android_log_setColoredOutput()\u0027",
+      "range": {
+        "startLine": 234,
+        "startChar": 23,
+        "endLine": 234,
+        "endChar": 25
+      },
+      "revId": "8b29e017006f305282f67d4919286097dac3d777",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
