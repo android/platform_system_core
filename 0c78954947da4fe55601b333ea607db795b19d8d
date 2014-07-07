@@ -16,6 +16,24 @@
       "revId": "0c78954947da4fe55601b333ea607db795b19d8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4c385c9_987f25ed",
+        "filename": "init/devices.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-07-07T17:22:20Z",
+      "side": 1,
+      "message": "The upath argument passed to fixup_sys_perms is always a directory, not a file. To create a file, the code above (line 157) uses the upath directory name plus a hardcoded value from ueventd.rc (dp-\u003eattr). \n\nBecause upath is a directory, we always want to use RESTORECON_RECURSE to make sure all files in the directory are labeled properly.\n\nHere are some sample entries from the hammerhead boot when line 172 is modified to be ERROR instead of INFO:\n\n  \u003c3\u003e[    2.032760] init: restorecon_recursive: /sys/devices/cpu\n  \u003c3\u003e[    2.036668] init: restorecon_recursive: /sys/devices/qcom,smp2pgpio-ssr-smp2p-4-in.22\n  \u003c3\u003e[    2.038560] init: restorecon_recursive: /sys/devices/qcom,smp2pgpio-ssr-smp2p-4-in.22/gpio/gpiochip561\n  \u003c3\u003e[    2.039712] init: restorecon_recursive: /sys/devices/msm_bimc\n  \u003c3\u003e[    2.040385] init: restorecon_recursive: /sys/devices/msm_dwc3\n  \u003c3\u003e[    2.045562] init: restorecon_recursive: /sys/devices/msm_dwc3/power_supply/usb\n  \u003c3\u003e[    2.046605] init: restorecon_recursive: /sys/devices/msm_dwc3/f9200000.dwc3\n  \u003c3\u003e[    2.049649] init: restorecon_recursive: /sys/devices/msm_dwc3/f9200000.dwc3/udc/f9200000.dwc3\n  \u003c3\u003e[    2.051324] init: restorecon_recursive: /sys/devices/soc0\n  \u003c3\u003e[    2.052735] init: restorecon_recursive: /sys/devices/msm_periph_noc\n  \u003c3\u003e[    2.053402] init: restorecon_recursive: /sys/devices/f9020000.timer\n\n\nThese messages won\u0027t normally show up.",
+      "parentUuid": "c471c58d_08c7374b",
+      "revId": "0c78954947da4fe55601b333ea607db795b19d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
