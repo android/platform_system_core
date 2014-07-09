@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9015cf5_1be2bb37",
+        "filename": "init/init.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-07-09T15:03:10Z",
+      "side": 1,
+      "message": "it\u0027s the const you need to cast away here, not the type, so (char*) might be more intention-revealing.\n\nthis is called between fork and exec, where i\u0027d expect allocation to be forbidden, but i guess (a) you don\u0027t have threads in init and (b) that was always the behavior here thanks to the malloc below.",
+      "revId": "b5b54a35702e5b5cc0ecf4c3bd756a7a740b90b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9f75445_9d048334",
+        "filename": "init/init.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-07-09T15:03:10Z",
+      "side": 1,
+      "message": "i think this should be -1 and you should change do_export to return add_environment.",
+      "revId": "b5b54a35702e5b5cc0ecf4c3bd756a7a740b90b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
