@@ -65,6 +65,48 @@
     },
     {
       "key": {
+        "uuid": "59ba20ef_c7faa853",
+        "filename": "include/cutils/jstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2014-07-16T21:22:21Z",
+      "side": 1,
+      "message": "__cplusplus is 201103L for C++11, 199711L for any standard before that.  It\u0027s year + month.  2010 seemed like a reasonable cutoff.  I don\u0027t know of any implementations for which it actually matters.  It doesn\u0027t seem to be customary to use in-between values for partial implementations.  I can change it to \u003c201103L, if you prefer.\n\nAccording to the standard, it\u0027s fine for it to be undefined.  Non-macro-defined identifiers are replace by zero before evaluating conditions like this.  I believe this does correctly test that we\u0027re using neither C11 nor C++11.  Based on http://port70.net/~nsz/c/c89/c89-draft.html#3.8.1, this has been true since at least C89.",
+      "parentUuid": "59ba20ef_e1a7dc8f",
+      "range": {
+        "startLine": 27,
+        "startChar": 38,
+        "endLine": 27,
+        "endChar": 49
+      },
+      "revId": "7b390de5e485e9afec60bec6697dbfbac442c479",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19c8a874_4c7618ea",
+        "filename": "include/cutils/jstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2014-07-16T21:22:21Z",
+      "side": 1,
+      "message": "Oops.  I\u0027m testing the wrong macro.  I should just be checking __STDC_VERSION__ .  Will fix.",
+      "parentUuid": "19c8a874_368f6db1",
+      "revId": "7b390de5e485e9afec60bec6697dbfbac442c479",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79c52478_028d3026",
         "filename": "include/cutils/jstring.h",
         "patchSetId": 1
@@ -76,6 +118,30 @@
       "writtenOn": "2014-07-16T19:53:59Z",
       "side": 1,
       "message": "For here, no problem, since you are compiling to a \u0027C\u0027 interface, you have no mangling concerns for binary compatibility for these following prototypes. If there is any C++ code that uses the char16_t type as inherited here (as uint16_t) like this, where one module is compiled with --std\u003dgnu11++ and another without, differences in the mangling will not see identity when the linker phase comes in. Only a problem really for libraries ...",
+      "range": {
+        "startLine": 28,
+        "startChar": 10,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "7b390de5e485e9afec60bec6697dbfbac442c479",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59ba20ef_07f1c077",
+        "filename": "include/cutils/jstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2014-07-16T21:22:21Z",
+      "side": 1,
+      "message": "That\u0027s clearly a valid concern.  But since char16_t is a keyword in both C11 and C++11, I don\u0027t see a clean way out. If I understand correctly, there is already no way to make such code compile and link, right?\n\nAn unconditional\n\ntypedef foo \u003cC11/C++11 reserved word\u003e\n\nstill seems like an even more serious problem.\n\nCan you think of a better way to proceed?\n\nWe already seem to have this problem in Unicode.h.  I think I\u0027m merely aggravating it :-( .",
+      "parentUuid": "79c52478_028d3026",
       "range": {
         "startLine": 28,
         "startChar": 10,
