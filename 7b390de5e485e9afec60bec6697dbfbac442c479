@@ -16,6 +16,75 @@
       "revId": "7b390de5e485e9afec60bec6697dbfbac442c479",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59ba20ef_e1a7dc8f",
+        "filename": "include/cutils/jstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-07-16T19:53:59Z",
+      "side": 1,
+      "message": "If __cplusplus is not defined, this fragment will not work on older C compilers. You need a #ifdef __cplusplus wrapped around it to be pedantically correct.",
+      "range": {
+        "startLine": 27,
+        "startChar": 38,
+        "endLine": 27,
+        "endChar": 49
+      },
+      "revId": "7b390de5e485e9afec60bec6697dbfbac442c479",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19c8a874_16aa71f4",
+        "filename": "include/cutils/jstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-07-16T19:53:59Z",
+      "side": 1,
+      "message": "__cplusplus \u003c 20110?L (? is some number which escapes me) I think looks after all of this; with no need to check __STDC_ISO_10646? I am sorry if I do not remember the threshold for __cplusplus version compliance for gnu++11 ...",
+      "range": {
+        "startLine": 27,
+        "startChar": 53,
+        "endLine": 27,
+        "endChar": 60
+      },
+      "revId": "7b390de5e485e9afec60bec6697dbfbac442c479",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79c52478_028d3026",
+        "filename": "include/cutils/jstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-07-16T19:53:59Z",
+      "side": 1,
+      "message": "For here, no problem, since you are compiling to a \u0027C\u0027 interface, you have no mangling concerns for binary compatibility for these following prototypes. If there is any C++ code that uses the char16_t type as inherited here (as uint16_t) like this, where one module is compiled with --std\u003dgnu11++ and another without, differences in the mangling will not see identity when the linker phase comes in. Only a problem really for libraries ...",
+      "range": {
+        "startLine": 28,
+        "startChar": 10,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "7b390de5e485e9afec60bec6697dbfbac442c479",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
