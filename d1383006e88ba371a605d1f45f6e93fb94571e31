@@ -16,6 +16,24 @@
       "revId": "d1383006e88ba371a605d1f45f6e93fb94571e31",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1975083e_451d5efe",
+        "filename": "toolbox/start.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1031429
+      },
+      "writtenOn": "2014-07-19T18:44:25Z",
+      "side": 1,
+      "message": "My original commit message was mistaken. \"stop \u0026\u0026 start\" is explicitly not the same as \"restart\", so netd (and any other affected services) aren\u0027t expected to be restarted in the former case. This is as far as I understood, looking at handle_control_message() and the methods it calls (msg_start, msg_stop nd msg_restart).\n\nSo, even if we did add a toolbox command that set \"ctl.restart\", I doubt it will help, since my understanding is that most developers are used to doing \"start \u0026\u0026 stop\".\n\nI haven\u0027t heard of any other services failing to be restarted on \"start \u0026\u0026 stop\", which is why this patch addresses only netd. If indeed other services are affected, I think the right solution is to add them too, perhaps in separate patches.",
+      "parentUuid": "5964e099_1109ee94",
+      "revId": "d1383006e88ba371a605d1f45f6e93fb94571e31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
