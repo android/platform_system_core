@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "360c9b77_44d9c204",
+        "filename": "logd/LogTimes.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-08-08T16:53:46Z",
+      "side": 1,
+      "message": "You misunderstand me. Let me try to rephrase. I am still siding on complying, just want to make it clear so that you understand the reasoning and can confirm we are both in sync.\n\n\u0027here\u0027 return NULL ok ... yes, only done here to *match* the bottom in pedantic operations. It always incurs a twinge of pain when the mid-routine exit differs from the exit at the bottom.\n\nBut the point is:\n\n    pthread_cleanup_pop(true);\n    return NULL;\n\nat the bottom is *not* the same thing as the cleanup is done in the context of the thread, and not in the context of the \u0027exit\u0027. If we want it to be performed in the \u0027exit\u0027 rather than in the contest of the thread:\n\n    return NULL;\n    pthread_cleanup_pop(true);\n\n-or less strange-\n\n    pthread_exit(NULL);\n    pthread_cleanup_pop(true);\n    return NULL;\n\neg: one of the problems (and I must admit this has more to do with the previous code which ran transitory threads, rather than this code which runs a persistent thread) is that the former can lead to more VSS taken under heavy load because the stack cleanup is no longer atomic in the general case.",
+      "parentUuid": "f6dbe336_bc5998c1",
+      "revId": "2dfa2c1a9137bed4e0f1b639f21602a3f2f97a6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "360c9b77_c13f64f1",
         "filename": "logd/LogTimes.cpp",
         "patchSetId": 1
