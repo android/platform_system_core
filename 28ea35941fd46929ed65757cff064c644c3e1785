@@ -34,6 +34,24 @@
       "revId": "28ea35941fd46929ed65757cff064c644c3e1785",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "567caff0_cb892915",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-08-09T18:06:17Z",
+      "side": 1,
+      "message": "this is really a const_cast\u003cchar*\u003e. (one reason we don\u0027t use C-style casts is because the reader doesn\u0027t necessarily immediately see what the writer was doing.) the better fix though isn\u0027t to use a const_cast --- prefix should just have type char* instead of const char*. (or, unless there\u0027s some reason not to, make it a std::string and remove the strdup and free.)",
+      "parentUuid": "9699c785_954f46a2",
+      "revId": "28ea35941fd46929ed65757cff064c644c3e1785",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
