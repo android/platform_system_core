@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3681fb17_87e3a6aa",
+        "filename": "debuggerd/tombstone.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-08-09T01:40:18Z",
+      "side": 0,
+      "message": "s/is_running/has_fault_address/, since that\u0027s what it seems to be used to mean?\n\nwhy is this the right test for whether si_addr is valid? shouldn\u0027t we be checking si_signo instead?\n\n       * SIGILL, SIGFPE, SIGSEGV, SIGBUS, and SIGTRAP fill in si_addr with\n         the address of the fault.\n\nhttp://man7.org/linux/man-pages/man2/sigaction.2.html\n\nor am i missing something?",
+      "revId": "56b28f6b2c4722c75dbc7f041f36552221e51133",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
