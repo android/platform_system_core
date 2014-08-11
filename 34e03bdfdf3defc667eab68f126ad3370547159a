@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "56a3cfb2_39d053df",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-08-11T15:16:44Z",
+      "side": 1,
+      "message": "I think I confused that comment with another discussion. Entry names can contain NUL if they\u0027re encoded using UTF-8 but we\u0027re free to impose constraints on |prefix|.\n\nNone of our callers need to match against prefixes that contain NUL so we shouldn\u0027t have to support \u0027em if we don\u0027t want to. \n\nThat said, I think Piotr\u0027s plan is to support them for completeness and because we want to make this API stop assuming null termination or any other encoding related constraints.",
+      "parentUuid": "f672031f_c89a0f92",
+      "revId": "34e03bdfdf3defc667eab68f126ad3370547159a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7687f329_7de1df32",
         "filename": "libziparchive/zip_archive.cc",
         "patchSetId": 3
