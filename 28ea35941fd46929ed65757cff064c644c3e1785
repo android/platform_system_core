@@ -70,6 +70,24 @@
       "revId": "28ea35941fd46929ed65757cff064c644c3e1785",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56a3cfb2_f64df84f",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-08-11T08:40:02Z",
+      "side": 1,
+      "message": "enh: good point, it didn\u0027t strike me that this was because we were calling free with \"const void *\", I assumed it was something daft like using an integral type.\n\nhaaawk: I don\u0027t think std::string cares about internal \u0027\\0\u0027 unless you use one of its c compatibility APIs (c_str et al.). You could use std::vector\u003cchar\u003e if you prefer, or you could leave it as is. I think using std::string or std::vector might make things slightly more roundabout in this particular case.",
+      "parentUuid": "56a3cfb2_d69ab491",
+      "revId": "28ea35941fd46929ed65757cff064c644c3e1785",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
