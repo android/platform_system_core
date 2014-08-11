@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7687f329_3dd76762",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-08-11T15:05:42Z",
+      "side": 1,
+      "message": "if prefix can contain a NUL byte, this code is broken -- because strdup(3) will stop at the first NUL byte -- and you MUST switch to std::string (with a start and end), std::vector\u003cchar\u003e (if you want to ensure that no one calls c_str).",
+      "revId": "34e03bdfdf3defc667eab68f126ad3370547159a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7687f329_7de1df32",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-08-11T15:05:42Z",
+      "side": 1,
+      "message": "likewise, this length will be wrong.\n\nare you _sure_ prefix can contain NUL? if so, this API is broken. you need to pass a size_t alongside the const char*. (and you might want to switch to const uint8_t* to make it clearer that this is just a pointer to bytes, not a C string.)",
+      "revId": "34e03bdfdf3defc667eab68f126ad3370547159a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f672031f_68d3db42",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-08-11T15:05:42Z",
+      "side": 1,
+      "message": "this is useless. you can always pass NULL to free(3).",
+      "revId": "34e03bdfdf3defc667eab68f126ad3370547159a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
