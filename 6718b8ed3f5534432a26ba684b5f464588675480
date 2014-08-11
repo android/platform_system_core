@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "16d4f72c_590207dc",
+        "filename": "include/nativebridge/native_bridge.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-08-11T21:31:44Z",
+      "side": 1,
+      "message": "I thought frameworks and Art are moved over. On the Art side it\u0027s fine to switch to const char* if must be.",
+      "parentUuid": "f6d0433d_55b88cc6",
+      "range": {
+        "startLine": 26,
+        "startChar": 43,
+        "endLine": 26,
+        "endChar": 44
+      },
+      "revId": "6718b8ed3f5534432a26ba684b5f464588675480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6e5ebf4_24a9f3fe",
         "filename": "nativebridge/native_bridge.cc",
         "patchSetId": 2
@@ -84,6 +108,24 @@
       "writtenOn": "2014-08-11T18:21:20Z",
       "side": 1,
       "message": "\"cbs [IN] the pointer to NativeBridgeCallbacks\"\n\nart_cbs -\u003e cbs, NativeBridgeArtCallbacks -\u003e NativeBridgeCallbacks.",
+      "revId": "6718b8ed3f5534432a26ba684b5f464588675480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16d4f72c_990f7f03",
+        "filename": "nativebridge/native_bridge.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-08-11T21:31:44Z",
+      "side": 1,
+      "message": "No. This was Art callbacks that the native bridge can use. I guess the name is now RuntimeCallbacks.",
+      "parentUuid": "b6e5ebf4_24a9f3fe",
       "revId": "6718b8ed3f5534432a26ba684b5f464588675480",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -172,6 +214,30 @@
       "side": 1,
       "message": "My only issue with this will related to pointer ownership, i.e. it seems easy to lose track of it when passing it through so many layers. I guess it can\u0027t be helped. \n\nIs there any reason why initialize doesn\u0027t take a const pointer? or it\u0027s just a glitch?",
       "parentUuid": "d6133f9f_19ac578c",
+      "range": {
+        "startLine": 114,
+        "startChar": 51,
+        "endLine": 114,
+        "endChar": 84
+      },
+      "revId": "6718b8ed3f5534432a26ba684b5f464588675480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76c53378_9ccc0970",
+        "filename": "nativebridge/native_bridge.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-08-11T21:31:44Z",
+      "side": 1,
+      "message": "I think a const * is fine, and it makes sense to have the caller retain ownership. Libnativebridge should not have to manage this, just pass it on. Then the caller can have this as a global (as it was in Art).",
+      "parentUuid": "56a3cfb2_c4b75ed7",
       "range": {
         "startLine": 114,
         "startChar": 51,
