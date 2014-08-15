@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56d02f88_a8a61bad",
+        "filename": "include/ziparchive/zip_archive.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-08-15T09:06:22Z",
+      "side": 1,
+      "message": "Yeah, this sort of heuristic is going to cause a lot of pain.\n\nWhy not just assume UTF-8 unless the entire archive is CP-437 ? That\u0027s really the safest thing to do since any API that guesses things like this likely to be flaky / surprising.\n\n(Assuming CP-437 in this scenario is dangerous, because then we are essentially ignoring the entry_name length of each entry).",
+      "revId": "8dd4b3cddc3cb52b27ba78f027d457bc1ce69402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
