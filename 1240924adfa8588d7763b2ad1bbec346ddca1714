@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13fb2935_beb8595d",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-08-18T12:12:47Z",
+      "side": 1,
+      "message": "The const_cast can be avoided, since this is a const T* and not a T * const. (I tend to avoid using const_cast as much as possible)\n\nYou could just do\n  uint8_t* prefix \u003d new uint8_t[prefix_name-\u003ename_length];\n  memcpy(prefix, prefix_name-\u003ename, prefix_name-\u003ename_length);\n  this-\u003eprefix \u003d prefix;\n\nIf you want to make prefix \"const T* const\" (which it should be, semantically) you\u0027ll need a static factory method.",
+      "revId": "1240924adfa8588d7763b2ad1bbec346ddca1714",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
