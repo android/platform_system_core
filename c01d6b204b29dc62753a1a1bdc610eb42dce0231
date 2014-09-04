@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "50583741_79e8a842",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-09-04T17:41:14Z",
+      "side": 1,
+      "message": "It depends. I was thinking it\u0027s orthogonal as I didn\u0027t want to \"fail everything\" when trying to re-initialize a native bridge.",
+      "parentUuid": "d0a0a75c_3c2c711c",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 30
+      },
+      "revId": "c01d6b204b29dc62753a1a1bdc610eb42dce0231",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0a0a75c_dc40edbe",
         "filename": "libnativebridge/native_bridge.cc",
         "patchSetId": 1
@@ -117,6 +141,30 @@
     },
     {
       "key": {
+        "uuid": "50583741_193bec03",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-09-04T17:41:14Z",
+      "side": 1,
+      "message": "This was the minimum-redundancy code for errors. There are two errors possible: 1. dlopen fails, 2. dlsym fails. And they are nested. So it\u0027s a bit more than just moving this block up, the whole structure needs to move.\n\nI\u0027ll take a stab at it.",
+      "parentUuid": "b09df327_7b9bdf21",
+      "range": {
+        "startLine": 126,
+        "startChar": 8,
+        "endLine": 127,
+        "endChar": 43
+      },
+      "revId": "c01d6b204b29dc62753a1a1bdc610eb42dce0231",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90d1cfe4_92b23ce4",
         "filename": "libnativebridge/native_bridge.cc",
         "patchSetId": 1
@@ -151,6 +199,30 @@
       "writtenOn": "2014-09-04T10:26:22Z",
       "side": 1,
       "message": "hmm, this becomes a bit misleading. If the state is open but not initialized then the rest of the calls will return null. I don\u0027t think we ever need the \u0027or\u0027 semantic here, i.e. the state should be on initialized (eventually renaming the function to NativeBridgeReady). If we have a use case for Open, then we can add another function (but I can\u0027t think of any...)",
+      "range": {
+        "startLine": 177,
+        "startChar": 5,
+        "endLine": 177,
+        "endChar": 26
+      },
+      "revId": "c01d6b204b29dc62753a1a1bdc610eb42dce0231",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10807fc3_8b845dbd",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-09-04T17:41:14Z",
+      "side": 1,
+      "message": "This was mainly done for testing before. I agree with you and will update.",
+      "parentUuid": "90d1cfe4_329d9053",
       "range": {
         "startLine": 177,
         "startChar": 5,
