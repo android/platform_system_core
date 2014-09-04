@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0a0a75c_3c2c711c",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-09-04T10:26:22Z",
+      "side": 1,
+      "message": "I think it\u0027s cleaner/clearer if we merge this into the states (i.e. kError instead of a separate flag). It will also get rid of some extra lines.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 30
+      },
+      "revId": "c01d6b204b29dc62753a1a1bdc610eb42dce0231",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0a0a75c_dc40edbe",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-09-04T10:26:22Z",
+      "side": 1,
+      "message": "worth explaining why we don\u0027t need a lock here.",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 90,
+        "endChar": 21
+      },
+      "revId": "c01d6b204b29dc62753a1a1bdc610eb42dce0231",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90d1cfe4_92d9dc2d",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-09-04T10:26:22Z",
+      "side": 1,
+      "message": "might prove useful to add the state to the log.",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 74
+      },
+      "revId": "c01d6b204b29dc62753a1a1bdc610eb42dce0231",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b09df327_3ba5575a",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-09-04T10:26:22Z",
+      "side": 1,
+      "message": "you can get rid of this. we need to set it only if the open succeeds (L126).",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 34
+      },
+      "revId": "c01d6b204b29dc62753a1a1bdc610eb42dce0231",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b09df327_7b9bdf21",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-09-04T10:26:22Z",
+      "side": 1,
+      "message": "if you add this at L116 you can get rid of the entire if-block. It will also spare the reader to go back and see where callbacks is set.",
+      "range": {
+        "startLine": 126,
+        "startChar": 8,
+        "endLine": 127,
+        "endChar": 43
+      },
+      "revId": "c01d6b204b29dc62753a1a1bdc610eb42dce0231",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90d1cfe4_92b23ce4",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-09-04T10:26:22Z",
+      "side": 1,
+      "message": "extra spaces.",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 6
+      },
+      "revId": "c01d6b204b29dc62753a1a1bdc610eb42dce0231",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90d1cfe4_329d9053",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-09-04T10:26:22Z",
+      "side": 1,
+      "message": "hmm, this becomes a bit misleading. If the state is open but not initialized then the rest of the calls will return null. I don\u0027t think we ever need the \u0027or\u0027 semantic here, i.e. the state should be on initialized (eventually renaming the function to NativeBridgeReady). If we have a use case for Open, then we can add another function (but I can\u0027t think of any...)",
+      "range": {
+        "startLine": 177,
+        "startChar": 5,
+        "endLine": 177,
+        "endChar": 26
+      },
+      "revId": "c01d6b204b29dc62753a1a1bdc610eb42dce0231",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
