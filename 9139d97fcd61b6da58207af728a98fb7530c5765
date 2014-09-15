@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "709e1b6e_b3aff268",
+        "filename": "include/cutils/atomic-arm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2014-09-15T22:47:01Z",
+      "side": 1,
+      "message": "I am not sure why is was repeated.\nCurrently these atomic-\u003ctarget\u003e.h files are included by atomic-inline.h, not  atomic.h. I suppose we can move all these into atomic-inline.h, but there is another file vendor/unbundled_google/packages/OneUp/package/cast_mirroring/jni/utils/Atomic.c that includes these atomic-\u003ctarget\u003e.h.",
+      "parentUuid": "d06fc739_18e3956a",
+      "revId": "9139d97fcd61b6da58207af728a98fb7530c5765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0933369_fec3006d",
         "filename": "include/cutils/atomic.h",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2014-09-15T22:10:06Z",
       "side": 1,
       "message": "this name doesn\u0027t make sense.",
+      "revId": "9139d97fcd61b6da58207af728a98fb7530c5765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d06fc739_93ada622",
+        "filename": "include/cutils/atomic.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2014-09-15T22:47:01Z",
+      "side": 1,
+      "message": "How about ANDROID_ATOMIC_INLINE_LINKAGE?",
+      "parentUuid": "b0933369_fec3006d",
       "revId": "9139d97fcd61b6da58207af728a98fb7530c5765",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -64,6 +100,24 @@
       "writtenOn": "2014-09-15T22:41:49Z",
       "side": 1,
       "message": "AFAICT, atomic.h doesn\u0027t include the actual definitions, and that\u0027s the only thing included here? \n\nI kind of figured out what this does, but it\u0027s extremely subtle and confusing.  The atomic.h include doesn\u0027t matter much, but trace.h includes atomic-inline.h, which makes the definitions available.  Not good.\n\nAn atomic-inline.h comment currently states that these should not usually be inlined.  I also don\u0027t see why.",
+      "parentUuid": "d06fc739_f8cdd9f1",
+      "revId": "9139d97fcd61b6da58207af728a98fb7530c5765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d06fc739_3316b2b3",
+        "filename": "libcutils/trace.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2014-09-15T22:47:01Z",
+      "side": 1,
+      "message": "Atomic functions in cutils/atomic.h are defined in atomic-inline.h.\nThe latter is not included by most users of atomic.h, so those functions are not actually inlined. So, a global definition is needed.\n\nBut the definition is included into both trace.c and atomic.c.\n\"external inline\" was the existing code to link those two files with gcc.\nFor Clang, I would change trace.c to use weak symbols.\nAlternatively, we can make those functions weak everywhere for Clang,\nor also for GCC, but that seems to be a riskier change.",
       "parentUuid": "d06fc739_f8cdd9f1",
       "revId": "9139d97fcd61b6da58207af728a98fb7530c5765",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
