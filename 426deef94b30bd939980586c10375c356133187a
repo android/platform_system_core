@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0c4cb62_bfbc1bc7",
+        "filename": "sdcard/sdcard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1429,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-09-15T17:16:09Z",
+      "side": 1,
+      "message": "don\u0027t you think the better fix is to ask for the FUSE version we actually need?\n\ni think it\u0027s a long-standing error that we\u0027ve been _requesting_ the highest version our header files have heard of, rather than the version we actually expect.\n\n * Version negotiation:\n *\n * Both the kernel and userspace send the version they support in the\n * INIT request and reply respectively.\n *\n * If the major versions match then both shall use the smallest\n * of the two minor versions for communication.\n *\n * If the kernel supports a larger major version, then userspace shall\n * reply with the major version it supports, ignore the rest of the\n * INIT message and expect a new INIT message from the kernel with a\n * matching major version.\n *\n * If the library supports a larger major version, then it shall fall\n * back to the major protocol version sent by the kernel for\n * communication and reply with that major version (and an arbitrary\n * supported minor version).\n\nso it looks like we really ought to just copy across the kernel\u0027s major and minor from the in struct and just check that they\u0027re at least some minimum version we understand.\n\nit looks like only the minor version has been bumped.\n\nhow about\n\n  if (req-\u003emajor \u003e FUSE_KERNEL_VERSION || (req-\u003emajor \u003d\u003d FUSE_KERNEL_VERSION \u0026\u0026 req-\u003eminor \u003e FUSE_KERNEL_MINOR_VERSION) {\n    ALOGW(\"kernel reported FUSE version %d.%d, we were compiled with headers for %d.%d\", ...);\n    out.major \u003d FUSE_KERNEL_VERSION; // or some hard-coded version that\u0027s what we actually need?\n    out.minor \u003d FUSE_KERNEL_MINOR_VERSION; // or some hard-coded version that\u0027s what we actually need?\n  } else {\n    out.major \u003d req-\u003emajor;\n    out.minor \u003d req-\u003eminor;\n  }\n\n?",
+      "revId": "426deef94b30bd939980586c10375c356133187a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
