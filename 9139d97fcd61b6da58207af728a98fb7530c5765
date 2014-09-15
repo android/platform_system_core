@@ -50,6 +50,24 @@
       "revId": "9139d97fcd61b6da58207af728a98fb7530c5765",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "709e1b6e_93710e5f",
+        "filename": "libcutils/trace.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2014-09-15T22:41:49Z",
+      "side": 1,
+      "message": "AFAICT, atomic.h doesn\u0027t include the actual definitions, and that\u0027s the only thing included here? \n\nI kind of figured out what this does, but it\u0027s extremely subtle and confusing.  The atomic.h include doesn\u0027t matter much, but trace.h includes atomic-inline.h, which makes the definitions available.  Not good.\n\nAn atomic-inline.h comment currently states that these should not usually be inlined.  I also don\u0027t see why.",
+      "parentUuid": "d06fc739_f8cdd9f1",
+      "revId": "9139d97fcd61b6da58207af728a98fb7530c5765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
