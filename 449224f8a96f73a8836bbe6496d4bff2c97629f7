@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "300d83bc_9ba4fb5e",
+        "filename": "include/nativebridge/native_bridge.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1051763
+      },
+      "writtenOn": "2014-09-17T13:34:12Z",
+      "side": 1,
+      "message": "If the env values are exposed as a symbol in native bridge, this interface will be removed.",
+      "range": {
+        "startLine": 121,
+        "startChar": 44,
+        "endLine": 121,
+        "endChar": 53
+      },
+      "revId": "449224f8a96f73a8836bbe6496d4bff2c97629f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90c0ef69_6b5f1ba0",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1051763
+      },
+      "writtenOn": "2014-09-17T13:34:12Z",
+      "side": 1,
+      "message": "The cpuinfo_path should be involved here, as well. All of these values can be fetched from native bridge library by dlsym in LoadNativeBridge. And the EarlyInitializeNativeBridge can bind-mount the /proc/cpuinfo based-on this cpuinfo_path without invoking any interface of native bridge with privileged permission.",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 32
+      },
+      "revId": "449224f8a96f73a8836bbe6496d4bff2c97629f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90c0ef69_4b2d771a",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1051763
+      },
+      "writtenOn": "2014-09-17T13:34:12Z",
+      "side": 1,
+      "message": "We also need to dlsym the symbol of runtime values here.",
+      "range": {
+        "startLine": 158,
+        "startChar": 61,
+        "endLine": 158,
+        "endChar": 66
+      },
+      "revId": "449224f8a96f73a8836bbe6496d4bff2c97629f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0fe8bbb_2b393de8",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1051763
+      },
+      "writtenOn": "2014-09-17T13:34:12Z",
+      "side": 1,
+      "message": "We\u0027d better retrieve the cpuinfo file path in LoadNativeBridge by dlsym the fixed symbol in native bridge library directly. Otherwise, we have to generate a cpuinfo file per process.",
+      "range": {
+        "startLine": 201,
+        "startChar": 23,
+        "endLine": 201,
+        "endChar": 30
+      },
+      "revId": "449224f8a96f73a8836bbe6496d4bff2c97629f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
