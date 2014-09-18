@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "3042e3dc_f9769756",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1051763
+      },
+      "writtenOn": "2014-09-18T13:52:07Z",
+      "side": 1,
+      "message": "Thanks for your clarify. But I still didn\u0027t get the point. The app_data_dir is different both for Zygote and each app. The PreInitializeNativeBridge is always invoked before InitializeNativeBridge. The bridge only involves and knows the app_data_dir after initialized in InitializeNativeBridge. Then it gets the chance the create the cpuinfo or its soft link for the app. But PreInitializeNativeBridge will open/bind-mount the cpuinfo before all above happened. Then, an error is always exposed duo to no cpuinfo file there. If any mistake, please help me on this. Thanks.",
+      "parentUuid": "7021bb30_d95dd35e",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 67
+      },
+      "revId": "f4318f0cd645d2b341489f531711a2dfbdca42e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f02ccb2f_55d0ac02",
         "filename": "libnativebridge/native_bridge.cc",
         "patchSetId": 5
