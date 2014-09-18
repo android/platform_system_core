@@ -22,6 +22,30 @@
       "revId": "f4318f0cd645d2b341489f531711a2dfbdca42e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7021bb30_d95dd35e",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-09-18T06:04:20Z",
+      "side": 1,
+      "message": "The intention here was that the code cache sub-directory name is known (it\u0027s public API for L). The bridge will be provided with the data directory on Initialize (see the new signature), which basically happens immediately after the dropping of the privileges. So the bridge can construct the same path and write to the file just fine before any app code is executed.\n\nYou will need the directory anyways to store compiled things in there / load them out of there. So that seemed like a decent approach.\n\nI\u0027ll discuss your proposal internally tomorrow.",
+      "parentUuid": "10479fed_73a382ce",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 67
+      },
+      "revId": "f4318f0cd645d2b341489f531711a2dfbdca42e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
