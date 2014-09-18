@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "501677dd_98c3d5d3",
+        "filename": "include/nativebridge/native_bridge.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-09-18T03:55:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70c53b78_1f06abae",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "449224f8a96f73a8836bbe6496d4bff2c97629f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "300d83bc_9ba4fb5e",
         "filename": "include/nativebridge/native_bridge.h",
         "patchSetId": 4
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "501677dd_f8be914c",
+        "filename": "include/nativebridge/native_bridge.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-09-18T03:55:25Z",
+      "side": 1,
+      "message": "I highly prefer a design that lets a native bridge support multiple emulated ABIs. For example, on a 64b system I\u0027d prefer the 64b bridge to emulate both 32b and 64b bridged arch, as that should be better from a performance standpoint.",
+      "parentUuid": "3042e3dc_08ef6bd4",
+      "range": {
+        "startLine": 121,
+        "startChar": 44,
+        "endLine": 121,
+        "endChar": 53
+      },
+      "revId": "449224f8a96f73a8836bbe6496d4bff2c97629f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90c0ef69_6b5f1ba0",
         "filename": "libnativebridge/native_bridge.cc",
         "patchSetId": 4
@@ -119,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "10479fed_18feddcd",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-09-18T03:55:25Z",
+      "side": 1,
+      "message": "This approach restricts the versatility of the native bridge, as then one library \u003d one emulated architecture.",
+      "parentUuid": "90c0ef69_6b5f1ba0",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 32
+      },
+      "revId": "449224f8a96f73a8836bbe6496d4bff2c97629f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70c53b78_ff46578c",
         "filename": "libnativebridge/native_bridge.cc",
         "patchSetId": 4
@@ -130,6 +202,30 @@
       "writtenOn": "2014-09-17T14:38:01Z",
       "side": 1,
       "message": "I think we should use supported_abis. cpu_abi and cpu_abi are already deprecated: frameworks/base/core/java/android/os/Build.java",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "449224f8a96f73a8836bbe6496d4bff2c97629f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10479fed_382079b6",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-09-18T03:55:25Z",
+      "side": 1,
+      "message": "As this is mostly meant to support older apps, we *must* set old fields (and these fields are not yet deprecated, as L is not yet released). I wonder what the right thing is for SUPPORTED_ABIS, probably for now just copying cpu_abi. The bit-width ones are complicated, as we cannot just use the bitness of the running process. Opinions welcome.",
+      "parentUuid": "70c53b78_ff46578c",
       "range": {
         "startLine": 33,
         "startChar": 4,
@@ -176,6 +272,30 @@
       "writtenOn": "2014-09-17T13:34:30Z",
       "side": 1,
       "message": "I\u0027d feel slightly better to introduce a new state. Would make things a bit easier to debug probably.\nEither way, I favor early returns than surrounding all the function code in an if.",
+      "range": {
+        "startLine": 183,
+        "startChar": 5,
+        "endLine": 183,
+        "endChar": 30
+      },
+      "revId": "449224f8a96f73a8836bbe6496d4bff2c97629f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "503d974b_34be4899",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-09-18T03:55:25Z",
+      "side": 1,
+      "message": "Early return. I don\u0027t think the additional state is worth it.",
+      "parentUuid": "50baf7ee_1e5fcda0",
       "range": {
         "startLine": 183,
         "startChar": 5,
@@ -280,6 +400,30 @@
     },
     {
       "key": {
+        "uuid": "50ef57ff_369400ec",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-09-18T03:55:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50baf7ee_be4d81ff",
+      "range": {
+        "startLine": 200,
+        "startChar": 31,
+        "endLine": 200,
+        "endChar": 41
+      },
+      "revId": "449224f8a96f73a8836bbe6496d4bff2c97629f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0fe8bbb_2b393de8",
         "filename": "libnativebridge/native_bridge.cc",
         "patchSetId": 4
@@ -291,6 +435,30 @@
       "writtenOn": "2014-09-17T13:34:12Z",
       "side": 1,
       "message": "We\u0027d better retrieve the cpuinfo file path in LoadNativeBridge by dlsym the fixed symbol in native bridge library directly. Otherwise, we have to generate a cpuinfo file per process.",
+      "range": {
+        "startLine": 201,
+        "startChar": 23,
+        "endLine": 201,
+        "endChar": 30
+      },
+      "revId": "449224f8a96f73a8836bbe6496d4bff2c97629f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70ea9bf0_85ded224",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-09-18T03:55:25Z",
+      "side": 1,
+      "message": "I prefer the setup as is, as it allows a native bridge to handle more than one architecture.",
+      "parentUuid": "f0fe8bbb_2b393de8",
       "range": {
         "startLine": 201,
         "startChar": 23,
@@ -326,6 +494,30 @@
     },
     {
       "key": {
+        "uuid": "50ef57ff_568784c4",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-09-18T03:55:25Z",
+      "side": 1,
+      "message": "O_CREAT...",
+      "parentUuid": "50baf7ee_de315577",
+      "range": {
+        "startLine": 209,
+        "startChar": 15,
+        "endLine": 209,
+        "endChar": 19
+      },
+      "revId": "449224f8a96f73a8836bbe6496d4bff2c97629f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70c53b78_bffb3f54",
         "filename": "libnativebridge/native_bridge.cc",
         "patchSetId": 4
@@ -337,6 +529,30 @@
       "writtenOn": "2014-09-17T13:34:30Z",
       "side": 1,
       "message": "I think it worth adding the full path, i.e. the \u0027buffer\u0027. Which now I thing it should be rename to cpuinfoPath or something.",
+      "range": {
+        "startLine": 216,
+        "startChar": 14,
+        "endLine": 216,
+        "endChar": 45
+      },
+      "revId": "449224f8a96f73a8836bbe6496d4bff2c97629f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "503d974b_b4a9f867",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-09-18T03:55:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70c53b78_bffb3f54",
       "range": {
         "startLine": 216,
         "startChar": 14,
@@ -372,6 +588,30 @@
     },
     {
       "key": {
+        "uuid": "10479fed_2d835981",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-09-18T03:55:25Z",
+      "side": 1,
+      "message": "16 is the default according to some Android docs, so I left it at that...",
+      "parentUuid": "10d4ff2c_fcc54179",
+      "range": {
+        "startLine": 236,
+        "startChar": 37,
+        "endLine": 236,
+        "endChar": 39
+      },
+      "revId": "449224f8a96f73a8836bbe6496d4bff2c97629f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10d4ff2c_bccfc995",
         "filename": "libnativebridge/native_bridge.cc",
         "patchSetId": 4
@@ -383,6 +623,30 @@
       "writtenOn": "2014-09-17T13:34:30Z",
       "side": 1,
       "message": "even if it\u0027s small I\u0027d extract this in a local function to avoid duplication",
+      "range": {
+        "startLine": 247,
+        "startChar": 6,
+        "endLine": 255,
+        "endChar": 7
+      },
+      "revId": "449224f8a96f73a8836bbe6496d4bff2c97629f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3042e3dc_930acc42",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-09-18T03:55:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10d4ff2c_bccfc995",
       "range": {
         "startLine": 247,
         "startChar": 6,
