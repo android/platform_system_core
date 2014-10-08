@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b0a334b2_f038a0c3",
+        "filename": "include/cutils/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2014-10-08T16:03:57Z",
+      "side": 1,
+      "message": "Thanks!  Good catch.\n\nElliott - Do you think we still need to support the uniprocessor case?  I would guess we need it for Wear, but just checking.\n\nIt seems to me that ideally this should be supported by a C compiler flag, but I guess we don\u0027t have that.",
+      "parentUuid": "d0bfc88a_a8782e33",
+      "range": {
+        "startLine": 75,
+        "startChar": 32,
+        "endLine": 75,
+        "endChar": 52
+      },
+      "revId": "41ed886780130d435a5f43409e222d088ea82d05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0bfc88a_68a9d621",
         "filename": "include/cutils/atomic.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2014-10-08T08:27:10Z",
       "side": 1,
       "message": "This is a weird ordering for an atomic_dec. It\u0027s usually used for reference counting, so it should be acq_rel. Or is this codebase consistently use a trailing android_memory_barrier() if the counter goes to zero?",
+      "range": {
+        "startLine": 101,
+        "startChar": 43,
+        "endLine": 101,
+        "endChar": 65
+      },
+      "revId": "41ed886780130d435a5f43409e222d088ea82d05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b988d9_c79cbdff",
+        "filename": "include/cutils/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2014-10-08T16:03:57Z",
+      "side": 1,
+      "message": "Agreed.  Most of the clients are fairly opaque to me.  binder/IMemory.cpp for example appears to have precisely the bug you describe.  The goal of this patch is bug compatibility with the original.  My view is that the clients of this interface are suspect by default, and we should go through them, check memory ordering, and convert to direct stdatomic.h use.",
+      "parentUuid": "d0bfc88a_68a9d621",
       "range": {
         "startLine": 101,
         "startChar": 43,
