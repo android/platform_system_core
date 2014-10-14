@@ -16,6 +16,98 @@
       "revId": "ee27857326fbbeeb85d854ce12ed4665f7383109",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "104ec00c_e2dfaee1",
+        "filename": "include/cutils/trace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-14T15:10:34Z",
+      "side": 1,
+      "message": "This is weird. It\u0027d be nice to be placing:\n__attribute__((__format__(__printf__, 1, 2)))\non this function but the format string has a %d at the beginning to match the getpid() that will be added below, whereas the name will come in as an argument. I\u0027d be tempted to pass in a character (B, S, F, C) or an enum constant, then change the formatting to be done purely in this function as something like:\nsnprintf(...., \"%c|%d|%s\", char_arg, getpid(), name)\nThe snprintf function has the printf attribute on it and therefore argument checking.",
+      "range": {
+        "startLine": 183,
+        "startChar": 35,
+        "endLine": 183,
+        "endChar": 38
+      },
+      "revId": "ee27857326fbbeeb85d854ce12ed4665f7383109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0218832_9b63c6fd",
+        "filename": "include/cutils/trace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-14T15:10:34Z",
+      "side": 1,
+      "message": "this seems like it will be prone to getting repeated declarations at link time - does noinline imply inline style linkage?",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 4
+      },
+      "revId": "ee27857326fbbeeb85d854ce12ed4665f7383109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5044b8e8_f41770b0",
+        "filename": "include/cutils/trace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-14T15:10:34Z",
+      "side": 1,
+      "message": "similarly change fmt to a single character.",
+      "range": {
+        "startLine": 197,
+        "startChar": 36,
+        "endLine": 197,
+        "endChar": 39
+      },
+      "revId": "ee27857326fbbeeb85d854ce12ed4665f7383109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5044b8e8_141d3cd1",
+        "filename": "include/cutils/trace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-14T15:10:34Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 211,
+        "startChar": 36,
+        "endLine": 211,
+        "endChar": 39
+      },
+      "revId": "ee27857326fbbeeb85d854ce12ed4665f7383109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
