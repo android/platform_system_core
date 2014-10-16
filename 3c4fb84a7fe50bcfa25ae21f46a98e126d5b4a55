@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "50f0380f_c060a030",
+        "filename": "logd/LogStatistics.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-10-16T23:13:32Z",
+      "side": 1,
+      "message": "I have never trusted an iterator to unwind/free the list of elements in a destructor. Will test and confirm.",
+      "parentUuid": "70f37c1b_ed7831f0",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 23
+      },
+      "revId": "3c4fb84a7fe50bcfa25ae21f46a98e126d5b4a55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50f0380f_2049842a",
         "filename": "logd/LogStatistics.cpp",
         "patchSetId": 11
@@ -58,6 +82,52 @@
         "startChar": 0,
         "endLine": 95,
         "endChar": 1
+      },
+      "revId": "3c4fb84a7fe50bcfa25ae21f46a98e126d5b4a55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50f0380f_e06f9c1a",
+        "filename": "logd/LogStatistics.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-10-16T23:13:32Z",
+      "side": 1,
+      "message": "So is this necessary either?",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 5
+      },
+      "revId": "3c4fb84a7fe50bcfa25ae21f46a98e126d5b4a55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10fa40f3_3be09751",
+        "filename": "logd/LogStatistics.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-10-16T23:13:32Z",
+      "side": 1,
+      "message": "Is this one necessary?",
+      "range": {
+        "startLine": 419,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 5
       },
       "revId": "3c4fb84a7fe50bcfa25ae21f46a98e126d5b4a55",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -111,6 +181,30 @@
     },
     {
       "key": {
+        "uuid": "10fa40f3_7bf4df65",
+        "filename": "logd/LogStatistics.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-10-16T23:13:32Z",
+      "side": 1,
+      "message": "There is a difference, if we _ever_ had multiple entries, we want to retain it even if the list is emptied due to pruning.\n\nmMultiple is set on push_back, but is not cleared on remove.\n\nFor the statistics it is useful to know if a specific comm (name of pid) is crashy, and that is what this flag reports.",
+      "parentUuid": "d0e42853_20cfbfea",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "3c4fb84a7fe50bcfa25ae21f46a98e126d5b4a55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70f37c1b_7886a138",
         "filename": "logd/LogStatistics.h",
         "patchSetId": 11
@@ -134,6 +228,30 @@
     },
     {
       "key": {
+        "uuid": "10fa40f3_5ba48342",
+        "filename": "logd/LogStatistics.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-10-16T23:13:32Z",
+      "side": 1,
+      "message": "getting nervous when I have pid and pids, I used the upper case to differentiate.\n\ngonePids is sounding better to keep it clear.",
+      "parentUuid": "70f37c1b_7886a138",
+      "range": {
+        "startLine": 46,
+        "startChar": 32,
+        "endLine": 46,
+        "endChar": 36
+      },
+      "revId": "3c4fb84a7fe50bcfa25ae21f46a98e126d5b4a55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50f0380f_e0fafc85",
         "filename": "logd/LogStatistics.h",
         "patchSetId": 11
@@ -145,6 +263,30 @@
       "writtenOn": "2014-10-16T22:45:18Z",
       "side": 1,
       "message": "No need for accessors if the accessors are trivial and have the same visibility.  Just call pids.{begin,end}() directly.",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 70
+      },
+      "revId": "3c4fb84a7fe50bcfa25ae21f46a98e126d5b4a55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0e42853_a3dd99f0",
+        "filename": "logd/LogStatistics.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-10-16T23:13:32Z",
+      "side": 1,
+      "message": "The goals is to abstract. All the members here behave similarly with their private sublists. uid statistics begin()/end() for pid, as is pid statistics begin()/end() for gone pids.\n\nIf I switch to gonePids, even more so with regards to making the code look simpler and not have to wrap.",
+      "parentUuid": "50f0380f_e0fafc85",
       "range": {
         "startLine": 48,
         "startChar": 4,
@@ -219,6 +361,76 @@
         "startChar": 9,
         "endLine": 66,
         "endChar": 17
+      },
+      "revId": "3c4fb84a7fe50bcfa25ae21f46a98e126d5b4a55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10fa40f3_9bc9ebe8",
+        "filename": "logd/LogStatistics.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-10-16T23:13:32Z",
+      "side": 1,
+      "message": "I will add a private:findMatch() and rename this to pidMatches.",
+      "parentUuid": "70f37c1b_ad1109f9",
+      "range": {
+        "startLine": 66,
+        "startChar": 9,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "3c4fb84a7fe50bcfa25ae21f46a98e126d5b4a55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10fa40f3_bbf6673a",
+        "filename": "logd/LogStatistics.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-10-16T23:13:32Z",
+      "side": 1,
+      "message": "here we have a pattern of accessors to simplify associated code.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 33
+      },
+      "revId": "3c4fb84a7fe50bcfa25ae21f46a98e126d5b4a55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10fa40f3_9bfbab24",
+        "filename": "logd/LogStatistics.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-10-16T23:13:32Z",
+      "side": 1,
+      "message": "and some more ...",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 66
       },
       "revId": "3c4fb84a7fe50bcfa25ae21f46a98e126d5b4a55",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
