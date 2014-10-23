@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "75244ea4_25f678f3",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-10-23T17:03:35Z",
+      "side": 1,
+      "message": "I think this generality is overkill, as we have only one array.",
+      "range": {
+        "startLine": 141,
+        "startChar": 24,
+        "endLine": 141,
+        "endChar": 34
+      },
+      "revId": "586651f21bebd060ebb901e8d2311297a5ae7333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5359ed2_46d87281",
         "filename": "libnativebridge/native_bridge.cc",
         "patchSetId": 5
@@ -13,6 +36,24 @@
       "writtenOn": "2014-10-23T16:42:25Z",
       "side": 1,
       "message": "This check is unnecessary, but whatever.",
+      "revId": "586651f21bebd060ebb901e8d2311297a5ae7333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75244ea4_05101c6f",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-10-23T17:03:35Z",
+      "side": 1,
+      "message": "Only if everything goes alright. We do allow app_data_dir_in to be nullptr in PreInitializeBridge and still proceed with a later Initialize. Calin would have to implement the TODO there.",
+      "parentUuid": "f5359ed2_46d87281",
       "revId": "586651f21bebd060ebb901e8d2311297a5ae7333",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -36,6 +77,52 @@
     },
     {
       "key": {
+        "uuid": "55210a94_018c8d8f",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-10-23T17:03:35Z",
+      "side": 1,
+      "message": "*Maybe* consider for readability at call-sites to use an enum: kWithError vs kWithoutError, for example.",
+      "range": {
+        "startLine": 148,
+        "startChar": 30,
+        "endLine": 148,
+        "endChar": 34
+      },
+      "revId": "586651f21bebd060ebb901e8d2311297a5ae7333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75244ea4_452614e3",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-10-23T17:03:35Z",
+      "side": 1,
+      "message": "If you split up the conditional, you can make this local to the case that we have app_code_cache_dir.",
+      "range": {
+        "startLine": 419,
+        "startChar": 4,
+        "endLine": 419,
+        "endChar": 19
+      },
+      "revId": "586651f21bebd060ebb901e8d2311297a5ae7333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "351e565a_7d7bebec",
         "filename": "libnativebridge/native_bridge.cc",
         "patchSetId": 5
@@ -47,6 +134,29 @@
       "writtenOn": "2014-10-23T16:42:25Z",
       "side": 1,
       "message": "I think we should try this only if ENOENT, not for all stat errors.",
+      "revId": "586651f21bebd060ebb901e8d2311297a5ae7333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75244ea4_e50c005b",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-10-23T17:03:35Z",
+      "side": 1,
+      "message": "If we do do the TODO, then we should either use this as a flag for an error or extend the state enum and have kPreInitialized in there, replacing the kOpened above.",
+      "range": {
+        "startLine": 420,
+        "startChar": 9,
+        "endLine": 420,
+        "endChar": 38
+      },
       "revId": "586651f21bebd060ebb901e8d2311297a5ae7333",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
