@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2db728_fee8b591",
+        "filename": "toolbox/mkswap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-11-18T18:16:14Z",
+      "side": 1,
+      "message": "all of these should be \": %s\\n\", strerror(errno).",
+      "revId": "ca941290c5ede9e18c8b3d4b0e204e5b3187a90a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a30bb7e_6a3e1f01",
+        "filename": "toolbox/mkswap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-11-18T18:16:14Z",
+      "side": 1,
+      "message": "you already did a stat, and you now know this is a regular file. why not just \"swap_size \u003d sb.st_size\" and lose the two seeks?",
+      "revId": "ca941290c5ede9e18c8b3d4b0e204e5b3187a90a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a30bb7e_0a4f6bb5",
+        "filename": "toolbox/mkswap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-11-18T18:16:14Z",
+      "side": 1,
+      "message": "i think you still want this test, regardless of whether this was a block or regular device. sharing is easier without the two seeks :-)",
+      "revId": "ca941290c5ede9e18c8b3d4b0e204e5b3187a90a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
