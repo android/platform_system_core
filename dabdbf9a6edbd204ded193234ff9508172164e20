@@ -69,6 +69,24 @@
       "revId": "dabdbf9a6edbd204ded193234ff9508172164e20",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "845d1634_0d45f5e2",
+        "filename": "libutils/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-12-07T00:00:47Z",
+      "side": 1,
+      "message": "BOARD_USES_GENERIC_AUDIO (and the other BOARD_USES_*_AUDIOs) seem to be used in vendor/*/proprietary* directories. i suspect that it\u0027s just AOSP where there\u0027s no non-generic audio.\n\nHAVE_HTC_AUDIO_DRIVER on the other hand appears to be genuinely dead.\n\nif you think you\u0027ve found something like this, feel free to ask me to check before trying to eradicate it. i cleaned up the dead ARCH_ARM_HAVE_*s recently, but sometimes these variables are specifically there so that OEMs can override some AOSP thing and will look dead in AOSP despite actually being needed. i\u0027m not sure there\u0027s any way to tell without access to the non-AOSP OEM code.",
+      "parentUuid": "84927610_9fe8130e",
+      "revId": "dabdbf9a6edbd204ded193234ff9508172164e20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
