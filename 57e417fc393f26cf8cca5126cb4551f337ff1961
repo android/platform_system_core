@@ -16,6 +16,24 @@
       "revId": "57e417fc393f26cf8cca5126cb4551f337ff1961",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4a13abc_40bb2ee4",
+        "filename": "include/utils/Singleton.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2014-12-11T00:12:00Z",
+      "side": 1,
+      "message": "It is possible to have ambiguity when used in a namespace with its own nested \"android\" namespace. I have not found such case, but I got some parsing ambiguity if I add \"::\" in front of android here.\n\nThe token sequence ::android::Mutex  ::android::Singleton\nis parsed as one qualified name and it becomes a syntax error.\nIs there a way to fix that parsing problem, or we can just do without global \"::\" qualification here?",
+      "parentUuid": "e4997284_5524fe9b",
+      "revId": "57e417fc393f26cf8cca5126cb4551f337ff1961",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
