@@ -69,6 +69,30 @@
       "revId": "d4e409415873e71ae93cfe667bf51fcb39adb51b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41c2301f_3011064a",
+        "filename": "logd/LogTimes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-12-16T20:37:15Z",
+      "side": 1,
+      "message": "KISS and maintainability are the primary goals.\n\nWe start pruning/skipping at 10% over on a per-id basis, and we punt the reader if we are 100% over.\n\nSkip is meant to be a coarse tool to provide a soft means of dealing with a reticent reader client that is behind by \u003e100% of the buffer. The intent was to leave it to caller heuristics to decide by how much, or if to kill the reader\u0027s socket.\n\nLeave the ULONG_MAX alone as it is KISS and means EVERYTHING, refining it to number of messages only means you will be creating edge or race conditions. Dealing with the edge conditions ala #2 was a fine move.\n\nNo value with accurate accounting given that prune request value will be \u0027very large\u0027 or \u0027roughly 10%\u0027. By all means refine the guess, but if it takes more than a few ns to figure out, or is complicated to maintain, walk away.\n\nNB: I am thinking of deprecating white and blacklists; not KISS and so far no one has used it. Also statistics needs to be KISS\u0027d too.",
+      "parentUuid": "e1d164e3_52413469",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 29
+      },
+      "revId": "d4e409415873e71ae93cfe667bf51fcb39adb51b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
