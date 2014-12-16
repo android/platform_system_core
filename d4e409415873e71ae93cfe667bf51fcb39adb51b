@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c16380f0_69ba2596",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-12-16T17:56:59Z",
+      "side": 1,
+      "message": "logd",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "d4e409415873e71ae93cfe667bf51fcb39adb51b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "815d0834_87fd46c7",
+        "filename": "logd/LogTimes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-12-16T17:56:59Z",
+      "side": 1,
+      "message": "Please no.\n\nTL;DR\n\nThis will result in a slow logger port (serial console log, or other slow path) increasing memory pressure on the system. triggerSkip is used to tell the reader threads in an emergency (using up to double requested storage) to dump a series of entries rather than forwarding them so that the memory can be freed. This allows a reader range lock to clear so that pruning can progress.\n\nWe can not allow this to be bypassed or we could get into a (minor) Memory DoS attack should a reader thread be blocked.\n\nArchitectural question: Could the problem be that the writer thread is not waking up to reader thread(s) to process the skip? IS there something blocking the reader thread(s) from waking up? Eventually when we get to double the storage, we kill the reader thread, but up to that point we will be doing a lot of ignored mechanics burning CPU cycles. This code was added because bumping the errant reader threads alone was undesirable if they were merely slow.\n\nNB: Android coding standard, use { }",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 29
+      },
+      "revId": "d4e409415873e71ae93cfe667bf51fcb39adb51b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
