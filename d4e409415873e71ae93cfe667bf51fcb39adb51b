@@ -45,6 +45,30 @@
       "revId": "d4e409415873e71ae93cfe667bf51fcb39adb51b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1d164e3_52413469",
+        "filename": "logd/LogTimes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1061958
+      },
+      "writtenOn": "2014-12-16T19:50:02Z",
+      "side": 1,
+      "message": "Yes sure, but in a normal execution scenario we will also have an oldest (this includes the scenario in which we have\nonly one client), so a value from which we start to skip should be set (bufferSize could be an idea).\n\nAdditionally should be taken into account:\n- TimeEntry works on multiple buffers and pruning is done per buffer (skipAhead should be skipAhead[LOG_ID_MAX] set,updated and checked accordingly).\n- clean should call prune with the current number of messages in the buffer;\n\nPlease let me know your opinion on this. So I can push a new patch-set.",
+      "parentUuid": "815d0834_87fd46c7",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 29
+      },
+      "revId": "d4e409415873e71ae93cfe667bf51fcb39adb51b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
