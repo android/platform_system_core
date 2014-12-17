@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01e678ff_7b839fe0",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-12-17T23:50:20Z",
+      "side": 1,
+      "message": "Corner Case: This flag will result in a slow reader holding a region lock to continue marching on with data that is supposed to have been cleared out. When an asynchronous clear is requested, the outstanding reader(s) should all skip to the end.\n\nI would prefer a solution that works in the face of a large skip value and not result in the apparent freezing of the logger.",
+      "range": {
+        "startLine": 356,
+        "startChar": 27,
+        "endLine": 356,
+        "endChar": 43
+      },
+      "revId": "9cef1ba05686b3db56a13e906d24fed20e61ad7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01e678ff_dbf03371",
+        "filename": "logd/LogTimes.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-12-17T23:50:20Z",
+      "side": 1,
+      "message": "What about clearing the skip count here instead, does that solve the problem you are seeing?",
+      "range": {
+        "startLine": 143,
+        "startChar": 14,
+        "endLine": 143,
+        "endChar": 15
+      },
+      "revId": "9cef1ba05686b3db56a13e906d24fed20e61ad7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
