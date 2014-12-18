@@ -16,6 +16,24 @@
       "revId": "1c22c4b53f99c2d8f47e2912028dea674d0df40e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61c81476_d6d6447f",
+        "filename": "init/property_service.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-12-18T14:35:58Z",
+      "side": 1,
+      "message": "Note that in policy, we permit domains to connect to the property service via macro calls like unix_socket_connect(shell, property, init).  The unix_socket_connect macro (defined in te_macros) expands to:\n\nallow shell property_socket:sock_file write;\nallow shell init:unix_stream_socket connectto;\n\nThe first rule allows the shell domain to write to the /dev/socket/property_service socket file.  The second rule allows the shell domain to connect to init\u0027s Unix/local stream socket endpoint, which has init\u0027s domain.  This is correct.  Similar calls to unix_socket_connect() are used for all authorized users of the property service.\n\nI don\u0027t know what problem you were trying to address here, but this is not a correct fix.",
+      "parentUuid": "61c81476_96dccca1",
+      "revId": "1c22c4b53f99c2d8f47e2912028dea674d0df40e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
