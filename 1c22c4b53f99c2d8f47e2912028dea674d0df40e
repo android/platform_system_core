@@ -34,6 +34,24 @@
       "revId": "1c22c4b53f99c2d8f47e2912028dea674d0df40e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1ae8c91_dbe7473c",
+        "filename": "init/property_service.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-12-18T15:03:52Z",
+      "side": 1,
+      "message": "Also, note that create_socket() already looks up the file context via selabel_lookup() from file_contexts, so it is already assigning this security context to the /dev/socket/property_service socket file at creation time.  But the context argument to create_socket() is for the socket object, not the socket file, and only when creating sockets for a different process as for service socket stanzas in init.rc.",
+      "parentUuid": "61c81476_d6d6447f",
+      "revId": "1c22c4b53f99c2d8f47e2912028dea674d0df40e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
