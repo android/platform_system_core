@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61c81476_96dccca1",
+        "filename": "init/property_service.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-12-18T14:28:21Z",
+      "side": 1,
+      "message": "This is wrong on two counts:\n\n1. We don\u0027t hardcode security context strings in code; we look them up via selabel_lookup (for files) or compute them via security_compute_create() (for processes and sockets).\n\n2. u:object_r:property_socket:s0 is a context for the socket file (/dev/socket/property_service), which is distinct and separate from the socket itself.  Unix/local domain sockets have two associated kernel objects:  a socket and a file that names it.  The socket is typically labeled the same as its creating/owning process.  The file is labeled based on file_contexts using selabel_lookup.  create_socket() takes a context argument in order to allow init to label sockets created for other services with the service domains rather than its own domain.  But the property socket is supposed to be labeled with init\u0027s domain because init is the receiver.",
+      "revId": "1c22c4b53f99c2d8f47e2912028dea674d0df40e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
