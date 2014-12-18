@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "618d7444_2e464783",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1057368
+      },
+      "writtenOn": "2014-12-18T09:17:20Z",
+      "side": 1,
+      "message": "then the function is never called",
+      "parentUuid": "a1d5ac01_b440d883",
+      "revId": "76c0e958065c05e0410568f11c2f7b0975c98b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1d5ac01_4f1d398e",
         "filename": "fs_mgr/fs_mgr.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "618d7444_6e404f64",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1057368
+      },
+      "writtenOn": "2014-12-18T09:17:20Z",
+      "side": 1,
+      "message": "you\u0027re right.  I checked every invocation of fs_mgr_mount_all() that I could find in AOSP and they all call this with an fstab populated by a call to fs_mgr_read_fstab(), which allocates the existing rec-\u003eblk_device with strdup(), so we can do what you suggest.  Note, however, that if anyone ever calls this where all the memory for struct fstab is just statically allocated, it will blow up, so let\u0027s hope that doesn\u0027t happen.",
+      "parentUuid": "a1d5ac01_4f1d398e",
+      "revId": "76c0e958065c05e0410568f11c2f7b0975c98b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81da6831_33578023",
         "filename": "fs_mgr/fs_mgr.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2014-12-17T21:35:18Z",
       "side": 1,
       "message": "it\u0027s okay to call closedir with NULL.",
+      "revId": "76c0e958065c05e0410568f11c2f7b0975c98b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41731024_e52b7695",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1057368
+      },
+      "writtenOn": "2014-12-18T09:17:20Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "81da6831_33578023",
       "revId": "76c0e958065c05e0410568f11c2f7b0975c98b33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
