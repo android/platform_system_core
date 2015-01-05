@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "2e1e095a_54f5acdf",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-05T19:18:37Z",
+      "side": 1,
+      "message": "The time is either in 1970 (monotonic), or 2015 (realtime), the size is merely to provide a margin to deal with processing lag (typically 0-20ms for BATCH priority processes). ten seconds is so far away that we guarantee no chance of processing lag. I do not expect to tune this (which happens when you abstract a number into a manifest define elsewhere); I would prefer to comment here to make it clear.",
+      "parentUuid": "0144b839_11820c2c",
+      "range": {
+        "startLine": 542,
+        "startChar": 24,
+        "endLine": 542,
+        "endChar": 26
+      },
+      "revId": "3b87cf111dacc91cde3925e4b09b97f6553b776a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c180e07b_6aaa6b0e",
         "filename": "logd/LogBuffer.cpp",
         "patchSetId": 2
@@ -82,6 +106,30 @@
       "writtenOn": "2015-01-01T15:34:14Z",
       "side": 1,
       "message": "not quite sure about this part: why wait depend on the subsequent entry being later than \u0027start\u0027 to add the diff?  Wouldn\u0027t it be better to check if \u0027start\u0027 is somewhere near \u0027element\u0027 and then use that diff?",
+      "range": {
+        "startLine": 569,
+        "startChar": 19,
+        "endLine": 572,
+        "endChar": 21
+      },
+      "revId": "3b87cf111dacc91cde3925e4b09b97f6553b776a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce156d30_08cdcf44",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-05T19:18:37Z",
+      "side": 1,
+      "message": "define \u0027near\u0027 :-) I want the \u0027closest\u0027 entry just before the monotonic \u0027start\u0027, as close to a few ns if at all possible to deal with realtime drift. Also, if we do not have one entry before, and one entry after, we do not have enough samples IMHO, so we resort to the \u0027current\u0027 diff (line 587 * 588).",
+      "parentUuid": "c180e07b_6aaa6b0e",
       "range": {
         "startLine": 569,
         "startChar": 19,
