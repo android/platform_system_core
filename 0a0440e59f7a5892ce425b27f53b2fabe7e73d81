@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ecac1df_60aa6e10",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2015-01-14T03:05:23Z",
+      "side": 1,
+      "message": "translate_ext_labels()\n\nas assumptions are being made that are based on ext FS.",
+      "range": {
+        "startLine": 319,
+        "startChar": 11,
+        "endLine": 319,
+        "endChar": 27
+      },
+      "revId": "0a0440e59f7a5892ce425b27f53b2fabe7e73d81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e47e93f_2626ea54",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2015-01-14T03:05:23Z",
+      "side": 1,
+      "message": "This is used to hold the result of an lseek()... and a read(), pick something appropriate. Or just get rid of it (see later comment).",
+      "range": {
+        "startLine": 347,
+        "startChar": 8,
+        "endLine": 347,
+        "endChar": 11
+      },
+      "revId": "0a0440e59f7a5892ce425b27f53b2fabe7e73d81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ecac1df_0090dada",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2015-01-14T03:05:23Z",
+      "side": 1,
+      "message": "not used. and unsigned long anyway.",
+      "range": {
+        "startLine": 348,
+        "startChar": 13,
+        "endLine": 348,
+        "endChar": 18
+      },
+      "revId": "0a0440e59f7a5892ce425b27f53b2fabe7e73d81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce372dc2_7288ae4a",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2015-01-14T03:05:23Z",
+      "side": 1,
+      "message": "why static?",
+      "range": {
+        "startLine": 349,
+        "startChar": 8,
+        "endLine": 349,
+        "endChar": 14
+      },
+      "revId": "0a0440e59f7a5892ce425b27f53b2fabe7e73d81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e47e93f_c6b3668c",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2015-01-14T03:05:23Z",
+      "side": 1,
+      "message": "The adding of different types and then comparing to some hardcoded value feels wrong for what seems to be for the sake of saving a some insignificant amount of lines.\n\nif (TEMP_FAILURE_RETRY(lseek()) \u003c 0 || TEMP_FAILURE_RETRY(read()) !\u003d 1024) {\n  close(fd);\n  continue;\n}\nclose(fd);",
+      "range": {
+        "startLine": 361,
+        "startChar": 7,
+        "endLine": 365,
+        "endChar": 24
+      },
+      "revId": "0a0440e59f7a5892ce425b27f53b2fabe7e73d81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ecac1df_c09522cf",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2015-01-14T03:05:23Z",
+      "side": 1,
+      "message": "meh.\n\n#include \u003cext4.h\u003e  /* For struct super_block{}. Comes from system/extras/ext4_utils. */",
+      "range": {
+        "startLine": 372,
+        "startChar": 22,
+        "endLine": 372,
+        "endChar": 24
+      },
+      "revId": "0a0440e59f7a5892ce425b27f53b2fabe7e73d81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce372dc2_326556ff",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2015-01-14T03:05:23Z",
+      "side": 1,
+      "message": "meh.\n\n#include \u003cext4.h\u003e ...",
+      "range": {
+        "startLine": 377,
+        "startChar": 30,
+        "endLine": 377,
+        "endChar": 33
+      },
+      "revId": "0a0440e59f7a5892ce425b27f53b2fabe7e73d81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
