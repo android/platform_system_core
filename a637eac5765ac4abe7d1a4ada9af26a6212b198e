@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6b1ab3b5_e60d5eab",
+        "filename": "debuggerd/debuggerd.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-01-21T00:41:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bc55323_77bd4288",
+      "revId": "a637eac5765ac4abe7d1a4ada9af26a6212b198e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bc55323_b7496a2e",
         "filename": "debuggerd/debuggerd.cpp",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2015-01-16T03:48:50Z",
       "side": 1,
       "message": "(there is actually a DEBUGGER64_SOCKET_NAME you can use. DEBUGGER_SOCKET_NAME is meant to be \"the one appropriate for my binary\u0027s arch\".)",
+      "revId": "a637eac5765ac4abe7d1a4ada9af26a6212b198e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab202bdf_6e778bfa",
+        "filename": "debuggerd/debuggerd.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-01-21T00:41:01Z",
+      "side": 1,
+      "message": "This case is for both 32 bit and 64 bit, so that\u0027s why I used this one.",
+      "parentUuid": "6bc55323_b7496a2e",
       "revId": "a637eac5765ac4abe7d1a4ada9af26a6212b198e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "8b2527f1_0acd1bc7",
+        "filename": "debuggerd/debuggerd.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-01-21T00:41:01Z",
+      "side": 1,
+      "message": "It\u0027s made non-blocking in the read_request function. However, when I was testing and forced the write to do 1 byte at a time, I saw this error. I think it\u0027s unlikely to ever happen in real life though.",
+      "parentUuid": "6bc55323_f7f13272",
+      "revId": "a637eac5765ac4abe7d1a4ada9af26a6212b198e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abdbcb04_e49ae279",
         "filename": "include/cutils/debugger.h",
         "patchSetId": 4
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "4b17af8b_e530b606",
+        "filename": "include/cutils/debugger.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-01-21T00:41:01Z",
+      "side": 1,
+      "message": "It\u0027s used in two places that are not C++ (frameworks/native/cmds/dumpstate/dumpstate.c, system/core/libcutils/utils.c). I don\u0027t think I can easily change utils.c to C++ right now. I\u0027ll see about converting all of dumpstate to C++ at some point.",
+      "parentUuid": "abdbcb04_e49ae279",
+      "revId": "a637eac5765ac4abe7d1a4ada9af26a6212b198e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bc55323_97d54ecb",
         "filename": "include/cutils/debugger.h",
         "patchSetId": 4
@@ -81,6 +153,24 @@
       "writtenOn": "2015-01-16T03:48:50Z",
       "side": 1,
       "message": "i understand why the address needs to be uint64_t, but what about the others? would it be clear to specify __packed__ instead and keep the natural types?",
+      "revId": "a637eac5765ac4abe7d1a4ada9af26a6212b198e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b17af8b_250acec8",
+        "filename": "include/cutils/debugger.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-01-21T00:41:01Z",
+      "side": 1,
+      "message": "I changed this to packed and changed all but the enum back to the natural type.",
+      "parentUuid": "6bc55323_97d54ecb",
       "revId": "a637eac5765ac4abe7d1a4ada9af26a6212b198e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
