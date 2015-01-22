@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbc55f7a_7f436792",
+        "filename": "logd/README.property",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-22T15:40:02Z",
+      "side": 1,
+      "message": "In https://android-review.googlesource.com/#/c/124320 aklogd was always available, not just in userdebug and eng builds.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 54
+      },
+      "revId": "5223dcc6fa6605400ece6201419426cefc85400c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bb21712_812dbe01",
+        "filename": "logd/main.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-22T15:40:02Z",
+      "side": 1,
+      "message": "In https://android-review.googlesource.com/#/c/124320 the proposal there is to always make the klogd available, not just for userdebug and eng. get_bool_svelte should be a low_ram config only to meet this requirement.\n\nThe question is, do we _want_ klogd available in user builds, and not just a convenience during development? logs become much less accessible in user builds, and are only visible in their entirety in a bugreport. The bugreport resorts to dmesg and last_kmsg so there is no need for \u0027logcat -b kernel\u0027 to be extracted.\n\n@yong.yau: how badly do you want/need this in a user build?",
+      "range": {
+        "startLine": 144,
+        "startChar": 4,
+        "endLine": 144,
+        "endChar": 56
+      },
+      "revId": "5223dcc6fa6605400ece6201419426cefc85400c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
