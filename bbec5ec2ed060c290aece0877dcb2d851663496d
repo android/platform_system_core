@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bc7afd5_45a94a18",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-24T00:00:59Z",
+      "side": 1,
+      "message": "Why must the wire-format be changed and transmitted to logger? The message could be generated here in the caller as a prefix message before issuing the resumed content. A little more complicated, but far less disruptive.\n\nBut may be a better approach especially given that this value has a different counter when transmitted to pstore (See commit that happened today).\n\n(I had a prototype doing so some time ago, resorted to increasing /proc/sys/net/unix/max_dgram_qlen instead to stop the noise).",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 35
+      },
+      "revId": "bbec5ec2ed060c290aece0877dcb2d851663496d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bc43bd1_87c22867",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-24T00:00:59Z",
+      "side": 1,
+      "message": "Sorry to disappoint, a non-trivial rebase will be required, we changed the way we handle wire format _today_ to make it scalable ;-{",
+      "range": {
+        "startLine": 188,
+        "startChar": 8,
+        "endLine": 203,
+        "endChar": 25
+      },
+      "revId": "bbec5ec2ed060c290aece0877dcb2d851663496d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
