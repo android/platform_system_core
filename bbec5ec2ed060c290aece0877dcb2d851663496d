@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6b26339e_49ff85bc",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1005146
+      },
+      "writtenOn": "2015-01-26T21:36:43Z",
+      "side": 1,
+      "message": "If I\u0027m understanding you correctly, you\u0027re suggesting a separate write to the logd socket when the count \u003e 0, followed by the original write?  That could work, but introduces some extra permutations.  Would we still try to write the original message if the attempt to write the drop message gets EAGAIN?\n\nI\u0027ll do some studying of the new commit for pstore and think about that a bit in this context.  It\u0027s totally new to me.",
+      "parentUuid": "4bc7afd5_45a94a18",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 35
+      },
+      "revId": "bbec5ec2ed060c290aece0877dcb2d851663496d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bc43bd1_87c22867",
         "filename": "liblog/logd_write.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-01-24T00:00:59Z",
       "side": 1,
       "message": "Sorry to disappoint, a non-trivial rebase will be required, we changed the way we handle wire format _today_ to make it scalable ;-{",
+      "range": {
+        "startLine": 188,
+        "startChar": 8,
+        "endLine": 203,
+        "endChar": 25
+      },
+      "revId": "bbec5ec2ed060c290aece0877dcb2d851663496d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab2cab7b_2bafa5a0",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1005146
+      },
+      "writtenOn": "2015-01-26T21:36:43Z",
+      "side": 1,
+      "message": "No problem.  I\u0027ll get familiar with the upstream changes and try again.",
+      "parentUuid": "2bc43bd1_87c22867",
       "range": {
         "startLine": 188,
         "startChar": 8,
