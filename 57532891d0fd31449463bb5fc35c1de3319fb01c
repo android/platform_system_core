@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "57fbd733_c4ca32cd",
+        "filename": "include/cutils/threads.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-27T15:53:52Z",
+      "side": 1,
+      "message": "There are some references to localized fragment spaces needing squashing here and there. Only if respun, not a priority. Only do localized ones, a complete squash may result in merge conflict issues.",
+      "range": {
+        "startLine": 65,
+        "startChar": 62,
+        "endLine": 65,
+        "endChar": 63
+      },
+      "revId": "57532891d0fd31449463bb5fc35c1de3319fb01c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7ec137b_56eed242",
+        "filename": "include/cutils/threads.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-27T15:53:52Z",
+      "side": 1,
+      "message": "If respun, squash this space.",
+      "range": {
+        "startLine": 102,
+        "startChar": 16,
+        "endLine": 102,
+        "endChar": 17
+      },
+      "revId": "57532891d0fd31449463bb5fc35c1de3319fb01c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57fbd733_e4bd2e45",
+        "filename": "include/cutils/threads.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-27T15:53:52Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 135,
+        "startChar": 42,
+        "endLine": 135,
+        "endChar": 43
+      },
+      "revId": "57532891d0fd31449463bb5fc35c1de3319fb01c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7ec137b_76f9d60a",
+        "filename": "include/log/log.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-27T15:53:52Z",
+      "side": 1,
+      "message": "not in sorted order, one line could be moved to correct this.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 18
+      },
+      "revId": "57532891d0fd31449463bb5fc35c1de3319fb01c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7e7c792_77cc32be",
         "filename": "include/log/logd.h",
         "patchSetId": 2
@@ -13,6 +105,277 @@
       "writtenOn": "2015-01-27T06:53:10Z",
       "side": 1,
       "message": "this seems like a bug too. but then so does the fact that \u003clog.h\u003e includes \u003clogd.h\u003e!\n\n(and if the comment on L25 is true, why is all this in a public header file?)",
+      "revId": "57532891d0fd31449463bb5fc35c1de3319fb01c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57fbd733_84cd4aed",
+        "filename": "include/log/logd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-27T15:53:52Z",
+      "side": 1,
+      "message": "There are no flies on me (truly, I make this up while I go along)\n\nlogd.h is for the prototypes used in liblog and for public consumption and log.h is for everyone else to get the access macros.\n\nThus private only in the sense that it is shared between internal use and external, and the users are to only utilize the macros as their abstract interface. Direct calls to the liblog functions is undesirable.\n\nI read the comment above as the headers being used by the liblog C files (system), and have no usefulness to any (external) consumers that are reading this for the API references.\n\nA (separate?) cleanup could be to strip this file down to bare minimum API prototypes perhaps even with a comment to not call the liblog functions directly as they are free to change, and let the liblog (and etc) read their own system include files.\n\nThe liblog reader functions notwithstanding in the API below, they have no macros to wrap them up. We want them to use exec logcat, but sometimes one wants a native function (tombstone, jni, logcat currently)",
+      "parentUuid": "d7e7c792_77cc32be",
+      "revId": "57532891d0fd31449463bb5fc35c1de3319fb01c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57fbd733_440982a3",
+        "filename": "libcutils/threads.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-27T15:53:52Z",
+      "side": 1,
+      "message": "squash space",
+      "range": {
+        "startLine": 10,
+        "startChar": 70,
+        "endLine": 10,
+        "endChar": 71
+      },
+      "revId": "57532891d0fd31449463bb5fc35c1de3319fb01c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57fbd733_04137ad5",
+        "filename": "libcutils/threads.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-27T15:53:52Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 11,
+        "startChar": 68,
+        "endLine": 11,
+        "endChar": 69
+      },
+      "revId": "57532891d0fd31449463bb5fc35c1de3319fb01c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7e7c792_d7577e0d",
+        "filename": "libcutils/threads.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-27T15:53:52Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 13,
+        "startChar": 70,
+        "endLine": 13,
+        "endChar": 71
+      },
+      "revId": "57532891d0fd31449463bb5fc35c1de3319fb01c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7ec137b_163a8a45",
+        "filename": "libcutils/threads.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-27T15:53:52Z",
+      "side": 1,
+      "message": "if respin, squash space",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 4
+      },
+      "revId": "57532891d0fd31449463bb5fc35c1de3319fb01c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7ec137b_f636065f",
+        "filename": "libcutils/threads.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-27T15:53:52Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 28,
+        "startChar": 63,
+        "endLine": 28,
+        "endChar": 64
+      },
+      "revId": "57532891d0fd31449463bb5fc35c1de3319fb01c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57fbd733_84ff8a09",
+        "filename": "libcutils/threads.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-27T15:53:52Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 4
+      },
+      "revId": "57532891d0fd31449463bb5fc35c1de3319fb01c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7e7c792_f75a8237",
+        "filename": "libcutils/threads.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-27T15:53:52Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 4
+      },
+      "revId": "57532891d0fd31449463bb5fc35c1de3319fb01c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57fbd733_c475921b",
+        "filename": "libutils/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-27T15:53:52Z",
+      "side": 1,
+      "message": "If you respin, squash space as per Android Coding standard.",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 4
+      },
+      "revId": "57532891d0fd31449463bb5fc35c1de3319fb01c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57fbd733_a472862f",
+        "filename": "libutils/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-27T15:53:52Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 4
+      },
+      "revId": "57532891d0fd31449463bb5fc35c1de3319fb01c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7e7c792_d7809e25",
+        "filename": "libutils/Timers.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-27T15:53:52Z",
+      "side": 1,
+      "message": "Sorted order, good. System headers before Android header before local headers.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 17
+      },
+      "revId": "57532891d0fd31449463bb5fc35c1de3319fb01c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7e7c792_974a166a",
+        "filename": "libutils/misc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-27T15:53:52Z",
+      "side": 1,
+      "message": "On its own, replacing HAVE_PTHREADS with !_WIN32 may be considered narrow-minded; however any OS without pthreads (or pthreads wrapper) is probably narrow minded ;-}",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 20
+      },
       "revId": "57532891d0fd31449463bb5fc35c1de3319fb01c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
