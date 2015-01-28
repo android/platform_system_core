@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d72fc7b3_22a0ee0b",
+        "filename": "include/log/logger.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-28T22:43:54Z",
+      "side": 1,
+      "message": "Not proud of this API, but it does permit testing.\n\n__android_set_log_backend(enum type);\n\n?",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 31
+      },
+      "revId": "e4d04a757c9c41dc1b192b0a5ae9dae10ac6d022",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7341308_c15dc232",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-28T22:43:54Z",
+      "side": 1,
+      "message": "At this point it would be \u0027nice\u0027 to be able to reclaim the 4KB buffer associated with the payload and move it back into the zero-page queue. We can do so by making the payload individually pre-allocated, and in this thread free it, then calloc it again.\n\nThis would help svelte concerns.",
+      "range": {
+        "startLine": 638,
+        "startChar": 9,
+        "endLine": 638,
+        "endChar": 9
+      },
+      "revId": "e4d04a757c9c41dc1b192b0a5ae9dae10ac6d022",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57ae7766_8c2c6b96",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-28T22:43:54Z",
+      "side": 1,
+      "message": "This is only zero syscall on 64 bit platforms. It incurs a syscall on 32 bit platforms. Lets consider ifdef\u0027ing this to the Consumer-side of the buffer to remove the syscall overhead; the compromise being our timestamp will lag.",
+      "range": {
+        "startLine": 679,
+        "startChar": 4,
+        "endLine": 679,
+        "endChar": 39
+      },
+      "revId": "e4d04a757c9c41dc1b192b0a5ae9dae10ac6d022",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57ae7766_2c3537d5",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-28T22:43:54Z",
+      "side": 1,
+      "message": "We also would like the background thread to be at BATCH priority. This means it could be delayed as much as 2/HZ (20ms) from executing on moderate to heavy load.",
+      "range": {
+        "startLine": 710,
+        "startChar": 8,
+        "endLine": 720,
+        "endChar": 9
+      },
+      "revId": "e4d04a757c9c41dc1b192b0a5ae9dae10ac6d022",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57ae7766_6ce24fdf",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-28T22:43:54Z",
+      "side": 1,
+      "message": "ugly bag of mostly water, move cleanup to thread; drop the stopped boolean.",
+      "range": {
+        "startLine": 735,
+        "startChar": 0,
+        "endLine": 758,
+        "endChar": 5
+      },
+      "revId": "e4d04a757c9c41dc1b192b0a5ae9dae10ac6d022",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7341308_219d8e7c",
+        "filename": "liblog/tests/liblog_benchmark.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-28T22:43:54Z",
+      "side": 1,
+      "message": "Bad move ex-lax (I can say this to myself, I wrote the code), with screen off this causes the CPU to clock down. We need to select a sleep that does not cause CPU to down-clock, but allow logd to catch up so that we do not get the automatic EAGAIN when the socket it full.\n\nRedefine light load not as mostly idle, but instead as loping along.",
+      "range": {
+        "startLine": 134,
+        "startChar": 7,
+        "endLine": 134,
+        "endChar": 46
+      },
+      "revId": "e4d04a757c9c41dc1b192b0a5ae9dae10ac6d022",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
