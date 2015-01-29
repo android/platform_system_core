@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "57df5723_5e8c151d",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-01-29T22:45:04Z",
+      "side": 1,
+      "message": "How does this compare to LOGGER_ENTRY_MAX_PAYLOAD ?  It looks like it\u0027s a difference of sizeof(uint16_t) and sizeof(android_pmsg_log_header_t) ?  Should LOGGER_ENTRY_MAX_PAYLOAD be used instead of starting with 4*1024 in case of future changes to that value?",
+      "range": {
+        "startLine": 538,
+        "startChar": 26,
+        "endLine": 538,
+        "endChar": 84
+      },
+      "revId": "ade3b1739da33a833615c29668afe32e2eb478ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77da9b34_9f5db333",
         "filename": "liblog/logd_write.c",
         "patchSetId": 3
@@ -65,6 +88,23 @@
         "endLine": 669,
         "endChar": 29
       },
+      "revId": "ade3b1739da33a833615c29668afe32e2eb478ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7998784_f2ab489a",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-01-29T22:45:04Z",
+      "side": 1,
+      "message": "Is the expected success value of this function 0 or the # of bytes written?  __write_log_to_daemon() looks to return the # of bytes written.\n\nDo the semantics change since this function doesn\u0027t actually write the bytes but rather queues them up for backend writing?",
       "revId": "ade3b1739da33a833615c29668afe32e2eb478ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
