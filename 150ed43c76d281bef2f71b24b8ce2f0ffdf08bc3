@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7b12b0e_3e13a584",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-30T16:43:34Z",
+      "side": 1,
+      "message": "Wake up on timeout to deliver pending or roughly when half full to properly batch?",
+      "range": {
+        "startLine": 587,
+        "startChar": 0,
+        "endLine": 588,
+        "endChar": 47
+      },
+      "revId": "150ed43c76d281bef2f71b24b8ce2f0ffdf08bc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7b12b0e_bb4907a7",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-30T16:43:34Z",
+      "side": 1,
+      "message": "Does not defer to kernel, no syscall.",
+      "range": {
+        "startLine": 662,
+        "startChar": 4,
+        "endLine": 662,
+        "endChar": 33
+      },
+      "revId": "150ed43c76d281bef2f71b24b8ce2f0ffdf08bc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37a823a2_1d3b5318",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-30T16:43:34Z",
+      "side": 1,
+      "message": "syscall to futex if busy. If one writer in process, never hits a syscall.",
+      "range": {
+        "startLine": 669,
+        "startChar": 0,
+        "endLine": 669,
+        "endChar": 24
+      },
+      "revId": "150ed43c76d281bef2f71b24b8ce2f0ffdf08bc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7b12b0e_9b4e4bab",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-30T16:43:34Z",
+      "side": 1,
+      "message": "cost of copy. We could optimize by unravelling the loop given we already know the maximum is not that high, but would it save us much?",
+      "range": {
+        "startLine": 681,
+        "startChar": 0,
+        "endLine": 695,
+        "endChar": 5
+      },
+      "revId": "150ed43c76d281bef2f71b24b8ce2f0ffdf08bc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37a823a2_60062c43",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-30T16:43:34Z",
+      "side": 1,
+      "message": "sem_post carries a syscall to futex if there is a waiter. This is the most likely scenario ... we need to change this to wake up when half full, or on timed wait (in the context of the background thread).",
+      "range": {
+        "startLine": 699,
+        "startChar": 4,
+        "endLine": 699,
+        "endChar": 23
+      },
+      "revId": "150ed43c76d281bef2f71b24b8ce2f0ffdf08bc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7c0a76a_ba4911a7",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-01-30T16:43:34Z",
+      "side": 1,
+      "message": "as noted above, in single thread no waiters.",
+      "range": {
+        "startLine": 720,
+        "startChar": 3,
+        "endLine": 720,
+        "endChar": 24
+      },
+      "revId": "150ed43c76d281bef2f71b24b8ce2f0ffdf08bc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
