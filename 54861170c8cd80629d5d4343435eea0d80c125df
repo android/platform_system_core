@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "97854f8c_033550d4",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-02-03T01:53:50Z",
+      "side": 1,
+      "message": "BM_log_light_overhead_fifo benchmarking results reports the overhead of this call is 33us for a total overhead of 36211ns :-(. 3.10 vintage Linux will immediately preempt this thread (even if SCHED_FIFO), and run the Consumer thread to completion before returning to this thread. This was particularly shocking given the SCHED_FIFO caller\u0027s priority.\n\nI have tried replacing sem_post(\u0026b-\u003efull) with a pipe(2), triggering a third thread to deploy the sem_post, and various futex tricks to no avail. Linux insists (correctly BTW, except for our low-latency goal) that it is more efficient (for throughput) to run the Consumer thread than to stick around in this Producer thread.\n\nThe only mitigation that worked so far was to switch to polling in the Consumer thread. Polling allowed us to reduce the BM_log_light_overhead_fifo results to less than 3000ns total overhead. We view polling as unacceptable for a General Purpose feature like this as it consumes cycles. If we must poll, then we are considering it best to leave things alone and let the individual applications form their own latency mitigation strategies?\n\n:-(\n\nWe will be exploring more ideas (place consumer thread into runnable state lazily), and come to terms with a polling approach.",
+      "range": {
+        "startLine": 738,
+        "startChar": 4,
+        "endLine": 738,
+        "endChar": 23
+      },
+      "revId": "54861170c8cd80629d5d4343435eea0d80c125df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b780937a_6786262a",
         "filename": "liblog/logd_write.c",
         "patchSetId": 5
@@ -13,6 +36,24 @@
       "writtenOn": "2015-02-03T01:43:58Z",
       "side": 1,
       "message": "Should this be __write_to_log_daemon or __write_to_log_init() ?  On line 855, we transition to __write_to_log_init() when leaving fifo mode.  A quick thought is that both places should transition to the same function.",
+      "revId": "54861170c8cd80629d5d4343435eea0d80c125df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97854f8c_83640034",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-02-03T01:53:50Z",
+      "side": 1,
+      "message": "\"This init function knows too much\"(tm).\n\nAll the activities and locking is identical here as it is for the daemon init variant minus the FIFO init goo; so it is acceptable to go straight to the handler here.\n\nThis needs a comment to state that fact.\n\nThis is not a frontend selection API as below where we are crippled regarding assumptions, this is an internal initialization handler that if any things fails, it must orderly transition to LOGGER_NORMAL configuration as its backup plan.",
+      "parentUuid": "b780937a_6786262a",
       "revId": "54861170c8cd80629d5d4343435eea0d80c125df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
