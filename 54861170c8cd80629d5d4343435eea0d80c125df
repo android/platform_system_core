@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "7c0fe024_7ac655a1",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-02-03T22:15:53Z",
+      "side": 1,
+      "message": "Consider polling for a short period of time before considering going to sleep? The cost in the Producer is too high once we go to sleep on a semaphore.",
+      "range": {
+        "startLine": 612,
+        "startChar": 25,
+        "endLine": 612,
+        "endChar": 43
+      },
+      "revId": "54861170c8cd80629d5d4343435eea0d80c125df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc10cc40_e0ccf66a",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-02-03T22:15:53Z",
+      "side": 1,
+      "message": "\"and triggers a wakeup to the Consumer worker\"\n\nConfirmed that the Consumer worker is not started until the caller hits a resource limit. Have confirmed that futex on a N9 (our worst case product for context overhead) introduces a total of 19us (at full clock rate) period of time inside the kernel making arrangements for a sleeping Consumer worker to wake up.\n\nfutex has also been confirmed as the cheapest means for waking up a thread",
+      "range": {
+        "startLine": 735,
+        "startChar": 7,
+        "endLine": 735,
+        "endChar": 47
+      },
+      "revId": "54861170c8cd80629d5d4343435eea0d80c125df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97854f8c_033550d4",
         "filename": "liblog/logd_write.c",
         "patchSetId": 5
