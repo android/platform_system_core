@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cd52078_07f0f66a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-02-06T21:51:49Z",
+      "side": 1,
+      "message": "Stop using the term low-latency, switch to using overhead!",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "b2053ffc4796234cfb17feec4b6132bb53753ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cd52078_87e346aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-02-06T21:51:49Z",
+      "side": 1,
+      "message": "I am still not 100% comfortable with this decision as it involves polling every 800ns for a period of 100ms before deciding to go to sleep on a sem_wait.\n\nPolling will result in issues with CPUs going to idle and thus suspend. The price to battery is too high, the callers (at SCHED_FIFO) need to be able to live with the 6us(hot) to 30us(low CPU freq) of possible overhead introduced by the futex wakeup.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 77
+      },
+      "revId": "b2053ffc4796234cfb17feec4b6132bb53753ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
