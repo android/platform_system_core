@@ -52,6 +52,24 @@
       "revId": "f65f8b35880fe4406c5edee38b0d8ab3995a3929",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "111ecf59_3400f0e0",
+        "filename": "init/init_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-02-07T16:41:37Z",
+      "side": 1,
+      "message": "i think ghartman is saying the opposite of what i think nnk understood: that as long as this is just equivalent to an anonymous one-shot service, it\u0027s not very useful. he needs it to block init from moving forward and running anything else until the child exits. so when this is something worth checking in, it\u0027ll be more obviously distinct from one-shot services. (though it might be worth explicitly calling out the relationship and differences in the documentation.)\n\nwe should definitely talk to the sony guys next week, since they seem to have some experience with using exec, and my aim is to get something that everyone can use.\n\n(and, yes, we should move the property startup earlier in init so that an exec\u0027ed binary can set properties earlier than they can with this change. i was going to do that as a separate patch though.)",
+      "parentUuid": "51292784_2e42e752",
+      "revId": "f65f8b35880fe4406c5edee38b0d8ab3995a3929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
