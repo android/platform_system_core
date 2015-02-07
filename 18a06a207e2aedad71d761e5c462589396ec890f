@@ -52,6 +52,24 @@
       "revId": "18a06a207e2aedad71d761e5c462589396ec890f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71f62b4b_c2e90488",
+        "filename": "libsparse/include/sparse/sparse.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-02-07T03:45:28Z",
+      "side": 1,
+      "message": "_LARGEFILE64_SOURCE is a no-op with bionic --- all it does is make the types and functions with 64 in their name (off64_t, lseek64, et cetera) available, and they\u0027re always available with bionic.\n\n_FILE_OFFSET_BITS\u003d64 is the one that should make off_t actually be off64_t and lseek be lseek64, but bionic doesn\u0027t have that. my concern is stdio, because that then effectively gives us two incompatible LP32 stdio ABIs (LP32 struct FILE contains 32-bit offsets), but i\u0027ll knock up a quick experiment that (a) makes _FILE_OFFSET_BITS\u003d64 work for all the functions it can work for and (b) makes the troublesome functions fail to compile.",
+      "parentUuid": "fcc030c1_6380c225",
+      "revId": "18a06a207e2aedad71d761e5c462589396ec890f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
