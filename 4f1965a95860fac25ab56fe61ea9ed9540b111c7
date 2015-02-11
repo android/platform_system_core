@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16cfa548_8c9ea73f",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-02-11T15:42:30Z",
+      "side": 1,
+      "message": "By definition, the Android Logger is non-blocking and must be low overhead. One can not put a sleep inline to this call.\n\nThe API specifies that if the log message returns EBUSY, and the caller _must_ have the message delivered, they can loop. This is not advised in any case.",
+      "range": {
+        "startLine": 274,
+        "startChar": 1,
+        "endLine": 274,
+        "endChar": 40
+      },
+      "revId": "4f1965a95860fac25ab56fe61ea9ed9540b111c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
