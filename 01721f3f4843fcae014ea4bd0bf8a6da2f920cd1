@@ -34,6 +34,24 @@
       "revId": "01721f3f4843fcae014ea4bd0bf8a6da2f920cd1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b4cdc89_47de301e",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-02-13T16:47:17Z",
+      "side": 1,
+      "message": "for next time, we did add a comment to the cutils include file:\n\n/*\n * A handful of basic atomic operations.\n * THESE ARE HERE FOR LEGACY REASONS ONLY.  AVOID.\n *\n * PREFERRED ALTERNATIVES:\n * - Use C++/C/pthread locks/mutexes whenever there is not a\n *   convincing reason to do otherwise.  Note that very clever and\n *   complicated, but correct, lock-free code is often slower than\n *   using locks, especially where nontrivial data structures\n *   are involved.\n * - C11 stdatomic.h.\n * - Where supported, C++11 std::atomic\u003cT\u003e .\n *\n * PLEASE STOP READING HERE UNLESS YOU ARE TRYING TO UNDERSTAND\n * OR UPDATE OLD CODE.\n\nsadly we didn\u0027t have the balls to add #warning. even ignoring vendor code, there\u0027s a *lot* of code using this and its [also] evil libutils twin: https://cs.corp.google.com/#search/\u0026q\u003dinclude.*utils/atomic.h%20-file:vendor/%20-file:device/\u0026sq\u003dpackage:%5Eandroid$\u0026type\u003dcs\u0026m\u003d100\u0026sort\u003d1",
+      "parentUuid": "2b9440fe_fdf04798",
+      "revId": "01721f3f4843fcae014ea4bd0bf8a6da2f920cd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
