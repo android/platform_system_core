@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b447857_af749932",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-02-13T00:39:47Z",
+      "side": 1,
+      "message": "\u0027dropped\u0027 can get damaged by multiple threads feeding log messages at the same time. We can not afford to use locking as it adds considerable overhead. Explore means to locklessly(sic) improve the reliability of the \u0027dropped\u0027 value.\n\nWhat does not get lost in the shuffle is that this event tells us messages were dropped, regardless if the number is correct or not. This piece of information is more valuable than the quantity.",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 5
+      },
+      "revId": "2353fa6a306f74f599e162a46616bc3378124278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b2600b6_d07782b6",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-02-13T00:39:47Z",
+      "side": 1,
+      "message": "We should limit to INT32_MAX/",
+      "range": {
+        "startLine": 310,
+        "startChar": 8,
+        "endLine": 310,
+        "endChar": 18
+      },
+      "revId": "2353fa6a306f74f599e162a46616bc3378124278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
