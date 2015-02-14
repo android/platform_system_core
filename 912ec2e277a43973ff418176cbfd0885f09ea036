@@ -99,6 +99,24 @@
       "revId": "912ec2e277a43973ff418176cbfd0885f09ea036",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b69a006_98d3395f",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-02-14T17:13:01Z",
+      "side": 1,
+      "message": "Ok, I will need to be clearer about my reasoning and will detail why and my architectural concerns. You may have forced my hand to consider adding a README or local comment to this source submission.\n\nFirst off, the counter is a can not happen and meant to debug and notify about a structural issue. If it happens, the integrator/vendor/partner uses this as a signal to increase the value they tuned /proc/sys/net/unix/max_dgram_qlen; or realize they are producing spam or a Denial Of Service to the logging subsystem and take action to reduce it to a reasonable level. One missed log message is enough, and reason enough to take these mitigating actions. It is _not_ meant to aid triage by telling the developer there are missed message and let them ignore the underlying problem(s).\n\nBy sending the message from upstream we are taking advantage of a KISS design, but with the knowledge we are adding to the logging pressure when doing so by slipping the message through the very same log entry point that is prostrated.\n\nCan not handle them the same way, the other errors occur when the logger is typically incapable of propagating them (eg: selinux MAC violations to the sockets, DAC permission to access the socket, logger crashing and forgetting the logs, logger stopped). The only one we can deal with is ENOTCONN, and it is handled above, and if it continues, means the logger is likely stopped. Once restarted, if we take generic action, the logger will get a flurry of lost message events from _all_ participants right at the _beginning_ of the log (a \"duh, what did you think?\"). That situation signals a complete truncation of the logs.\n\nIn the past, under many similar situations outlined above in other server projects, we already have a perfect storm, not contributing to it, and not producing messages that are meaningless to the logger data flow or result in an increase pressure on the logger unnecessarily.\n\nThis is all in the name of graceful failure modes. I have experienced dogpiles many times in my life, they often do not bode well for the developer and usually result in other engineers muttering about the heritage and experience of that developer ;-} lol\n\nI will now consider how I can say this in a manner that is clear and concise ...",
+      "parentUuid": "6b0c7878_2fc3c993",
+      "revId": "912ec2e277a43973ff418176cbfd0885f09ea036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
