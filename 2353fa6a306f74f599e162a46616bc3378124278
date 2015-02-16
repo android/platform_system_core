@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2b17e08c_c53e5a02",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1005146
+      },
+      "writtenOn": "2015-02-16T14:44:06Z",
+      "side": 1,
+      "message": "Only logging this into the events stream eliminates something we found valuable.  Our perspective is that of somebody analyzing the content of the logs.  If I see log message A in thread X, then later see log message C in thread X, and I expected to see log message B in thread X in between, but didn\u0027t, I want to see the \"Dropped X\" messages for thread X, so that I can distinguish between a log drop and an actual bug.",
+      "range": {
+        "startLine": 222,
+        "startChar": 20,
+        "endLine": 222,
+        "endChar": 33
+      },
+      "revId": "2353fa6a306f74f599e162a46616bc3378124278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b447857_af749932",
         "filename": "liblog/logd_write.c",
         "patchSetId": 2
@@ -73,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "6b2558ee_67905236",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1005146
+      },
+      "writtenOn": "2015-02-16T14:44:06Z",
+      "side": 1,
+      "message": "My original proposal used __thread to avoid this, which is a GNU extension.  It looks like C++11 has a standard mechanism (thread_local), but I didn\u0027t try it.  I guess if you\u0027re using atomic on a normal static then you don\u0027t care about thread-specific counts.",
+      "parentUuid": "cb5e442b_d0c9b45e",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 5
+      },
+      "revId": "2353fa6a306f74f599e162a46616bc3378124278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b2600b6_d07782b6",
         "filename": "liblog/logd_write.c",
         "patchSetId": 2
@@ -84,6 +131,30 @@
       "writtenOn": "2015-02-13T00:39:47Z",
       "side": 1,
       "message": "We should limit to INT32_MAX/",
+      "range": {
+        "startLine": 310,
+        "startChar": 8,
+        "endLine": 310,
+        "endChar": 18
+      },
+      "revId": "2353fa6a306f74f599e162a46616bc3378124278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b17e08c_e541d67c",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1005146
+      },
+      "writtenOn": "2015-02-16T14:44:06Z",
+      "side": 1,
+      "message": "We went with only 8 bits, since we figured past 255 drops the precision just wasn\u0027t interesting anymore.  Our perspective is that of somebody analyzing the log content, though, not profiling the system for logging throughput.",
+      "parentUuid": "2b2600b6_d07782b6",
       "range": {
         "startLine": 310,
         "startChar": 8,
