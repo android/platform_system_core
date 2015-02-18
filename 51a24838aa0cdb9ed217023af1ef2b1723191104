@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab0d90eb_191ccb66",
+        "filename": "libpixelflinger/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000411
+      },
+      "writtenOn": "2015-02-18T10:49:22Z",
+      "side": 1,
+      "message": "the .arm suffix is very important to generate more speedy code on ARM, removing it here is likely to affect performance in a negative way. Please ensure it is kept when targetting ARM.\n\nDoes keeping the suffix affect x86 compilation? I thought it did not. If not, just leave it there. Otherwise, use ifdef .. else .. endif somewhere.",
+      "revId": "51a24838aa0cdb9ed217023af1ef2b1723191104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b5ed4d0_c6ff226c",
+        "filename": "libpixelflinger/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000411
+      },
+      "writtenOn": "2015-02-18T10:49:22Z",
+      "side": 1,
+      "message": "I would prefer that this was added only when building for x86. At a minimum, make it explicit with a comment.",
+      "revId": "51a24838aa0cdb9ed217023af1ef2b1723191104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b5ed4d0_66f18e9a",
+        "filename": "libpixelflinger/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000411
+      },
+      "writtenOn": "2015-02-18T10:49:22Z",
+      "side": 1,
+      "message": "same here, this includes should only be added when targetting x86.",
+      "revId": "51a24838aa0cdb9ed217023af1ef2b1723191104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b5ed4d0_86b84ac4",
+        "filename": "libpixelflinger/pixelflinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000411
+      },
+      "writtenOn": "2015-02-18T10:49:22Z",
+      "side": 1,
+      "message": "I\u0027d recommend renaming GGLAssembler.h to GGLArmAssembler.h, and putting in GGLAssembler.h all the #if defined(...) .. #elif defined(...) #else .. #endif logic.",
+      "revId": "51a24838aa0cdb9ed217023af1ef2b1723191104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b69d873_07a4568e",
+        "filename": "libpixelflinger/scanline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000411
+      },
+      "writtenOn": "2015-02-18T10:49:22Z",
+      "side": 1,
+      "message": "Please let\u0027s keep things consistent and rename this to ANDROID_X86_CODEGEN",
+      "revId": "51a24838aa0cdb9ed217023af1ef2b1723191104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b5ed4d0_26d4f6f3",
+        "filename": "libpixelflinger/tests/codegen/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000411
+      },
+      "writtenOn": "2015-02-18T10:49:22Z",
+      "side": 1,
+      "message": "That\u0027s a *really* ugly dependency that is bound to break at some point in the future. We probably need an external/libenc first instead to de-couple the library from the runtime code before it is used here. Elliot, what do you think about this?",
+      "revId": "51a24838aa0cdb9ed217023af1ef2b1723191104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
