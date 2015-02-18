@@ -45,6 +45,29 @@
       "revId": "b2053ffc4796234cfb17feec4b6132bb53753ded",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b993cf9_62853237",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2015-02-18T22:18:48Z",
+      "side": 1,
+      "message": "I don\u0027t understand in what sense this is a \"write barrier\".  You mean \"barrier\" in the memory ordering or pthread_barrier/OpenMP sense?\n\nIt looks to me like the moral equivalent of an empty critical section, which probably does not ensure much in terms of memory ordering.  (There are some heated debates on that subject, but I think it should not.  It is reasonably likely that on ARMv8 it eventually will not, but there are lots of uncertainties before we get there.)\n\nIt does wait for existing writers to complete.  But it\u0027s unclear to me why a new one couldn\u0027t enter the critical section right after the \"fifo_write_barrier\".",
+      "range": {
+        "startLine": 572,
+        "startChar": 34,
+        "endLine": 572,
+        "endChar": 47
+      },
+      "revId": "b2053ffc4796234cfb17feec4b6132bb53753ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
