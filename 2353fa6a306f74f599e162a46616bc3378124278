@@ -49,6 +49,54 @@
     },
     {
       "key": {
+        "uuid": "8885328c_406d8e93",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-02-23T16:03:51Z",
+      "side": 1,
+      "message": "Interleaving is somewhat specific to your re-logging infrastructure. I will look into an adjustment to logd/logcat (as hinted above) that will help address your concerns over interleaving.\n\nYour logging infrastructure breaks our security concerns over PII by storing the data in persistent files. What really needs to be done is that the bugreport mechanism needs to be adjusted to address your needs. Please advise on the shortcomings you have with bugreports so we may fix it to work for you.",
+      "parentUuid": "2b17e08c_08c887ac",
+      "range": {
+        "startLine": 222,
+        "startChar": 20,
+        "endLine": 222,
+        "endChar": 33
+      },
+      "revId": "2353fa6a306f74f599e162a46616bc3378124278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a880367a_01654a7f",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-02-23T16:03:51Z",
+      "side": 1,
+      "message": "I understand. Please be advised that your reaction is a result of FUD associated with a _bug_ that you had thankfully resolved in logd; hopefully never to bite us again.\n\nI am not comfortable with creating a statistical infrastructure to record TID and LogID for each associated log drop, then play them back. The goal is to re-establish trust, I am sorry I broke that trust. But I still need/want an inexpensive mechanism to report logging failures if they occur in order to take corrective action on the platform. This message is to be considered \u0027fatal\u0027 from the logging perspective and I need to make that more prominent to the observer is my take (I will think about that). My gut tell me that the event needs to be special-cased in logd or logcat ...\n\nAs for being able to continue to triage a problem in the face of data-loss, almost all scenarios one can comes up with will not benefit triage with a more specific loss statistic. The reaction should be to fix the platform problem (hopefully one line in init.rc, and not fix a bug in the logger) and stop limping along.\n\nNB: putting 10000 into /proc/sys/net/unix/dgram_max_qlen and restarting logd can be done without adjusting the platform init.rc file. That should have _bypassed_ the bug in logd that was fixed by your CL.",
+      "parentUuid": "2b17e08c_c53e5a02",
+      "range": {
+        "startLine": 222,
+        "startChar": 20,
+        "endLine": 222,
+        "endChar": 33
+      },
+      "revId": "2353fa6a306f74f599e162a46616bc3378124278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b447857_af749932",
         "filename": "liblog/logd_write.c",
         "patchSetId": 2
