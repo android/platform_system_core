@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a880367a_849fa8f8",
+        "filename": "liblog/Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-02-23T18:39:16Z",
+      "side": 1,
+      "message": "I think this is premature since the recovery image could easily deploy logd if we moved it up the chain into the ramdisk. The idea should be split into another CL?\n\nstderr is considered a /dev/null on the Recovery image. The current logging library will send the logging information to pstore _and_ logd (if it exists), and pstore information can be retrieved on reboot; a better solution than stderr. What about sending to /dev/kmsg? All these questions add doubt to the value of liblog-stderr for the Recovery image.\n\nThe static library is less useful, an accompanying shared library should be built for the recovery image to use perhaps?",
+      "parentUuid": "48a17a0b_f12c828d",
+      "revId": "aa77b8674b80d24b04c57901057568349400d2da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48a17a0b_31472a45",
         "filename": "liblog/stderr_log.c",
         "patchSetId": 3
@@ -30,6 +48,52 @@
       "writtenOn": "2015-02-23T17:25:51Z",
       "side": 1,
       "message": "this whole comment can just be removed.",
+      "revId": "aa77b8674b80d24b04c57901057568349400d2da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08722291_7425e8a2",
+        "filename": "liblog/stderr_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-02-23T18:39:16Z",
+      "side": 1,
+      "message": "Why not leverage logprint.c?\n\nI know not perfect or completely adaptable as-is, but it can form a standard for translating logging messages to logcat format.\n\nThere are repeating themes in this call that match andorid_log_printLogLine for instance ...",
+      "range": {
+        "startLine": 232,
+        "startChar": 3,
+        "endLine": 232,
+        "endChar": 60
+      },
+      "revId": "aa77b8674b80d24b04c57901057568349400d2da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a880367a_0422b818",
+        "filename": "liblog/stderr_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-02-23T18:39:16Z",
+      "side": 1,
+      "message": "whtie space",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 4
+      },
       "revId": "aa77b8674b80d24b04c57901057568349400d2da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
