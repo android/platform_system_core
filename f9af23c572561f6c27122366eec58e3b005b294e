@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "a5b2215a_91bb7cee",
+        "filename": "adb/transport.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-02-25T06:59:17Z",
+      "side": 1,
+      "message": "Each callback is left in the list after it is called, so calling run_transport_disconnects twice will call each callback twice. This behavior is fine, I just wanted to note that the callbacks either need to be written such that they can be called multiple times without error, or that this function should only be called once.\n\nRight now the latter case is true. It would probably make sense to guard this function against one of the state members in the atransport.\n\nI\u0027ll clarify all this in the comment.",
+      "parentUuid": "a5b2215a_91ec1c19",
+      "revId": "f9af23c572561f6c27122366eec58e3b005b294e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85b7dd4b_10f944d2",
         "filename": "adb/transport.c",
         "patchSetId": 2
@@ -47,6 +65,24 @@
       "writtenOn": "2015-02-25T06:30:35Z",
       "side": 1,
       "message": "is there a reason we don\u0027t just rewrite callers to isalnum?",
+      "revId": "f9af23c572561f6c27122366eec58e3b005b294e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5b2215a_5157540f",
+        "filename": "adb/transport.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-02-25T06:59:17Z",
+      "side": 1,
+      "message": "No. I had written the test before I had finished deduping minadbd, so I had still been avoiding making any source changes. This isn\u0027t needed any more though. Gerrit has decided I\u0027m not allowed to upload any more changes tonight though (work/life balance bot?), so I\u0027ll get to it tomorrow.",
+      "parentUuid": "85b7dd4b_10f944d2",
       "revId": "f9af23c572561f6c27122366eec58e3b005b294e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
