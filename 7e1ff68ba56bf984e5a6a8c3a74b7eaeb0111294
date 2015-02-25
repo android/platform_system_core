@@ -2,6 +2,91 @@
   "comments": [
     {
       "key": {
+        "uuid": "85b7dd4b_b0e79833",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-02-25T06:26:55Z",
+      "side": 1,
+      "message": "the C strings part isn\u0027t the real difference though. if it was, we\u0027d just refactor libutils so we could reuse that code.",
+      "revId": "7e1ff68ba56bf984e5a6a8c3a74b7eaeb0111294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5ad55fe_92c53c99",
+        "filename": "adb/transport.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1173,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-02-25T06:26:55Z",
+      "side": 1,
+      "message": "ah, i see..",
+      "revId": "7e1ff68ba56bf984e5a6a8c3a74b7eaeb0111294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "451c051f_563bb4c0",
+        "filename": "adb/transport.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1216,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-02-25T06:26:55Z",
+      "side": 1,
+      "message": "so just rewrite this as if (r \u003d\u003d -1) {} else {} ?",
+      "revId": "7e1ff68ba56bf984e5a6a8c3a74b7eaeb0111294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e55419b3_a328da2a",
+        "filename": "adb/transport.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-02-25T06:26:55Z",
+      "side": 1,
+      "message": "will it?",
+      "revId": "7e1ff68ba56bf984e5a6a8c3a74b7eaeb0111294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "451c051f_16413c2f",
+        "filename": "adb/transport.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-02-25T06:26:55Z",
+      "side": 1,
+      "message": "do you really mean if the fd was closed, or do you mean if the _other end_ of the fd is closed?",
+      "revId": "7e1ff68ba56bf984e5a6a8c3a74b7eaeb0111294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85b7dd4b_f0cac0a6",
         "filename": "adb/transport.h",
         "patchSetId": 2
@@ -30,6 +115,24 @@
       "writtenOn": "2015-02-25T06:15:07Z",
       "side": 1,
       "message": "This is taken right out of libutils/tests/file_test.cpp. I think there\u0027s a roughly identical copy in bionic, and there are probably more elsewhere. Might be worth promoting this into a real libutils API.",
+      "revId": "7e1ff68ba56bf984e5a6a8c3a74b7eaeb0111294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5b2215a_11d2ec59",
+        "filename": "adb/transport_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-02-25T06:26:55Z",
+      "side": 1,
+      "message": "the bionic one is more complicated, but, yeah, it\u0027s probably time to start sharing our test utilities.",
+      "parentUuid": "650749cc_17f4944f",
       "revId": "7e1ff68ba56bf984e5a6a8c3a74b7eaeb0111294",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
