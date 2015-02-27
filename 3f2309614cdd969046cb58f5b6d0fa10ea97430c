@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "223aa7a9_4dd87928",
+        "filename": "init/devices.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-02-27T19:27:30Z",
+      "side": 1,
+      "message": "This is wrong, you should never call __system_property_set directly.  Use property_set.\n\nI\u0027m not sure if setting properties from ueventd is even supported - ueventd is forked as a separate process to avoid deadlocks with the init process, but property_set requires a blocking RPC to init to modify the shared property area.  This might cause deadlocks if a verity event arrives while init is waiting for ueventd to process a module load firmware event.",
+      "range": {
+        "startLine": 941,
+        "startChar": 8,
+        "endLine": 941,
+        "endChar": 29
+      },
+      "revId": "3f2309614cdd969046cb58f5b6d0fa10ea97430c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
