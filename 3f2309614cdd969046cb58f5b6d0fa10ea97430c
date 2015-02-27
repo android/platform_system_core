@@ -22,6 +22,30 @@
       "revId": "3f2309614cdd969046cb58f5b6d0fa10ea97430c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a24e9754_718a7833",
+        "filename": "init/devices.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1058768
+      },
+      "writtenOn": "2015-02-27T20:24:02Z",
+      "side": 1,
+      "message": "I think this is the correct thing to do in ueventd, because:\n\n1) Calling init\u0027s property_set from ueventd causes almost immediate deadlocks, so it\u0027s not an option as you stated. I tested this at first.\n\n2) Linking libcutils with conflicting function names to init does not feel like a feasible solution, especially since property_set in libcutils simply wraps __system_property_set.\n\n3) Using __system_property_set in ueventd works, and ueventd sharing binary with init is already a special case.\n\nHere\u0027s some background on why I want to set a property here:\n\nThis uevent is sent when dm-verity discovers a corrupted block, most probably from the system partition. At this point, we cannot rely on programs in the system partition to function properly, which also means we cannot rely on them to handle the event.\n\nIn response to the event, we want to update the dm-verity state to start it in logging mode next time, and reboot the device. Specifically, ueventd will set the verity.state property when it sees the uevent and the device specific init.rc will be used to trigger state save and reboot.\n\nAn alternative to setting the property is to perform this directly from ueventd, but I think being able to configure the behavior in the device specific init.rc is far more appropriate than hardcoding the functionality to ueventd, especially since not all devices will support verified boot.",
+      "parentUuid": "223aa7a9_4dd87928",
+      "range": {
+        "startLine": 941,
+        "startChar": 8,
+        "endLine": 941,
+        "endChar": 29
+      },
+      "revId": "3f2309614cdd969046cb58f5b6d0fa10ea97430c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
