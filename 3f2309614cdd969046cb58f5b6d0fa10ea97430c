@@ -46,6 +46,30 @@
       "revId": "3f2309614cdd969046cb58f5b6d0fa10ea97430c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6231ffd0_ea0107eb",
+        "filename": "init/devices.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-02-27T20:29:03Z",
+      "side": 1,
+      "message": "__system_property_set cannot be called directly from any process other than pid 1.  It assumes a single writer, and writing to the property store from the ueventd process may corrupt all properties.  The property store should be read only, so if it succeeds that is a bug.  Even if you were to use the libcutils implementation it would still deadlock with init waiting on the property socket.",
+      "parentUuid": "a24e9754_718a7833",
+      "range": {
+        "startLine": 941,
+        "startChar": 8,
+        "endLine": 941,
+        "endChar": 29
+      },
+      "revId": "3f2309614cdd969046cb58f5b6d0fa10ea97430c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
