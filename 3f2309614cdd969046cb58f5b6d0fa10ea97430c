@@ -70,6 +70,30 @@
       "revId": "3f2309614cdd969046cb58f5b6d0fa10ea97430c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2223878f_a5dd7ee6",
+        "filename": "init/devices.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-02-27T20:32:37Z",
+      "side": 1,
+      "message": "Slight correction, __system_property_set doesn\u0027t write to the property area directly, it implements the RPC to init, but that will still deadlock eventually.  \n\nInit\u0027s property_set calls __system_property_add or __system_property_update to write to the property area directly, but that can\u0027t be done from ueventd.  Libcutils\u0027 property_set calls __system_property_set.",
+      "parentUuid": "6231ffd0_ea0107eb",
+      "range": {
+        "startLine": 941,
+        "startChar": 8,
+        "endLine": 941,
+        "endChar": 29
+      },
+      "revId": "3f2309614cdd969046cb58f5b6d0fa10ea97430c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
