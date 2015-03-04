@@ -97,6 +97,54 @@
     },
     {
       "key": {
+        "uuid": "f25ea2fc_98fb95fd",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1005146
+      },
+      "writtenOn": "2015-03-04T21:55:47Z",
+      "side": 1,
+      "message": "Understood and agree about the FUD.\n\nMaking the failure more prominent is exactly what I\u0027d like as well.  Absent some automated monitoring of the event log stream in all test setups (both passive and active), we\u0027re relying on those actually viewing the logs to let us know that it\u0027s broken.  The automated monitoring itself wouldn\u0027t really help in the case of a single user passing some logs along ad-hoc, but as you say maybe that\u0027s just the FUD talking.\n\nI suppose adding a smoke test to our CI that introduces some stress and then looks for the issue in the event stream would be a good thing regardless.\n\nThanks for the effort on this.",
+      "parentUuid": "a880367a_01654a7f",
+      "range": {
+        "startLine": 222,
+        "startChar": 20,
+        "endLine": 222,
+        "endChar": 33
+      },
+      "revId": "2353fa6a306f74f599e162a46616bc3378124278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f25ea2fc_3863698f",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1005146
+      },
+      "writtenOn": "2015-03-04T21:55:47Z",
+      "side": 1,
+      "message": "Bugreports work well for certain situations, but are too large of a hammer for many of the things we do, and too small of one for others.  I don\u0027t know how you could make them work well in all situations.  The RAM-based log buffers don\u0027t have enough depth for solving network-related issues or other things that manifest over time.\n\nAs for PII, we don\u0027t log to persistent files on consumer devices.  We use it for testing.",
+      "parentUuid": "8885328c_406d8e93",
+      "range": {
+        "startLine": 222,
+        "startChar": 20,
+        "endLine": 222,
+        "endChar": 33
+      },
+      "revId": "2353fa6a306f74f599e162a46616bc3378124278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b447857_af749932",
         "filename": "liblog/logd_write.c",
         "patchSetId": 2
