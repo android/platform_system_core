@@ -16,6 +16,24 @@
       "revId": "6d3cddb2e245738f0b78a758a83ebf2608865394",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "172a48bf_a9569d2b",
+        "filename": "libnetutils/ifc_utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-03-06T18:41:25Z",
+      "side": 1,
+      "message": "Can you elaborate more on this?\n\nifc_ctl_sock is a static variable declared on line 58. There are no functions in this file which return the file descriptor to the callers, so it\u0027s impossible for this file descriptor to leak outside of this code. None of this code in this file does an exec. \n\nIf this file descriptor doesn\u0027t have SOCK_CLOEXEC, then it will leak to exec\u0027d processes yet not be usable, since there\u0027s no way to query the FD number.\n\nI don\u0027t understand your concern.",
+      "parentUuid": "f72054e0_88c477bb",
+      "revId": "6d3cddb2e245738f0b78a758a83ebf2608865394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
