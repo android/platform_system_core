@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc69b5e5_976004bb",
+        "filename": "debuggerd/Elf.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2015-03-10T00:38:57Z",
+      "side": 1,
+      "message": "This method reads from the mmapped segment but code that\u0027s calling this works with file offsets;\n\nIn practice for the first segment offsets from the base address will work.\n\nBut there might be a situation with offset !\u003d vaddr + C; in this case this code might read invalid values.\n\nI think in general the code should explicitly use vaddr fields when working with mmapped segments of a library.",
+      "revId": "7516facaaae1a68fae290ec0cb3606ac8e88185c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c75c5b7_b37c389d",
+        "filename": "debuggerd/Elf.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2015-03-10T00:38:57Z",
+      "side": 1,
+      "message": "size_t?",
+      "range": {
+        "startLine": 93,
+        "startChar": 6,
+        "endLine": 93,
+        "endChar": 15
+      },
+      "revId": "7516facaaae1a68fae290ec0cb3606ac8e88185c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc667911_d856ade2",
+        "filename": "debuggerd/Elf.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2015-03-10T00:38:57Z",
+      "side": 1,
+      "message": "the name is a little bit misleading, offset?",
+      "range": {
+        "startLine": 94,
+        "startChar": 16,
+        "endLine": 94,
+        "endChar": 20
+      },
+      "revId": "7516facaaae1a68fae290ec0cb3606ac8e88185c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
