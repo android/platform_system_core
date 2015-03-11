@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcd37594_c7441e07",
+        "filename": "debuggerd/Elf.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-03-11T02:16:30Z",
+      "side": 1,
+      "message": "why? i\u0027d have expected either no #if (because there\u0027s no reason a 32-bit executable can\u0027t look at a 64-bit ELF file, or vice versa) or that you\u0027d check the EI_CLASS against this debuggerd\u0027s size (because we have one debuggerd for 32-bit processes and another for 64-bit processes, so any given debuggerd should only ever be looking at one EI_CLASS of ELF file).",
+      "revId": "1ff7d62810e47b494beef2210ebe172ee1940413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc88d5a6_dfe7bbdc",
+        "filename": "debuggerd/Elf.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-03-11T02:16:30Z",
+      "side": 1,
+      "message": "does this have to be in the header file?",
+      "revId": "1ff7d62810e47b494beef2210ebe172ee1940413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c4d0d5a_11f84cca",
+        "filename": "debuggerd/Elf.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-03-11T02:16:30Z",
+      "side": 1,
+      "message": "does this?\n\nwhat does the T stand for here? the usual \"type\" doesn\u0027t make sense.\n\nshould this really just be something like ElfBuildIdReader, and not inherit from anything? and the current \u0027Elf\u0027 class is just the data source, right? so that should be something like PtraceDataSource?",
+      "revId": "1ff7d62810e47b494beef2210ebe172ee1940413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c4d0d5a_51dbb469",
+        "filename": "debuggerd/tombstone.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-03-11T02:16:30Z",
+      "side": 1,
+      "message": "do we have to collect them all? there can be a *lot* of maps, especially in a crashing process.",
+      "revId": "1ff7d62810e47b494beef2210ebe172ee1940413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
