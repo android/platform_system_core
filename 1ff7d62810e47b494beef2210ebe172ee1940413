@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2168ea9d_7c5cf5c6",
+        "filename": "debuggerd/Elf.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-03-12T21:45:02Z",
+      "side": 1,
+      "message": "Good point. I removed the if defined stuff. I don\u0027t think it\u0027s worth adding a check since, the only bad potential bad case would be from 32 to 64, and that should theoretically be impossible.",
+      "parentUuid": "dcd37594_c7441e07",
+      "revId": "1ff7d62810e47b494beef2210ebe172ee1940413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc88d5a6_dfe7bbdc",
         "filename": "debuggerd/Elf.h",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2015-03-11T02:16:30Z",
       "side": 1,
       "message": "does this have to be in the header file?",
+      "revId": "1ff7d62810e47b494beef2210ebe172ee1940413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c178ee71_16667c59",
+        "filename": "debuggerd/Elf.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-03-12T21:45:02Z",
+      "side": 1,
+      "message": "Nope, but I was thinking I might do something with this later on. Since I\u0027m not, I moved this to the cpp file.",
+      "parentUuid": "dc88d5a6_dfe7bbdc",
       "revId": "1ff7d62810e47b494beef2210ebe172ee1940413",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "c178ee71_39b7ebcb",
+        "filename": "debuggerd/Elf.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-03-12T21:45:02Z",
+      "side": 1,
+      "message": "I restructured this close to what you suggested. I didn\u0027t use PtraceDataSource since Backtrace is hiding that, instead I used BacktraceDataSource.",
+      "parentUuid": "1c4d0d5a_11f84cca",
+      "revId": "1ff7d62810e47b494beef2210ebe172ee1940413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c4d0d5a_51dbb469",
         "filename": "debuggerd/tombstone.cpp",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2015-03-11T02:16:30Z",
       "side": 1,
       "message": "do we have to collect them all? there can be a *lot* of maps, especially in a crashing process.",
+      "revId": "1ff7d62810e47b494beef2210ebe172ee1940413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2168ea9d_fcae45e8",
+        "filename": "debuggerd/tombstone.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-03-12T21:45:02Z",
+      "side": 1,
+      "message": "Yeah, I don\u0027t know why I did this, since I wind up making a call per output line. For some reason I thought that I was coing to consolidate all of the _LOG() calls into a single call.\n\nSo I\u0027ve removed all mention of vector.",
+      "parentUuid": "1c4d0d5a_51dbb469",
       "revId": "1ff7d62810e47b494beef2210ebe172ee1940413",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
