@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "417cfe56_02b9cade",
+        "filename": "logd/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-03-12T17:55:25Z",
+      "side": 1,
+      "message": "Merge conflict with https://android-review.googlesource.com/#/c/140880. Resolution for this area will look like:\n\nint fdDmesg \u003d -1;\nint fdPackages \u003d -1;\n\nstatic sem_t reinit;\nstatic bool reinit_running \u003d false;\nstatic LogBuffer *logBuf \u003d NULL;\n\nstatic void *reinit_thread_start(void * /*obj*/) {\n    prctl(PR_SET_NAME, \"logd.daemon\");\n    set_sched_policy(0, SP_BACKGROUND);\n\n    setgid(AID_SYSTEM);\n    setuid(AID_SYSTEM);\n\n    for (;;) {\n        // Privileged items to re-initialize\n        if (fdPackages \u003c 0) {\n            fdPackages \u003d open(\"/data/system/packages.xml\", O_RDONLY);\n        }\n\n        if (!reinit_running || sem_wait(\u0026reinit) || !reinit_running) {\n            break;\n        }\n        if (fdDmesg \u003e\u003d 0) {\n            static const char reinit_message[] \u003d { KMSG_PRIORITY(LOG_INFO),\n                \u0027l\u0027, \u0027o\u0027, \u0027g\u0027, \u0027d\u0027, \u0027.\u0027, \u0027d\u0027, \u0027a\u0027, \u0027e\u0027, \u0027m\u0027, \u0027o\u0027, \u0027n\u0027, \u0027:\u0027,\n                \u0027 \u0027, \u0027r\u0027, \u0027e\u0027, \u0027i\u0027, \u0027n\u0027, \u0027i\u0027, \u0027t\u0027, \u0027\\n\u0027 };\n            write(fdDmesg, reinit_message, sizeof(reinit_message));\n        }\n\n        // Anything that reads persist.\u003cproperty\u003e\n        if (logBuf) {\n            logBuf-\u003einit();\n        }\n    }\n    \n    return NULL;\n}\n\nvoid reinit_signal_handler(int /*signal*/) {\n    sem_post(\u0026reinit);\n}",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 1
+      },
+      "revId": "c1131080e0bef654f1147c848bed18ae0e95d4d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
