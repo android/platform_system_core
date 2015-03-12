@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2168ea9d_8d0fd12c",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-03-12T21:52:37Z",
+      "side": 1,
+      "message": "Does this cause unaligned access problems? So far only tested on N6 and N9.",
+      "range": {
+        "startLine": 163,
+        "startChar": 28,
+        "endLine": 163,
+        "endChar": 71
+      },
+      "revId": "21bf4bc8d6a8f23f8d77603b8ee180b3b3d41a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c178ee71_3c527937",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-03-12T21:52:37Z",
+      "side": 1,
+      "message": "expect a minor performance hit here doing the search. We need a way of managing a small cache of the _address_ of the searched tag for a quick read of the current value.\n\n__android_log_is_loggable can get a performance gain if it has a cache size of one when used in applications. Maybe that cache needs to have an API to allow adjusting its size for use by the logging daemon?",
+      "range": {
+        "startLine": 169,
+        "startChar": 9,
+        "endLine": 169,
+        "endChar": 65
+      },
+      "revId": "21bf4bc8d6a8f23f8d77603b8ee180b3b3d41a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
