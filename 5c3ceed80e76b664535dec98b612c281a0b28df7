@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e18892a6_5fb80b58",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-03-12T18:42:46Z",
+      "side": 1,
+      "message": "i think you\u0027re thinking about vector wrong. a vector is a dynamically-allocated contiguous sequence. that\u0027s exactly what you have here. that it has additional functionality you don\u0027t need... well, so does unique_ptr. that\u0027s not a problem.\n\nthe way i see it, preferring vector in cases like this is just part of \"avoid new/delete\". (plus there\u0027s the added bonus -- see below -- that vector is more container-like than unique_ptr.)",
+      "parentUuid": "01d1268c_a840db65",
+      "revId": "5c3ceed80e76b664535dec98b612c281a0b28df7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1d33294_e7de8253",
         "filename": "libziparchive/zip_archive.cc",
         "patchSetId": 1
