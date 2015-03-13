@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86052c00_91a4662f",
+        "filename": "logd/LogTimes.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2015-03-13T20:08:00Z",
+      "side": 1,
+      "message": "Don\u0027t create macros unless you need to do preprocessor magic.  Inline functions are just as efficient but will catch typing issues at compile time.\n\nIn this case I\u0027d just use std::min().  STL implementations are usually well-tuned, and anyway the cost of one branch would be dwarfed by the cost of the strnlen() call you\u0027re feeding the result to.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 53
+      },
+      "revId": "6e0f0bc7818d99daf77677fde886260a09e73d56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
