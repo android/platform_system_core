@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a624f0ad_f6b03671",
+        "filename": "init/readme.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-03-15T15:57:36Z",
+      "side": 1,
+      "message": "i think this should probably be [ \u003cflag\u003e ]* [ \u003coptions\u003e ] (i.e. missing the last * so we don\u0027t imply that options has to end with a trailing \u0027,\u0027).\n\nthis is pretty confusing, though, because both the man page and /etc/fstab refer to both of these as options, and include them all in the same string. even init\u0027s mount_all command requires fstabs where they\u0027re all mixed together.\n\ni\u0027ll raise a bug to rewrite \u0027mount\u0027 using \u0027mount_all\u0027. then we can fix the documentation to just \"mount \u003ctype\u003e \u003cdevice\u003e \u003cdir\u003e [\u003coptions\u003e]\", and we can have a compatibility mode that concatenates anything after \u003cdir\u003e. (i\u0027d rather just fix the init scripts, but i can only fix Nexus ones and i assume this would be a pain in the ass for OEMs because there\u0027s no way for me to communicate a breaking change.)",
+      "revId": "b25f46d22ceafba7d15375ea651c61e75050b633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
