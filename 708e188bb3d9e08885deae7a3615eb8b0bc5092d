@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "06177cd9_fbc1abd1",
+        "filename": "base/include/base/strings.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-19T20:53:20Z",
+      "side": 1,
+      "message": "enable_if.",
+      "parentUuid": "2620002d_3ca87d83",
+      "revId": "708e188bb3d9e08885deae7a3615eb8b0bc5092d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "461df4f5_1a9c9db5",
         "filename": "base/include/base/strings.h",
         "patchSetId": 1
@@ -64,6 +82,41 @@
       "writtenOn": "2015-03-19T20:33:45Z",
       "side": 1,
       "message": "does google3 have both? or should we just make people say \",\" rather than \u0027,\u0027?",
+      "revId": "708e188bb3d9e08885deae7a3615eb8b0bc5092d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "461df4f5_5da1afa0",
+        "filename": "base/include/base/strings.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-19T20:53:20Z",
+      "side": 1,
+      "message": "Their solution is somewhat more complex. Rather than operating on a char or string directly, they take a delimiter object, and chars or strings are implicitly converted.\n\nI think we can probably ditch the char variant though.",
+      "parentUuid": "06177cd9_5b921726",
+      "revId": "708e188bb3d9e08885deae7a3615eb8b0bc5092d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2620002d_dc6e217f",
+        "filename": "base/strings.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-19T20:53:20Z",
+      "side": 1,
+      "message": "This actually breaks the ability to use the null character as a delimiter (wasn\u0027t clear that it was even allowed, but it looks like it is). I\u0027ll add a test and rework this.",
       "revId": "708e188bb3d9e08885deae7a3615eb8b0bc5092d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
