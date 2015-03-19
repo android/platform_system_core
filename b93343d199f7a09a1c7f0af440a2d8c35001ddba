@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2620002d_ffbf57f2",
+        "filename": "include/system/graphics.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-03-19T21:09:37Z",
+      "side": 1,
+      "message": ".\n   typedef struct android_depth_points { ...\n\n   } android_depth_points_t;",
+      "revId": "b93343d199f7a09a1c7f0af440a2d8c35001ddba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "461df4f5_bd7d6b33",
+        "filename": "include/system/graphics.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-03-19T21:09:37Z",
+      "side": 1,
+      "message": "Not sure if we care at all, this is a C99 only feature and compiling with -pedantic-errors will yield:\n\n    error: flexible array members are a C99 feature [-Werror,-Wc99-extensions]\n\nalthough it works ok as a GNU extension in C++ (in both clang and gcc).",
+      "revId": "b93343d199f7a09a1c7f0af440a2d8c35001ddba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "461df4f5_7d67d395",
+        "filename": "include/system/graphics.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-03-19T21:09:37Z",
+      "side": 1,
+      "message": "Naming it is dangerous. enums can be as small as a char/short/etc (-fcompressed-enums) so using them like that is not ABI safe.",
+      "revId": "b93343d199f7a09a1c7f0af440a2d8c35001ddba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06177cd9_9eb09d43",
+        "filename": "include/system/window.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-03-19T21:09:37Z",
+      "side": 1,
+      "message": "int dataspace to be consistent with the other functions and the documentation on line 810?",
+      "range": {
+        "startLine": 823,
+        "startChar": 8,
+        "endLine": 823,
+        "endChar": 27
+      },
+      "revId": "b93343d199f7a09a1c7f0af440a2d8c35001ddba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
