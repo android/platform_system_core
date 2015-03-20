@@ -46,6 +46,30 @@
       "revId": "0afa55e7296199da87ee403379bfcb29765abc46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "068cdc85_b756b8e5",
+        "filename": "logd/main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2015-03-20T22:36:06Z",
+      "side": 1,
+      "message": "I stand corrected about sem_{post,wait}.  I checked POSIX and they guarantee memory synchronization.\n\nBut I still think uid needs to be atomic or protected by a lock.  Otherwise you could have a situation where two threads enter the function while uid \u003d\u003d 0, both read uid and decide it\u0027s safe to continue, and then race to write to uid.\n\n(Unless you know only one thread will enter this function at a time, in which case the if (uid) branch is unnecessary anyway.)",
+      "parentUuid": "66259842_b529f3b6",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 16
+      },
+      "revId": "0afa55e7296199da87ee403379bfcb29765abc46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
