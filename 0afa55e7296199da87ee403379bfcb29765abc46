@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "068cdc85_563af298",
+        "filename": "logd/main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2015-03-20T21:11:51Z",
+      "side": 1,
+      "message": "You need to use atomics here.  First to ensure the assignment to uid doesn\u0027t race, and second to make sure the reads and writes actually happen (since uid and name aren\u0027t volatile, the compiler could decide to cache the reads, or that the writes have no side effects and can be skipped).",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 16
+      },
+      "revId": "0afa55e7296199da87ee403379bfcb29765abc46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
