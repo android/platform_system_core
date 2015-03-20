@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46825452_e3d48ac3",
+        "filename": "init/devices.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-03-20T22:25:19Z",
+      "side": 1,
+      "message": "indexes are size_t",
+      "revId": "eb8100fee373c7cf2ed7dee26d09ac277d32f184",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "068cdc85_fcb50731",
+        "filename": "init/devices.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-03-20T22:25:19Z",
+      "side": 1,
+      "message": "you might want to lose all this insanity by switching to std::string and StringPrintf. so:\n\n  #include \u003cbase/stringprintf.h\u003e\n\n  std::string root \u003d android::base::StringPrintf(SYSFS_PREFIX\"%s/\", uevent-\u003epath);",
+      "revId": "eb8100fee373c7cf2ed7dee26d09ac277d32f184",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46825452_23193235",
+        "filename": "init/devices.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-03-20T22:25:19Z",
+      "side": 1,
+      "message": "either use the existing ARRAY_SIZE macro or just add a NULL at the end of the array and use \"firmware_dirs[i] !\u003d NULL\" at your test instead.",
+      "revId": "eb8100fee373c7cf2ed7dee26d09ac277d32f184",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
