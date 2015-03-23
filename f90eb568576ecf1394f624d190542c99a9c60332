@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "267f204e_a1e73ed9",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-03-23T22:24:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "068cdc85_1746a482",
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "068cdc85_178ea483",
         "filename": "adb/sysdeps_win32.c",
         "patchSetId": 3
@@ -89,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "06869c96_601e1291",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2291,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-03-23T22:24:46Z",
+      "side": 1,
+      "message": "I trimmed all lines down to 80 chars.\n\nThe reason I had the return type as int was to follow unix convention of success\u003d0, error\u003d-1 with errno. If you want me to change this to bool, let me know your preferences (bool vs. Win32 BOOL, success\u003dtrue or false, where to stuff the error code (errno or Win32 GetLastError()), etc.).",
+      "parentUuid": "068cdc85_178ea483",
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46825452_c6b2b4d7",
         "filename": "adb/sysdeps_win32.c",
         "patchSetId": 3
@@ -100,6 +136,30 @@
       "writtenOn": "2015-03-23T17:57:13Z",
       "side": 1,
       "message": "I\u0027d make it abort() then, with a log message above it.\n\nOnce I get around to making system/core/base/file.cpp play nice on Windows, this should just become \n\n    CHECK_NE(read_count, 0);",
+      "range": {
+        "startLine": 2301,
+        "startChar": 36,
+        "endLine": 2301,
+        "endChar": 56
+      },
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "267f204e_41a83256",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2301,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-03-23T22:24:46Z",
+      "side": 1,
+      "message": "Seems like fatal() is the helper to use in this codebase, so I used that instead of D()+abort().",
+      "parentUuid": "46825452_c6b2b4d7",
       "range": {
         "startLine": 2301,
         "startChar": 36,
@@ -135,6 +195,30 @@
     },
     {
       "key": {
+        "uuid": "267f204e_c18282d5",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2305,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-03-23T22:24:46Z",
+      "side": 1,
+      "message": "I used fatal() again and removed the errno setting and return.",
+      "parentUuid": "46825452_66d668f0",
+      "range": {
+        "startLine": 2305,
+        "startChar": 33,
+        "endLine": 2305,
+        "endChar": 56
+      },
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "068cdc85_491a5473",
         "filename": "adb/sysdeps_win32.c",
         "patchSetId": 3
@@ -146,6 +230,30 @@
       "writtenOn": "2015-03-23T17:57:13Z",
       "side": 1,
       "message": "This might be more clear as\n\n    if (input_record-\u003eEventType \u003d\u003d KEY_EVENT \u0026\u0026\n        input_record-\u003eEvent.KeyEvent.bKeyDown) {\n        return true;\n    }\n\nThe return on line 2323 would then go away.",
+      "range": {
+        "startLine": 2310,
+        "startChar": 0,
+        "endLine": 2316,
+        "endChar": 9
+      },
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "467c1457_427032d7",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2316,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-03-23T22:24:46Z",
+      "side": 1,
+      "message": "Done. To do this, I had to move the wRepeatCount check inside this block.",
+      "parentUuid": "068cdc85_491a5473",
       "range": {
         "startLine": 2310,
         "startChar": 0,
@@ -181,6 +289,30 @@
     },
     {
       "key": {
+        "uuid": "267f204e_415672e8",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2318,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-03-23T22:24:46Z",
+      "side": 1,
+      "message": "I used fatal() again.",
+      "parentUuid": "46825452_26970022",
+      "range": {
+        "startLine": 2318,
+        "startChar": 62,
+        "endLine": 2318,
+        "endChar": 85
+      },
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86160cff_b7e7a2d9",
         "filename": "adb/sysdeps_win32.c",
         "patchSetId": 3
@@ -198,6 +330,24 @@
     },
     {
       "key": {
+        "uuid": "06869c96_e03f82d9",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2372,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-03-23T22:24:46Z",
+      "side": 1,
+      "message": "As far as I can tell, they do not. MSDN doesn\u0027t list constants either. https://msdn.microsoft.com/en-us/library/windows/desktop/ms646316(v\u003dvs.85).aspx",
+      "parentUuid": "86160cff_b7e7a2d9",
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a69cf0d8_10c2eab1",
         "filename": "adb/sysdeps_win32.c",
         "patchSetId": 3
@@ -209,6 +359,30 @@
       "writtenOn": "2015-03-23T17:57:13Z",
       "side": 1,
       "message": "kill the padding spaces",
+      "range": {
+        "startLine": 2391,
+        "startChar": 37,
+        "endLine": 2391,
+        "endChar": 40
+      },
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "467c1457_c24a8286",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2391,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-03-23T22:24:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a69cf0d8_10c2eab1",
       "range": {
         "startLine": 2391,
         "startChar": 37,
@@ -244,6 +418,30 @@
     },
     {
       "key": {
+        "uuid": "267f204e_e1d4e6c3",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2410,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-03-23T22:24:46Z",
+      "side": 1,
+      "message": "The reason this function uses the length return+char* is because all of the buffer code deals with a length+char*, so it keeps it all consistent and easy to read at the callsites. If I change this, IMO, the readability of at least 2-3 callsites would decrease. That being said, if you feel strongly that this makes more sense, let me know and I can make the change.",
+      "parentUuid": "86160cff_975a66d7",
+      "range": {
+        "startLine": 2409,
+        "startChar": 4,
+        "endLine": 2410,
+        "endChar": 37
+      },
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a69cf0d8_33a290ef",
         "filename": "adb/sysdeps_win32.c",
         "patchSetId": 3
@@ -255,6 +453,30 @@
       "writtenOn": "2015-03-23T17:57:13Z",
       "side": 1,
       "message": "get_control_character? (at least that seems to be what\u0027s going on here)",
+      "range": {
+        "startLine": 2436,
+        "startChar": 14,
+        "endLine": 2436,
+        "endChar": 30
+      },
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "267f204e_01f1ca64",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2436,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-03-23T22:24:46Z",
+      "side": 1,
+      "message": "Ok, I renamed it to _get_control_character(). The reason I originally had it as \u0027mapped\u0027 was because maybe in the future it will may something other than control-related characters. But I think renaming is fine for now, so I did it.",
+      "parentUuid": "a69cf0d8_33a290ef",
       "range": {
         "startLine": 2436,
         "startChar": 14,
@@ -284,6 +506,24 @@
     },
     {
       "key": {
+        "uuid": "06869c96_80515637",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2442,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-03-23T22:24:46Z",
+      "side": 1,
+      "message": "When I press Ctrl-2 in Gnome Terminal and xterm, I get a NULL byte. All of these mappings were experimentally determined by trying all combinations in Gnome Terminal. If I\u0027ve made an error and something doesn\u0027t match Gnome Terminal (or my VM is screwing me up), let me know.\n\nI fixed the case statement indentation.",
+      "parentUuid": "86160cff_979266a6",
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6a1e40d_d444d478",
         "filename": "adb/sysdeps_win32.c",
         "patchSetId": 3
@@ -295,6 +535,24 @@
       "writtenOn": "2015-03-23T17:57:13Z",
       "side": 1,
       "message": "Same for the rest of these.",
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "467c1457_e2b6a6ed",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2447,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-03-23T22:24:46Z",
+      "side": 1,
+      "message": "My previous comment applies here too.",
+      "parentUuid": "c6a1e40d_d444d478",
       "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -318,6 +576,24 @@
     },
     {
       "key": {
+        "uuid": "06869c96_a0ac9a9f",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2489,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-03-23T22:24:46Z",
+      "side": 1,
+      "message": "If you\u0027re referring to the length+char* convention, my same previous comment applies (the reason is to keep buffer code callsites simple). Again, if you strongly think that I should change this, let me know and I\u0027ll take a crack at it.",
+      "parentUuid": "86160cff_77218a1f",
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86160cff_5ad63546",
         "filename": "adb/sysdeps_win32.c",
         "patchSetId": 3
@@ -335,6 +611,24 @@
     },
     {
       "key": {
+        "uuid": "267f204e_8114faf5",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2544,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-03-23T22:24:46Z",
+      "side": 1,
+      "message": "As far as I can tell, yes, this craziness is really necessary. I think what is going on is that when NumLock is on and Shift is pressed, Windows \u0027neutralizes\u0027 the NumLock (since Shift is down), so that the resulting keys are properly translated -- so Windows is actually doing proper translation of NumLock, it\u0027s just that it\u0027s hiding the fact that Shift is physically down, which happens to be something that we want to detect.",
+      "parentUuid": "86160cff_5ad63546",
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a69cf0d8_d6bb3ad5",
         "filename": "adb/sysdeps_win32.c",
         "patchSetId": 3
@@ -346,6 +640,24 @@
       "writtenOn": "2015-03-23T17:57:13Z",
       "side": 1,
       "message": "Move this check to be the first thing in the function and return early if it isn\u0027t on.",
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "467c1457_02bc6acc",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2559,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-03-23T22:24:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a69cf0d8_d6bb3ad5",
       "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -375,6 +687,30 @@
     },
     {
       "key": {
+        "uuid": "06869c96_00bc66cc",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2596,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-03-23T22:24:46Z",
+      "side": 1,
+      "message": "I changed all the +\u003d to |\u003d in this function.",
+      "parentUuid": "c6a1e40d_0b9e32e3",
+      "range": {
+        "startLine": 2596,
+        "startChar": 13,
+        "endLine": 2596,
+        "endChar": 15
+      },
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6a1e40d_ce455877",
         "filename": "adb/sysdeps_win32.c",
         "patchSetId": 3
@@ -386,6 +722,24 @@
       "writtenOn": "2015-03-23T17:57:13Z",
       "side": 1,
       "message": "#undef all these when you\u0027re done.",
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "467c1457_22a16ea2",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2720,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-03-23T22:24:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6a1e40d_ce455877",
       "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
