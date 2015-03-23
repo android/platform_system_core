@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a69cf0d8_cf5b948c",
+        "filename": "libcutils/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-03-23T15:31:53Z",
+      "side": 1,
+      "message": "Host dex2oat needs to link with libcutils now, because it has tracing in it. This is needed to build the shared library it links with.\n\nAre you suggesting I should link to libcutils statically on the host, and then we don\u0027t need this?",
+      "parentUuid": "a69cf0d8_130314c7",
+      "revId": "bedd8818d98d1db96c45fa12b4bf860d5cc72c48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a69cf0d8_53fd9c34",
         "filename": "libcutils/trace-host.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-03-21T00:37:26Z",
       "side": 1,
       "message": "Can\u0027t you just make all of the below static inline? Maybe remove above vars?",
+      "revId": "bedd8818d98d1db96c45fa12b4bf860d5cc72c48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86160cff_0e9e3fe3",
+        "filename": "libcutils/trace-host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-03-23T15:31:53Z",
+      "side": 1,
+      "message": "I don\u0027t understand.\n\nAre you suggesting I move the entire implementation of the atrace functions into the trace.h header file?\n\nOtherwise, the above vars and below definitions are needed to match the corresponding vars and definitions used on the target side.",
+      "parentUuid": "a69cf0d8_53fd9c34",
       "revId": "bedd8818d98d1db96c45fa12b4bf860d5cc72c48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
