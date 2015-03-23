@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86c44cd3_a7bc8451",
+        "filename": "fs_mgr/fs_mgr_verity.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2015-03-23T23:06:17Z",
+      "side": 1,
+      "message": "I\u0027m fine with the meta data area tagged with a magic flag.\nThe magic could be indicative of a max tag len, and max len.\n\nBut the data itself should just be a bunch of\n {tag, length, value}{t, l, v}...\n\nSo after finding the initial magic,\nyou want to scan for the tag you care about, until you start failing to scan, or you reach a possible \"eod 0\\n\".\n\nI strongly recommend strings for tag and length, as an fscanf(f, \"%\"MAX_TAG_LEN\"s %llu\\n\", \u0026tag, \u0026len) would then just\nwork. \n  fprintf(f, \"%s %llu\\n\", tag, len);\n  fwrite(f, value, sizeof(value));\n\nIf you don\u0027t find the magic, then write out the magic and the \"eod 0\".\nThen start the scan.",
+      "revId": "6e127d893accc1c151017dd0203a1ff4be895904",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
