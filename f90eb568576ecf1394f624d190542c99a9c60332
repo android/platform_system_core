@@ -52,6 +52,343 @@
       "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "068cdc85_1746a482",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-23T17:57:13Z",
+      "side": 1,
+      "message": "Don\u0027t indent in extern \"C\" {} blocks.",
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "068cdc85_178ea483",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2291,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-23T17:57:13Z",
+      "side": 1,
+      "message": "Could you trim the lines down to 80 characters?\n\nAlso, the return type is a boolean in disguise. Might as well just make it bool.",
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46825452_c6b2b4d7",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2301,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-23T17:57:13Z",
+      "side": 1,
+      "message": "I\u0027d make it abort() then, with a log message above it.\n\nOnce I get around to making system/core/base/file.cpp play nice on Windows, this should just become \n\n    CHECK_NE(read_count, 0);",
+      "range": {
+        "startLine": 2301,
+        "startChar": 36,
+        "endLine": 2301,
+        "endChar": 56
+      },
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46825452_66d668f0",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2305,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-23T17:57:13Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 2305,
+        "startChar": 33,
+        "endLine": 2305,
+        "endChar": 56
+      },
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "068cdc85_491a5473",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2316,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-23T17:57:13Z",
+      "side": 1,
+      "message": "This might be more clear as\n\n    if (input_record-\u003eEventType \u003d\u003d KEY_EVENT \u0026\u0026\n        input_record-\u003eEvent.KeyEvent.bKeyDown) {\n        return true;\n    }\n\nThe return on line 2323 would then go away.",
+      "range": {
+        "startLine": 2310,
+        "startChar": 0,
+        "endLine": 2316,
+        "endChar": 9
+      },
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46825452_26970022",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2318,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-23T17:57:13Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 2318,
+        "startChar": 62,
+        "endLine": 2318,
+        "endChar": 85
+      },
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86160cff_b7e7a2d9",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2372,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-23T17:57:13Z",
+      "side": 1,
+      "message": "Do they not exist in a header?",
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a69cf0d8_10c2eab1",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2391,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-23T17:57:13Z",
+      "side": 1,
+      "message": "kill the padding spaces",
+      "range": {
+        "startLine": 2391,
+        "startChar": 37,
+        "endLine": 2391,
+        "endChar": 40
+      },
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86160cff_975a66d7",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2410,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-23T17:57:13Z",
+      "side": 1,
+      "message": "Maybe reorganize the function like so:\n\n    static char _get_char... {\n        if (key_even-\u003euChar.AsciiChar !\u003d 0) {\n            return key_even-\u003euChar.AsciiChar;\n        }\n        \n        // Now the masking off of the modifier keys.\n        // ...\n        \n        if (ToAscii(...) \u003d\u003d 1) {\n            return (char)translated;\n        }\n        \n        return \u0027\\0\u0027;\n    }\n\nThere doesn\u0027t seem to be any reason to use the length return and a char* for the out when all you\u0027re doing is returning 0 if *ch \u003d\u003d 0 else 1.",
+      "range": {
+        "startLine": 2409,
+        "startChar": 4,
+        "endLine": 2410,
+        "endChar": 37
+      },
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a69cf0d8_33a290ef",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2436,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-23T17:57:13Z",
+      "side": 1,
+      "message": "get_control_character? (at least that seems to be what\u0027s going on here)",
+      "range": {
+        "startLine": 2436,
+        "startChar": 14,
+        "endLine": 2436,
+        "endChar": 30
+      },
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86160cff_979266a6",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2442,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-23T17:57:13Z",
+      "side": 1,
+      "message": "You don\u0027t actually want ctrl-2 to map to the control character, right? Just ctrl-@.\n\nAlso, case statements should have the same indentation as the switch.",
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6a1e40d_d444d478",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2447,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-23T17:57:13Z",
+      "side": 1,
+      "message": "Same for the rest of these.",
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86160cff_77218a1f",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2489,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-23T17:57:13Z",
+      "side": 1,
+      "message": "Same as before.",
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86160cff_5ad63546",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2544,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-23T17:57:13Z",
+      "side": 1,
+      "message": "Is this really necessary? Windows doesn\u0027t translate numlock for us?",
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a69cf0d8_d6bb3ad5",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2559,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-23T17:57:13Z",
+      "side": 1,
+      "message": "Move this check to be the first thing in the function and return early if it isn\u0027t on.",
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6a1e40d_0b9e32e3",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2596,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-23T17:57:13Z",
+      "side": 1,
+      "message": "|\u003d is a little more intention revealing.",
+      "range": {
+        "startLine": 2596,
+        "startChar": 13,
+        "endLine": 2596,
+        "endChar": 15
+      },
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6a1e40d_ce455877",
+        "filename": "adb/sysdeps_win32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2720,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-23T17:57:13Z",
+      "side": 1,
+      "message": "#undef all these when you\u0027re done.",
+      "revId": "f90eb568576ecf1394f624d190542c99a9c60332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
