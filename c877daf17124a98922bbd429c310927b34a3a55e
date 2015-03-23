@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86728c8f_14591419",
+        "filename": "logd/LogStatistics.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2015-03-23T23:00:06Z",
+      "side": 1,
+      "message": "Style nitpick: put the semicolon on its own line so it\u0027s clear the loop has an empty body",
+      "range": {
+        "startLine": 48,
+        "startChar": 77,
+        "endLine": 48,
+        "endChar": 78
+      },
+      "revId": "c877daf17124a98922bbd429c310927b34a3a55e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86728c8f_944b643b",
+        "filename": "logd/LogStatistics.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2015-03-23T23:00:06Z",
+      "side": 1,
+      "message": "This API is a bit weird, especially for something that\u0027s supposed to look like an iterator.\n\nAt a minimum don\u0027t delete [] or populate sorted here.  That\u0027s easy enough for the caller to do, and it\u0027s confusing that next() is mutating the list.\n\nI\u0027m also not sure this should be part of the hashtable class (as opposed to just a helper function in the .cpp file where it\u0027s used).  It\u0027s really operating on an external list and doesn\u0027t need to poke at non-public members.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 5
+      },
+      "revId": "c877daf17124a98922bbd429c310927b34a3a55e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
