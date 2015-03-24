@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c63d64a0_6eed2f03",
+        "filename": "fs_mgr/fs_mgr_verity.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1058768
+      },
+      "writtenOn": "2015-03-24T09:14:56Z",
+      "side": 1,
+      "message": "Note that we need to keep track where the last TLV ended, because after fscanf failure, the file pointer position is undefined. It appears that ftell will return the expected file position, but a subsequent fprintf will still write elsewhere. This is the reason fseek is always performed at the beginning of metadata_add.",
+      "range": {
+        "startLine": 551,
+        "startChar": 34,
+        "endLine": 551,
+        "endChar": 39
+      },
+      "revId": "946a0f3e1925c8cc9be08e3e34758d577cbe7f31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
