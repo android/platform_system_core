@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4665f4c2_0e8d7b83",
+        "filename": "include/system/window.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-03-24T20:46:58Z",
+      "side": 1,
+      "message": "It\u0027s a fair question. I\u0027m not sure what semantics we would expect here. While I haven\u0027t implemented it, I think the most reasonable thing would be to clamp the coordinates against the buffer size in BufferQueueProducer (which is the first time we have easy access to the buffer dimensions).",
+      "parentUuid": "a3f6a249_ec64f34b",
+      "revId": "0c1c8430c92a8d2e0a8eb3f92676dcbc3c5aebac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3fb9632_c771140c",
         "filename": "include/system/window.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-03-24T20:35:40Z",
       "side": 1,
       "message": "seems like a struct typedef might be worth it (e.g. struct ANativeWindowRect or some such)",
+      "revId": "0c1c8430c92a8d2e0a8eb3f92676dcbc3c5aebac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a68a309d_7100a0b8",
+        "filename": "include/system/window.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-03-24T20:46:58Z",
+      "side": 1,
+      "message": "This is basically a direct mapping of the following EGL extension:\n\nhttps://www.khronos.org/registry/egl/extensions/KHR/EGL_KHR_swap_buffers_with_damage.txt\n\nMy goal with this change was to pass things as directly as possible here, do some packaging in native Surface, and the rest in BufferQueueProducer. We could do this packaging further up the stack (basically in the EGL wrapper), but I don\u0027t anticipate anyone but the EGL wrapper using this API, so it\u0027s a \"six of one\" situation.",
+      "parentUuid": "c3fb9632_c771140c",
       "revId": "0c1c8430c92a8d2e0a8eb3f92676dcbc3c5aebac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
