@@ -118,6 +118,52 @@
     },
     {
       "key": {
+        "uuid": "834c3e8c_de0305c5",
+        "filename": "run-as/run-as.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-03-26T00:20:50Z",
+      "side": 1,
+      "message": "Is this really needed? We don\u0027t want to hold on to capabilities which we inadvertently received. I don\u0027t see the value to querying our existing capabilities before setting them.",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 5
+      },
+      "revId": "beba881afde8e777a36ded30e6ccd48d01885c2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "834c3e8c_5e46f513",
+        "filename": "run-as/run-as.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-03-26T00:20:50Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary. Calling setresuid() always drops all capabilities unless prctl(PR_SET_KEEPCAPS) is called, which it isn\u0027t here. Please see the PR_SET_KEEPCAPS section of \"man prctl\".",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 5
+      },
+      "revId": "beba881afde8e777a36ded30e6ccd48d01885c2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "834c3e8c_3e15793f",
         "filename": "run-as/run-as.c",
         "patchSetId": 1
