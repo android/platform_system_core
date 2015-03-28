@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3a94260_3f40f7f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-28T06:51:32Z",
+      "side": 1,
+      "message": "Wasn\u0027t this already the case?  klog_write in include/cutils/klog.h has the printf format attribute.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 35
+      },
+      "revId": "cd04c9603966351993330cdb4e87d403fc7a63d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3a94260_7f466f14",
+        "filename": "init/init.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-28T06:51:32Z",
+      "side": 1,
+      "message": "You made this NOTICE, which would print by default and be way too spammy, but its inside a comparison against KLOG_INFO_LEVEL so it doesn\u0027t log by default.  Did you mean to leave it at INFO?",
+      "range": {
+        "startLine": 601,
+        "startChar": 8,
+        "endLine": 601,
+        "endChar": 14
+      },
+      "revId": "cd04c9603966351993330cdb4e87d403fc7a63d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3a94260_1f3bbb7f",
+        "filename": "init/log.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-28T06:51:32Z",
+      "side": 1,
+      "message": "This seems fairly expensive to do on every log message, and there are relatively few places where init forks, maybe just store the name for printing?",
+      "range": {
+        "startLine": 26,
+        "startChar": 41,
+        "endLine": 26,
+        "endChar": 64
+      },
+      "revId": "cd04c9603966351993330cdb4e87d403fc7a63d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
