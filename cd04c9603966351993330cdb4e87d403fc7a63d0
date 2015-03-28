@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "63a3ca80_22577b61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-03-28T07:03:57Z",
+      "side": 1,
+      "message": "no. weirdly, the two layers of macros defeated it. i fixed it initially by just having one layer of macros, but then added my own logging function to get distinct tags anyway.",
+      "parentUuid": "a3a94260_3f40f7f2",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 35
+      },
+      "revId": "cd04c9603966351993330cdb4e87d403fc7a63d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3a94260_7f466f14",
         "filename": "init/init.cpp",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "63a3ca80_425cf780",
+        "filename": "init/init.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-03-28T07:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3a94260_7f466f14",
+      "range": {
+        "startLine": 601,
+        "startChar": 8,
+        "endLine": 601,
+        "endChar": 14
+      },
+      "revId": "cd04c9603966351993330cdb4e87d403fc7a63d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3a94260_1f3bbb7f",
         "filename": "init/log.cpp",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2015-03-28T06:51:32Z",
       "side": 1,
       "message": "This seems fairly expensive to do on every log message, and there are relatively few places where init forks, maybe just store the name for printing?",
+      "range": {
+        "startLine": 26,
+        "startChar": 41,
+        "endLine": 26,
+        "endChar": 64
+      },
+      "revId": "cd04c9603966351993330cdb4e87d403fc7a63d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43d246e8_545b830c",
+        "filename": "init/log.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-03-28T07:03:57Z",
+      "side": 1,
+      "message": "it\u0027s cheaper than you think (getprogname just returns a global, and basename is a strrchr on one of \"/init\", \"/sbin/ueventd\", or \"/sbin/watchdogd\"), but done anyway.\n\ntesting this, i actually saw the problem the TODO alludes to, so i\u0027ll fix that right away rather than leave it as a TODO...",
+      "parentUuid": "a3a94260_1f3bbb7f",
       "range": {
         "startLine": 26,
         "startChar": 41,
