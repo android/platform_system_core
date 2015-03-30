@@ -161,6 +161,24 @@
     },
     {
       "key": {
+        "uuid": "43308612_f747e2a6",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1501,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-03-30T17:34:08Z",
+      "side": 1,
+      "message": "actually... how about this:\n\n* we change the reboot command to only accept one of the known kinds of reboot.\n\n* we add \"reboot oem ...\" which just passes whatever comes next. so the OEMs can have whatever custom crap they like. this fits with how we\u0027ve done a lot of the other oem support.\n\n(but this still feels like it should be a separate change. we want to keep all the sideload goodness even if we have to revert the incidental reboot behavioral changes for some reason.)",
+      "parentUuid": "43308612_57184e2f",
+      "revId": "15ea8eced40acf0c52f94603891d108ed255931b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03dccefb_57d91bf7",
         "filename": "adb/services.cpp",
         "patchSetId": 4
@@ -288,6 +306,24 @@
       "side": 1,
       "message": "Yeah, --auto-reboot please.\n\n(As an argument for consistency rather than preference, it\u0027s reboot-recovery, not reboot_recovery.)",
       "parentUuid": "837a7ea8_092299ce",
+      "revId": "15ea8eced40acf0c52f94603891d108ed255931b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43308612_5774ce00",
+        "filename": "adb/services.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-03-30T17:34:08Z",
+      "side": 1,
+      "message": "(the problem is, on the other side, in the recovery image, they\u0027re fully google3. all the recovery options are like this. so he\u0027s doing the right thing here, even if it makes us cry.)",
+      "parentUuid": "43308612_978f762c",
       "revId": "15ea8eced40acf0c52f94603891d108ed255931b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
