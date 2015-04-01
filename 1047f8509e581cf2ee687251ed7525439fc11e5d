@@ -16,6 +16,24 @@
       "revId": "1047f8509e581cf2ee687251ed7525439fc11e5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_b93a3f79",
+        "filename": "init/devices.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-01T23:26:33Z",
+      "side": 1,
+      "message": "This will definitely cause deadlocks.  ueventd exists to handle uevents from the kernel without blocking init, specifically to provide firmware blobs to the kernel during insmod.  If insmod results in ueventd receiving a device add uevent followed by a firmware load uevent, it will get stuck trying to connect back to init while init is stuck in the insmod.",
+      "parentUuid": "2a1b4808_7acb5552",
+      "revId": "1047f8509e581cf2ee687251ed7525439fc11e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
