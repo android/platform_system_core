@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "63de6a5c_7a894525",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-04-02T16:21:19Z",
+      "side": 1,
+      "message": "remove definition, no longer being used.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 41
+      },
+      "revId": "a1fb3ab2c1caf1869d19d5316d163795159ce35d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83cefea1_bad349db",
         "filename": "logcat/logcat.cpp",
         "patchSetId": 1
@@ -53,6 +76,24 @@
     },
     {
       "key": {
+        "uuid": "23c4727c_8e35e78a",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-04-02T16:21:19Z",
+      "side": 1,
+      "message": "Yes, maybe add if(!file0 || !file1) { perror(...); } to after asprintf and leave this rename error checking section alone for clarity.",
+      "parentUuid": "c3d47630_b940fb65",
+      "revId": "a1fb3ab2c1caf1869d19d5316d163795159ce35d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83cefea1_7aded1e1",
         "filename": "logcat/logcat.cpp",
         "patchSetId": 1
@@ -81,6 +122,29 @@
       "writtenOn": "2015-04-02T14:51:00Z",
       "side": 1,
       "message": "in fact, if (fstat() \u003d\u003d -1) {... is better still. no need for ret at all.",
+      "revId": "a1fb3ab2c1caf1869d19d5316d163795159ce35d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03092eaf_a8c9bb59",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-04-02T16:21:19Z",
+      "side": 1,
+      "message": "You are free to use strtol_or_die here as well, setting to a value of \u00271\u0027 was considered a graceful response to an incorrect value, but I like the idea of reporting we did not like the value supplied.\n\nShould introduce a minimum/maximum-value check as well in the parms to strtol_or_die(argv[0], ret, optarg, \u003cMINIMUM\u003e, \u003cMAXIMUM\u003e)",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 21
+      },
       "revId": "a1fb3ab2c1caf1869d19d5316d163795159ce35d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
