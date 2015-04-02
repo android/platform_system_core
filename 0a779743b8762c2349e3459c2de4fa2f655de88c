@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "03092eaf_281f0b8c",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-02T15:05:40Z",
+      "side": 1,
+      "message": "(note that for C++ we now have google3-style logging in base/logging.h)",
+      "parentUuid": "a3d4e237_2d9dcdb1",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2312b2d8_a97d3de3",
         "filename": "tzdatacheck/tzdatacheck.cpp",
         "patchSetId": 6
@@ -30,6 +48,40 @@
       "writtenOn": "2015-04-02T14:41:22Z",
       "side": 1,
       "message": "what do you need klog.h for ? what did you want logged to the kernel log ?",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3d47630_9993ff5a",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-02T15:05:40Z",
+      "side": 1,
+      "message": "bionic doesn\u0027t actually support FTW_ACTIONRETVAL, and you didn\u0027t pass it to glibc below either.",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83cefea1_faf2e16c",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-02T15:05:40Z",
+      "side": 1,
+      "message": "these are the internal macros. you probably just want _GNU_SOURCE. (why are you building this for the host?)",
       "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -70,6 +122,41 @@
     },
     {
       "key": {
+        "uuid": "03092eaf_081c4793",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-02T15:05:40Z",
+      "side": 1,
+      "message": "(or the functions in \u003cerror.h\u003e if you really want your output on stderr instead of the log.)",
+      "parentUuid": "a3d4e237_0d9a11ba",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3d47630_79894325",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-02T15:05:40Z",
+      "side": 1,
+      "message": "const std::string\u0026",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83e35e1e_8c8de784",
         "filename": "tzdatacheck/tzdatacheck.cpp",
         "patchSetId": 6
@@ -81,6 +168,24 @@
       "writtenOn": "2015-04-02T14:41:22Z",
       "side": 1,
       "message": "std::vector\u003cchar\u003e is more idiomatic.",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03092eaf_e85d7358",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-02T15:05:40Z",
+      "side": 1,
+      "message": "or even std::string.",
+      "parentUuid": "83e35e1e_8c8de784",
       "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -115,6 +220,23 @@
       "writtenOn": "2015-04-02T14:41:22Z",
       "side": 1,
       "message": "for C++, don\u0027t bother with \"UNUSED\" - just omit the name.\n\n(const char* fpath, const struct stat*, int typeflag, FTW*)",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3d47630_3983cb07",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-02T15:05:40Z",
+      "side": 1,
+      "message": "just return 0.",
       "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -189,6 +311,23 @@
     },
     {
       "key": {
+        "uuid": "c3d47630_99009f05",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-02T15:05:40Z",
+      "side": 1,
+      "message": "why is this recursive? what\u0027s the structure of this directory supposed to be? i thought it was a single directory with files and a symlink?",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83e35e1e_0c6fb724",
         "filename": "tzdatacheck/tzdatacheck.cpp",
         "patchSetId": 6
@@ -234,6 +373,23 @@
       "writtenOn": "2015-04-02T14:41:22Z",
       "side": 1,
       "message": "LOG_ALWAYS_FATAL",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3d47630_d9f617a8",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-02T15:05:40Z",
+      "side": 1,
+      "message": "tool",
       "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
