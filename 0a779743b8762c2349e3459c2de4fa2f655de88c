@@ -1,0 +1,242 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3d4e237_2d9dcdb1",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-04-02T14:41:22Z",
+      "side": 1,
+      "message": "\"utils/Log.h\" is the canonical include.",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2312b2d8_a97d3de3",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-04-02T14:41:22Z",
+      "side": 1,
+      "message": "what do you need klog.h for ? what did you want logged to the kernel log ?",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2312b2d8_ecb90311",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-04-02T14:41:22Z",
+      "side": 1,
+      "message": "can be removed (see below)",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3d4e237_0d9a11ba",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-04-02T14:41:22Z",
+      "side": 1,
+      "message": "you don\u0027t need this, you can use LOG_ALWAYS_FATAL or LOG_ALWAYS_FATAL_IF",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83e35e1e_8c8de784",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-04-02T14:41:22Z",
+      "side": 1,
+      "message": "std::vector\u003cchar\u003e is more idiomatic.",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3d4e237_8d82814b",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-04-02T14:41:22Z",
+      "side": 1,
+      "message": "doesn\u0027t bionic define dirname as dirname(const char*) ? that would mean you don\u0027t need the additional copy.\n\nAlso, you can just return std::string instead of needing an input argument.",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83e35e1e_ac7d43e3",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-04-02T14:41:22Z",
+      "side": 1,
+      "message": "for C++, don\u0027t bother with \"UNUSED\" - just omit the name.\n\n(const char* fpath, const struct stat*, int typeflag, FTW*)",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3d4e237_6d68751e",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-04-02T14:41:22Z",
+      "side": 1,
+      "message": "ALOGW(TAG,....);",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83e35e1e_6c687b1e",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-04-02T14:41:22Z",
+      "side": 1,
+      "message": "ALOGI(TAG,....)",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83e35e1e_4c65bf44",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-04-02T14:41:22Z",
+      "side": 1,
+      "message": "(see comment above about input argument)",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2312b2d8_69518568",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-04-02T14:41:22Z",
+      "side": 1,
+      "message": "should be std::unique_ptr\u003cchar[]\u003e. another idiomatic style is to do :\n\n  std::vector\u003cchar\u003e tempDirName(tempDirNameTemplate.length() + 1);\n\n  strcp(\u0026tempDirName[0], ...Template.c_str());\n  if (mkdtemp(\u0026tempDirName[0]) \u003d\u003d NULL) {\n\nThis is applicable to getParentDir too.",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83e35e1e_0c6fb724",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-04-02T14:41:22Z",
+      "side": 1,
+      "message": "ALOGI",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2312b2d8_294b8db6",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-04-02T14:41:22Z",
+      "side": 1,
+      "message": "bad indent",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3d4e237_cd61a937",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-04-02T14:41:22Z",
+      "side": 1,
+      "message": "LOG_ALWAYS_FATAL",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
