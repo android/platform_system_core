@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "23c4727c_907977c3",
+        "filename": "libcutils/fs_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-04-03T00:48:28Z",
+      "side": 1,
+      "message": "Do we have unistd.h defined with this on all platforms (MAC?)",
+      "parentUuid": "23c4727c_dce14b15",
+      "range": {
+        "startLine": 119,
+        "startChar": 3,
+        "endLine": 119,
+        "endChar": 13
+      },
+      "revId": "ba9fd3df08e3baabbb82be3a9f250fdba5a0f21b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23c4727c_306990a5",
         "filename": "libcutils/fs_config.c",
         "patchSetId": 1
@@ -120,6 +144,54 @@
     },
     {
       "key": {
+        "uuid": "23c4727c_1c62233b",
+        "filename": "libcutils/fs_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-04-03T00:48:28Z",
+      "side": 1,
+      "message": "I used to have that, it results in \u0027code\u0027, this one reduces to a constant and thus a simple addition.",
+      "parentUuid": "e3bdfae6_52e883f8",
+      "range": {
+        "startLine": 139,
+        "startChar": 13,
+        "endLine": 139,
+        "endChar": 49
+      },
+      "revId": "ba9fd3df08e3baabbb82be3a9f250fdba5a0f21b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_10c9e7a6",
+        "filename": "libcutils/fs_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-04-03T00:48:28Z",
+      "side": 1,
+      "message": "I was concerned asprintf was not available on all platforms when I did this (MAC?)",
+      "parentUuid": "e3bdfae6_d5ad9d15",
+      "range": {
+        "startLine": 139,
+        "startChar": 13,
+        "endLine": 139,
+        "endChar": 49
+      },
+      "revId": "ba9fd3df08e3baabbb82be3a9f250fdba5a0f21b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23c4727c_1057ac60",
         "filename": "libcutils/fs_config.c",
         "patchSetId": 1
@@ -167,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "23c4727c_3012ab90",
+        "filename": "libcutils/fs_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-04-03T00:48:28Z",
+      "side": 1,
+      "message": "I viewed it as more readable since it would change this line to match exactly the open above. No problem, as-is then.",
+      "parentUuid": "e3bdfae6_75a5b129",
+      "range": {
+        "startLine": 147,
+        "startChar": 37,
+        "endLine": 147,
+        "endChar": 63
+      },
+      "revId": "ba9fd3df08e3baabbb82be3a9f250fdba5a0f21b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23c4727c_1620c498",
         "filename": "libcutils/fs_config.c",
         "patchSetId": 1
@@ -178,6 +274,24 @@
       "writtenOn": "2015-04-03T00:06:33Z",
       "side": 1,
       "message": "Nit-picky, but could we make this a do while loop instead of using break?  It\u0027s the same as TEMP_FAILURE_RETRY, which is what I believe this is emulating.\n\ndo {\naddress \u003d mmap(NULL, st.st_size, PROT_READ, MAP_PRIVATE, fd, 0);\nwhile (address \u003d\u003d MAP_FAILED \u0026\u0026 errno \u003d\u003d EINTR);",
+      "revId": "ba9fd3df08e3baabbb82be3a9f250fdba5a0f21b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_901cd795",
+        "filename": "libcutils/fs_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-04-03T00:48:28Z",
+      "side": 1,
+      "message": "You get a warning for _rc \u003d\u003d -1, -Werror tears this.",
+      "parentUuid": "23c4727c_1620c498",
       "revId": "ba9fd3df08e3baabbb82be3a9f250fdba5a0f21b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
