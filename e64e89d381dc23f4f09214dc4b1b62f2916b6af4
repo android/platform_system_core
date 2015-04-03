@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3bdfae6_cbe84c7e",
+        "filename": "libcutils/fs_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-04-03T23:13:24Z",
+      "side": 1,
+      "message": "I think this is off by a factor of sizeof(*p)\n\nIn my mind, I think of this as\n\nif ((const char *)p + p-\u003elen \u003e end)\n\u003d if ((const char *)p + sizeof(*p) + remainder \u003e end)\n\u003d if (sizeof(*p) + remainder \u003e end - (const char *)p)\n\nWe can again do the first check, then clamp remainder to end - (const char *)p - sizeof(*p);",
+      "revId": "e64e89d381dc23f4f09214dc4b1b62f2916b6af4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3bdfae6_0b0884e0",
+        "filename": "libcutils/fs_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-04-03T23:13:24Z",
+      "side": 1,
+      "message": "I don\u0027t think we need the \u003e check\n\nstrnlen is going to cap len to remainder which already is at most (end - (const char *)p), so this condition cannot be \u003e.\n\nThe \u003d\u003d part of the check is still important in case we don\u0027t hit a \\0 before the end of the string",
+      "revId": "e64e89d381dc23f4f09214dc4b1b62f2916b6af4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
