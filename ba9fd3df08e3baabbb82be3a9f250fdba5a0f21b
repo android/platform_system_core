@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "63f74ae2_38062d4e",
+        "filename": "libcutils/fs_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-04-03T20:23:05Z",
+      "side": 1,
+      "message": "Should there be alignment pragma\u0027s with this to ensure that it\u0027s formatted the same across architectures, especially since we\u0027re writing this out to a file?",
+      "revId": "ba9fd3df08e3baabbb82be3a9f250fdba5a0f21b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23c4727c_705f08fa",
         "filename": "libcutils/fs_config.c",
         "patchSetId": 1
@@ -490,6 +507,69 @@
       "side": 1,
       "message": "Ummmm IDK ;-) you may be right, it sets up the address pointing to a null page with copy on access. There are no expected resource contentions to result in a sleep. Until I am 100% sure, and I will investigate ...",
       "parentUuid": "23c4727c_24e389cf",
+      "revId": "ba9fd3df08e3baabbb82be3a9f250fdba5a0f21b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63f74ae2_9d7cf335",
+        "filename": "libcutils/fs_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-04-03T20:23:05Z",
+      "side": 1,
+      "message": "Why is there a -sizeof(*p) here?  This won\u0027t get us the last entry of the file, since the size of the last entry is (sizeof(*p) + strlen(pc-\u003eprefix) + sizeof(uint64_t)) \u0026 -sizeof(uint64_t); Even if pc-\u003eprefix is null, there is the alignment space too.\n\nDoesn\u0027t continually incrementing p by p-\u003elen get us to exactly address + st.st_size?  Why not set e \u003d (const struct fs_path_config_from_file *)((const char *)address + st.st_size and keep the check as p \u003c e?",
+      "revId": "ba9fd3df08e3baabbb82be3a9f250fdba5a0f21b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_9b950f43",
+        "filename": "libcutils/fs_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-04-03T20:23:05Z",
+      "side": 1,
+      "message": "Should we use strnlen since we know the buffer size and there\u0027s no guarantee the input file will have a null character to stop strlen from overrunning?\n\nMaybe even combine this and be below lines into,\n\nlen \u003d strnlen(p-\u003eprefix, min(MAX_BUFFER_SIZE, p-\u003elen - sizeof(*p)));",
+      "range": {
+        "startLine": 190,
+        "startChar": 26,
+        "endLine": 190,
+        "endChar": 32
+      },
+      "revId": "ba9fd3df08e3baabbb82be3a9f250fdba5a0f21b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3bdfae6_68edcb86",
+        "filename": "libcutils/fs_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-04-03T20:23:05Z",
+      "side": 1,
+      "message": "(const char *)p + sizeof(*p) + len \u003e (const char *)address + st.st_size\n\nIt\u0027s a more straight forward check to me, especially if address + st.st_size ends up being used in the loop condition.",
+      "range": {
+        "startLine": 195,
+        "startChar": 30,
+        "endLine": 195,
+        "endChar": 71
+      },
       "revId": "ba9fd3df08e3baabbb82be3a9f250fdba5a0f21b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
