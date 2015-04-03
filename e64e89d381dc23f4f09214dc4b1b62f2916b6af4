@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e3bdfae6_c6ba834e",
+        "filename": "libcutils/fs_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-04-03T23:44:42Z",
+      "side": 1,
+      "message": "Any thought on using just if ((const char *)p + p-\u003elen \u003e end) ?  It\u0027s more intuitive to me and since remainder is calculated from those values it will also be checked for correctness.",
+      "parentUuid": "63f74ae2_a0aae34c",
+      "revId": "e64e89d381dc23f4f09214dc4b1b62f2916b6af4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3bdfae6_0b0884e0",
         "filename": "libcutils/fs_config.c",
         "patchSetId": 2
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Should be e - p. \u0027\u003e\u003d\u0027 costs us nothing, and guarantees reliability when other hands get into here. It is a code robustness issue. Pedantics will lead us to \u003d\u003d and if someone makes a mistake adjusting the code above this in the future, we will live another day.\n\nNB: the mess above is cousin to the type of programming mistake I hope to catch with \u003e\u003d",
       "parentUuid": "e3bdfae6_0b0884e0",
+      "revId": "e64e89d381dc23f4f09214dc4b1b62f2916b6af4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63f74ae2_1be36621",
+        "filename": "libcutils/fs_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-04-03T23:44:42Z",
+      "side": 1,
+      "message": "Sounds reasonable.",
+      "parentUuid": "63f74ae2_40bb2fb2",
       "revId": "e64e89d381dc23f4f09214dc4b1b62f2916b6af4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
