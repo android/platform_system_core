@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "e3bdfae6_52e883f8",
+        "filename": "libcutils/fs_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-04-03T00:06:33Z",
+      "side": 1,
+      "message": "Since we know if we\u0027re using conf_file or conf_dir based on what the dir parameter is set to, can we simply do \n+ (dir ? sizeof(conf_dir) : sizeof(conf_file))\n\n?",
+      "parentUuid": "23c4727c_306990a5",
+      "range": {
+        "startLine": 139,
+        "startChar": 13,
+        "endLine": 139,
+        "endChar": 49
+      },
+      "revId": "ba9fd3df08e3baabbb82be3a9f250fdba5a0f21b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23c4727c_1057ac60",
         "filename": "libcutils/fs_config.c",
         "patchSetId": 1
@@ -65,6 +89,23 @@
         "endLine": 147,
         "endChar": 63
       },
+      "revId": "ba9fd3df08e3baabbb82be3a9f250fdba5a0f21b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_1620c498",
+        "filename": "libcutils/fs_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-04-03T00:06:33Z",
+      "side": 1,
+      "message": "Nit-picky, but could we make this a do while loop instead of using break?  It\u0027s the same as TEMP_FAILURE_RETRY, which is what I believe this is emulating.\n\ndo {\naddress \u003d mmap(NULL, st.st_size, PROT_READ, MAP_PRIVATE, fd, 0);\nwhile (address \u003d\u003d MAP_FAILED \u0026\u0026 errno \u003d\u003d EINTR);",
       "revId": "ba9fd3df08e3baabbb82be3a9f250fdba5a0f21b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
