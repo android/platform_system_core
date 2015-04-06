@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a34222dc_b02c9991",
+        "filename": "libcutils/fs_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-04-06T23:03:27Z",
+      "side": 1,
+      "message": "My problem to resolve. Request that this turn into followup adjustments. Used on host (stderr preferred) and target (logger). Could get real spammy (esp during an adb sync to logger) though as every file will hit it as the tools that use this (eg: make filesystems) recurse through all files.\n\n- Make sure host liblog is stderr noisy on host tools, this functionality has been ignored and may need fixes.\n- Will have to do a pass prior to this change to audit and add shared library liblog to all the target and host tools\u0027 Android.mk that use libcutils (part of the record for the associated bug).",
+      "parentUuid": "c34716eb_ece249c9",
+      "range": {
+        "startLine": 182,
+        "startChar": 16,
+        "endLine": 182,
+        "endChar": 30
+      },
+      "revId": "46f1f862ceec0f1ea75f44263c84683dc1f16487",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a34222dc_d0dcc563",
         "filename": "libcutils/fs_config.c",
         "patchSetId": 5
