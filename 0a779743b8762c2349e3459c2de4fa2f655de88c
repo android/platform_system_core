@@ -796,6 +796,24 @@
     },
     {
       "key": {
+        "uuid": "2312b2d8_92a4e284",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2015-04-07T13:02:57Z",
+      "side": 1,
+      "message": "I\u0027m happiest with this approach given it avoids problems if somebody makes a change to the zip file in the future. If we named individual files or dirs and we change the structure after release (perhaps to include new dirs for newer devices) it would end up leaving those files lying around on old devices.\n\nThat said, the use of rename before delete means it\u0027s less of a problem if files are left around.\n\nThe use of SELinux (see change under the same change-id) means I can lock down the permissions of the executable just the root dir we expect so even if something unexpected happens we are not too exposed.",
+      "parentUuid": "23c4727c_7ebc644f",
+      "revId": "0a779743b8762c2349e3459c2de4fa2f655de88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83e35e1e_0c6fb724",
         "filename": "tzdatacheck/tzdatacheck.cpp",
         "patchSetId": 6
