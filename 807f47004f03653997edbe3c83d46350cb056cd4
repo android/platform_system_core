@@ -16,6 +16,24 @@
       "revId": "807f47004f03653997edbe3c83d46350cb056cd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a34222dc_0e30c918",
+        "filename": "fs_mgr/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1037321
+      },
+      "writtenOn": "2015-04-07T00:47:08Z",
+      "side": 1,
+      "message": "For ext4 it would be a big cleanup (and for the time being) it would always be included since at least /cache is ext4.\n\nFor squashfs, The util lib is pretty small and not worth optimizing in the short term.\n\nThis is probably not in the scope of this change so I\u0027ll open an internal cleanup bug as we will need to do changes in build/core/Makefile to loop through BOARD_***_IMAGE_FILESYSTEM_TYPE and create corresponding build variables for ext4, squashfs and f2fs and then add a CFLAG based on those build flags in code referencing fs specific code OR make a common lib so the code remains clean....it seems to me the benefits don\u0027t outweigh the effort in the short term.",
+      "parentUuid": "83cefea1_d42a51a8",
+      "revId": "807f47004f03653997edbe3c83d46350cb056cd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
