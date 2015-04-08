@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c31c7621_96626c11",
+        "filename": "fastboot/bootimg_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1056365
+      },
+      "writtenOn": "2015-04-08T04:41:13Z",
+      "side": 1,
+      "message": "these *_actual\u0027s look a bit weird. although we are accepting int64_t sizes, they are truncated back to unsigned. how about casting the values to unsigned before calling mkbootimg()?",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 17
+      },
+      "revId": "d4ce16915277cd3699ad1b27b1a2f990c1433e16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0303eebf_f8b591e3",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1056365
+      },
+      "writtenOn": "2015-04-08T04:41:13Z",
+      "side": 1,
+      "message": "i don\u0027t know what fb_queue_download() does. do we need to care about the size there (which is still 32-bit unsigned)?",
+      "range": {
+        "startLine": 679,
+        "startChar": 41,
+        "endLine": 679,
+        "endChar": 43
+      },
+      "revId": "d4ce16915277cd3699ad1b27b1a2f990c1433e16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
