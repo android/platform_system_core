@@ -46,6 +46,30 @@
       "revId": "57a12f826ddf3c8ce97a02a04a0dcc43a6528f31",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63f82afb_0fd475c1",
+        "filename": "tzdatacheck/Android.mk",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-08T16:16:04Z",
+      "side": 1,
+      "message": "that [should be] because they have to run before the system partition is available (and thus no /system/lib and thus no shared libraries [also no /system/bin, so no dynamic linker either!]). but your executable can\u0027t do its job until both /system and /data are available anyway. plus you didn\u0027t use LOCAL_FORCE_STATIC_EXECUTABLE so you were still reliant on /system/bin. in which case...\n\n(this is a problem. there are definitely things that are bloated with static libraries just because the makefile they copy \u0026 pasted happened to be doing that. and then they grow a shared library dependency that brings in another copy of a library they statically linked, and things start going subtly wrong at runtime. if you can\u0027t explain why something _must_ be static, make it shared.)",
+      "parentUuid": "c3f39619_616f1024",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 50
+      },
+      "revId": "57a12f826ddf3c8ce97a02a04a0dcc43a6528f31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
