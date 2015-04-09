@@ -22,6 +22,30 @@
       "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03d12e8c_ae5d8359",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 13
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2015-04-09T17:03:18Z",
+      "side": 1,
+      "message": "It can probably survive some slop. Providing it has done its work before anything that uses the data tries to use it then it\u0027s probably ok.\n\nThings that might try to use it are anything built using bionic and use functions like localtime / mktime.\n\nLater on, ART-based executables that use ICU4J or libcore (e.g. the zygote and or app_process things like package manager) are also users of the timezone data. It would probably be bad if the data being deleted disappeared during launch, but it\u0027s ok after because all the users should copy with an unlink (and just keep using the old data).\n\nI thought exec was defined as a wrapper around a onetime service? Or is the idea that we\u0027d give it the same class as several other things and so all the things in that class would be started at once?",
+      "parentUuid": "83c43ed3_fa19e679",
+      "range": {
+        "startLine": 323,
+        "startChar": 4,
+        "endLine": 323,
+        "endChar": 115
+      },
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
