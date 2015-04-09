@@ -46,6 +46,472 @@
       "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_3627e569",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 13
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "he wants to make sure that the right tzdata is in place before anything starts running. his dependency on logd means he\u0027s guaranteeing that it\u0027ll take two reboots before logd sees the new tzdata. but i don\u0027t think logd uses tzdata so it shouldn\u0027t matter. (but this is another example of why i don\u0027t think this is the best solution in the long term. it just happens to be a major leap forward from where we are, and much more achievable.)",
+      "parentUuid": "83c43ed3_fa19e679",
+      "range": {
+        "startLine": 323,
+        "startChar": 4,
+        "endLine": 323,
+        "endChar": 115
+      },
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83c43ed3_dac98a2b",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "blank line before #includes, and C++ headers are supposed to come after C headers ( https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Names_and_Order_of_Includes ).",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83c43ed3_1ad4c2c1",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "static const char*. (avoid globals with constructors/destructors.)",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "237f124e_75516268",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "headers",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_365605b3",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "did you mean to have \\n on each line, so this is wrapped when it\u0027s output too?",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "237f124e_d5486eb9",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "check return value.",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_169f41df",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "there\u0027s a std::vector constructor that takes two pointers that will do the sizing \u0026 copy for you. (number 4:  http://en.cppreference.com/w/cpp/container/vector/vector )",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_969351d7",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "or just replace these three lines with\n\n  return dirname(\u0026dirNameCopy[0]);",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_d601598c",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "PLOG\n\n(and the usual idiom is PLOG() \u003c\u003c \"... failed\".)",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "237f124e_986ffbf4",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "this would make sense if you actually _used_ the different values. but you just LOG \"something went wrong\" at the call sites, and this method already logs the exact failure (which i think is the better approach anyway).\n\nso just switch to bool?",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83c43ed3_faca86ea",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "+\u003d?",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "237f124e_58bbb3d5",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "i don\u0027t think you need this.",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83c43ed3_7ab7b666",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "just \u0026tempDirName[0] here...",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_d6f879fe",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "\u003d\u003d -1",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "237f124e_b8aaff7a",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "PLOG",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83c43ed3_faa3a622",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "and here...",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_56c469be",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "...and here.",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "237f124e_f8948746",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "\u003d\u003d -1",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_f6aaddd0",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "just \"return false\" in the if and return true here.",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_d6731918",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "the cool kids have switched to nullptr (http://en.cppreference.com/w/cpp/types/nullptr_t).",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_31c9afa7",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "is unreadable? is that expected? (anyway, you wouldn\u0027t get ENOENT for that.)",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83c43ed3_3aea5e1e",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "don\u0027t log errno. strerror is better, and you\u0027re already doing that. (though, as elsewhere, just use PLOG.)",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83c43ed3_9ae71255",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "PLOG",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_f1e74728",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "missing function here that does fopen/error reporting/readZoneInfoHeader/fclose?",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_11dd8b5d",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "constant for this 11 we keep seeing?",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "237f124e_5873b396",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "same as",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "237f124e_9890db1d",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-09T17:14:49Z",
+      "side": 1,
+      "message": "\u003c\u003c \"; fixing...\"?",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
