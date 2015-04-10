@@ -325,6 +325,24 @@
     },
     {
       "key": {
+        "uuid": "e3617abc_fde1df14",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2015-04-10T17:26:43Z",
+      "side": 1,
+      "message": "Can you give an example of what you meant? I clearly didn\u0027t understand what you were suggesting and it\u0027ll just be quicker than me firing things I thought you meant back at you.",
+      "parentUuid": "636d8ab3_c6c9a72b",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03868e96_969351d7",
         "filename": "tzdatacheck/tzdatacheck.cpp",
         "patchSetId": 13
@@ -372,6 +390,24 @@
       "side": 1,
       "message": "huh?",
       "parentUuid": "a38a229d_43f4bad3",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a38a229d_a3465e81",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2015-04-10T17:26:43Z",
+      "side": 1,
+      "message": "\"These  functions  may  return  pointers  to statically allocated memory which may be overwritten by subsequent calls.  Alternatively, they may return a pointer to some part of path, so that the string referred to by path should not be modified or freed until the pointer returned by the function is no longer required.\"\n\nSince it needs a non-const argument, I create a copy of dirName to do so.\nWill C++ magically synthesize a std::string here, or are you suggesting I return the char*?\nIf I did the latter, I don\u0027t own the memory, do I?",
+      "parentUuid": "636d8ab3_06d47fc1",
       "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
