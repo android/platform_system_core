@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "6394aac1_c1e7e628",
+        "filename": "include/utils/Unicode.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002951
+      },
+      "writtenOn": "2015-04-10T16:40:30Z",
+      "side": 1,
+      "message": "return -1 on invliad surrogate character used here.",
+      "revId": "35f8288141c2a25445cbb7da1155d08d2f14195b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83999efb_a263bac6",
         "filename": "include/utils/Unicode.h",
         "patchSetId": 1
@@ -36,6 +53,30 @@
       "writtenOn": "2015-04-10T16:08:21Z",
       "side": 1,
       "message": "FYI You could use ICU U16_IS_LEAD(*src) and U16_IS_TRAIL(*++src).\nfrom unicode/utf16.h",
+      "range": {
+        "startLine": 416,
+        "startChar": 12,
+        "endLine": 416,
+        "endChar": 37
+      },
+      "revId": "35f8288141c2a25445cbb7da1155d08d2f14195b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3617abc_3a651d46",
+        "filename": "libutils/Unicode.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1002951
+      },
+      "writtenOn": "2015-04-10T16:40:30Z",
+      "side": 1,
+      "message": "Nothing else in this file is using unicode/utf16.h, doesnt it make more sense to switch to that as part of some larger rewrite?",
+      "parentUuid": "2368f29d_ed7dade2",
       "range": {
         "startLine": 416,
         "startChar": 12,
