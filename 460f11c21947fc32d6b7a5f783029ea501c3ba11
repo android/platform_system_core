@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "234d525a_93934ed7",
+        "filename": "logd/LogBufferElement.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2015-04-10T18:16:17Z",
+      "side": 1,
+      "message": "Consider creating a helper function e.g. populateEventForDroppedMessages() to construct and populate the buffer.  This is a lengthy branch and it\u0027s not immediately obvious why you need to do all this extra work for the !mMsg case.",
+      "revId": "460f11c21947fc32d6b7a5f783029ea501c3ba11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83999efb_c251a6ed",
+        "filename": "logd/LogBufferElement.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2015-04-10T18:16:17Z",
+      "side": 1,
+      "message": "If you\u0027re going to stick with a #define (which I still don\u0027t like, IMO preprocessor macros should be used only when simpler language features don\u0027t cut it) then at least don\u0027t indent like this.  Even if the C language allows whitespace between \"#\" and \"define\", it looks confusingly like a Python-style comment and is inconsistent with the rest of our codebase.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 38
+      },
+      "revId": "460f11c21947fc32d6b7a5f783029ea501c3ba11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "636d8ab3_e193edaa",
+        "filename": "logd/LogBufferElement.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2015-04-10T18:16:17Z",
+      "side": 1,
+      "message": "union {\n    const unsigned short mMsgLen;\n    unsigned short mDropped;\n};\n\nwould be clearer and would preserve mMsgLen\u0027s constness.  (And if you ever decide to change the size of one, you can do this without affecting the other.)",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 60
+      },
+      "revId": "460f11c21947fc32d6b7a5f783029ea501c3ba11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
