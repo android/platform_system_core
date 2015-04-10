@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "636d8ab3_661373e1",
+        "filename": "include/utils/Unicode.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1022037
+      },
+      "writtenOn": "2015-04-10T17:41:21Z",
+      "side": 1,
+      "message": "No, coming from UTF-32, \"such as\" is better. In UTF-32, any surrogate is invalid, and any value \u003e10FFFF. In UTF-16, only *unpaired* surrogates are invalid, everything else is fine.",
+      "parentUuid": "6394aac1_c1e7e628",
+      "revId": "35f8288141c2a25445cbb7da1155d08d2f14195b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83999efb_a263bac6",
         "filename": "include/utils/Unicode.h",
         "patchSetId": 1
@@ -77,6 +95,30 @@
       "side": 1,
       "message": "Nothing else in this file is using unicode/utf16.h, doesnt it make more sense to switch to that as part of some larger rewrite?",
       "parentUuid": "2368f29d_ed7dade2",
+      "range": {
+        "startLine": 416,
+        "startChar": 12,
+        "endLine": 416,
+        "endChar": 37
+      },
+      "revId": "35f8288141c2a25445cbb7da1155d08d2f14195b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "636d8ab3_86cecfda",
+        "filename": "libutils/Unicode.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1022037
+      },
+      "writtenOn": "2015-04-10T17:41:21Z",
+      "side": 1,
+      "message": "That\u0027s fine with me, I did mark it as FYI. I thought it would be nice to use a macro which is more readable than these expressions.",
+      "parentUuid": "e3617abc_3a651d46",
       "range": {
         "startLine": 416,
         "startChar": 12,
@@ -195,6 +237,24 @@
     },
     {
       "key": {
+        "uuid": "636d8ab3_86e7af54",
+        "filename": "libutils/Unicode.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1022037
+      },
+      "writtenOn": "2015-04-10T17:41:21Z",
+      "side": 1,
+      "message": "I am agnostic about whether it\u0027s ok to change this function to report an error rather than guess a value for it.\n\nThe comment would be better as\n// illegal: unpaired surrogate\n\nActually, there is a bug: As is, the new version only detects that a lead surrogate is not followed by a trail surrogate. It does not detect that a trail surrogate was encountered where a single or lead unit should be.\n\nWith ICU macros, I would change this to the following which optimizes for the non-surrogate path. Feel free to rewrite into vanilla expressions. Note that the first macro detects either kind of surrogate, and the second quickly disambiguates (single-bit test).\n\nif (U16_IS_SURROGATE(*src)) {\n  if (U16_IS_SURROGATE_LEAD(*src) \u0026\u0026 U16_IS_TRAIL(*++src) {\n    // A UTF-16 surrogate pair always maps to 4 bytes in UTF-8.\n    ret +\u003d 4;\n    src++;\n  } else {\n    // illegal: unpaired surrogate\n    return -1;\n  }\n}",
+      "parentUuid": "123a3aa9_70c6ee34",
+      "revId": "35f8288141c2a25445cbb7da1155d08d2f14195b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4365e6c2_7d8a33e9",
         "filename": "libutils/tests/Unicode_test.cpp",
         "patchSetId": 1
@@ -206,6 +266,29 @@
       "writtenOn": "2015-04-10T16:08:21Z",
       "side": 1,
       "message": "I don\u0027t understand where the +1 comes from.",
+      "revId": "35f8288141c2a25445cbb7da1155d08d2f14195b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e356daec_62329ba2",
+        "filename": "libutils/tests/Unicode_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1022037
+      },
+      "writtenOn": "2015-04-10T17:41:21Z",
+      "side": 1,
+      "message": "This only tests for an unpaired lead surrogate. Please add a test that uses an unpaired trail surrogate (DC00..DFFF).",
+      "range": {
+        "startLine": 146,
+        "startChar": 20,
+        "endLine": 146,
+        "endChar": 47
+      },
       "revId": "35f8288141c2a25445cbb7da1155d08d2f14195b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
