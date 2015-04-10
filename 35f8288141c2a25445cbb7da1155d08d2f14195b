@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "83999efb_a263bac6",
+        "filename": "include/utils/Unicode.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1022037
+      },
+      "writtenOn": "2015-04-10T16:08:21Z",
+      "side": 1,
+      "message": ", that is, it contains unpaired surrogates,",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 45
+      },
+      "revId": "35f8288141c2a25445cbb7da1155d08d2f14195b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2368f29d_ed7dade2",
+        "filename": "libutils/Unicode.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1022037
+      },
+      "writtenOn": "2015-04-10T16:08:21Z",
+      "side": 1,
+      "message": "FYI You could use ICU U16_IS_LEAD(*src) and U16_IS_TRAIL(*++src).\nfrom unicode/utf16.h",
+      "range": {
+        "startLine": 416,
+        "startChar": 12,
+        "endLine": 416,
+        "endChar": 37
+      },
+      "revId": "35f8288141c2a25445cbb7da1155d08d2f14195b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3243be82_7e1d714e",
         "filename": "libutils/Unicode.cpp",
         "patchSetId": 1
@@ -102,6 +148,23 @@
       "side": 1,
       "message": "This is a bad change.  It could break code that is unknowingly transporting invalid surrogate pairs.\n\nWe should tolerate the problem as before.  And it absolutely must remain consistent with the behavior of utf16_to_utf8.",
       "parentUuid": "72b456b0_42acf63b",
+      "revId": "35f8288141c2a25445cbb7da1155d08d2f14195b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4365e6c2_7d8a33e9",
+        "filename": "libutils/tests/Unicode_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1022037
+      },
+      "writtenOn": "2015-04-10T16:08:21Z",
+      "side": 1,
+      "message": "I don\u0027t understand where the +1 comes from.",
       "revId": "35f8288141c2a25445cbb7da1155d08d2f14195b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
