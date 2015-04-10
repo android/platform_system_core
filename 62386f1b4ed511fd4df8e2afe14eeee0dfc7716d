@@ -343,6 +343,24 @@
     },
     {
       "key": {
+        "uuid": "234d525a_b38a12e6",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-10T17:32:22Z",
+      "side": 1,
+      "message": "(see comments on new patch for an even simpler way to do it.)",
+      "parentUuid": "e3617abc_fde1df14",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03868e96_969351d7",
         "filename": "tzdatacheck/tzdatacheck.cpp",
         "patchSetId": 13
@@ -408,6 +426,24 @@
       "side": 1,
       "message": "\"These  functions  may  return  pointers  to statically allocated memory which may be overwritten by subsequent calls.  Alternatively, they may return a pointer to some part of path, so that the string referred to by path should not be modified or freed until the pointer returned by the function is no longer required.\"\n\nSince it needs a non-const argument, I create a copy of dirName to do so.\nWill C++ magically synthesize a std::string here, or are you suggesting I return the char*?\nIf I did the latter, I don\u0027t own the memory, do I?",
       "parentUuid": "636d8ab3_06d47fc1",
+      "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "636d8ab3_46ed9734",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-10T17:32:22Z",
+      "side": 1,
+      "message": "you\u0027re copying, so you don\u0027t care what happens next.\n\nand, yes, the compiler recognizes that you\u0027re returning a T2 from a function declared to return T1, so it looks for an appropriate constructor.",
+      "parentUuid": "a38a229d_a3465e81",
       "revId": "62386f1b4ed511fd4df8e2afe14eeee0dfc7716d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
