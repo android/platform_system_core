@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0242aae_f0e01515",
+        "filename": "logd/main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2015-04-14T23:58:41Z",
+      "side": 1,
+      "message": "Since you\u0027re not updating rc anymore, you can clean up that really messy for loop:\n\nif (rc \u003e\u003d 0) {\n    buf[len - 1] \u003d \u0027\\0\u0027;\n    for(char *ptr, *tok \u003d buf; tok; tok \u003d strtok_r(tok, \"\\r\\n\", \u0026ptr)) {\n        al-\u003elog(tok);\n    }\n}",
+      "range": {
+        "startLine": 316,
+        "startChar": 1,
+        "endLine": 322,
+        "endChar": 13
+      },
+      "revId": "6d30d082dfcc80609393488de36364710d6f85ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
