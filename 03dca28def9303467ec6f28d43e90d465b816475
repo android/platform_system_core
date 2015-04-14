@@ -22,6 +22,30 @@
       "revId": "03dca28def9303467ec6f28d43e90d465b816475",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0242aae_ae72385f",
+        "filename": "debuggerd/elf_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2015-04-14T18:51:36Z",
+      "side": 1,
+      "message": "Elf said that: If necessary, data structures contain explicit padding to ensure 4-byte alignment for 4-byte objects, to force structure sizes to a multiple of 4, and so on. Data also have suitable alignment from the beginning of the file. Thus, for example, a structure containing an Elf32_Addr member will be aligned on a 4-byte boundary within the file.\n\nAccording to \"System V ABI Update\" in 2009, note section should be an array of 8-byte words, and use 8-byte alignment in elf64. But in implementation, it is still an array of 4-byte words in elf64. I also saw in linux/tools/perf/util/symbol-elf.c that note segments are parsed as 4-byte alignment. So I think 4-byte alignment is actually used in elf64.",
+      "parentUuid": "d0299e86_ebd03b79",
+      "range": {
+        "startLine": 65,
+        "startChar": 10,
+        "endLine": 65,
+        "endChar": 14
+      },
+      "revId": "03dca28def9303467ec6f28d43e90d465b816475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
