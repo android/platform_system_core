@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d080bec6_909b2c72",
+        "filename": "include/system/window.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-04-15T19:53:41Z",
+      "side": 1,
+      "message": "I opened b/20262558 to track this.",
+      "parentUuid": "907ac6a8_2ea0bb18",
+      "range": {
+        "startLine": 504,
+        "startChar": 16,
+        "endLine": 504,
+        "endChar": 19
+      },
+      "revId": "ce08be4995d13e57276a968533ea1c2105542a51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "907ac6a8_2e22fb22",
         "filename": "include/system/window.h",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "\u003e Can we have 32-bit processes calling into a 64-bit BufferQueue or vice-versa?\n\nThe 32-bit process would be calling in to a different BufferQueue, right?",
       "parentUuid": "d080bec6_6577b003",
+      "range": {
+        "startLine": 937,
+        "startChar": 44,
+        "endLine": 937,
+        "endChar": 47
+      },
+      "revId": "ce08be4995d13e57276a968533ea1c2105542a51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b07b4aac_414e251d",
+        "filename": "include/system/window.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-04-15T19:53:41Z",
+      "side": 1,
+      "message": "(After further consideration)\n\nThe calls into this method will be handled by native Surface (in the same process), where they are packed into libui Rects before they are sent over Binder to the BufferQueueConsumer\u0027s process, so while the producer and consumer may be in differently-bitted processes, the parceling over Binder should avoid any issues. There shouldn\u0027t be any issue with this call.",
+      "parentUuid": "d080bec6_70af7096",
       "range": {
         "startLine": 937,
         "startChar": 44,
