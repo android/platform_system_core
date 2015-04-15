@@ -46,6 +46,54 @@
       "revId": "6d30d082dfcc80609393488de36364710d6f85ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d080bec6_79720363",
+        "filename": "logd/main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-04-15T15:06:19Z",
+      "side": 1,
+      "message": "Good catch",
+      "parentUuid": "b0242aae_f0e01515",
+      "range": {
+        "startLine": 316,
+        "startChar": 1,
+        "endLine": 322,
+        "endChar": 13
+      },
+      "revId": "6d30d082dfcc80609393488de36364710d6f85ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "907ac6a8_f7385a4f",
+        "filename": "logd/main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-04-15T15:06:19Z",
+      "side": 1,
+      "message": "len is in the range of 256K (depending on kernel configuration, some 64K, many 128K), using android::base::Split would result in more than doubling that allocation (at least temporarily if buf is forced out of scope right afterwards). Not a problem if logd starts where it should (PID\u003d148, very early), but can introduce problems if it should (heaven forbid, knock on wood) crash and restart.\n\nFor klogd (abandoned for the moment), this problem would get worse.\n\nI like the idea, adds some KISS, but must reject it on svelte grounds. In-place split up in buf[len] scales better.",
+      "parentUuid": "9033a6f4_3468db1e",
+      "range": {
+        "startLine": 316,
+        "startChar": 1,
+        "endLine": 322,
+        "endChar": 13
+      },
+      "revId": "6d30d082dfcc80609393488de36364710d6f85ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
