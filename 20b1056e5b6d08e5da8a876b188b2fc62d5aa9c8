@@ -46,6 +46,52 @@
       "revId": "20b1056e5b6d08e5da8a876b188b2fc62d5aa9c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "305cba63_130f0435",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-04-20T17:55:09Z",
+      "side": 1,
+      "message": "There has to be an efficient way to template/inline/subroutine this, and the merge check below?",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 13
+      },
+      "revId": "20b1056e5b6d08e5da8a876b188b2fc62d5aa9c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "305cba63_d3574c29",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-04-20T17:55:09Z",
+      "side": 1,
+      "message": "Plan B: Instead of clearing at the various junctures in the loop, we could instead \u0027age\u0027 the entries in the check above and below, if the last \u0027dropped\u0027 message is less than 200ms away, for example, we could merge to it even if we do not have a contiguous set of entries.",
+      "range": {
+        "startLine": 388,
+        "startChar": 16,
+        "endLine": 388,
+        "endChar": 29
+      },
+      "revId": "20b1056e5b6d08e5da8a876b188b2fc62d5aa9c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
