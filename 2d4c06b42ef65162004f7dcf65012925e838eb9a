@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "d01a7eb3_b2a55581",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-21T17:12:23Z",
+      "side": 1,
+      "message": "(a) it\u0027s what all the cool kids are doing, but (b) it forces callers to take ownership. yes, the fact that a function is returning a raw pointer is a strong clue, but returning a std::unique_ptr means the compiler won\u0027t let you ignore that. it goes from being a human-readable hint to a compiler-enforceable requirement.\n\nare you likely to screw up here, where everything\u0027s in a single file? probably not. but my feeling is we probably want to get into the habit of this quickly so it becomes the default idiom.\n\ngoogle3 is already moving in that direction: https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Ownership_and_Smart_Pointers (under \"Decision\")",
+      "parentUuid": "70f6329f_0e1d2b66",
+      "revId": "2d4c06b42ef65162004f7dcf65012925e838eb9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90148689_a7a88459",
         "filename": "libziparchive/zip_archive.cc",
         "patchSetId": 6
