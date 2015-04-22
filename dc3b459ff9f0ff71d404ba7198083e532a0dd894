@@ -22,6 +22,30 @@
       "revId": "dc3b459ff9f0ff71d404ba7198083e532a0dd894",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "309d9a70_3a1da566",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-22T04:50:35Z",
+      "side": 1,
+      "message": "this one i didn\u0027t actually change. i just replaced 0 with nullptr. :-)\n\nbut to answer the general question... given that the other call sites didn\u0027t check before, i don\u0027t want to surprise their callers by pushing null check responsibility up to them. especially for these fixed-size allocations: if you can\u0027t allocate a fixed-fixed struct, you\u0027re about to die anyway.\n\nfor the ones that already had some error handling, i copied what they\u0027d done. i\u0027m not sure that was a good idea.",
+      "parentUuid": "309d9a70_9aa211a7",
+      "range": {
+        "startLine": 497,
+        "startChar": 28,
+        "endLine": 497,
+        "endChar": 68
+      },
+      "revId": "dc3b459ff9f0ff71d404ba7198083e532a0dd894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
