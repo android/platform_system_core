@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "d0d43e30_e0146b79",
+        "filename": "liblog/log_is_loggable.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-04-23T22:23:42Z",
+      "side": 1,
+      "message": "\u003coops\u003e _forgot_ this was all a prototype to ask enh@ to evaluate this algorithm\n\n\u003csigh\u003e adding any cache thingy always adds complexity, once it start trying to scale outward (one for each thread, etc) it makes me sick just how monstrous it will eventually become.",
+      "parentUuid": "10a416b9_bf3ecedb",
+      "revId": "e03e576c134cb4760ca36444a4a377835547f88f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "309d9a70_684e754f",
         "filename": "liblog/log_is_loggable.c",
         "patchSetId": 3
@@ -53,6 +71,30 @@
       "writtenOn": "2015-04-23T21:24:53Z",
       "side": 1,
       "message": "The property area also has a global serial number, if that hasn\u0027t changed then you know no new properties have been added or changed.  This isn\u0027t currently exposed even as a private API though.\n\nCaching only set properties isn\u0027t going to be that useful, since these properties will rarely be set.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 57
+      },
+      "revId": "e03e576c134cb4760ca36444a4a377835547f88f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10a416b9_e2419df9",
+        "filename": "liblog/log_is_loggable.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-04-23T22:23:42Z",
+      "side": 1,
+      "message": "we need a better api, good point, we need to get that exposed , even privately.",
+      "parentUuid": "309d9a70_684e754f",
       "range": {
         "startLine": 42,
         "startChar": 0,
@@ -111,6 +153,30 @@
     },
     {
       "key": {
+        "uuid": "d0d43e30_205dc356",
+        "filename": "liblog/log_is_loggable.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-04-23T22:23:42Z",
+      "side": 1,
+      "message": "repeated code, this then scales out to subroutines. Will probably need to do so anyways if I do a per-thread cache to make this easier to maintain.",
+      "parentUuid": "309d9a70_083fa987",
+      "range": {
+        "startLine": 79,
+        "startChar": 12,
+        "endLine": 79,
+        "endChar": 18
+      },
+      "revId": "e03e576c134cb4760ca36444a4a377835547f88f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "309d9a70_4887f1e1",
         "filename": "liblog/log_is_loggable.c",
         "patchSetId": 3
@@ -122,6 +188,24 @@
       "writtenOn": "2015-04-23T21:24:53Z",
       "side": 1,
       "message": "This is reaching into system property implementation details, probably OK in this case but at least needs a comment saying this is private and shouldn\u0027t be copied.",
+      "revId": "e03e576c134cb4760ca36444a4a377835547f88f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10a416b9_22b0056c",
+        "filename": "liblog/log_is_loggable.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-04-23T22:23:42Z",
+      "side": 1,
+      "message": "We only started investigating a cache for __system_property* because of the speed worries expressed elsewhere.",
+      "parentUuid": "309d9a70_4887f1e1",
       "revId": "e03e576c134cb4760ca36444a4a377835547f88f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
