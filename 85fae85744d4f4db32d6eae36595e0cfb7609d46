@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9070061a_6b2cb2c7",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-04-23T19:27:11Z",
+      "side": 1,
+      "message": "If you take this approach rather than using setcon (not sure why), then you need to refactor selinux_initialize().  You only want to call selinux_android_load_policy() and security_setenforce() once, the first time init is executed by the kernel, and you only want to call selinux_init_all_handles() on the second invocation when init is re-executed by itself.",
+      "revId": "85fae85744d4f4db32d6eae36595e0cfb7609d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
