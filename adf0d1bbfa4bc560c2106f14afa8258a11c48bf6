@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9070061a_441d2365",
+        "filename": "init/init.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2015-04-24T12:41:12Z",
+      "side": 1,
+      "message": "At some point, we should likely change this to something along the lines of:\nbool kernel_enforcing \u003d (security_getenforce() \u003d\u003d 1);\nif (kernel_enforcing !\u003d is_enforcing) {\n    if (security_setenforce(is_enforcing)) {\n         ERROR(\"Could not set enforcing mode:  %s\\n\", strerror(errno));\n         security_failure();\n    }\n}\nThat way it checks for an error on security_setenforce() yet also won\u0027t fall over if the kernel was built without CONFIG_SECURITY_SELINUX_DEVELOP (i.e. without permissive mode), as the kernel will already be enforcing in that case.",
+      "revId": "adf0d1bbfa4bc560c2106f14afa8258a11c48bf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
