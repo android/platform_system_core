@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0d99e70_82900a1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-25T23:39:32Z",
+      "side": 1,
+      "message": "don\u0027t you mean \"This eliminates all use of mknod from the init domain; the only remaining use is from the kernel domain, and there\u0027s nothing we can do about that.\"?",
+      "revId": "adb787e322fcae0689ad0f62362ec7eca3fe7c26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d99e70_027c1a6d",
+        "filename": "init/util.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-25T23:39:32Z",
+      "side": 1,
+      "message": "worth a comment here. (that was true of the old code too, but since you\u0027re here...)",
+      "revId": "adb787e322fcae0689ad0f62362ec7eca3fe7c26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d99e70_e280eed0",
+        "filename": "init/util.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-25T23:39:32Z",
+      "side": 1,
+      "message": "just add this inside the previous if:\n\n  if (fd \u003d\u003d -1) {\n    exit(1);\n  }\n\nand lose this if, the return, and the weird exit at the end.",
+      "revId": "adb787e322fcae0689ad0f62362ec7eca3fe7c26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
