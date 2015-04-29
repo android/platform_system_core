@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70f8f2fa_61eb92f3",
+        "filename": "logd/LogBufferElement.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-04-29T21:18:07Z",
+      "side": 1,
+      "message": "This format line hides a grammatical issue:\n\n04-29 14:11:16.056   582  2238 I logd    : uid\u003d1000(system) comm\u003dsystem_server too chatty, expire 2 lines\n\n\u0027system_server\u0027 is not too chatty, UID\u003d1000 is\n\nMove the comm\u003d message to after \u0027too chatty\u0027 so that the UID is to blame, not the comm\u003d. The person viewing this can tell which \u0027thread\u0027 is too chatty in an UID group by looking at \u0027logcat -S\u0027 or look for the formatted logd line with the highest count in the logcat results.",
+      "range": {
+        "startLine": 99,
+        "startChar": 47,
+        "endLine": 99,
+        "endChar": 50
+      },
+      "revId": "c4e8ccb680cbd826d91fdef5c82c7bba4f432d3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
