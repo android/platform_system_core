@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "d0027e8c_57b3f3c8",
+        "filename": "adb/adb_client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-29T16:57:39Z",
+      "side": 1,
+      "message": "except the \u0027p\u0027 is for the free strerror, like perror and PLOG.",
+      "parentUuid": "d0d99e70_4cbeb7c5",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 15
+      },
+      "revId": "7b9d5fe8ed641c839c6ef241251a31167189cccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0f222e5_9ec3aaa6",
         "filename": "adb/adb_client.cpp",
         "patchSetId": 1
@@ -53,6 +77,24 @@
       "writtenOn": "2015-04-29T16:25:29Z",
       "side": 1,
       "message": "Is there any reason these aren\u0027t all just LOG(FATAL) (or ERROR)? I think the first thing I\u0027ll do today is bring up base::logging for Windows.",
+      "revId": "7b9d5fe8ed641c839c6ef241251a31167189cccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00b02a7_61875a14",
+        "filename": "adb/adb_client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-29T16:57:39Z",
+      "side": 1,
+      "message": "the calling code chooses what do do with these. that\u0027s what the adb_error() public API is for, and what i meant about the long-term fix being to just pass a std::string* and lose the global. i might just do that now instead. i can always come back to this ps if it gets too hairy.",
+      "parentUuid": "f0f222e5_9ec3aaa6",
       "revId": "7b9d5fe8ed641c839c6ef241251a31167189cccf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
