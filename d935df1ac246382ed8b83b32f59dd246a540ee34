@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "70f8f2fa_f01f5c14",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-30T20:33:07Z",
+      "side": 1,
+      "message": "it\u0027s not the lack of the size_t *type* that causes us problems --- it\u0027s that %zd doesn\u0027t work, so using size_t for parameters tends to lead to pain in adb.\n\nwe also have the unfortunate situation where all the tools are built for 64-bit Linux (and Mac OS) but 32-bit Windows. (and we don\u0027t even know what fraction of our users have 64-bit Windows.) so size_t leads to different limits on Windows vs Linux. (and Linux is the only place we test, so...)",
+      "parentUuid": "300cbaed_f6c8f02a",
+      "range": {
+        "startLine": 466,
+        "startChar": 4,
+        "endLine": 466,
+        "endChar": 12
+      },
+      "revId": "d935df1ac246382ed8b83b32f59dd246a540ee34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "300cbaed_ca4c21d1",
         "filename": "adb/commandline.cpp",
         "patchSetId": 1
