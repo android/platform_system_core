@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "90fd66eb_d2f5099a",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-30T21:29:28Z",
+      "side": 1,
+      "message": "weird though this might sound, i\u0027m actually leaving a lot of these as a reminder that we need to come back and remove a lot of these implicit limits. \"unsigned\" is clearly crufty old code that needs attention, but uint32_t looks like someone might have actually had a real reason, and mechanically switching over can hide that.\n\ni hope to fix fastboot\u0027s \u0027unsigned\u0027 issues soon (see http://b/20110580 and a work in progress patch that\u0027s lurking somewhere), but adb is probably further out. (~200 different locals and parameters are \u0027unsigned\u0027 in adb.)",
+      "parentUuid": "f005c2c3_e07b183b",
+      "range": {
+        "startLine": 466,
+        "startChar": 4,
+        "endLine": 466,
+        "endChar": 12
+      },
+      "revId": "d935df1ac246382ed8b83b32f59dd246a540ee34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "300cbaed_ca4c21d1",
         "filename": "adb/commandline.cpp",
         "patchSetId": 1
