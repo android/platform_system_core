@@ -22,6 +22,30 @@
       "revId": "81b3eabc49736b89c4f99940f79785074955eaa5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0218a87_6b72750d",
+        "filename": "logd/LogStatistics.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-05-05T16:41:50Z",
+      "side": 1,
+      "message": "Yes. free() accepts NULL according to POSIX (see bottom).\n\nWe are immediately reassigning the content. There is a lock between logging and reading (generating statistics or logcat reader connection to pidToName() from class) that should resolve any race conditions; otherwise I would have used:\n\n    void *tobefree \u003d name;\n    name \u003d NULL;\n    free(tobefree);\n    null \u003d android::pidToName(e-\u003egetPid());\n\nman page:\n\nThe free() function frees the memory space pointed to by\nptr, which must have been returned by a previous call to\nmalloc(), calloc() orrealloc(). Otherwise, or if free(ptr)\nhas already been called  before, undefined behavior occurs.\nIf ptr is NULL, no operation is performed.",
+      "parentUuid": "504a0e43_3c719eda",
+      "range": {
+        "startLine": 201,
+        "startChar": 17,
+        "endLine": 201,
+        "endChar": 21
+      },
+      "revId": "81b3eabc49736b89c4f99940f79785074955eaa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
