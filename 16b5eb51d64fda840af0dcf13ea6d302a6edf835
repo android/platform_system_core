@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d026fe9b_97eee801",
+        "filename": "logd/main.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-05-05T20:25:57Z",
+      "side": 1,
+      "message": "This code assumes logd starts immediately, works fine because there is no suspend action between start of the kernel logs and the start of logd.\n\nIt does not handle the case where logd crashes and restarts, as the correction factor needs to look for the _first_ \u0027] PM: suspend entry \u0027 needle in the haystack and recalculate the new \u0027base\u0027 correction before we start pouring through the kernel logs.",
+      "range": {
+        "startLine": 394,
+        "startChar": 12,
+        "endLine": 394,
+        "endChar": 54
+      },
+      "revId": "16b5eb51d64fda840af0dcf13ea6d302a6edf835",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
