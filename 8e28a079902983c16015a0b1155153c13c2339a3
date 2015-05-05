@@ -46,6 +46,30 @@
       "revId": "8e28a079902983c16015a0b1155153c13c2339a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "706d52b3_b9bdb7fb",
+        "filename": "include/nativebridge/native_bridge.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1051588
+      },
+      "writtenOn": "2015-05-05T02:36:11Z",
+      "side": 1,
+      "message": "I mean: Native bridge registers signal handler on behalf of apps code  native bridge is OK to use sigaction? \n\nA further discussion, how should native bridge decide which signal to use sigaction, and which one not? Can it assumes ART only call getSignalHandler(SIGSEGV), thus sigaction() all other signal handlers? (to prevent future ART changes from breaking it, native bridge can return NULL on getSignalHandler for signals other then SIGSEGV).",
+      "parentUuid": "f06142bc_74688120",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 52
+      },
+      "revId": "8e28a079902983c16015a0b1155153c13c2339a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
