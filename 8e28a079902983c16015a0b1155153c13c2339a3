@@ -70,6 +70,30 @@
       "revId": "8e28a079902983c16015a0b1155153c13c2339a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0218a87_28396352",
+        "filename": "include/nativebridge/native_bridge.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-05T03:30:41Z",
+      "side": 1,
+      "message": "This is not intended to forbid the use of sigaction.\n\nThis API is for the cases when a native bridge would like the runtime to ensure that its handler is always first (after ART). If you are interested in other signals, and they don\u0027t have an ordering constraint like SIGSEGV, this isn\u0027t gonna force you to do it this way (libsigchain still accepts general sigaction...).\n\nMy original question was whether only SIGSEGV is enough. After talking with bdc, we\u0027ll likely remove the SIGSEGV restriction, and ART will just query the whole range supported by libsigchain (where this prioritization will be implemented). If you don\u0027t want it handled, simply return null for those signals and call sigaction yourself. Same goes for any additional handlers you want installed - just call sigaction normally, and they\u0027ll be in the normal chain.\n\nDoes this sound reasonable to you?",
+      "parentUuid": "706d52b3_b9bdb7fb",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 52
+      },
+      "revId": "8e28a079902983c16015a0b1155153c13c2339a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
