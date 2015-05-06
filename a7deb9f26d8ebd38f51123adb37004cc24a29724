@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4d8435cc_abe83926",
+        "filename": "adb/client/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-05-06T21:35:42Z",
+      "side": 1,
+      "message": "Actually, it seems my comment isn\u0027t quite correct. Windows has strerror(3), and it behaves like you would expect... for the C library.\n\nThe Windows API calls essentially have their own errno that is retrieved by GetLastError(), and these error codes are not the same as those used by errno, and thus use the gross API (FormatMessage https://msdn.microsoft.com/en-us/library/aa908810.aspx) instead.\n\nI\u0027m not actually sure what to do with the logging API here, given that Windows actually needs two PLOGs...\n\nI\u0027ll update the comment either way.",
+      "parentUuid": "0d407d41_b6307095",
+      "revId": "a7deb9f26d8ebd38f51123adb37004cc24a29724",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d36f5df_950a0620",
         "filename": "adb/client/main.cpp",
         "patchSetId": 2
