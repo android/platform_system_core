@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4d36f5df_d2654491",
+        "filename": "include/nativebridge/native_bridge.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1051763
+      },
+      "writtenOn": "2015-05-06T03:55:56Z",
+      "side": 1,
+      "message": "Can we merge this new interface at the end of existing NativeBridgeCallbacks? Because we don\u0027t want to keep forward-compatible for native bridge.",
+      "range": {
+        "startLine": 149,
+        "startChar": 39,
+        "endLine": 149,
+        "endChar": 60
+      },
+      "revId": "8e28a079902983c16015a0b1155153c13c2339a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "706d52b3_7616cefc",
         "filename": "include/nativebridge/native_bridge.h",
         "patchSetId": 3
@@ -179,6 +202,30 @@
       "writtenOn": "2015-05-05T16:08:53Z",
       "side": 1,
       "message": "I\u0027m good with not having using kMaxSupported but we should document the intention here.",
+      "parentUuid": "102df676_a381f1fe",
+      "range": {
+        "startLine": 141,
+        "startChar": 41,
+        "endLine": 141,
+        "endChar": 42
+      },
+      "revId": "8e28a079902983c16015a0b1155153c13c2339a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d36f5df_725578a6",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1051763
+      },
+      "writtenOn": "2015-05-06T03:55:56Z",
+      "side": 1,
+      "message": "Hi Andreas,\nIt\u0027s not necessary to keep forward-compatible for native bridge.\nWe need a clear interface for different version of native bridge.\nIf the version is not matched, then, libnativebridge should stop loading it.",
       "parentUuid": "102df676_a381f1fe",
       "range": {
         "startLine": 141,
