@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "8d1e2d58_e98dfd03",
+        "filename": "include/nativebridge/native_bridge.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-06T05:06:47Z",
+      "side": 1,
+      "message": "I find that a very Houdini-centric answer. Yes, Houdini provides stubs/trampolines/whatever you call them for many (all) of the libraries in /system. But that is purely a performance-point implementation-detail IMHO. It is perfectly possible to translate *any* call and thus be forward-compatible, as you *can* be agnostic of any library.\n\nAs the initialization failure is a workable solution for a bailout, you still don\u0027t really convince me here why we should not aim for it.",
+      "parentUuid": "2d39c1d0_117bcc3c",
+      "range": {
+        "startLine": 149,
+        "startChar": 39,
+        "endLine": 149,
+        "endChar": 60
+      },
+      "revId": "8e28a079902983c16015a0b1155153c13c2339a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "706d52b3_7616cefc",
         "filename": "include/nativebridge/native_bridge.h",
         "patchSetId": 3
@@ -251,6 +275,30 @@
       "side": 1,
       "message": "I mean we can define it as below.\nstatic const NativeBridgeCallbacks* callbacks \u003d nullptr;",
       "parentUuid": "8d1e2d58_69c7ad49",
+      "range": {
+        "startLine": 86,
+        "startChar": 30,
+        "endLine": 86,
+        "endChar": 39
+      },
+      "revId": "8e28a079902983c16015a0b1155153c13c2339a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d19f971_dc0d5c3b",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-06T05:06:47Z",
+      "side": 1,
+      "message": "Sure. It necessitates a couple of signature changes, but is doable.\n\nObviously it\u0027s only for code cleanliness - anyone being able to look for a private data element and screw with it already has enough knowledge and control over the system. But we had enough discussions about perceived security...",
+      "parentUuid": "2d39c1d0_716c5888",
       "range": {
         "startLine": 86,
         "startChar": 30,
