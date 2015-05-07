@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd24a5a6_2488b021",
+        "filename": "adb/console.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-05-07T01:14:04Z",
+      "side": 1,
+      "message": "I think this needs - 1 to exclude the NULL terminator.",
+      "range": {
+        "startLine": 92,
+        "startChar": 42,
+        "endLine": 92,
+        "endChar": 68
+      },
+      "revId": "0a3a3d488c607d252be178cd6f76d92b3efe4c49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_20c9b8a6",
+        "filename": "adb/console.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-05-07T01:14:04Z",
+      "side": 1,
+      "message": "If the quit command could not be sent, the emulator will not close the socket, so adb emu will hang in the read loop below. My opinion is that if you get any write errors here (or above in the for loop), just adb_close() the socket and don\u0027t bother doing the read loop.",
+      "range": {
+        "startLine": 94,
+        "startChar": 56,
+        "endLine": 95,
+        "endChar": 29
+      },
+      "revId": "0a3a3d488c607d252be178cd6f76d92b3efe4c49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd24a5a6_e423d8a0",
+        "filename": "adb/console.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-05-07T01:14:04Z",
+      "side": 1,
+      "message": "I couldn\u0027t quickly see where this is defined. I\u0027m fine as long as this is bigger than ~32 bytes and not a super huge stack value (anywhere from 4K to 64K seems reasonable to me).",
+      "range": {
+        "startLine": 105,
+        "startChar": 17,
+        "endLine": 105,
+        "endChar": 23
+      },
+      "revId": "0a3a3d488c607d252be178cd6f76d92b3efe4c49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
