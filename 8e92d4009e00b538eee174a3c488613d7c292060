@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4d36f5df_9897dd90",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-05-07T14:55:22Z",
+      "side": 1,
+      "message": "https://google-styleguide.googlecode.com/svn/trunk/cppguide.html\n\neither is acceptible. personally i don\u0027t usually use it for anything other than just \"return;\".",
+      "parentUuid": "cd24a5a6_277d522d",
+      "range": {
+        "startLine": 799,
+        "startChar": 4,
+        "endLine": 799,
+        "endChar": 21
+      },
+      "revId": "8e92d4009e00b538eee174a3c488613d7c292060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd24a5a6_e7863aae",
         "filename": "init/init.cpp",
         "patchSetId": 1
@@ -42,6 +66,47 @@
         "endLine": 966,
         "endChar": 62
       },
+      "revId": "8e92d4009e00b538eee174a3c488613d7c292060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d36f5df_78767909",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-05-07T14:55:22Z",
+      "side": 1,
+      "message": "now *that* would be toybox style. it\u0027s harder to read though.",
+      "parentUuid": "cd24a5a6_e7863aae",
+      "range": {
+        "startLine": 966,
+        "startChar": 56,
+        "endLine": 966,
+        "endChar": 62
+      },
+      "revId": "8e92d4009e00b538eee174a3c488613d7c292060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d8435cc_8eebf8a7",
+        "filename": "init/log.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-05-07T14:55:22Z",
+      "side": 1,
+      "message": "oops. when i realized that the problem wasn\u0027t the \"msg[512]\" but actually the kernel, i undid my use of android::base::StringPrintf but left this here (and the \u003cstring\u003e above). will remove.",
       "revId": "8e92d4009e00b538eee174a3c488613d7c292060",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -83,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "4d8435cc_eebc04a9",
+        "filename": "init/log.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-05-07T14:55:22Z",
+      "side": 1,
+      "message": "i was hoping someone from kernel land was going to tell me (a) what the actual limit is and (b) how i\u0027m supposed to write this.\n\nas far as i can tell, you *must* use writev. i\u0027ve tried to switch to write in the past and nothing comes out. you mean split up as in \"insert line breaks and pretend this was really an n-line message\"? that\u0027s a possibility. does that have to be multiple writev calls, or can i just have more iovecs?\n\nit looks to me like the limit is the limit of kmalloc:\n\n  818         line \u003d kmalloc(len + 1, GFP_KERNEL);\n  819         if (line \u003d\u003d NULL)\n  820                 return -ENOMEM;\n\nbut the internet thinks that\u0027s 128KiB. and cmdline might be long, but it\u0027s not that long.",
+      "parentUuid": "cd24a5a6_07313698",
+      "revId": "8e92d4009e00b538eee174a3c488613d7c292060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d8435cc_ce0d803b",
         "filename": "init/util.cpp",
         "patchSetId": 1
@@ -94,6 +177,30 @@
       "writtenOn": "2015-05-07T14:39:30Z",
       "side": 1,
       "message": "Q: required? what string functionality is pulled in with stringprintf.h?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 30
+      },
+      "revId": "8e92d4009e00b538eee174a3c488613d7c292060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd24a5a6_e75f5abe",
+        "filename": "init/util.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-05-07T14:55:22Z",
+      "side": 1,
+      "message": "no. left over from an earlier version. (nothing but the std::string printf-style functions.)",
+      "parentUuid": "4d8435cc_ce0d803b",
       "range": {
         "startLine": 36,
         "startChar": 0,
@@ -135,6 +242,24 @@
       "side": 1,
       "message": "Can you split the two (making the hack dependent on the cleanup, as one likes the change from char* to std:string\u0026), so that the \u0027hack\u0027 can be reverted?",
       "parentUuid": "4d8435cc_98a4a20a",
+      "revId": "8e92d4009e00b538eee174a3c488613d7c292060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd24a5a6_c7be9e46",
+        "filename": "init/util.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-05-07T14:55:22Z",
+      "side": 1,
+      "message": "my hope was that you\u0027d see this and come up with the right fix, and it looks like romlem\u0027s about to give AOSP the internal kernel (and then get HTC to fix their bootloader). so i\u0027ll remove this instead.",
+      "parentUuid": "4d8435cc_ee8164fe",
       "revId": "8e92d4009e00b538eee174a3c488613d7c292060",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
