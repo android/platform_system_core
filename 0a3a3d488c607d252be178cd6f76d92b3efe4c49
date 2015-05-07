@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2d39c1d0_b7d5103b",
+        "filename": "adb/console.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-05-07T02:22:35Z",
+      "side": 1,
+      "message": "I checked the emulator code and its \u0027protocol\u0027 treats a NULL just like any other non-newline character. Newline is the terminator that it looks for. But yeah, probably a good idea to not send NULL since telnet/netcat (the other popular emulator clients) don\u0027t.",
+      "parentUuid": "8d1e2d58_e07620d0",
+      "range": {
+        "startLine": 92,
+        "startChar": 42,
+        "endLine": 92,
+        "endChar": 68
+      },
+      "revId": "0a3a3d488c607d252be178cd6f76d92b3efe4c49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d1e2d58_20c9b8a6",
         "filename": "adb/console.cpp",
         "patchSetId": 5
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "0d407d41_3f70d387",
+        "filename": "adb/console.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-05-07T02:22:35Z",
+      "side": 1,
+      "message": "To clarify my previous comment: If the kill command made it to the emulator and the following quit command didn\u0027t, then the read loop is ok, but if some other command made it and the following quit command didn\u0027t, then that would probably hang forever. Probably simplest to just don\u0027t do the read loop if there was an error.",
+      "parentUuid": "4d8435cc_38d9d6f4",
+      "range": {
+        "startLine": 94,
+        "startChar": 56,
+        "endLine": 95,
+        "endChar": 29
+      },
+      "revId": "0a3a3d488c607d252be178cd6f76d92b3efe4c49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd24a5a6_e423d8a0",
         "filename": "adb/console.cpp",
         "patchSetId": 5
@@ -131,6 +179,30 @@
       "side": 1,
       "message": "It\u0027s part of the standard library. Defined as some reasonable size to use for this type of thing (and for us it is somewhere in that range).",
       "parentUuid": "cd24a5a6_e423d8a0",
+      "range": {
+        "startLine": 105,
+        "startChar": 17,
+        "endLine": 105,
+        "endChar": 23
+      },
+      "revId": "0a3a3d488c607d252be178cd6f76d92b3efe4c49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d407d41_1f750f78",
+        "filename": "adb/console.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-05-07T02:22:35Z",
+      "side": 1,
+      "message": "Ah, ok, found it. Sounds good.",
+      "parentUuid": "4d8435cc_185ad20a",
       "range": {
         "startLine": 105,
         "startChar": 17,
