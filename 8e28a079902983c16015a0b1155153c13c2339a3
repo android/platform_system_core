@@ -241,6 +241,30 @@
     },
     {
       "key": {
+        "uuid": "0d407d41_9ad22a86",
+        "filename": "include/nativebridge/native_bridge.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1051763
+      },
+      "writtenOn": "2015-05-08T01:28:18Z",
+      "side": 1,
+      "message": "The push method is much better.\nOr, maybe define a check method, instead?\nFor example, bool NativeBridgeCallbacks2::isCompatibleVersion(uint32_t bridge_version).\nThen, invoke it before initialize?\n\nbool InitializeNativeBridge(JNIEnv* env, const char* instruction_set) {\n\n    ... ...\n\n    if ((callbacks-\u003eversion \u003e\u003d NativeBridgeCallbacks2::kVersionNum)\n        \u0026\u0026 !callbacks-\u003eisCompatibleVersion(kVersionNum)) {\n        CloseNativeBridge(true);\n        return false;\n    }\n    ... ...\n\n    if (callbacks-\u003einitialize(runtime_callbacks, app_code_cache_dir, instruction_set))\n\n    ... ...\n}\n\nThanks,\nJinghui",
+      "parentUuid": "4d8435cc_e1d0d2f7",
+      "range": {
+        "startLine": 149,
+        "startChar": 39,
+        "endLine": 149,
+        "endChar": 60
+      },
+      "revId": "8e28a079902983c16015a0b1155153c13c2339a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "706d52b3_7616cefc",
         "filename": "include/nativebridge/native_bridge.h",
         "patchSetId": 3
