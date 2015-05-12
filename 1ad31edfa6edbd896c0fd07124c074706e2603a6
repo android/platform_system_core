@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "2d338121_e003970f",
+        "filename": "logd/LogKlog.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-05-12T21:19:49Z",
+      "side": 1,
+      "message": "Both are acceptable Android coding styles I was lead to believe, this style is used throughout the logger and if it needs to be changed should be done in a cleanup CL.",
+      "parentUuid": "cd43c57f_7ea3a67e",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 9
+      },
+      "revId": "1ad31edfa6edbd896c0fd07124c074706e2603a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad3e91ea_0e0509cd",
         "filename": "logd/LogKlog.cpp",
         "patchSetId": 13
@@ -94,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "cd43c57f_142ec139",
+        "filename": "logd/LogKlog.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-05-12T21:19:49Z",
+      "side": 1,
+      "message": "log type?\n\nOne \u0027dmesg\u0027 style string in, a logged \u0027Android binary format\u0027 string out.",
+      "parentUuid": "ad3e91ea_ae54d5a8",
+      "range": {
+        "startLine": 180,
+        "startChar": 13,
+        "endLine": 180,
+        "endChar": 16
+      },
+      "revId": "1ad31edfa6edbd896c0fd07124c074706e2603a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad3e91ea_0e69896b",
         "filename": "logd/LogKlog.cpp",
         "patchSetId": 13
@@ -117,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "cd43c57f_3963f88c",
+        "filename": "logd/LogKlog.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-05-12T21:19:49Z",
+      "side": 1,
+      "message": "Everything above is used to calculate/parse/sniff all the pieces from the incoming dmesg line buffer and generate the internal log buffer format:\n\n\u003cpri\u003e\u003ctag\u003e\\0\u003cmessage\u003e\\0\n\nAll the vars would have to passed to a break-out function:\n\npri\nnow\nuid\npid\ntid\nmessage (buf, tag, l)\nlength\n\nI can not imagine the break-out to result in anything that looks less complicated.\n\nThe above parse/sniff routines are far better candidates for break-out. I will try that, and make this section look more linear.",
+      "parentUuid": "ad3e91ea_0e69896b",
+      "range": {
+        "startLine": 380,
+        "startChar": 4,
+        "endLine": 424,
+        "endChar": 5
+      },
+      "revId": "1ad31edfa6edbd896c0fd07124c074706e2603a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd43c57f_9eccb26b",
         "filename": "logd/LogKlog.h",
         "patchSetId": 13
@@ -128,6 +200,30 @@
       "writtenOn": "2015-05-12T19:54:11Z",
       "side": 1,
       "message": "do you need both of these? are they mutually exclusive?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 16
+      },
+      "revId": "1ad31edfa6edbd896c0fd07124c074706e2603a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d338121_8319f5b0",
+        "filename": "logd/LogKlog.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-05-12T21:19:49Z",
+      "side": 1,
+      "message": "I can use one, I think an enableLogging flag may be more clear.",
+      "parentUuid": "cd43c57f_9eccb26b",
       "range": {
         "startLine": 31,
         "startChar": 0,
