@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4d599572_5dcd0f04",
+        "filename": "adb/sysdeps.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-05-12T07:20:19Z",
+      "side": 1,
+      "message": "I didn\u0027t want to touch the full adb codebase before I got sign-off from you guys (or in case you guys wanted to make the rest of the changes yourselves or do it some other way). So you guys let me know if you want me to do the rest of the changes in this change or separately, or if you want to think about this a while (not a bad idea), or if you want to do it yourselves and want me to abandon, etc.",
+      "parentUuid": "ad3e91ea_890f5cb5",
+      "revId": "bbc1bcfb8fe35d028d764e90009e3bbc29539e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d338121_95d2d4d3",
         "filename": "adb/sysdeps_win32.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-05-12T06:14:49Z",
       "side": 1,
       "message": "yeah, that does seem like the best choice, if only because it\u0027s the option where we\u0027re least likely to reintroduce bugs.",
+      "revId": "bbc1bcfb8fe35d028d764e90009e3bbc29539e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d599572_fdbb434e",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3106,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-05-12T07:20:19Z",
+      "side": 1,
+      "message": "This is the first time I\u0027ve tried this option (I\u0027ve done plenty of option 1 and 2) and I think option 3 seems pretty good, especially for a codebase that already uses char*. I also think that if you guys are going to keep having way more POSIX competency than Win32, maybe it makes more sense to generally keep the codebase more POSIX-y as possible (if you don\u0027t want to introduce tons of generic, abstracted platform wrappers which some cross-platform codebases do).",
+      "parentUuid": "2d338121_95d2d4d3",
       "revId": "bbc1bcfb8fe35d028d764e90009e3bbc29539e3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "4d599572_fd94e3be",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3181,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-05-12T07:20:19Z",
+      "side": 1,
+      "message": "There seems to be some debate about whether the Standard says that the chars in a string are contiguous or not. Some people say that it didn\u0027t used to be in the Standard, but then someone checked many implementations and found that all were contiguous, so then they made it part of a newer Standard (C++11? something modern?). It definitely feels somewhat sketchy to get write access to the raw buffer this way.",
+      "parentUuid": "ad3e91ea_c91044d4",
+      "revId": "bbc1bcfb8fe35d028d764e90009e3bbc29539e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd43c57f_ede2719d",
         "filename": "adb/sysdeps_win32.cpp",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2015-05-12T06:14:49Z",
       "side": 1,
       "message": "or strdup?",
+      "revId": "bbc1bcfb8fe35d028d764e90009e3bbc29539e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d4819a1_9bae8b12",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3238,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-05-12T07:20:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd43c57f_ede2719d",
       "revId": "bbc1bcfb8fe35d028d764e90009e3bbc29539e3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
