@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d37016d_3845cf78",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-05-19T23:44:45Z",
+      "side": 1,
+      "message": "This typedef made the following less-ugly.",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 77
+      },
+      "revId": "e87594411d7f2291eaef375144125ec180e3122f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d37016d_980bbb25",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-05-19T23:44:45Z",
+      "side": 1,
+      "message": "Why in this case did the iterator type inheritance work, but in LogStatistics.h it did not?\n\nAnother feature that did not get inherited was operator[] in LogStatistics.h; it complained (when I tried to use it) that it could not do it trivially so it was deleted from the inheritance. I suspect that is my _clue_. The difference is here we retain a pointer in the value easy to copy, but in LogStatistics the value is a class with non-trivial non-default copy constructors and all to complicate things.",
+      "range": {
+        "startLine": 253,
+        "startChar": 56,
+        "endLine": 253,
+        "endChar": 57
+      },
+      "revId": "e87594411d7f2291eaef375144125ec180e3122f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adfdb1c1_7166039e",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-05-19T23:44:45Z",
+      "side": 1,
+      "message": "According to net wisdom this is KISS way of insert if it does not exist, and assign if it does. We only call this here if it does not exist as part of program flow.",
+      "range": {
+        "startLine": 274,
+        "startChar": 8,
+        "endLine": 274,
+        "endChar": 33
+      },
+      "revId": "e87594411d7f2291eaef375144125ec180e3122f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adfdb1c1_d1c7f7e5",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-05-19T23:44:45Z",
+      "side": 1,
+      "message": "A processing-speed improvement with the move to unordered_map, we continue through the loop. In BasicHashtable we would delete the entry and reset to the beginning to find the next one to erase.",
+      "range": {
+        "startLine": 287,
+        "startChar": 16,
+        "endLine": 287,
+        "endChar": 31
+      },
+      "revId": "e87594411d7f2291eaef375144125ec180e3122f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d37016d_155e9677",
+        "filename": "logd/LogStatistics.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-05-19T23:44:45Z",
+      "side": 1,
+      "message": "I was surprised I had to do this, fully expected to inherit the iterator.",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 73
+      },
+      "revId": "e87594411d7f2291eaef375144125ec180e3122f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adfdb1c1_71d963f4",
+        "filename": "logd/LogStatistics.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-05-19T23:44:45Z",
+      "side": 1,
+      "message": "took much machinations to get here, I was expecting unordered_map to have an iterator insert(TKey, TEntry) variant. the return is a pair, [.]second is a bool that reports _if_ the insert took place; I decided its failure is not something I can conveniently propagate.",
+      "range": {
+        "startLine": 80,
+        "startChar": 17,
+        "endLine": 80,
+        "endChar": 68
+      },
+      "revId": "e87594411d7f2291eaef375144125ec180e3122f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
