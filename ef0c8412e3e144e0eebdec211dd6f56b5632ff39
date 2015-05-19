@@ -16,6 +16,23 @@
       "revId": "ef0c8412e3e144e0eebdec211dd6f56b5632ff39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adfdb1c1_88f957fd",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 7
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-05-19T16:08:51Z",
+      "side": 1,
+      "message": "the permissions here conflict with the ones in internal master.\n\n  mkdir /data/misc/vold 0700 root root\n\nWhy does system_server/system apps need access? SELinux policies on this explicitly prohibit anyone but vold from accessing these directories.\n\nvold runs as root, whereas you\u0027re only granting system access.\n\nWhy 0770? Internal master is tighter at 0700.",
+      "revId": "ef0c8412e3e144e0eebdec211dd6f56b5632ff39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
