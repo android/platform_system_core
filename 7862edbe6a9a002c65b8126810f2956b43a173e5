@@ -16,6 +16,24 @@
       "revId": "7862edbe6a9a002c65b8126810f2956b43a173e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed19690f_bd95673d",
+        "filename": "adb/jdwp_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1010121
+      },
+      "writtenOn": "2015-05-20T00:26:49Z",
+      "side": 1,
+      "message": "Using a union is (or at least used to be) the recommended fix for this type of aliasing violation by the gcc guys (works in clang too), but it technically is undefined.\n\nmemcpy would work - another possibility would be adding __attribute__((may_alias)) to the sockaddr* definitions in Bionic, given sockaddr and friends usually come with casting pointers between different related types.",
+      "parentUuid": "adfdb1c1_ceeab272",
+      "revId": "7862edbe6a9a002c65b8126810f2956b43a173e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
