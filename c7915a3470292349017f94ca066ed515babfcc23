@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0d031dc0_ec5313bf",
+        "filename": "adb/adb.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-05-21T23:09:42Z",
+      "side": 1,
+      "message": "I\u0027ll do a rename eventually. It\u0027s a large patch and I\u0027m trying to avoid rebasing everything yet again.",
+      "parentUuid": "0d031dc0_8c27f7ae",
+      "revId": "c7915a3470292349017f94ca066ed515babfcc23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d0995dc_6098a6bf",
         "filename": "adb/transport.cpp",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "0d031dc0_8c63778b",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-05-21T23:09:42Z",
+      "side": 1,
+      "message": "Yeah, there\u0027s plenty more cleanup to be done. This was just enough to get us to being able to use non-POD types in the class.\n\nI\u0027ll try to get to the additional cleanup once I clear the current stack of patches I have.",
+      "parentUuid": "4d0995dc_6098a6bf",
+      "range": {
+        "startLine": 556,
+        "startChar": 0,
+        "endLine": 565,
+        "endChar": 29
+      },
+      "revId": "c7915a3470292349017f94ca066ed515babfcc23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d0995dc_63d39055",
         "filename": "adb/transport_test.cpp",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2015-05-21T23:01:37Z",
       "side": 1,
       "message": "it never returns false... unless EXPECT_EQ does it for us?",
+      "revId": "c7915a3470292349017f94ca066ed515babfcc23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d031dc0_2ceceb39",
+        "filename": "adb/transport_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-05-21T23:09:42Z",
+      "side": 1,
+      "message": "EXPECT_EQ doesn\u0027t return (ASSERT_EQ would return void, making it invalid to use in operator\u003d\u003d).\n\nI had it previously written to return false if any of these failed, but that left us with the really unhelpful test failure of \"something in that class wasn\u0027t equal\".\n\nThe important thing is that the EXPECT_EQ will still cause the overall test to fail if any of the assertions fail.\n\nI suppose it could be `void CompareTransports(...)` instead of the operator overload, but this makes it possible to get at the private/protected data for testing.",
+      "parentUuid": "4d0995dc_63d39055",
       "revId": "c7915a3470292349017f94ca066ed515babfcc23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
