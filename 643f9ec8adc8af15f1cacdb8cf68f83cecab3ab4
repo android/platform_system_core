@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdf3c519_bb630040",
+        "filename": "base/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-05-27T06:01:09Z",
+      "side": 1,
+      "message": "this means that any calling code that uses this needs to be built with _FILE_OFFSET_BITS\u003d64 too. i guess the fact that it\u0027s all C++ means we\u0027re safe because the mangled names won\u0027t match if you screw up?",
+      "revId": "643f9ec8adc8af15f1cacdb8cf68f83cecab3ab4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed8889a6_d9ffd3df",
+        "filename": "base/fd_file.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-05-27T06:01:09Z",
+      "side": 1,
+      "message": "all this logging seems surprising/not necessarily desired in such low-level library functions.",
+      "revId": "643f9ec8adc8af15f1cacdb8cf68f83cecab3ab4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed6169bc_b760680d",
+        "filename": "base/fd_file.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-05-27T06:01:09Z",
+      "side": 1,
+      "message": "i think this style is a mistake for a public API. it made sense for code that was only used in FUSE, but it\u0027s already led to bugs in art (where people use TEMP_FAILURE_RETRY). just switch to true/false instead?",
+      "revId": "643f9ec8adc8af15f1cacdb8cf68f83cecab3ab4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed6169bc_d765dc1b",
+        "filename": "base/fd_file.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-05-27T06:01:09Z",
+      "side": 1,
+      "message": "ssize_t -\u003e int truncation?",
+      "revId": "643f9ec8adc8af15f1cacdb8cf68f83cecab3ab4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdf3c519_fec61699",
+        "filename": "base/include/base/random_access_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-05-27T06:01:09Z",
+      "side": 1,
+      "message": "not completely true, and we should fix the rest.",
+      "revId": "643f9ec8adc8af15f1cacdb8cf68f83cecab3ab4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
