@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6d1bb95b_6d535270",
+        "filename": "liblog/log_time.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-05-28T22:38:35Z",
+      "side": 1,
+      "message": "No one is using it, except for strptime itself when NULL is supplied for the format. No one provides a NULL for format, but we want to support the API.",
+      "parentUuid": "6d1bb95b_2ae06511",
+      "revId": "32a8a08e61885c01fdbd5095139c693969a8f645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d54fde2_e6593fe2",
         "filename": "logcat/logcat.cpp",
         "patchSetId": 1
@@ -30,6 +48,47 @@
       "writtenOn": "2015-05-28T22:00:11Z",
       "side": 1,
       "message": "Are there any remaining consumers of log_time::default_format?",
+      "revId": "32a8a08e61885c01fdbd5095139c693969a8f645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_fc09ceb2",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-05-28T22:38:35Z",
+      "side": 1,
+      "message": "Nope (except internally in log_time::strptime() for a NULL format).",
+      "parentUuid": "0d54fde2_e6593fe2",
+      "revId": "32a8a08e61885c01fdbd5095139c693969a8f645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_a27ac0b2",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-05-28T22:38:35Z",
+      "side": 1,
+      "message": "If we iterated through all the files with the basename \u0027optarg\u0027, we would need this to be.\n\nif (ep \u0026\u0026 (*ep \u003d\u003d \u0027 \u0027) \u0026\u0026 (t \u003e tail_time)) {\n    tail_time \u003d t;\n}",
+      "range": {
+        "startLine": 558,
+        "startChar": 32,
+        "endLine": 558,
+        "endChar": 46
+      },
       "revId": "32a8a08e61885c01fdbd5095139c693969a8f645",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
