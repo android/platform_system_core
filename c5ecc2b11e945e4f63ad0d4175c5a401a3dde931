@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b9f6d849_1d8193d2",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-05-28T23:26:07Z",
+      "side": 1,
+      "message": "Here, we ensure that the directory does not exist until we need it. This feature is default off, I expect to not see the path created superfluously on \"user\" builds. I do recognize that we have a race condition here though, all members of the path need to be made in sequence.\n\nAs stated in the comment above, because all exec/services are called with umask(077), the files underneath this directory will not be readable except by the owner. That being the case, it makes sense to reflect that reality by not allowing anyone into the associated directory.\n\nWe may need a new umask keyword for both exec and service in init should we wish to circumvent that security.\n\nI have no problem with 077, this keeps the PII protected from all but the experts. But we will need it to be 037 or 000 (and modify logcat to set Group Read perms on it\u0027s saved files) in order to allow DAC access to the logged files to the group.",
+      "parentUuid": "6d1bb95b_887ddc2e",
+      "revId": "c5ecc2b11e945e4f63ad0d4175c5a401a3dde931",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed56c9ec_8a05ccce",
         "filename": "rootdir/init.rc",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "0d54fde2_0538f6ff",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-05-28T23:26:07Z",
+      "side": 1,
+      "message": "Adding -L to read the android logs saved from before the panic (comment above makes reference to access to pstore).",
+      "parentUuid": "ed56c9ec_8a05ccce",
+      "revId": "c5ecc2b11e945e4f63ad0d4175c5a401a3dde931",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d1bb95b_e842d000",
         "filename": "rootdir/init.rc",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2015-05-28T22:38:28Z",
       "side": 1,
       "message": "would prefer that we not reuse the logd domain, and create a logcat domain.",
+      "revId": "c5ecc2b11e945e4f63ad0d4175c5a401a3dde931",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_e01e798a",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-05-28T23:26:07Z",
+      "side": 1,
+      "message": "I had a design choice of adding a syslogd thread in logd, or running a separate syslogd (logcatd). If we choose later to pull in syslogd into logd, nothing much changes in the selinux MAC policies for the directory.\n\n\u0027ps -t | grep logd\u0027 picks up this logcatd process, I _like_ that too :-)",
+      "parentUuid": "6d1bb95b_e842d000",
       "revId": "c5ecc2b11e945e4f63ad0d4175c5a401a3dde931",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
