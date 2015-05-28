@@ -2,6 +2,91 @@
   "comments": [
     {
       "key": {
+        "uuid": "ed56c9ec_c744397f",
+        "filename": "adb/adb.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-05-28T06:14:20Z",
+      "side": 1,
+      "message": "T*",
+      "revId": "7b4dcd855d8718847fefd3f3f7c1406ff8edc8be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_67562d30",
+        "filename": "adb/adb.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-05-28T06:14:20Z",
+      "side": 1,
+      "message": "does that make sense? should this just be a CHECK?",
+      "revId": "7b4dcd855d8718847fefd3f3f7c1406ff8edc8be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d1bb95b_d7f94c95",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-05-28T06:14:20Z",
+      "side": 1,
+      "message": "(does clang-format put a line break in here? makes it read like a function rather than a variable.)\n\n(or should there be a line in there saying\n\n  // Nothing yet.\n\nand the assumption is that this won\u0027t stay empty for long?)",
+      "revId": "7b4dcd855d8718847fefd3f3f7c1406ff8edc8be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_b7c76718",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-05-28T06:14:20Z",
+      "side": 1,
+      "message": "ah, now i see the distinction you were trying to make. so maybe\n\n  if (t-\u003eCanUseFeature(\"pony\")) ride();\n\n?",
+      "revId": "7b4dcd855d8718847fefd3f3f7c1406ff8edc8be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_47a209ab",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-05-28T06:14:20Z",
+      "side": 1,
+      "message": "make append_transport_info take a const std::string\u0026 value? i\u0027m assuming t-\u003edevpath et cetera become std::strings in atransport eventually anyway.",
+      "revId": "7b4dcd855d8718847fefd3f3f7c1406ff8edc8be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adc5b1ce_c5437a71",
         "filename": "adb/transport.h",
         "patchSetId": 2
@@ -31,6 +116,24 @@
       "side": 1,
       "message": "Maybe IsFeatureSupported sounds okay, but I\u0027m not the best at naming things.",
       "parentUuid": "adc5b1ce_c5437a71",
+      "revId": "7b4dcd855d8718847fefd3f3f7c1406ff8edc8be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_c7ad199d",
+        "filename": "adb/transport.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-05-28T06:14:20Z",
+      "side": 1,
+      "message": "+1 to cferris\u0027 suggestion.\n\nthe obvious alternative would be SupportsFeature (or just Supports?), so calling code reads like\n\n  if (t-\u003eSupportsFeature(\"ponies\")) ride_pony();",
+      "parentUuid": "0d031dc0_040a8c58",
       "revId": "7b4dcd855d8718847fefd3f3f7c1406ff8edc8be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
