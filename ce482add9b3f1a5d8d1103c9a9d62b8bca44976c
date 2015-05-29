@@ -37,6 +37,57 @@
     },
     {
       "key": {
+        "uuid": "b91fb853_f895cd10",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-05-29T18:20:13Z",
+      "side": 1,
+      "message": "these .data() should really be .c_str() (though, yes, you\u0027ll get away with it on our current implementation).",
+      "revId": "ce482add9b3f1a5d8d1103c9a9d62b8bca44976c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_5f6b979f",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-05-29T18:20:13Z",
+      "side": 1,
+      "message": "\"re\"",
+      "revId": "ce482add9b3f1a5d8d1103c9a9d62b8bca44976c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_0919ec79",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-05-29T18:20:13Z",
+      "side": 1,
+      "message": "this is unsafe. fclose(NULL) will segfault. you either have do the fopen into a raw pointer and only define your unique_ptr when you can initialize it with a known non-null FILE*, or you could replace this with something like this instead:\n\n  std::string file;\n  if (android::base::ReadFileToString(file_name, \u0026file)) {\n    for (const auto\u0026 line : android::base::Split(file, \"\\n\")) {\n      ...\n    }\n  }\n\n(which would also let you go backwards as easily as forwards...)",
+      "revId": "ce482add9b3f1a5d8d1103c9a9d62b8bca44976c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d54fde2_b7cd98e2",
         "filename": "logcat/logcat.cpp",
         "patchSetId": 2
