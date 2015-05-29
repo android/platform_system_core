@@ -120,6 +120,29 @@
       "revId": "ce482add9b3f1a5d8d1103c9a9d62b8bca44976c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_0cc81a27",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-05-29T20:07:02Z",
+      "side": 1,
+      "message": "This algorithm has to handle the fact we do NOT have the year placed into the timestamp data and log_time::strptime fills in the current year sans one parsed, and a wrap around to January will result in the current time being lower than the maximum discovered in the file(s).\n\nmitigation: (plan A)\n- filter out all timestamps higher than the current time\n\nmitigation: (plan B)\n- collect all the matching filenames first\n- reverse sort the filenames before going through them (NB: the ext4 filesystem and the dynamics for normal operation of logcat -f will readdir in this order anyways, but not worth counting on)\n- reverse scan the files in turn looking for a valid timestamp\n- call it a day once a timestamp is found\n- too complex for ease of maintenance",
+      "range": {
+        "startLine": 589,
+        "startChar": 0,
+        "endLine": 591,
+        "endChar": 29
+      },
+      "revId": "ce482add9b3f1a5d8d1103c9a9d62b8bca44976c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
