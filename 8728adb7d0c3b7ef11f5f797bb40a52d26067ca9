@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b97b38ac_44495802",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 6
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-06-02T17:30:17Z",
+      "side": 1,
+      "message": "Then we have a problem, because although specified that this is optional, the code is:\n\n    if (command_arg \u003e 2) {\n        svc-\u003eseclabel \u003d args[1];\n    }\n    if (command_arg \u003e 3) {\n        svc-\u003euid \u003d decode_uid(args[2]);\n    }\n    if (command_arg \u003e 4) {\n        svc-\u003egid \u003d decode_uid(args[3]);\n\n:-(",
+      "parentUuid": "b97b38ac_444f1839",
+      "range": {
+        "startLine": 657,
+        "startChar": 9,
+        "endLine": 657,
+        "endChar": 20
+      },
+      "revId": "8728adb7d0c3b7ef11f5f797bb40a52d26067ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39d588cf_7d052249",
         "filename": "rootdir/init.rc",
         "patchSetId": 6
@@ -36,6 +60,24 @@
       "writtenOn": "2015-06-02T17:17:50Z",
       "side": 1,
       "message": "this shouldn\u0027t be necessary anymore, since you\u0027ve explicitly defined a domain transition in the selinux policy.",
+      "revId": "8728adb7d0c3b7ef11f5f797bb40a52d26067ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b97b38ac_a4570c9e",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 6
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-06-02T17:30:17Z",
+      "side": 1,
+      "message": "I would prefer to keep it to balance the above (at least until we have a fix for init)",
+      "parentUuid": "39d588cf_7d052249",
       "revId": "8728adb7d0c3b7ef11f5f797bb40a52d26067ca9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
