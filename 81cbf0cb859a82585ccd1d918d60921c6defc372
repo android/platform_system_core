@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "190b6419_47c17872",
+        "filename": "adb/adb_io_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-06-02T02:19:30Z",
+      "side": 1,
+      "message": "I think the thinking is that the failure scenarios are always subject to change, so best to write caller code generically (but still perhaps take care of important currently-known failure scenarios). I think GetTempPathA() can fail due to string truncation, internal memory allocation, maybe env var errors, or maybe path canonicalization errors.\n\nThe C Runtime has an API _dosmaperr() to convert from a Win32 error to an errno, but it is an undocumented API. Sysdeps_win32.cpp even has _socket_set_errno() to map a limited number of socket-related Win32 errors to errno values.\n\nMy thinking in choosing EIO was that GetTempPath() is an IO-related API. So it was more about the API than the specific error (since that is unknown).\n\nI reworked the change to use CHECK_*. Let me know what you think.",
+      "parentUuid": "f942104b_af1939ac",
+      "range": {
+        "startLine": 56,
+        "startChar": 14,
+        "endLine": 56,
+        "endChar": 17
+      },
+      "revId": "81cbf0cb859a82585ccd1d918d60921c6defc372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f942104b_2f342909",
         "filename": "adb/adb_io_test.cpp",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "d980ecc6_363b388c",
+        "filename": "adb/adb_io_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-06-02T02:19:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f942104b_2f342909",
+      "revId": "81cbf0cb859a82585ccd1d918d60921c6defc372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d54fde2_d50bead5",
         "filename": "adb/adb_io_test.cpp",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2015-06-01T18:38:48Z",
       "side": 1,
       "message": "Why did you ifdef a comment?",
+      "revId": "81cbf0cb859a82585ccd1d918d60921c6defc372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d980ecc6_161f1c1d",
+        "filename": "adb/adb_io_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-06-02T02:19:30Z",
+      "side": 1,
+      "message": "To make it clear that the text applies to Win32. But if you have to ask, that is too confusing, so I\u0027ve removed the ifdef.",
+      "parentUuid": "0d54fde2_d50bead5",
       "revId": "81cbf0cb859a82585ccd1d918d60921c6defc372",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
