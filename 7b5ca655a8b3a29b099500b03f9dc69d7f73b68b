@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "b967b830_beab785d",
+        "filename": "liblog/logprint.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-06-03T22:24:42Z",
+      "side": 1,
+      "message": "Yes, but I have left it in because it shows a history where year used to be part of the logcat timestamp. I would replace the comment with \u0027not worth having %Y since it is most likely to be constant in any timespan that logcat support\u0027.\n\nEither works for me, it is a reminder that %Y is silly.",
+      "parentUuid": "f955b039_cbf79503",
+      "revId": "7b5ca655a8b3a29b099500b03f9dc69d7f73b68b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d96c6c17_10589ccd",
         "filename": "liblog/logprint.c",
         "patchSetId": 1
@@ -100,6 +118,24 @@
       "writtenOn": "2015-06-03T22:05:49Z",
       "side": 1,
       "message": "convertPrintable returns the end pointer (char *). The value is correct (since NULL is passed-in), but this should probably be cast to make it clear:\n\n  bufferSize +\u003d (size_t)convertPrintable(...)",
+      "revId": "7b5ca655a8b3a29b099500b03f9dc69d7f73b68b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b967b830_bed7f8b6",
+        "filename": "liblog/logprint.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-06-03T22:24:42Z",
+      "side": 1,
+      "message": "(size_t)(convertPrintable(...) - NULL)\n\nI never assume NULL is zero (there was this one port to an obsolete architecture ~1977 by a mainframe maker... ;-/)\n\nThis whole game feels silly, I think convertPrintable should return a size_t length rather than the end pointer, much easier to maintain our wits.",
+      "parentUuid": "d96c6c17_10589ccd",
       "revId": "7b5ca655a8b3a29b099500b03f9dc69d7f73b68b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
