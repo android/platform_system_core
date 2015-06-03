@@ -22,6 +22,30 @@
       "revId": "6fee536daf16df59f4c7376e0eac602c372e8105",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f955b039_bdc0a71e",
+        "filename": "logd/LogStatistics.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-06-03T19:36:21Z",
+      "side": 1,
+      "message": "begin and end were defined _afterwards_ because I found out it was used publicly; these preceded their definition. I pondered it for a moment and decided this appears clearer especially if I also had to do map.insert, map.find mixed in.\n\neg:\n\nif (it \u003d\u003d end()) {\n    if \u003d map.insert(std::make_pair(key, TEntry(e))).first\n}\n\nscared me as being a FUD maintenance issue; at least as implemented:\n\nif (it \u003d\u003d map.end()) {\n    if \u003d map.insert(std::make_pair(key, TEntry(e))).first\n}\n\nit was clear what was happening.\n\nOnce I crossed that bridge, I _had_ to use map.begin() and map.end() in the sort() implementation too for consistency.",
+      "parentUuid": "f955b039_dd163b79",
+      "range": {
+        "startLine": 54,
+        "startChar": 26,
+        "endLine": 54,
+        "endChar": 29
+      },
+      "revId": "6fee536daf16df59f4c7376e0eac602c372e8105",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
