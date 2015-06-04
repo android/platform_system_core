@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d96c6c17_b9eee5af",
+        "filename": "adb/sysdeps.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-06-04T22:16:43Z",
+      "side": 1,
+      "message": "looks like we should kill adb_open_mode. one of the callers is wrong (because they don\u0027t supply O_CREAT, so the mode is ignored and they need to handle any permissions changes themselves), and the others could just use adb_open.",
+      "revId": "6ac5d7dc56a016718d2a26803435505e983e5d80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
