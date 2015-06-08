@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "796b8031_bdfeef2e",
+        "filename": "logd/LogKlog.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2015-06-08T18:23:00Z",
+      "side": 1,
+      "message": "0xEA is space and 0xE0-0xE9 is digit? 0xE\u003cten\u003e is confusing notation.\n\nIs there a reason not to use \"const int\" or #define here for clarity?",
+      "range": {
+        "startLine": 90,
+        "startChar": 43,
+        "endLine": 90,
+        "endChar": 52
+      },
+      "revId": "2e8919009543df8a96e9eb895a8cafd20115a551",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_18b7112a",
+        "filename": "logd/LogKlog.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2015-06-08T18:23:00Z",
+      "side": 1,
+      "message": "I think this is more readable as:\n\n  if ((*s \u0026 0x F0) \u003d\u003d 0xE0) {\n    if (*s \u003d\u003d 0xEA) {\n      *s \u003d \u0027 \u0027;\n    } else {\n      *s \u003d (*s \u0026 0x0F) + \u00270\u0027;\n    }\n    *--s \u003d \u0027[\u0027;\n  }",
+      "range": {
+        "startLine": 91,
+        "startChar": 8,
+        "endLine": 97,
+        "endChar": 9
+      },
+      "revId": "2e8919009543df8a96e9eb895a8cafd20115a551",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "796b8031_fddea7f9",
+        "filename": "logd/LogKlog.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2015-06-08T18:23:00Z",
+      "side": 1,
+      "message": "How about OPEN_BRACKET_SIG to make the code more self-documenting?",
+      "range": {
+        "startLine": 149,
+        "startChar": 22,
+        "endLine": 149,
+        "endChar": 26
+      },
+      "revId": "2e8919009543df8a96e9eb895a8cafd20115a551",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
