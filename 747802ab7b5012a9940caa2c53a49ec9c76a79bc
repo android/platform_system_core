@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19652496_57f2f6e5",
+        "filename": "liblog/log_is_loggable.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2015-06-12T03:37:13Z",
+      "side": 1,
+      "message": "key gets a concatenation of log_namespace and tag... the strcpy will put a \u0027\\0\u0027 at the end, so this looks like the buffer is 1 character short.",
+      "revId": "747802ab7b5012a9940caa2c53a49ec9c76a79bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19652496_b7c57280",
+        "filename": "liblog/log_is_loggable.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2015-06-12T03:37:13Z",
+      "side": 1,
+      "message": "if \"tag\" is \"foo\", doesn\u0027t key now equal \"persist.log.tagfoo\"? \"key+sizeof(log_namespace)\" points to the \\0.",
+      "revId": "747802ab7b5012a9940caa2c53a49ec9c76a79bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "997f5421_46e9f6f2",
+        "filename": "liblog/log_is_loggable.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2015-06-12T03:37:13Z",
+      "side": 1,
+      "message": "same thing here... this clears the character before the \u0027.\u0027, no?",
+      "revId": "747802ab7b5012a9940caa2c53a49ec9c76a79bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
