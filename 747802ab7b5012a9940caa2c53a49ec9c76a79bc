@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "79254042_86cb6f93",
+        "filename": "liblog/log_is_loggable.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-06-12T14:24:52Z",
+      "side": 1,
+      "message": "sizeof(log_namespace) \u003d strlen(log_namespace) + 1\n\nI will put a comment here to solidify the meaning of sizeof() for a string",
+      "parentUuid": "19652496_57f2f6e5",
+      "revId": "747802ab7b5012a9940caa2c53a49ec9c76a79bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19652496_b7c57280",
         "filename": "liblog/log_is_loggable.c",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2015-06-12T03:37:13Z",
       "side": 1,
       "message": "if \"tag\" is \"foo\", doesn\u0027t key now equal \"persist.log.tagfoo\"? \"key+sizeof(log_namespace)\" points to the \\0.",
+      "revId": "747802ab7b5012a9940caa2c53a49ec9c76a79bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79254042_46d5572c",
+        "filename": "liblog/log_is_loggable.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-06-12T14:24:52Z",
+      "side": 1,
+      "message": "Again, sizeof a string is the entire array size, which includes the trailing nul. eg: log_namespace[sizeof(log_namespace)] points the the (out-of-bounds) location after the trailing nul.",
+      "parentUuid": "19652496_b7c57280",
       "revId": "747802ab7b5012a9940caa2c53a49ec9c76a79bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
