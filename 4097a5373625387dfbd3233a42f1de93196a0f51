@@ -16,6 +16,24 @@
       "revId": "4097a5373625387dfbd3233a42f1de93196a0f51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e9c462a_9e2b390c",
+        "filename": "adb/daemon/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-06-18T17:19:21Z",
+      "side": 1,
+      "message": "yes, changed to use $if in the makefile.\n\ni always try to avoid #if unless it\u0027s actually syntactically impossible to build the code in question; with regular if you\u0027re guaranteed no bitrot. with #if you rely on actually building both variants. (which, for optional features, means they\u0027re always bitrotted when you want them, and for cases like this that are dependent on build variant, means you\u0027ve introduced a new way for someone to break the build variant they didn\u0027t test with.)\n\n(i also hate global variables like auth_required, but the adb code isn\u0027t factored well enough for me to reasonably fix that...)",
+      "parentUuid": "be7b1eac_b5fe60a4",
+      "revId": "4097a5373625387dfbd3233a42f1de93196a0f51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
