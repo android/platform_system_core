@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d31c4d21_aab9f71b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-07-06T15:07:28Z",
+      "side": 1,
+      "message": "What about the slowdown as a result of the dropbox filling up? You did disable the dropbox I see.",
+      "range": {
+        "startLine": 12,
+        "startChar": 19,
+        "endLine": 12,
+        "endChar": 27
+      },
+      "revId": "b2722b545eb140e766b79c042c9370d60752e894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f36151bc_1aa77945",
+        "filename": "init/perfboot.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-07-06T15:07:28Z",
+      "side": 1,
+      "message": "Disabling dropbox, does it prevent the directory scan(@)? If it does not, then maybe it would be better to clear \u0027old\u0027 entries? Need to ensure that from device to device with varying histories that there is a level of consistency.\n\n@ - Filesystems slow down when one accumulates a large number of files into a single directory like dropbox. Opening the directory can incur a significant delay.",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 25
+      },
+      "revId": "b2722b545eb140e766b79c042c9370d60752e894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d31c4d21_9f66ff49",
+        "filename": "init/perfboot.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-07-06T15:07:28Z",
+      "side": 1,
+      "message": "You need to be _very_ specific about the format you plan on parsing as logcat default format changed in L to \u0027-v threadtime\u0027 from \u0027-v brief\u0027 and could change again in the future.\n\nlogcat -b events -v threadtime\n\nis likely what you wanted here.\n\nAs a suggestion, do you need or want microsecond time accuracy reported? If you add the flag \u0027-v usec\u0027 for M you can acquire it. L will report an error to the request as it is an unknown format modifier though.\n\nlogcat -b events -v threadtime -v usec\n\nCheck ro.build.????? to to see if -v usec is supported? Difficult if the build comes from master or sandbox build of M. ro.build.version.sdk 23? ro.build.version.release M? ro.build.fingerprint google/\u003cproduct\u003e:M/MASTER...?",
+      "range": {
+        "startLine": 353,
+        "startChar": 30,
+        "endLine": 353,
+        "endChar": 61
+      },
+      "revId": "b2722b545eb140e766b79c042c9370d60752e894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3ba3136_f8bc655a",
+        "filename": "init/perfboot.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-07-06T15:07:28Z",
+      "side": 1,
+      "message": "Thanks!",
+      "range": {
+        "startLine": 386,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 56
+      },
+      "revId": "b2722b545eb140e766b79c042c9370d60752e894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
