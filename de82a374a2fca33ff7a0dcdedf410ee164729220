@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "135425e3_2b85cb59",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-07-08T22:52:09Z",
+      "side": 1,
+      "message": "Acknowledged KISS\n\nThe issue is that data corruption can be sourced by the eMMC and over time can turn into something serious. A large number of small fixes each boot are better than a discovered perfects storm when one has both data corruption and an unclean shutdown.\n\nAndroid Auto (which boots often) would have an issue with this. We would want to institute one of the following if a full has not been done over some period of time (eg: 7 days) or over some number of reboots (eg: 30)\n\n\n1) on shutdown request, reboot into recovery, fsck full the filesystem, then shutdown.\n2) periodically on boot, do a full",
+      "range": {
+        "startLine": 165,
+        "startChar": 20,
+        "endLine": 165,
+        "endChar": 25
+      },
+      "revId": "de82a374a2fca33ff7a0dcdedf410ee164729220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
