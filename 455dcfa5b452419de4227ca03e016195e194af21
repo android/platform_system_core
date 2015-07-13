@@ -52,6 +52,24 @@
       "revId": "455dcfa5b452419de4227ca03e016195e194af21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8f1caa3_91d49eb3",
+        "filename": "adb/daemon/main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2015-07-13T19:14:01Z",
+      "side": 1,
+      "message": "Using the system executable path is a show stoper. Adb should still run as root and su even if system fails to mount. So if system fails to mount adb would die here and you have no way of getting the logs via adb.\n\nThe domain tranistion only affects root builds, and the nice part is that this keeps the transition in policy and is compiled out (much like su is compiled out now). However, currently when su is compiled out, remnants remain, like in the seclabel option for adbd in the init.rc. Having the path to su binary, yeilds the same polution, su disapears, but we keep a hardcoded path to it no matter what.",
+      "parentUuid": "58b5dad8_e0f456ff",
+      "revId": "455dcfa5b452419de4227ca03e016195e194af21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
