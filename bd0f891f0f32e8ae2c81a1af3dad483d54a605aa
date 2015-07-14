@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58987a8f_b6eb6071",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-07-14T20:30:41Z",
+      "side": 1,
+      "message": "I\u0027d like to see a comment that this is in 500ms increments.\n\nAnother option is to specify this in ms, and let math below deal with utilizing it appropriately.",
+      "range": {
+        "startLine": 55,
+        "startChar": 28,
+        "endLine": 55,
+        "endChar": 30
+      },
+      "revId": "bd0f891f0f32e8ae2c81a1af3dad483d54a605aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "187d22ed_1198ce50",
+        "filename": "libcutils/android_reboot.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-07-14T20:30:41Z",
+      "side": 1,
+      "message": "NB: No action required, only if you feel compelled ... not your problem.\n\nI know this pre-exists. I also recognize that _I_ did this ;-/\n\nBIONIC defines __unused in sys/cdefs.h\n\nAn issue to include sys/cdefs.h if this is compiled for windows, linux host or mac. In _this_ file\u0027s case it is _not_ built for any of these other combinations. target only, static only.\n\nOne of my cleanup requests was to drop this definition, include sys/cdefs.h so that we utilized __unused consistently.",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 14
+      },
+      "revId": "bd0f891f0f32e8ae2c81a1af3dad483d54a605aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78b0de09_845dccbf",
+        "filename": "libcutils/android_reboot.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-07-14T20:30:41Z",
+      "side": 1,
+      "message": "I\u0027d like to see a comment stating this is in 100ms increments.\n\nAnother option is to specify this in ms, and let math below deal with utilizing it appropriately allowing the local sleep time to be used in that calculation.",
+      "range": {
+        "startLine": 35,
+        "startChar": 29,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "bd0f891f0f32e8ae2c81a1af3dad483d54a605aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9870321a_333eb2ea",
+        "filename": "libcutils/android_reboot.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-07-14T20:30:41Z",
+      "side": 1,
+      "message": "tricky (a neuron popped in my head ;-\u003e)\n\nwhile (!ret \u0026\u0026 ((opt ...))) {\n    ret \u003d !strcmp(opt, opt_to_find);\n}\n\nhmmm, maybe too tricky for ease-of-maintenance #IgnoreMe",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 3
+      },
+      "revId": "bd0f891f0f32e8ae2c81a1af3dad483d54a605aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98975254_363f7578",
+        "filename": "libcutils/android_reboot.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-07-14T20:30:41Z",
+      "side": 1,
+      "message": "If we have write failure, we waste 5 seconds checking.\n\nNot sure if I have an issue with that ... I do not know how remount_ro_done() can pass if this command did not make it into the kernel.\n\nDo we want to consider a runtime force remount on the list, marking the _ones_ that fail so we do not attempt the fsck on those?",
+      "range": {
+        "startLine": 148,
+        "startChar": 4,
+        "endLine": 148,
+        "endChar": 42
+      },
+      "revId": "bd0f891f0f32e8ae2c81a1af3dad483d54a605aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98975254_56e32154",
+        "filename": "libcutils/android_reboot.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-07-14T20:30:41Z",
+      "side": 1,
+      "message": "On the _last_ pass, do we want to consider deleting\u0026reporting the rw_entries that remain in \"rw\" mode, and let fsck progress on the remainder?",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 5
+      },
+      "revId": "bd0f891f0f32e8ae2c81a1af3dad483d54a605aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "187d22ed_f1dedace",
+        "filename": "libcutils/android_reboot.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-07-14T20:30:41Z",
+      "side": 1,
+      "message": "All this logic can be merged into remount_ro() which can in turn be restored to having a void return.\n\nThe gain is that we could be a little smarter about the list.\n\n- record all the \"rw\" filesystems\n- tell the system to mark them \"ro\" (and if write to /proc/sysrq-trigger failed, you could _manually remount the list; that is probably going to far though).\n- All the \"rw\" that become \"ro\" can be fsck\u0027d, the remainder are left alone; log them as failed (logcat -L or last_kmsg can pick this up).",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 5
+      },
+      "revId": "bd0f891f0f32e8ae2c81a1af3dad483d54a605aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
