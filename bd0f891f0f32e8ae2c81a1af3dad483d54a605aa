@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "78b0de09_2475d8ef",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1032760
+      },
+      "writtenOn": "2015-07-15T02:18:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58987a8f_b6eb6071",
+      "range": {
+        "startLine": 55,
+        "startChar": 28,
+        "endLine": 55,
+        "endChar": 30
+      },
+      "revId": "bd0f891f0f32e8ae2c81a1af3dad483d54a605aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "187d22ed_1198ce50",
         "filename": "libcutils/android_reboot.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "98975254_09117e07",
+        "filename": "libcutils/android_reboot.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1032760
+      },
+      "writtenOn": "2015-07-15T02:18:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "187d22ed_1198ce50",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 14
+      },
+      "revId": "bd0f891f0f32e8ae2c81a1af3dad483d54a605aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78b0de09_845dccbf",
         "filename": "libcutils/android_reboot.c",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2015-07-14T20:30:41Z",
       "side": 1,
       "message": "I\u0027d like to see a comment stating this is in 100ms increments.\n\nAnother option is to specify this in ms, and let math below deal with utilizing it appropriately allowing the local sleep time to be used in that calculation.",
+      "range": {
+        "startLine": 35,
+        "startChar": 29,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "bd0f891f0f32e8ae2c81a1af3dad483d54a605aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9870321a_b3fd4233",
+        "filename": "libcutils/android_reboot.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1032760
+      },
+      "writtenOn": "2015-07-15T02:18:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78b0de09_845dccbf",
       "range": {
         "startLine": 35,
         "startChar": 29,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "78b0de09_eae21750",
+        "filename": "libcutils/android_reboot.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1032760
+      },
+      "writtenOn": "2015-07-15T02:18:28Z",
+      "side": 1,
+      "message": "Added some code to check/log the return value from write. Regarding the manual remount, let me make it a TODO for now since the write failure issue does not seem to happen often.",
+      "parentUuid": "98975254_363f7578",
+      "range": {
+        "startLine": 148,
+        "startChar": 4,
+        "endLine": 148,
+        "endChar": 42
+      },
+      "revId": "bd0f891f0f32e8ae2c81a1af3dad483d54a605aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98975254_56e32154",
         "filename": "libcutils/android_reboot.c",
         "patchSetId": 4
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "187d22ed_fcf1510c",
+        "filename": "libcutils/android_reboot.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1032760
+      },
+      "writtenOn": "2015-07-15T02:18:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98975254_56e32154",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 5
+      },
+      "revId": "bd0f891f0f32e8ae2c81a1af3dad483d54a605aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "187d22ed_f1dedace",
         "filename": "libcutils/android_reboot.c",
         "patchSetId": 4
@@ -151,6 +271,30 @@
       "writtenOn": "2015-07-14T20:30:41Z",
       "side": 1,
       "message": "All this logic can be merged into remount_ro() which can in turn be restored to having a void return.\n\nThe gain is that we could be a little smarter about the list.\n\n- record all the \"rw\" filesystems\n- tell the system to mark them \"ro\" (and if write to /proc/sysrq-trigger failed, you could _manually remount the list; that is probably going to far though).\n- All the \"rw\" that become \"ro\" can be fsck\u0027d, the remainder are left alone; log them as failed (logcat -L or last_kmsg can pick this up).",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 5
+      },
+      "revId": "bd0f891f0f32e8ae2c81a1af3dad483d54a605aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "187d22ed_37b94219",
+        "filename": "libcutils/android_reboot.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1032760
+      },
+      "writtenOn": "2015-07-15T02:18:28Z",
+      "side": 1,
+      "message": "SGTM, done.\n\nBTW, my N9 device (-userdebug) does not have /proc/last_kmsg. Do you know how to enable it?",
+      "parentUuid": "187d22ed_f1dedace",
       "range": {
         "startLine": 176,
         "startChar": 0,
