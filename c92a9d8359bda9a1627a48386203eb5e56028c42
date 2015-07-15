@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b8d41638_4de819a3",
+        "filename": "libcutils/android_reboot.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1032760
+      },
+      "writtenOn": "2015-07-15T17:22:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8404ed5_bf37970b",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 21
+      },
+      "revId": "c92a9d8359bda9a1627a48386203eb5e56028c42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3837466d_416552c0",
         "filename": "libcutils/android_reboot.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-15T14:56:37Z",
       "side": 1,
       "message": "This means we no longer issue a sysrq-trigger \"u\" blindly. This is a change in functionality. I have a preference to restore a blind \"u\" request, but I can find a problem with not doing it with the known Nexus devices.\n\nDisadvantage:\n- We do not get the reassuring log message \"Emergency Remount R/O\" \u0026 \"Emergency Remount completed\" that combined help log and divide up the shutdown sequence.\n- sync returns before complete, ro gets set after sync has completed.\n- other non-block (?) (faster?) rw filesystems may not be flushed. I was originally worried about pstore for example, but that one is Ok (unless it is backed by flash? We do not do that on any of the Nexus Devices) as the \"ro\" request for these non-/dev/block devices can be used to synchronize the data to backing storage or some such.\n- network mounts? (nope)\n\nAdvantages:\n- One less thing blocking shutdown (faster)",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 5
+      },
+      "revId": "c92a9d8359bda9a1627a48386203eb5e56028c42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98fcb2c6_048c3607",
+        "filename": "libcutils/android_reboot.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1032760
+      },
+      "writtenOn": "2015-07-15T17:22:35Z",
+      "side": 1,
+      "message": "Good point. Let me just remove the empty check. Done.",
+      "parentUuid": "3837466d_416552c0",
       "range": {
         "startLine": 144,
         "startChar": 0,
