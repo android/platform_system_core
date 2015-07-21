@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "383666c8_b2294695",
+        "filename": "adb/adb.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-07-21T00:28:05Z",
+      "side": 1,
+      "message": "it might be wise to rename this MAX_PAYLOAD_V2 to prevent the possibility of merge problems silently changing code from 4KiB to 256KiB.\n\ndid you experiment with other sizes? why 256KiB and not, say, 1MiB?",
+      "revId": "76b54e4196160030b40c9ecc3078e90edfa57f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d143a33_7cd9b5a3",
+        "filename": "adb/protocol.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-07-21T00:28:05Z",
+      "side": 1,
+      "message": "this isn\u0027t really true, though, is it?\n\n\"Currently, version\u003d0x01000000 and maxdata\u003d256*1024. Older versions of adb hard-coded 4096, so CONNECT and AUTH packets sent to a device must not be larger than that because they\u0027re sent before the CONNECT from the device that tells the adb server what the device can support\".",
+      "revId": "76b54e4196160030b40c9ecc3078e90edfa57f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b83896b1_33b9d035",
+        "filename": "adb/usb_linux.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-07-21T00:28:05Z",
+      "side": 1,
+      "message": "not any more; we send a zero-length packet.\n\n(you could combine the two \u0027if\u0027s too.)",
+      "revId": "76b54e4196160030b40c9ecc3078e90edfa57f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8568eec_15faf4b2",
+        "filename": "adb/usb_linux_client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-07-21T00:28:05Z",
+      "side": 1,
+      "message": "that\u0027s just read(2). so it seems more likely that this is actually a limitation in the usb device driver. i\u0027m surprised that this would only affect reading and not writing...",
+      "revId": "76b54e4196160030b40c9ecc3078e90edfa57f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
