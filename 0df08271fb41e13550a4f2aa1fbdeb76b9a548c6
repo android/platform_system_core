@@ -46,6 +46,29 @@
       "revId": "0df08271fb41e13550a4f2aa1fbdeb76b9a548c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d83d4aa0_e2420ee3",
+        "filename": "libcutils/android_reboot.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-07-21T17:17:49Z",
+      "side": 1,
+      "message": "In the startup path we check \u0027fstab-\u003erecs[i].fs_mgr_flags \u0026 MF_CHECK\u0027 for the related filesystem. Here we do not.\n\nI accept and respect what we are doing here; but wonder if we want to gate the shutdown filesystem check on the fstab configuration? My gut says no worries, because anything we eventually mount r/w should be a candidate for a check on the way down.\n\n@mkayyash@ please weigh in on this.",
+      "range": {
+        "startLine": 81,
+        "startChar": 8,
+        "endLine": 82,
+        "endChar": 55
+      },
+      "revId": "0df08271fb41e13550a4f2aa1fbdeb76b9a548c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
