@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0d432251_8ffb15b2",
+        "filename": "adb/adb.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1059813
+      },
+      "writtenOn": "2015-07-21T11:36:57Z",
+      "side": 1,
+      "message": "I created a new MAX_PAYLOAD_V2 macro and defined MAX_PAYLOAD to it. I don\u0027t want to pollute with the code with references to MAX_PAYLOAD_V2 because I think it makes the code less readable, but if you want I can change it.\n\nI experimented with various packet sizes and further increase of the packet size have almost no impact on the push/pull speed on the other hand it increases the latency linearly (because of the USB transfer speed). With 256KiB packets the packet latency is ~8ms what means that any service have at least this latency if a push/pull using the connection with full load. For \"real time services\" (e.g. logcat or shell) I think this latency is acceptable but a further increase will hurt the user experience, because the practical latency is higher then this.",
+      "parentUuid": "383666c8_b2294695",
+      "revId": "76b54e4196160030b40c9ecc3078e90edfa57f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d143a33_7cd9b5a3",
         "filename": "adb/protocol.txt",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "2d0b8619_987135d3",
+        "filename": "adb/protocol.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1059813
+      },
+      "writtenOn": "2015-07-21T11:36:57Z",
+      "side": 1,
+      "message": "Updated the wording based on you suggestion.",
+      "parentUuid": "4d143a33_7cd9b5a3",
+      "revId": "76b54e4196160030b40c9ecc3078e90edfa57f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b83896b1_33b9d035",
         "filename": "adb/usb_linux.cpp",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2015-07-21T00:28:05Z",
       "side": 1,
       "message": "not any more; we send a zero-length packet.\n\n(you could combine the two \u0027if\u0027s too.)",
+      "revId": "76b54e4196160030b40c9ecc3078e90edfa57f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d0b8619_d867ad14",
+        "filename": "adb/usb_linux.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1059813
+      },
+      "writtenOn": "2015-07-21T11:36:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b83896b1_33b9d035",
       "revId": "76b54e4196160030b40c9ecc3078e90edfa57f45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -100,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "cd24aaaf_ad749dc2",
+        "filename": "adb/usb_linux.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1059813
+      },
+      "writtenOn": "2015-07-21T11:36:57Z",
+      "side": 1,
+      "message": "At the moment I don\u0027t have a Windows environment to test it on Windows but I plan to make that change after this CL.\n\nOn Windows currently we do 1 write (with full data) and several reads (with 4096 chunks). Changing it to make only 1 read makes sense (and I plan to do it), but I don\u0027t expect it to have measurable impact on the speed because the communication on the wire done independently of how much we read here.",
+      "parentUuid": "383666c8_f28f3e7f",
+      "range": {
+        "startLine": 474,
+        "startChar": 19,
+        "endLine": 474,
+        "endChar": 22
+      },
+      "revId": "76b54e4196160030b40c9ecc3078e90edfa57f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8568eec_15faf4b2",
         "filename": "adb/usb_linux_client.cpp",
         "patchSetId": 1
@@ -111,6 +189,24 @@
       "writtenOn": "2015-07-21T00:28:05Z",
       "side": 1,
       "message": "that\u0027s just read(2). so it seems more likely that this is actually a limitation in the usb device driver. i\u0027m surprised that this would only affect reading and not writing...",
+      "revId": "76b54e4196160030b40c9ecc3078e90edfa57f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd24aaaf_8d71e1d2",
+        "filename": "adb/usb_linux_client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1059813
+      },
+      "writtenOn": "2015-07-21T11:36:57Z",
+      "side": 1,
+      "message": "I changed the comment to blame the device driver but I don\u0027t know how can I check who exposes this limitation.\n\nI don\u0027t know why it effects only the read and not the write (possibly the driver have a read buffer, but not a write buffer), but if the write works with bigger sizes then we have to use it because doing chunked write slows down the communication because each write will result in a separate, synchronous URB request what have 50-200us latency. If we run into a device where we want to ship the new adbd and it don\u0027t support larger writes then we should implement a fallback (e.g. when we got a EINVAL back) but I expect it to work in all case where we want to deploy it.",
+      "parentUuid": "f8568eec_15faf4b2",
       "revId": "76b54e4196160030b40c9ecc3078e90edfa57f45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
