@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "2d3aa6f6_e0e44219",
+        "filename": "adb/adb.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1059813
+      },
+      "writtenOn": "2015-07-22T17:28:12Z",
+      "side": 1,
+      "message": "If we have an \"adb pull\" and an \"adb shell\" running at the same time with the same device then the \"adb pull\" will put high load of 256KiB packets onto the connection. If the shell service want to send a message also (e.g. stdout of a shell command) then it will try to use the same stream to write the data to the host because we have only 1 USB write endpoint. It means that when the shell service want to send a packet then it will have to wait until the packet currently transferred is finished what will be most likely a large packet from the file sync service. Because of it the latency of the shell service is affected by the packet size used by the file sync service.\n\nI agree that this isn\u0027t a major issue but it gives us an upper limit for the packet size. Increasing the packet size over 256KiB have almost no effect on the push/pull speed while increasing this effect to a level where it can be user visible.",
+      "parentUuid": "ad7a16a8_faea81e5",
+      "revId": "76b54e4196160030b40c9ecc3078e90edfa57f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d143a33_7cd9b5a3",
         "filename": "adb/protocol.txt",
         "patchSetId": 1
@@ -303,6 +321,24 @@
       "side": 1,
       "message": "ah, now i get the significance of the \"_adb_\" in these names. makes sense. that lets us clarify the comment (and not worry about this too much going forward). thanks!",
       "parentUuid": "4dd51ace_bac6303b",
+      "revId": "76b54e4196160030b40c9ecc3078e90edfa57f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd3e6aec_5dd87b1d",
+        "filename": "adb/usb_linux_client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1059813
+      },
+      "writtenOn": "2015-07-22T17:28:12Z",
+      "side": 1,
+      "message": "Clarified comment based on suggestions.",
+      "parentUuid": "ad7a16a8_9ae02d8d",
       "revId": "76b54e4196160030b40c9ecc3078e90edfa57f45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
