@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ad7a16a8_faea81e5",
+        "filename": "adb/adb.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-07-22T00:35:59Z",
+      "side": 1,
+      "message": "i don\u0027t understand your point about increasing latency --- this is the max payload size; we\u0027ll only send as many bytes as are actually in the packet.",
+      "parentUuid": "0d432251_8ffb15b2",
+      "revId": "76b54e4196160030b40c9ecc3078e90edfa57f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d143a33_7cd9b5a3",
         "filename": "adb/protocol.txt",
         "patchSetId": 1
@@ -231,6 +249,24 @@
       "side": 1,
       "message": "I changed the comment to blame the device driver but I don\u0027t know how can I check who exposes this limitation.\n\nI don\u0027t know why it effects only the read and not the write (possibly the driver have a read buffer, but not a write buffer), but if the write works with bigger sizes then we have to use it because doing chunked write slows down the communication because each write will result in a separate, synchronous URB request what have 50-200us latency. If we run into a device where we want to ship the new adbd and it don\u0027t support larger writes then we should implement a fallback (e.g. when we got a EINVAL back) but I expect it to work in all case where we want to deploy it.",
       "parentUuid": "f8568eec_15faf4b2",
+      "revId": "76b54e4196160030b40c9ecc3078e90edfa57f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dd51ace_e6a984db",
+        "filename": "adb/usb_linux_client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-07-22T00:35:59Z",
+      "side": 1,
+      "message": "ccross?",
+      "parentUuid": "cd24aaaf_8d71e1d2",
       "revId": "76b54e4196160030b40c9ecc3078e90edfa57f45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
