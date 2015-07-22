@@ -270,6 +270,24 @@
       "revId": "76b54e4196160030b40c9ecc3078e90edfa57f45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dd51ace_bac6303b",
+        "filename": "adb/usb_linux_client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-07-22T01:06:38Z",
+      "side": 1,
+      "message": "There are two kernel implementations, f_adb.c and f_fs.c.  This code is for the f_adb.c interface.  In f_adb.c, adb_read has:\n\n        #define ADB_BULK_BUFFER_SIZE           4096\n\n        if (count \u003e ADB_BULK_BUFFER_SIZE)\n                return -EINVAL;\n\nI don\u0027t see any equivalent limitation on the newer f_fs.c interface.",
+      "parentUuid": "4dd51ace_e6a984db",
+      "revId": "76b54e4196160030b40c9ecc3078e90edfa57f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
