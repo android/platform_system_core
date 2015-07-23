@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed1a4eb3_c63ca24c",
+        "filename": "adb/usb_linux.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-07-23T23:05:22Z",
+      "side": 1,
+      "message": "So if a timeout occurs, the URB is still active/pending, we\u0027ll return from this function, the buffer becomes stale, and random data could be written to the device? I\u0027m guessing that the OS does buffering so this doesn\u0027t actually happen in practice?",
+      "range": {
+        "startLine": 318,
+        "startChar": 4,
+        "endLine": 318,
+        "endChar": 18
+      },
+      "revId": "7a926fc8d2441e3754ed5258fa3c1252c63807eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad14d688_e4a39af6",
+        "filename": "adb/usb_linux.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-07-23T23:05:22Z",
+      "side": 1,
+      "message": "The old code broke out of the loop if h-\u003eurb_out_busy\u003d\u003d0 \u0026\u0026 urb-\u003estatus !\u003d 0. Was that just a bug in the old code?",
+      "range": {
+        "startLine": 323,
+        "startChar": 12,
+        "endLine": 323,
+        "endChar": 52
+      },
+      "revId": "7a926fc8d2441e3754ed5258fa3c1252c63807eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad14d688_67d4cc32",
+        "filename": "adb/usb_linux.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-07-23T23:05:22Z",
+      "side": 1,
+      "message": "Doesn\u0027t the destructor already close this fd?",
+      "range": {
+        "startLine": 552,
+        "startChar": 12,
+        "endLine": 552,
+        "endChar": 31
+      },
+      "revId": "7a926fc8d2441e3754ed5258fa3c1252c63807eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
