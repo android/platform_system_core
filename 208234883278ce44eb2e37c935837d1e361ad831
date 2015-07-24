@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed8dee45_499622a6",
+        "filename": "fastboot/usb_linux.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-07-24T21:39:49Z",
+      "side": 1,
+      "message": "I was thinking device when I wrote this, not host.  Devices tend to have more constrained memory and lots of non-movable dma pages that make physically contiguous allocations extra hard.  On my laptop /proc/buddyinfo reports thousands of 256KB chunks (order 6) available, so 256KiB transfers on 3.3 kernels should be pretty reliable.",
+      "range": {
+        "startLine": 69,
+        "startChar": 18,
+        "endLine": 70,
+        "endChar": 72
+      },
+      "revId": "208234883278ce44eb2e37c935837d1e361ad831",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
