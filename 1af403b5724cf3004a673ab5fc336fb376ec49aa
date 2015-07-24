@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd882a39_ed2c459a",
+        "filename": "adb/usb_linux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-07-24T02:37:51Z",
+      "side": 1,
+      "message": "I\u0027m out of my area of expertise here (Linux usb code??), but my intuition says that if this times out, there is still a pending IO that is going to write to urb_out. What if we call usb_write()/usb_bulk_write() after doing a write that times out? Seems like they could conflict, but again, I\u0027m out of my area of expertise.",
+      "range": {
+        "startLine": 320,
+        "startChar": 48,
+        "endLine": 320,
+        "endChar": 71
+      },
+      "revId": "1af403b5724cf3004a673ab5fc336fb376ec49aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad977653_6cc4dbd7",
+        "filename": "adb/usb_linux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-07-24T02:37:51Z",
+      "side": 1,
+      "message": "Maybe set errno for the benefit of usb_write() which dumps errno/strerror?",
+      "range": {
+        "startLine": 321,
+        "startChar": 19,
+        "endLine": 321,
+        "endChar": 21
+      },
+      "revId": "1af403b5724cf3004a673ab5fc336fb376ec49aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d83be1d_6a8597e2",
+        "filename": "adb/usb_linux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-07-24T02:37:51Z",
+      "side": 1,
+      "message": "It is my (weak) understanding that status is an error-code (is that right?). So if it is non-zero, there is an error and then we return 0? That sounds wrong. I think we should set errno \u003d urb-\u003estatus and then return -1? (BTW, to top this all off: check out transport.cpp:input_thread(): it ignores the return value from write_to_remote so it assumes that write errors bubble up some other way)",
+      "range": {
+        "startLine": 324,
+        "startChar": 19,
+        "endLine": 324,
+        "endChar": 62
+      },
+      "revId": "1af403b5724cf3004a673ab5fc336fb376ec49aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd882a39_adb95dc5",
+        "filename": "adb/usb_linux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-07-24T02:37:51Z",
+      "side": 1,
+      "message": "Maybe errno \u003d urb-\u003estatus for the benefit of usb_read which dumps errno?",
+      "range": {
+        "startLine": 387,
+        "startChar": 22,
+        "endLine": 387,
+        "endChar": 24
+      },
+      "revId": "1af403b5724cf3004a673ab5fc336fb376ec49aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
