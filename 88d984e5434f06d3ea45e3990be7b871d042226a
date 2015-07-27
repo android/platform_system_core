@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "4d37da6b_a1bc5e07",
+        "filename": "init/init_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-07-27T18:30:35Z",
+      "side": 1,
+      "message": "Is this a change that we want to make?  Allowing config files to import whole directories instead of specifically named files?",
+      "revId": "88d984e5434f06d3ea45e3990be7b871d042226a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d83be1d_b17fff88",
         "filename": "init/init_parser.cpp",
         "patchSetId": 1
@@ -111,6 +128,29 @@
       "writtenOn": "2015-07-25T00:32:16Z",
       "side": 1,
       "message": "never use readdir_r. http://elliotth.blogspot.com/2012/10/how-not-to-use-readdirr3.html",
+      "revId": "88d984e5434f06d3ea45e3990be7b871d042226a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d86fa2e_b5bc4bb6",
+        "filename": "init/init_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-07-27T18:30:35Z",
+      "side": 1,
+      "message": "We can use the d_type entry of dirent to do this same check with less overhead.  We use it in vold and other areas of init, so we already are assuming it\u0027s implemented.",
+      "range": {
+        "startLine": 465,
+        "startChar": 12,
+        "endLine": 465,
+        "endChar": 18
+      },
       "revId": "88d984e5434f06d3ea45e3990be7b871d042226a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
