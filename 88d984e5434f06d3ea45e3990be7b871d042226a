@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "8d4c7215_9b218bd6",
+        "filename": "init/init_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-07-27T18:49:34Z",
+      "side": 1,
+      "message": "Right, but when do you plan on doing those imports?  \u0027import\u0027 right now happens as the file is being parsed, which means if you try to import a file/directory on /system from the init.rc on the ramdisk, that it will fail.\n\nI\u0027ve proposed creating a command that would dynamically import files based on a trigger, but that did not gain support.  The idea that we settled on is importing a set of files (directories) after file systems are mounted in do_mount_all, see https://android-review.googlesource.com/#/c/161602/3\n\nAssuming that we do the above, then we shouldn\u0027t need to extend import to be able to import entire directories.  Unless we do think there\u0027s a good reason to do so.  We should modify the readme.txt for import if we do as well.",
+      "parentUuid": "4d37da6b_616bb6e4",
+      "revId": "88d984e5434f06d3ea45e3990be7b871d042226a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d83be1d_b17fff88",
         "filename": "init/init_parser.cpp",
         "patchSetId": 1
