@@ -156,6 +156,30 @@
     },
     {
       "key": {
+        "uuid": "6d9ade79_32d945a5",
+        "filename": "init/init_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1052976
+      },
+      "writtenOn": "2015-07-27T21:37:11Z",
+      "side": 1,
+      "message": "Yeah I think the individual files gives you enough info. Will change if anyone feels strongly though",
+      "parentUuid": "0da7a2c0_987a1930",
+      "range": {
+        "startLine": 454,
+        "startChar": 12,
+        "endLine": 454,
+        "endChar": 33
+      },
+      "revId": "88d984e5434f06d3ea45e3990be7b871d042226a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad977653_9bb217cf",
         "filename": "init/init_parser.cpp",
         "patchSetId": 1
@@ -167,6 +191,24 @@
       "writtenOn": "2015-07-25T00:32:16Z",
       "side": 1,
       "message": "std::unique_ptr",
+      "revId": "88d984e5434f06d3ea45e3990be7b871d042226a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd882a39_67386efb",
+        "filename": "init/init_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1052976
+      },
+      "writtenOn": "2015-07-27T21:37:11Z",
+      "side": 1,
+      "message": "Done - I\u0027ve changed it, to:\nstd::unique_ptr\u003cDIR, int(*)(DIR*)\u003e config_dir(opendir(path), closedir);\n\nc++ ftw, not convinced it clearer though :)",
+      "parentUuid": "ad977653_9bb217cf",
       "revId": "88d984e5434f06d3ea45e3990be7b871d042226a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -190,6 +232,24 @@
     },
     {
       "key": {
+        "uuid": "ed8dee45_8237fc6a",
+        "filename": "init/init_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1052976
+      },
+      "writtenOn": "2015-07-27T21:37:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dbd52cc_a77fd288",
+      "revId": "88d984e5434f06d3ea45e3990be7b871d042226a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d9d1a6f_2564a63d",
         "filename": "init/init_parser.cpp",
         "patchSetId": 1
@@ -207,6 +267,24 @@
     },
     {
       "key": {
+        "uuid": "cd882a39_c71842ae",
+        "filename": "init/init_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1052976
+      },
+      "writtenOn": "2015-07-27T21:37:11Z",
+      "side": 1,
+      "message": "cool, was trying to fit in with existing code style.\nDone.",
+      "parentUuid": "4d9d1a6f_2564a63d",
+      "revId": "88d984e5434f06d3ea45e3990be7b871d042226a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2da466b9_df28070f",
         "filename": "init/init_parser.cpp",
         "patchSetId": 1
@@ -218,6 +296,24 @@
       "writtenOn": "2015-07-25T00:32:16Z",
       "side": 1,
       "message": "never use readdir_r. http://elliotth.blogspot.com/2012/10/how-not-to-use-readdirr3.html",
+      "revId": "88d984e5434f06d3ea45e3990be7b871d042226a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d9d1a6f_4bde198e",
+        "filename": "init/init_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1052976
+      },
+      "writtenOn": "2015-07-27T21:37:11Z",
+      "side": 1,
+      "message": "arh thanks! I only used it as this is recursive. Though as its per stream (the storage is allocated per DIR) I think we are cool with readdir?",
+      "parentUuid": "2da466b9_df28070f",
       "revId": "88d984e5434f06d3ea45e3990be7b871d042226a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -247,6 +343,30 @@
     },
     {
       "key": {
+        "uuid": "2d3e264a_630f3c3c",
+        "filename": "init/init_parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1052976
+      },
+      "writtenOn": "2015-07-27T21:37:11Z",
+      "side": 1,
+      "message": "k, I\u0027m always wary of using d_type but if we already use it I\u0027ll change it.\nDone",
+      "parentUuid": "4d86fa2e_b5bc4bb6",
+      "range": {
+        "startLine": 465,
+        "startChar": 12,
+        "endLine": 465,
+        "endChar": 18
+      },
+      "revId": "88d984e5434f06d3ea45e3990be7b871d042226a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d86fa2e_e3744ec4",
         "filename": "init/util.cpp",
         "patchSetId": 1
@@ -258,6 +378,24 @@
       "writtenOn": "2015-07-25T00:32:16Z",
       "side": 1,
       "message": "\u003d\u003d -1 is more idiomatic.",
+      "revId": "88d984e5434f06d3ea45e3990be7b871d042226a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd882a39_07fc0aa9",
+        "filename": "init/util.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1052976
+      },
+      "writtenOn": "2015-07-27T21:37:11Z",
+      "side": 1,
+      "message": "In general isn\u0027t it better to check for success rather than a specific error? (agree here stat only does 0 or -1)\n\nIn Chrome we normally so if (ret !\u003d SUCCESS) rather than if (ret \u003d\u003d ERROR) as people add error codes and its prone to a failure?\n\nHow about \u003c 0?",
+      "parentUuid": "4d86fa2e_e3744ec4",
       "revId": "88d984e5434f06d3ea45e3990be7b871d042226a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
