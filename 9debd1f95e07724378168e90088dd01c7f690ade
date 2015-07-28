@@ -1,0 +1,375 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dae5efb_92a9bc98",
+        "filename": "init/perfboot.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-07-28T06:40:20Z",
+      "side": 1,
+      "message": "Kill the blank line",
+      "revId": "9debd1f95e07724378168e90088dd01c7f690ade",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d11d20b_b30a18ae",
+        "filename": "init/perfboot.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-07-28T06:40:20Z",
+      "side": 1,
+      "message": "Here too.",
+      "revId": "9debd1f95e07724378168e90088dd01c7f690ade",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d06c2cf_57160c56",
+        "filename": "init/perfboot.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-07-28T06:40:20Z",
+      "side": 1,
+      "message": "All of these (with the exception of _ANDROID_SERIAL) are only used in one function. Don\u0027t really need to be globals.",
+      "revId": "9debd1f95e07724378168e90088dd01c7f690ade",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6dae5efb_12966c57",
+        "filename": "init/perfboot.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-07-28T06:40:20Z",
+      "side": 1,
+      "message": "Same here as with _wait_cpu_cooldown.",
+      "revId": "9debd1f95e07724378168e90088dd01c7f690ade",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd174afa_75198886",
+        "filename": "init/perfboot.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-07-28T06:40:20Z",
+      "side": 1,
+      "message": "Drop the extraneous parens.",
+      "range": {
+        "startLine": 116,
+        "startChar": 15,
+        "endLine": 116,
+        "endChar": 16
+      },
+      "revId": "9debd1f95e07724378168e90088dd01c7f690ade",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dbb223c_ef76617d",
+        "filename": "init/perfboot.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-07-28T06:40:20Z",
+      "side": 1,
+      "message": "Make this a normal method. You\u0027re invoking a \"private\" method of this class, this is the only caller, and the only arguments are members.",
+      "revId": "9debd1f95e07724378168e90088dd01c7f690ade",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d06c2cf_177db48f",
+        "filename": "init/perfboot.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-07-28T06:40:20Z",
+      "side": 1,
+      "message": "threshold is not None",
+      "revId": "9debd1f95e07724378168e90088dd01c7f690ade",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4db19a56_714c1895",
+        "filename": "init/perfboot.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-07-28T06:40:20Z",
+      "side": 1,
+      "message": "FYI, I committed a Python adb wrapper to system/core/adb today that should handle all of this for you (and will actually error check adb shell commands).",
+      "revId": "9debd1f95e07724378168e90088dd01c7f690ade",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d11d20b_9336fc6d",
+        "filename": "init/perfboot.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-07-28T06:40:20Z",
+      "side": 1,
+      "message": "This block might be more clear as:\n\n    except subprocess.CalledProcessError:\n        if i \u003e\u003d _RUN_ADB_RETRIES - 1:\n            raise\n        time.sleep(1 \u003c\u003c i)",
+      "revId": "9debd1f95e07724378168e90088dd01c7f690ade",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d06c2cf_b7fa0884",
+        "filename": "init/perfboot.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-07-28T06:40:20Z",
+      "side": 1,
+      "message": "float(sum(data))",
+      "range": {
+        "startLine": 331,
+        "startChar": 11,
+        "endLine": 331,
+        "endChar": 26
+      },
+      "revId": "9debd1f95e07724378168e90088dd01c7f690ade",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4db19a56_91a9bc98",
+        "filename": "init/perfboot.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-07-28T06:40:20Z",
+      "side": 1,
+      "message": "Missed a . at the end.",
+      "range": {
+        "startLine": 341,
+        "startChar": 42,
+        "endLine": 341,
+        "endChar": 45
+      },
+      "revId": "9debd1f95e07724378168e90088dd01c7f690ade",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd174afa_753068ee",
+        "filename": "init/perfboot.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-07-28T06:40:20Z",
+      "side": 1,
+      "message": "Here too",
+      "revId": "9debd1f95e07724378168e90088dd01c7f690ade",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad1696fe_d4d7bceb",
+        "filename": "init/perfboot.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-07-28T06:40:20Z",
+      "side": 1,
+      "message": "Can merge this into the previous list comp.",
+      "revId": "9debd1f95e07724378168e90088dd01c7f690ade",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6dae5efb_b2fa0084",
+        "filename": "init/perfboot.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-07-28T06:40:20Z",
+      "side": 1,
+      "message": "Could you also explain the peculiarity about `timedout` in the docstring? Specifically, if I\u0027m reading this correctly, that it is a list that will contain a single True value when it times out, and the reason it is held in a list is because you need a mutable type to fake an out param?\n\nAlternatively, this would probably be better as a class.",
+      "revId": "9debd1f95e07724378168e90088dd01c7f690ade",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d11d20b_d319940b",
+        "filename": "init/perfboot.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-07-28T06:40:20Z",
+      "side": 1,
+      "message": "perf\n\nAlso, I typically set the description to `inspect.getdoc(sys.modules[__name__]))`, which will put the module docstring into the help text for the program. It\u0027s usually relevant. Might be a little verbose in this case, but I\u0027ll leave it up to you.",
+      "range": {
+        "startLine": 397,
+        "startChar": 63,
+        "endLine": 397,
+        "endChar": 67
+      },
+      "revId": "9debd1f95e07724378168e90088dd01c7f690ade",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad1696fe_94f42480",
+        "filename": "init/perfboot.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-07-28T06:40:20Z",
+      "side": 1,
+      "message": "Capitalize.",
+      "range": {
+        "startLine": 399,
+        "startChar": 30,
+        "endLine": 399,
+        "endChar": 31
+      },
+      "revId": "9debd1f95e07724378168e90088dd01c7f690ade",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2db8e63c_10bae4b8",
+        "filename": "init/perfboot.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-07-28T06:40:20Z",
+      "side": 1,
+      "message": "And elsewhere",
+      "range": {
+        "startLine": 401,
+        "startChar": 31,
+        "endLine": 401,
+        "endChar": 32
+      },
+      "revId": "9debd1f95e07724378168e90088dd01c7f690ade",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d11d20b_b3ae98ed",
+        "filename": "init/perfboot.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-07-28T06:40:20Z",
+      "side": 1,
+      "message": "Capitalize, and missing a period (apply same nits to all)",
+      "range": {
+        "startLine": 404,
+        "startChar": 48,
+        "endLine": 404,
+        "endChar": 72
+      },
+      "revId": "9debd1f95e07724378168e90088dd01c7f690ade",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd174afa_f5d2b8fd",
+        "filename": "init/perfboot.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-07-28T06:40:20Z",
+      "side": 1,
+      "message": "If it isn\u0027t constant it shouldn\u0027t be all caps.",
+      "range": {
+        "startLine": 423,
+        "startChar": 8,
+        "endLine": 423,
+        "endChar": 23
+      },
+      "revId": "9debd1f95e07724378168e90088dd01c7f690ade",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
