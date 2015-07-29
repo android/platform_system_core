@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ad72168f_54b38c82",
+        "filename": "adb/device.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1070509
+      },
+      "writtenOn": "2015-07-29T01:54:29Z",
+      "side": 1,
+      "message": "Thank you for fixing it promptly. I rebased the CL to include the fix.",
+      "parentUuid": "ed1c0e21_0a48eb03",
+      "revId": "4aa038b962e04e4adee915ab3f141073234f7736",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4db19a56_3a36e5ec",
         "filename": "init/perfboot.py",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2015-07-28T21:48:28Z",
       "side": 1,
       "message": "`import adb` is sufficient. The __init__.py imports device.*.",
+      "revId": "4aa038b962e04e4adee915ab3f141073234f7736",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d6d52b6_73498083",
+        "filename": "init/perfboot.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1070509
+      },
+      "writtenOn": "2015-07-29T01:54:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4db19a56_3a36e5ec",
       "revId": "4aa038b962e04e4adee915ab3f141073234f7736",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -64,6 +100,24 @@
       "writtenOn": "2015-07-28T21:48:28Z",
       "side": 1,
       "message": "adb.get_device(args.serial) will do some extra checking for cases like not having a specified serial but having multiple devices, or having set ANDROID_SERIAL but not having that device attached.\n\nIt does mean that the device has to be on and connected when this script starts, but afaict that\u0027s okay.",
+      "revId": "4aa038b962e04e4adee915ab3f141073234f7736",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed788e71_96fa8c84",
+        "filename": "init/perfboot.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1070509
+      },
+      "writtenOn": "2015-07-29T01:54:29Z",
+      "side": 1,
+      "message": "Thanks, I changed the code to use adb.get_device.\nYes, this script assumes that the device is on and connected. I think that\u0027s OK considering the purpose of the script.",
+      "parentUuid": "cd174afa_fbbe274e",
       "revId": "4aa038b962e04e4adee915ab3f141073234f7736",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
