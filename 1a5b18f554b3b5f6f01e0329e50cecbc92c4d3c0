@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2af28c55_a0915a27",
+        "filename": "init/action.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-07-29T17:20:40Z",
+      "side": 1,
+      "message": "Will do",
+      "parentUuid": "8d11d20b_3a91995b",
+      "range": {
+        "startLine": 139,
+        "startChar": 12,
+        "endLine": 139,
+        "endChar": 37
+      },
+      "revId": "1a5b18f554b3b5f6f01e0329e50cecbc92c4d3c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d06c2cf_807b3ce3",
         "filename": "init/action.h",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-29T03:50:25Z",
       "side": 1,
       "message": "How about providing more interface in Action and remove this? like adding command_count() and execute_one_command(size_t index)?",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 29
+      },
+      "revId": "1a5b18f554b3b5f6f01e0329e50cecbc92c4d3c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a00d8f0_1bf07b88",
+        "filename": "init/action.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-07-29T17:20:40Z",
+      "side": 1,
+      "message": "I don\u0027t want to expose that functionality to anything except for ActionQueue however, so a friend class seemed to be the best.  Let me think through this.  I can move some of the logic from execute_one_command() into Action.",
+      "parentUuid": "0d06c2cf_807b3ce3",
       "range": {
         "startLine": 26,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "caf6504b_bd173f53",
+        "filename": "init/action.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-07-29T17:20:40Z",
+      "side": 1,
+      "message": "Will do",
+      "parentUuid": "8d11d20b_9a226dd7",
+      "range": {
+        "startLine": 77,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 23
+      },
+      "revId": "1a5b18f554b3b5f6f01e0329e50cecbc92c4d3c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2db8e63c_a43c7a80",
         "filename": "init/action.h",
         "patchSetId": 9
@@ -82,6 +154,30 @@
       "writtenOn": "2015-07-29T03:50:25Z",
       "side": 1,
       "message": "which style do you insist on? this likes java method? and others like unix functions? and google prefers AddTableEntry().",
+      "range": {
+        "startLine": 83,
+        "startChar": 24,
+        "endLine": 83,
+        "endChar": 35
+      },
+      "revId": "1a5b18f554b3b5f6f01e0329e50cecbc92c4d3c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2af28c55_40a84e5f",
+        "filename": "init/action.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-07-29T17:20:40Z",
+      "side": 1,
+      "message": "I\u0027ve been keeping with the existing unix style since that\u0027s how the rest of init is/has been.  This one got away from me when typing, and I do need to fix up a reasonable number of style issues throughout.\n\nDo we prefer AddTableEntry() for init even though the legacy code is add_table_entry()?  Should we mix now with the intention of cleaning up the rest later?",
+      "parentUuid": "2db8e63c_a43c7a80",
       "range": {
         "startLine": 83,
         "startChar": 24,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "2af28c55_608c7211",
+        "filename": "init/action.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-07-29T17:20:40Z",
+      "side": 1,
+      "message": "queue_property_trigger() and queue_all_property_triggers() match the legacy names.  \u0027queue_actions\u0027 would be better too, since we can have multiple actions queued for a given trigger due to \u0026\u0026, but I\u0027m not sure about the rename.",
+      "parentUuid": "0d06c2cf_e08b186f",
+      "range": {
+        "startLine": 88,
+        "startChar": 9,
+        "endLine": 88,
+        "endChar": 28
+      },
+      "revId": "1a5b18f554b3b5f6f01e0329e50cecbc92c4d3c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4db19a56_20d4f4b5",
         "filename": "init/action.h",
         "patchSetId": 9
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "4a142033_59284388",
+        "filename": "init/action.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-07-29T17:20:40Z",
+      "side": 1,
+      "message": "I agree that ActionManager is a better name.  \n\nWhat would I move action_list/parse_action/dump_parse_state into?  Should I have separate ActionManager vs ActionQueue classes?",
+      "parentUuid": "4db19a56_20d4f4b5",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 35
+      },
+      "revId": "1a5b18f554b3b5f6f01e0329e50cecbc92c4d3c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eda16e0d_c8b43372",
         "filename": "init/builtins.cpp",
         "patchSetId": 9
@@ -151,6 +295,30 @@
       "writtenOn": "2015-07-29T03:50:25Z",
       "side": 1,
       "message": "indent here and below?",
+      "range": {
+        "startLine": 517,
+        "startChar": 4,
+        "endLine": 517,
+        "endChar": 26
+      },
+      "revId": "1a5b18f554b3b5f6f01e0329e50cecbc92c4d3c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caf6504b_7d23f7af",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-07-29T17:20:40Z",
+      "side": 1,
+      "message": "Will do",
+      "parentUuid": "eda16e0d_c8b43372",
       "range": {
         "startLine": 517,
         "startChar": 4,
