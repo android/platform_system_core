@@ -260,6 +260,24 @@
       "revId": "f99f8a79635d8f2904edd45a8fd532d2315d76ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a40cc41_7601e879",
+        "filename": "init/parser/tokenizer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-07-30T18:13:52Z",
+      "side": 1,
+      "message": "+1, I doubt this is a problem.  Init scripts are in the order of a few kbs.  The init scripts in system/core/rootdir is ~25kb, and searching in /device/, I find a strong majority in the \u003c10kb region.  Beyond that, the plan to divide init scripts by services will make them even smaller.  I\u0027d suggest using ReadFileToString directly and not create any new classes beyond this parser.\n\nAs a side note, wouldn\u0027t mmap be better if this were a problem?  It\u0027d let the kernel handle the pages that back the file, while we could copy the tokens out appropriately.",
+      "parentUuid": "0a430851_d297821b",
+      "revId": "f99f8a79635d8f2904edd45a8fd532d2315d76ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
