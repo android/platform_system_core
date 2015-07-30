@@ -224,6 +224,24 @@
       "revId": "f99f8a79635d8f2904edd45a8fd532d2315d76ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3980cf_e55f5eba",
+        "filename": "init/parser/tokenizer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1052976
+      },
+      "writtenOn": "2015-07-30T17:28:21Z",
+      "side": 1,
+      "message": "I only did it this way to keep the peak memory usage down as you only read a block at a time and only one token is alive at a given point, which should also be small. So unless a token is greater than the blocksize(1024) this code shouldn\u0027t use more than that.\n\nI kinda worry with allocating large buffers that people change default allocators and some are bad at giving back pages to the kernel. \n\ne.g \nbuf \u003d malloc(10MB); free(buf);\nIn some allocators they do not unmap the pages in the free and keep them hot in the heap pool. So the private dirty ram stays at 10MB.\n\nSo I think don\u0027t do arbitrarily big allocations if you don\u0027t have to - maybe I\u0027m stuck in the 90s :)",
+      "parentUuid": "2a40cc41_36d5a02f",
+      "revId": "f99f8a79635d8f2904edd45a8fd532d2315d76ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
