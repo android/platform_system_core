@@ -1,0 +1,203 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a5f2428_f0a7183e",
+        "filename": "init/parser/tokenizer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-07-31T15:27:56Z",
+      "side": 1,
+      "message": "nit: if (!data.empty()) is a bit simpler",
+      "revId": "220ca84223dca5aa7a58c1a941d745c1387d29be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a6260ef_c3ee8a28",
+        "filename": "init/parser/tokenizer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-07-31T15:27:56Z",
+      "side": 1,
+      "message": "nit: s/generated/generate/",
+      "range": {
+        "startLine": 64,
+        "startChar": 16,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "220ca84223dca5aa7a58c1a941d745c1387d29be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea295486_17ea9e67",
+        "filename": "init/parser/tokenizer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-07-31T15:27:56Z",
+      "side": 1,
+      "message": "this seems a bit weird; if you keep calling AdvChar() after you reach the end of the string, pos_ keeps getting incremented. it\u0027d probably be a bit cleaner to bail out before incrementing when eof_ is true.",
+      "revId": "220ca84223dca5aa7a58c1a941d745c1387d29be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2e188f_344fd63e",
+        "filename": "init/parser/tokenizer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-07-31T15:27:56Z",
+      "side": 1,
+      "message": "put this if condition into an IsWhiteSpace(char ch) helper function so you can share it with AdvText()?",
+      "revId": "220ca84223dca5aa7a58c1a941d745c1387d29be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a5ce834_70568637",
+        "filename": "init/parser/tokenizer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-07-31T15:27:56Z",
+      "side": 1,
+      "message": "it looks like \\0 is also allowed in the string -- can you document that?",
+      "revId": "220ca84223dca5aa7a58c1a941d745c1387d29be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a59ac45_31b81231",
+        "filename": "init/parser/tokenizer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-07-31T15:27:56Z",
+      "side": 1,
+      "message": "nit: add \u0027explicit\u0027",
+      "revId": "220ca84223dca5aa7a58c1a941d745c1387d29be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea295486_57f0265b",
+        "filename": "init/parser/tokenizer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-07-31T15:27:56Z",
+      "side": 1,
+      "message": "nit: add a simple constructor so it isn\u0027t possible to create one of these with garbage in the \u0027type\u0027 member",
+      "revId": "220ca84223dca5aa7a58c1a941d745c1387d29be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa33dcf3_75c2fa00",
+        "filename": "init/parser/tokenizer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-07-31T15:27:56Z",
+      "side": 1,
+      "message": "nit: this method can be const",
+      "revId": "220ca84223dca5aa7a58c1a941d745c1387d29be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a59ac45_d1be561b",
+        "filename": "init/parser/tokenizer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-07-31T15:27:56Z",
+      "side": 1,
+      "message": "nit: AdvanceChar, AdvanceText, etc. would be a bit clearer",
+      "range": {
+        "startLine": 53,
+        "startChar": 7,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "220ca84223dca5aa7a58c1a941d745c1387d29be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a5f2428_50a2642b",
+        "filename": "init/parser/tokenizer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-07-31T15:27:56Z",
+      "side": 1,
+      "message": "nit: StartToken() and EndToken() would be a bit clearer, i think",
+      "revId": "220ca84223dca5aa7a58c1a941d745c1387d29be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a6260ef_e3f18e0c",
+        "filename": "init/parser/tokenizer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1074340
+      },
+      "writtenOn": "2015-07-31T15:27:56Z",
+      "side": 1,
+      "message": "how big does this data get? seeing a member that\u0027s a reference makes me nervous, as it\u0027s easy to have a use-after-free if the caller doesn\u0027t hang onto the string that it passes to the c\u0027tor.\n\nif it\u0027s at all feasible, it\u0027d be better to make a copy of the input. failing that, the c\u0027tor should have a comment stating that the passed-in data needs to outlive the Tokenizer object.",
+      "revId": "220ca84223dca5aa7a58c1a941d745c1387d29be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
