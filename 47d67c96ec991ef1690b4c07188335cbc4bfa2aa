@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "ea295486_37aeba9d",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1470,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-07-31T04:05:34Z",
+      "side": 1,
+      "message": "I think Elliott already fixed this with adb_basename, but I think this (old) API is dangerous because it could return a ptr to a temporarily constructed std::string. i.e. char* base \u003d get_basename(std::string(\"foo\"))...",
+      "range": {
+        "startLine": 1470,
+        "startChar": 0,
+        "endLine": 1470,
+        "endChar": 60
+      },
+      "revId": "47d67c96ec991ef1690b4c07188335cbc4bfa2aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa33dcf3_353912fe",
+        "filename": "adb/sysdeps.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-07-31T04:05:34Z",
+      "side": 1,
+      "message": ".c_str()? must already be fixed in Elliott\u0027s change.",
+      "range": {
+        "startLine": 127,
+        "startChar": 15,
+        "endLine": 127,
+        "endChar": 19
+      },
+      "revId": "47d67c96ec991ef1690b4c07188335cbc4bfa2aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a5f2428_ed6981ea",
         "filename": "adb/sysdeps.h",
         "patchSetId": 7
@@ -19,6 +65,24 @@
     },
     {
       "key": {
+        "uuid": "0a5ce834_4d064d94",
+        "filename": "adb/sysdeps.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-07-31T04:05:34Z",
+      "side": 1,
+      "message": "Even with checking for / and \\, I\u0027m not sure if this properly handles paths like C:\\foo\\bar\\baz or UNC paths like \\\\server\\share\\dir1\\dir2\\file. The C Runtime has an API called _splitpath() that I think may be able to properly parse popular paths. BTW, yes, I\u0027ve seen this code before, but never cleaned it up because my guess is that the bad cases don\u0027t come up that often... and the real fix may be hard.",
+      "parentUuid": "6a5f2428_ed6981ea",
+      "revId": "47d67c96ec991ef1690b4c07188335cbc4bfa2aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea295486_119ceeef",
         "filename": "adb/sysdeps.h",
         "patchSetId": 7
@@ -30,6 +94,24 @@
       "writtenOn": "2015-07-30T22:17:01Z",
       "side": 1,
       "message": "...in particular, this \u003e seems wrong to me, unless i\u0027m missing something?",
+      "revId": "47d67c96ec991ef1690b4c07188335cbc4bfa2aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a59ac45_9191fe27",
+        "filename": "adb/sysdeps.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-07-31T04:05:34Z",
+      "side": 1,
+      "message": "Yeah, the \u003e is wrong I think.",
+      "parentUuid": "ea295486_119ceeef",
       "revId": "47d67c96ec991ef1690b4c07188335cbc4bfa2aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
