@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6a5f2428_7ef1b98f",
+        "filename": "init/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1052976
+      },
+      "writtenOn": "2015-08-01T01:27:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a6260ef_753e7379",
+      "revId": "70b58720c435bdf6ee43a5b012ed80c02354c496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a5ce834_163e22e6",
         "filename": "init/log.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-07-31T21:35:41Z",
       "side": 1,
       "message": "libbase has google3-style LOG(whatever) with an extension that would let us supply a function that sends stuff to the kernel log. we just need to wire that up and kill all this legacy crap...",
+      "revId": "70b58720c435bdf6ee43a5b012ed80c02354c496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea295486_089b9b49",
+        "filename": "init/log.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1052976
+      },
+      "writtenOn": "2015-08-01T01:27:29Z",
+      "side": 1,
+      "message": "Ok, I\u0027ve done a follow up CL that changes all the logging to use LOG() (it took forever!!).\n\nI\u0027ve got a few more left, so will push it up tomorrow.",
+      "parentUuid": "0a5ce834_163e22e6",
       "revId": "70b58720c435bdf6ee43a5b012ed80c02354c496",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "0a5ce834_76231eb0",
+        "filename": "init/parser/parser.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1052976
+      },
+      "writtenOn": "2015-08-01T01:27:29Z",
+      "side": 1,
+      "message": "I\u0027ll add a comment. It allows the handlers to return a pointer, which will be passed back with every HandleSubCommand.\n\ne.g Tom can use it in the ActionManager to remember which Action is being processed.",
+      "parentUuid": "8a2e188f_faa7f53d",
+      "revId": "70b58720c435bdf6ee43a5b012ed80c02354c496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca4d7087_fab12dcd",
         "filename": "init/util.cpp",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2015-07-31T21:35:41Z",
       "side": 1,
       "message": "this seems like a bad idea. can we just #if defined(__ANDROID__) any function that won\u0027t work on the host? or split this file up.",
+      "revId": "70b58720c435bdf6ee43a5b012ed80c02354c496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea523422_db55574d",
+        "filename": "init/util.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1052976
+      },
+      "writtenOn": "2015-08-01T01:27:29Z",
+      "side": 1,
+      "message": "Changed to __ANDROID__",
+      "parentUuid": "ca4d7087_fab12dcd",
       "revId": "70b58720c435bdf6ee43a5b012ed80c02354c496",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
