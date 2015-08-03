@@ -16,6 +16,24 @@
       "revId": "8df90321769c670b546a7ff0e7a14f2d7a79cc25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4acfc072_41a35286",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-03T21:37:48Z",
+      "side": 1,
+      "message": "The reason we need the switch is to map Win32 error codes to errno codes, so that the caller can give a better error message. For example, sync_recv() calls adb_creat() and upon failure, it calls strerror(errno). So we can\u0027t just map all errors to EINVAL.\n\nIf you\u0027re asking if we can specifically kill the case ERROR_FILE_NOT_FOUND, we could kill it, but then the D() tracing would say \"unknown error\" when it really isn\u0027t. Maybe this doesn\u0027t matter and the D() trace could just be \"mapping win32 error code x to errno y\" like what I did to socket_set_errno()?\n\nSome alternative ideas that I\u0027ve bounced around:\n\n1. Call the undocumented C Runtime API _dosmaperr() to map from Win32 error codes to errno codes. I don\u0027t really want to do something this gross. The gain isn\u0027t big enough to make such a risky change.\n\n2. Implement adb_creat() (and related APIs) out of fopen(), which will indirectly call _dosmaperr() to map the error codes. This would work, but seems kind of a big change to make with not enough benefits (and unknown downsides to consider).\n\n3. Make adb_creat() return a std::string* error like network_*. Frankly, I can accept making the socket stuff return an error string, but I don\u0027t know if you really want to go crazy and make more APIs return a string. IMO, it isn\u0027t a worth it change to make, unless we really think file APIs are failing a lot on end-user machines. (Winsock is kind of different since it has very broad error codes and adb does a lot of network stuff).\n\nThoughts?",
+      "parentUuid": "ca157084_052eb2c5",
+      "revId": "8df90321769c670b546a7ff0e7a14f2d7a79cc25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
