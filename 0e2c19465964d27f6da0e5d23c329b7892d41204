@@ -88,6 +88,24 @@
       "revId": "0e2c19465964d27f6da0e5d23c329b7892d41204",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a01803c_b4526e33",
+        "filename": "adb/transport_local.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-03T16:02:50Z",
+      "side": 1,
+      "message": "on Linux we could use inotify. i actually tried to switch adb over to libusbhost ages ago because it already uses inotify (https://android-review.googlesource.com/#/c/108551/), but that caused trouble (that apparently i didn\u0027t record, and sadly i can\u0027t remember). but, yeah, one day we should switch to inotify (one way or another).\n\n(so if there\u0027s a way to do this for Windows, that would be good too.)\n\nit\u0027s not obvious how we can do something similar for emulators though. the only thing i could think of (for Unix at least) would be using Unix domain sockets so they\u0027re visible in the file system and then we can just use inotify for them too. *but* that means we\u0027d need changes on the emulator side. (plus we\u0027d need to come up with something else for Mac OS and Windows.)",
+      "parentUuid": "4a6260ef_86b77b24",
+      "revId": "0e2c19465964d27f6da0e5d23c329b7892d41204",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
