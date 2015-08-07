@@ -179,6 +179,24 @@
     },
     {
       "key": {
+        "uuid": "e7fb4f32_87566cd9",
+        "filename": "init/parser/parser.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-08-07T17:45:01Z",
+      "side": 1,
+      "message": "I had a thought about this - we can remove priv entirely if we have a HandleSectionEnd() or similarly named function here.  The interface would be:\n\nHandleSection()\n0-n of HandleSubCommand()\nHandleSectionEnd()\n\nClasses that implement ParserSectionHandler would need to keep their own state and would be limited to parsing each section sequentially, but that seems reasonable.\n\nThis also makes the interface cleaner on the Action/Service side, since there will always be a single owner of the pointer, which isn\u0027t the case right now.",
+      "parentUuid": "8a61b821_7c0a8d5d",
+      "revId": "70b58720c435bdf6ee43a5b012ed80c02354c496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca4d7087_fab12dcd",
         "filename": "init/util.cpp",
         "patchSetId": 1
