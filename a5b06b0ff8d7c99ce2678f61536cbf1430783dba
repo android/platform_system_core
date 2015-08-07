@@ -16,6 +16,24 @@
       "revId": "a5b06b0ff8d7c99ce2678f61536cbf1430783dba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27b567ac_0bb141fb",
+        "filename": "adb/usb_windows.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-07T23:51:44Z",
+      "side": 1,
+      "message": "Good question. This is old code, so I was not inclined to mess with it, plus the reality is that in practice, the string returned is all ASCII, so there is no big runtime benefit to changing it. It would only be for code readability/maintainability.\n\nIf you want to improve this for readability/maintainability, I\u0027d vote to keep the string wide in the various data structures to reduce conversions, allocations, etc. in the common case (especially since this code is Windows-only). Probably the only time we\u0027d need to narrow is for the uncommon case of D() logging.\n\nWhat do you think? Agree/disagree? Want that in this change or in a separate?",
+      "parentUuid": "07b863a5_072a9603",
+      "revId": "a5b06b0ff8d7c99ce2678f61536cbf1430783dba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
