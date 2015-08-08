@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7ceb7a1_94d62436",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-08T22:26:04Z",
+      "side": 1,
+      "message": "An alternative would be the following in sysdeps.h:\n\n#ifdef _WIN32\ntypedef HANDLE NativeFd;\nconst NativeFd kInvalidNativeFd \u003d INVALID_HANDLE_VALUE;\n#else\ntypedef int NativeFd;\nconst NativeFd kInvalidNativeFd \u003d -1;\n#endif\n\nBut this would also require making adb.h #include sysdeps.h, plus minadbd would need to update its signature of adb_main, etc. Seems like a real pain. I actually prototyped this first, but it seemed more messy.",
+      "range": {
+        "startLine": 9,
+        "startChar": 63,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "5c398d2ce96150e94e596e959bfe2246b94de660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87c9b39e_f3d7b034",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-08T22:26:04Z",
+      "side": 1,
+      "message": "You may be wondering who uses this. I\u0027m not sure, but my best guess is that maybe Intel does/used-to use this mode because it is the only way to pass -a to adb to get it to listen on all interfaces. See d7b33085117ccbb908a883f624cb1fe5495ee92a . Basically, -a is broken for adb start-server/server and I think only works for adb server nodaemon and adb server fork-server (which no one in their right mind should run manually).",
+      "range": {
+        "startLine": 13,
+        "startChar": 31,
+        "endLine": 13,
+        "endChar": 50
+      },
+      "revId": "5c398d2ce96150e94e596e959bfe2246b94de660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67e67f2a_f2d7a834",
+        "filename": "adb/adb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-08T22:26:04Z",
+      "side": 1,
+      "message": "FYI, this whole function has some handle leaks that I hope to fixup with a ScopedHandle-style class later.",
+      "range": {
+        "startLine": 658,
+        "startChar": 8,
+        "endLine": 658,
+        "endChar": 18
+      },
+      "revId": "5c398d2ce96150e94e596e959bfe2246b94de660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47e97bf9_91d61c36",
+        "filename": "adb/client/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-08T22:26:04Z",
+      "side": 1,
+      "message": "I found it lower-impact to just call WriteFile(). The alternative seems messier: call the esoteric _open_osfhandle() to make a fd that works with android::base::WriteStringToFd() and unix_close(). Plus, then we\u0027d have to be careful if WriteStringToFd() is modified in the future to work with fds from sysdeps. Just way simpler to just WriteFile here, IMO. I\u0027m open to input.",
+      "range": {
+        "startLine": 167,
+        "startChar": 13,
+        "endLine": 167,
+        "endChar": 22
+      },
+      "revId": "5c398d2ce96150e94e596e959bfe2246b94de660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47e97bf9_71ecd804",
+        "filename": "adb/client/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-08T22:26:04Z",
+      "side": 1,
+      "message": "This really makes no difference for unix since unix_close and adb_close are the same there, just changing this to follow the spec (unix_close for fds from the OS, adb_close for fds from sysdeps).",
+      "range": {
+        "startLine": 180,
+        "startChar": 8,
+        "endLine": 180,
+        "endChar": 12
+      },
+      "revId": "5c398d2ce96150e94e596e959bfe2246b94de660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
