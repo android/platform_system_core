@@ -22,6 +22,30 @@
       "revId": "797348829ef0c1ff018b54066b56a4f2a423bebf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67e67f2a_b5190a83",
+        "filename": "init/init_parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-08-10T17:29:51Z",
+      "side": 1,
+      "message": "Using \u0026data[0] was my first idea, but we\u0027d either need to drop const from the parameter list (and dirty the interface as Elliott commented), or use a const_cast\u003c\u003e, which is pretty ugly.  Besides, we probably shouldn\u0027t be making raw changes to a std::string in the first place.\n\nA std::vector\u003cchar\u003e could have worked better here or wrapping the strdup() with std::unique_ptr, but hopefully we\u0027ll get rid of this copying once and for all with https://android-review.googlesource.com/#/c/162655/",
+      "parentUuid": "87a3737f_43cba64d",
+      "range": {
+        "startLine": 319,
+        "startChar": 4,
+        "endLine": 319,
+        "endChar": 43
+      },
+      "revId": "797348829ef0c1ff018b54066b56a4f2a423bebf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
