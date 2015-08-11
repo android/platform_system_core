@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c4f6494b_7d31b775",
+        "filename": "adb/client/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-11T23:38:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04f5c13c_e2c08875",
+      "range": {
+        "startLine": 120,
+        "startChar": 12,
+        "endLine": 120,
+        "endChar": 19
+      },
+      "revId": "2eae272c17c7473bd8058be28d287ae3d4d24ac0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64111d42_1a307d6e",
         "filename": "adb/client/main.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-08-11T23:27:52Z",
       "side": 1,
       "message": "What happens in this case? It seems like we are saying:\n\n - if possible use /tmp/adb.log\n - if that isn\u0027t possible, redirect to /dev/null\n - if that isn\u0027t possible, then ?\n\nSeems like it should be fatal, but it looks like this will never happen since the previous version doesn\u0027t even check for that error..",
+      "range": {
+        "startLine": 129,
+        "startChar": 20,
+        "endLine": 129,
+        "endChar": 26
+      },
+      "revId": "2eae272c17c7473bd8058be28d287ae3d4d24ac0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "645f5d28_8a79cba0",
+        "filename": "adb/client/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-11T23:38:14Z",
+      "side": 1,
+      "message": "Yes that\u0027s what the change is saying. If we make that last case fatal, why not make the first case fatal too? That\u0027s my overall design question for you guys. I\u0027m somewhat ambivlent. I think I modeled this after start_device_log() that just continues on if there is an error. But really I\u0027m open to ideas. My gut just says to make everything during startup fatal, but I\u0027m open to ideas...",
+      "parentUuid": "64111d42_1a307d6e",
       "range": {
         "startLine": 129,
         "startChar": 20,
