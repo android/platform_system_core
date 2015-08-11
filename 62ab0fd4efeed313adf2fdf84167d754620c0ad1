@@ -22,6 +22,30 @@
       "revId": "62ab0fd4efeed313adf2fdf84167d754620c0ad1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44141933_d9745344",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-08-11T23:34:53Z",
+      "side": 1,
+      "message": "There is a \u0027size\u0027 for each buffer id, so these are part of the sizes array. The code used to have stats.sizes(id) at each point, optimization changed it to capture the value for the specific id in one var and then propagate rather than call the method for every usage. I have this habit of using the _same_ name of the optimized fetched structure element or method for the variable name that acts as its local placeholder; regardless of plurality or __purity__.\n\nThis way at least I know I have made this a non-volatile placeholder for the method.",
+      "parentUuid": "645f5d28_8a6e6bf0",
+      "range": {
+        "startLine": 226,
+        "startChar": 11,
+        "endLine": 226,
+        "endChar": 16
+      },
+      "revId": "62ab0fd4efeed313adf2fdf84167d754620c0ad1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
