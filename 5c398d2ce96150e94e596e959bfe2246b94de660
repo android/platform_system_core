@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "87c9b39e_e8f69784",
+        "filename": "adb/adb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-11T01:38:19Z",
+      "side": 1,
+      "message": "should we just use intptr_t instead?",
+      "revId": "5c398d2ce96150e94e596e959bfe2246b94de660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67e67f2a_f2d7a834",
         "filename": "adb/adb.cpp",
         "patchSetId": 1
@@ -71,6 +88,23 @@
     },
     {
       "key": {
+        "uuid": "87c9b39e_88e603d3",
+        "filename": "adb/adb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-11T01:38:19Z",
+      "side": 1,
+      "message": "i\u0027m regretting the name \"--reply-fd\" at this point, but i can\u0027t really think of a better name (other than having two different names for Unix and Windows).",
+      "revId": "5c398d2ce96150e94e596e959bfe2246b94de660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47e97bf9_91d61c36",
         "filename": "adb/client/main.cpp",
         "patchSetId": 1
@@ -82,6 +116,30 @@
       "writtenOn": "2015-08-08T22:26:04Z",
       "side": 1,
       "message": "I found it lower-impact to just call WriteFile(). The alternative seems messier: call the esoteric _open_osfhandle() to make a fd that works with android::base::WriteStringToFd() and unix_close(). Plus, then we\u0027d have to be careful if WriteStringToFd() is modified in the future to work with fds from sysdeps. Just way simpler to just WriteFile here, IMO. I\u0027m open to input.",
+      "range": {
+        "startLine": 167,
+        "startChar": 13,
+        "endLine": 167,
+        "endChar": 22
+      },
+      "revId": "5c398d2ce96150e94e596e959bfe2246b94de660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7cf2b9d_8482700b",
+        "filename": "adb/client/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-11T01:38:19Z",
+      "side": 1,
+      "message": "sgtm.",
+      "parentUuid": "47e97bf9_91d61c36",
       "range": {
         "startLine": 167,
         "startChar": 13,
