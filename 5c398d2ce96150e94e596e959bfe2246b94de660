@@ -65,6 +65,24 @@
     },
     {
       "key": {
+        "uuid": "c7cf2b9d_a47d6c59",
+        "filename": "adb/adb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-11T02:32:56Z",
+      "side": 1,
+      "message": "It\u0027s your call. I think I started to prototype this and found that I had to change the strtol to strtoll, but only on 64-bit, change sprintf to %zd, cast at some point from intptr_t to int (for unix), change minadbd, etc. Basically, it was still a mess, so it didn\u0027t seem any better. But it\u0027s your codebase, so I\u0027m open to suggestions.",
+      "parentUuid": "87c9b39e_e8f69784",
+      "revId": "5c398d2ce96150e94e596e959bfe2246b94de660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67e67f2a_f2d7a834",
         "filename": "adb/adb.cpp",
         "patchSetId": 1
@@ -99,6 +117,24 @@
       "writtenOn": "2015-08-11T01:38:19Z",
       "side": 1,
       "message": "i\u0027m regretting the name \"--reply-fd\" at this point, but i can\u0027t really think of a better name (other than having two different names for Unix and Windows).",
+      "revId": "5c398d2ce96150e94e596e959bfe2246b94de660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67e67f2a_616080af",
+        "filename": "adb/adb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-11T02:32:56Z",
+      "side": 1,
+      "message": "I wouldn\u0027t worry about the name too much since this is all internal anyway. BTW, I actually did investigate passing a C Runtime \u0027fd\u0027 on Windows between processes. It is possible, but would require switching from CreateProcess() to spawn() (a C Runtime wrapper on top of CreateProcess) and that would cause some problems with capturing stdout/stderr because of the way the C Runtime behaves with detached processes. Basically, it was just easier to pass raw Windows handles between processes.",
+      "parentUuid": "87c9b39e_88e603d3",
       "revId": "5c398d2ce96150e94e596e959bfe2246b94de660",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
