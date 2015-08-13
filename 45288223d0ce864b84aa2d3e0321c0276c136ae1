@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c43e49ec_80a61896",
+        "filename": "adb/usb_osx.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1010055
+      },
+      "writtenOn": "2015-08-13T22:52:21Z",
+      "side": 0,
+      "message": "looks like you can\u0027t move these two down below other gotos. I get the following compile error:\n\nsystem/core/adb/usb_osx.cpp:348:9: error: cannot jump from this goto statement to its label\n        goto err_bad_adb_interface;\n        ^\nsystem/core/adb/usb_osx.cpp:351:17: note: jump bypasses variable initialization\n    usb_handle* handle \u003d reinterpret_cast\u003cusb_handle*\u003e(calloc(1, sizeof(usb_handle)));\n                ^\nsystem/core/adb/usb_osx.cpp:342:13: error: cannot jump from this goto statement to its label\n            goto err_get_interface_class;\n            ^\nsystem/core/adb/usb_osx.cpp:351:17: note: jump bypasses variable initialization\n    usb_handle* handle \u003d reinterpret_cast\u003cusb_handle*\u003e(calloc(1, sizeof(usb_handle)));\n                ^\nsystem/core/adb/usb_osx.cpp:334:9: error: cannot jump from this goto statement to its label\n        goto err_get_num_ep;\n        ^\nsystem/core/adb/usb_osx.cpp:351:17: note: jump bypasses variable initialization\n    usb_handle* handle \u003d reinterpret_cast\u003cusb_handle*\u003e(calloc(1, sizeof(usb_handle)));\n                ^\n3 errors generated.",
+      "range": {
+        "startLine": 310,
+        "startChar": 4,
+        "endLine": 310,
+        "endChar": 9
+      },
+      "revId": "45288223d0ce864b84aa2d3e0321c0276c136ae1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
