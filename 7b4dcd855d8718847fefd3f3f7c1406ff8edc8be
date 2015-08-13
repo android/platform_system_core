@@ -105,6 +105,24 @@
     },
     {
       "key": {
+        "uuid": "243ac5f6_63631c0f",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-08-13T22:46:36Z",
+      "side": 1,
+      "message": "This turns out to be a little awkward since t-\u003edevpath etc. can be null which std::string doesn\u0027t like.\n\nI can wrap the value arguments in a helper to safely construct a string, or do something like\n\n  (t ? t-\u003edevpath : \"\")\n\nfor each but IMO it\u0027s cleaner as-is.",
+      "parentUuid": "64591d73_1dc55708",
+      "revId": "7b4dcd855d8718847fefd3f3f7c1406ff8edc8be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adc5b1ce_c5437a71",
         "filename": "adb/transport.h",
         "patchSetId": 2
