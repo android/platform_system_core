@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "84bd31cc_f322702d",
+        "filename": "libutils/SharedBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1067467
+      },
+      "writtenOn": "2015-08-18T17:22:39Z",
+      "side": 1,
+      "message": "Hehe, interleaving issue. I was just uploading the new patch. No whitespace issues there :)",
+      "parentUuid": "64591d73_8be9122f",
+      "revId": "0b23fd4817975d4b855d64196ae23a14d8fa722a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4fb1585_c74dbd94",
         "filename": "libutils/SharedBufferTest.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-08-18T17:15:02Z",
       "side": 1,
       "message": "shouldn\u0027t this always return null? there should never be enough memory available to satisfy this request, should there? you\u0027ve basically asked for the entire address space?",
+      "revId": "0b23fd4817975d4b855d64196ae23a14d8fa722a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64b59dd9_da258538",
+        "filename": "libutils/SharedBufferTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1067467
+      },
+      "writtenOn": "2015-08-18T17:22:39Z",
+      "side": 1,
+      "message": "As per the C99 spec, SIZE_MAX could be as low as 65535 :) I don\u0027t think it makes sense to specifically check that it\u0027s null either (and if we are going to release it, then it\u0027s worth checking it\u0027s not null, so...)",
+      "parentUuid": "a4fb1585_c74dbd94",
       "revId": "0b23fd4817975d4b855d64196ae23a14d8fa722a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
