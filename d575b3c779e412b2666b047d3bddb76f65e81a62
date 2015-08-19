@@ -70,6 +70,30 @@
       "revId": "d575b3c779e412b2666b047d3bddb76f65e81a62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "243ac5f6_4c839c5c",
+        "filename": "crash_reporter/crash_reporter.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1076778
+      },
+      "writtenOn": "2015-08-19T22:25:41Z",
+      "side": 1,
+      "message": "No, I\u0027m not explicitly wait()ing here.  But in my testing (I replaced the dbus-send call with `wait 10`), after the vfork+execve, the rest of crash_reporter finished running immediately, then waited until the child finished before exiting.\n\nI used vfork instead of regular fork to guarantee not having to copy all the excess process data that would just be wiped out during the execve.  I believe (but am not entirely sure) that it also ties into the previous quesion about wait()ing.  A vfork suspends the parent until either an _exit or successful execve call is made.  Once the execve call is successful it wakes back up the parent as it won\u0027t have resource contention anymore.  A fork call does not suspend the parent, and I believe then would require a wait() call to reap the child process.  If you feel strongly about using fork instead of vfork, and are sure that we\u0027ll always have a copy-on-write version of fork, I can switch it.",
+      "parentUuid": "e4aeed64_9a032f85",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 1
+      },
+      "revId": "d575b3c779e412b2666b047d3bddb76f65e81a62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
