@@ -94,6 +94,30 @@
       "revId": "d575b3c779e412b2666b047d3bddb76f65e81a62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "243ac5f6_92b01a2c",
+        "filename": "crash_reporter/crash_reporter.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2015-08-19T22:34:11Z",
+      "side": 1,
+      "message": "Is there an explicit call to wait() anywhere in the code? Where is that waiting-before-exiting happening?\n\nIs dbus-send getting reparented to init?\n\nAs for fork vs vfork, this is the manpage:\n\n\"Under Linux, fork(2) is implemented using copy-on-write pages, so the only penalty incurred by fork(2) is the time and memory required to duplicate the parent\u0027s page tables,  and to create a unique task structure for the child.\"\n\nAlso, I don\u0027t think you can avoid wait()ing on vfork. Even when your child process goes through execve(), you still need to reap it; if not, it will get reparented to init when you exit.",
+      "parentUuid": "243ac5f6_4c839c5c",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 1
+      },
+      "revId": "d575b3c779e412b2666b047d3bddb76f65e81a62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
