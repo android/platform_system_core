@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "243ac5f6_5694c949",
+        "filename": "adb/client/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-19T01:43:38Z",
+      "side": 1,
+      "message": "didn\u0027t i already check in an equivalent change in adb_trace_init?",
+      "revId": "d17be07612cb568e614f78f5c7d395fedb7a5da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4a9e95f_993d7dec",
         "filename": "adb/usb_osx.cpp",
         "patchSetId": 1
@@ -19,6 +36,98 @@
         "endLine": 137,
         "endChar": 79
       },
+      "revId": "d17be07612cb568e614f78f5c7d395fedb7a5da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64591d73_ce615530",
+        "filename": "adb/usb_osx.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-19T01:43:38Z",
+      "side": 1,
+      "message": "you can android::base::StringPrintf() if you want a format string. if kern_return_t was a real type you could overload operator\u003c\u003c to output it nicely, but i\u0027m assuming it\u0027s just a typedef. your other option would be to reinterpret_cast\u003cvoid*\u003e to get the 0x%08x pointer formatting. i think this is fine though.\n\nyet another option would be a function that takes a kern_return_t and returns a std::string. then you could write \u003c\u003c f(kr); instead.",
+      "parentUuid": "c4a9e95f_993d7dec",
+      "range": {
+        "startLine": 137,
+        "startChar": 71,
+        "endLine": 137,
+        "endChar": 79
+      },
+      "revId": "d17be07612cb568e614f78f5c7d395fedb7a5da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4a8755c_65b572e7",
+        "filename": "adb/usb_osx.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-19T01:43:38Z",
+      "side": 1,
+      "message": "lose the casts.",
+      "revId": "d17be07612cb568e614f78f5c7d395fedb7a5da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4fb1585_be47d7f6",
+        "filename": "adb/usb_osx.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-19T01:43:38Z",
+      "side": 1,
+      "message": "tabs",
+      "revId": "d17be07612cb568e614f78f5c7d395fedb7a5da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4434d7f_267aa893",
+        "filename": "adb/usb_osx.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-19T01:43:38Z",
+      "side": 1,
+      "message": "serial is a string. plus std::hex remains in effect until you undo it. this might be a place where you actually want StringPrintf.",
+      "revId": "d17be07612cb568e614f78f5c7d395fedb7a5da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64591d73_71b58c19",
+        "filename": "adb/usb_osx.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-19T01:43:38Z",
+      "side": 1,
+      "message": "kr is probably stale at this point?",
       "revId": "d17be07612cb568e614f78f5c7d395fedb7a5da6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
