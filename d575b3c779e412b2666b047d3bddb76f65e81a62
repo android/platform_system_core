@@ -118,6 +118,30 @@
       "revId": "d575b3c779e412b2666b047d3bddb76f65e81a62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4fb1585_d85d93c2",
+        "filename": "crash_reporter/crash_reporter.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1076778
+      },
+      "writtenOn": "2015-08-19T22:52:49Z",
+      "side": 1,
+      "message": "You\u0027re right, looking at the logs closer, dbus-send was getting reparented to init, and then cleaned up.  I\u0027m going to take a step back on this one and re-look at it... if I have to propagate the PID back to wait() on it at the very end of execution, I\u0027ll likely just abandon this CL and go back to my initial chromeos::ProcessImpl one and propagate the process through the collectors.",
+      "parentUuid": "243ac5f6_92b01a2c",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 1
+      },
+      "revId": "d575b3c779e412b2666b047d3bddb76f65e81a62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
