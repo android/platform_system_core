@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "c42ba915_6f2f0d41",
+        "filename": "init/action.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2015-08-21T18:59:28Z",
+      "side": 1,
+      "message": "As far as I think, adding const helps make the aim more clear. Currently it seems not necessary as the class is small. But we don\u0027t know what will it become in the future. And it is hard to figure out which members can\u0027t be changed in a class having a dozen of members. So I think it is better to keep it as clean as possible at first. Of course, it depends on personal tastes.",
+      "parentUuid": "c4700952_41a002ee",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 25
+      },
+      "revId": "cb716f976b078dff72aa3a61f9435d45e4beb9f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a47f9520_7ba60b0e",
         "filename": "init/action.cpp",
         "patchSetId": 5
@@ -212,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "84253145_88806305",
+        "filename": "init/action.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2015-08-21T18:59:28Z",
+      "side": 1,
+      "message": "I agree with your idea of freeing oneshot Actions.",
+      "parentUuid": "84253145_28ceefa6",
+      "range": {
+        "startLine": 330,
+        "startChar": 4,
+        "endLine": 330,
+        "endChar": 31
+      },
+      "revId": "cb716f976b078dff72aa3a61f9435d45e4beb9f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c42ba915_afaf6599",
         "filename": "init/action.cpp",
         "patchSetId": 5
@@ -294,6 +342,30 @@
       "side": 1,
       "message": "I\u0027ve checked and I don\u0027t believe it is.  Once something is added to actions_ it persists through the duration of init.\n\nIt was leaking built in actions when I first committed it, though those are now added to this vector as well in this commit.\n\nBut I do agree that it should be cleaned up.  It could/should be simply std::vector\u003cAction\u003e as well and avoid the dynamic allocation entirely.  I also need to get rid of passing an Action pointer to init_parser.cpp for parsing commands.  Service.cpp has the same problem.  We discussed on https://android-review.googlesource.com/#/c/162655/ how to fix this.",
       "parentUuid": "248c8586_ba50eedd",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 34
+      },
+      "revId": "cb716f976b078dff72aa3a61f9435d45e4beb9f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a47f9520_2645ca1a",
+        "filename": "init/action.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2015-08-21T18:59:28Z",
+      "side": 1,
+      "message": "yes, it is only a potential memory leak.",
+      "parentUuid": "4485f957_a01a0473",
       "range": {
         "startLine": 83,
         "startChar": 4,
