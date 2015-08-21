@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e430ad80_4b232533",
+        "filename": "init/action.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-08-21T18:24:24Z",
+      "side": 1,
+      "message": "I will move this and add a comment in a future commit.",
+      "parentUuid": "e4750d3f_c8e8932b",
+      "range": {
+        "startLine": 192,
+        "startChar": 4,
+        "endLine": 192,
+        "endChar": 30
+      },
+      "revId": "cb716f976b078dff72aa3a61f9435d45e4beb9f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84253145_cd2f4d10",
         "filename": "init/action.cpp",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2015-08-21T17:51:43Z",
       "side": 1,
       "message": "const",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 25
+      },
+      "revId": "cb716f976b078dff72aa3a61f9435d45e4beb9f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4700952_41a002ee",
+        "filename": "init/action.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-08-21T18:24:24Z",
+      "side": 1,
+      "message": "Do we get a strong benefit from adding const here?  There\u0027s no interface to mutate this value currently, but we lose move semantics if we define it as const.\n\nI could/should define CheckTriggers as const though.\n\nSame comments for below",
+      "parentUuid": "84253145_cd2f4d10",
       "range": {
         "startLine": 275,
         "startChar": 0,
@@ -140,6 +188,30 @@
     },
     {
       "key": {
+        "uuid": "84253145_28ceefa6",
+        "filename": "init/action.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-08-21T18:24:24Z",
+      "side": 1,
+      "message": "I agree it should be cleaned up as mentioned in action.h.  These objects persist for the lifetime of init as in theory triggers can be called any number of times.\n\nI\u0027ve separately wondered if we\u0027d want to extend init to allow for \"oneshot\" triggers or something along those lines.  To that end, we would be able to free a \u0027oneshot\u0027 Action once it\u0027s been used, but that\u0027s for a later discussion.",
+      "parentUuid": "248c8586_1a69fa6e",
+      "range": {
+        "startLine": 330,
+        "startChar": 4,
+        "endLine": 330,
+        "endChar": 31
+      },
+      "revId": "cb716f976b078dff72aa3a61f9435d45e4beb9f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c42ba915_afaf6599",
         "filename": "init/action.cpp",
         "patchSetId": 5
@@ -163,6 +235,30 @@
     },
     {
       "key": {
+        "uuid": "c4700952_bcbeadf9",
+        "filename": "init/action.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-08-21T18:24:24Z",
+      "side": 1,
+      "message": "I will add a comment in a future commit.",
+      "parentUuid": "c42ba915_afaf6599",
+      "range": {
+        "startLine": 343,
+        "startChar": 20,
+        "endLine": 343,
+        "endChar": 41
+      },
+      "revId": "cb716f976b078dff72aa3a61f9435d45e4beb9f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "248c8586_ba50eedd",
         "filename": "init/action.h",
         "patchSetId": 5
@@ -174,6 +270,30 @@
       "writtenOn": "2015-08-21T17:51:43Z",
       "side": 1,
       "message": "I think Action is memory leaking. use std::vector\u003cstd::unique_ptr\u003cAction\u003e\u003e here?",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 34
+      },
+      "revId": "cb716f976b078dff72aa3a61f9435d45e4beb9f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4485f957_a01a0473",
+        "filename": "init/action.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-08-21T18:24:24Z",
+      "side": 1,
+      "message": "I\u0027ve checked and I don\u0027t believe it is.  Once something is added to actions_ it persists through the duration of init.\n\nIt was leaking built in actions when I first committed it, though those are now added to this vector as well in this commit.\n\nBut I do agree that it should be cleaned up.  It could/should be simply std::vector\u003cAction\u003e as well and avoid the dynamic allocation entirely.  I also need to get rid of passing an Action pointer to init_parser.cpp for parsing commands.  Service.cpp has the same problem.  We discussed on https://android-review.googlesource.com/#/c/162655/ how to fix this.",
+      "parentUuid": "248c8586_ba50eedd",
       "range": {
         "startLine": 83,
         "startChar": 4,
