@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a47f9520_8997ee51",
+        "filename": "adb/file_sync_client.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-22T06:26:06Z",
+      "side": 1,
+      "message": "the old code got away without closing these fds because we exit immediately after anyway, but, yeah, closing sounds like a good idea. done.",
+      "parentUuid": "c4700952_22105408",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 21
+      },
+      "revId": "50568f3a098113ea9e18497170dc6878a769edf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4750d3f_8b6fe21e",
         "filename": "adb/file_sync_client.cpp",
         "patchSetId": 5
@@ -101,6 +125,30 @@
     },
     {
       "key": {
+        "uuid": "048f817d_58c78caa",
+        "filename": "adb/file_sync_client.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-22T06:26:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a47f9520_8965ae11",
+      "range": {
+        "startLine": 404,
+        "startChar": 29,
+        "endLine": 404,
+        "endChar": 31
+      },
+      "revId": "50568f3a098113ea9e18497170dc6878a769edf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "048f817d_78c05095",
         "filename": "adb/file_sync_client.cpp",
         "patchSetId": 5
@@ -112,6 +160,30 @@
       "writtenOn": "2015-08-22T05:39:14Z",
       "side": 1,
       "message": "Is this what Josh is referring to? show_progress\u003dfalse for multiple files",
+      "range": {
+        "startLine": 558,
+        "startChar": 83,
+        "endLine": 558,
+        "endChar": 88
+      },
+      "revId": "50568f3a098113ea9e18497170dc6878a769edf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a47f9520_29a4bab9",
+        "filename": "adb/file_sync_client.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-22T06:26:06Z",
+      "side": 1,
+      "message": "yes.",
+      "parentUuid": "048f817d_78c05095",
       "range": {
         "startLine": 558,
         "startChar": 83,
@@ -170,6 +242,30 @@
     },
     {
       "key": {
+        "uuid": "c42ba915_c1771578",
+        "filename": "adb/file_sync_client.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-22T06:26:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "248c8586_e6cedf28",
+      "range": {
+        "startLine": 766,
+        "startChar": 30,
+        "endLine": 766,
+        "endChar": 31
+      },
+      "revId": "50568f3a098113ea9e18497170dc6878a769edf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "048f817d_9842d4c3",
         "filename": "adb/file_sync_service.cpp",
         "patchSetId": 5
@@ -181,6 +277,30 @@
       "writtenOn": "2015-08-22T05:39:14Z",
       "side": 1,
       "message": "If fail_errno() failed to write the error message, then we set fd\u003d-1 and continue? Seems odd? Maybe leave that to another day.",
+      "range": {
+        "startLine": 166,
+        "startChar": 12,
+        "endLine": 166,
+        "endChar": 20
+      },
+      "revId": "50568f3a098113ea9e18497170dc6878a769edf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4700952_2229343a",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-22T06:26:06Z",
+      "side": 1,
+      "message": "yeah, that does seem insane. i didn\u0027t notice that. especially because \u0027fd\u0027 is the locally-opened file, not the socket. and especially because if you get to the end of this function with fd \u003d\u003d -1, it returns true! i\u0027ll raise a bug to look at this.\n\nhandle_send_link uses fail_errno the way you\u0027d expect, but do_recv is weird too.",
+      "parentUuid": "048f817d_9842d4c3",
       "range": {
         "startLine": 166,
         "startChar": 12,
@@ -216,6 +336,30 @@
     },
     {
       "key": {
+        "uuid": "e4750d3f_ce83b8e1",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-22T06:26:06Z",
+      "side": 1,
+      "message": "ugh. it\u0027s not magic --- you\u0027ve hit on the explanation for L394. fucking C programmers.\n\ndone. L414 too.",
+      "parentUuid": "c42ba915_218a89f8",
+      "range": {
+        "startLine": 395,
+        "startChar": 36,
+        "endLine": 395,
+        "endChar": 43
+      },
+      "revId": "50568f3a098113ea9e18497170dc6878a769edf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e430ad80_73c05795",
         "filename": "adb/file_sync_service.cpp",
         "patchSetId": 5
@@ -227,6 +371,30 @@
       "writtenOn": "2015-08-22T05:39:14Z",
       "side": 1,
       "message": "I think the D() above already outputs sync: \u0027QUIT\u0027...",
+      "range": {
+        "startLine": 411,
+        "startChar": 8,
+        "endLine": 411,
+        "endChar": 27
+      },
+      "revId": "50568f3a098113ea9e18497170dc6878a769edf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e430ad80_73729709",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-22T06:26:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e430ad80_73c05795",
       "range": {
         "startLine": 411,
         "startChar": 8,
