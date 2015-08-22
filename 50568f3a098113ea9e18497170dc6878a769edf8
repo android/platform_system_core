@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c4700952_22105408",
+        "filename": "adb/file_sync_client.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-22T05:39:14Z",
+      "side": 1,
+      "message": "if (IsValid()) {SendQuit(); ShowTransferRate(); adb_close(fd);}  ??",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 21
+      },
+      "revId": "50568f3a098113ea9e18497170dc6878a769edf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4750d3f_8b6fe21e",
         "filename": "adb/file_sync_client.cpp",
         "patchSetId": 5
@@ -49,6 +72,167 @@
       "side": 1,
       "message": "Ah, show_progress is false with multiple files, even with the -p flag.",
       "parentUuid": "e430ad80_13eec37f",
+      "revId": "50568f3a098113ea9e18497170dc6878a769edf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a47f9520_8965ae11",
+        "filename": "adb/file_sync_client.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-22T05:39:14Z",
+      "side": 1,
+      "message": "false?",
+      "range": {
+        "startLine": 404,
+        "startChar": 29,
+        "endLine": 404,
+        "endChar": 31
+      },
+      "revId": "50568f3a098113ea9e18497170dc6878a769edf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "048f817d_78c05095",
+        "filename": "adb/file_sync_client.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-22T05:39:14Z",
+      "side": 1,
+      "message": "Is this what Josh is referring to? show_progress\u003dfalse for multiple files",
+      "range": {
+        "startLine": 558,
+        "startChar": 83,
+        "endLine": 558,
+        "endChar": 88
+      },
+      "revId": "50568f3a098113ea9e18497170dc6878a769edf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "048f817d_d8ba9c27",
+        "filename": "adb/file_sync_client.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-22T05:39:14Z",
+      "side": 1,
+      "message": "Is this what Josh is referring to? show_progress\u003dfalse for multiple files",
+      "range": {
+        "startLine": 703,
+        "startChar": 48,
+        "endLine": 703,
+        "endChar": 53
+      },
+      "revId": "50568f3a098113ea9e18497170dc6878a769edf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "248c8586_e6cedf28",
+        "filename": "adb/file_sync_client.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-22T05:39:14Z",
+      "side": 1,
+      "message": "false?",
+      "range": {
+        "startLine": 766,
+        "startChar": 30,
+        "endLine": 766,
+        "endChar": 31
+      },
+      "revId": "50568f3a098113ea9e18497170dc6878a769edf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "048f817d_9842d4c3",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-22T05:39:14Z",
+      "side": 1,
+      "message": "If fail_errno() failed to write the error message, then we set fd\u003d-1 and continue? Seems odd? Maybe leave that to another day.",
+      "range": {
+        "startLine": 166,
+        "startChar": 12,
+        "endLine": 166,
+        "endChar": 20
+      },
+      "revId": "50568f3a098113ea9e18497170dc6878a769edf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c42ba915_218a89f8",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-22T05:39:14Z",
+      "side": 1,
+      "message": "This should really be more like %c%c%c%c and msg.req.id[0-3] (or maybe something like %4s?), otherwise the current code assumes that there is magically a NULL byte at the start of the next field.",
+      "range": {
+        "startLine": 395,
+        "startChar": 36,
+        "endLine": 395,
+        "endChar": 43
+      },
+      "revId": "50568f3a098113ea9e18497170dc6878a769edf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e430ad80_73c05795",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-22T05:39:14Z",
+      "side": 1,
+      "message": "I think the D() above already outputs sync: \u0027QUIT\u0027...",
+      "range": {
+        "startLine": 411,
+        "startChar": 8,
+        "endLine": 411,
+        "endChar": 27
+      },
       "revId": "50568f3a098113ea9e18497170dc6878a769edf8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
