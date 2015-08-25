@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "048f817d_47ca49b4",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-25T03:06:29Z",
+      "side": 1,
+      "message": "I went into the git history and figured out what is really going on: the old fail_errno and fail_message used to return 0 on success and -1 on error, but when the return value type was changed from int to bool, all the callsites were not inverted. So I think we\u0027ve been misinterpreting all the calls.",
+      "range": {
+        "startLine": 131,
+        "startChar": 12,
+        "endLine": 131,
+        "endChar": 24
+      },
+      "revId": "2d61f574c0db9b872ac79a20e31d6835128171f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c42ba915_682cde98",
         "filename": "adb/file_sync_service.cpp",
         "patchSetId": 1
@@ -18,6 +41,121 @@
         "startChar": 33,
         "endLine": 144,
         "endChar": 34
+      },
+      "revId": "2d61f574c0db9b872ac79a20e31d6835128171f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4750d3f_bf977551",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-25T03:06:29Z",
+      "side": 1,
+      "message": "I think the old code used to only bail if there was an error sending the errmsg to the client. If the errmsg was sent ok, it would set fd\u003d-1, then continue (and ignore the secure_mkdirs failure). What do we really want to do?",
+      "range": {
+        "startLine": 153,
+        "startChar": 12,
+        "endLine": 153,
+        "endChar": 22
+      },
+      "revId": "2d61f574c0db9b872ac79a20e31d6835128171f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84253145_215cc5f7",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-25T03:06:29Z",
+      "side": 1,
+      "message": "I think the old code would only bail if there was an err sending errmsg. If that succeeded, it would set fd\u003d-1, go down into the loop below and read whatever the client sent (but don\u0027t write the data anywhere). What do we really want to do?",
+      "range": {
+        "startLine": 161,
+        "startChar": 8,
+        "endLine": 162,
+        "endChar": 18
+      },
+      "revId": "2d61f574c0db9b872ac79a20e31d6835128171f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4750d3f_5fa451ba",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-25T03:06:29Z",
+      "side": 1,
+      "message": "The old code would report the err, but then continue on, ignoring the failure. What do we really want to do?",
+      "range": {
+        "startLine": 165,
+        "startChar": 12,
+        "endLine": 166,
+        "endChar": 22
+      },
+      "revId": "2d61f574c0db9b872ac79a20e31d6835128171f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4700952_2fca78b3",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-25T03:06:29Z",
+      "side": 1,
+      "message": "This code looks crazy, but it was because the old code could end up with fd \u003c 0, in which case it would still want to read all the data from the socket and not write it anywhere. Crazy?",
+      "range": {
+        "startLine": 195,
+        "startChar": 8,
+        "endLine": 195,
+        "endChar": 19
+      },
+      "revId": "2d61f574c0db9b872ac79a20e31d6835128171f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4750d3f_7fa10da9",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-25T03:06:29Z",
+      "side": 1,
+      "message": "The old code would send the errmsg, bail if that failed, but if it succeeded, continue reading the socket and throw away what is read. What do we want?",
+      "range": {
+        "startLine": 199,
+        "startChar": 12,
+        "endLine": 199,
+        "endChar": 22
       },
       "revId": "2d61f574c0db9b872ac79a20e31d6835128171f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -87,6 +225,52 @@
         "startChar": 65,
         "endLine": 213,
         "endChar": 78
+      },
+      "revId": "2d61f574c0db9b872ac79a20e31d6835128171f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "248c8586_3652ceb7",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-25T03:06:29Z",
+      "side": 1,
+      "message": "The old code would bail if writing the errmsg failed, but if it succeeded, it would return success, presumably keeping the sync service thread running. What do we really want?",
+      "range": {
+        "startLine": 324,
+        "startChar": 8,
+        "endLine": 325,
+        "endChar": 21
+      },
+      "revId": "2d61f574c0db9b872ac79a20e31d6835128171f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84253145_6142bd14",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-25T03:06:29Z",
+      "side": 1,
+      "message": "The old thread would only kill the sync service thread if it failed to write the errmsg. What do we really want?",
+      "range": {
+        "startLine": 337,
+        "startChar": 19,
+        "endLine": 337,
+        "endChar": 25
       },
       "revId": "2d61f574c0db9b872ac79a20e31d6835128171f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
