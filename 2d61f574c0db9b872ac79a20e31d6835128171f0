@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "4485f957_537f6f1b",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-25T03:25:32Z",
+      "side": 1,
+      "message": "yeah, SyncConnection helps fix this problem. it\u0027s just not plumbed through everywhere yet. i think the problem is that these functions have too many fds. (in the short term, think \"s \u003d\u003d socket\" --- it\u0027s the fd for talking to the client.)",
+      "parentUuid": "c42ba915_682cde98",
+      "range": {
+        "startLine": 144,
+        "startChar": 33,
+        "endLine": 144,
+        "endChar": 34
+      },
+      "revId": "2d61f574c0db9b872ac79a20e31d6835128171f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4750d3f_bf977551",
         "filename": "adb/file_sync_service.cpp",
         "patchSetId": 1
@@ -186,6 +210,30 @@
     },
     {
       "key": {
+        "uuid": "248c8586_96785a37",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-25T03:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4485f957_d3727f58",
+      "range": {
+        "startLine": 203,
+        "startChar": 2,
+        "endLine": 203,
+        "endChar": 18
+      },
+      "revId": "2d61f574c0db9b872ac79a20e31d6835128171f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84253145_61695d98",
         "filename": "adb/file_sync_service.cpp",
         "patchSetId": 1
@@ -209,6 +257,30 @@
     },
     {
       "key": {
+        "uuid": "84253145_e1e7ada0",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-25T03:25:32Z",
+      "side": 1,
+      "message": "good question. [+nnk]: is there a reason why we can\u0027t just call this as soon as we\u0027ve created the file?",
+      "parentUuid": "84253145_61695d98",
+      "range": {
+        "startLine": 206,
+        "startChar": 8,
+        "endLine": 206,
+        "endChar": 44
+      },
+      "revId": "2d61f574c0db9b872ac79a20e31d6835128171f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4750d3f_7f482d81",
         "filename": "adb/file_sync_service.cpp",
         "patchSetId": 1
@@ -220,6 +292,30 @@
       "writtenOn": "2015-08-25T02:46:45Z",
       "side": 1,
       "message": "Shouldn\u0027t this goto fail (assuming you add a fd \u003d -1 after the close)? If do_unlink is true, the adb_unlink call from below is not called even though this is a failure case.",
+      "range": {
+        "startLine": 213,
+        "startChar": 65,
+        "endLine": 213,
+        "endChar": 78
+      },
+      "revId": "2d61f574c0db9b872ac79a20e31d6835128171f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4485f957_135247b7",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-08-25T03:25:32Z",
+      "side": 1,
+      "message": "but you\u0027re only supposed to unlink bad files, i think. if we get this far, what\u0027s on the fs is fine in every way --- we just weren\u0027t able to tell the client we finished.",
+      "parentUuid": "e4750d3f_7f482d81",
       "range": {
         "startLine": 213,
         "startChar": 65,
