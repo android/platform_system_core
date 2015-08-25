@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c42ba915_682cde98",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-08-25T02:46:45Z",
+      "side": 1,
+      "message": "Any chance in a follow-up cl you could change all of the instances of the variable s to actually be a meaningful name?",
+      "range": {
+        "startLine": 144,
+        "startChar": 33,
+        "endLine": 144,
+        "endChar": 34
+      },
+      "revId": "2d61f574c0db9b872ac79a20e31d6835128171f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4485f957_d3727f58",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-08-25T02:46:45Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this check any more. You can\u0027t get here if fd \u003c 0, you would skip to fail from above.",
+      "range": {
+        "startLine": 203,
+        "startChar": 2,
+        "endLine": 203,
+        "endChar": 18
+      },
+      "revId": "2d61f574c0db9b872ac79a20e31d6835128171f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84253145_61695d98",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-08-25T02:46:45Z",
+      "side": 1,
+      "message": "Do you need to do this in any of the fail cases?",
+      "range": {
+        "startLine": 206,
+        "startChar": 8,
+        "endLine": 206,
+        "endChar": 44
+      },
+      "revId": "2d61f574c0db9b872ac79a20e31d6835128171f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4750d3f_7f482d81",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-08-25T02:46:45Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this goto fail (assuming you add a fd \u003d -1 after the close)? If do_unlink is true, the adb_unlink call from below is not called even though this is a failure case.",
+      "range": {
+        "startLine": 213,
+        "startChar": 65,
+        "endLine": 213,
+        "endChar": 78
+      },
+      "revId": "2d61f574c0db9b872ac79a20e31d6835128171f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
