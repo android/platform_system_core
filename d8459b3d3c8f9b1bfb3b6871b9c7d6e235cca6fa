@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "048f817d_5bf7794d",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2015-08-26T22:55:57Z",
+      "side": 1,
+      "message": "Technically tsan is clearly correct.  This is a data race, which has undefined behavior.  Whether it can actually fail in practice is complicated.  In the old version, I think it would be correct, for example, for the compiler to remove the second t-\u003ekicked load, since it can assume the first one doesn\u0027t race, and hence the value can\u0027t change.  That would allow t-\u003ekick(t) to execute more than once, which certainly violates the intent of the code.\n\nI suspect no current compiler does that.  I wouldn\u0027t be surprised if people are working on it.",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "d8459b3d3c8f9b1bfb3b6871b9c7d6e235cca6fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
