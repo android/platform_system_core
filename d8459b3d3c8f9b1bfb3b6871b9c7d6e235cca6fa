@@ -46,6 +46,30 @@
       "revId": "d8459b3d3c8f9b1bfb3b6871b9c7d6e235cca6fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84253145_a748db81",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2015-08-27T17:58:54Z",
+      "side": 1,
+      "message": "I\u0027m assuming more devious reasoning by the compiler than you are.  The compiler may assume that the first load of t-\u003ekicked is not involved in a data race, since the language spec says so.  Under that assumption, the value of t-\u003ekicked cannot change between the two loads.  Thus it \"knows\" the second load has to return the same value as the first.\n\nIf the first load were not there, you would be right that the compiler could not move the load out of the critical section.  But the load outside the critical section gives the compiler information (in this case false) about what might be concurrently modified.  Taking advantage of that introduces the possible bug here.\n\nAll of this assumes that the compiler understands some things about adb_mutex_lock, which it probably doesn\u0027t.\n\nThe bottom line is really that we need to fix such tsan-reported bugs before compilers really get this clever.",
+      "parentUuid": "a47f9520_3e57fcd8",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "d8459b3d3c8f9b1bfb3b6871b9c7d6e235cca6fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
