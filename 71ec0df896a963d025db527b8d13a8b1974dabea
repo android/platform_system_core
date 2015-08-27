@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c4700952_ea39b58b",
+        "filename": "init/action.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2015-08-27T23:43:43Z",
+      "side": 1,
+      "message": "I noticed that android::base::Join is also used. As there are only 3 StringPrintf, I suggest using android::base::StringPrintf directly? or at least do the same thing for Join and StringPrintf?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a47f9520_5983025d",
         "filename": "init/action.cpp",
         "patchSetId": 6
@@ -13,6 +36,29 @@
       "writtenOn": "2015-08-27T22:30:42Z",
       "side": 1,
       "message": "does it make sense to have newlines at the end? shouldn\u0027t the caller be supplying those if it wants them? makes it harder to have multiple layers treating this more like a strerror result.",
+      "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "048f817d_433b0f87",
+        "filename": "init/action.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2015-08-27T23:43:43Z",
+      "side": 1,
+      "message": "will it better if using map::find()?",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 56
+      },
       "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +99,75 @@
     },
     {
       "key": {
+        "uuid": "84253145_dd0364c7",
+        "filename": "init/action.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2015-08-27T23:43:43Z",
+      "side": 1,
+      "message": "It seems the whole reason having shared_ptr is here. I prefer to keep Action* as the original code, and CheckTriggers using action_ \u003d\u003d \u0026action. Then you can change all shared_ptr into unique_ptr.",
+      "range": {
+        "startLine": 310,
+        "startChar": 4,
+        "endLine": 310,
+        "endChar": 42
+      },
+      "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84253145_1dc55cd5",
+        "filename": "init/action.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2015-08-27T23:43:43Z",
+      "side": 1,
+      "message": "I don\u0027t think passing private member of ActionManager to ActionParser is a good idea, unless you have some special considerations.",
+      "range": {
+        "startLine": 466,
+        "startChar": 11,
+        "endLine": 466,
+        "endChar": 53
+      },
+      "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c42ba915_6f305a22",
+        "filename": "init/action.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2015-08-27T23:43:43Z",
+      "side": 1,
+      "message": "Action* ? Then we only need to worry about the life of an Action in actions_.",
+      "range": {
+        "startLine": 109,
+        "startChar": 16,
+        "endLine": 109,
+        "endChar": 40
+      },
+      "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "048f817d_3e029e4a",
         "filename": "init/bootchart.h",
         "patchSetId": 6
@@ -81,6 +196,29 @@
       "writtenOn": "2015-08-27T22:30:42Z",
       "side": 1,
       "message": "we should add a maximum one of these days...",
+      "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "048f817d_5ea44237",
+        "filename": "init/builtins.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2015-08-27T23:43:43Z",
+      "side": 1,
+      "message": "you don\u0027t need to export a global variable. something like FindBuiltinFunction() is enough.",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 45
+      },
       "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
