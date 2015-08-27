@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4485f957_93f70eff",
+        "filename": "adb/adb.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2015-08-27T20:40:01Z",
+      "side": 1,
+      "message": "only the main thread can remove a transport from the transport_list and destroy it, in transport_registration_func (you may notice an exception in unregister_usb_transport, but it doesn\u0027t matter and I plan to remove it in the next change). So the transport will not be freed between find_transport and kick_transport.",
+      "parentUuid": "84253145_a7521b5f",
+      "range": {
+        "startLine": 987,
+        "startChar": 24,
+        "endLine": 987,
+        "endChar": 38
+      },
+      "revId": "5cb6ae78fdeebb40d5e636bae26772f7730d9bf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "248c8586_73cff357",
         "filename": "adb/transport.cpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-08-27T20:13:56Z",
       "side": 1,
       "message": "This can no longer take a nullptr. That sounds ok as long as you reviewed all the callers to make sure that is impossible.\n\nThis now does the kick under the lock. In theory I think that should be ok because other code already does the kick under a lock, but I haven\u0027t really looked into it deeply. Thoughts?",
+      "range": {
+        "startLine": 331,
+        "startChar": 5,
+        "endLine": 331,
+        "endChar": 19
+      },
+      "revId": "5cb6ae78fdeebb40d5e636bae26772f7730d9bf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84253145_a248c981",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2015-08-27T20:40:01Z",
+      "side": 1,
+      "message": "yes, if t \u003d\u003d nullptr, something unexpected must have happened.\nI checked all xxx_kick, no one calls back to transport layer. so it shouldn\u0027t cause deadlock. And here is not performance critical.",
+      "parentUuid": "248c8586_73cff357",
       "range": {
         "startLine": 331,
         "startChar": 5,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e4750d3f_28a6dec9",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2015-08-27T20:40:01Z",
+      "side": 1,
+      "message": "It is called by output_thread/input_thread now, can\u0027t be nullptr.",
+      "parentUuid": "046221c0_5af1f107",
+      "range": {
+        "startLine": 643,
+        "startChar": 10,
+        "endLine": 643,
+        "endChar": 22
+      },
+      "revId": "5cb6ae78fdeebb40d5e636bae26772f7730d9bf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "248c8586_33f2cb91",
         "filename": "adb/transport.cpp",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2015-08-27T20:13:56Z",
       "side": 1,
       "message": "As I mentioned before, this function is broken because the found transport can be destroyed once the lock is released.",
+      "range": {
+        "startLine": 954,
+        "startChar": 12,
+        "endLine": 954,
+        "endChar": 26
+      },
+      "revId": "5cb6ae78fdeebb40d5e636bae26772f7730d9bf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "046221c0_bdb4c71e",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2015-08-27T20:40:01Z",
+      "side": 1,
+      "message": "I think adb code seems dangerous as locks are almost everywhere. But actually 90% work are done in the main thread. So we don\u0027t need to take it too seriously.",
+      "parentUuid": "248c8586_33f2cb91",
       "range": {
         "startLine": 954,
         "startChar": 12,
