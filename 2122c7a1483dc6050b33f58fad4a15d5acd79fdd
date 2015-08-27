@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4700952_04843ae8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-27T02:21:00Z",
+      "side": 1,
+      "message": "The number of lines here is pretty excessive. I tried to eliminate some lines, but it was hard to do. Let me know if you have ideas.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 60
+      },
+      "revId": "2122c7a1483dc6050b33f58fad4a15d5acd79fdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84253145_71fda177",
+        "filename": "adb/adb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-27T02:21:00Z",
+      "side": 1,
+      "message": "Previously, we weren\u0027t adjusting the inheritance of STD_INPUT_HANDLE, but probably should just for cleanliness (it shouldn\u0027t have the problem described in the massive comment above because the caller is probably not going to read from this handle).",
+      "range": {
+        "startLine": 744,
+        "startChar": 9,
+        "endLine": 744,
+        "endChar": 67
+      },
+      "revId": "2122c7a1483dc6050b33f58fad4a15d5acd79fdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a47f9520_5b945a49",
+        "filename": "adb/adb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-27T02:21:00Z",
+      "side": 1,
+      "message": "Make this more defensive by changing \u003d\u003d to \u003e\u003d",
+      "range": {
+        "startLine": 778,
+        "startChar": 23,
+        "endLine": 778,
+        "endChar": 24
+      },
+      "revId": "2122c7a1483dc6050b33f58fad4a15d5acd79fdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4750d3f_375721d9",
+        "filename": "adb/adb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-27T02:21:00Z",
+      "side": 1,
+      "message": "Why I didn\u0027t use other APIs:\n\n- adb_thread_create (aka _beginthread) does not return a handle which we use later.\n\n- Win32 CreateThread() does not do CRT init that _beginthreadex() does. But that isn\u0027t quite true. In reality because we use the DLL version of the CRT, if we had used CreateThread(), the CRT init would happen via the DllMain callback. But _beginthreadex() is just clearer.",
+      "range": {
+        "startLine": 832,
+        "startChar": 12,
+        "endLine": 832,
+        "endChar": 26
+      },
+      "revId": "2122c7a1483dc6050b33f58fad4a15d5acd79fdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84253145_d13595df",
+        "filename": "adb/adb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-27T02:21:00Z",
+      "side": 1,
+      "message": "I restructured the old code a little bit to accomodate the waiting that is done afterwards. I\u0027m marginally happy with my restructure and am open to ideas.",
+      "range": {
+        "startLine": 851,
+        "startChar": 4,
+        "endLine": 851,
+        "endChar": 78
+      },
+      "revId": "2122c7a1483dc6050b33f58fad4a15d5acd79fdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "849451c2_6f2fd98e",
+        "filename": "adb/adb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-27T02:21:00Z",
+      "side": 1,
+      "message": "So basically, if the error is ERROR_BROKEN_PIPE don\u0027t print out that info. Only print info if it is some other error.",
+      "range": {
+        "startLine": 868,
+        "startChar": 27,
+        "endLine": 869,
+        "endChar": 34
+      },
+      "revId": "2122c7a1483dc6050b33f58fad4a15d5acd79fdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "248c8586_b5f7864c",
+        "filename": "adb/adb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-27T02:21:00Z",
+      "side": 1,
+      "message": "In other words, I don\u0027t know of any case where we\u0027d actually wait a long time, but this code is defensive in case of unknown hang bugs.",
+      "range": {
+        "startLine": 878,
+        "startChar": 7,
+        "endLine": 880,
+        "endChar": 30
+      },
+      "revId": "2122c7a1483dc6050b33f58fad4a15d5acd79fdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "849451c2_8f2c259a",
+        "filename": "adb/client/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-27T02:21:00Z",
+      "side": 1,
+      "message": "The reason I didn\u0027t implement this now is because I don\u0027t think the adb server actually hangs in practice when running adb start-server. Just an idea for the future in case it comes up. The reason this would need to be handled specially is because the process is detached from the console so if you Ctrl-C the parent process, nothing happens to the detached child.",
+      "range": {
+        "startLine": 79,
+        "startChar": 7,
+        "endLine": 80,
+        "endChar": 60
+      },
+      "revId": "2122c7a1483dc6050b33f58fad4a15d5acd79fdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a47f9520_bb83fe10",
+        "filename": "adb/client/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-27T02:21:00Z",
+      "side": 1,
+      "message": "I could change this to always unbuffer, even if fork-server (aka is_daemon) is not passed. Thoughts? That would cover the case of the user running \u0027adb server nodaemon\u0027 (which is probably esoteric to begin with). The reason I check is_daemon because then it matches the full scenario: being started with fork-server, which is when the parent process uses pipes, which is also when we redirect to adb.log, which is also when we do the special ACK.",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 144,
+        "endChar": 17
+      },
+      "revId": "2122c7a1483dc6050b33f58fad4a15d5acd79fdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a47f9520_db804a06",
+        "filename": "adb/sysdeps.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-27T02:21:00Z",
+      "side": 1,
+      "message": "It seems like a lot of work to fix operator bool: would have to inherit from std::unique, then pull in the right constructors, etc.",
+      "range": {
+        "startLine": 370,
+        "startChar": 20,
+        "endLine": 370,
+        "endChar": 35
+      },
+      "revId": "2122c7a1483dc6050b33f58fad4a15d5acd79fdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4750d3f_7745a919",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-27T02:21:00Z",
+      "side": 1,
+      "message": "The reason I didn\u0027t use LOG(...)\u003c\u003c is because this code may be called from the adb client (not adb server), in which case you don\u0027t want its spew that looks more destined for a log file (which the client doesn\u0027t have).",
+      "range": {
+        "startLine": 125,
+        "startChar": 12,
+        "endLine": 125,
+        "endChar": 13
+      },
+      "revId": "2122c7a1483dc6050b33f58fad4a15d5acd79fdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
