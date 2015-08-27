@@ -16,6 +16,24 @@
       "revId": "c348a88376c1bfbb86ca47eeca9b253558e6c926",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "248c8586_493b2287",
+        "filename": "libcutils/arch-mips/android_memset.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1010669
+      },
+      "writtenOn": "2015-08-27T22:49:30Z",
+      "side": 1,
+      "message": "Apparently \u0027uval16\u0027 in \u0027uval16\u003c\u003c16\u0027 promotes to signed integer before the shift is done, leading to questions about signed overflows!  Making an explicit promotion to unsigned integer before shifting, avoids the issue and retains the full 16-bit range when checking is on.\n\nWhen sanity\u003dinteger is on,\n   uval16 \u003c\u003c 15\nis handled okay with no checks,\n\n   uval16 \u003c\u003c 16\ngenerates runtime code which traps if uval16 \u0026 0x8000 is on,\nand\n\n   ((unsigned int)uval16) \u003c\u003c 16\nis handled okay with no checks.",
+      "parentUuid": "048f817d_638ad3f9",
+      "revId": "c348a88376c1bfbb86ca47eeca9b253558e6c926",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
