@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84253145_a7521b5f",
+        "filename": "adb/adb.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-27T20:13:56Z",
+      "side": 1,
+      "message": "I think that find_transport can find a transport while holding the lock, then it releases the lock, then another thread destroys the transport and then t points to a deallocated transport. Basically, find_transport does not increment the refcount, thus once it leaves the lock, the transport can be destroyed. In my original change, I considered modifying find_transport to increment the refcount, but that would mean that when releasing the refcount, the refcount could drop to zero on the adb disconnect thread, which would be a change from the current code, where it drops to zero on the input_thread or output_thread (in other words, it might be potentially more destabilizing). So it seems like you have to either do everything under the lock, or else increment the refcount before leaving the lock and then deal with any potential destabilization (which might be ok, but not my call to make since I\u0027m not the component owner).",
+      "range": {
+        "startLine": 987,
+        "startChar": 24,
+        "endLine": 987,
+        "endChar": 38
+      },
+      "revId": "5cb6ae78fdeebb40d5e636bae26772f7730d9bf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "248c8586_73cff357",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-27T20:13:56Z",
+      "side": 1,
+      "message": "This can no longer take a nullptr. That sounds ok as long as you reviewed all the callers to make sure that is impossible.\n\nThis now does the kick under the lock. In theory I think that should be ok because other code already does the kick under a lock, but I haven\u0027t really looked into it deeply. Thoughts?",
+      "range": {
+        "startLine": 331,
+        "startChar": 5,
+        "endLine": 331,
+        "endChar": 19
+      },
+      "revId": "5cb6ae78fdeebb40d5e636bae26772f7730d9bf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "046221c0_5af1f107",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-27T20:13:56Z",
+      "side": 1,
+      "message": "This sounds good as long as you reviewed all the callers to verify that nullptr is impossible.",
+      "range": {
+        "startLine": 643,
+        "startChar": 10,
+        "endLine": 643,
+        "endChar": 22
+      },
+      "revId": "5cb6ae78fdeebb40d5e636bae26772f7730d9bf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "248c8586_33f2cb91",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-27T20:13:56Z",
+      "side": 1,
+      "message": "As I mentioned before, this function is broken because the found transport can be destroyed once the lock is released.",
+      "range": {
+        "startLine": 954,
+        "startChar": 12,
+        "endLine": 954,
+        "endChar": 26
+      },
+      "revId": "5cb6ae78fdeebb40d5e636bae26772f7730d9bf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
