@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "84253145_bdf788fe",
+        "filename": "init/action.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-08-28T00:20:17Z",
+      "side": 1,
+      "message": "Done.\n\nLine wrapping with is very hard with strings and having the entire \"android::base::\" prefix on StringPrintf, so I\u0027d like to keep this using if possible.",
+      "parentUuid": "c4700952_ea39b58b",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a47f9520_5983025d",
         "filename": "init/action.cpp",
         "patchSetId": 6
@@ -36,6 +60,24 @@
       "writtenOn": "2015-08-27T22:30:42Z",
       "side": 1,
       "message": "does it make sense to have newlines at the end? shouldn\u0027t the caller be supplying those if it wants them? makes it harder to have multiple layers treating this more like a strerror result.",
+      "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4485f957_ee554dcc",
+        "filename": "init/action.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-08-28T00:20:17Z",
+      "side": 1,
+      "message": "No it doesn\u0027t.  I\u0027ve fixed this and a few other places.",
+      "parentUuid": "a47f9520_5983025d",
       "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "84253145_ddf4c4fb",
+        "filename": "init/action.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-08-28T00:20:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "048f817d_433b0f87",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 56
+      },
+      "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a47f9520_99a08aef",
         "filename": "init/action.cpp",
         "patchSetId": 6
@@ -76,6 +142,24 @@
       "writtenOn": "2015-08-27T22:30:42Z",
       "side": 1,
       "message": "what about 0? \u003d\u003d 1 is the real special case.\n\n(L85 might also be slightly more readable if the format string was argument%s and these were \"s\" and \"\".)",
+      "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4700952_2ab1fd4d",
+        "filename": "init/action.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-08-28T00:20:17Z",
+      "side": 1,
+      "message": "Through some web of conditionals, args.size() will never be 0 in practice, but this function is public so I added a check.",
+      "parentUuid": "a47f9520_99a08aef",
       "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "a47f9520_8af4aa48",
+        "filename": "init/action.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-08-28T00:20:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a47f9520_d96ff21d",
+      "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84253145_dd0364c7",
         "filename": "init/action.cpp",
         "patchSetId": 6
@@ -110,6 +212,30 @@
       "writtenOn": "2015-08-27T23:43:43Z",
       "side": 1,
       "message": "It seems the whole reason having shared_ptr is here. I prefer to keep Action* as the original code, and CheckTriggers using action_ \u003d\u003d \u0026action. Then you can change all shared_ptr into unique_ptr.",
+      "range": {
+        "startLine": 310,
+        "startChar": 4,
+        "endLine": 310,
+        "endChar": 42
+      },
+      "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c42ba915_6f261ac2",
+        "filename": "init/action.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-08-28T00:20:17Z",
+      "side": 1,
+      "message": "The two reasons I\u0027m using shared_ptr are since Actions are also present in current_executing_actions_ and ActionParser (while potentially simultaneously existing in actions_).\n\nI could take some care to ensure that usage doesn\u0027t overlap and that an Action is never removed from actions_ if it\u0027s still being parsed or in current_executing_actions_, but shared_ptr seemed the better options.  I\u0027m open to suggestions though.\n\nTotally agree that this specific case should be simply Action* as it was originally.  I never call this pointer and just compare it for equality, so there\u0027s no reason to have shared_ptr here.  I\u0027ll remove in an upcoming patchset.",
+      "parentUuid": "84253145_dd0364c7",
       "range": {
         "startLine": 310,
         "startChar": 4,
@@ -145,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "c42ba915_2f2022a1",
+        "filename": "init/action.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-08-28T00:20:17Z",
+      "side": 1,
+      "message": "I\u0027m open to suggestions on how to make this better.  It\u0027s the ugliest part of the code in my opinion (and I do it in ImportParser and ServiceParser too).\n\nI could have ActionManager implement SectionParser; would that be better?",
+      "parentUuid": "84253145_1dc55cd5",
+      "range": {
+        "startLine": 466,
+        "startChar": 11,
+        "endLine": 466,
+        "endChar": 53
+      },
+      "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c42ba915_6f305a22",
         "filename": "init/action.h",
         "patchSetId": 6
@@ -156,6 +306,30 @@
       "writtenOn": "2015-08-27T23:43:43Z",
       "side": 1,
       "message": "Action* ? Then we only need to worry about the life of an Action in actions_.",
+      "range": {
+        "startLine": 109,
+        "startChar": 16,
+        "endLine": 109,
+        "endChar": 40
+      },
+      "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "849451c2_04a63797",
+        "filename": "init/action.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-08-28T00:20:17Z",
+      "side": 1,
+      "message": "This may work, let me think about it.",
+      "parentUuid": "c42ba915_6f305a22",
       "range": {
         "startLine": 109,
         "startChar": 16,
@@ -185,6 +359,24 @@
     },
     {
       "key": {
+        "uuid": "e4750d3f_1297901b",
+        "filename": "init/bootchart.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-08-28T00:20:17Z",
+      "side": 1,
+      "message": "This function is one of the builtin functions so it has a set signature and all of the builtins return (\u003e\u003d ?) 0 for success and negative for failure.\n\nI\u0027m not sure there\u0027s enough motivation to change this.",
+      "parentUuid": "048f817d_3e029e4a",
+      "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "048f817d_1e11da8f",
         "filename": "init/builtins.cpp",
         "patchSetId": 6
@@ -196,6 +388,24 @@
       "writtenOn": "2015-08-27T22:30:42Z",
       "side": 1,
       "message": "we should add a maximum one of these days...",
+      "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "046221c0_1dce93d8",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-08-28T00:20:17Z",
+      "side": 1,
+      "message": "Agreed and done \n\nI\u0027d been thinking about it since there are many args.size() \u003d\u003d ... checks above that can be removed if we added that.",
+      "parentUuid": "048f817d_1e11da8f",
       "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -225,6 +435,30 @@
     },
     {
       "key": {
+        "uuid": "84253145_fdb50039",
+        "filename": "init/builtins.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-08-28T00:20:17Z",
+      "side": 1,
+      "message": "Done, although I don\u0027t like returning a pointer instead of a reference but I need the option to return not found.",
+      "parentUuid": "048f817d_5ea44237",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 45
+      },
+      "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4700952_2aa49d36",
         "filename": "init/init_parser.cpp",
         "patchSetId": 6
@@ -236,6 +470,24 @@
       "writtenOn": "2015-08-27T22:30:42Z",
       "side": 1,
       "message": "(missed a \\n --- this is why i think it\u0027s a bad idea. it\u0027s unnatural. we should move over to \u003cbase/logging.h\u003e so we don\u0027t have to remember the \\n at the end of each log statement too.)",
+      "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "046221c0_5df1eb07",
+        "filename": "init/init_parser.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-08-28T00:20:17Z",
+      "side": 1,
+      "message": "This is a return value though, the \\n gets added later (like those \\n\u0027s that I removed in action.cpp and service.cpp\n\nThe big advantage of passing around these *err\u0027s is that the file name and line number are printed for each of them, which is super useful for debugging.\n\nIf we move to libbase logging, then I think our best bet is to have the parser inform the logger of which line its on, such that the errors are printed with line number seamlessly?  I would like to get away from passing this around.",
+      "parentUuid": "c4700952_2aa49d36",
       "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -259,6 +511,24 @@
     },
     {
       "key": {
+        "uuid": "849451c2_e4b4eb1f",
+        "filename": "init/util.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-08-28T00:20:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "248c8586_e996961d",
+      "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "248c8586_29849ee8",
         "filename": "init/util.cpp",
         "patchSetId": 6
@@ -270,6 +540,24 @@
       "writtenOn": "2015-08-27T22:30:42Z",
       "side": 1,
       "message": "we should remove this at some point.",
+      "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "046221c0_fdbabf26",
+        "filename": "init/util.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2015-08-28T00:20:17Z",
+      "side": 1,
+      "message": "Agreed; I think this can wait for a later commit.  I\u0027m already debating doing this move in a separate commit from this one.",
+      "parentUuid": "248c8586_29849ee8",
       "revId": "71ec0df896a963d025db527b8d13a8b1974dabea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
