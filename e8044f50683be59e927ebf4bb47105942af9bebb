@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "048f817d_1159c884",
+        "filename": "adb/adb_auth_host.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-28T23:15:09Z",
+      "side": 1,
+      "message": "??? how about fatal(\"could not retrieve user profile directory path: %s\", Sys...). This should really never fail and we shouldn\u0027t continue if we can\u0027t get this because then the user will get authorization popups on their device because the keys are different, etc.",
+      "range": {
+        "startLine": 310,
+        "startChar": 19,
+        "endLine": 310,
+        "endChar": 21
+      },
+      "revId": "e8044f50683be59e927ebf4bb47105942af9bebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4485f957_88d83499",
+        "filename": "adb/adb_auth_host.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-28T23:15:09Z",
+      "side": 1,
+      "message": "What do you think of fatal() here? Is the user going to be able to figure this out if this fails and empty string is returned?",
+      "range": {
+        "startLine": 327,
+        "startChar": 12,
+        "endLine": 327,
+        "endChar": 21
+      },
+      "revId": "e8044f50683be59e927ebf4bb47105942af9bebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4700952_44955d95",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-28T23:15:09Z",
+      "side": 1,
+      "message": "Doesn\u0027t it seem like a problem that load_file() does not do \\r\\n translation, but ReadFileToString() does (I think)? Won\u0027t that break adb sideload?",
+      "range": {
+        "startLine": 535,
+        "startChar": 9,
+        "endLine": 535,
+        "endChar": 40
+      },
+      "revId": "e8044f50683be59e927ebf4bb47105942af9bebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
