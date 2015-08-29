@@ -45,6 +45,52 @@
       "revId": "ea515aa0dc3cb709d01df3d533b0f9a3e589f8a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "248c8586_84a6c895",
+        "filename": "adb/adb_auth_host.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-29T00:20:50Z",
+      "side": 1,
+      "message": "It turns out that adbkey.pub does not contain any \\r or \\n, so *in practice* it doesn\u0027t matter whether this reads it in text or binary mode. Adbkey.pub is written by write_public_keyfile which uses fopen which defaults to text mode, but the data that is written out is \u003cbase64\u003e\u003cspace\u003e\u003cusername\u003e@\u003chostname\u003e which does not have any \\r or \\n to translate in the first place.\n\nSo in practice RFTS() is fine here.\n\nBut taking a step back, how should this really be done? My opinion is that since this file format is really text, it should use text mode on both read and write on Windows. But that\u0027s just my opinion and I could be convinced out of it.\n\nPersonally on my machines I use editors that handle unix style line-endings, but silly Notepad that comes with the OS doesn\u0027t recognize it.",
+      "range": {
+        "startLine": 417,
+        "startChar": 24,
+        "endLine": 417,
+        "endChar": 40
+      },
+      "revId": "ea515aa0dc3cb709d01df3d533b0f9a3e589f8a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4700952_67fdfb77",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-08-29T00:20:50Z",
+      "side": 1,
+      "message": "I\u0027m convinced that this reads in text mode and breaks adb sideload. So I think you could either modify RFTS() to pass _O_BINARY to open() always, or maybe create ReadFileToString(arg0, arg1, extra_open_flags) where you pass _O_BINARY (or make it a boolean, whatever), or make another API, etc. you get the idea.\n\nSo basically, Windows is annoying because it forces cross-platform code to have this notion of textmode vs. binmode if it wants the files to be readable by Notepad. It\u0027s up to you guys how you want to deal with this. You could just say \u0027screw Notepad\u0027 and just use binary mode everywhere. Personally I can live with that, but I don\u0027t know about everyone else (here is an example: idea.log only has \\n so newbie Windows Android Studio users can\u0027t even easily read the log comfortably!)\n\nBTW, loading binary data into std::string sounds ok at the outset (because std::string is documented to handle embedded nulls), but I read that if you accidentally call c_str(), that truncates to the first NULL. That sounds a bit scary. Maybe it means that you really want ReadFileToString (text mode) and ReadFileToVector (binary). I dunno, these are really design questions for component owners. :)",
+      "range": {
+        "startLine": 535,
+        "startChar": 9,
+        "endLine": 535,
+        "endChar": 40
+      },
+      "revId": "ea515aa0dc3cb709d01df3d533b0f9a3e589f8a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
