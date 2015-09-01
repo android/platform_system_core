@@ -190,6 +190,30 @@
       "revId": "d575b3c779e412b2666b047d3bddb76f65e81a62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "644d9e85_2baadded",
+        "filename": "crash_reporter/crash_reporter.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1040868
+      },
+      "writtenOn": "2015-09-01T07:13:58Z",
+      "side": 1,
+      "message": "although, for the existing chromeos::Process users, we reap them immediately.  so what if, at the end of crash_reporter\u0027s main(), we do:\n\n /* Reap any outstanding zombies. */\n while (waitpid(-1, \u0026status, WNOHANG) \u003e\u003d 0)\n   continue;\n\nif the dbus process did actually crash/hang, we *do* want to let crash_reporter exit and have it reparent to `init`.  as long as crash_reporter continues to stay alive handling a user crash, the kernel will not free up the core dump or notify the processes watching the crashing process.\n\nand saying that out loud, maybe we should just let it always zombie/reparent and not worry about it ?",
+      "parentUuid": "0484e2ca_56db5406",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 1
+      },
+      "revId": "d575b3c779e412b2666b047d3bddb76f65e81a62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
