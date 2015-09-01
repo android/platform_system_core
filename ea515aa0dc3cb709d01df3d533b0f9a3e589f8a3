@@ -91,6 +91,30 @@
       "revId": "ea515aa0dc3cb709d01df3d533b0f9a3e589f8a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8497f201_b268a801",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-09-01T18:00:47Z",
+      "side": 1,
+      "message": "i checked the google3 code this is based on, and they use O_BINARY or equivalent. (you can see chromium\u0027s copy at https://code.google.com/p/chromium/codesearch#chromium/src/base/files/file_util.cc\u0026sq\u003dpackage:chromium\u0026l\u003d133.)\n\nthe only places adb currently uses these functions are in Linux-only code anyway, so it seems like adding that flag wouldn\u0027t break anything.\n\n(on the whole i also think this behavior is less surprising. the obvious exception being cases where the next thing you plan on doing is android::base::Split(content, \"\\n\"), but maybe that\u0027s just a sign we should have something like simpleperf\u0027s LineReader class in libbase...)",
+      "parentUuid": "c4700952_67fdfb77",
+      "range": {
+        "startLine": 535,
+        "startChar": 9,
+        "endLine": 535,
+        "endChar": 40
+      },
+      "revId": "ea515aa0dc3cb709d01df3d533b0f9a3e589f8a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
