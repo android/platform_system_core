@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "e486eed4_f0a86e5c",
+        "filename": "liblog/logprint.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-09-01T18:27:36Z",
+      "side": 1,
+      "message": "KISS, no need for old _and_ cp for this duty.",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 30
+      },
+      "revId": "d55376635f7db5c14219955d8519c0a5452136e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e486eed4_50603aca",
+        "filename": "liblog/logprint.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-09-01T18:27:36Z",
+      "side": 1,
+      "message": "Need a comment here about the error checking.",
+      "range": {
+        "startLine": 276,
+        "startChar": 8,
+        "endLine": 276,
+        "endChar": 16
+      },
+      "revId": "d55376635f7db5c14219955d8519c0a5452136e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "644d9e85_c5a57a82",
         "filename": "liblog/logprint.c",
         "patchSetId": 2
@@ -42,6 +88,53 @@
         "startChar": 0,
         "endLine": 280,
         "endChar": 62
+      },
+      "revId": "d55376635f7db5c14219955d8519c0a5452136e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84529221_5b13a767",
+        "filename": "liblog/logprint.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-09-01T18:27:36Z",
+      "side": 1,
+      "message": "I would prefer to keep the flexible zone name in, as the only complication is the minor bit of somewhat flawed error checking as it precludes other designations that gmt or utc to specify this zone.\n\nI could instead just document \"utc\" in logcat to not over-promise the feature. Setting it always (-v zone to turn it back off notwithstanding) has the feedback of showing the timezone in the output.\n\nBeing able to set and display the zone did allow me to override devices that have not got the time set right (I have a Manta and a AndroidOne that both are not sticky for selected timezone). So this part of the feature is more for myself ...",
+      "parentUuid": "e4d42ed5_f1bf08e3",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 62
+      },
+      "revId": "d55376635f7db5c14219955d8519c0a5452136e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84529221_bbb29bc8",
+        "filename": "liblog/logprint.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-09-01T18:27:36Z",
+      "side": 1,
+      "message": "If the caller calls tzset() then this will break.\n\nLets leave this open to _allow_ the caller to do so, just in case this is a legacy. Add a comment about that here.",
+      "range": {
+        "startLine": 946,
+        "startChar": 0,
+        "endLine": 964,
+        "endChar": 5
       },
       "revId": "d55376635f7db5c14219955d8519c0a5452136e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
