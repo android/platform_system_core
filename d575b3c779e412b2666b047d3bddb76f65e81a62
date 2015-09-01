@@ -166,6 +166,30 @@
       "revId": "d575b3c779e412b2666b047d3bddb76f65e81a62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0484e2ca_56db5406",
+        "filename": "crash_reporter/crash_reporter.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1040868
+      },
+      "writtenOn": "2015-09-01T07:09:34Z",
+      "side": 1,
+      "message": "i\u0027m pretty sure the reparent issue already exists in our current system/background implementation, so i wouldn\u0027t really use that particular point as a blocker.  although it still feels wrong to let it zombie/reparent.\n\nit could be squelched by calling signal(SIGCHLD, SIG_IGN) in the parent (crash_reporter), but that\u0027d interfere with other uses of chromeos::Process (which this code base does).  the kernel will then reap the child immediately and not let it go to zombie state/reparent it to init.",
+      "parentUuid": "64591d73_6593ff2d",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 1
+      },
+      "revId": "d575b3c779e412b2666b047d3bddb76f65e81a62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
