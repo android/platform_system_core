@@ -22,6 +22,30 @@
       "revId": "d55376635f7db5c14219955d8519c0a5452136e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4d42ed5_f1bf08e3",
+        "filename": "liblog/logprint.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2015-09-01T08:21:09Z",
+      "side": 1,
+      "message": "Mmm yeah, tzset(3) says:\n\nIf the TZ variable does appear in the environment, but its value is\n       empty, or its value cannot be interpreted using any of the formats\n       specified below, then Coordinated Universal Time (UTC) is used.\n\nBut you made this super-flexible; perhaps just allowing to print UTC time is enough? So in that case don\u0027t allow the user to specify a zone, but just have a modifier that always prints in UTC. Then no need to do timezone validation. I can\u0027t think of many usecases for printing a timezone that is both different than localtime and UTC - you can always calculate that from UTC (once you know what it is:)).",
+      "parentUuid": "644d9e85_c5a57a82",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 62
+      },
+      "revId": "d55376635f7db5c14219955d8519c0a5452136e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
