@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e486eed4_75b9a201",
+        "filename": "adb/shell_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-09-04T00:08:06Z",
+      "side": 1,
+      "message": "I think I should take all error messages out of the child subprocess to avoid race conditions; if we forked while another thread was logging and we get here this might deadlock or crash. Maybe signal each of these conditions with different exit codes instead?\n\nAlso, is there any benefit to manually closing the FDs before exit() like the code previously did?",
+      "range": {
+        "startLine": 193,
+        "startChar": 8,
+        "endLine": 193,
+        "endChar": 77
+      },
+      "revId": "edf9aec49e3a1a97a6264b012e272389daf1855a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
