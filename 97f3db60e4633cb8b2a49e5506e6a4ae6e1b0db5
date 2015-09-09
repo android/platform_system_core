@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "84d4522f_65c4f098",
+        "filename": "metricsd/uploader/upload_service.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1076133
+      },
+      "writtenOn": "2015-09-09T22:09:32Z",
+      "side": 1,
+      "message": "I actually reset it to 0 when staging a new log (see StageCurrentLog) to make sure that, any upload will be blocked until the stage log is deleted and replaced.\n\nI had to double check the logic so I improved the retry test to check that this logic is working.",
+      "parentUuid": "64cf5e9f_aa609393",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 30
+      },
+      "revId": "97f3db60e4633cb8b2a49e5506e6a4ae6e1b0db5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4ecf63c_82d17c5c",
         "filename": "metricsd/uploader/upload_service.cc",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-09T21:42:01Z",
       "side": 1,
       "message": "Is this a common occurrance or a very minor issue?  If not, perhaps warning or error would be better to catch attention when browsing logs?",
+      "range": {
+        "startLine": 243,
+        "startChar": 8,
+        "endLine": 243,
+        "endChar": 12
+      },
+      "revId": "97f3db60e4633cb8b2a49e5506e6a4ae6e1b0db5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84d4522f_85aeeccd",
+        "filename": "metricsd/uploader/upload_service.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1076133
+      },
+      "writtenOn": "2015-09-09T22:09:32Z",
+      "side": 1,
+      "message": "It is an error, you are right.\nI did not CHECK the result as, if we fill the disk with metrics, we want to keep the daemon running to remove the metrics.",
+      "parentUuid": "a4ecf63c_82d17c5c",
       "range": {
         "startLine": 243,
         "startChar": 8,
