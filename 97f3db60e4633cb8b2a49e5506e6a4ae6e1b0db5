@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64cf5e9f_aa609393",
+        "filename": "metricsd/uploader/upload_service.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1076778
+      },
+      "writtenOn": "2015-09-09T21:42:01Z",
+      "side": 1,
+      "message": "Do you need to decrement it then in the else case below for a successful send?  Or is Reset() being called somewhere after a successful send to reset the count?  IIUC, RemoveFailedLog will only delete the file and reset the count to 0 in the case of failing too many times, not a successful send, so the count would be incorrect after a successful send here.",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 30
+      },
+      "revId": "97f3db60e4633cb8b2a49e5506e6a4ae6e1b0db5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4ecf63c_82d17c5c",
+        "filename": "metricsd/uploader/upload_service.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1076778
+      },
+      "writtenOn": "2015-09-09T21:42:01Z",
+      "side": 1,
+      "message": "Is this a common occurrance or a very minor issue?  If not, perhaps warning or error would be better to catch attention when browsing logs?",
+      "range": {
+        "startLine": 243,
+        "startChar": 8,
+        "endLine": 243,
+        "endChar": 12
+      },
+      "revId": "97f3db60e4633cb8b2a49e5506e6a4ae6e1b0db5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
