@@ -110,6 +110,24 @@
     },
     {
       "key": {
+        "uuid": "64cf5e9f_cfb88101",
+        "filename": "crash_reporter/crash_sender",
+        "patchSetId": 2
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1076778
+      },
+      "writtenOn": "2015-09-09T18:48:10Z",
+      "side": 1,
+      "message": "I\u0027d like to get this CL in sooner than later, so that the devrel team can start testing end-to-end with their crash server.  Would it be acceptable for now to just remove the lock in the init\u0027s onboot setup, and file a bug for adding flock that I can get to next week?",
+      "parentUuid": "442a5a15_b43b409a",
+      "revId": "dedd12d217821724a2f7d68166618392b38fa62b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "447fba21_4c5fdf59",
         "filename": "crash_reporter/periodic_scheduler",
         "patchSetId": 2
@@ -121,6 +139,24 @@
       "writtenOn": "2015-09-09T16:38:45Z",
       "side": 1,
       "message": "is there a way to run periodic events using android\u0027s init ?  that would be ideal ...",
+      "revId": "dedd12d217821724a2f7d68166618392b38fa62b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4ef2afe_fc1bee06",
+        "filename": "crash_reporter/periodic_scheduler",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1076778
+      },
+      "writtenOn": "2015-09-09T18:48:10Z",
+      "side": 1,
+      "message": "According to the readme and what I know of the init code, there is not a straightforward way similar to using periodic_scheduler or cron to run periodic events.  The only workaround that might work, is to define the service with an \u0027onrestart\u0027 option that calls \u0027wait\u0027 on a file that we gaurantee won\u0027t exist so that it forces it to wait for the timeout.  Its a dirty hack that might work (I haven\u0027t tested it).",
+      "parentUuid": "447fba21_4c5fdf59",
       "revId": "dedd12d217821724a2f7d68166618392b38fa62b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
