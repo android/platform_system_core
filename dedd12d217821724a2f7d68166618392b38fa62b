@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4842e5f_91a2bc9b",
+        "filename": "crash_reporter/crash_sender",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1040868
+      },
+      "writtenOn": "2015-09-09T16:38:45Z",
+      "side": 1,
+      "message": "seems like we should create a variable to hold the base dir like CRASH_STATE_DIR ?",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "dedd12d217821724a2f7d68166618392b38fa62b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "447fba21_ec4faba8",
+        "filename": "crash_reporter/crash_sender",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1040868
+      },
+      "writtenOn": "2015-09-09T16:38:45Z",
+      "side": 1,
+      "message": "i\u0027ve never really liked the hardcoding of paths, and i can\u0027t think of a reason why it\u0027s necessary.  if you just change this to \"find\", does it work ?  same for the other programs.",
+      "revId": "dedd12d217821724a2f7d68166618392b38fa62b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84753240_eeeb1fb1",
+        "filename": "crash_reporter/crash_sender",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1040868
+      },
+      "writtenOn": "2015-09-09T16:38:45Z",
+      "side": 1,
+      "message": "LHS needs quoting",
+      "revId": "dedd12d217821724a2f7d68166618392b38fa62b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a48eb67e_4f8d8d25",
+        "filename": "crash_reporter/crash_sender",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1040868
+      },
+      "writtenOn": "2015-09-09T16:38:45Z",
+      "side": 1,
+      "message": "ideally we\u0027d change the exec/rm to -delete.  does the android find support that ?\n\nif not, would be good to use:\n\n -exec rm -- {} +",
+      "revId": "dedd12d217821724a2f7d68166618392b38fa62b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4e9ea2c_80fb36af",
+        "filename": "crash_reporter/crash_sender",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1040868
+      },
+      "writtenOn": "2015-09-09T16:38:45Z",
+      "side": 1,
+      "message": "\"${file}\" needs quoting",
+      "revId": "dedd12d217821724a2f7d68166618392b38fa62b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "442a5a15_b43b409a",
+        "filename": "crash_reporter/crash_sender",
+        "patchSetId": 2
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1040868
+      },
+      "writtenOn": "2015-09-09T16:38:45Z",
+      "side": 1,
+      "message": "this new locking logic doesn\u0027t protect against stale locks -- if the system reboots/whatever and doesn\u0027t clean the lock, then it never gets unlocked.\n\ni think we should implement flock inside of toybox.  it\u0027s not that hard actually ... it\u0027s just a thin wrapper around flock().  the util-linux flock is BSD-1 too, so should be OK to lift code from that.",
+      "revId": "dedd12d217821724a2f7d68166618392b38fa62b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "447fba21_4c5fdf59",
+        "filename": "crash_reporter/periodic_scheduler",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040868
+      },
+      "writtenOn": "2015-09-09T16:38:45Z",
+      "side": 1,
+      "message": "is there a way to run periodic events using android\u0027s init ?  that would be ideal ...",
+      "revId": "dedd12d217821724a2f7d68166618392b38fa62b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
