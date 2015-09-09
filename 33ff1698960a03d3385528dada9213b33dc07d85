@@ -1,0 +1,372 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64cf5e9f_aa0413db",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-09T23:48:56Z",
+      "side": 1,
+      "message": "Make this static? I\u0027m guessing you didn\u0027t kill the prev/next fields of fdevent because fdevent.h is also used by sysdeps_win32.cpp which still uses the fields?",
+      "range": {
+        "startLine": 51,
+        "startChar": 20,
+        "endLine": 51,
+        "endChar": 32
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "244c8613_612bb218",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-09T23:48:56Z",
+      "side": 1,
+      "message": "overload operator\u003c\u003c ?",
+      "range": {
+        "startLine": 65,
+        "startChar": 19,
+        "endLine": 65,
+        "endChar": 31
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4c34e74_0868af2d",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-09T23:48:56Z",
+      "side": 1,
+      "message": "What is fde.events for if fde.state already contains FDE_READ/WRITE/ERROR? Maybe there is some potential cleanup between fde.state and fde.events?",
+      "range": {
+        "startLine": 67,
+        "startChar": 8,
+        "endLine": 67,
+        "endChar": 17
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4ef2afe_1298c837",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-09T23:48:56Z",
+      "side": 1,
+      "message": "nit: destroying?",
+      "range": {
+        "startLine": 105,
+        "startChar": 23,
+        "endLine": 105,
+        "endChar": 30
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4ef2afe_32698cc0",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-09T23:48:56Z",
+      "side": 1,
+      "message": "error check? that will conveniently check the validity of the fd.",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 9
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04c1426c_cfa2bd9c",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-09T23:48:56Z",
+      "side": 1,
+      "message": "I thought the point of using emplace() was to avoid unnecessary object construction/copying? Then don\u0027t you want to use emplace(fde-\u003efd, fde)? Or do I misunderstand?",
+      "range": {
+        "startLine": 120,
+        "startChar": 18,
+        "endLine": 120,
+        "endChar": 48
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84d4522f_4570d461",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-09T23:48:56Z",
+      "side": 1,
+      "message": "I think that LOG() from logging.h does not contain an \u0027if\u0027, so it will always run dump_fdevent() even if logging is not enabled. logging.h should probably be fixed (adding the if might fix the errno issue as well?).",
+      "range": {
+        "startLine": 121,
+        "startChar": 4,
+        "endLine": 121,
+        "endChar": 14
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24c9e69c_cdcf6d90",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-09T23:48:56Z",
+      "side": 1,
+      "message": "set fde-\u003efd\u003d-1 just in case?",
+      "range": {
+        "startLine": 132,
+        "startChar": 22,
+        "endLine": 132,
+        "endChar": 29
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4ecf63c_45765e61",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-09T23:48:56Z",
+      "side": 1,
+      "message": "android::base::StringAppendF?",
+      "range": {
+        "startLine": 195,
+        "startChar": 8,
+        "endLine": 195,
+        "endChar": 17
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4ecf63c_a5cdaaf3",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-09T23:48:56Z",
+      "side": 1,
+      "message": "why PLOG instead of LOG? I don\u0027t see any syscall that might set errno. Copy \u0026 paste error?",
+      "range": {
+        "startLine": 206,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 8
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04c1426c_8fc3a572",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-09T23:48:56Z",
+      "side": 1,
+      "message": "check for error? handle EINTR?",
+      "range": {
+        "startLine": 207,
+        "startChar": 8,
+        "endLine": 207,
+        "endChar": 11
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84d4522f_901aac38",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-09T23:48:56Z",
+      "side": 1,
+      "message": "so if I didn\u0027t request FDE_ERROR, I can still be called back for it? I guess things are better that way.",
+      "range": {
+        "startLine": 218,
+        "startChar": 12,
+        "endLine": 218,
+        "endChar": 31
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04c1426c_6ff85184",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-09T23:48:56Z",
+      "side": 1,
+      "message": "So this assumes that the caller will do a read? What if it only does a write? Or is that impossible?",
+      "range": {
+        "startLine": 221,
+        "startChar": 31,
+        "endLine": 222,
+        "endChar": 41
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44cedaa4_48990ffa",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-09T23:48:56Z",
+      "side": 1,
+      "message": "can one be inserted twice onto the list? Is that ok? Is the pending bit preserved ok in that situation?",
+      "range": {
+        "startLine": 232,
+        "startChar": 12,
+        "endLine": 232,
+        "endChar": 34
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4c34e74_135464c6",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-09T23:48:56Z",
+      "side": 1,
+      "message": "GE? I guess really doesn\u0027t matter?",
+      "range": {
+        "startLine": 254,
+        "startChar": 10,
+        "endLine": 254,
+        "endChar": 12
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4bdd6e7_d1eee430",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-09T23:48:56Z",
+      "side": 1,
+      "message": "My understanding is that LOG(FATAL) calls abort() and that can make a coredump. I\u0027m not sure if that makes sense for \u0027expected\u0027 runtime error conditions. In practice, I don\u0027t think it comes up because this stuff probably never fails (it isn\u0027t like adb is perfect with all memory allocs).",
+      "range": {
+        "startLine": 302,
+        "startChar": 8,
+        "endLine": 302,
+        "endChar": 19
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
