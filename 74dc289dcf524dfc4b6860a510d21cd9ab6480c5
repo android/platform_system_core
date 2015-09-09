@@ -22,6 +22,30 @@
       "revId": "74dc289dcf524dfc4b6860a510d21cd9ab6480c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04822251_52769461",
+        "filename": "fs_mgr/fs_mgr_slotselect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2015-09-09T22:51:56Z",
+      "side": 1,
+      "message": "Well, this only happens when on a system where\n\n 0. it\u0027s using A/B (e.g. slotselect present in fstab file)\n 1. the bootloader isn\u0027t passing slot_suffix on the cmdline; and\n 2. the misc partition isn\u0027t set up correctly.\n\nso chances are it\u0027s only happening on developer systems, not production devices.\n\nThe reason I want this behavior is to avoid a flag day for all the Brillo developers. IOW, I want to add slotselect to our fstab file but I do not want to break already deployed devices that are not yet repartitioned for A/B (these devices only have \u0027boot\u0027 and \u0027system\u0027 partitions).\n\nIf I error out instead of this behavior, I\u0027ll instantly break all these devices (because we can\u0027t mount /system) and force developers to run my repartitioning script. This is not a good use of their time, I think.\n\nOn the other hand, with this change, their systems continue to work and they can repartition when they need A/B.\n\nI agree that an error is more appropriate and I don\u0027t mind changing it to that in a couple of months... it\u0027s just a lot more practical for us this way. Thanks for considering.",
+      "parentUuid": "c4ef2afe_323d0c56",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 25
+      },
+      "revId": "74dc289dcf524dfc4b6860a510d21cd9ab6480c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
