@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "244c8613_647c1bf6",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-11T05:57:25Z",
+      "side": 1,
+      "message": "Ah, ok, makes sense. I guess my follow-up question then is: why doesn\u0027t this print out fde.events? But that might not be important, I don\u0027t know.",
+      "parentUuid": "84d4522f_31df57cf",
+      "range": {
+        "startLine": 67,
+        "startChar": 8,
+        "endLine": 67,
+        "endChar": 17
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4ef2afe_1298c837",
         "filename": "adb/fdevent.cpp",
         "patchSetId": 2
@@ -319,6 +343,30 @@
       "side": 1,
       "message": "Yes, this is a problem. logging.h has a default log level INFO, and the level can be adjusted by env ANDROID_LOG_TAGS. But there is no way to set environment for adbd. I think one solution is to set the log level according to trace setting. I prefer to do this in a separate CL. \nfor the errno problem, I don\u0027t have any good idea to save errno in any situation while keeping current convenient logging style (I mean LOG() \u003c\u003c xxx). But I am optimistic that we rarely meet the situation that errno should be saved while xxx in \"LOG() \u003c\u003c xxx\" changes errno.",
       "parentUuid": "84d4522f_4570d461",
+      "range": {
+        "startLine": 121,
+        "startChar": 4,
+        "endLine": 121,
+        "endChar": 14
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4c34e74_5b69ce03",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-11T05:57:25Z",
+      "side": 1,
+      "message": "adb.cpp shows that there is a property persist.adb.trace_mask but that is for ADB_TRACE-style flags, not ANDROID_LOG_TAGS-style. Yeah, separate CL is fine.\n\nBefore I attempted the LOG() errno-saving, I looked for instances of code that depended on errno being preserved and there seemed to be at least a couple. (Of course, the good news is that most of the time errno is not overwritten.) I\u0027ll try to investigate this LOG()/errno issue next week (since I made the original errno restoring change), or you guys can feel free to beat me to it.",
+      "parentUuid": "44fdfae7_e50a0c98",
       "range": {
         "startLine": 121,
         "startChar": 4,
@@ -566,6 +614,30 @@
     },
     {
       "key": {
+        "uuid": "64cf5e9f_06bd3a0e",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-11T05:57:25Z",
+      "side": 1,
+      "message": "What do you mean?",
+      "parentUuid": "a4bdd6e7_7478218b",
+      "range": {
+        "startLine": 218,
+        "startChar": 12,
+        "endLine": 218,
+        "endChar": 31
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04c1426c_6ff85184",
         "filename": "adb/fdevent.cpp",
         "patchSetId": 2
@@ -613,6 +685,30 @@
     },
     {
       "key": {
+        "uuid": "244c8613_246db33d",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-11T05:57:25Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "64cf5e9f_266716af",
+      "range": {
+        "startLine": 221,
+        "startChar": 31,
+        "endLine": 222,
+        "endChar": 41
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44cedaa4_48990ffa",
         "filename": "adb/fdevent.cpp",
         "patchSetId": 2
@@ -648,6 +744,30 @@
       "side": 1,
       "message": "strictly it is possible. But only when fdevent_install() the same fdevent for different fds. check is added here for that.",
       "parentUuid": "44cedaa4_48990ffa",
+      "range": {
+        "startLine": 232,
+        "startChar": 12,
+        "endLine": 232,
+        "endChar": 34
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44cedaa4_5e05421a",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-11T05:57:25Z",
+      "side": 1,
+      "message": "I don\u0027t think I understand how the CHECK_EQ(fde-\u003efd, pollfd.fd) check checks whether the fde is already in the list?",
+      "parentUuid": "44fdfae7_85d1885c",
       "range": {
         "startLine": 232,
         "startChar": 12,
@@ -742,6 +862,30 @@
       "side": 1,
       "message": "Yes, LOG(FATAL) causes abort(). I think failure is not acceptable here. I guess if here fails, the connection will never stop when you try to run commands like \"adb shell ls\".",
       "parentUuid": "a4bdd6e7_d1eee430",
+      "range": {
+        "startLine": 302,
+        "startChar": 8,
+        "endLine": 302,
+        "endChar": 19
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44fdfae7_10b93403",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-11T05:57:25Z",
+      "side": 1,
+      "message": "Yes, failure is not acceptable, but do you really want a coredump (due to abort())? I don\u0027t know, I don\u0027t have a quick solution here, so maybe this is just something to think about in the future.",
+      "parentUuid": "64cf5e9f_26cef6ee",
       "range": {
         "startLine": 302,
         "startChar": 8,
