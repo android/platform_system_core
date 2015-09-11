@@ -34,6 +34,24 @@
       "revId": "784a69f8650068980bcc692584b515ab2372ab5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64cf5e9f_c6ae22cf",
+        "filename": "liblog/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-11T06:05:43Z",
+      "side": 0,
+      "message": "I think this is http://b/22953515 as described in https://android-review.googlesource.com/162936. Basically, I think this setting causes the linker flag -nodefaultlibs to be used which prevents the Windows C Runtime (MSVCRT.DLL) from being linked to. It contains read(), write(), etc. (which are wrappers on top of the actual OS APIs ReadFile, WriteFile, etc.)",
+      "parentUuid": "44cedaa4_1e0eaa3f",
+      "revId": "784a69f8650068980bcc692584b515ab2372ab5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
