@@ -16,6 +16,24 @@
       "revId": "13993210253ae2e748472b59db8ee0e11e07b4c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "848ff2ac_c728d4c8",
+        "filename": "crash_reporter/crash_sender",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1076778
+      },
+      "writtenOn": "2015-09-13T07:42:10Z",
+      "side": 1,
+      "message": "I\u0027m a little hazy on my understanding of shell expressions and variable represenation in the shell, but I made this change based on this part of the mksh man page (http://linux.die.net/man/1/mksh):\n\n---\n\nExpressions are calculated using signed arithmetic and the mksh_ari_t type (a 32-bit signed integer), unless they begin with a sole \u0027#\u0027 character, in which case they use mksh_uari_t (\na 32-bit unsigned integer).\n\n---\n\nIt was my understanding that when ${random} gets set, it would be set as a string as the output of the `od` call (and thus signed vs unsigned doesn\u0027t matter to this variable), and the `od` call would return a 32 bit unsigned int as a string.  Then for the arithmetic expression, the leading # character would tell the shell to use an unsigned int, and thus convert the input string value using all 32 unsigned bits.\n\nHere\u0027s my local test I ran in the emulator, which unless my initial number for a max unsigned int is incorrect (which var1 suggests it isn\u0027t), should include setting the high bit:\n\n# local random\u003d4294967295                                                            \n\n# echo $random                                                                 \n\n4294967295\n\n# local var1\u003d$((random))\n\n# echo $var1\n\n-1\n\n# local var2\u003d$((#random))\n\n# echo $var2\n\n4294967295",
+      "parentUuid": "44997af8_dcd50dd3",
+      "revId": "13993210253ae2e748472b59db8ee0e11e07b4c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
