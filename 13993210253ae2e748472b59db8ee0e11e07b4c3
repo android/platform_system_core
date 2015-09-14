@@ -34,6 +34,24 @@
       "revId": "13993210253ae2e748472b59db8ee0e11e07b4c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64c59ecc_88da3753",
+        "filename": "crash_reporter/crash_sender",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1040868
+      },
+      "writtenOn": "2015-09-14T20:19:46Z",
+      "side": 1,
+      "message": "the # prefix is a mksh-specific feature.  we\u0027ve been coding to POSIX rather than replace on shell-specific feature with a different one.\n\nwe can do this in a few ways:\n\n(1) change -N4 to -N3 and stick to 24 bits and assume we\u0027ll never have a system where sizeof(signed long) \u003c 4\n(2) mask out the sign bit: $(( random \u0026 0x7fffffff ))\n(3) invert the sign ourselves: $(( random \u003c 0 ? -random : random ))",
+      "parentUuid": "848ff2ac_c728d4c8",
+      "revId": "13993210253ae2e748472b59db8ee0e11e07b4c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
