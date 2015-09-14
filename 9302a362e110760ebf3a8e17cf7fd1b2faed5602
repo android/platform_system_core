@@ -16,6 +16,24 @@
       "revId": "9302a362e110760ebf3a8e17cf7fd1b2faed5602",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8478d270_b0c868e4",
+        "filename": "crash_reporter/crash_sender",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1076778
+      },
+      "writtenOn": "2015-09-14T21:54:21Z",
+      "side": 1,
+      "message": "Hows this sound:\n\n# Generate a uniform random number in 0..max-1.\n\n# POSIX arithmetic expansion uses signed long integers.  Some shell implementations\n\n# instead use 32-bit signed integers, in which case the 32-bit random number read from\n\n# /dev/urandom may be interpreted as negative when used inside an arithmetic expansion.\n\n# For this case, simply take the absolute value, which will still give a roughly uniform\n\n# random distribution for the modulo.\n\n# See corresponding Arithmetic Expansion and Arithmetic Expression sections:\n\n# POSIX: http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html#tag_02_06_04\n\n# mksh: http://linux.die.net/man/1/mksh",
+      "parentUuid": "44997af8_dc5b4de6",
+      "revId": "9302a362e110760ebf3a8e17cf7fd1b2faed5602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
