@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "44725a92_b4ae95b9",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2015-09-15T01:01:15Z",
+      "side": 1,
+      "message": "AFAIK, fde.events is not as useful as fde.state. fde.events is only valid when fde is on the pending_list. And fde is dumped mostly when there is some change to the fde, fde.state is more relevant. Of course we can print fde.events as well, but I also think it is not important.",
+      "parentUuid": "244c8613_647c1bf6",
+      "range": {
+        "startLine": 67,
+        "startChar": 8,
+        "endLine": 67,
+        "endChar": 17
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4ef2afe_1298c837",
         "filename": "adb/fdevent.cpp",
         "patchSetId": 2
@@ -638,6 +662,30 @@
     },
     {
       "key": {
+        "uuid": "e467cecb_4dc4d998",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2015-09-15T01:01:15Z",
+      "side": 1,
+      "message": "for FDE_ERROR, adb only print a debug message. The real error is handled when processing FDE_READ. So I think it doesn\u0027t matter to have FDE_ERROR or not in practice.",
+      "parentUuid": "64cf5e9f_06bd3a0e",
+      "range": {
+        "startLine": 218,
+        "startChar": 12,
+        "endLine": 218,
+        "endChar": 31
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04c1426c_6ff85184",
         "filename": "adb/fdevent.cpp",
         "patchSetId": 2
@@ -780,6 +828,30 @@
     },
     {
       "key": {
+        "uuid": "0465c2c3_4f94cd02",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2015-09-15T01:01:15Z",
+      "side": 1,
+      "message": "suppose we have two fdevent_install() with the same fde but different fd.\nfdevent_install(\u0026fde, 1);\nfdevent_install(\u0026fde, 2);\n\nfde.fd \u003d 2\nwhen some events happens on fd 1, it can be checked that fde.fd (2) !\u003d pollfd.fd (1).\n\nI know this check is less clear than having a HashSet for used fdevents. But I think this error is unlikely to happen, and we don\u0027t need to spend much effort on it.",
+      "parentUuid": "44cedaa4_5e05421a",
+      "range": {
+        "startLine": 232,
+        "startChar": 12,
+        "endLine": 232,
+        "endChar": 34
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4c34e74_135464c6",
         "filename": "adb/fdevent.cpp",
         "patchSetId": 2
@@ -886,6 +958,30 @@
       "side": 1,
       "message": "Yes, failure is not acceptable, but do you really want a coredump (due to abort())? I don\u0027t know, I don\u0027t have a quick solution here, so maybe this is just something to think about in the future.",
       "parentUuid": "64cf5e9f_26cef6ee",
+      "range": {
+        "startLine": 302,
+        "startChar": 8,
+        "endLine": 302,
+        "endChar": 19
+      },
+      "revId": "33ff1698960a03d3385528dada9213b33dc07d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "848ff2ac_8da50de9",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2015-09-15T01:01:15Z",
+      "side": 1,
+      "message": "I think it doesn\u0027t matter. I don\u0027t worry about space.",
+      "parentUuid": "44fdfae7_10b93403",
       "range": {
         "startLine": 302,
         "startChar": 8,
