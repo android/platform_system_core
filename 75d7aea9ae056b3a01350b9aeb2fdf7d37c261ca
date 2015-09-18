@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c91663dc_9e597d28",
+        "filename": "base/include/base/logging.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-18T22:20:27Z",
+      "side": 1,
+      "message": "I thought about using LIKELY, but I couldn\u0027t decide because D() translates to LOG(INFO) which means we have a lot of LOG(INFO) which makes it sound likely that we will log. But I\u0027m not sure and I guess logging.h is used in more than just adb, so I\u0027ll trust your judgment.",
+      "range": {
+        "startLine": 121,
+        "startChar": 6,
+        "endLine": 121,
+        "endChar": 12
+      },
+      "revId": "75d7aea9ae056b3a01350b9aeb2fdf7d37c261ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "099a3b78_a129681f",
+        "filename": "base/logging.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-18T22:20:27Z",
+      "side": 1,
+      "message": "I know we don\u0027t really worry about perf, but if this is in a .cpp file, will the compiler be able to inline it? When I directly accessed the global, the code was literally like \u0027cmp 0x2(INFO),addr-of-gMinimumLogSeverity, jne target, ret\u0027",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 35
+      },
+      "revId": "75d7aea9ae056b3a01350b9aeb2fdf7d37c261ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29bd3fca_0d76e59e",
+        "filename": "base/logging.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-18T22:20:27Z",
+      "side": 1,
+      "message": "Are you concerned at all about holding a lock when calling abort()? I think this will work in Windows because abort() will not call static destructors, but I don\u0027t know about other platforms.",
+      "range": {
+        "startLine": 360,
+        "startChar": 4,
+        "endLine": 360,
+        "endChar": 9
+      },
+      "revId": "75d7aea9ae056b3a01350b9aeb2fdf7d37c261ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
