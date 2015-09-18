@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "e9b7a7e1_7f5467c6",
+        "filename": "base/include/base/logging.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2015-09-18T04:11:29Z",
+      "side": 1,
+      "message": "I think it is a wonderful solution. ternary operator guarantees that the side effects should happen before following expressions. and in c++11, the destructor of temporary objects happen at the end of full expression in reverse order. So the constructor of ErrnoRestorer() happens first, the the destructor of ErrnoRestorer() happens last. It makes me think that \u0026\u0026 and || operators can be used as alternatives to ternary operator here, right?\n\nNow I want to know whether it supports\n((xxx) ? LOG(DEBUG) : LOG(ERROR)) \u003c\u003c yyy;\nBut I think it doesn\u0027t matter too much.\n\nI will take care of testing on other platforms other than windows.",
+      "parentUuid": "e99c0776_fa923d45",
+      "range": {
+        "startLine": 124,
+        "startChar": 39,
+        "endLine": 124,
+        "endChar": 62
+      },
+      "revId": "f41203a6c79aa2ffc5e503d0b9d7fb1c465d1247",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9b7a7e1_df29f34c",
         "filename": "base/logging_test.cpp",
         "patchSetId": 1
