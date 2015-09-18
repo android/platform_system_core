@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9ae6393_3e3e71a4",
+        "filename": "base/include/base/logging.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-18T02:54:50Z",
+      "side": 1,
+      "message": "If this macro was just if (!(expr)) ...stream(), then \"if (something) LOG(INFO) \u003c\u003c \"hello\"; else ...\" would cause the else to bind to the if in the macro, which is not intended.",
+      "range": {
+        "startLine": 121,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 6
+      },
+      "revId": "f41203a6c79aa2ffc5e503d0b9d7fb1c465d1247",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69c3b75a_9ed78161",
+        "filename": "base/include/base/logging.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-18T02:54:50Z",
+      "side": 1,
+      "message": "Use the ternary operator to make a sequence point between ErrnoRestorer and the rest of the logging code to guarantee it happens before. I originally tried using the comma operator, but that conflicted with a gtest macro which assumed no commas. Now that I made other changes to logging_test.cpp, it might be possible to change this back to the comma operator.",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 38
+      },
+      "revId": "f41203a6c79aa2ffc5e503d0b9d7fb1c465d1247",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e99c0776_fa923d45",
+        "filename": "base/include/base/logging.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-18T02:54:50Z",
+      "side": 1,
+      "message": "This looks gross, but when I checked the gcc win32 assembly, it generated no code. The ? operator doesn\u0027t even generate any code since everything is known staticly.",
+      "range": {
+        "startLine": 124,
+        "startChar": 39,
+        "endLine": 124,
+        "endChar": 62
+      },
+      "revId": "f41203a6c79aa2ffc5e503d0b9d7fb1c465d1247",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9b7a7e1_df29f34c",
+        "filename": "base/logging_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-18T02:54:50Z",
+      "side": 1,
+      "message": "This {} looks weird, but the gtest docs suggested this to pass multiple statements to ASSERT_DEATH().",
+      "range": {
+        "startLine": 97,
+        "startChar": 15,
+        "endLine": 97,
+        "endChar": 16
+      },
+      "revId": "f41203a6c79aa2ffc5e503d0b9d7fb1c465d1247",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
