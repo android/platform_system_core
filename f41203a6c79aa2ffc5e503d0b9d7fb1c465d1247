@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "89df0b23_e4038e17",
+        "filename": "base/include/base/logging.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-18T04:20:33Z",
+      "side": 1,
+      "message": "Yes, I prototyped \"ErrnoRestorer() || LogMessage().stream()\" and it worked. I didn\u0027t prefer that because it called std::ostream::operator bool() (I think) and the type of the expression was bool instead of std::ostream (not that it really matters). I\u0027ll leave it to you to choose which is better.\n\nBTW, the public Google Glog code uses a trick with \"void operator\u0026()\" to cause the expression to be void instead of bool or ostream. That is interesting and probably generates the same code, but it seemed messier.\n\nI don\u0027t think the ((xxx) ? LOG...) works because of the if that I used By Design. The reason I used if was to prevent the macro from evaluating to a type (like bool or ostream). But if you really want it to evaluate to a type maybe ternary operator could be used instead of the if.\n\nThanks for your help.",
+      "parentUuid": "e9b7a7e1_7f5467c6",
+      "range": {
+        "startLine": 124,
+        "startChar": 39,
+        "endLine": 124,
+        "endChar": 62
+      },
+      "revId": "f41203a6c79aa2ffc5e503d0b9d7fb1c465d1247",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9b7a7e1_df29f34c",
         "filename": "base/logging_test.cpp",
         "patchSetId": 1
