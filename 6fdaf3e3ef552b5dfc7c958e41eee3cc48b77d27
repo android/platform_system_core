@@ -141,6 +141,30 @@
       "revId": "6fdaf3e3ef552b5dfc7c958e41eee3cc48b77d27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e91fa7ee_d90633e7",
+        "filename": "libbacktrace/BacktraceOffline.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2015-09-21T21:55:59Z",
+      "side": 1,
+      "message": "If you search for \"llvm::\" here and ignore the useless glue stuff (like StringRef), you will see only references to getSectionName() and getSectionContents() from within their decoded ELF object. I don\u0027t know what ART has available for ELF \"reading\", but you might be able to use it here. The alternative, as Yabin suggested elsewhere (to prevent code bloat) is to link against libLLVM.so on the device, but the static libraries on the host.",
+      "parentUuid": "4970b318_c4c59ec6",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 35
+      },
+      "revId": "6fdaf3e3ef552b5dfc7c958e41eee3cc48b77d27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
