@@ -46,6 +46,30 @@
       "revId": "aa5263ea8a8e683fe68a8e7630c76ec3e6b50bcb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e4c398b_9824858e",
+        "filename": "logd/LogStatistics.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-09-24T21:34:00Z",
+      "side": 1,
+      "message": "constexpr did not work:\n\nout/target/product/flounder_lte/obj/EXECUTABLES/logd_intermediates/LogStatistics.o: In function `std::__1::__less\u003cunsigned long, unsigned long\u003e::operator()(unsigned long const\u0026, unsigned long const\u0026) const\u0027:\n/ssd/master/external/libcxx/include/algorithm:702: undefined reference to `EntryBase::pruned_len\u0027\n\nInitializing them in LogStatistics.cpp worked, but it\u0027s probably now in \u0027text\u0027 space :-(",
+      "parentUuid": "8e52b121_8f3afdf6",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 39
+      },
+      "revId": "aa5263ea8a8e683fe68a8e7630c76ec3e6b50bcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
