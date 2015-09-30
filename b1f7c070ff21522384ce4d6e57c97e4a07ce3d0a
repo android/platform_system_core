@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "75439281_1eb54db4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-30T03:55:51Z",
+      "side": 1,
+      "message": "Good question. My theory is that the caller might be writing data until errno\u003dEAGAIN. Then fdevent_process() detects an error and the handler is called with func(fd, FDE_ERROR|FDE_READ, arg). if the handler is written like \"if (events \u0026 FDE_WRITE) { adb_write... }\", then it won\u0027t do anything and it won\u0027t see the error.\n\nMy theory could be wrong if the OS always returns POLLOUT when returning POLLERR/POLLHUP/POLLINVAL (because then the handler would be called with FDE_WRITE|FDE_ERROR even without my change).\n\nMy theory could also be wrong if no adb code does what I described. I just checked and I don\u0027t think adb gets into this situation, so then this would only benefit new code.",
+      "parentUuid": "b5526a4f_d8f2cdcd",
+      "range": {
+        "startLine": 20,
+        "startChar": 60,
+        "endLine": 21,
+        "endChar": 37
+      },
+      "revId": "b1f7c070ff21522384ce4d6e57c97e4a07ce3d0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "953c86f3_1fa1c395",
         "filename": "adb/fdevent.cpp",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2015-09-30T02:56:01Z",
       "side": 1,
       "message": "Do you have any reason to change the strategy?",
+      "range": {
+        "startLine": 238,
+        "startChar": 12,
+        "endLine": 239,
+        "endChar": 36
+      },
+      "revId": "b1f7c070ff21522384ce4d6e57c97e4a07ce3d0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5398a03_e068c2fc",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-09-30T03:55:51Z",
+      "side": 1,
+      "message": "No, this is only theoretical and might actually be impossible (as I described in the other comment).",
+      "parentUuid": "15a33681_836bdef7",
       "range": {
         "startLine": 238,
         "startChar": 12,
