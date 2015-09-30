@@ -136,6 +136,24 @@
       "revId": "58a78b5dbf3855bc7270e29a5f992c437ce18f81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75439281_64ab1e74",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-09-30T20:08:50Z",
+      "side": 1,
+      "message": "does Brillo support platform development on Windows? Android doesn\u0027t.\n\notherwise, i\u0027m starting to think this is a mistake. we\u0027re doing command execution, but only in a very limited form. we\u0027re doing environment variable substitution, but badly. it feels like the best we can hope for is to achieve parity with the shell --- but we already have perfectly good shells.\n\nyour example provisioning script looks identical as a shell script except that each line starts with \"fastboot \".\n\nthe \"too much room for hacks\" is probably a good thing --- sooner or later there\u0027s going to be some custom bullshit an OEM needs you to do, and then you either hack that in to fastboot or have a separate shell script you need to run in addition to \"fastboot provision\". this is why Android\u0027s init is such an awful mess. they wanted it to be \"minimal\" but bad things happen when you collide with reality. especially in areas where OEMs are involved. the recovery image links in an arbitrary OEM-provided .so to solve the equivalent problem there. yeah, the shell\u0027s not lovely, but the alternatives all tend to be worse...\n\ni think \"Windows\" is really the only strong counter-argument, and even there that just makes me think \"python\" rather than \"shell\". (although for the level of complexity you\u0027re talking about, a .bat file is probably sufficient anyway.)",
+      "parentUuid": "55704e4f_0d455180",
+      "revId": "58a78b5dbf3855bc7270e29a5f992c437ce18f81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
