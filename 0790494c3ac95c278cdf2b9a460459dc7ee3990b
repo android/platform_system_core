@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "d55b5e6b_fc5185ff",
+        "filename": "logd/LogWhiteBlackList.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-09-30T16:55:06Z",
+      "side": 1,
+      "message": "will do",
+      "parentUuid": "ee86cdd4_d258c423",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 6
+      },
+      "revId": "0790494c3ac95c278cdf2b9a460459dc7ee3990b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e4c398b_3d920e16",
         "filename": "logd/LogWhiteBlackList.cpp",
         "patchSetId": 3
@@ -59,6 +83,30 @@
       "writtenOn": "2015-09-30T00:27:52Z",
       "side": 1,
       "message": "why does this need to be a string? you just use it as a c_str below and you incur copy constructors assigning char[] to it.",
+      "range": {
+        "startLine": 88,
+        "startChar": 9,
+        "endLine": 88,
+        "endChar": 15
+      },
+      "revId": "0790494c3ac95c278cdf2b9a460459dc7ee3990b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75439281_615dd064",
+        "filename": "logd/LogWhiteBlackList.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-09-30T16:55:06Z",
+      "side": 1,
+      "message": "See below. No \u0027need\u0027.",
+      "parentUuid": "4e4c398b_3d920e16",
       "range": {
         "startLine": 88,
         "startChar": 9,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "b5398a03_20baaa3b",
+        "filename": "logd/LogWhiteBlackList.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-09-30T16:55:06Z",
+      "side": 1,
+      "message": "I would need to strdup it, in order to use it in the following property_get(); or resort to using double the amount of stack for two PROPERTY_VALUE_MAX buffers.\n\nIn the first case I would incite the wrath of the C++ gohds, in the second case get arrested for stack abuse ;-}. This was my reasoning for using std::string.\n\nstd::string does optimize to move, so the copy constructor is not triggered in most cases; and it greatly reduces the risk for allocation management when we get out of scope.\n\nIn the future, the char * being handed to this function may be replaced with std::string reference ...",
+      "parentUuid": "15197672_16661aad",
+      "range": {
+        "startLine": 95,
+        "startChar": 8,
+        "endLine": 95,
+        "endChar": 14
+      },
+      "revId": "0790494c3ac95c278cdf2b9a460459dc7ee3990b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f86a1765_1383363e",
         "filename": "logd/LogWhiteBlackList.cpp",
         "patchSetId": 3
@@ -105,6 +177,30 @@
       "writtenOn": "2015-09-30T00:27:52Z",
       "side": 1,
       "message": "nit: strcmp !\u003d 0",
+      "range": {
+        "startLine": 98,
+        "startChar": 13,
+        "endLine": 98,
+        "endChar": 38
+      },
+      "revId": "0790494c3ac95c278cdf2b9a460459dc7ee3990b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15a33681_e3d0926d",
+        "filename": "logd/LogWhiteBlackList.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-09-30T16:55:06Z",
+      "side": 1,
+      "message": "TL;DR\n\nPlease, no sugar in my coffee.\n\nIn Android, there is no specification for either form, utilizing strcmp (or other zero or none-zero functions, methods or vars) results as a boolean, or checking if equal or not equal to 0. We can use either. One will find that there are significantly more cases of !strcmp() than strcmp() \u003d\u003d 0 in the source tree in Android, and thus why I chose to use the prevailing form. NB: bionic library is the exception, they tend to use the equal form (BSD).\n\nMy first introduction to being reviewed here also showed that bias, I was instructed to please use the shorter/sweeter boolean form.\n\nThis is also the case for Linux regarding lack of coding standard, and a bias towards treating strcmp and its ilk as a boolean.\n\nI have used this boolean form exclusively in logd, so to change this to \u003d\u003d 0 or !\u003d 0 would result in a non-consistent coding standard locally.\n\nI have caught myself occasionally (!religiously ;-} ) checking for this in each project that I issue modifications to.",
+      "parentUuid": "f86a1765_1383363e",
       "range": {
         "startLine": 98,
         "startChar": 13,
