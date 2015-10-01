@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "15a33681_d7918cd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2015-10-01T02:30:45Z",
+      "side": 1,
+      "message": "I think if some fd only wants to read or only wants to write, it will call synchronized read/write directly, instead of going through fdevent. If you read services.cpp, you can find many services running in a separate thread and do synchronized read/write.\n\nI agree it is weird that why I get a FDE_READ when I only register for FDE_WRITE. Ideally I want to make all errors return FDE_ERROR. But I am not confident in making the change now. So I prefer to stay on using FDE_READ for error processing for stability.",
+      "parentUuid": "75439281_1eb54db4",
+      "range": {
+        "startLine": 20,
+        "startChar": 60,
+        "endLine": 21,
+        "endChar": 37
+      },
+      "revId": "b1f7c070ff21522384ce4d6e57c97e4a07ce3d0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "953c86f3_1fa1c395",
         "filename": "adb/fdevent.cpp",
         "patchSetId": 1
