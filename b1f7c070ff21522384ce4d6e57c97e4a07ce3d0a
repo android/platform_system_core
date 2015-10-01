@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d55b5e6b_083fcf77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-01T02:55:58Z",
+      "side": 1,
+      "message": "Ok. Let me know how I should proceed with this review.\n\nBTW, sysdeps_win32.cpp says in a comment \u0027fdevents emulation: this is a very simple implementation, we rely on the fact that ADB doesn\u0027t use FDE_ERROR\u0027. I\u0027m not really sure if the code is really relying on that.\n\nBut I do think that the sysdeps_win32 fdevents code is somewhat scary:\n\n* Windows has select(), but because sysdeps has a custom socketpair implementation, select() won\u0027t work with it, so then WaitForMultipleObjects() + WSAEventSelect() was used instead.\n\n* (Even without the custom socketpair implementation, select() probably wouldn\u0027t work anyway because it is limited to 64 sockets on Windows. But WaitForSingleObjects() is also limited to 64 so sysdeps has a gross hack to make it work beyond 64.)\n\n* WSAEventSelect() requires that after an event occurs, that a \u0027re-enabling\u0027 function (like recv/send) be called, and if it isn\u0027t called, you won\u0027t get future events for a socket. Is this requirement satisfied by adb code? Perhaps, but I\u0027m not sure (maybe I will try to write a test case for this). The worst case scenario is hangs I guess.\n\n* Windows Vista has WSAPoll(), but from reading the web, it sounds buggy and not often used.\n\nBasically, Windows has a different I/O model than Unix. Windows really wants to use an I/O completion port with I/Os posted ahead of time instead of waiting for readiness. But that design is all about performance and I don\u0027t think Windows adb is having any performance issues (seems like reliability is the #1 issue hence why I\u0027m looking at this sysdeps code).\n\nAnyway, I just wanted to give you a sense of what the Windows side has to deal with to keep fdevents working.",
+      "parentUuid": "15a33681_d7918cd9",
+      "range": {
+        "startLine": 20,
+        "startChar": 60,
+        "endLine": 21,
+        "endChar": 37
+      },
+      "revId": "b1f7c070ff21522384ce4d6e57c97e4a07ce3d0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "953c86f3_1fa1c395",
         "filename": "adb/fdevent.cpp",
         "patchSetId": 1
