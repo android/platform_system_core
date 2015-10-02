@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9555663b_59b6b632",
+        "filename": "logd/LogStatistics.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2015-10-02T21:54:14Z",
+      "side": 1,
+      "message": "How about doing something like this for all of the split strncmps you have in this CL?\n\n  static inline bool logdstrncmp(const char *s1, const char *s2, size_t len) {\n    return (s1[0] !\u003d s2[0] || strncmp(s1+1, s2+1, len-1));\n  }\n\nSplitting the strings each time (eg \"C\"  \"PU\") makes the code less readable.",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 1
+      },
+      "revId": "1a596e5f5ddcf5f2edb3d0c6de957ab1ba4217c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
