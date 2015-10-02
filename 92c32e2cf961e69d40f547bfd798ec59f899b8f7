@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b5526a4f_ada51518",
+        "filename": "init/init.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-10-02T16:58:00Z",
+      "side": 1,
+      "message": "yeah, i almost made the same comment. only thing that held me back is that if anyone _does_ screw this up, it\u0027ll be really hard to debug because the device will reboot if init dies.",
+      "parentUuid": "953c86f3_0bf50046",
+      "revId": "92c32e2cf961e69d40f547bfd798ec59f899b8f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fb745b5_a7f4eab8",
         "filename": "init/property_service.cpp",
         "patchSetId": 4
@@ -83,6 +101,24 @@
       "writtenOn": "2015-10-01T23:59:08Z",
       "side": 1,
       "message": "Ill caveat this with I am a C++ idiot, but why are we not using static_cast here?",
+      "revId": "92c32e2cf961e69d40f547bfd798ec59f899b8f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "354d9aaf_633dd1a3",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-10-02T16:58:00Z",
+      "side": 1,
+      "message": "you can. some people prefer reinterpret_cast because it shouts \"danger! crappy type-unsafe C API here!\". others prefer static_cast because it\u0027s the weakest cast that will still work. i\u0027ll +2 either (but tend to use reinterpret_cast personally; i\u0027ve never seen anyone make the mistakes that static_cast would prevent in this specific circumstance).",
+      "parentUuid": "75439281_c8a04070",
       "revId": "92c32e2cf961e69d40f547bfd798ec59f899b8f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
