@@ -16,6 +16,24 @@
       "revId": "1743f22b5c20e8a0b7bf2a30ff6eb0aa99cb0de1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0435d80_2dbf3911",
+        "filename": "logd/LogCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-10-07T21:35:44Z",
+      "side": 1,
+      "message": "Reading /proc/\u003cpid\u003e/status is rife with race conditions. All of /proc suffers from this and its use should be minimized.\n\nNotably the content from one 4KB page to the next 4KB page can be from a change in shape if we are gracious enough to attempt to read atomically. getline(here) and fgets(before) can not even guarantee a 1KB read is not split up and in effect can read from different vintages of the content from this /proc file.\n\nWhen this was originally coded, the reviewer adamantly hated the race condition, but could not come up with any other option. We settled to agree that this sucked. We read once (before) and declared the design was we would err on denying access if we could not get the clear content we expected. Tough. We ran a test on this continuously and found we never had a fallout on-platform; but now I suspect that test was flawed (maybe did not have the perms hidden in the groups, we should have run a test via adb as well, rather than natively on the platform).\n\nThis design requirement has changed, as we are finding out in the field that a \u0027logcat -c\u0027 via adb (which has the perms hidden in the groups) occasionally is returned with permission denied and breaking scripts. gTest probably can never catch this problem, an external script calling adb on \"user\" may be a required. We still err on denying access if in doubt, but we expect the falses should be reduced significantly.\n\nThree times is a charm(tm)",
+      "parentUuid": "105c2963_6d781db5",
+      "revId": "1743f22b5c20e8a0b7bf2a30ff6eb0aa99cb0de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
