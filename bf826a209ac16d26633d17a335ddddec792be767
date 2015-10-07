@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d00a915c_0956bdeb",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-10-07T22:43:27Z",
+      "side": 1,
+      "message": "These three flags are all orthogonal; this is really three separate loops, sharing the same iteration ;-}. continue would be superfluous (and BTW, unnecessary even if the flags were not orthogonal, clear and report size would be a nice feature).",
+      "parentUuid": "704d65ae_ab6975e6",
+      "revId": "bf826a209ac16d26633d17a335ddddec792be767",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d03c51f4_939dccac",
         "filename": "logcat/logcat.cpp",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "90673931_8a475711",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-10-07T22:43:27Z",
+      "side": 1,
+      "message": "Even if the flags are not orthogonal, set and read size would be a nice feature :-)\n\nNot changing that functionality today.",
+      "parentUuid": "d03c51f4_939dccac",
+      "revId": "bf826a209ac16d26633d17a335ddddec792be767",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "504861a0_8ac6332c",
         "filename": "logcat/logcat.cpp",
         "patchSetId": 1
@@ -47,6 +83,47 @@
       "writtenOn": "2015-10-07T20:44:33Z",
       "side": 1,
       "message": "We just report errors for the last dev with each error... is that OK? would we be more interested in the first failure?",
+      "revId": "bf826a209ac16d26633d17a335ddddec792be767",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0435d80_d83495cb",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-10-07T22:43:27Z",
+      "side": 1,
+      "message": "\u003csigh\u003e KISS\n\nI am not going to dedicate a list just to propagate mundane details. I would prefer to place the name for the first one, and if it is already set, put a null string instead (none NULL pointer) so that we get _one_ message. Would that be OK?\n\nI am hating how complicated this loop is getting, and the associated error tracking.\n\nI expect only _one_ will give us problems, or _all_, but the good news is that even if more than one, as it stands now we still report an error code back to the caller (scripts) and _one_ error message.\n\nIf this really bothers you, then I need to create logcat_error handler for the loops above ... then exit an error code here. What I did not like about that was that we would report several lines (6 if -b all) of error messages all saying the same thing except for the log buffer reference.\n\nThe user is a script, I expect it does not care _which_ buffer failed. A user would consider 6 lines of dump bad behavior, so one message if at all possible.",
+      "parentUuid": "504861a0_8ac6332c",
+      "revId": "bf826a209ac16d26633d17a335ddddec792be767",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5061411e_3c301027",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-10-07T22:43:27Z",
+      "side": 1,
+      "message": "I do not need the quotes, makes it complicated if clearFail \u003d\u003d \"\"?",
+      "range": {
+        "startLine": 881,
+        "startChar": 55,
+        "endLine": 881,
+        "endChar": 59
+      },
       "revId": "bf826a209ac16d26633d17a335ddddec792be767",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
