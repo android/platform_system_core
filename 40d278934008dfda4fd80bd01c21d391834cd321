@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "5061411e_2760028d",
+        "filename": "crash_reporter/crash_reporter.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2015-10-07T16:52:22Z",
+      "side": 1,
+      "message": "Maybe add a comment here that these directories are group-writable by root so that crash reporter can still access them when switching users:\n\n# These directories are group-writable by root so that\n# crash_reporter can still access them when it switches \n# users.",
+      "range": {
+        "startLine": 17,
+        "startChar": 36,
+        "endLine": 17,
+        "endChar": 40
+      },
+      "revId": "40d278934008dfda4fd80bd01c21d391834cd321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5061411e_e7ba8a48",
+        "filename": "crash_reporter/user_collector.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2015-10-07T16:52:22Z",
+      "side": 1,
+      "message": "Update comment?",
+      "range": {
+        "startLine": 93,
+        "startChar": 44,
+        "endLine": 93,
+        "endChar": 59
+      },
+      "revId": "40d278934008dfda4fd80bd01c21d391834cd321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5061411e_67a83afb",
+        "filename": "crash_reporter/user_collector.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2015-10-07T16:52:22Z",
+      "side": 1,
+      "message": "Why do you need to get c_str() here?",
+      "range": {
+        "startLine": 231,
+        "startChar": 63,
+        "endLine": 231,
+        "endChar": 71
+      },
+      "revId": "40d278934008dfda4fd80bd01c21d391834cd321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50422131_8bcecd8c",
         "filename": "crash_reporter/user_collector.cc",
         "patchSetId": 1
@@ -19,6 +88,29 @@
     },
     {
       "key": {
+        "uuid": "5061411e_a799b2ec",
+        "filename": "crash_reporter/user_collector.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2015-10-07T16:52:22Z",
+      "side": 1,
+      "message": "Maybe log the permissions too? (in octal)",
+      "range": {
+        "startLine": 241,
+        "startChar": 34,
+        "endLine": 241,
+        "endChar": 45
+      },
+      "revId": "40d278934008dfda4fd80bd01c21d391834cd321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "104d095a_11e3ec08",
         "filename": "crash_reporter/user_collector.cc",
         "patchSetId": 1
@@ -30,6 +122,24 @@
       "writtenOn": "2015-10-07T15:50:17Z",
       "side": 1,
       "message": "shouldn\u0027t you be checking the return value ?",
+      "revId": "40d278934008dfda4fd80bd01c21d391834cd321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "504861a0_c49cb4de",
+        "filename": "crash_reporter/user_collector.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2015-10-07T16:52:22Z",
+      "side": 1,
+      "message": "This can only fail if the pointers fault.",
+      "parentUuid": "104d095a_11e3ec08",
       "revId": "40d278934008dfda4fd80bd01c21d391834cd321",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -81,6 +191,29 @@
       "writtenOn": "2015-10-07T15:50:17Z",
       "side": 1,
       "message": "same here",
+      "revId": "40d278934008dfda4fd80bd01c21d391834cd321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "704d65ae_854108cf",
+        "filename": "crash_reporter/user_collector.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2015-10-07T16:52:22Z",
+      "side": 1,
+      "message": "What\u0027s |container_dir| in this context? Shouldn\u0027t it be enough to give it group writable permissions and not have to change the permissions?\n\nI.e. you are running as root:root, change to \u003cuid of crashing program\u003e:root? Is it necessary to call setresgid above?",
+      "range": {
+        "startLine": 459,
+        "startChar": 12,
+        "endLine": 459,
+        "endChar": 25
+      },
       "revId": "40d278934008dfda4fd80bd01c21d391834cd321",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
