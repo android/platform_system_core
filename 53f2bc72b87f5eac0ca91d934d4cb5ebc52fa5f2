@@ -22,6 +22,30 @@
       "revId": "53f2bc72b87f5eac0ca91d934d4cb5ebc52fa5f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "504861a0_15d364e4",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-10-07T22:50:32Z",
+      "side": 1,
+      "message": "The busy \u003d prune(id, 1, uid)\n\nDoes not clear, it merely removes one entry if it needs to. I figured the 1 is very clearly not a ULONG_MAX. Its real purpose it to check if it is still busy after the sleep, if it is still busy, then we want to tell all the readers to \u0027go away\u0027, we kill them, then do yet another run to clear all the entries ULONG_MAX. If it is not busy, then we preserve the readers and let one more run go unhindered.\n\nThe one-line comment on line 663 describes what we are doing, it is obviously not enough comment ;-{",
+      "parentUuid": "30592d74_2fae190a",
+      "range": {
+        "startLine": 673,
+        "startChar": 12,
+        "endLine": 676,
+        "endChar": 9
+      },
+      "revId": "53f2bc72b87f5eac0ca91d934d4cb5ebc52fa5f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
