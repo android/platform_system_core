@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30592d74_2fae190a",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2015-10-07T21:02:31Z",
+      "side": 1,
+      "message": "Did you intend to do a \"break\" within the \"retry \u003d\u003d 1\" block? If not, then this is really the 2nd-to-last pass since we will go back to the top of the loop and execute lines 665-667 again. Seems odd.\n\nWould it be better to change 668+ to:\n\n  if (!busy)\n      break;\n  if (!--retry) {\n    // last pass\n    \u003call the last pass stuff\u003e\n    break;\n  }",
+      "range": {
+        "startLine": 673,
+        "startChar": 12,
+        "endLine": 676,
+        "endChar": 9
+      },
+      "revId": "53f2bc72b87f5eac0ca91d934d4cb5ebc52fa5f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
