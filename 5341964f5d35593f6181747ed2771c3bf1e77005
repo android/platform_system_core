@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "054dc959_b75cd0d6",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-10-09T19:35:30Z",
+      "side": 1,
+      "message": "This logic is flawed, it should not automatically set the head if UID is worst _if_ worstPid is in effect:\n\nif ((!gc \u0026\u0026 !worstPid) \u0026\u0026 ...\n\nThe result in long term testing has shown that mLastWorstUid has a flawed value in it whenever the logs managed to get down to a single proprietor (sort returns only one).",
+      "range": {
+        "startLine": 587,
+        "startChar": 0,
+        "endLine": 591,
+        "endChar": 17
+      },
+      "revId": "5341964f5d35593f6181747ed2771c3bf1e77005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8538d9b1_36b45e5c",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-10-09T19:35:30Z",
+      "side": 1,
+      "message": "ditto\n\nif ((!gc \u0026\u0026 !worstPid)) ||",
+      "range": {
+        "startLine": 628,
+        "startChar": 24,
+        "endLine": 628,
+        "endChar": 27
+      },
+      "revId": "5341964f5d35593f6181747ed2771c3bf1e77005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
