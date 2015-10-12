@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "ff32061b_aab33322",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-12T23:00:36Z",
+      "side": 1,
+      "message": "This may be a dumb question, but why isn\u0027t this just:\n\nif (args-\u003eprotocol) {\n  // This method would send some protocol msg to cause adbd\n  // to do close(fd) so that the subprocess would get read() \u003d\u003d 0\n  args-\u003eprotocol-\u003eClose(...);\n} else {\n  // close the socket, so the other side will see recv() \u003d\u003d 0\n  adb_close(args-\u003ewrite_fd);\n}",
+      "range": {
+        "startLine": 457,
+        "startChar": 12,
+        "endLine": 460,
+        "endChar": 13
+      },
+      "revId": "a7c6f13070c9826c85a4324fd156455bdb66dbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f30ba11_4b2eedc8",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-12T23:00:36Z",
+      "side": 1,
+      "message": "Couldn\u0027t stdin_read_thread() still be using `fd` (aka args-\u003ewrite_fd) concurrently? Is it safe to close it here without synchronization?",
+      "range": {
+        "startLine": 570,
+        "startChar": 8,
+        "endLine": 570,
+        "endChar": 21
+      },
+      "revId": "a7c6f13070c9826c85a4324fd156455bdb66dbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff32061b_27abdec7",
+        "filename": "adb/shell_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-12T23:00:36Z",
+      "side": 1,
+      "message": "Just a reminder to test this error case. I found that (on Windows at least), shutdown() returned an error when the socket was no longer connected, which somewhat surprised me.",
+      "range": {
+        "startLine": 511,
+        "startChar": 24,
+        "endLine": 511,
+        "endChar": 70
+      },
+      "revId": "a7c6f13070c9826c85a4324fd156455bdb66dbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff32061b_c7b9521e",
+        "filename": "adb/sysdeps.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-12T23:00:36Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ve been thinking of adding this too. This is what should have been there originally in the first place.",
+      "range": {
+        "startLine": 491,
+        "startChar": 23,
+        "endLine": 491,
+        "endChar": 58
+      },
+      "revId": "a7c6f13070c9826c85a4324fd156455bdb66dbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfb7aeb4_6794b213",
         "filename": "adb/sysdeps_win32.cpp",
         "patchSetId": 1
@@ -13,6 +105,30 @@
       "writtenOn": "2015-10-12T17:14:19Z",
       "side": 1,
       "message": "(Spencer maybe you\u0027ll have some insight here? My Windows programming is weak)\n\nDoes this seem like a reasonable value? I couldn\u0027t find much information on why this happens but it seems to be the same issue as this: http://sourceforge.net/p/sevenzip/bugs/645/.",
+      "range": {
+        "startLine": 3273,
+        "startChar": 0,
+        "endLine": 3275,
+        "endChar": 13
+      },
+      "revId": "a7c6f13070c9826c85a4324fd156455bdb66dbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df39c202_c9e4c904",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3275,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-12T23:00:36Z",
+      "side": 1,
+      "message": "Let me look into this further and get back to you.",
+      "parentUuid": "bfb7aeb4_6794b213",
       "range": {
         "startLine": 3273,
         "startChar": 0,
