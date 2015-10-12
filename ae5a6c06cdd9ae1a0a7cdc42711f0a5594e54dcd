@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf5b2e3e_07c8363a",
+        "filename": "adb/file_sync_client.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-12T05:31:33Z",
+      "side": 1,
+      "message": "ReadFileToString() does not currently support Unicode filenames on Windows so this effectively breaks adb push with Unicode filenames on Windows with small-sized files. I found this by running the python Unicode unittest that you wrote. :)\n\nPotential fix ideas:\n\n* Short-term: don\u0027t do the small-sized file optimization for Windows, killing the perf benefit for Windows, but getting things working again.\n* Move the Windows Unicode stuff into android::base. I\u0027m not really a fan of this since the code still feels too new to move into android::base.\n* Just move a little bit of Windows Unicode stuff into android::base. It might be possible to do this with only 20-30 lines and it would be under #ifdef _WIN32 so it wouldn\u0027t impact the unix users of android::base.\n* ...?\n\nI see that there are many people on this code review, so if you want to discuss further, email is ok too. Thanks.",
+      "range": {
+        "startLine": 342,
+        "startChar": 13,
+        "endLine": 342,
+        "endChar": 58
+      },
+      "revId": "ae5a6c06cdd9ae1a0a7cdc42711f0a5594e54dcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
