@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7fa9b65d_bf1ce77e",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-13T16:23:12Z",
+      "side": 1,
+      "message": "Not a dumb question at all, I was attempting to make that exact approach work for a while :)\n\nClosing the socket entirely is great because this loop won\u0027t hang, but it could miss an arbitrary amount of return data. For example if we were to send a lot of data without the shell protocol:\n\n  $ cat \u003clarge_file\u003e | adb shell -x cat\n\nthis stdin loop will hit the end of input and close the FD before all the return data is received.\n\nNeither option is ideal but IMO it\u0027s better to be predictable and cumbersome than sometimes work and sometimes silently drop data.",
+      "parentUuid": "ff32061b_aab33322",
+      "range": {
+        "startLine": 457,
+        "startChar": 12,
+        "endLine": 460,
+        "endChar": 13
+      },
+      "revId": "a7c6f13070c9826c85a4324fd156455bdb66dbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f30ba11_4b2eedc8",
         "filename": "adb/commandline.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-10-12T23:00:36Z",
       "side": 1,
       "message": "Couldn\u0027t stdin_read_thread() still be using `fd` (aka args-\u003ewrite_fd) concurrently? Is it safe to close it here without synchronization?",
+      "range": {
+        "startLine": 570,
+        "startChar": 8,
+        "endLine": 570,
+        "endChar": 21
+      },
+      "revId": "a7c6f13070c9826c85a4324fd156455bdb66dbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfb7aeb4_f6cfeeb0",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-13T16:23:12Z",
+      "side": 1,
+      "message": "Hmm you\u0027re absolutely right, thanks! I\u0027d love to properly exit the stdin read thread before this point but it seems tricky to do portably since afaik Windows doesn\u0027t have signals to interrupt reads and can\u0027t use select() on stdin.\n\nFor now I think I\u0027ll just leave this FD open, which isn\u0027t great, but seems to be the current behavior for interactive `adb shell`. I\u0027ll have to take some time and revisit this in another CL.",
+      "parentUuid": "1f30ba11_4b2eedc8",
       "range": {
         "startLine": 570,
         "startChar": 8,
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "1f30ba11_916e662c",
+        "filename": "adb/shell_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-13T16:23:12Z",
+      "side": 1,
+      "message": "This code is device-side only, doing exactly as you describe; this closes the subprocess stdin FD, but leaves stdout and stderr open so that the subprocess can continue to spit out data if necessary. I only close the entire FD if the shutdown() call fails.",
+      "parentUuid": "ff32061b_750f50b5",
+      "range": {
+        "startLine": 511,
+        "startChar": 24,
+        "endLine": 511,
+        "endChar": 70
+      },
+      "revId": "a7c6f13070c9826c85a4324fd156455bdb66dbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff32061b_c7b9521e",
         "filename": "adb/sysdeps.h",
         "patchSetId": 1
@@ -106,6 +178,30 @@
       "writtenOn": "2015-10-12T23:00:36Z",
       "side": 1,
       "message": "Thanks, I\u0027ve been thinking of adding this too. This is what should have been there originally in the first place.",
+      "range": {
+        "startLine": 491,
+        "startChar": 23,
+        "endLine": 491,
+        "endChar": 58
+      },
+      "revId": "a7c6f13070c9826c85a4324fd156455bdb66dbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fa3be81_b2873e4f",
+        "filename": "adb/sysdeps.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-13T16:23:12Z",
+      "side": 1,
+      "message": "Sorry to disappoint, I\u0027m only defining it for Linux at the moment :( I only need this on the device side for this CL and didn\u0027t want to worry about any Windows stuff that I didn\u0027t have to.",
+      "parentUuid": "ff32061b_c7b9521e",
       "range": {
         "startLine": 491,
         "startChar": 23,
@@ -177,6 +273,30 @@
       "side": 1,
       "message": "Ok, here\u0027s what I\u0027ve learned: On Windows 7, reading from a console uses the LPC subsystem of Windows which happens to use a 64k \"heap\" which is chopped up for IO operations. In practice, 31366 bytes seems to be the max allowed size. 16384 would probably be fine to use, but I don\u0027t see any point: a conservative 4096 is fine since a larger value doesn\u0027t buy us anything since this is just console IO.\n\nWindows 10 doesn\u0027t seem to have this issue since they rewrote the console stuff. I didn\u0027t try Vista or Win8 and I think for simplification purposes it is fine to use the same size on all Windows versions.\n\nI do have one suggestion to make: instead of if (fd \u003d\u003d STDIN..., how about something like:\n\n// Check if this is a console. This may also catch devices like NUL, but\n// that is ok as we just want to avoid pipes and files which don\u0027t need\n// size limiting. This isatty() test is very simple and quick\n// and doesn\u0027t call the OS.\nif (isatty(fd)) {\n  // On older versions of Windows (definitely 7, definitely not 10),\n  // ReadConsole() with a size \u003e\u003d 31367 fails, so limit the read size.\n  if (len \u003e 4096) {\n    len \u003d 4096;\n  }\n}\n\nThe idea is to use the original size for pipes \u0026 files and only do this weirdness for consoles (and corner cases that isatty() gets wrong, but that aren\u0027t important).\n\nPlease feel free to edit my suggestion as you like (i.e. you don\u0027t need to use my exact text, you can combine, edit, etc.). Thanks.\n\nP.S. I don\u0027t envy your test matrix. :)",
       "parentUuid": "df39c202_c9e4c904",
+      "range": {
+        "startLine": 3273,
+        "startChar": 0,
+        "endLine": 3275,
+        "endChar": 13
+      },
+      "revId": "a7c6f13070c9826c85a4324fd156455bdb66dbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfb7aeb4_a1d7f221",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3275,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-13T16:23:12Z",
+      "side": 1,
+      "message": "Will do, thanks! Really appreciate you looking into this.",
+      "parentUuid": "df39c202_34266886",
       "range": {
         "startLine": 3273,
         "startChar": 0,
