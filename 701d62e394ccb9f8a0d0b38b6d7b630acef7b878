@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df39c202_cf41696f",
+        "filename": "liblog/logprint.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2015-10-13T16:09:22Z",
+      "side": 1,
+      "message": "Seems like it would be better to drop the \"const\" from the prototype rather than force-dropping it via the cast. The caller then is explicitly aware that entry might be modified.",
+      "revId": "701d62e394ccb9f8a0d0b38b6d7b630acef7b878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfb7aeb4_568d9a75",
+        "filename": "liblog/logprint.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1019,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2015-10-13T16:09:22Z",
+      "side": 1,
+      "message": "This eclipses the \"AndroidLogEntry *e\" declared at 987. Can you use a unique local name?",
+      "range": {
+        "startLine": 1019,
+        "startChar": 27,
+        "endLine": 1019,
+        "endChar": 28
+      },
+      "revId": "701d62e394ccb9f8a0d0b38b6d7b630acef7b878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fa8725b_f808396b",
+        "filename": "liblog/logprint.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1266,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2015-10-13T16:09:22Z",
+      "side": 1,
+      "message": "Should this be done in the caller so we can keep the \"const\" promise?",
+      "range": {
+        "startLine": 1264,
+        "startChar": 4,
+        "endLine": 1266,
+        "endChar": 5
+      },
+      "revId": "701d62e394ccb9f8a0d0b38b6d7b630acef7b878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f30ba11_719c82aa",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2015-10-13T16:09:22Z",
+      "side": 1,
+      "message": "Do the conversion here?\n\n    if (g_logformat-\u003emonotonic_output) {\n        convertMonotonic(entry);\n    }\n    bytesWritten \u003d android_log_printLogLine(g_logformat, g_outFD, \u0026entry);",
+      "revId": "701d62e394ccb9f8a0d0b38b6d7b630acef7b878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
