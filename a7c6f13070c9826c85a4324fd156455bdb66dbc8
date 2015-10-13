@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9fae6a64_a0ee06e0",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-13T20:56:28Z",
+      "side": 1,
+      "message": "Given your cat example, why not do a socket half-close with shutdown(SHUT_WR), since that\u0027s what it was designed for? And as you\u0027ve explained, you\u0027re already doing that in adbd? In other words:\n\nif (args-\u003eprotocol) {\n  // This method would send some protocol msg to cause\n  // adbd to do shutdown(fd, SHUT_WR) so that the subprocess\n  // would get read()\u003d\u003d0, but the subprocess would still\n  // be able to write, and adbd would still be able to read from\n  // the subprocess.\n  args-\u003eprotocol-\u003eClose(ShellProtocol::kIdStdin); // this is basically already what you\u0027re doing\n} else {\n  // cause the other side to see recv()\u003d\u003d0, but the other side\n  // can still write to the fd.\n  shutdown(args-\u003ewrite_fd, SHUT_WR);\n}\n\nThough one problem I see with this is that I\u0027ve recently found that on Windows, if the adb client does close(sock) or shutdown(sock, SHUT_WR) before the adb server, the client socket stays in TIME_WAIT and eventually the adb client will run out of free ports and it will be unable to connect to the adb server until TIME_WAIT expires. I\u0027ve got a code review to solve this for a variety of places in adb, but adding the shutdown() above might break my fix, but it still might be preferable to do the shutdown() call anyway since it will make \u0027adb shell echo hello\u0027 not hang.\n\nThoughts?",
+      "parentUuid": "7fa9b65d_bf1ce77e",
+      "range": {
+        "startLine": 457,
+        "startChar": 12,
+        "endLine": 460,
+        "endChar": 13
+      },
+      "revId": "a7c6f13070c9826c85a4324fd156455bdb66dbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f30ba11_4b2eedc8",
         "filename": "adb/commandline.cpp",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Hmm you\u0027re absolutely right, thanks! I\u0027d love to properly exit the stdin read thread before this point but it seems tricky to do portably since afaik Windows doesn\u0027t have signals to interrupt reads and can\u0027t use select() on stdin.\n\nFor now I think I\u0027ll just leave this FD open, which isn\u0027t great, but seems to be the current behavior for interactive `adb shell`. I\u0027ll have to take some time and revisit this in another CL.",
       "parentUuid": "1f30ba11_4b2eedc8",
+      "range": {
+        "startLine": 570,
+        "startChar": 8,
+        "endLine": 570,
+        "endChar": 21
+      },
+      "revId": "a7c6f13070c9826c85a4324fd156455bdb66dbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fae6a64_804c2ab3",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-13T20:56:28Z",
+      "side": 1,
+      "message": "Does it really make sense to have this thread cause the stdin_read_thread to exit? Or does it make more sense for this thread to wait for the stdin_read_thread to exit? The latter is not too hard to do cross-platform (basically, pthread_join on *nix, and WaitForSingleObject(thread_handle) on Windows).\n\nBut yeah, I don\u0027t see this as super-critical, so fine to leave it for another day.",
+      "parentUuid": "bfb7aeb4_f6cfeeb0",
       "range": {
         "startLine": 570,
         "startChar": 8,
@@ -155,6 +203,30 @@
       "side": 1,
       "message": "This code is device-side only, doing exactly as you describe; this closes the subprocess stdin FD, but leaves stdout and stderr open so that the subprocess can continue to spit out data if necessary. I only close the entire FD if the shutdown() call fails.",
       "parentUuid": "ff32061b_750f50b5",
+      "range": {
+        "startLine": 511,
+        "startChar": 24,
+        "endLine": 511,
+        "endChar": 70
+      },
+      "revId": "a7c6f13070c9826c85a4324fd156455bdb66dbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fae6a64_40563243",
+        "filename": "adb/shell_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-13T20:56:28Z",
+      "side": 1,
+      "message": "Ah, ok, thanks for explaining.",
+      "parentUuid": "1f30ba11_916e662c",
       "range": {
         "startLine": 511,
         "startChar": 24,
