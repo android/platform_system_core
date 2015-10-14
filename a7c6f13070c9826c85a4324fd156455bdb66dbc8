@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "dfb462b2_651821c1",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-14T00:05:18Z",
+      "side": 1,
+      "message": "The problem is that adbd has to know to close only the subprocess stdin, which is only available with code added in this CL. I don\u0027t think there\u0027s any way to get around this just by changing client or server code, because for existing devices as soon as a read() returns 0 it will close the whole FD immediately.\n\nIn a sense I\u0027m using the shell protocol check to see if the device knows how to close just stdin. If so, either a 0-length message or shutdown(SHUT_WR) could probably be used to trigger this condition, but the explicit 0-length message requires much less logic.\n\nLet me know if this is unclear or still seems incorrect and I\u0027ll dig a bit deeper, but in my testing so far this seems to be the case.",
+      "parentUuid": "9fae6a64_a0ee06e0",
+      "range": {
+        "startLine": 457,
+        "startChar": 12,
+        "endLine": 460,
+        "endChar": 13
+      },
+      "revId": "a7c6f13070c9826c85a4324fd156455bdb66dbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f30ba11_4b2eedc8",
         "filename": "adb/commandline.cpp",
         "patchSetId": 1
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "I think my comment about waiting for stdin_read_thread is too naive because sometimes the command finishes, but stdin is still open. So ignore me.",
       "parentUuid": "9fae6a64_804c2ab3",
+      "range": {
+        "startLine": 570,
+        "startChar": 8,
+        "endLine": 570,
+        "endChar": 21
+      },
+      "revId": "a7c6f13070c9826c85a4324fd156455bdb66dbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfb462b2_45439d27",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-14T00:05:18Z",
+      "side": 1,
+      "message": "Yeah I was just about to mention that :) Unfortunately you\u0027re right either the subprocess or stdin could finish first.",
+      "parentUuid": "ff32061b_0d1cf434",
       "range": {
         "startLine": 570,
         "startChar": 8,
