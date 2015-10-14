@@ -46,6 +46,29 @@
       "revId": "a10801674cb9e23ae549fb7f861cb33d8c629e80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff32061b_e055578d",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-14T00:12:58Z",
+      "side": 1,
+      "message": "I\u0027m seeing this CHECK(it !\u003d g_poll_node_map.end()) fail when doing the following:\n\n1. Startup emulator (should happen on device too).\n2. adb reverse tcp:12345 tcp:12345\n3. adb reverse --remove tcp:12345\n\nThe last command will output an error because adbd aborts on the CHECK(). Reconnect and run logcat and it shows:\n\nF/adbd    ( 2157): fdevent.cpp:250] Check failed: it !\u003d g_poll_node_map.end()\n\nI see at least one problem: service_to_fd() runs reverse_service() in a new thread. The new thread eventually does remove_listener() which does free_listener() which does fdevent_remove(). But this is happening off the main thread, breaking fdevents\u0027 thread-safety assumption. Ouch.\n\nI found this when trying to run a unittest I\u0027m writing to test adb forward/reverse (to test some other random change I\u0027m working on).",
+      "range": {
+        "startLine": 236,
+        "startChar": 12,
+        "endLine": 236,
+        "endChar": 46
+      },
+      "revId": "a10801674cb9e23ae549fb7f861cb33d8c629e80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
