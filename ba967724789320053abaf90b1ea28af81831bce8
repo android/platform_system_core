@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5fa8725b_e171615c",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-15T00:20:59Z",
+      "side": 1,
+      "message": "For interactive sessions this is useful as an emergency exit, and it matches `ssh` behavior so shouldn\u0027t be taken out altogether.\n\nOn older devices piping input will still hang even with this CL, and putting \"\\n~.\" at the end can give users a way to close out piped input, so it\u0027s not totally useless. But if you think it might cause problems it seems reasonable to take it out for non-interactive inputs.",
+      "parentUuid": "7fa9b65d_76d45079",
+      "range": {
+        "startLine": 466,
+        "startChar": 8,
+        "endLine": 488,
+        "endChar": 9
+      },
+      "revId": "ba967724789320053abaf90b1ea28af81831bce8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df39c202_fbd348e6",
         "filename": "adb/commandline.cpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-10-14T23:38:22Z",
       "side": 1,
       "message": "In adb, the main thread can\u0027t control when child threads dead. I think that costs much effort and has little benefits. After all, every resource is released when the main thread exits.",
+      "range": {
+        "startLine": 524,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 18
+      },
+      "revId": "ba967724789320053abaf90b1ea28af81831bce8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df39c202_1b054cdf",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-15T00:20:59Z",
+      "side": 1,
+      "message": "The reason I want this is so that at some point install-multiple, which makes several connections to the device, can just reuse this shell function and we can remove \"exec\" entirely.\n\nI haven\u0027t looked into it too much yet but it seems better to document this behavior now in case someone starts heading down that path. It\u0027s possible we don\u0027t go this way but I figured it doesn\u0027t hurt to add a comment.",
+      "parentUuid": "df39c202_fbd348e6",
       "range": {
         "startLine": 524,
         "startChar": 0,
