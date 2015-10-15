@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "39611e20_f9622f15",
+        "filename": "adb/adb_io.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-15T23:21:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d952c250_3ea131d0",
+      "revId": "f9843ae79c7c6691d0f0695d95c546d54fa5b070",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1959ba73_5dc7cf75",
         "filename": "adb/commandline.cpp",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "996cca16_7c6e11c1",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-15T23:21:19Z",
+      "side": 1,
+      "message": "Yeah, good point. I\u0027ll wait for you Google people to set a precedent of using the class before moving on this. :)",
+      "parentUuid": "1959ba73_5dc7cf75",
+      "range": {
+        "startLine": 580,
+        "startChar": 12,
+        "endLine": 580,
+        "endChar": 26
+      },
+      "revId": "f9843ae79c7c6691d0f0695d95c546d54fa5b070",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99ae8a64_7a6441d7",
         "filename": "adb/test_adb.py",
         "patchSetId": 1
@@ -53,6 +95,30 @@
       "writtenOn": "2015-10-15T20:28:17Z",
       "side": 1,
       "message": "Not a big deal but I\u0027d recommend to either save the output to a variable and check it in test_emu_kill() or pass in the expected output to this function. That way the command input and expected output are defined close together in test_emu_kill to make the test more obvious.\n\nSide question: if assertEqual() fails here in a spawned thread does it in fact fail the test? I\u0027ve never tried this but a quick Google search seems to indicate that it might not.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 56
+      },
+      "revId": "f9843ae79c7c6691d0f0695d95c546d54fa5b070",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99f12aa5_d798d6e9",
+        "filename": "adb/test_adb.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-15T23:21:19Z",
+      "side": 1,
+      "message": "Good point, unittest asserts in spawned threads output the traceback, but don\u0027t fail the test. So I rewrote the test to use one thread combined with subprocess.Popen().\n\nThis moved all the code closer together so hopefully that should make the test more obvious.",
+      "parentUuid": "99ae8a64_7a6441d7",
       "range": {
         "startLine": 182,
         "startChar": 0,
