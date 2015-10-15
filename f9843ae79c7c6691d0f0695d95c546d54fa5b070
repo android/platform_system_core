@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d952c250_3ea131d0",
+        "filename": "adb/adb_io.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-15T20:28:17Z",
+      "side": 1,
+      "message": "Maybe describe return value here too? This returns true iff the server closed its side of the connection without sending any additional data, correct?",
+      "revId": "f9843ae79c7c6691d0f0695d95c546d54fa5b070",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1959ba73_5dc7cf75",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-15T20:28:17Z",
+      "side": 1,
+      "message": "In shell_service.cpp I have a helper class ScopedFd that will automatically close an FD when the object goes out of scope.\n\nIt could be useful here, though more than likely there are other places in this file that have this same pattern so it would probably be better to more methodically apply it to the file in another CL if we want to go that way. Feel free to ignore this, just wanted to mention the option :)",
+      "range": {
+        "startLine": 580,
+        "startChar": 12,
+        "endLine": 580,
+        "endChar": 26
+      },
+      "revId": "f9843ae79c7c6691d0f0695d95c546d54fa5b070",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99ae8a64_7a6441d7",
+        "filename": "adb/test_adb.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-15T20:28:17Z",
+      "side": 1,
+      "message": "Not a big deal but I\u0027d recommend to either save the output to a variable and check it in test_emu_kill() or pass in the expected output to this function. That way the command input and expected output are defined close together in test_emu_kill to make the test more obvious.\n\nSide question: if assertEqual() fails here in a spawned thread does it in fact fail the test? I\u0027ve never tried this but a quick Google search seems to indicate that it might not.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 56
+      },
+      "revId": "f9843ae79c7c6691d0f0695d95c546d54fa5b070",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
