@@ -140,6 +140,30 @@
     },
     {
       "key": {
+        "uuid": "3675adb9_969c8add",
+        "filename": "base/u8.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-22T22:00:00Z",
+      "side": 1,
+      "message": "Yeah, I think this comment doesn\u0027t add anything, so I\u0027ll kill it.",
+      "parentUuid": "194a9a42_2cd16f56",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 64
+      },
+      "revId": "9a8bfbf4b4e0479ff5ecff0787ddc978fe5c3312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9618ebd_91ec4c7b",
         "filename": "base/u8.cpp",
         "patchSetId": 2
@@ -151,6 +175,30 @@
       "writtenOn": "2015-10-22T18:28:07Z",
       "side": 1,
       "message": "As I understand it this should never happen since WideCharToMultiByte() will return the same value on both calls, but if we\u0027re going to check this case anyway, perhaps this should be a fatal() if result \u003e chars_required since that would indicate that we probably just corrupted some memory with a buffer overflow.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 3
+      },
+      "revId": "9a8bfbf4b4e0479ff5ecff0787ddc978fe5c3312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "166d09ed_1da977fd",
+        "filename": "base/u8.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-22T22:00:00Z",
+      "side": 1,
+      "message": "My thinking is that in reality the return value doesn\u0027t even need to be checked (since flags are already checked, invalid chars are already checked, size is already checked, etc.), but check it anyway for defensive programming (for anything unexpected). I\u0027m By Design not doing CHECK/LOG(FATAL) here since it seems like that should be up to the caller instead of a base library. After all, who knows where they\u0027re getting their strings.",
+      "parentUuid": "b9618ebd_91ec4c7b",
       "range": {
         "startLine": 62,
         "startChar": 0,
