@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "16d269e7_75ed42ba",
+        "filename": "base/file.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-22T23:08:23Z",
+      "side": 1,
+      "message": "So on Windows these functions will always do the conversion, right? What I\u0027ve read seems to indicate that the conversions are fairly expensive, do you think it\u0027s important to make this optional or add a check to these two functions to see if the conversion is necessary first? (Or maybe it\u0027s always necessary on Windows?)\n\nMy instinct is that it\u0027s probably fine as-is, I don\u0027t think anyone is going to be opening or deleting files in a tight enough loop to make performance matter, just wanted to mention it since I am pretty clueless about what else uses these functions besides adb.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 17
+      },
+      "revId": "9a8bfbf4b4e0479ff5ecff0787ddc978fe5c3312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3942fe30_9fa0c3cd",
         "filename": "base/u8.cpp",
         "patchSetId": 2
@@ -199,6 +222,30 @@
       "side": 1,
       "message": "My thinking is that in reality the return value doesn\u0027t even need to be checked (since flags are already checked, invalid chars are already checked, size is already checked, etc.), but check it anyway for defensive programming (for anything unexpected). I\u0027m By Design not doing CHECK/LOG(FATAL) here since it seems like that should be up to the caller instead of a base library. After all, who knows where they\u0027re getting their strings.",
       "parentUuid": "b9618ebd_91ec4c7b",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 3
+      },
+      "revId": "9a8bfbf4b4e0479ff5ecff0787ddc978fe5c3312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16d269e7_f554d237",
+        "filename": "base/u8.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-22T23:08:23Z",
+      "side": 1,
+      "message": "In general I agree returning an error is much better than dying. But the caller here has no way to know that this specific event occurred. There\u0027s a world of difference between \"the conversion failed\" and \"the conversion failed and we may have corrupted some of your program\u0027s memory\".\n\nIf result \u003e chars_required the program will hopefully have segfaulted already anyway, so exiting from the library is already a possibility. Adding a fatal() just makes it certain, to reduce randomness and prevent some poor programmer having to try to debug this if somehow it does come up.\n\nAs you say, this will almost certainly never happen, so if nobody else cares I\u0027m fine leaving this as-is, but IMO as long as we\u0027re defensive programming we might as well go all the way :)",
+      "parentUuid": "166d09ed_1da977fd",
       "range": {
         "startLine": 62,
         "startChar": 0,
