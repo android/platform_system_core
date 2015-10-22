@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f935c6bb_5808296b",
+        "filename": "base/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-22T08:45:47Z",
+      "side": 1,
+      "message": "Instead of using these *_windows_* variables, I could instead just put the contents of the file under #ifdef _WIN32. I\u0027m open to ideas.",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 15
+      },
+      "revId": "9a8bfbf4b4e0479ff5ecff0787ddc978fe5c3312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3942fe30_9fa0c3cd",
+        "filename": "base/u8.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-22T08:45:47Z",
+      "side": 1,
+      "message": "These WideToUTF8 and UTF8ToWide functions are based on the widen()/narrow() functions from sysdeps_win32.cpp with some changes, elaborated below.",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "9a8bfbf4b4e0479ff5ecff0787ddc978fe5c3312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19337ad8_d90b3faa",
+        "filename": "base/u8.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-22T08:45:47Z",
+      "side": 1,
+      "message": "The unittest found that the old code wasn\u0027t handling this case.",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "9a8bfbf4b4e0479ff5ecff0787ddc978fe5c3312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "194a9a42_ac2b9fb8",
+        "filename": "base/u8.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-22T08:45:47Z",
+      "side": 1,
+      "message": "The unittest found that the old code wasn\u0027t returning an error in some invalid char situations. This improves that.",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "9a8bfbf4b4e0479ff5ecff0787ddc978fe5c3312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d953a2fb_d9f427f6",
+        "filename": "base/u8.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-22T08:45:47Z",
+      "side": 1,
+      "message": "The old code was just calling fatal() here, but I didn\u0027t think that was appropriate for a general library like libbase. A bool is probably better and that\u0027s what Chromium\u0027s similar APIs return (though Chromium also has APIs that ignore errors).",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 17
+      },
+      "revId": "9a8bfbf4b4e0479ff5ecff0787ddc978fe5c3312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59725292_8860a70e",
+        "filename": "base/u8.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-22T08:45:47Z",
+      "side": 1,
+      "message": "The old code was passing -1 to WideCharToMultiByte(), but that just made the code more complicated.",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 67
+      },
+      "revId": "9a8bfbf4b4e0479ff5ecff0787ddc978fe5c3312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d953a2fb_f9f9ebec",
+        "filename": "base/u8.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-22T08:45:47Z",
+      "side": 1,
+      "message": "The old code passed 0 here, but the unittest found that this flag is better to identify errors.",
+      "range": {
+        "startLine": 90,
+        "startChar": 58,
+        "endLine": 90,
+        "endChar": 78
+      },
+      "revId": "9a8bfbf4b4e0479ff5ecff0787ddc978fe5c3312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "194a9a42_ec25a7e2",
+        "filename": "base/u8_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-22T08:45:47Z",
+      "side": 1,
+      "message": "This is a change I made to the Chromium unittest.",
+      "range": {
+        "startLine": 146,
+        "startChar": 4,
+        "endLine": 148,
+        "endChar": 51
+      },
+      "revId": "9a8bfbf4b4e0479ff5ecff0787ddc978fe5c3312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9618ebd_c67a8cea",
+        "filename": "base/u8_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-22T08:45:47Z",
+      "side": 1,
+      "message": "This is another change I made to the original Chromium unittest.",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 22
+      },
+      "revId": "9a8bfbf4b4e0479ff5ecff0787ddc978fe5c3312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3942fe30_dfaa4bab",
+        "filename": "base/u8_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-22T08:45:47Z",
+      "side": 1,
+      "message": "This is another change I made to the original Chromium unittest.",
+      "range": {
+        "startLine": 212,
+        "startChar": 4,
+        "endLine": 214,
+        "endChar": 51
+      },
+      "revId": "9a8bfbf4b4e0479ff5ecff0787ddc978fe5c3312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
