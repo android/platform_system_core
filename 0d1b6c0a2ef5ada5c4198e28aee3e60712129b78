@@ -215,6 +215,24 @@
     },
     {
       "key": {
+        "uuid": "b6699de6_6ba0e9cc",
+        "filename": "base/include/base/u8.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-23T17:55:29Z",
+      "side": 1,
+      "message": "It makes sense that we can\u0027t bring in a second open() function with the same signature to the global namespace, I\u0027m not sure there\u0027s any way to override global functions like that unless they are weakly linked.\n\nWhat about using the preprocessor to reroute open/unlink instead? It\u0027s the only way I can think of to automatically replace these functions without requiring the user to be in a namespace, but it may be preferable to stick with namespace + using instead.\n\n  #ifdef _WIN32\n  #define open ::android::base::u8::open\n  #define unlink ::android::base::u8::unlink\n  #endif",
+      "parentUuid": "f66f95e4_487e479d",
+      "revId": "0d1b6c0a2ef5ada5c4198e28aee3e60712129b78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f66f95e4_a2e70447",
         "filename": "base/u8.cpp",
         "patchSetId": 4
