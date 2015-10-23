@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "968019c6_1c22dd43",
+        "filename": "base/file.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-23T00:19:34Z",
+      "side": 1,
+      "message": "Yes, on Windows, these functions will always do the conversion. Have you seen this web site http://utf8everywhere.org/ ? It is a must-read for info on Unicode on Windows.\n\nIn particular, this suggests that the conversions are fairly cheap: http://utf8everywhere.org/#faq.cvt.perf . I\u0027ve never come across anything suggesting that these conversions can become a perf problem, do you have a reference? I think the biggest factors are that the input strings are small and that the conversion is a relatively simple transformation.\n\nSo I don\u0027t think perf would be a reason to make this optional. I don\u0027t think it would be better to make the code do `if (IsASCII(input)) { open(input); } else { _wopen(UTF8ToWide(input).c_str()); }\u0027 -- I think that would add a lot of complexity (and code-paths) for minimal gain.\n\nThe bigger question is what happens if someone passes a non-UTF8 ANSI code-page string to these APIs that expect UTF8. It might not work right, but I don\u0027t think there\u0027s any callers doing this and the fix would be to pass UTF8. (I don\u0027t have a full AOSP tree, so I don\u0027t think I can check this 100%.)\n\nTo elaborate further: on Windows, CreateFile() is a macro that expands to either CreateFileA(const char* ansi_string) or CreateFileW(const wchar_t* unicode_string). So on Windows, there are 3 choices:\n\n1. Only use Unicode and wchar_t everywhere. Only have foo(const wchar_t*). Real Windows-only code-bases actually do this.\n2. Have fooA(const char*) and fooW(const char*). Implement fooA() by calling MultiByteToWideChar() and passing the result to fooW(). Callers that use fooA() won\u0027t work with some strings because they can\u0027t be represented.\n3. Do the UTF-8 everywhere strategy like on the website and what we have in adb and in this change. It really seems like the only practical solution for cross-platform code.",
+      "parentUuid": "16d269e7_75ed42ba",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 17
+      },
+      "revId": "9a8bfbf4b4e0479ff5ecff0787ddc978fe5c3312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3942fe30_9fa0c3cd",
         "filename": "base/u8.cpp",
         "patchSetId": 2
@@ -246,6 +270,30 @@
       "side": 1,
       "message": "In general I agree returning an error is much better than dying. But the caller here has no way to know that this specific event occurred. There\u0027s a world of difference between \"the conversion failed\" and \"the conversion failed and we may have corrupted some of your program\u0027s memory\".\n\nIf result \u003e chars_required the program will hopefully have segfaulted already anyway, so exiting from the library is already a possibility. Adding a fatal() just makes it certain, to reduce randomness and prevent some poor programmer having to try to debug this if somehow it does come up.\n\nAs you say, this will almost certainly never happen, so if nobody else cares I\u0027m fine leaving this as-is, but IMO as long as we\u0027re defensive programming we might as well go all the way :)",
       "parentUuid": "166d09ed_1da977fd",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 3
+      },
+      "revId": "9a8bfbf4b4e0479ff5ecff0787ddc978fe5c3312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "369ccd29_c4057453",
+        "filename": "base/u8.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-23T00:19:34Z",
+      "side": 1,
+      "message": "Ok, I see what you\u0027re saying, so I added a CHECK_LE(), not just for overall defensive coding, but also since these APIs are kind of peculiar in the first place (i.e. the cb/cch args are so weird, what if I screwed them up? Or what if I pass one size and check against a different size?)\n\nFriendly joke: Now that I understand your thinking, I fully expect you to 1) find all calls to open() and make sure they check for fds \u003c -1, 2) find all calls to read() and add a CHECK_LE() in case it overran the buffer. ;-) ;-) ;-)",
+      "parentUuid": "16d269e7_f554d237",
       "range": {
         "startLine": 62,
         "startChar": 0,
