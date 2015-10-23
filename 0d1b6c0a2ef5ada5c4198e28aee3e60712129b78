@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "166d09ed_80cbdada",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 3512,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-23T00:36:31Z",
+      "side": 1,
+      "message": "~14 callers to widen(), ~8 callers to narrow(). I think it makes sense to rewrite (especially because I like a non-fatal error-path), let me know the timing: in this commit or after?",
+      "parentUuid": "3675adb9_fc0b5d65",
+      "revId": "0d1b6c0a2ef5ada5c4198e28aee3e60712129b78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56a1415d_c290064a",
         "filename": "base/include/base/u8.h",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2015-10-23T00:18:46Z",
       "side": 1,
       "message": "why u8 rather than utf8? (for the files and the namespace.)",
+      "revId": "0d1b6c0a2ef5ada5c4198e28aee3e60712129b78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6699de6_3daeb706",
+        "filename": "base/include/base/u8.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-23T00:36:31Z",
+      "side": 1,
+      "message": "I think I was influenced by the C++ string literal prefix of \u0027u8\u0027, but it doesn\u0027t matter to me. Just give the word and I can change u8 \u003d\u003e utf8.",
+      "parentUuid": "56a1415d_c290064a",
       "revId": "0d1b6c0a2ef5ada5c4198e28aee3e60712129b78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "d6661112_3e9b1141",
+        "filename": "base/include/base/u8.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-23T00:36:31Z",
+      "side": 1,
+      "message": "So your idea is to put \"using android::base::u8::open,unlink,etc\" in this file? Then the caller would do the following?\n\nnamespace { // gotta put your code in a namespace\n#include \"base/u8.h\"\nvoid SomeFunction() {...\n} // namespace\n\nI can try prototyping that, just give me suggestions on the filenames for the files containing the wide funcs and this file full of \"using\u0027s\".",
+      "parentUuid": "d6661112_7eed09ba",
+      "revId": "0d1b6c0a2ef5ada5c4198e28aee3e60712129b78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f66f95e4_a2e70447",
         "filename": "base/u8.cpp",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2015-10-23T00:18:46Z",
       "side": 1,
       "message": "no, let\u0027s definitely not consider anything other than deleting libutils :-)\n\nwe really do need to find the time to work on Win32 libc++ though. hopefully in 2016.",
+      "revId": "0d1b6c0a2ef5ada5c4198e28aee3e60712129b78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "166d09ed_c032328c",
+        "filename": "base/u8.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-23T00:36:31Z",
+      "side": 1,
+      "message": "Ok, so libutils is crufty, I gather? Anyway, let me know if I should edit libutils/Unicode.cpp out of this comment.",
+      "parentUuid": "f66f95e4_a2e70447",
       "revId": "0d1b6c0a2ef5ada5c4198e28aee3e60712129b78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
