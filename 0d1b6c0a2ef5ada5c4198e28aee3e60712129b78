@@ -251,6 +251,42 @@
     },
     {
       "key": {
+        "uuid": "76dac536_63f4d6f5",
+        "filename": "base/include/base/u8.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-23T22:05:40Z",
+      "side": 1,
+      "message": "To use libchrome\u0027s base::ReadFileToString(), we\u0027d need to pass it a FilePath object, which uses std::wstring internally on Windows and std::string elsewhere. To get a FilePath object, you can use `static FilePath FilePath::FromUTF8Unsafe(const std::string\u0026)\u0027 or just go hog-wild and use FilePath all over the adb codebase.\n\nLet\u0027s face it, libchrome has a ton of useful stuff, it just requires the caller to \u0027get religion\u0027 and use its APIs the way they want them to be used. Remember the headaches we had getting mkdirs() to work? libchrome has FilePath and base::CreateDirectory() to solve that in a sec.\n\nSo it\u0027s up to you guys what direction you want adb/libbase to take: POSIX-y like adb is generally right now, or more platform-neutral with various abstractions from libchrome. There\u0027s a lot to consider like what future people working on adb/base will be familiar with, will you be able to fix bugs in libchrome, etc.\n\nLet me know what you guys decide and then I can continue prototyping.",
+      "parentUuid": "96df3923_be3d19f7",
+      "revId": "0d1b6c0a2ef5ada5c4198e28aee3e60712129b78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36e4cdf6_4116f663",
+        "filename": "base/include/base/u8.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-23T22:05:40Z",
+      "side": 1,
+      "message": "Yeah, it does make sense that you can\u0027t bring in a second open() -- that\u0027s why adding an anonymous namespace works, because you\u0027re importing an open() function into an empty anonymous namespace.\n\nI did the preprocessor tricks in adb\u0027s sysdeps.h and although it works, it is somewhat fragile. See what I had to do with #define stat adb_stat for an example. Or the fact that a struct member named open will probably fail to compile with the macros in your comment. Basically, the macro technique is fragile and maybe ok for the scope of a single app (like adb), but I\u0027m hesitant to recommend it for a base library that is potentially used by more code (which I may not even be compiling).\n\nBut really the call is up to you guys, I\u0027ll go with whatever direction you guys want. My primary goal is just to get adb stable on Windows, so I\u0027m happy to go along with whatever big designs you guys want.\n\nStepping back, I see only a few ways to solve the big issues:\n\n1. Make new APIs and have everyone call those. This might be android::base::utf8::open(), or it might be libchrome\u0027s base::file::OpenFile(const FilePath\u0026), or some other abstraction. Other codebases that I\u0027ve worked on have gone this route.\n\n2. Let code call open() and use source code tricks (macros or using) to redirect calls to substitutions. This is what adb does right now with macros.\n\n3. Let code call open() and use linker tricks (--wrap or some other symbol overriding technique, I think there is even an __asm() trick that I saw in bionic). I haven\u0027t tried this since it seems even more fragile and hard to comprehend.\n\nI\u0027m open to ideas.",
+      "parentUuid": "b6699de6_6ba0e9cc",
+      "revId": "0d1b6c0a2ef5ada5c4198e28aee3e60712129b78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f66f95e4_a2e70447",
         "filename": "base/u8.cpp",
         "patchSetId": 4
