@@ -16,6 +16,24 @@
       "revId": "aceb1ff6b9fd067078806afa9c8e55eaf82d9392",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96df3923_c4ccd2c1",
+        "filename": "crash_reporter/crash_sender",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1076778
+      },
+      "writtenOn": "2015-10-23T23:47:59Z",
+      "side": 1,
+      "message": "To clarify, when you say sanitize and whitelist values, are you saying that we should just \"filter\" out non alnum characters from the log?  So that a product name of \"my_product\u0027name\\\" just gets printed to the log as \"myproductname\" and logs an error when the filtered name isn\u0027t the same as the original?  That would be fine with me and pretty easy to do for just this log file.\n\nBut if we\u0027re talking about checking the fields across all of crash_sender, including the actual sending of the report in the curl command above, I\u0027m a little against the idea of doing any kind of modifications (other than adding character escapes) in the crash sender code, for several reasons.\n1) Except for ID, which is assigned by the crash server and I thought would always be in [:alnum:], these fields are all controlled by the device manufacturer.  Device users shouldn\u0027t be able to modify any of these fields on their device.  Manufacturers *shouldn\u0027t* be doing anything ridiculous like adding quotes or a trailing slash.  A trailing slash at least right now, actually is really hard to even accomplish for the fields as I believe it would break the Android build system where the fields are set.  Once we get the product spec/config work going, its also something we should add as a config validation and throw a build time error for invalid settings.\n2) Sending a value other than what was set will prevent the crash report from being directed to the correct project on the crash server.  Some products do have non-[:alnum:] characters.  Our own example applications use both \u0027:\u0027 and \u0027-\u0027 characters in their product names, for instance.\n3) Other parts of the system (like metrics) use these fields, so we shouldn\u0027t modify them (other than character escapes) when dealing with them outside the device.",
+      "parentUuid": "d6a371b1_90b3d422",
+      "revId": "aceb1ff6b9fd067078806afa9c8e55eaf82d9392",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
