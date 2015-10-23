@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6a371b1_90b3d422",
+        "filename": "crash_reporter/crash_sender",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1040868
+      },
+      "writtenOn": "2015-10-23T20:29:57Z",
+      "side": 1,
+      "message": "where did we require/guarantee that |id| and |product| and |exec_name| do not have \u0027 or trailing \\ in them ?  we should add a json check func to sanitize \u0026 log an error when they\u0027re bad.\n\ni don\u0027t mean try and blacklist certain behavior like looking for a \u0027 in the middle or a \\ at the end -- you get into pathological cases like foo\\\u0027bar (which is valid) and bar\\\\\\\\ (which is valid).  let\u0027s whitelist values with a regex like [[:alnum:]_].  exec_name prob needs to allow through a bit more, but you get the idea.",
+      "revId": "aceb1ff6b9fd067078806afa9c8e55eaf82d9392",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
