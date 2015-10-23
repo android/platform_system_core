@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3675adb9_fc0b5d65",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 3512,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-10-23T00:18:46Z",
+      "side": 1,
+      "message": "how many callers are there of these? should we just rewrite them to use UTF8ToWide/WideToUTF8 directly?",
+      "revId": "0d1b6c0a2ef5ada5c4198e28aee3e60712129b78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56a1415d_c290064a",
+        "filename": "base/include/base/u8.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-10-23T00:18:46Z",
+      "side": 1,
+      "message": "why u8 rather than utf8? (for the files and the namespace.)",
+      "revId": "0d1b6c0a2ef5ada5c4198e28aee3e60712129b78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6661112_7eed09ba",
+        "filename": "base/include/base/u8.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-10-23T00:18:46Z",
+      "side": 1,
+      "message": "why don\u0027t we want to be able to just #include this file and have open et cetera just work, even on Windows? shouldn\u0027t the \u0027using\u0027s be in this file? (and if the reason is that we want the \"wide\" functions independently, let\u0027s just move them into their own header.)",
+      "revId": "0d1b6c0a2ef5ada5c4198e28aee3e60712129b78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f66f95e4_a2e70447",
+        "filename": "base/u8.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-10-23T00:18:46Z",
+      "side": 1,
+      "message": "no, let\u0027s definitely not consider anything other than deleting libutils :-)\n\nwe really do need to find the time to work on Win32 libc++ though. hopefully in 2016.",
+      "revId": "0d1b6c0a2ef5ada5c4198e28aee3e60712129b78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
