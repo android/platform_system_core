@@ -34,6 +34,24 @@
       "revId": "aceb1ff6b9fd067078806afa9c8e55eaf82d9392",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76880537_2d9bad72",
+        "filename": "crash_reporter/crash_sender",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1040868
+      },
+      "writtenOn": "2015-10-24T15:45:54Z",
+      "side": 1,
+      "message": "correct values of |product| are gated by the server.  while the device manuf gets to choose it, it\u0027s done so based on the server constraints.  i threw out [:alnum:] as a straw man ... i\u0027m happy to expand it further to include safe values like \".-+_\".\n\nwhen it comes to program names, i don\u0027t think the Android build system has such a limitation.  it is possible to override what gets installed such that you end up with arbitrary (if weird/dumb) names in the fs.  further, if a device manuf has the ability to d/l \u0026 run arbitrary code (either their own apps or make a way for users to execute code), then the app name is also arbitrary.  we should keep from generating a corrupt json file because of that.\n\nnote: the old format had the same problem -- any field containing a , or whitespace would break things",
+      "parentUuid": "96df3923_c4ccd2c1",
+      "revId": "aceb1ff6b9fd067078806afa9c8e55eaf82d9392",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
