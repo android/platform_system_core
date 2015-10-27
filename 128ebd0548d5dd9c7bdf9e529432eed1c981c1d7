@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "b640bdd4_c25ba4de",
+        "filename": "adb/file_sync_client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-27T23:47:26Z",
+      "side": 1,
+      "message": "Can you use ADB_FORMAT_ARCHETYPE (sysdeps.h) or FORMAT_ARCHETYPE (base/stringprintf.h) on the prototype to get the compiler checking of the args?",
+      "range": {
+        "startLine": 187,
+        "startChar": 15,
+        "endLine": 187,
+        "endChar": 30
+      },
+      "revId": "128ebd0548d5dd9c7bdf9e529432eed1c981c1d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76fd65bf_2835c3bc",
+        "filename": "adb/line_printer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-27T23:47:26Z",
+      "side": 1,
+      "message": "I think you\u0027ll want to #include \u003csysdeps.h\u003e here so that printf() really calls adb_printf() which can handle UTF-8.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 19
+      },
+      "revId": "128ebd0548d5dd9c7bdf9e529432eed1c981c1d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d63d314e_a626b2ed",
+        "filename": "adb/line_printer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-27T23:47:26Z",
+      "side": 1,
+      "message": "This should probably be to_print_wide[i] and earlier do something like \"const std::wstring to_print_wide \u003d widen(to_print);\"",
+      "range": {
+        "startLine": 93,
+        "startChar": 58,
+        "endLine": 93,
+        "endChar": 69
+      },
+      "revId": "128ebd0548d5dd9c7bdf9e529432eed1c981c1d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16342965_68fcf769",
+        "filename": "adb/line_printer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-27T23:47:26Z",
+      "side": 1,
+      "message": "This should probably be UnicodeChar.",
+      "range": {
+        "startLine": 93,
+        "startChar": 24,
+        "endLine": 93,
+        "endChar": 33
+      },
+      "revId": "128ebd0548d5dd9c7bdf9e529432eed1c981c1d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f636b56e_0450b8cc",
+        "filename": "adb/line_printer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-27T23:47:26Z",
+      "side": 1,
+      "message": "If you\u0027re changing the code above to unconditionally set Char.UnicodeChar, then this should probably be changed to explicitly be WriteConsoleOutputW.",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 22
+      },
+      "revId": "128ebd0548d5dd9c7bdf9e529432eed1c981c1d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36f76de3_c6318427",
         "filename": "adb/line_printer.h",
         "patchSetId": 1
