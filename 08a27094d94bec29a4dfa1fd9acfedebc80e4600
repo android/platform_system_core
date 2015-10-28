@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76fd65bf_e840cbd2",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1392,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-28T00:22:59Z",
+      "side": 1,
+      "message": "Does it matter that isatty() returns true for NUL on Windows? I couldn\u0027t come up with a failing test case other than \u0027adb shell \u003c nul\u0027 which no one in their right mind runs.\n\nisatty() came to my attention because I realized that for Windows, adb has 3 or 4 ways of checking for a console:\n\n* isatty() in unix_read (which I just recommended a few weeks ago).\n* isatty()+GetConsoleMode() in _get_console_handle()\n* GetFileType()+GetConsoleMode() in stdin_raw_init() (almost the same thing since isatty() is probably implemented by calling GetFileType())\n* enh is about to add GetConsoleScreenBufferInfo() in line_printer.cpp\n\nThis StackOverflow answer (http://stackoverflow.com/a/3650507) sums up the problem: different API specs for isatty() on Windows vs. *nix.\n\nMy thinking is to ignore this issue for now and maybe at some point (if it becomes really necessary) make adb_isatty() for Windows and #define isatty adb_isatty.",
+      "range": {
+        "startLine": 1392,
+        "startChar": 21,
+        "endLine": 1392,
+        "endChar": 27
+      },
+      "revId": "08a27094d94bec29a4dfa1fd9acfedebc80e4600",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
