@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d63612de_957c464f",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-10-29T22:59:14Z",
+      "side": 1,
+      "message": "For the general case with realtime we check the gestalt (_all_ files) and look for the latest timestamp. This will even deal with an unexpected reboot or kernel panic. Deals with the race that happens when the files are being rotated.\n\nFor the case of monotonic, which cycles on each boot, we can only use the \u0027last one\u0027, but we are prone to some issues on unexpected reboot while rotating. It would be _too_ complicated and risky to figure out which is the last file because of the monotonic cycling, so we only check the known active file (even if it is empty due to a file rotation :-( ).\n\nI will figure out how to expand the comment to make this clear without all the words I\u0027ve used here ...",
+      "parentUuid": "161fca56_37afd257",
+      "revId": "b1e324e4a6c6a47e6f750e8bb49f07d5ec07437a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6195673_36f7d6b8",
         "filename": "logd/LogBuffer.h",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2015-10-29T22:11:16Z",
       "side": 1,
       "message": "why not \"const int EPOCH_PLUS_10_YEARS (10 * 1461 / 4 * 24 * 60 * 60)\"?",
+      "revId": "b1e324e4a6c6a47e6f750e8bb49f07d5ec07437a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36204e91_18fe4923",
+        "filename": "logd/LogBuffer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-10-29T22:59:14Z",
+      "side": 1,
+      "message": "No big reason. Alas explaining it is not \u0027small\u0027 :-(\n\nI am more comfortable with this comparing against all sorts of sizes of ints and unsigneds; while if it is specifically set to \u0027const int\u0027 we will run into trouble against a uint64_t comparison (which is what we have below) turning into a warning message about signed/unsigned comparison. A numerical #define constant remains agnostic about type and signedness inside the compiler parse tree until used. This removes the need to add a specific cast when in comparisons to appease the C standards gohds.\n\nThe \u0027bad\u0027 part is that the #define is _wrong_ on a native 16-bit platform as it will assume native width (while remaining signed agnostic) for all calculations not otherwise cast or specified. To resolve that on the 16 bit platform for numbers of this size and still keeping it signed-agnostic is not possible :-( Fortunately we do not port Android to 16-bit platforms ;-}",
+      "parentUuid": "f6195673_36f7d6b8",
       "revId": "b1e324e4a6c6a47e6f750e8bb49f07d5ec07437a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
