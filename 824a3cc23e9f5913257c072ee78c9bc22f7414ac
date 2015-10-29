@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "56ab01f0_e045ca2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-29T17:02:36Z",
+      "side": 1,
+      "message": "Good point, but I think I slightly prefer to use adb_isatty() for both just so it\u0027s a little more obvious that there\u0027s something unusual going on here. I\u0027ll leave this one as-is.",
+      "parentUuid": "76c565cc_f9cf3fe4",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 10
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6d0d18a_3188d2b3",
         "filename": "adb/sysdeps.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-10-29T02:22:01Z",
       "side": 1,
       "message": "Is this really true? isatty() should work on stdout/stderr which should only be writable.\n\nCan you add some sort of comment that this takes standard fds like 0/1/2 (STD{IN,OUT,ERR}_FILENO) and fds returned by unix_open(), but not the adb_open() fds?",
+      "range": {
+        "startLine": 185,
+        "startChar": 3,
+        "endLine": 185,
+        "endChar": 47
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6d35d95_1b9deb30",
+        "filename": "adb/sysdeps.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-29T17:02:36Z",
+      "side": 1,
+      "message": "Good point will add comment.\n\nisatty() works, but GENERIC_READ is required for GetConsoleMode() unfortunately, as well as GetConsoleScreenBufferInfo(), so I don\u0027t think there\u0027s any way around it if we\u0027re going to do the full check. Messing with the unit test verifies that opening a console without GENERIC_READ causes it to always fail.\n\nDo you think this will be a problem? It seems that STDxxx_FILENO all work in my testing so it seems like they have GENERIC_READ access by default.",
+      "parentUuid": "d6d0d18a_3188d2b3",
       "range": {
         "startLine": 185,
         "startChar": 3,
@@ -118,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "76c565cc_944532e2",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2512,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-29T17:02:36Z",
+      "side": 1,
+      "message": "Ah thanks for clarifying, will change.",
+      "parentUuid": "7621e584_4e09476d",
+      "range": {
+        "startLine": 2512,
+        "startChar": 35,
+        "endLine": 2512,
+        "endChar": 49
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6d35d95_30a0ce68",
         "filename": "adb/sysdeps_win32.cpp",
         "patchSetId": 1
@@ -188,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "d6d0d18a_fc21f13f",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2522,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-29T17:02:36Z",
+      "side": 1,
+      "message": "Yeah it seems to work for both stdin and stdout so as long as you don\u0027t see a problem here it seems cleaner.",
+      "parentUuid": "d6d0d18a_b11202de",
+      "range": {
+        "startLine": 2522,
+        "startChar": 13,
+        "endLine": 2522,
+        "endChar": 27
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36a68d28_ff0c47c3",
         "filename": "adb/sysdeps_win32.cpp",
         "patchSetId": 1
@@ -211,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "f6d955b5_1edaf949",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2538,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-29T17:02:36Z",
+      "side": 1,
+      "message": "Ha my thoughts exactly. I\u0027ll add a comment though that errno handling isn\u0027t reliable on Windows adb_isatty(), if we for some reason need it later we can add it then.",
+      "parentUuid": "36a68d28_ff0c47c3",
+      "range": {
+        "startLine": 2538,
+        "startChar": 4,
+        "endLine": 2538,
+        "endChar": 14
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76c565cc_b9e94722",
         "filename": "adb/sysdeps_win32.cpp",
         "patchSetId": 1
@@ -222,6 +342,30 @@
       "writtenOn": "2015-10-29T02:22:01Z",
       "side": 1,
       "message": "If you make adb_isatty() start by calling isatty(), you could get rid of this optimization, since then files/pipes would bail out of adb_isatty() early? I\u0027m fine either way (with or without this optimization): whatever is better for you guys to maintain in the future.",
+      "range": {
+        "startLine": 3392,
+        "startChar": 11,
+        "endLine": 3392,
+        "endChar": 79
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96cad9dc_806deaef",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3392,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-29T17:02:36Z",
+      "side": 1,
+      "message": "Good call I\u0027ll do that, and maybe switch the length check first as a potential early bailout.",
+      "parentUuid": "76c565cc_b9e94722",
       "range": {
         "startLine": 3392,
         "startChar": 11,
@@ -280,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "56c4e1d1_b995c340",
+        "filename": "adb/sysdeps_win32_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-29T17:02:36Z",
+      "side": 1,
+      "message": "Ah so much better thanks! I was trying a bunch of different ways to get this to work but I didn\u0027t think of this one.",
+      "parentUuid": "b6d35d95_b0ae7e06",
+      "range": {
+        "startLine": 101,
+        "startChar": 19,
+        "endLine": 101,
+        "endChar": 30
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "769c85d8_c1aed207",
         "filename": "adb/sysdeps_win32_test.cpp",
         "patchSetId": 1
@@ -291,6 +459,30 @@
       "writtenOn": "2015-10-29T02:22:01Z",
       "side": 1,
       "message": "we don\u0027t need GENERIC_WRITE, so kill this?",
+      "range": {
+        "startLine": 102,
+        "startChar": 46,
+        "endLine": 102,
+        "endChar": 59
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "769c85d8_c7c8a28a",
+        "filename": "adb/sysdeps_win32_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-29T17:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "769c85d8_c1aed207",
       "range": {
         "startLine": 102,
         "startChar": 46,
@@ -349,6 +541,30 @@
     },
     {
       "key": {
+        "uuid": "76c565cc_94a9b2d1",
+        "filename": "adb/sysdeps_win32_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-29T17:02:36Z",
+      "side": 1,
+      "message": "See earlier comment about GetConsoleMode(), I think we do need this unfortunately (or, after moving to c runtime open(), we need O_RDONLY or O_RDWR; O_WRONLY fails).",
+      "parentUuid": "56c4e1d1_53910e4b",
+      "range": {
+        "startLine": 105,
+        "startChar": 32,
+        "endLine": 105,
+        "endChar": 44
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6d35d95_d0d4d279",
         "filename": "adb/sysdeps_win32_test.cpp",
         "patchSetId": 1
@@ -395,6 +611,54 @@
     },
     {
       "key": {
+        "uuid": "7621e584_6e628340",
+        "filename": "adb/sysdeps_win32_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-29T17:02:36Z",
+      "side": 1,
+      "message": "Done - creating tempfiles on Windows is not in my wheelhouse so you\u0027ll probably have to correct some code there too :)",
+      "parentUuid": "b6d35d95_d0d4d279",
+      "range": {
+        "startLine": 115,
+        "startChar": 8,
+        "endLine": 115,
+        "endChar": 14
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96cad9dc_a0e746c3",
+        "filename": "adb/sysdeps_win32_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-29T17:02:36Z",
+      "side": 1,
+      "message": "Yeah you\u0027re right I forgot that adb_open() always fails here, thanks. Will fix.",
+      "parentUuid": "76c565cc_99172bce",
+      "range": {
+        "startLine": 115,
+        "startChar": 17,
+        "endLine": 115,
+        "endChar": 25
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6d35d95_30ba8e47",
         "filename": "adb/sysdeps_win32_test.cpp",
         "patchSetId": 1
@@ -406,6 +670,30 @@
       "writtenOn": "2015-10-29T02:22:01Z",
       "side": 1,
       "message": "The socketpair fds are managed by sysdeps, so the fd can\u0027t be passed to fileno()/_get_osfhandle()/etc. I haven\u0027t tried this, but can you instead use _pipe() and test the read \u0026 write ends? That should simulate a pipe like \"echo exit | adb shell\".",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 61
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76c565cc_9f9a6b6c",
+        "filename": "adb/sysdeps_win32_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-29T17:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6d35d95_30ba8e47",
       "range": {
         "startLine": 120,
         "startChar": 4,
