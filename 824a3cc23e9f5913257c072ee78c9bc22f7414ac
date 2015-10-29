@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "76c565cc_f9cf3fe4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-29T02:22:01Z",
+      "side": 1,
+      "message": "Since Windows is the one with the problems, I\u0027d be ok if the Windows build just used a macro to map existing calls of isatty() to adb_isatty() (like how fprintf is mapped to adb_fprintf only for Windows). Then the code can stay unix-y. But it doesn\u0027t really matter to me, it\u0027s up to you guys, I\u0027m fine with either way.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 10
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6d0d18a_3188d2b3",
+        "filename": "adb/sysdeps.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-29T02:22:01Z",
+      "side": 1,
+      "message": "Is this really true? isatty() should work on stdout/stderr which should only be writable.\n\nCan you add some sort of comment that this takes standard fds like 0/1/2 (STD{IN,OUT,ERR}_FILENO) and fds returned by unix_open(), but not the adb_open() fds?",
+      "range": {
+        "startLine": 185,
+        "startChar": 3,
+        "endLine": 185,
+        "endChar": 47
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56ab01f0_f5446a14",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2509,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-29T02:22:01Z",
+      "side": 1,
+      "message": "same comment as before",
+      "range": {
+        "startLine": 2509,
+        "startChar": 26,
+        "endLine": 2509,
+        "endChar": 80
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6d35d95_d09a123b",
         "filename": "adb/sysdeps_win32.cpp",
         "patchSetId": 1
@@ -13,6 +82,30 @@
       "writtenOn": "2015-10-29T00:29:39Z",
       "side": 1,
       "message": "I decided to convert to a handle first based on Spencer\u0027s comment that isatty() likely calls GetFileType() internally, so using GetFileType() directly instead should eliminate the need for an extra _get_osfhandle() call inside of isatty().",
+      "range": {
+        "startLine": 2512,
+        "startChar": 35,
+        "endLine": 2512,
+        "endChar": 49
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7621e584_4e09476d",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2512,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-29T02:22:01Z",
+      "side": 1,
+      "message": "Sorry for the confusion: I meant that isatty() is built-upon GetFileType(), but GetFileType() is actually called when the fd is setup. isatty() itself just grabs a cached value. So is it possible to call isatty() early here and not call GetFileType() at all?\n\nAn extra call to _get_osfhandle() afterwards should be ok since it is cheap and simple.",
+      "parentUuid": "b6d35d95_d09a123b",
       "range": {
         "startLine": 2512,
         "startChar": 35,
@@ -41,6 +134,283 @@
         "startChar": 0,
         "endLine": 2519,
         "endChar": 75
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "769c85d8_81920ae0",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2519,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-29T02:22:01Z",
+      "side": 1,
+      "message": "I originally made stdin_raw_init() call GetFileType(), but I now think that it makes more sense to call isatty().\n\nGetFileType() can be \"slow\" (possibly kernel call) and it used to even hang (see my comments in adb.cpp about GFT()), though I don\u0027t think it hangs anymore. But basically, given how complicated it was/is, that is one reason to try to avoid calling it if we can help it.",
+      "parentUuid": "b6d35d95_30a0ce68",
+      "range": {
+        "startLine": 2518,
+        "startChar": 0,
+        "endLine": 2519,
+        "endChar": 75
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6d0d18a_b11202de",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2522,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-29T02:22:01Z",
+      "side": 1,
+      "message": "No suggested change here, just a comment: That StackOverflow answer said to use GetConsoleScreenBufferInfo() for writable handles, but I actually prefer if we just stick to using GetConsoleMode() here (like you\u0027ve done) to simplify things.",
+      "range": {
+        "startLine": 2522,
+        "startChar": 13,
+        "endLine": 2522,
+        "endChar": 27
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36a68d28_ff0c47c3",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2538,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-29T02:22:01Z",
+      "side": 1,
+      "message": "isatty(3) reminds me that isatty() sets errno, but I\u0027m fine with not setting it because who really reads errno after calling isatty()? Let\u0027s be real here.",
+      "range": {
+        "startLine": 2538,
+        "startChar": 4,
+        "endLine": 2538,
+        "endChar": 14
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76c565cc_b9e94722",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3392,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-29T02:22:01Z",
+      "side": 1,
+      "message": "If you make adb_isatty() start by calling isatty(), you could get rid of this optimization, since then files/pipes would bail out of adb_isatty() early? I\u0027m fine either way (with or without this optimization): whatever is better for you guys to maintain in the future.",
+      "range": {
+        "startLine": 3392,
+        "startChar": 11,
+        "endLine": 3392,
+        "endChar": 79
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6d35d95_b0ae7e06",
+        "filename": "adb/sysdeps_win32_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-29T02:22:01Z",
+      "side": 1,
+      "message": "If this helps simplify things, I think you could also use the C Runtime open(), then you wouldn\u0027t need _open_osfhandle().",
+      "range": {
+        "startLine": 101,
+        "startChar": 19,
+        "endLine": 101,
+        "endChar": 30
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96cad9dc_3a3f0980",
+        "filename": "adb/sysdeps_win32_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-29T02:22:01Z",
+      "side": 1,
+      "message": "Might be simpler to just use: L\"CONIN$\"",
+      "range": {
+        "startLine": 101,
+        "startChar": 31,
+        "endLine": 101,
+        "endChar": 54
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "769c85d8_c1aed207",
+        "filename": "adb/sysdeps_win32_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-29T02:22:01Z",
+      "side": 1,
+      "message": "we don\u0027t need GENERIC_WRITE, so kill this?",
+      "range": {
+        "startLine": 102,
+        "startChar": 46,
+        "endLine": 102,
+        "endChar": 59
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "769c85d8_a1b3c66d",
+        "filename": "adb/sysdeps_win32_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-29T02:22:01Z",
+      "side": 1,
+      "message": "same L\"foo\" comment",
+      "range": {
+        "startLine": 104,
+        "startChar": 32,
+        "endLine": 104,
+        "endChar": 56
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56c4e1d1_53910e4b",
+        "filename": "adb/sysdeps_win32_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-29T02:22:01Z",
+      "side": 1,
+      "message": "kill too?",
+      "range": {
+        "startLine": 105,
+        "startChar": 32,
+        "endLine": 105,
+        "endChar": 44
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6d35d95_d0d4d279",
+        "filename": "adb/sysdeps_win32_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-29T02:22:01Z",
+      "side": 1,
+      "message": "Can you also open a writable fd to nul and call adb_isatty() on it? Also a readable fd and writable fd to a real disk file, too?",
+      "range": {
+        "startLine": 115,
+        "startChar": 8,
+        "endLine": 115,
+        "endChar": 14
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76c565cc_99172bce",
+        "filename": "adb/sysdeps_win32_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-29T02:22:01Z",
+      "side": 1,
+      "message": "adb_open() returns fds that are indices into _win32_fhs in sysdeps_win32.cpp (yes, this is crazy and exists because the C Runtime doesn\u0027t really well support socketpairs/sockets as fds). I think you want to call the C Runtime open() which returns indices that the C Runtime APIs like fileno()/isatty()/_get_osfhandle() can deal with.",
+      "range": {
+        "startLine": 115,
+        "startChar": 17,
+        "endLine": 115,
+        "endChar": 25
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6d35d95_30ba8e47",
+        "filename": "adb/sysdeps_win32_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-29T02:22:01Z",
+      "side": 1,
+      "message": "The socketpair fds are managed by sysdeps, so the fd can\u0027t be passed to fileno()/_get_osfhandle()/etc. I haven\u0027t tried this, but can you instead use _pipe() and test the read \u0026 write ends? That should simulate a pipe like \"echo exit | adb shell\".",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 61
       },
       "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
