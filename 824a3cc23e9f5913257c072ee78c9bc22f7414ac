@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "d63612de_87fe545c",
+        "filename": "adb/sysdeps.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-30T22:46:04Z",
+      "side": 1,
+      "message": "If real console handles in practice always have GENERIC_READ, I don\u0027t think we need to worry about this. I think that if you manually verify once that real console handles (i.e. not from opening CONIN$/CONOUT$, but just running an app at the console) always have GENERIC_READ, we\u0027ll be fine.",
+      "parentUuid": "b6d35d95_1b9deb30",
+      "range": {
+        "startLine": 185,
+        "startChar": 3,
+        "endLine": 185,
+        "endChar": 47
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56ab01f0_f5446a14",
         "filename": "adb/sysdeps_win32.cpp",
         "patchSetId": 1
@@ -553,6 +577,30 @@
       "side": 1,
       "message": "See earlier comment about GetConsoleMode(), I think we do need this unfortunately (or, after moving to c runtime open(), we need O_RDONLY or O_RDWR; O_WRONLY fails).",
       "parentUuid": "56c4e1d1_53910e4b",
+      "range": {
+        "startLine": 105,
+        "startChar": 32,
+        "endLine": 105,
+        "endChar": 44
+      },
+      "revId": "824a3cc23e9f5913257c072ee78c9bc22f7414ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "562a227b_62d11ed6",
+        "filename": "adb/sysdeps_win32_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-30T22:46:04Z",
+      "side": 1,
+      "message": "Ok, this should be ok then. I\u0027d just recommend manually verifying once that a real console handle has the same results as using CONIN$/CONOUT$ and we should be good. (No need to codify that in a unittest because it is probably too big of a writing/maintenance pain to deal with AllocConsole and other APIs)",
+      "parentUuid": "76c565cc_94a9b2d1",
       "range": {
         "startLine": 105,
         "startChar": 32,
