@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7643a650_be3e05b6",
+        "filename": "fastboot/engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-10-30T20:22:01Z",
+      "side": 1,
+      "message": "size_t?",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 7
+      },
+      "revId": "af7edcda09a96f358c981756573e56e0125cf473",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "562a227b_d7189661",
+        "filename": "fastboot/engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-10-30T20:22:01Z",
+      "side": 1,
+      "message": "Doesn\u0027t vnsprintf take care of this already? I did a quick experiment and snprintf always adds the \u0027\\0\u0027.",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 29
+      },
+      "revId": "af7edcda09a96f358c981756573e56e0125cf473",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d63612de_e10cf0c3",
+        "filename": "fastboot/engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-10-30T20:22:01Z",
+      "side": 1,
+      "message": "I think this is better written as fs_get_generator() !\u003d nullptr. Or is there something subtle I\u0027m missing?\n\nSame below.",
+      "range": {
+        "startLine": 106,
+        "startChar": 15,
+        "endLine": 106,
+        "endChar": 48
+      },
+      "revId": "af7edcda09a96f358c981756573e56e0125cf473",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6195673_079f06d3",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-10-30T20:22:01Z",
+      "side": 1,
+      "message": "Is it worth checking if this is ULLONG_MAX and errno is set to ERANGE to indicate an error? I don\u0027t know enough about the protocol to know if this is even possible.",
+      "range": {
+        "startLine": 576,
+        "startChar": 21,
+        "endLine": 576,
+        "endChar": 29
+      },
+      "revId": "af7edcda09a96f358c981756573e56e0125cf473",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d63612de_21a0b8c1",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-10-30T20:22:01Z",
+      "side": 1,
+      "message": "Is it worth moving the variables to where the are first used? Only errMsg is used in the failed goto path.",
+      "range": {
+        "startLine": 847,
+        "startChar": 4,
+        "endLine": 847,
+        "endChar": 47
+      },
+      "revId": "af7edcda09a96f358c981756573e56e0125cf473",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760e462a_e07998d8",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-10-30T20:22:01Z",
+      "side": 1,
+      "message": "This is a badly named variable. Maybe part_size, or maybe change this to partition_size, and partition_size to partition_size_str.",
+      "range": {
+        "startLine": 899,
+        "startChar": 4,
+        "endLine": 899,
+        "endChar": 7
+      },
+      "revId": "af7edcda09a96f358c981756573e56e0125cf473",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
