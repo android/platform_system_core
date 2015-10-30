@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "765c8636_30a92ea1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-10-30T22:23:15Z",
+      "side": 1,
+      "message": "https://cs.corp.google.com/#android/frameworks/native/cmds/dumpstate/dumpstate.c\u0026q\u003d%5Cbps%5Cb%20file:dumpstate\u0026sq\u003dpackage:%5Eandroid$\u0026type\u003dcs\u0026l\u003d317\n\nright now we have:\n\n    run_command(\"PROCESSES\", 10, \"ps\", \"-P\", NULL);\n    run_command(\"PROCESSES AND THREADS\", 10, \"ps\", \"-t\", \"-p\", \"-P\", NULL);\n    run_command(\"PROCESSES (SELINUX LABELS)\", 10, \"ps\", \"-Z\", NULL);\n\nbut i\u0027d like to at least move to:\n\n    run_command(\"PROCESSES\", 10, \"ps\", \"-P\", NULL);\n    run_command(\"PROCESSES AND THREADS\", 10, \"ps\", \"-Z\", \"-t\", \"-p\", \"-P\", NULL);\n\nthough i\u0027m not sure why we have PROCESSES and PROCESSES AND THREADS, since the former is a subset of the latter already...\n\n(i can\u0027t find anyone parsing this via cs/, but maybe i just didn\u0027t come up with the right query?)",
+      "revId": "d2e26c0e309dd43352d444e11191e7261621faf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
