@@ -117,6 +117,30 @@
       "revId": "219fed931c03df4db7f6d28c2476259d6d259cfa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "765c8636_fbe017eb",
+        "filename": "adb/sysdeps_win32_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-10-31T00:26:47Z",
+      "side": 1,
+      "message": "You have a good point that unix_isatty() makes more sense, especially since 1) unix_isatty() is used somewhat like how adb uses unix_read(), 2) sysdeps_win32.cpp has unix_read() call unix_isatty().\n\nThe caveat I have with the \"unix_\" prefix is that splitting open() into unix_open() and adb_open() is already a huge headache and hard to maintain -- I\u0027ve had to fixup calls in the past and it seems like a real uphill battle. The headache has made me wonder if I can just make adb_open() take the CRT fds.\n\nAnyway, I think your idea to rename adb_isatty() to unix_isatty() is a good idea and it makes sense to do.",
+      "parentUuid": "5625c29e_05e93c16",
+      "range": {
+        "startLine": 105,
+        "startChar": 19,
+        "endLine": 105,
+        "endChar": 24
+      },
+      "revId": "219fed931c03df4db7f6d28c2476259d6d259cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
