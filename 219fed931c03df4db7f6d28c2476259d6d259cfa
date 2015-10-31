@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "36204e91_0ac027fc",
+        "filename": "adb/sysdeps.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-31T00:17:13Z",
+      "side": 1,
+      "message": "Ah good point, I didn\u0027t think about that. I don\u0027t like the wording here anyway, I\u0027ll try to make it clearer and fix this.",
+      "parentUuid": "765c8636_30936e40",
+      "range": {
+        "startLine": 187,
+        "startChar": 3,
+        "endLine": 187,
+        "endChar": 38
+      },
+      "revId": "219fed931c03df4db7f6d28c2476259d6d259cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76c565cc_1f703bc5",
         "filename": "adb/sysdeps_win32_test.cpp",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "It doesn\u0027t really matter to me. Here\u0027s what I think of all the APIs (with open as an example):\n\n- _open() seems to be a Microsoft thing since open() is technically non-standard from the MS perspective (since they\u0027re not really POSIX). So if I see _open(), that makes me think the code is Windows-only.\n\n- open() is POSIX, but also available on Windows unless you #define __STD__ or something. Then adb does #define open __xxx_unix_open to remind people to explicitly call either unix_open or adb_open.\n\n- unix_open() really means \"call OS/CRT open instead of an abstraction above the OS like sysdeps\". If this test code were really part of adb, I think I\u0027d expect this code to call unix_open().\n\nSo, to fit the rest of the adb code, I guess unix_open/unix_close/unlink/pipe makes more sense, but it doesn\u0027t really matter to me one way or another.",
       "parentUuid": "76c565cc_1f703bc5",
+      "range": {
+        "startLine": 105,
+        "startChar": 19,
+        "endLine": 105,
+        "endChar": 24
+      },
+      "revId": "219fed931c03df4db7f6d28c2476259d6d259cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5625c29e_05e93c16",
+        "filename": "adb/sysdeps_win32_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-10-31T00:17:13Z",
+      "side": 1,
+      "message": "Thanks that makes sense, I agree your suggested functions are probably the correct ones here then. I\u0027ll change it on Monday and re-upload.\n\nHmm actually in that case do you think adb_isatty() should be unix_isatty() instead? That might match the existing naming scheme better, and it\u0027s a little weird to have to mix and match like this:\n\n  fd \u003d unix_open(...)\n  adb_isatty(fd);\n  unix_close(fd);",
+      "parentUuid": "f6195673_22367092",
       "range": {
         "startLine": 105,
         "startChar": 19,
