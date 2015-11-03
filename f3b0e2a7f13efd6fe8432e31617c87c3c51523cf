@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "b65c3e65_5c987159",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-03T22:52:39Z",
+      "side": 1,
+      "message": "Why not just set a volatile sig_atomic_t flag here and read it when read() returns EINTR? As well as David\u0027s idea.",
+      "parentUuid": "b6335e1f_e17c4650",
+      "range": {
+        "startLine": 470,
+        "startChar": 4,
+        "endLine": 470,
+        "endChar": 18
+      },
+      "revId": "f3b0e2a7f13efd6fe8432e31617c87c3c51523cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96401a44_8ded56e9",
         "filename": "adb/commandline.cpp",
         "patchSetId": 2
@@ -77,6 +101,24 @@
       "side": 1,
       "message": "Makes sense to me, enabling a 3rd read() function is kind of a bummer but it seems necessary, and better than having to mess with macros for a legitimate use case like this.",
       "parentUuid": "96401a44_8ded56e9",
+      "revId": "f3b0e2a7f13efd6fe8432e31617c87c3c51523cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16a98a5f_e783bcb7",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-03T22:52:39Z",
+      "side": 1,
+      "message": "It\u0027s up to you guys. I guess there\u0027s two main schools of thought:\n\n- Make read() on Windows work with C Runtime fds and sysdeps fds.\n- Split read() into unix_read() which works with C Runtime fds and adb_read() which works with sysdeps fds.\n\nSo the proposal is for a 3rd option?",
+      "parentUuid": "b6335e1f_a126be93",
       "revId": "f3b0e2a7f13efd6fe8432e31617c87c3c51523cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
