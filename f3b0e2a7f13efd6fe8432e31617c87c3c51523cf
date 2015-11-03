@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "d6bb729e_0af7fbb7",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-11-03T22:08:36Z",
+      "side": 1,
+      "message": "nit: raw ShellProtocol* might be preferable here, doesn\u0027t really matter to me I just remembered the C++ primer saying something about this.\n\n(from C++ primer: \"In general, if you find yourself wanting to use a pointer or reference to a unique_ptr, you\u0027re probably not transferring ownership, so you should usually just pass a pointer or reference to the underlying object, and keep unique_ptr out of it.\")",
+      "range": {
+        "startLine": 448,
+        "startChar": 44,
+        "endLine": 448,
+        "endChar": 75
+      },
+      "revId": "f3b0e2a7f13efd6fe8432e31617c87c3c51523cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6335e1f_e17c4650",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-11-03T22:08:36Z",
+      "side": 1,
+      "message": "Is it safe to do this in a signal handler? I can\u0027t seem to find concrete information in the man pages but the articles/forum posts that I can find indicate this is unsafe.\n\nWould it be feasible to drop the lock and instead only enable SIGWINCH handling after the read thread has been set up?",
+      "range": {
+        "startLine": 470,
+        "startChar": 4,
+        "endLine": 470,
+        "endChar": 18
+      },
+      "revId": "f3b0e2a7f13efd6fe8432e31617c87c3c51523cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96401a44_8ded56e9",
         "filename": "adb/commandline.cpp",
         "patchSetId": 2
@@ -13,6 +59,24 @@
       "writtenOn": "2015-11-03T19:33:00Z",
       "side": 1,
       "message": "as an aside: now we\u0027re always building for Windows too, i wonder if we should just get rid of these #defines for Unix? (but keep them for Windows.) that way Unix-only code doesn\u0027t need to do stuff like this, but we\u0027ll still know straight away if we\u0027ve tried to use bare \u0027read\u0027 in code that runs on Windows.",
+      "revId": "f3b0e2a7f13efd6fe8432e31617c87c3c51523cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6335e1f_a126be93",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-11-03T22:08:36Z",
+      "side": 1,
+      "message": "Makes sense to me, enabling a 3rd read() function is kind of a bummer but it seems necessary, and better than having to mess with macros for a legitimate use case like this.",
+      "parentUuid": "96401a44_8ded56e9",
       "revId": "f3b0e2a7f13efd6fe8432e31617c87c3c51523cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
