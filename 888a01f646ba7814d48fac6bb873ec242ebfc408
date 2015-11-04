@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "36c12e1a_d0844234",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-11-04T01:22:18Z",
+      "side": 1,
+      "message": "we\u0027ll leave the terminal in a bad state (requiring \"stty sane\") if this doesn\u0027t run.\n\nif we really cared, we should set signal handlers for all the signals that default to killing the process. i\u0027ll switch this back to being called explicitly with a TODO for now, since no one\u0027s actually complained about this yet.",
+      "parentUuid": "f6a3167e_29e689d8",
+      "range": {
+        "startLine": 654,
+        "startChar": 8,
+        "endLine": 654,
+        "endChar": 33
+      },
+      "revId": "888a01f646ba7814d48fac6bb873ec242ebfc408",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16d0aae3_f50e0a4a",
         "filename": "adb/commandline.cpp",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2015-11-04T00:31:02Z",
       "side": 1,
       "message": "I guess it doesn\u0027t matter, but what is the point of switching from return\u0027ing up the calltree to exit()?",
+      "range": {
+        "startLine": 745,
+        "startChar": 4,
+        "endLine": 745,
+        "endChar": 8
+      },
+      "revId": "888a01f646ba7814d48fac6bb873ec242ebfc408",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6a3167e_29a0c9c1",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-11-04T01:22:18Z",
+      "side": 1,
+      "message": "because the \"what happens next?\" is pretty confusing for all this shell stuff. at this point, though i couldn\u0027t decide whether to move it up or down. adb_shell/RemoteShell seems less of a problem than RemoteShell/stdin_read_thread_loop/read_and_dump.\n\nsince this didn\u0027t go anywhere, i\u0027ll revert it for now.",
+      "parentUuid": "16d0aae3_f50e0a4a",
       "range": {
         "startLine": 745,
         "startChar": 4,
