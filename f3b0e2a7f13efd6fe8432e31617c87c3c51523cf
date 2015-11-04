@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "36aa0e54_0baf0157",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-11-04T01:08:48Z",
+      "side": 1,
+      "message": "there\u0027s no good way in our current code to implement the \"after\" part. (this lock is my implementation of the \"after\" part. it\u0027s how we know that the other thread got far enough for us to safely start sending it signals.) i think the real fix is to not have two threads, but that\u0027s a big enough change we should do it separately.",
+      "parentUuid": "36aa0e54_6821db2f",
+      "range": {
+        "startLine": 470,
+        "startChar": 4,
+        "endLine": 470,
+        "endChar": 18
+      },
+      "revId": "f3b0e2a7f13efd6fe8432e31617c87c3c51523cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96401a44_8ded56e9",
         "filename": "adb/commandline.cpp",
         "patchSetId": 2
@@ -203,6 +227,24 @@
       "side": 1,
       "message": "4th option sounds ok if you generally want to keep the codebase unix-ish (which is fine).",
       "parentUuid": "36c12e1a_50ccd23e",
+      "revId": "f3b0e2a7f13efd6fe8432e31617c87c3c51523cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56c6a231_54d7e4e4",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-11-04T01:08:48Z",
+      "side": 1,
+      "message": "there are very few uses of unix_read, and most of them are in non-Windows code. this and copy_to_file are the only exceptions. if we ripped out the STDIN_FILENO support from copy_to_file (and just asserted that we\u0027re _not_ dealing with stdin, which we currently never are), we\u0027d really just have this call site, and it really just wants _console_read.\n\nbut i don\u0027t have a particularly strong opinion. things aren\u0027t too bad right now, and mostly work.\n\ni\u0027ll copy the #define read ___xxx_read here for now, to preserve the status quo.",
+      "parentUuid": "f6a3167e_c935751d",
       "revId": "f3b0e2a7f13efd6fe8432e31617c87c3c51523cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
