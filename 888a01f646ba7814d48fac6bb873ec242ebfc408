@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6a3167e_29e689d8",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-04T00:31:02Z",
+      "side": 1,
+      "message": "I thought you might be considering moving from exit() to _exit() (which does not call atexit handlers) as described in https://android-review.googlesource.com/167998 ? Is it absolutely critical that this atexit handler run?\n\nBTW, if you make this change, please test on Windows* if you can (or hold your breath until I can try it) since calling stdin_raw_restore from an atexit handler probably goes down a different codepath on Windows (i.e. possibly loader lock held).\n\n[*] Yes, this means I should probably write a python unittest for adb shell in a real console on Windows.",
+      "range": {
+        "startLine": 654,
+        "startChar": 8,
+        "endLine": 654,
+        "endChar": 33
+      },
+      "revId": "888a01f646ba7814d48fac6bb873ec242ebfc408",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16d0aae3_f50e0a4a",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-04T00:31:02Z",
+      "side": 1,
+      "message": "I guess it doesn\u0027t matter, but what is the point of switching from return\u0027ing up the calltree to exit()?",
+      "range": {
+        "startLine": 745,
+        "startChar": 4,
+        "endLine": 745,
+        "endChar": 8
+      },
+      "revId": "888a01f646ba7814d48fac6bb873ec242ebfc408",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
