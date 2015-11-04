@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f6a3167e_26feb823",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-11-04T00:11:30Z",
+      "side": 1,
+      "message": "because read won\u0027t return EINTR unless i send the SIGUSR1. the SIGWINCH goes to the main thread (strictly, an arbitrary thread not of our choosing) so this signal handler exists merely to ensure that _some_ signal gets sent to the stdin read thread, which will cause the read to fail with EINTR.",
+      "parentUuid": "b65c3e65_5c987159",
+      "range": {
+        "startLine": 470,
+        "startChar": 4,
+        "endLine": 470,
+        "endChar": 18
+      },
+      "revId": "f3b0e2a7f13efd6fe8432e31617c87c3c51523cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96401a44_8ded56e9",
         "filename": "adb/commandline.cpp",
         "patchSetId": 2
@@ -119,6 +143,24 @@
       "side": 1,
       "message": "It\u0027s up to you guys. I guess there\u0027s two main schools of thought:\n\n- Make read() on Windows work with C Runtime fds and sysdeps fds.\n- Split read() into unix_read() which works with C Runtime fds and adb_read() which works with sysdeps fds.\n\nSo the proposal is for a 3rd option?",
       "parentUuid": "b6335e1f_a126be93",
+      "revId": "f3b0e2a7f13efd6fe8432e31617c87c3c51523cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36c12e1a_50ccd23e",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-11-04T00:11:30Z",
+      "side": 1,
+      "message": "a 4th option would be \"remove the TEMP_FAILURE_RETRY from unix_read on Unix, and explicitly write TEMP_FAILURE_RETRY in all but one call site\". (which is the real problem that brought me here, not so much the fact that we have two different reads.)\n\ni wasn\u0027t planning on doing anything about this right now, just throwing out another idea.",
+      "parentUuid": "16a98a5f_e783bcb7",
       "revId": "f3b0e2a7f13efd6fe8432e31617c87c3c51523cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
