@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "16d0aae3_fb9b5be2",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-11-04T17:02:51Z",
+      "side": 1,
+      "message": "I may be misunderstanding the problem here, but according to signal(7), signals will be delivered to an arbitrary thread selected from those which do not block the signal.\n\nCan we just block SIGWINCH before spawning the thread, and then use pthread_sigmask() to unblock it only for this thread, guaranteeing that it\u0027s delivered to only this thread? Then we can avoid the SIGUSR1 secondary signal altogether.",
+      "parentUuid": "36aa0e54_0baf0157",
+      "range": {
+        "startLine": 470,
+        "startChar": 4,
+        "endLine": 470,
+        "endChar": 18
+      },
+      "revId": "f3b0e2a7f13efd6fe8432e31617c87c3c51523cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96401a44_8ded56e9",
         "filename": "adb/commandline.cpp",
         "patchSetId": 2
