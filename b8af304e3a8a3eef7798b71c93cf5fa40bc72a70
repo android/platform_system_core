@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "568ea242_e8518fe2",
+        "filename": "libziparchive/zip_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-11-05T20:04:39Z",
+      "side": 1,
+      "message": "This is a copy of the above, but I think that would be better in both places.",
+      "parentUuid": "d6345268_82b03a04",
+      "range": {
+        "startLine": 296,
+        "startChar": 11,
+        "endLine": 296,
+        "endChar": 22
+      },
+      "revId": "b8af304e3a8a3eef7798b71c93cf5fa40bc72a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b69d1e72_c5dd9a31",
         "filename": "libziparchive/zip_writer.cc",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2015-11-05T18:28:56Z",
       "side": 1,
       "message": "Does this mean that this is never executed. I think we can remove this writing code here since the stream is ended above.",
+      "revId": "b8af304e3a8a3eef7798b71c93cf5fa40bc72a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36892e3b_41f44243",
+        "filename": "libziparchive/zip_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-11-05T20:04:39Z",
+      "side": 1,
+      "message": "Not exactly. The above code only occurs if the decompress buffer provided isn\u0027t big enough to hold the information for the last deflate. But there is still going to be a little bit leftover in almost all cases. Even the new test case executes this code.",
+      "parentUuid": "b69d1e72_c5dd9a31",
       "revId": "b8af304e3a8a3eef7798b71c93cf5fa40bc72a70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
