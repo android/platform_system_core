@@ -16,6 +16,24 @@
       "revId": "45b6fc878ab5ba0f76b6bb1947fe04ac6667c2f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6923665_b10c58c3",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2015-11-05T01:45:08Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like there\u0027s any difference (and there shouldn\u0027t be, since secure_mkdirs is only ever called when the directory for the file that\u0027s being created is missing, which probably doesn\u0027t happen much on sync).\n\nThe variance between runs is pretty high, though (I\u0027m seeing times between 40 and 50 seconds). We should maybe add some profiling infrastructure to see how much time we\u0027re actually spending doing stuff, and how much is just waiting for bits to come over the wire.",
+      "parentUuid": "b69d1e72_b78370b8",
+      "revId": "45b6fc878ab5ba0f76b6bb1947fe04ac6667c2f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
