@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "96a49abb_10ab59dd",
+        "filename": "liblog/logd_write.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-11-06T23:05:12Z",
+      "side": 1,
+      "message": "This takes a lock, and causes a regression. It increases the chances a lock is held while in signal context and can lead to deadlock if main thread is logging, and a signal happens in the middle of the code that is locked. Working on a fix on the hopes I do not have to revert this code.",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 38
+      },
+      "revId": "b1e324e4a6c6a47e6f750e8bb49f07d5ec07437a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "161fca56_37afd257",
         "filename": "logcat/logcat.cpp",
         "patchSetId": 5
