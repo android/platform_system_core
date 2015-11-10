@@ -42,6 +42,76 @@
     },
     {
       "key": {
+        "uuid": "56cb02e2_89523dba",
+        "filename": "liblog/log_is_loggable.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-11-10T01:07:54Z",
+      "side": 1,
+      "message": "I threw this over the wall, admittedly, as additional paranoia.\n\n_This_ is the only one where a performance penalty is an issue, the others are do-not-cares as they are not nearly as hot. I have yet to completely verify this change and run it through all the benchmarks. The biggest performance penalty is pthread_sigmask, which turns into a sigprocmask syscall (WAG 1us instead of tens of ns) so I have concerns over this approach, and much less over the additional overhead, paranoia and protection that this ERRORCHECK has to offer.",
+      "parentUuid": "76d4867d_c7e7fe61",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 76
+      },
+      "revId": "ba31bc56bd9ab14a3d717f60f7969f47abf0d64d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6d7f27c_cd49ddb5",
+        "filename": "liblog/log_is_loggable.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-11-10T01:07:54Z",
+      "side": 1,
+      "message": "I am cogitating a way to mitigate the expensive syscall overhead this represents.\n\nPerhaps this is where your idea of a additional API comes in, if we could determine there are no signal handlers, or that they have no logging, we could speed this up by two syscalls! The problem is, a new API goes unused, especially one like this.\n\nWe may have to accept the syscall performance penalty as it is \u0027correct\u0027 albeit costly. However, the cost is not just distributed to all the callers, because logd also uses this, where we are in precious CPU-capped background cgroup. Every log message is checked for is_loggable, however we at least only make the monotonic call once (and on logd-reinit). logd does _not_log in its signal handlers so this is not a cost I want to bear. I have pressure to invent a solution.",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 50
+      },
+      "revId": "ba31bc56bd9ab14a3d717f60f7969f47abf0d64d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16c50ace_2787f4c7",
+        "filename": "liblog/log_is_loggable.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-11-10T01:07:54Z",
+      "side": 1,
+      "message": "One speedup is to not perform the syscall call if sigmask is all off.",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 49
+      },
+      "revId": "ba31bc56bd9ab14a3d717f60f7969f47abf0d64d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16c50ace_44d4ae68",
         "filename": "liblog/logd_write.c",
         "patchSetId": 2
