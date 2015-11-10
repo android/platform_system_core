@@ -46,6 +46,30 @@
       "revId": "28416d6d33267f92768116e269966d61eac01db9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "369daed4_f0b91e3c",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-10T03:11:07Z",
+      "side": 1,
+      "message": "Ok, I tested it on Windows and this breaks things. Repro: 1) adb shell, 2) press up arrow and it hangs forever (_console_read() returns -1 with errno \u003d\u003d ENOMEM).\n\nI wrote _console_read() to assume that the buffer is always big enough to hold a full terminal sequence, so that I wouldn\u0027t have to keep track of an input queue buffer.\n\nI see two options:\n\n1. Make _console_read() maintain an input queue buffer so it can return one byte at a time.\n2. Make stdin_read_thread_loop() somehow do the \u0027coughing up\u0027 with memmove(), etc. correctly. (Sounds like it is harder than it sounds?)\n\nThoughts?",
+      "parentUuid": "369daed4_3099e63d",
+      "range": {
+        "startLine": 509,
+        "startChar": 8,
+        "endLine": 509,
+        "endChar": 24
+      },
+      "revId": "28416d6d33267f92768116e269966d61eac01db9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
