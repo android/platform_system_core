@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76d4867d_4a2dd3ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-10T00:43:01Z",
+      "side": 1,
+      "message": "1. I never run fastboot, so I didn\u0027t test this change.\n\n2. There is no precedent for calling logging from libbase. android::base::Split() calls abort() instead of using CHECK(). Does this mean that I should instead call abort() directly from UTF8ToWide/WideToUTF8? It\u0027s all David\u0027s fault for convincing me to add a CHECK() in the first place. :)\n\n3. The implication is that when fastboot calls ReadFileToString()/WriteStringToFile(), it now tries to do a UTF8 conversion on Windows. But it doesn\u0027t have a UTF8 string in the first place since it doesn\u0027t have sysdeps_win32.cpp\u0027s wmain() that converts from OS UTF16 to UTF8. This means:\n\na) Unicode command line params to fastboot never worked before this change and will continue to not work right,\n\nb) Multi-byte codepage params to fastboot used to work before this change (I think? maybe?) and now won\u0027t, but is anyone really passing multi-byte codepage params to fastboot to begin with?",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 52
+      },
+      "revId": "0a85ae91e6f636e2a6421fe2efc8e8bbbfaed572",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
