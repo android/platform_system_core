@@ -70,6 +70,24 @@
       "revId": "b64ca446d15a5f2a64e859df478bd85aa0c9be1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6a6b626_ae13b7a7",
+        "filename": "metricsd/metrics_daemon.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1076778
+      },
+      "writtenOn": "2015-11-10T00:00:05Z",
+      "side": 1,
+      "message": "IIUC, I think all logs are actually output to stderr.  And either init or some other android functionality collects that and outputs it into logcat.  Adding the kLogToSyslog as far as I can tell, only adds a call to syslog(..) and does nothing else different from the other cases: http://cs/googleplex-android/external/libchromeos/brillo/syslog_logging.cc\u0026l\u003d70",
+      "parentUuid": "16ac2a06_ac90e374",
+      "revId": "b64ca446d15a5f2a64e859df478bd85aa0c9be1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
