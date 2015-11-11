@@ -25,6 +25,40 @@
     },
     {
       "key": {
+        "uuid": "f6a6b626_850a16a4",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-11-11T06:26:22Z",
+      "side": 1,
+      "message": "the case i was worried about was: what if we have multiple pseudo-escapes in the buffer? right now, though, i\u0027m struggling to think how that could cause us to need more than one spare byte.",
+      "revId": "716992a21bdbc45e977640901acd90f7e6c106ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76d4867d_50861d83",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-11-11T06:26:22Z",
+      "side": 1,
+      "message": "(wrap to 100, not 80.)",
+      "revId": "716992a21bdbc45e977640901acd90f7e6c106ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56cb02e2_708ebde1",
         "filename": "adb/commandline.cpp",
         "patchSetId": 1
@@ -48,6 +82,40 @@
     },
     {
       "key": {
+        "uuid": "16ac2a06_21bb5402",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-11-11T06:26:22Z",
+      "side": 1,
+      "message": "i think what really sold me on not doing the memmoves though was that the previous change made this code work better _and_ made it much easier to read.\n\nokay, so it broke Windows, but apart from that... :-)\n\nyour suggestion of having the Windows code collect ANSI escape sequences sounded good to me. that seemed like it kept that where it belonged (and that code knows how long its maximum escape sequence is).\n\ni think that\u0027s the problem with this --- it mixes too much of the buffering with the interpretation, and it\u0027s always hard to follow code that\u0027s doing two things at once.\n\n(sorry i didn\u0027t reply to your suggestion earlier, but Netflix was broken today so i\u0027ve been too busy to come back to this. or any of the other messes i\u0027ve made recently :-( )",
+      "revId": "716992a21bdbc45e977640901acd90f7e6c106ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16ac2a06_019bb898",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-11-11T06:26:22Z",
+      "side": 1,
+      "message": "the other alternative seemed to be \"flush more frequently\", but the fact we have these two kinds of flushes (and the fact that we\u0027d have to do the memmoves too) made it seem like that wouldn\u0027t be particularly attractive. and adding an extra class to abstract away the two systems seemed like it would make things more complicated overall (even if it made them less complicated locally).",
+      "revId": "716992a21bdbc45e977640901acd90f7e6c106ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6da7ea7_5e4f513c",
         "filename": "adb/commandline.cpp",
         "patchSetId": 1
@@ -65,6 +133,46 @@
         "endLine": 591,
         "endChar": 9
       },
+      "revId": "716992a21bdbc45e977640901acd90f7e6c106ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16c50ace_1e003ddc",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3174,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-11-11T06:26:22Z",
+      "side": 1,
+      "message": "(how do these two groups differ?)",
+      "range": {
+        "startLine": 3140,
+        "startChar": 0,
+        "endLine": 3174,
+        "endChar": 22
+      },
+      "revId": "716992a21bdbc45e977640901acd90f7e6c106ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b0e2f2a_bd3d07bc",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3323,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-11-11T06:26:22Z",
+      "side": 1,
+      "message": "see: Windows wants you to have a std::string of buffered output in here :-)",
       "revId": "716992a21bdbc45e977640901acd90f7e6c106ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
