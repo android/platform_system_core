@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b0e2f2a_fd081f6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-11T03:30:04Z",
+      "side": 1,
+      "message": "This change is \u0027self-serving\u0027 in the sense that I \u0027solved\u0027 the issue by using a bigger buffer in the caller instead of making unix_read()/_console_read() internally buffer things up.\n\nI\u0027m not totally opposed to making that change in-addition-to or in-lieu-of this change. Just let me know how you\u0027d like it done.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 53
+      },
+      "revId": "716992a21bdbc45e977640901acd90f7e6c106ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56cb02e2_708ebde1",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-11T03:30:04Z",
+      "side": 1,
+      "message": "enh suggested the memmove() technique in https://android-review.googlesource.com/181651, but he said there is a problem with it. I don\u0027t see a problem (correct me if I\u0027m wrong), but if there is a problem, hopefully this CHECK() will find it.",
+      "range": {
+        "startLine": 570,
+        "startChar": 28,
+        "endLine": 570,
+        "endChar": 75
+      },
+      "revId": "716992a21bdbc45e977640901acd90f7e6c106ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6da7ea7_5e4f513c",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-11T03:30:04Z",
+      "side": 1,
+      "message": "Note that we could end up with r \u003d\u003d 0 here and then we\u0027d write zero bytes to the ShellProtocol or socket. In testing, this seems ok, but let me know if I should prevent this here.",
+      "range": {
+        "startLine": 583,
+        "startChar": 8,
+        "endLine": 591,
+        "endChar": 9
+      },
+      "revId": "716992a21bdbc45e977640901acd90f7e6c106ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
