@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b25eb9e_3fcc4bb3",
+        "filename": "liblog/fake_log_device.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2015-11-12T18:26:43Z",
+      "side": 1,
+      "message": "pthread_sigmask should only fail for an invalid mask or a bogus address... since both are programming errors, could this be an assertion instead and keep the lock method void (simplify the callers)?",
+      "revId": "3cd3ed4f9c49e1e6b2bd1431c31cfc354b7c72cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76d4867d_752d0bcf",
+        "filename": "liblog/fake_log_device.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2015-11-12T18:26:43Z",
+      "side": 1,
+      "message": "What happens if we bail out here a bunch of times? Is this a leak?",
+      "revId": "3cd3ed4f9c49e1e6b2bd1431c31cfc354b7c72cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b3453db_af3db5bb",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2015-11-12T18:26:43Z",
+      "side": 1,
+      "message": "Seems a bit hacky to be OR\u0027ing values declared in different namespaces. Not likely that someone will define a redundant 0x8000, but it seems better to declare ANDROID_LOGGABLE_NOT_WITHIN_SIGNAL in libc_logging.h along with the log levels that it will be OR\u0027d with. Does it really need to be kept secret?",
+      "revId": "3cd3ed4f9c49e1e6b2bd1431c31cfc354b7c72cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
