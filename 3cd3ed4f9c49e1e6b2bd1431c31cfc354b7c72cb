@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5b25eb9e_4ae2a356",
+        "filename": "liblog/fake_log_device.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-11-12T21:25:49Z",
+      "side": 1,
+      "message": "I see a return as simpler than assert.\n\nHowever, this code is for host, so I have no problem with KISS and switching back to void.\n\nThe rationalization for returning an error (success/failure):\n\nWe still want to check for pthread_mutex_lock failure below, although strictly in bionic _today_ it is also a can-not-happen for the specific class of mutex we are using because it simplifies to a semaphore and blocking syscall that only fails if we run out of memory (vm failures), but ...\n\nfakeLogDeviceLock \u003d PTHREAD_ERRORCHECK_MUTEX_INITIALIZER_NP\n\nis one of the options I want to consider at a future date which will return an expected error on nested calls to catch deadlock, and as such failure propagation is _important_.\n\nWe can cross the above bridge and associated complexity in the future. All the handling is \u0027dead code\u0027 right now.",
+      "parentUuid": "5b25eb9e_3fcc4bb3",
+      "revId": "3cd3ed4f9c49e1e6b2bd1431c31cfc354b7c72cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76d4867d_752d0bcf",
         "filename": "liblog/fake_log_device.c",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "5b25eb9e_ca5c73cc",
+        "filename": "liblog/fake_log_device.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-11-12T21:25:49Z",
+      "side": 1,
+      "message": "Yes, and it is a can-not-happen and a do-not-care at the same time, this is for host. As such I consider it better to leak than to deadlock if the caller (?) decides to delete a virtual log buffer channel.",
+      "parentUuid": "76d4867d_752d0bcf",
+      "revId": "3cd3ed4f9c49e1e6b2bd1431c31cfc354b7c72cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b3453db_af3db5bb",
         "filename": "logd/LogBuffer.cpp",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2015-11-12T18:26:43Z",
       "side": 1,
       "message": "Seems a bit hacky to be OR\u0027ing values declared in different namespaces. Not likely that someone will define a redundant 0x8000, but it seems better to declare ANDROID_LOGGABLE_NOT_WITHIN_SIGNAL in libc_logging.h along with the log levels that it will be OR\u0027d with. Does it really need to be kept secret?",
+      "revId": "3cd3ed4f9c49e1e6b2bd1431c31cfc354b7c72cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b25eb9e_ea0defbd",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-11-12T21:25:49Z",
+      "side": 1,
+      "message": "The other \u0027hacks\u0027 considered:\n\n- A call to a function to prep the library to no handle signals. Problem is must be run at init context in main, which we do not have access to in the jni call.\n- Code to detect if the caller is in \u0027signal\u0027 context, even more hacky than you can imagine.\n- A separate newly introduced function, rejected because I want to keep the API simple.\n- Overload def (this one).\n\nIt does not need to be kept secret. It was only called secret because I chose to place it near the function definition that uses it, rather than in the level definitions. I will drop the word \u0027secret\u0027.\n\nI am _not_ going to change the __android_log_is_loggable API, this is now chipped in stone. def is a value between 0 and a small integer, and that integers set has been that way since \u002708. Adding a semi-secret (as in not to be exposed in the API) feature-flag to this is low cost since the def value is always a constant #define and zero processing cost to overload.\n\nI can change the name to ANDROID_LOG_LOGGABLE_NOT_WITHIN_SIGNAL and add it near the android log levels, but it can _only_ be used with __android_log_is_loggable and no where else which startles me. If that will please your \u0027different namespace\u0027 issue. I cogitated over this for some time and decided to put its definition near the function so that it was strongly associated?\n\nAnother choice would be to continue to define near __android_log_is_loggable the following API change:\n\n- redefine def to flags in the prototype and in the library implementation.\n\n#define ANDROID_LOGGABLE_FLAG_LEVEL_MASK        0x000F\n#define ANDROID_LOGGABLE_FLAG_NOT_WITHIN_SIGNAL 0x8000",
+      "parentUuid": "1b3453db_af3db5bb",
       "revId": "3cd3ed4f9c49e1e6b2bd1431c31cfc354b7c72cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
