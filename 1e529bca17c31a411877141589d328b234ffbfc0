@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b25eb9e_c55224e7",
+        "filename": "adb/sysdeps.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-12T23:38:06Z",
+      "side": 1,
+      "message": "If \u0027#define open __xxx_open\u0027 happens before #include \u003cbase/utf8.h\u003e, there will be an error when utf8.h does \u0027namespace utf8 { using ::open; }\u0027 because there is no ::__xxx_open.",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 63
+      },
+      "revId": "1e529bca17c31a411877141589d328b234ffbfc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b25eb9e_e59ac0de",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3871,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-12T23:38:06Z",
+      "side": 1,
+      "message": "This assigns to the same variable, but seems to work fine. The adb_test unittest passes no prob.",
+      "range": {
+        "startLine": 3871,
+        "startChar": 8,
+        "endLine": 3871,
+        "endChar": 39
+      },
+      "revId": "1e529bca17c31a411877141589d328b234ffbfc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb2e9f8f_91ee9c1a",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3910,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-12T23:38:06Z",
+      "side": 1,
+      "message": "The point of this var is so that we unconditionally free(wbuf) even if WideToUTF8() fails. Another option would be to use unique_ptr\u003c..., decltype(free)\u003e on wbuf.",
+      "range": {
+        "startLine": 3910,
+        "startChar": 15,
+        "endLine": 3910,
+        "endChar": 28
+      },
+      "revId": "1e529bca17c31a411877141589d328b234ffbfc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96d1fa8e_3e837673",
+        "filename": "base/include/base/utf8.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-12T23:38:06Z",
+      "side": 1,
+      "message": "This compiles fine on Linux, but I don\u0027t have a Mac to test that.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 33
+      },
+      "revId": "1e529bca17c31a411877141589d328b234ffbfc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6da7ea7_5a611314",
+        "filename": "base/utf8.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-12T23:38:06Z",
+      "side": 1,
+      "message": "I switched from static + preceding underscore to using an anonymous namespace since that seems to be more C++-ish.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 11
+      },
+      "revId": "1e529bca17c31a411877141589d328b234ffbfc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
