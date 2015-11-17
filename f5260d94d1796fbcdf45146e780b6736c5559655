@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5b25eb9e_22cc23e1",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3651,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-11-17T17:10:03Z",
+      "side": 1,
+      "message": "Perfect, thanks!",
+      "parentUuid": "3b2597a9_3b28da71",
+      "range": {
+        "startLine": 3651,
+        "startChar": 7,
+        "endLine": 3651,
+        "endChar": 24
+      },
+      "revId": "f5260d94d1796fbcdf45146e780b6736c5559655",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b2597a9_db167633",
         "filename": "adb/sysdeps_win32.cpp",
         "patchSetId": 2
@@ -41,6 +65,29 @@
         "startChar": 30,
         "endLine": 3658,
         "endChar": 35
+      },
+      "revId": "f5260d94d1796fbcdf45146e780b6736c5559655",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db847bce_177946d6",
+        "filename": "adb/sysdeps_win32_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-11-17T17:10:03Z",
+      "side": 1,
+      "message": "Might be slightly more readable to pull the completed check out of the loop, something like:\n\n  for (...; i \u003c seq.size() - 1; ...) {\n    buffer.push_back(seq[i]);\n    TestParseCompleteUTF8(\u003cnot complete yet args\u003e);\n  }\n  buffer.push_back(seq.back());\n  TestParseCompleteUTF8(\u003ccomplete args\u003e);",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 13
       },
       "revId": "f5260d94d1796fbcdf45146e780b6736c5559655",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
