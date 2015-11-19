@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1b3453db_c541eb1e",
+        "filename": "include/log/log.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-11-19T01:16:02Z",
+      "side": 1,
+      "message": "I want to entrench into the API that we are only supporting ANDROID_LOGGABLE_FLAG_DEFAULT_MASK bits for the default values in flag so that if the user puts a nonsensical value that we at least validate it with a mask (we may add range checking later). This leaves the door open for me to overload the bits.\n\nThe alternative is that I toss the idea and let them put nonsensical values here so that they become the nonsensical return value from the function. There is value in that (a return value of 42, for instance, would allow the caller to determine that we hit the default, and they may chose to use that as a clue and take other actions.\n\nI\u0027d prefer to limit the abuse of an API and add validation to a library function.\n\nNB: mask checking alone still allows them to abuse it :-(, ANDROID_LOGGABLE_FLAG_DEFAULT_MASK as a value is much like the 42 I outlined above.",
+      "parentUuid": "db847bce_53e59838",
+      "range": {
+        "startLine": 619,
+        "startChar": 0,
+        "endLine": 620,
+        "endChar": 54
+      },
+      "revId": "1c3eeb9160cb7fc5158162666dcdf02f69d926d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b2597a9_47629f1b",
         "filename": "liblog/fake_log_device.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-11-19T00:08:18Z",
       "side": 1,
       "message": "nit: is this whitespace addition intentional or just leftover from removing the DECLARE_SIGSET() stuff from the previous CL?",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 1
+      },
+      "revId": "1c3eeb9160cb7fc5158162666dcdf02f69d926d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb75bfb9_92f32d5c",
+        "filename": "liblog/fake_log_device.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-11-19T01:16:02Z",
+      "side": 1,
+      "message": "Intentional, for clarity. I had to comply with this in previous CLs in the past, it is not part of the coding standard though. I touch it, I fix it ...",
+      "parentUuid": "3b2597a9_47629f1b",
       "range": {
         "startLine": 113,
         "startChar": 0,
@@ -71,6 +119,53 @@
     },
     {
       "key": {
+        "uuid": "7b6aafda_599ff681",
+        "filename": "liblog/log_is_loggable.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-11-19T01:16:02Z",
+      "side": 1,
+      "message": "First reason was balance with the other code in the liblog library that also abstracted the lock and documented this problem.\n\nI wanted to keep the deadlock warning comment, and put it near the top, this just felt right. The code inlines effectively. I could have opted to put it in front of the lock_loggable mutex definition placed at the top and leave the code below alone. I decided to keep the abstraction to the lock function.\n\nThis is also in preparation for the ToDo: as noted in the commit message. If we come to a solution, the change will be identical in each file, hitting the lock() code at the top.\n\nAnother future is that this code is not designed to host on MSDOS. If we get a request, this will also simplify the port to MSDOS. The reasoning behind not porting was that legacy code in the MSDOS deliverables do not use this API (yet).",
+      "parentUuid": "5b2a4b7b_e3c17fa7",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "1c3eeb9160cb7fc5158162666dcdf02f69d926d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b2597a9_476a9f32",
+        "filename": "liblog/log_is_loggable.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-11-19T01:16:02Z",
+      "side": 1,
+      "message": "This is currently KISS. What we want to later is:\n\nswitch (flag \u0026 ANDROID_LOGGABLE_FLAG_DEFAULT_MASK) {\ncase ANDROID_LOG_VERBOSE:\ncase ANDROID_LOG_DEBUG:\ncase ANDROID_LOG_INFO:\ncase ANDROID_LOG_WARN:\ncase ANDROID_LOG_ERROR:\ncase ANDROID_LOG_FATAL:\n    return flag \u0026 ANDROID_LOGGABLE_FLAG_DEFAULT_MASK;\n}\nreturn -1; /* ANDROID_LOG_SUPPRESS */",
+      "range": {
+        "startLine": 186,
+        "startChar": 4,
+        "endLine": 186,
+        "endChar": 53
+      },
+      "revId": "1c3eeb9160cb7fc5158162666dcdf02f69d926d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b816bc7_7d5bc838",
         "filename": "liblog/log_is_loggable.c",
         "patchSetId": 2
@@ -82,6 +177,30 @@
       "writtenOn": "2015-11-19T00:08:18Z",
       "side": 1,
       "message": "This is the substance of the change... the deadlock cases you saw all involved android_log_timestamp()?",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 224,
+        "endChar": 46
+      },
+      "revId": "1c3eeb9160cb7fc5158162666dcdf02f69d926d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b2a4b7b_86cc093c",
+        "filename": "liblog/log_is_loggable.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-11-19T01:16:02Z",
+      "side": 1,
+      "message": "Yes, the problem slapped us across the face when we shared the mutex for here and above. By splitting the mutex into two, we solve most of the problem. By allowing trylock we also allow for isLoggable in signal context (not in our codebase, but liblog is part of the API that vendors/partners use and they could do anything I expect, including isloggable in signal context).\n\nThe visible problem was an isLoggable in the mainline process, when a signal came in and tried to log a message, the former code deadlocked.\n\nWe still have the problem at a lower boil, people have reported deadlock and it was not repeatable with enough frequency to catch it. Now we know why. In the case of the other locks we just report and don\u0027t fix since we have an issue with BLOCK/UNBLOCK of signals that we have no intent on burning cycles to close yet. The comments may allow the vendors and partners to work around it.\n\nThe _correct_ way (currently) of using any signal unsafe operations in a signal is to spawn a thread waiting on a semaphore, signal would trip the semaphore, which would run the signal request in a survivable context. However, that is not an option in the places in our codebase since spawning a thread would be verbotten.",
+      "parentUuid": "5b816bc7_7d5bc838",
       "range": {
         "startLine": 207,
         "startChar": 1,
