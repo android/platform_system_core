@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b167790_aec05bff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-22T03:07:50Z",
+      "side": 1,
+      "message": "To get Android Studio to properly display UTF-8 from adb start-server, there is https://code.google.com/p/android/issues/detail?id\u003d194648.",
+      "range": {
+        "startLine": 7,
+        "startChar": 41,
+        "endLine": 7,
+        "endChar": 69
+      },
+      "revId": "d8488e52e56ceb463ff98a45e8bef07014e30e84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b153384_cd096140",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-22T03:07:50Z",
+      "side": 1,
+      "message": "An alternative would be to use the C Runtime pipe() (instead of CreatePipe() which is currently used) which will convert \\r\\n\u003d\u003e\\n, then just use fwrite() with regular stdout/stderr which will convert \\n\u003d\u003e\\r\\n. But that seems more gross to keep converting line-endings, when this kind of utility code shouldn\u0027t even be thinking about such data format issues.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 28
+      },
+      "revId": "d8488e52e56ceb463ff98a45e8bef07014e30e84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b167790_eeba5389",
+        "filename": "adb/adb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-22T03:07:50Z",
+      "side": 1,
+      "message": "An alternative would be to just use STDOUT/STDERR_FILENO, but by calling fileno(), the C Runtime can tell us if we\u0027re not even connected to anything by returning -2. Plus, if stdout/stderr have been freopen\u0027d, the file descriptor number could be different (but that is probably a crazy corner case we don\u0027t worry about).",
+      "range": {
+        "startLine": 517,
+        "startChar": 34,
+        "endLine": 517,
+        "endChar": 40
+      },
+      "revId": "d8488e52e56ceb463ff98a45e8bef07014e30e84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bed97ca_96dc9234",
+        "filename": "adb/adb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-22T03:07:50Z",
+      "side": 1,
+      "message": "An alternative would be to do _open_osfhandle(DuplicateHandle(_get_osfhandle(fd), FALSE)), but that seems very esoteric.",
+      "range": {
+        "startLine": 529,
+        "startChar": 11,
+        "endLine": 529,
+        "endChar": 76
+      },
+      "revId": "d8488e52e56ceb463ff98a45e8bef07014e30e84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db271bf3_f330822c",
+        "filename": "adb/adb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-22T03:07:50Z",
+      "side": 1,
+      "message": "An alternative would be to move ScopedFd from shell_service.cpp to adb_utils.h. Libbase also has unique_fd, but that uses close() and adb has the crazy unix_close() macro.",
+      "range": {
+        "startLine": 543,
+        "startChar": 12,
+        "endLine": 543,
+        "endChar": 22
+      },
+      "revId": "d8488e52e56ceb463ff98a45e8bef07014e30e84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b246ff3_10d26adc",
+        "filename": "adb/adb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-22T03:07:50Z",
+      "side": 1,
+      "message": "Same ScopedFd comment.",
+      "range": {
+        "startLine": 551,
+        "startChar": 12,
+        "endLine": 551,
+        "endChar": 22
+      },
+      "revId": "d8488e52e56ceb463ff98a45e8bef07014e30e84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbf69f9c_34795614",
+        "filename": "adb/adb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-22T03:07:50Z",
+      "side": 1,
+      "message": "Remove this check? No one checks the return value from printf/fprintf, so why check this return value? This check happens to make this change dependent on my other UTF-8 change that fixes up the adb_write() return value.",
+      "range": {
+        "startLine": 585,
+        "startChar": 12,
+        "endLine": 585,
+        "endChar": 44
+      },
+      "revId": "d8488e52e56ceb463ff98a45e8bef07014e30e84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db271bf3_33885a09",
+        "filename": "adb/adb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2015-11-22T03:07:50Z",
+      "side": 1,
+      "message": "This comment is because I forgot why I did all this manual pipe reading and this is the reason.",
+      "range": {
+        "startLine": 636,
+        "startChar": 80,
+        "endLine": 639,
+        "endChar": 19
+      },
+      "revId": "d8488e52e56ceb463ff98a45e8bef07014e30e84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
