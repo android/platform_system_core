@@ -214,6 +214,30 @@
       "revId": "379499cd3ab8dbc26de7a8206567e5c49be52ac4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bf38fea_0f556545",
+        "filename": "metricsd/.clang-format",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1072350
+      },
+      "writtenOn": "2015-11-30T19:06:32Z",
+      "side": 1,
+      "message": "I see, in that case Chromium should be fine as well. \n\nMy question then though is why not make it BasedOnStyle: Google + additional restriction of */\u0026 with type (PointerAlignment: Left)?\n\nMore details below. (tl;dr: have a slight preference for deviating minimally from Google style).\n\nHere\u0027s the delta between BasedOnStyle Google vs. Chromium as defined by clang-format:\n\n$ diff google-style chromium-style \n11c11\n\u003c AllowAllParametersOfDeclarationOnNextLine: true\n---\n\u003e AllowAllParametersOfDeclarationOnNextLine: false\n14,16c14,16\n\u003c AllowShortFunctionsOnASingleLine: All\n\u003c AllowShortIfStatementsOnASingleLine: true\n\u003c AllowShortLoopsOnASingleLine: true\n---\n\u003e AllowShortFunctionsOnASingleLine: Inline\n\u003e AllowShortIfStatementsOnASingleLine: false\n\u003e AllowShortLoopsOnASingleLine: false\n21c21\n\u003c BinPackParameters: true\n---\n\u003e BinPackParameters: false\n44c44\n\u003c DerivePointerAlignment: true\n---\n\u003e DerivePointerAlignment: false\n\nLooks like the delta is related to additional formatting restrictions in Chromium (http://dev.chromium.org/developers/coding-style#Code_Formatting).",
+      "parentUuid": "fbe4dff8_9a5a1c30",
+      "range": {
+        "startLine": 1,
+        "startChar": 14,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "379499cd3ab8dbc26de7a8206567e5c49be52ac4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
