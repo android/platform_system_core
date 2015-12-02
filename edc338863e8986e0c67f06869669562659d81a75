@@ -22,6 +22,30 @@
       "revId": "edc338863e8986e0c67f06869669562659d81a75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb113f0a_c29d3c7d",
+        "filename": "metricsd/.clang-format",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1076133
+      },
+      "writtenOn": "2015-12-02T16:41:50Z",
+      "side": 1,
+      "message": "From the clang page \"The penalty for each character outside of the column limit. \"\n\nI\u0027m guessing this is the penalty in the score function, minimized by clang-format. There are also penalty for breaking a string, puting the return type on its own line etc..\n\nadb, debuggerd, base and bionic set this (this is where I got it), probably to allow for more flexible rules.\n\nChromium and Google both defaults to 10000 (no flexibility, you shall never be more than 80 chars), we should probably do that too.\n\nI\u0027ll remove that line.",
+      "parentUuid": "3b3917b5_6d8375e9",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 22
+      },
+      "revId": "edc338863e8986e0c67f06869669562659d81a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
