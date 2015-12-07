@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20672434_746c6813",
+        "filename": "libcutils/socket_inaddr_any_server.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2015-12-07T04:35:48Z",
+      "side": 1,
+      "message": "Looks like this is the only actual change in this CL. I wonder if it makes sense to split this CL into two? One would just have the no-op changes to change \"sockaddr\" to \"sockaddr_storage\" and the other would contain this change. That would have the advantage that if this change breaks something it can be rolled back by itself without impacting the sockaddr_storage changes.\n\nLGTM either way though.",
+      "range": {
+        "startLine": 37,
+        "startChar": 11,
+        "endLine": 37,
+        "endChar": 23
+      },
+      "revId": "eca2d8d2ef71e1f19be148a8b6e483a0299fc381",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
