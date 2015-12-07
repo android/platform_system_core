@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40933818_524842b1",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-12-07T20:49:50Z",
+      "side": 1,
+      "message": "If crate_transport() tries to make a TCP connection and fails this will fall through and then attempt to make a USB connection, which is almost certainly not what the user wanted.\n\nWe probably just want to return |transport| here whether it\u0027s null or not, and then add handling at the call site to error out if nullptr is returned.",
+      "range": {
+        "startLine": 238,
+        "startChar": 8,
+        "endLine": 238,
+        "endChar": 24
+      },
+      "revId": "4627cee345632f69bbfc3576014038cbf877aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e06d0cee_14ae2ca9",
+        "filename": "fastboot/tcp_linux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-12-07T20:49:50Z",
+      "side": 1,
+      "message": "If you want to just put sockfd directly as a member in LinuxTcpTransport that might be simpler. I only kept the \"handle\" structures in the USB code to avoid having to do a large refactor when I introduced the Transport class.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "4627cee345632f69bbfc3576014038cbf877aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e06d0cee_b456604f",
+        "filename": "fastboot/tcp_linux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-12-07T20:49:50Z",
+      "side": 1,
+      "message": "Prefer more descriptive variable names instead of prefixing _ for new code, maybe something like this:\n\n  ssize_t LinuxTcpTransport::Write(const void* data, size_t len) {\n    unsigned char* char_data \u003d reinterpret_cast\u003cunsigned char*\u003e(data);",
+      "range": {
+        "startLine": 66,
+        "startChar": 33,
+        "endLine": 66,
+        "endChar": 50
+      },
+      "revId": "4627cee345632f69bbfc3576014038cbf877aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0842cce_16b38c56",
+        "filename": "fastboot/tcp_linux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-12-07T20:49:50Z",
+      "side": 1,
+      "message": "Prefer pointer next to the type for new code (see above comment for example).",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 54
+      },
+      "revId": "4627cee345632f69bbfc3576014038cbf877aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00486077_3295ae20",
+        "filename": "fastboot/tcp_linux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-12-07T20:49:50Z",
+      "side": 1,
+      "message": "Use TEMP_FAILURE_RETRY to handle EINTR, and I think we can drop EAGAIN handling if we\u0027re always blocking, to get rid of this switch statement.",
+      "range": {
+        "startLine": 76,
+        "startChar": 12,
+        "endLine": 76,
+        "endChar": 46
+      },
+      "revId": "4627cee345632f69bbfc3576014038cbf877aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40933818_b7a6582d",
+        "filename": "fastboot/tcp_linux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-12-07T20:49:50Z",
+      "side": 1,
+      "message": "Probably better to return -1 here and let the main loop decide how to handle the failure.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 24
+      },
+      "revId": "4627cee345632f69bbfc3576014038cbf877aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00486077_52902a30",
+        "filename": "fastboot/tcp_linux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-12-07T20:49:50Z",
+      "side": 1,
+      "message": "I assume this is to get around hardware limitations, is it necessary to repeat here? Might as well leave it out if not.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 75
+      },
+      "revId": "4627cee345632f69bbfc3576014038cbf877aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "009dc025_af0b61aa",
+        "filename": "fastboot/tcp_linux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-12-07T20:49:50Z",
+      "side": 1,
+      "message": "Seems better to return |count| here and let the caller decide how to handle it.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 20
+      },
+      "revId": "4627cee345632f69bbfc3576014038cbf877aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40933818_97e0fc4f",
+        "filename": "fastboot/tcp_linux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-12-07T20:49:50Z",
+      "side": 1,
+      "message": "Same re: TEMP_FAILURE_RETRY.",
+      "range": {
+        "startLine": 105,
+        "startChar": 12,
+        "endLine": 105,
+        "endChar": 46
+      },
+      "revId": "4627cee345632f69bbfc3576014038cbf877aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "204d6487_38747117",
+        "filename": "fastboot/tcp_linux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-12-07T20:49:50Z",
+      "side": 1,
+      "message": "Return -1.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 24
+      },
+      "revId": "4627cee345632f69bbfc3576014038cbf877aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00486077_526b8a9c",
+        "filename": "fastboot/tcp_linux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-12-07T20:49:50Z",
+      "side": 1,
+      "message": "n?",
+      "range": {
+        "startLine": 112,
+        "startChar": 15,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "4627cee345632f69bbfc3576014038cbf877aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60e03ce1_0165cc60",
+        "filename": "fastboot/tcp_linux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2015-12-07T20:49:50Z",
+      "side": 1,
+      "message": "What\u0027s the bug here and do we have to replicate it?\n\nI\u0027m not super familiar with USB internals, but it seems like this is just saying \"if we get a smaller packet than we expected, we\u0027re done\". This seems fine if USB packets aren\u0027t fragmented (though I\u0027m not positive this is the case) since you\u0027re guaranteed to get everything the device sent.\n\nHowever TCP can definitely fragment packets right? If fragmentation happens here and the read() returns less than was sent by the device, this will exit early. The callers of this function make no attempt to re-read if they don\u0027t get all the bytes they want so this would likely cause a failure.\n\nThe expectation seems to be that Read() may return fewer than |len| bytes, but it will always return everything the device has sent. I believe to achieve the same guarantee in TCP we\u0027ll have to add some sort of protocol indicating packet sizes so we can keep reading here until we get a full packet.",
+      "range": {
+        "startLine": 115,
+        "startChar": 9,
+        "endLine": 115,
+        "endChar": 43
+      },
+      "revId": "4627cee345632f69bbfc3576014038cbf877aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
