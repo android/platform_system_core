@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0e3a848_e1cfa6a8",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-12-08T22:47:00Z",
+      "side": 1,
+      "message": "Not accurate because credential GID checking not performed. Checking in LogListener.cpp (when fixed) is accurate and is _the_ line of defense. No need for us to do the checking here _except_ to bypass is_loggable.",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 9
+      },
+      "revId": "dd10c7314d294a1b8a95da3fc8338c02ec214541",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80ed303a_bf13f735",
+        "filename": "logd/LogBufferElement.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-12-08T22:47:00Z",
+      "side": 1,
+      "message": "Not strictly needed here and below because we do not have spam filter on security buffer, required for completeness and accuracy.",
+      "range": {
+        "startLine": 162,
+        "startChar": 33,
+        "endLine": 162,
+        "endChar": 64
+      },
+      "revId": "dd10c7314d294a1b8a95da3fc8338c02ec214541",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0098cde_7aa5f970",
+        "filename": "logd/LogListener.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-12-08T22:47:00Z",
+      "side": 1,
+      "message": "wrong logic, messed up by trying to put clientHasLogCredentials last, or trying to do pre-check of local copies of uid. Here is accurate, but does not place clientHasLogCredentials last:\n\nif ((header-\u003eid \u003d\u003d LOG_ID_SECURITY) \u0026\u0026 ((cred-\u003euid !\u003d AID_SYSTEM) \u0026\u0026 (cred-\u003euid !\u003d AID_ROOT) \u0026\u0026 !clientHasLogCredentials(cli)) || !__android_log_security())) {\n\nHere is KISS accurate dropping pre-check:\n\nif ((header-\u003eid \u003d\u003d LOG_ID_SECURITY) \u0026\u0026 (!__android_log_security() || !clientHasLogCredentials(cli)) {",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 42
+      },
+      "revId": "dd10c7314d294a1b8a95da3fc8338c02ec214541",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20fe44e6_9c472553",
+        "filename": "logd/LogUtils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-12-08T22:47:00Z",
+      "side": 1,
+      "message": "/* Furnished in LogCommand.cpp */",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 5
+      },
+      "revId": "dd10c7314d294a1b8a95da3fc8338c02ec214541",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
