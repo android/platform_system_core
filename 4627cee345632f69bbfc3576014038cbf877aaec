@@ -419,6 +419,30 @@
       "revId": "4627cee345632f69bbfc3576014038cbf877aaec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00106094_a6652826",
+        "filename": "fastboot/tcp_linux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1047984
+      },
+      "writtenOn": "2015-12-08T15:40:04Z",
+      "side": 1,
+      "message": "\u003c\u003c\u003d\u003d I believe to achieve the same guarantee in TCP we\u0027ll have to add some sort of protocol indicating packet sizes so we can keep reading here until we get a full packet. \u003d\u003d\u003e\u003e Yes, agree with you. One more patch set will follow tomorrow. Will prefix each packet with 0xFB + \u003c4 bytes representing the packet length\u003e + \u003cpacket\u003e on each side - client and server.",
+      "parentUuid": "60e03ce1_0165cc60",
+      "range": {
+        "startLine": 115,
+        "startChar": 9,
+        "endLine": 115,
+        "endChar": 43
+      },
+      "revId": "4627cee345632f69bbfc3576014038cbf877aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
