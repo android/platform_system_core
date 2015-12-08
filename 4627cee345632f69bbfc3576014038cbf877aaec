@@ -275,6 +275,30 @@
       "revId": "4627cee345632f69bbfc3576014038cbf877aaec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60f2fca8_11fc2ed9",
+        "filename": "fastboot/tcp_linux.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1047984
+      },
+      "writtenOn": "2015-12-08T14:25:53Z",
+      "side": 1,
+      "message": "Yes, it was related to the fact that passed |len| parameter is the maximum number of bytes that might be stored in the passed |data| buffer. In protocol.cpp:check_response() method the transport read method (line 55) always get the length of \"status\", which is 64 bytes. However we cannot expect to get 64 bytes all the time, given the fact that, IE, a \"DATA\" status will always return 12 bytes only. Therefore I have simplified LinuxTcpTransport::Read() method to the form that can be seen now.",
+      "parentUuid": "60e03ce1_0165cc60",
+      "range": {
+        "startLine": 115,
+        "startChar": 9,
+        "endLine": 115,
+        "endChar": 43
+      },
+      "revId": "4627cee345632f69bbfc3576014038cbf877aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
