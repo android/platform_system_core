@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "254d7687_e7af5ca3",
+        "filename": "metricsd/metricscollectorservice_trampoline.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2015-12-09T19:24:03Z",
+      "side": 1,
+      "message": "Yes... I\u0027ll try a forward declaration and see if that avoids these problems here.",
+      "parentUuid": "e55fde25_eacde7e0",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "e094291ae806906ad35f3636ed0678e89c4ed577",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "855c6237_67c5b264",
         "filename": "metricsd/metricscollectorservice_trampoline.cc",
         "patchSetId": 2
@@ -168,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "6553ee27_692b4175",
+        "filename": "metricsd/metricscollectorservice_trampoline.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2015-12-09T19:24:03Z",
+      "side": 1,
+      "message": "yeah, let me try a forward declare.  Since the old code did the same cast from a DBus callback void*, I figured I\u0027d drop this in as a replacement, but, ugh.",
+      "parentUuid": "855c6237_67c5b264",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 27
+      },
+      "revId": "e094291ae806906ad35f3636ed0678e89c4ed577",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "855c6237_0751560b",
         "filename": "metricsd/metricscollectorservice_trampoline.cc",
         "patchSetId": 2
@@ -179,6 +227,30 @@
       "writtenOn": "2015-12-09T18:19:54Z",
       "side": 1,
       "message": "This will not be thread safe and you may corrupt the state of metrics_collector.\n\nIt may be simpler to post a task to MetricsCollector\u0027s main loop and have the work done there synchronously.\nAnother option is to remove the other thread and add a binder watcher that integrates the binder service with the main loop (see brillo/binder_watcher.cc in libbrillo).\nThis would allow us to process everything (timers, binder oneway calls, weave calls) synchronously without having to worry about multithreading.",
+      "range": {
+        "startLine": 25,
+        "startChar": 22,
+        "endLine": 25,
+        "endChar": 38
+      },
+      "revId": "e094291ae806906ad35f3636ed0678e89c4ed577",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e55fde25_cd323dea",
+        "filename": "metricsd/metricscollectorservice_trampoline.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2015-12-09T19:24:03Z",
+      "side": 1,
+      "message": "OK, I had assumed the old D-Bus stuff did everything using a thread pool, including the stuff it still needs to do, but sounds like that\u0027s not correct, and part of this change also needs to handle both Binder and D-Bus callbacks in a single thread / main loop.",
+      "parentUuid": "855c6237_0751560b",
       "range": {
         "startLine": 25,
         "startChar": 22,
