@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5b5e6ad_e8b95305",
+        "filename": "adb/shell_service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1040868
+      },
+      "writtenOn": "2015-12-11T23:35:53Z",
+      "side": 1,
+      "message": "note: it\u0027s entirely permissible for environ to be empty.  if it is, you segfault here.\n\n $ cat test.c\nint main(int argc, char *argv[])\n{\n    if (argc \u003d\u003d 2)\n        printf(\"%p\\n\", environ[0]);\n    else\n        execle(argv[0], argv[0], \"--child\", NULL, NULL);\n}\n\n $ gcc test.c \u0026\u0026 ./a.out\n(nil)",
+      "revId": "9b3fd6721392b16dee00caeca9586070496471e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5b5e6ad_28a8cbb3",
+        "filename": "adb/shell_service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1040868
+      },
+      "writtenOn": "2015-12-11T23:35:53Z",
+      "side": 1,
+      "message": "note: it\u0027s entirely permissible for the environ to contain binary data.  if there\u0027s a string that does not contain \u003d, adb will segfault.  bash will typically ignore such values and pass them along to children.\n\n $ cat test.c\nint main(int argc, char *argv[])\n{\n    char *new_argv[] \u003d {\n        \"foo\",\n        NULL,\n    };\n\n    if (argc \u003d\u003d 2)\n        printf(\"%s\\n\", environ[0]);\n    else\n        execle(argv[0], argv[0], \"--child\", NULL, new_argv);\n}\n\n $ gcc test.c \u0026\u0026 ./a.out\nfoo",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 28
+      },
+      "revId": "9b3fd6721392b16dee00caeca9586070496471e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
