@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "e5cc3e7f_28154f1b",
+        "filename": "debuggerd/debuggerd.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-12-12T15:47:11Z",
+      "side": 1,
+      "message": "since we\u0027re forking now, is there a concern about concurrent access to this file or other race conditions?",
+      "revId": "cf7974841be2fba725deffc0063238d5f9e43d7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5cc3e7f_88c49b67",
         "filename": "debuggerd/debuggerd.cpp",
         "patchSetId": 1
@@ -13,6 +30,46 @@
       "writtenOn": "2015-12-12T01:49:43Z",
       "side": 1,
       "message": "warn that someone appears to be fucking with us? (or really broken...)",
+      "revId": "cf7974841be2fba725deffc0063238d5f9e43d7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05107294_cccfa37c",
+        "filename": "debuggerd/debuggerd.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-12-12T15:47:11Z",
+      "side": 1,
+      "message": "please use setresuid(AID_DEBUGGERD, AID_DEBUGGERD, AID_DEBUGGERD) please. For hard to explain reasons, it\u0027s less dangerous that setuid().\n\nAlso, you\u0027ve never called setgid / setresgid, so you\u0027re still running with gid\u003d0",
+      "revId": "cf7974841be2fba725deffc0063238d5f9e43d7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5cf3a71_2742de45",
+        "filename": "debuggerd/tombstone.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-12-12T15:47:11Z",
+      "side": 1,
+      "message": "this can be deleted. /data/tombstones is guaranteed to exist and have the correct SELinux label due to https://android-review.googlesource.com/127840",
+      "range": {
+        "startLine": 704,
+        "startChar": 0,
+        "endLine": 718,
+        "endChar": 3
+      },
       "revId": "cf7974841be2fba725deffc0063238d5f9e43d7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
