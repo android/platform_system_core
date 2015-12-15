@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "65e04ee1_98206ddf",
+        "filename": "adb/daemon/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2015-12-15T21:44:49Z",
+      "side": 1,
+      "message": "The current code in libminijail will drop all caps (not just the bounding set). Would that be OK or should I add functionality for only dropping from the bounding set?",
+      "parentUuid": "e598be91_96ce1cdb",
+      "revId": "d1c47873ec20ccd5b464a43361fb9f2bd7eebbeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5b81ad7_8e99075d",
         "filename": "adb/daemon/main.cpp",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "c5b81ad7_4e97ef6a",
+        "filename": "adb/daemon/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2015-12-15T21:44:49Z",
+      "side": 1,
+      "message": "Can we pass custom deleters to unique_ptr? There\u0027s fields in the struct that need free\u0027ing. Unfortunately minijail is still a C library. Alternatively I can add a ScopedJail wrapper.",
+      "parentUuid": "c5b81ad7_8e99075d",
+      "revId": "d1c47873ec20ccd5b464a43361fb9f2bd7eebbeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05107294_98ca01c6",
         "filename": "adb/daemon/main.cpp",
         "patchSetId": 1
@@ -47,6 +83,30 @@
       "writtenOn": "2015-12-15T19:51:18Z",
       "side": 1,
       "message": "Don\u0027t argue with clang-format.",
+      "range": {
+        "startLine": 125,
+        "startChar": 22,
+        "endLine": 125,
+        "endChar": 23
+      },
+      "revId": "d1c47873ec20ccd5b464a43361fb9f2bd7eebbeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05e5d2f2_70de56fe",
+        "filename": "adb/daemon/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2015-12-15T21:44:49Z",
+      "side": 1,
+      "message": "Found it weird that it doesn\u0027t add this space but it does add a space after AID_READPROC below. Doesn\u0027t look like clang-format would be inconsistent like that.",
+      "parentUuid": "05107294_98ca01c6",
       "range": {
         "startLine": 125,
         "startChar": 22,
@@ -106,6 +166,24 @@
       "side": 1,
       "message": "What happens if the call to minijail_set_supplementary_gids() calloc() fails? We return ENOMEM, but the rest of this code proceeds without any supplemental groups ever being set. It appears that minijail_enter() won\u0027t die if minijail_set_supplementary_gids() has memory problems, leading to a mismatch between what\u0027s written in the code vs what actually happens.",
       "parentUuid": "05e5d2f2_3588409b",
+      "revId": "d1c47873ec20ccd5b464a43361fb9f2bd7eebbeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e598be91_d12dce3e",
+        "filename": "adb/daemon/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2015-12-15T21:44:49Z",
+      "side": 1,
+      "message": "That\u0027s true, will fix.",
+      "parentUuid": "45db4a39_c9ff8419",
       "revId": "d1c47873ec20ccd5b464a43361fb9f2bd7eebbeb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
