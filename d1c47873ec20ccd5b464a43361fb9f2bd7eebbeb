@@ -34,6 +34,24 @@
       "revId": "d1c47873ec20ccd5b464a43361fb9f2bd7eebbeb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45db4a39_c9ff8419",
+        "filename": "adb/daemon/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-12-15T19:46:53Z",
+      "side": 1,
+      "message": "What happens if the call to minijail_set_supplementary_gids() calloc() fails? We return ENOMEM, but the rest of this code proceeds without any supplemental groups ever being set. It appears that minijail_enter() won\u0027t die if minijail_set_supplementary_gids() has memory problems, leading to a mismatch between what\u0027s written in the code vs what actually happens.",
+      "parentUuid": "05e5d2f2_3588409b",
+      "revId": "d1c47873ec20ccd5b464a43361fb9f2bd7eebbeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
