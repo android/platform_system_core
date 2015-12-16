@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5e3ba48_a4192c57",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-12-16T20:28:59Z",
+      "side": 1,
+      "message": "Would it make more sense to make this a std::string? Since all of the StartsWith calls are going to convert it anyway.\n\nIt would also get rid of the strcmp calls.\n\nThe server modification lines could be changed to:\n\nservice.erase(0, sizeof(XXX) - 1);",
+      "range": {
+        "startLine": 1016,
+        "startChar": 41,
+        "endLine": 1016,
+        "endChar": 60
+      },
+      "revId": "14305110a814ca3fbf75289f3c9b1b9c50afda9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2580164e_af13d533",
+        "filename": "adb/services.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2015-12-16T20:28:59Z",
+      "side": 1,
+      "message": "Same as the other comment, would this be better as a std::string?",
+      "range": {
+        "startLine": 487,
+        "startChar": 32,
+        "endLine": 487,
+        "endChar": 48
+      },
+      "revId": "14305110a814ca3fbf75289f3c9b1b9c50afda9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
