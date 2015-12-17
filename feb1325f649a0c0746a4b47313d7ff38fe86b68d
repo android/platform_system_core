@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c5dadaa8_ef9bf592",
+        "filename": "adb/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2015-12-17T18:39:45Z",
+      "side": 1,
+      "message": "We should be able to. Do you want me to fix before landing or in a follow-up CL?",
+      "parentUuid": "4518aa2c_fbbe27cf",
+      "revId": "feb1325f649a0c0746a4b47313d7ff38fe86b68d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5d1668e_4bf159fb",
         "filename": "adb/daemon/main.cpp",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "459d0ad3_56a10a65",
+        "filename": "adb/daemon/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2015-12-17T18:39:45Z",
+      "side": 1,
+      "message": "Yes, that\u0027s a good point. There\u0027s other sections of the Minijail API that can fail (mostly for the same reason, failure to copy something to the minijail struct), but it might make sense for those functions to just fail instead of returning an error.",
+      "parentUuid": "a5d1668e_4bf159fb",
+      "range": {
+        "startLine": 132,
+        "startChar": 8,
+        "endLine": 132,
+        "endChar": 39
+      },
+      "revId": "feb1325f649a0c0746a4b47313d7ff38fe86b68d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "459d0ad3_306f2646",
         "filename": "adb/daemon/main.cpp",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2015-12-17T01:46:40Z",
       "side": 1,
       "message": "why isn\u0027t this PLOG? how does minijail_set_supplementary_gids report errors?",
+      "revId": "feb1325f649a0c0746a4b47313d7ff38fe86b68d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0512320e_87407638",
+        "filename": "adb/daemon/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2015-12-17T18:39:45Z",
+      "side": 1,
+      "message": "Because the error is failing to copy the groups array into an internal struct, which would not generate any usable error to print with perror.",
+      "parentUuid": "459d0ad3_306f2646",
       "revId": "feb1325f649a0c0746a4b47313d7ff38fe86b68d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
