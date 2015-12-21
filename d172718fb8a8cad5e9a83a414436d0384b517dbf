@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6a2adb7b_bdfdeb88",
+        "filename": "metricsd/uploader/bn_metricsd_impl.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1076133
+      },
+      "writtenOn": "2015-12-21T18:10:05Z",
+      "side": 1,
+      "message": "Parts of it could be moved (registering the binder interface) but the message_loop_ part should stay here IMO. It provides a nice isolation.",
+      "parentUuid": "2a3463db_86ebfe5e",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 1
+      },
+      "revId": "d172718fb8a8cad5e9a83a414436d0384b517dbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a5c6f37_3626c6a5",
         "filename": "metricsd/uploader/bn_metricsd_impl.cc",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4a2517a8_c7da229b",
+        "filename": "metricsd/uploader/bn_metricsd_impl.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1076133
+      },
+      "writtenOn": "2015-12-21T18:10:05Z",
+      "side": 1,
+      "message": "This is actually needed as we have two main loops and I didn\u0027t want to export |message_loops_| out of this object.",
+      "parentUuid": "8a5c6f37_3626c6a5",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 1
+      },
+      "revId": "d172718fb8a8cad5e9a83a414436d0384b517dbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a53bb27_f53822ca",
         "filename": "metricsd/uploader/bn_metricsd_impl.h",
         "patchSetId": 6
@@ -59,6 +107,24 @@
       "writtenOn": "2015-12-21T04:08:49Z",
       "side": 1,
       "message": "It\u0027s weird that a particular binder object also contains a reference to the global mainloop that will run all binder objects in this process.  Can I convince you to move the message loop up into the main() or at least up to the upload service if you want to make that the top level concept?",
+      "revId": "d172718fb8a8cad5e9a83a414436d0384b517dbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca62e7ed_dee301c0",
+        "filename": "metricsd/uploader/bn_metricsd_impl.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1076133
+      },
+      "writtenOn": "2015-12-21T18:10:05Z",
+      "side": 1,
+      "message": "Actually, this is not a global main loop but the main loop used for the binder thread only (to receive and handler metrics sample or \"quit\" event).\nThere is another main loop for the uploader part (aggregate the metrics, upload them, save them to disk, etc...).\n\nWe have two main loops to ensure we can receive lots of metrics samples even if we are doing IO work on the uploader thread.",
+      "parentUuid": "6a53bb27_f53822ca",
       "revId": "d172718fb8a8cad5e9a83a414436d0384b517dbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
