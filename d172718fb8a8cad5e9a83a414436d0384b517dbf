@@ -170,6 +170,24 @@
       "revId": "d172718fb8a8cad5e9a83a414436d0384b517dbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca33c71e_a1007e49",
+        "filename": "metricsd/uploader/bn_metricsd_impl.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-22T16:37:43Z",
+      "side": 1,
+      "message": "Actually, that\u0027s a more interesting example than I thought it would be, because you could theoretically call methods on the callback object from anywhere in your process without passing through the mainloop.  I\u0027m unsure what happens when you call into the binder driver from a thread other than the one you\u0027ll be using for polling.  It seems safer to do this from that binder thread though, by passing the event to the binder message loop, and letting the callback happen on that thread.",
+      "parentUuid": "aa3a13f4_a0cd1ae4",
+      "revId": "d172718fb8a8cad5e9a83a414436d0384b517dbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
