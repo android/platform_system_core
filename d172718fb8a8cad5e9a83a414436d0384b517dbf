@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "ca33c71e_c1030255",
+        "filename": "metricsd/uploader/bn_metricsd_impl.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-22T16:33:40Z",
+      "side": 1,
+      "message": "You need to quit the second mainloop, but that could also be done by passing a pointer to the second mainloop (or a closure wrapping the BreakLoop() function) to your first mainloop.",
+      "parentUuid": "4a2517a8_c7da229b",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 1
+      },
+      "revId": "d172718fb8a8cad5e9a83a414436d0384b517dbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a53bb27_f53822ca",
         "filename": "metricsd/uploader/bn_metricsd_impl.h",
         "patchSetId": 6
@@ -125,6 +149,24 @@
       "side": 1,
       "message": "Actually, this is not a global main loop but the main loop used for the binder thread only (to receive and handler metrics sample or \"quit\" event).\nThere is another main loop for the uploader part (aggregate the metrics, upload them, save them to disk, etc...).\n\nWe have two main loops to ensure we can receive lots of metrics samples even if we are doing IO work on the uploader thread.",
       "parentUuid": "6a53bb27_f53822ca",
+      "revId": "d172718fb8a8cad5e9a83a414436d0384b517dbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa3a13f4_a0cd1ae4",
+        "filename": "metricsd/uploader/bn_metricsd_impl.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2015-12-22T16:33:40Z",
+      "side": 1,
+      "message": "I realized that it was the loop handling just the Binder interface.  You could argue that since this main loop only drives this particular object, that it makes sense to keep it here.\n\nHowever, my objection was more fundamental, that a binder object (even if it were the only binder object) should not hold a mainloop, since it is the mainloop that will drive all binder objects, and not the other way around.  My point was just that this leaves a marginally more confusing hierarchy for  the next person to add an interface to this service.\n\nSuppose that later we want to register a callback binder with metricsd to receive notification of some interesting events.  That person has to reallize that those notifications happen on this message loop inside BnMetricsdImpl.  Dunno, maybe that\u0027s over engineering, but I thought it might be nice to see the threading structure of the program clearly laid out in the top level (main()) function.",
+      "parentUuid": "ca62e7ed_dee301c0",
       "revId": "d172718fb8a8cad5e9a83a414436d0384b517dbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
