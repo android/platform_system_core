@@ -188,6 +188,24 @@
       "revId": "d172718fb8a8cad5e9a83a414436d0384b517dbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0af79f9a_4ead73bf",
+        "filename": "metricsd/uploader/bn_metricsd_impl.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1076133
+      },
+      "writtenOn": "2015-12-23T00:53:10Z",
+      "side": 1,
+      "message": "Dig a bit more and initializing the binder main loop in main() actually looks pretty hard :/ It is also a miracle that this code works without me knowing all this:\n\n* main loops do a lot during initialization, including registering to a static global map of thread -\u003e mainloops.\nEverything uses this map (binder_watcher, brillo\u0027s message loop, etc...).\nInitializing two main loop in the same thread is dangerous because we need to carefully unregister/register the right main loop at the right time to get the correct result.\n\nThe fact that we actually have two static maps (one for brillo mainloop and one for the libchrome mainloop) tracking related object without coordination makes it scarier :/\n\n* We can\u0027t get a closure to quit the (binder) main loop until the main loop is running. This makes initialization racy as we need to start the binder thread and wait to get a correct quit closure.\n\n* debugging callback issues on a multi-threaded program is not fun, especially without all the DCHECKs. The service will just segfault without any message.\n\n\nIMO, the cleanest approaches would be either:\n1) keep the binder mainloop initialization in bn_metrics_impl but creating the instance and starting it (in a new thread) from main(). We would only pass a quit closure to UploadService.\n\n2) create a \"launcher\" object (metricsd_service_runner ?), instanciated and owned by main(), that will create and own the binder mainloop. This allows us to keep BnMetricsImpl as close as possible to the interface while exposing the thread hierarchy cleanly.\n\nOption 2 has my vote. It is more verbose but easier to understand.\n\nWhat do you think?",
+      "parentUuid": "ca33c71e_a1007e49",
+      "revId": "d172718fb8a8cad5e9a83a414436d0384b517dbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
