@@ -22,6 +22,30 @@
       "revId": "35e1ac17ccdaae260db481ca8fecfc3ed6087bd8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea27abf2_67ade5bf",
+        "filename": "metricsd/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2016-01-05T00:35:39Z",
+      "side": 1,
+      "message": "metrics_collector.h doesn\u0027t compile without adding gtest, dbus, and weaved to the include path.  The metrics_collector executable gets the above two thru its shared libs dependencies on libdbus and libweaved.  The libmetricscollector library only needs to get the header file to compile; it doesn\u0027t actually depend on the library code.  So I did it this way.  \n\nNow that I think of it, metrics_collector_service_impl.cc was only compiled here in the library to be -fnortti.  I can probably now move it to compile with metrics_collector executable and get the include paths that way.",
+      "parentUuid": "6a1bbbb8_b029d55b",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 15
+      },
+      "revId": "35e1ac17ccdaae260db481ca8fecfc3ed6087bd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
