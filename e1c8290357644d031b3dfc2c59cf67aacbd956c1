@@ -164,6 +164,30 @@
       "revId": "e1c8290357644d031b3dfc2c59cf67aacbd956c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa1773d7_9e097d7b",
+        "filename": "metricsd/metrics_collector_service_impl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1076863
+      },
+      "writtenOn": "2016-01-05T22:25:57Z",
+      "side": 1,
+      "message": "On a second look, the remaining code is also wrong. IServiceManager::addService() takes sp\u003cIBinder\u003e and not a raw binder pointer. What happens here is a new strong pointer is created for raw |this| pointer (and this pointer has a ref count of 0). Even though BnMetricsCollectorServiceImpl might be owned by another ref-counted strong pointer elsewhere, the ref count of sp\u003c\u003e passed to the service manager will not respect a global ref count. So, as soon as service manager releases the pointer, the object will be deleted, even though there might be other parties holding on to it.\n\nOne more reason to remove publishing out of the instance of the class and delegate this to the daemon who is holding the original sp\u003c\u003e in the first place....",
+      "parentUuid": "8a1aaf01_9a42e923",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 68
+      },
+      "revId": "e1c8290357644d031b3dfc2c59cf67aacbd956c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
