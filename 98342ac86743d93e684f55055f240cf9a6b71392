@@ -39,6 +39,30 @@
       "revId": "98342ac86743d93e684f55055f240cf9a6b71392",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a4357e2_bdc6bf1d",
+        "filename": "logd/README.property",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-01-05T17:16:08Z",
+      "side": 1,
+      "message": "Indicating given the above statement, resulting in counterintuitive logger behavior.\n\nHave too much log spam, increase log buffer 8-fold to compensate. logger runs out of background cgroup cycles and pruning can not keep up with incoming content. As a result logd runs virtually continuously in the context of logd.writer thread desperately trying to remove aging content, but albeit slower than incoming. -EBUSY is returned to callers dropping content on the floor, logs are lost, CPU cycles are burned, battery dies. Logger is blamed for the problem, when the real issue is the excessive logspam.\n\nI have to report this in a total of two sentences or less ...",
+      "parentUuid": "ea1debf7_3a92c10a",
+      "range": {
+        "startLine": 21,
+        "startChar": 51,
+        "endLine": 23,
+        "endChar": 53
+      },
+      "revId": "98342ac86743d93e684f55055f240cf9a6b71392",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
