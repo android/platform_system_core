@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca202730_b94d7fc5",
+        "filename": "metricsd/metrics_collector.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1076863
+      },
+      "writtenOn": "2016-01-05T16:12:09Z",
+      "side": 1,
+      "message": "I don\u0027t think this is right. BnMetricsCollectorService is a ref-counted object and should be used inside android::sp\u003c\u003e. Creating it on the stack like that could mean that nasty things could happen (e.g. binder releases the last reference to it and try to call delete on the pointer, but this object is allocated on the stack and not on the heap).",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 31
+      },
+      "revId": "e1c8290357644d031b3dfc2c59cf67aacbd956c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a1aaf01_37e418f6",
+        "filename": "metricsd/metrics_collector_service_impl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1076863
+      },
+      "writtenOn": "2016-01-05T16:12:09Z",
+      "side": 1,
+      "message": "This should be initialized in constructor\u0027s initializer list.",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "e1c8290357644d031b3dfc2c59cf67aacbd956c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a1aaf01_d70fdc7d",
+        "filename": "metricsd/metrics_collector_service_impl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1076863
+      },
+      "writtenOn": "2016-01-05T16:12:09Z",
+      "side": 1,
+      "message": "I think this whole method could be moved to daemon\u0027s Init() method. There is no need to abstract the binder anymore. This will make the code even simpler (I think).",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 68
+      },
+      "revId": "e1c8290357644d031b3dfc2c59cf67aacbd956c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
