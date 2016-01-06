@@ -22,6 +22,30 @@
       "revId": "76f75f8cdc17669c261f9cd3cf2da87e420cfb4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a52a3ad_f6c1c05a",
+        "filename": "metricsd/metrics_collector.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1076863
+      },
+      "writtenOn": "2016-01-06T20:25:22Z",
+      "side": 1,
+      "message": "Because if the object is killed while the callback is still pending, the callback will not be called later. Compare:\n\nstd::unique_ptr\u003cClass\u003e inst(new Class);\nauto callback1 \u003d base::Bind(\u0026Class::Method, inst-\u003eweak_ptr_factory_.GetWeakPtr());\nauto callback2 \u003d base::Bind(\u0026Class::Method, base::Unretained(inst.get()));\n\n// kill inst...\ninst.reset();\ncallback1.Run();  // works, but callback is not invoked\ncallback2.Run();  // crash",
+      "parentUuid": "8a41cfd9_2ed03721",
+      "range": {
+        "startLine": 240,
+        "startChar": 17,
+        "endLine": 240,
+        "endChar": 47
+      },
+      "revId": "76f75f8cdc17669c261f9cd3cf2da87e420cfb4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
