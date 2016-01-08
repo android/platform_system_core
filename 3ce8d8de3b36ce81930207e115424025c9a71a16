@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "ea1debf7_4bfeba84",
+        "filename": "init/service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1076133
+      },
+      "writtenOn": "2016-01-08T00:42:15Z",
+      "side": 1,
+      "message": "I don\u0027t think it can. This not accessed concurrently and RemoveService can handle |svc| not being in the list of services.",
+      "parentUuid": "2a52a3ad_52fe7984",
+      "range": {
+        "startLine": 817,
+        "startChar": 8,
+        "endLine": 817,
+        "endChar": 27
+      },
+      "revId": "3ce8d8de3b36ce81930207e115424025c9a71a16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a4ddf0f_38ccf0b8",
         "filename": "init/service.cpp",
         "patchSetId": 1
@@ -82,6 +106,30 @@
       "writtenOn": "2016-01-07T23:40:01Z",
       "side": 1,
       "message": "Should this have a way of erroring out in case ReapOneProcess constantly returns true?\n\nI guess you\u0027re calling waitpid with WNOHANG and returning false in that case, you cannot always get and kill a process and never end... unless the system is in the middle of something like a fork bomb? I guess maybe in that case we don\u0027t care what happens.",
+      "range": {
+        "startLine": 824,
+        "startChar": 0,
+        "endLine": 825,
+        "endChar": 5
+      },
+      "revId": "3ce8d8de3b36ce81930207e115424025c9a71a16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa1773d7_b5e6d762",
+        "filename": "init/service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1076133
+      },
+      "writtenOn": "2016-01-08T00:42:15Z",
+      "side": 1,
+      "message": "There might be pathological cases where this will run forever but I don\u0027t think there is a good way to handle it. We could set a limit on the number of process we can Reap in one go (1000?) but I\u0027m not sure what the consequences would be in the rest of the system. In doubt, it might be better to keep this simple.\n\nA service crash loop will not cause this as we will first reap all stopped services before starting them again.",
+      "parentUuid": "0a4ddf0f_38ccf0b8",
       "range": {
         "startLine": 824,
         "startChar": 0,
