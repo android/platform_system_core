@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "6a901bcb_5e5d7571",
+        "filename": "init/service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1076133
+      },
+      "writtenOn": "2016-01-08T17:40:24Z",
+      "side": 1,
+      "message": "IIUC, the pathological case already exist in init:\n* a rogue process spins lots of child process that exit (creating an infinity of process to wait for).\n* the SIGCHLD signal is received by init.\n* at the next iteration of the main loop, epoll_wait selects ReapAnyOutstandingChildren and will run forever (if we can generate an infinity of child process exiting).\n* As ReapAnyOutstandingChildren never exits, the main loop never processes any other event and cannot handle the reboot request (sent with a system property).\n\nLimiting the number of time we can call ReapOneProcess in ReapAnyOutstandingChildren sounds like a good idea. Any opinion on a good number? 10? 100? 1000?",
+      "parentUuid": "aa1773d7_95d87375",
+      "range": {
+        "startLine": 824,
+        "startChar": 0,
+        "endLine": 825,
+        "endChar": 5
+      },
+      "revId": "3ce8d8de3b36ce81930207e115424025c9a71a16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a4357e2_1f1d5ef7",
         "filename": "init/service.h",
         "patchSetId": 1
