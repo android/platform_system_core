@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "07495aa4_138a52d2",
+        "filename": "fastboot/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-01-15T22:19:24Z",
+      "side": 1,
+      "message": "Looks like the un-revert is at http://r.android.com/182090, but it doesn\u0027t contain the fastboot dependency on libcutils because you moved gettid to libbase.\n\nIf it was in fact a fastboot dependency on libcutils causing the build breakage, it might show up again here, I just can\u0027t figure out how to replicate it if that\u0027s the case.",
+      "parentUuid": "274e5eac_428a4401",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 13
+      },
+      "revId": "0007e9b7858d34b477cde51cc4ab4890d8fe2430",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e759a674_6227785b",
         "filename": "include/cutils/sockets.h",
         "patchSetId": 1
@@ -60,6 +84,24 @@
       "writtenOn": "2016-01-15T21:29:08Z",
       "side": 1,
       "message": "so maybe it shouldn\u0027t be public?",
+      "revId": "0007e9b7858d34b477cde51cc4ab4890d8fe2430",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "274e5eac_a247c833",
+        "filename": "include/cutils/sockets.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-01-15T22:19:24Z",
+      "side": 1,
+      "message": "Yeah I think you\u0027re right, I\u0027ll move it elsewhere.",
+      "parentUuid": "e759a674_6227785b",
       "revId": "0007e9b7858d34b477cde51cc4ab4890d8fe2430",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
