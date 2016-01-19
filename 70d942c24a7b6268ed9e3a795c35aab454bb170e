@@ -16,6 +16,24 @@
       "revId": "70d942c24a7b6268ed9e3a795c35aab454bb170e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07495aa4_c25bf208",
+        "filename": "include/log/log.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-01-19T23:14:03Z",
+      "side": 1,
+      "message": "Alas, this header is the wrong place for the list of tags in any case. So far we have been ad-hoc, and in some cases even added them to the associated Android.mk files as a -D define passed in to the compiler.\n\nAs a baby-step, add a build-time tool or script to convert SecurityLog.logtag into a local header?\n\nNB: __android_log_security_bswrite() calls a subroutine which checks __android_log_security() in the cases where the LOG-SECURITY buffer is referenced. For this call, we are not saving enough cycles to warrant the pre-check. One would expect the caller to use __android_log_security() if there is some work to be done (eg: calculate a package SHA) to format the message.",
+      "parentUuid": "27673e34_15ba3cf5",
+      "revId": "70d942c24a7b6268ed9e3a795c35aab454bb170e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
