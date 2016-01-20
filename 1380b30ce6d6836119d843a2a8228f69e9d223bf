@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "274e5eac_ab77a06c",
+        "filename": "adb/shell_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-01-20T01:41:27Z",
+      "side": 1,
+      "message": "This is the only part I\u0027m not sure of, I think this could leak local_socket_sfd_.\n\nBefore this change, when WaitForExit() wasn\u0027t properly called, our Subprocess object would retain ownership of local_socket_sfd_ and close it during destruction.\n\nBut now that WaitForExit() is closed, this code passes local_socket_sfd_ to fdevent_subproc_event_func() and assumes that it will close the FD, which I don\u0027t think it will since this FD never got registered with g_poll_node_map (fdevent.cpp:307).\n\nI think we want to close this FD manually if ForkAndExec() failed, and check if it\u0027s valid before passing it here.",
+      "range": {
+        "startLine": 670,
+        "startChar": 0,
+        "endLine": 684,
+        "endChar": 5
+      },
+      "revId": "1380b30ce6d6836119d843a2a8228f69e9d223bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
