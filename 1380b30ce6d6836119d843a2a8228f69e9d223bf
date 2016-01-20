@@ -22,6 +22,30 @@
       "revId": "1380b30ce6d6836119d843a2a8228f69e9d223bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c75ca266_33bdd580",
+        "filename": "adb/shell_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-01-20T02:25:57Z",
+      "side": 1,
+      "message": "Yeah, I think you\u0027re right.\n\nI\u0027m wondering if it\u0027d be cleaner to close the fd we read in fdevent_subproc_event_func in that case (also on line 312). Reading that function by itself makes me think that in those two error cases, it should either close the fd received or it should abort.\n\nThoughts?",
+      "parentUuid": "274e5eac_ab77a06c",
+      "range": {
+        "startLine": 670,
+        "startChar": 0,
+        "endLine": 684,
+        "endChar": 5
+      },
+      "revId": "1380b30ce6d6836119d843a2a8228f69e9d223bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
