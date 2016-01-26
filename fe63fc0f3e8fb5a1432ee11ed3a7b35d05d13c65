@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "34c3ee5c_1eb1aa46",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-01-26T23:30:13Z",
+      "side": 1,
+      "message": "especially if it\u0027s going to happen anyway, i think we may as well lose the destructor.",
+      "parentUuid": "34c3ee5c_bbbfe8e6",
+      "revId": "fe63fc0f3e8fb5a1432ee11ed3a7b35d05d13c65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4afde8e_074de049",
         "filename": "fastboot/fastboot.cpp",
         "patchSetId": 2
@@ -171,6 +189,24 @@
       "side": 1,
       "message": "Good point, I\u0027ll check it out. Windows doesn\u0027t seem to implement writev() but WSASend() might do the trick.",
       "parentUuid": "94b2daf4_e61b905b",
+      "revId": "fe63fc0f3e8fb5a1432ee11ed3a7b35d05d13c65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f49a3677_a121688d",
+        "filename": "fastboot/tcp.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-01-26T23:30:13Z",
+      "side": 1,
+      "message": "yeah, in adb we cheated and made sure we always had space at the beginning of the buffer to write the header in later. (while experimenting i found it was actually faster to allocate a new buffer and insert the header than to do two writes.)",
+      "parentUuid": "f4b5d6da_49928dce",
       "revId": "fe63fc0f3e8fb5a1432ee11ed3a7b35d05d13c65",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
