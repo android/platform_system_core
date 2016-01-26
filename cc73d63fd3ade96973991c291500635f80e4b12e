@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "14beeac6_a8d31f2d",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-01-26T22:56:24Z",
+      "side": 1,
+      "message": "I was considering that, but doing a comparison on the function to set the proper packet id seems gross.",
+      "parentUuid": "f49a3677_61ba20db",
+      "revId": "cc73d63fd3ade96973991c291500635f80e4b12e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14beeac6_2d7e41f8",
         "filename": "adb/file_sync_service.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-01-26T22:41:42Z",
       "side": 1,
       "message": "only ctime? why not all the times?",
+      "revId": "cc73d63fd3ade96973991c291500635f80e4b12e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f49a3677_012f94c7",
+        "filename": "adb/file_sync_service.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-01-26T22:56:24Z",
+      "side": 1,
+      "message": "I accidentally deleted mtime when deleting blksize, blocks, and atime, I think. Do you think there\u0027s any value in sending over atime? (Do we even enable atime on our filesystems?)",
+      "parentUuid": "14beeac6_2d7e41f8",
       "revId": "cc73d63fd3ade96973991c291500635f80e4b12e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
