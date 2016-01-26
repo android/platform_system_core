@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "94b2daf4_7de0efb8",
+        "filename": "logd/LogListener.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-01-26T00:46:44Z",
+      "side": 1,
+      "message": "On second thought, this can be debugged with:\n\nadb shell su 1000,1000,1000 logcat -b security -d\n\nSo no real _need_ to entrench AID_ROOT here.\n\nNow that I have stated that out loud in an open-source portal, it really doesn\u0027t change anything except a little bit more obscurity ...\n\n_If_ bugreports are to contain security logs, we will have problems now that we are dropping AID_LOG.\n\ndumpstate is uid\u003dAID_SHELL, gid\u003dAID_SHELL, groups\u003dAID_LOG, AID_SDCARD_R, AID_SDCARD_RW and AID_MOUNT (logd only looks at the first four).\n\nDo we want or need security logs in the bugreports. It was promised as part of the follow-up report collected when a security violation was detected I thought?",
+      "parentUuid": "54c14218_2128d671",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 29
+      },
+      "revId": "7dc2f3dbf0864968b89adb56402ce60eb4def960",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54c14218_a1636619",
         "filename": "logd/LogListener.cpp",
         "patchSetId": 1
