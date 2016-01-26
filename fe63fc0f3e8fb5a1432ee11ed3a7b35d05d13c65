@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "34c3ee5c_bbbfe8e6",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-01-26T23:17:57Z",
+      "side": 1,
+      "message": "Windows in particular doesn\u0027t do the full TCP handshake if we don\u0027t close the socket manually (it just sends RST and the other side gets a \"connection reset by peer\" error).\n\nThis probably isn\u0027t too important though, devices need to handle this case properly anyway since _exit() or being killed will still cause RST on all platforms.\n\nIf you prefer I can reword the comment or just go back to a raw pointer and let the device deal with the RST.",
+      "parentUuid": "b4a43ebb_a4a09a10",
+      "revId": "fe63fc0f3e8fb5a1432ee11ed3a7b35d05d13c65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4afde8e_074de049",
         "filename": "fastboot/fastboot.cpp",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2016-01-26T21:12:32Z",
       "side": 1,
       "message": "while (true)",
+      "revId": "fe63fc0f3e8fb5a1432ee11ed3a7b35d05d13c65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4b8d2d6_4840c71e",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-01-26T23:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4afde8e_074de049",
       "revId": "fe63fc0f3e8fb5a1432ee11ed3a7b35d05d13c65",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "54c4e260_04eec01a",
+        "filename": "fastboot/socket_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-01-26T23:17:57Z",
+      "side": 1,
+      "message": "Didn\u0027t realize you could do that with a server but it makes sense, I\u0027ll check it out.",
+      "parentUuid": "b4a43ebb_a4717a23",
+      "revId": "fe63fc0f3e8fb5a1432ee11ed3a7b35d05d13c65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f49a3677_062faac7",
         "filename": "fastboot/tcp.cpp",
         "patchSetId": 2
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "94b2daf4_915bec37",
+        "filename": "fastboot/tcp.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-01-26T23:17:57Z",
+      "side": 1,
+      "message": "It\u0027s going to be a bit tricky since Windows has its own error reporting mechanisms for socket errors, but I\u0027ll look into moving the adb error handling functionality into libcutils first and using it here.",
+      "parentUuid": "f49a3677_062faac7",
+      "revId": "fe63fc0f3e8fb5a1432ee11ed3a7b35d05d13c65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94b2daf4_e61b905b",
         "filename": "fastboot/tcp.cpp",
         "patchSetId": 2
@@ -81,6 +153,24 @@
       "writtenOn": "2016-01-26T21:12:32Z",
       "side": 1,
       "message": "you don\u0027t want to writev(2)? sending the length and the packet together was probably the largest adb sync speedup we made. (i was surprised it was as important as it turned out to be.)",
+      "revId": "fe63fc0f3e8fb5a1432ee11ed3a7b35d05d13c65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4b5d6da_49928dce",
+        "filename": "fastboot/tcp.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-01-26T23:17:57Z",
+      "side": 1,
+      "message": "Good point, I\u0027ll check it out. Windows doesn\u0027t seem to implement writev() but WSASend() might do the trick.",
+      "parentUuid": "94b2daf4_e61b905b",
       "revId": "fe63fc0f3e8fb5a1432ee11ed3a7b35d05d13c65",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
