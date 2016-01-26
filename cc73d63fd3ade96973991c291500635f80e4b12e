@@ -103,6 +103,47 @@
       "revId": "cc73d63fd3ade96973991c291500635f80e4b12e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4b5d6da_6942f1ef",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-01-26T23:32:44Z",
+      "side": 1,
+      "message": "Seems reasonable as long as there won\u0027t be any devices that only implement a subset of those new functions.\n\nIf you are doing this in multiple CLs I would suggest not turning on kFeatureFileSync2 until all functions have landed (you can just put it in locally for your own use). That way there\u0027s no weirdness if somebody happens to have a build where kFeatureFileSync2 was enabled but only stat and lstat are implemented.",
+      "parentUuid": "b4afde8e_2df8056a",
+      "revId": "cc73d63fd3ade96973991c291500635f80e4b12e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14beeac6_e86997cb",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-01-26T23:32:44Z",
+      "side": 1,
+      "message": "Make sure to do this when you change features, it\u0027s a big pain if client and server feature lists get off-sync :)",
+      "range": {
+        "startLine": 796,
+        "startChar": 0,
+        "endLine": 797,
+        "endChar": 73
+      },
+      "revId": "cc73d63fd3ade96973991c291500635f80e4b12e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
