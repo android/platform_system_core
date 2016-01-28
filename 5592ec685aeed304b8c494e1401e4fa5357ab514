@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "34fe8ee6_bcc5c1b9",
+        "filename": "adb/shell_service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-01-28T20:57:06Z",
+      "side": 1,
+      "message": "OK just wasn\u0027t sure if you had a better grasp on the expectations here than me :)\n\nI think ideally we want to conform to 2-space Google style (at least for fastboot I know that\u0027s the case) but I don\u0027t think it\u0027s been worth the time and effort for anybody to actually do.",
+      "parentUuid": "14f98afe_9b93ab41",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 1
+      },
+      "revId": "5592ec685aeed304b8c494e1401e4fa5357ab514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54c4e260_72e4915f",
         "filename": "adb/shell_service.cpp",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "AFAIK the only plausible failure case in CreateSocketpair is running out of file descriptors. That means we\u0027ve probably leaked thousands of FDs already, and nothing is going to work. I was considering just removing the error reporting of CreateSocketpair and making it exit on failure, but that might be a bit too drastic?",
       "parentUuid": "54c4e260_72e4915f",
+      "range": {
+        "startLine": 247,
+        "startChar": 8,
+        "endLine": 247,
+        "endChar": 72
+      },
+      "revId": "5592ec685aeed304b8c494e1401e4fa5357ab514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d40c52f0_196debd7",
+        "filename": "adb/shell_service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-01-28T20:57:06Z",
+      "side": 1,
+      "message": "Hmm yeah not sure, I\u0027d be a little hesitant to exit on failure but if you and enh@ think that\u0027s the way to go I\u0027m not opposed. The way this is seems fine if running out of FDs is the only way to hit this error.",
+      "parentUuid": "94065ace_b72328e8",
       "range": {
         "startLine": 247,
         "startChar": 8,
