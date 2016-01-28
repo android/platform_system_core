@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "14f98afe_9b93ab41",
+        "filename": "adb/shell_service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-01-28T19:46:07Z",
+      "side": 1,
+      "message": "This is just what clang-format does, but I don\u0027t think this is actually what we want. (I don\u0027t actually know what we want.) It\u0027s probably just a side effect of the google style (2 space indentation, 1 space dedent for access modifiers), with only the indentation changed.\n\nI\u0027ll remove this change.",
+      "parentUuid": "d4b8d2d6_d68ab544",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 1
+      },
+      "revId": "5592ec685aeed304b8c494e1401e4fa5357ab514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54c4e260_72e4915f",
         "filename": "adb/shell_service.cpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-01-28T16:59:30Z",
       "side": 1,
       "message": "Do you think adding strerror() would be useful in the CreateSocketpair() failure cases? Or does it make more sense to leave it up to the user to check logcat if they need more info?",
+      "range": {
+        "startLine": 247,
+        "startChar": 8,
+        "endLine": 247,
+        "endChar": 72
+      },
+      "revId": "5592ec685aeed304b8c494e1401e4fa5357ab514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "94065ace_b72328e8",
+        "filename": "adb/shell_service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-01-28T19:46:07Z",
+      "side": 1,
+      "message": "AFAIK the only plausible failure case in CreateSocketpair is running out of file descriptors. That means we\u0027ve probably leaked thousands of FDs already, and nothing is going to work. I was considering just removing the error reporting of CreateSocketpair and making it exit on failure, but that might be a bit too drastic?",
+      "parentUuid": "54c4e260_72e4915f",
       "range": {
         "startLine": 247,
         "startChar": 8,
