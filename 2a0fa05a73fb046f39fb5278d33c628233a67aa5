@@ -22,6 +22,30 @@
       "revId": "2a0fa05a73fb046f39fb5278d33c628233a67aa5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "349a0eef_0573987c",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-01-29T07:13:48Z",
+      "side": 1,
+      "message": "The problem with using info.dwSize.Y, is that it includes the scroll-back buffer (which everyone has enabled) which doesn\u0027t make sense to use in the logical window size. So I left it using info.srWindow. This is largely academic since no one runs full-screen programs with adb shell on Windows.\n\nI made the change to use info.dwSize.X, though I think that is largely theoretical since I don\u0027t think anyone runs a console window with the buffer wider than the window. But a good change to make to handle this pathological case.",
+      "parentUuid": "9462dabe_da442134",
+      "range": {
+        "startLine": 502,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 61
+      },
+      "revId": "2a0fa05a73fb046f39fb5278d33c628233a67aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
