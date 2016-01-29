@@ -70,6 +70,30 @@
       "revId": "2a0fa05a73fb046f39fb5278d33c628233a67aa5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14950abd_8436ccb5",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-01-29T21:59:44Z",
+      "side": 1,
+      "message": "Looks like Win7 lets one drag the window edge to reduce the window width, but keep the buffer width the same. Win7 also lets the user change the buffer width without having to uncheck a checkbox (like Win10). So yeah, using info.dwSize.X makes sense (especially because the underlying OS event is about buffer resizing, not window resizing). I used it in PS3.\n\nI think Win10 was the first version to let the user drag the window edge to make the window (and buffer) wider (https://blogs.windows.com/buildingapps/2014/10/07/console-improvements-in-the-windows-10-technical-preview/). I think this SIGWINCH change will get most used by Win10 users (other than the initial sizing, which of course helps all users).",
+      "parentUuid": "749006cb_64953e5f",
+      "range": {
+        "startLine": 502,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 61
+      },
+      "revId": "2a0fa05a73fb046f39fb5278d33c628233a67aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
