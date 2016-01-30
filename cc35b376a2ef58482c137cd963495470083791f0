@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d468d2a0_c27513d3",
+        "filename": "base/errors_windows.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-01-30T01:15:48Z",
+      "side": 1,
+      "message": "FWIW, the reason I named the original API SystemErrorCodeToString() was to match Chromium so in case devs came from Chromium to this codebase, they\u0027d already be familiar with what this does. But this doesn\u0027t really matter and it\u0027s your codebase, so I\u0027m fine with this rename.",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 29
+      },
+      "revId": "cc35b376a2ef58482c137cd963495470083791f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5422228b_99c9cb37",
+        "filename": "base/errors_windows.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-01-30T01:15:48Z",
+      "side": 1,
+      "message": "In case you\u0027re curious, I think the reason that I used errno in the original code was because WideToUTF8() always sets errno so that the API is sensible cross-platform. But it happens to also setup GetLastError() on error, so this is fine too (and probably more specific/useful).",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 22
+      },
+      "revId": "cc35b376a2ef58482c137cd963495470083791f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5422228b_59b8338d",
+        "filename": "base/include/android-base/errors.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-01-30T01:15:48Z",
+      "side": 1,
+      "message": "My understanding of how this mess occurred: Winsock existed when Win16 and Win32 existed at the same time. Win16 didn\u0027t have GetLastError(), so Winsock couldn\u0027t build upon that and thus Winsock had to create WSAGetLastError(). But now, Win16 is dead and WSAGetLastError() just calls GetLastError() under the covers, so they\u0027re basically the same (and probably will continue to be the same moving forward) even if the docs suggest otherwise.",
+      "range": {
+        "startLine": 24,
+        "startChar": 7,
+        "endLine": 25,
+        "endChar": 22
+      },
+      "revId": "cc35b376a2ef58482c137cd963495470083791f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
