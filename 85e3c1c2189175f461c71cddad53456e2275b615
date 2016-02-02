@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "31c3005d_1a137dac",
+        "filename": "fastboot/socket.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-02-02T22:10:07Z",
+      "side": 1,
+      "message": "Yeah that probably makes sense, I didn\u0027t realize initially I was going to have to do so much additional work here.\n\nI\u0027ll rework this a bit as you suggest, should simplify it.",
+      "parentUuid": "711bb8b8_ec437f45",
+      "revId": "85e3c1c2189175f461c71cddad53456e2275b615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31c3005d_5abb35dc",
         "filename": "fastboot/socket.cpp",
         "patchSetId": 1
@@ -53,6 +71,30 @@
       "writtenOn": "2016-02-02T21:58:28Z",
       "side": 1,
       "message": "what if you fail with ECONNRESET? this doesn\u0027t seem right. other than EINTR (which is already handled by TEMP_FAILURE_RETRY), why would you try again?",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 9
+      },
+      "revId": "85e3c1c2189175f461c71cddad53456e2275b615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "711bb8b8_ec37ffb3",
+        "filename": "fastboot/socket.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-02-02T22:10:07Z",
+      "side": 1,
+      "message": "I think this does what you\u0027re suggesting already unless I\u0027m misunderstanding you - if this iteration returns -1, we break the loop and return the total number of bytes sent so far.\n\nThe special case is just saying if we never completed a send at all, return -1 instead of 0. I\u0027ll look into reworking the code to make this a little more obvious.",
+      "parentUuid": "31c3005d_5abb35dc",
       "range": {
         "startLine": 206,
         "startChar": 0,
@@ -88,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "5116b490_abba0d24",
+        "filename": "fastboot/socket.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-02-02T22:10:07Z",
+      "side": 1,
+      "message": "Boolean probably makes sense here as well, but current behavior does return the total number of bytes transferred up until the failure.",
+      "parentUuid": "3115c084_67432cf4",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 17
+      },
+      "revId": "85e3c1c2189175f461c71cddad53456e2275b615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31c3005d_baa8c997",
         "filename": "fastboot/socket.h",
         "patchSetId": 1
@@ -99,6 +165,24 @@
       "writtenOn": "2016-02-02T21:58:28Z",
       "side": 1,
       "message": "why is this nested?",
+      "revId": "85e3c1c2189175f461c71cddad53456e2275b615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "711bb8b8_4cf73341",
+        "filename": "fastboot/socket.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-02-02T22:10:07Z",
+      "side": 1,
+      "message": "Just to avoid putting it in the global namespace.",
+      "parentUuid": "31c3005d_baa8c997",
       "revId": "85e3c1c2189175f461c71cddad53456e2275b615",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
