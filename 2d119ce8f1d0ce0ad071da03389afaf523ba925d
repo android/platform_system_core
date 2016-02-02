@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f127a8f2_4d1a8dfc",
+        "filename": "libcutils/ashmem-dev.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-02T21:55:49Z",
+      "side": 1,
+      "message": "atomics carry with them a cost, both in volatility and in inter processor locking.\n\nIn addition, the number of instructions between atomic_load and _ashmem_open calling atomic_store needs to be minimized to keep the race condition it represents as small as possible.\n\nI should confirm that atomic_load is using relaxed ordering.",
+      "parentUuid": "f127a8f2_8d30058f",
+      "range": {
+        "startLine": 86,
+        "startChar": 15,
+        "endLine": 86,
+        "endChar": 26
+      },
+      "revId": "2d119ce8f1d0ce0ad071da03389afaf523ba925d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5116b490_8bbbd188",
         "filename": "libcutils/ashmem-dev.c",
         "patchSetId": 2
@@ -41,6 +65,53 @@
         "startChar": 26,
         "endLine": 88,
         "endChar": 33
+      },
+      "revId": "2d119ce8f1d0ce0ad071da03389afaf523ba925d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3115c084_27de5493",
+        "filename": "libcutils/ashmem-dev.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-02T21:55:49Z",
+      "side": 1,
+      "message": "This is the value on two devices I inspected.\n\nThis is because we do not want to endure the cost and race conditions associated with _ashmem_open setting the value.\n\nI will take heart about not glomming together, knowing rdev pulling it relaxed is informational. I can accept not knowing as another datapoint, perhaps pointing to this application lacking access to ashmem.\n\nIt does make the subsequent CL to use FATAL \u0027bigger\u0027, but hey, that is what it is :-)",
+      "parentUuid": "5116b490_8bbbd188",
+      "range": {
+        "startLine": 88,
+        "startChar": 26,
+        "endLine": 88,
+        "endChar": 33
+      },
+      "revId": "2d119ce8f1d0ce0ad071da03389afaf523ba925d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b121b0e4_6e502b0d",
+        "filename": "libcutils/ashmem-dev.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-02T21:55:49Z",
+      "side": 1,
+      "message": "This is _wrong_, I had originally thought I used atomic_load_explicit with a forced sequence to ensure all cache is flushed on all processors before pulling the data here. This was done to keep the number of cycles between the load and the store in _ashmem_open minimised.\n\nI vaguely remember inadvertently deleting this line and restored it from above without thinking. Comment above was a good catch to cause me to see the error in my ways.",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 39
       },
       "revId": "2d119ce8f1d0ce0ad071da03389afaf523ba925d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
