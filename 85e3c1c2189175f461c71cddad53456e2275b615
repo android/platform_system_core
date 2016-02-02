@@ -22,6 +22,86 @@
       "revId": "85e3c1c2189175f461c71cddad53456e2275b615",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "711bb8b8_ec437f45",
+        "filename": "fastboot/socket.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-02-02T21:58:28Z",
+      "side": 1,
+      "message": "the reason that having cutils_socket_buffer_t just be a typedef (to two different types) seemed reasonable was because it avoided any translation. if our only known user is going to have to do that anyway, should SendBuffer move to libcutils as cutils_socket_buffer_t, and the translation happen there?",
+      "revId": "85e3c1c2189175f461c71cddad53456e2275b615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31c3005d_5abb35dc",
+        "filename": "fastboot/socket.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-02-02T21:58:28Z",
+      "side": 1,
+      "message": "what if you fail with ECONNRESET? this doesn\u0027t seem right. other than EINTR (which is already handled by TEMP_FAILURE_RETRY), why would you try again?",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 9
+      },
+      "revId": "85e3c1c2189175f461c71cddad53456e2275b615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3115c084_67432cf4",
+        "filename": "fastboot/socket.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-02-02T21:58:28Z",
+      "side": 1,
+      "message": "returning -1 or total is misleading too. do you really just want a boolean here, since you seem to be assuming that the only thing to do on failure is give up anyway (since you return -1 rather than what, if anything, was actually transferred)?",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 17
+      },
+      "revId": "85e3c1c2189175f461c71cddad53456e2275b615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31c3005d_baa8c997",
+        "filename": "fastboot/socket.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-02-02T21:58:28Z",
+      "side": 1,
+      "message": "why is this nested?",
+      "revId": "85e3c1c2189175f461c71cddad53456e2275b615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
