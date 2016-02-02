@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "9124acf4_0d20952a",
+        "filename": "liblog/log_is_loggable.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-02-02T20:39:31Z",
+      "side": 1,
+      "message": "strncmp(last_tag + 1, tag + 1, min(strlen(tag),sizeof(last_tag) - 1))-1) will change the behavior, it will match any tag that is a prefix of last_tag.  I think it needs:\n\n  strncmp(last_tag + 1, tag + 1, sizeof(last_tag) - 2)\n\nThe -2 is to drop the first character (from last_tag + 1), and to drop the trailing null from last_tag.￼",
+      "parentUuid": "9462dabe_2635087e",
+      "range": {
+        "startLine": 154,
+        "startChar": 23,
+        "endLine": 154,
+        "endChar": 53
+      },
+      "revId": "fe7027ff569174731430307ed8d6d7fdb1035fc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b486fe94_4f2cd96b",
         "filename": "liblog/log_is_loggable.c",
         "patchSetId": 1
