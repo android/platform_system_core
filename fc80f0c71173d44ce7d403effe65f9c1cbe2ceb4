@@ -51,6 +51,24 @@
       "revId": "fc80f0c71173d44ce7d403effe65f9c1cbe2ceb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b121b0e4_6857830e",
+        "filename": "libcutils/sockets_unix.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-02-02T17:07:37Z",
+      "side": 1,
+      "message": "the names don\u0027t matter, but, yeah, having the wrong order is annoying :-(\n\nan alternative would be a macro that flips the argument order for Win32:\n\n  cutils_socket_buffer_t msg \u003d { CUTILS_SOCKET_BUFFER(hdr, hdr_len), CUTILS_SOCKET_BUFFER(body, body_len) };\n\nbut the flipped order is definitely a gotcha if someone tries to do without the macro. the compiler might not catch that in C?\n\n(oh, yeah, we should add the missing \"_t\" to the type.)",
+      "parentUuid": "31c3005d_9495a405",
+      "revId": "fc80f0c71173d44ce7d403effe65f9c1cbe2ceb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
