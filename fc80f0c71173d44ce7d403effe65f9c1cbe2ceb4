@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5422228b_913c3f69",
+        "filename": "include/cutils/sockets.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-02-02T07:02:44Z",
+      "side": 1,
+      "message": "or lose cutils_socket_buffer and just pass void*[] and size_t[] (and a size_t for the number of elements) to socket_send_buffers?",
+      "revId": "fc80f0c71173d44ce7d403effe65f9c1cbe2ceb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9489faaa_7e93080d",
+        "filename": "libcutils/sockets_unix.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-02-02T07:02:44Z",
+      "side": 1,
+      "message": "ah. sneaky. are we sure we want socket_set_buffer rather than just structure initializers? (since the name is awkward, i wonder if structure initializers might look more natural?)",
+      "revId": "fc80f0c71173d44ce7d403effe65f9c1cbe2ceb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
