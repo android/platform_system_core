@@ -16,6 +16,24 @@
       "revId": "2bedc7455318e35b2a6ac77031b673d59893877d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31c3005d_3d3f5393",
+        "filename": "crash_reporter/crash_reporter.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1076778
+      },
+      "writtenOn": "2016-02-03T02:24:00Z",
+      "side": 1,
+      "message": "No, brillo\u0027s crash_reporter no longer uses /run.  None of our services use a shared /run directory anymore (which doesn\u0027t exist on Android\u0027s FS).  When we asked earlier whether Android had anything equivalent to /run, we were told there wasn\u0027t since it would be a possible security vector for malicious apps to read and modify other system process\u0027s data.  So everything was moved to within /data/misc/\u003cservice\u003e folders.  Right now, I think the kernel-crash-detected is the only part that crash_reporter is putting in this generic run folder... all other functionality I put into one of the other tmp/log/lock/crash folders that I\u0027m creating below.",
+      "parentUuid": "5116b490_99368bd9",
+      "revId": "2bedc7455318e35b2a6ac77031b673d59893877d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
