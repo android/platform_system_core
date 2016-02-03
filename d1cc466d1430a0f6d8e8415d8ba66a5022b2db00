@@ -22,6 +22,30 @@
       "revId": "d1cc466d1430a0f6d8e8415d8ba66a5022b2db00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3115c084_beab6993",
+        "filename": "libcutils/ashmem-dev.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-03T20:43:50Z",
+      "side": 1,
+      "message": "I had it that way, then asked myself, why did I pick rdev \u003d 0, and that propelled me into adding a comment:\n\n    rdev \u003d 0; /* Too much complexity to pick up __ashmem_rdev */\n\nwhich looked like I was being _petty_ about enh@\u0027s comments ;-\u003e which I wasn\u0027t. I just wanted to make sure future selves understood why we did not just pick it up. My worries are a future self doing it without atomics or locking ... thus the need for the warning that it is not just as simple as:\n\n    rdev \u003d __ashmem_rdev;\n\nWe can not eliminate the goto, IMHO coding and maintenance standard abhors the duplicate identical ALOGE messages.\n\nNow that I got that off my chest, will respin ;-}",
+      "parentUuid": "9124acf4_a686c33e",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 13
+      },
+      "revId": "d1cc466d1430a0f6d8e8415d8ba66a5022b2db00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
