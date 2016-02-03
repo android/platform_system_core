@@ -115,6 +115,30 @@
       "revId": "f27da0d669d9ace06e20cc885fd410d45f1484da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f127a8f2_13d556de",
+        "filename": "libcutils/ashmem-dev.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-02-03T00:53:14Z",
+      "side": 1,
+      "message": "All of the atomic operations (and plain atomic assignments) default to memory_order_seq_cst.  If you use nothing else, you get sequential consistency for the program.  I believe memory_order_relaxed is also fine here.  It\u0027s a trade-off of performance vs. code-understanding-complexity. The default is much easier to reason about.\n\nIt\u0027s hard to get information from processor vendors as to whether fences cause buffers to be flushed sooner, as opposed to just waiting until they are flushed anyway.  My current theory is that it\u0027s mostly the latter.",
+      "parentUuid": "3115c084_2deab5cc",
+      "range": {
+        "startLine": 95,
+        "startChar": 51,
+        "endLine": 95,
+        "endChar": 72
+      },
+      "revId": "f27da0d669d9ace06e20cc885fd410d45f1484da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
