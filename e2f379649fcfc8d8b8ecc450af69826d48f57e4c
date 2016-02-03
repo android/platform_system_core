@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "711bb8b8_6ffca1d4",
+        "filename": "include/cutils/sockets.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-02-03T00:50:39Z",
+      "side": 1,
+      "message": "Opted for a hard limit rather than dynamically allocating memory for speed and simplicity. I expect most usage will be to transmit 2 buffers, a header and a body, so I don\u0027t think this will be a problem.",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 42
+      },
+      "revId": "e2f379649fcfc8d8b8ecc450af69826d48f57e4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3115c084_4df8d166",
+        "filename": "libcutils/Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-02-03T00:50:39Z",
+      "side": 1,
+      "message": "enh: you recommended C++ for this file in https://android-review.googlesource.com/#/c/199435/2/libcutils/sockets.c@39.\n\nI think the linkage may not matter here because nobody is using this file except fastboot, but it makes more sense to me to leave everything as C if switching some files to C++ can break stuff, so I changed this as well. LMK if you would rather I leave it as C++.",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "e2f379649fcfc8d8b8ecc450af69826d48f57e4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
