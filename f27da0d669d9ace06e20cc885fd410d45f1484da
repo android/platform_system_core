@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11f7dc9a_d453b2ba",
+        "filename": "libcutils/ashmem-dev.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-02-03T00:15:30Z",
+      "side": 1,
+      "message": "spelling",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 8
+      },
+      "revId": "f27da0d669d9ace06e20cc885fd410d45f1484da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11f7dc9a_94bdaaef",
+        "filename": "libcutils/ashmem-dev.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-02-03T00:15:30Z",
+      "side": 1,
+      "message": "I would have found this easier to read with a comment that it\u0027s really a dev_t, and is always either zero or the ashmem dev_t.",
+      "range": {
+        "startLine": 39,
+        "startChar": 27,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "f27da0d669d9ace06e20cc885fd410d45f1484da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31c3005d_7aac71c5",
+        "filename": "libcutils/ashmem-dev.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-02-03T00:15:30Z",
+      "side": 1,
+      "message": "I don\u0027t see why this really requires any ordering.  There is no other state you expect to be consistent as a a result of seeing a nonzero value.  I would use either memory_order_relaxed consistently (if the cost of a couple of fences matters), or a plain atomic_store (if it doesn\u0027t matter, and you want to keep the code as simple as possible).",
+      "range": {
+        "startLine": 63,
+        "startChar": 26,
+        "endLine": 63,
+        "endChar": 46
+      },
+      "revId": "f27da0d669d9ace06e20cc885fd410d45f1484da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31fce07c_35c4b294",
+        "filename": "libcutils/ashmem-dev.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-02-03T00:15:30Z",
+      "side": 1,
+      "message": "Consume is currently pretty broken.  And it\u0027s not what you want here anyway.  Again, I think relaxed is fine here and above.",
+      "range": {
+        "startLine": 95,
+        "startChar": 51,
+        "endLine": 95,
+        "endChar": 72
+      },
+      "revId": "f27da0d669d9ace06e20cc885fd410d45f1484da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
