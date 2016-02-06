@@ -91,6 +91,30 @@
       "revId": "60f6daf78e03a783ebddf007bef5118296511be8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd1e9c58_54c36c55",
+        "filename": "healthd/BatteryMonitor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1049213
+      },
+      "writtenOn": "2016-02-06T09:53:01Z",
+      "side": 1,
+      "message": "1. !mChargerNames.size() check isn\u0027t removed in order to not disturb the google\u0027s base behaviour/expectation. We too thought this is not required as we are specifically checking if battery is present or not (from commit message).\n2. Shall i remove this !mChargerNames.size() check ? in next patchset?\n3.Now, regarding \"mBatteryDevicePresent\", it will be true, if the path \"/sys/class/power_supply/battery/\" exists. But we should be ideally checking for /sys/class/power_supply/battery/online\" path to know if the actual battery is present or not.\nHence using the logic :\nprops.batteryPresent \u003d getBooleanField(mHealthdConfig-\u003ebatteryPresentPath);\n[line 589-594]\n \nNote: mBatteryDevicePresent will be true if battery is present or not (as the path /sys/class/power_supply/battery is present even if battery is not present on device.)",
+      "parentUuid": "f165e8c4_ba83f12b",
+      "range": {
+        "startLine": 598,
+        "startChar": 8,
+        "endLine": 598,
+        "endChar": 54
+      },
+      "revId": "60f6daf78e03a783ebddf007bef5118296511be8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
