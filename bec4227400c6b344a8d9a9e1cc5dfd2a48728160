@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5da7a8bf_c3dbd662",
+        "filename": "fastboot/udp.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-02-09T23:10:54Z",
+      "side": 1,
+      "message": "TBH no it\u0027s not important right now, since I don\u0027t think we have any commands that sends a lot of data from the device to the host. This just adds some future-proofing in case fastboot adds a command that does this later on.\n\nAs a comparison, when I implemented the device side in Python, the difference between keeping a list of buffers vs. appending to a single buffer as packets came in was enormous (\u003c10 seconds vs several minutes for downloading a partition). I haven\u0027t actually tried in C++ though, so those numbers may not apply here.\n\nIn any case I\u0027m happy to leave this out if you think it adds more complexity than it\u0027s worth and/or if there\u0027s no chance we\u0027re going to implement reading large amounts of data from a device.",
+      "parentUuid": "fd977c52_cfcea1d1",
+      "revId": "bec4227400c6b344a8d9a9e1cc5dfd2a48728160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5da7a8bf_e3ce1ad1",
         "filename": "fastboot/udp.cpp",
         "patchSetId": 2
@@ -47,6 +65,24 @@
       "writtenOn": "2016-02-09T22:54:15Z",
       "side": 1,
       "message": "i guess so. comment on the do loops above, since do loops are unusual?",
+      "revId": "bec4227400c6b344a8d9a9e1cc5dfd2a48728160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7da46cba_1981cfed",
+        "filename": "fastboot/udp.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-02-09T23:10:54Z",
+      "side": 1,
+      "message": "Will do, I was surprised myself to be finding a use for them.",
+      "parentUuid": "bd83441c_73a832b4",
       "revId": "bec4227400c6b344a8d9a9e1cc5dfd2a48728160",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
