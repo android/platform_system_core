@@ -34,6 +34,24 @@
       "revId": "84c667f42fd4c188dff17e1fb81445ed0b772331",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d89b03a_9319249f",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-02-09T21:24:54Z",
+      "side": 1,
+      "message": "line 141 is only reachable if AUDITD_ENFORCE_INTEGRITY is true, which is only on user builds. On userdebug / eng builds, this entire block is a no-op.\n\nSpecifically, I\u0027d like to see this block replaced by something like:\n\nif (loaded) {\n  if (policyLoaded) {\n    // Policy changes are not allowed. Reboot to safe mode to limit\n    // damage.\n    if (AUDITD_ENFORCE_INTEGRITY) { \n      enterSafeMode();\n    } else {\n      logToDmesg(\"Integrity Enforcement Suppressed - not rebooting to safe mode\");\n    }\n  } else {\n    logToDmesg(\"policy loaded; enforcing integrity\");\n    policyLoaded \u003d true;\n  }\n}",
+      "parentUuid": "fdc21c56_ddcbbf67",
+      "revId": "84c667f42fd4c188dff17e1fb81445ed0b772331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
