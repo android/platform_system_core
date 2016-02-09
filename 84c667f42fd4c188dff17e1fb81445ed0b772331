@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1d89b03a_d36f2cc8",
+        "filename": "logd/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-02-09T21:38:20Z",
+      "side": 1,
+      "message": "You also need to update build/core/cleanbuild.mk, specifically the variable \"installclean_files\". Otherwise you could end up with userdebug/eng logd installed on a user build.",
+      "revId": "84c667f42fd4c188dff17e1fb81445ed0b772331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d89b03a_137b749e",
         "filename": "logd/LogAudit.cpp",
         "patchSetId": 1
@@ -13,6 +30,30 @@
       "writtenOn": "2016-02-09T21:32:53Z",
       "side": 1,
       "message": "getprop(\"ro.build.type\")?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 6
+      },
+      "revId": "84c667f42fd4c188dff17e1fb81445ed0b772331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d89b03a_136294e6",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-02-09T21:38:20Z",
+      "side": 1,
+      "message": "If we wanted to use a property, we should use ro.debuggable, instead of ro.build.type. ro.debuggable is true on userdebug/eng builds, and false on user builds.\n\nHowever, as a general rule, I prefer compile time checks, to avoid the property space being subject to attack. We\u0027ve had bugs in the past where it was possible to modify properties and convince the system it was a userdebug/eng build, when it was really a user build. A compile time check avoids these kinds of bugs.",
+      "parentUuid": "1d89b03a_137b749e",
       "range": {
         "startLine": 36,
         "startChar": 0,
