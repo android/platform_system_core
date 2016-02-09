@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "3d8e7442_f14d02b5",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-09T21:31:18Z",
+      "side": 1,
+      "message": "logd is running _before_ /data is mounted. What are the implications if persist properties are not written? (device                   is stuck in a reboot loop, or randomly reboots and does not enter safe mode, either are bad).\n\nYou can add some redundancy in those that check these flags by also inspecting /sys/fs/pstore/console-ramoops for the log message. Not to be trusted, but it takes you from 99% to 99.99%.",
+      "range": {
+        "startLine": 101,
+        "startChar": 4,
+        "endLine": 101,
+        "endChar": 46
+      },
+      "revId": "84c667f42fd4c188dff17e1fb81445ed0b772331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fdc21c56_fd523b3c",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-09T21:31:18Z",
+      "side": 1,
+      "message": "The reboot message can also be used as a means of communicating safe mode rather than depending on /data presence or integrity, it would show in the kernel command line as reboot reason?",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 43
+      },
+      "revId": "84c667f42fd4c188dff17e1fb81445ed0b772331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ddbd58cb_b625468b",
         "filename": "logd/LogAudit.cpp",
         "patchSetId": 1
