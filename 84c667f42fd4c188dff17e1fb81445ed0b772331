@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9dc4c07e_c2cdf831",
+        "filename": "logd/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1058768
+      },
+      "writtenOn": "2016-02-10T23:44:38Z",
+      "side": 1,
+      "message": "Done in Id3ca7889ede30b54b7af73dd50653ca1a20d59aa",
+      "parentUuid": "1d89b03a_d36f2cc8",
+      "revId": "84c667f42fd4c188dff17e1fb81445ed0b772331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d89b03a_137b749e",
         "filename": "logd/LogAudit.cpp",
         "patchSetId": 1
@@ -77,6 +95,30 @@
       "writtenOn": "2016-02-09T21:31:18Z",
       "side": 1,
       "message": "logd is running _before_ /data is mounted. What are the implications if persist properties are not written? (device                   is stuck in a reboot loop, or randomly reboots and does not enter safe mode, either are bad).\n\nYou can add some redundancy in those that check these flags by also inspecting /sys/fs/pstore/console-ramoops for the log message. Not to be trusted, but it takes you from 99% to 99.99%.",
+      "range": {
+        "startLine": 101,
+        "startChar": 4,
+        "endLine": 101,
+        "endChar": 46
+      },
+      "revId": "84c667f42fd4c188dff17e1fb81445ed0b772331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ddc9d89d_a7dfb281",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1058768
+      },
+      "writtenOn": "2016-02-10T23:44:38Z",
+      "side": 1,
+      "message": "I changed this to reboot to recovery if logd hasn\u0027t received a reinit command (to indicate persistent properties have been loaded). This should prevent boot looping. Thoughts?",
+      "parentUuid": "3d8e7442_f14d02b5",
       "range": {
         "startLine": 101,
         "startChar": 4,
@@ -159,6 +201,24 @@
       "side": 1,
       "message": "line 141 is only reachable if AUDITD_ENFORCE_INTEGRITY is true, which is only on user builds. On userdebug / eng builds, this entire block is a no-op.\n\nSpecifically, I\u0027d like to see this block replaced by something like:\n\nif (loaded) {\n  if (policyLoaded) {\n    // Policy changes are not allowed. Reboot to safe mode to limit\n    // damage.\n    if (AUDITD_ENFORCE_INTEGRITY) { \n      enterSafeMode();\n    } else {\n      logToDmesg(\"Integrity Enforcement Suppressed - not rebooting to safe mode\");\n    }\n  } else {\n    logToDmesg(\"policy loaded; enforcing integrity\");\n    policyLoaded \u003d true;\n  }\n}",
       "parentUuid": "fdc21c56_ddcbbf67",
+      "revId": "84c667f42fd4c188dff17e1fb81445ed0b772331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7dbb8cf2_a10b24bc",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1058768
+      },
+      "writtenOn": "2016-02-10T23:44:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d89b03a_9319249f",
       "revId": "84c667f42fd4c188dff17e1fb81445ed0b772331",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
