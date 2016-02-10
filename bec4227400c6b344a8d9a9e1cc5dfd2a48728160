@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "5da7a8bf_c925b58a",
+        "filename": "fastboot/udp.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-02-10T01:19:12Z",
+      "side": 1,
+      "message": "I\u0027m not sure, I could very well have had bugs in my code, it was a bit of a surprise.\n\nThe outstanding packets happen because a device can ACK and provide return data in the same packet. In this case, we\u0027re still in the fastboot write function so we need to buffer the returned data for the next fastboot read.\n\nAfter thinking on it though, this is definitely an unnecessary optimization. It only saves ~50 round-trips in a \"flashall\" out of \u003e100K. Tomorrow I\u0027ll change it to always separate write and read packets, that should let me remove all this packet buffering stuff.\n\nThanks!",
+      "parentUuid": "dd92b865_3ac3dd56",
+      "revId": "bec4227400c6b344a8d9a9e1cc5dfd2a48728160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5da7a8bf_e3ce1ad1",
         "filename": "fastboot/udp.cpp",
         "patchSetId": 2
