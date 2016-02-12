@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1dd53033_45f8e5d9",
+        "filename": "adb/sysdeps.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-02-12T23:36:44Z",
+      "side": 1,
+      "message": "_beginthreadex declares the argument as `unsigned ( __stdcall *start_address )( void * )`. They\u0027re equivalent, but is one of them encouraged over the other?\n\nhttps://msdn.microsoft.com/en-us/library/kdzttdcb.aspx",
+      "parentUuid": "3ddaf464_03ad3c66",
+      "range": {
+        "startLine": 126,
+        "startChar": 7,
+        "endLine": 126,
+        "endChar": 25
+      },
+      "revId": "32eab9021c52ff8e2a54d77c725bae915d255cda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fde3fc1c_02bd332f",
         "filename": "adb/sysdeps.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-02-12T23:28:14Z",
       "side": 1,
       "message": "If you\u0027re using _beginthreadex(), the corresponding exit function is endthreadex(), I think. https://msdn.microsoft.com/en-us/library/hw264s73.aspx\n\nIn reality, it really only matters if you happen to use the static C Runtime (which I don\u0027t think adb does). If you use the dynamically linked C Runtime, it has a DllMain hook that cleans up any C Runtime thread stuff.\n\nBut anyway, if you use _beginthreadex(), it\u0027s probably cleanest to also use _endthreadex() here.",
+      "range": {
+        "startLine": 172,
+        "startChar": 4,
+        "endLine": 172,
+        "endChar": 14
+      },
+      "revId": "32eab9021c52ff8e2a54d77c725bae915d255cda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bde6e426_0302d1a1",
+        "filename": "adb/sysdeps.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-02-12T23:36:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fde3fc1c_02bd332f",
       "range": {
         "startLine": 172,
         "startChar": 4,
@@ -77,6 +125,24 @@
       "side": 1,
       "message": "My thinking was: why have this block allocated for the duration of the thread life when it isn\u0027t really needed that long? But if you think it\u0027s cleaner the other way around, of course, feel free to override me.",
       "parentUuid": "3d4834fd_0780bcb7",
+      "revId": "32eab9021c52ff8e2a54d77c725bae915d255cda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7df0ecdc_0dcb2699",
+        "filename": "adb/sysdeps.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-02-12T23:36:44Z",
+      "side": 1,
+      "message": "I added a comment and renamed the variables, so it should be immediately obvious what\u0027s going on.",
+      "parentUuid": "bd0fc4b0_6a728ced",
       "revId": "32eab9021c52ff8e2a54d77c725bae915d255cda",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
