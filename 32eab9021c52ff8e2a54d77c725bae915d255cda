@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bde6e426_e3ab4db8",
+        "filename": "adb/sysdeps.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-02-12T23:41:33Z",
+      "side": 1,
+      "message": "Good point. :) I think what is going on is that CreateThread() with DWORD WINAPI etc. existed first. Then _beginthreadex() was written as a wrapper, but they didn\u0027t want to use DWORD and WINAPI because then the C Runtime process.h would take a dependency on windows.h.\n\nMy thinking was that WINAPI is preferable to __stdcall (which seems really low-level), but the fact that process.h (and your MSDN link) use __stdcall makes me fine with what you\u0027ve got.",
+      "parentUuid": "1dd53033_45f8e5d9",
+      "range": {
+        "startLine": 126,
+        "startChar": 7,
+        "endLine": 126,
+        "endChar": 25
+      },
+      "revId": "32eab9021c52ff8e2a54d77c725bae915d255cda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fde3fc1c_02bd332f",
         "filename": "adb/sysdeps.h",
         "patchSetId": 1
