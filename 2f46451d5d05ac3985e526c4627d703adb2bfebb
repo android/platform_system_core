@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "bdc1846e_c9cd1d32",
+        "filename": "adb/fdevent_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-02-13T00:34:41Z",
+      "side": 1,
+      "message": "Now that you have fdevent_terminate_loop(), is it cleaner to call it instead of adb_thread_exit()? I thought the whole point of fdevent_terminate_loop() was so that you don\u0027t need adb_thread_exit().",
+      "range": {
+        "startLine": 151,
+        "startChar": 8,
+        "endLine": 151,
+        "endChar": 23
+      },
+      "revId": "2f46451d5d05ac3985e526c4627d703adb2bfebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7dbb8cf2_8d7611a7",
+        "filename": "adb/fdevent_test.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-02-13T00:34:41Z",
+      "side": 1,
+      "message": "Is this dead code? Or is the param to TerminateThread() dead code?",
+      "range": {
+        "startLine": 24,
+        "startChar": 17,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "2f46451d5d05ac3985e526c4627d703adb2bfebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3dacb4b4_a88d3460",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2266,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-02-13T00:34:41Z",
+      "side": 1,
+      "message": "This seems super scary? I guess sysdeps doesn\u0027t have enough free fds compared to unix?",
+      "range": {
+        "startLine": 2266,
+        "startChar": 7,
+        "endLine": 2266,
+        "endChar": 86
+      },
+      "revId": "2f46451d5d05ac3985e526c4627d703adb2bfebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5dbec8e3_39b2a212",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2268,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-02-13T00:34:41Z",
+      "side": 1,
+      "message": "I don\u0027t think this actually works because the sysdeps fds start at 100. So you\u0027d need adb_close(WIN32_FH_BASE + i).",
+      "range": {
+        "startLine": 2268,
+        "startChar": 8,
+        "endLine": 2268,
+        "endChar": 21
+      },
+      "revId": "2f46451d5d05ac3985e526c4627d703adb2bfebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7dbb8cf2_ad2e7586",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2271,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-02-13T00:34:41Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this is important, but:\n\nfdevent_init() also sets htab_count. Sysdeps also maintains fd_table and fd_table_max (at the moment I don\u0027t recall what this is for).",
+      "range": {
+        "startLine": 2271,
+        "startChar": 4,
+        "endLine": 2271,
+        "endChar": 22
+      },
+      "revId": "2f46451d5d05ac3985e526c4627d703adb2bfebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1da7f0d2_b25a46f9",
         "filename": "adb/sysdeps_win32.cpp",
         "patchSetId": 4
