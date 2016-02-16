@@ -1,0 +1,301 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1dd53033_4011f36f",
+        "filename": "bvb/bvb_rsa.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "keep const on first arg?\n\nnit: line too long?",
+      "revId": "b0c1cce65762c692611a9f1832c28a8df26ee179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdc1846e_09d435be",
+        "filename": "bvb/bvb_rsa.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "What about 3072? It could be a nice alternative if 4096 has poor performance.",
+      "range": {
+        "startLine": 50,
+        "startChar": 26,
+        "endLine": 50,
+        "endChar": 30
+      },
+      "revId": "b0c1cce65762c692611a9f1832c28a8df26ee179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd0fc4b0_aa3d2477",
+        "filename": "bvb/bvb_rsa.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "nit: 2 * h.key_num_bits / 8 is more clear (and is used above also, maybe put in a descriptive var?)",
+      "range": {
+        "startLine": 66,
+        "startChar": 57,
+        "endLine": 66,
+        "endChar": 61
+      },
+      "revId": "b0c1cce65762c692611a9f1832c28a8df26ee179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ddc9d89d_f501cb9d",
+        "filename": "bvb/bvb_rsa.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "optional: key-\u003en \u003d (uint32_t *) (key + 1); is more succinct (although maybe not as obvious)?",
+      "revId": "b0c1cce65762c692611a9f1832c28a8df26ee179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d4834fd_52a8c44f",
+        "filename": "bvb/bvb_rsa.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "key-\u003err \u003d key-\u003en + key-\u003elen;",
+      "revId": "b0c1cce65762c692611a9f1832c28a8df26ee179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3dacb4b4_68e96cfc",
+        "filename": "bvb/bvb_rsa.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "The documentation for the image describes a big-endian number but this is documented as little endian. In that case, this code should also reverse the order of all the uint32_t\u0027s? Or is the documentation wrong? Is it a big-endian number composed of host-endian words?",
+      "revId": "b0c1cce65762c692611a9f1832c28a8df26ee179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1da7f0d2_92506ad9",
+        "filename": "bvb/bvb_rsa.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "nit: consistency w/ \u0027a \u003d\u003d NULL\u0027 statements elsewhere",
+      "revId": "b0c1cce65762c692611a9f1832c28a8df26ee179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3dacb4b4_28800421",
+        "filename": "bvb/bvb_rsa.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "log in this case and free any successful allocs (like verify below)?",
+      "revId": "b0c1cce65762c692611a9f1832c28a8df26ee179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ddc9d89d_958df760",
+        "filename": "bvb/bvb_rsa.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "nit: spaces around *",
+      "range": {
+        "startLine": 225,
+        "startChar": 39,
+        "endLine": 225,
+        "endChar": 40
+      },
+      "revId": "b0c1cce65762c692611a9f1832c28a8df26ee179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7df0ecdc_708cc5f1",
+        "filename": "bvb/bvb_rsa.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "hash_num_bytes (length consistency already verified above)",
+      "range": {
+        "startLine": 255,
+        "startChar": 53,
+        "endLine": 255,
+        "endChar": 86
+      },
+      "revId": "b0c1cce65762c692611a9f1832c28a8df26ee179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bde6e426_1e246a48",
+        "filename": "bvb/bvb_rsa.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "nit: double-space",
+      "range": {
+        "startLine": 260,
+        "startChar": 9,
+        "endLine": 260,
+        "endChar": 11
+      },
+      "revId": "b0c1cce65762c692611a9f1832c28a8df26ee179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fdce9ca2_74737db8",
+        "filename": "bvb/bvb_sha.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "nit: lower case for consistency?",
+      "range": {
+        "startLine": 48,
+        "startChar": 9,
+        "endLine": 48,
+        "endChar": 12
+      },
+      "revId": "b0c1cce65762c692611a9f1832c28a8df26ee179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d8c6c87_d0983ca7",
+        "filename": "bvb/bvb_unittest_util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "Looks like this macro could just as well be a class method?",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 22
+      },
+      "revId": "b0c1cce65762c692611a9f1832c28a8df26ee179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd255844_3347481d",
+        "filename": "bvb/bvb_unittest_util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "nit: override destructor?",
+      "revId": "b0c1cce65762c692611a9f1832c28a8df26ee179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d76744b_b1181abb",
+        "filename": "bvb/bvb_unittest_util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "base::DeleteFile?",
+      "revId": "b0c1cce65762c692611a9f1832c28a8df26ee179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
