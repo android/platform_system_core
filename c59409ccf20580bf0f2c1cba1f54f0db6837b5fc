@@ -435,6 +435,30 @@
     },
     {
       "key": {
+        "uuid": "bdc1846e_297c99bc",
+        "filename": "bvb/README",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "Yes, 2048 is acceptable, but it\u0027s also the minimum acceptable and I\u0027d prefer to default reasonably high (like 4096) and let BSPs reduce this as needed for boot performance.",
+      "parentUuid": "5df328ea_be4fa508",
+      "range": {
+        "startLine": 129,
+        "startChar": 36,
+        "endLine": 129,
+        "endChar": 40
+      },
+      "revId": "c59409ccf20580bf0f2c1cba1f54f0db6837b5fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdce9ca2_0968b9f5",
         "filename": "bvb/README",
         "patchSetId": 4
@@ -505,6 +529,30 @@
       "side": 1,
       "message": "It\u0027s already described in the \"Rollback protection\" section of \"Brillo Boot Loader Requirements\" [1] which is shared with partners. I\u0027m not keen to reference that document in a public file since the document is available only under NDA... thoughts?\n\nThe initial Brillo Verified Boot plan called for the Developer Console to manage user keys and the rollback index, but unfortunately that idea was rejected (complexity and other things)... so now the poor users have to manage both keys (yikes!) and remember to increase the rollback index. It\u0027s really not ideal.\n\nI imagine we might still want to automate this down the road (current situation sucks)... until, I don\u0027t think we should say too much about it since in the ideal world, users should never have to configure verified boot or worry about rollback indexes or whatever (it really should just work out of the box and the developer console should manage all the difficult bits).\n\n[1] : see https://docs.google.com/document/d/1bNFwTzPI0kcxTPUfO1kiHbWSCs9MwUmY956pkIrMsaw/edit#heading\u003dh.fj4s28f8rdcd",
       "parentUuid": "bde6e426_d29b848f",
+      "range": {
+        "startLine": 136,
+        "startChar": 39,
+        "endLine": 136,
+        "endChar": 63
+      },
+      "revId": "c59409ccf20580bf0f2c1cba1f54f0db6837b5fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bde6e426_436d79ce",
+        "filename": "bvb/README",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "Understood.",
+      "parentUuid": "9de920fd_d3b6dfb9",
       "range": {
         "startLine": 136,
         "startChar": 39,
@@ -968,6 +1016,30 @@
     },
     {
       "key": {
+        "uuid": "fde3fc1c_c25a8bfa",
+        "filename": "bvb/bvb_boot_image_header.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "Name is fine if explained elsewhere...",
+      "parentUuid": "fde3fc1c_a9608adb",
+      "range": {
+        "startLine": 247,
+        "startChar": 42,
+        "endLine": 247,
+        "endChar": 46
+      },
+      "revId": "c59409ccf20580bf0f2c1cba1f54f0db6837b5fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1dd0d03a_a943051b",
         "filename": "bvb/bvb_property.c",
         "patchSetId": 4
@@ -1003,6 +1075,30 @@
       "side": 1,
       "message": "In general, I use very long variable names but in this case |h| makes perfect sense much the same way |n| is used for counting and |i| is used for iterators. E.g. it makes sense here since the BvbBootImageHeader is a central concept to the whole thing.",
       "parentUuid": "1dd0d03a_a943051b",
+      "range": {
+        "startLine": 24,
+        "startChar": 28,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "c59409ccf20580bf0f2c1cba1f54f0db6837b5fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5df328ea_180c848d",
+        "filename": "bvb/bvb_property.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "Arguably makes sense but I disagree :). This comment was a result of me having to go back and remind myself what variables mean what. |h| is fine, though it seems |header| is also succinct. |key_nb| and |value_nb| I had to double-check. For |prop_start| I popped back to the header file to remember that this was one of the top-level sections; |property_section_start| would have been better. I forget what |p| is exactly.\n\nMy 2 cents as a reader. Do what you think is best... :)",
+      "parentUuid": "3ddaf464_9d43cf1b",
       "range": {
         "startLine": 24,
         "startChar": 28,
@@ -1171,6 +1267,24 @@
     },
     {
       "key": {
+        "uuid": "fde3fc1c_6264f78b",
+        "filename": "bvb/bvb_property.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "And \u0027 || prop_end \u003c prop_start\u0027?",
+      "parentUuid": "bd0fc4b0_b17ebff0",
+      "revId": "c59409ccf20580bf0f2c1cba1f54f0db6837b5fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ddaf464_d7cff6a0",
         "filename": "bvb/bvb_property.c",
         "patchSetId": 4
@@ -1206,6 +1320,24 @@
     },
     {
       "key": {
+        "uuid": "5df328ea_9800744f",
+        "filename": "bvb/bvb_property.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "This might be guaranteed if |h| is aligned? Each property is padded to 8, so as long as each section before the property section is also padded, we just need the one check.",
+      "parentUuid": "fde3fc1c_a9f52a36",
+      "revId": "c59409ccf20580bf0f2c1cba1f54f0db6837b5fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9de920fd_9a43ccea",
         "filename": "bvb/bvb_property.c",
         "patchSetId": 4
@@ -1235,6 +1367,24 @@
       "side": 1,
       "message": "Overflow check is done below \"if (total + p \u003e prop_end)\".\n\nAdding the doc.",
       "parentUuid": "9de920fd_9a43ccea",
+      "revId": "c59409ccf20580bf0f2c1cba1f54f0db6837b5fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d09ccae_ae7531d5",
+        "filename": "bvb/bvb_property.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "|| total + p \u003c prop_start?",
+      "parentUuid": "5df328ea_49b5a5f8",
       "revId": "c59409ccf20580bf0f2c1cba1f54f0db6837b5fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1375,6 +1525,24 @@
     },
     {
       "key": {
+        "uuid": "5df328ea_b88fb817",
+        "filename": "bvb/bvb_property.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": ":) I just don\u0027t like null terminators. This is fine.",
+      "parentUuid": "fde3fc1c_29193a5a",
+      "revId": "c59409ccf20580bf0f2c1cba1f54f0db6837b5fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7df0ecdc_b0da3892",
         "filename": "bvb/bvb_property.h",
         "patchSetId": 4
@@ -1445,6 +1613,30 @@
       "side": 1,
       "message": "Mostly because it\u0027s C and not C++ and underscores help drive home that point. I would prefer to keep it this way.",
       "parentUuid": "7df0ecdc_846a565a",
+      "range": {
+        "startLine": 45,
+        "startChar": 12,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "c59409ccf20580bf0f2c1cba1f54f0db6837b5fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3dacb4b4_e8557cca",
+        "filename": "bvb/bvb_property.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "I\u0027m ok with this. A bunch of my style nits can probably be ignored given this.",
+      "parentUuid": "bde6e426_d2b7f9fc",
       "range": {
         "startLine": 45,
         "startChar": 12,
@@ -1633,6 +1825,30 @@
       "side": 1,
       "message": "I\u0027d rather change it to bvb_rsa_verify. I did it this way because it was just RSAVerify which won\u0027t work with the model we\u0027re targeting (partner code could have a RSAVerify() symbol already) so namespacing is paramount.",
       "parentUuid": "5df328ea_e3335aaa",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "c59409ccf20580bf0f2c1cba1f54f0db6837b5fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d09ccae_ae5c1155",
+        "filename": "bvb/bvb_rsa.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1079236
+      },
+      "writtenOn": "2016-02-16T21:59:10Z",
+      "side": 1,
+      "message": "Agreed - bvb_rsa_verify.",
+      "parentUuid": "3ddaf464_7d7ee342",
       "range": {
         "startLine": 43,
         "startChar": 4,
