@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "620e892a_cb0355f0",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-02-18T23:27:21Z",
+      "side": 1,
+      "message": "I was blindly grepping for WSAGetLastError to look for spots where we weren\u0027t setting errno. I went ahead and removed this (and added a comment saying that not setting errno was intentional).\n\nIn practice I think you\u0027re right that this doesn\u0027t matter, though. Outside of tests, we check the result of adb_close in exactly one place, and all we do is log. I actually think we should make adb_close return void. On linux, if you pass it a valid FD, close will always succeed (even if it returns failure!) See http://lkml.iu.edu/hypermail/linux/kernel/0207.2/0409.html for more info.",
+      "parentUuid": "8240dd43_99a6bf83",
+      "range": {
+        "startLine": 718,
+        "startChar": 12,
+        "endLine": 718,
+        "endChar": 34
+      },
+      "revId": "a28fc8ba01fee2cbc46eeda6d11086bb4d99f603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2199973_d6c0a29f",
         "filename": "adb/sysdeps_win32.cpp",
         "patchSetId": 2
