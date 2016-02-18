@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd9478c3_fe89dde4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-02-18T02:06:17Z",
+      "side": 1,
+      "message": "Do you have a reference for this? The best I could find is https://msdn.microsoft.com/en-us/library/6e3b887c.aspx",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 37
+      },
+      "revId": "4d3ffe2a8e160925172310cb28d036056bfff93f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d7f604c_44dcc05b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-02-18T02:06:17Z",
+      "side": 1,
+      "message": "This seems like a very good idea to move the base up. I suppose you could even move it up to 2048 (max configurable via _setmaxstdio), but that seems like overkill. What would really be overkill is to call _getmaxstdio() at runtime (probably a bad idea since it might get way bigger than we expect).",
+      "range": {
+        "startLine": 9,
+        "startChar": 39,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "4d3ffe2a8e160925172310cb28d036056bfff93f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd7c2458_45211c94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-02-18T02:06:17Z",
+      "side": 1,
+      "message": "The reason I started from the last allocated FD is to try to prevent potential use-after-free bugs https://android-review.googlesource.com/161566 . The reason I was concerned about that was because of crazy fd bugs like https://android-review.googlesource.com/153804 . Thoughts?",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 11,
+        "endChar": 67
+      },
+      "revId": "4d3ffe2a8e160925172310cb28d036056bfff93f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d862c98_462be6c6",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-02-18T02:06:17Z",
+      "side": 1,
+      "message": "It seems like if you\u0027re maintaining _win32_fh_next to be the lowest available, you could start the search there and you could probably simplify the body of the loop.",
+      "range": {
+        "startLine": 244,
+        "startChar": 4,
+        "endLine": 247,
+        "endChar": 43
+      },
+      "revId": "4d3ffe2a8e160925172310cb28d036056bfff93f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d8968a7_82f87cdb",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-02-18T02:06:17Z",
+      "side": 1,
+      "message": "If you break here, _win32_fh_next is WIN32_MAX_FHS, so the next call to _fh_from_int() will do L247, incrementing _win32_fh_next to WIN32_MAX_FHS+1, then on L253, it will read _win32_fhs[WIN32_MAX_FHS] which is beyond the end of the array.",
+      "range": {
+        "startLine": 251,
+        "startChar": 12,
+        "endLine": 251,
+        "endChar": 18
+      },
+      "revId": "4d3ffe2a8e160925172310cb28d036056bfff93f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
