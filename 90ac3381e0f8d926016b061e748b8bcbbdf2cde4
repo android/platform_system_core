@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d8968a7_22c6d082",
+        "filename": "adb/sysdeps.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-02-18T02:51:02Z",
+      "side": 1,
+      "message": "My understanding is that this returns a pseudo-handle, in other words it always returns the same value (0xFFFFFFFE). So it can\u0027t be used to compare different threads. Some alternatives:\n\n1. Use GetCurrentThreadId(). I think this is what Win32 codebases will typically do for the sort of check you\u0027re doing. But it is an id, not a adb_thread_t (HANDLE).\n\n2. If you really want a thread handle, use DuplicateHandle(GetCurrentThread()). That is a real pain to use compared to just calling GetCurrentThreadId(). I\u0027d probably only recommend this route if you really need a thread handle for some reason.\n\n3. Use adb_thread_id() instead?",
+      "range": {
+        "startLine": 184,
+        "startChar": 11,
+        "endLine": 184,
+        "endChar": 27
+      },
+      "revId": "90ac3381e0f8d926016b061e748b8bcbbdf2cde4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d8968a7_42c3d471",
+        "filename": "adb/sysdeps.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-02-18T02:51:02Z",
+      "side": 1,
+      "message": "see comments above about thread handles/ids",
+      "range": {
+        "startLine": 188,
+        "startChar": 11,
+        "endLine": 188,
+        "endChar": 47
+      },
+      "revId": "90ac3381e0f8d926016b061e748b8bcbbdf2cde4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d9034ca_0142ac87",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-02-18T02:51:02Z",
+      "side": 1,
+      "message": "Wow, does the caller really pass bad stuff in practice?\n\nSo the point of `sockets\u0027 is to filter the invalid/non-socket handles and also to create WSAPoll structures with Win32 HANDLE values (from fh-\u003eu.socket) instead of sysdeps fd values?",
+      "range": {
+        "startLine": 667,
+        "startChar": 4,
+        "endLine": 667,
+        "endChar": 94
+      },
+      "revId": "90ac3381e0f8d926016b061e748b8bcbbdf2cde4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd6504c6_a0de5ef7",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-02-18T02:51:02Z",
+      "side": 1,
+      "message": "sockaddr_storage?",
+      "range": {
+        "startLine": 1140,
+        "startChar": 4,
+        "endLine": 1140,
+        "endChar": 15
+      },
+      "revId": "90ac3381e0f8d926016b061e748b8bcbbdf2cde4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd993cfa_9ffc57d6",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-02-18T02:51:02Z",
+      "side": 1,
+      "message": "network_loopback_server doesn\u0027t set errno (since it sets the error string instead), so errno isn\u0027t meaningful here. Maybe something to fix in the future (seems like David is working on socket stuff these days).",
+      "range": {
+        "startLine": 1147,
+        "startChar": 8,
+        "endLine": 1147,
+        "endChar": 18
+      },
+      "revId": "90ac3381e0f8d926016b061e748b8bcbbdf2cde4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd9478c3_de6341a7",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1165,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-02-18T02:51:02Z",
+      "side": 1,
+      "message": "network_loopback_client doesn\u0027t set errno either.",
+      "range": {
+        "startLine": 1165,
+        "startChar": 8,
+        "endLine": 1165,
+        "endChar": 18
+      },
+      "revId": "90ac3381e0f8d926016b061e748b8bcbbdf2cde4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
