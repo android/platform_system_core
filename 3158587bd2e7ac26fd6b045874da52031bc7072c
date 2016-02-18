@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d7f604c_e73eb6a2",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1166,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-02-18T03:40:04Z",
+      "side": 1,
+      "message": "It seems like the fundamental issue here is that adb_socket_accept() does not set errno if _fh_alloc fails. Maybe consider fixing that and then kill the errno checking in this func? (sorry, I should fixed adb_socket_accept myself when I last touched it)",
+      "range": {
+        "startLine": 1166,
+        "startChar": 4,
+        "endLine": 1166,
+        "endChar": 14
+      },
+      "revId": "3158587bd2e7ac26fd6b045874da52031bc7072c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d9034ca_c10a8442",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1173,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-02-18T03:40:04Z",
+      "side": 1,
+      "message": "If you make that change, maybe kill this since adb_socket_accept already does the equivalent to this?",
+      "range": {
+        "startLine": 1170,
+        "startChar": 12,
+        "endLine": 1173,
+        "endChar": 35
+      },
+      "revId": "3158587bd2e7ac26fd6b045874da52031bc7072c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
