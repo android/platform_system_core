@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e200b9f1_db421386",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-02-18T18:22:39Z",
+      "side": 1,
+      "message": "As long as we\u0027re defining it should this be adb_pollfd? (Even though it seems to be the same thing.)",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 10
+      },
+      "revId": "b4493684da258b6a13893647e209c477cef9a470",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "820b7d17_d870cde5",
+        "filename": "adb/fdevent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-02-18T18:22:39Z",
+      "side": 1,
+      "message": "Is this necessary? It seems weird that we would ever build with ADB_HOST \u003d\u003d 0 on Windows.\n\nIf we do need this, logical \u0026\u0026 instead of bitwise \u0026?",
+      "range": {
+        "startLine": 289,
+        "startChar": 13,
+        "endLine": 289,
+        "endChar": 32
+      },
+      "revId": "b4493684da258b6a13893647e209c477cef9a470",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "620e892a_b7f9a8df",
+        "filename": "adb/sysdeps_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-02-18T18:22:39Z",
+      "side": 1,
+      "message": "I actually was doing a similar test yesterday, and it turns out this can be weirdly flaky because the WriteFdExactly() can complete but the TCP loopback connection may not flush the data all the way through to the receiving socket in time, so this can return right away without indicating POLLIN.\n\nThis never happened on my Linux machine but it did rarely on a Mac Pro I was testing on. (I was also using select() rather than poll(), but I think there\u0027s the same risk with either).\n\nI think a safer way to do this is poll on the receiver only, so it definitely waits until the data has been passed through, and then poll for both like you\u0027re doing here.",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 38
+      },
+      "revId": "b4493684da258b6a13893647e209c477cef9a470",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "820b7d17_b845193f",
+        "filename": "adb/sysdeps_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-02-18T18:22:39Z",
+      "side": 1,
+      "message": "Same as above re: writing and polling immediately.",
+      "range": {
+        "startLine": 143,
+        "startChar": 4,
+        "endLine": 143,
+        "endChar": 38
+      },
+      "revId": "b4493684da258b6a13893647e209c477cef9a470",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "021f8d56_743428c5",
+        "filename": "adb/sysdeps_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-02-18T18:22:39Z",
+      "side": 1,
+      "message": "It looks like Posix does as well (http://pubs.opengroup.org/onlinepubs/009695399/functions/poll.html). Would it be more accurate to check for the exact flags we expect throughout these tests? e.g.\n\n  EXPECT_EQ(POLLRDNORM, pfd[0].revents);",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 42
+      },
+      "revId": "b4493684da258b6a13893647e209c477cef9a470",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8240dd43_d08adcd4",
+        "filename": "adb/sysdeps_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-02-18T18:22:39Z",
+      "side": 1,
+      "message": "Will this test fail on Windows then? Could we allow either 1 or 2 so it passes everywhere?",
+      "range": {
+        "startLine": 167,
+        "startChar": 4,
+        "endLine": 167,
+        "endChar": 15
+      },
+      "revId": "b4493684da258b6a13893647e209c477cef9a470",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
