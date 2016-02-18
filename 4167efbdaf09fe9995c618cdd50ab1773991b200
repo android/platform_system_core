@@ -323,6 +323,24 @@
     },
     {
       "key": {
+        "uuid": "1d22908a_45e3eaec",
+        "filename": "bvb/bvb_verify.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-02-18T18:34:47Z",
+      "side": 1,
+      "message": "Actually, the code right now is wrong. It requires the user to pass in the exact length of the boot image which he of course doesn\u0027t know .... he will just load the entire 16 or 32 MiB boot partition and pass that size as length. I\u0027ll change the code so it works that way and I\u0027ll also point it out in the docs for this function.\n\nI\u0027ll also add overflow checks.",
+      "parentUuid": "1d71b053_10fb2ad9",
+      "revId": "4167efbdaf09fe9995c618cdd50ab1773991b200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d8fa87c_a361b211",
         "filename": "bvb/bvb_verify.c",
         "patchSetId": 6
@@ -334,6 +352,24 @@
       "writtenOn": "2016-02-16T21:59:10Z",
       "side": 1,
       "message": "overflow checks here too? For example, offset\u003d1, size\u003d~0 would pass this test.\n\nIn all cases below too...\n\nMaybe a utility function to implement the subtleties would be helpful?",
+      "revId": "4167efbdaf09fe9995c618cdd50ab1773991b200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d3680c6_69536542",
+        "filename": "bvb/bvb_verify.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-02-18T18:34:47Z",
+      "side": 1,
+      "message": "Yeah, adding a utility function to do this.",
+      "parentUuid": "5d8fa87c_a361b211",
       "revId": "4167efbdaf09fe9995c618cdd50ab1773991b200",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -592,6 +628,24 @@
     },
     {
       "key": {
+        "uuid": "bd3344d6_8a808beb",
+        "filename": "bvb/bvb_verify_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-02-18T18:34:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd7ab832_545c4254",
+      "revId": "4167efbdaf09fe9995c618cdd50ab1773991b200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d76744b_5743e6ea",
         "filename": "bvb/bvb_verify_unittest.cc",
         "patchSetId": 6
@@ -603,6 +657,30 @@
       "writtenOn": "2016-02-16T21:59:10Z",
       "side": 1,
       "message": "Also verify minor version change is ok?",
+      "range": {
+        "startLine": 125,
+        "startChar": 19,
+        "endLine": 125,
+        "endChar": 36
+      },
+      "revId": "4167efbdaf09fe9995c618cdd50ab1773991b200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d22908a_654e26b2",
+        "filename": "bvb/bvb_verify_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-02-18T18:34:47Z",
+      "side": 1,
+      "message": "Good point. Will do.",
+      "parentUuid": "3d76744b_5743e6ea",
       "range": {
         "startLine": 125,
         "startChar": 19,
@@ -638,6 +716,30 @@
     },
     {
       "key": {
+        "uuid": "bd3344d6_0a757bd3",
+        "filename": "bvb/bvb_verify_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-02-18T18:34:47Z",
+      "side": 1,
+      "message": "Yup. Done.",
+      "parentUuid": "fd2a1c13_7aeef117",
+      "range": {
+        "startLine": 262,
+        "startChar": 19,
+        "endLine": 262,
+        "endChar": 36
+      },
+      "revId": "4167efbdaf09fe9995c618cdd50ab1773991b200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d8fa87c_a38c52b5",
         "filename": "bvb/bvbtool_unittest.cc",
         "patchSetId": 6
@@ -661,6 +763,30 @@
     },
     {
       "key": {
+        "uuid": "22f73149_1df3d3c3",
+        "filename": "bvb/bvbtool_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-02-18T18:34:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d8fa87c_a38c52b5",
+      "range": {
+        "startLine": 39,
+        "startChar": 20,
+        "endLine": 39,
+        "endChar": 23
+      },
+      "revId": "4167efbdaf09fe9995c618cdd50ab1773991b200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd2a1c13_fab68122",
         "filename": "bvb/bvbtool_unittest.cc",
         "patchSetId": 6
@@ -672,6 +798,30 @@
       "writtenOn": "2016-02-16T21:59:10Z",
       "side": 1,
       "message": "Use ReadFileToString?",
+      "range": {
+        "startLine": 49,
+        "startChar": 20,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "4167efbdaf09fe9995c618cdd50ab1773991b200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd1b9859_03756ed3",
+        "filename": "bvb/bvbtool_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-02-18T18:34:47Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s cleaner that way. Will do.",
+      "parentUuid": "fd2a1c13_fab68122",
       "range": {
         "startLine": 49,
         "startChar": 20,
@@ -712,6 +862,24 @@
       "writtenOn": "2016-02-16T21:59:10Z",
       "side": 1,
       "message": "optional: This seems brittle. Maybe that\u0027s intentional / useful as a reminder to update tests?",
+      "revId": "4167efbdaf09fe9995c618cdd50ab1773991b200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22201191_b5cc0081",
+        "filename": "bvb/bvbtool_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-02-18T18:34:47Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s intentional.",
+      "parentUuid": "dd255844_16cf9ace",
       "revId": "4167efbdaf09fe9995c618cdd50ab1773991b200",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
