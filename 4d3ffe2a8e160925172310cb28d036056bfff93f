@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5d8968a7_e5a072be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-02-18T03:01:25Z",
+      "side": 1,
+      "message": "I believe the one I saw was this: https://msdn.microsoft.com/en-us/library/kdfaxaay.aspx",
+      "parentUuid": "dd9478c3_fe89dde4",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 37
+      },
+      "revId": "4d3ffe2a8e160925172310cb28d036056bfff93f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d7f604c_44dcc05b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-02-18T02:06:17Z",
       "side": 1,
       "message": "This seems like a very good idea to move the base up. I suppose you could even move it up to 2048 (max configurable via _setmaxstdio), but that seems like overkill. What would really be overkill is to call _getmaxstdio() at runtime (probably a bad idea since it might get way bigger than we expect).",
+      "range": {
+        "startLine": 9,
+        "startChar": 39,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "4d3ffe2a8e160925172310cb28d036056bfff93f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd993cfa_3f40a3dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-02-18T03:01:25Z",
+      "side": 1,
+      "message": "Bumping it up to 2048 sounds reasonable.",
+      "parentUuid": "9d7f604c_44dcc05b",
       "range": {
         "startLine": 9,
         "startChar": 39,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5d8968a7_85c96672",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-02-18T03:01:25Z",
+      "side": 1,
+      "message": "Hmm. Exposing those bugs seems like a neutral to good thing to me (but I\u0027m biased, since I don\u0027t use adb on Windows, and anything this mitigates on windows would be bugs on linux/darwin).",
+      "parentUuid": "bd7c2458_45211c94",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 11,
+        "endChar": 67
+      },
+      "revId": "4d3ffe2a8e160925172310cb28d036056bfff93f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d862c98_462be6c6",
         "filename": "adb/sysdeps_win32.cpp",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "5d8968a7_027f0cef",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-02-18T03:01:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d862c98_462be6c6",
+      "range": {
+        "startLine": 244,
+        "startChar": 4,
+        "endLine": 247,
+        "endChar": 43
+      },
+      "revId": "4d3ffe2a8e160925172310cb28d036056bfff93f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d8968a7_82f87cdb",
         "filename": "adb/sysdeps_win32.cpp",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2016-02-18T02:06:17Z",
       "side": 1,
       "message": "If you break here, _win32_fh_next is WIN32_MAX_FHS, so the next call to _fh_from_int() will do L247, incrementing _win32_fh_next to WIN32_MAX_FHS+1, then on L253, it will read _win32_fhs[WIN32_MAX_FHS] which is beyond the end of the array.",
+      "range": {
+        "startLine": 251,
+        "startChar": 12,
+        "endLine": 251,
+        "endChar": 18
+      },
+      "revId": "4d3ffe2a8e160925172310cb28d036056bfff93f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd6504c6_4072e2ec",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-02-18T03:01:25Z",
+      "side": 1,
+      "message": "Ugh, good catch.",
+      "parentUuid": "5d8968a7_82f87cdb",
       "range": {
         "startLine": 251,
         "startChar": 12,
