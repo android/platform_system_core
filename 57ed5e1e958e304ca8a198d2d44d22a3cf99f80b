@@ -22,6 +22,30 @@
       "revId": "57ed5e1e958e304ca8a198d2d44d22a3cf99f80b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02986d84_0c07d73c",
+        "filename": "bvb/bvb_property.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-02-19T21:52:50Z",
+      "side": 1,
+      "message": "\u003e this doesn\u0027t handle overflow correctly.\n\nYeah, see TEST(BvbToolTest, CheckProperties) in bvbtool_unittest.cc where it says we currently don\u0027t handle overflow but possibly could.\n\nShould we handle overflow, though? I don\u0027t think it\u0027s needed especially because data has already been positively verified though bvb_verify_image() before properties are accessed. IOW, the fact we don\u0027t handle overflow is not an attack vector.\n\n\u003e why not strtoull?\n\nThen we\u0027d have to require the user of the code (bootloader vendor) to implement it as bvb_stroull() as part of the bvb_sysdeps.h contract... not sure I want to put that burden on them for something that is just a convenience function.",
+      "parentUuid": "62a5a9c6_3f04c7f7",
+      "range": {
+        "startLine": 114,
+        "startChar": 4,
+        "endLine": 114,
+        "endChar": 30
+      },
+      "revId": "57ed5e1e958e304ca8a198d2d44d22a3cf99f80b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
