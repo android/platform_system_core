@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62a5a9c6_b9690f89",
+        "filename": "healthd/BatteryMonitor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-22T21:43:49Z",
+      "side": 1,
+      "message": "This has annoyed me for some time, and I have basically written it off as unnecessary since we are not overflowing the buffer. But this needs to stop, this code is supposed to be a good example :-)\n\nThis (and all the others) are a bug waiting to happen to overflow the buffer and lead to negative values for sizeof(dmesgline) - len. Replace the sequence with something like:\n\n int n \u003d snprintf(...);\n len +\u003d min(n, sizeof(dmesgline) - len));\n\n-or-\n\n len +\u003d min(snprintf(...), sizeof(dmesgline) - len));\n\n(if your implementation of min() has no side effects)\n\nsnprintf returns the number of bytes it would have written, if it could, not the number of bytes it actually wrote.",
+      "range": {
+        "startLine": 317,
+        "startChar": 16,
+        "endLine": 318,
+        "endChar": 67
+      },
+      "revId": "5cd298129ff734567ffbbabc30f93686249cd53b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82bb7df1_d83ba221",
+        "filename": "healthd/BatteryMonitor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-22T21:43:49Z",
+      "side": 1,
+      "message": "alternate:\n\nleave 322 alone, drop len\u003dstrlen(dmesgline) (?) on line 330 and add len \u003d snprintf on line 326?\n\nSaves one more pour through the buffer to get the len on 330.",
+      "range": {
+        "startLine": 322,
+        "startChar": 7,
+        "endLine": 328,
+        "endChar": 9
+      },
+      "revId": "5cd298129ff734567ffbbabc30f93686249cd53b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
