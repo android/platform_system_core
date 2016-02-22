@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "a29b218c_8dc60411",
+        "filename": "liblog/log_event_list.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1020966
+      },
+      "writtenOn": "2016-02-22T21:47:23Z",
+      "side": 1,
+      "message": "Ok, I see, I originally did not have a mechanism to add nested lists (only for parsing nested lists), so I thought the _begin you added was strictly for adding lists within lists :)\n\nSo what would the output be like if I never used _begin/_end, and just started adding more than 1 element? Say:\n\ncreate_android_logger,\nwrite_int32,\nwrite_string8,\nwrite_list,\n\nwould the output have two enclosing brackets, [[29657235, \"hello\"]], one bracket, or would it just fail? I noticed that in the test case you specifically test for writing one element without the _begin, but not more than one.",
+      "parentUuid": "62be89e4_b1401081",
+      "revId": "6d5eee07d43defcbd0012b2a9be73e4b68462c5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62be89e4_6bc60914",
         "filename": "liblog/log_event_list.c",
         "patchSetId": 1
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "Yes ... ((int)true) \u003d\u003d 1 according to the standard, but we are using stdbool.h? I expect landing this into a uint16_t should not be an issue. FYI: I expect at some future date, if we need more bits, this could be a bitfield, why I split your initial definition into a pair of uint16_t\u0027s",
       "parentUuid": "62be89e4_6bc60914",
+      "range": {
+        "startLine": 367,
+        "startChar": 24,
+        "endLine": 367,
+        "endChar": 25
+      },
+      "revId": "6d5eee07d43defcbd0012b2a9be73e4b68462c5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22d0113b_2a2fe368",
+        "filename": "liblog/log_event_list.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1020966
+      },
+      "writtenOn": "2016-02-22T21:47:23Z",
+      "side": 1,
+      "message": "Ok I see. I just noticed the change to uint16_t\u0027s from uint32_t\u0027s, which is fine with me.\n\nI actually meant to say that you have\n\nelem.complete \u003d true\n\non lines 447, etc., and so it\u0027s probably better to keep it consistent and choose either 1 or true. If we want to make this be extensible later (as a bit field), then you\u0027re right we should just use 1 everywhere below as well.",
+      "parentUuid": "22d0113b_aaec13af",
       "range": {
         "startLine": 367,
         "startChar": 24,
@@ -154,6 +196,23 @@
     },
     {
       "key": {
+        "uuid": "c2c1f56d_35bf47da",
+        "filename": "liblog/tests/liblog_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1927,
+      "author": {
+        "id": 1020966
+      },
+      "writtenOn": "2016-02-22T21:47:23Z",
+      "side": 1,
+      "message": "Maybe also have a test that has two elements without a _begin and make sure it behaves as intended?:\n\nstatic const char *event_test_no_begin(uint32_t tag, size_t \u0026expected_len) {\n    android_log_context ctx;\n\n    EXPECT_TRUE(NULL !\u003d (ctx \u003d create_android_logger(tag)));\n    if (!ctx) {\n        return NULL;\n    }\n\n    EXPECT_LE(0, android_log_write_int32(ctx, 0x40302010));\n    EXPECT_LE(0, android_log_write_int64(ctx,\n            0x8070605040302010));\n\n    EXPECT_LE(0, android_log_write_list(ctx, LOG_ID_EVENTS));\n\n        :\n        :\n        :",
+      "revId": "6d5eee07d43defcbd0012b2a9be73e4b68462c5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62a5a9c6_ae19c7be",
         "filename": "liblog/tests/liblog_test.cpp",
         "patchSetId": 1
@@ -200,6 +259,30 @@
       "writtenOn": "2016-02-22T20:52:16Z",
       "side": 1,
       "message": "We should expose in the API the maximum list nesting depth, rather than letting it remain internal.\n\nThis should turn into a loop based on that value.",
+      "range": {
+        "startLine": 2149,
+        "startChar": 0,
+        "endLine": 2155,
+        "endChar": 56
+      },
+      "revId": "6d5eee07d43defcbd0012b2a9be73e4b68462c5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22d0113b_aade5383",
+        "filename": "liblog/tests/liblog_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2155,
+      "author": {
+        "id": 1020966
+      },
+      "writtenOn": "2016-02-22T21:47:23Z",
+      "side": 1,
+      "message": "Yes, good call. Maybe also add a test where it goes over the max, to check it behaves correctly?",
+      "parentUuid": "62be89e4_912f4cd2",
       "range": {
         "startLine": 2149,
         "startChar": 0,
