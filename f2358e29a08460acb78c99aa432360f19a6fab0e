@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2c1f56d_f0cd447c",
+        "filename": "adb/adb_auth_client.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-02-24T23:48:48Z",
+      "side": 1,
+      "message": "I think we want to call fdevent_remove() here, otherwise is this possible?\n\n  1. adb_auth_listener() sets framework_fd\n  2. adb_auth_confirm_key() installs auth_fde on framework_fd\n  3. USB unplugs -\u003e usb_disconnected()\n  4. framework_fd closes -\u003e adb_auth_event() fires\n\nNow at this point usb_transport is NULL, which means in adb_auth_event() the fdevent_remove() call never happens, so I think the fdevent loop keeps calling adb_auth_event() on every iteration.",
+      "revId": "f2358e29a08460acb78c99aa432360f19a6fab0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2def959_a6ed4e1a",
+        "filename": "adb/adb_auth_client.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-02-24T23:48:48Z",
+      "side": 1,
+      "message": "Thinking on it more, if adb_auth_listener() closes framework_fd then assigns it a new value, won\u0027t this fire and then just close the new framework_fd right away? But we can\u0027t close |fd| instead because it may have already been closed in adb_auth_listener().\n\nMaybe if we close framework_fd in adb_auth_listener() and usb_transport exists we also want to call fdevent_remove() so this isn\u0027t called?",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 13
+      },
+      "revId": "f2358e29a08460acb78c99aa432360f19a6fab0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
