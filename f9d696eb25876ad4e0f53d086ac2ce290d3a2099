@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62a5a9c6_d1f022f7",
+        "filename": "adb/adb_auth_client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-02-24T17:42:59Z",
+      "side": 1,
+      "message": "I think if |usb_transport| exists this will close |framework_fd| twice which might be a race condition. Would this work instead?\n\n  if (usb_transport) {\n    fdevent_remove(\u0026usb_transport-\u003eauth_fde);\n  } else if (framework_fd \u003e\u003d 0) {\n    adb_close(framework_fd);\n  }\n  framework_fd \u003d -1;",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 13
+      },
+      "revId": "f9d696eb25876ad4e0f53d086ac2ce290d3a2099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02e4ed24_022ad315",
+        "filename": "adb/adb_auth_client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-02-24T17:42:59Z",
+      "side": 1,
+      "message": "Hmm this actually might double-close the FD as well if I\u0027m reading it right. Closing here will cause adb_auth_event() to fire, then if |usb_transport| exists the fdevent_remove() call will try to close the same FD again.\n\nNot sure what the solution is here, maybe we want to set the FDE_DONT_CLOSE flag on this event and just always do it ourselves?",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 5
+      },
+      "revId": "f9d696eb25876ad4e0f53d086ac2ce290d3a2099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
