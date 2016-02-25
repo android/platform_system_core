@@ -39,6 +39,30 @@
       "revId": "f2358e29a08460acb78c99aa432360f19a6fab0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02e4ed24_84a00c1a",
+        "filename": "adb/adb_auth_client.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-02-25T02:00:54Z",
+      "side": 1,
+      "message": "I think the core problem is that the framework socket and usb transport have unrelated lifecycles, but the usb transport contains the fdevent for the framework socket, which makes things unnecessarily hard to reason about.\n\nPS3 moves auth_fde to a static variable in this file, instead of being a member of usb_transport.",
+      "parentUuid": "e2def959_a6ed4e1a",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 13
+      },
+      "revId": "f2358e29a08460acb78c99aa432360f19a6fab0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
