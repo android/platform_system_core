@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2b0b90b_9c8bcfd9",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-29T19:01:11Z",
+      "side": 1,
+      "message": "unnecessary initialization that results in this being moved from BSS to initialized data, C++ standard guarantees false is zero.",
+      "range": {
+        "startLine": 90,
+        "startChar": 26,
+        "endLine": 90,
+        "endChar": 34
+      },
+      "revId": "4521242b8cc39d89a643a369793f9fd64d5eafcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22ef3134_e3bde6dd",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-29T19:01:11Z",
+      "side": 1,
+      "message": "Since the pair of messages are mutually exclusive, this works by adding common functionality to the dmesg log handler, but might not be intuitively obvious to future selves that wish to add a third logged once message, or allow runtime switching of AUDITD_ENFORCE_INTEGRITY, that could result in unexpected suppression?\n\nAdding the loggedOnce flag into context of enforceIntegrity function could be clearer without the need to add a clarity comment regarding the abstracted behavior in logToDmesg. eg:\n\nvoid LogAudit::enforceIntegrity() {\n    static bool loggedOnce;\n    bool once \u003d loggedOnce;\n\n    loggedOnce \u003d true;\n\n    if (!AUDITD_ENFORCE_INTEGRITY) {\n        if (!once) logToDmesg(\"....\");\n    } else if (RebootToSafeMode) {\n        if (getProperty(\"persist.sys.safemode\") \u003d\u003d \"1\") {\n            if (!once) logToDmesg(\"....\");\n            return;",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 79
+      },
+      "revId": "4521242b8cc39d89a643a369793f9fd64d5eafcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
