@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02feade5_6548bc2b",
+        "filename": "healthd/BatteryMonitor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-29T22:18:15Z",
+      "side": 1,
+      "message": "If we change to:\n\nif (!path.isEmpty() \u0026\u0026 readFromFile(path, buf, SIZE) \u003e 0) {\n\nwe will be able to simplify 215 suggestion I made to not require the check for isEmpty.\n\nThis would add an additional sense of security that getBooleanField does not even try to open the file for reading for an empty path should it be used for something else in the future.",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 41
+      },
+      "revId": "0bb06bce00ce7340a572f14b849386e0dd2ce8e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a26ec178_9e6409b2",
+        "filename": "healthd/BatteryMonitor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-29T22:18:15Z",
+      "side": 1,
+      "message": "Just A Comment, no action requested. If I was to go crazy (which is not in-fact, in doubt ;-} ), you could also add empty checking here as well, and you will find you can KISS strip out a few .isEmpty() calls that if() { } around getIntField. Of course, not all of them, because an empty field is used to report an error ... whereas a zero return is not an error ...",
+      "range": {
+        "startLine": 200,
+        "startChar": 17,
+        "endLine": 200,
+        "endChar": 18
+      },
+      "revId": "0bb06bce00ce7340a572f14b849386e0dd2ce8e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02594de9_ed36bd3b",
+        "filename": "healthd/BatteryMonitor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-29T22:18:15Z",
+      "side": 1,
+      "message": "mBatteryDevicePresent will always be false now if there is no batteryPresentPath.\n\nKISS:\n\nprops.batteryPresent \u003d !mHealthdConfig-\u003ebatteryPresentPath.isEmpty() \u0026\u0026 getBooleanField(mHealthdConfig-\u003ebatteryPresentPath);\n\nEdit: if you change line 187, then:\n\nprops.batteryPresent \u003d getBooleanField(mHealthdConfig-\u003ebatteryPresentPath);",
+      "range": {
+        "startLine": 215,
+        "startChar": 8,
+        "endLine": 215,
+        "endChar": 53
+      },
+      "revId": "0bb06bce00ce7340a572f14b849386e0dd2ce8e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26bb568_54f751ea",
+        "filename": "healthd/BatteryMonitor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-29T22:18:15Z",
+      "side": 1,
+      "message": "Good, but I see that you can simplify on line 215.\n\nNB: N9 cat /sys/devices/platform/htc_battery_max17050.8/power_supply/flounder-battery/present \u003d 1",
+      "range": {
+        "startLine": 519,
+        "startChar": 24,
+        "endLine": 519,
+        "endChar": 70
+      },
+      "revId": "0bb06bce00ce7340a572f14b849386e0dd2ce8e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02feade5_055d7821",
+        "filename": "healthd/BatteryMonitor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-02-29T22:18:15Z",
+      "side": 1,
+      "message": "So, if battery is present, and there are no charger supplies found, what does that mean in the scheme of things?",
+      "range": {
+        "startLine": 619,
+        "startChar": 8,
+        "endLine": 619,
+        "endChar": 30
+      },
+      "revId": "0bb06bce00ce7340a572f14b849386e0dd2ce8e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
