@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c26bb568_e7e57587",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2016-02-29T23:04:08Z",
+      "side": 1,
+      "message": "suggest: if a battery device exists\n\nTo disambiguate from whether a removable battery is currently present.  (The name of the variable for this is a bit unfortunate.)",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "0bb06bce00ce7340a572f14b849386e0dd2ce8e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02feade5_6548bc2b",
         "filename": "healthd/BatteryMonitor.cpp",
         "patchSetId": 1
@@ -94,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "22ef3134_4c74c7d8",
+        "filename": "healthd/BatteryMonitor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2016-02-29T23:04:08Z",
+      "side": 1,
+      "message": "mBatteryDevicePresent is supposed to reflect whether the hardware has any battery device (removable or not), independent of whether a platform that has a removable battery currently has a battery installed or not.  The names of these two fields are unfortunately too similar.\n\nI don\u0027t know what anybody does with an Android device that has a removable battery that is actually removed (and presumably running on charger power), but safest to leave this the way it was.",
+      "range": {
+        "startLine": 519,
+        "startChar": 48,
+        "endLine": 519,
+        "endChar": 63
+      },
+      "revId": "0bb06bce00ce7340a572f14b849386e0dd2ce8e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02feade5_055d7821",
         "filename": "healthd/BatteryMonitor.cpp",
         "patchSetId": 1
@@ -105,6 +151,30 @@
       "writtenOn": "2016-02-29T22:18:15Z",
       "side": 1,
       "message": "So, if battery is present, and there are no charger supplies found, what does that mean in the scheme of things?",
+      "range": {
+        "startLine": 619,
+        "startChar": 8,
+        "endLine": 619,
+        "endChar": 30
+      },
+      "revId": "0bb06bce00ce7340a572f14b849386e0dd2ce8e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22ef3134_cc68d7f8",
+        "filename": "healthd/BatteryMonitor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2016-02-29T23:04:08Z",
+      "side": 1,
+      "message": "It would reflect a battery-operated device that must be charged separately, I suppose.  Such a thing has probably never been tested by us.",
+      "parentUuid": "02feade5_055d7821",
       "range": {
         "startLine": 619,
         "startChar": 8,
