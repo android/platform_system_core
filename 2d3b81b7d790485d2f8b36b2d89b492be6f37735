@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a26ec178_b8dec583",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-02-29T18:25:18Z",
+      "side": 1,
+      "message": "IMHO, this would be more readable as:\n\n  if (once) {\n    if (loggedOnce) {\n      return;\n    }\n    loggedOnce \u003d true;\n  }\n\nThe else block isn\u0027t needed.",
+      "range": {
+        "startLine": 95,
+        "startChar": 10,
+        "endLine": 97,
+        "endChar": 9
+      },
+      "revId": "2d3b81b7d790485d2f8b36b2d89b492be6f37735",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
