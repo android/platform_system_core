@@ -22,6 +22,30 @@
       "revId": "b4809d5845c395d4955d690eb9257a967d0e8373",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a26ec178_369893a3",
+        "filename": "init/util.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-03-03T19:14:28Z",
+      "side": 1,
+      "message": "At the point this function is called, klog_init() has not yet been called, and /dev/__kmsg__ is not available for writing. If we call klog_init() before open_devnull_stdio(), klog_fd will likely be assigned fd\u003d0 or fd\u003d1, which will be clobbered when open_devnull_stdio is called.\n\nI don\u0027t think logging to dmesg is practical here...",
+      "parentUuid": "c26bb568_ee7a1efe",
+      "range": {
+        "startLine": 406,
+        "startChar": 8,
+        "endLine": 406,
+        "endChar": 16
+      },
+      "revId": "b4809d5845c395d4955d690eb9257a967d0e8373",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
