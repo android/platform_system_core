@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82d1bd8e_28422be8",
+        "filename": "adb/file_sync_client.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-03-03T19:01:14Z",
+      "side": 1,
+      "message": "I think this needs to be done in copy_remote_dir_local() instead (or it needs to be modified somehow), it looks like that function is still creating a local copy of the remote folder with the original name as well as the changed name.\n\nHere\u0027s what I\u0027m finding when I try this:\n\nLocal structure:\n  foo/  (empty)\n\nRemote structure:\n  data/\n    local/\n      tmp/\n        test/\n          foo.txt\n          bar.txt\n\n$ adb pull data/local/tmp/test foo/subdir\n\nLocal result:\n  foo/\n    subdir/\n      foo.txt\n      bar.txt\n    test/  \u003c-- I think this should not be here",
+      "range": {
+        "startLine": 998,
+        "startChar": 16,
+        "endLine": 998,
+        "endChar": 27
+      },
+      "revId": "e7cccbbd5a7650b5a70d509cbd10fa3d35372169",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22ef3134_eacda07c",
+        "filename": "adb/test_device.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-03-03T19:01:14Z",
+      "side": 1,
+      "message": "nit: we should try to stick with either single or double quotes for strings. At the moment it\u0027s a bit of both, but the majority seems to be single so I would suggest using single quotes here. (I wouldn\u0027t worry about the rest of the file in this CL though)",
+      "range": {
+        "startLine": 918,
+        "startChar": 46,
+        "endLine": 918,
+        "endChar": 52
+      },
+      "revId": "e7cccbbd5a7650b5a70d509cbd10fa3d35372169",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02feade5_b7430838",
+        "filename": "adb/test_device.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-03-03T19:01:14Z",
+      "side": 1,
+      "message": "|dest_dir| already has |host_dir| in it, it\u0027s a little confusing to join it again even though in practice it still works.",
+      "range": {
+        "startLine": 931,
+        "startChar": 20,
+        "endLine": 931,
+        "endChar": 38
+      },
+      "revId": "e7cccbbd5a7650b5a70d509cbd10fa3d35372169",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02feade5_17e63c93",
+        "filename": "adb/test_device.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-03-03T19:01:14Z",
+      "side": 1,
+      "message": "nit: only one newline between methods in a class.",
+      "range": {
+        "startLine": 938,
+        "startChar": 0,
+        "endLine": 939,
+        "endChar": 0
+      },
+      "revId": "e7cccbbd5a7650b5a70d509cbd10fa3d35372169",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
