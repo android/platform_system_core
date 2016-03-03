@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "22fe51bd_0edfaf1e",
+        "filename": "healthd/BatteryMonitor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1049213
+      },
+      "writtenOn": "2016-03-03T10:25:22Z",
+      "side": 1,
+      "message": "There are two properties here: props.batteryPresent and mBatteryDevicePresent.\nFrom my observation, i think the better way to detect if a battery is actually Inserted on a device or not is to check the whole path - (/sys/class/power_supply/battery/present)\u003d(i.e. props.batteryPresent) and not , (/sys/class/power_supply/battery/)\u003d(i.e mBatteryDevicePresent), because, even if battery is not inserted into the device, mBatteryDevicePresent will still be true, as the directory creation of /sys/class/power_supply/battery/ happens in kernel itself during boot.. so,a better way to check, is to go further inside, and check for /sys/class/power_supply/battery/present.\nLet me know what you think..",
+      "parentUuid": "a2e32149_ee7e58b5",
+      "range": {
+        "startLine": 623,
+        "startChar": 8,
+        "endLine": 623,
+        "endChar": 29
+      },
+      "revId": "de4c43bbe448a7dfe9a365308677fc583badec8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e211990a_fc90d8cb",
         "filename": "healthd/BatteryMonitor.cpp",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2016-03-03T00:26:27Z",
       "side": 1,
       "message": "This log message is no longer needed, now that we are no longer checking the condition of \"no charger supplies\".",
+      "range": {
+        "startLine": 624,
+        "startChar": 8,
+        "endLine": 624,
+        "endChar": 59
+      },
+      "revId": "de4c43bbe448a7dfe9a365308677fc583badec8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22fe51bd_ee0c538f",
+        "filename": "healthd/BatteryMonitor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1049213
+      },
+      "writtenOn": "2016-03-03T10:25:22Z",
+      "side": 1,
+      "message": "Sure will remove.",
+      "parentUuid": "e211990a_fc90d8cb",
       "range": {
         "startLine": 624,
         "startChar": 8,
