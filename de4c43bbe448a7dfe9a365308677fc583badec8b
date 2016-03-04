@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c26bb568_acfaebd0",
+        "filename": "healthd/BatteryMonitor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2016-03-04T02:38:29Z",
+      "side": 1,
+      "message": "The two variables have unfortunately similar names, but serve different purposes.  mBatteryDevicePresent is true when there is a battery device registered on the platform, although the battery device might not be currently present if it is removable.  \n\nprops.batteryPresent is true if the battery is currently present (either a removable battery that is currently installed or a non-removable battery).\n\nThe fake battery properties are to be used only when there is no battery at all (mBatteryDevicePresent \u003d\u003d false).",
+      "parentUuid": "22fe51bd_0edfaf1e",
+      "range": {
+        "startLine": 623,
+        "startChar": 8,
+        "endLine": 623,
+        "endChar": 29
+      },
+      "revId": "de4c43bbe448a7dfe9a365308677fc583badec8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e211990a_fc90d8cb",
         "filename": "healthd/BatteryMonitor.cpp",
         "patchSetId": 4
