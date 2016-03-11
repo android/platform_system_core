@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d79459c3_1b3f7bbc",
+        "filename": "trusty/nvram/trusty_nvram_implementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1080683
+      },
+      "writtenOn": "2016-03-11T15:08:05Z",
+      "side": 1,
+      "message": "Can you elaborate on a use case for this? I\u0027m happy to make them configurable if that\u0027s helpful, but I don\u0027t understand the benefit yet. FWIW, the TIPC gatekeeper and keymaster implementation also hard-code these parameters.",
+      "parentUuid": "37a21512_917d3e90",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 60
+      },
+      "revId": "23ca39abc8e27636fd49e36e5bde2013a0fef2da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37a21512_91e9be66",
         "filename": "trusty/nvram/trusty_nvram_implementation.cpp",
         "patchSetId": 3
@@ -59,6 +83,54 @@
       "writtenOn": "2016-03-10T23:49:31Z",
       "side": 1,
       "message": "also, is this going to be threadsafe? if not you can avoid the allocation and copy the response into a static buffer.",
+      "parentUuid": "37a21512_91e9be66",
+      "range": {
+        "startLine": 121,
+        "startChar": 23,
+        "endLine": 121,
+        "endChar": 29
+      },
+      "revId": "23ca39abc8e27636fd49e36e5bde2013a0fef2da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d79459c3_1b74db9c",
+        "filename": "trusty/nvram/trusty_nvram_implementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1080683
+      },
+      "writtenOn": "2016-03-11T15:08:05Z",
+      "side": 1,
+      "message": "This is not designed to be reentrant. Getting several independent HAL device instances and using them on different threads should work though. I\u0027ve now changed the code to avoid the allocation by making the response buffer a TrustyNvramImplementation member. That way, we have a single up-front allocation when creating the NVRAM HAL device.",
+      "parentUuid": "37a21512_31f9ea2f",
+      "range": {
+        "startLine": 121,
+        "startChar": 23,
+        "endLine": 121,
+        "endChar": 29
+      },
+      "revId": "23ca39abc8e27636fd49e36e5bde2013a0fef2da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d79459c3_3b7197ad",
+        "filename": "trusty/nvram/trusty_nvram_implementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1080683
+      },
+      "writtenOn": "2016-03-11T15:08:05Z",
+      "side": 1,
+      "message": "It\u0027s difficult to flag allocation failure from within the constructor. I could make it fall back to an empty buffer in the failure case. But then I\u0027d still need a check to verify that the actual size matches the requested size, and the result wouldn\u0027t be any simpler from what I have now.",
       "parentUuid": "37a21512_91e9be66",
       "range": {
         "startLine": 121,
