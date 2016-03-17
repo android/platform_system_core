@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5c240ef3_aad96f3b",
+        "filename": "include/private/android_logger.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-03-17T19:00:43Z",
+      "side": 1,
+      "message": "write function should be passed an obj just in case it needs to manipulate something back up in the caller.\n\nThis may have the side-effect that an ignored void *obj should be passed into __android_log_pmsg_file_write to maintain argument compatibility. We could deal with this by making it the last argument in the set and casting or requiring a static wrapper to perform this duty.",
+      "range": {
+        "startLine": 119,
+        "startChar": 47,
+        "endLine": 119,
+        "endChar": 55
+      },
+      "revId": "77333caba6e525238bf187c9506c9d0da52b637b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c240ef3_07eb56cc",
         "filename": "liblog/pmsg_reader.c",
         "patchSetId": 1
@@ -41,6 +64,29 @@
         "startChar": 22,
         "endLine": 306,
         "endChar": 41
+      },
+      "revId": "77333caba6e525238bf187c9506c9d0da52b637b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c240ef3_6a3ad71d",
+        "filename": "liblog/pmsg_reader.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-03-17T19:00:43Z",
+      "side": 1,
+      "message": "We should add the filenames in sorted-order to facilitate file rotation. eg: recovery/log_file recovery/log_file.1 and so on. Thus the caller does not _need_ to run multiple passes to get the directory, then act upon it. e.g. if recovery/log_file does not exist, there is no need to rotate the filenames on \u0027refresh\u0027 cycle.",
+      "range": {
+        "startLine": 414,
+        "startChar": 0,
+        "endLine": 415,
+        "endChar": 52
       },
       "revId": "77333caba6e525238bf187c9506c9d0da52b637b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
