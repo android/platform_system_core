@@ -46,6 +46,30 @@
       "revId": "ee95cef5dc13b06457602c74b91e5f3cea0bb5d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c240ef3_8dee4516",
+        "filename": "liblog/pmsg_writer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-03-17T23:31:06Z",
+      "side": 1,
+      "message": "Nope, not strictly, but the only caller is recovery right now, via this android _private_ interface, and it uses LOG_ID_SYSTEM.\n\nOne never know what will follow, but the key here is this is NOT part of the Android API.\n\nIt looks like I may have to respin this (adding support for optional void * argument needed for __android_log_pmsg_file_write) so I will check for logId validity and return an error.\n\nPedantically we can handle _any_ id but not the binary, since pmsg actually has no restrictions; but doing so will prevent logcat -L from extracting them. I must think about this, maybe that is a good thing ... maybe I will add a special LOG_ID_HIDDEN to cover this case?\n\nLog buffers are limited because they are binary or inaccessible. We could add support for the binary format in the future, but I see no need for it right now.",
+      "parentUuid": "5c240ef3_0d1ed5a5",
+      "range": {
+        "startLine": 182,
+        "startChar": 17,
+        "endLine": 182,
+        "endChar": 22
+      },
+      "revId": "ee95cef5dc13b06457602c74b91e5f3cea0bb5d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
