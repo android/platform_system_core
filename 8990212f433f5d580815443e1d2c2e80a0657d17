@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5c240ef3_4d60cddd",
+        "filename": "liblog/log_cdefs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-03-17T22:17:25Z",
+      "side": 1,
+      "message": "This should move down to the section that defines expected but missing definitions in some OS variants of sys/cdefs.h",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "8990212f433f5d580815443e1d2c2e80a0657d17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c240ef3_ada18972",
         "filename": "liblog/log_cdefs.h",
         "patchSetId": 1
@@ -19,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "5c240ef3_0d66d5fc",
+        "filename": "liblog/log_cdefs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-03-17T22:17:25Z",
+      "side": 1,
+      "message": "log_cdefs.h is the logical wrapper for sys/cdefs.h for all OS variants, first section is cdefs-like definitions we add for our convenience in much the same vein as __LIBC_HIDDEN, and __LIBC_PUBLIC, second section is to deal with some OS variants that do not define all of the expected sys/cdefs.h definitions (eg: Mac does not define __unused for example).\n\nThis short comment indicates two things:\n1) delineates between sys/cdefs.h and unistd.h missing definitions\n2) complains about the fact that we are borrowing log_cdefs.h to look after what should pedantically be a local log_unistd.h file with the intent to cause future selves to make the split if this list grows.\n\nI will cogitate over a better way of explaining this, e.g.:\n\n/* START of section dealing with some OS variants not defining expected definitions in unistd.h */\n/* If this grows beyond just the one, suggest moving these to log_unistd.h or renaming this file to log_portability.h */",
+      "parentUuid": "5c240ef3_ada18972",
+      "revId": "8990212f433f5d580815443e1d2c2e80a0657d17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c240ef3_4debad99",
         "filename": "liblog/logd_reader.c",
         "patchSetId": 1
@@ -30,6 +71,29 @@
       "writtenOn": "2016-03-17T22:00:45Z",
       "side": 1,
       "message": "whitespace",
+      "revId": "8990212f433f5d580815443e1d2c2e80a0657d17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c240ef3_ed6ee1cd",
+        "filename": "liblog/pmsg_reader.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-03-17T22:17:25Z",
+      "side": 1,
+      "message": "should be a call to the internal __android_log_uid()",
+      "range": {
+        "startLine": 85,
+        "startChar": 10,
+        "endLine": 85,
+        "endChar": 18
+      },
       "revId": "8990212f433f5d580815443e1d2c2e80a0657d17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
