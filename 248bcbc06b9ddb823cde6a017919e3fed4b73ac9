@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c240ef3_1638a2cb",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-03-18T19:55:00Z",
+      "side": 1,
+      "message": "For logId \u003d LOG_ID_EVENTS or LOG_ID_SECURITY you are dealing with a raw binary buffer here. You could chose to skip, or maybe we can consider it a feature to rely on libpcre to deal with it?\n\nThe alternative is to regex the formatted output string and not worry about it. A small refactor of the code below (look at logprint.c:android_log_printLogLine, snarf that as open-coded) can allow you to switch to the formatted content.\n\nFYI: binary content packets contain int32_t and int64_t in nl-order and may contain an embedded string object. The tag is a numerical lookup.",
+      "range": {
+        "startLine": 158,
+        "startChar": 30,
+        "endLine": 158,
+        "endChar": 61
+      },
+      "revId": "248bcbc06b9ddb823cde6a017919e3fed4b73ac9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
