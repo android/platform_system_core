@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c240ef3_96f49237",
+        "filename": "liblog/pmsg_reader.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-03-18T20:05:49Z",
+      "side": 1,
+      "message": "Although more \u0027odd\u0027, we may prefer a mechanism that places more weight on the first numbers than the remaining content sorted order. e.g.\n\nlog.10\nlog.9\nklog.9\nlog.8\nklog.8\n. . .\nlog.1\nklog.1\nlog\nklog\n\nThis would mean that the most recent content log and klog are written last and thus will have less chance of overflowing the FIFO.",
+      "range": {
+        "startLine": 418,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 20
+      },
+      "revId": "db4ff8499bfc47a5029a67182190135922c44bd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c240ef3_565e9aec",
+        "filename": "liblog/pmsg_reader.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-03-18T20:05:49Z",
+      "side": 1,
+      "message": "optimization, switch above to a while loop, do not subtract one here, and instead add the increments to the block for *l \u003d\u003d *r below.\n\nGiven the above comment, this comment may be meaningless ... we may switch out this whole loop for a strpbrk(l, \"0123456789\") for each string, then compare numbers, and if equal, then strcmp ...",
+      "range": {
+        "startLine": 438,
+        "startChar": 32,
+        "endLine": 438,
+        "endChar": 36
+      },
+      "revId": "db4ff8499bfc47a5029a67182190135922c44bd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
