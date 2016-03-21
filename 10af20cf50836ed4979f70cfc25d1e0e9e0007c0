@@ -141,6 +141,30 @@
       "revId": "10af20cf50836ed4979f70cfc25d1e0e9e0007c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c240ef3_f3ccfbda",
+        "filename": "libbacktrace/BacktraceOffline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-03-21T18:45:36Z",
+      "side": 1,
+      "message": "it was this \"all the choices with this API are bad\" that made me +narayan. it seems like ZipArchiveHandles tend to just be stack-allocated and only used to pass to a heap-allocated ZipArchive (the destructor of which calls CloseZipArchive).\n\nlooks like art has a better API wrapping this. is the right answer \"don\u0027t use the C OpenArchiveFd API, use the ZipArchive::OpenFromFd API instead\"? then you\u0027d just have a regular unique_ptr. but we\u0027d have to have something more like the ART API in libziparchive itself.\n\n_alternatively_ yabinc\u0027s approach here is the minimal approach. and if we want it here, we probably want it in the public header so others can use it. isn\u0027t the code in the dynamic linker wrong, for example? i see two \u0027continue\u0027s before the CloseArchive scope_guard. the fastboot code looks right, would be cleaner using this.",
+      "parentUuid": "5c240ef3_d393b7d1",
+      "range": {
+        "startLine": 667,
+        "startChar": 0,
+        "endLine": 678,
+        "endChar": 2
+      },
+      "revId": "10af20cf50836ed4979f70cfc25d1e0e9e0007c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
