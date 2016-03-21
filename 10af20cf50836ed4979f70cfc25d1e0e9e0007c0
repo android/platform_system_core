@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c240ef3_b3260397",
+        "filename": "libbacktrace/BacktraceOffline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-03-21T18:35:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c240ef3_336693fd",
+      "range": {
+        "startLine": 649,
+        "startChar": 60,
+        "endLine": 649,
+        "endChar": 61
+      },
+      "revId": "10af20cf50836ed4979f70cfc25d1e0e9e0007c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c240ef3_730c8b1d",
         "filename": "libbacktrace/BacktraceOffline.cpp",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "I was going to comment that I think you can do this with a unique_ptr and a deleter.",
       "parentUuid": "5c240ef3_730c8b1d",
+      "range": {
+        "startLine": 667,
+        "startChar": 0,
+        "endLine": 678,
+        "endChar": 2
+      },
+      "revId": "10af20cf50836ed4979f70cfc25d1e0e9e0007c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c240ef3_d393b7d1",
+        "filename": "libbacktrace/BacktraceOffline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-03-21T18:35:02Z",
+      "side": 1,
+      "message": "I have considered using unique_ptr. But unique_ptr holds a pointer, not a value (Although I know ZipArchiveHandle is in fact a pointer).\nSo I can\u0027t use unique_ptr\u003cZiparchiveHandle, decltype(CloseArchive)\u003e.\n\nAFAIK, I can only use unique_ptr like this: unique_ptr\u003cvoid, decltype(\u0026CloseArchive)\u003e p(handle, CloseArchive); Is it fine to take advantage of knowing that ZiparchiveHandle is void*?",
+      "parentUuid": "5c240ef3_333b33b3",
       "range": {
         "startLine": 667,
         "startChar": 0,
