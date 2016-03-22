@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c240ef3_e9fecc12",
+        "filename": "logcat/tests/logcat_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1080302
+      },
+      "writtenOn": "2016-03-22T01:52:56Z",
+      "side": 1,
+      "message": "We want to filter begin messages separately, since if we get a message that is neither one of ours /nor/ the begin message it means the filter didn\u0027t work.\n\nBut checking for the logcat test string is a good idea.",
+      "parentUuid": "5c240ef3_666a0bef",
+      "range": {
+        "startLine": 985,
+        "startChar": 8,
+        "endLine": 985,
+        "endChar": 9
+      },
+      "revId": "73201a8c99f46ab9de419c26a25534b2adad872c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c240ef3_26877306",
         "filename": "logcat/tests/logcat_test.cpp",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5c240ef3_29e90463",
+        "filename": "logcat/tests/logcat_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1080302
+      },
+      "writtenOn": "2016-03-22T01:52:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c240ef3_26877306",
+      "range": {
+        "startLine": 989,
+        "startChar": 28,
+        "endLine": 989,
+        "endChar": 29
+      },
+      "revId": "73201a8c99f46ab9de419c26a25534b2adad872c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c240ef3_4619c7bc",
         "filename": "logcat/tests/logcat_test.cpp",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2016-03-21T20:05:29Z",
       "side": 1,
       "message": "pclose(fp) is required to cleanly kill the zombie, which otherwise could outlive the test.",
+      "range": {
+        "startLine": 991,
+        "startChar": 23,
+        "endLine": 991,
+        "endChar": 24
+      },
+      "revId": "73201a8c99f46ab9de419c26a25534b2adad872c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c240ef3_89ee3069",
+        "filename": "logcat/tests/logcat_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1080302
+      },
+      "writtenOn": "2016-03-22T01:52:56Z",
+      "side": 1,
+      "message": "I ran into trouble with this. pclose blocks until the process terminates, which in this case it never does, at least not voluntarily. The other tests solve this by calling fclose first (which is NOT allowed by my reading of the manpage), writing to the log again to cause SIGPIPE, then calling pclose, but I can\u0027t seem to make that work correctly.\n\nBest plan I have is to just wait until we have max-count and solve it that way.",
+      "parentUuid": "5c240ef3_4619c7bc",
       "range": {
         "startLine": 991,
         "startChar": 23,
