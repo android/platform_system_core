@@ -140,6 +140,30 @@
       "revId": "73201a8c99f46ab9de419c26a25534b2adad872c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c240ef3_bfa402d1",
+        "filename": "logcat/tests/logcat_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-03-22T14:40:02Z",
+      "side": 1,
+      "message": "Yes, killing it with an fclose and writing to cause SIGPIPE is not 100% POSIX 100% compliant. Maybe something like:\n\n\"logcat --pid %d -e logcat_test_a+b\u0026 pid\u003d$! ; sleep 4 ; kill $pid\"\n\nwould be more compliant?",
+      "parentUuid": "5c240ef3_89ee3069",
+      "range": {
+        "startLine": 991,
+        "startChar": 23,
+        "endLine": 991,
+        "endChar": 24
+      },
+      "revId": "73201a8c99f46ab9de419c26a25534b2adad872c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
