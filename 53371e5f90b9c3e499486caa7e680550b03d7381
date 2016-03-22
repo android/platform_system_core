@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c240ef3_ba409080",
+        "filename": "base/include/android-base/file.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-03-22T18:37:11Z",
+      "side": 1,
+      "message": "we should probably document that this is meant for portable code; Linux-only code should always use O_CLOEXEC.",
+      "revId": "53371e5f90b9c3e499486caa7e680550b03d7381",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c240ef3_1a271cfd",
+        "filename": "libziparchive/zip_archive_holder.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-03-22T18:37:11Z",
+      "side": 1,
+      "message": "wait, this seems weird. surely any CLOEXEC stuff should be at the site of the original open, not here. why would ZipArchiveHolder have an opinion on CLOEXEC?",
+      "range": {
+        "startLine": 57,
+        "startChar": 22,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "53371e5f90b9c3e499486caa7e680550b03d7381",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
