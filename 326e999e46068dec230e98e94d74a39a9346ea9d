@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "5c240ef3_641963bd",
+        "filename": "include/ziparchive/ziparchive.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-03-22T01:03:13Z",
+      "side": 1,
+      "message": "yes. And there is a internal class ZipArchive used by libziparchive. So I rename this class to ZipArchiveHolder. Including this class to zip_archive.h is fine, but zip_archive.h gives me a hint that it can included in a pure c environment. In addition, the header name zip_archive_holder.h is also suitable for this class. Other considerations?",
+      "parentUuid": "5c240ef3_a63c0376",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 35
+      },
+      "revId": "326e999e46068dec230e98e94d74a39a9346ea9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c240ef3_265ad3c9",
         "filename": "include/ziparchive/ziparchive.h",
         "patchSetId": 3
@@ -71,6 +95,24 @@
       "writtenOn": "2016-03-21T21:47:12Z",
       "side": 1,
       "message": "this seems like too-low-level an API. do we need to expose the ZipArchiveHandle at all? narayan?",
+      "revId": "326e999e46068dec230e98e94d74a39a9346ea9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c240ef3_e42c33e2",
+        "filename": "include/ziparchive/ziparchive.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-03-22T01:03:13Z",
+      "side": 1,
+      "message": "I think unless we provide all the function interfaces in zip_archive.h in this class (which might overkill the need in this CL), we need to export ZipArchiveHandle.",
+      "parentUuid": "5c240ef3_265ad3c9",
       "revId": "326e999e46068dec230e98e94d74a39a9346ea9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
