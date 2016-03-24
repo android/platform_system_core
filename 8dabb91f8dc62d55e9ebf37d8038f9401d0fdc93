@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5cbb2e3b_b27f9e45",
+        "filename": "logcat/tests/logcat_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-03-24T20:51:45Z",
+      "side": 1,
+      "message": "This is _not_ the way to solve this, because if regex fails and matches more than expected, you will still only get three messages and a statement that the test was successful.",
+      "range": {
+        "startLine": 970,
+        "startChar": 54,
+        "endLine": 970,
+        "endChar": 58
+      },
+      "revId": "8dabb91f8dc62d55e9ebf37d8038f9401d0fdc93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cbb2e3b_7277f661",
+        "filename": "logcat/tests/logcat_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-03-24T20:51:45Z",
+      "side": 1,
+      "message": "Alas, -m 3 is not a solution, so revert back with the ToDo.\n\nFUD: Without the pclose, however, it could interfere with logcat.maxcount test? Hope not.\n\nOne possible easy solution is to push the X lines of content, wait one second to settle (there is roughly a 20ms latency from pushing a log entry, to it showing up in logd, timestamp is accurate, its just delayed delivery) _before_ running logcat. Add the -d flag to logcat and it will close when it has no more content. Easy peasy.\n\nThis comment should have been made in the --regex CL, please fix there if the above paragraph solves your problem.",
+      "range": {
+        "startLine": 994,
+        "startChar": 4,
+        "endLine": 994,
+        "endChar": 15
+      },
+      "revId": "8dabb91f8dc62d55e9ebf37d8038f9401d0fdc93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cbb2e3b_f28926a7",
+        "filename": "logcat/tests/logcat_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-03-24T20:51:45Z",
+      "side": 1,
+      "message": "Send a fourth one, we need that in order to test count of 3.\n\n(NB: if any test runs first, e.g. logcat.regex runs first, it has already pushed more than 4 lines; this deals with the case where someone runs logcat_unit_test --gtest_filter\u003dlogcat.maxcount)",
+      "range": {
+        "startLine": 1015,
+        "startChar": 4,
+        "endLine": 1015,
+        "endChar": 91
+      },
+      "revId": "8dabb91f8dc62d55e9ebf37d8038f9401d0fdc93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cbb2e3b_926d3a99",
+        "filename": "logcat/tests/logcat_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-03-24T20:51:45Z",
+      "side": 1,
+      "message": "As pointed out earlier, w/o closure due to a bug (no signal to kill logcat process), this will pause forever. The net result will be go/apct will report a timeout failure (all tests are given 60 seconds to run) and we can investigate, so not that big of a deal. Please put a comment here stating the possibility.\n\nAs noted earlier, you can add the -d flag to logcat to solve this problem, but to do so requires a one second sleep between pushing content and starting up logcat.",
+      "range": {
+        "startLine": 1029,
+        "startChar": 4,
+        "endLine": 1029,
+        "endChar": 15
+      },
+      "revId": "8dabb91f8dc62d55e9ebf37d8038f9401d0fdc93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
