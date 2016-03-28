@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f10fad76_12e6f2fd",
+        "filename": "adb/socket_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-03-28T22:59:49Z",
+      "side": 1,
+      "message": "Would this work instead? Feels a little better than const_cast\u0027ing c_str():\n\n  void VerifySkipHostSerial(std::string serial, const char* expected) {\n    char* result \u003d internal::skip_host_serial(\u0026serial[0]);\n    ...\n  }",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 82
+      },
+      "revId": "c7544804092beb068e960a3083425f2a35ec77ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
