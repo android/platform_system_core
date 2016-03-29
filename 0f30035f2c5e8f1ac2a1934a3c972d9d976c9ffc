@@ -22,6 +22,30 @@
       "revId": "0f30035f2c5e8f1ac2a1934a3c972d9d976c9ffc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f10fad76_98d16119",
+        "filename": "adb/socket_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-03-29T17:08:03Z",
+      "side": 1,
+      "message": "Sorry I may have been unclear or perhaps I\u0027m misunderstanding what\u0027s happening here.\n\nI\u0027m suggesting two changes:\n1. VerifySkipHostSerial() should take a std::string argument, not a reference and not const.\n2. Use \u0026serial[0] (as this patch set does).\n\nI believe this should cause \u0026serial[0] to return a non-const char* for all compilers. It seems to work for me on current ToT; if it doesn\u0027t work with the new compiler could you post the error message?\n\nI\u0027m actually surprised this works on the new libcxx. As written shouldn\u0027t \u0026serial[0] return a const char* which can\u0027t be passed to skip_host_serial?",
+      "parentUuid": "f10fad76_f8b05507",
+      "range": {
+        "startLine": 279,
+        "startChar": 53,
+        "endLine": 279,
+        "endChar": 54
+      },
+      "revId": "0f30035f2c5e8f1ac2a1934a3c972d9d976c9ffc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
