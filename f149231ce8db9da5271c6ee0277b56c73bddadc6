@@ -22,6 +22,30 @@
       "revId": "f149231ce8db9da5271c6ee0277b56c73bddadc6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "915f51f9_4cd21f1d",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-03-30T23:15:24Z",
+      "side": 0,
+      "message": "The log_id_t is present in entry as well. This function was introduced within the past week, so it is OK to refine it.\n\nIf we preserved this internal (static) API, we would need to adjust the definition as follows to prevent unused argument _error_:\n\nstatic bool regexOk(const AndroidLogEntry\u0026 entry, log_id_t /* id */)\n\nI prefer to remove such ugliness :-)",
+      "parentUuid": "915f51f9_21917480",
+      "range": {
+        "startLine": 152,
+        "startChar": 48,
+        "endLine": 152,
+        "endChar": 61
+      },
+      "revId": "f149231ce8db9da5271c6ee0277b56c73bddadc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
