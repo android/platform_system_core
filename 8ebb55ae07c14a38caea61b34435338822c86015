@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8e3accf4_e0960276",
+        "filename": "libcrypto_utils/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1080683
+      },
+      "writtenOn": "2016-04-04T21:01:28Z",
+      "side": 1,
+      "message": "This copies what libcrypto is doing. It has the LOCAL_MODULE_HOST_OS only for the static library (I think it\u0027s present for building adb). If I add the same line for the host shared library, I\u0027ll run into trouble since there is no suitable libcrypto available.",
+      "parentUuid": "4ec61432_6809df80",
+      "revId": "8ebb55ae07c14a38caea61b34435338822c86015",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ec61432_08d13b17",
         "filename": "libcrypto_utils/include/crypto_utils/byte_order.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-04-04T20:47:12Z",
       "side": 1,
       "message": "(android is little-endian, so feel free to just remove any of this.)",
+      "revId": "8ebb55ae07c14a38caea61b34435338822c86015",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e3d98ed_3f85a737",
+        "filename": "libcrypto_utils/include/crypto_utils/byte_order.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1080683
+      },
+      "writtenOn": "2016-04-04T21:01:28Z",
+      "side": 1,
+      "message": "Well, this gets built as part of adb, and adb theoretically runs on Linux hosts which might use big-endian byte order. I guess we just don\u0027t support this, at least I wouldn\u0027t feel confident adb works on big-endian Linux hosts?\n\nAnyhow, I figured I\u0027d rather not add to the problem, and I think it\u0027s nice to have the swap macros at the right points in the code if only for documentation purposes.",
+      "parentUuid": "4ec61432_08d13b17",
       "revId": "8ebb55ae07c14a38caea61b34435338822c86015",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
