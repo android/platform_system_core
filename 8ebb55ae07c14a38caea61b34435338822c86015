@@ -87,6 +87,24 @@
       "revId": "8ebb55ae07c14a38caea61b34435338822c86015",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2eaac053_05693283",
+        "filename": "libcrypto_utils/include/crypto_utils/byte_order.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1080683
+      },
+      "writtenOn": "2016-04-04T21:11:38Z",
+      "side": 1,
+      "message": "Hm, keeping untested code doesn\u0027t make much sense indeed. However I still need some conversion to meet BoringSSL\u0027s expectation of binary-encoded numbers being big endian. I could just drop all the macros for specific cases and use crypto_utils_bswap32 in the places where I need to convert? That may still look/weird incorrect to people reading the code. Will think some more about this.",
+      "parentUuid": "4ec61432_68031f34",
+      "revId": "8ebb55ae07c14a38caea61b34435338822c86015",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
