@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ec61432_b5539f5e",
+        "filename": "include/utils/Condition.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2016-04-04T23:48:53Z",
+      "side": 1,
+      "message": "I think you could do this:\n\n  if (__builtin_add_overflow(ts.tv_sec, reltime_sec, \u0026ts.tv_sec)) {\n#if defined(__LP64__)\n    ts.tv_sec \u003d INT64_MAX;\n#else\n    ts.tv_sec \u003d INT32_MAX;\n#endif\n  }\n\nWhich would replace the code down below too.",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 134,
+        "endChar": 5
+      },
+      "revId": "fd376b97f7e9c8ca6cb755d53d0f0fc9196c94e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
