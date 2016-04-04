@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "4ec61432_f13ce2c4",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-04-04T18:18:43Z",
+      "side": 1,
+      "message": "nit: looks like everything else uses 2 spaces here.",
+      "range": {
+        "startLine": 243,
+        "startChar": 9,
+        "endLine": 243,
+        "endChar": 10
+      },
+      "revId": "8b7208039e0a89d9eeb5d5287b4f010aa9175a58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ec61432_51d136d3",
         "filename": "adb/commandline.cpp",
         "patchSetId": 7
@@ -30,6 +53,29 @@
       "writtenOn": "2016-04-01T20:37:12Z",
       "side": 1,
       "message": "why not on linux?",
+      "revId": "8b7208039e0a89d9eeb5d5287b4f010aa9175a58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ec61432_82974a68",
+        "filename": "adb/services.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-04-04T18:18:43Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think this is necessary since transport is already a pointer.",
+      "range": {
+        "startLine": 356,
+        "startChar": 55,
+        "endLine": 356,
+        "endChar": 62
+      },
       "revId": "8b7208039e0a89d9eeb5d5287b4f010aa9175a58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -52,6 +98,75 @@
         "startChar": 7,
         "endLine": 89,
         "endChar": 15
+      },
+      "revId": "8b7208039e0a89d9eeb5d5287b4f010aa9175a58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ec61432_e2a5eec7",
+        "filename": "adb/sockets.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-04-04T18:18:43Z",
+      "side": 1,
+      "message": "nit: this sort of defeats the purpose of having a constant since it assumes HEARTBEAT_SOCKET_ID is 0xFFFFFFFF. But if it won\u0027t ever change it probably doesn\u0027t matter.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 5
+      },
+      "revId": "8b7208039e0a89d9eeb5d5287b4f010aa9175a58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ec61432_a2a5a676",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-04-04T18:18:43Z",
+      "side": 1,
+      "message": "This might be a little aggressive for TCP transports, depending on the system\u0027s TCP backoff/retransmission settings 1 second might mean just 1 or 2 retransmissions will kill the connection which could potentially make adb over WiFi pretty flaky.\n\nIn http://r.android.com/204446 I added a 10-second TCP timeout using the TCP keepalive feature, but I was considering an approach similar to this as well. Maybe it makes more sense to just set this timeout higher for TCP transports and I should revert http://r.android.com/204446 once this lands?",
+      "range": {
+        "startLine": 601,
+        "startChar": 16,
+        "endLine": 601,
+        "endChar": 41
+      },
+      "revId": "8b7208039e0a89d9eeb5d5287b4f010aa9175a58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ec61432_a2afe6a3",
+        "filename": "adb/transport.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-04-04T18:18:43Z",
+      "side": 1,
+      "message": "What do you think about aliasing this to make the code a little more readable? Something like\n\n  typedef std::chrono::steady_clock clock;\n\ninside the atransport class might cut down on some repetition.",
+      "range": {
+        "startLine": 53,
+        "startChar": 33,
+        "endLine": 53,
+        "endChar": 58
       },
       "revId": "8b7208039e0a89d9eeb5d5287b4f010aa9175a58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
