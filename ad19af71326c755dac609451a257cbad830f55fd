@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ec61432_1564f388",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1061159
+      },
+      "writtenOn": "2016-04-05T00:47:16Z",
+      "side": 1,
+      "message": "JFYI, from what I\u0027ve seen, the code to update the monotonic boottime clock is typically added by the SoC vendor (since it\u0027s a function of the RTC and RTC will vary based on SoC).  Because this coding needs to be added to each new SoC kernel, there\u0027s room for error there and as such, there could still be a use for this test in the future.\n\nI encounter many different kernels working on Android Wear due to the range/variety of SoC\u0027s across different wear devices, and I\u0027ve run into cases on some kernels where monotonic boottime is adjusted properly right after waking from kernel suspend, prior to the resume cycle.  I\u0027ve seen other kernels where monotonic boottime isn\u0027t adjusted for sleep until the RTC driver\u0027s resume() routine (well into resume cycle), point being kernels\u0027 implementation of monotonic boottime is not consistent.\n\nThat having been said, I haven\u0027t caught a case yet where a kernel failed to update monotonic boottime properly before end of kernel resume cycle, so I\u0027m ok with removing this test if that\u0027s your preference.",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "ad19af71326c755dac609451a257cbad830f55fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
