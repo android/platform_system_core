@@ -129,6 +129,30 @@
       "revId": "a3a9a45598e51f0f2cbe104cc70e531fff064cbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae9b108c_2f51270c",
+        "filename": "logd/LogStatistics.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-04-07T21:23:31Z",
+      "side": 1,
+      "message": "Basically yes, that was my final possible solution, getpwuid() would call back to package_aid_to_name(aid); the WEAK stub in libc library would make direct calls to WEAK stubs in libc that looked like libpackageparser calls. We would implement a local package_aid_to_name(aid) function that calls to logd.daemon to pick up the content (shown here as android::uidToName(aid)).",
+      "parentUuid": "ae9b108c_4fd10bd4",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 181,
+        "endChar": 20
+      },
+      "revId": "a3a9a45598e51f0f2cbe104cc70e531fff064cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
