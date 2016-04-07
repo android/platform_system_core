@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ae9b108c_efa0dfb9",
+        "filename": "logd/LogStatistics.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-07T20:34:45Z",
+      "side": 1,
+      "message": "this could be getuid(), if Im self, its string auditd",
+      "revId": "a3a9a45598e51f0f2cbe104cc70e531fff064cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae9b108c_6f5bb05f",
         "filename": "logd/LogStatistics.cpp",
         "patchSetId": 1
@@ -13,6 +30,30 @@
       "writtenOn": "2016-04-07T18:31:13Z",
       "side": 1,
       "message": "In the future, parse of /data/system/packages.list _could_ be integrated into getpwuid. However, this is difficult here in logd since a separate thread running as AID_SYSTEM is accessing that data, and this thread is AID_LOGD (android::uidToName actually does some serialized rpc to that thread).",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 181,
+        "endChar": 20
+      },
+      "revId": "a3a9a45598e51f0f2cbe104cc70e531fff064cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae9b108c_cfcf5b79",
+        "filename": "logd/LogStatistics.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-07T20:34:45Z",
+      "side": 1,
+      "message": "Yeah but it would be nice to get rid of this... I was looking at the design of this again last night, and its quite clunky. But we can address packageparser after we get some integration into grp/pwd later.",
+      "parentUuid": "ae9b108c_6f5bb05f",
       "range": {
         "startLine": 165,
         "startChar": 4,
