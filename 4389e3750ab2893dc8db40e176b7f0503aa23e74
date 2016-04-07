@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "ae9b108c_79f6e2ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-04-07T14:40:10Z",
+      "side": 1,
+      "message": "Advantages:\n- one copy of android_ids in libc, removing it from init objects.\n- immediately starts supporting in rc files oem_2900 to oem_2999, oem_5000 to oem_5999 and u\u003cuserid\u003e_i\u003cappid\u003e (this last one is of little use, nnk@ please comment, we may wish to _prevent_ these?).\n- future will support _named_ oem ids (re: backend improvements).",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "4389e3750ab2893dc8db40e176b7f0503aa23e74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae9b108c_b967ca8e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-04-07T14:40:10Z",
+      "side": 1,
+      "message": "I know you do not have visibility, but there is an associated google bug for this. This will help rationalizations and tracking.\n\nSigned-off-by: William Roberts \u003cwilliam.c.roberts@intel.com\u003e\nBug: 27999086\nChange-Id: Ib1ae1e0cbdcaaf60deb3759681a6030b615c069c",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 60
+      },
+      "revId": "4389e3750ab2893dc8db40e176b7f0503aa23e74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae9b108c_1e8b3ca3",
         "filename": "init/util.cpp",
         "patchSetId": 2
@@ -13,6 +59,24 @@
       "writtenOn": "2016-04-07T02:24:27Z",
       "side": 1,
       "message": "I tested this on aosp_x86_64 I never saw it hit this error path.",
+      "revId": "4389e3750ab2893dc8db40e176b7f0503aa23e74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae9b108c_d9516eb3",
+        "filename": "init/util.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-04-07T14:40:10Z",
+      "side": 1,
+      "message": "Good to know. Please remove this error path in any case, there will be log stutter as init will no doubt complain at a higher layer (hopefully with line numbers and context) that the name referenced in the command does not exist.",
+      "parentUuid": "ae9b108c_1e8b3ca3",
       "revId": "4389e3750ab2893dc8db40e176b7f0503aa23e74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
