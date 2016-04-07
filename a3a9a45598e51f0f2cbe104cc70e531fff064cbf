@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ae9b108c_8ff83367",
+        "filename": "logd/LogStatistics.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-04-07T21:02:22Z",
+      "side": 1,
+      "message": "Wanted to keep this constant, rather than runtime. At issue is some of the threads within logd are actually run in other-than-AID_LOGD user id.",
+      "parentUuid": "ae9b108c_efa0dfb9",
+      "revId": "a3a9a45598e51f0f2cbe104cc70e531fff064cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae9b108c_6f5bb05f",
         "filename": "logd/LogStatistics.cpp",
         "patchSetId": 1
@@ -54,6 +72,30 @@
       "side": 1,
       "message": "Yeah but it would be nice to get rid of this... I was looking at the design of this again last night, and its quite clunky. But we can address packageparser after we get some integration into grp/pwd later.",
       "parentUuid": "ae9b108c_6f5bb05f",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 181,
+        "endChar": 20
+      },
+      "revId": "a3a9a45598e51f0f2cbe104cc70e531fff064cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae9b108c_af141768",
+        "filename": "logd/LogStatistics.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-04-07T21:02:22Z",
+      "side": 1,
+      "message": "AID_LOGD does _not_ have access to /data/system/packages.list, so getpwuid_r would fail to be enhanced when libpackagelistparser is referenced.\n\nAllow AID_LOGD access to /data/system; but making it system/logd will have ramifications.\n\nuid name is picked up here (in context of logcat -S command in logd.control thread) and in chatty (in context of logcat logd.reader.per transitory thread); and we use logd.daemon thread to perform the data pickup. Elevating logd.reader.per to AID_SYSTEM is not security-wise possible.\n\nThe solution I expect is to double-wrap libpackageparser with a WEAK package_aid_to_name(aid) in libc that in-turn has WEAK stubs to libpackageparser; and override package_aid_to_name(aid) here with our own version.\n\nlater dude ;-}",
+      "parentUuid": "ae9b108c_cfcf5b79",
       "range": {
         "startLine": 165,
         "startChar": 4,
