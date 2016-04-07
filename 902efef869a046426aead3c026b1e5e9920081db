@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ae9b108c_74dee927",
+        "filename": "adb/daemon/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-04-07T15:49:51Z",
+      "side": 1,
+      "message": "All of this code is ifdefed out on user builds, so the changes below only apply to userdebug/eng builds. None of the code you have below is even compiled on production builds.",
+      "revId": "902efef869a046426aead3c026b1e5e9920081db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae9b108c_f97e72ed",
         "filename": "adb/daemon/main.cpp",
         "patchSetId": 1
@@ -71,6 +88,23 @@
     },
     {
       "key": {
+        "uuid": "ae9b108c_54dbe535",
+        "filename": "adb/daemon/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-04-07T15:49:51Z",
+      "side": 1,
+      "message": "There\u0027s no way to restart adbd from a user build, so the only effect this has is to generate an event on every boot. This is pointless.",
+      "revId": "902efef869a046426aead3c026b1e5e9920081db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae9b108c_3985fa36",
         "filename": "adb/set_verity_enable_state_service.cpp",
         "patchSetId": 1
@@ -111,6 +145,23 @@
         "endLine": 91,
         "endChar": 7
       },
+      "revId": "902efef869a046426aead3c026b1e5e9920081db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae9b108c_74f709a0",
+        "filename": "adb/set_verity_enable_state_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-04-07T15:49:51Z",
+      "side": 1,
+      "message": "This is a compile time constant, which is set to false on user builds. As a result, the code on lines 90-94 will never even be compiled on production builds. The only place this would show up is on userdebug/eng builds.",
       "revId": "902efef869a046426aead3c026b1e5e9920081db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
