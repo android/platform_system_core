@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae9b108c_929cdc26",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-04-08T00:05:14Z",
+      "side": 1,
+      "message": "For safety I think this should probably be at least as long as the heartbeat timeout period, maybe create a function something like:\n\n  atransport::GetInitialConnectionTimeoutSec() {\n    return std::max(3, heartbeat_interval_ * heartbeat_failed_count_before_invalid_);\n  }\n\nand then use that instead of hardcoding 3 here?",
+      "range": {
+        "startLine": 589,
+        "startChar": 36,
+        "endLine": 589,
+        "endChar": 37
+      },
+      "revId": "13daf796b85ccd4ef4bc0430ae5e08c14c014487",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae9b108c_526774f3",
+        "filename": "adb/transport.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-04-08T00:05:14Z",
+      "side": 1,
+      "message": "nit: these seem like they should be int rather than size_t.",
+      "range": {
+        "startLine": 62,
+        "startChar": 15,
+        "endLine": 62,
+        "endChar": 55
+      },
+      "revId": "13daf796b85ccd4ef4bc0430ae5e08c14c014487",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae9b108c_326cf0d3",
+        "filename": "adb/transport.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-04-08T00:05:14Z",
+      "side": 1,
+      "message": "nit: don\u0027t need std::chrono:: anymore.",
+      "range": {
+        "startLine": 63,
+        "startChar": 24,
+        "endLine": 63,
+        "endChar": 37
+      },
+      "revId": "13daf796b85ccd4ef4bc0430ae5e08c14c014487",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
