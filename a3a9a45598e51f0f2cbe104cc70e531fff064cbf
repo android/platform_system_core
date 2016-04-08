@@ -224,6 +224,30 @@
       "revId": "a3a9a45598e51f0f2cbe104cc70e531fff064cbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae36b0c5_c987f1d3",
+        "filename": "logd/LogStatistics.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-04-08T16:20:13Z",
+      "side": 1,
+      "message": "Phase 5 \u0027stretch goal\u0027, yes, exactly as I have been saying regarding implementation details, just the wurds are not connecting ;-/. We are saying the same thing minus the details of the MAC and DAC permissions.\n\nlogd.* threads, minus logd.daemon, do _not_ run with any DAC privileges high enough to access libpackageparser and get results, so a libc+libpackagparser will _fail_; only the logd.daemon context which has _both_ MAC and DAC permissions (at an rpc and sequentialization cost) can gain access to the file.\n\nlibc would implement a WEAK __package_aid_to_name() functional stub for those that have MAC and DAC permissions to use libc+libpackageparser in the caller\u0027s context.\n\nlogd would implement an override replacement of __package_aid_to_name() that rpc\u0027s out to logd.daemon to make the libpackageparser calls in appropriate context. Others could also do so with an rpc binder call to package manager for instance.\n\nNB: callers that do not wish the extra \u0027weight\u0027 of libpackageparser base overhead in getpwuid not needing the name resolution for that set can disable the callouts by providing a dead stub for __package_aid_to_name(). I do not expect that there is any security issues with this callback as of yet. libpackageparser callouts would only happen for AID_APP+ I would expect, but that is too many details, too soon.\n\nNone of this affects the current change, there is a reason to defer this to another set of CLs.",
+      "parentUuid": "ae9b108c_b53b4a7b",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 181,
+        "endChar": 20
+      },
+      "revId": "a3a9a45598e51f0f2cbe104cc70e531fff064cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
