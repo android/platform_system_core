@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae36b0c5_0c33d73e",
+        "filename": "logd/LogStatistics.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-04-08T17:22:04Z",
+      "side": 1,
+      "message": "Once libc+libpackageparser added and supported, we should evaluate the cost of serializing getpwuid into logd.daemon where MAC, DAC and general thread safety are maintained. This will add a comfort factor with regards to getpwuid and the _ugly_ getpwuid_r debate.\n\nStill worth implementing WEAK __package_aid_to_name in libc as __LIBC_ABI_PRIVATE__ just in case in Phase 5 to allow a more efficient implementation detail should the cost of rpc to logd.daemon be too expensive for every request.",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 5
+      },
+      "revId": "9cf25d7638b5df732ca8570a21b76196968e7bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
