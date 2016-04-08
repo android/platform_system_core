@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "ae9b108c_95aba6e0",
+        "filename": "logd/LogStatistics.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-08T03:43:58Z",
+      "side": 1,
+      "message": "Agreed.",
+      "parentUuid": "ae9b108c_afdf7752",
+      "range": {
+        "startLine": 167,
+        "startChar": 18,
+        "endLine": 167,
+        "endChar": 21
+      },
+      "revId": "a3a9a45598e51f0f2cbe104cc70e531fff064cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae9b108c_6f5bb05f",
         "filename": "logd/LogStatistics.cpp",
         "patchSetId": 1
@@ -167,6 +191,30 @@
       "side": 1,
       "message": "Basically yes, that was my final possible solution, getpwuid() would call back to package_aid_to_name(aid); the WEAK stub in libc library would make direct calls to WEAK stubs in libc that looked like libpackageparser calls. We would implement a local package_aid_to_name(aid) function that calls to logd.daemon to pick up the content (shown here as android::uidToName(aid)).",
       "parentUuid": "ae9b108c_4fd10bd4",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 181,
+        "endChar": 20
+      },
+      "revId": "a3a9a45598e51f0f2cbe104cc70e531fff064cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae9b108c_b53b4a7b",
+        "filename": "logd/LogStatistics.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-04-08T03:43:58Z",
+      "side": 1,
+      "message": "Where is the package_aid_to_name(), is it the weak stub in libc your referring to?\n\nWhy couldn\u0027t we just put a weak stub calls to libpackageparser in libc, and gave the pwd functions call them, if you want full appid resolution link your binary to libc + libpackageparser.\n\nWhy does logd need to implement teh override package_aid_to_name? Eventually uidToName() would just be replaced with getpwduid().\n\nI guess I don\u0027t understand what the additional indirection of having logs have to implement this package_aid_to_name() routine.",
+      "parentUuid": "ae9b108c_2f51270c",
       "range": {
         "startLine": 165,
         "startChar": 4,
