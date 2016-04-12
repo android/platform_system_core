@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bb2eaf7_9d90630b",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1097918
+      },
+      "writtenOn": "2016-04-12T22:49:34Z",
+      "side": 1,
+      "message": "few notes:\nstring parser does not report errors (missing \u0027}\u0027). It does not allow recursive expansion by design, but does not warn if recursive expression is found.\nIt does not allow to use literal sequence \"${...}\" (no escape char).",
+      "revId": "8ab6ce221419ace5a4c61f4506c579ba3d168230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b410ad7_1fc6c366",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1097918
+      },
+      "writtenOn": "2016-04-12T22:49:34Z",
+      "side": 1,
+      "message": "std::vector\u003cchar\u003e copy(expanded.data(), expanded.data() + expanded.size());\nchar *str \u003d copy.data();\n\nessentially the same, but no mixed c/c++ allocation",
+      "range": {
+        "startLine": 797,
+        "startChar": 15,
+        "endLine": 798,
+        "endChar": 57
+      },
+      "revId": "8ab6ce221419ace5a4c61f4506c579ba3d168230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
