@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "abda22a7_cf08b180",
+        "filename": "logcat/logpersist",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-04-13T20:21:39Z",
+      "side": 1,
+      "message": "yes, except some are not relevant for each linked command name (*.cat *.start and *.stop) as you see below. There is minimal checking if the options are selected and not used at line 41, 50 and 63. This is a \u0027developer\u0027 command never released on \"user\".\n\nIt is getting complicated enough that we may resort to delivering a binary based off C++ for this. But as you can see it is a throw-away in the future. The script has grown from an original of 5 lines ...\n\nThe eventual goal is to deprecate the script and replace it with menus in Developer Options as per b/28120456. It remains a stretch goal (as officially I have no Java readability ;-} although evidence shows otherwise).",
+      "parentUuid": "abda22a7_6c743308",
+      "range": {
+        "startLine": 19,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "5c99f6ee922d7a24461955818b1a8a447392fb39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abda22a7_cf9f117b",
         "filename": "logcat/logpersist",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "abda22a7_2f498db1",
+        "filename": "logcat/logpersist",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-04-13T20:21:39Z",
+      "side": 1,
+      "message": "Nope, once you are running on the system, the number is but a distant memory in the source files, or part of a binary android_ids[] list. There is a separate effort going on to solve this kind of issue b/27999086 so that names to AID translations are centralized and unified. Once done, even init.rc files can take names for _all_ AIDs.\n\nsu will be fixed to take names when b/27999086 is in phase 5 (stretch goals and improvements).",
+      "parentUuid": "abda22a7_cf9f117b",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 9
+      },
+      "revId": "5c99f6ee922d7a24461955818b1a8a447392fb39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abda22a7_2fd7cd0b",
         "filename": "logcat/logpersist",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2016-04-13T20:06:56Z",
       "side": 1,
       "message": "start ${service} ?",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "5c99f6ee922d7a24461955818b1a8a447392fb39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abda22a7_8f2079e4",
+        "filename": "logcat/logpersist",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-04-13T20:21:39Z",
+      "side": 1,
+      "message": "Look at logcatd.rc, this trigger a series of actions on property. One of the final actions is to exec logcat with a set of parameters. sleep is, what it is ... gives time for init to react.",
+      "parentUuid": "abda22a7_2fd7cd0b",
       "range": {
         "startLine": 59,
         "startChar": 2,
