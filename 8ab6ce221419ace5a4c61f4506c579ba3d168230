@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "abda22a7_09a2c9bf",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-04-13T15:13:23Z",
+      "side": 1,
+      "message": "No use for literals. In all cases you cite the caller will report an error for any syntax issues by showing before and after with a reason attached. I will add comments here so that it is clear _why_ we parse this way.",
+      "parentUuid": "6bb2eaf7_9d90630b",
+      "revId": "8ab6ce221419ace5a4c61f4506c579ba3d168230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b410ad7_1fc6c366",
         "filename": "logcat/logcat.cpp",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2016-04-12T22:49:34Z",
       "side": 1,
       "message": "std::vector\u003cchar\u003e copy(expanded.data(), expanded.data() + expanded.size());\nchar *str \u003d copy.data();\n\nessentially the same, but no mixed c/c++ allocation",
+      "range": {
+        "startLine": 797,
+        "startChar": 15,
+        "endLine": 798,
+        "endChar": 57
+      },
+      "revId": "8ab6ce221419ace5a4c61f4506c579ba3d168230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abda22a7_29cced87",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-04-13T15:13:23Z",
+      "side": 1,
+      "message": "will remove mixed allocations, except strtok() is not appropriate to use on _any_ C++ object data too. I chose strdup to switch to C. data() is not c_str(), vector is inaccurate. If I am to remove strdup, I will have to use C++ token parsing too.",
+      "parentUuid": "6b410ad7_1fc6c366",
       "range": {
         "startLine": 797,
         "startChar": 15,
