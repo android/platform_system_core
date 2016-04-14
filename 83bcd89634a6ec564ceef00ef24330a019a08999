@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b79a672_79dec325",
+        "filename": "libbacktrace/ThreadEntry.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-04-14T22:51:08Z",
+      "side": 1,
+      "message": "protect this one using wait_mutex_ instead of making it atomic? because I think you already have a mutex (here is wait_mutex_) to protect wait_value_, so a little confusing to make it atomic. If you really want to use atomic, I would recommand \u003catomic\u003e in libc++.",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 34
+      },
+      "revId": "83bcd89634a6ec564ceef00ef24330a019a08999",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
