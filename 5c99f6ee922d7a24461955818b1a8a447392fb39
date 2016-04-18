@@ -189,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "4b3e069d_589cb235",
+        "filename": "logcat/logpersist",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1097918
+      },
+      "writtenOn": "2016-04-18T15:30:32Z",
+      "side": 1,
+      "message": "this is cool :)",
+      "parentUuid": "abda22a7_4f2e816b",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 9
+      },
+      "revId": "5c99f6ee922d7a24461955818b1a8a447392fb39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abda22a7_2fd7cd0b",
         "filename": "logcat/logpersist",
         "patchSetId": 1
@@ -224,6 +248,30 @@
       "side": 1,
       "message": "Look at logcatd.rc, this trigger a series of actions on property. One of the final actions is to exec logcat with a set of parameters. sleep is, what it is ... gives time for init to react.",
       "parentUuid": "abda22a7_2fd7cd0b",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "5c99f6ee922d7a24461955818b1a8a447392fb39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b3e069d_d8d6e2c8",
+        "filename": "logcat/logpersist",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1097918
+      },
+      "writtenOn": "2016-04-18T15:30:32Z",
+      "side": 1,
+      "message": "I missed this. But now this is raising different question, in fact 2 of them:\n1) sleep 1 does not in fact guarantee anything, because it does not synchronize with anything. it is just likely to be \"long enough\". so, generating error code this way may give false negative\n2) there is an asymmetry in a way how service is started/stopped (through property handler vs directly with shell command). There may be good reason to do this, but in this case it is better to document it in comment",
+      "parentUuid": "abda22a7_8f2079e4",
       "range": {
         "startLine": 59,
         "startChar": 2,
