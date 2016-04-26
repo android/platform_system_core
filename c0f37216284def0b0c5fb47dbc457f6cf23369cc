@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a884e9cc_02d82afe",
+        "filename": "fs_mgr/fs_mgr_verity.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1058768
+      },
+      "writtenOn": "2016-04-26T16:47:35Z",
+      "side": 1,
+      "message": "This is a static function, so drop fs_mgr_, it\u0027s cleaner.",
+      "range": {
+        "startLine": 846,
+        "startChar": 11,
+        "endLine": 846,
+        "endChar": 18
+      },
+      "revId": "c0f37216284def0b0c5fb47dbc457f6cf23369cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a884e9cc_4272b2d6",
+        "filename": "fs_mgr/fs_mgr_verity.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1058768
+      },
+      "writtenOn": "2016-04-26T16:47:35Z",
+      "side": 1,
+      "message": "You can use std::string and android::base::Split to avoid C-style string processing.\n\n  auto tokens \u003d android::base::Split(*table);\n\n  for (const auto token : words) {\n      ...\n  }\n\nThen again, we might just as well clean up the entire file in another CL.",
+      "range": {
+        "startLine": 850,
+        "startChar": 0,
+        "endLine": 850,
+        "endChar": 43
+      },
+      "revId": "c0f37216284def0b0c5fb47dbc457f6cf23369cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a884e9cc_42d632d7",
+        "filename": "fs_mgr/fs_mgr_verity.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1058768
+      },
+      "writtenOn": "2016-04-26T16:47:35Z",
+      "side": 1,
+      "message": "Why not just use params.table?",
+      "range": {
+        "startLine": 884,
+        "startChar": 4,
+        "endLine": 884,
+        "endChar": 23
+      },
+      "revId": "c0f37216284def0b0c5fb47dbc457f6cf23369cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a884e9cc_82cc3a47",
+        "filename": "fs_mgr/fs_mgr_verity.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1058768
+      },
+      "writtenOn": "2016-04-26T16:47:35Z",
+      "side": 1,
+      "message": "Coding style should match the rest of the file. Should be:\n\n  if (!verity.table) {\n      goto out;\n  }\n\nThe same elsewhere where brackets are omitted.",
+      "range": {
+        "startLine": 949,
+        "startChar": 0,
+        "endLine": 950,
+        "endChar": 17
+      },
+      "revId": "c0f37216284def0b0c5fb47dbc457f6cf23369cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
