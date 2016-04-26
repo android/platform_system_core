@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "08c17519_4db679ee",
+        "filename": "init/devices.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-04-26T17:49:59Z",
+      "side": 1,
+      "message": "Yes, we can probably add hard failures throughout (for setegid too below?).  Originally was soft-fail to allow for clean operation on SELinux-disabled without having to wrap everything with if (is_selinux_enabled()), plus worst case scenario was that the file would end up defaulting to the type of /dev and thus likely inaccessible anyway.",
+      "parentUuid": "a884e9cc_422b9220",
+      "revId": "d38fd752b72bc5d4d6368d1d92fb7ab0c8b99b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a884e9cc_02f6eae7",
         "filename": "init/devices.cpp",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2016-04-26T17:30:17Z",
       "side": 1,
       "message": "@nnk: should we die loud here too, or fix it up in a separate patch addressing comment above?",
+      "revId": "d38fd752b72bc5d4d6368d1d92fb7ab0c8b99b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08c17519_2d9e8d67",
+        "filename": "init/devices.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2016-04-26T17:49:59Z",
+      "side": 1,
+      "message": "lsetfilecon() so we don\u0027t follow symlinks?",
+      "parentUuid": "a884e9cc_02f6eae7",
       "revId": "d38fd752b72bc5d4d6368d1d92fb7ab0c8b99b65",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
