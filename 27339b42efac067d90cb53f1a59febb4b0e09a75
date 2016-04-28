@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e84d01b0_23be2910",
+        "filename": "init/devices.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-04-28T10:39:33Z",
+      "side": 1,
+      "message": "Brackets for the if block, and parens around the errno comparison:\n\n  if (mknod(path, mode, dev) \u0026\u0026 (errno \u003d\u003d EEXIST)) {\n      if (lsetfilecon(path, secontext)) {\n          ERROR(...);\n      }\n  }\n  chown(...)",
+      "revId": "27339b42efac067d90cb53f1a59febb4b0e09a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
