@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a8e6a926_46aa322b",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-04-29T15:30:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a884e9cc_857e84d3",
+      "range": {
+        "startLine": 1180,
+        "startChar": 19,
+        "endLine": 1180,
+        "endChar": 20
+      },
+      "revId": "c6897085d6358622821c8aa1a9f94bc47289f95f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a884e9cc_c5732c04",
         "filename": "fastboot/protocol.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-04-26T18:22:10Z",
       "side": 1,
       "message": "Does the Read function guarantee that status is nul terminated? This seems like it could cause an issue if not.",
+      "range": {
+        "startLine": 83,
+        "startChar": 68,
+        "endLine": 83,
+        "endChar": 74
+      },
+      "revId": "c6897085d6358622821c8aa1a9f94bc47289f95f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8e6a926_e667e613",
+        "filename": "fastboot/protocol.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-04-29T15:30:04Z",
+      "side": 1,
+      "message": "no, that\u0027s the 65/64 cruft in this function. there are actually a whole bunch of Read implementations though, so doing it here -- even if it didn\u0027t have to be quite so C-style -- is probably the better choice.",
+      "parentUuid": "a884e9cc_c5732c04",
       "range": {
         "startLine": 83,
         "startChar": 68,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a8e6a926_667416bf",
+        "filename": "fastboot/protocol.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-04-29T15:30:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a884e9cc_25d1b8dd",
+      "range": {
+        "startLine": 136,
+        "startChar": 18,
+        "endLine": 136,
+        "endChar": 45
+      },
+      "revId": "c6897085d6358622821c8aa1a9f94bc47289f95f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a884e9cc_e553d05a",
         "filename": "fastboot/protocol.cpp",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2016-04-26T18:22:10Z",
       "side": 1,
       "message": "Not needed, since you aren\u0027t modifying the string.",
+      "range": {
+        "startLine": 219,
+        "startChar": 22,
+        "endLine": 219,
+        "endChar": 50
+      },
+      "revId": "c6897085d6358622821c8aa1a9f94bc47289f95f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8e6a926_267e0e9f",
+        "filename": "fastboot/protocol.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-04-29T15:30:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a884e9cc_e553d05a",
       "range": {
         "startLine": 219,
         "startChar": 22,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a8e6a926_064aea73",
+        "filename": "fastboot/protocol.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-04-29T15:30:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a884e9cc_c54a4c9c",
+      "range": {
+        "startLine": 233,
+        "startChar": 22,
+        "endLine": 233,
+        "endChar": 49
+      },
+      "revId": "c6897085d6358622821c8aa1a9f94bc47289f95f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8659cc5_63fe1012",
         "filename": "fastboot/util_linux.cpp",
         "patchSetId": 1
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "a8e6a926_66ad3641",
+        "filename": "fastboot/util_linux.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-04-29T15:30:04Z",
+      "side": 1,
+      "message": "it\u0027s not a static buffer. it\u0027s just going to add 1024 to the stack pointer. making callers supply a size has no real benefit and makes the API more awkward.",
+      "parentUuid": "c8659cc5_63fe1012",
+      "range": {
+        "startLine": 37,
+        "startChar": 38,
+        "endLine": 37,
+        "endChar": 50
+      },
+      "revId": "c6897085d6358622821c8aa1a9f94bc47289f95f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68683071_0517578e",
         "filename": "fastboot/util_windows.cpp",
         "patchSetId": 1
@@ -151,6 +295,24 @@
       "writtenOn": "2016-04-25T23:22:14Z",
       "side": 1,
       "message": "For error handling: https://msdn.microsoft.com/en-us/library/windows/desktop/ms683197(v\u003dvs.85).aspx",
+      "revId": "c6897085d6358622821c8aa1a9f94bc47289f95f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8e6a926_262cce9a",
+        "filename": "fastboot/util_windows.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-04-29T15:30:04Z",
+      "side": 1,
+      "message": "done. (in the same crappy way as we handle this for linux. yagni. but we should maybe move these into libbase; both fastboot and adb have [different] copies of this code. then spencer can tell us what we should really be doing :-) )",
+      "parentUuid": "68683071_0517578e",
       "revId": "c6897085d6358622821c8aa1a9f94bc47289f95f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
