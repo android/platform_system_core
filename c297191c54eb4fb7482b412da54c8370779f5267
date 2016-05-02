@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "88b1e559_7aad0d98",
+        "filename": "adb/adb_listeners.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-05-02T21:51:02Z",
+      "side": 1,
+      "message": "Yeah it is a little odd, I played around with changing to an STL container as well, but in the end decided to try to keep this CL smaller and avoid too many changes.\n\nI\u0027ll take a look at changing the endpoints to nullptr though if you would prefer that, should be a fairly small change.",
+      "parentUuid": "88b1e559_77bec810",
+      "range": {
+        "startLine": 196,
+        "startChar": 44,
+        "endLine": 196,
+        "endChar": 63
+      },
+      "revId": "c297191c54eb4fb7482b412da54c8370779f5267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88b1e559_17f65ce7",
         "filename": "adb/commandline.cpp",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "88b1e559_5aaac981",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-05-02T21:51:02Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "88b1e559_17f65ce7",
+      "revId": "c297191c54eb4fb7482b412da54c8370779f5267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88b1e559_d7b854f8",
         "filename": "adb/commandline.cpp",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2016-05-02T21:32:55Z",
       "side": 1,
       "message": "I think we should forbid `adb forward tcp:1234 tcp:0` and `adb reverse tcp:0 tcp:1234`. Right now, both of them will return success. (apparently so does adb forward tcp:-1 tcp:-1)",
+      "revId": "c297191c54eb4fb7482b412da54c8370779f5267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88b1e559_ba03f565",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1742,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-05-02T21:51:02Z",
+      "side": 1,
+      "message": "Yeah we don\u0027t do any sanity checking on these inputs at the moment. I\u0027ll look into adding some more verification.\n\nIn my understanding though (and this CL\u0027s implementation) `adb reverse tcp:0 tcp:1234` should work, indicating we want the device to forward a arbitrary port to host port 1234.",
+      "parentUuid": "88b1e559_d7b854f8",
       "revId": "c297191c54eb4fb7482b412da54c8370779f5267",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
