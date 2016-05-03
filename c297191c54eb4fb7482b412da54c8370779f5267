@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2dfc8b2a_b24408a9",
+        "filename": "adb/adb_listeners.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-05-03T18:31:21Z",
+      "side": 1,
+      "message": "I think I\u0027m just going to change to a std::list after all for simplicity, there\u0027s a little more bookkeeping changing the head/tail to nullptr than it\u0027s worth.\n\nRemoving a forward/reversal with std::list will be slightly slower (one additional O(N) operation) but this should be negligible given the small size of the forward lists, unless you know of a use case that forwards something like 10k ports.",
+      "parentUuid": "88b1e559_7aad0d98",
+      "range": {
+        "startLine": 196,
+        "startChar": 44,
+        "endLine": 196,
+        "endChar": 63
+      },
+      "revId": "c297191c54eb4fb7482b412da54c8370779f5267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88b1e559_17f65ce7",
         "filename": "adb/commandline.cpp",
         "patchSetId": 1
