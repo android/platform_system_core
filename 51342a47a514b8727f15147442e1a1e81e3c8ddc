@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7254a4e4_dcc24afb",
+        "filename": "libutils/RefBase.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1021189
+      },
+      "writtenOn": "2016-05-13T22:52:45Z",
+      "side": 1,
+      "message": "some kind of assert() here would be nice (even if enabled by a local #define). could be useful when debugging.",
+      "revId": "51342a47a514b8727f15147442e1a1e81e3c8ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7254a4e4_fc138e52",
+        "filename": "libutils/RefBase.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1021189
+      },
+      "writtenOn": "2016-05-13T22:52:45Z",
+      "side": 1,
+      "message": "It looks like using memory_order_relaxed is not safe (as opposed to acquire), because if, two threads call incStrong() at the same time, but the thread who \"wins\" the first incStrong race, is different from the thread that constructed the object then, when it calls onFirstRef(), it might not see the (non-atomic) memory set in the constructor.\n\nHOWEVER, I think in reality it\u0027s not an issue, because no other thread can act on the newly created object, since they have no way to have a reference to it, and I\u0027m assuming that creating a thread, or somehow passing the pointer to another thread would have to perform an acquire.\n\nSo... if you guys agree, I think this deserves a comment.",
+      "revId": "51342a47a514b8727f15147442e1a1e81e3c8ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
