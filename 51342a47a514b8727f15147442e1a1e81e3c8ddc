@@ -33,6 +33,24 @@
       "revId": "51342a47a514b8727f15147442e1a1e81e3c8ddc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7254a4e4_22aed093",
+        "filename": "libutils/RefBase.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-05-13T23:48:31Z",
+      "side": 1,
+      "message": "I think the end of construction always has to happen before (in the technical sense) the incStrong call. That\u0027s just a consequence of the C++ lifetime rules.  Constructor races are never legal.\n\nBut it would be wonderful to really pin down the usage rules here. Presumably I can create a weak reference (or ordinary pointer) to a new object, properly pass it to a second thread, have them both call incStrong concurrently, and have it be nondeterministic who gets the onFirstRef call.  Is that all allowed?  I guess it doesn\u0027t cause any problems.",
+      "parentUuid": "7254a4e4_fc138e52",
+      "revId": "51342a47a514b8727f15147442e1a1e81e3c8ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
