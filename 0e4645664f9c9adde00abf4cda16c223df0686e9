@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "7254a4e4_0c4f3a5e",
+        "filename": "libutils/RefBase.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-05-17T15:42:32Z",
+      "side": 1,
+      "message": "It\u0027s the C++ standard library compare_exchange_weak.  curCount is passed by reference, for better or worse.  See http://en.cppreference.com/w/cpp/atomic/atomic/compare_exchange, for example.  I can add a comment, but I think we usually don\u0027t for the standard library.",
+      "parentUuid": "7254a4e4_ccc29246",
+      "range": {
+        "startLine": 534,
+        "startChar": 31,
+        "endLine": 534,
+        "endChar": 43
+      },
+      "revId": "0e4645664f9c9adde00abf4cda16c223df0686e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7254a4e4_8956bc48",
         "filename": "libutils/RefBase.cpp",
         "patchSetId": 6
@@ -144,6 +168,24 @@
       "side": 1,
       "message": "I\u0027m referring to the entire function. It is possible there is no problem, but the clients of this code are different from the clients of incStrong. A call to either function is similar to a mutex_lock call in that the client expects the object to be valid after the call returns. If there is no transition from invalid to valid then this is probably ok, but the code below to handle the initial state seems to indicate that this is not always the case.",
       "parentUuid": "7254a4e4_ac9e2e60",
+      "revId": "0e4645664f9c9adde00abf4cda16c223df0686e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7254a4e4_8c6a4aa4",
+        "filename": "libutils/RefBase.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-05-17T15:42:32Z",
+      "side": 1,
+      "message": "Careful scrutiny here is certainly good, but I think it\u0027s OK as is. We were presumably passed the weak pointer using proper synchronization, so object construction happens before us.  If this function succeeds, then the object can\u0027t be deallocated until we, or a thread we pass the reference to, calls decStrong. So, by the arguments above, anything here happens before destruction.\n\nI don\u0027t fully understand the usage model. If someone is using this for  synchronization, i.e. assuming that because this succeeded they will see certain prior memory effects, then we have a problem.  I\u0027ll add a comment saying that this is not guaranteed. But it never was. We\u0027d just be preserving the brokenness, though possibly increasing failure frequency.",
+      "parentUuid": "7254a4e4_0cdf3a1c",
       "revId": "0e4645664f9c9adde00abf4cda16c223df0686e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
