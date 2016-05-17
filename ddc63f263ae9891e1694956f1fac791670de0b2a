@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7254a4e4_e97668f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-05-17T22:26:49Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s definitely cleaner. Doing that instead.",
+      "parentUuid": "7254a4e4_f63726eb",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "ddc63f263ae9891e1694956f1fac791670de0b2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7254a4e4_05f1d678",
         "filename": "adb/sockets.cpp",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2016-05-14T16:23:28Z",
       "side": 1,
       "message": "should we have an asocket::destroy? (it would at least make it more obvious that we\u0027d explicitly considered all the \u0027else\u0027 cases.)",
+      "revId": "ddc63f263ae9891e1694956f1fac791670de0b2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7f6229d_4ba56565",
+        "filename": "adb/sockets.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-05-17T22:26:49Z",
+      "side": 1,
+      "message": "AFAICT, this *is* asocket::destroy. local sockets are weird because close doesn\u0027t immediately destroy them, because we want to flush whatever\u0027s left in the socket before we destroy them, so the actual destruction gets deferred.",
+      "parentUuid": "7254a4e4_05f1d678",
       "revId": "ddc63f263ae9891e1694956f1fac791670de0b2a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
