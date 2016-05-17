@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "923678c6_deac01b5",
+        "filename": "adb/transport_local.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1079748
+      },
+      "writtenOn": "2016-05-17T20:35:44Z",
+      "side": 1,
+      "message": "Curios: What\u0027s the reason for putting this in heap rather than text? Smaller binary size?\nWhat implications does this have w.r.t. initialization / cleanup order of globals?",
+      "range": {
+        "startLine": 147,
+        "startChar": 46,
+        "endLine": 147,
+        "endChar": 73
+      },
+      "revId": "7a45c927e16fc338854bfab5bb2ee8fba12e8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "923678c6_7eecf505",
+        "filename": "adb/transport_local.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1079748
+      },
+      "writtenOn": "2016-05-17T20:35:44Z",
+      "side": 1,
+      "message": "FR:\nWe could get rid of this initial poll (and hence the 16 emulators limit / polling problems) if we did two things:\n- Emulator currently advertizes its port to adb-server exactly once on start up. Instead, on start-up, it keeps advertising \u0027emulator-XXXX\u0027 until adb-server first connects to the emulator on the advertised port\n- adb-server persists it\u0027s list of known emulators (added in this CL) to disk.\n\nThis way,\n- If the emulator is started first, it\u0027ll keep yelling out for any adb-server that starts later.\n- If adb-server dies, the list of currently known emulators will still be available for the restarted server.\n\nwdyt?",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 32
+      },
+      "revId": "7a45c927e16fc338854bfab5bb2ee8fba12e8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "923678c6_b2b301fa",
+        "filename": "adb/transport_local.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1079748
+      },
+      "writtenOn": "2016-05-17T20:35:44Z",
+      "side": 1,
+      "message": "nit: 80 char colums? 100 char columns? Not sure what the style is.",
+      "range": {
+        "startLine": 166,
+        "startChar": 97,
+        "endLine": 166,
+        "endChar": 105
+      },
+      "revId": "7a45c927e16fc338854bfab5bb2ee8fba12e8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "923678c6_3e7b5d18",
+        "filename": "adb/transport_local.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1079748
+      },
+      "writtenOn": "2016-05-17T20:35:44Z",
+      "side": 1,
+      "message": "Note: This might appear as a slight regression in re-connection speed to the end user.\nBefore this CL, this delay was somewhere between 0 - 1 second. After this CL, it\u0027s always 1 second.",
+      "range": {
+        "startLine": 168,
+        "startChar": 21,
+        "endLine": 168,
+        "endChar": 52
+      },
+      "revId": "7a45c927e16fc338854bfab5bb2ee8fba12e8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "923678c6_129ccd6a",
+        "filename": "adb/transport_local.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1079748
+      },
+      "writtenOn": "2016-05-17T20:35:44Z",
+      "side": 1,
+      "message": "VLOG here that we stopped retrying on this port?",
+      "range": {
+        "startLine": 179,
+        "startChar": 15,
+        "endLine": 179,
+        "endChar": 43
+      },
+      "revId": "7a45c927e16fc338854bfab5bb2ee8fba12e8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "923678c6_f2ad7997",
+        "filename": "adb/transport_local.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1079748
+      },
+      "writtenOn": "2016-05-17T20:35:44Z",
+      "side": 1,
+      "message": "Seems unrelated to the main CL. Please land as a separate bugfix CL for easy cherry-picking.",
+      "range": {
+        "startLine": 221,
+        "startChar": 12,
+        "endLine": 223,
+        "endChar": 13
+      },
+      "revId": "7a45c927e16fc338854bfab5bb2ee8fba12e8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "923678c6_32c8f168",
+        "filename": "adb/transport_local.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1079748
+      },
+      "writtenOn": "2016-05-17T20:35:44Z",
+      "side": 1,
+      "message": "Seems unrelated to the main CL. Please land as a separate bugfix CL for easy cherry-picking.",
+      "range": {
+        "startLine": 317,
+        "startChar": 16,
+        "endLine": 318,
+        "endChar": 74
+      },
+      "revId": "7a45c927e16fc338854bfab5bb2ee8fba12e8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
