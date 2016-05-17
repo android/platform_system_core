@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7254a4e4_8ca16aaa",
+        "filename": "libutils/RefBase.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-05-17T05:33:08Z",
+      "side": 1,
+      "message": "By compare_exchange_weak.  That\u0027s just a reminder about a standard C++ library API.",
+      "parentUuid": "7254a4e4_a9538058",
+      "range": {
+        "startLine": 534,
+        "startChar": 31,
+        "endLine": 534,
+        "endChar": 43
+      },
+      "revId": "0e4645664f9c9adde00abf4cda16c223df0686e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7254a4e4_8956bc48",
         "filename": "libutils/RefBase.cpp",
         "patchSetId": 6
@@ -36,6 +60,24 @@
       "writtenOn": "2016-05-17T02:15:16Z",
       "side": 1,
       "message": "Are you sure this should have relaxed memory ordering? In incStrong the caller knows it already has a strong ref, while here it does not.",
+      "revId": "0e4645664f9c9adde00abf4cda16c223df0686e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7254a4e4_ac9e2e60",
+        "filename": "libutils/RefBase.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-05-17T05:33:08Z",
+      "side": 1,
+      "message": "You\u0027re commenting on the compare_exchange?  All that matters by the reasoning in the comment at the top is that if this succeeds it happens before a corresponding decrement, and hence all memory effects are visible by the time it matters, i.e. when a zero count is detected. I\u0027m assuming that we never act on a nonzero count; the calls to retrieve counts are only for debugging.",
+      "parentUuid": "7254a4e4_8956bc48",
       "revId": "0e4645664f9c9adde00abf4cda16c223df0686e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
