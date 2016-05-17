@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d761c220_13654c10",
+        "filename": "adb/transport.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-05-17T22:08:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d761c220_738480e7",
+      "revId": "7a45c927e16fc338854bfab5bb2ee8fba12e8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "923678c6_deac01b5",
         "filename": "adb/transport_local.cpp",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2016-05-17T20:35:44Z",
       "side": 1,
       "message": "Curios: What\u0027s the reason for putting this in heap rather than text? Smaller binary size?\nWhat implications does this have w.r.t. initialization / cleanup order of globals?",
+      "range": {
+        "startLine": 147,
+        "startChar": 46,
+        "endLine": 147,
+        "endChar": 73
+      },
+      "revId": "7a45c927e16fc338854bfab5bb2ee8fba12e8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d761c220_93f79c9a",
+        "filename": "adb/transport_local.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-05-17T22:08:49Z",
+      "side": 1,
+      "message": "The reason to do this is to avoid warning from thread sanitizer. retry_ports is a global variable protected by retry_ports_lock, but its destructor is called without lock\u0027s protection when exit() is called. Writing code like this prevents retry_ports\u0027s destructor being called.",
+      "parentUuid": "923678c6_deac01b5",
       "range": {
         "startLine": 147,
         "startChar": 46,
@@ -89,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "d761c220_b373b8d6",
+        "filename": "adb/transport_local.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-05-17T22:08:49Z",
+      "side": 1,
+      "message": "the old emulator (using port forwarding method) can\u0027t advertise its port recursively, right?\nkeeping a list of known emulators to disk is not an easy task.\nI prefer not to change until there is a real need. If emulator count is an issue, we can simply increase ADB_LOCAL_TRANSPORT_MAX.",
+      "parentUuid": "d761c220_730be06e",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 32
+      },
+      "revId": "7a45c927e16fc338854bfab5bb2ee8fba12e8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "923678c6_b2b301fa",
         "filename": "adb/transport_local.cpp",
         "patchSetId": 3
@@ -100,6 +166,30 @@
       "writtenOn": "2016-05-17T20:35:44Z",
       "side": 1,
       "message": "nit: 80 char colums? 100 char columns? Not sure what the style is.",
+      "range": {
+        "startLine": 166,
+        "startChar": 97,
+        "endLine": 166,
+        "endChar": 105
+      },
+      "revId": "7a45c927e16fc338854bfab5bb2ee8fba12e8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d761c220_93531c5a",
+        "filename": "adb/transport_local.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-05-17T22:08:49Z",
+      "side": 1,
+      "message": "Done. I think adb uses 100 char columns.",
+      "parentUuid": "923678c6_b2b301fa",
       "range": {
         "startLine": 166,
         "startChar": 97,
@@ -135,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "d761c220_b389f8dd",
+        "filename": "adb/transport_local.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-05-17T22:08:49Z",
+      "side": 1,
+      "message": "Yes. Actually, in my experiment, if moving the sleep to the end of the loop, the first immediate retry can fail because the adbd hasn\u0027t been started yet. So the only way to improve this seems to decrease LOCAL_PORT_RETRY_INTERVAL_IN_MS, but the delay time is hard to adjust. So I prefer to leave it until it really hurts someone\u0027s work.",
+      "parentUuid": "923678c6_3e7b5d18",
+      "range": {
+        "startLine": 168,
+        "startChar": 21,
+        "endLine": 168,
+        "endChar": 52
+      },
+      "revId": "7a45c927e16fc338854bfab5bb2ee8fba12e8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "923678c6_129ccd6a",
         "filename": "adb/transport_local.cpp",
         "patchSetId": 3
@@ -158,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "d761c220_d3a91436",
+        "filename": "adb/transport_local.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-05-17T22:08:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "923678c6_129ccd6a",
+      "range": {
+        "startLine": 179,
+        "startChar": 15,
+        "endLine": 179,
+        "endChar": 43
+      },
+      "revId": "7a45c927e16fc338854bfab5bb2ee8fba12e8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "923678c6_f2ad7997",
         "filename": "adb/transport_local.cpp",
         "patchSetId": 3
@@ -169,6 +307,30 @@
       "writtenOn": "2016-05-17T20:35:44Z",
       "side": 1,
       "message": "Seems unrelated to the main CL. Please land as a separate bugfix CL for easy cherry-picking.",
+      "range": {
+        "startLine": 221,
+        "startChar": 12,
+        "endLine": 223,
+        "endChar": 13
+      },
+      "revId": "7a45c927e16fc338854bfab5bb2ee8fba12e8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d761c220_733c80d0",
+        "filename": "adb/transport_local.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-05-17T22:08:49Z",
+      "side": 1,
+      "message": "Done. It is a little related (if having this, I won\u0027t need the comment in L66-167)",
+      "parentUuid": "923678c6_f2ad7997",
       "range": {
         "startLine": 221,
         "startChar": 12,
