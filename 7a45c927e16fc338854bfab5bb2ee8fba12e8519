@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "d761c220_738480e7",
+        "filename": "adb/transport.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-05-17T21:28:08Z",
+      "side": 1,
+      "message": "Maybe assert that local_port_for_emulator \u003d\u003d -1? That might be going too far. Just throwing it out there.",
+      "revId": "7a45c927e16fc338854bfab5bb2ee8fba12e8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "923678c6_deac01b5",
         "filename": "adb/transport_local.cpp",
         "patchSetId": 3
@@ -36,6 +53,30 @@
       "writtenOn": "2016-05-17T20:35:44Z",
       "side": 1,
       "message": "FR:\nWe could get rid of this initial poll (and hence the 16 emulators limit / polling problems) if we did two things:\n- Emulator currently advertizes its port to adb-server exactly once on start up. Instead, on start-up, it keeps advertising \u0027emulator-XXXX\u0027 until adb-server first connects to the emulator on the advertised port\n- adb-server persists it\u0027s list of known emulators (added in this CL) to disk.\n\nThis way,\n- If the emulator is started first, it\u0027ll keep yelling out for any adb-server that starts later.\n- If adb-server dies, the list of currently known emulators will still be available for the restarted server.\n\nwdyt?",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 32
+      },
+      "revId": "7a45c927e16fc338854bfab5bb2ee8fba12e8519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d761c220_730be06e",
+        "filename": "adb/transport_local.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-05-17T21:28:08Z",
+      "side": 1,
+      "message": "Do you guys really want to make adb that stateful (persisting the known emulators to disk)? It seems hard enough already diagnosing problems, that I\u0027m not sure if that makes sense.",
+      "parentUuid": "923678c6_7eecf505",
       "range": {
         "startLine": 155,
         "startChar": 4,
