@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7f6229d_65edead4",
+        "filename": "adb/sockets.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-05-18T19:16:38Z",
+      "side": 1,
+      "message": "Just remembered that as all asockets are used only in main thread, the lock actually doesn\u0027t take effect. And if we really need to operate asockets in different threads, only local_socket_list_lock might not be enough. I thought of removing the lock, but didn\u0027t take action as having the lock doesn\u0027t hurt anything. maybe we can remove it when totally refactored asocket into a c++ class (so we have better control of its use). However, I think it is an improvement to change the lock into recursive mutex, as we can remove code like L236.",
+      "range": {
+        "startLine": 44,
+        "startChar": 29,
+        "endLine": 44,
+        "endChar": 51
+      },
+      "revId": "4dac2fc188de40d53e00808e2933ea65a0b8936a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7f6229d_fa785519",
+        "filename": "adb/sockets.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-05-18T19:16:38Z",
+      "side": 1,
+      "message": "I think it might overflow, like when you have created (1\u003c\u003c32) sockets.",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 94,
+        "endChar": 42
+      },
+      "revId": "4dac2fc188de40d53e00808e2933ea65a0b8936a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
