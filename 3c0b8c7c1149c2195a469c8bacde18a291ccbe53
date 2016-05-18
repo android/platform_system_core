@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7f6229d_9a38312a",
+        "filename": "libutils/SharedBuffer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-05-18T17:48:00Z",
+      "side": 1,
+      "message": "is what they were really trying to say (sizeof(SharedBuffer) % sizeof(void*) \u003d\u003d 0)?\n\ni think \"sized\" in the comment didn\u0027t mean \"\u003d\u003d 16\", rather \"any appropriate size\", and \"correct alignment\" didn\u0027t mean 16-byte aligned, but just \"the next multiple of sizeof(void*) [which right now in my LP32-only world just happens to \u003d\u003d 16]\".\n\ndoes moving mSize cause any binary compatibility problems? (i\u0027m not sure whether any blobs have an inlined size() but are using the out of line alloc()...)\n\nmaybe drop the reserved fields altogether and round up in alloc()?",
+      "revId": "3c0b8c7c1149c2195a469c8bacde18a291ccbe53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
