@@ -94,6 +94,30 @@
       "revId": "305254be60865e38b08a823d2fd9208f77eb1924",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7f6229d_e08b8877",
+        "filename": "adb/sysdeps_test.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-05-18T22:20:19Z",
+      "side": 1,
+      "message": "The standard says no: \"Requires: If m is of type std::mutex, std::timed_mutex, or std::shared_timed_mutex, the calling\nthread does not own the mutex\"\n\nBefore I added this, the implementation of mutex I had did something that was technically legal (since it was UB), but still unexpected. Even if something technically is UB, we should either detect it and abort, or do something sensible. I think it\u0027s worth the potential failure in the future (which is probably unlikely?) to ensure this.\n\n(And if it ever does break, it should probably be regarded as a bug in the C++ implementation. Just because the standard gives you license to hurt your users doesn\u0027t mean that you should.)",
+      "parentUuid": "d7f6229d_808444e8",
+      "range": {
+        "startLine": 253,
+        "startChar": 17,
+        "endLine": 253,
+        "endChar": 29
+      },
+      "revId": "305254be60865e38b08a823d2fd9208f77eb1924",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
