@@ -16,6 +16,24 @@
       "revId": "3c0b8c7c1149c2195a469c8bacde18a291ccbe53",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7f6229d_da6119c7",
+        "filename": "libutils/SharedBuffer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-05-18T20:17:50Z",
+      "side": 1,
+      "message": "Interesting questions.\n\nI presumed it should be 16 (or a multiple) for the following reasons: The presence of the mReserved array didn\u0027t otherwise make any sense to me. And, at least on x86, the usual (non-Android (?)) convention is that allocated memory is 16 byte aligned to support vector units that need alignment. Note that the code below uses \"this + 1\" to compute the beginning of the payload data. What\u0027s the maximum alignment requirement on ARM?\n\nOne alternative is to leave mSize in its old place, but conditionally remove mReserved for 64 bit.  That should still result in a 16 byte size with reasonable ABI alignment conventions, though via more complicated reasoning.  Another alternative is to just remove the 16 byte comment.",
+      "parentUuid": "d7f6229d_9a38312a",
+      "revId": "3c0b8c7c1149c2195a469c8bacde18a291ccbe53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
