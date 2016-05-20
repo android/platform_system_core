@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "37a21e12_3dfb7b88",
+        "filename": "libutils/SharedBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-05-20T23:47:46Z",
+      "side": 1,
+      "message": "This seems to be intended solely as an (ineffective) error check.  It should probably abort rather than returning -1.\n\nI think the only client is in VectorImpl.cpp.  It first checks  if (sb-\u003erelease(SharedBuffer::eKeepStorage) \u003d\u003d 1) .  It does not actually look at the error code we return here.\n\nI think that leaving this as is is OK, since there doesn\u0027t seem to be an actual bug here.  I\u0027ll add a large deprecated warning at the beginning of the file to discourage new users.\n\nI\u0027m also OK with changing this to a void return and getting rid of the test.  Or possibly calling abort().\n\nThis is different from RefBase, since there seems to be agreement that this code should go away, or at least not get new clients.",
+      "parentUuid": "37a21e12_021f3a49",
+      "revId": "87dcb805fd97325e4299519ae4063da89c4606d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37a21e12_6230bed8",
         "filename": "libutils/SharedBuffer.cpp",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2016-05-20T22:42:09Z",
       "side": 1,
       "message": "What is the point having two ways to release the last reference? Why not:\nprev \u003d mRefs.fetch_sub(1, std::memory_order_release);\nif (prev \u003d\u003d 1) {\n  atomic_thread_fence(std::memory_order_acquire);\n  if ((flags \u0026 eKeepStorage) \u003d\u003d 0) {\n...",
+      "revId": "87dcb805fd97325e4299519ae4063da89c4606d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37a21e12_3d57fb48",
+        "filename": "libutils/SharedBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-05-20T23:47:46Z",
+      "side": 1,
+      "message": "This is presumably faster if most objects only ever acquire a single reference.  In the common case we then do just an acquire load, which (in the correct version) involves a single fence instead of two, and no load/store exclusive.\n\nI was optimistically assuming the original owner had done this in whatever way was optimal.  Since the other solution didn\u0027t obviously dominate it, I decided to leave the original logic alone, modulo required correctness fixes.",
+      "parentUuid": "37a21e12_6230bed8",
       "revId": "87dcb805fd97325e4299519ae4063da89c4606d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
