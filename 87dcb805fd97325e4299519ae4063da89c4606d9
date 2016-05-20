@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37a21e12_021f3a49",
+        "filename": "libutils/SharedBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2016-05-20T22:42:09Z",
+      "side": 1,
+      "message": "This does not look safe. If this function is ever called by anyone who did not see 1 returned from SharedBuffer::release you have two race conditions. 1. two threads could free the same buffer. 2. free could be called without acquire memory order.",
+      "revId": "87dcb805fd97325e4299519ae4063da89c4606d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37a21e12_6230bed8",
+        "filename": "libutils/SharedBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2016-05-20T22:42:09Z",
+      "side": 1,
+      "message": "What is the point having two ways to release the last reference? Why not:\nprev \u003d mRefs.fetch_sub(1, std::memory_order_release);\nif (prev \u003d\u003d 1) {\n  atomic_thread_fence(std::memory_order_acquire);\n  if ((flags \u0026 eKeepStorage) \u003d\u003d 0) {\n...",
+      "revId": "87dcb805fd97325e4299519ae4063da89c4606d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
