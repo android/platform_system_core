@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3c91230e_c5124ef1",
+        "filename": "adb/sysdeps/condition_variable.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-05-23T20:52:24Z",
+      "side": 1,
+      "message": "It works like this:\nthread A:              thread B\n  m.lock()\n  cond.wait(m)    -\u003e   \n                       m.lock()\n\n                       m.unlock()\n\n  m.unlock()\n\n\nIf we don\u0027t --m.lock_count here, the m.lock() in thread B will find that m.lock_count is already 0 and fatal().",
+      "parentUuid": "3c91230e_855f66d8",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 43,
+        "endChar": 25
+      },
+      "revId": "474f7f63edba65128aa8dcd9117aadda78ec49c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c91230e_45fcfee5",
         "filename": "adb/sysdeps/mutex.h",
         "patchSetId": 7
@@ -36,6 +60,24 @@
       "writtenOn": "2016-05-23T20:22:49Z",
       "side": 1,
       "message": "std::mutex has another name for this:\n\n\nnative_handle_type native_handle();\n\t\t\nReturns the underlying implementation-defined native handle object.",
+      "revId": "474f7f63edba65128aa8dcd9117aadda78ec49c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c91230e_e5eaf2e6",
+        "filename": "adb/sysdeps/mutex.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-05-23T20:52:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c91230e_45fcfee5",
       "revId": "474f7f63edba65128aa8dcd9117aadda78ec49c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "3c91230e_45bddee0",
+        "filename": "adb/sysdeps_test.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-05-23T20:52:24Z",
+      "side": 1,
+      "message": "That actually makes no difference. the main thread doesn\u0027t have a chance to verify the flag until it holds the lock. So even if cond.notify_one() is seen before \"flag \u003d true\", it doesn\u0027t matter.",
+      "parentUuid": "3c91230e_056b5673",
+      "range": {
+        "startLine": 315,
+        "startChar": 8,
+        "endLine": 315,
+        "endChar": 25
+      },
+      "revId": "474f7f63edba65128aa8dcd9117aadda78ec49c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c91230e_650102a9",
         "filename": "adb/transport_local.cpp",
         "patchSetId": 7
@@ -76,6 +142,30 @@
       "writtenOn": "2016-05-23T20:32:03Z",
       "side": 1,
       "message": "notify outside the critsect?",
+      "range": {
+        "startLine": 410,
+        "startChar": 25,
+        "endLine": 410,
+        "endChar": 35
+      },
+      "revId": "474f7f63edba65128aa8dcd9117aadda78ec49c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c91230e_65a582c1",
+        "filename": "adb/transport_local.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-05-23T20:52:24Z",
+      "side": 1,
+      "message": "no difference.",
+      "parentUuid": "3c91230e_650102a9",
       "range": {
         "startLine": 410,
         "startChar": 25,
