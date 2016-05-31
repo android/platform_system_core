@@ -52,6 +52,24 @@
       "revId": "16e0f7fc86211d5d6fd6047de9926cfff24bb462",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cbbe33c_03545eb8",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1104175
+      },
+      "writtenOn": "2016-05-31T04:39:30Z",
+      "side": 1,
+      "message": "\u003e \u003e\u003e\u003e \"it is not going to be used anyways.\"\n \u003e \u003eWe think it will be used by native bridge via the callback of\n \u003e native loader.\n \u003e \n \u003e There is no need for that - there are no host arch libraries to\n \u003e load for NB app.\n\nNB app could have host arch libs. Apps packs cross ABI libs together, checks ABI and load ABI-matched libs.\nEven apps don\u0027t, native bridge needs to load a host arch libc.so for a non-host-arch libc.so whenever it\u0027s loaded. native bridge lives in mix-ABI world and interacts with many modules of Android, host-arch lib is a must.",
+      "parentUuid": "3cbbe33c_a337529a",
+      "revId": "16e0f7fc86211d5d6fd6047de9926cfff24bb462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
