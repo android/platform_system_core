@@ -16,6 +16,24 @@
       "revId": "16e0f7fc86211d5d6fd6047de9926cfff24bb462",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cbbe33c_23dec280",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1104175
+      },
+      "writtenOn": "2016-05-31T04:16:11Z",
+      "side": 1,
+      "message": "\u003e\u003e\u003e \"it is not going to be used anyways.\"\nWe think it will be used by native bridge via the callback of native loader.\n\n\u003e\u003e\u003e \"no longer need access to default/anonymous namespaces\"\nI think these is no relationship between the code here and default/anonymous namespaces.\n\nPlease note this, for apps run in emulated subsystem, native bridge and dynamic linker always need to load \"same\" libraries for different ABI. For example, if an app wants to load libc.so in the subsystem, native bridge loads a non-native libc.so and it calls dlopen() to load a native libc.so with at dynamic linker side. This is very important to the emulated subsystem, otherwise nothing works. Though this operation is transparent to apps.\n\nWith namespace introduced, namespace should be created at both dynamic linker and native bridge side. Only in this way, can the native bridge load libraries of different ABIs in peered namespace.\n\nThat\u0027s why \"host namespace\" and why default/anonymous namespaces are needed.",
+      "parentUuid": "3cbbe33c_83bdee28",
+      "revId": "16e0f7fc86211d5d6fd6047de9926cfff24bb462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
