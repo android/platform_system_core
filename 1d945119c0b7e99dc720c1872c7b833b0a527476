@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "193e319c_f15662f9",
+        "filename": "logcat/logpersist",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-06-02T21:41:11Z",
+      "side": 1,
+      "message": "The _act_ of setting this property actually starts logcatd (on property in logcatd.rc)\n\nAlso, just felt like saying it, this su is necessary today because selinux currently blocks shell context from accessing this property. One could debate the use of \u0027su root \u003ccommand\u003e\u0027 as a security hole or hack. Since this script is _only_ delivered on userdebug and eng builds we will play fast and loose with the security in this script.\n\nI expect if nnk@ or jeffv@ looked at this critically they would prefer to open up this property context to be adjustable in shell.te in userdebug_or_eng(`\u0027) thus saving a few su process elevation activities ...",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 10
+      },
+      "revId": "1d945119c0b7e99dc720c1872c7b833b0a527476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "193e319c_11284e85",
+        "filename": "logcat/logpersist",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-06-02T21:41:11Z",
+      "side": 1,
+      "message": "returns the \u0027value\u0027 of ${property} \"persist.logd.logpersistd\" which is ${service} \"logcatd\" as set by the property above.\n\nThis prints logcatd on the stdout _if_ you have all the appropriate permissions to set the property.",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 21
+      },
+      "revId": "1d945119c0b7e99dc720c1872c7b833b0a527476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "193e319c_b1213aa0",
+        "filename": "logcat/logpersist",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-06-02T21:41:11Z",
+      "side": 1,
+      "message": "This returns a PID for the logcat that is running in uid logd to the stdout (145 in the example)\n\nUntil pgrep is fixed (see other comments), this will always return error code 0 (success) _even_ if the process does not exist. After pgrep is fixed, it will return code 1 if the process is not found, and return code 0 if the process is found. (code path of pgrep -\u003e ;; -\u003e esac --\u003e EOF does not disturb the exit code).",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 35
+      },
+      "revId": "1d945119c0b7e99dc720c1872c7b833b0a527476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
