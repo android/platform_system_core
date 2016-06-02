@@ -16,6 +16,24 @@
       "revId": "3c1c41f2c32682f0d5b3f251152616c1dc143882",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "193e319c_511736e3",
+        "filename": "libutils/tests/RefBase_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-06-02T22:00:48Z",
+      "side": 1,
+      "message": "If we execute that code, yes, largely. The theory was that the sched_yield should not be executed on a multiprocessor, unless the scheduler does something weird or the machine is overloaded.  On second thought, I\u0027m not completely sure I believe that either, though.  Once one thread does a sched_yield, it\u0027s probably hard to get out of that mode and start spinning again.\n\nMaybe the best we can easily do is look at _SC_NPROCESSORS_ONLN, and skip the test if it\u0027s less than two, assuming the Linux scheduler will do something reasonable to prevent the threads from getting scheduled against each other?",
+      "parentUuid": "39a5b5c7_a221e08d",
+      "revId": "3c1c41f2c32682f0d5b3f251152616c1dc143882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
