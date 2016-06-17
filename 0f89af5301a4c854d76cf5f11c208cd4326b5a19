@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "49affc8f_38fa0917",
+        "filename": "debuggerd/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-06-17T18:39:48Z",
+      "side": 1,
+      "message": "From inspection, the only thing I can see in libc_logging that\u0027s not standards compliant is a use of pthread_mutex_trylock, which should be safe with our implementation.\n\nliblog does lots of stuff that could be problematic. The first log write does a mutex lock (probably not a problem for the linker, possibly a problem for other users), it calls malloc and mmap to allocate an event tag cache, etc.",
+      "parentUuid": "a92eb88e_51b0340c",
+      "range": {
+        "startLine": 60,
+        "startChar": 13,
+        "endLine": 60,
+        "endChar": 25
+      },
+      "revId": "0f89af5301a4c854d76cf5f11c208cd4326b5a19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4162500_0ede3f16",
         "filename": "debuggerd/include/debuggerd/client.h",
         "patchSetId": 1
