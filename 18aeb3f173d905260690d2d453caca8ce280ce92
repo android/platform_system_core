@@ -37,6 +37,29 @@
     },
     {
       "key": {
+        "uuid": "e3c37158_f89ded72",
+        "filename": "adb/test_device.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-06-23T22:03:17Z",
+      "side": 1,
+      "message": "more specific? the real process is you send ctrl-c to adb client, then adb server closes connection, and adbd closes the local_socket_fd, then protocol_fd is detected dead in ShellSubprocess, then it sends SIGHUP to the child process. It is hard to imagine all these things with the short comment.",
+      "range": {
+        "startLine": 500,
+        "startChar": 8,
+        "endLine": 500,
+        "endChar": 70
+      },
+      "revId": "18aeb3f173d905260690d2d453caca8ce280ce92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03fc052a_de65652e",
         "filename": "adb/test_device.py",
         "patchSetId": 2
@@ -143,6 +166,30 @@
       "side": 1,
       "message": "Just kidding, it\u0027s even more necessary. Doing the proposed change.",
       "parentUuid": "e3c37158_356db0b2",
+      "range": {
+        "startLine": 512,
+        "startChar": 8,
+        "endLine": 512,
+        "endChar": 24
+      },
+      "revId": "18aeb3f173d905260690d2d453caca8ce280ce92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3c37158_7892bd66",
+        "filename": "adb/test_device.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-06-23T22:03:17Z",
+      "side": 1,
+      "message": "And in L521, you may cat the log_path before the shell script can finished writing it. you may write in the log file like:\n\"\"test start\nSIGHUP\ntest end\"\"\n\nand search for key strings in the log file.",
+      "parentUuid": "e3c37158_75bc88e6",
       "range": {
         "startLine": 512,
         "startChar": 8,
