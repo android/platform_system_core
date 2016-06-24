@@ -209,6 +209,24 @@
     },
     {
       "key": {
+        "uuid": "a31b395a_038d6ef2",
+        "filename": "init/service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-06-24T22:06:37Z",
+      "side": 1,
+      "message": "if you don\u0027t mind that your logging won\u0027t actually go anywhere until we write a kmsg logger and switch the rest of init over... :-(",
+      "parentUuid": "8309d5df_7a4a199b",
+      "revId": "92d1c7f19bd8e98a476e3c0e6120c5edb71eba73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03cb25e3_c666e2d2",
         "filename": "init/service.cpp",
         "patchSetId": 4
@@ -290,6 +308,24 @@
       "side": 1,
       "message": "HandlePidns is called when init reads the directive in the .rc file, but this section happens on fork -- not sure how to combine the two.\n\nDo you mean I should just inline the init() function here?",
       "parentUuid": "03cb25e3_e6a03e0a",
+      "revId": "92d1c7f19bd8e98a476e3c0e6120c5edb71eba73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a31b395a_238a6adb",
+        "filename": "init/service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-06-24T22:06:37Z",
+      "side": 1,
+      "message": "grr. i wish those functions were all called Parse* instead of Handle*. i just meant \"this function is way too large, and this is making it worse; let\u0027s break this out into a new function, and then inline `init` into that new function\".",
+      "parentUuid": "c00583ff_fc95c94d",
       "revId": "92d1c7f19bd8e98a476e3c0e6120c5edb71eba73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
