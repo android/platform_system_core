@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "408c3387_50c44c46",
+        "filename": "libcutils/klog.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-06-29T23:54:41Z",
+      "side": 1,
+      "message": "There\u0027s a cross-process race here you may have made more common by calling this more often.  Maybe use a unique name so a process doesn\u0027t get EEXIST from mknod?",
+      "revId": "171a829c39d9298432505fe943ad7128aeefe2b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "408c3387_b0ded817",
+        "filename": "libcutils/klog.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-06-29T23:54:41Z",
+      "side": 1,
+      "message": "does this mean everything that links against libcutils will now open klog?  that might cause lots of selinux failures from the mknod, etc.  I\u0027m also not sure what opening klog costs in the kernel.\n\nAlso, if zygote opens this it will stay open in apps and they could abuse it.",
+      "revId": "171a829c39d9298432505fe943ad7128aeefe2b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
