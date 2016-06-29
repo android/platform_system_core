@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c09903fb_fcde4918",
+        "filename": "libcutils/klog.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-06-29T23:57:57Z",
+      "side": 1,
+      "message": "it\u0027s still only called if you actually try to log. (see below.)",
+      "parentUuid": "408c3387_50c44c46",
+      "revId": "171a829c39d9298432505fe943ad7128aeefe2b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "408c3387_b0ded817",
         "filename": "libcutils/klog.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-06-29T23:54:41Z",
       "side": 1,
       "message": "does this mean everything that links against libcutils will now open klog?  that might cause lots of selinux failures from the mknod, etc.  I\u0027m also not sure what opening klog costs in the kernel.\n\nAlso, if zygote opens this it will stay open in apps and they could abuse it.",
+      "revId": "171a829c39d9298432505fe943ad7128aeefe2b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c09903fb_5cb9fdd8",
+        "filename": "libcutils/klog.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-06-29T23:57:57Z",
+      "side": 1,
+      "message": "no, it means anyone who calls klog_writev will [in a thread-safe manner] call __open_klog if it hasn\u0027t already been called.",
+      "parentUuid": "408c3387_b0ded817",
       "revId": "171a829c39d9298432505fe943ad7128aeefe2b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
