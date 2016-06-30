@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40ea7321_e0de8218",
+        "filename": "adb/adb_auth.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-06-30T01:33:04Z",
+      "side": 1,
+      "message": "PLOG?",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 11
+      },
+      "revId": "f04023d7a754cd8d66539edd0bc0dc1e9f204a9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c047433d_2cbc13ca",
+        "filename": "adb/adb_auth.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-06-30T01:33:04Z",
+      "side": 1,
+      "message": "Are these supposed to not be called? Should they just be removed or turned into aborts?",
+      "revId": "f04023d7a754cd8d66539edd0bc0dc1e9f204a9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0202385_a4fd8274",
+        "filename": "adb/adb_auth_client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-06-30T01:33:04Z",
+      "side": 1,
+      "message": "`return RSA_verify(...) !\u003d 0;`\n\nImplicit conversion from C style 0 success to bool wasn\u0027t apparent until I\u0027d read the whole patch. Read this is looking for at least one good key rather than failing on the first bad one.\n\nSome documentation on `for_each_public_key` stating that it stops iterating if the callback returns true and returns true if stopped would be good too.",
+      "revId": "f04023d7a754cd8d66539edd0bc0dc1e9f204a9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
