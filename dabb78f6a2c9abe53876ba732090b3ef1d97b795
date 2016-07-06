@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5db89ed4_edac4db5",
+        "filename": "libcutils/canned_fs_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-07-06T16:08:57Z",
+      "side": 1,
+      "message": "NIT: headers are not sorted correctly for the Android coding standard. We need a cleanup patch for this and the tabs in the file.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "dabb78f6a2c9abe53876ba732090b3ef1d97b795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5db89ed4_6db91df4",
+        "filename": "libcutils/canned_fs_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-07-06T16:08:57Z",
+      "side": 1,
+      "message": "What about stripping leading \u0027/\u0027 to ensure that all paths are correct for the comparison, and thus allow a solitary / to denote the root directory as a bonus?\n\nstatic int path_compare(const void* a, const void* b) {\n    Path* ap \u003d a;\n    Path* bp \u003d b;\n    return strcmp(ap-\u003epath + (ap-\u003epath[0] \u003d\u003d \u0027/\u0027),\n                  bp-\u003epath + (bp-\u003epath[0] \u003d\u003d \u0027/\u0027));\n}",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 51
+      },
+      "revId": "dabb78f6a2c9abe53876ba732090b3ef1d97b795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5db89ed4_0daa6196",
+        "filename": "libcutils/canned_fs_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-07-06T16:08:57Z",
+      "side": 1,
+      "message": "NIT: For balance in the library, missing an unload_canned_fs_config to free up the associated resources. Need a cleanup patch for this.",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 43
+      },
+      "revId": "dabb78f6a2c9abe53876ba732090b3ef1d97b795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5db89ed4_2d964563",
+        "filename": "libcutils/canned_fs_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-07-06T16:08:57Z",
+      "side": 1,
+      "message": "NIT: This is a C++\u0027ism where parameters are defined in the middle where used.\n\nNeed a cleanup patch to make this \u0027C\u0027 compliant.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 38
+      },
+      "revId": "dabb78f6a2c9abe53876ba732090b3ef1d97b795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5db89ed4_edd1ad2c",
+        "filename": "libcutils/canned_fs_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-07-06T16:08:57Z",
+      "side": 1,
+      "message": "KISS to get around strtok misbehavior?\n\nbool rootdir \u003d line[0] \u003d\u003d \u0027 \u0027;\np-\u003epath \u003d strdup(rootdir ? \"\" : strtok(line, \" \"));\np-\u003euid \u003d atoi(strtok(rootdir ? line : NULL, \" \"));",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "dabb78f6a2c9abe53876ba732090b3ef1d97b795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5db89ed4_4d9b798a",
+        "filename": "libcutils/canned_fs_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-07-06T16:08:57Z",
+      "side": 1,
+      "message": "NIT: unnecessary initialization.",
+      "range": {
+        "startLine": 70,
+        "startChar": 13,
+        "endLine": 70,
+        "endChar": 21
+      },
+      "revId": "dabb78f6a2c9abe53876ba732090b3ef1d97b795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5db89ed4_8d959155",
+        "filename": "libcutils/canned_fs_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-07-06T16:08:57Z",
+      "side": 1,
+      "message": "NIT:\n\nstatic const char cap[] \u003d \"capabilities\u003d\"\n\nreplace 13 with sizeof(cap) - 1",
+      "range": {
+        "startLine": 73,
+        "startChar": 48,
+        "endLine": 73,
+        "endChar": 50
+      },
+      "revId": "dabb78f6a2c9abe53876ba732090b3ef1d97b795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5db89ed4_6d903d64",
+        "filename": "libcutils/canned_fs_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-07-06T16:08:57Z",
+      "side": 1,
+      "message": "BADNIT: Tempted ... for a later day ...\n\nwhile ((token \u003d strtok(NULL, \" \")) !\u003d NULL) {",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 18
+      },
+      "revId": "dabb78f6a2c9abe53876ba732090b3ef1d97b795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5db89ed4_cd9f8979",
+        "filename": "libcutils/canned_fs_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-07-06T16:08:57Z",
+      "side": 1,
+      "message": "Indent fubar, this entire file needs a cleanup patch to replace tabs with spaces. But that is another day.\n\nIn addition, with comment for line 41 above, this checking piece is not needed. If 41 is accepted to enhance this CL, then \"correct\" indent to tabs, we (me? mkayyash?) will use a separate followup CL to switch the file over to Android coding standard of spaces.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 58
+      },
+      "revId": "dabb78f6a2c9abe53876ba732090b3ef1d97b795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
