@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d8cca86_d6803412",
+        "filename": "include/nativebridge/native_bridge.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1104175
+      },
+      "writtenOn": "2016-07-07T06:41:46Z",
+      "side": 1,
+      "message": "Why use this instead of the legacy one? I remembered you want use it to verify if a library is accessible in one namespace once, is it?\n\nThe legacy one is just to verify Machine type of a .so. If the .so should be loaded by native bridge (arm library on x86 devices for example), the needs_native_bridge will be set, and native bridge is responsible for this library instead of dynamic linker. I think we should keep it.",
+      "range": {
+        "startLine": 231,
+        "startChar": 9,
+        "endLine": 231,
+        "endChar": 24
+      },
+      "revId": "f6ecf11258185671e0e0189104629000d114ca2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdc43ad3_24dd32eb",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1104175
+      },
+      "writtenOn": "2016-07-07T06:41:46Z",
+      "side": 1,
+      "message": "NativeBridge cannot determinate whether itself should start on a app library path.",
+      "range": {
+        "startLine": 149,
+        "startChar": 25,
+        "endLine": 149,
+        "endChar": 48
+      },
+      "revId": "f6ecf11258185671e0e0189104629000d114ca2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdc43ad3_64fe0a3b",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1104175
+      },
+      "writtenOn": "2016-07-07T06:41:46Z",
+      "side": 1,
+      "message": "By this design, a namespace uses NativeBridge or not?\nI understand you want the library of an application is pure one ABI. We are the same.\n\nBut, Android is so diverse, there are many apps packed x86 \u0026 arm library together and declare itself as an x86 app. And there are other apps dynamically download x86 library but declare itself as a ARM app.\nBy this new \"IsSupport/namespace\" design, these apps cannot be compatible with Intel devices. Maybe we can follow the original design \"check if nativebridge is needed library by library?\"\n\nAnd, can we bridge the namespace of nativebridge and linker? We really need a way to handle the cases talked above.\nWe hate these apps much more than you guys, trust me. but we cannot persuade them to develop decent apps.... :(",
+      "range": {
+        "startLine": 152,
+        "startChar": 26,
+        "endLine": 152,
+        "endChar": 42
+      },
+      "revId": "f6ecf11258185671e0e0189104629000d114ca2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdc43ad3_44494ea5",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1104175
+      },
+      "writtenOn": "2016-07-07T06:41:46Z",
+      "side": 1,
+      "message": "I think NativeBridgeInitNamespace should always be called.\n\nAs far as I understand, InitPublicNamespace() can be called when:\n1. app is just started, dex loaded by Android, and ApplicationLoader calls into NativeLoader.\n2. app uses DexClassLoader, the classloader namespace is not created since the loading of this dex is not by ApplicationLoader. In this dex java code, app System.loadLibrary() and finally call into NativeLoader, and  namespace for new dex\u0027s classloader has not been created, so create classloader in OpenNativeLibrary().\n\nFor the first one, the path is library path of app. NativeBridge cannot determine whether the app needs it in app startup stage.\nFor the second one(we won\u0027t expect it here right?), the path is a library path, seems ok.\n\nI think that, InitNamespaces is just like let NativeBridge turn into a mode such that it could well handle library loading. I suggest let namespace of NativeBridge always init. This only actually happens on Intel devices which really equipped with nativebridge implementation.",
+      "range": {
+        "startLine": 302,
+        "startChar": 9,
+        "endLine": 302,
+        "endChar": 25
+      },
+      "revId": "f6ecf11258185671e0e0189104629000d114ca2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdc43ad3_a4ef628c",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1104175
+      },
+      "writtenOn": "2016-07-07T06:41:46Z",
+      "side": 1,
+      "message": "Is it NativeBridgeGetError() here?",
+      "range": {
+        "startLine": 454,
+        "startChar": 19,
+        "endLine": 454,
+        "endChar": 26
+      },
+      "revId": "f6ecf11258185671e0e0189104629000d114ca2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdc43ad3_849fc61d",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1104175
+      },
+      "writtenOn": "2016-07-07T06:41:46Z",
+      "side": 1,
+      "message": "NativeBridge v3 has NativeBridgeUnloadLibrary() now. NativeLoader can call it to unload a library when necessary.",
+      "range": {
+        "startLine": 477,
+        "startChar": 5,
+        "endLine": 477,
+        "endChar": 23
+      },
+      "revId": "f6ecf11258185671e0e0189104629000d114ca2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
