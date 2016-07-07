@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fd26b29b_663e2eaa",
+        "filename": "include/nativebridge/native_bridge.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2016-07-07T17:09:41Z",
+      "side": 1,
+      "message": "mostly because host linker does not support namespaces...",
+      "parentUuid": "fd3dd29f_8e425b2f",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 18
+      },
+      "revId": "f6ecf11258185671e0e0189104629000d114ca2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd3dd29f_0e2cab8b",
         "filename": "include/nativebridge/native_bridge.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-07-07T16:36:24Z",
       "side": 1,
       "message": "I assume all libraries? What if only one is not supported? Document",
+      "range": {
+        "startLine": 230,
+        "startChar": 15,
+        "endLine": 230,
+        "endChar": 24
+      },
+      "revId": "f6ecf11258185671e0e0189104629000d114ca2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd26b29b_66b0ee53",
+        "filename": "include/nativebridge/native_bridge.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2016-07-07T17:09:41Z",
+      "side": 1,
+      "message": "well - what if app has 1 corrupted library which is never loaded?",
+      "parentUuid": "fd3dd29f_0e2cab8b",
       "range": {
         "startLine": 230,
         "startChar": 15,
@@ -107,6 +155,30 @@
       "side": 1,
       "message": "Yea, it looks a bit redundant. Any reason to not use the old one?",
       "parentUuid": "3d8cca86_d6803412",
+      "range": {
+        "startLine": 231,
+        "startChar": 9,
+        "endLine": 231,
+        "endChar": 24
+      },
+      "revId": "f6ecf11258185671e0e0189104629000d114ca2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd26b29b_86940ab3",
+        "filename": "include/nativebridge/native_bridge.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2016-07-07T17:09:41Z",
+      "side": 1,
+      "message": "the old one assumes path to an actual library. Changing expected behavior and parameter of already exiting function did not seem right to me (even though parameter has the same c++ type - the actual type is different)",
+      "parentUuid": "3d2daa77_a8f55b22",
       "range": {
         "startLine": 231,
         "startChar": 9,
@@ -211,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "fd26b29b_06a9faf4",
+        "filename": "include/nativebridge/native_bridge.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2016-07-07T17:09:41Z",
+      "side": 1,
+      "message": "for example - currently everything under /data is permitted.",
+      "parentUuid": "3dd12a8d_c830af91",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 75
+      },
+      "revId": "f6ecf11258185671e0e0189104629000d114ca2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd787271_9638cc94",
         "filename": "libnativebridge/native_bridge.cc",
         "patchSetId": 2
@@ -222,6 +318,30 @@
       "writtenOn": "2016-07-07T16:36:24Z",
       "side": 1,
       "message": "where is this coming from? Did you delete the arg by mistake?",
+      "range": {
+        "startLine": 158,
+        "startChar": 6,
+        "endLine": 158,
+        "endChar": 15
+      },
+      "revId": "f6ecf11258185671e0e0189104629000d114ca2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd26b29b_e67a1e58",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2016-07-07T17:09:41Z",
+      "side": 1,
+      "message": "I am not sure what happened here - this is coming from ps1",
+      "parentUuid": "fd787271_9638cc94",
       "range": {
         "startLine": 158,
         "startChar": 6,
@@ -268,6 +388,30 @@
       "writtenOn": "2016-07-07T16:36:24Z",
       "side": 1,
       "message": "Looks a bit odd to me. You could get away with a single void* and get_as_native_bridge_ns() and get_as_android_ns() together with some extra checks.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 47
+      },
+      "revId": "f6ecf11258185671e0e0189104629000d114ca2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd26b29b_e6f5beef",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2016-07-07T17:09:41Z",
+      "side": 1,
+      "message": "I would like to avoid static/reinterpret_casts...\n\nI will need a flag anyways.. I was considering flag + union but it effectively is a hidden reinterpret_cast\u003c\u003e so I went with explicit pointer types.",
+      "parentUuid": "5d36dec8_c9c7f1a4",
       "range": {
         "startLine": 75,
         "startChar": 0,
@@ -551,6 +695,30 @@
       "side": 1,
       "message": "Where? You mean UnloadNativeBridge? That\u0027s only for the entire native bridge.",
       "parentUuid": "fd26b29b_2630b6f4",
+      "range": {
+        "startLine": 477,
+        "startChar": 5,
+        "endLine": 477,
+        "endChar": 23
+      },
+      "revId": "f6ecf11258185671e0e0189104629000d114ca2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd26b29b_86cdeaca",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2016-07-07T17:09:41Z",
+      "side": 1,
+      "message": "You are right - I forgot to add it - done.",
+      "parentUuid": "fd787271_565714b8",
       "range": {
         "startLine": 477,
         "startChar": 5,
