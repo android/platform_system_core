@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba144089_7f5e0861",
+        "filename": "libziparchive/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-07-13T03:13:49Z",
+      "side": 1,
+      "message": "The makefile doesn\u0027t include a shared version of libziparchive, and with static libraries don\u0027t differentiate between shared_libs and static_libs. So to behave the same as make:\n\n  static_libs: [\"libutils\"],\n  shared_libs: [\"liblog\", \"libbase\"],\n  target: {\n    android: {\n      shared_libs: [\"libz\"],\n    },\n    host: {\n      shared_libs: [\"libz-host\"],\n    },\n  },\n\nThis would be better if we could combine the libz and libz-host modules, and just change the shared library name with stem, but that wouldn\u0027t work with Make.\n\nBut this should work too -- we just may not share libz with other libraries in the process, or include libz-host.so when it isn\u0027t necessary.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 38
+      },
+      "revId": "c40391225f1291ece47812c367bc76bf62a30112",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
