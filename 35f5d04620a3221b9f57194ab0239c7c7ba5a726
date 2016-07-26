@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8f601d1d_19d0cb22",
+        "filename": "init/action.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-07-26T22:50:17Z",
+      "side": 1,
+      "message": "my plan in the next change is to add a kernel logger to android::base and switch to that. then all the references to the \u003ccutils/klog.h\u003e can disappear. (this isn\u0027t the only one.)",
+      "parentUuid": "8f601d1d_93415c94",
+      "revId": "35f5d04620a3221b9f57194ab0239c7c7ba5a726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf22159a_550ecc3e",
         "filename": "init/log.cpp",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2016-07-26T17:11:54Z",
       "side": 1,
       "message": "Is one of these meant to be \"NOTICE\"? Or did you intend to remove it altogether?",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 46
+      },
+      "revId": "35f5d04620a3221b9f57194ab0239c7c7ba5a726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f601d1d_f9ffcf98",
+        "filename": "init/log.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-07-26T22:50:17Z",
+      "side": 1,
+      "message": "no, that was the bug before --- there is nothing corresponding to NOTICE in the google3 levels. i\u0027d mistakenly tried to use it as VERBOSE (which is missing in the kernel levels), not realizing that order matters. since NOTICE comes between INFO and WARNING in kernel levels, this broke comparisons.",
+      "parentUuid": "cf22159a_550ecc3e",
       "range": {
         "startLine": 29,
         "startChar": 3,
