@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ea798774_df24171a",
+        "filename": "include/nativebridge/native_bridge.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1104175
+      },
+      "writtenOn": "2016-07-26T00:57:08Z",
+      "side": 1,
+      "message": "maybe we can left it here(or return false?) and use the NativeBridgeIsPathSupported() of v3?",
+      "parentUuid": "ea798774_1c44dda0",
+      "revId": "22f7bc4ffdb504979ef4f2a9f1637b53128f90b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea798774_fc4e41c3",
         "filename": "libnativebridge/native_bridge.cc",
         "patchSetId": 7
@@ -30,6 +48,47 @@
       "writtenOn": "2016-07-25T22:57:31Z",
       "side": 1,
       "message": "This check seems redundant - isCompatibleWith checks for callback !\u003d nullptr.",
+      "revId": "22f7bc4ffdb504979ef4f2a9f1637b53128f90b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea798774_1fc12f2a",
+        "filename": "libnativebridge/native_bridge.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1104175
+      },
+      "writtenOn": "2016-07-26T00:57:08Z",
+      "side": 1,
+      "message": "maybe we can use isCompatibleWith() for all? however, the comments said:\n      // Two failure conditions: could not find library (dlopen failed), or could not find native\n      // bridge interface (dlsym failed). Both are an error and close the native bridge.\n\nmaybe we can just leave it here.",
+      "parentUuid": "ea798774_fc4e41c3",
+      "revId": "22f7bc4ffdb504979ef4f2a9f1637b53128f90b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea798774_df725716",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1104175
+      },
+      "writtenOn": "2016-07-26T00:57:08Z",
+      "side": 1,
+      "message": "this is where the legacy NativeBridgeIsSupported() is used.\n\nHowever, i am curious if nativeloader still handles library loading in non-app-mode(ifndef ANDROID). what\u0027s the scenario of art calls nativeloader in non-app-mode, for a test purpose? if JNI is involved in such scenario?",
+      "range": {
+        "startLine": 465,
+        "startChar": 8,
+        "endLine": 465,
+        "endChar": 31
+      },
       "revId": "22f7bc4ffdb504979ef4f2a9f1637b53128f90b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
