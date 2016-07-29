@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f6689d2_74ca4846",
+        "filename": "adb/sysdeps/stat_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-07-29T21:20:43Z",
+      "side": 1,
+      "message": "Your comment makes me wonder if it would be a good idea to have a test that calls stat() with a trailing slash/backslash, to a path that doesn\u0027t exist and then check errno. Thoughts? Overkill?",
+      "revId": "17a0727c01379e7707ef62eccef54eb2b35338e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f6689d2_b4a6a0a9",
+        "filename": "adb/sysdeps/win32/stat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-07-29T21:20:43Z",
+      "side": 1,
+      "message": "Does this error code make sense for a fail to convert a UTF8 string? UTF8ToWide() already sets errno to EILSEQ or EINVAL on failure.",
+      "range": {
+        "startLine": 43,
+        "startChar": 8,
+        "endLine": 43,
+        "endChar": 23
+      },
+      "revId": "17a0727c01379e7707ef62eccef54eb2b35338e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f6689d2_54b8e4c2",
+        "filename": "adb/sysdeps/win32/stat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2016-07-29T21:20:43Z",
+      "side": 1,
+      "message": "Why the temp var? Because you don\u0027t want *s to be set to bogus stuff in the ENOTDIR case? If so, ok.",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 23
+      },
+      "revId": "17a0727c01379e7707ef62eccef54eb2b35338e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
