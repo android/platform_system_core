@@ -73,6 +73,99 @@
     },
     {
       "key": {
+        "uuid": "d97e679c_7be5170f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-08-05T21:05:05Z",
+      "side": 1,
+      "message": "The title needs to be accurate and succinct (eg: \u003c70 characters).\n\nThe replacement title will likely read:\n\nlogcat: -d, -t or -L, along with -f, do not set background cgroup\n\nThe body of the message describes why we are doing this, and can be as wordy as necessary to get the point across.\n\nI said formerly ;-}, as in before this CL.\n\nIn the current code -f sets the global filename, and thus the whole process goes to background cgroup, batch scheduling and process priority regardless of which other flags are used.\n\nThe change is that if one uses any one or more of the -d, -t and -L flags in any combination, and also one specifies the -f flag, that we will _not_ go into the background cgroup (and thus _not_ cause a priority inversion).",
+      "parentUuid": "d97e679c_1b81835e",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "7964ec6ad1a807993b0aeed29a653e5642308fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d97e679c_dec77910",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-08-05T21:05:05Z",
+      "side": 1,
+      "message": "process cgroup",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "7964ec6ad1a807993b0aeed29a653e5642308fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d97e679c_5edda9d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-08-05T21:05:05Z",
+      "side": 1,
+      "message": "content and we are pushing that content to the logrotate set of files.",
+      "range": {
+        "startLine": 11,
+        "startChar": 59,
+        "endLine": 11,
+        "endChar": 66
+      },
+      "revId": "7964ec6ad1a807993b0aeed29a653e5642308fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d97e679c_fec4b50d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-08-05T21:05:05Z",
+      "side": 1,
+      "message": "place ourselves into the background cgroup",
+      "range": {
+        "startLine": 11,
+        "startChar": 18,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "7964ec6ad1a807993b0aeed29a653e5642308fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d97e679c_d580bc2a",
         "filename": "logcat/logcat.cpp",
         "patchSetId": 2
@@ -137,6 +230,53 @@
         "startChar": 0,
         "endLine": 239,
         "endChar": 45
+      },
+      "revId": "7964ec6ad1a807993b0aeed29a653e5642308fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d97e679c_3b9a3f68",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-08-05T21:05:05Z",
+      "side": 1,
+      "message": "Will setupOutputAndPolicy(bool blocking) and setupOutputAndPolicy(mode \u0026 ANDROID_LOG_NONBLOCK) make you happier for this moment? If not, I will split it.\n\nSplitting this into two functions is clearer from one maintenance perspective, but the pair of functions would _still_ need to be called in tight sequence; moving one or the other around (and if you look at the patch set in this series, this is happening) and thus introduces maintenance risk. As soon as we consider opening the output file, we want to drop to background cgroup.\n\nI may wish to reconsider this, maybe it is better to set the priority just before we _really_ start reading, rather than when we decide to open the output file for writing? (my answer will come when I respin this CL in the patch series)\n\nThe background cgroup policy is closely tied to where/what the input is coming from and where the output is going, and controls the flow rate of the input and output.\n\nFYI the mode argument is actually representing the _input_ mode.",
+      "parentUuid": "d97e679c_db4c6b9e",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 45
+      },
+      "revId": "7964ec6ad1a807993b0aeed29a653e5642308fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d97e679c_9b88331f",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-08-05T21:05:05Z",
+      "side": 1,
+      "message": "ToDo: We should switch to using libminijail, except that is _new_ and not in N,",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 9
       },
       "revId": "7964ec6ad1a807993b0aeed29a653e5642308fd1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
