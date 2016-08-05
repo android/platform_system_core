@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d97e679c_d8b8f1c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-08-05T19:23:47Z",
+      "side": 1,
+      "message": "Will add a comma after -L to group the list linguistically.\n\nFormerly -f would \u0027blindly\u0027 go into background regardless of any other flags. This was done because we would coalesce continuing content in batches, and make sure that while writing logrotate content we do not use up enough cpu cycles to affect foreground activities. As new log content arrives, we limit our wakeups to process the content.\n\nHowever, -d, -t and -L all result in a terminate content, in that logcat does not continue to sit around waiting for new content, it stops once it hits the end.\n\nIn these cases we get better behavior from logcat if we are in the foreground cgroup.",
+      "parentUuid": "d97e679c_15395487",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "7964ec6ad1a807993b0aeed29a653e5642308fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d97e679c_d580bc2a",
         "filename": "logcat/logcat.cpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-05T17:31:07Z",
       "side": 1,
       "message": "I don\u0027t like this part, but this is not your fault. You\u0027re a victim because the function signature has to changed for a not-so-obvious reason.\n\nThis is setting the priority of the process, without anything to do with the output. IMO this could have been taken outside to form a function of its own.",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 45
+      },
+      "revId": "7964ec6ad1a807993b0aeed29a653e5642308fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d97e679c_7be2f7a1",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-08-05T19:23:47Z",
+      "side": 1,
+      "message": "This is a static function, do not care if the signature changes.\n\nChecking outside means that the caller also needs to understand the meanings of g_outputFileName. The policy for output remains here.\n\nThe eventual goal is to remove all g_* variables and make them part of the function variables, but that is outside the scope of the fix here. This is but a first step towards that goal _perhaps_.",
+      "parentUuid": "d97e679c_d580bc2a",
       "range": {
         "startLine": 239,
         "startChar": 0,
