@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d97e679c_7e966598",
+        "filename": "logd/LogKlog.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1097918
+      },
+      "writtenOn": "2016-08-05T21:36:18Z",
+      "side": 1,
+      "message": "condition is true here, because we tested it in line 598;\nwe went through line 601 check also (and this pruved that if we made it to line 604 then (p \u003c \u0026buf[len]) in line 598 is true); this means that (isspace(*p) || !*p) condition in line 598 is false, and consequently that the opposite of it is true: (!isspace(*p) \u0026\u0026 *p) which is exactly the check in line 608.\nBut again, it is only a nit; no harmful behavior.",
+      "parentUuid": "d97e679c_fe49158b",
+      "range": {
+        "startLine": 608,
+        "startChar": 4,
+        "endLine": 608,
+        "endChar": 27
+      },
+      "revId": "6f308c4aafabe08b0ccbeca7b9c13897385be546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d97e679c_3ef6ad91",
         "filename": "logd/LogKlog.cpp",
         "patchSetId": 2
