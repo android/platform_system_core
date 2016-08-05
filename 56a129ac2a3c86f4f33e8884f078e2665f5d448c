@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d97e679c_d8c79110",
+        "filename": "logd/LogKlog.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-08-05T18:02:10Z",
+      "side": 1,
+      "message": "three of five paths need this check, the others will _break_ the parser if we check this ahead.\n\nThe optimizer will do what you are asking in that the check will set up a compiler parse tree for the three paths that need this. I want the check to be prior to the blocks that care so it is _clear_ who needs it (of course, one can view this as source of error, witness that I needed to come back and add them here ;-/)",
+      "parentUuid": "d97e679c_581861d9",
+      "range": {
+        "startLine": 666,
+        "startChar": 24,
+        "endLine": 666,
+        "endChar": 37
+      },
+      "revId": "56a129ac2a3c86f4f33e8884f078e2665f5d448c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d97e679c_3827a520",
         "filename": "logd/LogKlog.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-05T17:44:46Z",
       "side": 1,
       "message": "this could benefit from taglen \u003e size check, as well.",
+      "range": {
+        "startLine": 676,
+        "startChar": 22,
+        "endLine": 676,
+        "endChar": 39
+      },
+      "revId": "56a129ac2a3c86f4f33e8884f078e2665f5d448c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d97e679c_58b4e19a",
+        "filename": "logd/LogKlog.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-08-05T18:02:10Z",
+      "side": 1,
+      "message": "Already kind-of checked on line 634 for all, for the common good, and the check you are asking for will _break_ this path since all we care about here is that there is _one_ character left in taglen, not that taglen is greater than size.\n\nThe taglen \u003e size check is to find \u0027future tag stutter\u0027 in continuing content.",
+      "parentUuid": "d97e679c_3827a520",
       "range": {
         "startLine": 676,
         "startChar": 22,
