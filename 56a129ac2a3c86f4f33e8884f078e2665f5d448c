@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d97e679c_98427946",
+        "filename": "logd/LogKlog.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1097918
+      },
+      "writtenOn": "2016-08-05T18:17:17Z",
+      "side": 1,
+      "message": "if you read all the buffer here and \u0027]\u0027 is not found, you might break the outer cycle logic:\ne.g. taglen could be zero here; or *et could be zero.\nboth are unconditionally modified in outer cycle increment-statement.",
+      "range": {
+        "startLine": 620,
+        "startChar": 15,
+        "endLine": 623,
+        "endChar": 16
+      },
+      "revId": "56a129ac2a3c86f4f33e8884f078e2665f5d448c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d97e679c_581861d9",
         "filename": "logd/LogKlog.cpp",
         "patchSetId": 1
@@ -84,6 +107,30 @@
       "side": 1,
       "message": "Already kind-of checked on line 634 for all, for the common good, and the check you are asking for will _break_ this path since all we care about here is that there is _one_ character left in taglen, not that taglen is greater than size.\n\nThe taglen \u003e size check is to find \u0027future tag stutter\u0027 in continuing content.",
       "parentUuid": "d97e679c_3827a520",
+      "range": {
+        "startLine": 676,
+        "startChar": 22,
+        "endLine": 676,
+        "endChar": 39
+      },
+      "revId": "56a129ac2a3c86f4f33e8884f078e2665f5d448c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d97e679c_3886c577",
+        "filename": "logd/LogKlog.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1097918
+      },
+      "writtenOn": "2016-08-05T18:17:17Z",
+      "side": 1,
+      "message": "line 634 only checks for taglen \u003e 0; this check guarantees that there is at least one byte available to parse;\nhere, you looking ahead of current pointer by size bytes without making sure you have that much; this creates a buffer overread condition.",
+      "parentUuid": "d97e679c_58b4e19a",
       "range": {
         "startLine": 676,
         "startChar": 22,
