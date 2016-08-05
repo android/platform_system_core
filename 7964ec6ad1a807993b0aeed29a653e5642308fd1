@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "d97e679c_696a2d22",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1116123
+      },
+      "writtenOn": "2016-08-05T22:19:24Z",
+      "side": 1,
+      "message": "\u003e Will setupOutputAndPolicy(bool blocking) and setupOutputAndPolicy(mode\n \u003e \u0026 ANDROID_LOG_NONBLOCK) make you happier for this moment? If not, I\n \u003e will split it.\n\nNot really. But I don\u0027t think this part is super important either. So adding a TODO will probably make me the happiest. :)\n\n \u003e \n \u003e Splitting this into two functions is clearer from one maintenance\n \u003e perspective, but the pair of functions would _still_ need to be\n \u003e called in tight sequence; moving one or the other around (and if\n \u003e you look at the patch set in this series, this is happening) and\n \u003e thus introduces maintenance risk. As soon as we consider opening\n \u003e the output file, we want to drop to background cgroup.\n\nIn that case we\u0027re creating the freedom and we\u0027re making a conscientious choice to group the calls together, rather than being forced to lump them.\n\n \u003e \n \u003e I may wish to reconsider this, maybe it is better to set the\n \u003e priority just before we _really_ start reading, rather than when we\n \u003e decide to open the output file for writing? (my answer will come\n \u003e when I respin this CL in the patch series)\n \u003e \n \u003e The background cgroup policy is closely tied to where/what the\n \u003e input is coming from and where the output is going, and controls\n \u003e the flow rate of the input and output.\n \u003e \n \u003e FYI the mode argument is actually representing the _input_ mode.\n\nYes. This part is clear. I\u0027m not complaining about output isn\u0027t accepting mode.",
+      "parentUuid": "d97e679c_3b9a3f68",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 45
+      },
+      "revId": "7964ec6ad1a807993b0aeed29a653e5642308fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d97e679c_9b88331f",
         "filename": "logcat/logcat.cpp",
         "patchSetId": 2
