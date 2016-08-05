@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d97e679c_1b81835e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1116123
+      },
+      "writtenOn": "2016-08-05T20:14:36Z",
+      "side": 1,
+      "message": "Not seeing -f going to background in the code. You said \"formally\" so does it mean it used to be that way in the past?\n\nNow it seems to me we\u0027re mentioning -d and -t to have a description of the overall status right now, and at the same time we\u0027re mentioning -f to get a sense of what\u0027s been changing.\n\nI think either the description can focus on the current status, or the delta since the last commit. For the former, I\u0027d just say -d -t and -L won\u0027t go into background. For the latter, I\u0027d say switching -L to foreground to keep up with -d and -t.\n\nSorry about the nit-picking here. :)",
+      "parentUuid": "d97e679c_d8b8f1c3",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "7964ec6ad1a807993b0aeed29a653e5642308fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d97e679c_d580bc2a",
         "filename": "logcat/logcat.cpp",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "This is a static function, do not care if the signature changes.\n\nChecking outside means that the caller also needs to understand the meanings of g_outputFileName. The policy for output remains here.\n\nThe eventual goal is to remove all g_* variables and make them part of the function variables, but that is outside the scope of the fix here. This is but a first step towards that goal _perhaps_.",
       "parentUuid": "d97e679c_d580bc2a",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 45
+      },
+      "revId": "7964ec6ad1a807993b0aeed29a653e5642308fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d97e679c_db4c6b9e",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1116123
+      },
+      "writtenOn": "2016-08-05T20:14:36Z",
+      "side": 1,
+      "message": "\u003e This is a static function, do not care if the signature changes.\n\nThis is true. Signature change is the end result. Regardless of that I don\u0027t think this is written cleanly. What I don\u0027t like is it\u0027s not like the output will be any different when mode changes. The output only depends on the file name. Scheduling depends on both the file name and mode. It\u0027s only this common dependency on the file name that holds these two parts together in this one function. And the function name doesn\u0027t even reflect the scheduling.\n\n \u003e \n \u003e Checking outside means that the caller also needs to understand the\n \u003e meanings of g_outputFileName. The policy for output remains here.\n \u003e \n \u003e The eventual goal is to remove all g_* variables and make them part\n \u003e of the function variables, but that is outside the scope of the fix\n \u003e here. This is but a first step towards that goal _perhaps_.\n\nYeah. The global variables can be eliminated by passing them in the parameters. In that case eventually I hope we can say setupOutput(name); setScheduling(name, mode).\n\nFeel free to ignore this comment, as this is not introduced by you. And this is perhaps not the most important part of the code.",
+      "parentUuid": "d97e679c_7be2f7a1",
       "range": {
         "startLine": 239,
         "startChar": 0,
