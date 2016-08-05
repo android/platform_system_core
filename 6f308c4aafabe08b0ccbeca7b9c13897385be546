@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d97e679c_fe49158b",
+        "filename": "logd/LogKlog.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-08-05T21:26:02Z",
+      "side": 1,
+      "message": "Not if the buffer is prematurely empty (*p is a nul) or rather if the dmesg contains an embedded nul (we had this coming from a partner kernel).\n\nWill also skip out if the character is a newline, which happens _often_ in vendor code that wants to make itself _loud_ by adding a bunch of empty lines. We do not care to log that noise.",
+      "parentUuid": "d97e679c_7e8185f6",
+      "range": {
+        "startLine": 608,
+        "startChar": 4,
+        "endLine": 608,
+        "endChar": 27
+      },
+      "revId": "6f308c4aafabe08b0ccbeca7b9c13897385be546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d97e679c_3ef6ad91",
         "filename": "logd/LogKlog.cpp",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d97e679c_de153950",
+        "filename": "logd/LogKlog.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-08-05T21:26:02Z",
+      "side": 1,
+      "message": "not sure if I want to expend yet another indent on this minor transgression, let me see if I can make this cleaner ..\n\nRegarding my use of minor transgression: The issue we have is either we progress beyond the buffer bounds until we hit a protective page boundary, or we don\u0027t and then scribble a large swath of buffer-beyond-bounds into an output. So this is a minor transgression as it will trigger neither of these catastrophic behaviors; but it can cause corrupted output content.",
+      "parentUuid": "d97e679c_3ef6ad91",
+      "range": {
+        "startLine": 632,
+        "startChar": 12,
+        "endLine": 632,
+        "endChar": 22
+      },
+      "revId": "6f308c4aafabe08b0ccbeca7b9c13897385be546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d97e679c_1efbb169",
         "filename": "logd/LogKlog.cpp",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2016-08-05T20:54:50Z",
       "side": 1,
       "message": "the only guarantee here about size is \"size \u003e 0\".\nthe code below makes certain assumptions about size, without proving them. Calculating (size - 5) may render unwanted results if size is \u003c 5.",
+      "range": {
+        "startLine": 638,
+        "startChar": 12,
+        "endLine": 638,
+        "endChar": 34
+      },
+      "revId": "6f308c4aafabe08b0ccbeca7b9c13897385be546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d97e679c_be1cfd77",
+        "filename": "logd/LogKlog.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-08-05T21:26:02Z",
+      "side": 1,
+      "message": "Yes, we need to check if size \u003e 5 ...",
+      "parentUuid": "d97e679c_1efbb169",
       "range": {
         "startLine": 638,
         "startChar": 12,
