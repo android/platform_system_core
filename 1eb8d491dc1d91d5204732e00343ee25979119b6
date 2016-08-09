@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "799bbb7c_b52fea3a",
+        "filename": "include/utils/RefBase.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-08-09T22:24:41Z",
+      "side": 1,
+      "message": "Fixed the wording as you suggested.\n\nIt\u0027s used fairly frequently when logging, and that probably make sense. I found one non-debugging/logging use and filed b/30261110.",
+      "parentUuid": "990eaf7b_23912a9f",
+      "range": {
+        "startLine": 121,
+        "startChar": 67,
+        "endLine": 121,
+        "endChar": 75
+      },
+      "revId": "1eb8d491dc1d91d5204732e00343ee25979119b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "990eaf7b_4390a697",
         "filename": "include/utils/RefBase.h",
         "patchSetId": 4
@@ -82,6 +106,30 @@
       "writtenOn": "2016-08-09T09:12:28Z",
       "side": 1,
       "message": "I had to go look at the implementation to understand what attemptIncStrong was doing. It isn\u0027t pretty :(.\n\nI think you\u0027ve written this as clearly as possible. However, I\u0027d suggest adding an additional warning here that this is not for general purpose use ? I don\u0027t really think this is a common use case.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 28
+      },
+      "revId": "1eb8d491dc1d91d5204732e00343ee25979119b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3914e3d3_d80b8d27",
+        "filename": "include/utils/RefBase.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-08-09T22:24:41Z",
+      "side": 1,
+      "message": "I made an attempt to better express this. I think everything except promote() is very special purpose. Promote() should really be the standard way to access the object referenced by a wp\u003c\u003e.",
+      "parentUuid": "990eaf7b_4390a697",
       "range": {
         "startLine": 132,
         "startChar": 0,
