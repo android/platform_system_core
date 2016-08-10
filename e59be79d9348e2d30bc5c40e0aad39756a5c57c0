@@ -213,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "39cea3f0_c8dc2f15",
+        "filename": "libutils/RefBase.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2016-08-10T08:32:05Z",
+      "side": 1,
+      "message": "Yeah, my guess was this was unintentional behaviour that we\u0027re now somewhat stuck with. I agree with your other two points.",
+      "parentUuid": "3914e3d3_1b2a5f83",
+      "range": {
+        "startLine": 517,
+        "startChar": 11,
+        "endLine": 525,
+        "endChar": 69
+      },
+      "revId": "e59be79d9348e2d30bc5c40e0aad39756a5c57c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "799bbb7c_55687ec5",
         "filename": "libutils/RefBase.cpp",
         "patchSetId": 5
@@ -295,6 +319,30 @@
       "side": 1,
       "message": "I also just had this discussion with bdc.\n\nOne of the others is go/aog/253530, which is just a +2 away from disappearing.\n\nThe other(s) would be much easier to track down once I got rid of the aapt issue. They only result in occasional messages.\n\nFixing the aapt case would involve heap allocating an object that is currently stack allocated. I seemed to get on the order of half a dozen log messages per aapt invocation, so I doubt that changing this is a measurable performance issue. If there is consensus that\u0027s the right thing to do, I can upload a CL and track down the others. I wouldn\u0027t mind, but it seemed potentially more controversial than the rest.",
       "parentUuid": "990eaf7b_a357dace",
+      "range": {
+        "startLine": 713,
+        "startChar": 23,
+        "endLine": 713,
+        "endChar": 74
+      },
+      "revId": "e59be79d9348e2d30bc5c40e0aad39756a5c57c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99a5cf1d_0bb63dd6",
+        "filename": "libutils/RefBase.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2016-08-10T08:32:05Z",
+      "side": 1,
+      "message": "re: go/oag/253530, i\u0027ve tried to move things along. I will +2 it if the owners don\u0027t look.\n\nI\u0027ve found that many of them ignore aosp changes for the most part and i\u0027ve often had to send them a change internally or nag them over IM / email to get them to look.\n\nMy vote is for fixing the aapt issue and tracking down the others.",
+      "parentUuid": "3914e3d3_5b7bf786",
       "range": {
         "startLine": 713,
         "startChar": 23,
