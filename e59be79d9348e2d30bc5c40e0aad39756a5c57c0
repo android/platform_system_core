@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3914e3d3_3bf5e3e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-08-10T00:05:59Z",
+      "side": 1,
+      "message": "See b/30292538 for one.  I also generated some, now abandoned, CLs that make the offending wp constructor explicit. There are a bunch of cases in which weak pointers\nare implicitly generated in constructors. go/aog/251984 contains most of the changes required for that experiment.\nThreads.cpp is an interesting sample.\n\nThis convinced me that we really do not want to have weak pointer construction and destruction impact object lifetime.  (It still does for Binder proxies, but the damage there appears to be well-contained.)",
+      "parentUuid": "990eaf7b_6367a2c0",
+      "range": {
+        "startLine": 15,
+        "startChar": 54,
+        "endLine": 16,
+        "endChar": 56
+      },
+      "revId": "e59be79d9348e2d30bc5c40e0aad39756a5c57c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "799bbb7c_35e21aa1",
         "filename": "libutils/RefBase.cpp",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-09T21:11:26Z",
       "side": 1,
       "message": "Why not abort if we plan to forbidden this? Logging is likely to be neglected.",
+      "range": {
+        "startLine": 86,
+        "startChar": 11,
+        "endLine": 86,
+        "endChar": 62
+      },
+      "revId": "e59be79d9348e2d30bc5c40e0aad39756a5c57c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3914e3d3_7b783b89",
+        "filename": "libutils/RefBase.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-08-10T00:05:59Z",
+      "side": 1,
+      "message": "This comment is not currently accurate, and got left in by mistake. See the discussion below. We may want to make it correct again.",
+      "parentUuid": "799bbb7c_35e21aa1",
       "range": {
         "startLine": 86,
         "startChar": 11,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "3914e3d3_bb301305",
+        "filename": "libutils/RefBase.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-08-10T00:05:59Z",
+      "side": 1,
+      "message": "I attempted to make this clearer. The destructor does not delete mRefs unless the strong count is INITIAL_STRONG_VALUE, which is impossible, since we just decremented it for the last time.",
+      "parentUuid": "990eaf7b_e3d0b24e",
+      "range": {
+        "startLine": 440,
+        "startChar": 15,
+        "endLine": 440,
+        "endChar": 49
+      },
+      "revId": "e59be79d9348e2d30bc5c40e0aad39756a5c57c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "990eaf7b_03722e7e",
         "filename": "libutils/RefBase.cpp",
         "patchSetId": 5
@@ -105,6 +177,30 @@
       "writtenOn": "2016-08-09T12:10:09Z",
       "side": 1,
       "message": ":(",
+      "range": {
+        "startLine": 517,
+        "startChar": 11,
+        "endLine": 525,
+        "endChar": 69
+      },
+      "revId": "e59be79d9348e2d30bc5c40e0aad39756a5c57c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3914e3d3_1b2a5f83",
+        "filename": "libutils/RefBase.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-08-10T00:05:59Z",
+      "side": 1,
+      "message": "Agreed this is not perfect. But:\n\n- We have better tools for debugging leaks than heap corruption.\n\n- If this indeed ever happens, I think it is far more likely the new version is correct. There is some amount of code that acquires a weak pointer in the constructor (sometimes silently, since the wp constructor is not explicit), and I can\u0027t analyze the code sufficiently to ensure it always outlives the constructor, though it usually does. If the ALOGW is executed, it is likely to be in such a race scenario, where the new behavior is correct.\n\n- Based on the recollection of the original authors of this code, the current behavior appears to have been unintentional.",
+      "parentUuid": "990eaf7b_03722e7e",
       "range": {
         "startLine": 517,
         "startChar": 11,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "3914e3d3_3b40833d",
+        "filename": "libutils/RefBase.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-08-10T00:05:59Z",
+      "side": 1,
+      "message": "Removed the part about weak references. That was preserved from the original, but I\u0027m also not sure what it was intended to mean.",
+      "parentUuid": "799bbb7c_55687ec5",
+      "range": {
+        "startLine": 706,
+        "startChar": 0,
+        "endLine": 706,
+        "endChar": 77
+      },
+      "revId": "e59be79d9348e2d30bc5c40e0aad39756a5c57c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "990eaf7b_a357dace",
         "filename": "libutils/RefBase.cpp",
         "patchSetId": 5
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "3914e3d3_5b7bf786",
+        "filename": "libutils/RefBase.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-08-10T00:05:59Z",
+      "side": 1,
+      "message": "I also just had this discussion with bdc.\n\nOne of the others is go/aog/253530, which is just a +2 away from disappearing.\n\nThe other(s) would be much easier to track down once I got rid of the aapt issue. They only result in occasional messages.\n\nFixing the aapt case would involve heap allocating an object that is currently stack allocated. I seemed to get on the order of half a dozen log messages per aapt invocation, so I doubt that changing this is a measurable performance issue. If there is consensus that\u0027s the right thing to do, I can upload a CL and track down the others. I wouldn\u0027t mind, but it seemed potentially more controversial than the rest.",
+      "parentUuid": "990eaf7b_a357dace",
+      "range": {
+        "startLine": 713,
+        "startChar": 23,
+        "endLine": 713,
+        "endChar": 74
+      },
+      "revId": "e59be79d9348e2d30bc5c40e0aad39756a5c57c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "990eaf7b_436c26a1",
         "filename": "libutils/tests/RefBase_test.cpp",
         "patchSetId": 5
@@ -174,6 +318,30 @@
       "writtenOn": "2016-08-09T12:10:09Z",
       "side": 1,
       "message": "just curious : why did you choose to have one thread that does NITERS/20 iterations instead of one racing thread per iteration ? In other words, why not move this std::thread construction \u0026 join inside the for loop ?",
+      "range": {
+        "startLine": 225,
+        "startChar": 8,
+        "endLine": 225,
+        "endChar": 39
+      },
+      "revId": "e59be79d9348e2d30bc5c40e0aad39756a5c57c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3914e3d3_1b149fef",
+        "filename": "libutils/tests/RefBase_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-08-10T00:05:59Z",
+      "side": 1,
+      "message": "It would presumably be MUCH slower. And the potentially interfering part of the code would execute much faster than the overhead of thread creation, probably making it less likely that the interesting code pieces would ever be simultaneously scheduled.\n\nThe intent here is to maximize that chance that the core of the two loops are really run on two cores at the same time.",
+      "parentUuid": "990eaf7b_436c26a1",
       "range": {
         "startLine": 225,
         "startChar": 8,
