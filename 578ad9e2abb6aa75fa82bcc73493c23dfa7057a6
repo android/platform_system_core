@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dec3ad20_706f8e93",
+        "filename": "debuggerd/tombstone.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2016-08-12T00:27:37Z",
+      "side": 1,
+      "message": "Did you verify that this is working properly for a few signals?\n\nI think this should be fine, but would want to make sure we don\u0027t screw up if the signal is not a SEGV.",
+      "range": {
+        "startLine": 188,
+        "startChar": 25,
+        "endLine": 188,
+        "endChar": 36
+      },
+      "revId": "578ad9e2abb6aa75fa82bcc73493c23dfa7057a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dec3ad20_5043721a",
+        "filename": "debuggerd/tombstone.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2016-08-12T00:27:37Z",
+      "side": 1,
+      "message": "This appears to be slightly different behavior than the old code. I believe that you can invoke the behavior where the signal is zero if you force a tombstone creation by running debuggerd \u003cPID\u003e. Did you happen to test this path?\n\nIn this case, there is no real signal, so you don\u0027t want to dump signal info.",
+      "range": {
+        "startLine": 452,
+        "startChar": 2,
+        "endLine": 452,
+        "endChar": 29
+      },
+      "revId": "578ad9e2abb6aa75fa82bcc73493c23dfa7057a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
