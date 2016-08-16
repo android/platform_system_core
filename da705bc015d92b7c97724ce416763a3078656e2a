@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "9b9b0733_1b2e5ba5",
+        "filename": "init/init.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1058768
+      },
+      "writtenOn": "2016-08-16T14:18:53Z",
+      "side": 1,
+      "message": "Sure, but you might just as well fix this instance now. You can specify a \u0027deleter\u0027 function for unique_ptr as follows:\n\n  std::unique_ptr\u003cstruct fstab, decltype(\u0026fs_mgr_free_fstab)\u003e fstab(fs_mgr_read_fstab_file(fstab_file), fs_mgr_free_fstab);\n\nAlso, checking return values for fmemopen and fs_mgr_read_fstab_file would be prudent here.",
+      "parentUuid": "9ba2277b_43a96624",
+      "range": {
+        "startLine": 501,
+        "startChar": 4,
+        "endLine": 501,
+        "endChar": 16
+      },
+      "revId": "da705bc015d92b7c97724ce416763a3078656e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ee76958_c03d3ee6",
         "filename": "init/init.cpp",
         "patchSetId": 9
