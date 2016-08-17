@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "9baf87ac_9b32cb09",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1064403
+      },
+      "writtenOn": "2016-08-17T10:13:03Z",
+      "side": 1,
+      "message": "I have resolve to this issue.",
+      "parentUuid": "1b0ab75d_0f440579",
+      "range": {
+        "startLine": 201,
+        "startChar": 65,
+        "endLine": 201,
+        "endChar": 69
+      },
+      "revId": "e9bf373ce9d2451db366c12574fcad808ce93517",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b0ab75d_ef4c219e",
         "filename": "fs_mgr/fs_mgr.c",
         "patchSetId": 2
@@ -59,6 +83,24 @@
       "writtenOn": "2016-08-16T18:12:13Z",
       "side": 1,
       "message": "Is there any way to avoid the use of tune2fs here?  Is this just modifying a field in the superblock?  If so, tune2fs seems like overkill.\n\nIs it even necessary to modify existing filesystems, or should we just do this when formatting new filesystems?",
+      "revId": "e9bf373ce9d2451db366c12574fcad808ce93517",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9baf87ac_1bf8fb13",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1064403
+      },
+      "writtenOn": "2016-08-17T10:13:03Z",
+      "side": 1,
+      "message": "tune2fs indeed to overkill, But I just to call once. If we not use tune2fs, we cannot resolve this issue on our old device.\n\nmake_ext4fs is also needs to support reserved blocks for userdata. I\u0027m developing. But other format tools may be not do thus.",
+      "parentUuid": "1b0ab75d_ef4c219e",
       "revId": "e9bf373ce9d2451db366c12574fcad808ce93517",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
