@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c849337d_046a76ba",
+        "filename": "adb/adb_auth_host.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-08-19T22:54:49Z",
+      "side": 1,
+      "message": "Oops. I had code to handle deleting keys when files were removed, but I screwed up when killing it.",
+      "parentUuid": "c849337d_a4496290",
+      "range": {
+        "startLine": 190,
+        "startChar": 20,
+        "endLine": 190,
+        "endChar": 31
+      },
+      "revId": "676d73fad9f33f1b0912e28b6a3b0e06e90908eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb27a396_2375fd90",
         "filename": "adb/adb_auth_host.cpp",
         "patchSetId": 2
@@ -110,6 +134,78 @@
         "startChar": 12,
         "endLine": 231,
         "endChar": 21
+      },
+      "revId": "676d73fad9f33f1b0912e28b6a3b0e06e90908eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c849337d_c4bd7e17",
+        "filename": "adb/adb_auth_host.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-08-19T22:54:49Z",
+      "side": 1,
+      "message": "What would we do with it? e.g. if there\u0027s a directory filled with keys, and we failed to read it, would we return false?\n\nThe only thing the return value gets used for is printing an error message during initalization, anyway, and that gets done throughout.",
+      "parentUuid": "fb27a396_e3b76539",
+      "range": {
+        "startLine": 231,
+        "startChar": 12,
+        "endLine": 231,
+        "endChar": 21
+      },
+      "revId": "676d73fad9f33f1b0912e28b6a3b0e06e90908eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c849337d_a46f22bf",
+        "filename": "adb/adb_auth_host.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-08-19T22:54:49Z",
+      "side": 1,
+      "message": "Yes, inotify doesn\u0027t work recursively and managing the logic to emulate it is copmlicated, so I think it\u0027s better to be consistent and not load keys in nested directories than load them at the start, but not monitor the nested dirs.",
+      "parentUuid": "fb27a396_43bf590f",
+      "range": {
+        "startLine": 231,
+        "startChar": 51,
+        "endLine": 231,
+        "endChar": 56
+      },
+      "revId": "676d73fad9f33f1b0912e28b6a3b0e06e90908eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c849337d_846c26cb",
+        "filename": "adb/adb_auth_host.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-08-19T22:54:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb27a396_a3800d60",
+      "range": {
+        "startLine": 231,
+        "startChar": 30,
+        "endLine": 231,
+        "endChar": 33
       },
       "revId": "676d73fad9f33f1b0912e28b6a3b0e06e90908eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
