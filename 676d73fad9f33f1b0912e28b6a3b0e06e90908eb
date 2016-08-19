@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "c849337d_c4f57eb6",
+        "filename": "adb/adb_auth_host.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-08-19T23:11:32Z",
+      "side": 1,
+      "message": "what if you read a directory at init, then read the directory again when a file is added. Then you will read keys for old files in the directory. Do you want a warning in this situation?",
+      "range": {
+        "startLine": 191,
+        "startChar": 12,
+        "endLine": 191,
+        "endChar": 19
+      },
+      "revId": "676d73fad9f33f1b0912e28b6a3b0e06e90908eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb27a396_2375fd90",
         "filename": "adb/adb_auth_host.cpp",
         "patchSetId": 2
@@ -206,6 +229,54 @@
         "startChar": 30,
         "endLine": 231,
         "endChar": 33
+      },
+      "revId": "676d73fad9f33f1b0912e28b6a3b0e06e90908eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c849337d_64412a13",
+        "filename": "adb/adb_auth_host.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-08-19T23:11:32Z",
+      "side": 1,
+      "message": "I agree, if there is no need, we don\u0027t need to support nested directories. can you add your words in comment? I didn\u0027t expect the reason is inotify doesn\u0027t support nested directory.",
+      "parentUuid": "c849337d_a46f22bf",
+      "range": {
+        "startLine": 231,
+        "startChar": 51,
+        "endLine": 231,
+        "endChar": 56
+      },
+      "revId": "676d73fad9f33f1b0912e28b6a3b0e06e90908eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c849337d_2434528b",
+        "filename": "adb/adb_auth_host.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-08-19T23:11:32Z",
+      "side": 1,
+      "message": "I think it is the caller to decide how to handle return value of read_keys(). Since read_keys() returns a bool value, we\u0027d better make it catch all error situations. As you want to continue even meeting error here, why not use `bool result` to record the failure and continue?",
+      "parentUuid": "c849337d_c4bd7e17",
+      "range": {
+        "startLine": 231,
+        "startChar": 12,
+        "endLine": 231,
+        "endChar": 21
       },
       "revId": "676d73fad9f33f1b0912e28b6a3b0e06e90908eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
