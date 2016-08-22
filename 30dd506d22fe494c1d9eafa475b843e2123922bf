@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68d2071a_a1541ecf",
+        "filename": "liblog/logd_writer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-08-22T21:47:09Z",
+      "side": 1,
+      "message": "perfect. For socket there is no \u0027open\u0027 locking checking, so this works as expected to remove the need for a subsequent fcntl.",
+      "range": {
+        "startLine": 70,
+        "startChar": 72,
+        "endLine": 70,
+        "endChar": 88
+      },
+      "revId": "30dd506d22fe494c1d9eafa475b843e2123922bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68d2071a_41eb5208",
+        "filename": "logd/tests/logd_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-08-22T21:47:09Z",
+      "side": 1,
+      "message": "There is a subtle difference with O_NONBLOCK for the open call. It will fail immediately if the referenced device is locked (exclusive or in an EBUSY state). I would prefer this remain blocking for open as a DOS attack on the kernel logger could (possibly) make this test pass and I want a positive fail.",
+      "range": {
+        "startLine": 346,
+        "startChar": 38,
+        "endLine": 346,
+        "endChar": 51
+      },
+      "revId": "30dd506d22fe494c1d9eafa475b843e2123922bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
