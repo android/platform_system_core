@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5afcaab_e1e802e5",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1609,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-08-26T23:37:20Z",
+      "side": 1,
+      "message": "This makes adb commands always go through the One True Server if one exists locally, but I seem to recall that there are people spawning multiple adb servers, each using adb connect, for automated testing purposes or something along those lines. I\u0027m not sure how we should balance that use case with the studio one, since they seem to want exactly opposite things. Maybe a switch that turns off the lockfile that also disables USB device handling?\n\nThoughts?",
+      "revId": "c25d62b4e43d5b9e445adb2a420855241eafecf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
