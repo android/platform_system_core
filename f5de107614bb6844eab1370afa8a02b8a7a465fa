@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5afcaab_84770c97",
+        "filename": "sdcard/sdcard.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-08-27T00:35:23Z",
+      "side": 1,
+      "message": "bool and flip the callers? (especially since you\u0027ve added other bool functions.)",
+      "range": {
+        "startLine": 315,
+        "startChar": 7,
+        "endLine": 315,
+        "endChar": 10
+      },
+      "revId": "f5de107614bb6844eab1370afa8a02b8a7a465fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5afcaab_6419a07c",
+        "filename": "sdcard/sdcard.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-08-27T00:35:23Z",
+      "side": 1,
+      "message": "StringPrintf would let you lose the fixed-length buffers.",
+      "revId": "f5de107614bb6844eab1370afa8a02b8a7a465fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5afcaab_0431bcee",
+        "filename": "sdcard/sdcard.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-08-27T00:35:23Z",
+      "side": 1,
+      "message": "PLOG does the strerror part for you. so just:\n\n  PLOG(ERROR) \u003c\u003c \"failed to mount sdcardfs filesystem\";\n\n(i remember it as P for perror(3).)\n\nyou might want to add the source_path and/or dest_path, though, given that you have a *lot* of calls to this function.",
+      "revId": "f5de107614bb6844eab1370afa8a02b8a7a465fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5afcaab_8445cc56",
+        "filename": "sdcard/sdcard.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-08-27T00:35:23Z",
+      "side": 1,
+      "message": "(here you don\u0027t even need StringPrintf. you can just use std::string\u0027s operator+. but StringPrintf is fine too.)",
+      "revId": "f5de107614bb6844eab1370afa8a02b8a7a465fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5afcaab_64740092",
+        "filename": "sdcard/sdcard.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-08-27T00:35:23Z",
+      "side": 1,
+      "message": "// comments",
+      "revId": "f5de107614bb6844eab1370afa8a02b8a7a465fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5afcaab_c42ab47a",
+        "filename": "sdcard/sdcard.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-08-27T00:35:23Z",
+      "side": 1,
+      "message": "oh. given L325, lose the \u0027P\u0027 here?",
+      "revId": "f5de107614bb6844eab1370afa8a02b8a7a465fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5afcaab_e487f076",
+        "filename": "sdcard/sdcard.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-08-27T00:35:23Z",
+      "side": 1,
+      "message": "or:\n\n  std::string filesystems;\n  if (!android::base::ReadFileToString(\"/proc/filesystems\")) {\n    PLOG(ERROR) \u003c\u003c \"...\";\n    return false;\n  }\n\n  for (const auto\u0026 fs : android::base::Split(filesystems, \"\\n\")) {\n    if (fs \u003d\u003d \"sdcardfs\") return true;\n  }\n  return false;",
+      "revId": "f5de107614bb6844eab1370afa8a02b8a7a465fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
