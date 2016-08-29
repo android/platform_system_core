@@ -88,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "a5afcaab_f53f9867",
+        "filename": "base/include/android-base/multiprocess.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2016-08-29T23:21:30Z",
+      "side": 1,
+      "message": "I\u0027ve gone back-and-forth on this one.  On the one hand you can shoot yourself in the foot by passing in an object that doesn\u0027t like being bitwise copied.  On the other hand send()/recv() already let you shoot yourself in the foot by doing exactly that.\n\nI\u0027m fine with removing it, or restricting it to POD types.  I\u0027m mainly interested in the fd-sharing case, where the cmsg API is kind of fiddly and IMO not all that well documented.\n\nThoughts?",
+      "parentUuid": "a5afcaab_44cea42f",
+      "revId": "7e135ada54b06c8f2a0297f9c4bad651c051c8ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5afcaab_e45b7088",
         "filename": "base/multiprocess.cpp",
         "patchSetId": 1
@@ -105,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "45836e87_4074ae91",
+        "filename": "base/multiprocess.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2016-08-29T23:21:30Z",
+      "side": 1,
+      "message": "I like Josh\u0027s idea of just implementing bool socketpair(unique_fd[2]) and pipe(unique_fd[2]), so none of these details are hidden inside a class.",
+      "parentUuid": "a5afcaab_e45b7088",
+      "revId": "7e135ada54b06c8f2a0297f9c4bad651c051c8ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5afcaab_a43b28eb",
         "filename": "base/multiprocess.cpp",
         "patchSetId": 1
@@ -116,6 +152,24 @@
       "writtenOn": "2016-08-27T00:12:34Z",
       "side": 1,
       "message": "This seems like it would be more useful to have this generally available for any unix domain socket, not just socketpairs created through this class. We have dozens of copies of this boilerplate throughout the codebase.",
+      "revId": "7e135ada54b06c8f2a0297f9c4bad651c051c8ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5afcaab_d5625cab",
+        "filename": "base/multiprocess.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2016-08-29T23:21:30Z",
+      "side": 1,
+      "message": "As in, break this method out into its own helper function, or make local_socketstream work with other kinds of sockets?\n\nIf it\u0027s the latter, there\u0027s already a constructor that just consumes a bare fd.",
+      "parentUuid": "a5afcaab_a43b28eb",
       "revId": "7e135ada54b06c8f2a0297f9c4bad651c051c8ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
