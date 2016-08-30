@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "315b2141_a724cabc",
+        "filename": "base/include/android-base/local_socket.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-08-30T20:50:29Z",
+      "side": 1,
+      "message": "Hmm, it might be better to have two arguments for this and socketpair. I think that most people are probably going to want to name each end of the pipe/socketpair.",
+      "revId": "233cea20250d3b28508b54f7cdebe4c317d3c1b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "315b2141_e7488258",
+        "filename": "base/include/android-base/local_socket.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-08-30T20:50:29Z",
+      "side": 1,
+      "message": "This seems like it needs to return ssize_t, or else you\u0027re screwed if sendmsg returns short.",
+      "range": {
+        "startLine": 44,
+        "startChar": 13,
+        "endLine": 44,
+        "endChar": 69
+      },
+      "revId": "233cea20250d3b28508b54f7cdebe4c317d3c1b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "315b2141_c76c5ec8",
+        "filename": "base/include/android-base/local_socket.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-08-30T20:50:29Z",
+      "side": 1,
+      "message": "But it doesn\u0027t tell you how long the message was?",
+      "range": {
+        "startLine": 49,
+        "startChar": 13,
+        "endLine": 49,
+        "endChar": 73
+      },
+      "revId": "233cea20250d3b28508b54f7cdebe4c317d3c1b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
