@@ -106,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "45836e87_4373d8f2",
+        "filename": "base/include/android-base/multiprocess.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-08-30T00:48:40Z",
+      "side": 1,
+      "message": "I think most people would expect \u003c\u003c to do something similar to iostreams when used in this context. Maybe rename it to something like read(void*, size_t)?",
+      "parentUuid": "a5afcaab_f53f9867",
+      "revId": "7e135ada54b06c8f2a0297f9c4bad651c051c8ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5afcaab_e45b7088",
         "filename": "base/multiprocess.cpp",
         "patchSetId": 1
@@ -159,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "45836e87_a38104af",
+        "filename": "base/multiprocess.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-08-30T00:48:40Z",
+      "side": 1,
+      "message": "You could have a flags arg that defaults to 0 for the best of both worlds.",
+      "parentUuid": "45836e87_231974d6",
+      "revId": "7e135ada54b06c8f2a0297f9c4bad651c051c8ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5afcaab_a43b28eb",
         "filename": "base/multiprocess.cpp",
         "patchSetId": 1
@@ -188,6 +224,24 @@
       "side": 1,
       "message": "As in, break this method out into its own helper function, or make local_socketstream work with other kinds of sockets?\n\nIf it\u0027s the latter, there\u0027s already a constructor that just consumes a bare fd.",
       "parentUuid": "a5afcaab_a43b28eb",
+      "revId": "7e135ada54b06c8f2a0297f9c4bad651c051c8ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45836e87_0391d0f7",
+        "filename": "base/multiprocess.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-08-30T00:48:40Z",
+      "side": 1,
+      "message": "I mean a \"sendmsg that sends FDs\" helper (and corresponding recvmsg) that does all of the CMSG junk for you. If you grep for CMSG, this exact sequence of code is everywhere.",
+      "parentUuid": "a5afcaab_d5625cab",
       "revId": "7e135ada54b06c8f2a0297f9c4bad651c051c8ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
