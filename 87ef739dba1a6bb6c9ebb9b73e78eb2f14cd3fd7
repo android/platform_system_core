@@ -87,6 +87,24 @@
       "revId": "87ef739dba1a6bb6c9ebb9b73e78eb2f14cd3fd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1c6e968_db94ab3c",
+        "filename": "adb/adb_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1010055
+      },
+      "writtenOn": "2016-08-31T21:11:08Z",
+      "side": 0,
+      "message": "Sorry, I don\u0027t know of the correct answer here. I can tell you the various places we use:\n\n1. ~/.android\n2. Android Studio itself uses the folders that vary with the platform: https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs\n\nA few months ago we had someone complaining that we are polluting the home directory, and he had a link to some authoritative linux recommendation. I\u0027ve forgotten what that was but http://www.pathname.com/fhs/pub/fhs-2.3.html seems like a possibility. That seems to give a specific recommendation for lock files: http://www.pathname.com/fhs/pub/fhs-2.3.html#VARLOCKLOCKFILES.\n\nI don\u0027t know if any of that helps, but if you start with $HOME/.android, I\u0027d be perfectly fine with that as long as you are using it specifically for tiny files. (Specifically because $HOME/.android is where we keep a uid.txt)\n\nIf you need a more specific recommendation, let me know and I can email the team.",
+      "parentUuid": "f1c6e968_f875edc1",
+      "revId": "87ef739dba1a6bb6c9ebb9b73e78eb2f14cd3fd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
