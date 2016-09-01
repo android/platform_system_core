@@ -22,6 +22,47 @@
       "revId": "b2f019ec1eb2dec1c87050dcf797cc8538d805b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d113a50f_f4ad983d",
+        "filename": "liblog/event_tag_map.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-09-01T20:30:36Z",
+      "side": 1,
+      "message": "yeah, lets us remove the close from \"fail:\" too. we should have the One True close occur after the \"if\" below, though, so we don\u0027t clobber errno...\n\n...except that has a goto fail.\n\n/me wishes this file was C++ so we could just use unique_fd...",
+      "parentUuid": "51625590_cb2889a9",
+      "range": {
+        "startLine": 91,
+        "startChar": 38,
+        "endLine": 91,
+        "endChar": 39
+      },
+      "revId": "b2f019ec1eb2dec1c87050dcf797cc8538d805b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d113a50f_94b8a481",
+        "filename": "liblog/event_tag_map.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-09-01T20:30:36Z",
+      "side": 1,
+      "message": "isn\u0027t there a bug here? MAP_FAILED !\u003d NULL, so we\u0027ll try to munmap on L122. i guess it doesn\u0027t matter because no-one checks the result of the munmap.",
+      "revId": "b2f019ec1eb2dec1c87050dcf797cc8538d805b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
