@@ -105,6 +105,24 @@
       "revId": "87ef739dba1a6bb6c9ebb9b73e78eb2f14cd3fd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71ecb90a_b46a2e14",
+        "filename": "adb/adb_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-09-01T00:49:41Z",
+      "side": 0,
+      "message": "\u003e I don\u0027t know if any of that helps, but if you start with $HOME/.android, I\u0027d be perfectly fine with that as long as you are using it specifically for tiny files. (Specifically because $HOME/.android is where we keep a uid.txt)\n\nYeah, on linux/OS X, the behavior for adbkey should be unchanged (~/.android/adbkey), and the lockfile will placed alongside it. The lockfile itself will just contain where the adb socket is (e.g. \u0027tcp:5037\u0027).\n\nThe Windows-only logic here seems like it can only cause problems. (e.g. https://code.google.com/p/android/issues/detail?id\u003d62766). Also, if ANDROID_SDK_HOME is unset, it uses the $HOME\\.android as on linux/OS X, but dotfiles aren\u0027t hidden on windows. It seems like windows users should be complaining about the home directory pollution even more :-)\n\nShould we move to using the %localappdata% path instead? It seems to be the canonical path for this kind of thing. (e.g. C:\\Users\\jmgao\\AppData\\Local\\Android\\adbkey (adb instead of Android? Google\\Android\\adb? let the bikeshedding commence))",
+      "parentUuid": "f1c6e968_db94ab3c",
+      "revId": "87ef739dba1a6bb6c9ebb9b73e78eb2f14cd3fd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
