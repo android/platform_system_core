@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51625590_cb2889a9",
+        "filename": "liblog/event_tag_map.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-09-01T19:31:06Z",
+      "side": 1,
+      "message": "If fd is no longer required, it should be closed here right after mmap(), circumventing any closes below, but worry about file closes above.\n\nclose(fd);\nfd \u003d -1;\n\nShould do the trick.",
+      "range": {
+        "startLine": 91,
+        "startChar": 38,
+        "endLine": 91,
+        "endChar": 39
+      },
+      "revId": "b2f019ec1eb2dec1c87050dcf797cc8538d805b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
