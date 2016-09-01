@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "31d32198_c7c7fe55",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-09-01T22:13:20Z",
+      "side": 1,
+      "message": "Agreed, will not use android:: if there is a std:: available.",
+      "parentUuid": "31d32198_87486613",
+      "range": {
+        "startLine": 492,
+        "startChar": 4,
+        "endLine": 492,
+        "endChar": 24
+      },
+      "revId": "39462a64eb9a224c86f12f6c930ef375e486c4f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51b5f542_f383ea5a",
         "filename": "logd/LogBuffer.cpp",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2016-09-01T21:56:33Z",
       "side": 1,
       "message": "not exactly true; \nit is called from line 836 without clear_all; and from line 857 with clear_all;\nI don\u0027t believe it breaks the logic; just a little misleading",
+      "range": {
+        "startLine": 511,
+        "startChar": 11,
+        "endLine": 511,
+        "endChar": 42
+      },
+      "revId": "39462a64eb9a224c86f12f6c930ef375e486c4f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31d32198_47ddce2c",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-09-01T22:13:20Z",
+      "side": 1,
+      "message": "Both are clearall. The assumption that pruneRows \u003d\u003d ULONG_MAX is no longer correct because of the retry logic setting it to 1 on the last pass to collect a status return value.\n\nThe logic is still correct as it will report busy, it just will not exit after one pass through the loop to quickly report busy.\n\nNeed to fix this, but not at priority (technical debt), sonot in the context of this CL.",
+      "parentUuid": "51b5f542_f383ea5a",
       "range": {
         "startLine": 511,
         "startChar": 11,
