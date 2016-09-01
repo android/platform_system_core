@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d113a50f_9446e473",
+        "filename": "liblog/event_tag_map.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-09-01T20:44:07Z",
+      "side": 1,
+      "message": "a little more complicated because on line 87 it wants us to call close in fail.\n\nerrno gets clobbered all over the place here, if we wanted to be accurate we should hold on to a save_errno after important calls calls (open, lseek, mmap \u0026 processFile()), and restore in fail path.\n\nBeyond the scope of this fix, will look into correcting that in a followup orphan\u0027d patch to AOSP for Android next.",
+      "parentUuid": "d113a50f_f4ad983d",
+      "range": {
+        "startLine": 91,
+        "startChar": 38,
+        "endLine": 91,
+        "endChar": 39
+      },
+      "revId": "b2f019ec1eb2dec1c87050dcf797cc8538d805b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d113a50f_94b8a481",
         "filename": "liblog/event_tag_map.c",
         "patchSetId": 1
@@ -60,6 +84,24 @@
       "writtenOn": "2016-09-01T20:30:36Z",
       "side": 1,
       "message": "isn\u0027t there a bug here? MAP_FAILED !\u003d NULL, so we\u0027ll try to munmap on L122. i guess it doesn\u0027t matter because no-one checks the result of the munmap.",
+      "revId": "b2f019ec1eb2dec1c87050dcf797cc8538d805b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d113a50f_d4697cf1",
+        "filename": "liblog/event_tag_map.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-09-01T20:44:07Z",
+      "side": 1,
+      "message": "Cleanliness suggests do not call munmap if mapAddr \u003d\u003d MAP_FAILED ... but it is not harmful.\n\nAs for NULL, it is supposed to be a can-not-happen, but I have checked for both as \u0027failures\u0027 in other arenas so should be done.\n\nAlso outside the scope of this CL, so will followup later.",
+      "parentUuid": "d113a50f_94b8a481",
       "revId": "b2f019ec1eb2dec1c87050dcf797cc8538d805b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
