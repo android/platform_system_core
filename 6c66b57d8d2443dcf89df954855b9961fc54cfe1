@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "8b1e5af2_49a7ada9",
+        "filename": "libsync/sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2016-09-12T22:25:02Z",
+      "side": 1,
+      "message": "You need to check fds.revents, since poll() also returns 1 when the fd had an error event.  (A trivial example is to send in a bogus fd: poll() will return 1 and set fds.revents \u003d POLLNVAL.)",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 17
+      },
+      "revId": "6c66b57d8d2443dcf89df954855b9961fc54cfe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b1e5af2_09f3f59a",
+        "filename": "libsync/sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2016-09-12T22:25:02Z",
+      "side": 1,
+      "message": "On timeout poll() returns 0, whereas ioctl(SYNC_IOC_LEGACY_WAIT) returns -1 with errno \u003d ETIME.\n\nThis causes the FenceTest.OneTimelineWait and FenceTest.MultiTimelineWait unit tests to fail, since they both deliberately wait on unfired fences with a timeout of 0.",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "6c66b57d8d2443dcf89df954855b9961fc54cfe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1691b3ce_c449b216",
         "filename": "libsync/sync.c",
         "patchSetId": 2
