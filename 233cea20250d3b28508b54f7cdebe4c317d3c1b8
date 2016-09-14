@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2b672ea1_469327a8",
+        "filename": "base/include/android-base/local_socket.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2016-09-14T21:10:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "315b2141_a724cabc",
+      "revId": "233cea20250d3b28508b54f7cdebe4c317d3c1b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "315b2141_e7488258",
         "filename": "base/include/android-base/local_socket.h",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2016-08-30T20:50:29Z",
       "side": 1,
       "message": "This seems like it needs to return ssize_t, or else you\u0027re screwed if sendmsg returns short.",
+      "range": {
+        "startLine": 44,
+        "startChar": 13,
+        "endLine": 44,
+        "endChar": 69
+      },
+      "revId": "233cea20250d3b28508b54f7cdebe4c317d3c1b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b672ea1_46eec717",
+        "filename": "base/include/android-base/local_socket.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2016-09-14T21:10:26Z",
+      "side": 1,
+      "message": "The sendmsg() documentation is incredibly vague about what happens to the control message on a short read, so I\u0027ve just removed the payload completely.  I don\u0027t see anywhere in our codebase where we use SCM_RIGHTS with anything but a bogus 1-byte payload anyway.",
+      "parentUuid": "315b2141_e7488258",
       "range": {
         "startLine": 44,
         "startChar": 13,
