@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "90bccb98_6d325100",
+        "filename": "adb/socket_spec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-09-20T02:49:33Z",
+      "side": 1,
+      "message": "No, listening on port 0 has meaning. It means \"listen on an available port\", which you can get the value of with getsockname.\n\nConnecting on port 0 is meaningless, but AFAIK we handle that properly elsewhere.",
+      "parentUuid": "90bccb98_6dbc9171",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 22
+      },
+      "revId": "c869fcc9450b49a9b21813c7771b94bbf81dd0bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90bccb98_2db69991",
         "filename": "adb/socket_spec.cpp",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "90bccb98_0d2715c1",
+        "filename": "adb/socket_spec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-09-20T02:49:33Z",
+      "side": 1,
+      "message": "See above",
+      "parentUuid": "90bccb98_2db69991",
+      "range": {
+        "startLine": 93,
+        "startChar": 48,
+        "endLine": 93,
+        "endChar": 49
+      },
+      "revId": "c869fcc9450b49a9b21813c7771b94bbf81dd0bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90bccb98_ed6881ec",
         "filename": "adb/socket_spec.cpp",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2016-09-20T02:03:12Z",
       "side": 1,
       "message": "Now this is somewhat confusing, it seems if hostname\u003d\u003d\"127.0.0.1\", we don\u0027t consider it as localhost and will go the else branch...",
+      "range": {
+        "startLine": 157,
+        "startChar": 12,
+        "endLine": 157,
+        "endChar": 29
+      },
+      "revId": "c869fcc9450b49a9b21813c7771b94bbf81dd0bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90bccb98_ad1e0966",
+        "filename": "adb/socket_spec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-09-20T02:49:33Z",
+      "side": 1,
+      "message": "Yeah, this is a hack, but it only matters for tcp reverse forwarding on the device side (i.e. connect to host and have it forwarded to connect to a port on the device), which is uncommon (and rejected connecting to localhost:1234 entirely).",
+      "parentUuid": "90bccb98_ed6881ec",
       "range": {
         "startLine": 157,
         "startChar": 12,
