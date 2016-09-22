@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "300b1fab_676c1200",
+        "filename": "base/include/android-base/properties.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-09-22T00:00:19Z",
+      "side": 1,
+      "message": "Given the recent __ANDROID__ vs __BIONIC__ cleanups, this error doesn\u0027t match the ifdef. It seems like we\u0027ll want at least a stub system properties implementation for host bionic?",
+      "range": {
+        "startLine": 21,
+        "startChar": 12,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "a8c3a9131d059c0800944815978e436304e2821a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "300b1fab_47690eee",
+        "filename": "base/properties.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-09-22T00:00:19Z",
+      "side": 1,
+      "message": "But we don\u0027t pass that on to the caller?\n\nProperties with an empty value can exist, right? If so, should this return a bool instead, denoting whether a property was found?",
+      "revId": "a8c3a9131d059c0800944815978e436304e2821a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
