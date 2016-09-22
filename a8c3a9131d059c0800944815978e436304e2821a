@@ -107,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "300b1fab_bbc57f04",
+        "filename": "base/include/android-base/properties.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-09-22T17:04:54Z",
+      "side": 1,
+      "message": "there hasn\u0027t historically been such a distinction, and i couldn\u0027t think of a case where we\u0027d need one.\n\nthe big question here does seem to be \"should we distinguish \u0027not found\u0027 from \u0027empty\u0027\", and my provisional answer there is similar (for the reason outlined on an earlier comment to jmgao: you can\u0027t delete system properties, so there isn\u0027t much of a useful distinction between \u0027not found\u0027 and \u0027empty\u0027 anyway). if anyone has examples where it would have been useful to distinguish, let me know.\n\n(we can also easily go from void -\u003e bool later; return types aren\u0027t part of the mangled name.)\n\npersonally i\u0027m actually more tempted to make SetProperty void... if you look at https://cs.corp.google.com/android/external/toybox/toys/android/setprop.c?type\u003dcs\u0026q\u003dfile:setprop.c\u0026sq\u003dpackage:%5Eandroid$\u0026l\u003d3 you\u0027ll see that a caller that cares really ends up duplicating most of the init logic anyway.\n\nnew reviewers: note that this is not the current patchset. please look at the current one (https://android-review.googlesource.com/#/c/277377/3/base/include/android-base/properties.h).",
+      "parentUuid": "d0272349_b43fc0e2",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 5
+      },
+      "revId": "a8c3a9131d059c0800944815978e436304e2821a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "300b1fab_47690eee",
         "filename": "base/properties.cpp",
         "patchSetId": 1
