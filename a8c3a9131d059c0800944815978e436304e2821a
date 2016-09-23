@@ -203,6 +203,30 @@
     },
     {
       "key": {
+        "uuid": "d06f23aa_9d57072b",
+        "filename": "base/include/android-base/properties.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-09-23T00:17:16Z",
+      "side": 1,
+      "message": "i\u0027ve changed the \"empty\" behavior to match property_get (and changed the test).\n\ni\u0027ll keep the void return for now, since we don\u0027t actually know what the init that\u0027s maintaining the properties considers valid (malchev has a change up to change that for treble right now).",
+      "parentUuid": "d06f23aa_9a61cd3f",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 5
+      },
+      "revId": "a8c3a9131d059c0800944815978e436304e2821a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "300b1fab_47690eee",
         "filename": "base/properties.cpp",
         "patchSetId": 1
@@ -286,6 +310,24 @@
       "side": 1,
       "message": "Once a property exists, it can never go away.  libcutils property_get treats non-existent property and zero-length property as the same value, and returns the default value in that case.  This implementation overwrites the default value with \"\" if the property has been \"unset\" by setting it to \"\".",
       "parentUuid": "300b1fab_c7a73ebf",
+      "revId": "a8c3a9131d059c0800944815978e436304e2821a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d06f23aa_7d5dcb71",
+        "filename": "base/properties.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-09-23T00:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d06f23aa_571c6e1f",
       "revId": "a8c3a9131d059c0800944815978e436304e2821a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
