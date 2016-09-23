@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d06f23aa_0eee5fb1",
+        "filename": "base/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-09-23T15:36:27Z",
+      "side": 1,
+      "message": "can\u0027t you make reformatting a presubmit hook everywhere then? before they start to drift astray... anything that requires humans will get broken. (and adding a check without an automatic fix just pisses people off.)",
+      "parentUuid": "d06f23aa_83f08859",
+      "revId": "7e8d2e87e5295d9040eeccd4b235c503541d4aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5850fca_62c1f628",
         "filename": "base/include/android-base/properties.h",
         "patchSetId": 5
@@ -30,6 +48,30 @@
       "writtenOn": "2016-09-23T09:17:18Z",
       "side": 1,
       "message": "GetBooleanProperty maybe ? it\u0027s easy to figure out what it does when i read it here, but i might be a bit more confused if i see :\n\n  if (!GetProperty(\"random\", false)) {\n    foo();\n  }\n\nin some file.",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 16
+      },
+      "revId": "7e8d2e87e5295d9040eeccd4b235c503541d4aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d06f23aa_6edd13fb",
+        "filename": "base/include/android-base/properties.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-09-23T15:36:27Z",
+      "side": 1,
+      "message": "yeah, i\u0027d had the same feeling moving adb over. done.\n\nthe other thing i\u0027m not sure about is whether we should have:\n\n  std::string GetProperty(const std::string\u0026 key, const std::string\u0026 default_value);\n\ninstead for the string variant. it does mean we can\u0027t easily change to returning bool in future, but i\u0027m pretty sure YAGNI. (and if we do, we\u0027re going to have to change all the boolean callers, which are probably the most common case, and the cutils API for booleans is similarly hard to fix.)",
+      "parentUuid": "a5850fca_62c1f628",
       "range": {
         "startLine": 38,
         "startChar": 5,
