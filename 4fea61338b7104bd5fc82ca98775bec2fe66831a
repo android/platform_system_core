@@ -16,6 +16,24 @@
       "revId": "4fea61338b7104bd5fc82ca98775bec2fe66831a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d06f23aa_9b89ccd3",
+        "filename": "include/utils/Flattenable.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1074523
+      },
+      "writtenOn": "2016-09-23T19:46:52Z",
+      "side": 1,
+      "message": "Is is_pod going to be too strict?\n\nThe structure below fails the test.\n\n  struct C {\n    int m;\n    C(int _m) : m(_m) {}\n  };\n\nIf the static_assert is added, code such as the following also have to be changed the same time to compile.\n\nhttps://cs.corp.google.com/android/frameworks/native/libs/gui/IGraphicBufferProducer.cpp?rcl\u003d96fc72d19e17d6d6dae1f3bdaca888a2db658f77\u0026l\u003d792",
+      "parentUuid": "d06f23aa_5b857406",
+      "revId": "4fea61338b7104bd5fc82ca98775bec2fe66831a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
