@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "425b693f_d0e772fd",
+        "filename": "adb/usb_libusb.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-09-30T00:53:52Z",
+      "side": 1,
+      "message": "There\u0027s a race here (and in read) that leads to a use after free when the device gets closed after this function is entered, but before the libusb_bulk_transfer call happens. The best way to fix it seems to be to switch to the libusb async API, because there\u0027s no way to interrupt libusb_bulk_transfer other than just throwing a timeout on it and putting it in a loop that checks.",
+      "revId": "42de06b941f1b72bab281634bcd63aaf28103b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
