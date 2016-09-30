@@ -46,6 +46,30 @@
       "revId": "2a04bfe4411ce6148092193368a4d743dd3d270b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "425b693f_81bc0ed9",
+        "filename": "libmemtrack/memtrack.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-09-30T18:12:11Z",
+      "side": 1,
+      "message": "i just follow https://google.github.io/styleguide/cppguide.html#Names_and_Order_of_Includes\n\nwhen i was in google3 i got sick of doing this manually and actually have a python script to do it. (at that time the lint tool would complain, but wouldn\u0027t fix it/tell you the fix. not sure if they\u0027ve improved that since.)\n\nlike you say, it usually doesn\u0027t matter, but your new friend \u003clibgen.h\u003e is actually a pathological example: everything in that header file is also in \u003cstring.h\u003e --- except that they\u0027re different functions (that behave differently) with the same names. so having SOP be \"implementation header first\" keeps us out of mischief when people do stupid things like that.\n\n*hopefully* no-one\u0027s doing that to new headers, but like they say in google3, \"hope is not a strategy\".\n\nif you\u0027re really keen on reordering, i\u0027ll mail you my script...",
+      "parentUuid": "425b693f_a18272ae",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 30
+      },
+      "revId": "2a04bfe4411ce6148092193368a4d743dd3d270b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
