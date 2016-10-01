@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "425b693f_89e9d0a7",
+        "filename": "adb/usb_libusb.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-10-01T01:42:04Z",
+      "side": 1,
+      "message": "atomic variables are hard to use and understand. There are already three atomic variables in usb_handle, and two variables with mutex in themselves (read/write), maybe using a mutex in usb_handle and removing atomics is a better way. It is also what we did in usb_linux.cpp.\nBut I don\u0027t know if you have any special consideration (like for doing usb_read and usb_write?).",
+      "range": {
+        "startLine": 129,
+        "startChar": 9,
+        "endLine": 129,
+        "endChar": 15
+      },
+      "revId": "7e8a311976229c59d4bce973ce97ab689e2376ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "425b693f_4622a762",
+        "filename": "adb/usb_libusb.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-10-01T01:42:04Z",
+      "side": 1,
+      "message": "why recursive_mutex? Can we replace it with a normal mutex, which is easier to understand and maintain?",
+      "range": {
+        "startLine": 163,
+        "startChar": 43,
+        "endLine": 163,
+        "endChar": 58
+      },
+      "revId": "7e8a311976229c59d4bce973ce97ab689e2376ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "425b693f_e6087be2",
+        "filename": "adb/usb_libusb.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-10-01T01:42:04Z",
+      "side": 1,
+      "message": "no need to be global?",
+      "range": {
+        "startLine": 165,
+        "startChar": 20,
+        "endLine": 165,
+        "endChar": 38
+      },
+      "revId": "7e8a311976229c59d4bce973ce97ab689e2376ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "425b693f_66dc8b3b",
+        "filename": "adb/usb_libusb.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-10-01T01:42:04Z",
+      "side": 1,
+      "message": "It seems being hold for a too long code?",
+      "range": {
+        "startLine": 281,
+        "startChar": 56,
+        "endLine": 281,
+        "endChar": 73
+      },
+      "revId": "7e8a311976229c59d4bce973ce97ab689e2376ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "425b693f_c98fc827",
+        "filename": "adb/usb_libusb.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-10-01T01:42:04Z",
+      "side": 1,
+      "message": "Normally, to signal an event, we use a boolean flag in addition, like below:\n\nwaiter:\nunique_lock lock(mutex);\nwhile (!flag) {\n  cv.wait(lock);\n}\n\nproducer:\nunique_lock lock(mutex);\nflag \u003d true;\ncv.notify_one();\n\nThis is because cv.wait() can be waked Spuriously. see http://pubs.opengroup.org/onlinepubs/7908799/xsh/pthread_cond_wait.html",
+      "range": {
+        "startLine": 390,
+        "startChar": 8,
+        "endLine": 390,
+        "endChar": 92
+      },
+      "revId": "7e8a311976229c59d4bce973ce97ab689e2376ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "425b693f_89ff904c",
+        "filename": "adb/usb_libusb.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-10-01T01:42:04Z",
+      "side": 1,
+      "message": "why close it twice? we have closed it in usb_kick, right?",
+      "range": {
+        "startLine": 509,
+        "startChar": 16,
+        "endLine": 509,
+        "endChar": 21
+      },
+      "revId": "7e8a311976229c59d4bce973ce97ab689e2376ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
