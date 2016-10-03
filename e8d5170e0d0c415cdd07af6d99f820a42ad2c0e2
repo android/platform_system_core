@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "62a14daa_70dcb069",
+        "filename": "libsparse/output_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-10-03T21:26:54Z",
+      "side": 1,
+      "message": "if (errno !\u003d EINTR), or TEMP_FAILURE_RETRY around the write",
+      "revId": "e8d5170e0d0c415cdd07af6d99f820a42ad2c0e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62a14daa_d01f1c69",
         "filename": "libsparse/output_file.c",
         "patchSetId": 2
@@ -36,6 +53,75 @@
       "writtenOn": "2016-10-03T21:04:03Z",
       "side": 1,
       "message": "may as well fix `ret` by making it the correct ssize_t, and fix len by making it size_t?",
+      "revId": "e8d5170e0d0c415cdd07af6d99f820a42ad2c0e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62a14daa_f0eee00e",
+        "filename": "libsparse/output_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-10-03T21:26:54Z",
+      "side": 1,
+      "message": "That will make implementing gz_file_write harder, gzwrite takes an unsigned int.",
+      "parentUuid": "62a14daa_d01f1c69",
+      "revId": "e8d5170e0d0c415cdd07af6d99f820a42ad2c0e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62a14daa_30f948df",
+        "filename": "libsparse/output_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-10-03T21:26:54Z",
+      "side": 1,
+      "message": "gzwrite doesn\u0027t produce partial writes, it should always return 0 or len, but there are some other problems here.",
+      "revId": "e8d5170e0d0c415cdd07af6d99f820a42ad2c0e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62a14daa_7003d0e8",
+        "filename": "libsparse/output_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-10-03T21:26:54Z",
+      "side": 1,
+      "message": "gzwrite returns 0 on error",
+      "revId": "e8d5170e0d0c415cdd07af6d99f820a42ad2c0e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62a14daa_90e75437",
+        "filename": "libsparse/output_file.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-10-03T21:26:54Z",
+      "side": 1,
+      "message": "gzwrite sets gzerror(), not errno.",
       "revId": "e8d5170e0d0c415cdd07af6d99f820a42ad2c0e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
