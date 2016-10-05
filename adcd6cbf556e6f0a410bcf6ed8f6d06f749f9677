@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "22283569_26da760c",
+        "filename": "libsparse/output_file.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1051574
+      },
+      "writtenOn": "2016-10-05T11:55:16Z",
+      "side": 1,
+      "message": "gzwrite returns an int, let\u0027s keep int there.\nsize_t len OK",
+      "parentUuid": "829e417b_8786ea15",
+      "range": {
+        "startLine": 240,
+        "startChar": 62,
+        "endLine": 240,
+        "endChar": 74
+      },
+      "revId": "adcd6cbf556e6f0a410bcf6ed8f6d06f749f9677",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "829e417b_44934060",
         "filename": "libsparse/output_file.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "22283569_06dd7a03",
+        "filename": "libsparse/output_file.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1051574
+      },
+      "writtenOn": "2016-10-05T11:55:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "829e417b_44934060",
+      "range": {
+        "startLine": 249,
+        "startChar": 45,
+        "endLine": 249,
+        "endChar": 52
+      },
+      "revId": "adcd6cbf556e6f0a410bcf6ed8f6d06f749f9677",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "829e417b_079bfa6d",
         "filename": "libsparse/output_file.c",
         "patchSetId": 3
@@ -59,6 +107,24 @@
       "writtenOn": "2016-10-04T16:34:13Z",
       "side": 1,
       "message": "why not make len and buffer_size size_t, then this check is unnecessary.",
+      "revId": "adcd6cbf556e6f0a410bcf6ed8f6d06f749f9677",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "422fe970_c76d1e29",
+        "filename": "libsparse/output_file.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1051574
+      },
+      "writtenOn": "2016-10-05T11:55:16Z",
+      "side": 1,
+      "message": "size_t type is architecture dependent (usually 32 bits on 32 bits architecture and 64 bits on 64 bits architecture).\n\nIf we compile for 32 bits architecture and buffer_size is size_t, buffer_size could be overflowed.\n\nOr I could propose the following solution:\n@@ -699,13 +699,13 @@ int write_fill_chunk(struct output_file *out, unsigned int len,\n \treturn out-\u003esparse_ops-\u003ewrite_fill_chunk(out, len, fill_val);\n }\n \n-int write_fd_chunk(struct output_file *out, unsigned int len,\n+int write_fd_chunk(struct output_file *out, size_t len,\n \t\tint fd, int64_t offset)\n {\n \tint ret;\n \tint64_t aligned_offset;\n-\tint aligned_diff;\n-\tuint64_t buffer_size;\n+\tsize_t aligned_diff;\n+\tsize_t buffer_size;\n \tchar *ptr;\n \n \taligned_offset \u003d offset \u0026 ~(4096 - 1);\n@@ -713,7 +713,7 @@ int write_fd_chunk(struct output_file *out, unsigned int len,\n \tbuffer_size \u003d len + aligned_diff;\n \n #ifndef USE_MINGW\n-\tif (buffer_size \u003e SIZE_MAX)\n+\tif (SIZE_MAX - len \u003e aligned_diff)\n \t\treturn -E2BIG;\n \tchar *data \u003d mmap64(NULL, buffer_size, PROT_READ, MAP_SHARED, fd,\n \t\t\taligned_offset);\n\nOn the other hand,  write_fd_chunk() is about writing a data chunk which is by design limited to UINT_MAX.\n\nPlease let me know what you prefer.",
+      "parentUuid": "829e417b_079bfa6d",
       "revId": "adcd6cbf556e6f0a410bcf6ed8f6d06f749f9677",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
