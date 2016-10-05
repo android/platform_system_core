@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62830d88_297235da",
+        "filename": "include/android/log.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-05T14:50:32Z",
+      "side": 1,
+      "message": "callers are frameworks/base/core/jni/android_app_admin_SecurityLog.cpp, system/core/adb. Moving these into system/core/private/android_logger.h is \u0027doable\u0027",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 69
+      },
+      "revId": "99837a1df56d88b0090d812659448c0bc3604651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62830d88_c94b8980",
+        "filename": "include/android/log.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1070,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-05T14:50:32Z",
+      "side": 1,
+      "message": "This fragment allows native code to read their logs. It was originally designed to be exported in \u0027L\u0027, but we hesitated because considered exec logcat to be the defacto API and this native interface would only add confusion and choices. We should comment regarding the preference to use logcat.",
+      "range": {
+        "startLine": 695,
+        "startChar": 0,
+        "endLine": 1070,
+        "endChar": 52
+      },
+      "revId": "99837a1df56d88b0090d812659448c0bc3604651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62830d88_897981bb",
+        "filename": "include/android/log.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1266,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-05T14:50:32Z",
+      "side": 1,
+      "message": "called throughout the system for SafteyNet, not easy to scale this and __android_log_error_write() out. We expect vendors to also report these events, so these must stay.",
+      "range": {
+        "startLine": 1262,
+        "startChar": 1,
+        "endLine": 1266,
+        "endChar": 62
+      },
+      "revId": "99837a1df56d88b0090d812659448c0bc3604651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62830d88_496f79ed",
+        "filename": "include/android/log.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1295,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-05T14:50:32Z",
+      "side": 1,
+      "message": "callers are frameworks/base/core/jni/android_app_admin_SecurityLog.cpp, system/core/adb. Moving these into system/core/private/android_logger.h is \u0027doable\u0027",
+      "range": {
+        "startLine": 1295,
+        "startChar": 0,
+        "endLine": 1295,
+        "endChar": 59
+      },
+      "revId": "99837a1df56d88b0090d812659448c0bc3604651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
