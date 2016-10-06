@@ -1,0 +1,237 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f6e9ce8_3d9a3b1d",
+        "filename": "include/ziparchive/zip_archive.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-06T01:38:53Z",
+      "side": 1,
+      "message": "we don\u0027t want a debug name for error messages?",
+      "revId": "93150682d7a19a8306265a908167c8ce5ae722d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f6e9ce8_bd85ebba",
+        "filename": "include/ziparchive/zip_archive.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-06T01:38:53Z",
+      "side": 1,
+      "message": "is this name actually useful, or should we just use the type directly in the ProcessZipEntryContents signature?",
+      "revId": "93150682d7a19a8306265a908167c8ce5ae722d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f6e9ce8_7db7538a",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-06T01:38:53Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be a member of FileReaderWrapper? so instead of calling ReadAtOffset(file_reader, ...), callers call file_reader.ReadAtOffset(...). presumably then you can make more of the fields private too?",
+      "revId": "93150682d7a19a8306265a908167c8ce5ae722d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f6e9ce8_1dac173e",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-06T01:38:53Z",
+      "side": 1,
+      "message": "should this be a call to ReadAtOffset now?",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 3
+      },
+      "revId": "93150682d7a19a8306265a908167c8ce5ae722d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f6e9ce8_fda28346",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-06T01:38:53Z",
+      "side": 1,
+      "message": "(pre-existing bug, but seems like we should have a null check here.)",
+      "revId": "93150682d7a19a8306265a908167c8ce5ae722d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f6e9ce8_7d62f30c",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-06T01:38:53Z",
+      "side": 1,
+      "message": "we\u0027re effectively passing `archive` twice here. just pass `archive` once and extract `file_reader` from it in the callee?",
+      "revId": "93150682d7a19a8306265a908167c8ce5ae722d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f6e9ce8_fd6da3f8",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-06T01:38:53Z",
+      "side": 1,
+      "message": "what if the file_reader doesn\u0027t have an fd?",
+      "revId": "93150682d7a19a8306265a908167c8ce5ae722d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f6e9ce8_9d7a67ac",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1115,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-06T01:38:53Z",
+      "side": 1,
+      "message": "or just\n\n  ProcessWriter writer(func, cookie);\n\n?",
+      "revId": "93150682d7a19a8306265a908167c8ce5ae722d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f6e9ce8_5d44cf73",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-06T01:38:53Z",
+      "side": 1,
+      "message": "would it make more sense to have two functions: an underlying Create(void*, size_t) that recovery calls directly, and the code above that ends up calling the (void*,size_t) version?\n\nalso, Create doesn\u0027t really seem like the right verb. (admittedly copied from the old code, but it was wrong there too.)",
+      "revId": "93150682d7a19a8306265a908167c8ce5ae722d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f6e9ce8_9d51072e",
+        "filename": "libziparchive/zip_archive_private.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-06T01:38:53Z",
+      "side": 1,
+      "message": "or just FileReader or MappedZipFile? i\u0027m not sure what the \"Wrapper\" is trying to tell me.",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 23
+      },
+      "revId": "93150682d7a19a8306265a908167c8ce5ae722d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f6e9ce8_bdeacb64",
+        "filename": "libziparchive/zip_archive_private.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-06T01:38:53Z",
+      "side": 1,
+      "message": "has_fd?",
+      "revId": "93150682d7a19a8306265a908167c8ce5ae722d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f6e9ce8_5d2fefad",
+        "filename": "libziparchive/zip_archive_private.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-06T01:38:53Z",
+      "side": 1,
+      "message": "how many of these can we make private?",
+      "revId": "93150682d7a19a8306265a908167c8ce5ae722d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f6e9ce8_1d3977f4",
+        "filename": "libziparchive/zip_archive_private.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-06T01:38:53Z",
+      "side": 1,
+      "message": "is this the right place for directory_map?\n\nshould it be in ZipArchive? maybe in a std::unique_ptr to make the optional-ness clear?",
+      "revId": "93150682d7a19a8306265a908167c8ce5ae722d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
