@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1f546c0d_66d48e12",
+        "filename": "adb/usb_libusb.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-10-06T00:35:25Z",
+      "side": 1,
+      "message": "Yeah, there\u0027s a simpler way to do this. I replaced the active_transfers and device_handle atomics with a mutex that guards device_handle, which gets acquired and then released after the libusb_submit_transfer call returns. libusb_submit_transfer will have incremented the refcount, so it\u0027s safe to libusb_close then.",
+      "parentUuid": "425b693f_89e9d0a7",
+      "range": {
+        "startLine": 129,
+        "startChar": 9,
+        "endLine": 129,
+        "endChar": 15
+      },
+      "revId": "7e8a311976229c59d4bce973ce97ab689e2376ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "425b693f_4622a762",
         "filename": "adb/usb_libusb.cpp",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-10-01T01:42:04Z",
       "side": 1,
       "message": "why recursive_mutex? Can we replace it with a normal mutex, which is easier to understand and maintain?",
+      "range": {
+        "startLine": 163,
+        "startChar": 43,
+        "endLine": 163,
+        "endChar": 58
+      },
+      "revId": "7e8a311976229c59d4bce973ce97ab689e2376ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f546c0d_66712e35",
+        "filename": "adb/usb_libusb.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-10-06T00:35:25Z",
+      "side": 1,
+      "message": "Yeah, this can be non-recursive. Fixed.",
+      "parentUuid": "425b693f_4622a762",
       "range": {
         "startLine": 163,
         "startChar": 43,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1f546c0d_e683de3e",
+        "filename": "adb/usb_libusb.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-10-06T00:35:25Z",
+      "side": 1,
+      "message": "Forgot to add the code that actually uses it, fixed.",
+      "parentUuid": "425b693f_e6087be2",
+      "range": {
+        "startLine": 165,
+        "startChar": 20,
+        "endLine": 165,
+        "endChar": 38
+      },
+      "revId": "7e8a311976229c59d4bce973ce97ab689e2376ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "425b693f_66dc8b3b",
         "filename": "adb/usb_libusb.cpp",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2016-10-01T01:42:04Z",
       "side": 1,
       "message": "It seems being hold for a too long code?",
+      "range": {
+        "startLine": 281,
+        "startChar": 56,
+        "endLine": 281,
+        "endChar": 73
+      },
+      "revId": "7e8a311976229c59d4bce973ce97ab689e2376ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f546c0d_06d27afb",
+        "filename": "adb/usb_libusb.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-10-06T00:35:25Z",
+      "side": 1,
+      "message": "This was to keep usb_close from closing a device that we\u0027ve opened here, but the check should be sufficient, since usb_close holds the lock the entire time. Fixed.",
+      "parentUuid": "425b693f_66dc8b3b",
       "range": {
         "startLine": 281,
         "startChar": 56,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "1f546c0d_66700e6a",
+        "filename": "adb/usb_libusb.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-10-06T00:35:25Z",
+      "side": 1,
+      "message": "Thanks, I forgot about that. Fixed.",
+      "parentUuid": "425b693f_c98fc827",
+      "range": {
+        "startLine": 390,
+        "startChar": 8,
+        "endLine": 390,
+        "endChar": 92
+      },
+      "revId": "7e8a311976229c59d4bce973ce97ab689e2376ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "425b693f_89ff904c",
         "filename": "adb/usb_libusb.cpp",
         "patchSetId": 5
@@ -128,6 +248,30 @@
       "writtenOn": "2016-10-01T01:42:04Z",
       "side": 1,
       "message": "why close it twice? we have closed it in usb_kick, right?",
+      "range": {
+        "startLine": 509,
+        "startChar": 16,
+        "endLine": 509,
+        "endChar": 21
+      },
+      "revId": "7e8a311976229c59d4bce973ce97ab689e2376ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f546c0d_4653d269",
+        "filename": "adb/usb_libusb.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-10-06T00:35:25Z",
+      "side": 1,
+      "message": "It\u0027s actually 3 times, it gets Closed against in the destructor. Removed this one, but left the one in the destructor alone, since it\u0027s basically free.",
+      "parentUuid": "425b693f_89ff904c",
       "range": {
         "startLine": 509,
         "startChar": 16,
