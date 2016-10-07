@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff007887_8e96ff3d",
+        "filename": "libcutils/tests/AshmemTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2016-10-07T22:52:06Z",
+      "side": 1,
+      "message": "ASHMEM_PURGE_ALL_CACHES requires CAP_SYS_ADMIN.  You should add a check for this at the beginning of this test, since people won\u0027t ordinarily run tests as root.\n\nIt\u0027d be good to also have a test that makes sure PurgeCaches() *fails* when running without CAP_SYS_ADMIN.\n\nsystem/core/libcutils/tests/sched_policy_test.cpp has an example of testing for required caps.  The setdomainname() test in bionic/tests/unistd_test.cpp has an example of dropping admin caps to test the kernel\u0027s handling of unprivileged callers.",
+      "revId": "20d52d1522120057447fb94d5f50253fa1d8f996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
