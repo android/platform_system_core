@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ff007887_a569de88",
+        "filename": "include/android/log.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-10-07T19:45:42Z",
+      "side": 1,
+      "message": "How? It isn\u0027t defined in log.h.",
+      "parentUuid": "1fe1cce4_a400a6ac",
+      "range": {
+        "startLine": 90,
+        "startChar": 13,
+        "endLine": 90,
+        "endChar": 32
+      },
+      "revId": "420a94e7b006b08d9ee0cb3d18b18771c26fa2b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fe1cce4_a49fc6b2",
         "filename": "include/android/log.h",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I have some trouble with that. Build system should not be involved in this, I do not want headers to change flavour just because of the build environment. They must be deterministic and consistent.\n\nI am not 100% behind LOG_TAG as the flag, I would prefer to add an #ifndef ANDROID_LEGACY that the bad code can use if they insist on near zero maintenance. They can add it to their files, or their Android.bp/Android.mk if the new android/log.h hurts them?\n\nWe are only going to export _one_ header to the NDK, and we should use the same header internally in exactly the same manner to make sure it is _correct_. Any more than one header and we cause confusion. I can not count the number of times vendors have asked us which header to use internally, or where I caught them picking the wrong one and adding their own flavours of workarounds.\n\nWe have to move everyone to the LOG macros, they are in external documentation yet the NDK is lacking them!!!",
       "parentUuid": "1fe1cce4_a49fc6b2",
+      "range": {
+        "startLine": 157,
+        "startChar": 7,
+        "endLine": 157,
+        "endChar": 14
+      },
+      "revId": "420a94e7b006b08d9ee0cb3d18b18771c26fa2b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff007887_a552feda",
+        "filename": "include/android/log.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-10-07T19:45:42Z",
+      "side": 1,
+      "message": "\u003e I would prefer to add an #ifndef ANDROID_LEGACY that the bad code can use if they insist on near zero maintenance.\n\nThis would work too. ANDROID_ENABLE_LOG_MACROS has the advantage of meaning that anything that currently builds will continue building without any work, but agreed that it puts more burden on the people that do want the better functionality.\n\n\u003e I can not count the number of times vendors have asked us which header to use internally\n\nWell, if every header is called \"log.h\", yeah, that\u0027s confusing. Better naming could fix that :)\n\n\u003e they are in external documentation yet the NDK is lacking them!!!\n\nThey are? Where?",
+      "parentUuid": "1fe1cce4_64c93e72",
       "range": {
         "startLine": 157,
         "startChar": 7,
