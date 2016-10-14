@@ -65,6 +65,24 @@
     },
     {
       "key": {
+        "uuid": "bc41ae2d_0b5c9dec",
+        "filename": "include/android/log.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-14T19:52:53Z",
+      "side": 1,
+      "message": "Because some use ANDROID_NATIVE_API_LEVEL (some stuff in-tree BTW) and some use __ANDROID_API__, where the later is ours I believe, and the other is used sporadically.",
+      "parentUuid": "bc41ae2d_6b61a131",
+      "revId": "30c1e7cb918c18ec92d30d643849132f99dfe7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc41ae2d_4b8865d2",
         "filename": "include/android/log.h",
         "patchSetId": 13
@@ -76,6 +94,24 @@
       "writtenOn": "2016-10-14T19:11:32Z",
       "side": 1,
       "message": "The comment should stay with the function.",
+      "revId": "30c1e7cb918c18ec92d30d643849132f99dfe7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc41ae2d_4b186530",
+        "filename": "include/android/log.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-14T19:52:53Z",
+      "side": 1,
+      "message": "True ...",
+      "parentUuid": "bc41ae2d_4b8865d2",
       "revId": "30c1e7cb918c18ec92d30d643849132f99dfe7d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -99,6 +135,24 @@
     },
     {
       "key": {
+        "uuid": "bc41ae2d_0b857d44",
+        "filename": "include/android/log.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-14T19:52:53Z",
+      "side": 1,
+      "message": "Double underscore functions exposed to the NDK, but not recommended to be called directly; so there is a point to not include this.\n\nHowever, I kept it here because it represents completeness, a partner\u0027s code caller should have the power to close logging after a fork, and before an exec (the FDs are CLOEXEC so it is a weak argument) or before they continue on the process (the stronger argument).",
+      "parentUuid": "bc41ae2d_eb983125",
+      "revId": "30c1e7cb918c18ec92d30d643849132f99dfe7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc41ae2d_6b50c128",
         "filename": "include/android/log.h",
         "patchSetId": 13
@@ -110,6 +164,24 @@
       "writtenOn": "2016-10-14T19:11:32Z",
       "side": 1,
       "message": "Everything from here down is new ABI.",
+      "revId": "30c1e7cb918c18ec92d30d643849132f99dfe7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c39f6b7_6ca453a2",
+        "filename": "include/android/log.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-14T19:52:53Z",
+      "side": 1,
+      "message": "Do you feel a comment is warranted is why you said this, or is this just a delineation of sorts?\n\nI should move CLOSE interface down here too ...",
+      "parentUuid": "bc41ae2d_6b50c128",
       "revId": "30c1e7cb918c18ec92d30d643849132f99dfe7d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -133,6 +205,24 @@
     },
     {
       "key": {
+        "uuid": "bc128f45_3a90e128",
+        "filename": "include/android/log.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-14T19:52:53Z",
+      "side": 1,
+      "message": "False, if the caller does not define __ANDROID_API__ or ANDROID_NATIVE_API_LEVEL. I found that in most builds, this is the cased (undefined).",
+      "parentUuid": "bc41ae2d_0b22ddc1",
+      "revId": "30c1e7cb918c18ec92d30d643849132f99dfe7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc41ae2d_8b16cd61",
         "filename": "include/android/log.h",
         "patchSetId": 13
@@ -150,6 +240,24 @@
     },
     {
       "key": {
+        "uuid": "5c0d132b_9789040a",
+        "filename": "include/android/log.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-14T19:52:53Z",
+      "side": 1,
+      "message": "We are going to need to talk about this. This might not be the right forum to educate me ...\n\nAre you talking universally, or just for the MACROs?\n\nI do not want to define any interfaces here that will not work if targeted for JB for example, and generally this gives a strong layer of lint checking to their builds.\n\nFor the case of the MACROs, we are special and also switch this all on if LOG_TAG defined which is a substantive bypass, the gate on API Version is to make sure we do not fail in external builds that count on the legacy variant of android/log.h.",
+      "parentUuid": "bc41ae2d_8b16cd61",
+      "revId": "30c1e7cb918c18ec92d30d643849132f99dfe7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc41ae2d_0b0bbd39",
         "filename": "include/android/log.h",
         "patchSetId": 13
@@ -161,6 +269,24 @@
       "writtenOn": "2016-10-14T19:11:32Z",
       "side": 1,
       "message": "Why are we exposing the radio log to the NDK?",
+      "revId": "30c1e7cb918c18ec92d30d643849132f99dfe7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc41ae2d_0b0e5df0",
+        "filename": "include/android/log.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-14T19:52:53Z",
+      "side": 1,
+      "message": "Because we would like to allow radio components to be able to built out-of-tree. I had the BRCM folks complain about this.",
+      "parentUuid": "bc41ae2d_0b0bbd39",
       "revId": "30c1e7cb918c18ec92d30d643849132f99dfe7d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
