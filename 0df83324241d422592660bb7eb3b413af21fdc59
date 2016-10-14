@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c0d132b_57d36cbf",
+        "filename": "include/android/log.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-10-14T20:20:11Z",
+      "side": 1,
+      "message": "Whether or not this is true depends on the include order of this file. __ANDROID_API__ is defined as soon as you include a libc header (even for platform code).\n\n    #include \u003candroid/log.h\u003e // Won\u0027t be defined.\n\nBut\n\n    #include \u003cstdio.h\u003e\n    #include \u003candroid/log.h\u003e // Will be defined.",
+      "revId": "0df83324241d422592660bb7eb3b413af21fdc59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
