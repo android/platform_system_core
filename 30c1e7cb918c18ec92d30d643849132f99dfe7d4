@@ -83,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "5c0d132b_d7ad3c6b",
+        "filename": "include/android/log.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-10-14T20:20:11Z",
+      "side": 1,
+      "message": "Where do you see ANDROID_NATIVE_API_LEVEL? I see it only in cmake files in external: https://cs.corp.google.com/search/?q\u003dANDROID_NATIVE_API_LEVEL\u0026m\u003d100\u0026sq\u003dpackage:android\u0026type\u003dcs\n\nANDROID_NATIVE_API_LEVEL means nothing to the NDK right now.",
+      "parentUuid": "bc41ae2d_0b5c9dec",
+      "revId": "30c1e7cb918c18ec92d30d643849132f99dfe7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc41ae2d_4b8865d2",
         "filename": "include/android/log.h",
         "patchSetId": 13
@@ -153,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "5c0d132b_17e3b4c0",
+        "filename": "include/android/log.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-10-14T20:20:11Z",
+      "side": 1,
+      "message": "If it gets exposed in the NDK it can *never* change. The ABI and the behavior needs to remain consistent forever.\n\nDon\u0027t expose anything for completeness. Expose things because they are useful to apps.",
+      "parentUuid": "bc41ae2d_0b857d44",
+      "revId": "30c1e7cb918c18ec92d30d643849132f99dfe7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc41ae2d_6b50c128",
         "filename": "include/android/log.h",
         "patchSetId": 13
@@ -182,6 +218,24 @@
       "side": 1,
       "message": "Do you feel a comment is warranted is why you said this, or is this just a delineation of sorts?\n\nI should move CLOSE interface down here too ...",
       "parentUuid": "bc41ae2d_6b50c128",
+      "revId": "30c1e7cb918c18ec92d30d643849132f99dfe7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0d132b_770b1098",
+        "filename": "include/android/log.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-10-14T20:20:11Z",
+      "side": 1,
+      "message": "My point is that anything below this point is something you\u0027re committing to maintain the ABI and behavior of forever. Not thinking about what libc APIs to expose is a mistake that was made nearly a decade ago that we\u0027re still paying for. If there\u0027s anything in here that isn\u0027t useful for an app, don\u0027t expose it.",
+      "parentUuid": "7c39f6b7_6ca453a2",
       "revId": "30c1e7cb918c18ec92d30d643849132f99dfe7d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -223,6 +277,24 @@
     },
     {
       "key": {
+        "uuid": "5c0d132b_371598b2",
+        "filename": "include/android/log.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-10-14T20:20:11Z",
+      "side": 1,
+      "message": "Whoops. Yes, you\u0027re right. That goes to prove my point that ANDROID_NATIVE_API_LEVEL is confusing when we already have __ANDROID_API__ though. __ANDROID_API__ is always defined, ANDROID_NATIVE_API_LEVEL isn\u0027t, despite the fact that they have more or less the same name and seem to represent the same concept.",
+      "parentUuid": "bc128f45_3a90e128",
+      "revId": "30c1e7cb918c18ec92d30d643849132f99dfe7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc41ae2d_8b16cd61",
         "filename": "include/android/log.h",
         "patchSetId": 13
@@ -258,6 +330,24 @@
     },
     {
       "key": {
+        "uuid": "5c0d132b_f733a056",
+        "filename": "include/android/log.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-10-14T20:20:11Z",
+      "side": 1,
+      "message": "Yes, just the macros. ABI should be gated by the version that it\u0027s available in.\n\nANDROID_USE_LOG_MACROS (or ANDROID_HIDE_LOG_MACROS, if we prefer on by default, either works for me) would make this a lot more clear. It isn\u0027t obvious that LOG_TAG would change the interface provided here. Also remember that the reason this came up in the first place is that some external code was using LOG_TAG to mean something different.",
+      "parentUuid": "5c0d132b_9789040a",
+      "revId": "30c1e7cb918c18ec92d30d643849132f99dfe7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc41ae2d_0b0bbd39",
         "filename": "include/android/log.h",
         "patchSetId": 13
@@ -287,6 +377,24 @@
       "side": 1,
       "message": "Because we would like to allow radio components to be able to built out-of-tree. I had the BRCM folks complain about this.",
       "parentUuid": "bc41ae2d_0b0bbd39",
+      "revId": "30c1e7cb918c18ec92d30d643849132f99dfe7d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0d132b_57ac8c41",
+        "filename": "include/android/log.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-10-14T20:20:11Z",
+      "side": 1,
+      "message": "Is the radio log really the only thing blocking that? Most vendor code depends on a ton of things that aren\u0027t available in the NDK.",
+      "parentUuid": "bc41ae2d_0b0e5df0",
       "revId": "30c1e7cb918c18ec92d30d643849132f99dfe7d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
