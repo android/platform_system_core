@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c0a735e_38f828a7",
+        "filename": "base/include/android-base/parsedouble.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-10-18T21:22:11Z",
+      "side": 1,
+      "message": "This seems a bit dangerous. Do you really want this to compile if you accidentally pass a char* into out?\n\nIt seems like this should reject non-floating point T. Change the return type to std::enable_if_t\u003cstd::is_floating_point\u003cT\u003e::value, bool\u003e?",
+      "revId": "6d2d7add81a8bb941e696b4393ec5c2fb9134c3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0a735e_784bd024",
+        "filename": "base/include/android-base/parsedouble.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-10-18T21:22:11Z",
+      "side": 1,
+      "message": "ParseDouble\u003cfloat\u003e seems wrong. ParseFloat\u003cT\u003e instead?",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 16
+      },
+      "revId": "6d2d7add81a8bb941e696b4393ec5c2fb9134c3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
