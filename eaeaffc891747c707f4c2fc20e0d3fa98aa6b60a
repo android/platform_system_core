@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c3f7f99_4e8dd313",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2016-10-21T20:42:12Z",
+      "side": 1,
+      "message": "I think on legacy devices something like `adb shell echo foo` will end up requesting a raw shell here and then will error out below? We probably only want non-interactive shells to go raw if we\u0027re also using the shell protocol.\n\n(Alternately maybe it makes more sense to initialize tty as kPtyDefinitely if the shell protocol isn\u0027t supported, that way this case will never be hit).",
+      "range": {
+        "startLine": 749,
+        "startChar": 42,
+        "endLine": 749,
+        "endChar": 57
+      },
+      "revId": "eaeaffc891747c707f4c2fc20e0d3fa98aa6b60a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
