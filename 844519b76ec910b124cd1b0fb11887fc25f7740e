@@ -133,6 +133,24 @@
     },
     {
       "key": {
+        "uuid": "9c0f8be2_873ea4ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1042203
+      },
+      "writtenOn": "2016-10-24T23:04:51Z",
+      "side": 1,
+      "message": "\u003e \u003e isolated_app inherits read perms from appdomain into /storage, so is that OK?\n \u003e \n \u003e That doesn\u0027t seem OK at all. Here\u0027s a CL to address that: https://android-review.googlesource.com/#/c/292656/\n\nOK, glad we are in agreement on that ;). It wasn\u0027t totally clear given the SELinux policy, so thanks for fixing.\n\n \u003e With isolated_app no longer allowed to access storage, what security properties do we lose by inheriting webview_zygote\u0027s mount namespace?\n\nThe mount namespace is only created so that per-process mounts can be added (this commit covers some of the background: https://android.googlesource.com/platform/dalvik/+/d8de46c475830792eeb6fb0f7b59aab51f55e817). Since isolated processes never have additional mounts added, the mount namespace would be identical to that of the parent. The main difference would be that /storage is still mounted in the process, but access to it is denied by SELinux. Since Jeff (Sharkey) authored that above commit, hopefully he can weigh in on that.",
+      "parentUuid": "7c83b787_296b15a1",
+      "revId": "844519b76ec910b124cd1b0fb11887fc25f7740e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcbf42c0_fdd5dbd8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
