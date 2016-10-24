@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c0f8be2_b18ccb51",
+        "filename": "include/log/log.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-24T16:28:38Z",
+      "side": 1,
+      "message": "const void* payload\n\nnew(?) android coding standard, please address.",
+      "range": {
+        "startLine": 257,
+        "startChar": 38,
+        "endLine": 257,
+        "endChar": 57
+      },
+      "revId": "59efa1221c30837332a8b6f11fe5118bca7d342b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c0f8be2_319c3ba6",
+        "filename": "include/log/log.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-24T16:28:38Z",
+      "side": 1,
+      "message": "This is log_time shaped and also on u64 boundary, suggest moving log_time definitions above here, and utilizing a union at this point in the logger_entry* packets.",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 49
+      },
+      "revId": "59efa1221c30837332a8b6f11fe5118bca7d342b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c0f8be2_f1f2c3c7",
+        "filename": "include/log/log.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-24T16:28:38Z",
+      "side": 1,
+      "message": "As a minimum this round, we should consider the preemptive strike of\n\n#ifdef _SYSTEM_CORE_INCLUDE_PRIVATE_ANDROID_LOGGER_H_\n#define _struct_log_time_private_defined\n    static const timespec EPOCH;\n#endif",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 449,
+        "endChar": 53
+      },
+      "revId": "59efa1221c30837332a8b6f11fe5118bca7d342b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c0f8be2_f15643e7",
+        "filename": "include/log/log.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-24T16:28:38Z",
+      "side": 1,
+      "message": "There is an issue that if private/android_logger.h is included after this file, which is the normal flow if we follow android header include standards. Do something like:\n\nHere:\n\n#ifdef _SYSTEM_CORE_INCLUDE_PRIVATE_ANDROID_LOGGER_H_\n#define _struct_log_time_private_defined\n    static const timespec EPOCH;\n#endif\n\nIn system/core/include/private/android_logger.h:\n\n#ifdef _LIBS_LOG_LOG_H\n#ifdef _struct_log_time_defined\n#ifndef _struct_log_time_private_defined\n#define _struct_log_time_private_defined\n#ifdef __cplusplus\nstruct log_time_private : log_time {\n    static const timespec EPOCH;\n\n    log_time operator-\u003d (const timespec \u0026T);\n    log_time operator- (const timespec \u0026T) const\n    {\n        log_time local(*this);\n        return local -\u003d T;\n    }\n    log_time operator+\u003d (const timespec \u0026T);\n    log_time operator+ (const timespec \u0026T) const\n    {\n        log_time local(*this);\n        return local +\u003d T;\n    }\n\n    log_time operator-\u003d (const log_time \u0026T);\n    log_time operator- (const log_time \u0026T) const\n    {\n        log_time local(*this);\n        return local -\u003d T;\n    }\n    log_time operator+\u003d (const log_time \u0026T);\n    log_time operator+ (const log_time \u0026T) const\n    {\n        log_time local(*this);\n        return local +\u003d T;\n    }\n\n    static const char default_format[];\n\n    /* Add %#q for the fraction of a second to the standard library functions */\n    char* strptime(const char* s, const char* format \u003d default_format);\n    char* strftime(const char* s, size_t l, const char* format \u003d default_format);\n#if defined(_USING_LIBCXX)\n    std::string strftime(const char* format \u003d default_format);\n#endif\n} __attribute__((__packed__));\n\n#define log_time log_time_private\n#endif\n#endif\n#endif\n#endif\n\nand add supportive reflections(?) of these functions to system/core/liblog/log_time.cpp",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 451,
+        "endChar": 6
+      },
+      "revId": "59efa1221c30837332a8b6f11fe5118bca7d342b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c0f8be2_9189c742",
+        "filename": "include/log/log.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-24T16:28:38Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 508,
+        "startChar": 0,
+        "endLine": 521,
+        "endChar": 6
+      },
+      "revId": "59efa1221c30837332a8b6f11fe5118bca7d342b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c0f8be2_f124837b",
+        "filename": "include/log/log.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-24T16:28:38Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 551,
+        "startChar": 0,
+        "endLine": 564,
+        "endChar": 6
+      },
+      "revId": "59efa1221c30837332a8b6f11fe5118bca7d342b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c0f8be2_31c55b98",
+        "filename": "include/log/log.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-24T16:28:38Z",
+      "side": 1,
+      "message": "completeness:\n\nstd::string strftime(const char *format \u003d default_format);\n\nwe can find convenient uses for this",
+      "range": {
+        "startLine": 575,
+        "startChar": 4,
+        "endLine": 575,
+        "endChar": 71
+      },
+      "revId": "59efa1221c30837332a8b6f11fe5118bca7d342b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c0f8be2_51cc4fc1",
+        "filename": "include/log/log.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-24T16:28:38Z",
+      "side": 1,
+      "message": "completeness:\n\nstd::string strftime(const char *format \u003d default_format);\n\nWe can find convenient uses for this in the tree (liblog/logprint.c for one, after it converts to C++?)",
+      "range": {
+        "startLine": 575,
+        "startChar": 10,
+        "endLine": 575,
+        "endChar": 18
+      },
+      "revId": "59efa1221c30837332a8b6f11fe5118bca7d342b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c0f8be2_d1297f53",
+        "filename": "include/log/log.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-24T16:28:38Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 571,
+        "startChar": 0,
+        "endLine": 576,
+        "endChar": 6
+      },
+      "revId": "59efa1221c30837332a8b6f11fe5118bca7d342b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c0f8be2_312f1b57",
+        "filename": "liblog/log_time.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-24T16:28:38Z",
+      "side": 1,
+      "message": "#undef log_time_private\n\nLIBLOG_ABI_PRIVATE const char log_time::default_format[] \u003d \"%m-%d %H:%M:%S.%q\";\nLIBLOG_ABI_PRIVATE const timespec log_time::EPOCH \u003d { 0, 0 };\nLIBLOG_ABI_PRIVATE const char log_time_private::default_format[] \u003d \"%m-%d %H:%M:%S.%q\";\nLIBLOG_ABI_PRIVATE const timespec log_time_private::EPOCH \u003d { 0, 0 };\n\nLIBLOG_ABI_PRIVATE char *log_time::strptime(const char* s, const char* format) {\n. . .\n}\n\nLIBLOG_ABI_PRIVATE char *log_time_private::strptime(const char* s, const char* format) {\n    return reinterpret_cast\u003clog_time*\u003e(this)-\u003estrptime(s, format);\n}",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 61
+      },
+      "revId": "59efa1221c30837332a8b6f11fe5118bca7d342b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c0f8be2_3146fb1c",
+        "filename": "liblog/logprint.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1352,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-24T16:28:38Z",
+      "side": 1,
+      "message": "If logprint.c became logprint.cpp, this whole thing would be replaced by log_time::strftime() ...",
+      "range": {
+        "startLine": 1316,
+        "startChar": 4,
+        "endLine": 1352,
+        "endChar": 5
+      },
+      "revId": "59efa1221c30837332a8b6f11fe5118bca7d342b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
