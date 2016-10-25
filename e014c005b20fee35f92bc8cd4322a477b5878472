@@ -22,6 +22,30 @@
       "revId": "e014c005b20fee35f92bc8cd4322a477b5878472",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a15fc857_39a30fed",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2016-10-25T01:36:35Z",
+      "side": 1,
+      "message": "So, there are a couple of problems with that. \u0027.\u0027 requires special behavior, isalnum returns true for other characters (\u0027locale-specific\u0027).\n\nWe could just use is_legal_property_name(\"init.svc.\" + name) in service.cpp, but that would require an extra string concatenation.\n\nThoughts?",
+      "parentUuid": "a15fc857_9957bb18",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 55
+      },
+      "revId": "e014c005b20fee35f92bc8cd4322a477b5878472",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
