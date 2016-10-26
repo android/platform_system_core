@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "81b56446_76836852",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-10-26T19:40:56Z",
+      "side": 1,
+      "message": "We don\u0027t need the list to be in the correct order: this is a map, so it will map strings to ints, and the ints are set by the define, not by the order of the definition. We can change the order to whatever, and it will still do the same thing:\n\n\"CAP_SETPCAP\", CAP_SETPCAP which is\n\"CAP_SETPCAP\", 8\n\nwhatever the position of that line on the list is.",
+      "parentUuid": "c1d83cb2_b04040a4",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1d83cb2_f03ab82d",
         "filename": "init/capabilities.cpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-10-26T19:26:44Z",
       "side": 1,
       "message": "This assumes all builders will have the kernel headers from v3.16 or later (introduction of CAP_AUDIT_READ). Does libcap\u0027s cap_from_name() hard code these or does it depend on the kernel uapi headers too?",
+      "range": {
+        "startLine": 69,
+        "startChar": 30,
+        "endLine": 69,
+        "endChar": 44
+      },
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81b56446_b6b95026",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-10-26T19:40:56Z",
+      "side": 1,
+      "message": "That is true. At least we\u0027d fail at compile time.\n\nI\u0027m pretty sure kernel-headers for Android is in the 4.x range (I had to fix a bug in Minijail when they were changed) but I can double-check.\n\nlibcap auto-generates a list of caps based on the headers: https://kernel.googlesource.com/pub/scm/linux/kernel/git/morgan/libcap/+/master/libcap/_makenames.c",
+      "parentUuid": "c1d83cb2_f03ab82d",
       "range": {
         "startLine": 69,
         "startChar": 30,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "815c8406_7867a100",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-10-26T19:40:56Z",
+      "side": 1,
+      "message": "It can only fail with EINVAL if you pass bad values for e.g. the CAP_SET argument. I\u0027m happy to remove this error case but I wanted to fail close if e.g. we ever update libcap and things change.\n\nI can add the failing cap.",
+      "parentUuid": "c1d83cb2_702fe8e8",
+      "range": {
+        "startLine": 98,
+        "startChar": 31,
+        "endLine": 98,
+        "endChar": 43
+      },
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1d83cb2_304c50e1",
         "filename": "init/capabilities.cpp",
         "patchSetId": 2
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "815c8406_98947592",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-10-26T19:40:56Z",
+      "side": 1,
+      "message": "But it matches the capability names used in files like: https://cs.corp.google.com/android/device/google/marlin/marlin/android_filesystem_config.h?q\u003dandroid_filesystem_config+package:%5Eandroid$\u0026l\u003d1\n\nand all other Android devices.\n\nAlso, cap_from_name() uses a linear search while the map is log().",
+      "parentUuid": "c1d83cb2_304c50e1",
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1d83cb2_f0c8f809",
         "filename": "init/capabilities.cpp",
         "patchSetId": 2
@@ -99,6 +189,30 @@
       "writtenOn": "2016-10-26T19:26:44Z",
       "side": 1,
       "message": "Is this to cover the case were SETPCAP is in Permitted but not Effective?",
+      "range": {
+        "startLine": 139,
+        "startChar": 9,
+        "endLine": 139,
+        "endChar": 29
+      },
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "815c8406_b89939c9",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-10-26T19:40:56Z",
+      "side": 1,
+      "message": "Yes, SETPCAP needs to be in Effective for the bounding set dropping operation below to work.",
+      "parentUuid": "c1d83cb2_f0c8f809",
       "range": {
         "startLine": 139,
         "startChar": 9,
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "815c8406_d88eed7b",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-10-26T19:40:56Z",
+      "side": 1,
+      "message": "The reason to skip here is that drop_bounding_set is already printing an error. Given that we call set_inh_prm_eff_caps() twice, it made sense to print an extra error here to differentiate which call was failing.\n\nHappy to add an error here as well though, but I don\u0027t think it can add more information.",
+      "parentUuid": "c1d83cb2_502c64f2",
+      "range": {
+        "startLine": 145,
+        "startChar": 15,
+        "endLine": 145,
+        "endChar": 20
+      },
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1d83cb2_b0a5e058",
         "filename": "init/capabilities.cpp",
         "patchSetId": 2
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "815c8406_f893b1a4",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-10-26T19:40:56Z",
+      "side": 1,
+      "message": "The inner function is already reporting an error, and it\u0027s unclear whether the error reported here would add any useful information.",
+      "parentUuid": "c1d83cb2_b0a5e058",
+      "range": {
+        "startLine": 161,
+        "startChar": 15,
+        "endLine": 161,
+        "endChar": 20
+      },
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1d83cb2_70dd28c5",
         "filename": "init/service.cpp",
         "patchSetId": 2
@@ -168,6 +330,30 @@
       "writtenOn": "2016-10-26T19:26:44Z",
       "side": 1,
       "message": "Just to double-check: does the FATAL target kill the process?",
+      "range": {
+        "startLine": 268,
+        "startChar": 8,
+        "endLine": 268,
+        "endChar": 9
+      },
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "815c8406_18894572",
+        "filename": "init/service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-10-26T19:40:56Z",
+      "side": 1,
+      "message": "It does. And this is post-fork so we\u0027re not killing init.",
+      "parentUuid": "c1d83cb2_70dd28c5",
       "range": {
         "startLine": 268,
         "startChar": 8,
