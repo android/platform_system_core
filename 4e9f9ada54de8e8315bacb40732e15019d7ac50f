@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1d83cb2_b04040a4",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1082649
+      },
+      "writtenOn": "2016-10-26T19:26:44Z",
+      "side": 1,
+      "message": "While you have an assert that the cap list hasn\u0027t changed, there is nothing that keeps this cap list in the correct order. While it looks correct to me as-is, I find this to be a fragile way to construct it.\n\nI\u0027m not sure how to do with with a std::map, but building this with a C array could be done like this to force array positions:\n\n#define CAP_MAP_ENTRY(cap) [CAP_ ## cap] \u003d #cap\n\nHowever, see my comment in lookup_cap(), maybe this will all just go away. :)",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1d83cb2_f03ab82d",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1082649
+      },
+      "writtenOn": "2016-10-26T19:26:44Z",
+      "side": 1,
+      "message": "This assumes all builders will have the kernel headers from v3.16 or later (introduction of CAP_AUDIT_READ). Does libcap\u0027s cap_from_name() hard code these or does it depend on the kernel uapi headers too?",
+      "range": {
+        "startLine": 69,
+        "startChar": 30,
+        "endLine": 69,
+        "endChar": 44
+      },
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1d83cb2_702fe8e8",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1082649
+      },
+      "writtenOn": "2016-10-26T19:26:44Z",
+      "side": 1,
+      "message": "While it boggles the mind how cap_set_flag() could fail as used here, I think this should report which cap was being attempted anyway.",
+      "range": {
+        "startLine": 98,
+        "startChar": 31,
+        "endLine": 98,
+        "endChar": 43
+      },
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1d83cb2_304c50e1",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1082649
+      },
+      "writtenOn": "2016-10-26T19:26:44Z",
+      "side": 1,
+      "message": "Why this instead of wrapping cap_from_name() instead? This code also deviates from everything else using cap_from_name(), in that the \"cap_\" prefix isn\u0027t used in the names.",
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1d83cb2_f0c8f809",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1082649
+      },
+      "writtenOn": "2016-10-26T19:26:44Z",
+      "side": 1,
+      "message": "Is this to cover the case were SETPCAP is in Permitted but not Effective?",
+      "range": {
+        "startLine": 139,
+        "startChar": 9,
+        "endLine": 139,
+        "endChar": 29
+      },
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1d83cb2_502c64f2",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1082649
+      },
+      "writtenOn": "2016-10-26T19:26:44Z",
+      "side": 1,
+      "message": "Other failure points report to ERROR, so this should too.",
+      "range": {
+        "startLine": 145,
+        "startChar": 15,
+        "endLine": 145,
+        "endChar": 20
+      },
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1d83cb2_b0a5e058",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1082649
+      },
+      "writtenOn": "2016-10-26T19:26:44Z",
+      "side": 1,
+      "message": "As with the bounding set failure, this should report to ERROR as well.",
+      "range": {
+        "startLine": 161,
+        "startChar": 15,
+        "endLine": 161,
+        "endChar": 20
+      },
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1d83cb2_70dd28c5",
+        "filename": "init/service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1082649
+      },
+      "writtenOn": "2016-10-26T19:26:44Z",
+      "side": 1,
+      "message": "Just to double-check: does the FATAL target kill the process?",
+      "range": {
+        "startLine": 268,
+        "startChar": 8,
+        "endLine": 268,
+        "endChar": 9
+      },
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
