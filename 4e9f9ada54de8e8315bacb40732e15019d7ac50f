@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "c1d83cb2_90225cbd",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1082649
+      },
+      "writtenOn": "2016-10-26T20:11:55Z",
+      "side": 1,
+      "message": "The build will break when a new kernel adds a new capability, but that\u0027s easier to debug than failures at runtime. The horrible thing AppArmor does to pull capabilities at build time is:\n\nCAPABILITIES\u003d$(shell echo \"\\#include \u003clinux/capability.h\u003e\" | cpp -dM | LC_ALL\u003dC sed -n -e \u0027/CAP_EMPTY_SET/d\u0027 -e \u0027s/^\\#define[ \\t]\\+CAP_\\([A-Z0-9_]\\+\\)[ \\t]\\+\\([0-9xa-f]\\+\\)\\(.*\\)$$/CAP_\\1/p\u0027 | sort)\n\ncap_names.h: /usr/include/linux/capability.h\n        echo \"$(CAPABILITIES)\" | LC_ALL\u003dC sed -n -e \"s/[ \\\\t]\\\\?CAP_\\\\([A-Z0-9_]\\\\+\\\\)/\\{\\\"\\\\L\\\\1\\\", \\\\UCAP_\\\\1\\},\\\\n/pg\" \u003e $@\n\nWhich produces cap_names.h containing:\n\n{\"audit_control\", CAP_AUDIT_CONTROL},\n{\"audit_write\", CAP_AUDIT_WRITE},\n...\n\nWhich gets included like this (adding the ability to pre-define capabilities that may not yet exist in the build kernel headers):\n\nstatic struct keyword_table capability_table[] \u003d {\n        /* capabilities */\n        #include \"cap_names.h\"\n#ifndef CAP_SYSLOG\n        {\"syslog\", 34},\n#endif\n        /* terminate */\n        {NULL, 0}\n};\n\n\nIf we wanted extreme future-proofing, something similar could be done here, and then adjust the assert to CAP_LAST_CAP check is \u003e\u003d not \u003d\u003d, and any time we needed to depend on a new cap existing, we could update the assert.",
+      "parentUuid": "c1d83cb2_50362417",
+      "range": {
+        "startLine": 69,
+        "startChar": 30,
+        "endLine": 69,
+        "endChar": 44
+      },
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1d83cb2_702fe8e8",
         "filename": "init/capabilities.cpp",
         "patchSetId": 2
