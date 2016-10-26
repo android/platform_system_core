@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "c1d83cb2_f0611852",
+        "filename": "debuggerd/crash_dump.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-10-26T19:02:00Z",
+      "side": 1,
+      "message": "If the process we\u0027re trying to dump dies, we\u0027ll be reparented onto init (or someone else guaranteed to be an ancestor of us, if PR_SET_CHILD_SUBREAPER is on), so checking if getppid() changes after we PTRACE_ATTACH everything should be sufficient. This is complicated a bit because we need to fork and then ptrace in that child, because we need to be able to waitpid on the child before we exit the signal handler, to avoid leaving a zombie when doing a non-fatal dump, so we\u0027ll actually need to parse /proc/getppid()/status or do IPC to call getppid() in the parent or something. (TODOs on line 211, 280)",
+      "parentUuid": "c1d83cb2_b00960a0",
+      "revId": "2f3bd776adc409820434a38707e42ddabc42139a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1d83cb2_6de9d1cb",
         "filename": "debuggerd/crash_dump.cpp",
         "patchSetId": 5
