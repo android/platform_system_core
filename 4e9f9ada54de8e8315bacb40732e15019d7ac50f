@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c1d83cb2_70608819",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1082649
+      },
+      "writtenOn": "2016-10-26T19:59:27Z",
+      "side": 1,
+      "message": "Ah-ha! Okay, awesome. Yay smart types. :)",
+      "parentUuid": "81b56446_76836852",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1d83cb2_f03ab82d",
         "filename": "init/capabilities.cpp",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "That is true. At least we\u0027d fail at compile time.\n\nI\u0027m pretty sure kernel-headers for Android is in the 4.x range (I had to fix a bug in Minijail when they were changed) but I can double-check.\n\nlibcap auto-generates a list of caps based on the headers: https://kernel.googlesource.com/pub/scm/linux/kernel/git/morgan/libcap/+/master/libcap/_makenames.c",
       "parentUuid": "c1d83cb2_f03ab82d",
+      "range": {
+        "startLine": 69,
+        "startChar": 30,
+        "endLine": 69,
+        "endChar": 44
+      },
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1d83cb2_b02a00ad",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1082649
+      },
+      "writtenOn": "2016-10-26T19:59:27Z",
+      "side": 1,
+      "message": "This seems frustratingly fragile, but yeah, I can\u0027t think of a better way that doesn\u0027t fail at runtime which is MUCH harder to debug.",
+      "parentUuid": "81b56446_b6b95026",
       "range": {
         "startLine": 69,
         "startChar": 30,
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "c1d83cb2_902ffcbc",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1082649
+      },
+      "writtenOn": "2016-10-26T19:59:27Z",
+      "side": 1,
+      "message": "Right, yeah, I meant \"improving this error message seems silly since it\u0027ll never fail\", but yeah, let\u0027s add the cap anyway.",
+      "parentUuid": "815c8406_7867a100",
+      "range": {
+        "startLine": 98,
+        "startChar": 31,
+        "endLine": 98,
+        "endChar": 43
+      },
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1d83cb2_304c50e1",
         "filename": "init/capabilities.cpp",
         "patchSetId": 2
@@ -172,6 +244,24 @@
       "side": 1,
       "message": "But it matches the capability names used in files like: https://cs.corp.google.com/android/device/google/marlin/marlin/android_filesystem_config.h?q\u003dandroid_filesystem_config+package:%5Eandroid$\u0026l\u003d1\n\nand all other Android devices.\n\nAlso, cap_from_name() uses a linear search while the map is log().",
       "parentUuid": "c1d83cb2_304c50e1",
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1d83cb2_303f30ee",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1082649
+      },
+      "writtenOn": "2016-10-26T19:59:27Z",
+      "side": 1,
+      "message": "Well, the names could be mangled for cap_from_name(), but since it\u0027s both less fragile and more efficient than cap_from_name(), I\u0027m fine with this. :)",
+      "parentUuid": "815c8406_98947592",
       "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -260,6 +350,30 @@
       "side": 1,
       "message": "The reason to skip here is that drop_bounding_set is already printing an error. Given that we call set_inh_prm_eff_caps() twice, it made sense to print an extra error here to differentiate which call was failing.\n\nHappy to add an error here as well though, but I don\u0027t think it can add more information.",
       "parentUuid": "c1d83cb2_502c64f2",
+      "range": {
+        "startLine": 145,
+        "startChar": 15,
+        "endLine": 145,
+        "endChar": 20
+      },
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1d83cb2_7039a805",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1082649
+      },
+      "writtenOn": "2016-10-26T19:59:27Z",
+      "side": 1,
+      "message": "Ah, gotcha.",
+      "parentUuid": "815c8406_d88eed7b",
       "range": {
         "startLine": 145,
         "startChar": 15,
