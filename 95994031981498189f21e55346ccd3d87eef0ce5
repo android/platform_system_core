@@ -70,6 +70,30 @@
       "revId": "95994031981498189f21e55346ccd3d87eef0ce5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1c7c880_7f32470f",
+        "filename": "init/property_service.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2016-10-26T00:01:38Z",
+      "side": 1,
+      "message": "Yes, but the problem is that if you just change this one thing to a std::string, we\u0027ll be making additional copies of property names (in two places). Example:\n\nbefore:\n\n    case PROP_MSG_SETPROP:\n        msg.name[PROP_NAME_MAX-1] \u003d 0;\n        msg.value[PROP_VALUE_MAX-1] \u003d 0;\n\n        if (!is_legal_property_name(msg.name, strlen(msg.name))) {\n             ...\n        }\n\nafter:\n\n    case PROP_MSG_SETPROP:\n        msg.name[PROP_NAME_MAX-1] \u003d 0;\n        msg.value[PROP_VALUE_MAX-1] \u003d 0;\n\n        std::string value(msg.name); // copies buffer\n\n        if (!is_legal_property_name(value)) {\n             ...\n        }\n\nThis corresponds to an additional allocation every time a property is set/updated and every time the epoll handler for property_service receives the message PROP_MSG_SETPROP.\n\nI\u0027m not sure what the performance requirements of property_service are, but reading the code, they look pretty tight (the extra string concatenation in service.cpp seemed a little more reasonable because the number of services that exist are far fewer).\n\nAre you sure you want me to make this change?",
+      "parentUuid": "a1c7c880_7cfc95c7",
+      "range": {
+        "startLine": 37,
+        "startChar": 53,
+        "endLine": 37,
+        "endChar": 67
+      },
+      "revId": "95994031981498189f21e55346ccd3d87eef0ce5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
