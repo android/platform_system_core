@@ -91,6 +91,29 @@
       "revId": "64db3a81af0ab777f7aecbddcfbd40653b5c6842",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "665b2640_072716e7",
+        "filename": "libcutils/files.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-27T20:49:59Z",
+      "side": 1,
+      "message": "Perform a fcntl(fd, F_GETFD) to see if the file descriptor is still open and valid.\n\nWe should also consider readlink(/proc/self/fd/\u003cpid\u003e,...) and check for a match to the incoming name.\n\nNB: same could be done for socket variant, except we use getsockname(fd,...)",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 33
+      },
+      "revId": "64db3a81af0ab777f7aecbddcfbd40653b5c6842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
