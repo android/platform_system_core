@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "815c8406_780de1e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-10-27T01:03:41Z",
+      "side": 1,
+      "message": "I think that\u0027s splitting hairs -- the process will have the capabilities if you look at /proc/self/status. You won\u0027t be able to use them if you don\u0027t have them allowed in SELinux policy though, that is correct.",
+      "parentUuid": "c1d83cb2_70e9a8cb",
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1d83cb2_b094c091",
         "filename": "init/Android.mk",
         "patchSetId": 2
@@ -632,6 +650,24 @@
     },
     {
       "key": {
+        "uuid": "815c8406_380369bc",
+        "filename": "init/service.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-10-27T01:03:41Z",
+      "side": 1,
+      "message": "Because consistency is good?",
+      "parentUuid": "c1d83cb2_13add668",
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1d83cb2_13a83660",
         "filename": "init/test/test_service.cpp",
         "patchSetId": 2
@@ -643,6 +679,24 @@
       "writtenOn": "2016-10-26T21:48:05Z",
       "side": 1,
       "message": "Why not check that the status is what was set, is their someway we could make the test fail.",
+      "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "815c8406_d8fb4da1",
+        "filename": "init/test/test_service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-10-27T01:03:41Z",
+      "side": 1,
+      "message": "This service doesn\u0027t actually test anything. It\u0027s just an easy way to have something to run to test things when one is working on init. I\u0027m just gonna split it off to a separate CL.\n\nWe could have this service check that the right capabilities have been set, but I was envisioning this code to be used by folks to test all sorts of things -- every time I write new init functionality, I end up writing a simple test service -- this allows me to not have to do that every time.",
+      "parentUuid": "c1d83cb2_13a83660",
       "revId": "4e9f9ada54de8e8315bacb40732e15019d7ac50f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
