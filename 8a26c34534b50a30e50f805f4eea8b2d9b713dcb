@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "81b56446_e69cbff9",
+        "filename": "init/service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-28T14:47:22Z",
+      "side": 1,
+      "message": "The cases where we need file are for /dev/kmsg or /proc/kmsg, init is providing a means to open a file or device at init privileges so that the service does not need to start at those privileges.\n\nYes, it is a loophole, much like sockets are; but the gain is the service does not have to start as root.",
+      "parentUuid": "81b56446_8d835651",
+      "revId": "8a26c34534b50a30e50f805f4eea8b2d9b713dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81b56446_cd96fe28",
         "filename": "init/service.cpp",
         "patchSetId": 3
@@ -59,6 +77,30 @@
     },
     {
       "key": {
+        "uuid": "a6eefe70_23ee694a",
+        "filename": "init/service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-28T14:47:22Z",
+      "side": 1,
+      "message": "yes :-) copy and paste!",
+      "parentUuid": "81b56446_cd96fe28",
+      "range": {
+        "startLine": 346,
+        "startChar": 21,
+        "endLine": 346,
+        "endChar": 23
+      },
+      "revId": "8a26c34534b50a30e50f805f4eea8b2d9b713dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81b56446_8da5168b",
         "filename": "init/service.cpp",
         "patchSetId": 3
@@ -70,6 +112,30 @@
       "writtenOn": "2016-10-28T00:59:47Z",
       "side": 1,
       "message": "These should be 3 and 6 I believe.",
+      "range": {
+        "startLine": 543,
+        "startChar": 25,
+        "endLine": 543,
+        "endChar": 33
+      },
+      "revId": "8a26c34534b50a30e50f805f4eea8b2d9b713dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a16b489a_d6b95525",
+        "filename": "init/service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-28T14:47:22Z",
+      "side": 1,
+      "message": "Ooops, good catch! I remember dropping socket type, only to replace it with file open type later, forgot to fix up here.",
+      "parentUuid": "81b56446_8da5168b",
       "range": {
         "startLine": 543,
         "startChar": 25,
@@ -129,6 +195,30 @@
     },
     {
       "key": {
+        "uuid": "81ce44ee_fe7c3e2a",
+        "filename": "init/service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-28T14:47:22Z",
+      "side": 1,
+      "message": "I do this _much_ better in PS 2 because I used isalnum() which requires a single pass through iteration, so yes, done!\n\nI used a auto size_t index, auto\u0026c looks cleaner so, will migrate.",
+      "parentUuid": "81b56446_4d4ccee1",
+      "range": {
+        "startLine": 820,
+        "startChar": 0,
+        "endLine": 821,
+        "endChar": 70
+      },
+      "revId": "8a26c34534b50a30e50f805f4eea8b2d9b713dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81b56446_8d8cf618",
         "filename": "init/service.h",
         "patchSetId": 3
@@ -140,6 +230,47 @@
       "writtenOn": "2016-10-28T00:59:47Z",
       "side": 1,
       "message": "Nit: the gid_t should be aligned with \u0027const\u0027 on the above row.\n\nI messed up with up SocketInfo above, but better to fix it moving forward then propagate it.",
+      "revId": "8a26c34534b50a30e50f805f4eea8b2d9b713dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21c918eb_ddf86612",
+        "filename": "init/service.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-28T14:47:22Z",
+      "side": 1,
+      "message": "yes, style! I will fix both in the next path.",
+      "parentUuid": "81b56446_8d8cf618",
+      "revId": "8a26c34534b50a30e50f805f4eea8b2d9b713dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21c918eb_5ded9648",
+        "filename": "init/service.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-28T14:47:22Z",
+      "side": 1,
+      "message": "these should probably all be const, as they never change during the lifetime of this structure once initialized. Enforcing them as immutable will keep our grubby hands off the content.",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 24
+      },
       "revId": "8a26c34534b50a30e50f805f4eea8b2d9b713dcb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
