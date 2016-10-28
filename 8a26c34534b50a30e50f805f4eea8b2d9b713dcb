@@ -2,6 +2,86 @@
   "comments": [
     {
       "key": {
+        "uuid": "81b56446_6d89d206",
+        "filename": "init/service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2016-10-28T00:59:47Z",
+      "side": 1,
+      "message": "Same Nit here for gid_t aligning with const on the previous line.",
+      "revId": "8a26c34534b50a30e50f805f4eea8b2d9b713dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81b56446_8d835651",
+        "filename": "init/service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2016-10-28T00:59:47Z",
+      "side": 1,
+      "message": "Does anything need to be done here for files as well?",
+      "revId": "8a26c34534b50a30e50f805f4eea8b2d9b713dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81b56446_cd96fe28",
+        "filename": "init/service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2016-10-28T00:59:47Z",
+      "side": 1,
+      "message": "Nit: fi for file info maybe?",
+      "range": {
+        "startLine": 346,
+        "startChar": 21,
+        "endLine": 346,
+        "endChar": 23
+      },
+      "revId": "8a26c34534b50a30e50f805f4eea8b2d9b713dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81b56446_8da5168b",
+        "filename": "init/service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2016-10-28T00:59:47Z",
+      "side": 1,
+      "message": "These should be 3 and 6 I believe.",
+      "range": {
+        "startLine": 543,
+        "startChar": 25,
+        "endLine": 543,
+        "endChar": 33
+      },
+      "revId": "8a26c34534b50a30e50f805f4eea8b2d9b713dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "665b2640_0786f6ad",
         "filename": "init/service.cpp",
         "patchSetId": 3
@@ -25,6 +105,47 @@
     },
     {
       "key": {
+        "uuid": "81b56446_4d4ccee1",
+        "filename": "init/service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2016-10-28T00:59:47Z",
+      "side": 1,
+      "message": "Each of these find() calls is starting over from the beginning of the string.  May be better to just loop over this string,\n\n  for (auto\u0026 c : string) {                                                                                                                                     \n    if (c \u003d\u003d \u0027.\u0027 || c \u003d\u003d \u0027/\u0027) {                                                                                                                                \n      c \u003d \u0027_\u0027;                                                                                                                                                 \n    }                                                                                                                                                          \n  }",
+      "parentUuid": "665b2640_0786f6ad",
+      "range": {
+        "startLine": 820,
+        "startChar": 0,
+        "endLine": 821,
+        "endChar": 70
+      },
+      "revId": "8a26c34534b50a30e50f805f4eea8b2d9b713dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81b56446_8d8cf618",
+        "filename": "init/service.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2016-10-28T00:59:47Z",
+      "side": 1,
+      "message": "Nit: the gid_t should be aligned with \u0027const\u0027 on the above row.\n\nI messed up with up SocketInfo above, but better to fix it moving forward then propagate it.",
+      "revId": "8a26c34534b50a30e50f805f4eea8b2d9b713dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "665b2640_a735ea09",
         "filename": "init/util.cpp",
         "patchSetId": 3
@@ -42,6 +163,23 @@
         "endLine": 195,
         "endChar": 57
       },
+      "revId": "8a26c34534b50a30e50f805f4eea8b2d9b713dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81b56446_4d35ee3b",
+        "filename": "init/util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2016-10-28T00:59:47Z",
+      "side": 1,
+      "message": "Same nit with uid_t and const on the previous line",
       "revId": "8a26c34534b50a30e50f805f4eea8b2d9b713dcb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
