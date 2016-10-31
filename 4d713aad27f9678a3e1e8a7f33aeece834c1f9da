@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "066eea3f_24a592ef",
+        "filename": "init/service.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-31T16:10:36Z",
+      "side": 1,
+      "message": "We only need this if uid_ is set.\n\nAlso, we should clear KEEPCAPS _after_ we set the uid as the assumption in the executables is that this is always clear unless they set it (i.e.: make them work for their crumbs)",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 5
+      },
+      "revId": "4d713aad27f9678a3e1e8a7f33aeece834c1f9da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "066eea3f_c4d67e50",
+        "filename": "init/service.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-31T16:10:36Z",
+      "side": 1,
+      "message": "You will need CAP_SETGID for this, but if we do this, do we want to specifically block CAP_SETGID for the exec? Either we do it, or the executable does it, but not both?\n\nHmm, maybe outside the cope of this change, come to think of it, if supp_gids is empty, maybe we should make sure setgroups empties the supp_gids?",
+      "range": {
+        "startLine": 245,
+        "startChar": 12,
+        "endLine": 245,
+        "endChar": 64
+      },
+      "revId": "4d713aad27f9678a3e1e8a7f33aeece834c1f9da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "066eea3f_84b3a635",
+        "filename": "init/service.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-31T16:10:36Z",
+      "side": 1,
+      "message": "expect we should clear KEEPCAPS here?",
+      "range": {
+        "startLine": 252,
+        "startChar": 8,
+        "endLine": 252,
+        "endChar": 9
+      },
+      "revId": "4d713aad27f9678a3e1e8a7f33aeece834c1f9da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
