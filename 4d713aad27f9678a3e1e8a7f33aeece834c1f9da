@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "662326ed_4d860daf",
+        "filename": "init/service.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-10-31T16:25:29Z",
+      "side": 1,
+      "message": "I don\u0027t think that\u0027s necessarily true. It\u0027s possible for a process to keep UID\u003d0 but drop caps, and if you drop CAP_SETPCAP and the bounding set, you won\u0027t be able to gain those caps back.\n\nAs for KEEPCAPS, the capabilities(7) man page confirms it\u0027s cleared on execve(2):\nSECBIT_KEEP_CAPS\n\"This flag is always cleared  on  an  execve(2).   (This  flag  provides the same functionality as the older prctl(2) PR_SET_KEEPCAPS operation.)\n\nWe could lock the secure bit if we were being extra paranoid but since we\u0027re dropping the bounding set, there\u0027s no extra caps that can ever be gained.\n\nWe could also set no-new-privs if we wanted to be extra paranoid.",
+      "parentUuid": "066eea3f_24a592ef",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 5
+      },
+      "revId": "4d713aad27f9678a3e1e8a7f33aeece834c1f9da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "066eea3f_c4d67e50",
         "filename": "init/service.cpp",
         "patchSetId": 8
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "662326ed_8d676543",
+        "filename": "init/service.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-10-31T16:25:29Z",
+      "side": 1,
+      "message": "We don\u0027t. The only thing done above is settings KEEPCAPS. Capabilities are actually dropped below, in the SetCapsForExec() function, so at this point the process can still do whatever it wants.",
+      "parentUuid": "066eea3f_c4d67e50",
+      "range": {
+        "startLine": 245,
+        "startChar": 12,
+        "endLine": 245,
+        "endChar": 64
+      },
+      "revId": "4d713aad27f9678a3e1e8a7f33aeece834c1f9da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "066eea3f_84b3a635",
         "filename": "init/service.cpp",
         "patchSetId": 8
@@ -59,6 +107,30 @@
       "writtenOn": "2016-10-31T16:10:36Z",
       "side": 1,
       "message": "expect we should clear KEEPCAPS here?",
+      "range": {
+        "startLine": 252,
+        "startChar": 8,
+        "endLine": 252,
+        "endChar": 9
+      },
+      "revId": "4d713aad27f9678a3e1e8a7f33aeece834c1f9da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "662326ed_ad6a290b",
+        "filename": "init/service.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-10-31T16:25:29Z",
+      "side": 1,
+      "message": "Why? The process is dying.",
+      "parentUuid": "066eea3f_84b3a635",
       "range": {
         "startLine": 252,
         "startChar": 8,
