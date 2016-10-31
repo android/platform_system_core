@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "066eea3f_c4df5e4c",
+        "filename": "init/service.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-31T16:54:21Z",
+      "side": 1,
+      "message": "You misunderstand. KEEPCAPS _only_ is required so that setuid() does not drop the capability set. You only run setuid if uid_ is not zero. This is all about keeping attack surfaces minimized, do not ask for things you do not need. CAP_SETPCAP remains because you did not do a setuid() ...",
+      "parentUuid": "662326ed_4d860daf",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 5
+      },
+      "revId": "4d713aad27f9678a3e1e8a7f33aeece834c1f9da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "066eea3f_c4d67e50",
         "filename": "init/service.cpp",
         "patchSetId": 8
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "066eea3f_245af20a",
+        "filename": "init/service.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-31T16:54:21Z",
+      "side": 1,
+      "message": "But that is the point, if we restrict/set the groups here, then we may not wish to allow the exec\u0027d process to do so?\n\nI recant in any case, because if we restrict it here, we should still allow the underlying process to restrict it further ... but my worry remains is that it could be allowed to grow the set.",
+      "parentUuid": "662326ed_8d676543",
+      "range": {
+        "startLine": 245,
+        "startChar": 12,
+        "endLine": 245,
+        "endChar": 64
+      },
+      "revId": "4d713aad27f9678a3e1e8a7f33aeece834c1f9da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "066eea3f_84b3a635",
         "filename": "init/service.cpp",
         "patchSetId": 8
@@ -131,6 +179,30 @@
       "side": 1,
       "message": "Why? The process is dying.",
       "parentUuid": "066eea3f_84b3a635",
+      "range": {
+        "startLine": 252,
+        "startChar": 8,
+        "endLine": 252,
+        "endChar": 9
+      },
+      "revId": "4d713aad27f9678a3e1e8a7f33aeece834c1f9da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "066eea3f_6464ead1",
+        "filename": "init/service.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-10-31T16:54:21Z",
+      "side": 1,
+      "message": "I tagged the fall-through, not the failure case.\n\nIf uid_ is set, and we have ran setuid, then KEEPCAPS has done its job and we do not need it anymore. This is based on the new code above which set KEEPCAPS in order for this mechanics to work.",
+      "parentUuid": "662326ed_ad6a290b",
       "range": {
         "startLine": 252,
         "startChar": 8,
