@@ -57,6 +57,30 @@
       "revId": "202ebc76f25d69699be7b72611f5ced7b69619ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "662326ed_4dce0d50",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-10-31T15:46:18Z",
+      "side": 1,
+      "message": "I guess that\u0027s possible given that vendors can use any kernel they want, but it also seems unlikely right? We\u0027re at 4.4 headers right now and nothing is shipping with 4.4 kernels.\n\nMoreover, note that this is failing closed: the capability sets are fully cleared before enabling any capabilities, so if the kernel supports extra capabilities that we don\u0027t know about, we\u0027ll just never set them. Moreover, even if we did know the kernel supported extra caps, with older headers we wouldn\u0027t have a #define for them, so we would not be able to parse them nor set them (except by setting them by number, which is ugly.)\n\nGiven that situation I actually think it\u0027s a better idea to keep this compile-time assert. Note the assert will not fail with newer kernels, only if we ever update the kernel headers and that brings a new cap.",
+      "parentUuid": "665b2640_0743965e",
+      "range": {
+        "startLine": 69,
+        "startChar": 14,
+        "endLine": 69,
+        "endChar": 26
+      },
+      "revId": "202ebc76f25d69699be7b72611f5ced7b69619ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
