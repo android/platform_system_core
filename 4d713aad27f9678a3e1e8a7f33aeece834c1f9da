@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "662326ed_2db91923",
+        "filename": "init/service.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-10-31T17:20:01Z",
+      "side": 1,
+      "message": "Adding an uid_ check here is the right thing to do. I was just pointing out that settings caps without changing uid also makes sense.",
+      "parentUuid": "066eea3f_c4df5e4c",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 5
+      },
+      "revId": "4d713aad27f9678a3e1e8a7f33aeece834c1f9da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "066eea3f_c4d67e50",
         "filename": "init/service.cpp",
         "patchSetId": 8
@@ -144,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "662326ed_cdd31d5e",
+        "filename": "init/service.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-10-31T17:20:01Z",
+      "side": 1,
+      "message": "Right. There\u0027s two issues:\n\n1-We do not need CAP_SETGID for this specific call to setgroups, because in line 245 we have not yet dropped caps.\n\n2-If the process expects to change UID/GIDs again (maybe to drop some GIDs, maybe to change UID to an even less privileged UID), the process should ask for CAP_SETUID/CAP_SETGID. Obviously CAP_SETUID/CAP_SETGID are very powerful capabilities, but note:\n\n\"3. If the effective user ID is changed from nonzero to 0, then the permitted set is copied  to the effective set.\"\n\nWhich means that asking for CAP_SETUID and changing the UID back to 0 won\u0027t allow the process to gain any extra caps: \"permitted\" is already the same as \"effective\" in the child process.\n\n(It also means that dropping caps while running as root is useful.)",
+      "parentUuid": "066eea3f_245af20a",
+      "range": {
+        "startLine": 245,
+        "startChar": 12,
+        "endLine": 245,
+        "endChar": 64
+      },
+      "revId": "4d713aad27f9678a3e1e8a7f33aeece834c1f9da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "066eea3f_84b3a635",
         "filename": "init/service.cpp",
         "patchSetId": 8
@@ -203,6 +251,30 @@
       "side": 1,
       "message": "I tagged the fall-through, not the failure case.\n\nIf uid_ is set, and we have ran setuid, then KEEPCAPS has done its job and we do not need it anymore. This is based on the new code above which set KEEPCAPS in order for this mechanics to work.",
       "parentUuid": "662326ed_ad6a290b",
+      "range": {
+        "startLine": 252,
+        "startChar": 8,
+        "endLine": 252,
+        "endChar": 9
+      },
+      "revId": "4d713aad27f9678a3e1e8a7f33aeece834c1f9da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "662326ed_4d9f2d99",
+        "filename": "init/service.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-10-31T17:20:01Z",
+      "side": 1,
+      "message": "My reasoning is that this code does one of two things:\n\nIt either LOG(FATAL)s,\nOr it drop caps (including the bounding set), and execve(2)\u0027s, which means that KEEPCAPS is cleared.\n\nMoreover, if we change the if clause in your first comment to only call prctl(KEEPCAPS) when uid_ is set, then we\u0027ll always try to setuid() here, which means that we\u0027ll either succeed or die.\n\nIn either of the cases, there does not seem to be a need to clear KEEPCAPS. Happy to add it if you think it\u0027s a good idea though.",
+      "parentUuid": "066eea3f_6464ead1",
       "range": {
         "startLine": 252,
         "startChar": 8,
