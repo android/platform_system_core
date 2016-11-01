@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6c8f69a_96b3ca9f",
+        "filename": "init/service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2016-11-01T01:43:46Z",
+      "side": 1,
+      "message": "All of these functions can/should be the overrides of the base class\u0027s Create/Public/Clean functions.\n\nI\u0027d actually go one further; since CreateSocket() and PublishSocket() are never called separately from one another, there could be just one function that handles both.",
+      "revId": "5b74f5a7c570f89f075d34c402104a9531127a3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6c8f69a_36c3d6f4",
+        "filename": "init/service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2016-11-01T01:43:46Z",
+      "side": 1,
+      "message": "Assuming the above is done, then this can be replaced with\n\nfor (const auto\u0026 di : descriptors_) {\n  di.CreateAndPublish();\n}",
+      "revId": "5b74f5a7c570f89f075d34c402104a9531127a3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6c8f69a_16569a6f",
+        "filename": "init/service.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2016-11-01T01:43:46Z",
+      "side": 1,
+      "message": "Since this is already C++, it\u0027d be best if these were virtual functions and there were SocketInfo and FileInfo classes that overrode them.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 55
+      },
+      "revId": "5b74f5a7c570f89f075d34c402104a9531127a3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6c8f69a_16c0dae3",
+        "filename": "init/util.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2016-11-01T01:43:46Z",
+      "side": 1,
+      "message": "Should this be right after the open() call?",
+      "range": {
+        "startLine": 205,
+        "startChar": 4,
+        "endLine": 208,
+        "endChar": 5
+      },
+      "revId": "5b74f5a7c570f89f075d34c402104a9531127a3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
