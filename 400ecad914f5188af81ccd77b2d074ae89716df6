@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06a98af7_72aed0d0",
+        "filename": "init/service.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-11-02T16:16:47Z",
+      "side": 1,
+      "message": "Use C++ comment style",
+      "range": {
+        "startLine": 241,
+        "startChar": 8,
+        "endLine": 241,
+        "endChar": 22
+      },
+      "revId": "400ecad914f5188af81ccd77b2d074ae89716df6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06a98af7_32ff28bd",
+        "filename": "init/service.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-11-02T16:16:47Z",
+      "side": 1,
+      "message": "emplace_back is really a move since info goes out of scope. Do I need to use std::move(info) here?\n\nNB: emplace_back can never be used if list based on a base-class and info is a sub-class, but tomcherry@ has stated we can work around that by passing in unique_ptr references to (pedantically) perform cleanup (entries are never removed from descriptors_ in any case).",
+      "range": {
+        "startLine": 538,
+        "startChar": 3,
+        "endLine": 538,
+        "endChar": 36
+      },
+      "revId": "400ecad914f5188af81ccd77b2d074ae89716df6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06a98af7_b20af803",
+        "filename": "init/service.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-11-02T16:16:47Z",
+      "side": 1,
+      "message": "essential for compare method, so we retain it for a switch in the other methods.\n\nIf only I could access a signature associated with sub-class virtual functions for comparison, then I could make this a base-class.",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 35
+      },
+      "revId": "400ecad914f5188af81ccd77b2d074ae89716df6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
