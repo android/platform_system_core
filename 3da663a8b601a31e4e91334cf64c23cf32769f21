@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06a98af7_e6420259",
+        "filename": "libcutils/sockets.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-11-03T15:08:47Z",
+      "side": 1,
+      "message": "not available on _WIN32\n\nIf I was pedantic I\u0027d include winsock2.h, ws2tcpip.h and play with socklen_t and SOCKET definitions; but we have cutils/socket.h to do that for us. Perhaps best to drop this include from the quagmire.\n\n(Android coding standard should include system files you actually use content from, or are documented as required to use any library interfaces, to ensure build robustness)",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 23
+      },
+      "revId": "3da663a8b601a31e4e91334cf64c23cf32769f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
