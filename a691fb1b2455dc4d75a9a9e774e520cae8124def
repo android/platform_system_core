@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06a98af7_d343435f",
+        "filename": "fs_mgr/fs_mgr_main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-11-03T21:41:37Z",
+      "side": 1,
+      "message": "You misread me.\n\nThis code is now a bastardized version of the NULL check for argv[0] and I stated it was unnecessary. You can not do + 1 since strrchr can return a NULL and now me will be a dereferenced NULL pointer. Please revert back. This one is \u0027fragile\u0027 because it was open-coded as we can see as you made a common mistake in refactoring it.\n\nRevert back, or take enh\u0027s suggestion to switch to the alternate char * basename(const char *path). This one is fragile because a change elsewhere, or switching includes, can cause it to switch back to the posix variant ...",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 52
+      },
+      "revId": "a691fb1b2455dc4d75a9a9e774e520cae8124def",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
