@@ -69,6 +69,24 @@
       "revId": "9494740d5be33a2306ab66ab321b49a5d1fbaea7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab04074e_b16720d5",
+        "filename": "libcutils/tests/sockets_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-11-04T17:02:54Z",
+      "side": 1,
+      "message": "I copy and pasted it because libcutils depends on toggle_O_NONBLOCK and thus must work. Why would it not work (not having a MAC capable of building Android tree to test this out)? Windows host build does not define G_GETFL, so _that_ is the one that will not work.\n\nIF SOCK_NONBLOCK is defined as it is on linux, toggle_O_NONBLOCK will do nothing as it is replaced with \u0027return s;\u0027. Agreed, it would be clearer to make this set_O_NONBLOCK rather than copying an existing functional(?) routine.\n\n(respinning to clarify rather than cut and paste)",
+      "parentUuid": "ab04074e_7191389c",
+      "revId": "9494740d5be33a2306ab66ab321b49a5d1fbaea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
