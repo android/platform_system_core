@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab04074e_60e67cd4",
+        "filename": "init/util.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-11-05T20:50:44Z",
+      "side": 1,
+      "message": "(i know this is copy \u0026 paste, but in all these cases where the return code isn\u0027t actually used, prefer to just compare to -1 directly and lose the temporary variable... it just makes readers think there\u0027s something clever going on when there isn\u0027t.)",
+      "revId": "62767fe29f8aaf62470781a3cf419ba11187d178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab04074e_c0dac8fd",
+        "filename": "init/util.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-11-05T20:50:44Z",
+      "side": 1,
+      "message": "the filecon code above may have mangled errno by the time you try to log it here. (the function above saves/restores errno, but i don\u0027t understand why we don\u0027t just do the filecon stuff afterwards instead?)",
+      "revId": "62767fe29f8aaf62470781a3cf419ba11187d178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab04074e_80e1e0bc",
+        "filename": "init/util.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-11-05T20:50:44Z",
+      "side": 1,
+      "message": "(better in new code to use unique_fd. we haven\u0027t finished cleaning up the gotos yet, so sadly there are still lots of bad examples left lying around :-( )",
+      "revId": "62767fe29f8aaf62470781a3cf419ba11187d178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab04074e_4008989b",
+        "filename": "init/util_test.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-11-05T20:50:44Z",
+      "side": 1,
+      "message": "use TemporaryFile in \u003candroid-base/test_utils.h\u003e instead.",
+      "revId": "62767fe29f8aaf62470781a3cf419ba11187d178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab04074e_00d5f0cc",
+        "filename": "init/util_test.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-11-05T20:50:44Z",
+      "side": 1,
+      "message": "should be EXPECT_STREQ. (there\u0027s an ASSERT_STREQ too.) or you can use the trick you used on L95.",
+      "revId": "62767fe29f8aaf62470781a3cf419ba11187d178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
