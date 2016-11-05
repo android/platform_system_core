@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ab04074e_205f548b",
+        "filename": "logd/main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-11-05T21:10:16Z",
+      "side": 1,
+      "message": "one of the advantages of \u003candroid-base/logging.h\u003e is that you can install your own log destination. (see the SetLogger function.) so you can pass SetLogger something that basically does what your prdebug does, and all P?LOG(blah) output will automatically go there. including from any other libraries you\u0027ve linked to: calling code doesn\u0027t need to worry about _where_ the logging ends up.\n\n(this is why, in case you\u0027ve been wondering, we\u0027ve sometimes made changes to switch libraries over to \u003candroid-base/logging.h\u003e without making any other changes to the libraries --- it\u0027s so that the library\u0027s logging \"just works\" even in weird places like init.)",
+      "parentUuid": "06a98af7_f22640d1",
+      "range": {
+        "startLine": 114,
+        "startChar": 17,
+        "endLine": 114,
+        "endChar": 24
+      },
+      "revId": "f16f61eeef2d28175700ef9dbf3009caed5addde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6827e80_246b3c13",
         "filename": "logd/main.cpp",
         "patchSetId": 3
