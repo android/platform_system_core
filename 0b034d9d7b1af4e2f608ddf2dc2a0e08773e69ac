@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "abd88709_069cc84f",
+        "filename": "include/cutils/files.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-11-07T16:45:06Z",
+      "side": 1,
+      "message": "Fair enough!",
+      "parentUuid": "ab04074e_0026902f",
+      "revId": "0b034d9d7b1af4e2f608ddf2dc2a0e08773e69ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab04074e_e0226c19",
         "filename": "libcutils/Android.bp",
         "patchSetId": 10
@@ -47,6 +65,24 @@
       "writtenOn": "2016-11-05T21:05:37Z",
       "side": 1,
       "message": "(C++ is automatically _GNU_SOURCE.)",
+      "revId": "0b034d9d7b1af4e2f608ddf2dc2a0e08773e69ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abd88709_a6985c5c",
+        "filename": "libcutils/files.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-11-07T16:45:06Z",
+      "side": 1,
+      "message": "Apparently not, because windows build requires this. But once I move the common helper code to sockets.cpp, this will not be necessary.",
+      "parentUuid": "ab04074e_40f1b879",
       "revId": "0b034d9d7b1af4e2f608ddf2dc2a0e08773e69ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -93,6 +129,30 @@
     },
     {
       "key": {
+        "uuid": "abd88709_5a7b842f",
+        "filename": "libcutils/files.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-11-07T16:45:06Z",
+      "side": 1,
+      "message": "I was keeping sockets.cpp separate from this. Besides not copy and paste, more like create and paste ;-\u003e, I expanded/corrected the code, and it has ANDROID_FILE_ENV_PREFIX unique.\n\nWill move common stuff to an (internal) helper in sockets.cpp.",
+      "parentUuid": "ab04074e_60f03c74",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "0b034d9d7b1af4e2f608ddf2dc2a0e08773e69ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab04074e_80eba089",
         "filename": "libcutils/files.cpp",
         "patchSetId": 10
@@ -104,6 +164,30 @@
       "writtenOn": "2016-11-05T21:05:37Z",
       "side": 1,
       "message": "same comment as in the other file.",
+      "range": {
+        "startLine": 72,
+        "startChar": 46,
+        "endLine": 79,
+        "endChar": 6
+      },
+      "revId": "0b034d9d7b1af4e2f608ddf2dc2a0e08773e69ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abd88709_fa7fd818",
+        "filename": "libcutils/files.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-11-07T16:45:06Z",
+      "side": 1,
+      "message": "Except I am keeping SC_OPEN_MAX",
+      "parentUuid": "ab04074e_80eba089",
       "range": {
         "startLine": 72,
         "startChar": 46,
@@ -156,6 +240,30 @@
     },
     {
       "key": {
+        "uuid": "abd88709_da8694fa",
+        "filename": "libcutils/files.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-11-07T16:45:06Z",
+      "side": 1,
+      "message": "If I put an internal private helper in sockets.cpp and use it here, that will deal with the conversion.",
+      "parentUuid": "ab04074e_c004887f",
+      "range": {
+        "startLine": 92,
+        "startChar": 40,
+        "endLine": 92,
+        "endChar": 42
+      },
+      "revId": "0b034d9d7b1af4e2f608ddf2dc2a0e08773e69ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab04074e_a001846d",
         "filename": "libcutils/files.cpp",
         "patchSetId": 10
@@ -179,6 +287,30 @@
     },
     {
       "key": {
+        "uuid": "abd88709_ba89500b",
+        "filename": "libcutils/files.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-11-07T16:45:06Z",
+      "side": 1,
+      "message": "definition of readlink is that it does _not_ place the terminating nul, and will override the nul in len + 1 if the link path is greater. We want it to, to ensure truncation does not result in equality:\n\neg: file points to /dev/logdr, and we supplied /dev/logd in the getenv.\n\nNeeds a comment, but that was going to be taken care of in thes block deserving a code comment.",
+      "parentUuid": "ab04074e_a001846d",
+      "range": {
+        "startLine": 96,
+        "startChar": 49,
+        "endLine": 96,
+        "endChar": 53
+      },
+      "revId": "0b034d9d7b1af4e2f608ddf2dc2a0e08773e69ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab04074e_e0fb8c51",
         "filename": "libcutils/tests/files_test.cpp",
         "patchSetId": 10
@@ -190,6 +322,24 @@
       "writtenOn": "2016-11-05T21:05:37Z",
       "side": 1,
       "message": "does this test pass if you\u0027re not running as root?",
+      "revId": "0b034d9d7b1af4e2f608ddf2dc2a0e08773e69ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abd88709_fa691818",
+        "filename": "libcutils/tests/files_test.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-11-07T16:45:06Z",
+      "side": 1,
+      "message": "No. There are a multitude of gTests that will not pass unless we are root. I understand, no excuses ... I could certainly use /data/local/tmp/ (but selinux may not allow access to that either by the end of this development cycle). I also _want_ this test to work on host so I have some thinkin\u0027 to do.",
+      "parentUuid": "ab04074e_e0fb8c51",
       "revId": "0b034d9d7b1af4e2f608ddf2dc2a0e08773e69ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
