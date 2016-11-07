@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8bd3c31c_00dea64f",
+        "filename": "fs_mgr/fs_mgr_main.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1051712
+      },
+      "writtenOn": "2016-11-07T19:34:50Z",
+      "side": 1,
+      "message": "I thought about it for some time and feel ** is less misleading than *[] since the parameter in line 96 is exactly pointer to a pointer (\u0026n_name) instead of array.",
+      "parentUuid": "abd88709_9d00061d",
+      "range": {
+        "startLine": 41,
+        "startChar": 21,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "7ffdba95fccd373f2685873f17d3fbc5dfa81321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab04074e_8080c093",
         "filename": "fs_mgr/fs_mgr_main.c",
         "patchSetId": 8
@@ -36,6 +60,24 @@
       "writtenOn": "2016-11-06T00:54:09Z",
       "side": 1,
       "message": "(ugh. would it have killed them to use getopt?)",
+      "revId": "7ffdba95fccd373f2685873f17d3fbc5dfa81321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd3c31c_6077727e",
+        "filename": "fs_mgr/fs_mgr_main.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1051712
+      },
+      "writtenOn": "2016-11-07T19:34:50Z",
+      "side": 1,
+      "message": "Agreed as Mark mentioned but scope of this patch is to fix a memleak warning. It\u0027s already gone a bit beyond that : ) I wanted to focus on one issue at a time and make this patch as simple as possible. We should do getopt in a separate patch.",
+      "parentUuid": "ab04074e_8080c093",
       "revId": "7ffdba95fccd373f2685873f17d3fbc5dfa81321",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -88,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "8bd3c31c_e03c6286",
+        "filename": "fs_mgr/fs_mgr_main.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1051712
+      },
+      "writtenOn": "2016-11-07T19:34:50Z",
+      "side": 1,
+      "message": "Agree this cannot happen yet, though nothing prevents someone modifying code to break the assumption in line 75. I feel a safe net kind of error check here is reasonable. Again, this is also outside scope of this patch.",
+      "parentUuid": "abd88709_1d673646",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 5
+      },
+      "revId": "7ffdba95fccd373f2685873f17d3fbc5dfa81321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab04074e_207bd4e2",
         "filename": "fs_mgr/fs_mgr_main.c",
         "patchSetId": 8
@@ -99,6 +165,24 @@
       "writtenOn": "2016-11-06T00:54:09Z",
       "side": 1,
       "message": "why isn\u0027t this const char*?",
+      "revId": "7ffdba95fccd373f2685873f17d3fbc5dfa81321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd3c31c_236c947b",
+        "filename": "fs_mgr/fs_mgr_main.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1051712
+      },
+      "writtenOn": "2016-11-07T19:34:50Z",
+      "side": 1,
+      "message": "fs_mgr_do_mount doesn\u0027t expect a const name. we can change it and this will touch two more files. Luckily all callers of fs_mgr_do_mount happen to pass in a const string. So this is on my fence of out of scope change...",
+      "parentUuid": "ab04074e_207bd4e2",
       "revId": "7ffdba95fccd373f2685873f17d3fbc5dfa81321",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -128,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "8bd3c31c_439a784a",
+        "filename": "fs_mgr/fs_mgr_main.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1051712
+      },
+      "writtenOn": "2016-11-07T19:34:50Z",
+      "side": 1,
+      "message": "yup, will remove it.",
+      "parentUuid": "ab04074e_4076d8fc",
+      "range": {
+        "startLine": 96,
+        "startChar": 32,
+        "endLine": 96,
+        "endChar": 47
+      },
+      "revId": "7ffdba95fccd373f2685873f17d3fbc5dfa81321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab04074e_e0d70ca3",
         "filename": "fs_mgr/fs_mgr_main.c",
         "patchSetId": 8
@@ -139,6 +247,30 @@
       "writtenOn": "2016-11-06T00:54:09Z",
       "side": 1,
       "message": "can\u0027t we fix this to take const char* like it should? (damn those c programmers!)",
+      "range": {
+        "startLine": 106,
+        "startChar": 15,
+        "endLine": 106,
+        "endChar": 30
+      },
+      "revId": "7ffdba95fccd373f2685873f17d3fbc5dfa81321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd3c31c_e3254c24",
+        "filename": "fs_mgr/fs_mgr_main.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1051712
+      },
+      "writtenOn": "2016-11-07T19:34:50Z",
+      "side": 1,
+      "message": "I hope so but this becomes a conversion to \"char * const argv[]\" all over the universe. For this particular one, it\u0027s passed to check_fs function, which uses the string in char * e2fsck_argv[], which is passed to android_fork_execvp_ext, who doesn\u0027t respect const argvs as we have in this file. Who knows what we end up with downstream from there : )",
+      "parentUuid": "ab04074e_e0d70ca3",
       "range": {
         "startLine": 106,
         "startChar": 15,
