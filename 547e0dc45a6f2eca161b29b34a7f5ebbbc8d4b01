@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "abd88709_a6e61cfe",
+        "filename": "libcutils/sockets.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-11-07T15:39:44Z",
+      "side": 1,
+      "message": "SC_OPEN_MAX is system per-process maximum as reported by Linux. The others are, as you say, minimum maximums and in my exuberance used them to retain the check in the face of windows or MAC builds.\n\nThanks. Looking at it again, I see them as clutter and will remove them from here in a followup CL.",
+      "parentUuid": "ab04074e_801280c7",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 6
+      },
+      "revId": "547e0dc45a6f2eca161b29b34a7f5ebbbc8d4b01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab04074e_60179cb9",
         "filename": "libcutils/sockets.cpp",
         "patchSetId": 7
@@ -36,6 +60,24 @@
       "writtenOn": "2016-11-05T20:59:18Z",
       "side": 1,
       "message": "why do you even define this function for Windows? is this ever useful off the device? seems like you\u0027re just making everything more complicated to no advantage?",
+      "revId": "547e0dc45a6f2eca161b29b34a7f5ebbbc8d4b01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abd88709_c6e320ed",
+        "filename": "libcutils/sockets.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-11-07T15:39:44Z",
+      "side": 1,
+      "message": "Maybe cargo, it was defined, did not want to audit whether it was right to be in the windows or MAC build, only accepted that it was. Removing this file from the windows build is a separate investigation and CL-set.\n\n(I thought this fragment would work on Windows, but I am missing the include-fu, so I opted to ifdef it out since it was new functionality).",
+      "parentUuid": "ab04074e_60179cb9",
       "revId": "547e0dc45a6f2eca161b29b34a7f5ebbbc8d4b01",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
