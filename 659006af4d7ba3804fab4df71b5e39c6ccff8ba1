@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "8bd3c31c_75764a4b",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1059554
+      },
+      "writtenOn": "2016-11-08T02:07:01Z",
+      "side": 1,
+      "message": "It seems then that we\u0027d want to look in /proc/self/fd and check our ulimit to see if we need to do this, rather than making assumptions.\n\nIf we\u0027re in a sufficiently weird state that we\u0027ve hit the ulimit for file descriptors, it\u0027s reasonable that we may also be in a sufficiently weird state that they\u0027re all above 1024.",
+      "parentUuid": "8bd3c31c_3a6cb17b",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bd3c31c_6f267dd5",
         "filename": "debuggerd/handler/debuggerd_handler.cpp",
         "patchSetId": 14
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "It gets passed as an argument to exec.",
       "parentUuid": "8bd3c31c_6f267dd5",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd3c31c_356cc27b",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1059554
+      },
+      "writtenOn": "2016-11-08T02:07:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bd3c31c_8faae16b",
       "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -124,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "8bd3c31c_f5897a0a",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1059554
+      },
+      "writtenOn": "2016-11-08T02:07:01Z",
+      "side": 1,
+      "message": "It\u0027s probably worthwhile to add a line comment that just calls out \"this is basically pthread_create without CLONE_FILES and XYZ\"",
+      "parentUuid": "8bd3c31c_ba7fe119",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bd3c31c_afcb25ab",
         "filename": "debuggerd/handler/debuggerd_handler.cpp",
         "patchSetId": 14
@@ -176,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "8bd3c31c_f5a25a82",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1059554
+      },
+      "writtenOn": "2016-11-08T02:07:01Z",
+      "side": 1,
+      "message": "0xABCDE000 is sufficiently aligned as 0xABCDE010.  There shouldn\u0027t be a need to skip over 16 bytes, unless there\u0027s code that does something silly like dereferencing sp.  Stack frame allocation usually decrements SP before storing.",
+      "parentUuid": "8bd3c31c_9a94dd1d",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bd3c31c_0f2ed1ed",
         "filename": "debuggerd/tombstoned/tombstoned.cpp",
         "patchSetId": 14
@@ -222,6 +294,24 @@
       "side": 1,
       "message": "This process is entirely single threaded, these callbacks happen in a serialized fashion upon input on a socket (or timeout).",
       "parentUuid": "8bd3c31c_6fae7d3c",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd3c31c_b5da92fc",
+        "filename": "debuggerd/tombstoned/tombstoned.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1059554
+      },
+      "writtenOn": "2016-11-08T02:07:01Z",
+      "side": 1,
+      "message": "Then the name is a bit misleading, no?",
+      "parentUuid": "8bd3c31c_7ac8f941",
       "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
