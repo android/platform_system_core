@@ -16,6 +16,24 @@
       "revId": "623d6ed68dbaa37571641727ebc0532ce31ed11b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd3c31c_7d4ab09b",
+        "filename": "init/util.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-11-08T17:37:52Z",
+      "side": 1,
+      "message": "I would still need to comment for this one even if I moved it below because we want to reserve errno for return. Besides, best practices are to free resources and unlock before calling any logging routines.\n\nWe _know_ that PLOG preserved errno for _return_ as well. But I wanted to make sure no one wastes time like I did confirming that freecon does not upset errno in order to evaluate if it must be saved and restored before _return_.",
+      "parentUuid": "8bd3c31c_bd4d18e2",
+      "revId": "623d6ed68dbaa37571641727ebc0532ce31ed11b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
