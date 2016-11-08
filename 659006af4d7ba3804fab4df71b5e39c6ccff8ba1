@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8bd3c31c_3a6cb17b",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-11-08T01:07:49Z",
+      "side": 1,
+      "message": "This is an arbitrary number selected to hopefully close all of the file descriptors. The point of this isn\u0027t to reimplement O_CLOEXEC, it\u0027s to allow us to log failure and create communication pipes when all of the file descriptors *before* the exec happens. (see the comment at line 162)",
+      "parentUuid": "8bd3c31c_cf394906",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bd3c31c_6f267dd5",
         "filename": "debuggerd/handler/debuggerd_handler.cpp",
         "patchSetId": 14
@@ -30,6 +48,24 @@
       "writtenOn": "2016-11-08T00:47:45Z",
       "side": 1,
       "message": "It\u0027s not clear what this actually does, since any effects will be lost via the exec",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd3c31c_8faae16b",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-11-08T01:07:49Z",
+      "side": 1,
+      "message": "It gets passed as an argument to exec.",
+      "parentUuid": "8bd3c31c_6f267dd5",
       "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "8bd3c31c_ba7fe119",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-11-08T01:07:49Z",
+      "side": 1,
+      "message": "See the comment at line 162",
+      "parentUuid": "8bd3c31c_af8a4566",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bd3c31c_afcb25ab",
         "filename": "debuggerd/handler/debuggerd_handler.cpp",
         "patchSetId": 14
@@ -104,6 +158,24 @@
     },
     {
       "key": {
+        "uuid": "8bd3c31c_9a94dd1d",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-11-08T01:07:49Z",
+      "side": 1,
+      "message": "To satisfy ABI requirements on stack alignment",
+      "parentUuid": "8bd3c31c_0fac11d4",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bd3c31c_0f2ed1ed",
         "filename": "debuggerd/tombstoned/tombstoned.cpp",
         "patchSetId": 14
@@ -132,6 +204,24 @@
       "writtenOn": "2016-11-08T00:47:45Z",
       "side": 1,
       "message": "This should be atomic, no?",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd3c31c_7ac8f941",
+        "filename": "debuggerd/tombstoned/tombstoned.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-11-08T01:07:49Z",
+      "side": 1,
+      "message": "This process is entirely single threaded, these callbacks happen in a serialized fashion upon input on a socket (or timeout).",
+      "parentUuid": "8bd3c31c_6fae7d3c",
       "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
