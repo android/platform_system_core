@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bd3c31c_cf394906",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1059554
+      },
+      "writtenOn": "2016-11-08T00:47:45Z",
+      "side": 1,
+      "message": "Is there any particular reason for the selection of 1024?\n\nIt seems more robust to ensure O_CLOEXEC is set on all file descriptors that we care about, and in particular to check /proc/self/fd/ instead of relying on a hard-coded constant.",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd3c31c_6f267dd5",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1059554
+      },
+      "writtenOn": "2016-11-08T00:47:45Z",
+      "side": 1,
+      "message": "It\u0027s not clear what this actually does, since any effects will be lost via the exec",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd3c31c_cf2ce9b1",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1059554
+      },
+      "writtenOn": "2016-11-08T00:47:45Z",
+      "side": 1,
+      "message": "This needs to be done in a loop, checking for the exit status.  For example, a SIGSTOP sent to the child should still cause this wait to exit.  See WIFEXITED.",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd3c31c_af8a4566",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1059554
+      },
+      "writtenOn": "2016-11-08T00:47:45Z",
+      "side": 1,
+      "message": "Why are we not just using pthread here?  I\u0027m sure there\u0027s a good reason, it\u0027s just not mentioned.",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd3c31c_afcb25ab",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1059554
+      },
+      "writtenOn": "2016-11-08T00:47:45Z",
+      "side": 1,
+      "message": "Why are we doing all of this manually instead of using pthread?\n\nPresumably, it\u0027s to limit the size of the stack and ensure it\u0027s bounded by guard pages on either side.",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd3c31c_0fac11d4",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1059554
+      },
+      "writtenOn": "2016-11-08T00:47:45Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand why we\u0027re skipping over 0x10 bytes at the base of the stack.",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd3c31c_0f2ed1ed",
+        "filename": "debuggerd/tombstoned/tombstoned.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1059554
+      },
+      "writtenOn": "2016-11-08T00:47:45Z",
+      "side": 1,
+      "message": "O_CLOEXEC?",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd3c31c_6fae7d3c",
+        "filename": "debuggerd/tombstoned/tombstoned.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1059554
+      },
+      "writtenOn": "2016-11-08T00:47:45Z",
+      "side": 1,
+      "message": "This should be atomic, no?",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd3c31c_4fd299bb",
+        "filename": "debuggerd/tombstoned/tombstoned.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1059554
+      },
+      "writtenOn": "2016-11-08T00:47:45Z",
+      "side": 1,
+      "message": "There\u0027s a race condition here, if multiple concurrent dumps take the \u0027false\u0027 branch.",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
