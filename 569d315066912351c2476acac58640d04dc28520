@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bbdafe5_fa07858b",
+        "filename": "init/devices.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-11-09T02:43:23Z",
+      "side": 1,
+      "message": "If the allocation on line 111 succeeds, but the allocation on 118 fails, \"node\" will be freed but \"node-\u003edp.name\" will not be freed. It seems like we also need:\n\n  free(node-\u003edp.name);\n\nimmediately before this line.",
+      "revId": "569d315066912351c2476acac58640d04dc28520",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
