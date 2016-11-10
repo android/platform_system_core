@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab888773_06b0c8dc",
+        "filename": "libappfuse/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-11-10T02:41:24Z",
+      "side": 1,
+      "message": "I\u0027ve seen multiline preferred for this, when written by ccross. It does ensure smaller deltas when adding things later. (Also note that a trailing comma is allowed)",
+      "range": {
+        "startLine": 18,
+        "startChar": 11,
+        "endLine": 18,
+        "endChar": 65
+      },
+      "revId": "977a7594c2db0398650863124d18296772ecdc0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab888773_bac79032",
+        "filename": "libappfuse/FuseAppLoop.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-11-10T02:41:24Z",
+      "side": 1,
+      "message": "I don\u0027t understand this wrt/ line 35 (and the comment in line 36).",
+      "range": {
+        "startLine": 44,
+        "startChar": 6,
+        "endLine": 44,
+        "endChar": 58
+      },
+      "revId": "977a7594c2db0398650863124d18296772ecdc0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab888773_faf0b878",
+        "filename": "libappfuse/FuseAppLoop.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-11-10T02:41:24Z",
+      "side": 1,
+      "message": "Is there some link you could add in a comment or so that describes this layout/data? Maybe in the header of this file? Would help future maintainers...",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 46
+      },
+      "revId": "977a7594c2db0398650863124d18296772ecdc0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab888773_da84d4a7",
+        "filename": "libappfuse/include/libappfuse/FuseAppLoop.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-11-10T02:41:24Z",
+      "side": 1,
+      "message": "Do you expect subclasses? If not, mark it final.",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 19
+      },
+      "revId": "977a7594c2db0398650863124d18296772ecdc0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab888773_5ad8e4d2",
+        "filename": "libappfuse/include/libappfuse/FuseAppLoop.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-11-10T02:41:24Z",
+      "side": 1,
+      "message": "I know the intent is to use this class only in a single thread. But:\n\nIs the FuseBuffer large? Couldn\u0027t you just stack-allocate it in the Start() function, and add it as a parameter to the Handle functions?\n\nThat would ensure that you can call Start() in as many threads as you want (could even make everything static). In fact, making the buffer a parameter allows to hide the Handle functions from the header, as they don\u0027t have to be members.",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 21
+      },
+      "revId": "977a7594c2db0398650863124d18296772ecdc0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab888773_baad503f",
+        "filename": "libappfuse/tests/FuseAppLoopTest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-11-10T02:41:24Z",
+      "side": 1,
+      "message": "android-base/macros.h has ATTRIBUTE_UNUSED. More verbose, but gives the added guarantee that Clang will fail you if you switch to actually using it (unexpectedly). Your choice...",
+      "range": {
+        "startLine": 59,
+        "startChar": 43,
+        "endLine": 59,
+        "endChar": 53
+      },
+      "revId": "977a7594c2db0398650863124d18296772ecdc0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab888773_5a8a24a7",
+        "filename": "libappfuse/tests/FuseBridgeLoopTest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-11-10T02:41:24Z",
+      "side": 1,
+      "message": "Consider unique_fd?",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 5
+      },
+      "revId": "977a7594c2db0398650863124d18296772ecdc0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
