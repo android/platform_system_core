@@ -22,6 +22,30 @@
       "revId": "4f411270c75c6c7977c36a2e6dabf0b2557a1376",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b1ef349_24027271",
+        "filename": "libappfuse/include/libappfuse/FuseBridgeLoop.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-11T05:01:08Z",
+      "side": 1,
+      "message": "Sorry for missing the fix. According to Google C++ style guide, a global function is preferred to a class containing only static members.\nhttps://google.github.io/styleguide/cppguide.html#Nonmember,_Static_Member,_and_Global_Functions\n\nSo I turned this and FuseAppLoop::Start into global functions. For FuseBridgeLoop, I could not delete the class in this patch because the class is used in the framework code. I\u0027ll delete the class after I changed the framework code so that it uses the new global function.\n\nThank you!",
+      "parentUuid": "0b97d3c5_cb20e1ba",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 12
+      },
+      "revId": "4f411270c75c6c7977c36a2e6dabf0b2557a1376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
