@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0b97d3c5_547b822f",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-11-12T19:13:49Z",
+      "side": 1,
+      "message": "only used in a single usleep(3) call. inlined instead.",
+      "parentUuid": "6b612fbb_74d88105",
+      "revId": "71ffe153a0c160c711404b21808b81be7b9e5c28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0464c6b_23f0ca70",
         "filename": "init/readme.txt",
         "patchSetId": 4
@@ -30,6 +48,30 @@
       "writtenOn": "2016-11-12T02:46:23Z",
       "side": 1,
       "message": "Time in ns that init started, presumably? (also, maybe throw in a \"since epoch\"?)",
+      "range": {
+        "startLine": 444,
+        "startChar": 2,
+        "endLine": 444,
+        "endChar": 44
+      },
+      "revId": "71ffe153a0c160c711404b21808b81be7b9e5c28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b97d3c5_5494621b",
+        "filename": "init/readme.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-11-12T19:13:49Z",
+      "side": 1,
+      "message": "yeah, added a note to that effect.\n\ni deliberately just referred to the underlying clock rather than specify an epoch because -- despite the name -- the epoch is strictly _un_specified. i\u0027ve added \"after boot\" anyway, to make it clear that even if the underlying implementation changes, this is our intention and we\u0027d then come up with some other way.",
+      "parentUuid": "d0464c6b_23f0ca70",
       "range": {
         "startLine": 444,
         "startChar": 2,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "0b97d3c5_74a95e67",
+        "filename": "init/service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-11-12T19:13:49Z",
+      "side": 1,
+      "message": "why?",
+      "parentUuid": "d0464c6b_c3069685",
+      "range": {
+        "startLine": 746,
+        "startChar": 64,
+        "endLine": 746,
+        "endChar": 80
+      },
+      "revId": "71ffe153a0c160c711404b21808b81be7b9e5c28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb935fd8_90afd862",
         "filename": "init/util.h",
         "patchSetId": 4
@@ -76,6 +142,24 @@
       "writtenOn": "2016-11-12T02:46:23Z",
       "side": 1,
       "message": "Does this actually work? std::chrono::seconds\u0027s representation is an integral type, so I think this truncates the fractional part and then silently does an integer to double promotion.\n\nhttp://ideone.com/YBitwa\n\n(now() - start) / 1.0s does the right thing.",
+      "revId": "71ffe153a0c160c711404b21808b81be7b9e5c28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b97d3c5_94a6ea96",
+        "filename": "init/util.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-11-12T19:13:49Z",
+      "side": 1,
+      "message": "oops; i had this but accidentally in the next change...\n\n-    return std::chrono::duration_cast\u003cstd::chrono::seconds\u003e(boot_clock::now() - start_).count();\n+    typedef std::chrono::duration\u003cdouble\u003e double_duration;\n+    return std::chrono::duration_cast\u003cdouble_duration\u003e(boot_clock::now() - start_).count();\n\nwill bring that back.",
+      "parentUuid": "eb935fd8_90afd862",
       "revId": "71ffe153a0c160c711404b21808b81be7b9e5c28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
