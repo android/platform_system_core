@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b612fbb_74d88105",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-11-12T02:46:23Z",
+      "side": 1,
+      "message": "kTerminateServiceTime \u003d 50000us?",
+      "revId": "71ffe153a0c160c711404b21808b81be7b9e5c28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0464c6b_23f0ca70",
+        "filename": "init/readme.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-11-12T02:46:23Z",
+      "side": 1,
+      "message": "Time in ns that init started, presumably? (also, maybe throw in a \"since epoch\"?)",
+      "range": {
+        "startLine": 444,
+        "startChar": 2,
+        "endLine": 444,
+        "endChar": 44
+      },
+      "revId": "71ffe153a0c160c711404b21808b81be7b9e5c28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0464c6b_c3069685",
+        "filename": "init/service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-11-12T02:46:23Z",
+      "side": 1,
+      "message": "(next_start - now)/1s instead?",
+      "range": {
+        "startLine": 746,
+        "startChar": 64,
+        "endLine": 746,
+        "endChar": 80
+      },
+      "revId": "71ffe153a0c160c711404b21808b81be7b9e5c28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb935fd8_90afd862",
+        "filename": "init/util.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-11-12T02:46:23Z",
+      "side": 1,
+      "message": "Does this actually work? std::chrono::seconds\u0027s representation is an integral type, so I think this truncates the fractional part and then silently does an integer to double promotion.\n\nhttp://ideone.com/YBitwa\n\n(now() - start) / 1.0s does the right thing.",
+      "revId": "71ffe153a0c160c711404b21808b81be7b9e5c28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
