@@ -1,0 +1,441 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0464c6b_031eeeda",
+        "filename": "libandroid_unwind/ArmExidx.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-11-12T02:25:31Z",
+      "side": 1,
+      "message": "If we put code calling logging besides code executing unwind instructions, I am worried that it affects the code efficiency. Maybe we can add a separate logging function to dump all the to-be-executed unwind instructions? And we can use VLOG(OP) to make the code cleaner?",
+      "range": {
+        "startLine": 204,
+        "startChar": 6,
+        "endLine": 204,
+        "endChar": 20
+      },
+      "revId": "09ef6393c03e62f89445df9b51b5adca37909a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b612fbb_d4c14d42",
+        "filename": "libandroid_unwind/Dwarf.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-11-12T02:25:31Z",
+      "side": 1,
+      "message": "cie_offset?",
+      "range": {
+        "startLine": 65,
+        "startChar": 23,
+        "endLine": 65,
+        "endChar": 29
+      },
+      "revId": "09ef6393c03e62f89445df9b51b5adca37909a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b612fbb_f9c64afe",
+        "filename": "libandroid_unwind/Dwarf.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-11-12T02:25:31Z",
+      "side": 1,
+      "message": "This pushes \u0027\\0\u0027 into std::string, which is at least not necessary.",
+      "range": {
+        "startLine": 119,
+        "startChar": 37,
+        "endLine": 119,
+        "endChar": 46
+      },
+      "revId": "09ef6393c03e62f89445df9b51b5adca37909a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb935fd8_8d2d03ad",
+        "filename": "libandroid_unwind/Dwarf.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-11-12T02:25:31Z",
+      "side": 1,
+      "message": "GetFDE?",
+      "range": {
+        "startLine": 193,
+        "startChar": 7,
+        "endLine": 193,
+        "endChar": 19
+      },
+      "revId": "09ef6393c03e62f89445df9b51b5adca37909a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b5ca306_d8818221",
+        "filename": "libandroid_unwind/Dwarf.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-11-12T02:25:31Z",
+      "side": 1,
+      "message": "rename offset to something more meaningful, like ip, pc?",
+      "range": {
+        "startLine": 193,
+        "startChar": 29,
+        "endLine": 193,
+        "endChar": 35
+      },
+      "revId": "09ef6393c03e62f89445df9b51b5adca37909a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b5ca306_d8dd022a",
+        "filename": "libandroid_unwind/Dwarf.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-11-12T02:25:31Z",
+      "side": 1,
+      "message": "instead of copying DwarfCIE and DwarfFDE data, can we just pass a const DwarfCIE pointer and a const DwarfFDE pointer? so we can save the time and space copying.",
+      "range": {
+        "startLine": 196,
+        "startChar": 7,
+        "endLine": 196,
+        "endChar": 16
+      },
+      "revId": "09ef6393c03e62f89445df9b51b5adca37909a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b5ca306_7824f676",
+        "filename": "libandroid_unwind/Dwarf.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-11-12T02:25:31Z",
+      "side": 1,
+      "message": "maybe we can use some way to show what is the error, use error code, or debug logging? Although I am not comfortable with the debug logging of libunwind.",
+      "range": {
+        "startLine": 226,
+        "startChar": 8,
+        "endLine": 226,
+        "endChar": 23
+      },
+      "revId": "09ef6393c03e62f89445df9b51b5adca37909a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_51c716a2",
+        "filename": "libandroid_unwind/DwarfEhFrame.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-11-12T02:25:31Z",
+      "side": 1,
+      "message": "make it more clear, like eh_frame_hdr_offset?",
+      "range": {
+        "startLine": 65,
+        "startChar": 21,
+        "endLine": 65,
+        "endChar": 27
+      },
+      "revId": "09ef6393c03e62f89445df9b51b5adca37909a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb669bd0_b185c458",
+        "filename": "libandroid_unwind/DwarfEhFrame.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-11-12T02:25:31Z",
+      "side": 1,
+      "message": "can we hide this inside ReadEncodedValue(), like libunwind?",
+      "range": {
+        "startLine": 89,
+        "startChar": 12,
+        "endLine": 89,
+        "endChar": 25
+      },
+      "revId": "09ef6393c03e62f89445df9b51b5adca37909a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b773781_43dbc502",
+        "filename": "libandroid_unwind/DwarfEhFrame.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-11-12T02:25:31Z",
+      "side": 1,
+      "message": "dito",
+      "range": {
+        "startLine": 94,
+        "startChar": 12,
+        "endLine": 94,
+        "endChar": 25
+      },
+      "revId": "09ef6393c03e62f89445df9b51b5adca37909a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b97d3c5_8dc0a638",
+        "filename": "libandroid_unwind/DwarfEhFrame.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-11-12T02:25:31Z",
+      "side": 1,
+      "message": "how to ensure current \u003e\u003d 1?",
+      "range": {
+        "startLine": 139,
+        "startChar": 23,
+        "endLine": 139,
+        "endChar": 34
+      },
+      "revId": "09ef6393c03e62f89445df9b51b5adca37909a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b7aab69_644e08de",
+        "filename": "libandroid_unwind/DwarfEhFrame.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-11-12T02:25:31Z",
+      "side": 1,
+      "message": "how to ensure current \u003c fde_count_ - 1?",
+      "range": {
+        "startLine": 149,
+        "startChar": 23,
+        "endLine": 149,
+        "endChar": 34
+      },
+      "revId": "09ef6393c03e62f89445df9b51b5adca37909a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b773781_033f0dcd",
+        "filename": "libandroid_unwind/DwarfEhFrame.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-11-12T02:25:31Z",
+      "side": 1,
+      "message": "when will this happen? I can\u0027t find similar code in libunwind.",
+      "range": {
+        "startLine": 161,
+        "startChar": 6,
+        "endLine": 161,
+        "endChar": 25
+      },
+      "revId": "09ef6393c03e62f89445df9b51b5adca37909a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb669bd0_918e004a",
+        "filename": "libandroid_unwind/DwarfStructs.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-11-12T02:25:31Z",
+      "side": 1,
+      "message": "names used by libunwind seem more clear, which are start_ip_offset and fde_offset.",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 30,
+        "endChar": 14
+      },
+      "revId": "09ef6393c03e62f89445df9b51b5adca37909a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab6b279a_518b8f6c",
+        "filename": "libandroid_unwind/LocalGetRegsX86.S",
+        "patchSetId": 21
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-11-12T02:25:31Z",
+      "side": 1,
+      "message": "can we use some macro names instead of these raw numbers?",
+      "range": {
+        "startLine": 36,
+        "startChar": 11,
+        "endLine": 36,
+        "endChar": 13
+      },
+      "revId": "09ef6393c03e62f89445df9b51b5adca37909a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_b10e9ae0",
+        "filename": "libandroid_unwind/Maps.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-11-12T02:25:31Z",
+      "side": 1,
+      "message": "this argument is confusing, it depends whether to use it or not.",
+      "range": {
+        "startLine": 32,
+        "startChar": 36,
+        "endLine": 32,
+        "endChar": 39
+      },
+      "revId": "09ef6393c03e62f89445df9b51b5adca37909a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb669bd0_dcfa4f06",
+        "filename": "libandroid_unwind/Maps.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-11-12T02:25:31Z",
+      "side": 1,
+      "message": "bsearch or std::upper_bound?",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 7
+      },
+      "revId": "09ef6393c03e62f89445df9b51b5adca37909a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb669bd0_bce67b6c",
+        "filename": "libandroid_unwind/Maps.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-11-12T02:25:31Z",
+      "side": 1,
+      "message": "I will make this in libprocinfo, it also appears in simpleperf.",
+      "range": {
+        "startLine": 65,
+        "startChar": 12,
+        "endLine": 65,
+        "endChar": 16
+      },
+      "revId": "09ef6393c03e62f89445df9b51b5adca37909a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab6b279a_3119bb5b",
+        "filename": "libandroid_unwind/Regs.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2016-11-12T02:25:31Z",
+      "side": 1,
+      "message": "If it doesn\u0027t has custom behavior, instead of writing the whole class, we can use:\nusing Regs32 \u003d RegsTmpl\u003cuint32_t\u003e.\n\nIt also applies for ElfInterface32, Dwarf32.",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 40
+      },
+      "revId": "09ef6393c03e62f89445df9b51b5adca37909a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
