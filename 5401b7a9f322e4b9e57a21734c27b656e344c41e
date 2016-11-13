@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0b97d3c5_b731284f",
+        "filename": "init/devices.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-11-13T19:34:19Z",
+      "side": 1,
+      "message": "No, this is necessary to tell the kernel that the firmware is not coming so it can fail the driver\u0027s call to request_firmware.",
+      "parentUuid": "0b97d3c5_5469c237",
+      "revId": "5401b7a9f322e4b9e57a21734c27b656e344c41e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b97d3c5_d455d264",
         "filename": "init/devices.cpp",
         "patchSetId": 1
@@ -47,6 +65,24 @@
       "writtenOn": "2016-11-12T19:50:49Z",
       "side": 1,
       "message": "there\u0027s a huge difference in how long some of these take (0.2s vs 0.001s)...\n\n[    4.036059] ueventd: process_firmware_event for sensor_hub.img took 0.208769s\n[    4.043086] ueventd: process_firmware_event for synaptics.img took 0.107088s\n[    4.047027] ueventd: process_firmware_event for sar0_CY8C.img took 0.203958s\n[    4.049436] ueventd: process_firmware_event for sar1_CY8C.img took 0.203308s\n[    6.929875] ueventd: process_firmware_event for gk20a/gpmu_ucode.bin took 0.00203617s\n[    6.940145] ueventd: process_firmware_event for tegra13x/gpmu_ucode.bin took 0.00596842s\n[    6.950186] ueventd: process_firmware_event for gk20a/NETB_img.bin took 0.00276275s\n[    6.960312] ueventd: process_firmware_event for tegra13x/NETB_img.bin took 0.00530658s\n[    6.968670] ueventd: process_firmware_event for gk20a/fecs.bin took 0.00647925s\n[    6.981622] ueventd: process_firmware_event for tegra13x/fecs.bin took 0.00779108s\n[    6.984656] ueventd: process_firmware_event for gk20a/gpccs.bin took 0.00174917s\n[    6.994490] ueventd: process_firmware_event for tegra13x/gpccs.bin took 0.00484792s\n[    7.296675] ueventd: process_firmware_event for tegra13x/vic03_ucode.bin took 0.00101183s\n[   19.355761] ueventd: process_firmware_event for nvavp_os_8ff00000.bin took 0.00142608s\n[   19.362416] ueventd: process_firmware_event for nvavp_vid_ucode.bin took 0.00202042s\n[   19.364773] ueventd: process_firmware_event for nvavp_vid_ucode_alt.bin took 0.00230783s\n\nluckily they\u0027re all done in separate children that we don\u0027t wait for, so i don\u0027t think it matters. remove this logging (which is new in this change)?",
+      "revId": "5401b7a9f322e4b9e57a21734c27b656e344c41e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b97d3c5_d72eb4ec",
+        "filename": "init/devices.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-11-13T19:34:19Z",
+      "side": 1,
+      "message": "The size of these files can vary dramatically. How big are the files for the longest uploads (sar0_CY8C.img)?\n\nThe logging looks useful, although I might drop the time, and add the name of the device it was sent to?",
+      "parentUuid": "0b97d3c5_b458469d",
       "revId": "5401b7a9f322e4b9e57a21734c27b656e344c41e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
