@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "0b97d3c5_c8de154f",
+        "filename": "init/devices.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-11-14T19:00:12Z",
+      "side": 1,
+      "message": "No, a kernel driver calling request_firmware() starts it, then the kernel sends a uevent to ueventd, and the driver sits there waiting until it gets a response.  There probably isn\u0027t even a timeout - sometimes drivers have to wait a long time (for system to be mounted) before they can get a response.  If ueventd isn\u0027t going to respond with a firmware it should always write -1.",
+      "parentUuid": "0b97d3c5_dd44156b",
+      "revId": "5401b7a9f322e4b9e57a21734c27b656e344c41e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b97d3c5_d455d264",
         "filename": "init/devices.cpp",
         "patchSetId": 1
