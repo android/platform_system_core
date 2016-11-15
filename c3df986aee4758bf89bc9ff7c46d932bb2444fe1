@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10ad446a_3ced5746",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-11-15T23:56:17Z",
+      "side": 1,
+      "message": "wouldn\u0027t this make more sense the other way round? so do_restorecon_recursive is\n\n  {\n    args.insert(std::next(args.begin()), \"--recursive\");\n    return do_restorecon(args);\n  }\n\nand `restorecon` is the general-purpose routine?",
+      "range": {
+        "startLine": 905,
+        "startChar": 11,
+        "endLine": 905,
+        "endChar": 24
+      },
+      "revId": "c3df986aee4758bf89bc9ff7c46d932bb2444fe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10ad446a_7cc98f0e",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-11-15T23:56:17Z",
+      "side": 1,
+      "message": "skip-ce?",
+      "range": {
+        "startLine": 920,
+        "startChar": 12,
+        "endLine": 920,
+        "endChar": 18
+      },
+      "revId": "c3df986aee4758bf89bc9ff7c46d932bb2444fe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10ad446a_3cdb17da",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-11-15T23:56:17Z",
+      "side": 1,
+      "message": "android::base::StartsWith(args[i], \"--\")",
+      "range": {
+        "startLine": 928,
+        "startChar": 12,
+        "endLine": 928,
+        "endChar": 50
+      },
+      "revId": "c3df986aee4758bf89bc9ff7c46d932bb2444fe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10ad446a_dc6e8319",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-11-15T23:56:17Z",
+      "side": 1,
+      "message": "(args[i] \u003d\u003d flags[j].name)",
+      "range": {
+        "startLine": 931,
+        "startChar": 20,
+        "endLine": 931,
+        "endChar": 63
+      },
+      "revId": "c3df986aee4758bf89bc9ff7c46d932bb2444fe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10ad446a_5c1ff387",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-11-15T23:56:17Z",
+      "side": 1,
+      "message": "you actually want\n\n  restorecon_recursive /fs1 --flag /fs2\n\nto use different flags for /fs1 and /fs2? doesn\u0027t it seem likely folks will only ever actually do that by accident?",
+      "range": {
+        "startLine": 941,
+        "startChar": 0,
+        "endLine": 943,
+        "endChar": 9
+      },
+      "revId": "c3df986aee4758bf89bc9ff7c46d932bb2444fe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10ad446a_3c2c77a9",
+        "filename": "init/util.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-11-15T23:56:17Z",
+      "side": 1,
+      "message": "looks like we can collapse these too.",
+      "range": {
+        "startLine": 377,
+        "startChar": 4,
+        "endLine": 377,
+        "endChar": 24
+      },
+      "revId": "c3df986aee4758bf89bc9ff7c46d932bb2444fe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
