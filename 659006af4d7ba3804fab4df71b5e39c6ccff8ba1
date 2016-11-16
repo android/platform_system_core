@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "10ad446a_8fd0bd5b",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-11-16T21:56:02Z",
+      "side": 1,
+      "message": "Handling this \"properly\" in all cases is pretty painful (and maybe impossible?)\nThings that are annoying:\n  We can\u0027t use opendir because we can\u0027t use malloc, so we\u0027re stuck using getdents directly.\n  If we\u0027re out of file descriptors, we can\u0027t even do that, because we can\u0027t get a directory fd (and chdir + AT_FDCWD doesn\u0027t work with getdents).\n  The hard limit can be lowered, so we might not be able to rely on being able to raise it, or being able to loop to it.\n\nThis is intended to be able to report crashes for apps that run out of file descriptors (because of a leak or whatever), not to be safe against someone screwing with us. If we fail here, the worst thing that can happen should be that the process mysteriously dies with no output.",
+      "parentUuid": "2bc73767_260e56e3",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bd3c31c_6f267dd5",
         "filename": "debuggerd/handler/debuggerd_handler.cpp",
         "patchSetId": 14
@@ -143,6 +161,24 @@
     },
     {
       "key": {
+        "uuid": "0b97d3c5_f74737ba",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-11-16T21:56:02Z",
+      "side": 1,
+      "message": "Replaced with TEMP_FAILURE_RETRY(waitid(P_PID, forkpid, \u0026foo, WEXITED)\n\n(the WNOHANG was also a bug)",
+      "parentUuid": "8bd3c31c_cf2ce9b1",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bd3c31c_af8a4566",
         "filename": "debuggerd/handler/debuggerd_handler.cpp",
         "patchSetId": 14
@@ -190,6 +226,24 @@
       "side": 1,
       "message": "It\u0027s probably worthwhile to add a line comment that just calls out \"this is basically pthread_create without CLONE_FILES and XYZ\"",
       "parentUuid": "8bd3c31c_ba7fe119",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab888773_c57aba2b",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-11-16T21:56:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bd3c31c_f5897a0a",
       "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -260,6 +314,24 @@
       "side": 1,
       "message": "0xABCDE000 is sufficiently aligned as 0xABCDE010.  There shouldn\u0027t be a need to skip over 16 bytes, unless there\u0027s code that does something silly like dereferencing sp.  Stack frame allocation usually decrements SP before storing.",
       "parentUuid": "8bd3c31c_9a94dd1d",
+      "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd3c31c_b504527e",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2016-11-16T21:56:02Z",
+      "side": 1,
+      "message": "The manpage says that child_stack should point to \"the topmost address of the memory space\", and I misinterpreted that to mean to the greatest address that was in the range. Fixed.",
+      "parentUuid": "8bd3c31c_f5a25a82",
       "revId": "659006af4d7ba3804fab4df71b5e39c6ccff8ba1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
