@@ -22,6 +22,29 @@
       "revId": "9f50f7e1b65bb3a20543a53d02941bf638e72834",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "700680a0_ee469b99",
+        "filename": "liblog/tests/liblog_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2655,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-11-18T21:02:53Z",
+      "side": 1,
+      "message": "We could rewrite this if necessary. How would you make the base class work for android-base/logging.h?\n\nandroid_log_event_context ctx(1005); // instantiation with  tag\nctx.begin(); // [ open brace for array\nctx \u003c\u003c binary stuff \u003c\u003c binary stuff ...; // create content\nctx \u003c\u003c more binary stuff; // create more content\nctx.end(); // ] close brace for array\nctx.write(); // send composed event log content;\n\n(ctx.close merely releases the resources, going out of context or delete will do this job too).",
+      "range": {
+        "startLine": 2654,
+        "startChar": 4,
+        "endLine": 2655,
+        "endChar": 62
+      },
+      "revId": "9f50f7e1b65bb3a20543a53d02941bf638e72834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
