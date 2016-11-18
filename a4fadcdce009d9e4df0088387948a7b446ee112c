@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "50b17cf0_b9f1b2b5",
+        "filename": "include/log/log.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-11-18T15:54:54Z",
+      "side": 1,
+      "message": "I am glad you broached this question. I have had troubles engaging anyone on how to architect this.\n\nThis #ifdef is to prevent the definition of this method if one does not include the private API. This file is being cultivate/curated to be _the_ Vendor API.\n\nIf a class can completely be defined inline, it can be used by a vendor. If I implement that class details in a library, we can not allow a vendor to use it because its shape carries the risk of changing from release to release. (I should add a comment at the top of the class to \u0027spain that goal)\n\nThe options are:\n\n- two classes, one with, and one without. The one with in private Is-A of the one without defined here. (Google coding standard asks that we stay away from Is-A and implement Has-A instead which will be exceedingly noisy)\n- Make this a public API. (However, I do not feel comfortable making android_log_write_list_buffer vendor public)\n- forgo adding this to the class, leave the android_log_write_list_buffer private, native, and C. (works too, class operator to return android_log_context reference)\n\nNB: there will be exactly _one_ internal user of this API. I can not imagine more, but imagination should not stifle planning.",
+      "parentUuid": "50b17cf0_43150967",
+      "revId": "a4fadcdce009d9e4df0088387948a7b446ee112c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50b17cf0_e3053d32",
         "filename": "liblog/log_event_list.c",
         "patchSetId": 2
@@ -35,6 +53,76 @@
         "startChar": 10,
         "endLine": 355,
         "endChar": 14
+      },
+      "revId": "a4fadcdce009d9e4df0088387948a7b446ee112c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50b17cf0_39c5a24e",
+        "filename": "liblog/log_event_list.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-11-18T15:54:54Z",
+      "side": 1,
+      "message": "Good catch! I leave it as an exercise to the reader to determine the nature of this.\n\nOn purpose, hoping it would never get caught, and never be ascribed nefarious. It is my signature. :-) there has to be at least one booger joke in our code base, or we appear too serious.\n\nOr a freudian slip?\n\nEither way, caught, means it goes ...",
+      "parentUuid": "50b17cf0_e3053d32",
+      "range": {
+        "startLine": 355,
+        "startChar": 10,
+        "endLine": 355,
+        "endChar": 14
+      },
+      "revId": "a4fadcdce009d9e4df0088387948a7b446ee112c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50b17cf0_39acc286",
+        "filename": "liblog/tests/liblog_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2654,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-11-18T15:54:54Z",
+      "side": 1,
+      "message": "... or android_log_event_context_private, an Is-A of android_log_event_context?",
+      "range": {
+        "startLine": 2654,
+        "startChar": 4,
+        "endLine": 2654,
+        "endChar": 29
+      },
+      "revId": "a4fadcdce009d9e4df0088387948a7b446ee112c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50b17cf0_59b176dd",
+        "filename": "liblog/tests/liblog_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2655,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-11-18T15:54:54Z",
+      "side": 1,
+      "message": "Discussion with enh@ could change this piece of implied conversion to std::string into something a bit more complicated? This fragment is to like a code example, shows us the minimum.\n\nNot in class:\n\nctx \u003c\u003c 1005 \u003c\u003c \"tag_def\" \u003c\u003c \"(tag|1),(name|3),(format|3)\";\nconst char* data \u003d NULL;\nsize_t length \u003d 0;\nandroid_log_write_list_buffer(ctx, \u0026data, \u0026length);\nEXPECT_TRUE(data !\u003d NULL);\n. . .\nEXPECT_EQ(android_log_buffer_to_string(data, length, msgbuf...",
+      "range": {
+        "startLine": 2655,
+        "startChar": 23,
+        "endLine": 2655,
+        "endChar": 80
       },
       "revId": "a4fadcdce009d9e4df0088387948a7b446ee112c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
