@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "50b17cf0_8f5d8009",
+        "filename": "include/log/log.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-11-18T18:05:32Z",
+      "side": 1,
+      "message": "\u003e This #ifdef is to prevent the definition of this method if one does not include the private API\n\nlike i said, i don\u0027t understand why you have three completely different things all in one file:\n\n1. NDK API: available to all *apps* for all time. not even minor ABI changes allowed.\n\n2. platform API: available to the platform. even source-incompatible changes allowed, though you\u0027ll have to work to keep blobs working etc.\n\n3. internal API: stuff that not even OEMs should be messing with (and if they do, it\u0027s basically the same as changing logd itself).\n\nat the moment, because you only have one file, you\u0027re basically lumping everything into 1. which doesn\u0027t seem good for anyone.\n\n(you\u0027re also making it harder for folks *reading* the headers to know what\u0027s what. even folks trying to be good are likely to be confused, and since there\u0027s no *enforcement* of the distinction between 2 and 3 above [and even 1\u0027s enforcement is circumventable], you\u0027re asking for a free-for-all.)\n\n\ni think you want [at least] three distinct files, and you should ask yourself which file each specific thing belongs in. (and typically the answer for any *class* is \"a file of its own\", but even just having the clear NDK/platform/internal distinction would be a step forward.)\n\nthe problem with the old headers wasn\u0027t that we had multiple files: it was that there was no logic behind what was in what file. (plus there were two *different* files for the \"NDK\" role.)",
+      "parentUuid": "50b17cf0_b9f1b2b5",
+      "revId": "a4fadcdce009d9e4df0088387948a7b446ee112c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50b17cf0_e3053d32",
         "filename": "liblog/log_event_list.c",
         "patchSetId": 2
