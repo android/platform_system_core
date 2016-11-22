@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "102f0424_fb13e7d1",
+        "filename": "init/init.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-11-22T20:32:36Z",
+      "side": 1,
+      "message": "In theory, the reboot request could be denied, at which point this will return an error. And the boot will continue on.\n\nLike we do in init/builtins.cpp, I would recommend adding the following line after this line:\n\n  while (1) { pause(); }  // never reached\n\nto handle this particular case and make sure the boot doesn\u0027t continue.",
+      "revId": "5f27d285226f61ce028aaa74168f33a6aaa5b516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
