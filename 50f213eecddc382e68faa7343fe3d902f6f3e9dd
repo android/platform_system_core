@@ -16,6 +16,24 @@
       "revId": "50f213eecddc382e68faa7343fe3d902f6f3e9dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed30d7ea_ef073d3a",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1073563
+      },
+      "writtenOn": "2016-11-29T09:20:53Z",
+      "side": 1,
+      "message": "Yes.\n\nThis change makes sure triggers before (\"\", \"\") don\u0027t have chances to perform the real action. They just set the property and let (\"\", \"\") do the real action. If we set property_triggers_enabled too early, all triggers coming before (\"\", \"\") will both change the property value and queue the trigger. So they will be executed twice, the other one is from (\"\", \"\"). In most cases, executing twice does not cause problems but anyway it\u0027s not logically right. And in some cases like ours, it does cause a problem.",
+      "parentUuid": "903934bb_f27ad9da",
+      "revId": "50f213eecddc382e68faa7343fe3d902f6f3e9dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
