@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d506749_d3d103e9",
+        "filename": "liblog/event_tag_map.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-02T17:50:34Z",
+      "side": 1,
+      "message": "Yes, _much_ faster. In logd I saved 3% of the processing time by converting all str*cmps to a check of the first characters followed by a call out if match. In a library, it is always worth it to shave off nano-seconds IMHO, as long as it is not unwieldy of course. In logd I made it more readable though with (system/core/logd/LogUtils.h)\n\ntemplate \u003cint (*cmp)(const char *l, const char *r, const size_t s)\u003e\nstatic inline int fast(const char *l, const char *r, const size_t s) {\n    return (*l !\u003d *r) || cmp(l + 1, r + 1, s - 1);\n}\n\ntemplate \u003cint (*cmp)(const void *l, const void *r, const size_t s)\u003e\nstatic inline int fast(const void *lv, const void *rv, const size_t s) {\n    const char *l \u003d static_cast\u003cconst char *\u003e(lv);\n    const char *r \u003d static_cast\u003cconst char *\u003e(rv);\n    return (*l !\u003d *r) || cmp(l + 1, r + 1, s - 1);\n}\n\ntemplate \u003cint (*cmp)(const char *l, const char *r)\u003e\nstatic inline int fast(const char *l, const char *r) {\n    return (*l !\u003d *r) || cmp(l + 1, r + 1);\n}\n\nThen using it ala:\n\nfast\u003cstrncmp\u003e(name, \"zygote\", 6).\n\nSo maybe I should move the \u0027fast\u0027 template into its own utils include file _first_ so all can take advantage of it!\n\nA new file system/core/include/utils/FastStrcmp.h ...",
+      "parentUuid": "6d506749_6d7f7dca",
+      "range": {
+        "startLine": 49,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 66
+      },
+      "revId": "1901fc5511f4561bb32624d51e88eab6d49dac54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d506749_ad8995b6",
         "filename": "liblog/event_tag_map.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-12-02T01:59:06Z",
       "side": 1,
       "message": "Not sure what this is saying?",
+      "range": {
+        "startLine": 90,
+        "startChar": 37,
+        "endLine": 92,
+        "endChar": 50
+      },
+      "revId": "1901fc5511f4561bb32624d51e88eab6d49dac54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d506749_d3074381",
+        "filename": "liblog/event_tag_map.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-02T17:50:34Z",
+      "side": 1,
+      "message": "If I did a hash that was the combination of both the tag and the format strings, rather than just tag alone, I lost 100ns for lookups with no real gain since typically tag is unique.\n\nI will revise the comment so that it is not so terse.",
+      "parentUuid": "6d506749_ad8995b6",
       "range": {
         "startLine": 90,
         "startChar": 37,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "6d506749_3305df79",
+        "filename": "liblog/event_tag_map.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-02T17:50:34Z",
+      "side": 1,
+      "message": "Yup!",
+      "parentUuid": "6d506749_cd65e9c8",
+      "range": {
+        "startLine": 211,
+        "startChar": 4,
+        "endLine": 211,
+        "endChar": 21
+      },
+      "revId": "1901fc5511f4561bb32624d51e88eab6d49dac54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d506749_22874fa3",
         "filename": "liblog/event_tag_map.cpp",
         "patchSetId": 1
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "6d506749_f34fe7d8",
+        "filename": "liblog/event_tag_map.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-02T17:50:34Z",
+      "side": 1,
+      "message": "Good catch!\n\nI do not know how this check even got added.\n\nSuspect it was a result of my 50 or so patches in my private development branch, a rebase probably snuck it in unnoticed.",
+      "parentUuid": "6d506749_22874fa3",
+      "range": {
+        "startLine": 279,
+        "startChar": 4,
+        "endLine": 279,
+        "endChar": 17
+      },
+      "revId": "1901fc5511f4561bb32624d51e88eab6d49dac54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d506749_8d2ad13e",
         "filename": "liblog/event_tag_map.cpp",
         "patchSetId": 1
@@ -128,6 +224,30 @@
       "writtenOn": "2016-12-02T01:59:06Z",
       "side": 1,
       "message": "fd is always already closed when fail_unmap label can be reached, could skip fail_close processing, or check for fd !\u003d -1 at line 303.",
+      "range": {
+        "startLine": 301,
+        "startChar": 4,
+        "endLine": 301,
+        "endChar": 21
+      },
+      "revId": "1901fc5511f4561bb32624d51e88eab6d49dac54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d506749_13309b44",
+        "filename": "liblog/event_tag_map.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-02T17:50:34Z",
+      "side": 1,
+      "message": "close with an fd \u003d -1 (set in line 284) does nothing. Error path is unlikely, so IMHO not worth adding little checks like this as this section can be KISS.\n\nThe real issue is all the gotos, we are supposed to remove them with appropriate C++ isms. For instance fd could be an unique_fd instead and close automagically.\n\nWill look into that.",
+      "parentUuid": "6d506749_8d2ad13e",
       "range": {
         "startLine": 301,
         "startChar": 4,
@@ -197,6 +317,30 @@
       "writtenOn": "2016-12-02T01:59:06Z",
       "side": 1,
       "message": "This a FR for \"Add an event log tag service\", what bug is being caused here?",
+      "range": {
+        "startLine": 353,
+        "startChar": 61,
+        "endLine": 353,
+        "endChar": 71
+      },
+      "revId": "1901fc5511f4561bb32624d51e88eab6d49dac54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d506749_13d6dbae",
+        "filename": "liblog/event_tag_map.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-02T17:50:34Z",
+      "side": 1,
+      "message": "The bug has changed a bit since it started, as part of the discovery we pointed out in the bug that *cp \u003d \u0027\\0\u0027 caused Shared page backed by a file converted to a Private Dirty page backed by swap (a waste). Just from boot there was 200MB of wasted memory attributed to this one line.\n\nSo part of the bug was to deprecate android_lookupEventTag and replace it with a new function android_lookupEventTag_len.\n\nThis _existing_ comment should be rewritten to describe the fix (the commit message comment from https://android-review.googlesource.com/#/c/282291 might do the trick ...) and the rason this function is marked deprecated in the headers.",
+      "parentUuid": "6d506749_a2507f4f",
       "range": {
         "startLine": 353,
         "startChar": 61,
