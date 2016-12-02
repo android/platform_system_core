@@ -2,6 +2,115 @@
   "comments": [
     {
       "key": {
+        "uuid": "6d506749_b5b437d5",
+        "filename": "init/descriptors.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-02T06:13:34Z",
+      "side": 1,
+      "message": "always not null",
+      "range": {
+        "startLine": 99,
+        "startChar": 66,
+        "endLine": 99,
+        "endChar": 81
+      },
+      "revId": "62767fe29f8aaf62470781a3cf419ba11187d178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d506749_1888ba06",
+        "filename": "init/readme.txt",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-02T06:13:34Z",
+      "side": 1,
+      "message": "as best I\u0027m aware, this seclabel functionality associated with sockets has never been used. We might want to consider deleting it just to reduce complexity... (same for seclabel on line 151)",
+      "range": {
+        "startLine": 143,
+        "startChar": 47,
+        "endLine": 143,
+        "endChar": 61
+      },
+      "revId": "62767fe29f8aaf62470781a3cf419ba11187d178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d506749_15c24341",
+        "filename": "init/readme.txt",
+        "patchSetId": 10
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-02T06:13:34Z",
+      "side": 1,
+      "message": "what\u0027s not clear from reading this documentation is that the default UID/GID/SELinux context will be assigned to the file, even if it already exists. That seems incredibly error prone and dangerous.",
+      "range": {
+        "startLine": 153,
+        "startChar": 24,
+        "endLine": 156,
+        "endChar": 43
+      },
+      "revId": "62767fe29f8aaf62470781a3cf419ba11187d178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d506749_d5b72bd8",
+        "filename": "init/util.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-02T06:13:34Z",
+      "side": 1,
+      "message": "Misleading name. This function will open an existing file if it exists, not just create a file.",
+      "revId": "62767fe29f8aaf62470781a3cf419ba11187d178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d506749_f51a2f30",
+        "filename": "init/util.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-02T06:13:34Z",
+      "side": 1,
+      "message": "create_file is only called from descriptors.cpp, which has the following line:\n\n  create_file(name().c_str(), flags, perm(), uid(), gid(), context.c_str());\n\n\"context\" will always be not null. Statements like line 178 are always true as a result.",
+      "range": {
+        "startLine": 173,
+        "startChar": 29,
+        "endLine": 173,
+        "endChar": 48
+      },
+      "revId": "62767fe29f8aaf62470781a3cf419ba11187d178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab04074e_60e67cd4",
         "filename": "init/util.cpp",
         "patchSetId": 10
@@ -19,6 +128,86 @@
     },
     {
       "key": {
+        "uuid": "6d506749_354e673a",
+        "filename": "init/util.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-02T06:13:34Z",
+      "side": 1,
+      "message": "setsockcreatecon(arg) is a lot like umask(), in that it affects the SELinux context of newly created socket objects. However, in the code below, you are never creating any sockets, so setting the socket creation default label doesn\u0027t have any effect.\n\nMore on setsockcreatecon at https://linux.die.net/man/3/setsockcreatecon",
+      "revId": "62767fe29f8aaf62470781a3cf419ba11187d178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d506749_d53c4b86",
+        "filename": "init/util.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-02T06:13:34Z",
+      "side": 1,
+      "message": "filecon is always not-null (see comment on line 173), so this code is unreachable.",
+      "range": {
+        "startLine": 183,
+        "startChar": 6,
+        "endLine": 193,
+        "endChar": 5
+      },
+      "revId": "62767fe29f8aaf62470781a3cf419ba11187d178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d506749_55f67bba",
+        "filename": "init/util.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-02T06:13:34Z",
+      "side": 1,
+      "message": "In most cases, filecon will be the SELinux domain of the target service (unless an explicit label is specified for the file), so this will attempt to set the SELinux label of the target file to the service name.\n\nFor instance, system/core/logd/logd.rc has the following lines:\n\nservice logd /system/bin/logd\n    file /proc/kmsg r\n    file /dev/kmsg w\n\nwhich will attempt to run lsetfilecon(\"/dev/kmsg\", \"u:r:logd:s0\") and assign it to an improper SELinux label. This is causing the existing SELinux denial, because init isn\u0027t allowed to relabel /dev/kmsg (for good reason) and it likely would have caused an additional error once logd took ownership of this file.\n\nAlso, because you already have an open file descriptor here, it would have been much better to use fsetfilecon() here. See https://linux.die.net/man/3/fsetfilecon",
+      "revId": "62767fe29f8aaf62470781a3cf419ba11187d178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d506749_35fb07a1",
+        "filename": "init/util.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-02T06:13:34Z",
+      "side": 1,
+      "message": "unreachable code.",
+      "range": {
+        "startLine": 200,
+        "startChar": 6,
+        "endLine": 203,
+        "endChar": 5
+      },
+      "revId": "62767fe29f8aaf62470781a3cf419ba11187d178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab04074e_c0dac8fd",
         "filename": "init/util.cpp",
         "patchSetId": 10
@@ -30,6 +219,63 @@
       "writtenOn": "2016-11-05T20:50:44Z",
       "side": 1,
       "message": "the filecon code above may have mangled errno by the time you try to log it here. (the function above saves/restores errno, but i don\u0027t understand why we don\u0027t just do the filecon stuff afterwards instead?)",
+      "revId": "62767fe29f8aaf62470781a3cf419ba11187d178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d506749_75057fc3",
+        "filename": "init/util.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-02T06:13:34Z",
+      "side": 1,
+      "message": "IMHO, this is error prone. For instance, logd.rc has the following line:\n\n  file /dev/kmsg w\n\nIf /dev/kmsg was anything other than UID\u003d0/GID\u003d0, this would have the effect of resetting the UID and GID to zero. The use of this directive on a pre-existing file could cause that file to become unreadable or open it up more widely than intended.\n\nSilently changing the ownership of a file isn\u0027t something to be taken lightly. For the vast majority of files in /dev, this should only be done by ueventd.",
+      "revId": "62767fe29f8aaf62470781a3cf419ba11187d178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d506749_b506f7cc",
+        "filename": "init/util.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-02T06:13:34Z",
+      "side": 1,
+      "message": "contrary to what this function is titled, it does much more than just create files. It also opens existing files. In particular, this line is misleading, since it will claim that /dev/kmsg is created, when in reality, it was only opened from it\u0027s existing location.\n\nIf you really want this to be a create-only function, then you should add O_EXCL on line 195.",
+      "range": {
+        "startLine": 225,
+        "startChar": 17,
+        "endLine": 225,
+        "endChar": 33
+      },
+      "revId": "62767fe29f8aaf62470781a3cf419ba11187d178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d506749_75d3bf1a",
+        "filename": "init/util.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-02T06:13:34Z",
+      "side": 1,
+      "message": "Mode isn\u0027t relevant if an existing file is opened (vs a new file being created).",
       "revId": "62767fe29f8aaf62470781a3cf419ba11187d178",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -70,6 +316,23 @@
     },
     {
       "key": {
+        "uuid": "6d506749_f5beafb0",
+        "filename": "init/util_test.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-02T06:13:34Z",
+      "side": 1,
+      "message": "If there\u0027s an error creating this file, the test passes?",
+      "revId": "62767fe29f8aaf62470781a3cf419ba11187d178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab04074e_00d5f0cc",
         "filename": "init/util_test.cpp",
         "patchSetId": 10
@@ -81,6 +344,23 @@
       "writtenOn": "2016-11-05T20:50:44Z",
       "side": 1,
       "message": "should be EXPECT_STREQ. (there\u0027s an ASSERT_STREQ too.) or you can use the trick you used on L95.",
+      "revId": "62767fe29f8aaf62470781a3cf419ba11187d178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d506749_f597cf30",
+        "filename": "init/util_test.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-02T06:13:34Z",
+      "side": 1,
+      "message": "line 93 already asserted this is not null, so this check is redundant.",
       "revId": "62767fe29f8aaf62470781a3cf419ba11187d178",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
