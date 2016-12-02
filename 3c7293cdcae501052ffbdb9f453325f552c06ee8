@@ -72,6 +72,53 @@
     },
     {
       "key": {
+        "uuid": "ede0d714_cf952191",
+        "filename": "include/utils/FastStrcmp.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-02T20:58:57Z",
+      "side": 1,
+      "message": "Profiling was done on logd back when we were using gcc. Saved 3% off total processing time to log messages.\n\nNot sure if clang would built_in improve this though.",
+      "parentUuid": "ede0d714_af92d5e5",
+      "range": {
+        "startLine": 27,
+        "startChar": 34,
+        "endLine": 27,
+        "endChar": 43
+      },
+      "revId": "3c7293cdcae501052ffbdb9f453325f552c06ee8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ede0d714_2f7f0580",
+        "filename": "include/utils/FastStrcmp.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-02T20:58:57Z",
+      "side": 1,
+      "message": "Now that this has moved out of logd, it probably should be called fastcmp?\n\nMuch larger impact on logd code, but all purely mechanical (+/- line wrapping).",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 8
+      },
+      "revId": "3c7293cdcae501052ffbdb9f453325f552c06ee8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ede0d714_ef98dd09",
         "filename": "include/utils/FastStrcmp.h",
         "patchSetId": 2
@@ -83,6 +130,30 @@
       "writtenOn": "2016-12-02T20:36:27Z",
       "side": 1,
       "message": "This isn\u0027t semantically equivalent to the actual string comparison function though, because you are only checking for equality/inequality, rather than ordering (i.e. the +1/-1 side of if). I hesitate to call this \"fast\" anything, unless you really want to go do the anti-correctness pattern of \"fastmath\".",
+      "range": {
+        "startLine": 36,
+        "startChar": 11,
+        "endLine": 36,
+        "endChar": 21
+      },
+      "revId": "3c7293cdcae501052ffbdb9f453325f552c06ee8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ede0d714_8f8f197b",
+        "filename": "include/utils/FastStrcmp.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-02T20:58:57Z",
+      "side": 1,
+      "message": "Yes, see line 32 ;-}\n\nThe idea of course is to prevent a subroutine call and overhead, and a possible cache locality slowdown.",
+      "parentUuid": "ede0d714_ef98dd09",
       "range": {
         "startLine": 36,
         "startChar": 11,
