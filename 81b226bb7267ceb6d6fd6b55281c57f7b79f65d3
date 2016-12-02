@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ede0d714_35b632bc",
+        "filename": "init/readme.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-02T23:27:11Z",
+      "side": 1,
+      "message": "For another CL, thanks for the research!",
+      "parentUuid": "ede0d714_529e7450",
+      "revId": "81b226bb7267ceb6d6fd6b55281c57f7b79f65d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ede0d714_95784632",
         "filename": "init/util.cpp",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2016-12-02T23:20:29Z",
       "side": 1,
       "message": "there\u0027s only one user of this, and open_file is a very vague name, and the only interesting thing this function does (the O_NDELAY) is in neither the name nor the doc comment. can we move it into FileInfo::Create?\n\n(not in this change though, since it seems like there\u0027s more cleanup coming anyway.)",
+      "revId": "81b226bb7267ceb6d6fd6b55281c57f7b79f65d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ede0d714_f5e0aab4",
+        "filename": "init/util.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-02T23:27:11Z",
+      "side": 1,
+      "message": "O_NDELAY jiggery-pokery is to deal with devices that act like serial ports and their carrier detect facility. I wanted _zero_ risk that the single threaded init would be blocked by an open call.\n\nAgreed, separate CL ...",
+      "parentUuid": "ede0d714_95784632",
       "revId": "81b226bb7267ceb6d6fd6b55281c57f7b79f65d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
