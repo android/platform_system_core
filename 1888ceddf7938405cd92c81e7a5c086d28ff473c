@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ede0d714_952286c7",
+        "filename": "init/descriptors.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-03T00:23:43Z",
+      "side": 1,
+      "message": "I\u0027m confused by this. Per \"man fcntl\", the only supported F_SETFD flag is \"FD_CLOEXEC\". Passing in O_NDELAY, O_RDONLY, O_WRONLY, or O_RDWR doesn\u0027t seem to do anything.\n\nAs O_NDELAY is defined as O_NONBLOCK, and O_NONBLOCK is settable via F_SETFL, perhaps you meant that? F_SETFL !\u003d F_SETFD.\n\nAlso, no return value checking.\n\nIs this really needed at all? This should be entirely handled by the open() call... If not, it\u0027s a race.",
+      "revId": "1888ceddf7938405cd92c81e7a5c086d28ff473c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ede0d714_d5012e23",
+        "filename": "init/descriptors.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-03T00:23:43Z",
+      "side": 1,
+      "message": "probably better to print this out in hex...\n\nO_RDONLY\u003d0\nO_WRONLY\u003d1\nO_RDWR\u003d2\nO_NDELAY\u003d00004000\n\nOctal is weird for flags...",
+      "range": {
+        "startLine": 118,
+        "startChar": 29,
+        "endLine": 118,
+        "endChar": 37
+      },
+      "revId": "1888ceddf7938405cd92c81e7a5c086d28ff473c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
