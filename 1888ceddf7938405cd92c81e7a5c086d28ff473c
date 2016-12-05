@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ede0d714_b37eb7cb",
+        "filename": "init/descriptors.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-05T19:16:09Z",
+      "side": 1,
+      "message": "Good catch, this has been borken for some time. The correct flag is F_SETFL. O_NDELAY \u003d\u003d O_NONBLOCK, but I should really use the later since the former is legacy UNIX and not late-model POSIX.",
+      "parentUuid": "ede0d714_952286c7",
+      "revId": "1888ceddf7938405cd92c81e7a5c086d28ff473c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ede0d714_d5012e23",
         "filename": "init/descriptors.cpp",
         "patchSetId": 6
@@ -30,6 +48,30 @@
       "writtenOn": "2016-12-03T00:23:43Z",
       "side": 1,
       "message": "probably better to print this out in hex...\n\nO_RDONLY\u003d0\nO_WRONLY\u003d1\nO_RDWR\u003d2\nO_NDELAY\u003d00004000\n\nOctal is weird for flags...",
+      "range": {
+        "startLine": 118,
+        "startChar": 29,
+        "endLine": 118,
+        "endChar": 37
+      },
+      "revId": "1888ceddf7938405cd92c81e7a5c086d28ff473c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ede0d714_935a9b6b",
+        "filename": "init/descriptors.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-05T19:16:09Z",
+      "side": 1,
+      "message": "All these flags are octal in the header files, hence why I use octal to print.\n\nI grew up on the PDP11, all we had there was octal, hex had not been invented yet ;-\u003e\n\n00004000 _is_ _octal_",
+      "parentUuid": "ede0d714_d5012e23",
       "range": {
         "startLine": 118,
         "startChar": 29,
