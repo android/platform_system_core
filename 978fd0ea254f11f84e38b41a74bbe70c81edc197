@@ -22,6 +22,30 @@
       "revId": "978fd0ea254f11f84e38b41a74bbe70c81edc197",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ede0d714_b3a597e9",
+        "filename": "init/descriptors.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-05T19:38:15Z",
+      "side": 1,
+      "message": "0 is not clearer IMHO, as this was broken in 1981 ;-}, I was there when this got fixed in SysVR3 ;-/. It has since been generally accepted practice to always send the same flags you issued to open, to fcntl with the modifications you want to make for backward portability (waaaaaay backward, I admit). POSIX added the clarity regarding the O_RDONLY and friends in the documentation so that all knew they could not shoot themselves in the foot, or die trying to make it so ...\n\nAlso, if I _chose_ to allow a nonblocking flag in the future on line 98, it would be a trivial change at the top with no adjustment here. That supports code stability and reduced fragility.",
+      "parentUuid": "ede0d714_73596f46",
+      "range": {
+        "startLine": 115,
+        "startChar": 21,
+        "endLine": 115,
+        "endChar": 26
+      },
+      "revId": "978fd0ea254f11f84e38b41a74bbe70c81edc197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
