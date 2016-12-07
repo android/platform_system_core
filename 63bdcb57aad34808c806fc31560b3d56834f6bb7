@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d602f88_a62226c7",
+        "filename": "base/logging.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-12-07T14:23:54Z",
+      "side": 1,
+      "message": "This constructor is constexpr, except for Windows where we fake the std::mutex. We should use\n\n    #ifdef _WIN32\n    // Avoid destruction order issues by leaking the mutex.\n    static auto\u0026 logging_lock \u003d *new std::mutex();\n    #else\n    std::mutex logging_lock;  // Statically initialized.\n    #endif\n\nand avoid the dynamic initialization and heap allocation.",
+      "range": {
+        "startLine": 122,
+        "startChar": 33,
+        "endLine": 122,
+        "endChar": 45
+      },
+      "revId": "63bdcb57aad34808c806fc31560b3d56834f6bb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
