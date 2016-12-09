@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ba37f7d9_67a6d061",
+        "filename": "liblog/event_tag_map.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-09T22:56:59Z",
+      "side": 1,
+      "message": "Switched to typedef (thus dropping FastStrcmp.h dependency too), and we lost about 2.5ns in performance (instead of a random 52 or 53ns, we would get a solid 55ns with an occasional 56ns).\n\nSomewhat on the fence, but I can overrule this class in the followon CL to incorporate FastStrcmp.h and the support for both std::string_view and std::string in this class.",
+      "parentUuid": "ba37f7d9_cc36c3f8",
+      "revId": "0d470f1a4af94e3c769285e9b14e0218c1af631b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba37f7d9_4cf89308",
         "filename": "liblog/event_tag_map.cpp",
         "patchSetId": 7
@@ -71,6 +89,30 @@
       "writtenOn": "2016-12-09T21:37:31Z",
       "side": 1,
       "message": "typedef?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "0d470f1a4af94e3c769285e9b14e0218c1af631b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba37f7d9_e7b1a091",
+        "filename": "liblog/event_tag_map.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-09T22:56:59Z",
+      "side": 1,
+      "message": "typedef, and switch to using std::make_pair(MapString(), MapString()) worked great, and had no performance impact.\n\nSo yes.",
+      "parentUuid": "ba37f7d9_2cfd4ff8",
       "range": {
         "startLine": 73,
         "startChar": 0,
