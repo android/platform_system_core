@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1af2c318_6310b6ff",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-12-16T03:49:12Z",
+      "side": 1,
+      "message": "That\u0027s a good point. You could argue that this code should be resilient even if the caller has not checked what the max runtime supported cap is, but I think KISS wins here.",
+      "parentUuid": "fa6fafa9_b7e6a2cd",
+      "range": {
+        "startLine": 89,
+        "startChar": 45,
+        "endLine": 89,
+        "endChar": 70
+      },
+      "revId": "ad61f2b2594306bb432a8766d0f2bbd82f618f03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa6fafa9_5771cef6",
         "filename": "init/capabilities.cpp",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "1af2c318_8313420c",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-12-16T03:49:12Z",
+      "side": 1,
+      "message": "Maybe it makes sense to make them all unsigned ints. unsigned int -\u003e unsigned long promotion is defined and doesn\u0027t do anything unexpected. The int args would get promoted to long when passed to prctl. With 40 capabilities, unsigned int is clearly big enough. What do you think?",
+      "parentUuid": "fa6fafa9_5771cef6",
+      "revId": "ad61f2b2594306bb432a8766d0f2bbd82f618f03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa6fafa9_d7723e50",
         "filename": "init/service.cpp",
         "patchSetId": 2
@@ -53,6 +95,30 @@
       "writtenOn": "2016-12-16T03:18:04Z",
       "side": 1,
       "message": "This is stricter than necessary. If anyone ever upgrades the kernel, for instance, without upgrading this file / the libc header files, init will fail to start services, which will make bringup slightly harder.\n\nInstead, perhaps it makes more sense to only error out if the config file requests a capability not supported by the kernel. How about, around line 327, something like:\n\n  int cap \u003d LookupCap(arg);\n  if ((cap \u003d\u003d -1) || (cap \u003e GetLastValidCap())) {\n    *err \u003d StringPrintf(\"...\");\n    return false;\n  }",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 5
+      },
+      "revId": "ad61f2b2594306bb432a8766d0f2bbd82f618f03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1af2c318_c3db8a3a",
+        "filename": "init/service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-12-16T03:49:12Z",
+      "side": 1,
+      "message": "That\u0027s reasonable. I\u0027m not sure how often we update actual kernels beyond kernel headers, but no need to be overly strict when it doesn\u0027t provide a security guarantee.",
+      "parentUuid": "fa6fafa9_d7723e50",
       "range": {
         "startLine": 320,
         "startChar": 0,
