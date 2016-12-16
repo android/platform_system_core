@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6fafa9_e3c4dc33",
+        "filename": "include/log/log.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-16T19:34:37Z",
+      "side": 1,
+      "message": "Mingw not happy with this :-(\n\n/usr/local/google/buildbot/src/android/master/prebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8/x86_64-w64-mingw32/include/c++/4.8.3/atomic:804:5: error: ‘std::__atomic_is_lock_free’ declared as an ‘inline’ variable\n     atomic_is_lock_free(const atomic\u003c_ITp\u003e* __a) noexcept",
+      "range": {
+        "startLine": 829,
+        "startChar": 0,
+        "endLine": 829,
+        "endChar": 22
+      },
+      "revId": "96720b368b4e671a22dbf36c9f36b5b1e413e5e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6fafa9_6371acf7",
+        "filename": "include/log/log.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-16T19:34:37Z",
+      "side": 1,
+      "message": "If we remove the need for the caller to even know about atomics. The fact that it is illegal to abstract this to a uint64_t since one can not guarantee it is aligned properly to cast to atomic_uint_fast64_t. We have a few choices:\n\n1) uint32_t works on all architectures we care about, can we get by with 32 bits? Also, you can use include \u003ccutils/atomic.h\u003e which only supports 32-bit atomics.\n2) create a type that is 128 bits in size, and perform alignment internally to guarantee atomic operations \u003cick\u003e\n3) Do not support caller-supplied state, always global, all the time ...",
+      "range": {
+        "startLine": 838,
+        "startChar": 44,
+        "endLine": 838,
+        "endChar": 70
+      },
+      "revId": "96720b368b4e671a22dbf36c9f36b5b1e413e5e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6fafa9_43acb06b",
+        "filename": "include/log/log.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-16T19:34:37Z",
+      "side": 1,
+      "message": "uint",
+      "range": {
+        "startLine": 849,
+        "startChar": 19,
+        "endLine": 849,
+        "endChar": 23
+      },
+      "revId": "96720b368b4e671a22dbf36c9f36b5b1e413e5e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
