@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "1af2c318_43f01aae",
+        "filename": "init/service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-12-16T03:59:08Z",
+      "side": 1,
+      "message": "Actually, thinking more about this, if the kernel gets updated but the headers don\u0027t, then LookupCap will return -1 -- LookupCap looks at the kernel headers. So there\u0027s really no way to identify the case where the user is requesting a capability not present in the current headers vs a capability that doesn\u0027t exist at all in the upstream headers.\n\nSo what I\u0027m gonna do is warn but not error (i.e. not return false) if we find the runtime has more capabilities than the headers.",
+      "parentUuid": "1af2c318_c3db8a3a",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 5
+      },
+      "revId": "ad61f2b2594306bb432a8766d0f2bbd82f618f03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa6fafa9_d7931ee7",
         "filename": "init/service.cpp",
         "patchSetId": 2
