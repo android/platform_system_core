@@ -142,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "dabe6b36_5835a991",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-16T00:50:29Z",
+      "side": 1,
+      "message": "I guess if you want to support kernels without, for instance, CAP_SETUID, then sure.  :-) Anything before CAP_NET_RAW (cap #13) has been around since before the dawn of time. I\u0027m not sure what additional confidence this gives you, but it does have a non-zero cost.",
+      "parentUuid": "1af2c318_e3532656",
+      "range": {
+        "startLine": 73,
+        "startChar": 34,
+        "endLine": 73,
+        "endChar": 35
+      },
+      "revId": "a599897b8eb068eadceaf20076273261a5d93f79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabe6b36_5dbc7b67",
         "filename": "init/capabilities.cpp",
         "patchSetId": 1
@@ -282,6 +306,30 @@
       "side": 1,
       "message": "That\u0027s a fair point. The only reason to put it here was to hide the implementation details of the number of caps from the users of this file -- arguably, you might not want to force every caller of this interface to have to find the runtime value of cap_last_cap. If you still think losing that encapsulation in the name of performance is worth it, I\u0027m happy to move things around.\n\nAlternatively, we could just cache things in this file, with a lazy initializer. What do you think?",
       "parentUuid": "dabe6b36_fd9d67a5",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 5
+      },
+      "revId": "a599897b8eb068eadceaf20076273261a5d93f79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabe6b36_98e0c1e4",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-16T00:50:29Z",
+      "side": 1,
+      "message": "If you keep it here, you\u0027d still miss the error message if the service doesn\u0027t execute. For instance, if it\u0027s a disabled service. Moving it to the service parsing would emit an error even if the service itself is never triggered.\n\nLazy initializer SGTM. I think it\u0027s thread safe too, but enh would know better.",
+      "parentUuid": "1af2c318_63855698",
       "range": {
         "startLine": 155,
         "startChar": 0,
