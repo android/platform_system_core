@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "1af2c318_039452ce",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-12-16T00:40:39Z",
+      "side": 1,
+      "message": "No need, these live in an anonymous namespace.",
+      "parentUuid": "dabe6b36_7d633723",
+      "revId": "a599897b8eb068eadceaf20076273261a5d93f79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabe6b36_4637940b",
         "filename": "init/capabilities.cpp",
         "patchSetId": 1
@@ -99,6 +117,24 @@
     },
     {
       "key": {
+        "uuid": "1af2c318_e3984606",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-12-16T00:40:39Z",
+      "side": 1,
+      "message": "No need, this is inside an anonymous namespace.",
+      "parentUuid": "dabe6b36_5dbc7b67",
+      "revId": "a599897b8eb068eadceaf20076273261a5d93f79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabe6b36_9d7713f1",
         "filename": "init/capabilities.cpp",
         "patchSetId": 1
@@ -110,6 +146,24 @@
       "writtenOn": "2016-12-16T00:04:47Z",
       "side": 1,
       "message": "Missing static\n\n\"static bool SetProcCaps ...\"",
+      "revId": "a599897b8eb068eadceaf20076273261a5d93f79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1af2c318_438e5ac2",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-12-16T00:40:39Z",
+      "side": 1,
+      "message": "Same, inside anonymous namespace.",
+      "parentUuid": "dabe6b36_9d7713f1",
       "revId": "a599897b8eb068eadceaf20076273261a5d93f79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -133,6 +187,24 @@
     },
     {
       "key": {
+        "uuid": "1af2c318_238b4eb2",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-12-16T00:40:39Z",
+      "side": 1,
+      "message": "Same \u003d)",
+      "parentUuid": "dabe6b36_5d6e3b1b",
+      "revId": "a599897b8eb068eadceaf20076273261a5d93f79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabe6b36_fd9d67a5",
         "filename": "init/capabilities.cpp",
         "patchSetId": 1
@@ -144,6 +216,30 @@
       "writtenOn": "2016-12-16T00:04:47Z",
       "side": 1,
       "message": "this feels like an awkward place for this. Before the invocation of every service which uses capabilities, you call GetLastValidCap. This recomputes the exact same value over and over again. This is going to have overhead on every service invocation.\n\nInstead, it feels like this would be better placed in service.cpp function ParseCapabilities, so the check only occurs on service parsing, not service execution. That way, even if the service isn\u0027t executed or is disabled, an error message will still be generated.\n\nExtra points for caching this value to avoid recomputing this over and over again.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 5
+      },
+      "revId": "a599897b8eb068eadceaf20076273261a5d93f79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1af2c318_63855698",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-12-16T00:40:39Z",
+      "side": 1,
+      "message": "That\u0027s a fair point. The only reason to put it here was to hide the implementation details of the number of caps from the users of this file -- arguably, you might not want to force every caller of this interface to have to find the runtime value of cap_last_cap. If you still think losing that encapsulation in the name of performance is worth it, I\u0027m happy to move things around.\n\nAlternatively, we could just cache things in this file, with a lazy initializer. What do you think?",
+      "parentUuid": "dabe6b36_fd9d67a5",
       "range": {
         "startLine": 155,
         "startChar": 0,
