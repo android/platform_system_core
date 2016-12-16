@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6fafa9_23a25491",
+        "filename": "liblog/logger_write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2016-12-16T20:37:27Z",
+      "side": 1,
+      "message": "This should be defined(__BIONIC__) to avoid typos.",
+      "range": {
+        "startLine": 393,
+        "startChar": 4,
+        "endLine": 393,
+        "endChar": 14
+      },
+      "revId": "70b2b5e8dc105e6382655f0e1d9368fd8ffbeb9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6fafa9_03ad5881",
+        "filename": "liblog/logger_write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2016-12-16T20:37:27Z",
+      "side": 1,
+      "message": "As Greg mentioned, it\u0027s much better to dump something to the log which includes the stack trace of the bad process. You can talk to debuggerd to dump a process, but this will require extra selinux permissions.\n\nI\u0027d recommend doing a basic dump of the process information, and then maybe add something behind a system property that, if enabled, will attempt to dump the offending process stack.\n\nI would recommend also talking to the testing team to have them scrap their logs for these messages.",
+      "range": {
+        "startLine": 397,
+        "startChar": 20,
+        "endLine": 397,
+        "endChar": 28
+      },
+      "revId": "70b2b5e8dc105e6382655f0e1d9368fd8ffbeb9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
