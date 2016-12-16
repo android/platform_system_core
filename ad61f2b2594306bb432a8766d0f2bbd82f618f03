@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6fafa9_b7e6a2cd",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-16T03:18:04Z",
+      "side": 1,
+      "message": "Is this needed anymore? Service::ParseCapabilities errors out if last_valid_cap \u003e\u003d to_keep.size(), so this is an impossible to occur condition without \"cap \u003c to_keep.size()\" also triggering.\n\n(same comment on line 109 and 137)",
+      "range": {
+        "startLine": 89,
+        "startChar": 45,
+        "endLine": 89,
+        "endChar": 70
+      },
+      "revId": "ad61f2b2594306bb432a8766d0f2bbd82f618f03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6fafa9_d7723e50",
+        "filename": "init/service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-16T03:18:04Z",
+      "side": 1,
+      "message": "This is stricter than necessary. If anyone ever upgrades the kernel, for instance, without upgrading this file / the libc header files, init will fail to start services, which will make bringup slightly harder.\n\nInstead, perhaps it makes more sense to only error out if the config file requests a capability not supported by the kernel. How about, around line 327, something like:\n\n  int cap \u003d LookupCap(arg);\n  if ((cap \u003d\u003d -1) || (cap \u003e GetLastValidCap())) {\n    *err \u003d StringPrintf(\"...\");\n    return false;\n  }",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 5
+      },
+      "revId": "ad61f2b2594306bb432a8766d0f2bbd82f618f03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
