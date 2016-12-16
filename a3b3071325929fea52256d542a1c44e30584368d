@@ -52,6 +52,24 @@
       "revId": "a3b3071325929fea52256d542a1c44e30584368d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6fafa9_68b98ba8",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-16T17:23:46Z",
+      "side": 1,
+      "message": "The revert mentioned in the commit message for https://android-review.googlesource.com/166778 was abandoned. \n\nhttps://android-review.googlesource.com/167062 is the abandoned revert.\n\nIn addition, even if an overflow occurred, it would still require that \"prctl(PR_CAPBSET_READ, 0, 0, 0, 0)\" fail for this if condition to not be true. That would imply that CAP_CHOWN (capability #0) did not exist. I don\u0027t believe this has ever been true in the history of the Linux kernel...\n\n(if you can write a unittest which exercises the \"else\" block if this test, I\u0027d be curious to see it.  Maybe possible with seccomp? Dunno...)",
+      "parentUuid": "5a2fdb70_a7c10a95",
+      "revId": "a3b3071325929fea52256d542a1c44e30584368d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
