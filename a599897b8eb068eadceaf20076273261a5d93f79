@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "dabe6b36_cc8f1e10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-12-16T00:55:37Z",
+      "side": 1,
+      "message": "sgtm.",
+      "parentUuid": "1af2c318_a3491eae",
+      "revId": "a599897b8eb068eadceaf20076273261a5d93f79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dabe6b36_7d633723",
         "filename": "init/capabilities.cpp",
         "patchSetId": 1
@@ -348,6 +366,30 @@
       "side": 1,
       "message": "If you keep it here, you\u0027d still miss the error message if the service doesn\u0027t execute. For instance, if it\u0027s a disabled service. Moving it to the service parsing would emit an error even if the service itself is never triggered.\n\nLazy initializer SGTM. I think it\u0027s thread safe too, but enh would know better.",
       "parentUuid": "1af2c318_63855698",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 5
+      },
+      "revId": "a599897b8eb068eadceaf20076273261a5d93f79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabe6b36_ccba7ea3",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-12-16T00:55:37Z",
+      "side": 1,
+      "message": "yeah, the usual\n\n  static unsigned GetLastValidCap() {\n    static unsigned result \u003d ComputeLastValidCap();\n    return result;\n  }\n\nidiom is thread-safe. the compiler inserts the necessary locking.",
+      "parentUuid": "dabe6b36_98e0c1e4",
       "range": {
         "startLine": 155,
         "startChar": 0,
