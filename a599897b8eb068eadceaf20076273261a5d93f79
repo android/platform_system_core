@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabe6b36_7d633723",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-16T00:04:47Z",
+      "side": 1,
+      "message": "Missing static.\n\n\"static unsigned int GetLastValidCap() {\"",
+      "revId": "a599897b8eb068eadceaf20076273261a5d93f79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabe6b36_4637940b",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-16T00:04:47Z",
+      "side": 1,
+      "message": "to match the signature of prctl(), should be unsigned long. \"man prctl\". (although the bionic declaration is \"int prctl(int option, ...);\", so I\u0027m not 100% sure on this one)",
+      "range": {
+        "startLine": 73,
+        "startChar": 13,
+        "endLine": 73,
+        "endChar": 16
+      },
+      "revId": "a599897b8eb068eadceaf20076273261a5d93f79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabe6b36_5dbc7b67",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-16T00:04:47Z",
+      "side": 1,
+      "message": "Missing static\n\n\"static bool DropBoundingSet ...\"",
+      "revId": "a599897b8eb068eadceaf20076273261a5d93f79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabe6b36_9d7713f1",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-16T00:04:47Z",
+      "side": 1,
+      "message": "Missing static\n\n\"static bool SetProcCaps ...\"",
+      "revId": "a599897b8eb068eadceaf20076273261a5d93f79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabe6b36_5d6e3b1b",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-16T00:04:47Z",
+      "side": 1,
+      "message": "missing static\n\n\"static bool SetAmbientCaps...\"",
+      "revId": "a599897b8eb068eadceaf20076273261a5d93f79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dabe6b36_fd9d67a5",
+        "filename": "init/capabilities.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-12-16T00:04:47Z",
+      "side": 1,
+      "message": "this feels like an awkward place for this. Before the invocation of every service which uses capabilities, you call GetLastValidCap. This recomputes the exact same value over and over again. This is going to have overhead on every service invocation.\n\nInstead, it feels like this would be better placed in service.cpp function ParseCapabilities, so the check only occurs on service parsing, not service execution. That way, even if the service isn\u0027t executed or is disabled, an error message will still be generated.\n\nExtra points for caching this value to avoid recomputing this over and over again.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 5
+      },
+      "revId": "a599897b8eb068eadceaf20076273261a5d93f79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
