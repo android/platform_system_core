@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fa6fafa9_11775b78",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2016-12-17T01:38:06Z",
+      "side": 1,
+      "message": "good point. I did not try changing this. If it has impact, that should go as separate CL.",
+      "parentUuid": "da93cbd8_5bbf435d",
+      "range": {
+        "startLine": 151,
+        "startChar": 4,
+        "endLine": 151,
+        "endChar": 46
+      },
+      "revId": "046c8b5cda473a5e03de54b4c88f3f276ee14bca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da93cbd8_3bb27796",
         "filename": "rootdir/init.rc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-12-17T01:32:22Z",
       "side": 1,
       "message": "On 32bit only arch, there will be no zygote_secondary defined I think. could we use something like \"class_start zygote\" ?",
+      "range": {
+        "startLine": 479,
+        "startChar": 10,
+        "endLine": 479,
+        "endChar": 26
+      },
+      "revId": "046c8b5cda473a5e03de54b4c88f3f276ee14bca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6fafa9_f12c9f60",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2016-12-17T01:38:06Z",
+      "side": 1,
+      "message": "starting non-existing service was no-op. I considered having separate stage only for zygote but that does not allow me to do this at this point. restorecon below, which is not necessary for zygote, was adding some additional delay.",
+      "parentUuid": "da93cbd8_3bb27796",
       "range": {
         "startLine": 479,
         "startChar": 10,
