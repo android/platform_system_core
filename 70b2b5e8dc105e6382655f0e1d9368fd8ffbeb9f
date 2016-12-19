@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fa6fafa9_ae5e4b91",
+        "filename": "liblog/logger_write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-19T23:12:50Z",
+      "side": 1,
+      "message": "I will be aware of that, this is _everywhere_. Should fix so that people like me that cut and paste, or partners and vendors have good examples everywhere to draw upon. A clean pass through all the code cleanup is in order.",
+      "parentUuid": "fa6fafa9_23a25491",
+      "range": {
+        "startLine": 393,
+        "startChar": 4,
+        "endLine": 393,
+        "endChar": 14
+      },
+      "revId": "70b2b5e8dc105e6382655f0e1d9368fd8ffbeb9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa6fafa9_03ad5881",
         "filename": "liblog/logger_write.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-12-16T20:37:27Z",
       "side": 1,
       "message": "As Greg mentioned, it\u0027s much better to dump something to the log which includes the stack trace of the bad process. You can talk to debuggerd to dump a process, but this will require extra selinux permissions.\n\nI\u0027d recommend doing a basic dump of the process information, and then maybe add something behind a system property that, if enabled, will attempt to dump the offending process stack.\n\nI would recommend also talking to the testing team to have them scrap their logs for these messages.",
+      "range": {
+        "startLine": 397,
+        "startChar": 20,
+        "endLine": 397,
+        "endChar": 28
+      },
+      "revId": "70b2b5e8dc105e6382655f0e1d9368fd8ffbeb9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa6fafa9_6e027374",
+        "filename": "liblog/logger_write.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-19T23:12:50Z",
+      "side": 1,
+      "message": "We do not want liblog.so to depend on libunwind.so ...\n\n_everyone_ would require the permissions as this is inside the context of the process performing the logging. Ick )(?)\n\nIn https://android-review.googlesource.com/#/c/314074 logd will report multiple identical log messages with a (midstream, which makes it unique) chatty deduping the identical messages. They can scrape for that.\n\nOr I can enhance logd to add a statistic to \u0027logcat -b all -S\u0027 that can add them to the wall of shame ... (i.e. worst multiple identical messages per UID).\n\nThis CL is about recording a stack trace so the person triaging can figure out the state of his software and figure out _why_ they are storming the logs. This is less about Q/A finding offenders, and more about giving the person traiging the logspam problem enough details to find out _why_.\n\nCan we unravel our own local stack and log that to the crash buffer (w/o libunwind.so)?",
+      "parentUuid": "fa6fafa9_03ad5881",
       "range": {
         "startLine": 397,
         "startChar": 20,
