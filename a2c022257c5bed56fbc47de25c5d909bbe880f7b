@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6fafa9_a5602116",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-19T19:26:05Z",
+      "side": 1,
+      "message": "Incorrect, should be:\n\nif (dropped) {\n    if (count) {\n       log(dropped);\n    } else {\n        delete dropped;\n    }\n    droppedElements[log_id] \u003d NULL;\n    log(currentLast);\n} else {\n    delete currentLast;\n}",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 9
+      },
+      "revId": "a2c022257c5bed56fbc47de25c5d909bbe880f7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
