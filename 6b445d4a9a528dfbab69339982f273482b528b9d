@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "77b2fac6_053e05ea",
+        "filename": "include/log/log.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-20T23:30:00Z",
+      "side": 1,
+      "message": "Good catch, I _felt_ there was something wrong here, but could not see it. I need to listen to the other voices in my head a bit more!",
+      "parentUuid": "77b2fac6_eff2b226",
+      "range": {
+        "startLine": 840,
+        "startChar": 8,
+        "endLine": 840,
+        "endChar": 12
+      },
+      "revId": "6b445d4a9a528dfbab69339982f273482b528b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b2fac6_4fae5e7f",
         "filename": "liblog/log_ratelimit.c",
         "patchSetId": 4
@@ -94,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "77b2fac6_c55ead5b",
+        "filename": "liblog/log_ratelimit.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-20T23:30:00Z",
+      "side": 1,
+      "message": "I did use trylock for a reason, I allow contention issues to also be a signal to ratelimit the messages.\n\nThe only other mitigation I can propose is to leave locking in the hands of the caller. At that point they can do the whole thing and the library provides no advantages.",
+      "parentUuid": "77b2fac6_52c92147",
+      "range": {
+        "startLine": 27,
+        "startChar": 23,
+        "endLine": 27,
+        "endChar": 37
+      },
+      "revId": "6b445d4a9a528dfbab69339982f273482b528b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b2fac6_6f41e25b",
         "filename": "liblog/log_ratelimit.c",
         "patchSetId": 4
@@ -128,6 +176,30 @@
       "writtenOn": "2016-12-20T22:24:12Z",
       "side": 1,
       "message": "Scheduling jitter may occasionally cause this to fail?  Maybe leave a little more wiggle room?",
+      "range": {
+        "startLine": 2883,
+        "startChar": 4,
+        "endLine": 2884,
+        "endChar": 53
+      },
+      "revId": "6b445d4a9a528dfbab69339982f273482b528b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b2fac6_e5409176",
+        "filename": "liblog/tests/liblog_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2884,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-20T23:30:00Z",
+      "side": 1,
+      "message": "I only made it tight because we have to conserve time. I can add a second more.\n\nWe are already burning 6 seconds to test this, added to all the other testing delays, go/apct stops working at 60 seconds for the group of tests (might be a problem, will need to double check), or for individual tests (low risk).",
+      "parentUuid": "77b2fac6_0f5b863e",
       "range": {
         "startLine": 2883,
         "startChar": 4,
