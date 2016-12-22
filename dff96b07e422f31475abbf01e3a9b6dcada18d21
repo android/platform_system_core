@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "77b2fac6_5052672b",
+        "filename": "logd/LogTags.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-22T20:44:11Z",
+      "side": 1,
+      "message": "GREAT find!",
+      "parentUuid": "77b2fac6_955f71fb",
+      "range": {
+        "startLine": 131,
+        "startChar": 39,
+        "endLine": 131,
+        "endChar": 47
+      },
+      "revId": "dff96b07e422f31475abbf01e3a9b6dcada18d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b2fac6_b52dd5c5",
         "filename": "logd/LogTags.cpp",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "77b2fac6_d0465774",
+        "filename": "logd/LogTags.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-22T20:44:11Z",
+      "side": 1,
+      "message": "This whole fragment is like a piece of documentation, and a DEBUG test in one. I can define a static const here where used and drop the comment.",
+      "parentUuid": "77b2fac6_b52dd5c5",
+      "range": {
+        "startLine": 162,
+        "startChar": 49,
+        "endLine": 162,
+        "endChar": 51
+      },
+      "revId": "dff96b07e422f31475abbf01e3a9b6dcada18d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b2fac6_b59395aa",
         "filename": "logd/LogTags.cpp",
         "patchSetId": 7
@@ -59,6 +107,30 @@
       "writtenOn": "2016-12-22T19:58:56Z",
       "side": 1,
       "message": "I can\u0027t remember... is it safe to evaluate .end() without the read lock?",
+      "range": {
+        "startLine": 360,
+        "startChar": 15,
+        "endLine": 360,
+        "endChar": 23
+      },
+      "revId": "dff96b07e422f31475abbf01e3a9b6dcada18d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b2fac6_10eaaf2d",
+        "filename": "logd/LogTags.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-22T20:44:11Z",
+      "side": 1,
+      "message": "strictly, I would expect not safe, except that tag2name.end() returns iterator(nullptr) in the case of __hash_table classes.",
+      "parentUuid": "77b2fac6_b59395aa",
       "range": {
         "startLine": 360,
         "startChar": 15,
@@ -128,6 +200,24 @@
       "writtenOn": "2016-12-22T19:58:56Z",
       "side": 1,
       "message": "Don\u0027t you need the readlock for tag2uid and tag2name lookups? It looks like the caller doesn\u0027t always have it (line 766).",
+      "revId": "dff96b07e422f31475abbf01e3a9b6dcada18d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b2fac6_107e2f80",
+        "filename": "logd/LogTags.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-12-22T20:44:11Z",
+      "side": 1,
+      "message": "766 is calling formatEntry in line 726.\n\nI see this as confusion, should call this function formatEntry_locked() to solve that.",
+      "parentUuid": "77b2fac6_154ce18b",
       "revId": "dff96b07e422f31475abbf01e3a9b6dcada18d21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
