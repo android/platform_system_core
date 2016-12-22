@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77b2fac6_955f71fb",
+        "filename": "logd/LogTags.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2016-12-22T19:58:56Z",
+      "side": 1,
+      "message": "need write lock here?",
+      "range": {
+        "startLine": 131,
+        "startChar": 39,
+        "endLine": 131,
+        "endChar": 47
+      },
+      "revId": "dff96b07e422f31475abbf01e3a9b6dcada18d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b2fac6_b52dd5c5",
+        "filename": "logd/LogTags.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2016-12-22T19:58:56Z",
+      "side": 1,
+      "message": "wouldn\u0027t it be better to declare this above as a const int instead of a magic number embedded in the code?",
+      "range": {
+        "startLine": 162,
+        "startChar": 49,
+        "endLine": 162,
+        "endChar": 51
+      },
+      "revId": "dff96b07e422f31475abbf01e3a9b6dcada18d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b2fac6_b59395aa",
+        "filename": "logd/LogTags.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2016-12-22T19:58:56Z",
+      "side": 1,
+      "message": "I can\u0027t remember... is it safe to evaluate .end() without the read lock?",
+      "range": {
+        "startLine": 360,
+        "startChar": 15,
+        "endLine": 360,
+        "endChar": 23
+      },
+      "revId": "dff96b07e422f31475abbf01e3a9b6dcada18d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b2fac6_b541555e",
+        "filename": "logd/LogTags.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2016-12-22T19:58:56Z",
+      "side": 1,
+      "message": "perform",
+      "range": {
+        "startLine": 413,
+        "startChar": 15,
+        "endLine": 413,
+        "endChar": 21
+      },
+      "revId": "dff96b07e422f31475abbf01e3a9b6dcada18d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b2fac6_15b06122",
+        "filename": "logd/LogTags.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2016-12-22T19:58:56Z",
+      "side": 1,
+      "message": "Is \"_unlocked\" supposed to be telling me that the caller must acquire the readlock? I would think \"_locked\" would be better in that case since you are saying the lock is already held.",
+      "range": {
+        "startLine": 416,
+        "startChar": 27,
+        "endLine": 416,
+        "endChar": 36
+      },
+      "revId": "dff96b07e422f31475abbf01e3a9b6dcada18d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b2fac6_154ce18b",
+        "filename": "logd/LogTags.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2016-12-22T19:58:56Z",
+      "side": 1,
+      "message": "Don\u0027t you need the readlock for tag2uid and tag2name lookups? It looks like the caller doesn\u0027t always have it (line 766).",
+      "revId": "dff96b07e422f31475abbf01e3a9b6dcada18d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
