@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f730aaea_278d6154",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-12-27T23:09:09Z",
+      "side": 1,
+      "message": "Nit: I\u0027d use is_avb_used() as the name - it\u0027s more precise.",
+      "range": {
+        "startLine": 659,
+        "startChar": 12,
+        "endLine": 659,
+        "endChar": 18
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b2fac6_39b8f7a2",
         "filename": "fs_mgr/fs_mgr.c",
         "patchSetId": 7
@@ -90,6 +113,201 @@
     },
     {
       "key": {
+        "uuid": "f730aaea_e7863937",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-12-27T23:09:09Z",
+      "side": 1,
+      "message": "It actually says nothing about the UNLOCK state (it\u0027s valid to set the HASHTREE_DISABLED flag at build time and sign the image with the flag set - meaning it would boot on a LOCKED device)... that said, most of the time the HASHTREE_DISABLED flag is set with \u0027adb disable-verity\u0027.\n\nI think maybe a more precise statement in the comment would be\n\n If HASHTREE_DISABLED is set (cf. \u0027adb disable-verity\u0027) we should\n set up the device without using dm-verity.",
+      "range": {
+        "startLine": 755,
+        "startChar": 15,
+        "endLine": 757,
+        "endChar": 60
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f730aaea_078a653b",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-12-27T23:09:09Z",
+      "side": 1,
+      "message": "Mmm. We should still setup the device, just not with dm-verity, right? (Or if this is already done below, point it out in a comment)",
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f730aaea_a722716b",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-12-27T23:09:09Z",
+      "side": 1,
+      "message": "Seems like code-duplication from above? Maybe the code was already like this?",
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f730aaea_27eb21f6",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-12-27T23:09:09Z",
+      "side": 1,
+      "message": "Would be a lot more C++-ish if you used std::string instead.",
+      "range": {
+        "startLine": 85,
+        "startChar": 14,
+        "endLine": 85,
+        "endChar": 19
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f730aaea_a75031ef",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-12-27T23:09:09Z",
+      "side": 1,
+      "message": "Probably nicer to use std::string here.",
+      "range": {
+        "startLine": 358,
+        "startChar": 35,
+        "endLine": 358,
+        "endChar": 69
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f730aaea_67f129e4",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-12-27T23:09:09Z",
+      "side": 1,
+      "message": "Why don\u0027t you just allocate hashtree_desc on the stack? (like you do for |desc|)",
+      "range": {
+        "startLine": 410,
+        "startChar": 24,
+        "endLine": 410,
+        "endChar": 43
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f730aaea_47f62dde",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-12-27T23:09:09Z",
+      "side": 1,
+      "message": "Just use strcmp() instead of checking length and memcmp()?",
+      "range": {
+        "startLine": 414,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 17
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f730aaea_c7e1fd12",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-12-27T23:09:09Z",
+      "side": 1,
+      "message": "Should this be a symbolic constant instead? (also below for \u0027return 0\u0027).",
+      "range": {
+        "startLine": 428,
+        "startChar": 15,
+        "endLine": 428,
+        "endChar": 17
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f730aaea_076145bb",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-12-27T23:09:09Z",
+      "side": 1,
+      "message": "So, this only works because your AvbOps read_from_partition() appends the ab_suffix itself. I don\u0027t think this is quite right, I think we should instead pass the proper A/B suffix here and ensure the read_from_partition() operation can cope with it.",
+      "range": {
+        "startLine": 495,
+        "startChar": 56,
+        "endLine": 495,
+        "endChar": 71
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b2fac6_399f973a",
         "filename": "fs_mgr/fs_mgr_avb_ops.c",
         "patchSetId": 7
@@ -141,6 +359,23 @@
     },
     {
       "key": {
+        "uuid": "f730aaea_e76d19af",
+        "filename": "fs_mgr/fs_mgr_avb_ops.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-12-27T23:09:09Z",
+      "side": 1,
+      "message": "Any reason this is implemented in a different way than https://android.googlesource.com/platform/external/avb/+/master/boot_control/avb_ops_device.c ?",
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b2fac6_f9ba5fa1",
         "filename": "fs_mgr/fs_mgr_avb_ops.c",
         "patchSetId": 7
@@ -169,6 +404,86 @@
       "writtenOn": "2016-12-27T17:29:34Z",
       "side": 1,
       "message": "android::base::unique_fd",
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f730aaea_270201ee",
+        "filename": "fs_mgr/fs_mgr_avb_ops.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-12-27T23:09:09Z",
+      "side": 1,
+      "message": "I would use the word \"dummy\" here - e.g. call the functions fs_mgr_dummy_avb_ops_{new,free}() - and explicitly mention that these operations\n\n- will allow any public key for signing.\n- return 0 for any rollback index location. \n\nand these operations are provided solely for use in user-space and that the caller MUST check the hash over AvbSlotVerifyData.vbmeta_images() against the androidboot.vbmeta.{hash_alg, size, digest} values from /proc/cmdline (would also point to the function you have for doing this).",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 10
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f730aaea_c76a1d95",
+        "filename": "fs_mgr/fs_mgr_priv.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-12-27T23:09:09Z",
+      "side": 1,
+      "message": "Macros are typically in UPPER_CASE...",
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f730aaea_6773698e",
+        "filename": "fs_mgr/fs_mgr_priv_avb.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-12-27T23:09:09Z",
+      "side": 1,
+      "message": "Looks like this struct is only used in fs_mgr_avb.cpp? If so, move it there.",
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f730aaea_a779516f",
+        "filename": "fs_mgr/fs_mgr_priv_avb.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2016-12-27T23:09:09Z",
+      "side": 1,
+      "message": "Document this (in particular explain return codes such as FS_MGR_SETUP_AVB_HASHTREE_DISABLED).",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 51
+      },
       "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
