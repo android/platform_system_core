@@ -33,6 +33,23 @@
       "revId": "ad00caf05c812b807e906181adecea34efa4b3e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b2fac6_2b365ea1",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2016-12-28T00:56:26Z",
+      "side": 1,
+      "message": "I took a look at this, im confused why we need this security_failure() call and were not just logging at FATAL.\n\nPLOG(FATAL) \u003c\u003c \"xxx\";\n\nAFICT, the security_exception() just adds a \"security failure...\" message and calls abort(). The logging facilities will pass the message through the DefaultAborter() too android_set_abort_message() followed by abort().",
+      "revId": "ad00caf05c812b807e906181adecea34efa4b3e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
