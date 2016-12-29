@@ -469,6 +469,30 @@
     },
     {
       "key": {
+        "uuid": "17961e08_4392baa5",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2016-12-29T16:15:56Z",
+      "side": 1,
+      "message": "Oh, just because it will return the allocated hashtree_desc at line 440.",
+      "parentUuid": "f730aaea_67f129e4",
+      "range": {
+        "startLine": 410,
+        "startChar": 24,
+        "endLine": 410,
+        "endChar": 43
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f730aaea_47f62dde",
         "filename": "fs_mgr/fs_mgr_avb.cpp",
         "patchSetId": 7
@@ -595,6 +619,24 @@
     },
     {
       "key": {
+        "uuid": "17961e08_639336ac",
+        "filename": "fs_mgr/fs_mgr_avb_ops.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2016-12-29T16:15:56Z",
+      "side": 1,
+      "message": "Did you mean 32 is too small?\nI\u0027ll change it to 64 if this is the case.",
+      "parentUuid": "77b2fac6_79ae6f66",
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b2fac6_d9c99b49",
         "filename": "fs_mgr/fs_mgr_avb_ops.c",
         "patchSetId": 7
@@ -623,6 +665,24 @@
       "writtenOn": "2016-12-27T23:09:09Z",
       "side": 1,
       "message": "Any reason this is implemented in a different way than https://android.googlesource.com/platform/external/avb/+/master/boot_control/avb_ops_device.c ?",
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17961e08_8398c2c5",
+        "filename": "fs_mgr/fs_mgr_avb_ops.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2016-12-29T16:15:56Z",
+      "side": 1,
+      "message": "Two reasons:\n1. The open_fstab() reads fstab file from fstab.\"ro.hardware\". But it should support a specified fstab path in the mount_all command: \n https://android.googlesource.com/platform/system/core/+/master/init/readme.txt#336\n\n2. It doesn\u0027t support negative offset to read from the end of the partition. e.g., -AVB_FOOTER_SIZE.\n\nFeel free to let me know if that\u0027s not true.\nThanks!",
+      "parentUuid": "f730aaea_e76d19af",
       "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -760,6 +820,24 @@
       "writtenOn": "2016-12-27T23:09:09Z",
       "side": 1,
       "message": "Looks like this struct is only used in fs_mgr_avb.cpp? If so, move it there.",
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17961e08_0384b25e",
+        "filename": "fs_mgr/fs_mgr_priv_avb.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2016-12-29T16:15:56Z",
+      "side": 1,
+      "message": "Yes, will do.",
+      "parentUuid": "f730aaea_6773698e",
       "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
