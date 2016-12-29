@@ -136,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "17961e08_63bc960e",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2016-12-29T17:12:00Z",
+      "side": 1,
+      "message": "adding \u0026\u0026 device_is_secure() means we won\u0027t enable AVB for eng build. I\u0027m ok with it now as it can make Engs\u0027 life easier and get less complaints.\n\nNot sure if David has other idea about it?",
+      "parentUuid": "3726c2ad_d99fb748",
+      "range": {
+        "startLine": 754,
+        "startChar": 0,
+        "endLine": 754,
+        "endChar": 65
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f730aaea_e7863937",
         "filename": "fs_mgr/fs_mgr.c",
         "patchSetId": 7
@@ -147,6 +171,30 @@
       "writtenOn": "2016-12-27T23:09:09Z",
       "side": 1,
       "message": "It actually says nothing about the UNLOCK state (it\u0027s valid to set the HASHTREE_DISABLED flag at build time and sign the image with the flag set - meaning it would boot on a LOCKED device)... that said, most of the time the HASHTREE_DISABLED flag is set with \u0027adb disable-verity\u0027.\n\nI think maybe a more precise statement in the comment would be\n\n If HASHTREE_DISABLED is set (cf. \u0027adb disable-verity\u0027) we should\n set up the device without using dm-verity.",
+      "range": {
+        "startLine": 755,
+        "startChar": 15,
+        "endLine": 757,
+        "endChar": 60
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17961e08_83c1a295",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2016-12-29T17:12:00Z",
+      "side": 1,
+      "message": "I see, thanks!\n\nPreviously it only returns FS_MGR_SETUP_AVB_HASHTREE_DISABLED when device is UNLOCKED (allow_verification_error) with AVB_SLOT_VERIFY_RESULT_ERROR_VERIFICATION and AVB_VBMETA_IMAGE_FLAGS_HASHTREE_DISABLED. I\u0027ll change that to check the flag as well even avb_slot_verify() returns AVB_SLOT_VERIFY_RESULT_OK.\n\nhttps://android-review.googlesource.com/#/c/287081/7/fs_mgr/fs_mgr_avb.cpp@524",
+      "parentUuid": "f730aaea_e7863937",
       "range": {
         "startLine": 755,
         "startChar": 15,
