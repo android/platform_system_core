@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "77b2fac6_6113151f",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-29T21:59:51Z",
+      "side": 1,
+      "message": "Could do. Will leave up to enh@ exactly where he wants this (if he wants this version of the change).",
+      "parentUuid": "77b2fac6_0b683acc",
+      "revId": "ad00caf05c812b807e906181adecea34efa4b3e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b2fac6_44f13fb1",
         "filename": "init/init.cpp",
         "patchSetId": 1
@@ -54,6 +72,47 @@
     },
     {
       "key": {
+        "uuid": "77b2fac6_303801fa",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-29T21:59:51Z",
+      "side": 1,
+      "message": "this needs to be removed (s/sepolicy2/sepolicy/)",
+      "range": {
+        "startLine": 528,
+        "startChar": 20,
+        "endLine": 528,
+        "endChar": 21
+      },
+      "revId": "ad00caf05c812b807e906181adecea34efa4b3e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b2fac6_f01b4997",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-29T21:59:51Z",
+      "side": 1,
+      "message": "I\u0027m not sure what the rootfs contract is.  I can say that this works now (rootfs hasn\u0027t been marked read-only by init yet), but that we likely should do a different approach with my previous CL that outputs directly to shared memory rather than relying on writing and reading a file (for boot-time efficiency)",
+      "parentUuid": "77b2fac6_44f13fb1",
+      "revId": "ad00caf05c812b807e906181adecea34efa4b3e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b2fac6_8445f718",
         "filename": "init/init.cpp",
         "patchSetId": 1
@@ -65,6 +124,24 @@
       "writtenOn": "2016-12-28T23:06:46Z",
       "side": 1,
       "message": "s/stat/access?",
+      "revId": "ad00caf05c812b807e906181adecea34efa4b3e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b2fac6_9020cdc3",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-29T21:59:51Z",
+      "side": 1,
+      "message": "sgtm",
+      "parentUuid": "77b2fac6_8445f718",
       "revId": "ad00caf05c812b807e906181adecea34efa4b3e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -105,6 +182,24 @@
     },
     {
       "key": {
+        "uuid": "77b2fac6_b025d1d3",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-29T21:59:51Z",
+      "side": 1,
+      "message": "if we fail to fork a process, then we can\u0027t compile policy and shouldn\u0027t boot.",
+      "parentUuid": "77b2fac6_6bb776d7",
+      "revId": "ad00caf05c812b807e906181adecea34efa4b3e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b2fac6_eb9846c6",
         "filename": "init/init.cpp",
         "patchSetId": 1
@@ -122,6 +217,24 @@
     },
     {
       "key": {
+        "uuid": "77b2fac6_500a5545",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-29T21:59:51Z",
+      "side": 1,
+      "message": "taken from service.cpp",
+      "parentUuid": "77b2fac6_eb9846c6",
+      "revId": "ad00caf05c812b807e906181adecea34efa4b3e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b2fac6_2b365ea1",
         "filename": "init/init.cpp",
         "patchSetId": 1
@@ -133,6 +246,24 @@
       "writtenOn": "2016-12-28T00:56:26Z",
       "side": 1,
       "message": "I took a look at this, im confused why we need this security_failure() call and were not just logging at FATAL.\n\nPLOG(FATAL) \u003c\u003c \"xxx\";\n\nAFICT, the security_exception() just adds a \"security failure...\" message and calls abort(). The logging facilities will pass the message through the DefaultAborter() too android_set_abort_message() followed by abort().",
+      "revId": "ad00caf05c812b807e906181adecea34efa4b3e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b2fac6_7007593d",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2016-12-29T21:59:51Z",
+      "side": 1,
+      "message": "Would like to keep this consistent with existing code, but could be removed everywhere.",
+      "parentUuid": "77b2fac6_2b365ea1",
       "revId": "ad00caf05c812b807e906181adecea34efa4b3e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
