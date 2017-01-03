@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "77b2fac6_9084462f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-01-03T21:51:07Z",
+      "side": 1,
+      "message": "The first uid\u003d field refers to the UID of the process which injected the event into the kernel audit subsystem, and the second uid indicates the uid of the process which triggered the userspace SELinux check. Both of them are correct and needed.\n\nAs discussed via chat, I don\u0027t think we need to do anything different for logd sniffing.",
+      "parentUuid": "77b2fac6_c563e232",
+      "range": {
+        "startLine": 23,
+        "startChar": 42,
+        "endLine": 23,
+        "endChar": 48
+      },
+      "revId": "9a0a9259e5af8f84b0e05486516f1abafd79db44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b2fac6_d08abe3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-01-03T21:51:07Z",
+      "side": 1,
+      "message": "The first pid\u003d field refers to the pid of the process which injected the event into the kernel audit subsystem, and the second pid indicates the pid of the process which triggered the userspace SELinux check. Both of them are correct and needed.\n\nAs discussed via chat, I don\u0027t think we need to do anything different for logd sniffing.",
+      "parentUuid": "77b2fac6_6570f6f4",
+      "range": {
+        "startLine": 23,
+        "startChar": 36,
+        "endLine": 23,
+        "endChar": 41
+      },
+      "revId": "9a0a9259e5af8f84b0e05486516f1abafd79db44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b2fac6_c5da02d1",
         "filename": "init/log.cpp",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-01-03T17:19:11Z",
       "side": 1,
       "message": "could we hold on to the socket connection globally once initialized? Cost of opening/closing?",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 34
+      },
+      "revId": "9a0a9259e5af8f84b0e05486516f1abafd79db44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b2fac6_304c7a43",
+        "filename": "init/log.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-01-03T21:51:07Z",
+      "side": 1,
+      "message": "We could, but I\u0027m not sure it\u0027s worth keeping the socket resources allocated the entire time. This code is only called when we fail to set a property due to SELinux saying no. This should be a fairly rare occurrence, and the code is simpler if we don\u0027t try to be fancy and cache the FD. I haven\u0027t attempted to measure the overhead of this function.",
+      "parentUuid": "77b2fac6_c5da02d1",
       "range": {
         "startLine": 51,
         "startChar": 4,
@@ -164,6 +236,102 @@
     },
     {
       "key": {
+        "uuid": "77b2fac6_0b910b2f",
+        "filename": "init/log.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-01-03T21:51:07Z",
+      "side": 1,
+      "message": "\u003e strlen once in this function rather than twice?\n\nDone.",
+      "parentUuid": "77b2fac6_c5068288",
+      "range": {
+        "startLine": 52,
+        "startChar": 47,
+        "endLine": 52,
+        "endChar": 57
+      },
+      "revId": "9a0a9259e5af8f84b0e05486516f1abafd79db44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b2fac6_0bca6b3d",
+        "filename": "init/log.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-01-03T21:51:07Z",
+      "side": 1,
+      "message": "\u003e strnlen?\n\nDone.",
+      "parentUuid": "77b2fac6_a5b4ae83",
+      "range": {
+        "startLine": 52,
+        "startChar": 47,
+        "endLine": 52,
+        "endChar": 57
+      },
+      "revId": "9a0a9259e5af8f84b0e05486516f1abafd79db44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b2fac6_cbabf351",
+        "filename": "init/log.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-01-03T21:51:07Z",
+      "side": 1,
+      "message": "\u003e TEMP_FAILURE_RETRY?\n\nI can\u0027t use TEMP_FAILURE_RETRY directly because of the different return values, but I wrote the libnl equivalent. Done.",
+      "parentUuid": "77b2fac6_05c9fa0f",
+      "range": {
+        "startLine": 52,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 64
+      },
+      "revId": "9a0a9259e5af8f84b0e05486516f1abafd79db44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b2fac6_ebc4b734",
+        "filename": "init/log.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-01-03T21:51:07Z",
+      "side": 1,
+      "message": "\u003e Isn\u0027t there a response ack packet?\n\nI didn\u0027t add the NLM_F_ACK flag, and as a result, no ACK is requested from the netlink subsystem. I want this function to spend minimal time logging, so blocking init waiting for an ack doesn\u0027t seem worthwhile. I don\u0027t care if this message gets dropped.",
+      "parentUuid": "77b2fac6_25cafe08",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 18
+      },
+      "revId": "9a0a9259e5af8f84b0e05486516f1abafd79db44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b2fac6_85d40aa5",
         "filename": "logd/LogAudit.cpp",
         "patchSetId": 1
@@ -175,6 +343,30 @@
       "writtenOn": "2017-01-03T17:25:06Z",
       "side": 1,
       "message": "translate all embedded \u0027\\n\u0027 to a space before line 96? then _maybe_ make sure trailing spaces are removed?",
+      "range": {
+        "startLine": 101,
+        "startChar": 4,
+        "endLine": 106,
+        "endChar": 5
+      },
+      "revId": "9a0a9259e5af8f84b0e05486516f1abafd79db44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b2fac6_8bb5fbad",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-01-03T21:51:07Z",
+      "side": 1,
+      "message": "Moved to https://android-review.googlesource.com/318209 and done.",
+      "parentUuid": "77b2fac6_85d40aa5",
       "range": {
         "startLine": 101,
         "startChar": 4,
