@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "77a11aaa_96090c52",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-01-04T15:40:32Z",
+      "side": 1,
+      "message": "cool",
+      "parentUuid": "97d20e17_c183e256",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 5
+      },
+      "revId": "d0eeafb76e0f7a1ef27b87e882666910c6613900",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97d20e17_e434743b",
         "filename": "logd/libaudit.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-01-04T00:15:08Z",
       "side": 1,
       "message": "Telling the auditing subsystem that you have a new PID over and over again, even if it\u0027s the same as before, seems less efficient and potentially more error prone than just having two functions:\n\naudit_setup() which uses AUDIT_STATUS_PID, and audit_set_throttle(), which uses AUDIT_STATUS_RATE_LIMIT. Something like:\n\nint audit_set_throttle(int fd, unsigned rate_limit) {\n  struct audit_status status;\n  memset(\u0026status, 0, sizeof(status));\n  status.mask \u003d AUDIT_STATUS_RATE_LIMIT;\n  status.rate_limit \u003d rate_limit;\n  audit_send(...);\n  audit_get_reply(...);\n  return 0;\n}",
+      "range": {
+        "startLine": 166,
+        "startChar": 18,
+        "endLine": 166,
+        "endChar": 34
+      },
+      "revId": "d0eeafb76e0f7a1ef27b87e882666910c6613900",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77a11aaa_762588d1",
+        "filename": "logd/libaudit.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-01-04T15:40:32Z",
+      "side": 1,
+      "message": "Thanks",
+      "parentUuid": "97d20e17_e434743b",
       "range": {
         "startLine": 166,
         "startChar": 18,
