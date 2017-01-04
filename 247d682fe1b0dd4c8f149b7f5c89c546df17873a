@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77a11aaa_aadce3ce",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-01-04T22:55:14Z",
+      "side": 1,
+      "message": "If this change is submitted, can we get rid of the \"duplicate messages suppressed\" logic? I\u0027ve noticed some oddness in logd where SELinux denials don\u0027t always show up, or show up delayed, which I believe is attributable to this code. The kernel throttling logic in this change should eliminate the need for the complexity here.",
+      "revId": "247d682fe1b0dd4c8f149b7f5c89c546df17873a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77a11aaa_2a72b303",
+        "filename": "logd/libaudit.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-01-04T22:55:14Z",
+      "side": 1,
+      "message": "this return value is never used. Might as well just change this to a \"void\" and delete lines 101-102.",
+      "range": {
+        "startLine": 110,
+        "startChar": 7,
+        "endLine": 110,
+        "endChar": 10
+      },
+      "revId": "247d682fe1b0dd4c8f149b7f5c89c546df17873a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
