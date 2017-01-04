@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "77a11aaa_ca04c7ca",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-01-04T23:34:16Z",
+      "side": 1,
+      "message": "The logic could be removed in favour of the  duplicate message filter in the main logging infrastructure. Outside the scope of this modification of course ...\n\nI will have to double check, AFAIR (remember) this logic prints the first message in a timely manner, then delays on subsequent identical messages counting up the duplicates. As a result there should be no lost or untimely denials.\n\nThe _nature_ of logd running as a background cgroup service has resulted in up to 2 second delays worst case in processing an selinux violation, there is truly poor synchronization between selinux messages and their location in the logs. It gets exasperated when logpersist is running as a running logd.reader thead does not allow logd.writer to \u0027rewrite\u0027 the log sequence to ensure they are properly placed in time sequence.",
+      "parentUuid": "77a11aaa_aadce3ce",
+      "revId": "247d682fe1b0dd4c8f149b7f5c89c546df17873a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77a11aaa_2a72b303",
         "filename": "logd/libaudit.h",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2017-01-04T22:55:14Z",
       "side": 1,
       "message": "this return value is never used. Might as well just change this to a \"void\" and delete lines 101-102.",
+      "range": {
+        "startLine": 110,
+        "startChar": 7,
+        "endLine": 110,
+        "endChar": 10
+      },
+      "revId": "247d682fe1b0dd4c8f149b7f5c89c546df17873a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77a11aaa_8a31dfb5",
+        "filename": "logd/libaudit.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-01-04T23:34:16Z",
+      "side": 1,
+      "message": "I _want_ to use it to control the state of the tooFast bool, but need a better understanding of the possible errors from this function that fall under the class of transitory ...\n\nAs it stands I am still evaluating this part of the error propagation. As it stands it works well, no errors have occurred to trouble me under various loading conditions, so the issue is the audit trying to discover _why_ this call could fail, if ever ...",
+      "parentUuid": "77a11aaa_2a72b303",
       "range": {
         "startLine": 110,
         "startChar": 7,
