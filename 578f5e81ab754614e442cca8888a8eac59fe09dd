@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77a11aaa_666dcf72",
+        "filename": "libutils/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-01-05T20:27:41Z",
+      "side": 1,
+      "message": "Just to state it again in the context of this new CL:\n\nI would like to see C++ headers broken into a set that have no library dependencies, and a set that have a dependency on the libutils.so. Splitting them can be outside the scope of this CL, but I can at least state that libutils ByteOrder.h, Endian.h and FastStrcmp.h are some of the pure header-only files. So see if you can imagine the appropriate build mechanics to separate/overlap them maybe?\n\nThe VNDK can be served by having this split. but we probably can never guarantee that a header-only library will not become ABI-dependent in the future?",
+      "range": {
+        "startLine": 18,
+        "startChar": 3,
+        "endLine": 18,
+        "endChar": 37
+      },
+      "revId": "578f5e81ab754614e442cca8888a8eac59fe09dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77a11aaa_0bc40e4e",
+        "filename": "libutils/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-01-05T20:27:41Z",
+      "side": 1,
+      "message": "spaces",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "578f5e81ab754614e442cca8888a8eac59fe09dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
