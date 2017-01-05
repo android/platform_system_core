@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77a11aaa_ebb0aa8f",
+        "filename": "libcutils/include/cutils/log.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-01-05T19:45:01Z",
+      "side": 1,
+      "message": "We need a vndk variant of this! can you split up the internal and external version?\n\nI had a previous comment with regards to what I have come to expect in the internal version, but no need to apply it yet, it can remain as-is. The following is what I expect in the VNDK version:\n\n/*Special log.h file for VNDK linking modules*/\n\n/*\n * Copyright (C) 2005-2017 The Android Open Source Project\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n *      http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */\n\n#ifndef _LIBS_CUTIL_LOG_H\n#define _LIBS_CUTIL_LOG_H\n\n#warning \"Deprecated: don\u0027t include cutils/log.h, use either android/log.h or log/log.h\"\n#include \u003clog/log.h\u003e\n\n#endif /* _LIBS_CUTIL_LOG_H */\n\n\nAnd the _internal_ variant would look like (but outside the scope of this CL, as it may cause build errors in more extreme lint checking compiler options):\n\n/*\n * Copyright (C) 2005-2017 The Android Open Source Project\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n *      http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */\n\n#ifndef _LIBS_CUTIL_LOG_H\n#define _LIBS_CUTIL_LOG_H\n\n/* We do not know if developer wanted log/log.h or subset android/log.h */\n#include \u003clog/log.h\u003e\n\n#if defined(__GNUC__)\n#if defined( __clang__)\n#pragma GCC diagnostic push\n#pragma GCC diagnostic warning \"-W#warnings\"\n#pragma clang diagnostic push\n#pragma clang diagnostic ignored \"-Wpedantic\"\n#elif (__GNUC__ \u003e 4) || ((__GNUC__ \u003d\u003d 4) \u0026\u0026 (__GNUC_MINOR \u003e 9))\n#pragma GCC diagnostic push\n#pragma GCC diagnostic warning \"-W#warnings\"\n#else\n#pragma GCC diagnostic push\n#pragma GCC diagnostic warning \"-Wcpp\"\n#endif\n#endif\n\n#warning \"Deprecated: don\u0027t include cutils/log.h, use either android/log.h or log/log.h\"\n\n#if defined(__GNUC__)\n#if defined( __clang__)\n#pragma clang diagnostic pop\n#endif\n#pragma GCC diagnostic pop\n#endif\n\n#endif /* _LIBS_CUTIL_LOG_H */",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "e72c85d8d0b0928a2cc2fe275bb4975918255973",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77a11aaa_cb65a63a",
+        "filename": "liblog/include/log/logd.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-01-05T19:45:01Z",
+      "side": 1,
+      "message": "Sort of a similar boat as cutils/log.h. log/logd.h has been deprecated. It has a _better_ history in that we could remove it as we have cleared out all references in our tree.\n\nWe could actually maintain the internal one with the unconditional #warning as we suggest for the cutils/log.h VNDK version, rather than have the special pragma mechanics we cited earlier to make a #warning a warning even if -Werror was selected.\n\n#include \u003clog/log.h\u003e\n\n#warning \"Deprecated: do not include log/logd.h, use log/log.h instead\"\n\n(you can add ifdef include mechanics to make sure this only happens once)",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "e72c85d8d0b0928a2cc2fe275bb4975918255973",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77a11aaa_cb576642",
+        "filename": "liblog/include/log/logger.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-01-05T19:45:01Z",
+      "side": 1,
+      "message": "Same boat as log/logd.h, there are no more internal users of this file and we could deprecate immediately. Only leaving it around for one release cycle. Should have the unconditional #warning eg:\n\n#include \u003clog/log.h\u003e\n\n#warning \"Deprecated: do not include log/logger.h, use log/log.h instead\"\n\n(you can add ifdef include mechanics to make sure this only happens once)",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "e72c85d8d0b0928a2cc2fe275bb4975918255973",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
