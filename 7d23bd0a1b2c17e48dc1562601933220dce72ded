@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "17961e08_c31c8a2d",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f730aaea_278d6154",
+      "range": {
+        "startLine": 659,
+        "startChar": 12,
+        "endLine": 659,
+        "endChar": 18
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b2fac6_39b8f7a2",
         "filename": "fs_mgr/fs_mgr.c",
         "patchSetId": 7
@@ -36,6 +60,24 @@
       "writtenOn": "2016-12-27T17:29:34Z",
       "side": 1,
       "message": "this isn\u0027t thread-safe. the thread-safe idiom is:\n\n  static bool init_is_avb() {\n    ...\n  }\n\n  static bool is_avb() {\n    static bool result \u003d init_is_avb();\n    return result;\n  }",
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17961e08_23452e17",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Ok, moved this functions to fs_mgr_avb.cpp with the idiom.\n\nWe could probably have another CL to convert fs_mgr.c to fs_mgr.cpp.",
+      "parentUuid": "77b2fac6_39b8f7a2",
       "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -101,6 +143,30 @@
       "side": 1,
       "message": "new code should be using android::base::GetProperty to avoid fixed-length buffers.",
       "parentUuid": "17961e08_431b9ae7",
+      "range": {
+        "startLine": 679,
+        "startChar": 10,
+        "endLine": 679,
+        "endChar": 31
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17961e08_63afb67d",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77b2fac6_99ab2353",
       "range": {
         "startLine": 679,
         "startChar": 10,
@@ -232,6 +298,30 @@
     },
     {
       "key": {
+        "uuid": "37040298_e60d9e20",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "The only benefit is that engineers doesn\u0027t have to run \u0027adb disable-verity\u0027.\n\nBut running the command once sounds acceptable.\n\nLet\u0027s try to not include device_is_secure() for now and see how\u0027s going when the first project uses AVB.",
+      "parentUuid": "77b2fac6_70867201",
+      "range": {
+        "startLine": 754,
+        "startChar": 0,
+        "endLine": 754,
+        "endChar": 65
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f730aaea_e7863937",
         "filename": "fs_mgr/fs_mgr.c",
         "patchSetId": 7
@@ -279,6 +369,30 @@
     },
     {
       "key": {
+        "uuid": "17961e08_83b442cf",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f730aaea_e7863937",
+      "range": {
+        "startLine": 755,
+        "startChar": 15,
+        "endLine": 757,
+        "endChar": 60
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f730aaea_078a653b",
         "filename": "fs_mgr/fs_mgr.c",
         "patchSetId": 7
@@ -290,6 +404,24 @@
       "writtenOn": "2016-12-27T23:09:09Z",
       "side": 1,
       "message": "Mmm. We should still setup the device, just not with dm-verity, right? (Or if this is already done below, point it out in a comment)",
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17961e08_e3a2e690",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Comments added.\n  \nYes, the actual mount happens in the following function: mount_with_alternatives() at line 779.\n  \nHere we just skip setup dm-verity.",
+      "parentUuid": "f730aaea_078a653b",
       "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -313,6 +445,24 @@
     },
     {
       "key": {
+        "uuid": "17961e08_c399ea63",
+        "filename": "fs_mgr/fs_mgr.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Yes, it\u0027s a bit duplicated but the existing code already like this. \n\nThe above fs_mgr_mount_all() is for \u0027mount_all\u0027 in init.rc\n  mount_all \u003cfstab\u003e [ \u003cpath\u003e ]* [--\u003coption\u003e]\n  \nThe fs_mgr_do_mount() here is only for fs_mgr_main and system/vold to mount a single entry in fstab.\nMaybe they can be refactored to prevent the duplication. But I\u0027d prefer doing this as a separated CL.",
+      "parentUuid": "f730aaea_a722716b",
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7180671_47f97e0a",
         "filename": "fs_mgr/fs_mgr_avb.cpp",
         "patchSetId": 7
@@ -324,6 +474,30 @@
       "writtenOn": "2016-12-28T08:44:07Z",
       "side": 1,
       "message": "Nit: Coding style:\n\n  if (...) {\n  } else if (...) {\n  }",
+      "range": {
+        "startLine": 75,
+        "startChar": 32,
+        "endLine": 75,
+        "endChar": 33
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17961e08_86a0d02c",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "I changed this to a switch case, let me know if any concern.",
+      "parentUuid": "d7180671_47f97e0a",
       "range": {
         "startLine": 75,
         "startChar": 32,
@@ -359,6 +533,30 @@
     },
     {
       "key": {
+        "uuid": "17961e08_a685ccf4",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f730aaea_27eb21f6",
+      "range": {
+        "startLine": 85,
+        "startChar": 14,
+        "endLine": 85,
+        "endChar": 19
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "773d9abc_96e1ec13",
         "filename": "fs_mgr/fs_mgr_avb.cpp",
         "patchSetId": 7
@@ -370,6 +568,30 @@
       "writtenOn": "2016-12-28T08:44:07Z",
       "side": 1,
       "message": "Nit: Coding style:\n\n  type *name\n\ninstead of\n\n  type* name\n\nBut I fully agree with David that using a string would be better in this particular case.",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 9
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17961e08_06792030",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "OK, I\u0027ll change it to \u0027type *name\u0027 by using \u0027DerivePointerAlignment: false, PointerAlignment: Right\u0027 with clang-format.\n\nNoted that the reference will also be changed to:\n  const string \u0026str;\n\nIt seems both alignment is acceptable from the coding guide:\nhttps://google.github.io/styleguide/cppguide.html#Pointer_and_Reference_Expressions",
+      "parentUuid": "773d9abc_96e1ec13",
       "range": {
         "startLine": 87,
         "startChar": 8,
@@ -405,6 +627,30 @@
     },
     {
       "key": {
+        "uuid": "17961e08_a69e2c3b",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Thanks, using a lookup array is better!\nYup, this should be a common function. \n\nPlease help to review the new function: HexToBytes() first.\nAnd I\u0027ll move them to system/core/base in a separate CL so others can use it.",
+      "parentUuid": "3726c2ad_b99cfb54",
+      "range": {
+        "startLine": 91,
+        "startChar": 8,
+        "endLine": 91,
+        "endChar": 16
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1728de81_93990465",
         "filename": "fs_mgr/fs_mgr_avb.cpp",
         "patchSetId": 7
@@ -416,6 +662,30 @@
       "writtenOn": "2016-12-28T08:44:07Z",
       "side": 1,
       "message": "Why StartsWith instead of just \u003d\u003d?",
+      "range": {
+        "startLine": 123,
+        "startChar": 23,
+        "endLine": 123,
+        "endChar": 33
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17961e08_662d84c3",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1728de81_93990465",
       "range": {
         "startLine": 123,
         "startChar": 23,
@@ -451,6 +721,30 @@
     },
     {
       "key": {
+        "uuid": "17961e08_86321021",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7180671_27fe82f4",
+      "range": {
+        "startLine": 125,
+        "startChar": 52,
+        "endLine": 125,
+        "endChar": 56
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3726c2ad_dc78c52e",
         "filename": "fs_mgr/fs_mgr_avb.cpp",
         "patchSetId": 7
@@ -462,6 +756,30 @@
       "writtenOn": "2016-12-28T08:44:07Z",
       "side": 1,
       "message": "Can this wall of text be somehow formatted to be more readable?",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 41
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17961e08_26277ce5",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3726c2ad_dc78c52e",
       "range": {
         "startLine": 236,
         "startChar": 0,
@@ -497,6 +815,30 @@
     },
     {
       "key": {
+        "uuid": "17aa9e9b_7d201711",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f71b4a68_1ac87d0b",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 16
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3745e284_e1d3a0ba",
         "filename": "fs_mgr/fs_mgr_avb.cpp",
         "patchSetId": 7
@@ -508,6 +850,30 @@
       "writtenOn": "2016-12-28T08:44:07Z",
       "side": 1,
       "message": "string? Or at least unique_ptr.",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 33
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17aa9e9b_5d1d5bd7",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "It\u0027s for asprintf() in\nhttps://android-review.googlesource.com/#/c/313204/4/fs_mgr/fs_mgr_dm_ioctl.c@66\n\nLet\u0027s use unique_ptr for now.\nI will upload a separate CL to convert \"char *\" or \"char **\" to std::string in fs_mgr_dm_ioctl.cpp.",
+      "parentUuid": "3745e284_e1d3a0ba",
       "range": {
         "startLine": 290,
         "startChar": 0,
@@ -543,6 +909,30 @@
     },
     {
       "key": {
+        "uuid": "37040298_e60b5e9b",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Thanks for the info, will do that in another separate CL.",
+      "parentUuid": "3726c2ad_fc7b8128",
+      "range": {
+        "startLine": 330,
+        "startChar": 24,
+        "endLine": 330,
+        "endChar": 62
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f730aaea_a75031ef",
         "filename": "fs_mgr/fs_mgr_avb.cpp",
         "patchSetId": 7
@@ -554,6 +944,30 @@
       "writtenOn": "2016-12-27T23:09:09Z",
       "side": 1,
       "message": "Probably nicer to use std::string here.",
+      "range": {
+        "startLine": 358,
+        "startChar": 35,
+        "endLine": 358,
+        "endChar": 69
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17961e08_c65ed85b",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f730aaea_a75031ef",
       "range": {
         "startLine": 358,
         "startChar": 35,
@@ -637,6 +1051,30 @@
     },
     {
       "key": {
+        "uuid": "17961e08_a6614c1c",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Oh, I changed my mind: allocating it on the stack is better!",
+      "parentUuid": "f730aaea_418f36bd",
+      "range": {
+        "startLine": 410,
+        "startChar": 24,
+        "endLine": 410,
+        "endChar": 43
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f730aaea_47f62dde",
         "filename": "fs_mgr/fs_mgr_avb.cpp",
         "patchSetId": 7
@@ -648,6 +1086,30 @@
       "writtenOn": "2016-12-27T23:09:09Z",
       "side": 1,
       "message": "Just use strcmp() instead of checking length and memcmp()?",
+      "range": {
+        "startLine": 414,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 17
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37040298_c61062c8",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "I think desc_partition_name is not null-terminated, no?\n  \nFollowing HASHTREE are |partition_name_len| bytes of the partition name (UTF-8 encoded), |salt_len| bytes of salt, \nand then |root_digest_len| bytes of the root digest.\n  \ne.g. for \u0027system\u0027 the partition_name_len is 6.",
+      "parentUuid": "f730aaea_47f62dde",
       "range": {
         "startLine": 414,
         "startChar": 0,
@@ -683,6 +1145,30 @@
     },
     {
       "key": {
+        "uuid": "37040298_a61566b6",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "As this function just need to return found or not found, I changed the return type to \u0027bool\u0027.\n\nLet me know if you have other idea.\nThanks!",
+      "parentUuid": "f730aaea_c7e1fd12",
+      "range": {
+        "startLine": 428,
+        "startChar": 15,
+        "endLine": 428,
+        "endChar": 17
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f730aaea_076145bb",
         "filename": "fs_mgr/fs_mgr_avb.cpp",
         "patchSetId": 7
@@ -694,6 +1180,30 @@
       "writtenOn": "2016-12-27T23:09:09Z",
       "side": 1,
       "message": "So, this only works because your AvbOps read_from_partition() appends the ab_suffix itself. I don\u0027t think this is quite right, I think we should instead pass the proper A/B suffix here and ensure the read_from_partition() operation can cope with it.",
+      "range": {
+        "startLine": 495,
+        "startChar": 56,
+        "endLine": 495,
+        "endChar": 71
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37040298_a6c206ee",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Yup, it\u0027s a bit tricky in my original code.\n\nI\u0027ll get property \"ro.boot.slot_suffix\" for ab_suffix.\n\nHowever, I\u0027d prefer make this property mandatory for bootloader to pass in. Then we don\u0027t have to parse either \"bootloader_message_ab\" or \"AvbABData\" from /misc partition.",
+      "parentUuid": "f730aaea_076145bb",
       "range": {
         "startLine": 495,
         "startChar": 56,
@@ -729,6 +1239,30 @@
     },
     {
       "key": {
+        "uuid": "17aa9e9b_3d2a8fef",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "OK, just std::string should be fine.\nThanks!",
+      "parentUuid": "f71b4a68_fadca1cf",
+      "range": {
+        "startLine": 572,
+        "startChar": 0,
+        "endLine": 574,
+        "endChar": 29
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b2fac6_399f973a",
         "filename": "fs_mgr/fs_mgr_avb_ops.c",
         "patchSetId": 7
@@ -740,6 +1274,24 @@
       "writtenOn": "2016-12-27T17:29:34Z",
       "side": 1,
       "message": "no new .c files in system/core/. it makes it harder for folks to write better/safer code.",
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37040298_86c70afe",
+        "filename": "fs_mgr/fs_mgr_avb_ops.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77b2fac6_399f973a",
       "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -799,6 +1351,24 @@
     },
     {
       "key": {
+        "uuid": "37040298_a69446d1",
+        "filename": "fs_mgr/fs_mgr_avb_ops.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77b2fac6_3559d3a2",
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b2fac6_d9c99b49",
         "filename": "fs_mgr/fs_mgr_avb_ops.c",
         "patchSetId": 7
@@ -810,6 +1380,24 @@
       "writtenOn": "2016-12-27T17:29:34Z",
       "side": 1,
       "message": "use the better implementation in \u003candroid-base/macros.h\u003e instead.",
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37040298_86994a09",
+        "filename": "fs_mgr/fs_mgr_avb_ops.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77b2fac6_d9c99b49",
       "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -868,6 +1456,24 @@
     },
     {
       "key": {
+        "uuid": "37040298_c69f42ec",
+        "filename": "fs_mgr/fs_mgr_avb_ops.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "No needed now, change them to std::string.",
+      "parentUuid": "77b2fac6_f9ba5fa1",
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b2fac6_19c0931e",
         "filename": "fs_mgr/fs_mgr_avb_ops.c",
         "patchSetId": 7
@@ -879,6 +1485,24 @@
       "writtenOn": "2016-12-27T17:29:34Z",
       "side": 1,
       "message": "android::base::unique_fd",
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37040298_668f6ebd",
+        "filename": "fs_mgr/fs_mgr_avb_ops.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "This is awesome, thanks!",
+      "parentUuid": "77b2fac6_19c0931e",
       "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -908,6 +1532,30 @@
     },
     {
       "key": {
+        "uuid": "37040298_c631821f",
+        "filename": "fs_mgr/fs_mgr_avb_ops.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Noted, this is indeed a good suggestion.\nThanks!",
+      "parentUuid": "f730aaea_270201ee",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 10
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f730aaea_c76a1d95",
         "filename": "fs_mgr/fs_mgr_priv.h",
         "patchSetId": 7
@@ -919,6 +1567,24 @@
       "writtenOn": "2016-12-27T23:09:09Z",
       "side": 1,
       "message": "Macros are typically in UPPER_CASE...",
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37040298_66dd2ec9",
+        "filename": "fs_mgr/fs_mgr_priv.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f730aaea_c76a1d95",
       "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -948,6 +1614,30 @@
     },
     {
       "key": {
+        "uuid": "37040298_e640fe5a",
+        "filename": "fs_mgr/fs_mgr_priv_avb.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Changed to enum as it only has two values: sha256 and sha512.",
+      "parentUuid": "3726c2ad_3cc45932",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 28
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1728de81_b6d06ee1",
         "filename": "fs_mgr/fs_mgr_priv_avb.h",
         "patchSetId": 7
@@ -959,6 +1649,30 @@
       "writtenOn": "2016-12-28T08:44:07Z",
       "side": 1,
       "message": "vector?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 26
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37040298_46b6b223",
+        "filename": "fs_mgr/fs_mgr_priv_avb.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "I\u0027d prefer use:\n   uint8_t digest[SHA512_DIGEST_SIZE]; to accommodate both sha256 and sha512. Thought?",
+      "parentUuid": "1728de81_b6d06ee1",
       "range": {
         "startLine": 36,
         "startChar": 0,
@@ -1017,6 +1731,30 @@
       "writtenOn": "2016-12-27T23:09:09Z",
       "side": 1,
       "message": "Document this (in particular explain return codes such as FS_MGR_SETUP_AVB_HASHTREE_DISABLED).",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 51
+      },
+      "revId": "7d23bd0a1b2c17e48dc1562601933220dce72ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37040298_06eafa2d",
+        "filename": "fs_mgr/fs_mgr_priv_avb.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-06T17:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f730aaea_a779516f",
       "range": {
         "startLine": 40,
         "startChar": 0,
