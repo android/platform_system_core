@@ -16,6 +16,24 @@
       "revId": "c2d5eb6616e50813bf2e778cf15cbab12d71771a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37cc02f9_897d1d5b",
+        "filename": "fs_mgr/fs_mgr_priv.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-12T08:46:41Z",
+      "side": 1,
+      "message": "Yup, your proposed approach also works.\n\nBut I\u0027d prefer to keep the avb flag in fstab because of:\n 1. It can explicitly indicate which partition enables AVB. (a similar experience to previous \u0027verify\u0027 flag).\n  It\u0027s also easier for developer to check which partitions have AVB during debugging (just cat fstab file).\n\n 2. Rely solely on AVB metadata might have some risk.\n    e.g., in some project we want to enable AVB on /vendor but somehow the build flow doesn\u0027t include its AVB metadata properly. Without MF_AVB, we\u0027ll just mount the /vendor partition without dm-verity. With MF_AVB, it will skip mounting this partition.\n\nDoes that make sense?\nThanks!",
+      "parentUuid": "d7248649_07aa06bc",
+      "revId": "c2d5eb6616e50813bf2e778cf15cbab12d71771a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
