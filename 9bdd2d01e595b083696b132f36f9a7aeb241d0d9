@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "237845b1_31aa5776",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-01-12T01:51:22Z",
+      "side": 1,
+      "message": "This doesn\u0027t sound quite right to me.  The comment says \u0027normal boot\u0027, but the actual bootmode it checks for is \u0027unknown\u0027.  \n\nI see that is the default value if none have been filled out, but that seems to be unclean to me.  \n\nWhat is the disadvantage to keeping this as a regular else?  A single extra trigger being queued with no recipient shouldn\u0027t be an issue for factory scripts.\n\nOtherwise what are the other consumers of ro.bootmode, and can we change the default to \u0027normal\u0027 or some other string that clearly states that we\u0027re in a \u0027normal\u0027 mode and not an \u0027unknown\u0027 one?",
+      "range": {
+        "startLine": 834,
+        "startChar": 0,
+        "endLine": 837,
+        "endChar": 5
+      },
+      "revId": "9bdd2d01e595b083696b132f36f9a7aeb241d0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
