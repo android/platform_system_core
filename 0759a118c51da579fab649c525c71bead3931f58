@@ -16,6 +16,24 @@
       "revId": "0759a118c51da579fab649c525c71bead3931f58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "835651ec_efd4c19e",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1019198
+      },
+      "writtenOn": "2017-01-18T22:01:10Z",
+      "side": 1,
+      "message": "\u003e You are changing the semantics of defining a property in both /system/build.prop and /vendor/build.prop, and changing any semantics around properties is pretty much guaranteed to break some devices.\n\n\nIf this could break any semantics, I will add \"build_overrides.prop\" instead of using \"build.prop\".\n\n\n\u003e It looks like you are trying to solve the override problem we discussed for using properties for configuration - the semantics of overrides flips between read-only properties and writeable properties.  You are trying to make all properties write-once when read from multiple build.prop files.  This seems especially strange since exclusive_props_set doesn\u0027t carry across from reading /default.prop.\n\n\nI want to keep the semantics in /default.prop and /system/build.prop and I don\u0027t want to change the semantics of overrides between them, so I don\u0027t carry exclusive_props_set across between them.\n\n\n\u003e I don\u0027t know where the naming for default.prop and build.prop came from, but in the current system the only difference between default.prop and build.prop is that properties in default.prop are available very early before /system is mounted.\n\n\nTo make things clear, I will rename the prop files as follows.\n\n- /vender/default_overrides.prop\n- /odm/default_overrides.prop\n- /vender/build_overrides.prop\n- /odm/build_overrides.prop\n\nActually, this implementation is only following go/treble-sysprop-management. Please leave any comments if you have any more concerns so that I could follow up them.",
+      "parentUuid": "438e19b4_402830a2",
+      "revId": "0759a118c51da579fab649c525c71bead3931f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
