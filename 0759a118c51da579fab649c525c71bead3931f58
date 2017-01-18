@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "438e19b4_402830a2",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-01-18T17:27:00Z",
+      "side": 1,
+      "message": "You are changing the semantics of defining a property in both /system/build.prop and /vendor/build.prop, and changing any semantics around properties is pretty much guaranteed to break some devices.\n\nIt looks like you are trying to solve the override problem we discussed for using properties for configuration - the semantics of overrides flips between read-only properties and writeable properties.  You are trying to make all properties write-once when read from multiple build.prop files.  This seems especially strange since exclusive_props_set doesn\u0027t carry across from reading /default.prop.\n\nI don\u0027t know where the naming for default.prop and build.prop came from, but in the current system the only difference between default.prop and build.prop is that properties in default.prop are available very early before /system is mounted.",
+      "revId": "0759a118c51da579fab649c525c71bead3931f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
