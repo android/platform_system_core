@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a856d212_faeec73b",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-01-20T01:13:40Z",
+      "side": 1,
+      "message": "Might be worth handling partial reads here.  The old implementation wrote everything with a single call to send(), and had a small fixed size, which makes it pretty unlikely that the kernel would ever break it up.  With multiple sends and an unbounded name length string, the kernel might return a partial value.",
+      "revId": "673a209d0c4446e8e195e0b21bc3a34c93802230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a856d212_3a99ff0b",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-01-20T01:13:40Z",
+      "side": 1,
+      "message": "This is copied from the old code, but I noticed this resets the timeout on EINTR.  Any process could cause init to hang here forever by double forking a child every second and making init get a SIGCHLD to reap it.",
+      "revId": "673a209d0c4446e8e195e0b21bc3a34c93802230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
