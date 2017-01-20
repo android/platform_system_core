@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a856d212_4444d179",
+        "filename": "libbacktrace/b.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-01-20T21:17:20Z",
+      "side": 1,
+      "message": "b? What\u0027s b?",
+      "revId": "2756518464712021c7813a19631d610083053b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a856d212_c438c110",
         "filename": "libunwindstack/Android.bp",
         "patchSetId": 3
@@ -13,6 +30,132 @@
       "writtenOn": "2017-01-20T20:17:06Z",
       "side": 1,
       "message": "Oh, I\u0027m going to have trouble doing it that way anyway. I\u0027ll just take prebuilts from the platform probably.",
+      "revId": "2756518464712021c7813a19631d610083053b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a856d212_447e1181",
+        "filename": "libunwindstack/ArmExidx.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-01-20T21:17:20Z",
+      "side": 1,
+      "message": "Why not?",
+      "range": {
+        "startLine": 108,
+        "startChar": 42,
+        "endLine": 108,
+        "endChar": 68
+      },
+      "revId": "2756518464712021c7813a19631d610083053b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a856d212_04925976",
+        "filename": "libunwindstack/ArmExidx.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-01-20T21:17:20Z",
+      "side": 1,
+      "message": "This bit pattern is never guaranteed by this function. Is it a precondition? DCHECK it?",
+      "range": {
+        "startLine": 174,
+        "startChar": 5,
+        "endLine": 174,
+        "endChar": 9
+      },
+      "revId": "2756518464712021c7813a19631d610083053b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a856d212_a44f0d28",
+        "filename": "libunwindstack/ArmExidx.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-01-20T21:17:20Z",
+      "side": 1,
+      "message": "https://xkcd.com/859/",
+      "range": {
+        "startLine": 177,
+        "startChar": 27,
+        "endLine": 177,
+        "endChar": 28
+      },
+      "revId": "2756518464712021c7813a19631d610083053b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a856d212_d702b182",
+        "filename": "libunwindstack/ArmExidx.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-01-20T21:17:20Z",
+      "side": 1,
+      "message": "I think that\u0027s spelled DCHECK :)",
+      "range": {
+        "startLine": 193,
+        "startChar": 11,
+        "endLine": 193,
+        "endChar": 21
+      },
+      "revId": "2756518464712021c7813a19631d610083053b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a856d212_978679b4",
+        "filename": "libunwindstack/ArmExidx.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-01-20T21:17:20Z",
+      "side": 1,
+      "message": "I feel like this should be broken into smaller functions for each of the cases since it\u0027s essentially a giant switch with a lot of code in each case, but I\u0027m not really sure what most of them would be named...",
+      "revId": "2756518464712021c7813a19631d610083053b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a856d212_043ed9f5",
+        "filename": "libunwindstack/ArmExidx.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-01-20T21:17:20Z",
+      "side": 1,
+      "message": "Hmm. So we\u0027re going to have a circular dependency here. libc++ will use this unwinder, and this uses libc++. I think as long as I use a static version of the unwinder in libc++ this is okay?\n\nAt the moment anything using this will have two unwinders in its address space. Executables using libc++ have libunwind_llvm statically linked and hidden, which means that unwinder will take precedence.",
       "revId": "2756518464712021c7813a19631d610083053b04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
