@@ -345,6 +345,29 @@
     },
     {
       "key": {
+        "uuid": "a856d212_be86ed3a",
+        "filename": "libunwindstack/ArmExidx.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-01-23T20:56:10Z",
+      "side": 1,
+      "message": "set cfa if popping r13?",
+      "range": {
+        "startLine": 205,
+        "startChar": 2,
+        "endLine": 205,
+        "endChar": 3
+      },
+      "revId": "2756518464712021c7813a19631d610083053b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a856d212_978679b4",
         "filename": "libunwindstack/ArmExidx.cpp",
         "patchSetId": 3
@@ -373,6 +396,190 @@
       "writtenOn": "2017-01-20T21:17:20Z",
       "side": 1,
       "message": "Hmm. So we\u0027re going to have a circular dependency here. libc++ will use this unwinder, and this uses libc++. I think as long as I use a static version of the unwinder in libc++ this is okay?\n\nAt the moment anything using this will have two unwinders in its address space. Executables using libc++ have libunwind_llvm statically linked and hidden, which means that unwinder will take precedence.",
+      "revId": "2756518464712021c7813a19631d610083053b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a856d212_3831f50d",
+        "filename": "libunwindstack/Memory.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-01-23T20:56:10Z",
+      "side": 1,
+      "message": "In MemoryFileAtOffset::Read and MemoryOffline::Read, we use data_[addr + offset_ + ...] to read. To make it more clear and reduce overhead, how about add offset_ to data_ here, and munmap(data_ - offset_, size_) in ~MemoryFileAtOffset?",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 7
+      },
+      "revId": "2756518464712021c7813a19631d610083053b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a856d212_186511f7",
+        "filename": "libunwindstack/Memory.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-01-23T20:56:10Z",
+      "side": 1,
+      "message": "size_ - offset_?",
+      "range": {
+        "startLine": 85,
+        "startChar": 20,
+        "endLine": 85,
+        "endChar": 35
+      },
+      "revId": "2756518464712021c7813a19631d610083053b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a856d212_3878d58f",
+        "filename": "libunwindstack/Memory.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-01-23T20:56:10Z",
+      "side": 1,
+      "message": "why? because of the linux version?",
+      "range": {
+        "startLine": 141,
+        "startChar": 36,
+        "endLine": 141,
+        "endChar": 56
+      },
+      "revId": "2756518464712021c7813a19631d610083053b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a856d212_f8a0fde6",
+        "filename": "libunwindstack/Memory.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-01-23T20:56:10Z",
+      "side": 1,
+      "message": "In the man page, process_vm_readv is used to read from different process. But here it is used to read from the same process, why just memcpy() doesn\u0027t work here?",
+      "range": {
+        "startLine": 142,
+        "startChar": 16,
+        "endLine": 142,
+        "endChar": 62
+      },
+      "revId": "2756518464712021c7813a19631d610083053b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a856d212_fe946529",
+        "filename": "libunwindstack/Memory.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-01-23T20:56:10Z",
+      "side": 1,
+      "message": "will it be more reasonable by making max_read \u003d UINT64_MAX?",
+      "range": {
+        "startLine": 35,
+        "startChar": 62,
+        "endLine": 35,
+        "endChar": 83
+      },
+      "revId": "2756518464712021c7813a19631d610083053b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a856d212_9e532925",
+        "filename": "libunwindstack/tests/ArmExidxDecodeTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-01-23T20:56:10Z",
+      "side": 1,
+      "message": "1",
+      "range": {
+        "startLine": 115,
+        "startChar": 6,
+        "endLine": 115,
+        "endChar": 7
+      },
+      "revId": "2756518464712021c7813a19631d610083053b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a856d212_731d4e2e",
+        "filename": "libunwindstack/tests/MemoryFileTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-01-23T20:56:10Z",
+      "side": 1,
+      "message": "looks the same as the above test.",
+      "range": {
+        "startLine": 65,
+        "startChar": 23,
+        "endLine": 65,
+        "endChar": 59
+      },
+      "revId": "2756518464712021c7813a19631d610083053b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a856d212_be5f0d81",
+        "filename": "libunwindstack/tests/MemoryRemoteTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-01-23T20:56:10Z",
+      "side": 1,
+      "message": "already verified by L123?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 3
+      },
       "revId": "2756518464712021c7813a19631d610083053b04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
