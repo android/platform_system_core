@@ -22,6 +22,24 @@
       "revId": "4ef27b830afe8adf7a8489b76232ee6b72640f17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a856d212_f34ffe9f",
+        "filename": "debuggerd/crash_dump.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-01-23T19:39:58Z",
+      "side": 1,
+      "message": "With wait_for_gdb, we don\u0027t actually wait here, we just leave the target process SIGSTOPped and then exit.\n\nNo explicit message happens (I was a bit hesitant to bring in libc_logging for signal safe logging, since we\u0027re already using two separate logging interfaces in here already), but it can be pieced together from the other logs.\n\nThe slowest device I\u0027ve tried this on is bullhead, and I don\u0027t think I\u0027ve ever seen anything take more than a second. Maybe it\u0027s not enough if you\u0027re on a heavily-loaded seed or something, though? Bumped it up to as super generous 20s (which matches dumpstate\u0027s timeout)",
+      "parentUuid": "a856d212_b3c3c61b",
+      "revId": "4ef27b830afe8adf7a8489b76232ee6b72640f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
