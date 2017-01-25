@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "00c38307_7689210a",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-25T13:05:34Z",
+      "side": 1,
+      "message": "Yup, I thought about this before.\n\nBut it turns out the type is \"char *const argv[]\" in \nexecv() family:\nhttps://linux.die.net/man/3/execv\n  \nI guess it\u0027s also a historical mistake?\n  \nI\u0027ll resume the following issue to clean it up, in separate CLs.\nhttps://b.corp.google.com/issues/34365373",
+      "revId": "91f1e2b20edf836c5f12e05e3c54e7c8dee59cf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b88d1660_271ef104",
         "filename": "fs_mgr/fs_mgr_main.cpp",
         "patchSetId": 1
@@ -30,6 +47,29 @@
       "writtenOn": "2017-01-25T06:50:57Z",
       "side": 1,
       "message": "strangely, C++ is always _GNU_SOURCE, so you can just remove this in .cpp files...",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 6
+      },
+      "revId": "91f1e2b20edf836c5f12e05e3c54e7c8dee59cf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ca97684_12a7fe26",
+        "filename": "fs_mgr/fs_mgr_main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-01-25T13:05:34Z",
+      "side": 1,
+      "message": "Oh, I see. Thanks for the info.\n\nThat\u0027s why I got the error:\n\u003cbuilt-in\u003e:363:9: note: previous definition is here\n#define _GNU_SOURCE 1\n        ^",
       "range": {
         "startLine": 17,
         "startChar": 0,
