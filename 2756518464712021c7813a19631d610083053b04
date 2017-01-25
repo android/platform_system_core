@@ -550,6 +550,23 @@
     },
     {
       "key": {
+        "uuid": "22277e45_d117967a",
+        "filename": "libunwindstack/ArmExidx.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-01-25T00:33:10Z",
+      "side": 1,
+      "message": "The test cases are actually where you\u0027d want DCHECK on. They get compiled out for normal builds, but you can add an additional libunwindstackd with -UNDEBUG that gets linked into the tests. (Might want to actually build the tests in both forms just to make sure you don\u0027t accidentally do work in a DCHECK.)\n\nMight even go so far as to set up a system property or something to configure the system to use the DCHECKED variant of the library. If something is behaving funky, flip the switch and see if it aborts. (I think this is how ART does it.)",
+      "revId": "2756518464712021c7813a19631d610083053b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a856d212_a44f0d28",
         "filename": "libunwindstack/ArmExidx.cpp",
         "patchSetId": 3
@@ -590,6 +607,23 @@
         "endLine": 177,
         "endChar": 28
       },
+      "revId": "2756518464712021c7813a19631d610083053b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6d9e632_52ffc004",
+        "filename": "libunwindstack/ArmExidx.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-01-25T00:33:10Z",
+      "side": 1,
+      "message": "Oh, I actually hadn\u0027t seen the closing on L187. I thought it was missing in the log. Never mind :)",
       "revId": "2756518464712021c7813a19631d610083053b04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -664,6 +698,23 @@
       "writtenOn": "2017-01-25T00:13:27Z",
       "side": 1,
       "message": "I rewrote the code below so it\u0027s obvious what registers can be set.",
+      "revId": "2756518464712021c7813a19631d610083053b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "585ccb9c_967fc56d",
+        "filename": "libunwindstack/ArmExidx.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-01-25T00:33:10Z",
+      "side": 1,
+      "message": "Yep, that\u0027s more clear. Thanks.",
       "revId": "2756518464712021c7813a19631d610083053b04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -761,6 +812,23 @@
       "writtenOn": "2017-01-25T00:13:27Z",
       "side": 1,
       "message": "I agree. I broke this up by pulling the code up to the previous function and then sub dividing there.\n\nTake a look at see if this is much better than this massive function.",
+      "revId": "2756518464712021c7813a19631d610083053b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba20a4ec_ef0c94f0",
+        "filename": "libunwindstack/ArmExidx.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-01-25T00:33:10Z",
+      "side": 1,
+      "message": "Yep, much better imo.",
       "revId": "2756518464712021c7813a19631d610083053b04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
