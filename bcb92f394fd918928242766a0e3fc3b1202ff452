@@ -16,6 +16,23 @@
       "revId": "bcb92f394fd918928242766a0e3fc3b1202ff452",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ceed441_496ac3cc",
+        "filename": "liblog/include_ndk/android",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-01-26T21:04:11Z",
+      "side": 1,
+      "message": "The whole goal of the ndk, vnkd, and build changes are to remove global headers. headers are exprted from their responsible library module directories only. android/log.h under control of liblog/include* directories. The system/core/include directory is being deprecated.\n\nThe translation incorporating that plan is instead point to the system/core/liblog/include/android/log.h (the real file) for ndk export and not add this include_ndk silliness?",
+      "revId": "bcb92f394fd918928242766a0e3fc3b1202ff452",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
