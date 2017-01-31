@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15b318ac_e06b03ca",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-01-31T23:15:23Z",
+      "side": 1,
+      "message": "This is race prone, but we might be able to get away with it if we move the waitid on 289 below this point, so the pids are never reaped.\n\nI\u0027m going to look into implementing prctls PR_TRACEME_ON_FORK and PR_INHERIT_TRACEES as a race-proof way of implementing this.",
+      "revId": "9362fe33717ef89a9d855276a69710de4851f3ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
