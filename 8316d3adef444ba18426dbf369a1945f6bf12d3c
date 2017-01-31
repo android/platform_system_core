@@ -22,6 +22,23 @@
       "revId": "8316d3adef444ba18426dbf369a1945f6bf12d3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eee5e525_ded6314a",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-01-31T22:34:04Z",
+      "side": 1,
+      "message": "Yes, I think the bootloader requirements doc is incorrect in saying that. the fs_mgr slotselect only depends on \n androidboot.slot_suffix cmdline or bootloader_message_ab struct passed through the raw /misc partition.\nsee: fs_mgr_slotsetect.cpp:get_active_slot_suffix()\n\nIf this is passed only through DT, I don\u0027t see how the slotselection will work during \"mount_all \u003cfstab\u003e\"\n\nThat being said, instead of doing this, we should just do fs_mgr_update_for_slotselect() on the fstab record before mounting",
+      "revId": "8316d3adef444ba18426dbf369a1945f6bf12d3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
