@@ -94,6 +94,29 @@
     },
     {
       "key": {
+        "uuid": "94a10db4_dcd81840",
+        "filename": "logd/LogTags.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-01T21:21:54Z",
+      "side": 1,
+      "message": "rwlock is used purely to protect the internal data structures. I want all actual access to the internal unordered_map to be pedantically atomically protected regardless if it is needed or not in the specific path.\n\nThis function is called whenever a new registration occurs, which is a single threaded action, so there is no need to protect file2watermark setting, or the file update.\n\nI agree that this is confusing, and can cause bugs in the future if the algorithms change, there would be less FUD if I made the entire function write-protected; but the performance difference between a read lock (which has minimal contention) and a write lock is why I do this.",
+      "range": {
+        "startLine": 72,
+        "startChar": 35,
+        "endLine": 72,
+        "endChar": 43
+      },
+      "revId": "57002ce24f55442f7c7c460caa217844b27727ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90c58735_161410c2",
         "filename": "logd/LogTags.cpp",
         "patchSetId": 15
@@ -174,6 +197,29 @@
       "writtenOn": "2017-02-01T01:27:23Z",
       "side": 1,
       "message": "nit: inconsistent use of \"type* var\" vs. \"type *var\" in this file.",
+      "range": {
+        "startLine": 357,
+        "startChar": 6,
+        "endLine": 357,
+        "endChar": 11
+      },
+      "revId": "57002ce24f55442f7c7c460caa217844b27727ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be15aae5_31a1a68f",
+        "filename": "logd/LogTags.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-01T21:21:54Z",
+      "side": 1,
+      "message": "there is, will audit for type\u003cspace\u003e* as all new files must comply with Android coding standard.",
       "range": {
         "startLine": 357,
         "startChar": 6,
@@ -324,6 +370,29 @@
     },
     {
       "key": {
+        "uuid": "2c34b798_2c963864",
+        "filename": "logd/LogTags.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-01T21:21:54Z",
+      "side": 1,
+      "message": "Single threaded here. Lock is pedantically applied to all accesses to unordered_map as it is very fragile. It may have been too pedantic here since this is the only writer for tag2total.",
+      "range": {
+        "startLine": 639,
+        "startChar": 29,
+        "endLine": 639,
+        "endChar": 60
+      },
+      "revId": "57002ce24f55442f7c7c460caa217844b27727ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "018e2781_c6f45696",
         "filename": "logd/LogTags.cpp",
         "patchSetId": 15
@@ -335,6 +404,29 @@
       "writtenOn": "2017-02-01T01:27:23Z",
       "side": 1,
       "message": "similar uncertainty over use of write lock to update info that wasn\u0027t generated under the lock.",
+      "range": {
+        "startLine": 653,
+        "startChar": 31,
+        "endLine": 653,
+        "endChar": 40
+      },
+      "revId": "57002ce24f55442f7c7c460caa217844b27727ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7eddd69_7b8524d5",
+        "filename": "logd/LogTags.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-01T21:21:54Z",
+      "side": 1,
+      "message": "View this as equivalent to changing tag2total to an atomic to prevent corrupted content, except it is an unordered_map, so we pedantically protect it with a lock.",
       "range": {
         "startLine": 653,
         "startChar": 31,
@@ -370,6 +462,75 @@
     },
     {
       "key": {
+        "uuid": "bdd537a0_c76d7e85",
+        "filename": "logd/LogTags.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-01T21:21:54Z",
+      "side": 1,
+      "message": "There is no space for coding humour. I mispelled root on purpose and you caught me ...",
+      "range": {
+        "startLine": 809,
+        "startChar": 53,
+        "endLine": 809,
+        "endChar": 58
+      },
+      "revId": "57002ce24f55442f7c7c460caa217844b27727ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ccdc7f1e_f8fb8f4e",
+        "filename": "logd/LogTags.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-01T21:21:54Z",
+      "side": 1,
+      "message": "2017",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "57002ce24f55442f7c7c460caa217844b27727ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dff11fd9_cfa34435",
+        "filename": "logd/LogTags.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-01T21:21:54Z",
+      "side": 1,
+      "message": "I need a comment here so it is clear that this is protecting _all_ the unodered_map accesses only.\n\nThere is a single threaded ness for all updates. However other activities in the logger (isloggable for instance in the logging path) _reading_ these data structures can cause asynchronous access.\n\nI need to audit all of those activities again to ensure that there is no FUD or confusion (since we have some added value that snuck in that I need to make sure does not trigger a write).",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "57002ce24f55442f7c7c460caa217844b27727ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfe6c657_f0ae4f1a",
         "filename": "logd/logtagd.rc",
         "patchSetId": 15
@@ -393,6 +554,29 @@
     },
     {
       "key": {
+        "uuid": "f408bba5_feb3bdfb",
+        "filename": "logd/logtagd.rc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-01T21:21:54Z",
+      "side": 1,
+      "message": "I\u0027d prefer incantations ;-}\n\nToo much weirdness? will drop \u0027init scriptures for\u0027",
+      "range": {
+        "startLine": 2,
+        "startChar": 7,
+        "endLine": 2,
+        "endChar": 17
+      },
+      "revId": "57002ce24f55442f7c7c460caa217844b27727ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b526885d_93fbc7a0",
         "filename": "logd/tests/logd_test.cpp",
         "patchSetId": 15
@@ -404,6 +588,29 @@
       "writtenOn": "2017-02-01T01:27:23Z",
       "side": 1,
       "message": "nit: inconsistent \"type* var\" vs. \"type *var\"",
+      "range": {
+        "startLine": 42,
+        "startChar": 28,
+        "endLine": 42,
+        "endChar": 33
+      },
+      "revId": "57002ce24f55442f7c7c460caa217844b27727ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "655b5af8_c89db8a5",
+        "filename": "logd/tests/logd_test.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-01T21:21:54Z",
+      "side": 1,
+      "message": "Android coding standard is type*\n\nAll changes gently move us into that direction.",
       "range": {
         "startLine": 42,
         "startChar": 28,
