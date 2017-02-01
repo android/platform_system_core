@@ -33,6 +33,23 @@
       "revId": "18117e724aa94f847ada82cadd789687a195445d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea90807c_5e6199f3",
+        "filename": "liblog/include/log/log_read.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-01T15:46:37Z",
+      "side": 1,
+      "message": "Not knowing the clang error, but stat.h\u0027s usage is also\n#if __WORDSIZE \u003d\u003d 64 if you want/need to refine the checking more to keep the #undef minimized.\n\n#undef is needed, I added it because of a build break. I need this header to work _anywhere_ it is requested in any case, including a host build (work in progress) for the local logger_v2 interface. With the rampant #include ordering issues everywhere, we should always be hardened if someone puts the includes out-of-order (wrt Android Coding standard).",
+      "revId": "18117e724aa94f847ada82cadd789687a195445d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
