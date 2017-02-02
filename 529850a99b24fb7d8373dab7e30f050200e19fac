@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "134708c4_665f6f12",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-02-02T02:51:34Z",
+      "side": 1,
+      "message": "It would be better to write this as:\n\n    unsigned int last_valid_cap \u003d 0;\n    for (unsigned int i \u003d 0; prctl(PR_CAPBSET_READ, i, 0, 0, 0) \u003e\u003d 0; i++) {\n      prctl(PR_CAP_AMBIENT, PR_CAP_AMBIENT_RAISE, i, 0, 0);\n    }\n\nprctl(PR_CAPBSET_READ) will return -1 if the capability doesn\u0027t exist, and adjusts as kernels add new capabilities.\n\nAlso, should you be checking the return value of prctl(PR_CAP_AMBIENT)?",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 5
+      },
+      "revId": "529850a99b24fb7d8373dab7e30f050200e19fac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
