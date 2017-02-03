@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f87d504_d783b0a0",
+        "filename": "liblog/logger_write.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-03T15:56:38Z",
+      "side": 1,
+      "message": "Not effective enough, does not switch back and forth accurately enough. We get -EPERM for log messages (on host because of fake logger) if we start with normal and switch later to local.\n\nThe goal was to preserve existing log interfaces, keeping them open and not tossing information since even for local logging we will submit LOG_ID_SECURITY logs to the normal logger as it is not handled by the local logger. But the result of this was internal masks and fds are not reset so we get \u0027issues\u0027.\n\nWorks well for one, or the other, but not if we actively switch back and forth during a gTest or CTS run.",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 639,
+        "endChar": 46
+      },
+      "revId": "b2ecf7963e74fee9a7ba6478e96b21199145e81c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
