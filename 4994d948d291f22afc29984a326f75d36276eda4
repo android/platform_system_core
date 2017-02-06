@@ -39,6 +39,48 @@
       "revId": "4994d948d291f22afc29984a326f75d36276eda4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80116036_90e54987",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1138013
+      },
+      "writtenOn": "2017-02-06T18:53:42Z",
+      "side": 1,
+      "message": "I don\u0027t know whether the original intention was for callers to be able to call dlerror but currently the callers are not utilizing dlerror after calling this method.\n\nOn top of that, other method here, such as OpenNativeLibrary do call dlerror in the implementation making me suspect that consumers of libnativeloader should not expect the dlerror to persist out of the library.",
+      "parentUuid": "11796d9f_5fce92c7",
+      "revId": "4994d948d291f22afc29984a326f75d36276eda4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f460547a_55310c30",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1138013
+      },
+      "writtenOn": "2017-02-06T18:53:42Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "3af157c8_55489a18",
+      "range": {
+        "startLine": 251,
+        "startChar": 8,
+        "endLine": 251,
+        "endChar": 13
+      },
+      "revId": "4994d948d291f22afc29984a326f75d36276eda4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
