@@ -117,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "d6a76938_3f2fafb2",
+        "filename": "liblog/logger_write.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-07T22:55:08Z",
+      "side": 1,
+      "message": "BUG: write_to_log !\u003d __write_to_log_daemon",
+      "range": {
+        "startLine": 653,
+        "startChar": 9,
+        "endLine": 653,
+        "endChar": 46
+      },
+      "revId": "e10207c6b3a22b6a8c44c16d87ec86f33506db22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d09cbf24_de920d98",
         "filename": "liblog/logger_write.c",
         "patchSetId": 4
@@ -128,6 +151,30 @@
       "writtenOn": "2017-02-07T22:30:02Z",
       "side": 1,
       "message": "Always set this unconditionally?  \n\nIf write_to_log \u003d\u003d __write_to_log_null, it should not be left that way?",
+      "range": {
+        "startLine": 654,
+        "startChar": 8,
+        "endLine": 654,
+        "endChar": 43
+      },
+      "revId": "e10207c6b3a22b6a8c44c16d87ec86f33506db22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92213fcd_c0b5e4c3",
+        "filename": "liblog/logger_write.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-07T22:55:08Z",
+      "side": 1,
+      "message": "I guess I only want to set it to __write_to_log_init _only_ if not __write_to_log_daemon for the code as-is. And of course the lock protects us from the race with respect to __write_to_log_init which can asynchronously change to __write_to_log_daemon after completed. I added the check for both because I remain paranoid about any other values (write_to_log_stderr is in the wings for future changes, and thus this code would be untouched at that point.",
+      "parentUuid": "d09cbf24_de920d98",
       "range": {
         "startLine": 654,
         "startChar": 8,
