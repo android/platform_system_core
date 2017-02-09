@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3f509664_81e72247",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-02-09T15:27:28Z",
+      "side": 1,
+      "message": "Note that the bootloader won\u0027t pass the symlink (*/by-name/*).\n  \nInstead, it passes something the symlink points to.\ne.g., /sys/devices/1010000.msdc0/mmc_host/mmc0/mmc0:0001/block/mmcblk0/mmcblk0p10\n  \nThe early-mount feature uses similar approach.\nhttps://android-review.googlesource.com/#/c/209860/\n\nAnyway, it seems better to add the polling on read_from_partition(). Let me consider...",
+      "parentUuid": "c13905f3_116dc155",
+      "revId": "b0b459f05e92b47f9ce6e74c24176eb379841c87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e49b60a2_92e0ce3a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-02-09T15:16:31Z",
       "side": 1,
       "message": "(Btw, you might need that polling anyway in the read_from_partition() function since that\u0027s where we open() the device file...)",
+      "revId": "b0b459f05e92b47f9ce6e74c24176eb379841c87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3086d61d_7f6789cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-02-09T15:27:28Z",
+      "side": 1,
+      "message": "OK, this sounds better.\nThanks!",
+      "parentUuid": "e49b60a2_92e0ce3a",
       "revId": "b0b459f05e92b47f9ce6e74c24176eb379841c87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
