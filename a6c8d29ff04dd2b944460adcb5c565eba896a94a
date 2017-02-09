@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "328280cd_ef77eb6f",
+        "filename": "adb/daemon/usb.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-09T00:02:04Z",
+      "side": 1,
+      "message": "I see from https://android-review.googlesource.com/#/c/315381/ that you added this ioctl.  This is very dangerous for future compatibility - the next time someone upstream adds an ioctl they are going to use 131, and if it conflicts with this one it will be hard to deal with this in the future.\n\nThe ideal case is you get the new ioctl upstreamed first, in order to reserve the ioctl number.  If this is not possible, I suggest picking a much higher ioctl number to avoid collisions.  If the patch is accepted in the future with this number, we can at least detect if our temporary one exists on a device without risking calling some other ioctl.",
+      "revId": "a6c8d29ff04dd2b944460adcb5c565eba896a94a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
