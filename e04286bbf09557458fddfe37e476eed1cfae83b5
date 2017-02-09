@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "de352bb7_d4ba8ae5",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-09T23:50:24Z",
+      "side": 1,
+      "message": "\u003e more \"type *\"\n\nugh, sorry about that.\n\nI noticed a bunch more of them as well, I am fixing as many as I can find in this and the preceding patches. That devices.cpp file is going to continue to be mix of \u0027type *\u0027 and \u0027type*\u0027 however.",
+      "parentUuid": "4d5eee7f_c2ed0dc7",
+      "range": {
+        "startLine": 659,
+        "startChar": 4,
+        "endLine": 659,
+        "endChar": 15
+      },
+      "revId": "e04286bbf09557458fddfe37e476eed1cfae83b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "257aa132_9d6abad0",
         "filename": "init/init.cpp",
         "patchSetId": 3
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "94a24e67_d9a730a2",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-09T23:50:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "257aa132_9d6abad0",
+      "revId": "e04286bbf09557458fddfe37e476eed1cfae83b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4b6fcee_0b60ffc3",
         "filename": "init/init.cpp",
         "patchSetId": 3
@@ -53,6 +95,24 @@
       "writtenOn": "2017-02-09T23:12:58Z",
       "side": 1,
       "message": "how specifically? your previous comment makes it sound like you already did :-)",
+      "revId": "e04286bbf09557458fddfe37e476eed1cfae83b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab65be4c_efb056d6",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-09T23:50:24Z",
+      "side": 1,
+      "message": "\u003e how specifically? your previous comment makes it sound like you\n \u003e already did :-)\n\nNo, I\u0027m pretty sure this will break for _a/_b. Note: I\u0027ve only tested on Angler so far, A/B devices are still TODO.\n\nThe \"found_XYZ\" logic below will definitely miss at least one device node when these partitions are A/B-ed. I am setting found_{odm,vendor,system} as soon as the first {odm,vendor,system}_* partition is found. Because of the partition lay out, the uevents will likely be processed for A/B partitions one after the other.\n\nSo, if \u0027system_*\u0027 is the last partition found (after odm* and vendor*), the code will return COLDBOOT_STOP right after it sees system_a and completely miss the system_b :(.\n\nSounds like something that probably should not be merged? :)\n\nI am counting on that cmdline check to stop affecting devices right now.",
+      "parentUuid": "a4b6fcee_0b60ffc3",
       "revId": "e04286bbf09557458fddfe37e476eed1cfae83b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
