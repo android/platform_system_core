@@ -46,6 +46,30 @@
       "revId": "ce16a8a9408688597d4efd3dc027fc5009e8dcb8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a551591e_0b1a9f1d",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-02-09T23:27:20Z",
+      "side": 1,
+      "message": "ugh. normally i\u0027d say \"rewrite the code to not use goto\", but since you didn\u0027t make this mess in the first place and you\u0027re not making things worse, i\u0027ll let you off :-)\n\n(if you did want to, i think in this case the best way would be to move the two fb_getvar calls that \"goto failed\" together and just move the \"failed:\" block up. the if (type_override) and if (size_override) blocks seem like they can happily come next. there\u0027s something similar in the fs_get_generator block too, except without the FAILED message. [which seems meaningless because this function is void anyway.] what a mess.)",
+      "parentUuid": "516b63ea_6fa68a39",
+      "range": {
+        "startLine": 1400,
+        "startChar": 0,
+        "endLine": 1402,
+        "endChar": 78
+      },
+      "revId": "ce16a8a9408688597d4efd3dc027fc5009e8dcb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
