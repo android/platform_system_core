@@ -22,6 +22,30 @@
       "revId": "294b1eb87d970ea87e1d33d6c4ee177faedf42bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8116230b_06d2f9d0",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2017-02-09T15:11:41Z",
+      "side": 1,
+      "message": "(copy-paste from an email but posting it here for context / other reviewers)\n\nActually AvbOps-\u003eread_from_partition(partition_name, ...) doesn\u0027t need any system property for this to work. See the code, the way it works is that it looks up the device file for the \u0027misc\u0027 partition in fstab. Once it has this device file, for example\n\n /dev/block/platform/soc.0/7824900.sdhci/by-name/misc\n\nit just removes the trailing /misc part and replaces it with |partition_name| to get e.g.\n\n /dev/block/platform/soc.0/7824900.sdhci/by-name/vbmeta_a\n\nSo this should work just fine, yes?",
+      "parentUuid": "4966915e_d4ac5108",
+      "range": {
+        "startLine": 494,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 21
+      },
+      "revId": "294b1eb87d970ea87e1d33d6c4ee177faedf42bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
