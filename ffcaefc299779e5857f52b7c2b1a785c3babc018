@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94c71368_882b6b4c",
+        "filename": "libbacktrace/BacktraceOffline.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-02-10T18:52:07Z",
+      "side": 1,
+      "message": "Have you found cases where a function is in multiple sections? If so, that seems like something is generating something incorrectly.\n\nI had a similar bug before, but the problem was that I was considering an address that wasn\u0027t actually in a function, to be in the function. If an address is not in a function definition, then it is not correct to use that information.",
+      "range": {
+        "startLine": 284,
+        "startChar": 2,
+        "endLine": 285,
+        "endChar": 66
+      },
+      "revId": "ffcaefc299779e5857f52b7c2b1a785c3babc018",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "985c24c5_f2b95016",
+        "filename": "libbacktrace/backtrace_offline_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-02-10T18:52:07Z",
+      "side": 1,
+      "message": "It might be better to make this a structure. Either that or break the function up so that it operates on smaller pieces at a time.",
+      "range": {
+        "startLine": 223,
+        "startChar": 25,
+        "endLine": 229,
+        "endChar": 62
+      },
+      "revId": "ffcaefc299779e5857f52b7c2b1a785c3babc018",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
