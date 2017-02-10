@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e418439d_5244a8b6",
+        "filename": "init/service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1076863
+      },
+      "writtenOn": "2017-02-10T23:42:18Z",
+      "side": 1,
+      "message": "I swear I searched for StatsWith in code search and got hits in art/utils.h and some java stuff but didn\u0027t see anything in android-base... But I guess I wasn\u0027t looking to carefully...",
+      "parentUuid": "247fe44e_f8b53ec0",
+      "revId": "ce5d3a806f90006ed37fb937844da57756493785",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcbd1abf_0c41d98d",
         "filename": "init/service.cpp",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2017-02-10T23:33:13Z",
       "side": 1,
       "message": "the one `writepid` caller i see that isn\u0027t just writing to /dev/cpuset writes to /dev/cpuset *and* /dev/stune. in which case it would be a pessimization to use both `cpuset` and `writepid`.",
+      "revId": "ce5d3a806f90006ed37fb937844da57756493785",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1746c9a_ea603ab3",
+        "filename": "init/service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1076863
+      },
+      "writtenOn": "2017-02-10T23:42:18Z",
+      "side": 1,
+      "message": "Yes, and that\u0027s the reason why we need to keep writepid as it is useful for other things.\n\nI\u0027m changing some of .rc files to use \u0027cpuset\u0027 and leaving \u0027writepid\u0027 whenever it makes sense, e.g. in https://android-review.git.corp.google.com/#/c/337008/1/camera/cameraserver/cameraserver.rc",
+      "parentUuid": "dcbd1abf_0c41d98d",
       "revId": "ce5d3a806f90006ed37fb937844da57756493785",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
