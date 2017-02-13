@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca48e927_eee21616",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-13T16:19:25Z",
+      "side": 1,
+      "message": "Footers have a space after the :",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 4
+      },
+      "revId": "db661808dce61bc05ee7331a7e3d6b067c2fc615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3ab11ae_367ecdbc",
+        "filename": "init/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-13T16:19:25Z",
+      "side": 1,
+      "message": "Do we want to deprecate writepid to set cpuset? I do not see it being used _anywhere_ for cgroup?\n\nI do not like there are two competing interfaces with overlapping interference, this only leads to confusion. writepid to /dev/cpuset/ and at times /dev/stune/ is used predominantly (except external/wpa_supplicant_8/hostapd/hostapd.android.rc).\n\nGiving too many choices is bad engineering. writepid has it\u0027s place (at least in one place), dropping this highlighted sentence would be the appearance that it does not present a choice for cpuset. Followed by a complete replacement of all uses of writepid in the tree to use cpuset, _then_ you have the shining example.\n\nI do not feel comfortable accepting this change without the interlocking set of changes that represents the more meaningful(?) way of doing this all.",
+      "range": {
+        "startLine": 205,
+        "startChar": 57,
+        "endLine": 206,
+        "endChar": 22
+      },
+      "revId": "db661808dce61bc05ee7331a7e3d6b067c2fc615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92522588_4ad0348d",
+        "filename": "init/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-13T16:19:25Z",
+      "side": 1,
+      "message": "I do not see this documenting why cpuset is different/superior than writepid. _Everyone_ has to understand.\n\nFrom my take, if you changed the default behavior to ${ro.cpuset.default} and let writepid override it, you have everything you have specified? Correct me if I am wrong.\n\nI know the above sentence is a reversal of the suggestions above by hinting that cpuset keyword not be added, but it represents good engineering that we keep one choice.",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 50
+      },
+      "revId": "db661808dce61bc05ee7331a7e3d6b067c2fc615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
