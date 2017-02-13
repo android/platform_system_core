@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d819f28d_5d3956a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1076863
+      },
+      "writtenOn": "2017-02-13T16:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca48e927_eee21616",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 4
+      },
+      "revId": "db661808dce61bc05ee7331a7e3d6b067c2fc615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3ab11ae_367ecdbc",
         "filename": "init/README.md",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5ac6559f_4cbf8f1d",
+        "filename": "init/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1076863
+      },
+      "writtenOn": "2017-02-13T16:47:22Z",
+      "side": 1,
+      "message": "I agree and I have dropped this sentence mentioning cpusets directly. I still think that we need to keep \u0027writepid\u0027 for places using it not related to cpusets. Like the /dev/stune or even cgroups (even though no one currently uses them). Merging the current ro.cpuset.default into writepid is probably not such a great idea since this only works with a cpuset is not specified for a service and since writepid can be used with many other things, we\u0027d need the logic of overriding interpreting the write destination and see if we write to cpuset or something else.\n\nAnd I know that I have added such logic already, but I consider the code that parses the input of writepid and checks if it is meant for cpuset or not, but I consider this code temporary and hopefully it can be removed soon. The main motivation is to help 3rd party code migrate to the new cpuset from writepid. I did have all the code in AOSP tree changed, but I have no guarantee some vendors don\u0027t have their own closed source somewhere that still uses writepid to write to cpusets.",
+      "parentUuid": "e3ab11ae_367ecdbc",
+      "range": {
+        "startLine": 205,
+        "startChar": 57,
+        "endLine": 206,
+        "endChar": 22
+      },
+      "revId": "db661808dce61bc05ee7331a7e3d6b067c2fc615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92522588_4ad0348d",
         "filename": "init/README.md",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2017-02-13T16:19:25Z",
       "side": 1,
       "message": "I do not see this documenting why cpuset is different/superior than writepid. _Everyone_ has to understand.\n\nFrom my take, if you changed the default behavior to ${ro.cpuset.default} and let writepid override it, you have everything you have specified? Correct me if I am wrong.\n\nI know the above sentence is a reversal of the suggestions above by hinting that cpuset keyword not be added, but it represents good engineering that we keep one choice.",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 50
+      },
+      "revId": "db661808dce61bc05ee7331a7e3d6b067c2fc615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba23f8a4_93ae0a73",
+        "filename": "init/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1076863
+      },
+      "writtenOn": "2017-02-13T16:47:22Z",
+      "side": 1,
+      "message": "I have expanded the description of \u0027cpuset\u0027 to specify the behavior when it is not specified and the usage of \u0027ro.cpuset.default\u0027 system property.",
+      "parentUuid": "92522588_4ad0348d",
       "range": {
         "startLine": 208,
         "startChar": 0,
