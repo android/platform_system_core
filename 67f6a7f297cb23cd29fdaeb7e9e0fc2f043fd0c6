@@ -69,6 +69,29 @@
       "revId": "67f6a7f297cb23cd29fdaeb7e9e0fc2f043fd0c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9eff3cf1_0601c04e",
+        "filename": "init/service.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1076863
+      },
+      "writtenOn": "2017-02-14T00:13:15Z",
+      "side": 1,
+      "message": "So, the original suggestion (posted here https://googleplex-android-review.git.corp.google.com/#/c/1811300/6/init/service.cpp@835 by jorgelo@) of opening /dev/cpuset during parsing and fail the parse if the path specified is incorrect doesn\u0027t really work. The .rc files are parsed first and only then executed, which means all the initialization including file system mounting happens after all the files are parsed.\n\nAs such, we can\u0027t open /dev/cpuset at parse time since they don\u0027t exist yet (it\u0027s too early in boot process).\n\nWill have to revert some of this code...",
+      "range": {
+        "startLine": 518,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 5
+      },
+      "revId": "67f6a7f297cb23cd29fdaeb7e9e0fc2f043fd0c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
