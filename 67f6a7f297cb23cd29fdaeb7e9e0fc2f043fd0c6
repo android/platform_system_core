@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a934afe7_0a057b81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1076863
+      },
+      "writtenOn": "2017-02-14T00:06:55Z",
+      "side": 1,
+      "message": "Yes, the / is not necessary here. We never concatenate paths. Instead, it\u0027s being open with openat() and we prepend ./ to the provided path.\n\nThe main reason why leading / is there is for consistency with the case where root cpuset needs to be used, so the subpath would have to be empty. So, people can use \"cpuset /\" for that case. And once using \"/\" there, we might as well use it everywhere. One can make an argument that the paths is rooted at /dev/cpuset, so \"/\" indicates that mount point and everything else is a descendant.",
+      "parentUuid": "f6af5630_8c2cf91a",
+      "range": {
+        "startLine": 18,
+        "startChar": 15,
+        "endLine": 18,
+        "endChar": 16
+      },
+      "revId": "67f6a7f297cb23cd29fdaeb7e9e0fc2f043fd0c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "726d8298_94ac9172",
         "filename": "init/README.md",
         "patchSetId": 7
