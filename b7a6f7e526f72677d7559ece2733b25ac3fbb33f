@@ -122,6 +122,24 @@
       "revId": "b7a6f7e526f72677d7559ece2733b25ac3fbb33f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "524a3fe9_67a55c31",
+        "filename": "init/service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1076863
+      },
+      "writtenOn": "2017-02-14T22:34:17Z",
+      "side": 1,
+      "message": "Right now, if \u0027cpuset\u0027 is not set, then we try to put the process into a cpuset specified by the system default (in ro.cpuset.default system property). Now, consider a legacy file that uses writepid for cpusets. Since \u0027cpuset\u0027 wasn\u0027t specified and we do not have the current special code to filter out the /dev/cpuset/ from writepid, when we fork the process, the code (see line 660 below) will try to get the property value use that as the cpuset for the process.",
+      "parentUuid": "117160c4_0b2f78ae",
+      "revId": "b7a6f7e526f72677d7559ece2733b25ac3fbb33f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
