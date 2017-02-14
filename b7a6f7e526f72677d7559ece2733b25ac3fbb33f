@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "43ffeaca_da2e7e75",
+        "filename": "init/service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1076863
+      },
+      "writtenOn": "2017-02-14T20:56:32Z",
+      "side": 1,
+      "message": "I\u0027ll fix the constexpr. As for \"tasks\" since it is used in a couple places (once when we remove /tasks from path in the old writepid instructions) and once when we add that to the file name when opening an fd I decided to have this in one place (since these are very related usages and should always be in sync). I mean, I don\u0027t feel strongly otherwise, but just wanted to explain my reasoning.",
+      "parentUuid": "2c191a8f_f16d2a00",
+      "revId": "b7a6f7e526f72677d7559ece2733b25ac3fbb33f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67a70b0c_ed06f3e9",
         "filename": "init/service.cpp",
         "patchSetId": 9
@@ -47,6 +65,24 @@
       "writtenOn": "2017-02-14T20:48:17Z",
       "side": 1,
       "message": "if you\u0027re going to do that, why warn? seems like we should either warn and not fix up, or fix up and not warn.",
+      "revId": "b7a6f7e526f72677d7559ece2733b25ac3fbb33f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0cec875_770a0fb9",
+        "filename": "init/service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1076863
+      },
+      "writtenOn": "2017-02-14T20:56:32Z",
+      "side": 1,
+      "message": "Without fixing, I\u0027m afraid that this change can cause significant issues to vendor (closed-source) devices which we cannot fix ourselves. So I feel like fixing this up is important to make sure the devices continue to function. However I still wanted to let vendors know that then need to upgrade their init scripts...",
+      "parentUuid": "67a70b0c_ed06f3e9",
       "revId": "b7a6f7e526f72677d7559ece2733b25ac3fbb33f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
