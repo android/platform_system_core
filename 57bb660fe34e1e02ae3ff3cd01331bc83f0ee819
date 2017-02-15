@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20cbad2c_1eda3ab7",
+        "filename": "libcutils/include/cutils/properties.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-15T23:04:53Z",
+      "side": 1,
+      "message": "1) should this should be in the private libcutils/include_vndk/ directory tree as it seriously differs from what we would want to use internally?\n\n2) If bionic does not have them, I am concerned we are defining them and the vndk folk will include cutils/properties.h to get what is missing in bionic. Which is of course wrong.\n\nThe problem with #2 is scale. If used once here it is easy to solve (see below), if used 20 times we might be in a quandary.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 7
+      },
+      "revId": "57bb660fe34e1e02ae3ff3cd01331bc83f0ee819",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4fb5def1_1a4201bb",
+        "filename": "libcutils/include/cutils/properties.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-15T23:04:53Z",
+      "side": 1,
+      "message": "eg: to not introduce __errordecl here we could:\n\nextern int __property_get_real(const char *, char *, const char *)\n    __asm__(__USER_LABEL_PREFIX__ \"property_get\");\n#ifdef __errordecl\n__errordecl(__property_get_too_small_error, __property_get_err_str);\n#endif",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 68
+      },
+      "revId": "57bb660fe34e1e02ae3ff3cd01331bc83f0ee819",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
