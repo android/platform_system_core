@@ -82,6 +82,29 @@
     },
     {
       "key": {
+        "uuid": "95300466_5c0a80bf",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1430,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-02-15T20:55:22Z",
+      "side": 1,
+      "message": "Restrict variables to the smallest block in which they are used (in this case, declare tmp inside the \"for\" clause).",
+      "range": {
+        "startLine": 1430,
+        "startChar": 4,
+        "endLine": 1430,
+        "endChar": 32
+      },
+      "revId": "6256e82f8492744c20b28f19b5e416da7a56357e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff66ff17_175fa5af",
         "filename": "fastboot/fastboot.cpp",
         "patchSetId": 2
@@ -115,6 +138,29 @@
         "startChar": 0,
         "endLine": 1434,
         "endChar": 18
+      },
+      "revId": "6256e82f8492744c20b28f19b5e416da7a56357e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c04b0023_e608a590",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1444,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-02-15T20:55:22Z",
+      "side": 1,
+      "message": "This is more of a debug-only diagnostic message and probably shouldn\u0027t be unconditionally printed. I don\u0027t think fastboot has any modern logging utilities at the moment so suggest either removing or commenting this out for now.",
+      "range": {
+        "startLine": 1444,
+        "startChar": 8,
+        "endLine": 1444,
+        "endChar": 76
       },
       "revId": "6256e82f8492744c20b28f19b5e416da7a56357e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -173,6 +219,29 @@
     },
     {
       "key": {
+        "uuid": "95e7822b_455c9451",
+        "filename": "fastboot/partition.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-02-15T20:55:22Z",
+      "side": 1,
+      "message": "In general, try to avoid abbreviations for names (https://google.github.io/styleguide/cppguide.html#General_Naming_Rules).",
+      "range": {
+        "startLine": 17,
+        "startChar": 37,
+        "endLine": 17,
+        "endChar": 40
+      },
+      "revId": "6256e82f8492744c20b28f19b5e416da7a56357e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c5929b2_96ea94f2",
         "filename": "fastboot/partition.cpp",
         "patchSetId": 2
@@ -201,6 +270,69 @@
       "writtenOn": "2017-02-15T19:17:23Z",
       "side": 1,
       "message": "std::unique_ptr",
+      "revId": "6256e82f8492744c20b28f19b5e416da7a56357e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3870c586_5d6bf72b",
+        "filename": "fastboot/partition.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-02-15T20:55:22Z",
+      "side": 1,
+      "message": "Is the data format used here a standard defined somewhere else or did you come up with this? If it\u0027s a standard, please reference the documentation. If not, I think we\u0027re going to need to at least add some versioning support in case we decide we need larger buffers or additional data later on.",
+      "revId": "6256e82f8492744c20b28f19b5e416da7a56357e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce3ea52c_12658b59",
+        "filename": "fastboot/partition.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-02-15T20:55:22Z",
+      "side": 1,
+      "message": "Prefer enums to macros when possible, and keep internal details that other files don\u0027t need in the implementation (.cpp) file instead of the header.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "6256e82f8492744c20b28f19b5e416da7a56357e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8998c1b9_93c7063e",
+        "filename": "fastboot/partition.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-02-15T20:55:22Z",
+      "side": 1,
+      "message": "What do you think about making this into a C++ class instead for better usability and readability? I get that we want to transfer this data as a buffer, but keeping all these variables with vague names in a struct makes it quite difficult to figure out what\u0027s actually happening here. IMO it would be cleaner to store these things as simply as possible, and only pack them into the transmit format on-demand.\n\nMaybe something like this:\n\n  class Partition {\n   public:\n    ...\n\n    // Pack the partition into the required format\n    // to transmit to the device.\n    std::vector\u003cuint8_t\u003e Serialize() const;\n  };\n\n  class PartitionTable {\n   public:\n    PartitionTable(const std::string\u0026 file_path);\n\n    const std::vector\u003cPartition\u003e\u0026 partitions() const;\n\n    ...\n  }\n\nThis way usage can be a little simpler:\n\n  PartitionTable table(\u003cfile\u003e);\n  fastboot_buffer fb_buffer;\n  fb_buffer.type \u003d FB_BUFFER;\n  for (const Partition\u0026 partition : table.partitions()) {\n    std::vector\u003cuint8_t\u003e data \u003d partition.Serialize();\n    fb_buffer.data \u003d data.data();\n    fb_buffer.sz \u003d data.size();\n    flash_buf(...);\n  }",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 30
+      },
       "revId": "6256e82f8492744c20b28f19b5e416da7a56357e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
