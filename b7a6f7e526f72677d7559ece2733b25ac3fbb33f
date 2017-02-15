@@ -248,6 +248,24 @@
       "revId": "b7a6f7e526f72677d7559ece2733b25ac3fbb33f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9403b05_0eb60b09",
+        "filename": "init/service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1076863
+      },
+      "writtenOn": "2017-02-15T18:02:12Z",
+      "side": 1,
+      "message": "Sure there is a way to remove this code. I mean, my plan was as follows:\n\n1. Introduce \u0027cpuset\u0027 and change the behavior of \u0027writepid\u0027 with filtering out cpuset targets and issuing a warning.\n2. Let this code be for some time to let people migrate.\n3. Add another patch that removes the fixups in writepid and instead make it fail if anyone tries to use writepid to write to cpuset.\n\nWhen a particular vendor gets affected by #3 down the road, they have a choice: 1) fix up their init scripts [hopefully] or 2) revert #3 for their device(s). Either way, they still have \u0027cpuset\u0027 handling.\n\nAs for your other question regarding using writepid and add code for handling system defaults, this is certainly doable, but is quite awkward. Right now, \u0027cpuset\u0027 option specifies just the cpuset \"name\" and automatically constructs a path like /dev/cpuset/\u003ccpuset-name\u003e/tasks. The ro.cpuset.default property also specifies the \u003ccpuset-name\u003e.\n\nIf we were to delegate this to writepid, we\u0027d use the actual full path /dev/cpuset/\u003ccpuset-name\u003e/tasks in the file list. Now, if we want to specify a system default cpuset, would we set ro.cpuset.default to, say, \"foreground\" or \"/dev/cpuset/foreground/tasks\"? I would say it should be the latter to stay consistent with how writepid works, but on the other hand, \"foreground\" seems better and straight to the point.",
+      "parentUuid": "6aff9603_c39be2f2",
+      "revId": "b7a6f7e526f72677d7559ece2733b25ac3fbb33f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
