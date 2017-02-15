@@ -423,6 +423,24 @@
     },
     {
       "key": {
+        "uuid": "a55c96d4_2069f1af",
+        "filename": "fastboot/partition.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-02-15T23:25:37Z",
+      "side": 1,
+      "message": "just don\u0027t name the argument(s) you don\u0027t want:\n\n  int main(int, char* argv[]) {",
+      "parentUuid": "89234111_0c9ed7da",
+      "revId": "6256e82f8492744c20b28f19b5e416da7a56357e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95e7822b_455c9451",
         "filename": "fastboot/partition.cpp",
         "patchSetId": 2
@@ -610,6 +628,30 @@
       "side": 1,
       "message": "I thought about that. However, as the is not guarantee of the enum size for different compilers I cannot define field type inside struct partition table as enum partition_type type. it still would need to be uint32_t. I was not sure about compilation warnings or cast requirement. Also, that did not look good to me. But I can create the enum, no problem.",
       "parentUuid": "ce3ea52c_12658b59",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "6256e82f8492744c20b28f19b5e416da7a56357e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4932b1c_e302a8cc",
+        "filename": "fastboot/partition.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-02-15T23:25:37Z",
+      "side": 1,
+      "message": "c++11 allows you to specify the underlying type:\n\nhttp://en.cppreference.com/w/cpp/language/enum",
+      "parentUuid": "17fccc48_bd9d0475",
       "range": {
         "startLine": 20,
         "startChar": 0,
