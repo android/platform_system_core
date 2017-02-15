@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efac0943_b433ef2c",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-15T19:18:20Z",
+      "side": 1,
+      "message": "android::strnstr only returns if lenl \u003e strlen(avc) by design.\n\nThere has to be a better way to tell clang SANITIZE it\u0027s error is wrong (if it demanded for lenl \u003e strlen(avc) below). Sadly it can not just peek into LogKlog.cpp to find that out, is there a way we can tell the checker that this function has this side-effect?\n\nRegardless (if we can, or cannot), we should add a comment above line 178 to state that this is a side-effect of this call.",
+      "range": {
+        "startLine": 178,
+        "startChar": 23,
+        "endLine": 178,
+        "endChar": 57
+      },
+      "revId": "48221ba361ed712a82060e71edc0403ee3d3b324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9db3490_83755f9a",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-15T19:18:20Z",
+      "side": 1,
+      "message": "This just dropped, in a small way, a hot path efficiency we fought hard for in the heat of battle. fastcmp\u003cmemcmp\u003e is a FAST version of comparison that helped us save precious background cgroup cycles and was part of the list of changes we had to do to allow bullhead to be functional and android::strnstr was recognized for its side-effects.\n\nstrlen(avc) reduces to sizeof(avc) - 1 in the optimizer, which is our only saving grace.",
+      "range": {
+        "startLine": 185,
+        "startChar": 8,
+        "endLine": 185,
+        "endChar": 29
+      },
+      "revId": "48221ba361ed712a82060e71edc0403ee3d3b324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6352492a_9316c84a",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-15T19:18:20Z",
+      "side": 1,
+      "message": "Now here is the bona-fide bugfix, Thanks!",
+      "range": {
+        "startLine": 188,
+        "startChar": 24,
+        "endLine": 188,
+        "endChar": 42
+      },
+      "revId": "48221ba361ed712a82060e71edc0403ee3d3b324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
