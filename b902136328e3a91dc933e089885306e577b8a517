@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "1025d77f_847925ef",
+        "filename": "logcat/include/log/logcat.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-16T15:40:46Z",
+      "side": 1,
+      "message": "Short answer: no\n\nThis is standard \u0027dressing\u0027 for typedefs so that you have an associated macro for its presence and make sure it is not over-defined. It is just planning. I guess you can override it with your own copy (not that we need to). Sometimes these are used to _turn_ _off_ troublesome typedefs in include files (but I doubt we are there either). It is a secondary to __ANDROID_API detection above, so you can #ifdef __android_logcat_context_defined your code to use API here (or not). __ANDROID_API is complex, this one is simple.",
+      "parentUuid": "db7b4b94_6babcd19",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "b902136328e3a91dc933e089885306e577b8a517",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "507e0827_8b7a03e4",
         "filename": "logcat/include/log/logcat.h",
         "patchSetId": 1
@@ -347,6 +371,30 @@
     },
     {
       "key": {
+        "uuid": "b434a820_4c1c18b8",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-16T15:40:46Z",
+      "side": 1,
+      "message": "You are correct.\n\noutput_fd is the argument passed in to the API to aid cleanup if needed.\n\noutFD is the \u0027rotating\u0027 actual fd being used internally for the output.\n\nIts legacy was that it was grouped with the \u0027globals\u0027 relocated into the object instance, I moved it here because it is similar.\n\nYes, I am sure I can merge them, outFD is the legacy I probably need to remove but I stopped once I had a working prototype.",
+      "parentUuid": "67ef58b4_bd7a34ca",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 13
+      },
+      "revId": "b902136328e3a91dc933e089885306e577b8a517",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a161b02b_3cc8c62d",
         "filename": "logcat/logcat.cpp",
         "patchSetId": 1
@@ -387,6 +435,24 @@
     },
     {
       "key": {
+        "uuid": "5017cce1_223095e5",
+        "filename": "logcat/logcat_popen.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-16T15:40:46Z",
+      "side": 1,
+      "message": "Good catch, I messed it even though I was looking for it. These all used to be one glob, guess I missed a spot when I failed to \u0027spot\u0027 this file in the right place.",
+      "parentUuid": "514d975e_6b59a98c",
+      "revId": "b902136328e3a91dc933e089885306e577b8a517",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e1d8309_9bcf801a",
         "filename": "logcat/logcat_popen.cpp",
         "patchSetId": 1
@@ -398,6 +464,30 @@
       "writtenOn": "2017-02-16T00:39:13Z",
       "side": 1,
       "message": "File name implies popen, but this is not assoc. with the popen impl, or is it?  Header file not present in this CL?",
+      "range": {
+        "startLine": 96,
+        "startChar": 18,
+        "endLine": 96,
+        "endChar": 25
+      },
+      "revId": "b902136328e3a91dc933e089885306e577b8a517",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "322ecbf1_fb36638e",
+        "filename": "logcat/logcat_popen.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-16T15:40:46Z",
+      "side": 1,
+      "message": "I had them split, but they both need __android_logcat_parse and I gave up having too many files.\n\nlogcat_system.cpp would be a better name, as it can cover _both_.",
+      "parentUuid": "8e1d8309_9bcf801a",
       "range": {
         "startLine": 96,
         "startChar": 18,
