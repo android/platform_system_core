@@ -711,6 +711,30 @@
     },
     {
       "key": {
+        "uuid": "f8d45e03_5dc0cf09",
+        "filename": "fastboot/partition.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-02-16T01:16:15Z",
+      "side": 1,
+      "message": "std::vector is nice because you don\u0027t have to worry about freeing memory - as soon as it goes out of scope it will take care of that for you.\n\nI think either returning a reference to an existing vector would be fine, it sort of depends on how you want to implement it. If you want to maintain a vector internally at construction you can just return a const reference to it, or you can generate a new one on the fly - the performance impact will be negligible either way for such a small amount of data.\n\nI wrote up some sample code at http://gpaste/5825712112009216 that might give some ideas how it could work to generate a new vector and return it each time. It\u0027s not the only feasible approach and isn\u0027t super clean but hopefully will be enough to give you something to go on.",
+      "parentUuid": "0d8e0231_3b628353",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 30
+      },
+      "revId": "6256e82f8492744c20b28f19b5e416da7a56357e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9375979_05c3aff4",
         "filename": "fastboot/partition.h",
         "patchSetId": 2
