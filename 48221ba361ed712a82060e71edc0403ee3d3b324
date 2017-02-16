@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "4e362439_29cb4d6a",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1137865
+      },
+      "writtenOn": "2017-02-16T21:50:49Z",
+      "side": 1,
+      "message": "I did look at fastcmp\u003cmemcmp\u003e implementation and I\u0027m aware of the difference. Your concern is unfounded, SANITIZER does not complain on the absence of checks, it complains on access beyond the buffer boundaries (which is fixed by adjusting lenl for fastcmp\u003c\u003e call).\n\nWhat is checked in strnstr? Ok, imagine the simplest case possible, msgl and msgr happened to be \"): avc: \", exactly equal to avc. What is going to happen? avcl \u003d\u003d msgl, lenl \u003d\u003d strlen(avc), right? Now we\u0027re calling fastcmp\u003cmemcmp\u003e(avcl + strlen(avc), avcr + strlen(avc), 0);, and fastcmp access beyond buffer again. That\u0027s the simplest example of the repro case I mentioned earlier, but any msg string ending with \"): avc: \" will lead to the same problem.",
+      "parentUuid": "5e81031e_dae3b030",
+      "range": {
+        "startLine": 185,
+        "startChar": 8,
+        "endLine": 185,
+        "endChar": 29
+      },
+      "revId": "48221ba361ed712a82060e71edc0403ee3d3b324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6352492a_9316c84a",
         "filename": "logd/LogBuffer.cpp",
         "patchSetId": 2
