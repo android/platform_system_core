@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "5e81031e_dae3b030",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-16T21:12:47Z",
+      "side": 1,
+      "message": "When it comes to performance, you just do -not_ perform superfluous checks. This is already checked in strnstr above. This path was hot enough that shaving off a branch could be measured.\n\nMy concern is that the SANITIZER complains that you do not check if lenl \u003e strlen(avc).\n\nNB: fastcmp\u003cmemcmp\u003e is _not_ the same as memcmp behavior.",
+      "parentUuid": "27fae01e_20e435be",
+      "range": {
+        "startLine": 185,
+        "startChar": 8,
+        "endLine": 185,
+        "endChar": 29
+      },
+      "revId": "48221ba361ed712a82060e71edc0403ee3d3b324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6352492a_9316c84a",
         "filename": "logd/LogBuffer.cpp",
         "patchSetId": 2
