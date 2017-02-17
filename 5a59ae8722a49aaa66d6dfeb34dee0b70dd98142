@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85e40dcb_c2c00212",
+        "filename": "debuggerd/debuggerd_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-02-17T16:58:10Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be:\n\n  1ULL \u003c\u003c (i-32)\n\n(but see other comments before making this change)",
+      "range": {
+        "startLine": 454,
+        "startChar": 38,
+        "endLine": 454,
+        "endChar": 39
+      },
+      "revId": "5a59ae8722a49aaa66d6dfeb34dee0b70dd98142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "328d0de4_58a43ab7",
+        "filename": "debuggerd/debuggerd_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-02-17T16:58:10Z",
+      "side": 1,
+      "message": "Can be better written as:\n\nfor (unsigned int i \u003d 0; i \u003c CAP_LAST_CAP; i+\u003d2) {\n  capdata[CAP_TO_INDEX(i)].permitted |\u003d CAP_TO_MASK(i);\n  capdata[CAP_TO_INDEX(i)].effective |\u003d CAP_TO_MASK(i);\n}",
+      "range": {
+        "startLine": 447,
+        "startChar": 1,
+        "endLine": 456,
+        "endChar": 5
+      },
+      "revId": "5a59ae8722a49aaa66d6dfeb34dee0b70dd98142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62c504b0_3e3d0e12",
+        "filename": "debuggerd/debuggerd_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-02-17T16:58:10Z",
+      "side": 1,
+      "message": "capdata[CAP_TO_INDEX(CAP_SYS_PTRACE)].permitted \u0026\u003d ~(CAP_TO_MASK(CAP_SYS_PTRACE));",
+      "range": {
+        "startLine": 459,
+        "startChar": 0,
+        "endLine": 460,
+        "endChar": 54
+      },
+      "revId": "5a59ae8722a49aaa66d6dfeb34dee0b70dd98142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
