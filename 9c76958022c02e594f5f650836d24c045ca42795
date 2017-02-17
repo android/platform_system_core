@@ -45,6 +45,30 @@
       "revId": "9c76958022c02e594f5f650836d24c045ca42795",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91caf69c_c598e08d",
+        "filename": "init/devices.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-17T19:34:09Z",
+      "side": 1,
+      "message": "\u003e Can we put sehandle in a unique_ptr?\n\nActually, that\u0027s going to require even bigger refactor since the variable is part of init and used everywhere else too.\n\nI think this whole thing is wrong and I don\u0027t need to cleanup sehandle here since its \"global\" to init/ueventd. I\u0027ll amend the change now which should be much smaller..",
+      "parentUuid": "1aacf634_4deeac1c",
+      "range": {
+        "startLine": 1048,
+        "startChar": 0,
+        "endLine": 1051,
+        "endChar": 5
+      },
+      "revId": "9c76958022c02e594f5f650836d24c045ca42795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
