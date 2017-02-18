@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "635882fd_07f13eb0",
+        "filename": "fs_mgr/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-02-18T07:18:13Z",
+      "side": 1,
+      "message": "nit: fs_mgr_boot_config.cpp, just to be consistent with function naming.",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "483657d1_f4653eff",
+        "filename": "fs_mgr/fs_mgr_bootconfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-02-18T07:18:13Z",
+      "side": 1,
+      "message": "nit: 2017",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a48144d_bc4b1fa6",
+        "filename": "fs_mgr/fs_mgr_bootconfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-02-18T07:18:13Z",
+      "side": 1,
+      "message": "How about:\n  bool fs_mgr_get_boot_prop(const std::string\u0026 key, std::string* out_val) {\n     FS_MGR_CHECK(out_value !\u003d nullptr);\n     ...",
+      "range": {
+        "startLine": 24,
+        "startChar": 27,
+        "endLine": 24,
+        "endChar": 45
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39fbfe2a_1c034384",
+        "filename": "fs_mgr/fs_mgr_bootconfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-02-18T07:18:13Z",
+      "side": 1,
+      "message": "Why not just \"*out_value \u003d ...\" below. Then we don\u0027t have to clear here. Except we want to append new content into out_value in several iterations.",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 17
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d287fb42_65daaef6",
+        "filename": "fs_mgr/fs_mgr_bootconfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-02-18T07:18:13Z",
+      "side": 1,
+      "message": "With #include \u003candroid-base/properties.h\u003e, we can have:\n\n *out_value \u003d android::base::GetProperty(\"ro.boot.\" + key);\n  if (!out_val-\u003eempty()) {\n      return true;\n  }",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 5
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a4cf2ed_482ef541",
+        "filename": "fs_mgr/fs_mgr_bootconfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-02-18T07:18:13Z",
+      "side": 1,
+      "message": "With \"bool fs_mgr_get_boot_prop(const std::string\u0026 key ...\" above, we can have:\n  \n                if (pieces[0] \u003d\u003d \"androidboot.\" + key) {\n                    *out_vale \u003d pieces[1]\n                    return true;\n                }",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3515bbfc_f407c028",
+        "filename": "fs_mgr/fs_mgr_bootconfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-02-18T07:18:13Z",
+      "side": 1,
+      "message": "How about:\n\n  const std::string android_dt_dir \u003d \"...android/\";\n  std::string file_name(android_dt_dir + \"compatible\");",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 89
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "271ad14d_e586fd91",
+        "filename": "fs_mgr/fs_mgr_bootconfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-02-18T07:18:13Z",
+      "side": 1,
+      "message": "maybe just: dt_value \u003d\u003d \"android,firmware\"",
+      "range": {
+        "startLine": 55,
+        "startChar": 12,
+        "endLine": 55,
+        "endChar": 49
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbf35a46_d625e5eb",
+        "filename": "fs_mgr/fs_mgr_bootconfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-02-18T07:18:13Z",
+      "side": 1,
+      "message": "How about:\n\nfile_name \u003d android_dt_dir + key;",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 81
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "442184d2_42f8b42e",
+        "filename": "fs_mgr/fs_mgr_priv_bootconfig.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-02-18T07:18:13Z",
+      "side": 1,
+      "message": "2017?",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d323a697_be8b8071",
+        "filename": "fs_mgr/fs_mgr_priv_bootconfig.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-02-18T07:18:13Z",
+      "side": 1,
+      "message": "not required as this file won\u0027t be included by other .c files?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 13
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47510589_e10c4f35",
+        "filename": "fs_mgr/fs_mgr_slotselect.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-02-18T07:18:13Z",
+      "side": 1,
+      "message": "nit: maybe better to return bool?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 3
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0e86510_f6bba2c0",
+        "filename": "fs_mgr/fs_mgr_slotselect.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-02-18T07:18:13Z",
+      "side": 1,
+      "message": "nit: need not to have struct in cpp",
+      "range": {
+        "startLine": 23,
+        "startChar": 33,
+        "endLine": 23,
+        "endChar": 39
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c24afb4d_cffa4911",
+        "filename": "fs_mgr/fs_mgr_slotselect.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-02-18T07:18:13Z",
+      "side": 1,
+      "message": "bool?",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 7
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21fac4a7_99211b64",
+        "filename": "fs_mgr/fs_mgr_slotselect.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-02-18T07:18:13Z",
+      "side": 1,
+      "message": "Maybe replacing the whole block, as we\u0027re being more C++-ish in this file.\n\n   std::string with_suffix \u003d std::string(fstab-\u003erecs[n].blk_device) + suffix;\n   free(fstab-\u003erecs[n].blk_device);\n   fstab-\u003erecs[n].blk_device \u003d strdup(with_suffix.c_str());\n\nAlso, we can then remove \u003cstdio.h\u003e and the char* tmp above.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 13
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
