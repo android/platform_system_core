@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "6c998bee_abbff0bb",
+        "filename": "fs_mgr/fs_mgr_bootconfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-20T18:00:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "483657d1_f4653eff",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a48144d_bc4b1fa6",
         "filename": "fs_mgr/fs_mgr_bootconfig.cpp",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2017-02-18T07:18:13Z",
       "side": 1,
       "message": "How about:\n  bool fs_mgr_get_boot_prop(const std::string\u0026 key, std::string* out_val) {\n     FS_MGR_CHECK(out_value !\u003d nullptr);\n     ...",
+      "range": {
+        "startLine": 24,
+        "startChar": 27,
+        "endLine": 24,
+        "endChar": 45
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15170875_c2b6b119",
+        "filename": "fs_mgr/fs_mgr_bootconfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-20T18:00:01Z",
+      "side": 1,
+      "message": "Done, but still calling the function get_boot_config to be consistent with file naming and since its not necessarily a property in early mount case ..",
+      "parentUuid": "6a48144d_bc4b1fa6",
       "range": {
         "startLine": 24,
         "startChar": 27,
@@ -118,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "6de6b301_53e3a06f",
+        "filename": "fs_mgr/fs_mgr_bootconfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-20T18:00:01Z",
+      "side": 1,
+      "message": "\u003e Why not just \"*out_value \u003d ...\" below. Then we don\u0027t have to clear\n \u003e here. Except we want to append new content into out_value in\n \u003e several iterations.\n\ncorrect, we don\u0027t necessarily want to append, so replacin\nas you suggested. thanks",
+      "parentUuid": "39fbfe2a_1c034384",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 17
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d287fb42_65daaef6",
         "filename": "fs_mgr/fs_mgr_bootconfig.cpp",
         "patchSetId": 2
@@ -129,6 +201,30 @@
       "writtenOn": "2017-02-18T07:18:13Z",
       "side": 1,
       "message": "With #include \u003candroid-base/properties.h\u003e, we can have:\n\n *out_value \u003d android::base::GetProperty(\"ro.boot.\" + key);\n  if (!out_val-\u003eempty()) {\n      return true;\n  }",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 5
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea54f03a_2911e1a6",
+        "filename": "fs_mgr/fs_mgr_bootconfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-20T18:00:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d287fb42_65daaef6",
       "range": {
         "startLine": 27,
         "startChar": 1,
@@ -164,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "50053d7b_c940fe52",
+        "filename": "fs_mgr/fs_mgr_bootconfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-20T18:00:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a4cf2ed_482ef541",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3515bbfc_f407c028",
         "filename": "fs_mgr/fs_mgr_bootconfig.cpp",
         "patchSetId": 2
@@ -175,6 +295,30 @@
       "writtenOn": "2017-02-18T07:18:13Z",
       "side": 1,
       "message": "How about:\n\n  const std::string android_dt_dir \u003d \"...android/\";\n  std::string file_name(android_dt_dir + \"compatible\");",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 89
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adb7c292_12fdf554",
+        "filename": "fs_mgr/fs_mgr_bootconfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-20T18:00:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3515bbfc_f407c028",
       "range": {
         "startLine": 51,
         "startChar": 3,
@@ -210,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "9aa9d4e4_d191e535",
+        "filename": "fs_mgr/fs_mgr_bootconfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-20T18:00:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "271ad14d_e586fd91",
+      "range": {
+        "startLine": 55,
+        "startChar": 12,
+        "endLine": 55,
+        "endChar": 49
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbf35a46_d625e5eb",
         "filename": "fs_mgr/fs_mgr_bootconfig.cpp",
         "patchSetId": 2
@@ -221,6 +389,30 @@
       "writtenOn": "2017-02-18T07:18:13Z",
       "side": 1,
       "message": "How about:\n\nfile_name \u003d android_dt_dir + key;",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 81
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66a8e707_7a04b08c",
+        "filename": "fs_mgr/fs_mgr_bootconfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-20T18:00:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbf35a46_d625e5eb",
       "range": {
         "startLine": 60,
         "startChar": 8,
@@ -256,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "a1ab347d_2b4f0886",
+        "filename": "fs_mgr/fs_mgr_priv_bootconfig.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-20T18:00:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "442184d2_42f8b42e",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d323a697_be8b8071",
         "filename": "fs_mgr/fs_mgr_priv_bootconfig.h",
         "patchSetId": 2
@@ -267,6 +483,30 @@
       "writtenOn": "2017-02-18T07:18:13Z",
       "side": 1,
       "message": "not required as this file won\u0027t be included by other .c files?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 13
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9febe75_00f736c1",
+        "filename": "fs_mgr/fs_mgr_priv_bootconfig.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-20T18:00:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d323a697_be8b8071",
       "range": {
         "startLine": 23,
         "startChar": 0,
@@ -325,6 +565,30 @@
     },
     {
       "key": {
+        "uuid": "faf19ae6_106943f2",
+        "filename": "fs_mgr/fs_mgr_slotselect.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-20T18:00:01Z",
+      "side": 1,
+      "message": "\u003e nit: need not to have struct in cpp\n\nthis is unchanged from the previous API, don\u0027t want to make\nthat change as part of this CL. So, this I will keep.",
+      "parentUuid": "e0e86510_f6bba2c0",
+      "range": {
+        "startLine": 23,
+        "startChar": 33,
+        "endLine": 23,
+        "endChar": 39
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c24afb4d_cffa4911",
         "filename": "fs_mgr/fs_mgr_slotselect.cpp",
         "patchSetId": 2
@@ -348,6 +612,30 @@
     },
     {
       "key": {
+        "uuid": "0de8f04f_646c77ba",
+        "filename": "fs_mgr/fs_mgr_slotselect.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-20T18:00:01Z",
+      "side": 1,
+      "message": "\u003e bool?\n\nditto, unchanged from previous implementation, will not change it here.",
+      "parentUuid": "c24afb4d_cffa4911",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 7
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21fac4a7_99211b64",
         "filename": "fs_mgr/fs_mgr_slotselect.cpp",
         "patchSetId": 2
@@ -359,6 +647,30 @@
       "writtenOn": "2017-02-18T07:18:13Z",
       "side": 1,
       "message": "Maybe replacing the whole block, as we\u0027re being more C++-ish in this file.\n\n   std::string with_suffix \u003d std::string(fstab-\u003erecs[n].blk_device) + suffix;\n   free(fstab-\u003erecs[n].blk_device);\n   fstab-\u003erecs[n].blk_device \u003d strdup(with_suffix.c_str());\n\nAlso, we can then remove \u003cstdio.h\u003e and the char* tmp above.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 13
+      },
+      "revId": "20c5c392ec041f4ada9c7658421c000bb9dd5be5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6fa73bb_aafe4c2e",
+        "filename": "fs_mgr/fs_mgr_slotselect.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-20T18:00:01Z",
+      "side": 1,
+      "message": "\u003e Maybe replacing the whole block, as we\u0027re being more C++-ish in\n \u003e this file.\n \u003e \n \u003e std::string with_suffix \u003d std::string(fstab-\u003erecs[n].blk_device) +\n \u003e suffix;\n \u003e free(fstab-\u003erecs[n].blk_device);\n \u003e fstab-\u003erecs[n].blk_device \u003d strdup(with_suffix.c_str());\n \u003e \n \u003e Also, we can then remove \u003cstdio.h\u003e and the char* tmp above.\n\nas part of a different CL if you wish :), not in this though",
+      "parentUuid": "21fac4a7_99211b64",
       "range": {
         "startLine": 40,
         "startChar": 0,
