@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "c913f1cf_07a2c859",
+        "filename": "libcutils/sched_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1139803
+      },
+      "writtenOn": "2017-02-20T04:07:56Z",
+      "side": 1,
+      "message": "static int enabled \u003d (access(\"...\", F_OK) \u003d\u003d 0) ? 1 : 0;\n\ndoesn\u0027t compile in C11 because:\n\"error: initializer element is not a compile-time constant\"\n\nSo you want me to use _Atomic(int) or turn sched_policy.c into sched_policy.cpp?",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 82
+      },
+      "revId": "2935aedd535f0ea42cc80b64b19ea9f0f5fe335d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84f3e500_566b1df5",
         "filename": "libcutils/sched_policy.c",
         "patchSetId": 2
