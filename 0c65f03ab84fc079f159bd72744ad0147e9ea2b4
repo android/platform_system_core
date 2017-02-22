@@ -22,6 +22,30 @@
       "revId": "0c65f03ab84fc079f159bd72744ad0147e9ea2b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58cdc0e4_7014d338",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-22T00:33:58Z",
+      "side": 1,
+      "message": "bourne shells parse right to left when dealing with redirections (\u003e \u003e\u003e \u003c\u003c \u003c |). The behavior here is as-if stdout redirection is rightmost, and stderr redirection is leftmost. If someone did the following command:\n\nfoo \u003eFILENAME 2\u003e\u00261 \n\nfor a shell, stderr would be redirected to whatever the stdout is at the time of the command exec, likely your screen or console, and stdout of the command would go to FILENAME.\n\nfor liblogcat, stdout would be redirected to FILENAME, and stderr would be redirected to the now redirected stdout and thus FILENAME as well.\n\nfoo 2\u003e\u00261 \u003eFILENAME\n\nfor a shell and a liblogcat, stdout would be redirected to FILENAME, and stderr would be redirected to the now redirected stdout and thus FILENAME as well.\n\nBy us trying to keep the algorithm simple, we have made describing what happens difficult IMHO. Words escape me in either case because the subtlety of redirection is lost on most :-(",
+      "parentUuid": "daf40fb5_3a7c23f1",
+      "range": {
+        "startLine": 18,
+        "startChar": 51,
+        "endLine": 20,
+        "endChar": 27
+      },
+      "revId": "0c65f03ab84fc079f159bd72744ad0147e9ea2b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
