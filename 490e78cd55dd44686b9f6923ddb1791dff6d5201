@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adfc979b_fd85133c",
+        "filename": "init/devices.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1002,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-02-22T18:59:37Z",
+      "side": 1,
+      "message": "If we do call this multiple times, then we probably do want \n\nif (!sehandle) sehandle \u003d selinux_android_file_context_handle();\n\nProbably can also put the selinux_status_open(true); in that same conditional too, so\n\nif (!sehandle) {\n    sehandle \u003d selinux_android_file_context_handle();\n    selinux_status_open(true);\n}\nif (device_fd \u003d\u003d -1) ...\n\nSorry I didn\u0027t comment on this earlier; I do agree though that this whole area needs clean up, especially since ueventd and init have two separate entry points, so sehandle being global and functions that use it being called from each process if quite dangerous.",
+      "revId": "490e78cd55dd44686b9f6923ddb1791dff6d5201",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
