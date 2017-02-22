@@ -16,6 +16,24 @@
       "revId": "490e78cd55dd44686b9f6923ddb1791dff6d5201",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adfc2e8b_a4fdfe96",
+        "filename": "init/devices.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1002,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-22T19:20:31Z",
+      "side": 1,
+      "message": "\u003e If we do call this multiple times, then we probably do want\n \u003e \n \u003e if (!sehandle) sehandle \u003d selinux_android_file_context_handle();\n\nhmm, I assumed selinux_android_file_context_handle() takes care of that already in library, but I assumed wrong. So, I\u0027ll fix this right away.\n\n \u003e \n \u003e Probably can also put the selinux_status_open(true); in that same\n \u003e conditional too, so\n \u003e \n \u003e if (!sehandle) {\n \u003e sehandle \u003d selinux_android_file_context_handle();\n \u003e selinux_status_open(true);\n \u003e }\n \u003e if (device_fd \u003d\u003d -1) ...\n \u003e \n\nthe selinux_status_open() has nothing to do with the file handle unfortunately, which is why I did it separately. The status_open() is done to only find out if changes were made to selinux attributes / policy load etc later, so keep this as is?\n\n\n \u003e Sorry I didn\u0027t comment on this earlier; I do agree though that this\n \u003e whole area needs clean up, especially since ueventd and init have\n \u003e two separate entry points, so sehandle being global and functions\n \u003e that use it being called from each process if quite dangerous.\n\nindeed",
+      "parentUuid": "adfc979b_fd85133c",
+      "revId": "490e78cd55dd44686b9f6923ddb1791dff6d5201",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
