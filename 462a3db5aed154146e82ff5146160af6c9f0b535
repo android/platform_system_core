@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6dcc8149_b4967ee7",
+        "filename": "logcat/include/log/logcat.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-22T22:00:32Z",
+      "side": 1,
+      "message": "This is why the whole patch stack fails some of the tests, \u0026_ctx can be null when the destructor is called, and android_logcat_pclose currently does not handle that case. It SHOULD, it is a library function, so we have to fix the liblogcat library.",
+      "range": {
+        "startLine": 127,
+        "startChar": 24,
+        "endLine": 127,
+        "endChar": 58
+      },
+      "revId": "462a3db5aed154146e82ff5146160af6c9f0b535",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6aff3e0f_ccaf1500",
         "filename": "logcat/tests/liblogcat_test.cpp",
         "patchSetId": 1
@@ -13,6 +36,30 @@
       "writtenOn": "2017-02-22T21:46:02Z",
       "side": 1,
       "message": "This one not converted to the new class?",
+      "range": {
+        "startLine": 22,
+        "startChar": 31,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "462a3db5aed154146e82ff5146160af6c9f0b535",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73e8de28_f8ca7c4e",
+        "filename": "logcat/tests/liblogcat_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-02-22T22:00:32Z",
+      "side": 1,
+      "message": "Because he has no class ;-\u003e\n\nandroid_logcat::system() method added for completeness only, but it has no use for the context, and the code as-is in logcat_test.cpp skirted this by not doing logcat_define(ctx) whenever logcat_system was the sole representative. I would need to _add_ the definitions, and modify logcat_system() to take a context argument.\n\nI could \u0027solve\u0027 this by making the system() static, and the calls as android_logcat::system(). But doing so would require us to define it somewhere, as in within liblogcat, which breaks the inline (as in requires no C++ ABI from liblogcat) nature of this class.\n\nMaybe should get some C++ expert eyes on this?",
+      "parentUuid": "6aff3e0f_ccaf1500",
       "range": {
         "startLine": 22,
         "startChar": 31,
