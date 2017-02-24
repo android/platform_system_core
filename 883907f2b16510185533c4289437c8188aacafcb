@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "cbe3c06a_e53cc50a",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-02-24T19:21:25Z",
+      "side": 1,
+      "message": "yeah, we should try to have all fastboot documentation in the README.md (since OEMs are expected to use this too).",
+      "parentUuid": "755e847a_eae005c1",
+      "revId": "883907f2b16510185533c4289437c8188aacafcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfd3a2ec_a0b1055b",
         "filename": "fastboot/fastboot.cpp",
         "patchSetId": 7
@@ -84,6 +102,30 @@
     },
     {
       "key": {
+        "uuid": "c08a67d8_0a61b839",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1429,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-02-24T19:21:25Z",
+      "side": 1,
+      "message": "https://google.github.io/styleguide/cppguide.html#Rvalue_references",
+      "parentUuid": "8e56e4bf_d8058e0e",
+      "range": {
+        "startLine": 1429,
+        "startChar": 47,
+        "endLine": 1429,
+        "endChar": 49
+      },
+      "revId": "883907f2b16510185533c4289437c8188aacafcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "080fdb46_354247d2",
         "filename": "fastboot/fastboot.cpp",
         "patchSetId": 7
@@ -113,6 +155,24 @@
       "side": 1,
       "message": "Short conditional statements __may__ be written on one line if this enhances readability. You __may__ use this only when the line is brief and the statement does not use the else clause.\n\nIn general, curly braces are not required for single-line statements, but they are allowed if you like them; conditional or loop statements with complex conditions or statements may be more readable with curly braces. Some projects require that an if must always always have an accompanying brace.\n\nif (condition)\n  DoSomething();  // 2 space indent.\n\nif (condition) {\n  DoSomething();  // 2 space indent.\n}\n\nSeems that you need to update the cppguide.",
       "parentUuid": "080fdb46_354247d2",
+      "revId": "883907f2b16510185533c4289437c8188aacafcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a596847a_86813530",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1735,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-02-24T19:21:25Z",
+      "side": 1,
+      "message": "okay, \"all of system/core/ is one of those projects that require\".\n\nthere\u0027s a .clang-format in system/core/init for now.",
+      "parentUuid": "63b78c1a_516cde3b",
       "revId": "883907f2b16510185533c4289437c8188aacafcb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -154,6 +214,30 @@
       "side": 1,
       "message": "where is that documented? do you see a problem keeping the support? I think the explicit comment in the code that it will send data in little endian is good to keep. Also, this may be endup being a library, so I think it is good to keep it.",
       "parentUuid": "cb5c455b_3a020817",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 5
+      },
+      "revId": "883907f2b16510185533c4289437c8188aacafcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fe2dfb2_1ab987fe",
+        "filename": "fastboot/partition.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-02-24T19:21:25Z",
+      "side": 1,
+      "message": "i think using htole* for documentation purposes is fine, but having unused and untested code lying around is both a liability and misleading. 99% of this code doesn\u0027t work on BE, no-one *has* a BE host anyway, and folks in a parallel universe who want to use a BE host will have a lot of work to do, and this doesn\u0027t help them.\n\n(i will add \u003candroid-base/endian.h\u003e to give a portable version of \u003cendian.h\u003e though. but that won\u0027t have BE support either. BE doesn\u0027t exist.)",
+      "parentUuid": "c3f2c0be_25e6f071",
       "range": {
         "startLine": 38,
         "startChar": 0,
