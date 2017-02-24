@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3b07a3c_9ab8d661",
+        "filename": "fastboot/README.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-02-24T22:37:12Z",
+      "side": 1,
+      "message": "volume",
+      "range": {
+        "startLine": 468,
+        "startChar": 14,
+        "endLine": 468,
+        "endChar": 20
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac100dc4_aa622255",
+        "filename": "fastboot/README.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-02-24T22:37:12Z",
+      "side": 1,
+      "message": "addressable",
+      "range": {
+        "startLine": 486,
+        "startChar": 11,
+        "endLine": 486,
+        "endChar": 22
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4e9f223_d9217c7b",
+        "filename": "fastboot/README.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-02-24T22:37:12Z",
+      "side": 1,
+      "message": "present",
+      "range": {
+        "startLine": 490,
+        "startChar": 45,
+        "endLine": 490,
+        "endChar": 52
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b93863f_e4c982c9",
+        "filename": "fastboot/README.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-02-24T22:37:12Z",
+      "side": 1,
+      "message": "extra whitespace",
+      "range": {
+        "startLine": 513,
+        "startChar": 76,
+        "endLine": 513,
+        "endChar": 77
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "005e78dc_cdc33491",
+        "filename": "fastboot/engine.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-02-24T22:37:12Z",
+      "side": 1,
+      "message": "nit: prefer size_t for things like buffer lengths.",
+      "range": {
+        "startLine": 171,
+        "startChar": 50,
+        "endLine": 171,
+        "endChar": 58
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27544f20_7a65df4b",
+        "filename": "fastboot/engine.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-02-24T22:37:12Z",
+      "side": 1,
+      "message": "It looks like these fb_queue_* functions all expect that they\u0027re given ownership of the memory passed to them so they don\u0027t need to make a persistent copy themselves. Can we follow that same rule here to keep it consistent?\n\nAs far as I can tell this memory is never released, the program just exits - is that right? If so, just dynamically allocate your std::vector\u003c\u003e and pass in the underlying array here. It\u0027s no worse than leaving un-deleted buffers floating around and matches the existing functionality better.",
+      "range": {
+        "startLine": 174,
+        "startChar": 4,
+        "endLine": 174,
+        "endChar": 29
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4d4be05_7e5bebcc",
+        "filename": "fastboot/partition.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-02-24T22:37:12Z",
+      "side": 1,
+      "message": "These feel like they should be member variables of StorageInfo (or some other class we define) instead.\n\nMaking these static here will make writing unittests a lot harder and seems more prone to unanticipated side effects.\n\nSpeaking of, I would strongly recommend unittests for this file - just pass some sample XML strings to StorageInfo trying to hit some corner cases and make sure the resulting PartitionTable and Partition objects are what you would expect them to be.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 21
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4462d29_2bf3083a",
+        "filename": "fastboot/partition.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-02-24T22:37:12Z",
+      "side": 1,
+      "message": "I know legacy code doesn\u0027t always follow this, but try to keep https://google.github.io/styleguide/cppguide.html#Naming in mind for new code.\n\nIn particular, type names (enums, structs, classes) and function names should be UpperCamelCase, and private class data members should end with a trailing underscore.",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 19
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6dbc969a_7ca300f8",
+        "filename": "fastboot/partition.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-02-24T22:37:12Z",
+      "side": 1,
+      "message": "Similarly, new constants should use kConstantName.",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3036cdae_67b31b3d",
+        "filename": "fastboot/partition.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-02-24T22:37:12Z",
+      "side": 1,
+      "message": "This data seems like an internal detail, suggest making it a private nested type under PartitionTable class:\n\n  class PartitionTable {\n   public:\n    ...\n\n   private:\n    struct Header {\n      ...\n    };\n\n    Header header_;\n    std::vector\u003cPartition\u003e partitions_;\n  }",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 30
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0b290ca_04ba1951",
+        "filename": "fastboot/partition.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-02-24T22:37:12Z",
+      "side": 1,
+      "message": "Looks like internal state, can this be private instead?\n\nAlso, making it static means that partition table lun numbering carries over between tables - is that what we want? If someone calls \"partition\" twice in the same fastboot command, e.g.\n\n  fastboot partition foo.xml partition bar.xml\n\nThis current_lun value will carry over between the two so that foo.xml affects bar.xml.",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 25
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee060574_df4bf23b",
+        "filename": "fastboot/partition.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-02-24T22:37:12Z",
+      "side": 1,
+      "message": "Seems like these aren\u0027t used anywhere, can we get rid of them?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 48
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
