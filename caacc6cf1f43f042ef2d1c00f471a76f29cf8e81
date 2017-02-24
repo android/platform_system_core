@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b587440d_ed4a9360",
+        "filename": "fastboot/README.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1138338
+      },
+      "writtenOn": "2017-02-24T23:49:00Z",
+      "side": 1,
+      "message": "\u003e Server side?  Device side?\nI will use host side and device side to make it more clear. It is device side.\n\n \u003e \n \u003e I think we\u0027re going to need some guidance on what a device is\n \u003e expected to do here.  In particular, messing with the partition\n \u003e table is a quick way to irreversibly brick a device.  In the past,\n \u003e as part of the fastbootd project, we considered having a region of\n \u003e the storage that was owned by Android that we could subpartition\n \u003e into system/vendor/odm/etc. as we saw fit, without messing with the\n \u003e bootloader owned partitions.\n\nIt is up to the vendor what restriction to put on this command, since the device side can handle that. Vendors may want to not support this command at all on production devices (they can send \"partition command not supported on production devices\") to the user to make it clear. Or they can support partitioning of specific volumes by the user if the device is unlocked, etc. There is no restriction on that.",
+      "parentUuid": "8fd1de73_491c8515",
+      "range": {
+        "startLine": 459,
+        "startChar": 56,
+        "endLine": 460,
+        "endChar": 62
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3b07a3c_9ab8d661",
         "filename": "fastboot/README.md",
         "patchSetId": 12
