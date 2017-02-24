@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "9ea255d0_2814e66d",
+        "filename": "fastboot/README.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-24T23:59:40Z",
+      "side": 1,
+      "message": "Vendors generally don\u0027t use fastboot, they only implement it because we tell them to, so we need to specify the behaviors that we want.  Should the bootloader pretend that all the vendor-owned partitions don\u0027t exist, and partition around them?  What should they do if the requested partition table overlaps a vendor one?  Should this be allowed at all on production devices after fastboot oem unlock, or only on development bootloaders?\n\nAll existing fastboot commands are supposed to be recoverable - if you flash a bad boot.img, you can always hold down the volume keys to get back into fastboot and flash a good one.  The one exception is flashing the bootloader, but that is generally signed so only a good one should be accepted.\n\nImplementing this correctly on the device side is non-trivial, and I still haven\u0027t seen what the use case is for it.",
+      "parentUuid": "4edc0e3f_1745101b",
+      "range": {
+        "startLine": 459,
+        "startChar": 56,
+        "endLine": 460,
+        "endChar": 62
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3b07a3c_9ab8d661",
         "filename": "fastboot/README.md",
         "patchSetId": 12
