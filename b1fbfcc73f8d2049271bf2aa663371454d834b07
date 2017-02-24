@@ -2,6 +2,74 @@
   "comments": [
     {
       "key": {
+        "uuid": "c2d5e712_4bd173d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-24T20:08:58Z",
+      "side": 1,
+      "message": "I think these worked because the selected slot was _a and cause the corresponding devices show up first during coldboot.",
+      "revId": "b1fbfcc73f8d2049271bf2aa663371454d834b07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9dac19e0_457d6d57",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-24T20:08:58Z",
+      "side": 1,
+      "message": "this is doing exact match, we need to prefix_match and make sure we create all nodes for a/b slots i.e. /dev/.../by-name/vendor_{a,b}",
+      "revId": "b1fbfcc73f8d2049271bf2aa663371454d834b07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c23540cd_b244c078",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-24T20:08:58Z",
+      "side": 1,
+      "message": "needs to be fixed for a/b, this will erase it when first partition is found.",
+      "revId": "b1fbfcc73f8d2049271bf2aa663371454d834b07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b04f8afb_3e6afea0",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-24T20:08:58Z",
+      "side": 1,
+      "message": "you missed the fs_mgr_is_slotselect() calls here to determine if we need to look for a/b partitions...",
+      "revId": "b1fbfcc73f8d2049271bf2aa663371454d834b07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c3d82b2_ed07349a",
         "filename": "init/init.cpp",
         "patchSetId": 1
@@ -25,6 +93,30 @@
     },
     {
       "key": {
+        "uuid": "5318c219_419c11c8",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-24T20:08:58Z",
+      "side": 1,
+      "message": "\u003e PLOG?  Is there a relevant errno for this log?\n\nI think s/PLOG/LOG is needed here..",
+      "parentUuid": "8c3d82b2_ed07349a",
+      "range": {
+        "startLine": 826,
+        "startChar": 8,
+        "endLine": 826,
+        "endChar": 12
+      },
+      "revId": "b1fbfcc73f8d2049271bf2aa663371454d834b07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a53196a_cc1ba4ba",
         "filename": "init/init.cpp",
         "patchSetId": 1
@@ -36,6 +128,24 @@
       "writtenOn": "2017-02-24T19:32:09Z",
       "side": 1,
       "message": "It\u0027s possible we may have called device_init() despite failing and need device_close() here, right?",
+      "revId": "b1fbfcc73f8d2049271bf2aa663371454d834b07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aff116de_bb452d9c",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-02-24T20:08:58Z",
+      "side": 1,
+      "message": "\u003e It\u0027s possible we may have called device_init() despite failing and\n \u003e need device_close() here, right?\n\nYes, the device_close needs to be called here.",
+      "parentUuid": "9a53196a_cc1ba4ba",
       "revId": "b1fbfcc73f8d2049271bf2aa663371454d834b07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
