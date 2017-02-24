@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "228d1a10_cf317a4b",
+        "filename": "base/include/android-base/endian.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1138338
+      },
+      "writtenOn": "2017-02-24T22:20:14Z",
+      "side": 1,
+      "message": "I don\u0027t think network function should be here. here should be only function to convert from host to LE,BE and vice versa. Anyone requiring handling network packages knows that netinet/in.h needs to be included.",
+      "revId": "1dbd976200cbcc2aa57322e6cdd45a0032ad9965",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9dd343f1_01ff6b03",
+        "filename": "base/include/android-base/endian.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1138338
+      },
+      "writtenOn": "2017-02-24T22:20:14Z",
+      "side": 1,
+      "message": "assuming what is define on bionic, glib, any other c/c++ library don\u0027t seems write, since it can change over time and you will start getting redefinition errors. Why don\u0027t just check if that is defined if not then create the macro.",
+      "revId": "1dbd976200cbcc2aa57322e6cdd45a0032ad9965",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
