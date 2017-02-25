@@ -617,6 +617,30 @@
     },
     {
       "key": {
+        "uuid": "d422c02d_397f506e",
+        "filename": "fastboot/engine.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-02-25T00:46:42Z",
+      "side": 1,
+      "message": "Maybe I was a little loose using \"no worse\" - it\u0027s no worse in the sense that it\u0027s still unreleased memory, but you are correct that it falls under a different valgrind category.\n\nThe raw buffers can technically still be reached because they have pointers from the global action_list. std::vector\u003c\u003e is different because we\u0027re only retaining the pointer to the underlying buffer in action_list - the additional bookkeeping data is indeed lost and unrecoverable.\n\nI suppose since speed/memory usage isn\u0027t really a concern here, let\u0027s not kill ourselves trying to avoid a buffer copy, but let\u0027s do it in the caller so that fb_queue_partition() follows the same ownership semantics (e.g. assumes ownership of the pointer)\n\nTL;DR: go back to a stack-allocated std::vector\u003c\u003e, and copy its data to a dynamically allocated raw buffer in the caller rather than in fb_queue_partition()",
+      "parentUuid": "e8eb5458_4d6b0055",
+      "range": {
+        "startLine": 174,
+        "startChar": 4,
+        "endLine": 174,
+        "endChar": 29
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4d4be05_7e5bebcc",
         "filename": "fastboot/partition.cpp",
         "patchSetId": 12
