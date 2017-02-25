@@ -569,6 +569,30 @@
     },
     {
       "key": {
+        "uuid": "e8eb5458_4d6b0055",
+        "filename": "fastboot/engine.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1138338
+      },
+      "writtenOn": "2017-02-25T00:36:54Z",
+      "side": 1,
+      "message": "Unfortunately after the changes:\n\nvoid fb_queue_partition(unsigned num, void *data, size_t sz)\n{\n    Action *a;\n\n    a \u003d queue_action(OP_DOWNLOAD, \"\");\n\n    a-\u003edata \u003d data;\n    a-\u003esize \u003d (uint32_t)sz;\n    a-\u003emsg \u003d mkmsg(\"sending partition table %u (%d B)\", num, sz);\n\n    a \u003d queue_action(OP_COMMAND, \"partition\");\n    a-\u003emsg \u003d mkmsg(\"writing partition table %u \", num);\n}\n...\nstatic int do_partition_table(const std::string\u0026 fname)\n{\n    storage_info info(fname);\n\n    for (auto\u0026 p : info.get_partition_tables()) {\n        auto data \u003d new std::vector\u003cuint8_t\u003e(p.serialize());\n        fb_queue_partition(p.get_lun(), data-\u003edata(), data-\u003esize());\n    }\n\n    return 0;\n}\n..\n\nMemory leaked is reported.\n\n\u003d\u003d182933\u003d\u003d LEAK SUMMARY:\n\u003d\u003d182933\u003d\u003d    definitely lost: 72 bytes in 3 blocks\n\n\u003e \"It\u0027s no worse than leaving un-deleted buffers floating around and matches the existing functionality better.\"\n\nSome how it is worse. is there any other solution ?",
+      "parentUuid": "7c0e4940_d504d2c4",
+      "range": {
+        "startLine": 174,
+        "startChar": 4,
+        "endLine": 174,
+        "endChar": 29
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4d4be05_7e5bebcc",
         "filename": "fastboot/partition.cpp",
         "patchSetId": 12
