@@ -688,6 +688,30 @@
     },
     {
       "key": {
+        "uuid": "ed82bfbc_79cbd9ee",
+        "filename": "fastboot/partition.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1138338
+      },
+      "writtenOn": "2017-02-25T01:17:14Z",
+      "side": 1,
+      "message": "\u003e These feel like they should be member variables of StorageInfo (or\n \u003e some other class we define) instead.\n\nyeah, that sounds good.\n\n \u003e \n \u003e Making these static here will make writing unittests a lot harder\n \u003e and seems more prone to unanticipated side effects.\n \u003e \n \u003e Speaking of, I would strongly recommend unittests for this file -\n \u003e just pass some sample XML strings to StorageInfo trying to hit some\n \u003e corner cases and make sure the resulting PartitionTable and\n \u003e Partition objects are what you would expect them to be.\n\nI will look into how to integrate the unittest",
+      "parentUuid": "b4d4be05_7e5bebcc",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 21
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4462d29_2bf3083a",
         "filename": "fastboot/partition.h",
         "patchSetId": 12
@@ -699,6 +723,30 @@
       "writtenOn": "2017-02-24T22:37:12Z",
       "side": 1,
       "message": "I know legacy code doesn\u0027t always follow this, but try to keep https://google.github.io/styleguide/cppguide.html#Naming in mind for new code.\n\nIn particular, type names (enums, structs, classes) and function names should be UpperCamelCase, and private class data members should end with a trailing underscore.",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 19
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "032fb2b7_11699590",
+        "filename": "fastboot/partition.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1138338
+      },
+      "writtenOn": "2017-02-25T01:17:14Z",
+      "side": 1,
+      "message": "I started with that style because I followed the current style of fastboot. which is basically C code with only .cpp name. But since now it is following more C++ Style I can do the changes.",
+      "parentUuid": "c4462d29_2bf3083a",
       "range": {
         "startLine": 24,
         "startChar": 5,
@@ -734,6 +782,30 @@
     },
     {
       "key": {
+        "uuid": "ef41fdaf_3549eafc",
+        "filename": "fastboot/partition.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1138338
+      },
+      "writtenOn": "2017-02-25T01:17:14Z",
+      "side": 1,
+      "message": "sure",
+      "parentUuid": "6dbc969a_7ca300f8",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3036cdae_67b31b3d",
         "filename": "fastboot/partition.h",
         "patchSetId": 12
@@ -745,6 +817,30 @@
       "writtenOn": "2017-02-24T22:37:12Z",
       "side": 1,
       "message": "This data seems like an internal detail, suggest making it a private nested type under PartitionTable class:\n\n  class PartitionTable {\n   public:\n    ...\n\n   private:\n    struct Header {\n      ...\n    };\n\n    Header header_;\n    std::vector\u003cPartition\u003e partitions_;\n  }",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 30
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4c1cce9_406509c3",
+        "filename": "fastboot/partition.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1138338
+      },
+      "writtenOn": "2017-02-25T01:17:14Z",
+      "side": 1,
+      "message": "sure",
+      "parentUuid": "3036cdae_67b31b3d",
       "range": {
         "startLine": 45,
         "startChar": 0,
@@ -780,6 +876,30 @@
     },
     {
       "key": {
+        "uuid": "f725dced_dd867205",
+        "filename": "fastboot/partition.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1138338
+      },
+      "writtenOn": "2017-02-25T01:17:14Z",
+      "side": 1,
+      "message": "That is not supported right now.\n\nsaid that. I also don\u0027t like that. I use that also to keep this behavior:\n\nAttribute lun:    unique id of the physical instance for emmc device this is\n                  partition (Boot0/1, RPMB, GP0/1/2/3, USER) for ufs device this\n                  is UFS LUN# (0..7). if not present volumes will be enumerated\n                  in the order they are found in the XML\n\n\"f not present volumes will be enumerated in the order they are found in the XML\"\n\nit was the simplest way to do int since the one that knows how many partitions have been process is storage_info but where attr lun is read is inside partition_table constructor which has not idea of how many partition have been processed.\n\nI prefer simplicity always but I can think in other solution.",
+      "parentUuid": "c0b290ca_04ba1951",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 25
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee060574_df4bf23b",
         "filename": "fastboot/partition.h",
         "patchSetId": 12
@@ -791,6 +911,30 @@
       "writtenOn": "2017-02-24T22:37:12Z",
       "side": 1,
       "message": "Seems like these aren\u0027t used anywhere, can we get rid of them?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 48
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bb3503c_17a7eadf",
+        "filename": "fastboot/partition.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1138338
+      },
+      "writtenOn": "2017-02-25T01:17:14Z",
+      "side": 1,
+      "message": "Oh yes, they are leftovers from previous code. I will get rid of them",
+      "parentUuid": "ee060574_df4bf23b",
       "range": {
         "startLine": 69,
         "startChar": 0,
