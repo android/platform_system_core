@@ -216,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "f60e7a81_8c171913",
+        "filename": "fastboot/README.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1138338
+      },
+      "writtenOn": "2017-02-25T00:21:32Z",
+      "side": 1,
+      "message": "\u003e Vendors generally don\u0027t use fastboot,\n\n\nwe (google) as a OEM of the pixel device would like to use it.\n\n\n they only implement it\n \u003e because we tell them to, so we need to specify the behaviors that\n \u003e we want.\n\n\nThat is the good think about the change. It does not really change anything, it is only parsing information and passing it to the device side fastboot which is implemented by vendors. They have all the control about what can be done and what can not.\n\n\u003e  Should the bootloader pretend that all the vendor-owned\n \u003e partitions don\u0027t exist, and partition around them?\n\n\nI don\u0027t think is a good idea to have some partitions hidden and some visible in the same LUN. I think it would be common sense to put all partition you don\u0027t want to modify under one LUN and others we allow to modify in other LUN.\n\n\n\u003e  What should\n \u003e they do if the requested partition table overlaps a vendor one? \n\nthat should not be the case. Anyway when you modify some partition table all partitions there will be erase, that is what is expected (no only in android devices). So, you wisely choose your partition layout\n\n\n \u003e Should this be allowed at all on production devices after fastboot\n \u003e oem unlock, or only on development bootloaders?\n\n\nit is really up to the vendor. if you want to be ROM creator friendly. You could have one LUN with boot, system and data partitions and allow user to freely change partition sizes (or introduce new partitions). So that, if someone wants to put a bigger kernel (unlikely) he can.\n\n\n \u003e \n \u003e All existing fastboot commands are supposed to be recoverable - if\n \u003e you flash a bad boot.img, you can always hold down the volume keys\n \u003e to get back into fastboot and flash a good one.  The one exception\n \u003e is flashing the bootloader, but that is generally signed so only a\n \u003e good one should be accepted.\n \u003e \n \u003e Implementing this correctly on the device side is non-trivial, and\n \u003e I still haven\u0027t seen what the use case is for it.\n\n\nit is meant for development phases of the phones, to avoid using the awfully vendor tools, and for OTA updates, that I am not sure how are they managing partition resize changes currently.",
+      "parentUuid": "9ea255d0_2814e66d",
+      "range": {
+        "startLine": 459,
+        "startChar": 56,
+        "endLine": 460,
+        "endChar": 62
+      },
+      "revId": "caacc6cf1f43f042ef2d1c00f471a76f29cf8e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3b07a3c_9ab8d661",
         "filename": "fastboot/README.md",
         "patchSetId": 12
