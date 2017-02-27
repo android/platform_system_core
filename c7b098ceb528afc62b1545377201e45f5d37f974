@@ -22,6 +22,30 @@
       "revId": "c7b098ceb528afc62b1545377201e45f5d37f974",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5fc0bc1_14b25400",
+        "filename": "include/system/qemu_pipe.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2017-02-27T17:13:48Z",
+      "side": 1,
+      "message": "I totally agree that requiring \"pipe:\" prefix is a source of confusion here, having this many clients in different API levels.\nWhat I suggest is we make the interface accept optional \"pipe:\" prefix, and let the qemu_pipe_open() handle the case error from (old version of the) emulator when it can\u0027t find the name of the service and closes the pipe instead. This function could reopen the pipe and send the name with prefix in that case.",
+      "parentUuid": "839fd6e6_7c9d2c49",
+      "range": {
+        "startLine": 51,
+        "startChar": 22,
+        "endLine": 51,
+        "endChar": 36
+      },
+      "revId": "c7b098ceb528afc62b1545377201e45f5d37f974",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
