@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "0250f9b6_f3910986",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-03-01T21:52:57Z",
+      "side": 1,
+      "message": "I should put another comment here about this not being signal-safe; but at least it is thread-safe. So for now not an area for continued work.\n\nA comment about wanting to share this across contexts would be nice too, closing/reopening the event tag map is somewhat costly.\n\nWe still need to make *_popen/*_system calls work without a destroy and realloc of the context.",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 9
+      },
+      "revId": "de022a841f61b8aae1abadb46755867da5e4f2df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d93c243e_fdbda2fa",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-03-01T21:52:57Z",
+      "side": 1,
+      "message": "Here is another (gentle) ToDo comment. This is one of the reasons we are not thread-safe.",
+      "range": {
+        "startLine": 852,
+        "startChar": 4,
+        "endLine": 852,
+        "endChar": 40
+      },
+      "revId": "de022a841f61b8aae1abadb46755867da5e4f2df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac4b68f2_8fb26600",
         "filename": "logcat/logcat.cpp",
         "patchSetId": 1
@@ -13,6 +59,30 @@
       "writtenOn": "2017-03-01T20:56:44Z",
       "side": 1,
       "message": "Not sure what this is saying.  Is it a TODO item to replace with a semaphore?",
+      "range": {
+        "startLine": 1731,
+        "startChar": 8,
+        "endLine": 1731,
+        "endChar": 77
+      },
+      "revId": "de022a841f61b8aae1abadb46755867da5e4f2df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3587e44_d1a9840a",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1731,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-03-01T21:52:57Z",
+      "side": 1,
+      "message": "It is a (gentle) TODO item to replace with a semaphore. It contains a terse excuse why it is still here (this loop is typically short lived, should spin 0 or a few times), and should have a timeout to ensure it is short lived.\n\nIt is also an architectural concern (in the internal High Level Design document) as semaphores are not safe in signal handlers.\n\nIt is out of scope to fix anything in the context of this CL. Code Style changes only.\n\nI do not have a solid plan for a fix for this since we list thread safety and signal handler safety as outstanding issues in liblogcat.",
+      "parentUuid": "ac4b68f2_8fb26600",
       "range": {
         "startLine": 1731,
         "startChar": 8,
