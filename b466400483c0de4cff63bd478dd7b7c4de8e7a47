@@ -184,6 +184,24 @@
     },
     {
       "key": {
+        "uuid": "47437056_2ebf67ad",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-03-01T18:31:39Z",
+      "side": 1,
+      "message": "+1  There are a few examples of `char *` vs `char*` as well that need to be corrected",
+      "parentUuid": "db6776f7_defd4a6e",
+      "revId": "b466400483c0de4cff63bd478dd7b7c4de8e7a47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "210f05d6_acac8a8a",
         "filename": "init/init.cpp",
         "patchSetId": 3
@@ -277,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "3a4c0e2c_bb8a74c9",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-03-01T18:31:39Z",
+      "side": 1,
+      "message": "+1.\n\nIn general can we use `bool` for the return value for these functions?  We\u0027ve been trying to move init to bool instead of arbitrarily defined return values.\n\nThis could be simplified as far as:\nreturn selinux_has_split_policy() ? selinux_load_split_policy() : selinux_load_monolithic_policy();",
+      "parentUuid": "366900f9_f53ef777",
+      "range": {
+        "startLine": 747,
+        "startChar": 12,
+        "endLine": 747,
+        "endChar": 37
+      },
+      "revId": "b466400483c0de4cff63bd478dd7b7c4de8e7a47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb675534_1e8560fe",
         "filename": "init/init.cpp",
         "patchSetId": 3
@@ -288,6 +330,23 @@
       "writtenOn": "2017-03-01T00:31:24Z",
       "side": 1,
       "message": "Then do the split policy loading here:\nselinux_load_split_policy()",
+      "revId": "b466400483c0de4cff63bd478dd7b7c4de8e7a47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "362587ec_61f2c7aa",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-03-01T18:31:39Z",
+      "side": 1,
+      "message": "Why no longer security_failure() ?",
       "revId": "b466400483c0de4cff63bd478dd7b7c4de8e7a47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
