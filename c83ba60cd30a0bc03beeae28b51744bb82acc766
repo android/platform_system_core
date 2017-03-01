@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "0bea7da4_bdb50aa6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-03-01T18:23:15Z",
+      "side": 1,
+      "message": "If this particular time isn\u0027t useful, then I\u0027d prefer to accept this patch as-is.\n\nThe corresponding SELinux change for this change is https://android-review.googlesource.com/346304 . That change conceptually reverts a slightly earlier change (https://android-review.googlesource.com/345264) which exposed ro.boottime.* properties more widely than we\u0027re comfortable with.\n\nAfter https://android-review.googlesource.com/346304, we\u0027ll be back to where we were at before with the ro.boottime.* properties. Specifically, they are only readable to the following processes: init, bootstat, and system_server.\n\n  sesearch --allow -t boottime_prop -p read $OUT/root/sepolicy\n\nto see readability of this property group.",
+      "parentUuid": "26f41e31_601e1c18",
+      "revId": "c83ba60cd30a0bc03beeae28b51744bb82acc766",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c548e77_be22f2bc",
         "filename": "init/property_service.cpp",
         "patchSetId": 1
