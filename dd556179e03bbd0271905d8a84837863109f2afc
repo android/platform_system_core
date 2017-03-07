@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8c6356c7_5a20d9c1",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1622,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-03-07T21:58:50Z",
+      "side": 1,
+      "message": "This fragment is short and sweet, and makes assumptions based on all the code it passes through to get here. The more generic one is placed into the destroy function.",
+      "range": {
+        "startLine": 1619,
+        "startChar": 0,
+        "endLine": 1622,
+        "endChar": 5
+      },
+      "revId": "dd556179e03bbd0271905d8a84837863109f2afc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d50eae9_588241e0",
         "filename": "logcat/logcat.cpp",
         "patchSetId": 1
@@ -13,6 +36,30 @@
       "writtenOn": "2017-03-07T19:43:15Z",
       "side": 1,
       "message": "I\u0027m assuming these context functions are not meant to be called concurrently, but just in case.",
+      "range": {
+        "startLine": 1801,
+        "startChar": 51,
+        "endLine": 1801,
+        "endChar": 76
+      },
+      "revId": "dd556179e03bbd0271905d8a84837863109f2afc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98580be2_3999957b",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1801,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-03-07T21:58:50Z",
+      "side": 1,
+      "message": "Yes, just in case. But so you know what I am thinking:\n\nCurrently supported MO is only alloc,command,destroy and in all likelihood this code fragment will skip on through; unless one of the panic exits happen. I could probably have performed the cleanup in that panic path as well, but it complicates some prototypes I am working on.\n\nI expect you recognized that this code is paranoid, as it tries to cleanup the possible garbage and ensure only one call to android_logger_list_free is done.\n\nHowever, in the future, I would like to support alloc,command,command,command,destroy, but that is untested, unprototyped(sic), and undesigned. The result of this form will be made happy by this style of cleanup, but I have invested nothing yet in trying to twist the existing logcat that far yet.\n\nI would like to support a split API of:\nalloc,prep ... \u003csignal\u003e command and \u003cexit\u003e destroy. This is the specific issue resolved by this cleanup should the signal never happen. The prep code does all the allocations so none has to be done during the command phase ... I am testing that this can be done.",
+      "parentUuid": "0d50eae9_588241e0",
       "range": {
         "startLine": 1801,
         "startChar": 51,
