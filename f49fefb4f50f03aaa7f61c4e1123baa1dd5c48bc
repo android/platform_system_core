@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "152d4fc6_e6a9d71d",
+        "filename": "debuggerd/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-03-09T05:47:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6def0f0a_cd19b0a8",
+      "range": {
+        "startLine": 11,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 61
+      },
+      "revId": "f49fefb4f50f03aaa7f61c4e1123baa1dd5c48bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "027c8b2d_bcd64e3f",
         "filename": "debuggerd/handler/debuggerd_handler.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-09T00:47:38Z",
       "side": 1,
       "message": "Doesn\u0027t this potentially unlock crash_mutex? But at this point you are not holding the crash_mutex lock.\n\nIn fact, I think it would be better if you explicitly locked and unlocked crash mutex in this function rather than relying on resend_signal. It\u0027s hard to tell from looking at the code whether you have lock/unlock unbalanced since the lock occurs here, but the unlock occurs in another function.",
+      "range": {
+        "startLine": 366,
+        "startChar": 4,
+        "endLine": 366,
+        "endChar": 17
+      },
+      "revId": "f49fefb4f50f03aaa7f61c4e1123baa1dd5c48bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "380eaa27_86540f6b",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-03-09T05:47:51Z",
+      "side": 1,
+      "message": "You\u0027re right. I moved the pthread_mutex_unlock out to the only other invocation of resend_signal.",
+      "parentUuid": "027c8b2d_bcd64e3f",
       "range": {
         "startLine": 366,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6c5af2d1_adfed1b5",
+        "filename": "debuggerd/libdebuggerd/backtrace.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-03-09T05:47:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3634d352_45a1d5a4",
+      "range": {
+        "startLine": 70,
+        "startChar": 13,
+        "endLine": 70,
+        "endChar": 28
+      },
+      "revId": "f49fefb4f50f03aaa7f61c4e1123baa1dd5c48bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1dc57209_d964b2e4",
         "filename": "debuggerd/libdebuggerd/backtrace.cpp",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "a978ff41_a293d1d9",
+        "filename": "debuggerd/libdebuggerd/backtrace.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-03-09T05:47:51Z",
+      "side": 1,
+      "message": "I expect it to be called multiple times, but this will only be used for two processes. Sharing the backtrace map across threads seems nontrivial, I\u0027m pretty sure it\u0027d need memory fences to be correct?",
+      "parentUuid": "1dc57209_d964b2e4",
+      "range": {
+        "startLine": 125,
+        "startChar": 5,
+        "endLine": 125,
+        "endChar": 28
+      },
+      "revId": "f49fefb4f50f03aaa7f61c4e1123baa1dd5c48bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca72466a_f10dcb9b",
         "filename": "debuggerd/tombstoned_client.cpp",
         "patchSetId": 3
@@ -105,6 +201,30 @@
       "writtenOn": "2017-03-09T00:47:38Z",
       "side": 1,
       "message": "Would this be better as WriteFully?",
+      "range": {
+        "startLine": 45,
+        "startChar": 25,
+        "endLine": 45,
+        "endChar": 30
+      },
+      "revId": "f49fefb4f50f03aaa7f61c4e1123baa1dd5c48bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10bcbaaf_d39cc5d8",
+        "filename": "debuggerd/tombstoned_client.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-03-09T05:47:51Z",
+      "side": 1,
+      "message": "No, it\u0027s a SOCK_SEQPACKET packet, so short writes can\u0027t happen.",
+      "parentUuid": "ca72466a_f10dcb9b",
       "range": {
         "startLine": 45,
         "startChar": 25,
