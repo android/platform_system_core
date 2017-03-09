@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6def0f0a_cd19b0a8",
+        "filename": "debuggerd/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-03-09T00:47:38Z",
+      "side": 1,
+      "message": "Since this code relies on this always being true, should there be a comment in the logging headers that this is async signal safe?",
+      "range": {
+        "startLine": 11,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 61
+      },
+      "revId": "f49fefb4f50f03aaa7f61c4e1123baa1dd5c48bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "027c8b2d_bcd64e3f",
+        "filename": "debuggerd/handler/debuggerd_handler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-03-09T00:47:38Z",
+      "side": 1,
+      "message": "Doesn\u0027t this potentially unlock crash_mutex? But at this point you are not holding the crash_mutex lock.\n\nIn fact, I think it would be better if you explicitly locked and unlocked crash mutex in this function rather than relying on resend_signal. It\u0027s hard to tell from looking at the code whether you have lock/unlock unbalanced since the lock occurs here, but the unlock occurs in another function.",
+      "range": {
+        "startLine": 366,
+        "startChar": 4,
+        "endLine": 366,
+        "endChar": 17
+      },
+      "revId": "f49fefb4f50f03aaa7f61c4e1123baa1dd5c48bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3634d352_45a1d5a4",
+        "filename": "debuggerd/libdebuggerd/backtrace.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-03-09T00:47:38Z",
+      "side": 1,
+      "message": "Is there a reason this isn\u0027t directly included in log_thread_name? This function is only called once from and log_thread_name is a really small function. In addition, this function only has a single early out point, so you could just use threadname directly.",
+      "range": {
+        "startLine": 70,
+        "startChar": 13,
+        "endLine": 70,
+        "endChar": 28
+      },
+      "revId": "f49fefb4f50f03aaa7f61c4e1123baa1dd5c48bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1dc57209_d964b2e4",
+        "filename": "debuggerd/libdebuggerd/backtrace.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-03-09T00:47:38Z",
+      "side": 1,
+      "message": "It\u0027s not clear, but do you only anticipate that Backtrace::Create will be called once with this function? Otherwise, we did an optimization to pass in the map so that it isn\u0027t created multiple times for the same process. The call below to Create would create a map.\n\nThis is fine if you only ever call this once, and don\u0027t expect to create any other Backtrace objects for the same pid.",
+      "range": {
+        "startLine": 125,
+        "startChar": 5,
+        "endLine": 125,
+        "endChar": 28
+      },
+      "revId": "f49fefb4f50f03aaa7f61c4e1123baa1dd5c48bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca72466a_f10dcb9b",
+        "filename": "debuggerd/tombstoned_client.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-03-09T00:47:38Z",
+      "side": 1,
+      "message": "Would this be better as WriteFully?",
+      "range": {
+        "startLine": 45,
+        "startChar": 25,
+        "endLine": 45,
+        "endChar": 30
+      },
+      "revId": "f49fefb4f50f03aaa7f61c4e1123baa1dd5c48bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
