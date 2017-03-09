@@ -16,6 +16,24 @@
       "revId": "fb72770d13a74cc654a8332e716629448f2c9425",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd443714_5548c312",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-03-09T13:25:52Z",
+      "side": 1,
+      "message": "OK, will move to /{odm,vendor}/etc/\n\nI don\u0027t think using const string\u0026 matters, because both call the constructor.\n - const std::string\u0026 \u003d \"/odm/fstab.\" v.s.\n - std::string \u003d \"/odm/fstab.\"\n\nLet\u0027s change prefix to const char* so it uses:\n  operator+ (const char* lhs, const string\u0026 rhs);\n\nfor prefix + hw. (might have some optimization?)",
+      "parentUuid": "8cf1dcc0_23ad9011",
+      "revId": "fb72770d13a74cc654a8332e716629448f2c9425",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
