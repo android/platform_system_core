@@ -75,6 +75,24 @@
       "revId": "ea2b0d19553048d9003142301d4c874375934195",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1226542_1601c729",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-03-10T06:59:57Z",
+      "side": 1,
+      "message": "This function tries to mount one of the consecutive entries with the same mount_point, and skip mounting if a previous attempt is success.\n/dev/block/..../device-1  /same_mount  ...\n/dev/block/..../device-2  /same_mount  ...\n/dev/block/..../device-3  /same_mount  ...\n\nThe \u0027mount_error\u0027 only matters when *all* mounts (with the same mount_point) fails because mount_error will be backup at line 580. And this function claims it will set errno to the 1st mount failure. In this case, it will be start_idx. \n\nMaybe change it to the following will be more readable?\n  /* back up the first errno for crypto decisions */\n  if (mount_errno \u003d\u003d 0) {\n    mount_errno \u003d errno;\n  }\n\nps: we might need to re-write the whole logic in the long term, to make it less confusing.",
+      "parentUuid": "7c9f17d4_522bbbd0",
+      "revId": "ea2b0d19553048d9003142301d4c874375934195",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
