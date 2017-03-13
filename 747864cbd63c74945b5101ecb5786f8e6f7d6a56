@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "4a5ef038_37522729",
+        "filename": "logd/LogReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-03-13T16:08:15Z",
+      "side": 1,
+      "message": "I struggled with this until I looked at all the old bugs filed against tail and --wrap.\n\nAdmittedly fractured reasoning (we will refine this in a deeper dive and make sure we continue to comply with the API, perhaps simplifying, but can not eliminate). IMHO \nWe still need this lambda, but I will give it a college try.\n\nThere is a subtlety in this, and agreed it is a heavy cost. If there are no candidate times found in the entire list (_before_ or _after_ I might add) for the incoming time specified, and we are non-blocking, we have to close the socket. Dumping the entire contents on a non-existent _old_ time not present in the logs was requested before --wrap was invented for polling activities. In addition, on blocking reads if we did not find a candidate, and no last entry, we have to resort to using the current time to comply with the --wrap timeout API.\n\nI tried to simplify this, but there does remain a few things I can do, since now I am only really concerned regarding the time range represented by the associated logs (which are not end() or begin() though :-( so an iteration is still required). We are abstracted from list migration via the flushTo interface that manages all reader/writer locking complexity, so the lambda remains. However, and to your point, we only need flushTo to take us to an entry if the time requested is older than the current time (admittedly not gated) and can stop immediately if that first entry is found (older, equal, or newer) to establish the oldest entry to wake up on (otherwise we wake up immediately on the errant time, another bug we closed). In that case, we can merrily exit. We can not skip flushTo and this Lambda if time is after the current time, and we are blocking, as we have to discover the last entry that matches so as to use it as the line to wakeup on --wrap to guarantee the comfort of overlap.",
+      "parentUuid": "89e5d382_69b93d75",
+      "range": {
+        "startLine": 123,
+        "startChar": 8,
+        "endLine": 123,
+        "endChar": 28
+      },
+      "revId": "747864cbd63c74945b5101ecb5786f8e6f7d6a56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d92b89f2_4183de29",
         "filename": "logd/LogReader.cpp",
         "patchSetId": 1
