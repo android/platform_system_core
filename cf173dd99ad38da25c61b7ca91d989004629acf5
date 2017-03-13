@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9b063d48_32a91bcd",
+        "filename": "logd/LogReader.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-03-13T18:53:26Z",
+      "side": 1,
+      "message": "This is all about triggering memory cells from four years of development.\n\nI misstated this ...\n\nOn non-blocking reads if time is older than anything and nothing that matches the criteria is discovered, we return immediately and close the socket.\n\nThe issue is that if we let it through without validation, the pass in the Command Handler will block until an entry shows up (that may have been true, I need to recheck this, this code dates back to Lollipop). Yet, we are supposed to be non-blocking. If memory serves (and I will have to dive into that code) I had fixed this blocking issue and may have not removed this mitigation.",
+      "parentUuid": "5bc28124_e52d61bb",
+      "range": {
+        "startLine": 128,
+        "startChar": 43,
+        "endLine": 128,
+        "endChar": 48
+      },
+      "revId": "cf173dd99ad38da25c61b7ca91d989004629acf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "854cd9e3_7c99ba05",
         "filename": "logd/LogReader.cpp",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-13T18:18:38Z",
       "side": 1,
       "message": "I think we will end up in doSocketDelete(cli) on line 202 in this case actually since found() will be false.",
+      "range": {
+        "startLine": 130,
+        "startChar": 10,
+        "endLine": 131,
+        "endChar": 75
+      },
+      "revId": "cf173dd99ad38da25c61b7ca91d989004629acf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5fba21c_a7114365",
+        "filename": "logd/LogReader.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-03-13T18:53:26Z",
+      "side": 1,
+      "message": "You are correct. The expected API is what I was writing down. Not sure if this expectation makes sense.",
+      "parentUuid": "854cd9e3_7c99ba05",
       "range": {
         "startLine": 130,
         "startChar": 10,
