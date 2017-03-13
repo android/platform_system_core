@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80e39723_3b846e51",
+        "filename": "logd/LogReader.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-03-13T17:39:42Z",
+      "side": 1,
+      "message": "NB: Do not move this logic into FlushCommand, we are tempted to use its two-pass logic for -t/-T # (count) rather than doing a pre-pass here and punting to the single-pass logic. The advantage as-is we hold the reader lock here, then release it, whereas tail count holds the reader lock for both passes in FlushCommand to enforce tail count accurately, so there may be a small latency performance advantage splitting it here.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 5
+      },
+      "revId": "cf173dd99ad38da25c61b7ca91d989004629acf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
