@@ -225,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "9c4cc890_a22dadca",
+        "filename": "libstorageinfo/storageinfo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-03-15T21:42:06Z",
+      "side": 1,
+      "message": "Hmm.  That\u0027s unfortunate.  Looks like make_unique\u003c\u003e doesn\u0027t play along nicely with private constructors.  Given that caveat, I don\u0027t have any other suggestions - this is good as it is currently.",
+      "parentUuid": "3258cc7b_87830496",
+      "range": {
+        "startLine": 223,
+        "startChar": 16,
+        "endLine": 223,
+        "endChar": 64
+      },
+      "revId": "c5dbf2e63c84cd530792abd63632cc974db4ed5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c11fc44f_cf21762b",
         "filename": "libstorageinfo/storageinfo.cpp",
         "patchSetId": 7
@@ -259,6 +283,30 @@
       "writtenOn": "2017-03-15T21:41:46Z",
       "side": 1,
       "message": "do we need to do that? info gets out of scope it will be destroyed or copy which should also reset it to nullptr, right?",
+      "parentUuid": "c11fc44f_cf21762b",
+      "range": {
+        "startLine": 224,
+        "startChar": 46,
+        "endLine": 224,
+        "endChar": 61
+      },
+      "revId": "c5dbf2e63c84cd530792abd63632cc974db4ed5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60b74811_4f10659b",
+        "filename": "libstorageinfo/storageinfo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-03-15T21:42:06Z",
+      "side": 1,
+      "message": "Why?  info is local, it should be destructed when we exit via `return nullptr`",
       "parentUuid": "c11fc44f_cf21762b",
       "range": {
         "startLine": 224,
