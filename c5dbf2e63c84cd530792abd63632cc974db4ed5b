@@ -413,6 +413,30 @@
       "revId": "c5dbf2e63c84cd530792abd63632cc974db4ed5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f320d8c9_a625a848",
+        "filename": "libstorageinfo/storageinfo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1138338
+      },
+      "writtenOn": "2017-03-15T22:40:34Z",
+      "side": 1,
+      "message": "I also prefer to return nullptr immediately after an error. Also other functions are not following the single \"return policy\" which I agree sometimes is useful for breaks (and some times not because of compiler optimizations anyway). However this one is an easy to fix keeping everyone happy :)\n\n\nreturn Parser().ParseXml(info.get(), fname) ? info : nullptr;\n\nI think nobody has a problem with that :)",
+      "parentUuid": "d4b24833_ff7e653f",
+      "range": {
+        "startLine": 224,
+        "startChar": 46,
+        "endLine": 224,
+        "endChar": 61
+      },
+      "revId": "c5dbf2e63c84cd530792abd63632cc974db4ed5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
