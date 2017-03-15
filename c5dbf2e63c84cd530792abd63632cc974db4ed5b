@@ -461,6 +461,30 @@
       "revId": "c5dbf2e63c84cd530792abd63632cc974db4ed5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef5c9c78_154382f3",
+        "filename": "libstorageinfo/storageinfo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1138338
+      },
+      "writtenOn": "2017-03-15T22:52:01Z",
+      "side": 1,
+      "message": "Unfortunately, compiler does have a problem.\n\nsystem/core/libstorageinfo/storageinfo.cpp:224:51: error: call to implicitly-deleted copy constructor of \u0027std::__1::unique_ptr\u003cStorageInfo, std::__1::default_delete\u003cStorageInfo\u003e \u003e\u0027\n    return Parser().ParseXml(info.get(), fname) ? info : nullptr;\n\nseems it is doing a copy of the object (which is disabled). No sure if this is acceptable?\n\nreturn Parser().ParseXml(info.get(), fname) ? std::move(info) : nullptr;\n\nif not, I will keep the original one.",
+      "parentUuid": "025e13d4_14cbafdc",
+      "range": {
+        "startLine": 224,
+        "startChar": 46,
+        "endLine": 224,
+        "endChar": 61
+      },
+      "revId": "c5dbf2e63c84cd530792abd63632cc974db4ed5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
