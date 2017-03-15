@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6a1781b1_14052eaa",
+        "filename": "libstorageinfo/storageinfo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1138338
+      },
+      "writtenOn": "2017-03-15T21:25:59Z",
+      "side": 1,
+      "message": "thanks I will fix it",
+      "parentUuid": "cb14f6e0_3d099733",
+      "revId": "c5dbf2e63c84cd530792abd63632cc974db4ed5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "565c497d_2fbaa4bc",
         "filename": "libstorageinfo/storageinfo.cpp",
         "patchSetId": 7
@@ -30,6 +48,30 @@
       "writtenOn": "2017-03-15T18:24:30Z",
       "side": 1,
       "message": "const string\u0026 fname\n\nPlease use bool for return value when indicating if a function succeeded or not.",
+      "range": {
+        "startLine": 156,
+        "startChar": 40,
+        "endLine": 156,
+        "endChar": 52
+      },
+      "revId": "c5dbf2e63c84cd530792abd63632cc974db4ed5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de2e0ed7_e0ef8a29",
+        "filename": "libstorageinfo/storageinfo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1138338
+      },
+      "writtenOn": "2017-03-15T21:25:59Z",
+      "side": 1,
+      "message": "I will fix it",
+      "parentUuid": "565c497d_2fbaa4bc",
       "range": {
         "startLine": 156,
         "startChar": 40,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "146b316e_fa334370",
+        "filename": "libstorageinfo/storageinfo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1138338
+      },
+      "writtenOn": "2017-03-15T21:25:59Z",
+      "side": 1,
+      "message": "I will fix it",
+      "parentUuid": "bd2723b0_f579457f",
+      "range": {
+        "startLine": 203,
+        "startChar": 57,
+        "endLine": 203,
+        "endChar": 73
+      },
+      "revId": "c5dbf2e63c84cd530792abd63632cc974db4ed5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23917122_b342c253",
         "filename": "libstorageinfo/storageinfo.cpp",
         "patchSetId": 7
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "91346359_525fe3c4",
+        "filename": "libstorageinfo/storageinfo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1138338
+      },
+      "writtenOn": "2017-03-15T21:25:59Z",
+      "side": 1,
+      "message": "I will fix it",
+      "parentUuid": "23917122_b342c253",
+      "range": {
+        "startLine": 213,
+        "startChar": 67,
+        "endLine": 213,
+        "endChar": 83
+      },
+      "revId": "c5dbf2e63c84cd530792abd63632cc974db4ed5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c44b221_30b19b43",
         "filename": "libstorageinfo/storageinfo.cpp",
         "patchSetId": 7
@@ -99,6 +189,30 @@
       "writtenOn": "2017-03-15T18:24:30Z",
       "side": 1,
       "message": "std::make_unique\u003cStorageInfo\u003e();",
+      "range": {
+        "startLine": 223,
+        "startChar": 16,
+        "endLine": 223,
+        "endChar": 64
+      },
+      "revId": "c5dbf2e63c84cd530792abd63632cc974db4ed5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3258cc7b_87830496",
+        "filename": "libstorageinfo/storageinfo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1138338
+      },
+      "writtenOn": "2017-03-15T21:25:59Z",
+      "side": 1,
+      "message": "I changed it but I got this error:\n\nxternal/libcxx/include/memory:3011:32: error: calling a private constructor of class \u0027StorageInfo\u0027\n    return unique_ptr\u003c_Tp\u003e(new _Tp(_VSTD::forward\u003c_Args\u003e(__args)...));\n\nSince StorageInfo constructor is private. As suggested by go/totw/42 when doing a factory function in order to force the only use of the factory function. So, I will keep this part with unique_ptr unless you have another suggestion.",
+      "parentUuid": "8c44b221_30b19b43",
       "range": {
         "startLine": 223,
         "startChar": 16,
