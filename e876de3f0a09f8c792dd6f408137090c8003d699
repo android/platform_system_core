@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b0d66da7_084d455b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-03-16T20:03:13Z",
+      "side": 1,
+      "message": "Yes, via the following path:\n\nlogcat --wrap -t \"\u003ctimestamp\u003e\" -\u003e liblog.so::android_logger_list_alloc_time(ANDROID_LOG_RDONLY | ANDROID_LOB_NONBLOCK | ANDROID_LOG_WRAP, \u003ctimestamp\u003e,) -\u003e android_log_get_transport() \u003d\u003d LOGGER_LOGD -\u003e write(\"/dev/socket/logdr\", \"dumpAndClose start\u003dtimestamp timeout\u003d7200\", strlen()) -\u003e logd::LogListener() -\u003e logd::LogFlushCommand::runSocketCommand() with a socket-associated LogTimes::mTimeout set to 7200.000000000.\n\nThe protocol refers to the socket communications.\n\nI want but _one_ sentence to state that when someone issues logcat --wrap, that it means inside logd the mTimeout is non-zero and set to 7200 seconds (two hours).\n\nThe previous manifestation of this had cwren@ wondering what timeout had to do with --wrap. They are one and the same from a boolean perspective.",
+      "parentUuid": "d94bf1b7_e7e30012",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "e876de3f0a09f8c792dd6f408137090c8003d699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94d2ea76_c8959b5c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-16T19:34:10Z",
       "side": 1,
       "message": "Is it necessarily initiated by user, or does auto-time set via network for daylight savings time etc. cause this?",
+      "range": {
+        "startLine": 14,
+        "startChar": 56,
+        "endLine": 14,
+        "endChar": 70
+      },
+      "revId": "e876de3f0a09f8c792dd6f408137090c8003d699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13430285_99070c89",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-03-16T20:03:13Z",
+      "side": 1,
+      "message": "Only user initiated.\n\nDaylight savings time affects bionic library and localtime/ctime translations. clock_gettime(CLOCK_REALTIME) is UTC 1070 epoch time, does not move an inch.\n\nntp (wifi time) makes sure all time is monotonic by speeding up and slowing down as necessary until the time is synchronized.\n\nTime from LTE and rtc driver can serve disruptively, but if all is running normally the correction is small (and is dealt with in the \u00275 second\u0027 CL) and occurs early in boot and thus does not affect the main flowing of logs.",
+      "parentUuid": "94d2ea76_c8959b5c",
       "range": {
         "startLine": 14,
         "startChar": 56,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "6598e95c_3f16bc23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-03-16T20:03:13Z",
+      "side": 1,
+      "message": "unpresidented! ;-}\n\nI do not know how either word makes sense and how my fingers fumbled it.\n\nI say drop the word completely to make sense.",
+      "parentUuid": "f9f461b6_9a2aad5a",
+      "range": {
+        "startLine": 23,
+        "startChar": 24,
+        "endLine": 23,
+        "endChar": 32
+      },
+      "revId": "e876de3f0a09f8c792dd6f408137090c8003d699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8ed6e86_1aecd635",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "f89c7870_5cebb936",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-03-16T20:03:13Z",
+      "side": 1,
+      "message": "Fear/Uncertainty/Doubt",
+      "parentUuid": "b8ed6e86_1aecd635",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 3
+      },
+      "revId": "e876de3f0a09f8c792dd6f408137090c8003d699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14ec4561_f9af5d63",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -128,6 +224,30 @@
       "writtenOn": "2017-03-16T19:34:10Z",
       "side": 1,
       "message": "I\u0027m not sure what this means.",
+      "range": {
+        "startLine": 27,
+        "startChar": 30,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "e876de3f0a09f8c792dd6f408137090c8003d699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5132aadf_ce60d92b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-03-16T20:03:13Z",
+      "side": 1,
+      "message": "The signal is returning with the logs and the caller taking action immediately then restarting the logging batch operation.\n\nIf we did not return, then something would have to troll the logs looking for what may be a signal of a time-jump, but without access to the actual updated time, to figure out what happened. Exiting the timeout means non of this post-mortem analysis.",
+      "parentUuid": "14ec4561_f9af5d63",
       "range": {
         "startLine": 27,
         "startChar": 30,
