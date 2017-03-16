@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f2dfed2_a841a423",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1190,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2017-03-16T04:37:35Z",
+      "side": 1,
+      "message": "You need to create labels for these properties in selinux policy. The current \"qemu_prop\" label is too permissive.\n\n1. Create the type in property.te,\n2. assign the type to the property string in property_contexts\n3. Grant read_prop() only to logcat in the emulator\u0027s device specific policy.",
+      "range": {
+        "startLine": 1189,
+        "startChar": 0,
+        "endLine": 1190,
+        "endChar": 35
+      },
+      "revId": "c711389e5de75928a935d46e12f7c83f76669c67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
