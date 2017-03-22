@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75c02748_2f7d0ad9",
+        "filename": "init/util_test.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-03-22T18:32:55Z",
+      "side": 1,
+      "message": "It\u0027s better to namespace this and there is a helper in android-base/test_utils.h to do this (same with the world_writeable below):\n\n    TemporaryDir test_dir;\n    std::string path \u003d android::base::StringPrintf(\"%s/group_writeable\", test_dir.path);\n\nThis also removes the hardcoded /data/local/tmp, so this could run on the host in the future.",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 17
+      },
+      "revId": "21b798b372592e8da9d5393a1ab4313a1789ab22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
