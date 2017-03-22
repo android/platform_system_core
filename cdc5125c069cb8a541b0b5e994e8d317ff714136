@@ -37,6 +37,29 @@
     },
     {
       "key": {
+        "uuid": "83729635_ff4e4495",
+        "filename": "libbacktrace/Backtrace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-03-22T22:05:55Z",
+      "side": 1,
+      "message": "How does PROT_DEVICE_MAP get set? It looks like BacktraceMap.cpp parses the \"rwxp\" in /proc/\u003cpid\u003e/maps and will only ever set PROT_READ/WRITE/EXEC?\n\n(I was originally going to ask whether this was relying on these architecture specific values, but I couldn\u0027t actually find where they were escaping the kernel: https://github.com/torvalds/linux/blob/master/arch/arm/include/asm/pgtable.h#L92)",
+      "range": {
+        "startLine": 62,
+        "startChar": 26,
+        "endLine": 62,
+        "endChar": 36
+      },
+      "revId": "cdc5125c069cb8a541b0b5e994e8d317ff714136",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c915ca0_e4ab8028",
         "filename": "libbacktrace/backtrace_test.cpp",
         "patchSetId": 2
