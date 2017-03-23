@@ -16,6 +16,24 @@
       "revId": "688bf9bd9eabe3c3eca2f9a5c8eff699cb4585a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "776c2163_11add8e5",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2017-03-23T19:12:54Z",
+      "side": 1,
+      "message": "I acknowledge that it would be desirable to start the HALs as early as possible. But for now and given that keymaster is the only early_hal it makes a  lot of sense to start this class right here, because we can be very sure that qseecom is up, and it is in time for vold and installkey.\nIf you feel that this can be solved more holistically, than I suggest we file a bug to track this issue and then also the blocking bug against qualcomm to sort out the qseecom dependency problem. But for now this CL is probably the least intrusive solution to fixing b/35764921 and I would appreciate it if we could move forward with this.\n\nIf  early_hal is too generic a name, how about class data_hal or class hal_data_dependencies indicating that these hals are dependencies for bringing up the data partition?",
+      "parentUuid": "cb9f0d02_b529ef4e",
+      "revId": "688bf9bd9eabe3c3eca2f9a5c8eff699cb4585a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
