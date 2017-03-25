@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c70c3f2_7bf766a0",
+        "filename": "base/include/android-base/properties.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-03-25T01:24:56Z",
+      "side": 1,
+      "message": "Might as well have it default to an infinite wait?",
+      "revId": "08a178b9e4526b8cb34cd102aefdea99086388d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7f54da1_84cb12c2",
+        "filename": "base/properties.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-03-25T01:24:56Z",
+      "side": 1,
+      "message": "Any other thoughts / options here?  The compiler doesn\u0027t allow converting nanoseconds::max() to milliseconds, but allows converting seconds::max() to milliseconds and the latter can overflow.\n\nUnless there\u0027s an option we can have to restrict this to specifically milliseconds?  We probably wouldn\u0027t want to do that though, as then passing \u00271s\u0027 wouldn\u0027t work...",
+      "revId": "08a178b9e4526b8cb34cd102aefdea99086388d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
