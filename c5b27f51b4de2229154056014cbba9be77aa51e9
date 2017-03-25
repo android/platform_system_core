@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b28de0f1_bef5e0a3",
+        "filename": "base/include/android-base/properties.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-03-25T03:06:12Z",
+      "side": 1,
+      "message": "Substantially overkill?  Effectively a safe duration_cast\u003c\u003e with the idea to cast to long double from condition_variable::wait_for()\n\nCould probably do the duration_cast math with __builtin_mul_overflow() alternatively.\n\nOr just accept that some values may not work?",
+      "revId": "c5b27f51b4de2229154056014cbba9be77aa51e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
