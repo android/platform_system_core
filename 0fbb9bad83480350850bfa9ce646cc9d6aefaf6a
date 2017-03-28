@@ -16,6 +16,24 @@
       "revId": "0fbb9bad83480350850bfa9ce646cc9d6aefaf6a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "422c9505_faa12e64",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-03-28T04:35:19Z",
+      "side": 1,
+      "message": "Hi,\nSorry, I should provide more details in advance.\n\nThe problem is that when there is no metadata (INVALID_METADATA), the expected \"androidboot.vbmeta.digest\" will be absent in kernel cmdline.\n\n\"androidboot.vbmeta.digest\" will only appear with the following return values when the device is unlocked.\nhttps://android-review.googlesource.com/#/c/304672/2/libavb/avb_slot_verify.c@56\n\nThe skip of verification should be ok as the device is already unlocked. We did similar things for legacy verified boot as well.\nhttps://b.corp.google.com/issues/35603549#comment16\nhttps://android-review.googlesource.com/#/c/348902/\nhttps://android-review.googlesource.com/#/c/348309/\n\nHope that clarifies.\nDavid, feel free to set me straight if this is incorrect.",
+      "parentUuid": "b6351f1c_6069665b",
+      "revId": "0fbb9bad83480350850bfa9ce646cc9d6aefaf6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
