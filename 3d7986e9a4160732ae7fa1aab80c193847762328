@@ -22,6 +22,30 @@
       "revId": "3d7986e9a4160732ae7fa1aab80c193847762328",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2af9d3d_42386c52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-03-28T17:04:11Z",
+      "side": 1,
+      "message": "The pid to be killed was very recently read from the cgroup task list.  The time between reading from the file and sending the kill signal will be small.  For this to happen a previous attempt to kill the process must complete and a new process would have to immediately reuse that pid, all in that small window.  Adding a stat isn\u0027t going to change much, it will just move the race from between the read and the kill to between the stat and the kill.",
+      "parentUuid": "7c492e1c_a7314c9c",
+      "range": {
+        "startLine": 15,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 15
+      },
+      "revId": "3d7986e9a4160732ae7fa1aab80c193847762328",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
