@@ -16,6 +16,29 @@
       "revId": "cdae99c30d8ae34ab87ac8d66173282534f8b1e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b51c7064_a0d6b940",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1169,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-03-28T21:39:12Z",
+      "side": 1,
+      "message": "This is a pretty big difference between debuggable and non-debuggable devices. I\u0027m worried that this will lead to unxpected regressions on user builds.\n\nInstead, can we do the following:\n\n mknod(\"/dev/kmsg\", S_IFCHR | 0600, makedev(1, 11));\n if constexpr (WORLD_WRITABLE_KMSG) {\n   mknod(\"/dev/kmsg-debuggable\", S_IFCHR | 0622, makedev(1, 11));\n  }\n\neg, create two kmsg-like devices, /dev/kmsg and /dev/kmsg-debuggable, one with relaxed permissions.\n\nThis would keep the existing device node, and create a new device-node on debuggable builds only, which seems to address your concerns. This also allows us to create a separate SELinux label for this file, so we can distinguish the fake vs real /dev/kmsg file.\n\nThis also reduces the possibility of regressions on user vs userdebug builds.",
+      "range": {
+        "startLine": 1165,
+        "startChar": 0,
+        "endLine": 1169,
+        "endChar": 9
+      },
+      "revId": "cdae99c30d8ae34ab87ac8d66173282534f8b1e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
