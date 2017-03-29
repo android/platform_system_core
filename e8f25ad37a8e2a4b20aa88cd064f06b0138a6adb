@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "691824cc_2e8c19fa",
+        "filename": "adb/transport_usb.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-03-29T02:44:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08b5f623_f1d5d9fb",
+      "revId": "e8f25ad37a8e2a4b20aa88cd064f06b0138a6adb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76ed9d89_68f6af52",
         "filename": "adb/transport_usb.cpp",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2017-03-28T18:41:34Z",
       "side": 1,
       "message": "is this buffer necessary? we can just read 1024 bytes into char* data which is MAX_PAYLOAD long. \n\nwould we get the same effect maybe by just rounding reads up to the next 1024 boundary? We know MAX_PAYLOAD is a multiple of 1024.",
+      "revId": "e8f25ad37a8e2a4b20aa88cd064f06b0138a6adb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8fd10ae6_88567530",
+        "filename": "adb/transport_usb.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-03-29T02:44:50Z",
+      "side": 1,
+      "message": "I think you are mostly worried about the memcpy performance loss. Changed the code to use p-\u003edata if it has enough space. But still use buffer if p-\u003edata doesn\u0027t have enough space, which I think is unlikely to happen.",
+      "parentUuid": "76ed9d89_68f6af52",
       "revId": "e8f25ad37a8e2a4b20aa88cd064f06b0138a6adb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -154,6 +190,24 @@
       "side": 1,
       "message": "I submitted the clang format change, so after a sync, you should be able to rerun the formatter.",
       "parentUuid": "b5f10266_8ea0096e",
+      "revId": "e8f25ad37a8e2a4b20aa88cd064f06b0138a6adb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "190251bb_c62fad1b",
+        "filename": "adb/transport_usb.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-03-29T02:44:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b913d78_40775b5b",
       "revId": "e8f25ad37a8e2a4b20aa88cd064f06b0138a6adb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
