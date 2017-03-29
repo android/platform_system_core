@@ -176,6 +176,24 @@
       "revId": "8fd0f1c8d9726a66d562a769455cfb887cfd34dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac75fa5c_bb0f8c91",
+        "filename": "init/service.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-03-29T20:30:50Z",
+      "side": 1,
+      "message": "\u003e The original use of retry was to catch forks between finding the list of processes and sending the signals\n\nSeems like we should leave the retry as is with SIGTERM to catch these forked processes then?\n\nOr perhaps we could do a more elaborate check instead of retrying?  Store a list of pids that we\u0027ve killed before and if they and only they are still running then we know our signals have been caught and there is nothing else we can do, so return then?",
+      "parentUuid": "2a081e66_53c0befc",
+      "revId": "8fd0f1c8d9726a66d562a769455cfb887cfd34dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
