@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c27cd73_2f586e3f",
+        "filename": "init/service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-03-29T17:30:27Z",
+      "side": 1,
+      "message": "Given the two comments in the header file, maybe even just have the logic to not retry in here,\n\nif (signal \u003d\u003d SIGTERM) {\n  // No reason to send sigterm more than once, etc etc\n  killProcessGroupOnce(uid_, pid_, signal);\n} else {\n  killProcessGroup(uid_, pid_, signal);\n}\n\n?",
+      "revId": "8fd0f1c8d9726a66d562a769455cfb887cfd34dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f877a64f_db920c92",
+        "filename": "init/service.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-03-29T17:30:27Z",
+      "side": 1,
+      "message": "Would we ever want retry \u003d true here?  The commit message states that there\u0027s no point in sending SIGTERM twice, so we can drop this parameter and have this always false, right?\n\nReboot is the only user of this that sets it as false with this CL as is.",
+      "revId": "8fd0f1c8d9726a66d562a769455cfb887cfd34dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eed01c23_10be7bde",
+        "filename": "init/service.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-03-29T17:30:27Z",
+      "side": 1,
+      "message": "Similarly here, StopOrReset() sends SIGKILL, which we presumably do want to retry.  We don\u0027t have any callers setting this to false with this CL, so let\u0027s drop this change.",
+      "revId": "8fd0f1c8d9726a66d562a769455cfb887cfd34dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
