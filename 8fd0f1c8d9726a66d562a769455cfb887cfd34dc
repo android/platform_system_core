@@ -194,6 +194,24 @@
       "revId": "8fd0f1c8d9726a66d562a769455cfb887cfd34dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9caeff87_9878cd4a",
+        "filename": "init/service.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2017-03-29T20:49:52Z",
+      "side": 1,
+      "message": "I think no retry for SIGTERM is enough. Other part of init only need to do SIGKILL while only shutdown flow is giving SIGTERM first and then SIGKILL. For shutdown flow, there is no need to retry at all. Either add explicit call for once (or option like in this patch) or change SIGTERM to do once always. If we find use case to send SIGTERM in other usage, we can figure out the right way to handle it later. As we have only one concrete use case where try once is enough, building anything more complex can become useless.",
+      "parentUuid": "ac75fa5c_bb0f8c91",
+      "revId": "8fd0f1c8d9726a66d562a769455cfb887cfd34dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
