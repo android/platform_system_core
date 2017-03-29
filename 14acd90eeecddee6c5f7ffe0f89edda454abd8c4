@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1d6a9306_c072f272",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2017-03-29T09:57:13Z",
+      "side": 1,
+      "message": "Missed this one when I moved the other. Will move it.",
+      "parentUuid": "84af96c2_df53663d",
+      "range": {
+        "startLine": 370,
+        "startChar": 7,
+        "endLine": 371,
+        "endChar": 16
+      },
+      "revId": "14acd90eeecddee6c5f7ffe0f89edda454abd8c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49af0697_a805f97b",
         "filename": "tzdatacheck/tzdatacheck.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-29T09:24:36Z",
       "side": 1,
       "message": "this seems overly verbose why not make line 447 an \"else if\" and add another \"else\" at line 450 with the warning ?",
+      "range": {
+        "startLine": 440,
+        "startChar": 4,
+        "endLine": 444,
+        "endChar": 5
+      },
+      "revId": "14acd90eeecddee6c5f7ffe0f89edda454abd8c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97e815b9_33365dbc",
+        "filename": "tzdatacheck/tzdatacheck.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2017-03-29T09:57:13Z",
+      "side": 1,
+      "message": "Because it was an early escape for an error case and made sense to get it out the way.\n\nI do mix structured and early-return/jumpy code when I don\u0027t have choice, but I don\u0027t feel good about it because it increases cognitive load for the reader.\n\nHere I handle the error, get it out the way so the reader can forget about it. Then I\u0027m left with the two cases we actually care about, which I handle with a structured if / else.",
+      "parentUuid": "49af0697_a805f97b",
       "range": {
         "startLine": 440,
         "startChar": 4,
