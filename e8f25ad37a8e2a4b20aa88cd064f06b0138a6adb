@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "57400755_72b8dfbe",
+        "filename": "adb/transport_usb.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-03-30T18:10:09Z",
+      "side": 1,
+      "message": "I\u0027m more concerned that we\u0027re writing branches for conditions that don\u0027t occur. MAX_PAYLOAD is currently 262144 bytes which is much much bigger than MAX_USB_BULK_PACKET_SIZE. Perhaps you could static_assert(sizeof(amessage.data) \u003e MAX_USB_BULK_PACKET_SIZE) and then simplify the code accordingly.\n\nAlso does the rounded up read need to be separate from the others? If not you could get rid of the loop entirely and have the function be a single read with the size rounded up.",
+      "parentUuid": "8fd10ae6_88567530",
+      "revId": "e8f25ad37a8e2a4b20aa88cd064f06b0138a6adb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd0fddce_da90f317",
         "filename": "adb/transport_usb.cpp",
         "patchSetId": 5
