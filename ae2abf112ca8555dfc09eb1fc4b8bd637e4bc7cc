@@ -22,6 +22,30 @@
       "revId": "ae2abf112ca8555dfc09eb1fc4b8bd637e4bc7cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ccc3cada_3f856b9e",
+        "filename": "logd/LogBuffer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-03-31T21:15:06Z",
+      "side": 1,
+      "message": "I will disagree with explanation (and yes, I saw your +2 ;-} )\n\nOk, got it, mLastTid instead of lastTid. I missed that part before because I do not like [?], it must be LOG_ID_MAX in size (minimum ...), but C++ does not allow one to enforce a size when passing a pointer, only if it is a reference. But if it is a reference, it can not be nullptr ... So I added the comment with the indexed size so all would know!\n\nThe other problem here is that LogBuffer class has no knowledge of mLastTid member of LogTimes. So putting mLastTid is discriminatory. mLastTid member of LogTimes just so happens to be what I am passing _today_.\n\nI could (in the future) pass in a stack version of lastTid[LOG_ID_MAX] and it would still be OK. The idea is lastTid is an optional context, and where it resides, and what it is called, does not matter. I was contemplating doing as much so that I could pass in a reference, the _dummy_ one for the ones I pass in as nullptr. I reserve the right to do so on a whim to allow ASAN and other array limit checking to start working.\n\nSo, basically, we refer to it as lastTid _because_ that is the argument\u0027s chosen name. I will not do [?] because that removes why I originally commented about the argument.",
+      "parentUuid": "82c9907c_cffd7168",
+      "range": {
+        "startLine": 122,
+        "startChar": 41,
+        "endLine": 122,
+        "endChar": 49
+      },
+      "revId": "ae2abf112ca8555dfc09eb1fc4b8bd637e4bc7cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
