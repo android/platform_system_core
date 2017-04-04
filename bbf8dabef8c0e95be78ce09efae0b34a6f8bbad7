@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e0ffb6d4_5a6a35b2",
+        "filename": "libunwindstack/DwarfOp.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-04-04T19:36:43Z",
+      "side": 1,
+      "message": "Undefined behavior. Specifically:\n\n If the absolute value cannot be represented, the result is undefined.",
+      "parentUuid": "451551e3_72a161ae",
+      "revId": "bbf8dabef8c0e95be78ce09efae0b34a6f8bbad7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d62a746_7506e848",
         "filename": "libunwindstack/DwarfOp.cpp",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "92fe0819_848c1dc0",
+        "filename": "libunwindstack/DwarfOp.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-04-04T19:36:43Z",
+      "side": 1,
+      "message": "The dwarf spec is vague, the only description is:\n\nThe DW_OP_mod operation pops the top two stack values and pushes the result of the\ncalculation: former second stack entry modulo the former top of the stack.\n\nTherefore, I think it\u0027s fair to use the % operator. The libunwind code uses %, although I did notice a slight difference. In libunwind, if the first value is zero, it simply pops the two values and puts a zero on the stack. There is nothing in the spec that says what to do in these cases.",
+      "parentUuid": "0d62a746_7506e848",
+      "revId": "bbf8dabef8c0e95be78ce09efae0b34a6f8bbad7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e0efe12_e6ed36ed",
         "filename": "libunwindstack/DwarfOp.cpp",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2017-04-04T18:27:56Z",
       "side": 1,
       "message": "?",
+      "revId": "bbf8dabef8c0e95be78ce09efae0b34a6f8bbad7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa92c469_56ddfcaf",
+        "filename": "libunwindstack/DwarfOp.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-04-04T19:36:43Z",
+      "side": 1,
+      "message": "Oops, removed.",
+      "parentUuid": "1e0efe12_e6ed36ed",
       "revId": "bbf8dabef8c0e95be78ce09efae0b34a6f8bbad7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "bbaa91a5_a2e49796",
+        "filename": "libunwindstack/DwarfOp.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-04-04T19:36:43Z",
+      "side": 1,
+      "message": "Yeah,, that makes it way more readable.\n\nI changed it slightly to bool_to_dwarf_bool.",
+      "parentUuid": "0186ba68_f1d15ae1",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 3
+      },
+      "revId": "bbf8dabef8c0e95be78ce09efae0b34a6f8bbad7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84e6023b_b2adf4de",
         "filename": "libunwindstack/DwarfOp.cpp",
         "patchSetId": 1
@@ -87,6 +165,24 @@
       "writtenOn": "2017-04-04T18:27:56Z",
       "side": 1,
       "message": "do we have an actual user? if not, should we just leave this unimplemented until then?",
+      "revId": "bbf8dabef8c0e95be78ce09efae0b34a6f8bbad7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71f2e74d_4d38be85",
+        "filename": "libunwindstack/DwarfOp.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-04-04T19:36:43Z",
+      "side": 1,
+      "message": "I saw these ops in some x86 unwind data. I don\u0027t think I\u0027ve ever seen them used, but since they actually show up, I wanted to at least print them out.",
+      "parentUuid": "84e6023b_b2adf4de",
       "revId": "bbf8dabef8c0e95be78ce09efae0b34a6f8bbad7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
