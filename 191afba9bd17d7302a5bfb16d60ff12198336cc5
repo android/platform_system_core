@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7b0689bb_428ffa0f",
+        "filename": "liblog/event_tag_map.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-04-05T20:32:41Z",
+      "side": 1,
+      "message": "I\u0027d prefer a comment over code in this case, the code would never do anything. A comment provides zero code change stress/risk, and adds a mindfulness when someone adjusts the code in a bad way.\n\nThis is _hot_ code on the platform, I do not want unnecessary cycles if I can prevent it.",
+      "parentUuid": "2293feca_b934bb3c",
+      "revId": "191afba9bd17d7302a5bfb16d60ff12198336cc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac13c0ff_7deda57c",
         "filename": "liblog/event_tag_map.cpp",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2017-04-05T20:19:13Z",
       "side": 1,
       "message": "Some of these could be -1 (if error at line 415 and which \u003e 0)?  Could skip if so.",
+      "range": {
+        "startLine": 477,
+        "startChar": 45,
+        "endLine": 477,
+        "endChar": 61
+      },
+      "revId": "191afba9bd17d7302a5bfb16d60ff12198336cc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf5fbd37_2378e101",
+        "filename": "liblog/event_tag_map.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-04-05T20:32:41Z",
+      "side": 1,
+      "message": "skip not necessary, close(-1) is safe. The only reason we set to -1 above is to prevent closing a file descriptor twice (another thread could have reused it).\n\nFailure is not hot code, so we are not concerned about wasted system calls and adding superfluous/purity checking here.\n\n(NUM_MAPS is 2, so it is not a big deal).",
+      "parentUuid": "ac13c0ff_7deda57c",
       "range": {
         "startLine": 477,
         "startChar": 45,
