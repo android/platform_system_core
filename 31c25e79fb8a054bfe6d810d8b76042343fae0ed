@@ -22,6 +22,30 @@
       "revId": "31c25e79fb8a054bfe6d810d8b76042343fae0ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d242635_a3a8d71e",
+        "filename": "libcutils/fs_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-04-05T20:57:59Z",
+      "side": 1,
+      "message": "I had it as ssize_t, had to cast it here and on line 248. I had it as size_t, then still had to add an (int) cast on line 248 which incurs a reduction in precision on 32-bit platforms. As an int it uses the most efficient register on the platform, and the (int) cast here will warn us if the const char string[] size exceeds the boundaries for an int (which it can never do ;-})\n\nI chose the lesser of all evils.",
+      "parentUuid": "bc7edf1d_8e5639f7",
+      "range": {
+        "startLine": 244,
+        "startChar": 36,
+        "endLine": 244,
+        "endChar": 41
+      },
+      "revId": "31c25e79fb8a054bfe6d810d8b76042343fae0ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
