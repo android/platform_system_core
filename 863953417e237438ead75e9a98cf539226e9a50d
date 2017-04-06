@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa138fcb_d5a55a24",
+        "filename": "debuggerd/libdebuggerd/utility.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-04-06T02:50:14Z",
+      "side": 1,
+      "message": "Why not just try unconditionally to write to /dev/kmsg_debug instead? If the file doesn\u0027t exist, not a big deal.\n\nSeems like lots of extra unnecessary complexity...",
+      "revId": "863953417e237438ead75e9a98cf539226e9a50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ef61bca_573ab434",
+        "filename": "debuggerd/libdebuggerd/utility.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-04-06T02:50:14Z",
+      "side": 1,
+      "message": "perhaps it would be better to take a look at the return value here. If this function returns an error, then do the write to /dev/kmsg_debug below.",
+      "revId": "863953417e237438ead75e9a98cf539226e9a50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06dbe605_cf4bbe8d",
+        "filename": "debuggerd/libdebuggerd/utility.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-04-06T02:50:14Z",
+      "side": 1,
+      "message": "O_CLOEXEC please",
+      "range": {
+        "startLine": 95,
+        "startChar": 48,
+        "endLine": 95,
+        "endChar": 67
+      },
+      "revId": "863953417e237438ead75e9a98cf539226e9a50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
