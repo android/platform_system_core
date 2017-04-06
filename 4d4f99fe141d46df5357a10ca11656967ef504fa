@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17dc3c06_35020275",
+        "filename": "debuggerd/client/debuggerd_client.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-04-06T14:32:01Z",
+      "side": 1,
+      "message": "static bool send_signal(pid_t pid, bool backtrace) {\n  sigval val;\n  val.sival_int \u003d backtrace;\n  if (sigqueue(pid, DEBUGGER_SIGNAL, val) !\u003d 0) {\n    PLOG(ERROR) \u003c\u003c \"libdebuggerd_client: failed to send signal to pid \" \u003c\u003c pid;\n    return false;\n  }\n  return true;\n}\n\nWhy are we adding log stutter?",
+      "range": {
+        "startLine": 144,
+        "startChar": 4,
+        "endLine": 144,
+        "endChar": 7
+      },
+      "revId": "4d4f99fe141d46df5357a10ca11656967ef504fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
