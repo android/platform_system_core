@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "90e8becb_caea594e",
+        "filename": "debuggerd/libdebuggerd/utility.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-04-06T03:08:46Z",
+      "side": 1,
+      "message": "That\u0027s what I wanted originally, but if we spend too much time logging (e.g. when running the crash dump tests, or if there\u0027s some native crash loop happening), a watchdog reboots the kernel.",
+      "parentUuid": "aa138fcb_d5a55a24",
+      "revId": "863953417e237438ead75e9a98cf539226e9a50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ef61bca_573ab434",
         "filename": "debuggerd/libdebuggerd/utility.cpp",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2017-04-06T02:50:14Z",
       "side": 1,
       "message": "perhaps it would be better to take a look at the return value here. If this function returns an error, then do the write to /dev/kmsg_debug below.",
+      "revId": "863953417e237438ead75e9a98cf539226e9a50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5587cfd8_3c2a8697",
+        "filename": "debuggerd/libdebuggerd/utility.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-04-06T03:08:46Z",
+      "side": 1,
+      "message": "We can be in situations where it\u0027s possible to successfully write to logd, but it\u0027s impossible to actually retrieve those logs. If vold crashes early enough (the thing that motivated this patch in the first place), logd can be up, but it can\u0027t save them anywhere and we don\u0027t have enough time to run `adb logcat`.",
+      "parentUuid": "8ef61bca_573ab434",
       "revId": "863953417e237438ead75e9a98cf539226e9a50d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
