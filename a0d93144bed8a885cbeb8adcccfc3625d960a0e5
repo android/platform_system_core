@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "357a7e73_6aea5212",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-07T06:15:46Z",
+      "side": 1,
+      "message": "Why?  Querying avb_handle should be sufficient.",
+      "revId": "a0d93144bed8a885cbeb8adcccfc3625d960a0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41301c12_e85b1749",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-07T06:15:46Z",
+      "side": 1,
+      "message": "Why?  We\u0027ve been pretty consistently not using nothrow and expecting these daemons to blow up if they can\u0027t get their memory.  I don\u0027t think there\u0027s any graceful recovery from here.",
+      "range": {
+        "startLine": 452,
+        "startChar": 12,
+        "endLine": 452,
+        "endChar": 26
+      },
+      "revId": "a0d93144bed8a885cbeb8adcccfc3625d960a0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "576a8a19_68564022",
+        "filename": "fs_mgr/fs_mgr_priv_avb.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-07T06:15:46Z",
+      "side": 1,
+      "message": "Thinking out loud a bit...\n\nI think we\u0027re over using unique_ptr with a custom deleter too much here.  It\u0027s required for wrapping the C pointers from libavb, but all new types created in fs_mgr should have destructors (or better they should have all of their members have destructors).  So for fs_mgr_avb_handle, I\u0027d rather have something like:\n\nstruct fs_mgr_avb_handle {\n  std::unique_ptr\u003cAvbSlotVerifyData, decltype(\u0026avb_slot_verify_data_free)\u003e avb_slot_verify_data;\n  std::unique_ptr\u003cAvbOps\u003e avb_ops;\n  AvbHandleStatus status;\n}\n\nThen we should get rid of fs_mgr_avb_close() and have fs_mgr_avb_open() return std::unique_ptr\u003cfs_mgr_avb_handle\u003e.  Better, it should be a factory method within fs_mgr_avb_handle, so std::unique_ptr\u003cfs_mgr_avb_handle\u003e fs_mgr_avb_handle::Open()\n\nWe should rework fs_mgr_avb_ops.cpp too.  Get rid of fs_mgr_dummy_avb_ops_free() and have fs_mgr_dummy_avb_ops_new() return a unique_ptr\u003cAvbOps\u003e directly.\n\nAlso, ideally, this would follow the google C++ naming style too, so FsManagerAvbHandle.",
+      "revId": "a0d93144bed8a885cbeb8adcccfc3625d960a0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
