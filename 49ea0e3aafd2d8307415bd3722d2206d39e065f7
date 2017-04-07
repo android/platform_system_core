@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6cc46a00_3252aadc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-07T18:21:02Z",
+      "side": 1,
+      "message": "Is the idea that the synchronous action of mounting R/O will ensure all pending writes have been committed and that the subsequent (but still asynchronous) umount() will have less reason to delay?  Sgtm, but it\u0027d be nice to have someone with more FS experience than I have to review this idea too.",
+      "revId": "49ea0e3aafd2d8307415bd3722d2206d39e065f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a83c985a_d62c8275",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-07T18:21:02Z",
+      "side": 1,
+      "message": "guarantee",
+      "range": {
+        "startLine": 10,
+        "startChar": 33,
+        "endLine": 10,
+        "endChar": 41
+      },
+      "revId": "49ea0e3aafd2d8307415bd3722d2206d39e065f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "007b23af_3794d91f",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-07T18:21:02Z",
+      "side": 1,
+      "message": "You should be able to put this as an initializer too, aka\n, writeable_(writable_ \u003d hasmntopt(\u0026entry, \"rw\")) {}",
+      "revId": "49ea0e3aafd2d8307415bd3722d2206d39e065f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cc4a219_c0f1c96b",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-07T18:21:02Z",
+      "side": 1,
+      "message": "LOG(INFO) \u003c\u003c \"mount entry \" \u003c\u003c mentry-\u003e mnt_fsname \u003c\u003c \":\" \u003c\u003c mentry-\u003emnt_dir \u003c\u003c ...\n\nHere and below.  I noticed a few other places where the StringPrintf() call can be removed too in this file, though not critical to change them; let\u0027s just not add new ones.",
+      "revId": "49ea0e3aafd2d8307415bd3722d2206d39e065f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1373cca5_13cc35bf",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-07T18:21:02Z",
+      "side": 1,
+      "message": "The body of this loop could be it\u0027s own function; likely a member function of MountEntry.  Same with FlushBlockDevice() and DoFsck().  You won\u0027t need so many accessor functions either, cause it looks like a lot of them are used by these functions that could be part of the MountEntry class.",
+      "revId": "49ea0e3aafd2d8307415bd3722d2206d39e065f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
