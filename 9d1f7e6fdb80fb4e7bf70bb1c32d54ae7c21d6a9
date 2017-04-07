@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f9ffe61_c58c96a9",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-07T06:17:03Z",
+      "side": 1,
+      "message": "This should be a member function of `struct avb_handle` once it\u0027s made into a class as I mentioned on a previous CL.",
+      "revId": "9d1f7e6fdb80fb4e7bf70bb1c32d54ae7c21d6a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d3f261b_00184fd5",
+        "filename": "fs_mgr/fs_mgr_avb_ops.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-07T06:17:03Z",
+      "side": 1,
+      "message": "There\u0027s only one caller of this function with the fstab parameter, right?  I\u0027d factor this out to the faller.  AvbOps shouldn\u0027t need to know that it needs to parse the fstab to get the right prefix.  \n\nThen everything can call through a single fs_mgr_dummy_avb_ops_new() function.\n\nBut even at that point, I\u0027d refactor this whole thing a bit.  \"static std::string fstab_by_name_prefix;\" strikes me as strange.  I know we don\u0027t need to deal with concurrency or anything, so this is safe, but having globals is unfortunate in any case, but I see AvbOps contains a \u0027user_data\u0027 pointer that could be used to repurpose this into a class nicely.",
+      "revId": "9d1f7e6fdb80fb4e7bf70bb1c32d54ae7c21d6a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
