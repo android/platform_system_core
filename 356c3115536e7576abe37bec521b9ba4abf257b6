@@ -68,6 +68,30 @@
       "revId": "356c3115536e7576abe37bec521b9ba4abf257b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1b821b8_c3726326",
+        "filename": "liblog/properties.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-04-07T18:19:29Z",
+      "side": 1,
+      "message": "last_tag_len can not be 0 because of !last_tag[0] check above, but last_tag_len could be 1, which would pass zero into strncmp which is acceptable but wasteful with regards to cache locality.\n\nIt is _very_ unlikely that it is a value of 1 though, so I am making the call that checking if it is 1 would cost us more than it would save. last_tag_len starts at zero and grows as required, never shrinks, so even if it was 1, it would even be less likely to be persistent. The +1 below always allows for the trailing nul too, which logically makes it even more impossible to be a value of 1 (1 would indicate a strlen(tag) reporting a value of 0, which would fail the !last_tag[0] test thus preventing us getting here too).",
+      "parentUuid": "ac2bcfeb_1f192fe5",
+      "range": {
+        "startLine": 152,
+        "startChar": 41,
+        "endLine": 152,
+        "endChar": 54
+      },
+      "revId": "356c3115536e7576abe37bec521b9ba4abf257b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
