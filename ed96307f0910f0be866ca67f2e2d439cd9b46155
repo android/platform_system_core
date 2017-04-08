@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc5fbdf1_123c87ce",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-08T00:38:26Z",
+      "side": 1,
+      "message": "If we want to get clever, this can be:\n\nreturn std::all_of(partitions-\u003ebegin(), partitions-\u003eend(), [remountFirst](auto\u0026 entry) { entry.Umount(remountFirst); });\n\nSince this would be one line, it could be even moved into the other UmountPartitions directly,\n\nif (emulated_devices.size() \u003e 0) {\n  if (std::all_of(partitions-\u003ebegin(), partitions-\u003eend(), [](auto\u0026 entry) { entry.Umount(false); }) {\n    sync();\n  }\n}\n\nfor (auto\u0026 entry : *block_devices) {\n  entry.Umount(true);\n}",
+      "revId": "ed96307f0910f0be866ca67f2e2d439cd9b46155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
