@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "c33ce13a_aba0c004",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-10T16:58:41Z",
+      "side": 1,
+      "message": "this seems a bit half way vectorized; some suggestions: dynamically peel for alignment or at the very least do cleanup loop at end if incoming arrays are typically aligned; use SIMD registers not \"chunk\", cleanup loop should be scalar to avoid \"reading too much\", SIMD register also can get rid of masking",
+      "revId": "3c54020f97335039e7f43a6638fb1c86c48bc0f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a98279e2_491eb71e",
         "filename": "libziparchive/zip_archive.cc",
         "patchSetId": 1
