@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "d9c5b66f_8c9f034e",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-11T02:35:40Z",
+      "side": 1,
+      "message": "Yup, after some thought I agree the optimization is needless. Thanks for checking this in detail!",
+      "parentUuid": "f22d2f22_e9950bb4",
+      "revId": "a0d93144bed8a885cbeb8adcccfc3625d960a0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41301c12_e85b1749",
         "filename": "fs_mgr/fs_mgr_avb.cpp",
         "patchSetId": 2
@@ -197,6 +215,24 @@
       "side": 1,
       "message": "The classes sound good to me the way you\u0027ve written then; I\u0027m sure I\u0027ll have more concrete comments once they\u0027re written. \n\nI think I wrote this on a different CL, but the FsManagerAvbOps should be helped by the user_data element of the AvbOps struct.  \n\nBasically what we want is a class with static methods that cast the AvbOps::user_data into a pointer of the class itself and dispatch to the class methods.  The FakeAvbOps in external/avb/test/fake_avb_ops.h does this (and more than we need actually).",
       "parentUuid": "7a83601a_25639eb2",
+      "revId": "a0d93144bed8a885cbeb8adcccfc3625d960a0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "533c7888_cc638c83",
+        "filename": "fs_mgr/fs_mgr_priv_avb.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-11T02:35:40Z",
+      "side": 1,
+      "message": "Yes, that\u0027s exactly my plan to AvbOps::user_data to hold *this for FsManagerAvbOps().\n  \nI actually considered this before when seeing FakeAvbOps(). But just thought it\u0027s a bit overkill given we just need to provide read_from_partition() here (others are dummy).\n  \nAnyway, let\u0027s do this in a C++-ish way so it\u0027s more extendable/readable for future enhancement.\n  \nThanks for reviewing this :)",
+      "parentUuid": "7c41d2e4_b040d918",
       "revId": "a0d93144bed8a885cbeb8adcccfc3625d960a0e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
