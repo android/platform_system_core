@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "35578325_e9ce41ba",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-04-11T01:46:54Z",
+      "side": 1,
+      "message": "you should only use std::nothrow if you\u0027re expecting to recover from a failure to allocate, typically because the size of your allocation depends on user input.\n\nso if you\u0027re asked to open a file, and the file header says the file contains 3 billion sections, and you try to allocate an array of sizeof(SectionHeader) * 3 billion, say, you might want to be able to gracefully say \"this file implausibly claims to have 3 billion sections\" and keep running. but if you\u0027re just allocating something fixed-size that you need in order to function, it\u0027s much easier to reason about if you just std::terminate because there\u0027s no catch handler for the exception that would otherwise be thrown. the failure to allocate \"can\u0027t happen\" anyway.",
+      "parentUuid": "e4844b95_558f51f7",
+      "range": {
+        "startLine": 452,
+        "startChar": 12,
+        "endLine": 452,
+        "endChar": 26
+      },
+      "revId": "a0d93144bed8a885cbeb8adcccfc3625d960a0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "576a8a19_68564022",
         "filename": "fs_mgr/fs_mgr_priv_avb.h",
         "patchSetId": 2
