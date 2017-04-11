@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4ef95d1b_1127dea9",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-11T01:04:39Z",
+      "side": 1,
+      "message": "Because fs_mgr_avb_open() at line 799 below will return nullptr when there is an error to load AVB metadata from /vbmeta.\n\nSee the a bunch of \"return nullptr\"s:\nhttps://android-review.googlesource.com/#/c/365440/2/fs_mgr/fs_mgr_avb.cpp@448\n\nBy querying avb_handle, we won\u0027t know whether a) it\u0027s NOT-INITIALIZED or b) Failed to load AVB metadata.\n\nAnyway, let me just return -1 here if fs_mgr_avb_open() returns nullptr. So it will be less confusing.",
+      "parentUuid": "357a7e73_6aea5212",
+      "revId": "a0d93144bed8a885cbeb8adcccfc3625d960a0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41301c12_e85b1749",
         "filename": "fs_mgr/fs_mgr_avb.cpp",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "e4844b95_558f51f7",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-11T01:04:39Z",
+      "side": 1,
+      "message": "I saw some source using this and thought it\u0027s because we don\u0027t use exception: https://google.github.io/styleguide/cppguide.html#Exceptions\n\nBut I agree using nothrow doesn\u0027t quite matter. Will change it. Thanks!",
+      "parentUuid": "41301c12_e85b1749",
+      "range": {
+        "startLine": 452,
+        "startChar": 12,
+        "endLine": 452,
+        "endChar": 26
+      },
+      "revId": "a0d93144bed8a885cbeb8adcccfc3625d960a0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "576a8a19_68564022",
         "filename": "fs_mgr/fs_mgr_priv_avb.h",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2017-04-07T06:15:46Z",
       "side": 1,
       "message": "Thinking out loud a bit...\n\nI think we\u0027re over using unique_ptr with a custom deleter too much here.  It\u0027s required for wrapping the C pointers from libavb, but all new types created in fs_mgr should have destructors (or better they should have all of their members have destructors).  So for fs_mgr_avb_handle, I\u0027d rather have something like:\n\nstruct fs_mgr_avb_handle {\n  std::unique_ptr\u003cAvbSlotVerifyData, decltype(\u0026avb_slot_verify_data_free)\u003e avb_slot_verify_data;\n  std::unique_ptr\u003cAvbOps\u003e avb_ops;\n  AvbHandleStatus status;\n}\n\nThen we should get rid of fs_mgr_avb_close() and have fs_mgr_avb_open() return std::unique_ptr\u003cfs_mgr_avb_handle\u003e.  Better, it should be a factory method within fs_mgr_avb_handle, so std::unique_ptr\u003cfs_mgr_avb_handle\u003e fs_mgr_avb_handle::Open()\n\nWe should rework fs_mgr_avb_ops.cpp too.  Get rid of fs_mgr_dummy_avb_ops_free() and have fs_mgr_dummy_avb_ops_new() return a unique_ptr\u003cAvbOps\u003e directly.\n\nAlso, ideally, this would follow the google C++ naming style too, so FsManagerAvbHandle.",
+      "revId": "a0d93144bed8a885cbeb8adcccfc3625d960a0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a83601a_25639eb2",
+        "filename": "fs_mgr/fs_mgr_priv_avb.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-11T01:04:39Z",
+      "side": 1,
+      "message": "Thanks for the good suggestions.\n\nBut I would rather not adding the unique_ptr\u003c\u003e inside fs_mgr_avb_handle.\nThe main reason is that avb_slot_verify_data is read-write: avb_slot_verify(..., \u0026avb_slot_verify_data), using a unique_ptr won\u0027t help simplify the code much.\n\nhttps://android.googlesource.com/platform/external/avb/+/master/libavb/avb_slot_verify.h#251\n\ne.g., we would need to have something like:\nAvbSlotVerifyData* slot_data \u003d nullptr.\navb_result \u003d avb_slot_verify(..., \u0026slot_data);\n\nif (avb_result \u003d\u003d ...)\n  FsManagerAvbHandle.avb_slot_verify_data.reset(slot_data);\n\n\nI would rather have the following and free them on the ~FsManagerAvbHandle() so it can work with \"default deleter\".\n\nclass FsManagerAvbOps;  // adding a class to hold device_file_by_name_prefix.\nclass FsManagerAvbHandle {\npublic:\n  std::unique_ptr\u003cFsManagerAvbHandle\u003e FsManagerAvbHandle::Open();\n  ~FsManagerAvbHandle() {\n      if (avb_slot_verify_data)\n         avb_slot_verify_data_free(avb_slot_verify_data);\n  }\nprivate:\n  AvbSlotVerifyData* avb_slot_verify_data;\n  FsManagerAvbOps avb_ops;\n  FsManagerAvbHandleStatus status;\n}\n\nPlease LMK if you have other concern.\nThanks!",
+      "parentUuid": "576a8a19_68564022",
       "revId": "a0d93144bed8a885cbeb8adcccfc3625d960a0e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
