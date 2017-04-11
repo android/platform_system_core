@@ -236,6 +236,24 @@
       "revId": "a0d93144bed8a885cbeb8adcccfc3625d960a0e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f16a74b_494ea964",
+        "filename": "fs_mgr/fs_mgr_priv_avb.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-11T16:51:58Z",
+      "side": 1,
+      "message": "Sgtm.  \n\n\u003e I actually considered this before when seeing FakeAvbOps(). But just thought it\u0027s a bit overkill given we just need to provide read_from_partition() here (others are dummy).\n\nFakeAvbOps is a bit overkill; we definitely don\u0027t need a dispatch_ member.  But since we do need to provide implementations for each of the functions in any case, it makes sense to have a set of virtual functions as they do with the default behavior a no-op and allow subclasses to override and provide strictly the functionality that is needed.\n\nIn general, and I think we both agree and are on this path, but I\u0027ll state it explicitly for posterity: we should make C++ bindings for libavb and only interact with libavb through those bindings.  We can see if it would make sense to include them as a header for libavb itself, but for now, let\u0027s make them for fs_mgr and use them here.",
+      "parentUuid": "533c7888_cc638c83",
+      "revId": "a0d93144bed8a885cbeb8adcccfc3625d960a0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
