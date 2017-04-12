@@ -140,6 +140,30 @@
       "revId": "6748f24d70fe0391ddc5df14cc45add5d7984a9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "125a091f_cd3e9504",
+        "filename": "libcutils/sched_policy.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2017-04-12T17:55:02Z",
+      "side": 1,
+      "message": "I have a hypothesis: maybe it is because, we don\u0027t verify this returning \"-1\"\nhttps://cs.corp.google.com/android/external/toybox/toys/posix/ps.c?type\u003dcs\u0026q\u003dget_sched_policy\u0026sq\u003dpackage:%5Eandroid$\u0026l\u003d541\nand \"bg\" is actually \"0\" per enum seq.\nI need to fine if where we allocate the buf and if it is default 0.",
+      "parentUuid": "3972d5ba_f5fa65b1",
+      "range": {
+        "startLine": 459,
+        "startChar": 0,
+        "endLine": 460,
+        "endChar": 30
+      },
+      "revId": "6748f24d70fe0391ddc5df14cc45add5d7984a9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
