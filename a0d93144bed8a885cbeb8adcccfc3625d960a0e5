@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "18cb9e2d_03753fcc",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-12T15:55:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9c5b66f_8c9f034e",
+      "revId": "a0d93144bed8a885cbeb8adcccfc3625d960a0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41301c12_e85b1749",
         "filename": "fs_mgr/fs_mgr_avb.cpp",
         "patchSetId": 2
@@ -168,6 +186,30 @@
     },
     {
       "key": {
+        "uuid": "24b45a11_4f7265b2",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-12T15:55:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b24c9d9_28a197ad",
+      "range": {
+        "startLine": 452,
+        "startChar": 12,
+        "endLine": 452,
+        "endChar": 26
+      },
+      "revId": "a0d93144bed8a885cbeb8adcccfc3625d960a0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "576a8a19_68564022",
         "filename": "fs_mgr/fs_mgr_priv_avb.h",
         "patchSetId": 2
@@ -251,6 +293,24 @@
       "side": 1,
       "message": "Sgtm.  \n\n\u003e I actually considered this before when seeing FakeAvbOps(). But just thought it\u0027s a bit overkill given we just need to provide read_from_partition() here (others are dummy).\n\nFakeAvbOps is a bit overkill; we definitely don\u0027t need a dispatch_ member.  But since we do need to provide implementations for each of the functions in any case, it makes sense to have a set of virtual functions as they do with the default behavior a no-op and allow subclasses to override and provide strictly the functionality that is needed.\n\nIn general, and I think we both agree and are on this path, but I\u0027ll state it explicitly for posterity: we should make C++ bindings for libavb and only interact with libavb through those bindings.  We can see if it would make sense to include them as a header for libavb itself, but for now, let\u0027s make them for fs_mgr and use them here.",
       "parentUuid": "533c7888_cc638c83",
+      "revId": "a0d93144bed8a885cbeb8adcccfc3625d960a0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68ea894b_fab44dee",
+        "filename": "fs_mgr/fs_mgr_priv_avb.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-12T15:55:02Z",
+      "side": 1,
+      "message": "Done.\nI guess you meant delegate_? (Agree that we don\u0027t need it :))\n\nAdding virtual functions seems overkill to me.\nPlease see FsManagerAvbOps() in PS-3, it provides the C++ binding for libavb-\u003eavb_slot_verify().\n\nAs David mentioned, the libavb is mainly for bootloader to perform verified boot. The major security checks are done there. In user-space, we actually just need to get the AVB metadata to extract dm-verity params for kernel. \n\nI don\u0027t think any user-space other than fs_mgr will need to use libavb() because \"verified boot\" should be done prior to device mounts/starts the userland.",
+      "parentUuid": "8f16a74b_494ea964",
       "revId": "a0d93144bed8a885cbeb8adcccfc3625d960a0e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
