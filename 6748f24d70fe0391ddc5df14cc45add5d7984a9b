@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d8e1832_c5d06aa6",
+        "filename": "libcutils/sched_policy.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-04-12T17:17:43Z",
+      "side": 1,
+      "message": "yeah, i can\u0027t reproduce this either, though the code does seem wrong...\n\nangler:/ # grep system-back /proc/*/cgroup | head                                                                \n/proc/342/cgroup:3:cpuset:/system-background\n/proc/343/cgroup:3:cpuset:/system-background\n/proc/349/cgroup:3:cpuset:/system-background\n/proc/352/cgroup:3:cpuset:/system-background\n/proc/393/cgroup:3:cpuset:/system-background\n/proc/394/cgroup:3:cpuset:/system-background\n/proc/395/cgroup:3:cpuset:/system-background\n/proc/3957/cgroup:3:cpuset:/system-background\n/proc/396/cgroup:3:cpuset:/system-background\n/proc/397/cgroup:3:cpuset:/system-background\nangler:/ # ps -O PCY 342 343 349 352 393 394 395 3957 396 397                                                    \nUSER           PID  PPID     VSZ    RSS WCHAN            ADDR S PCY NAME                       \nlogd           342     1   22008   5804 sigsuspend 7350d6f198 S  bg logd\nsystem         343     1   13772   3308 SyS_epoll+ 7f95c12fd0 S  bg hwservicemanager\nsystem         349     1   11164   1836 do_wait    73e0f03110 S  bg qseecomd\nsystem         352   349   17104   1168 sigsuspend 73e0f02198 S  bg qseecomd\nroot           393     1   19400   2348 do_sigtim+ 735d5ab1b0 S  bg pm-service\nnobody         394     1   17772   1868 poll_sche+ 75eba8e108 S  bg rmt_storage\nroot           395     1    9756   1876 poll_sche+ 7bb8dbc0f0 S  bg msm_irqbalance\nroot           396     1    8888   1660 SyS_epoll+ 7c0c144fd0 S  bg lmkd\nsystem         397     1   10236   2276 binder_th+ 7bd13360c0 S  bg servicemanager\nsystem        3957     1  244228  23484 SyS_epoll+ 70062d2fe8 S  bg surfaceflinger\nangler:/ #",
+      "parentUuid": "9b7ff580_f1edbc9e",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 32
+      },
+      "revId": "6748f24d70fe0391ddc5df14cc45add5d7984a9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "474f2256_43e58c81",
         "filename": "libcutils/sched_policy.cpp",
         "patchSetId": 1
