@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "12408fe3_f9a28016",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-13T00:08:14Z",
+      "side": 1,
+      "message": "\u003e Offhand, is svc-\u003eStop(); synchronous?\nNo, it just sends the kill; it doesn\u0027t wait for the child to exit.\n\n\u003e could we move ShutDownVold() to vold service itself in it\u0027s exit code?\nIt should be possible.  We\u0027d have to do the \u0027volume shutdown\u0027 operation in the SIGTERM handler.\n\n\u003e Then vold could be shutdown after_apps?\nIt seems like it, yes",
+      "parentUuid": "6be8bf51_796e281c",
+      "revId": "29587f948c672a269ff8c95dfc89ee8e84c4e90a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1d71bac_06b591b5",
         "filename": "init/reboot.cpp",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2017-04-12T23:58:48Z",
       "side": 1,
       "message": "could this move to the vold init.rc as a property trigger?\n\non property:sys.powerctl\u003d*\n  /system/bin/vdc volume shutdown\n\n\nI would imagine it\u0027s racy...",
+      "revId": "29587f948c672a269ff8c95dfc89ee8e84c4e90a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d66263a4_f62d8c53",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-13T00:08:14Z",
+      "side": 1,
+      "message": "I don\u0027t think so.  We want the vold shutdown to happen after we\u0027ve terminated all of the other services that may be trying to write to data.  If it\u0027s in the property trigger, it\u0027ll happen way too early.",
+      "parentUuid": "a1d71bac_06b591b5",
       "revId": "29587f948c672a269ff8c95dfc89ee8e84c4e90a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
