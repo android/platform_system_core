@@ -16,6 +16,24 @@
       "revId": "290c7f61a67f036feec3bc9dfd2a70855cb082c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bce6dadb_ef1b227f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1013433
+      },
+      "writtenOn": "2017-04-13T17:30:29Z",
+      "side": 1,
+      "message": "\u003e Oops my initial look was wrong, this is the delta between\n \u003e service-\u003eTerminate() vs service-\u003eStop() (SIGTERM vs SIGKILL).\n \u003e \n \u003e What we want is an option to kill after_apps, maybe something like:\n \u003e \n \u003e shutdown never\n \u003e shutdown after_apps start|nostart sigterm|sigkill\n\nWe don\u0027t really need the start|nostart semantic since after_apps are not explicitly started, and vold falls into this, but we need a chance to send vold a sigterm to handle shutdown...\n\n \u003e \n \u003e where after_apps the default is nostart and sigkill?",
+      "parentUuid": "c9096666_46ebfef2",
+      "revId": "290c7f61a67f036feec3bc9dfd2a70855cb082c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
