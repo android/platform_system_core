@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca156874_266d26ed",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-13T20:51:46Z",
+      "side": 1,
+      "message": "Was there ever an associated device_close() ?  We\u0027re probably leaking an fd, at least, without it.\n\nNot outrageously critical though, since I\u0027m working on refactoring devices.cpp and making a better interface.",
+      "revId": "f33c07c6cddda6b993e9065599e1d0cca90a1b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "266a382b_00407ae3",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-13T20:51:46Z",
+      "side": 1,
+      "message": "dm_device \u003d\u003d uevent-\u003edevice_name",
+      "range": {
+        "startLine": 982,
+        "startChar": 43,
+        "endLine": 982,
+        "endChar": 90
+      },
+      "revId": "f33c07c6cddda6b993e9065599e1d0cca90a1b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eed30f6c_4f53d4da",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-13T20:51:46Z",
+      "side": 1,
+      "message": "This code is the same as in the above function, right?  Could we factor it out into a new function and call it where we\u0027re currently setting need_create_dm_device \u003d true now?\n\nAlternatively, since the above if statement + the loading of avb_handle are the only differences, does it make sense to refactor this such that the loop + dm device creation + fs_mgr_do_mount_one() are common but call into a vboot1.0/vboot2.0 specific setup function?\n\nOr even is it time that these become classes?  device_file_by_name_prefix sounds like it should be a member variable anyway, as it\u0027s passed around a bit awkwardly and Vboot2.0 specific.  \n\nCould maybe have a base class with the common functionality then virtual functions for the Vboot1.0 vs Vboot 2.0 specifics?  early_mount() could pick one of the two to load depending on is_dt_vbmeta_compatible() and we can avoid subsequent calls to it.\n\nLastly, if we do go down this path, may be time to move this code into a early_mount.cpp as there\u0027s enough code that\u0027s independent from the rest of this file to call for it.",
+      "range": {
+        "startLine": 1022,
+        "startChar": 0,
+        "endLine": 1035,
+        "endChar": 9
+      },
+      "revId": "f33c07c6cddda6b993e9065599e1d0cca90a1b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77f41f04_51fc46a2",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-13T20:51:46Z",
+      "side": 1,
+      "message": "const auto\u0026",
+      "range": {
+        "startLine": 1150,
+        "startChar": 9,
+        "endLine": 1150,
+        "endChar": 13
+      },
+      "revId": "f33c07c6cddda6b993e9065599e1d0cca90a1b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
