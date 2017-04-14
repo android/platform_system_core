@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "67de817b_ff4527b7",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-14T00:27:34Z",
+      "side": 1,
+      "message": "If we use vboot_1_0_mount_partitions() directly, yes, the device_fd is leaking.\n\nBut since we only use it inside early_mount() function, it will call device_close() at line 1238 before leaving.",
+      "parentUuid": "ca156874_266d26ed",
+      "revId": "f33c07c6cddda6b993e9065599e1d0cca90a1b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "266a382b_00407ae3",
         "filename": "init/init.cpp",
         "patchSetId": 3
@@ -53,6 +71,30 @@
       "writtenOn": "2017-04-13T20:51:46Z",
       "side": 1,
       "message": "This code is the same as in the above function, right?  Could we factor it out into a new function and call it where we\u0027re currently setting need_create_dm_device \u003d true now?\n\nAlternatively, since the above if statement + the loading of avb_handle are the only differences, does it make sense to refactor this such that the loop + dm device creation + fs_mgr_do_mount_one() are common but call into a vboot1.0/vboot2.0 specific setup function?\n\nOr even is it time that these become classes?  device_file_by_name_prefix sounds like it should be a member variable anyway, as it\u0027s passed around a bit awkwardly and Vboot2.0 specific.  \n\nCould maybe have a base class with the common functionality then virtual functions for the Vboot1.0 vs Vboot 2.0 specifics?  early_mount() could pick one of the two to load depending on is_dt_vbmeta_compatible() and we can avoid subsequent calls to it.\n\nLastly, if we do go down this path, may be time to move this code into a early_mount.cpp as there\u0027s enough code that\u0027s independent from the rest of this file to call for it.",
+      "range": {
+        "startLine": 1022,
+        "startChar": 0,
+        "endLine": 1035,
+        "endChar": 9
+      },
+      "revId": "f33c07c6cddda6b993e9065599e1d0cca90a1b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3d89196_b0b0e0b7",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-14T00:27:34Z",
+      "side": 1,
+      "message": "OK, I\u0027ll move need_create_dm_device block into a function.\n\nI like your ideas about adding a class and having an early_mount.cpp. But I currently don\u0027t have enough bandwidth on it and some device team need to verify/test early mount on AVB. Let\u0027s fixing need_create_dm_device into a function first. Sounds good?\n\nI\u0027ll probably add the early_mount.cpp later next week.",
+      "parentUuid": "eed30f6c_4f53d4da",
       "range": {
         "startLine": 1022,
         "startChar": 0,
