@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a69f7a68_72124565",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-04-17T23:46:31Z",
+      "side": 1,
+      "message": "This change leave it the same:\n1. It doesn\u0027t affect writing packets.\n2. It doesnt\u0027 affect reading packets on device.\n2. When reading packets on host, if the data is a multiply of 1K, it is exactly the same. Otherwise, it uses a 1K buffer to read the last \u003c1K bytes.",
+      "parentUuid": "654839d3_53add570",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 34
+      },
+      "revId": "ab814a1fcc4f4f0a9d69be452bcb8aa225e68ce8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8228aeb_678934cd",
         "filename": "adb/adb_trace.cpp",
         "patchSetId": 8
@@ -36,6 +60,24 @@
       "writtenOn": "2017-04-16T16:09:48Z",
       "side": 1,
       "message": "wasn\u0027t this code explicitly meant for host use?",
+      "revId": "ab814a1fcc4f4f0a9d69be452bcb8aa225e68ce8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8fec77bd_47042605",
+        "filename": "adb/adb_trace.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-04-17T23:46:31Z",
+      "side": 1,
+      "message": "I guess this is mainly to ignore ANDROID_LOG_TAGS on device (because the comment mentioned logcat). I need to use ANDROID_LOG_TAGS on host, because the usb_libusb.cpp code explicitly uses LOG(DEBUG). I can\u0027t enable them except by setting ANDROID_LOG_TAGS.",
+      "parentUuid": "f8228aeb_678934cd",
       "revId": "ab814a1fcc4f4f0a9d69be452bcb8aa225e68ce8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -76,6 +118,47 @@
       "writtenOn": "2017-04-16T16:09:48Z",
       "side": 1,
       "message": "isn\u0027t this a bit weird that you\u0027ll return n if n !\u003d sizeof(*msg) without having copied any bytes into msg?",
+      "revId": "ab814a1fcc4f4f0a9d69be452bcb8aa225e68ce8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01db8447_20cefa73",
+        "filename": "adb/transport_usb.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-04-17T23:46:31Z",
+      "side": 1,
+      "message": "If n \u003c\u003e sizeof(*msg), there is no need to copy into *msg. I also tried moving L84 here, but it didn\u0027t look better. So I added some comment here.",
+      "parentUuid": "0e236a6f_87bf8722",
+      "revId": "ab814a1fcc4f4f0a9d69be452bcb8aa225e68ce8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d989646a_6cbe282a",
+        "filename": "adb/transport_usb.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-04-17T23:46:31Z",
+      "side": 1,
+      "message": "It has a risk of buffer overflow, fixed in patch 9.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 100
+      },
       "revId": "ab814a1fcc4f4f0a9d69be452bcb8aa225e68ce8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
