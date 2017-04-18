@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69b874c5_6e52a9e9",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-18T10:24:46Z",
+      "side": 1,
+      "message": "how about:\nint retry_count \u003d 5;\nwhile (retry_count-- \u003e 0) {\n   ...\n}\nso we don\u0027t need the \"if (retry \u003e 5) break;\" inside.",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 30
+      },
+      "revId": "52921a805b5e995b59f18d4ea0db3a5893c26fef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed5c4155_1c680570",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-18T10:24:46Z",
+      "side": 1,
+      "message": "It seems we can combine both result/umount_success.\nHow about:\n\nbool unmounted \u003d false;\nint retry_count \u003d 5;\nwhile (retry_count -- \u003e 0) {\n    unmounted \u003d umount(target) \u003d\u003d 0;\n    if (unmounted) {\n        LINFO ...\n        break;\n    }\n    PERROR \"..., remaining retry: \" \u003c\u003c retry_count;   // outputting retry_cout might be useful for debugging;\n    sleep(1);\n}\nif (!unmounted) {\n  // boot may fail ...\n  ....\n}",
+      "range": {
+        "startLine": 171,
+        "startChar": 20,
+        "endLine": 171,
+        "endChar": 48
+      },
+      "revId": "52921a805b5e995b59f18d4ea0db3a5893c26fef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d7c600a_fdc94a13",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-18T10:24:46Z",
+      "side": 1,
+      "message": "How adding an inline function for this:\ne.g.,\nstatic bool inline should_force_fsck(const int\u0026 fs_stat) {\n    return fs_stat \u0026 (  ....\n                      ....       );\n}",
+      "range": {
+        "startLine": 201,
+        "startChar": 43,
+        "endLine": 204,
+        "endChar": 92
+      },
+      "revId": "52921a805b5e995b59f18d4ea0db3a5893c26fef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a85cc92_1e8ab4db",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-18T10:24:46Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 584,
+        "startChar": 0,
+        "endLine": 586,
+        "endChar": 24
+      },
+      "revId": "52921a805b5e995b59f18d4ea0db3a5893c26fef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb362730_3d962108",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1097,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-18T10:24:46Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1095,
+        "startChar": 1,
+        "endLine": 1097,
+        "endChar": 20
+      },
+      "revId": "52921a805b5e995b59f18d4ea0db3a5893c26fef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
