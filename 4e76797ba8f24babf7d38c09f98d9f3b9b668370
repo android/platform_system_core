@@ -34,6 +34,47 @@
       "revId": "4e76797ba8f24babf7d38c09f98d9f3b9b668370",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "afbb9eeb_2d91fa8c",
+        "filename": "libsparse/sparse_read.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-04-18T15:32:51Z",
+      "side": 1,
+      "message": "i think this is one reason why same-line-or-brace is allowed. so you can write this as\n\n  std::string ErrorString(int err) {\n    if (err \u003d\u003d -EOVERFLOW) return \"...\";\n    if (err \u003d\u003d -EINVAL) return \"\"...\";\n    return StringPrintf...\n  }\n\n  verbose_error() {\n    std::string msg \u003d ErrorString(err);\n  }\n\nbecause why wouldn\u0027t you have the equivalent of strerror for your custom error codes?",
+      "parentUuid": "486b06c9_654a319d",
+      "revId": "4e76797ba8f24babf7d38c09f98d9f3b9b668370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "733da2ac_a99e3986",
+        "filename": "libsparse/sparse_read.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-04-18T15:32:51Z",
+      "side": 1,
+      "message": "longer term we\u0027ll move off malloc/free, but that\u0027s usually a bad idea in the initial change: just doing the minimum to switch is preferred. but you avoid adding a new C-style cast.\n\n(not sure why we\u0027re using malloc/free on a fixed-size global...)",
+      "range": {
+        "startLine": 259,
+        "startChar": 12,
+        "endLine": 259,
+        "endChar": 20
+      },
+      "revId": "4e76797ba8f24babf7d38c09f98d9f3b9b668370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
