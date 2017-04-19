@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a3a18d24_88ea3714",
+        "filename": "adb/client/usb_windows.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-04-19T21:56:41Z",
+      "side": 1,
+      "message": "I didn\u0027t change L428-437. It is the clang-format. changed to skip the auto format.",
+      "parentUuid": "b0f9bb75_d294872b",
+      "revId": "742da698a5dae02c78ad5db8e07aa20f523f1307",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3daf1a5c_215e2e03",
         "filename": "adb/transport.h",
         "patchSetId": 9
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "f3095108_46d6035d",
+        "filename": "adb/transport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-04-19T21:56:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3daf1a5c_215e2e03",
+      "revId": "742da698a5dae02c78ad5db8e07aa20f523f1307",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4007df9b_307271c8",
         "filename": "adb/transport_usb.cpp",
         "patchSetId": 9
@@ -47,6 +83,24 @@
       "writtenOn": "2017-04-19T19:39:11Z",
       "side": 1,
       "message": "just to be sure, the purpose of this is to make sure the last read size isn\u0027t smaller than 1024 bytes? Have you found that reading in a packet would ever go above the size of the p-\u003edata buffer?",
+      "revId": "742da698a5dae02c78ad5db8e07aa20f523f1307",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c329e3d0_78db4b4c",
+        "filename": "adb/transport_usb.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-04-19T21:56:41Z",
+      "side": 1,
+      "message": "comment is added. What I want to do in UsbReadMessage/UsbReadPayload is to use a buffer which size is a multiply of MAX_USB_BULK_PACKET_SIZE to read at each time. The actual read bytes can be less than the buffer size.\nThat is why I use the buffer[MAX_USB_BULK_PACKET_SIZE] for the  read when the need_size \u003c MAX_USB_BULK_PACKET_SIZE.\n\nIn a normal case, the reading in a packet can never go above the size of p-\u003edata buffer. But it can fill all the p-\u003edata buffer. What I worried is below situation:\nIf we have filled p-\u003edata buffer except for 512 bytes. Then next time, we will make a usb_read() with a buffer of 512 bytes. This is what I want to avoid, I want to use a buffer having a multiply of MAX_USB_BULK_PACKET_SIZE bytes. Probably when this situation happens, the max packet size of a usb bulk transfer is \u003c\u003d 512 bytes.  But to be safe, I still prefer to use a buffer having 1024 bytes.",
+      "parentUuid": "4007df9b_307271c8",
       "revId": "742da698a5dae02c78ad5db8e07aa20f523f1307",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
