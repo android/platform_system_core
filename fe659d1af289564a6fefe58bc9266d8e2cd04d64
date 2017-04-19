@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aea82f6_ad6388a4",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2017-04-19T21:26:56Z",
+      "side": 1,
+      "message": "these two are both \"animation\" class, so do we don\u0027t need treat specially\n\nServiceManager::GetInstance().ForEachServiceInClass(\"animation\", [](Service* s) {\n            s-\u003eSetShutdownCritical();  // will not check animation class separately\n        });\n\nis enough?",
+      "range": {
+        "startLine": 341,
+        "startChar": 4,
+        "endLine": 349,
+        "endChar": 5
+      },
+      "revId": "fe659d1af289564a6fefe58bc9266d8e2cd04d64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
