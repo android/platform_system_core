@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3f66b59e_031a72cc",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-19T01:50:04Z",
+      "side": 1,
+      "message": "Oh, I see.\nIt seems the need of \"retry\" is increasing here, how about add a function for it? Then invoke the retry with lambda.\n\nps: one of the downside is that __FUNCTION__ inside lambda won\u0027t give meaningful name, but this should be minor.\n\ne.g.,\n\nusing try_callback \u003d std::function\u003cbool()\u003e ;                                    \nstatic bool try_with(int try_count, unsigned int retry_interval_secs, try_callback fn) {\n    while (try_count-- \u003e 0) {                                                   \n        if (fn()) return true;                                                                             \n        if (retry_interval_secs \u0026\u0026 try_count) {                                 \n            sleep(retry_interval_secs);                                         \n        }                                                                       \n    }                                                                           \n    return false;                                                               \n}\n\nif (!ret) {\n    bool unmounted \u003d try_with(5 /* try_count */, 1 /* retry_interval_secs */ , [\u003d]() {\n        if (umount(target) \u003d\u003d 0) {\n            LINFO \u003c\u003c \"unmount(\" \u003c\u003c target \u003c\u003c \") succeeded\";\n            return true;\n        }\n        PERROR \"umount(\" \u003c\u003c target \u003c\u003c \") failed\";\n        return false;\n    });\n    if (!umounted) {\n        // boot may fail but continue and leave it to later stage for now.\n        PERROR \u003c\u003c __FUNCTION__ \u003c\u003c \"(): umount(\" \u003c\u003c target \u003c\u003c \") timed out\";\n        *fs_stat |\u003d FS_STAT_RO_UNMOUNT_FAILED;\n    }\n} else {\n    *fs_stat |\u003d FS_STAT_RO_MOUNT_FAILED;\n}",
+      "parentUuid": "b51118ba_9210797d",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 30
+      },
+      "revId": "52921a805b5e995b59f18d4ea0db3a5893c26fef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed5c4155_1c680570",
         "filename": "fs_mgr/fs_mgr.cpp",
         "patchSetId": 1
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "same here. I don\u0027t want to run another fsck while not retrying mount again.",
       "parentUuid": "7a85cc92_1e8ab4db",
+      "range": {
+        "startLine": 584,
+        "startChar": 0,
+        "endLine": 586,
+        "endChar": 24
+      },
+      "revId": "52921a805b5e995b59f18d4ea0db3a5893c26fef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3697dd62_4967d5b0",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-19T01:50:04Z",
+      "side": 1,
+      "message": "Please see if try_with() can help here or not.\nNote that you\u0027ll need to use \"captured by reference\" for the lambda because you need to modify the surrounding variables like mount_errno here.\n\nOh, just found you want to run fsck instead of just sleep() between the iterations.\n\nIf so, probably need to change the try_with() further as below.\nBut I don\u0027t have strong opinion on this, as this might be more suitable to do in a large refactoring.\n\n\n\nusing try_callback \u003d std::function\u003cbool()\u003e ;                                    \nusing retry_interval_callback \u003d std::function\u003cvoid()\u003e ;                         \nstatic bool try_with(int try_count, try_callback fn, retry_interval_callback retry_interval_fn \u003d {}) {\n    while (try_count-- \u003e 0) {                                                   \n        if (fn()) return true;                                                  \n        if (retry_interval_fn \u0026\u0026 try_count) {                                   \n            retry_interval_fn();                                                \n        }                                                                       \n    }                                                                           \n    return false;                                                               \n}                                                                               \n \n\ntry_with(\n    2, /* try_count */\n    [\u0026]() {  /* try_callback */\n        if (!__mount(fstab-\u003erecs[i].blk_device, fstab-\u003erecs[i].mount_point,\n                     \u0026fstab-\u003erecs[i])) {\n            *attempted_idx \u003d i;\n            mounted \u003d 1;\n            if (i !\u003d start_idx) {\n                LERROR \u003c\u003c ...\n                fs_stat \u0026\u003d ~FS_STAT_FULL_MOUNT_FAILED;\n                mount_errno \u003d 0;\n                return true;\n\t\t\t}\n\t\t }\n    },\n    [\u0026]() {  /* retry_interval_callback */ \n\t    fs_stat |\u003d FS_STAT_FULL_MOUNT_FAILED;\n        /* back up the first errno for crypto decisions */\n        if (mount_errno \u003d\u003d 0) {\n            mount_errno \u003d errno;\n        }\n        // retry after fsck\n        check_fs(fstab-\u003erecs[i].blk_device, fstab-\u003erecs[i].fs_type,\n                 fstab-\u003erecs[i].mount_point, \u0026fs_stat);\n    });\n}",
+      "parentUuid": "81824d58_f13abcad",
       "range": {
         "startLine": 584,
         "startChar": 0,
