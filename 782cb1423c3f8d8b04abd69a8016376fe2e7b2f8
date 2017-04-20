@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "515e8215_b8c5e86e",
+        "filename": "libsparse/include/sparse/sparse.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-04-20T22:02:40Z",
+      "side": 1,
+      "message": "Put these in a private header",
+      "revId": "782cb1423c3f8d8b04abd69a8016376fe2e7b2f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ffe65aa_42a89817",
+        "filename": "libsparse/include/sparse/sparse.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-04-20T22:02:40Z",
+      "side": 1,
+      "message": "Can this be a C++ interface so you can use default arguments?",
+      "revId": "782cb1423c3f8d8b04abd69a8016376fe2e7b2f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd1d54ed_26e95ddd",
+        "filename": "libsparse/sparse_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-04-20T22:02:40Z",
+      "side": 1,
+      "message": "print strerror?",
+      "revId": "782cb1423c3f8d8b04abd69a8016376fe2e7b2f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ef198c9_5e89a464",
         "filename": "libsparse/sparse_utils.c",
         "patchSetId": 6
@@ -13,6 +64,24 @@
       "writtenOn": "2017-04-20T19:50:46Z",
       "side": 1,
       "message": "return values are \"-1 or maybe -errno depending if sparse returned the error.\"\n\nI am counting on whoever is seeing errors, will also see stderr.  Is that OK, or should I clean up some of these return -1\u0027s to be more useful?",
+      "revId": "782cb1423c3f8d8b04abd69a8016376fe2e7b2f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "468093c1_1433f20c",
+        "filename": "libsparse/sparse_utils.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-04-20T22:02:40Z",
+      "side": 1,
+      "message": "Might as well return -errno, although you\u0027ll have to stash it around the fprintf.",
+      "parentUuid": "1ef198c9_5e89a464",
       "revId": "782cb1423c3f8d8b04abd69a8016376fe2e7b2f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
