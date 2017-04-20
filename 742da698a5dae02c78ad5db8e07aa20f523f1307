@@ -122,6 +122,24 @@
       "revId": "742da698a5dae02c78ad5db8e07aa20f523f1307",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e4155e7_e68ab0e0",
+        "filename": "adb/transport_usb.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-04-20T00:24:38Z",
+      "side": 1,
+      "message": "The problem is the same even if we get the actual max packet size:\nsuppose we have 256K bytes to read, and the max packet size is 512 bytes. In the normal case, we expect a list of 512 bytes data. But what if we receive a 24 bytes data in between? Then we will need to read the last data with a 512-24 \u003d 488 bytes buffer in p-\u003edata. This is less than the max packet size. So we still need a buffer[] even if we know the actual max packet size.",
+      "parentUuid": "443e15fc_613574c0",
+      "revId": "742da698a5dae02c78ad5db8e07aa20f523f1307",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
