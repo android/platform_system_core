@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a6f6af0c_974aa14d",
+        "filename": "init/init.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-21T04:10:04Z",
+      "side": 1,
+      "message": "OK, will do.",
+      "parentUuid": "532b6d90_36310347",
+      "revId": "4dc4cbb21c563d73450a8bcbb65b4aa98bf2954c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "037e1e43_81dbb4bb",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 4
@@ -30,6 +48,30 @@
       "writtenOn": "2017-04-20T17:58:52Z",
       "side": 1,
       "message": "Start implies to me that this is only the beginning of a process, but this function does all of the first stage mount activity right?  Maybe DoMount() or DoFirstStageMount() is more accurate?",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 19
+      },
+      "revId": "4dc4cbb21c563d73450a8bcbb65b4aa98bf2954c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99566587_309664c5",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-21T04:10:04Z",
+      "side": 1,
+      "message": "Will do, much better!",
+      "parentUuid": "037e1e43_81dbb4bb",
       "range": {
         "startLine": 47,
         "startChar": 9,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "b9502218_17e48864",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-21T04:10:04Z",
+      "side": 1,
+      "message": "Thanks, I wasn\u0027t clear about this before, so assumed we only use new style for class methods. Will do this for later changes!",
+      "parentUuid": "250efae5_47af1b3f",
+      "revId": "4dc4cbb21c563d73450a8bcbb65b4aa98bf2954c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "999a0ce8_12dc38f4",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 4
@@ -70,6 +130,24 @@
       "writtenOn": "2017-04-20T17:58:52Z",
       "side": 1,
       "message": "Might as well make this a member function too?  It\u0027s intimately tied to the classes anyway.",
+      "revId": "4dc4cbb21c563d73450a8bcbb65b4aa98bf2954c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f859b69_5333e092",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-21T04:10:04Z",
+      "side": 1,
+      "message": "Sometimes I was struggling to decide whether to put a function into a class as a member function or leave it as a static free function.\n\nMy previous rule is simple: if the function doesn\u0027t need to access any private member, then it can be a static free function. But I don\u0027t have the strong preference though.\n\nAs you said, this function is quite related to the class, let\u0027s move it there.\n\nThanks!",
+      "parentUuid": "999a0ce8_12dc38f4",
       "revId": "4dc4cbb21c563d73450a8bcbb65b4aa98bf2954c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "a8a80b66_33ac8278",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-21T04:10:04Z",
+      "side": 1,
+      "message": "Actually I was considering this as well :)\n\nAs stated above, sometimes I\u0027m struggling about:\n  - member function V.S. static free function\n  - member variable V.S. local variable\n\nIn Java, we need to put everything inside a class so we have no choice. In C++, this seems a grey area to me. Anyway, I\u0027ll move it inside the class to have better granularity.\n\nIf you have more experience to share, feel free to let me know.",
+      "parentUuid": "6faa38a1_ca4ead4f",
+      "revId": "4dc4cbb21c563d73450a8bcbb65b4aa98bf2954c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c942c6f_822b6287",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 4
@@ -104,6 +200,24 @@
       "writtenOn": "2017-04-20T17:58:52Z",
       "side": 1,
       "message": "Why not call device_init_verity_device() directly here? and in the VbootV2 function too?",
+      "revId": "4dc4cbb21c563d73450a8bcbb65b4aa98bf2954c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9f10680_6799736e",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-21T04:10:04Z",
+      "side": 1,
+      "message": "OK, even better!",
+      "parentUuid": "3c942c6f_822b6287",
       "revId": "4dc4cbb21c563d73450a8bcbb65b4aa98bf2954c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
