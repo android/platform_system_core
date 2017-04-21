@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19c82e19_1e309b28",
+        "filename": "logd/LogStatistics.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-04-21T15:30:29Z",
+      "side": 1,
+      "message": "std::string_view would allows us to save some memory space (About 32Kbytes maximum possible) since tagToName, \"\u003cNULL\u003e\", \"chatty\" are _forever_, and we only need to allocate for element-\u003egetMsg() + 1 and StringPrintf(\"[%d]\",...), the cost being a flag to indicate that the memory would need to be freed on destruction, and some maintenance issues.",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 484,
+        "endChar": 27
+      },
+      "revId": "427670116ab6f63ad3804809371c269181448016",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e82a3853_a8368434",
+        "filename": "logd/LogStatistics.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-04-21T15:30:29Z",
+      "side": 1,
+      "message": "This screams of inefficiency (albeit rare to happen, currently only 70220 is an unregistered log buffer id), and we return c_str() only because everything else is an utf8z so that name does the ultimate std::string allocation.",
+      "range": {
+        "startLine": 493,
+        "startChar": 15,
+        "endLine": 494,
+        "endChar": 20
+      },
+      "revId": "427670116ab6f63ad3804809371c269181448016",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28b754f1_cac855bb",
+        "filename": "logd/LogStatistics.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-04-21T15:30:29Z",
+      "side": 1,
+      "message": "The price of const std::string name is this initialization madness. The price looks too high, drop const and expand this in the constructor.",
+      "range": {
+        "startLine": 491,
+        "startChar": 10,
+        "endLine": 495,
+        "endChar": 58
+      },
+      "revId": "427670116ab6f63ad3804809371c269181448016",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "173d0f2e_7df514d1",
+        "filename": "logd/LogStatistics.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-04-21T15:30:29Z",
+      "side": 1,
+      "message": "Counts will soon be misdirected and miscounted. We need to override drop() as well, since it is the warning shot that an entry with the corresponding element-\u003egetMsg() + 1 tag name, is to become an entry in \"chatty\".\n\nThis is going to get interesting, since we will need to find the \"chatty\" entry in the table and fix it up (!)",
+      "range": {
+        "startLine": 525,
+        "startChar": 4,
+        "endLine": 525,
+        "endChar": 5
+      },
+      "revId": "427670116ab6f63ad3804809371c269181448016",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
