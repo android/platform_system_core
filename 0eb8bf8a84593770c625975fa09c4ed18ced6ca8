@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "74650e94_b490c153",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-21T16:22:59Z",
+      "side": 1,
+      "message": "sgtm; I was wondering if there was a more specific reason.  If it\u0027s just to kill the goto, then maybe we should do that with the refactoring change to make the intention of this CL more clear?",
+      "parentUuid": "7124157d_8acfeb77",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 5
+      },
+      "revId": "0eb8bf8a84593770c625975fa09c4ed18ced6ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2eab560e_6317ab3d",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 3
@@ -225,6 +249,24 @@
       "side": 1,
       "message": "Yes, we don\u0027t need to mount it. In recovery, we\u0027d prefer not to mount unnecessary partitions to prevent further recovery.\n\nActually here we just want to ensure the libavb version can successfully verify the AVB metadata on all partitions, before we set it into ro.boot.avb_version.\n\nIt\u0027s possible for FsManagerAvbHandle::Open() to include two different libavb versions inside: e.g., libavb (1.0) and libavb (2.1) and try to use both to verify the AVB metadata. But only the working libavb version that successfully verifies the metadata will be used in the FsManagerAvbUniquePtr, where we can get its version via avb_handle-\u003eavb_version(). See below for more details.\n\nAnyway, I\u0027ll add some comments here in the next PS.\nThanks for the feedback.\n\nhttps://docs.google.com/drawings/d/15-hg40L5G6ujxhYjx62UeaJlTjfbUFZLccqepy5hIfU/edit\n\nhttps://docs.google.com/document/d/1jnCNutEghY46s3FlC1uZ8OKZycn07-ah6M0HgL9L8ho/edit#heading\u003dh.e6w538w3glef",
       "parentUuid": "52c70c3d_0b28a265",
+      "revId": "0eb8bf8a84593770c625975fa09c4ed18ced6ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f1a0856_940e12f5",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-21T16:22:59Z",
+      "side": 1,
+      "message": "Thanks for the info.  In particular, I believe the below answers my question:\n\n\u003e Actually here we just want to ensure the libavb version can successfully verify the AVB metadata on all partitions, before we set it into ro.boot.avb_version.\n\nThis means that we actually need to do the coldboot on the partitions to read their verify their meta data?\n\nI was wondering if it would be possible or make sense to skip the coldboot here and let ueventd do it later, if we didn\u0027t need to access the partitions, but that\u0027s probably a pre-mature optimization anyway.  Saving a 10? 100s? of ms in recovery boot time wouldn\u0027t be worth diverging these code paths.",
+      "parentUuid": "5ffeff57_f241e6ce",
       "revId": "0eb8bf8a84593770c625975fa09c4ed18ced6ca8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
