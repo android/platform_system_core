@@ -118,6 +118,121 @@
     },
     {
       "key": {
+        "uuid": "d3758391_77639bf6",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-04-21T23:29:20Z",
+      "side": 1,
+      "message": "bowogo, can you remind me if its possible to find the -\u003e verity_loc set for 2 fstab_recs in the fstab? I think it is totally possible and in that case that \"if (!meta_partition.empty())\" check will return true and we will needlessly fail.\n\nI think it needs to also do the comparison ...\n\nif (!meta_partition.empty() \u0026\u0026 meta_partition !\u003d std::string(fstab_rec-\u003everity_lock)) {\n  // fail here ..\n}",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 29
+      },
+      "revId": "62e08d8864c4e1247419c637e1081f7d1c635ae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "267e0de5_d28086b3",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-04-21T23:29:20Z",
+      "side": 1,
+      "message": "do we need to do this check anymore? We can still do it I guess, but then return false if fstab_rec is not verified. Right now, we are returning failure only if record says its verified and we failed to setup dmverity ..",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 40
+      },
+      "revId": "62e08d8864c4e1247419c637e1081f7d1c635ae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b66bc9b6_e35e640c",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-04-21T23:29:20Z",
+      "side": 1,
+      "message": "\"do not wait for verity_dev\"",
+      "range": {
+        "startLine": 255,
+        "startChar": 58,
+        "endLine": 255,
+        "endChar": 77
+      },
+      "revId": "62e08d8864c4e1247419c637e1081f7d1c635ae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aadb2d58_ccdcaf08",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-04-21T23:29:20Z",
+      "side": 1,
+      "message": "nit: TODO here if we are going to remove the prefix..",
+      "range": {
+        "startLine": 289,
+        "startChar": 38,
+        "endLine": 289,
+        "endChar": 52
+      },
+      "revId": "62e08d8864c4e1247419c637e1081f7d1c635ae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "191736bd_d456d63a",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-04-21T23:29:20Z",
+      "side": 1,
+      "message": "same comment as the V1 version, its an error if this is not set in fstab_rec, we are returning success anyway ..",
+      "range": {
+        "startLine": 327,
+        "startChar": 8,
+        "endLine": 327,
+        "endChar": 21
+      },
+      "revId": "62e08d8864c4e1247419c637e1081f7d1c635ae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67cebf16_261a51c6",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 5
@@ -134,6 +249,29 @@
         "startChar": 24,
         "endLine": 357,
         "endChar": 26
+      },
+      "revId": "62e08d8864c4e1247419c637e1081f7d1c635ae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25f2e007_bab058c4",
+        "filename": "init/init_first_stage.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-04-21T23:29:20Z",
+      "side": 1,
+      "message": "nit: init_first_stage_mount.h or first_stage_mount.h",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 27
       },
       "revId": "62e08d8864c4e1247419c637e1081f7d1c635ae6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
