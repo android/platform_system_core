@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "889038b3_b31e01dc",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-21T15:47:17Z",
+      "side": 1,
+      "message": "It seems to me that \u0027need_dm_verity_\u0027 and \u0027device_init_partitions_\u0027 are better to be local vars here.\nBecause they\u0027re not used in other member functions.\nAlso, local vars provides better connection between the function calls here. LMK what do you think.\n\ne.g.,\n\n    if (!GetRequiredDevices(\u0026device_init_partitions, \u0026need_dm_verity)) return false;\n  \n    bool success \u003d false;\n    InitRequiredDevices(\u0026device_init_partitions);  // Creates the devices we need.\n\n    if (!device_init_partitions.empty()) {\n        LOG(ERROR) \u003c\u003c ...;\n    }\n\n    if (need_dm_verity) {\n        // Creates /dev/device-mapper.\n        device_init(\"/sys/devices/virtual/misc/device-mapper\",\n                    [\u0026](uevent* uevent) -\u003e coldboot_action_t { return COLDBOOT_STOP; });\n    }",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 5
+      },
+      "revId": "62e08d8864c4e1247419c637e1081f7d1c635ae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
