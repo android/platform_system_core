@@ -45,6 +45,30 @@
       "revId": "fdf45e5acc88c3fbce37b459c3b774bfea0c3ced",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b679f5f0_0a1f82e6",
+        "filename": "libprocessgroup/processgroup.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-21T02:08:59Z",
+      "side": 1,
+      "message": "The whole issue that I filed b/37540956 for is that we never know if retries \u003d 0, since the \u0027processes\u0027 count isn\u0027t recalculated after sending the signals.  \n\nThe only way we could know would be to add a wait and then check to see how many processes are still alive, but that defeats the purpose of doing this \u0027once\u0027, especially since reboot with this change (without any new waits) works quite well.\n\nI\u0027ll add a comment.",
+      "parentUuid": "2aab26ab_916fe6b6",
+      "range": {
+        "startLine": 322,
+        "startChar": 8,
+        "endLine": 322,
+        "endChar": 27
+      },
+      "revId": "fdf45e5acc88c3fbce37b459c3b774bfea0c3ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
