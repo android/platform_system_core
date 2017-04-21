@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d1c01ba_f7c770d2",
+        "filename": "init/service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-21T03:11:36Z",
+      "side": 1,
+      "message": "We never report this line for ueventd since it doesn\u0027t have a process group.\n\nI\u0027m thinking that if isProcessGroupEmpty() is true and kill() below succeeds then having a print in that case?  It\u0027ll print for ueventd and it\u0027ll help us catch any other issues where we have an empty process group but alive process (which there in theory shouldn\u0027t be?)",
+      "revId": "278fd3246b58f69ce9d1959d298de6074bf5b167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "299fa3fe_018f9405",
+        "filename": "libprocessgroup/processgroup.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-21T03:11:36Z",
+      "side": 1,
+      "message": ":\u0027( Will make ctx a real class so this isn\u0027t needed tomorrow.",
+      "revId": "278fd3246b58f69ce9d1959d298de6074bf5b167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
