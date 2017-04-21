@@ -70,6 +70,30 @@
       "revId": "9401a0b9d196f8f87cce0dd8ae7499f8e05ce938",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "995c26d0_f22f7b4d",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-21T00:13:49Z",
+      "side": 0,
+      "message": "Hm are you sure?  Look at save_reboot_reason in https://android-review.googlesource.com/#/c/356078/2/libcutils/android_reboot.c  We ignore the string and hardcode specific text for everything other than reboot.\n\nI would be okay with just passing everything as it\u0027s given to us.\n\nIs there anywhere where this is actually consumed or documented?  I assume it exists for a reason, but I couldn\u0027t find a consumer in our tree...",
+      "parentUuid": "f4796e00_452e70e5",
+      "range": {
+        "startLine": 445,
+        "startChar": 12,
+        "endLine": 445,
+        "endChar": 42
+      },
+      "revId": "9401a0b9d196f8f87cce0dd8ae7499f8e05ce938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
