@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9af4074b_3c970858",
+        "filename": "init/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-24T08:38:19Z",
+      "side": 1,
+      "message": "OK, thanks! my poor English :)",
+      "parentUuid": "66dd2637_a49e9e2f",
+      "range": {
+        "startLine": 509,
+        "startChar": 57,
+        "endLine": 509,
+        "endChar": 61
+      },
+      "revId": "62e08d8864c4e1247419c637e1081f7d1c635ae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "361295c2_48996807",
         "filename": "init/README.md",
         "patchSetId": 5
@@ -141,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "2f630432_aeefa3fe",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-24T08:38:19Z",
+      "side": 1,
+      "message": "Oh, good catch, thanks!\n\nYup, I think it\u0027s possible by cs:\nhttps://cs.corp.google.com/search/?q\u003d%22verify%3D%22+p:android+file:fstab*\u0026type\u003dcs",
+      "parentUuid": "d3758391_77639bf6",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 29
+      },
+      "revId": "62e08d8864c4e1247419c637e1081f7d1c635ae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "267e0de5_d28086b3",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 5
@@ -164,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "ea8c4e94_543a3740",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-24T08:38:19Z",
+      "side": 1,
+      "message": "We still need the check here.\n\nOtherwise we\u0027ll need to check this in the base class (which I want to avoid): https://android-review.googlesource.com/#/c/373934/5/init/init_first_stage.cpp@200\n\nReturn true just simply means the derived class ignore the verity setup, because MF_VERIFY or MF_AVB isn\u0027t set.\nSimilar to what we did in the fs_mgr.cpp:\n\nhttps://cs.corp.google.com/android/system/core/fs_mgr/fs_mgr.cpp?q\u003dfs_mgr.cpp+p:android\u0026dr\u0026l\u003d863\n\nI think the logic is also similar to \"return true\" in early_mount():\n\nstatic bool early_mount() {                                                         \n    // skip early mount if we\u0027re in recovery mode                                   \n    if (access(\"/sbin/recovery\", F_OK) \u003d\u003d 0) {                                      \n        LOG(INFO) \u003c\u003c \"Early mount skipped (recovery mode)\";                         \n        return true;  \u003c--- return true here                                                              \n    }                                                                               \n                                                                                    \n    // first check if device tree fstab entries are compatible                      \n    if (!is_dt_fstab_compatible()) {                                                \n        LOG(INFO) \u003c\u003c \"Early mount skipped (missing/incompatible fstab in device tree)\";\n        return true;  \u003c--- return true here       \n    }     \n    ...",
+      "parentUuid": "267e0de5_d28086b3",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 40
+      },
+      "revId": "62e08d8864c4e1247419c637e1081f7d1c635ae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b66bc9b6_e35e640c",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 5
@@ -175,6 +247,30 @@
       "writtenOn": "2017-04-21T23:29:20Z",
       "side": 1,
       "message": "\"do not wait for verity_dev\"",
+      "range": {
+        "startLine": 255,
+        "startChar": 58,
+        "endLine": 255,
+        "endChar": 77
+      },
+      "revId": "62e08d8864c4e1247419c637e1081f7d1c635ae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28fb92b7_dc2ee21e",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-24T08:38:19Z",
+      "side": 1,
+      "message": "This is the function parameter, not a general comment.\nI usually do this for the literals. \n\nint fs_mgr_setup_verity(struct fstab_rec *fstab, bool wait_for_verity_dev);",
+      "parentUuid": "b66bc9b6_e35e640c",
       "range": {
         "startLine": 255,
         "startChar": 58,
@@ -233,6 +329,30 @@
     },
     {
       "key": {
+        "uuid": "ce7c1c3a_e03aae34",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-24T08:38:19Z",
+      "side": 1,
+      "message": "Same as above. \n\nWe need to return true to allow mount partitions without verity. I knew that all early mount partitions should have verity, but this check should probably be done separately (e.g., a CTS check) and not an enforcement here.\n\nActually this is the current behavior before the refactoring.\ne.g., some existing project already early mounts /vendor without verity:\nhttps://b.corp.google.com/issues/37290841#comment2\n\nReturning false here will break them.",
+      "parentUuid": "191736bd_d456d63a",
+      "range": {
+        "startLine": 327,
+        "startChar": 8,
+        "endLine": 327,
+        "endChar": 21
+      },
+      "revId": "62e08d8864c4e1247419c637e1081f7d1c635ae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67cebf16_261a51c6",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 5
@@ -267,6 +387,30 @@
       "writtenOn": "2017-04-21T23:29:20Z",
       "side": 1,
       "message": "nit: init_first_stage_mount.h or first_stage_mount.h",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "62e08d8864c4e1247419c637e1081f7d1c635ae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10f99b0a_f8ba294d",
+        "filename": "init/init_first_stage.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-24T08:38:19Z",
+      "side": 1,
+      "message": "I\u0027d prefer to stay this to be more generic, because the next CL (SetInitAvbVersion) does not \u0027mount\u0027 anything. \n\nWe can also consider moving other first stage sources (before execv itself) to init_first_stage.cpp when it gets bloated later.\n\nhttps://cs.corp.google.com/android/system/core/init/init.cpp?q\u003dinit.cpp\u0026dr\u0026l\u003d1368",
+      "parentUuid": "25f2e007_bab058c4",
       "range": {
         "startLine": 18,
         "startChar": 0,
