@@ -312,6 +312,24 @@
       "revId": "0eb8bf8a84593770c625975fa09c4ed18ced6ca8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "342a62f9_3e3c85c9",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-24T13:59:05Z",
+      "side": 1,
+      "message": "From the log, the coldboot of those vbmeta partitions takes 14+ ms\n  init: Coldboot took 0.0142254 seconds \n\nIf we use the ueventd solution, we\u0027ll need to rely on \nfs_mgr_test_access() to poll the by-name prefix.\nIt sleeps 40 ms in each iteration for a given partition.\n\nLooks like it cannot improve it.",
+      "parentUuid": "3faad45a_e09e030e",
+      "revId": "0eb8bf8a84593770c625975fa09c4ed18ced6ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
