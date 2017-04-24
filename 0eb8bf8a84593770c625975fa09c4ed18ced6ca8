@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "9cb805cf_bc8d1b84",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-24T06:08:51Z",
+      "side": 1,
+      "message": "Agree, will move there!",
+      "parentUuid": "74650e94_b490c153",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 5
+      },
+      "revId": "0eb8bf8a84593770c625975fa09c4ed18ced6ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2eab560e_6317ab3d",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 3
@@ -267,6 +291,24 @@
       "side": 1,
       "message": "Thanks for the info.  In particular, I believe the below answers my question:\n\n\u003e Actually here we just want to ensure the libavb version can successfully verify the AVB metadata on all partitions, before we set it into ro.boot.avb_version.\n\nThis means that we actually need to do the coldboot on the partitions to read their verify their meta data?\n\nI was wondering if it would be possible or make sense to skip the coldboot here and let ueventd do it later, if we didn\u0027t need to access the partitions, but that\u0027s probably a pre-mature optimization anyway.  Saving a 10? 100s? of ms in recovery boot time wouldn\u0027t be worth diverging these code paths.",
       "parentUuid": "5ffeff57_f241e6ce",
+      "revId": "0eb8bf8a84593770c625975fa09c4ed18ced6ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3faad45a_e09e030e",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-04-24T06:08:51Z",
+      "side": 1,
+      "message": "This means that we actually need to do the coldboot on the partitions to read their verify their meta data?\n --\u003e Yes.\n\nI actually considered the ueventd solution before.\nhttps://android-review.googlesource.com/#/c/373794/\n\nBut it doesn\u0027t work because ueventd is too late to create those by-name* paths. Maybe postpone it further (still in init second stage because we need to set ro.boot.*) could work. But the code structure there isn\u0027t good, i.e., inserting the SetInitAvbVersioin() during the am.Queue* groups in the second stage. And we\u0027ll need to polling until the by-name symlink is created, so maybe it won\u0027t save much and might need to wait a bit longer (I didn\u0027t do real experiment though).\n\nhttps://android.googlesource.com/platform/system/core/+/master/fs_mgr/fs_mgr_avb_ops.cpp#118\n\nhttps://cs.corp.google.com/android/system/core/fs_mgr/fs_mgr.cpp?q\u003dfs_mgr_test_access+p:android\u0026dr\u003dCSs\u0026l\u003d778\n\n\nI think setting it here is better:\n - No worry about the race condition (ueventd creates the by-name symlink v.s. we read the metadata from the partition)\n\n - More consistent with normal boot flow: setenv INIT_AVB_VERSION in the first stage then set \"ro.boot.avb_version\" in the second stage.\n\n - Optimizing it in the recovery path seems not worth to me :)",
+      "parentUuid": "8f1a0856_940e12f5",
       "revId": "0eb8bf8a84593770c625975fa09c4ed18ced6ca8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
