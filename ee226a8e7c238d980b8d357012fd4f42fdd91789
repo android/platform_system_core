@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f77b0c24_af8c0665",
+        "filename": "init/service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-24T21:45:37Z",
+      "side": 1,
+      "message": "Bail early if it fails?\n\nIn thinking more about this, this isn\u0027t right in any case either.  The case 2) isn\u0027t right.  The reason I\u0027m seeing this print is the below is happening,\n\n\u003e I kill Surfaceflinger\nSF onrestart kills zygote\n- killProcessGroup synchronously kills the cgroup and removes it.\n- kill() asynchronously kills the process group\nReap() for zygote happens\n- isProcessGroupEmpty() returns true since killProcessGroup() is synchronous\n- kill() still returns success as the above call was asynchronous and the kernel hasn\u0027t finished processing each of the signals from the previous kill(), so the process group still exists and is killable.\n\nSo these prints don\u0027t really make sense in that case.",
+      "parentUuid": "e65a2e67_d22e2afe",
+      "revId": "ee226a8e7c238d980b8d357012fd4f42fdd91789",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "013680ff_1c2bf614",
         "filename": "libprocessgroup/processgroup.cpp",
         "patchSetId": 9
@@ -30,6 +48,24 @@
       "writtenOn": "2017-04-24T18:05:52Z",
       "side": 1,
       "message": "This seems like an odd side affect for a query routine.",
+      "revId": "ee226a8e7c238d980b8d357012fd4f42fdd91789",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a276831_d2af86ed",
+        "filename": "libprocessgroup/processgroup.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-04-24T21:45:37Z",
+      "side": 1,
+      "message": "You\u0027re right, this is ugly.  I want to skip the call to killProcessGroups() but it\u0027s necessary to remove the process group itself, hence why I tried this.",
+      "parentUuid": "013680ff_1c2bf614",
       "revId": "ee226a8e7c238d980b8d357012fd4f42fdd91789",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
