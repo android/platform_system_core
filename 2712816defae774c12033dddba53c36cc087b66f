@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f8929fb9_3f483193",
+        "filename": "fastboot/protocol.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1125188
+      },
+      "writtenOn": "2017-04-26T17:32:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ee3e758_2a1ecb20",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 25
+      },
+      "revId": "2712816defae774c12033dddba53c36cc087b66f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ecaa454c_6eed3565",
         "filename": "fastboot/protocol.cpp",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3818d6af_df6d7d67",
+        "filename": "fastboot/protocol.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1125188
+      },
+      "writtenOn": "2017-04-26T17:32:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecaa454c_6eed3565",
+      "range": {
+        "startLine": 159,
+        "startChar": 13,
+        "endLine": 159,
+        "endChar": 23
+      },
+      "revId": "2712816defae774c12033dddba53c36cc087b66f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "467fed37_931c6118",
         "filename": "fastboot/protocol.cpp",
         "patchSetId": 7
@@ -59,6 +107,30 @@
       "writtenOn": "2017-04-26T06:14:18Z",
       "side": 1,
       "message": "isn\u0027t this WriteStringToFile? just use std::string instead of std::vector above?",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 5
+      },
+      "revId": "2712816defae774c12033dddba53c36cc087b66f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30a5bf79_4aa4a380",
+        "filename": "fastboot/protocol.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1125188
+      },
+      "writtenOn": "2017-04-26T17:32:51Z",
+      "side": 1,
+      "message": "Yep. Couple reasons I went with std::vector.\n\n1. string::data() returns a const char*, I would have to pass \u0026data[0] to _command_read_data, not sure if this is portable/always safe.\n\n2. data can contain \u0027\\0\u0027, so I preferred to not use std::string (though its still okay)\n\nI can use std::string instead if thats what you prefer.",
+      "parentUuid": "467fed37_931c6118",
       "range": {
         "startLine": 265,
         "startChar": 0,
