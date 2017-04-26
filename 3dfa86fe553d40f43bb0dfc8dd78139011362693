@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "bb36a91e_9943a71f",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-04-26T05:59:38Z",
+      "side": 1,
+      "message": "\"you did that to yourself\" :-)",
+      "parentUuid": "2b35bbb9_b8a718b8",
+      "range": {
+        "startLine": 565,
+        "startChar": 8,
+        "endLine": 565,
+        "endChar": 14
+      },
+      "revId": "3dfa86fe553d40f43bb0dfc8dd78139011362693",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "374a55a2_43abd3db",
         "filename": "fastboot/fastboot.cpp",
         "patchSetId": 1
@@ -53,6 +77,30 @@
       "writtenOn": "2017-04-26T02:06:50Z",
       "side": 1,
       "message": "shouldn\u0027t this be result.c_str()",
+      "range": {
+        "startLine": 571,
+        "startChar": 16,
+        "endLine": 571,
+        "endChar": 26
+      },
+      "revId": "3dfa86fe553d40f43bb0dfc8dd78139011362693",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "017f457e_e30ad2e8",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-04-26T05:59:38Z",
+      "side": 1,
+      "message": "no. if you look at http://man7.org/linux/man-pages/man3/mkstemp.3.html you\u0027ll see that these functions actually _modify_ the string you pass in. basically the template looks like /my/tmp/dir/whatever_XXXXXX and the function finds some replacement for \"XXXXXX\" that gives you a unique name.\n\nc_str returns a _const_ pointer, so you use \u0026* instead to get a non-const pointer to the first element.",
+      "parentUuid": "374a55a2_43abd3db",
       "range": {
         "startLine": 571,
         "startChar": 16,
