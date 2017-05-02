@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "11f227b6_6fb2aac4",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-02T23:44:54Z",
+      "side": 1,
+      "message": "The \u003ckeyutils.h\u003e is a real thing from libkeyutils. By having it where I placed it, there are no changes here when/if we transition.",
+      "parentUuid": "6fb0e80e_d309d68f",
+      "revId": "7fff58148dd0c67fed80876179ef538e7f20d905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7565fd7_0f0cb5b1",
         "filename": "init/init.cpp",
         "patchSetId": 1
@@ -30,6 +48,29 @@
       "writtenOn": "2017-05-02T23:34:03Z",
       "side": 1,
       "message": "It may be useful to make the comment explain that the purpose of doing this is to set up a keyring which all processes will have access to, to hold things like FBE encryption keys; and we assume that no process overrides its session keyring (otherwise it would lose access to the keys).",
+      "revId": "7fff58148dd0c67fed80876179ef538e7f20d905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fadaca21_a53b5778",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-02T23:44:54Z",
+      "side": 1,
+      "message": "This is KEY_OTH_VIEW",
+      "range": {
+        "startLine": 1020,
+        "startChar": 60,
+        "endLine": 1020,
+        "endChar": 61
+      },
       "revId": "7fff58148dd0c67fed80876179ef538e7f20d905",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -59,6 +100,30 @@
     },
     {
       "key": {
+        "uuid": "bc546cc1_a48711ff",
+        "filename": "init/keyutils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-02T23:44:54Z",
+      "side": 1,
+      "message": "The _real_ keyctl is keyctl(int cmd, ...), by extension we need to support variable arguments (an audit would be required to determine if I should drop the ...)",
+      "parentUuid": "196e976b_ecc7307a",
+      "range": {
+        "startLine": 5,
+        "startChar": 53,
+        "endLine": 5,
+        "endChar": 58
+      },
+      "revId": "7fff58148dd0c67fed80876179ef538e7f20d905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bda04a0_97419de0",
         "filename": "init/keyutils.h",
         "patchSetId": 1
@@ -70,6 +135,24 @@
       "writtenOn": "2017-05-02T23:34:03Z",
       "side": 1,
       "message": "There\u0027s already a wrapper for this in system/extras/ext4_utils/key_control.cpp; can that be used?",
+      "revId": "7fff58148dd0c67fed80876179ef538e7f20d905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c113286_998de7a2",
+        "filename": "init/keyutils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-02T23:44:54Z",
+      "side": 1,
+      "message": "I agree, that one is _better_ :-)",
+      "parentUuid": "3bda04a0_97419de0",
       "revId": "7fff58148dd0c67fed80876179ef538e7f20d905",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
