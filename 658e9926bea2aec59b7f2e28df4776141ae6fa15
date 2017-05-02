@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fc7bf9a2_fa217d9b",
+        "filename": "libcutils/fs_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-02T15:42:26Z",
+      "side": 1,
+      "message": "I know ... I know ... will split this CL up.",
+      "parentUuid": "2f52b818_e1604fed",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "658e9926bea2aec59b7f2e28df4776141ae6fa15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "606b3b40_8f1f2b90",
         "filename": "libcutils/tests/fs_config.cpp",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2017-05-02T15:21:07Z",
       "side": 1,
       "message": "make them visible for testing instead?",
+      "revId": "658e9926bea2aec59b7f2e28df4776141ae6fa15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec8affc2_8871f650",
+        "filename": "libcutils/tests/fs_config.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-02T15:42:26Z",
+      "side": 1,
+      "message": "Thanks for the injection of bravery. Will do.\n\nExposing the two tables as __android_dirs and __android_files _without_ any references in the headers.\n\nMy concerns were exposing them in the library, the past (eg: how many C++ objects we had to scrub from vendor sources from release to release) has shown if the symbols are there, someone will decide to access them as a libcutils API. libcutils is part of the vndk, I was not that brave to set a precedent.",
+      "parentUuid": "606b3b40_8f1f2b90",
       "revId": "658e9926bea2aec59b7f2e28df4776141ae6fa15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
