@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "ecfea71a_801d8cc6",
+        "filename": "logd/logd.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-02T21:13:47Z",
+      "side": 1,
+      "message": "Not needed. I added this more like a comment, class late_start groups this with all the late_start (last set) of daemons and services. We do not in-fact want this to start with late_start.\n\nLooking at it in hte light of a review, this is not a comment but can turn into cargo cult if someone does not understand why I put this here.",
+      "parentUuid": "b278520f_9697f8aa",
+      "revId": "351b49fa689a1b3aee8ee675cd5cc3f0e8995a8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0af943b_d93a0fb5",
         "filename": "logd/logd.rc",
         "patchSetId": 2
@@ -53,6 +71,30 @@
       "writtenOn": "2017-05-02T20:05:08Z",
       "side": 1,
       "message": "There has to be something better to trigger off of right?\n\nWhy isn\u0027t the first logd-reinit acceptable here?  This should happen only after /data is mounted and if I\u0027m reading right, the key is installed in the mount_all built in, so it should be late enough.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "351b49fa689a1b3aee8ee675cd5cc3f0e8995a8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80ddb8b6_2cd80e12",
+        "filename": "logd/logd.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-02T21:13:47Z",
+      "side": 1,
+      "message": "This is under review _primarily_ because I consider these a hokey start for logd-reinit. These make sure that logd-reinit runs at 10 seconds in, 8 seconds or earlier did not _work_, and /data mounts at 5.6 seconds in. late_start was at 6.5 seconds and was too early (?)",
+      "parentUuid": "e0af943b_d93a0fb5",
       "range": {
         "startLine": 29,
         "startChar": 0,
