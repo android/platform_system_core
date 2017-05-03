@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0dc21d63_b9843747",
+        "filename": "adb/transport_usb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-05-03T18:41:48Z",
+      "side": 1,
+      "message": "usb_get_max_packet_size()?",
+      "range": {
+        "startLine": 30,
+        "startChar": 53,
+        "endLine": 30,
+        "endChar": 77
+      },
+      "revId": "789c7d0e8d6961e354949788747f97202b78ed86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af687e19_99bc7ce7",
+        "filename": "adb/transport_usb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-05-03T18:41:48Z",
+      "side": 1,
+      "message": "CHECK usb_packet_size \u003e\u003d sizeof(amessage)?",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 10
+      },
+      "revId": "789c7d0e8d6961e354949788747f97202b78ed86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbdb5f60_3d880f5a",
+        "filename": "adb/transport_usb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-05-03T18:41:48Z",
+      "side": 1,
+      "message": "why not using usb_packet_size here?",
+      "range": {
+        "startLine": 38,
+        "startChar": 16,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "789c7d0e8d6961e354949788747f97202b78ed86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a234e97b_c611fbd4",
+        "filename": "adb/transport_usb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-05-03T18:41:48Z",
+      "side": 1,
+      "message": "usb_get_max_packet_size()?",
+      "range": {
+        "startLine": 48,
+        "startChar": 53,
+        "endLine": 48,
+        "endChar": 77
+      },
+      "revId": "789c7d0e8d6961e354949788747f97202b78ed86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "605b6d2e_f1b53b8f",
+        "filename": "adb/transport_usb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-05-03T18:41:48Z",
+      "side": 1,
+      "message": "these checks not needed?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 51
+      },
+      "revId": "789c7d0e8d6961e354949788747f97202b78ed86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25872176_843ae745",
+        "filename": "adb/transport_usb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-05-03T18:41:48Z",
+      "side": 1,
+      "message": "Add comment like: The device doesn\u0027t send zero packet, so don\u0027t read more packets than needed.",
+      "range": {
+        "startLine": 58,
+        "startChar": 67,
+        "endLine": 58,
+        "endChar": 68
+      },
+      "revId": "789c7d0e8d6961e354949788747f97202b78ed86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43d48327_cabdd490",
+        "filename": "adb/transport_usb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-05-03T18:41:48Z",
+      "side": 1,
+      "message": "I don\u0027t have any real story that one big usb_read() won\u0027t work. Just a remind that there is no loop reading in usb_read() (moved to here by previous patch). If we remove the loop here, we are relying on using one big usb_read() to read the whole payload. Currently I think it is fine. But what if the device changes logic: for example, it may decide to insert zero packet. This is my concern to keep the read loop.",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 19
+      },
+      "revId": "789c7d0e8d6961e354949788747f97202b78ed86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
