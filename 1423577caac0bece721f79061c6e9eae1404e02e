@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52b2e105_7c495b15",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-05-03T23:14:34Z",
+      "side": 1,
+      "message": "To suppress compiler warnings on unreachable break statements,\nyou could just comment out that break, with a comment saying that LOG(FATAL) does not return. Or add a NOLINT, if some tool complains about missing break.\nIf there is not another case after default, the \"break\" is really redundant.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 44
+      },
+      "revId": "1423577caac0bece721f79061c6e9eae1404e02e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8883b012_146b4539",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-05-03T23:14:34Z",
+      "side": 1,
+      "message": "Could you make it work without another namespace?\nThere are already so many macros and Log* classes in this file.\nMaybe just call it LogAbortAfterFullExpr?",
+      "range": {
+        "startLine": 177,
+        "startChar": 16,
+        "endLine": 177,
+        "endChar": 22
+      },
+      "revId": "1423577caac0bece721f79061c6e9eae1404e02e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a042081b_0d482924",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-05-03T23:14:34Z",
+      "side": 1,
+      "message": "Replace bool(x) with (x), if all callers use bool type values?",
+      "range": {
+        "startLine": 181,
+        "startChar": 61,
+        "endLine": 181,
+        "endChar": 65
+      },
+      "revId": "1423577caac0bece721f79061c6e9eae1404e02e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "743a02c9_a60b8c61",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-05-03T23:14:34Z",
+      "side": 1,
+      "message": "Same here about bool(x).",
+      "range": {
+        "startLine": 184,
+        "startChar": 39,
+        "endLine": 184,
+        "endChar": 43
+      },
+      "revId": "1423577caac0bece721f79061c6e9eae1404e02e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff9d75c4_096f0f69",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-05-03T23:14:34Z",
+      "side": 1,
+      "message": "Wouldn\u0027t the \"true\" literal work here in stead of \"1\"?",
+      "range": {
+        "startLine": 186,
+        "startChar": 62,
+        "endLine": 186,
+        "endChar": 63
+      },
+      "revId": "1423577caac0bece721f79061c6e9eae1404e02e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "440dd466_a23ea8ac",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-05-03T23:14:34Z",
+      "side": 1,
+      "message": "Comment from line 222 to 227 looked out of date.\nCould you update it too? Thanks.",
+      "range": {
+        "startLine": 228,
+        "startChar": 8,
+        "endLine": 228,
+        "endChar": 14
+      },
+      "revId": "1423577caac0bece721f79061c6e9eae1404e02e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c50bcc5_2eb801eb",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-05-03T23:14:34Z",
+      "side": 1,
+      "message": "Replace \"0\" with \"false\"?",
+      "range": {
+        "startLine": 252,
+        "startChar": 44,
+        "endLine": 252,
+        "endChar": 45
+      },
+      "revId": "1423577caac0bece721f79061c6e9eae1404e02e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
