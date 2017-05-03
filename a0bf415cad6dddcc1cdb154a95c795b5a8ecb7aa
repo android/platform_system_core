@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c68469c_ddc516bf",
+        "filename": "libutils/include/utils/ThreadDefs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-03T20:21:31Z",
+      "side": 0,
+      "message": "These are the only users of libsystem headers in libutils.  This one looks unnecessary.",
+      "revId": "a0bf415cad6dddcc1cdb154a95c795b5a8ecb7aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ccd23018_f104f9ad",
+        "filename": "libutils/include/utils/ThreadDefs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-03T20:21:31Z",
+      "side": 0,
+      "message": "This defines the ANDROID_* types below, which are duplicated here.  We could do one of:\n1. redefine them here, with a comment to keep them in sync\n2. delete them from here and update any users to use the ANDROID_* ones and libsystem\n3. define them separately, and provide a function that maps between them that is in a .cpp file that includes system/thread_defs.h",
+      "revId": "a0bf415cad6dddcc1cdb154a95c795b5a8ecb7aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
