@@ -22,6 +22,30 @@
       "revId": "5380ac4df2ea91312e5777d35163a787d9b8338e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3076c96d_90550781",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-03T17:32:39Z",
+      "side": 1,
+      "message": "Are we enforcing encryption on all devices? Partner and otherwise?\n\nIf this fails on a device that enforces encryption, for whatever reason, and we let it go, I believe we will boot up far enough to trip up the mount or decryption operations. The device will be in \u0027emergency call mode\u0027 and will not access encrypted data.\n\nThe rationalization is roughly the same for why we do not check error conditions on most paths in this secondary initialization phase, for instance the failure in the fragment on 1025 will mean no firmware loaders will be freed to go on to do their stuff. Because we know that a failure is not fatal here until the feature it is activating is necessary and used later.\n\nFatal here will burn out the battery in a tight reboot loop, or go back to A if this is B (and vice versa). A failure of e4crypt_install_keyring later will probably be more graceful though ...",
+      "parentUuid": "91fc0f64_30e12377",
+      "range": {
+        "startLine": 1022,
+        "startChar": 4,
+        "endLine": 1022,
+        "endChar": 10
+      },
+      "revId": "5380ac4df2ea91312e5777d35163a787d9b8338e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
