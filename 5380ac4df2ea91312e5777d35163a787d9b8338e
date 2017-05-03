@@ -70,6 +70,30 @@
       "revId": "5380ac4df2ea91312e5777d35163a787d9b8338e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74a7eb54_84cdd6ca",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2017-05-03T18:15:15Z",
+      "side": 1,
+      "message": "This will work, but IMO the init process doesn\u0027t really have any business setting up the \"e4crypt\" keyring specifically.  Not all devices use ext4 encryption, and I wouldn\u0027t be too surprised if some devices even use kernels built with CONFIG_KEYS\u003dn, which would make the \"Failed to create keyring\" from e4crypt_install_keyring() always show up in the log.\n\nEven more subtle is the fact that calling e4crypt_install_keyring() a second time will actually cause the \"e4crypt\" keyring to be unlinked and replaced with a fresh one.  It\u0027s not an issue if it\u0027s empty anyway, but it\u0027s still weird.\n\nSo I think it would be more logical to just have init create the session keyring by calling \u0027keyctl(KEYCTL_GET_KEYRING_ID, KEY_SPEC_SESSION_KEYRING, 1)\u0027, and then leave creating the e4crypt keyring inside the session keyring for later.\n\nAlso: \"No process should override its session keyrings.\" \u003d\u003e \"No process should override its session keyring.\".",
+      "parentUuid": "1e2c74df_a8f50bf0",
+      "range": {
+        "startLine": 1022,
+        "startChar": 4,
+        "endLine": 1022,
+        "endChar": 10
+      },
+      "revId": "5380ac4df2ea91312e5777d35163a787d9b8338e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
