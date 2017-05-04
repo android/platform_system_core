@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dac81fd_6cc2f88b",
+        "filename": "libprocessgroup/include/processgroup/processgroup.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-04T19:31:26Z",
+      "side": 1,
+      "message": "The idea here is that if a cgroup only contains a single process (or a process and only children from its process group), and we do the following:\n\nkill(-pid ...)\nkillProcessGroupOnce(... pid ...)\n\nthen in the likely case that the processes have already exited by the time that we attempt to kill the cgroup, then this call simply removes the cgroup and returns success.  In the case that there are still processes pending exiting (or who\u0027ve caught our signal), it returns -1 and that should be expected since we\u0027re not retrying at all.",
+      "revId": "20514c4411923e03df4a5057ef43bf9716983e14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
