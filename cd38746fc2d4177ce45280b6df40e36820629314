@@ -22,6 +22,53 @@
       "revId": "cd38746fc2d4177ce45280b6df40e36820629314",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42856802_c83ba29c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-05-04T16:51:17Z",
+      "side": 1,
+      "message": "It looks to me that when libusb_open() fails the only piece of information we\u0027re really missing is the device serial, which usb_linux.cpp gets from /sys/bus/usb/devices/.../serial.\n\nIt looks like our libusb_device might give us the necessary information to fill in this path? Maybe something like:\n\n  if LIBUSB_ERROR_ACCESS:\n    Get bus number from libusb_get_bus_number()\n    Get port numbers from libusb_get_port_numbers()\n    Get config ID from the libusb_config_descriptor\n    Get interface ID from the libusb_interface\n    dev_path \u003d \"bus-port[.port]*:config.interface\"\n    serial \u003d read(\"/sys/bus/usb/devices/\" + dev_path + \"/serial\");\n    register_usb_transport(..., writable\u003dfalse)\n\nBut I\u0027m not at all sure how stable that dev_path is across Linux versions, so maybe this would be too brittle.",
+      "parentUuid": "8a68c055_668b52c3",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 9
+      },
+      "revId": "cd38746fc2d4177ce45280b6df40e36820629314",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5be826b5_cce327ff",
+        "filename": "adb/diagnose_usb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-05-04T16:51:17Z",
+      "side": 1,
+      "message": "empty string",
+      "range": {
+        "startLine": 33,
+        "startChar": 77,
+        "endLine": 33,
+        "endChar": 84
+      },
+      "revId": "cd38746fc2d4177ce45280b6df40e36820629314",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
