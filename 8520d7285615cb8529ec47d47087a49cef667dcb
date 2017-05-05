@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "273f049c_bca6544a",
+        "filename": "adb/client/usb_libusb.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2017-05-05T18:44:37Z",
+      "side": 1,
+      "message": "I think we need to initialize this to nullptr explicitly or else we might end up wrapping unique_device_handle around (and eventually deleting) a random memory address if libusb_open() fails.",
+      "range": {
+        "startLine": 309,
+        "startChar": 12,
+        "endLine": 309,
+        "endChar": 45
+      },
+      "revId": "8520d7285615cb8529ec47d47087a49cef667dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
