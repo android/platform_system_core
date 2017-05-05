@@ -88,6 +88,30 @@
     },
     {
       "key": {
+        "uuid": "a851fe35_f57f794d",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-05-05T01:34:32Z",
+      "side": 1,
+      "message": "Not yet, I\u0027ll investigate how to do this later.",
+      "parentUuid": "e0f74983_2f901a05",
+      "range": {
+        "startLine": 152,
+        "startChar": 8,
+        "endLine": 152,
+        "endChar": 22
+      },
+      "revId": "453cd6f71da0da5fc15a164c8770f18163801c61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df905680_4a455221",
         "filename": "init/uevent_handler.cpp",
         "patchSetId": 1
@@ -261,6 +285,30 @@
       "side": 1,
       "message": "Ya...  :(  Really the idea is that coldboot should happen in a separate thread than the uevent processing, in which case coldboot isn\u0027t even a class, but rather just a function that gets called.  But before that happens and everything is kept synchronous I need to give it these classes.\n\nI can\u0027t move uevent_handler into it either as I need uevent_handler to continue to handle uevents after coldboot has finished.\n\nI\u0027ll figure out something to do here.",
       "parentUuid": "7e21bfd5_45135243",
+      "range": {
+        "startLine": 95,
+        "startChar": 18,
+        "endLine": 95,
+        "endChar": 57
+      },
+      "revId": "453cd6f71da0da5fc15a164c8770f18163801c61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70471226_16de6a2e",
+        "filename": "init/ueventd.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-05-05T01:34:32Z",
+      "side": 1,
+      "message": "Oh, I see. The lift time of uevent_handler is much longer than coldboot. (in ueventd, it\u0027s alive until power off or reboot).",
+      "parentUuid": "e2ee9f86_f94d49d5",
       "range": {
         "startLine": 95,
         "startChar": 18,
