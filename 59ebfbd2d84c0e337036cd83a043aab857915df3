@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90f3ae64_cda44dca",
+        "filename": "init/descriptors.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-08T20:29:01Z",
+      "side": 1,
+      "message": "This is simpler with android::base::Split(),\n\n\n    auto types \u003d android::base::Split(type(), \"+\");\n    int flags \u003d ((types[0] \u003d\u003d \"stream\" ? SOCK_STREAM :\n                  (types[0] \u003d\u003d \"dgram\" ? SOCK_DGRAM :\n                   SOCK_SEQPACKET)));\n    if (types.size() \u003e 1 \u0026\u0026 types[1] \u003d\u003d \"passcred\") flags |\u003d INIT_SOCK_PASSCRED;",
+      "revId": "59ebfbd2d84c0e337036cd83a043aab857915df3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c37aa20_82cc82f7",
+        "filename": "init/util.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-08T20:29:01Z",
+      "side": 1,
+      "message": "I\u0027m not a big fan of overloading type with this flag as it was otherwise meant to be passed directly to socket() to specify the \u0027type\u0027 parameter.  Could we have a separate bool parameter to this function for passcred?\n\n(If you do make this change, could you rename create_socket() to CreateSocket() too?  We\u0027re slowly getting to have proper function name syntax in init).",
+      "revId": "59ebfbd2d84c0e337036cd83a043aab857915df3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
