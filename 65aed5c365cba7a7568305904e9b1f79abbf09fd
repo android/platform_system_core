@@ -57,6 +57,24 @@
       "revId": "65aed5c365cba7a7568305904e9b1f79abbf09fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f06e1dc6_06362198",
+        "filename": "platform_tools_tool_version.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1010055
+      },
+      "writtenOn": "2017-05-08T21:21:47Z",
+      "side": 1,
+      "message": "I *think* you are looking for a solution with the following characteristics:\n - you should be able to distinguish adb that was built locally by a platform developer from the release version\n - you should be able to distinguish between different releases without knowing the build number -\u003e release number mapping.\n\nSo you need the following info at the very least:\n 1. Something that says that this was built on go/ab. I suspect a build number may be enough if you can just look at it and say it looks reasonable. Or you could add \"REL\" or \"USER\" to the version depending on whether it is built on ab or not.\n 2. The platform tools version that you have above.\n\nWith those two, you should be able to solve most of the common issues (I think).",
+      "parentUuid": "a9ff80ca_463f08e3",
+      "revId": "65aed5c365cba7a7568305904e9b1f79abbf09fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
