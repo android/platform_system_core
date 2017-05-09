@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "131545a9_e6434073",
+        "filename": "init/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-09T02:24:14Z",
+      "side": 1,
+      "message": "You can put all of these in a cc_defaults:\n\n  cc_defaults: {\n      name: \"\u003cname\u003e\",\n      cppflags: [],\n      cpp_std: \"\",\n      product_variables: {\n          debuggable: {\n              cppflags: [],\n          },\n          eng: {\n              cppflags: [],\n          },\n      },\n      sanitize: {\n          misc_undefined: [\"integer\"],\n      },\n      ...\n  }\n\nthen the modules can say:\n\n  cc_library_static: {\n      name: \"libinit\",\n      defaults: [\"\u003cname\u003e\"],",
+      "revId": "9efb48dbf9c498d2837f63503cb13fbcf4652798",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da0c897d_4df3e5c7",
+        "filename": "init/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-09T02:24:14Z",
+      "side": 1,
+      "message": "cpp_std: \"experimental\" ?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "9efb48dbf9c498d2837f63503cb13fbcf4652798",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34b52693_0802230d",
+        "filename": "init/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-09T02:24:14Z",
+      "side": 1,
+      "message": "We\u0027ve just been assuming this is the default now",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "9efb48dbf9c498d2837f63503cb13fbcf4652798",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
