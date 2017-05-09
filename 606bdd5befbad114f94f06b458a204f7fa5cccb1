@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a6706e2_c4ada0b2",
+        "filename": "fastboot/engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-05-09T02:17:04Z",
+      "side": 1,
+      "message": "i think it\u0027s also time we rewrote the Action stuff to actually own (and free/close) memory/fds.",
+      "revId": "606bdd5befbad114f94f06b458a204f7fa5cccb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec218ff0_1fba24d9",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1618,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-05-09T02:17:04Z",
+      "side": 1,
+      "message": "anyone know why this was a while loop? _some_ of the commands were checking that they didn\u0027t have any trailing crap, and some of the commands inherently send all the rest of the command line to the bootloader. and yet someone at some point seemed to think that \"fastboot devices flashall flash boot boot.img\" was valid?\n\nremove the \"last_arg\" calls, or remove the while loop?",
+      "range": {
+        "startLine": 1618,
+        "startChar": 4,
+        "endLine": 1618,
+        "endChar": 9
+      },
+      "revId": "606bdd5befbad114f94f06b458a204f7fa5cccb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c1d7ace_78d080f4",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1729,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-05-09T02:17:04Z",
+      "side": 1,
+      "message": "anyone know? we should fix the help text if so, or add a check for \u003d\u003d \"boot\" otherwise.",
+      "range": {
+        "startLine": 1729,
+        "startChar": 52,
+        "endLine": 1729,
+        "endChar": 110
+      },
+      "revId": "606bdd5befbad114f94f06b458a204f7fa5cccb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
