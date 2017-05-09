@@ -19,6 +19,41 @@
     },
     {
       "key": {
+        "uuid": "851fd600_6e65420d",
+        "filename": "fastboot/engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-09T17:15:54Z",
+      "side": 1,
+      "message": "+1  Seems like this whole file could be re-written with Action as an interface and then a set of subclasses that fully own their data.  It\u0027s :( to see free() in modern code.",
+      "parentUuid": "2a6706e2_c4ada0b2",
+      "revId": "606bdd5befbad114f94f06b458a204f7fa5cccb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe366e68_849a4aa6",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-09T17:15:54Z",
+      "side": 1,
+      "message": "If you\u0027re doing pop_front(), args should be a deque.\n\nAlternatively, why pop the front at all?  This could just increment an iterator.  Though you\u0027d need two arguments to know the end() iterator that way, but you could probably do something interesting here to get around that if you want, like making your own iterator that tracks end() and calls syntax_error() if you hit it.  Something like the below?\n\nauto get_next_args(const std::vector\u003cstd::string\u003e\u0026 args) {\n  auto it \u003d args.begin();\n  auto end \u003d args.end();\n  return [\u0026args, it, end] () mutable { \n    if (it \u003d\u003d end) syntax_error();\n    return *it++;\n  };\n}\n    \nauto next_arg \u003d get_next_args(args);\nstd::string arg \u003d next_arg();",
+      "revId": "606bdd5befbad114f94f06b458a204f7fa5cccb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec218ff0_1fba24d9",
         "filename": "fastboot/fastboot.cpp",
         "patchSetId": 1
@@ -84,6 +119,23 @@
         "endLine": 1618,
         "endChar": 9
       },
+      "revId": "606bdd5befbad114f94f06b458a204f7fa5cccb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a0141be_897e9145",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1624,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-09T17:15:54Z",
+      "side": 1,
+      "message": "Looks like this is safe, cause there is a strdup() in fb_queue_display(), but this feels super precarious given that variable is a temporary and we lose any lifetime information when we grab it\u0027s c_str().  Nothing to do in this CL, but substantiating the reasons to make Action better.",
       "revId": "606bdd5befbad114f94f06b458a204f7fa5cccb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
