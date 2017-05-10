@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ecbe231_8a0bc406",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-05-10T05:15:01Z",
+      "side": 1,
+      "message": "the idea here was that you can\u0027t use tmpfile(3) on Windows even though it exists (see the comment on L537) so the function above and this macro put a compatible \"better\" implementation in tmpfile\u0027s place. your change breaks that.",
+      "revId": "22ff3a9c56a68b73f6ccb47d81901db49203ab58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53272f42_67eecc48",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-05-10T05:15:01Z",
+      "side": 1,
+      "message": "here you\u0027ve implemented something more like mkstemp(3), which is a fine idea, but you\u0027ve named it terribly --- it sounds like mktemp.\n\n(plus you\u0027ve doubled down on the bug mentioned in L564.)\n\na more reasonable approach is probably something like int make_temporary_file(std::string* path). this would cover existing uses too, and you could optionally allow nullptr for the callers that don\u0027t actually care.\n\nit\u0027s still a bit of an awkward idea though... do you really want something more like libbase\u0027s TemporaryFile at this point?",
+      "revId": "22ff3a9c56a68b73f6ccb47d81901db49203ab58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16593901_a05e2fdf",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-05-10T05:15:01Z",
+      "side": 1,
+      "message": "you\u0027re returning the name you just unlinked?",
+      "range": {
+        "startLine": 609,
+        "startChar": 0,
+        "endLine": 610,
+        "endChar": 25
+      },
+      "revId": "22ff3a9c56a68b73f6ccb47d81901db49203ab58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ac89c7b_8a861944",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-05-10T05:15:01Z",
+      "side": 1,
+      "message": "this is what unique_fd::release (and std::unique_ptr\u0027s release) is for.",
+      "range": {
+        "startLine": 1479,
+        "startChar": 32,
+        "endLine": 1479,
+        "endChar": 34
+      },
+      "revId": "22ff3a9c56a68b73f6ccb47d81901db49203ab58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce6bd148_b496b483",
+        "filename": "fastboot/fs.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-05-10T05:15:01Z",
+      "side": 1,
+      "message": "?",
+      "revId": "22ff3a9c56a68b73f6ccb47d81901db49203ab58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9a8c6b0_537b8417",
+        "filename": "fastboot/fs.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-05-10T05:15:01Z",
+      "side": 1,
+      "message": "strerror here and elsewhere",
+      "revId": "22ff3a9c56a68b73f6ccb47d81901db49203ab58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
