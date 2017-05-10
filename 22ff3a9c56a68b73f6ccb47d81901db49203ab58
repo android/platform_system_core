@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7790ae4a_18fc0cc6",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1051712
+      },
+      "writtenOn": "2017-05-10T19:13:38Z",
+      "side": 1,
+      "message": "Maybe I missed something. Any reason we need to keep the function @539 compatible with tmpfile? I\u0027ve updated all callers in this file to take std::string as return value so I think it\u0027s no longer tmpfile(3) and I can rename it (generate_tmp_filename?) to be less confusing, i.e. we define a local function to generate name for tmp file, even it\u0027s similar with tmpfile but we don\u0027t have to make it an override function of tmpfile.",
+      "parentUuid": "4ecbe231_8a0bc406",
+      "revId": "22ff3a9c56a68b73f6ccb47d81901db49203ab58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53272f42_67eecc48",
         "filename": "fastboot/fastboot.cpp",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "81f22705_e7215143",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1051712
+      },
+      "writtenOn": "2017-05-10T19:13:38Z",
+      "side": 1,
+      "message": "What I need the file name for is:\n\n1. generate a tmp filename\n2. pass the name to mke2fs for writing output image.\n3. get the fd from output image and pass it to load_buf_fd.\n4. keep the fd open until fastboot executed cmd.\n\nTemporaryFile looks a better fit : )",
+      "parentUuid": "53272f42_67eecc48",
+      "revId": "22ff3a9c56a68b73f6ccb47d81901db49203ab58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16593901_a05e2fdf",
         "filename": "fastboot/fastboot.cpp",
         "patchSetId": 4
@@ -47,6 +83,30 @@
       "writtenOn": "2017-05-10T05:15:01Z",
       "side": 1,
       "message": "you\u0027re returning the name you just unlinked?",
+      "range": {
+        "startLine": 609,
+        "startChar": 0,
+        "endLine": 610,
+        "endChar": 25
+      },
+      "revId": "22ff3a9c56a68b73f6ccb47d81901db49203ab58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14a0a425_e5c6b087",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1051712
+      },
+      "writtenOn": "2017-05-10T19:13:38Z",
+      "side": 1,
+      "message": "yeah, filename should be valid as long as we have fd open. A bit awkwardness since I need the filename. Should be resolved with TemporaryFile.",
+      "parentUuid": "16593901_a05e2fdf",
       "range": {
         "startLine": 609,
         "startChar": 0,
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "c1a7c363_52074cef",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1051712
+      },
+      "writtenOn": "2017-05-10T19:13:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ac89c7b_8a861944",
+      "range": {
+        "startLine": 1479,
+        "startChar": 32,
+        "endLine": 1479,
+        "endChar": 34
+      },
+      "revId": "22ff3a9c56a68b73f6ccb47d81901db49203ab58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce6bd148_b496b483",
         "filename": "fastboot/fs.cpp",
         "patchSetId": 4
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "96a0429c_652dcfce",
+        "filename": "fastboot/fs.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1051712
+      },
+      "writtenOn": "2017-05-10T19:13:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce6bd148_b496b483",
+      "revId": "22ff3a9c56a68b73f6ccb47d81901db49203ab58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9a8c6b0_537b8417",
         "filename": "fastboot/fs.cpp",
         "patchSetId": 4
@@ -110,6 +212,24 @@
       "writtenOn": "2017-05-10T05:15:01Z",
       "side": 1,
       "message": "strerror here and elsewhere",
+      "revId": "22ff3a9c56a68b73f6ccb47d81901db49203ab58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39624168_b31a66cf",
+        "filename": "fastboot/fs.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1051712
+      },
+      "writtenOn": "2017-05-10T19:13:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9a8c6b0_537b8417",
       "revId": "22ff3a9c56a68b73f6ccb47d81901db49203ab58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
