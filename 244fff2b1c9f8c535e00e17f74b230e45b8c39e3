@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e6f25816_43f92f33",
+        "filename": "logd/LogBufferInterface.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-10T23:18:38Z",
+      "side": 1,
+      "message": "I assume you want to enhance the comment with that. Yes, descriptive and accurate.",
+      "parentUuid": "8b9fb6a5_2f8121c9",
+      "range": {
+        "startLine": 26,
+        "startChar": 60,
+        "endLine": 26,
+        "endChar": 73
+      },
+      "revId": "244fff2b1c9f8c535e00e17f74b230e45b8c39e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6f97dd1_b9df1cd5",
         "filename": "logd/LogListener.cpp",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cb028b4a_edf198ed",
+        "filename": "logd/LogListener.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-10T23:18:38Z",
+      "side": 1,
+      "message": "Yes. This is a means for someone to spoof a log credential based on the tid they manufacture. We are basically opening ourselves up that if the credentials are missing (because PASSCRED was not set) that we continue functioning as a logger.\n\nNote that this code is now used in non Android loggers, so allowing this permits them to function.",
+      "parentUuid": "c6f97dd1_b9df1cd5",
+      "range": {
+        "startLine": 104,
+        "startChar": 7,
+        "endLine": 104,
+        "endChar": 59
+      },
+      "revId": "244fff2b1c9f8c535e00e17f74b230e45b8c39e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d21182f_be949a97",
         "filename": "logd/LogListener.cpp",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2017-05-10T22:54:29Z",
       "side": 1,
       "message": "It may also mean tidToPid() failed and returned the supplied param?  Probably fine to drop in that case anyway?",
+      "range": {
+        "startLine": 109,
+        "startChar": 30,
+        "endLine": 109,
+        "endChar": 42
+      },
+      "revId": "244fff2b1c9f8c535e00e17f74b230e45b8c39e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "798259e9_dda4bd20",
+        "filename": "logd/LogListener.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-10T23:18:38Z",
+      "side": 1,
+      "message": "cred-\u003epid \u003d\u003d getpid() is self. We want to make sure any log message that comes from the libraries logd uses are dropped on the floor.\n\nGood catch on the second half (and following might act as an explanation why I mental blocked this).\n\n(cred-\u003epid \u003d\u003d header-\u003etid) seems like a \u0027brain ph@rt\u0027 to me, as I remember thinking \u0027what if the tid matches self?\u0027. header-\u003etid \u003d\u003d getpid() or header-\u003etid \u003d\u003d gettid() was what I had in my head. Besides, they are not enough IMHO because what if the tid is one of the members of our thread pool? Why I wrote that second fragment that way fails me ;-/ and is human error. Besides, as a minimum, we _can_ see our own logd proc/\u003ctid\u003e/ information even without readproc permissions, so lets not second guess this.\n\nDo note that pid \u003d\u003d tid in _many_ legitimate cases and will result in dropped content, not the intent of this.\n\nNeed to drop the second part of this test.\n\nIf we need to get paranoid and internally look at all our threads in logd\u0027s pool (assuming /proc/\u003cpid\u003e/ and /proc/\u003ctid\u003e are denied), we can add that complexity later for those that need it.",
+      "parentUuid": "5d21182f_be949a97",
       "range": {
         "startLine": 109,
         "startChar": 30,
