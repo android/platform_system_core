@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "9391a69d_a7c39198",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-12T21:35:50Z",
+      "side": 1,
+      "message": "Yes, agree, better clarity on \u0027release\u0027 or \u0027RELEASE\u0027 ;-}",
+      "parentUuid": "06cc245b_a78b3ab4",
+      "range": {
+        "startLine": 619,
+        "startChar": 11,
+        "endLine": 619,
+        "endChar": 18
+      },
+      "revId": "e4919583a61cb5d01d2a32a707a1c9ae015d1714",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "431b899f_57fcee17",
         "filename": "logd/LogBuffer.cpp",
         "patchSetId": 1
@@ -105,6 +129,30 @@
       "writtenOn": "2017-05-12T21:24:02Z",
       "side": 1,
       "message": "All of these new calls to isBusy() are preceded by this condition, is it part of the \"is busy\" decision. and if so should it move there?",
+      "range": {
+        "startLine": 716,
+        "startChar": 16,
+        "endLine": 716,
+        "endChar": 62
+      },
+      "revId": "e4919583a61cb5d01d2a32a707a1c9ae015d1714",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b2ddcc6_ee0b9b92",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-12T21:35:50Z",
+      "side": 1,
+      "message": "It is not part of the isBusy decision, it is a pre-check as to whether to consider busy checking (busy being that there is more than (pruneMargin + 1 second) of logs between the watermark and the end of the logging list.\n\nIt is also a gate as to whether to consider a kickMe operation.",
+      "parentUuid": "431b899f_57fcee17",
       "range": {
         "startLine": 716,
         "startChar": 16,
@@ -132,6 +180,122 @@
         "startLine": 717,
         "startChar": 20,
         "endLine": 717,
+        "endChar": 46
+      },
+      "revId": "e4919583a61cb5d01d2a32a707a1c9ae015d1714",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cafc956_e9bab0af",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-12T21:35:50Z",
+      "side": 1,
+      "message": "Android style prohibits this ... good point, old habit.",
+      "parentUuid": "d52bab13_7af52e7f",
+      "range": {
+        "startLine": 717,
+        "startChar": 20,
+        "endLine": 717,
+        "endChar": 46
+      },
+      "revId": "e4919583a61cb5d01d2a32a707a1c9ae015d1714",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a691ecb9_9b059b25",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-12T21:35:50Z",
+      "side": 1,
+      "message": "NB: we can never be in this path if --clear, and no one else cares about the return value, so setting/clearing busy boolean is a wasted effort.\n\nKeep it because pedantically it shows a united front, and if a developer copy and pasted this into a new ingenious loop if we removed it would present a maintenance issue.\n\nOthers would call this Cargo Cult :-(",
+      "range": {
+        "startLine": 805,
+        "startChar": 1,
+        "endLine": 805,
+        "endChar": 55
+      },
+      "revId": "e4919583a61cb5d01d2a32a707a1c9ae015d1714",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62849646_14feda5a",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-12T21:35:50Z",
+      "side": 1,
+      "message": "I could be convinced dropping any reader-mitigations in the chatty/blacklisting loop is too aggressive.",
+      "range": {
+        "startLine": 806,
+        "startChar": 0,
+        "endLine": 806,
+        "endChar": 46
+      },
+      "revId": "e4919583a61cb5d01d2a32a707a1c9ae015d1714",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41bfd05d_a51e05bd",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-12T21:35:50Z",
+      "side": 1,
+      "message": "And this is why we can not make a common \u0027watermark check\u0027 function. Besides if we added one, we would need oldest, id , pruneRows, watermark, element, \u0026busy, whitelist (optioned here) as arguments which does not serve us well for clarity.",
+      "range": {
+        "startLine": 958,
+        "startChar": 0,
+        "endLine": 958,
+        "endChar": 33
+      },
+      "revId": "e4919583a61cb5d01d2a32a707a1c9ae015d1714",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60c3afd9_7b227d46",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-05-12T21:35:50Z",
+      "side": 1,
+      "message": "busy \u003d isBusy(watermark);\nif (busy) kickMe(oldest, id, pruneRows);\nbreak;",
+      "range": {
+        "startLine": 991,
+        "startChar": 0,
+        "endLine": 992,
         "endChar": 46
       },
       "revId": "e4919583a61cb5d01d2a32a707a1c9ae015d1714",
