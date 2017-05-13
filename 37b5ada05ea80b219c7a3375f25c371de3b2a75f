@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "86d6f82f_f4e9badb",
+        "filename": "fs_mgr/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-05-13T06:50:50Z",
+      "side": 1,
+      "message": "No, it\u0027s not a problem.\n\nIt will bail out early because there is no metadata on eng build.\nhttps://cs.corp.google.com/android/system/core/fs_mgr/fs_mgr_verity.cpp?q\u003dfec_verity_get_metadata+p:android\u0026dr\u003dC\u0026l\u003d751\n\nvboot 1.0 (fs_mgr_verity.cpp) only adds verity metadata for user/userdebug but NOT eng. And only allow disabling verity on userdebug.\n\nBtw, this flag is NOT used in vboot 2.0 (AVB) because we decided to remove the dependency between verity and build variants. All user/userdebug/eng builds have AVB metadata and allow disable it if and only if the device is UNLOCKED.",
+      "parentUuid": "c46c5817_93e4780c",
+      "revId": "37b5ada05ea80b219c7a3375f25c371de3b2a75f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c64203a8_844081b5",
         "filename": "fs_mgr/Android.mk",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-05-13T00:13:48Z",
       "side": 1,
       "message": "Not sure that we can do this with .bp yet, so this isn\u0027t converted.",
+      "revId": "37b5ada05ea80b219c7a3375f25c371de3b2a75f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cf7df71_341502f3",
+        "filename": "fs_mgr/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-05-13T06:50:50Z",
+      "side": 1,
+      "message": "I\u0027m not sure either.",
+      "parentUuid": "c64203a8_844081b5",
       "revId": "37b5ada05ea80b219c7a3375f25c371de3b2a75f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
