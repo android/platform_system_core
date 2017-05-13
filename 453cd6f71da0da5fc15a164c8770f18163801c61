@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ceae04ed_b458c59e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-13T01:16:24Z",
+      "side": 1,
+      "message": "Nominally b/33785894‎.",
+      "parentUuid": "504eb6b3_0b3e8e65",
+      "revId": "453cd6f71da0da5fc15a164c8770f18163801c61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17f709bf_d22f9ddf",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2017-05-04T06:41:38Z",
       "side": 1,
       "message": "Better to test this for devices having \"first stage mount\" (They\u0027re marlin/sailfish in goog gerrit, AOSP doesn\u0027t enable it yet).\n\nAnyway, I can verify this when the CL is close to final stage.",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "453cd6f71da0da5fc15a164c8770f18163801c61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ae2abf9_a2cc0b1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-13T01:16:24Z",
+      "side": 1,
+      "message": "Right, truthfully, I only wrote that to satisfy the gerrit hook.  This needs much more testing when it\u0027s final.",
+      "parentUuid": "17f709bf_d22f9ddf",
       "range": {
         "startLine": 19,
         "startChar": 6,
@@ -77,6 +119,30 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "eed2f910_77cc6eef",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 28
+      },
+      "revId": "453cd6f71da0da5fc15a164c8770f18163801c61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51388999_5e6208b7",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-13T01:16:24Z",
+      "side": 1,
+      "message": "I want to too; this is ugly as is.  I think at least part of this is going to have to stay.  In the latest version of this file, GetBlockDeviceSymlinks() is used and that is part of UeventHandler, so we\u0027ll likely need to keep at least that.",
+      "parentUuid": "53452f4c_31378228",
       "range": {
         "startLine": 62,
         "startChar": 0,
@@ -182,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "c96658fc_527d4a75",
+        "filename": "init/uevent_handler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-13T01:16:24Z",
+      "side": 1,
+      "message": "I\u0027ll fix the above comment for this.",
+      "parentUuid": "755e92d3_4ce1cb6b",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "453cd6f71da0da5fc15a164c8770f18163801c61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6861ed7_f6b83a28",
         "filename": "init/uevent_handler.cpp",
         "patchSetId": 1
@@ -193,6 +283,30 @@
       "writtenOn": "2017-05-08T21:08:09Z",
       "side": 1,
       "message": "should the link creation depend on sehandle_? As long as you setfscreatecon() on the file within this block, you should be ok. You can add the links after the block ..",
+      "range": {
+        "startLine": 143,
+        "startChar": 6,
+        "endLine": 147,
+        "endChar": 38
+      },
+      "revId": "453cd6f71da0da5fc15a164c8770f18163801c61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3ed523e_9682d9bc",
+        "filename": "init/uevent_handler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-13T01:16:24Z",
+      "side": 1,
+      "message": "That\u0027s not what these lines are doing.  selabel_lookup_best_match needs an array of c strings to do a look up by symlink, so I need to build such an array from the actual links vector.  The links are created elsewhere regardless of sehandle.",
+      "parentUuid": "e6861ed7_f6b83a28",
       "range": {
         "startLine": 143,
         "startChar": 6,
@@ -228,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "1ac27818_6742b027",
+        "filename": "init/uevent_handler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-13T01:16:24Z",
+      "side": 1,
+      "message": "Hm, ya the start should just be set \u003d 12 from the start.\n\nThis file is just a rename of devices.cpp, so I\u0027ll handle this in another CL.",
+      "parentUuid": "c49b44a6_078eaf8c",
+      "range": {
+        "startLine": 236,
+        "startChar": 30,
+        "endLine": 236,
+        "endChar": 35
+      },
+      "revId": "453cd6f71da0da5fc15a164c8770f18163801c61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e1f4ed8_6357d55f",
         "filename": "init/uevent_handler.cpp",
         "patchSetId": 1
@@ -239,6 +377,30 @@
       "writtenOn": "2017-05-05T00:06:30Z",
       "side": 1,
       "message": "I think this test is redundant. Checks above already guarantee \"pci//\" so checking \"pci/\" is no-op here?",
+      "range": {
+        "startLine": 243,
+        "startChar": 4,
+        "endLine": 247,
+        "endChar": 5
+      },
+      "revId": "453cd6f71da0da5fc15a164c8770f18163801c61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4a9c159_257b1ee6",
+        "filename": "init/uevent_handler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-13T01:16:24Z",
+      "side": 1,
+      "message": "There was a test I added this for before.  Like above, I\u0027ll look into this for another CL.",
+      "parentUuid": "2e1f4ed8_6357d55f",
       "range": {
         "startLine": 243,
         "startChar": 4,
@@ -274,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "9e566399_2c4b9372",
+        "filename": "init/uevent_handler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-13T01:16:24Z",
+      "side": 1,
+      "message": "Makes sense; same comment as above.",
+      "parentUuid": "83be1d64_7ebf27e2",
+      "range": {
+        "startLine": 292,
+        "startChar": 35,
+        "endLine": 292,
+        "endChar": 36
+      },
+      "revId": "453cd6f71da0da5fc15a164c8770f18163801c61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b92b83b_3403c588",
         "filename": "init/uevent_handler.h",
         "patchSetId": 1
@@ -297,6 +483,30 @@
     },
     {
       "key": {
+        "uuid": "ff1b45c1_8ecbc37b",
+        "filename": "init/uevent_handler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-13T01:16:24Z",
+      "side": 1,
+      "message": "gerrit isn\u0027t showing this right, but this is actually a rename of devices.h, hence the old date.",
+      "parentUuid": "4b92b83b_3403c588",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "453cd6f71da0da5fc15a164c8770f18163801c61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6afa09ad_c5584f4a",
         "filename": "init/uevent_handler_test.cpp",
         "patchSetId": 1
@@ -308,6 +518,30 @@
       "writtenOn": "2017-05-05T00:06:30Z",
       "side": 1,
       "message": "add failing cases for /devices/pci/ and /devices/pci// as well?",
+      "range": {
+        "startLine": 259,
+        "startChar": 17,
+        "endLine": 259,
+        "endChar": 30
+      },
+      "revId": "453cd6f71da0da5fc15a164c8770f18163801c61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abb5abc4_c4cd1b4b",
+        "filename": "init/uevent_handler_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-13T01:16:24Z",
+      "side": 1,
+      "message": "I can add those too, but this effectively tests for that.  This fails because of the double \u0027/\u0027 after pci; the mmcblk0 shouldn\u0027t have an effect on the failure.  I guess I can just remove it in that case, but I thought I\u0027d make it look like a real path.",
+      "parentUuid": "6afa09ad_c5584f4a",
       "range": {
         "startLine": 259,
         "startChar": 17,
@@ -426,6 +660,30 @@
       "writtenOn": "2017-05-04T06:41:38Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "453cd6f71da0da5fc15a164c8770f18163801c61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db1762ae_dbec53e7",
+        "filename": "init/ueventd_parser.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-13T01:16:24Z",
+      "side": 1,
+      "message": "Ah; this one wasn\u0027t renamed so it\u0027s a pure typo.",
+      "parentUuid": "9be9c70b_17211966",
       "range": {
         "startLine": 2,
         "startChar": 17,
