@@ -22,6 +22,30 @@
       "revId": "27b31235142b12ff1cea0caeffcb3ccd5183dfc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11af95e9_cbdee1c6",
+        "filename": "adb/transport_usb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-05-18T22:07:50Z",
+      "side": 1,
+      "message": "I think the handling on line 82 doesn\u0027t work in all cases (this doesn\u0027t either, but I think it works in more).\nSpecifically, if the packet that\u0027s in the queue is a payload and not a message, the read at line 70 will fail and return -1.\n\nI think this covers all of the cases that the code above does, do you think I should just delete the handling there?",
+      "parentUuid": "ce9ecc7c_fc2ea602",
+      "range": {
+        "startLine": 137,
+        "startChar": 30,
+        "endLine": 137,
+        "endChar": 36
+      },
+      "revId": "27b31235142b12ff1cea0caeffcb3ccd5183dfc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
