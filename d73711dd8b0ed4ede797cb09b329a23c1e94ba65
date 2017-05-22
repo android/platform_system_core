@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ded199c_e8fcb5ee",
+        "filename": "init/ueventd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-05-22T18:13:32Z",
+      "side": 1,
+      "message": "nit: space. ignore if .clang_format didn\u0027t complain.",
+      "range": {
+        "startLine": 110,
+        "startChar": 72,
+        "endLine": 110,
+        "endChar": 75
+      },
+      "revId": "d73711dd8b0ed4ede797cb09b329a23c1e94ba65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93f29f30_2921faff",
+        "filename": "init/ueventd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-05-22T18:13:32Z",
+      "side": 1,
+      "message": "this seems completely unused..",
+      "range": {
+        "startLine": 161,
+        "startChar": 4,
+        "endLine": 161,
+        "endChar": 14
+      },
+      "revId": "d73711dd8b0ed4ede797cb09b329a23c1e94ba65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4895511_136f2da8",
+        "filename": "init/ueventd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-05-22T18:13:32Z",
+      "side": 1,
+      "message": "I think we might need to do that with this change. If for whatever reason the forked process crashes in the middle of handling the uevents, the current code seem to continue to set COLDBOOT_DONE and init will continue the boot. Depending on luck, boot may / may not succeed.\n\nNot necessarily saying its wrong, but this is a \"change in behavior\".\n\nIf you want to be consistent with today\u0027s behavior, you may want to at least know if the child terminated normally.",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 7
+      },
+      "revId": "d73711dd8b0ed4ede797cb09b329a23c1e94ba65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
