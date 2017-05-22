@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "846e4af9_25bdb10c",
+        "filename": "init/ueventd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-22T20:01:12Z",
+      "side": 1,
+      "message": "No clang-format complaints.  (I\u0027m always used to the ?: operator being without a space too)",
+      "parentUuid": "8ded199c_e8fcb5ee",
+      "range": {
+        "startLine": 110,
+        "startChar": 72,
+        "endLine": 110,
+        "endChar": 75
+      },
+      "revId": "d73711dd8b0ed4ede797cb09b329a23c1e94ba65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93f29f30_2921faff",
         "filename": "init/ueventd.cpp",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "08c475a6_fa1aaa0d",
+        "filename": "init/ueventd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-22T20:01:12Z",
+      "side": 1,
+      "message": "Right; it\u0027s left over from some debugging code.  Will remove.",
+      "parentUuid": "93f29f30_2921faff",
+      "range": {
+        "startLine": 161,
+        "startChar": 4,
+        "endLine": 161,
+        "endChar": 14
+      },
+      "revId": "d73711dd8b0ed4ede797cb09b329a23c1e94ba65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4895511_136f2da8",
         "filename": "init/ueventd.cpp",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2017-05-22T18:13:32Z",
       "side": 1,
       "message": "I think we might need to do that with this change. If for whatever reason the forked process crashes in the middle of handling the uevents, the current code seem to continue to set COLDBOOT_DONE and init will continue the boot. Depending on luck, boot may / may not succeed.\n\nNot necessarily saying its wrong, but this is a \"change in behavior\".\n\nIf you want to be consistent with today\u0027s behavior, you may want to at least know if the child terminated normally.",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 7
+      },
+      "revId": "d73711dd8b0ed4ede797cb09b329a23c1e94ba65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "348bbaaa_888c37e6",
+        "filename": "init/ueventd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-22T20:01:12Z",
+      "side": 1,
+      "message": "Makes sense; you\u0027re right that the current code isn\u0027t robust.  \n\nI should get rid of this and have a proper signal handler for SIGCHLD; I\u0027ll be able to wait for these children with a timeout.  If the timeout hits or any of the children exit unsuccessfully, ueventd can kill the other children and handle all of the uevents in the queue itself.  \n\nIt will come with a clear cost to boot time (if the timeout is hit, children are killed, and ueventd then subsequently does the handling), but that should be a long tail situation and will ensure safety.\n\nI\u0027ll do this.",
+      "parentUuid": "a4895511_136f2da8",
       "range": {
         "startLine": 233,
         "startChar": 0,
