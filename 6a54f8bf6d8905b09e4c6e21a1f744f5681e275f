@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30da3f5a_ac8bf13e",
+        "filename": "init/coldboot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-05-22T16:19:33Z",
+      "side": 1,
+      "message": "nit: Just came to think of it, as current ColdBoot actually just runs \"echo add \u003e uevent\", how about rename it to \"UeventTrigger\" or \"UeventWalker\"?\n\nSo the three functions here will be (assuming Walker is selected):\n  - UeventWalkerDir()\n  - UeventWalkerPath()\n  - UeventWalker()",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 9
+      },
+      "revId": "6a54f8bf6d8905b09e4c6e21a1f744f5681e275f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1fca879_790f7fc3",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-05-22T16:19:33Z",
+      "side": 1,
+      "message": "How about moving the device_handler, uevent_listener, HandleUevents(UeventCallback callback) and enum ColdBootAction into a separate class here. Because those coldboot related actions seems has low cohesion with other members in FirstStageMount class.\n\ne.g., name the new class \u0027ColdBoot\u0027 if you\u0027re ok to rename ColdBoot in coldboot.cpp to UeventWalker or UeventTrigger. Or name it ConditionalColdBoot otherwise.\n\nclass ColdBoot or ConditionalColdBoot {\n  public:\n    enum class ColdBootAction {\n        kContinue \u003d 0,\n        kCreate,\n        kStop,\n    };\n    // The following two functions invokes UeventWalker() inside.\n    ColdBootAction ColdBootPath(const std::string\u0026 path, UeventCallback callback);\n    ColdBootAction ColdBoot(UeventCallback callback);\n\n  private:\n    bool HandleUevents(UeventCallback callback);\n    DeviceHandler device_handler_;\n    UeventListener uevent_listener_;\n}",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 36
+      },
+      "revId": "6a54f8bf6d8905b09e4c6e21a1f744f5681e275f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "617b97e1_ce32ccc2",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-05-22T16:19:33Z",
+      "side": 1,
+      "message": "It seems the two level lambda is not very intuitive.\n\nThis can be fixed if we\u0027re creating a new class for ColdBoot as commented above.",
+      "range": {
+        "startLine": 188,
+        "startChar": 7,
+        "endLine": 193,
+        "endChar": 11
+      },
+      "revId": "6a54f8bf6d8905b09e4c6e21a1f744f5681e275f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
