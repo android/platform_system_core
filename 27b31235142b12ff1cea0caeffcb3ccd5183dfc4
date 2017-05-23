@@ -94,6 +94,30 @@
       "revId": "27b31235142b12ff1cea0caeffcb3ccd5183dfc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44653cd0_298b3af2",
+        "filename": "adb/transport_usb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-05-23T22:00:48Z",
+      "side": 1,
+      "message": "Yes, I agree the problem only occurs at the beginning of connections. But I think at least L106-L112 should be moved to initial_read, otherwise the device offlince problem can occur for the reason in L107-L108. This can be tested by test_device.DeviceOfflineTest, however, you need to write a script to run the tests in a loop for a long time (like several hours). Because the situation in problem is hard to reproduce.",
+      "parentUuid": "6862b06a_cd8c656d",
+      "range": {
+        "startLine": 137,
+        "startChar": 30,
+        "endLine": 137,
+        "endChar": 36
+      },
+      "revId": "27b31235142b12ff1cea0caeffcb3ccd5183dfc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
