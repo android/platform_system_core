@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "7a08f5bd_6183977d",
+        "filename": "init/coldboot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-23T02:36:17Z",
+      "side": 1,
+      "message": "I ended up going with RegenerateUevents as part of UeventListener.  It seems to make sense to me to have those two together given that there isn\u0027t much to be gained in splitting them into separate threads.",
+      "parentUuid": "c1e65951_bc30e942",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 9
+      },
+      "revId": "6a54f8bf6d8905b09e4c6e21a1f744f5681e275f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1fca879_790f7fc3",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 7
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "Maybe we could just add that method into ColdBoot class?\nAlthough it\u0027s a bit odd to invoke it inside a ColdbootCallback, but I cannot think of a better solution now.\n\nclass ColdBoot {\n  public:\n    std::vector\u003cstd::string\u003e GetBlockDeviceSymlinks(const Uevent\u0026 uevent) {\n        return device_handler_.GetBlockDeviceSymlinks(uevent);\n    }",
       "parentUuid": "8704465c_6e1576d4",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 36
+      },
+      "revId": "6a54f8bf6d8905b09e4c6e21a1f744f5681e275f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cef3ca6_56f1fc25",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-23T02:36:17Z",
+      "side": 1,
+      "message": "I want to keep device_handler_ separate from cold boot / uevent listening though as they\u0027re different operations.  Check out the new patchset I uploaded.  The unfortunate part about them is that they require this file to actually call HandleDeviceEvent(), but it does keep everything separated.",
+      "parentUuid": "88662415_68147e52",
       "range": {
         "startLine": 82,
         "startChar": 0,
