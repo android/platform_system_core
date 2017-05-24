@@ -142,6 +142,30 @@
       "revId": "27b31235142b12ff1cea0caeffcb3ccd5183dfc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6aa60fba_e53f519e",
+        "filename": "adb/transport_usb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-05-24T17:29:59Z",
+      "side": 1,
+      "message": "For usb bulk transfer, each data package has a DATA0/DATA1 flag. The host and device should have the same expectation of the flag, otherwise the package will be ignored. A discussion is http://www.microchip.com/forums/m473721.aspx. When adb server on host is killed and restarted, the host resets its epin/epout data toggle flags to DATA0. But the device doesn\u0027t know this, and keeps the original flags. So the first package sent from adb server to adbd, and the first package sent from adbd to adb server can lost because of DATA flag mismatch.\n\nI fixed this by adding an empty packet when sending the first packet from adb server to adbd, https://cs.corp.google.com/android/system/core/adb/adb.cpp?type\u003dcs\u0026q\u003dadb.cpp\u0026sq\u003dp:%5Eandroid$\u0026l\u003d266. And when adb server doesn\u0027t receive a packet correctly, it may be because the packet header is ignored, so it resend the CNXN packet.\n\nIt is not the only solution. For example, resetting the usb device or set usb configuration should also fix this. I didn\u0027t choose them because they may affect other usb interfaces.",
+      "parentUuid": "15ec2e8a_74ee02f7",
+      "range": {
+        "startLine": 137,
+        "startChar": 30,
+        "endLine": 137,
+        "endChar": 36
+      },
+      "revId": "27b31235142b12ff1cea0caeffcb3ccd5183dfc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
