@@ -22,6 +22,30 @@
       "revId": "bbd83be8c03f15c1f30805e2774c453007cf1023",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c5e3565_06fbebb8",
+        "filename": "init/firmware_handler.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-24T00:01:39Z",
+      "side": 1,
+      "message": "In the first case we can\u0027t because that\u0027s the case that\u0027s opening the loading_fd.  I\u0027m not sure for the second case as it\u0027s moved over from devices.cpp.  \n\nI\u0027m not sure if we need to add it either way.  The docs say that the kernel aborts after a timeout (default 10 seconds) if nothing is written to the loading file, and this case (the loading file is available but data is not) should be exceedingly rare.  Might as well keep it as is?",
+      "parentUuid": "e4005968_af189654",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 15
+      },
+      "revId": "bbd83be8c03f15c1f30805e2774c453007cf1023",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
