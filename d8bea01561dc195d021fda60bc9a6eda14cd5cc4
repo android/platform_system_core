@@ -233,6 +233,30 @@
     },
     {
       "key": {
+        "uuid": "9a02ccaf_e7db6d8b",
+        "filename": "init/devices.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-25T19:55:02Z",
+      "side": 1,
+      "message": "Ah; I totally lied in my previous statement.  These are similar to the \u0027openat\u0027 case and are expected to fail.  We only match \u0027path\u0027 against the uevent permissions, then call chown() / chmod() for any of the \u0027atrribute files\u0027 that we find in that path.  \n\nE.g.\n\n/sys/devices/virtual/input/input*   enable      0660  root   input\n/sys/devices/virtual/input/input*   poll_delay  0660  root   input\n\nwill call chown() / chmod() for \u0027enable\u0027 and \u0027poll_delay\u0027 in any path that matches that regex.  Sometimes those files do not exist and therefore we\u0027ll get error messages.  It\u0027s probably okay skipping the error reporting here too, as if the files do exist, my previous statement that something would need to be exceptionally wrong for these to fail is true.",
+      "parentUuid": "d05b60ea_41fa704b",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 42
+      },
+      "revId": "d8bea01561dc195d021fda60bc9a6eda14cd5cc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc6416b8_b5c9ac9c",
         "filename": "init/devices.cpp",
         "patchSetId": 11
