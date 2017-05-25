@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e6492531_22156c86",
+        "filename": "init/devices.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-25T19:08:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d90abd4_43ead528",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 26
+      },
+      "revId": "d8bea01561dc195d021fda60bc9a6eda14cd5cc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "256d5a29_5b1bf9db",
         "filename": "init/devices.cpp",
         "patchSetId": 11
@@ -120,6 +144,24 @@
     },
     {
       "key": {
+        "uuid": "8d9c250a_03566fce",
+        "filename": "init/devices.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-25T19:08:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f37ce0f_11653fd9",
+      "revId": "d8bea01561dc195d021fda60bc9a6eda14cd5cc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfe9d7c6_e9fcc9fb",
         "filename": "init/devices.cpp",
         "patchSetId": 11
@@ -167,6 +209,30 @@
     },
     {
       "key": {
+        "uuid": "d05b60ea_41fa704b",
+        "filename": "init/devices.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-25T19:08:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d60ea63_465f0f81",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 42
+      },
+      "revId": "d8bea01561dc195d021fda60bc9a6eda14cd5cc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc6416b8_b5c9ac9c",
         "filename": "init/devices.cpp",
         "patchSetId": 11
@@ -178,6 +244,24 @@
       "writtenOn": "2017-05-25T05:25:53Z",
       "side": 1,
       "message": "report failures?",
+      "revId": "d8bea01561dc195d021fda60bc9a6eda14cd5cc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d06ee81_41bf1122",
+        "filename": "init/devices.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-25T19:08:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc6416b8_b5c9ac9c",
       "revId": "d8bea01561dc195d021fda60bc9a6eda14cd5cc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -219,6 +303,30 @@
       "side": 1,
       "message": "Long story.  I should (and will for the next patchset) just revert this back to how it is checked in now, and have this file only move the code from devices.cpp instead of trying to clean it up (I wanted to get rid of the goto, but alas...).\n\nThe thought here was that we should check if we\u0027re booting, try to load the firmware, then if we were booting wait and loop.  The check for booting first has to happen to prevent a race where we fail to load the firmware (because we haven\u0027t mounted the appropriate FS\u0027s), then we mount them (happens in parallel), then we check IsBooting() and believe that we were not booting and therefore do not retry.\n\nAnyway...  All of this is wrong.  IsBooting() is wrong.  This should all be a system property.  We have an efficient WaitForProperty() which solves both this issue an the below one.  \n\nAnd this only even applies to legacy devices anymore.  With treble asking that /system and /vendor are mounted early, the first pass check to LoadFirmware() before checking if we\u0027ve mounted the right filesystems (erroneously called booting), will always find the firmwares if they\u0027re available.\n\nI digress.  tl;dr: I\u0027ll move this back to exactly the original code from devices.cpp (+/- style changes, e.g. LoadFirmware() not load_firmware()) for this CL and follow up in the future with a CL to do this without the sleep_for or the while loop (goto), etc.",
       "parentUuid": "44c15d9c_835e787a",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 30
+      },
+      "revId": "d8bea01561dc195d021fda60bc9a6eda14cd5cc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7ec6e8a_99a32883",
+        "filename": "init/firmware_handler.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-25T19:08:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eead6632_09d21834",
       "range": {
         "startLine": 75,
         "startChar": 0,
@@ -295,6 +403,24 @@
       "side": 1,
       "message": "Will add.  We don\u0027t even need the singleton in init anymore either actually.  The changes for it aren\u0027t super pretty yet, but probably better than having this as a singleton, so I should probably just push that.",
       "parentUuid": "ab2e2fa5_37913e68",
+      "revId": "d8bea01561dc195d021fda60bc9a6eda14cd5cc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24d76eca_f1f560f8",
+        "filename": "init/init_parser.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-05-25T19:08:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e05c5758_c6629738",
       "revId": "d8bea01561dc195d021fda60bc9a6eda14cd5cc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
