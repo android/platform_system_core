@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "e037c9a1_685f771d",
+        "filename": "init/devices.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-05-25T16:37:47Z",
+      "side": 1,
+      "message": "or just flip the ifs, so you check npos first?",
+      "parentUuid": "42cb7698_5b57e5c0",
+      "revId": "d8bea01561dc195d021fda60bc9a6eda14cd5cc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfe9d7c6_e9fcc9fb",
         "filename": "init/devices.cpp",
         "patchSetId": 11
@@ -294,6 +312,24 @@
       "side": 1,
       "message": "I think it\u0027s designed to fail and for us to ignore the error.  We don\u0027t check if a \u0027uevent\u0027 file exists then try to open it, we just try to open it, and it\u0027s not necessarily the case that all directories in /sys have a uevent file in them.\n\nWe could add a checks to see if a uevent file does exist and then see if we fail this openat(), but I can\u0027t imagine that we have any good recovery steps at that point either.\n\nIn any case, this code is coming up (mostly) unchanged from devices.cpp, so I think for this CL itself, keeping this behavior is fine?",
       "parentUuid": "3353bbc7_509cdbbb",
+      "revId": "d8bea01561dc195d021fda60bc9a6eda14cd5cc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc4fc0f7_f1875022",
+        "filename": "init/uevent_listener.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-05-25T16:37:47Z",
+      "side": 1,
+      "message": "sgtm",
+      "parentUuid": "595dc942_70b92a38",
       "revId": "d8bea01561dc195d021fda60bc9a6eda14cd5cc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
