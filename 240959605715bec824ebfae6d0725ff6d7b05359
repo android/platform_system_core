@@ -70,6 +70,121 @@
       "revId": "240959605715bec824ebfae6d0725ff6d7b05359",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92cd8c75_c2b2bbd2",
+        "filename": "debuggerd/common/include/dump_type.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-05-31T04:45:22Z",
+      "side": 1,
+      "message": "I don\u0027t like this name, but I can\u0027t think of another one that\u0027s much better. Maybe kDebuggerdAnyIntercept?\n\nMaybe we should just drop the google c++ style and use enum class to get DebuggerdDumpType::Any...",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "240959605715bec824ebfae6d0725ff6d7b05359",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "795a7caf_d0db4dbf",
+        "filename": "debuggerd/tombstoned/intercept_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-05-31T04:45:22Z",
+      "side": 1,
+      "message": "This message is no longer always correct (but it\u0027s useless anyway, just say \"invalid request\"?)",
+      "range": {
+        "startLine": 121,
+        "startChar": 49,
+        "endLine": 123,
+        "endChar": 38
+      },
+      "revId": "240959605715bec824ebfae6d0725ff6d7b05359",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca66797a_dc2f47cc",
+        "filename": "debuggerd/tombstoned/intercept_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-05-31T04:45:22Z",
+      "side": 1,
+      "message": "This was confusing to me until I went back and found the other use of this.\n\nMaybe switch it to the following?\n\n  if (dump_type \u003d\u003d kDebuggerdRegisteredIntercept) {\n    LOG(INFO) \u003c\u003c \"received request for any intercept, found one of type \" \u003c\u003c it-\u003esecond-\u003edump-type;\n  } else if (it-\u003esecond-\u003edump_type !\u003d dump_type) {\n    ...\n  }\n\nAlso, unrelated, but it springs to mind after reading this code: should we split up InterceptStatus::kFailed into InterceptStatus::kFailed and InterceptStatus::kAlreadyRegistered, to let the requesters know to retry? Otherwise, a bugreport and an ANR happening at the same time could have spurious failures.",
+      "range": {
+        "startLine": 199,
+        "startChar": 6,
+        "endLine": 199,
+        "endChar": 48
+      },
+      "revId": "240959605715bec824ebfae6d0725ff6d7b05359",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0000a549_0748bdbb",
+        "filename": "debuggerd/tombstoned/intercept_manager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-05-31T04:45:22Z",
+      "side": 1,
+      "message": "nit: all of the other logs are lowercase",
+      "range": {
+        "startLine": 200,
+        "startChar": 18,
+        "endLine": 200,
+        "endChar": 19
+      },
+      "revId": "240959605715bec824ebfae6d0725ff6d7b05359",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9d9e979_d228652b",
+        "filename": "debuggerd/tombstoned/tombstoned.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-05-31T04:45:22Z",
+      "side": 1,
+      "message": "delete extra space",
+      "range": {
+        "startLine": 282,
+        "startChar": 47,
+        "endLine": 282,
+        "endChar": 48
+      },
+      "revId": "240959605715bec824ebfae6d0725ff6d7b05359",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
