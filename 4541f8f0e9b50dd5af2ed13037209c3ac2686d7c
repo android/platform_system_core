@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "ce29274d_892a7084",
+        "filename": "libziparchive/entry_name_utils-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-06-06T17:28:19Z",
+      "side": 1,
+      "message": "That increment doesn\u0027t alter the contents of str, so having \"const uint8_t *str\" should still be ok. I don\u0027t seem to be able to see where the contents of str are being modified (although if they are, that is also pretty disturbing). My only guess as to why it would complain here is if __builtin_memcpy() somehow is missing the const in its declaration, but I don\u0027t think that is the case based on Clang\u0027s Builtins.def file. It looks like a const void * for the source argument.",
+      "parentUuid": "54d3ae07_ec5def57",
+      "revId": "4541f8f0e9b50dd5af2ed13037209c3ac2686d7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa9702da_e258308d",
         "filename": "libziparchive/entry_name_utils-inl.h",
         "patchSetId": 3
