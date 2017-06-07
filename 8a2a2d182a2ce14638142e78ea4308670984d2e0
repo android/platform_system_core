@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ae79bb4_366895b8",
+        "filename": "debuggerd/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-06-07T22:41:58Z",
+      "side": 1,
+      "message": "It seems like a bad idea to use this. Eventually this will become the norm, but any code that depends on this is going to have a high likelihood of having a problem on clang updates.\n\nUnless the code is that much more elegant, I think you should use what\u0027s currently available that isn\u0027t experimental.",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "8a2a2d182a2ce14638142e78ea4308670984d2e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e093a54_b40fe2da",
+        "filename": "debuggerd/crash_dump.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-06-07T22:41:58Z",
+      "side": 1,
+      "message": "Isn\u0027t this more expensive that doing a:\n\nthreads.insert(main_tid, process_name);\n\nSince you are getting the thread name twice?",
+      "range": {
+        "startLine": 295,
+        "startChar": 4,
+        "endLine": 295,
+        "endChar": 57
+      },
+      "revId": "8a2a2d182a2ce14638142e78ea4308670984d2e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "810f2230_c8261ce7",
+        "filename": "debuggerd/crash_dump.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-06-07T22:41:58Z",
+      "side": 1,
+      "message": "If this fails, does the process die leaving the original process frozen?",
+      "range": {
+        "startLine": 349,
+        "startChar": 8,
+        "endLine": 349,
+        "endChar": 68
+      },
+      "revId": "8a2a2d182a2ce14638142e78ea4308670984d2e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
