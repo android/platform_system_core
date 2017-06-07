@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "84f13f67_66f5770e",
+        "filename": "libprocessgroup/processgroup.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-06-07T00:56:23Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem like anything is doing it as we\u0027d surely notice when the system panics.  I don\u0027t think we\u0027d want to add any extra checks here vs just making sure no users of cgroups accidentally place init in a cgroup.",
+      "parentUuid": "27006796_aaa895d5",
+      "range": {
+        "startLine": 272,
+        "startChar": 12,
+        "endLine": 272,
+        "endChar": 20
+      },
+      "revId": "b08617391e38c5928bc58b5a27b92c6b2a839919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a57f6ed_dee1de9c",
         "filename": "libprocessgroup/processgroup.cpp",
         "patchSetId": 3
@@ -59,6 +83,30 @@
       "writtenOn": "2017-06-07T00:23:51Z",
       "side": 1,
       "message": "can\u0027t this test be done when adding to pids? Any case that this can change from the 1st check in line 278?",
+      "range": {
+        "startLine": 297,
+        "startChar": 8,
+        "endLine": 297,
+        "endChar": 51
+      },
+      "revId": "b08617391e38c5928bc58b5a27b92c6b2a839919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "896d6a6d_877838ff",
+        "filename": "libprocessgroup/processgroup.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-06-07T00:56:23Z",
+      "side": 1,
+      "message": "Right, I can move the check for -1 higher.  I was moving around this code a bit so it just ended up here.\n\nI don\u0027t think we can move the pgids.count(pgid) higher though.  It\u0027s unlikely, but possible for a process to have a pgid that\u0027s higher than its own, which is why I loop through the whole cgroup, store the pgids, store the normal processes, and do this check at the end.",
+      "parentUuid": "c0904895_45817dc0",
       "range": {
         "startLine": 297,
         "startChar": 8,
