@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "c8249dab_07fb2ea6",
+        "filename": "debuggerd/crash_dump.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-06-07T22:48:23Z",
+      "side": 1,
+      "message": "We\u0027re using /proc/\u003cpid\u003e/comm for thread name and /proc/\u003cpid\u003e/cmdline for process name, which are basically unrelated (they start off with similar values, but you can change each of them independently).",
+      "parentUuid": "8e093a54_b40fe2da",
+      "range": {
+        "startLine": 295,
+        "startChar": 4,
+        "endLine": 295,
+        "endChar": 57
+      },
+      "revId": "8a2a2d182a2ce14638142e78ea4308670984d2e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "810f2230_c8261ce7",
         "filename": "debuggerd/crash_dump.cpp",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2017-06-07T22:41:58Z",
       "side": 1,
       "message": "If this fails, does the process die leaving the original process frozen?",
+      "range": {
+        "startLine": 349,
+        "startChar": 8,
+        "endLine": 349,
+        "endChar": 68
+      },
+      "revId": "8a2a2d182a2ce14638142e78ea4308670984d2e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d6a0ae8_684b34d5",
+        "filename": "debuggerd/crash_dump.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-06-07T22:48:23Z",
+      "side": 1,
+      "message": "It shouldn\u0027t, the kernel should resume the process. (Tested by https://android.googlesource.com/platform/bionic/+/master/tests/sys_ptrace_test.cpp#517, which seizes, interrupts, and then exits)",
+      "parentUuid": "810f2230_c8261ce7",
       "range": {
         "startLine": 349,
         "startChar": 8,
