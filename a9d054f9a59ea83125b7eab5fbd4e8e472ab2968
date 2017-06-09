@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e3e4f584_53083dff",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1037023
+      },
+      "writtenOn": "2017-06-09T23:25:06Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure what you mean.  The main use for this code is vold, which runs restorecon on the root of the mounted volume.  Are you suggesting vold does a readdir at the mounted volume\u0027s root and sequentially processes the nodes found instead of processing the mounted volume\u0027s root?  Or are you suggesting that this code do the readdir?  Either way, I\u0027m not sure that would substantially affect performance.  The bug report mentioned large numbers of cache files in adopted storage.  That directory is surely a few levels down.\n\nIt is unfortunate that restorecon must be done sequentially, but I don\u0027t think it runs very often.  It runs at boot time for /data and once per mounted storage volume (which may also run at boot time).  If you are concerned about blocking, perhaps changing the API would be a better design?  Say, by using a variable property name like selinux.restorecon_recursive.$volume_name?\n\nAlso note that adding code to process a list of paths in the property value is probably pretty trivial.  But property value length limits could easily get in the way.",
+      "parentUuid": "a4ab7cb2_e73ab8a9",
+      "revId": "a9d054f9a59ea83125b7eab5fbd4e8e472ab2968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "255387fa_870e051a",
         "filename": "init/property_service.cpp",
         "patchSetId": 2
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "864c8ff7_07eab1ac",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1037023
+      },
+      "writtenOn": "2017-06-09T23:25:06Z",
+      "side": 1,
+      "message": "Noted, will fix.",
+      "parentUuid": "255387fa_870e051a",
+      "revId": "a9d054f9a59ea83125b7eab5fbd4e8e472ab2968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ccfb2a24_971cfa35",
         "filename": "init/property_service.cpp",
         "patchSetId": 2
@@ -65,6 +101,24 @@
       "writtenOn": "2017-06-09T23:01:56Z",
       "side": 1,
       "message": "Setting a property is meant to be done from a single thread, so having this done in the forked process will cause a race condition.  It will need to done when the process is reaped.  \n\nThis can lend well to my above comment too however, where I suggest to have a list of paths that is processed sequentially, as when we reap the process, we\u0027ll then know to fork another.",
+      "revId": "a9d054f9a59ea83125b7eab5fbd4e8e472ab2968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b23628f3_13448d85",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1037023
+      },
+      "writtenOn": "2017-06-09T23:25:06Z",
+      "side": 1,
+      "message": "Noted.  I didn\u0027t see a problem with races because this is a special property that is only set from one place.  But it\u0027s pretty easy to change.  Just need to save the path in a global static to be able to set the property from the main process.",
+      "parentUuid": "ccfb2a24_971cfa35",
       "revId": "a9d054f9a59ea83125b7eab5fbd4e8e472ab2968",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
