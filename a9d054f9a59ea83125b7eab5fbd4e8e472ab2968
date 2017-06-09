@@ -16,6 +16,58 @@
       "revId": "a9d054f9a59ea83125b7eab5fbd4e8e472ab2968",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4ab7cb2_e73ab8a9",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-06-09T23:01:56Z",
+      "side": 1,
+      "message": "Could we have a list of directories to run restorecon and process them sequentially?  With this wait, we could end up spinning and causing timeouts due to a 2nd restorecon command.",
+      "parentUuid": "fe6b2af6_8e78101e",
+      "revId": "a9d054f9a59ea83125b7eab5fbd4e8e472ab2968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "255387fa_870e051a",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-06-09T23:01:56Z",
+      "side": 1,
+      "message": "We should do this check before we fork.",
+      "revId": "a9d054f9a59ea83125b7eab5fbd4e8e472ab2968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ccfb2a24_971cfa35",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-06-09T23:01:56Z",
+      "side": 1,
+      "message": "Setting a property is meant to be done from a single thread, so having this done in the forked process will cause a race condition.  It will need to done when the process is reaped.  \n\nThis can lend well to my above comment too however, where I suggest to have a list of paths that is processed sequentially, as when we reap the process, we\u0027ll then know to fork another.",
+      "revId": "a9d054f9a59ea83125b7eab5fbd4e8e472ab2968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
