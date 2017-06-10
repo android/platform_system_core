@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "16a70366_02e1f76b",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-06-10T00:44:24Z",
+      "side": 1,
+      "message": "I mean if someone were to do this\n\nsetprop(selinux.restorecon_recursive, /path/that/takes/a/while)\nsetprop(selinux.restorecon_recursive, /second/path/that/takes/a/while)\n\nWhen this code processes the second setprop, we\u0027ll enter this loop and spin, which can cause the same timeout that this patch intends to prevent.\n\nInstead, we could add the second path to a list and when we reap the process forked for the first path, we can fork a new process for the second path.",
+      "parentUuid": "e3e4f584_53083dff",
+      "revId": "a9d054f9a59ea83125b7eab5fbd4e8e472ab2968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "255387fa_870e051a",
         "filename": "init/property_service.cpp",
         "patchSetId": 2
@@ -119,6 +137,41 @@
       "side": 1,
       "message": "Noted.  I didn\u0027t see a problem with races because this is a special property that is only set from one place.  But it\u0027s pretty easy to change.  Just need to save the path in a global static to be able to set the property from the main process.",
       "parentUuid": "ccfb2a24_971cfa35",
+      "revId": "a9d054f9a59ea83125b7eab5fbd4e8e472ab2968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d6cc26d_0db9ca36",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-06-10T00:44:24Z",
+      "side": 1,
+      "message": "It\u0027ll be hard to hit in practice, since there\u0027s only this one property in the restorecon_prop property file and the global property serial is written atomically, but it\u0027d be best to keep this clean in any case.",
+      "parentUuid": "b23628f3_13448d85",
+      "revId": "a9d054f9a59ea83125b7eab5fbd4e8e472ab2968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc0df554_203dd7aa",
+        "filename": "init/service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1099,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-06-10T00:44:24Z",
+      "side": 1,
+      "message": "Note, I\u0027m not the biggest fan of tying ServiceManager to property service, but I don\u0027t see a clear way of handling it.  Let me think more on this.",
       "revId": "a9d054f9a59ea83125b7eab5fbd4e8e472ab2968",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
