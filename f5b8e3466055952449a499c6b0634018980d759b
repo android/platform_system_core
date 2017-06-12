@@ -16,6 +16,24 @@
       "revId": "f5b8e3466055952449a499c6b0634018980d759b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4f83e36_d5a670d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-06-12T19:25:26Z",
+      "side": 1,
+      "message": "yikes. this looks way more complex to handle than something like open: the number and types of the \"right\" args to pass in all depend on previous arguments. glancing through the manpage, it looks like this function can have at least 9 different \"signatures\".\n\ni don\u0027t know of a way to handle this sanely using FORTIFY-like features (mainly: if your \"match this antipattern\" type doesn\u0027t match a call well enough, clang will just silently fall back to the varargs function).\n\nsomething like a clang-tidy check may be appropriate here, though.",
+      "parentUuid": "920c3546_51b7a5c8",
+      "revId": "f5b8e3466055952449a499c6b0634018980d759b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
