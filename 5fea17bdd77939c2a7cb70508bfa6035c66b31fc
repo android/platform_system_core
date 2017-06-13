@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ef545ed_e1625520",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-06-13T03:22:17Z",
+      "side": 1,
+      "message": "Just use (ret \u003c 0).\n\nUsing gettime() here might not be accurate.\ne.g.,\n1. ret is actually 0 (success)\n2. You check gettime() here, and it \u003e\u003d timeout_time now.\n   It prints out the error here.",
+      "range": {
+        "startLine": 116,
+        "startChar": 8,
+        "endLine": 116,
+        "endChar": 33
+      },
+      "revId": "5fea17bdd77939c2a7cb70508bfa6035c66b31fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "119c016f_f175d141",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-06-13T03:22:17Z",
+      "side": 1,
+      "message": "How about:\n  LERROR \u003c\u003c __func__ \u003c\u003c \" \u0027\" \u003c\u003c filename \u003c\u003c \"\u0027 failed (timeout: \" \u003c\u003c timeout_time \u003c\u003c \" secs).\";",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 83
+      },
+      "revId": "5fea17bdd77939c2a7cb70508bfa6035c66b31fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
