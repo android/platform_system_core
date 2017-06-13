@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c9bac29_e23d6387",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2017-06-13T22:00:46Z",
+      "side": 1,
+      "message": "The \u0027fs_stat\u0027 value is logged for the purpose of gathering data about e2fsck; see log_fs_stat() and Id00fad4c5f8ebbb9f9908164a1026e415df06721.  I imagine this is temporary and will be removed eventually.",
+      "parentUuid": "e3c4ee88_9b011bc1",
+      "range": {
+        "startLine": 77,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 29
+      },
+      "revId": "e27ce6775d17b1251cbfdf6aea308550740df48a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "805df55e_dcf2683d",
         "filename": "fs_mgr/fs_mgr.cpp",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2017-06-13T20:21:39Z",
       "side": 1,
       "message": "Maybe make do_reserved_size a function called by do_late_tunefs? Then you can use early returns to handle the conditions \"(rec-\u003efs_mgr_flags \u0026 MF_RESERVEDSIZE) \u003d\u003d 0\", \"ext4_r_blocks_count(sb) \u003d\u003d reserved_block\", \"!tune2fs_available()\", reducing indentation by three steps. This is worth it since an indent lives not only in the code, but in the mind of the reader, who is maintaining an internal stack of things to worry about...",
+      "revId": "e27ce6775d17b1251cbfdf6aea308550740df48a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3e07361_245f8ac4",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2017-06-13T22:00:46Z",
+      "side": 1,
+      "message": "Done, but for consistency with tune_quota() I named it tune_reserved_size() and call it directly from prepare_fs_for_mount().",
+      "parentUuid": "805df55e_dcf2683d",
       "revId": "e27ce6775d17b1251cbfdf6aea308550740df48a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
