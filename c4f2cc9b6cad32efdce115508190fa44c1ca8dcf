@@ -22,6 +22,30 @@
       "revId": "c4f2cc9b6cad32efdce115508190fa44c1ca8dcf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c9537cc_a1cc11ed",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1037023
+      },
+      "writtenOn": "2017-06-13T02:27:43Z",
+      "side": 1,
+      "message": "Oh, right, I wasn\u0027t paying attention to the signal model of init.  This won\u0027t work properly because init uses a signal pipe.\n\n(I was counting on the SIGCHLD handler calling property_child_reaped() and then kicking us out of pause(), which won\u0027t work with a signal pipe)",
+      "parentUuid": "f5411957_5aad7290",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 5
+      },
+      "revId": "c4f2cc9b6cad32efdce115508190fa44c1ca8dcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
