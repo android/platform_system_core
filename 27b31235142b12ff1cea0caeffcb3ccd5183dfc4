@@ -214,6 +214,30 @@
       "revId": "27b31235142b12ff1cea0caeffcb3ccd5183dfc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6452f01f_01765596",
+        "filename": "adb/transport_usb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-06-14T20:43:34Z",
+      "side": 1,
+      "message": "Hmm, is this actually a bug with specific devices? I dug deeper and it seems like for both linux and darwin, the libusb_clear_halt we do on both endpoints is supposed to reset both the device and host data toggles to 0.\n\nI think this is actually triggering a race on the other end. This patch is reliably broken, and AFAICT, there shouldn\u0027t be any difference, other than that it\u0027s faster: https://android-review.googlesource.com/#/c/411199/\n\nI think we should just consider removing this logic, and just do a full device reset on anything that\u0027s offline for more than some arbitrary timeout.",
+      "parentUuid": "c49c0444_44999e9e",
+      "range": {
+        "startLine": 137,
+        "startChar": 30,
+        "endLine": 137,
+        "endChar": 36
+      },
+      "revId": "27b31235142b12ff1cea0caeffcb3ccd5183dfc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
