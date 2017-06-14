@@ -46,6 +46,30 @@
       "revId": "c4f2cc9b6cad32efdce115508190fa44c1ca8dcf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc73d8cc_65ef424e",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-06-14T00:34:23Z",
+      "side": 1,
+      "message": "That still wouldn\u0027t solve the issue.  \n\nIf you do:\n\nsetprop selinux.restorecon_recursive /mnt/sdcard1\nsetprop selinux.restorecon_recursive /mnt/sdcard2\n\nWith no delay on the caller side, and assuming that each of those restorecons takes a long time (like the ones that cause the bug we\u0027re trying to fix), there will be an issue.  The second call will block in this while loop until the first finishes, causing the same bad behavior that a single restorecon_recursive call does now.\n\nI\u0027m off tomorrow, but I have some ideas that I\u0027ll push on Thursday for handling this.",
+      "parentUuid": "6c9537cc_a1cc11ed",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 5
+      },
+      "revId": "c4f2cc9b6cad32efdce115508190fa44c1ca8dcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
