@@ -159,6 +159,24 @@
       "revId": "e626f97a8f0faf490df3ee951fc078a03ea65658",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b5a8589_af1b2ee9",
+        "filename": "adb/commandline.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1332,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-06-15T16:14:19Z",
+      "side": 1,
+      "message": "it\u0027s the same as every time we have this argument:\n\n* something is badly wrong.\n\n* we try to fail early so the user can work out what\u0027s wrong.\n\n* you want us to try to work around it, hiding the fact that something is badly wrong and you should never have been on this path in the first place.\n\nno, we\u0027re not ever going to do that. if something is badly wrong, we\u0027re not going to try to continue so you run into obscure shit: we\u0027re just going to fail as soon as possible so you can fix the real problem.\n\nthe bug here is that our error reporting is useless (because it\u0027s the background process that dies). really that wants a general solution, but we could add this special-case hack.\n\nit might actually be more useful to just explain how to manually get the full log any time start-server fails...",
+      "parentUuid": "a8ba518a_d7327abf",
+      "revId": "e626f97a8f0faf490df3ee951fc078a03ea65658",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
