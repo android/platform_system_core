@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "818f0129_4f0545a8",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-06-16T00:01:07Z",
+      "side": 1,
+      "message": "Function names should be camel case, so PropertySetImpl() per https://google.github.io/styleguide/cppguide.html#Function_Names.\n\nI know that most of the other functions in this file aren\u0027t that way, but we\u0027re trying to move the code over into this direction, so particularly new code, we\u0027re asking to be formatted this way.",
+      "range": {
+        "startLine": 166,
+        "startChar": 16,
+        "endLine": 166,
+        "endChar": 33
+      },
+      "revId": "8db4168a177fa8e98566b29299ed76e19e7668a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e19e658e_2c0039ef",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-06-16T00:01:07Z",
+      "side": 1,
+      "message": "Types should be PropertyAsyncFunc per https://google.github.io/styleguide/cppguide.html#Type_Names",
+      "range": {
+        "startLine": 208,
+        "startChar": 14,
+        "endLine": 208,
+        "endChar": 35
+      },
+      "revId": "8db4168a177fa8e98566b29299ed76e19e7668a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "438ccd73_93a5c122",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-06-16T00:01:07Z",
+      "side": 1,
+      "message": "No need for void here in C++",
+      "range": {
+        "startLine": 219,
+        "startChar": 34,
+        "endLine": 219,
+        "endChar": 38
+      },
+      "revId": "8db4168a177fa8e98566b29299ed76e19e7668a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e970b12d_d601ca26",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-06-16T00:01:07Z",
+      "side": 1,
+      "message": "!property_children.empty() is a little bit more idiomatic.",
+      "range": {
+        "startLine": 255,
+        "startChar": 8,
+        "endLine": 255,
+        "endChar": 36
+      },
+      "revId": "8db4168a177fa8e98566b29299ed76e19e7668a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff209e9e_e871ee7e",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-06-16T00:01:07Z",
+      "side": 1,
+      "message": "I think it\u0027s better to leave this out and add it again if vold does require a second property.  Reason being that we\u0027d need to add new SELinux rules to handle these new properties and I\u0027m not sure the churn is worth it given that we wouldn\u0027t be using them yet.\n\nWe\u0027d need to do android::base::StartsWith() for this check instead of find() as well, since the SELinux rules work based on prefixes and we wouldn\u0027t want someone to do setprop(vendor.writable.prefix.selinux.restorecon_recursive.one, /should/not/be/restoreconned)",
+      "range": {
+        "startLine": 288,
+        "startChar": 12,
+        "endLine": 288,
+        "endChar": 59
+      },
+      "revId": "8db4168a177fa8e98566b29299ed76e19e7668a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4cee2a7d_3bdb4909",
+        "filename": "init/service.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1099,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-06-16T00:01:07Z",
+      "side": 1,
+      "message": "Part of me wants to do something like having the children write to a property to indicate that they\u0027ve finished instead of needing to tap into this function, but that\u0027s not pretty either.\n\nReally, I need to just fix the handling of SIGCHLD to get the pid from the signal handler instead of waitpid(), so while tying this file into property_service.cpp isn\u0027t the prettiest, it\u0027s probably the best that we have right now.",
+      "revId": "8db4168a177fa8e98566b29299ed76e19e7668a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
