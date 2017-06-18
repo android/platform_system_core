@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dce3e21b_3087bc6e",
+        "filename": "init/devices.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-06-18T17:01:18Z",
+      "side": 1,
+      "message": "nit:\n  \nMaybe we could consider an optimization here: \nstoring the last return value. \ne.g., std::string last_platform_device_path;\n  \nThen use previously logic in PlatformDeviceList::Find() here:\n\n  if (last_platform_device_path.length() \u003c path.length() \u0026\u0026\n      path[last_platform_device_path.length()] \u003d\u003d \u0027/\u0027 \u0026\u0026\n      android::base::StartsWith(path, last_platform_device_path.c_str())) {\n      *platform_device_path \u003d last_platform_device_path;\n      return true;\n  }\n\nThis is based on the assumption that a group of same block uevents will be reported together.\n\ne.g., it can saves 36 times of traversal up in sailfish.\n\npath:\u0027/devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:0/block/sda\u0027\n  \npath:\u0027/devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda1\u0027\n  \npath:\u0027/devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda2\u0027\n...\npath:\u0027/devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda34\u0027\n  \npath:\u0027/devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda35\u0027\n  \npath:\u0027/devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda36\u0027",
+      "revId": "5d1a70f608863f98a3ad52e133b6402e5a9b9f26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
