@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "78b8394d_9d90248e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-06-19T17:25:18Z",
+      "side": 1,
+      "message": "have we seen this happening? The platform bus being higher in the device\u0027s tree, must always get probed first if this is the case and you would always receive the platform uevent before you get the block uevent if the block device indeed is a platform device ...\n\ne.g. on sailfish you should receive events in the order for vendor_a (sda31)\n\nplatform (bus)-\u003escsi(bus)-\u003e..scsi_host events..-\u003eblock(dev, sda31, partition)\n\nThe only way this would happen is if we changed uevent context (i.e. if we are listening to uevents w/o going through coldboot first, which means we never kept a list of platform devices)",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "5d1a70f608863f98a3ad52e133b6402e5a9b9f26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dce3e21b_3087bc6e",
         "filename": "init/devices.cpp",
         "patchSetId": 3
@@ -31,6 +54,24 @@
       "side": 1,
       "message": "Agreed; I was thinking of doing this, but figured that the first patch should just fix this issue safely.  I\u0027m seeing maybe ~20ms of boot time regression with this, which is barely above noise and still way faster than we were before some of the optimizations.\n\nFunnily enough, the code that fork()\u0027s the subprocesses will reduce our savings by the number of subprocesses that would independently need to walk the tree.",
       "parentUuid": "dce3e21b_3087bc6e",
+      "revId": "5d1a70f608863f98a3ad52e133b6402e5a9b9f26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df9f5fc1_7a5894b8",
+        "filename": "init/devices.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-06-19T17:25:18Z",
+      "side": 1,
+      "message": "Isn\u0027t this probably why the old code was storing the list in the first place? Given that we only ever create symlinks for block devices at boot and may be usb at runtime (on sailfish)..\n\nIf we add that optimization, the directory traversal will happen very very rarely and the code isn\u0027t any more simplified ..",
+      "parentUuid": "2d7ba297_c771af8b",
       "revId": "5d1a70f608863f98a3ad52e133b6402e5a9b9f26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
