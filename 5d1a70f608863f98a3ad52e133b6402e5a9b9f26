@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4fd9b025_63196738",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-06-19T17:45:18Z",
+      "side": 1,
+      "message": "Yes we\u0027re seeing it happen (it\u0027s what the referenced bugs are for).\n\nThe uevent socket doesn\u0027t discriminate between uevents regenerated during coldboot or uevents generated when devices are probed for the first time.  We\u0027re seeing the block devices probed for the first time before we regenerate the platform device uevent during coldboot, which causes this bug.\n\nI\u0027ll rephrase the commit message it make it more clear.",
+      "parentUuid": "78b8394d_9d90248e",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "5d1a70f608863f98a3ad52e133b6402e5a9b9f26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dce3e21b_3087bc6e",
         "filename": "init/devices.cpp",
         "patchSetId": 3
@@ -72,6 +96,24 @@
       "side": 1,
       "message": "Isn\u0027t this probably why the old code was storing the list in the first place? Given that we only ever create symlinks for block devices at boot and may be usb at runtime (on sailfish)..\n\nIf we add that optimization, the directory traversal will happen very very rarely and the code isn\u0027t any more simplified ..",
       "parentUuid": "2d7ba297_c771af8b",
+      "revId": "5d1a70f608863f98a3ad52e133b6402e5a9b9f26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39494f9d_e06b2a8a",
+        "filename": "init/devices.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-06-19T17:45:18Z",
+      "side": 1,
+      "message": "I don\u0027t totally follow what you\u0027re saying.  I think the original code added it to fix it and it seemed easiest to store the platform devices: https://android.googlesource.com/platform/system/core/+/fadb85e3bd333653014df5fcc931d844dc8c3630\n\nIf we want to solve the race from the commit message, we can\u0027t rely on getting the platform block device first however (unless we do something like https://android-review.googlesource.com/#/c/413603/ which I\u0027m less inclined to do), so we at least need to do this traversal.\n\nWe can then cache away the path (and have a smaller platform device list than previously), but I want to fix the bug at hand before optimizing this.",
+      "parentUuid": "df9f5fc1_7a5894b8",
       "revId": "5d1a70f608863f98a3ad52e133b6402e5a9b9f26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
