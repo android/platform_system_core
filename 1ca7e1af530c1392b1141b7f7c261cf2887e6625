@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "16ee452d_9ac3afd4",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-06-19T16:54:00Z",
+      "side": 1,
+      "message": "I keep forgetting if it\u0027s std::chrono::literals or std::chrono_literals or std::literals::chrono_literals or what and secretly dislike including the namespace just for the 2 simple uses that I have here.\n\nI\u0027ll probably add it later though anyway.",
+      "parentUuid": "76facaa2_390f0b1d",
+      "range": {
+        "startLine": 173,
+        "startChar": 58,
+        "endLine": 173,
+        "endChar": 82
+      },
+      "revId": "1ca7e1af530c1392b1141b7f7c261cf2887e6625",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "767983ee_893390cc",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 3
@@ -164,6 +188,30 @@
     },
     {
       "key": {
+        "uuid": "d86be5f1_110f8fdc",
+        "filename": "init/uevent_listener.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-06-19T16:54:00Z",
+      "side": 1,
+      "message": "Makse sense, but the \u0027+\u0027 to create end_time can overflow, particularly if we have a really long time out like enh@ suggests below.  See what I did with https://android-review.googlesource.com/#/c/357589/.   I copied this code from there.",
+      "parentUuid": "f8825d00_35536be6",
+      "range": {
+        "startLine": 182,
+        "startChar": 9,
+        "endLine": 182,
+        "endChar": 19
+      },
+      "revId": "1ca7e1af530c1392b1141b7f7c261cf2887e6625",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7138ca01_a742b34b",
         "filename": "init/uevent_listener.cpp",
         "patchSetId": 3
@@ -175,6 +223,24 @@
       "writtenOn": "2017-06-17T22:10:27Z",
       "side": 1,
       "message": "combine these two cases rather than duplicate? maybe just have this call PollWithTimeout with a 10 year timeout or something (since there\u0027s no convenient way to actually say \"forever\")?",
+      "revId": "1ca7e1af530c1392b1141b7f7c261cf2887e6625",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1267a610_c760ed6d",
+        "filename": "init/uevent_listener.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-06-19T16:54:00Z",
+      "side": 1,
+      "message": "Ya, I plan to.  Truthfully, I put the last parts of this change together a bit quickly to make sure those who wanted to test it on the weekend could.  It does pain me to add extra clock stuff in an infinite loop, but oh well.\n\nMaybe std::optional could help here?  If it\u0027s empty, it\u0027s an infinite timeout and we can continue to pass -1 to poll().",
+      "parentUuid": "7138ca01_a742b34b",
       "revId": "1ca7e1af530c1392b1141b7f7c261cf2887e6625",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
