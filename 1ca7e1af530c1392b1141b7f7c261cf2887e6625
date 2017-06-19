@@ -118,6 +118,29 @@
     },
     {
       "key": {
+        "uuid": "f8825d00_35536be6",
+        "filename": "init/uevent_listener.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-06-19T15:04:14Z",
+      "side": 1,
+      "message": "nit: adding a \u0027end_time\u0027 seems more intuitive to me, just FYI.\n\ne.g.,\nusing Ms \u003d std::chrono::milliseconds;     \n\nvoid UeventListener::PollWithTimeout(const ListenerCallback\u0026 callback,\n                                     const Ms relative_timeout) const {  \n\n   ...\n   auto start_time \u003d std::chrono::time_point_cast\u003cMs\u003e(std::chrono::steady_clock::now());\n   auto end_time \u003d start_time + relative_timeout_ms; \n  \n   while (true) {\n        auto now \u003d std::chrono::time_point_cast\u003cMs\u003e(std::chrono::steady_clock::now());\n        if (now \u003e end_time) return;                                             \n                                                                                \n        auto remaining_timeout_ms \u003d (end_time - now).count();   \n   }\n}",
+      "range": {
+        "startLine": 182,
+        "startChar": 9,
+        "endLine": 182,
+        "endChar": 19
+      },
+      "revId": "1ca7e1af530c1392b1141b7f7c261cf2887e6625",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7138ca01_a742b34b",
         "filename": "init/uevent_listener.cpp",
         "patchSetId": 3
