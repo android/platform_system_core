@@ -120,6 +120,24 @@
     },
     {
       "key": {
+        "uuid": "f611f362_578f2354",
+        "filename": "init/devices.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-06-20T01:07:10Z",
+      "side": 1,
+      "message": "I see, 20 ms doesn\u0027t gain much. If so, let\u0027s keep the code simpler :) Plus, more subprocesses can mitigate this.\n\n\u003e  the directory traversal will happen very very rarely\n\n\nIt will happen first time (when we never see the platform device before). e.g., it will do directory traversal on \u0027sda\u0027 below then cache the result. So following \u0027sda1\u0027, \u0027sda2\u0027, ... \u0027sda36\u0027 doesn\u0027t need to traverse again.\n\nAnyway, I agree optimization seems doesn\u0027t make big difference here. And it\u0027s better to do this in a separate CL later.\n\n\npath:\u0027/devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:0/block/sda\u0027\n  \npath:\u0027/devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda1\u0027\n  \npath:\u0027/devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda2\u0027\n...\npath:\u0027/devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda34\u0027\n  \npath:\u0027/devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda35\u0027\n  \npath:\u0027/devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda36\u0027",
+      "parentUuid": "39494f9d_e06b2a8a",
+      "revId": "5d1a70f608863f98a3ad52e133b6402e5a9b9f26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76ba9ade_1b2d9702",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 3
