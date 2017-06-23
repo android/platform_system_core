@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1be131f_bb0ef19d",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-06-23T07:45:27Z",
+      "side": 1,
+      "message": "Return kDisabled, no matter it\u0027s due to HASHTREE_DISABLED or VERIFICATION_DISABLED flag on /vbmeta.",
+      "range": {
+        "startLine": 590,
+        "startChar": 0,
+        "endLine": 593,
+        "endChar": 5
+      },
+      "revId": "7d26dd1267293df689176e886f96be77761e72b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "736f00cc_ab341295",
+        "filename": "fs_mgr/fs_mgr_avb_ops.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-06-23T07:45:27Z",
+      "side": 1,
+      "message": "Need to add this because of:\n\nhttps://android-review.googlesource.com/#/c/418399/2/libavb/avb_slot_verify.c@256\n\nAlternatively, we can add a fix in libavb to not request this when there is no requested_partitions. But adding a dummy here also works to me.",
+      "range": {
+        "startLine": 113,
+        "startChar": 37,
+        "endLine": 113,
+        "endChar": 64
+      },
+      "revId": "7d26dd1267293df689176e886f96be77761e72b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c82bcdb_34e0c242",
+        "filename": "fs_mgr/include/fs_mgr_avb.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-06-23T07:45:27Z",
+      "side": 1,
+      "message": "Move this to private and only export Success/Disabled/Fail in SetUpAvbHashtreeResult above.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 6
+      },
+      "revId": "7d26dd1267293df689176e886f96be77761e72b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "908ab871_e4997c1b",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-06-23T07:45:27Z",
+      "side": 1,
+      "message": "Fix this per discussion on:\n\nhttps://android-review.googlesource.com/#/c/420421/3/init/init_first_stage.cpp@414",
+      "range": {
+        "startLine": 418,
+        "startChar": 16,
+        "endLine": 418,
+        "endChar": 63
+      },
+      "revId": "7d26dd1267293df689176e886f96be77761e72b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
