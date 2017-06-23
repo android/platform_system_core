@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec6aa19b_f8a6f25c",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-06-23T09:45:00Z",
+      "side": 1,
+      "message": "how about: const std::chrono::milliseconds relative_timeout \u003d 1000\n\ni.e. Set default to 1 sec, so we can rename this function to fs_mgr_wait_for_file() and delete fs_mgr_test_access().",
+      "range": {
+        "startLine": 108,
+        "startChar": 48,
+        "endLine": 108,
+        "endChar": 59
+      },
+      "revId": "35e822befa3caa269cc4b779525a59bcdae3ec88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5183d374_9333ceec",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-06-23T09:45:00Z",
+      "side": 1,
+      "message": "auto start_time \u003d ...",
+      "range": {
+        "startLine": 110,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 41
+      },
+      "revId": "35e822befa3caa269cc4b779525a59bcdae3ec88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bdb10bb_81b0f8b4",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-06-23T09:45:00Z",
+      "side": 1,
+      "message": "You can move this inside the loop.\nAlso, the name \u0027end\u0027 isn\u0027t appropriate because it\u0027s more like \u0027now\u0027.",
+      "range": {
+        "startLine": 111,
+        "startChar": 3,
+        "endLine": 111,
+        "endChar": 46
+      },
+      "revId": "35e822befa3caa269cc4b779525a59bcdae3ec88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee11db63_95709929",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-06-23T09:45:00Z",
+      "side": 1,
+      "message": "1 ms seems too short, how about:\nusleep(50 * 1000);  // sleep 50 msecs",
+      "range": {
+        "startLine": 117,
+        "startChar": 7,
+        "endLine": 117,
+        "endChar": 39
+      },
+      "revId": "35e822befa3caa269cc4b779525a59bcdae3ec88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "890f230b_9129648a",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-06-23T09:45:00Z",
+      "side": 1,
+      "message": "auto now \u003d std::chrono::steady_clock::now();\nauto time_elapsed \u003d std::chrono::duration_cast\u003cstd::chrono::milliseconds\u003e(now - start_time);",
+      "range": {
+        "startLine": 118,
+        "startChar": 8,
+        "endLine": 119,
+        "endChar": 98
+      },
+      "revId": "35e822befa3caa269cc4b779525a59bcdae3ec88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9803018_3d24ca32",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-06-23T09:45:00Z",
+      "side": 1,
+      "message": "Let\u0027s add a blank line between while() and LERROR.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 17
+      },
+      "revId": "35e822befa3caa269cc4b779525a59bcdae3ec88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74938722_b6c2b8ae",
+        "filename": "fs_mgr/fs_mgr_priv.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-06-23T09:45:00Z",
+      "side": 1,
+      "message": "This change it from 20 secs to 200 msecs (0.2 secs).\nNot sure is it safe?\n\nBtw, let\u0027s remove this 200 and use chrono_literals directly:\n\ne.g., 20s;\n\nSee the following examples.\n\nhttps://android-review.googlesource.com/#/c/417053/9/init/init_first_stage.cpp@39\n\nhttps://android-review.googlesource.com/#/c/417053/9/init/init_first_stage.cpp@185",
+      "range": {
+        "startLine": 47,
+        "startChar": 21,
+        "endLine": 47,
+        "endChar": 24
+      },
+      "revId": "35e822befa3caa269cc4b779525a59bcdae3ec88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
