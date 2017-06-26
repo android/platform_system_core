@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c24c0535_110370d6",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-06-26T16:54:10Z",
+      "side": 1,
+      "message": "To prevent maintenance issues, prefix_cmp was meant to be a drop-in replacement for the former strncmp that did not manage aliases, but now with the ability to remove system/ prefix in either. These changes blur the lines a bit more, so the comment needs to reflect this to keep clarity.\n\ni.e. this function is now an analog to return partial ? strncmp() : strcmp();",
+      "range": {
+        "startLine": 271,
+        "startChar": 12,
+        "endLine": 271,
+        "endChar": 22
+      },
+      "revId": "eba9de9e2bdd441467ccbc97b663b630e2231b32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02cb23b4_8c5fc4de",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-06-26T16:54:10Z",
+      "side": 1,
+      "message": "We should replace dir\u0027s name here with partial to be clearer for future selves?",
+      "range": {
+        "startLine": 288,
+        "startChar": 31,
+        "endLine": 288,
+        "endChar": 34
+      },
+      "revId": "eba9de9e2bdd441467ccbc97b663b630e2231b32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98c63fa6_a6bfbd86",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-06-26T16:54:10Z",
+      "side": 1,
+      "message": "Also bad assumption :-( plen can be \u003c len if someone sets prefix reference with \"system/\". Make sure gTest covers this subtlety? My gut feeling is drop this check and let prefix_cmp do the math (now that you are passing it down).",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 9
+      },
+      "revId": "eba9de9e2bdd441467ccbc97b663b630e2231b32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7dd0f457_47ada341",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-06-26T16:54:10Z",
+      "side": 1,
+      "message": "Hmmm, thinking about optimization and the bad assumption enclosed. Replace entire if else fragment with:\n\n// If name ends in * then allow partial matches.\nif (!partial \u0026\u0026 (prefix[len - 1] \u003d\u003d \u0027*\u0027)) {\n    --len;\n    partial \u003d true;\n}",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 5
+      },
+      "revId": "eba9de9e2bdd441467ccbc97b663b630e2231b32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
