@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0072d388_3ede55e0",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-06-28T21:36:42Z",
+      "side": 1,
+      "message": "yes because mkdir is allowed to fail (directory already exists). If we do not clear it, then PINFO below on mount success will print the mkdir\u0027s error.",
+      "parentUuid": "544f96a9_94b81669",
+      "range": {
+        "startLine": 479,
+        "startChar": 4,
+        "endLine": 479,
+        "endChar": 9
+      },
+      "revId": "08d1e33df5ac75ae44196db7136ffc60991e7081",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d221375_d54ba790",
         "filename": "fs_mgr/fs_mgr.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-28T21:31:40Z",
       "side": 1,
       "message": "errno ?",
+      "range": {
+        "startLine": 483,
+        "startChar": 49,
+        "endLine": 483,
+        "endChar": 52
+      },
+      "revId": "08d1e33df5ac75ae44196db7136ffc60991e7081",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "079fa55b_7b21edcd",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-06-28T21:36:42Z",
+      "side": 1,
+      "message": "PINFO (a macro around PLOG specific to fs_mgr) prints errno value, this is part of the C++ world order of android::base:logger. LINFO does not print the errno.",
+      "parentUuid": "2d221375_d54ba790",
       "range": {
         "startLine": 483,
         "startChar": 49,
