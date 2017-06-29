@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33c8edf3_50a47cc1",
+        "filename": "init/capabilities.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-06-29T21:35:17Z",
+      "side": 1,
+      "message": "if you go this route, it might actually be worth adding the deleter class so that your users don\u0027t have to keep saying \", cap_free\".\n\n  struct CapDeleter {\n    void operator()(cap_t c) { cap_free(c); }\n  };\n\n  using ScopedCaps \u003d std::unique_ptr\u003cstd::remove_pointer\u003ccap_t\u003e::type, CapDeleter\u003e;",
+      "range": {
+        "startLine": 28,
+        "startChar": 67,
+        "endLine": 28,
+        "endChar": 88
+      },
+      "revId": "fb4e7acff888ec46af20334aa50a4999c05603cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
