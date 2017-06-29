@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "42acdc3b_21a4eb48",
+        "filename": "init/service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1087,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-06-29T23:44:51Z",
+      "side": 1,
+      "message": "man page states \n\n\"If  WNOHANG  was  specified in options and there were no children in a waitable state, then waitid() returns 0 immediately and the state of the siginfo_t structure pointed to by infop is unspecified.\n       To distinguish this case from that where a child was in a waitable state, zero out the si_pid field before the call and check for a nonzero value in this field after the call returns.\"\n\nSo I just rolled with that.  You\u0027re right though, I\u0027ll memset() it.",
+      "parentUuid": "2420059e_52233ebd",
+      "revId": "a8de5a658a11f7fed6468bb61ac8d072926cecd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "23a60a2d_b92acf33",
         "filename": "init/service.cpp",
         "patchSetId": 2
