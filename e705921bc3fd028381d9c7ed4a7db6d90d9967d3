@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20aae7b0_9f4a4fe2",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2017-07-05T16:55:46Z",
+      "side": 1,
+      "message": "also allow EXT4_GOOD_OLD_REV",
+      "range": {
+        "startLine": 260,
+        "startChar": 8,
+        "endLine": 260,
+        "endChar": 43
+      },
+      "revId": "e705921bc3fd028381d9c7ed4a7db6d90d9967d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a640fb66_56bbc599",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2017-07-05T16:55:46Z",
+      "side": 1,
+      "message": "use EXT4_BLOCK_SIZE macro and compare with EXT4_MIN_BLOCK_SIZE and EXT4_MAX_BLOCK_SIZE instead? Then no need to define MAX_BLOCK_LOG_SIZE here.",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 83
+      },
+      "revId": "e705921bc3fd028381d9c7ed4a7db6d90d9967d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9741bde5_994c84c5",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2017-07-05T16:55:46Z",
+      "side": 1,
+      "message": "I see this macro from ext4.h, so this check is only valid for GOOD_OLD_REV, #define EXT4_INODE_SIZE(s) (((s)-\u003es_rev_level \u003d\u003d EXT4_GOOD_OLD_REV) ?   EXT4_GOOD_OLD_INODE_SIZE :   (s)-\u003es_inode_size). Remove it or add GOOD_OLD_REV check as well.",
+      "range": {
+        "startLine": 265,
+        "startChar": 4,
+        "endLine": 265,
+        "endChar": 71
+      },
+      "revId": "e705921bc3fd028381d9c7ed4a7db6d90d9967d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "603f5b11_12403206",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2017-07-05T16:55:46Z",
+      "side": 1,
+      "message": "this will not be that useful. remove.",
+      "range": {
+        "startLine": 266,
+        "startChar": 4,
+        "endLine": 266,
+        "endChar": 55
+      },
+      "revId": "e705921bc3fd028381d9c7ed4a7db6d90d9967d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
