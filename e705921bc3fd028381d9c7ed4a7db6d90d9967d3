@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "52d52719_59d8f33f",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1180253
+      },
+      "writtenOn": "2017-07-06T02:24:27Z",
+      "side": 1,
+      "message": "ok，I add it.",
+      "parentUuid": "20aae7b0_9f4a4fe2",
+      "range": {
+        "startLine": 260,
+        "startChar": 8,
+        "endLine": 260,
+        "endChar": 43
+      },
+      "revId": "e705921bc3fd028381d9c7ed4a7db6d90d9967d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a640fb66_56bbc599",
         "filename": "fs_mgr/fs_mgr.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-07-05T16:55:46Z",
       "side": 1,
       "message": "use EXT4_BLOCK_SIZE macro and compare with EXT4_MIN_BLOCK_SIZE and EXT4_MAX_BLOCK_SIZE instead? Then no need to define MAX_BLOCK_LOG_SIZE here.",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 83
+      },
+      "revId": "e705921bc3fd028381d9c7ed4a7db6d90d9967d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9617fc9b_662d6cd2",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1180253
+      },
+      "writtenOn": "2017-07-06T02:24:27Z",
+      "side": 1,
+      "message": "EXT4_BLOCK_SIZE can\u0027t be compared with other, because  EXT4_BLOCK_SIZE(\u0026sb) is shifting function(define EXT4_BLOCK_SIZE(s) (EXT4_MIN_BLOCK_SIZE \u003c\u003c (s)-\u003es_log_block_size))，but sb-\u003es_log_block_size can be any number. In our test case sb-\u003es_log_block_size is 0x2eab78cf ,this number will cause abort.",
+      "parentUuid": "a640fb66_56bbc599",
       "range": {
         "startLine": 261,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d671a083_2dc7bda2",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1180253
+      },
+      "writtenOn": "2017-07-06T02:24:27Z",
+      "side": 1,
+      "message": "In the case GOOD_OLD_REV ,EXT4_INODE_SIZE is EXT4_GOOD_OLD_INODE_SIZE(128bits).\nIn the new reversion, EXT4_INODE_SIZE is 256(bits). I think this value will increasing, for porting GOOD_OLD_REV.So this judgement is userful.",
+      "parentUuid": "9741bde5_994c84c5",
+      "range": {
+        "startLine": 265,
+        "startChar": 4,
+        "endLine": 265,
+        "endChar": 71
+      },
+      "revId": "e705921bc3fd028381d9c7ed4a7db6d90d9967d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "603f5b11_12403206",
         "filename": "fs_mgr/fs_mgr.cpp",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2017-07-05T16:55:46Z",
       "side": 1,
       "message": "this will not be that useful. remove.",
+      "range": {
+        "startLine": 266,
+        "startChar": 4,
+        "endLine": 266,
+        "endChar": 55
+      },
+      "revId": "e705921bc3fd028381d9c7ed4a7db6d90d9967d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b715055b_7e1bb415",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1180253
+      },
+      "writtenOn": "2017-07-06T02:24:27Z",
+      "side": 1,
+      "message": "Encrypted surper block may be any unexpect contexts.The judgment condition may be hard to come into effect, but it will be useful once it becomes effective.",
+      "parentUuid": "603f5b11_12403206",
       "range": {
         "startLine": 266,
         "startChar": 4,
