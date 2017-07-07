@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f0a77605_b9d586c6",
+        "filename": "base/include/android-base/chrono_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-07-07T23:14:01Z",
+      "side": 1,
+      "message": "Nanoseconds seems to be too fine grain for most users to me, but I guess they\u0027ll be mostly hidden from this, since things like t.duration() \u003e 50ms would still work transparently.\n \nMy other thought was having a template here so users can specify the duration that they want.  Something like \n\ntemplate \u003ctypename T \u003d std::chrono::milliseconds\u003e\nT duration() {\n...\n}\n\nWith overloaded operator\u003c\u003c() that gives the time in the selected units.  Though... if we print over PrettyDuration then that doesn\u0027t matter anyway.",
+      "parentUuid": "85bdf634_2eac6b0d",
+      "range": {
+        "startLine": 41,
+        "startChar": 15,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "6e0036d1b4ebc6db76d1f693a5197844938817cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "011505f4_e1bcea23",
         "filename": "init/action.cpp",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c5823e06_d2bd2bdf",
+        "filename": "init/action.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-07-07T23:14:01Z",
+      "side": 1,
+      "message": "I was thinking that too, but then we end up with extra overhead included in with the time as opposed to printing the original duration that we store away above.  I guess that overhead probably isn\u0027t much?  But it\u0027s better fidelity to not have it.",
+      "parentUuid": "011505f4_e1bcea23",
+      "range": {
+        "startLine": 105,
+        "startChar": 18,
+        "endLine": 105,
+        "endChar": 44
+      },
+      "revId": "6e0036d1b4ebc6db76d1f693a5197844938817cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96c7b935_2abb3492",
         "filename": "init/service.cpp",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-07-07T23:01:52Z",
       "side": 1,
       "message": "for our next trick, i\u0027ve been meaning to bring PrettyDuration over from art for a long time: https://cs.corp.google.com/android/art/runtime/base/time_utils.cc?q\u003dprettyduration\u0026sq\u003dpackage:%5Eandroid$\u0026l\u003d35\n\noperator\u003c\u003c should probably call that, and callers like this that just want \"something readable\" should just use operator\u003c\u003c.",
+      "range": {
+        "startLine": 1130,
+        "startChar": 54,
+        "endLine": 1130,
+        "endChar": 64
+      },
+      "revId": "6e0036d1b4ebc6db76d1f693a5197844938817cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bcd674a_a5b0d56d",
+        "filename": "init/service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-07-07T23:14:01Z",
+      "side": 1,
+      "message": "Ya...  The biggest reason why I kept this is because I know we parse this value and I don\u0027t want to change the format on anything (at least not in this CL).\n\nWe do lose a few decimals of fidelity, but are the microseconds here really significant?  (I doubt it)",
+      "parentUuid": "96c7b935_2abb3492",
       "range": {
         "startLine": 1130,
         "startChar": 54,
