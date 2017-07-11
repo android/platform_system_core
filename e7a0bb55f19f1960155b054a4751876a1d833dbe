@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f373ee10_1a367634",
+        "filename": "libsysutils/src/NetlinkListener.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-07-11T15:29:19Z",
+      "side": 1,
+      "message": "A cs/ reveals that these messages are in essence for essential system services like vold and netd. IMHO several valid vendor ueventd and usb configuration daemons could possibly also use this class. The question we want to ask ourselves is do we want exp_det_netlink_failure event messages from vendor ueventd and usb service binaries when they experience issues?\n\nAndroid\u0027s ueventd, which also serves usb, does _not_ use this class, and thus does not provide these messages. Reasons are beyond me (gcondra@ please advise), but as a matter of form and logic the answer is that it is likely OK to not pollute the events with netlink failures associated with ueventd from system _or_ from vendor.\n\nIn my quest to find out why there is netlink monitoring, git blame reports commit d98533a01213ef8d4ef9a644074ada200cdfc926 gcondra@ Mar 29 2012 which had no associated bug filed, could hopefully probably fill in some context.",
+      "parentUuid": "257e2a05_7d9bb8e3",
+      "range": {
+        "startLine": 31,
+        "startChar": 7,
+        "endLine": 31,
+        "endChar": 23
+      },
+      "revId": "e7a0bb55f19f1960155b054a4751876a1d833dbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6f8df1a_f92a58a4",
         "filename": "libsysutils/src/NetlinkListener.cpp",
         "patchSetId": 2
@@ -111,6 +135,29 @@
         "startChar": 26,
         "endLine": 67,
         "endChar": 31
+      },
+      "revId": "e7a0bb55f19f1960155b054a4751876a1d833dbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "548a84d7_65e6fd0c",
+        "filename": "libsysutils/src/NetlinkListener.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-07-11T15:29:19Z",
+      "side": 1,
+      "message": "if (count \u003c 0) {\n    int save_errno \u003d errno;\n    if (uid \u003e 0) LOG_EVENT_INT(65537, uid); // exp_det_netlink_failure\n    SLOGE(\"recvmsg failed (%s)\", strerror(save_errno));\n    errno \u003d save_errno;\n    return false;\n}",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 54
       },
       "revId": "e7a0bb55f19f1960155b054a4751876a1d833dbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
