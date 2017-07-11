@@ -166,6 +166,30 @@
       "revId": "c8b1dc6f665538f21ecf20596bdd64725578d039",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "497be426_819ef64a",
+        "filename": "libutils/include/utils/Log.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-07-11T22:34:09Z",
+      "side": 1,
+      "message": "You\u0027re saying to add a include_vndk/utils/Log.h and add a warning to it?  I thought you were talking about the existing warning in cutils/log.h.  Are we actually generating warnings to the build log for that?\n\nI see \u003e 1000 matches in our vendor trees for \u003cutils/Log.h\u003e, presumably those should be compiled with VNDK in the future too.  I just don\u0027t see the benefit in creating all of those warnings, and actually think it\u0027s a bit negative.  \n\nIt\u0027s unfortunate that we have many ways to include \u003clog/log.h\u003e, but at least if we make all of them do nothing more than include it, then that\u0027s sufficient.\n\nGoing off of what enh@\u0027s says, we can even remove the header guards and even the copyright here.  This really could/should juts be the warning lines I add here and #include \u003clog/log.h\u003e",
+      "parentUuid": "dc667569_c8058153",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "c8b1dc6f665538f21ecf20596bdd64725578d039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
