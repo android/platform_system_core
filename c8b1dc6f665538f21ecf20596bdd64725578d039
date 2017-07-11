@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "447589f5_d01f8dec",
+        "filename": "libutils/include/utils/Log.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-07-11T21:07:36Z",
+      "side": 1,
+      "message": "Look at system/core/libcutils/include_vndk/cutils/log.h where we added a \u0027soft\u0027 compile deprecation warning. We should have something like this at least in the libutils/include_vndk/utils/Log.h file.\n\nYMMV since some in-tree compilations still treat that soft warning as a hard (-Werror) warning, but the vndk side should _never_ use this file so we do not care that much about it. I am sure there are more pragma/compiler tricks that could be added to make it more robust for in-tree and out-of-tree compilation.",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "c8b1dc6f665538f21ecf20596bdd64725578d039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
