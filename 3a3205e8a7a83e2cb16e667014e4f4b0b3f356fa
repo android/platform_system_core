@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1845056e_61337012",
+        "filename": "adb/daemon/AsyncIO.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-07-13T00:02:59Z",
+      "side": 1,
+      "message": "Where would the lib go?",
+      "parentUuid": "7d3b4015_d48dc2b8",
+      "revId": "3a3205e8a7a83e2cb16e667014e4f4b0b3f356fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "971a7da2_e7517240",
         "filename": "adb/daemon/usb.cpp",
         "patchSetId": 3
@@ -76,6 +94,24 @@
       "writtenOn": "2017-07-12T23:55:03Z",
       "side": 1,
       "message": "Name them aiob_read and aiob_write?",
+      "revId": "3a3205e8a7a83e2cb16e667014e4f4b0b3f356fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db10866c_6e51b01a",
+        "filename": "adb/daemon/usb.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-07-13T00:02:59Z",
+      "side": 1,
+      "message": "several operations in usb.cpp take advantage of being able to index into this array to eliminate a block like\n\nif (read) {\n    aiobp \u003d \u0026aiob_read;\nelse {\n    aiobp \u003d \u0026aiob_write;\n\nto\n\naiobp \u003d \u0026aiob[read];",
+      "parentUuid": "0c9f58e6_01c9f93e",
       "revId": "3a3205e8a7a83e2cb16e667014e4f4b0b3f356fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
