@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ad63c0b4_5cfb2e09",
+        "filename": "adb/daemon/AsyncIO.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-07-13T00:20:31Z",
+      "side": 1,
+      "message": "system/core/libasyncio or something along those lines",
+      "parentUuid": "1845056e_61337012",
+      "revId": "3a3205e8a7a83e2cb16e667014e4f4b0b3f356fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "971a7da2_e7517240",
         "filename": "adb/daemon/usb.cpp",
         "patchSetId": 3
@@ -112,6 +130,24 @@
       "side": 1,
       "message": "several operations in usb.cpp take advantage of being able to index into this array to eliminate a block like\n\nif (read) {\n    aiobp \u003d \u0026aiob_read;\nelse {\n    aiobp \u003d \u0026aiob_write;\n\nto\n\naiobp \u003d \u0026aiob[read];",
       "parentUuid": "0c9f58e6_01c9f93e",
+      "revId": "3a3205e8a7a83e2cb16e667014e4f4b0b3f356fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14a82008_bfe86ccf",
+        "filename": "adb/daemon/usb.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-07-13T00:20:31Z",
+      "side": 1,
+      "message": "It looks like it\u0027s only one on line 434? You could just rewrite it as a ternary like:\n\n    aiobp \u003d read ? \u0026h-\u003eaiob_read : \u0026h-\u003eaiob_write",
+      "parentUuid": "db10866c_6e51b01a",
       "revId": "3a3205e8a7a83e2cb16e667014e4f4b0b3f356fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
