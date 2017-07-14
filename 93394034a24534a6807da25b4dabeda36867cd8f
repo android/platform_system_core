@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "16c2444a_f4f24a05",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-07-14T21:13:26Z",
+      "side": 1,
+      "message": "No, it inherits from /data/misc/recovery/ as do all files under this tree until someone states otherwise.",
+      "parentUuid": "9f1e80f4_e7470637",
+      "range": {
+        "startLine": 386,
+        "startChar": 10,
+        "endLine": 386,
+        "endChar": 34
+      },
+      "revId": "93394034a24534a6807da25b4dabeda36867cd8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3822a420_a2964974",
         "filename": "rootdir/init.rc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-07-14T21:04:07Z",
       "side": 1,
       "message": "or maybe just /data/misc/recovery/proc_version.1 if unlikely to save a bunch of /proc files and need to preserve the hierarchy?",
+      "range": {
+        "startLine": 387,
+        "startChar": 42,
+        "endLine": 387,
+        "endChar": 76
+      },
+      "revId": "93394034a24534a6807da25b4dabeda36867cd8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c10a2cca_33dcbd5c",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-07-14T21:13:26Z",
+      "side": 1,
+      "message": "I chose .../recovery/proc/version because there has been discussion several times in the past to also save /proc/config.gz. If the question got asked again, I would put it here. However, most pushback was because they could always get config.gz from the kernel signature working back to our repositories.\n\nI could imagine /proc/swaps and /proc/partitions too which give us hardware signatures that are outside the scope of just the kernel build signature.\n\nAll of these are out-of-scope for this change, but reasoning enough to take a subdirectory today so we are not painted into a corner.",
+      "parentUuid": "3822a420_a2964974",
       "range": {
         "startLine": 387,
         "startChar": 42,
