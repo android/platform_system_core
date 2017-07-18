@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c720b39_ac6808f6",
+        "filename": "adb/adb.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-07-18T01:09:56Z",
+      "side": 1,
+      "message": "Changing this without renaming it seems bad, but I don\u0027t think we actually need to know the value of MAX_PAYLOAD_V2, since it\u0027s all negotiated anyway. Just delete MAX_PAYLOAD_V2 and set MAX_PAYLOAD to 1024 * 1024?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "676df01a092f7e4f9a533043e3fdf3bcf216ac57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a897a3d_51ed2192",
+        "filename": "adb/file_sync_service.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-07-18T01:09:56Z",
+      "side": 1,
+      "message": "Do we want this flag for writes? It seems like what we actually want to do is truncate the file before we start writing (what I think we *actually* want is to write the file to a temp file in the same partition, and then atomically rename it on top, so we don\u0027t corrupt the file, but that\u0027s obviously beyond the scope of this patch and not your responsibility :-)",
+      "range": {
+        "startLine": 210,
+        "startChar": 77,
+        "endLine": 210,
+        "endChar": 96
+      },
+      "revId": "676df01a092f7e4f9a533043e3fdf3bcf216ac57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2031a5fb_1591c2cf",
+        "filename": "libasyncio/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-07-18T01:09:56Z",
+      "side": 1,
+      "message": "I think this is implied by export_include_dirs?",
+      "revId": "676df01a092f7e4f9a533043e3fdf3bcf216ac57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bdbeca8_a65ac532",
+        "filename": "libasyncio/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-07-18T01:09:56Z",
+      "side": 1,
+      "message": "I don\u0027t think this needs libbase?",
+      "revId": "676df01a092f7e4f9a533043e3fdf3bcf216ac57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14bac076_430b1bd1",
+        "filename": "libasyncio/AsyncIO.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-07-18T01:09:56Z",
+      "side": 1,
+      "message": "This include should be first.",
+      "revId": "676df01a092f7e4f9a533043e3fdf3bcf216ac57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03c89da1_fc18cc5e",
+        "filename": "libasyncio/include/asyncio/AsyncIO.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-07-18T01:09:56Z",
+      "side": 1,
+      "message": "Wrap these in extern \"C\" if __cplusplus is defined?",
+      "revId": "676df01a092f7e4f9a533043e3fdf3bcf216ac57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
