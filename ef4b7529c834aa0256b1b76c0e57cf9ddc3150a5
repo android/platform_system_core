@@ -52,6 +52,24 @@
       "revId": "ef4b7529c834aa0256b1b76c0e57cf9ddc3150a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec8c0c14_ad80871f",
+        "filename": "init/ueventd_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-07-19T22:35:22Z",
+      "side": 1,
+      "message": "Actually, good thing that you mentioned this as I do in fact see both:\n\nsystem/core/init/ueventd_test.cpp:200: Failure\n      Expected: 0U\n      Which is: 0\nTo be equal to: num_api_failures\n      Which is: 1\nsystem/core/init/ueventd_test.cpp:201: Failure\n      Expected: 0U\n      Which is: 0\nTo be equal to: num_context_check_failures\n      Which is: 2\n[  FAILED  ] ueventd.selabel_lookup_MultiThreaded (211 ms)\n\nIt\u0027s pretty intermittent, but it\u0027s a sure failure and I can hit it for real at boot if I have multiple threads in init.",
+      "parentUuid": "81d13f68_6bd42582",
+      "revId": "ef4b7529c834aa0256b1b76c0e57cf9ddc3150a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
