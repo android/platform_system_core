@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "78f0f7c9_ddeb7355",
+        "filename": "fs_mgr/fs_mgr_priv_boot_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1057369
+      },
+      "writtenOn": "2017-07-25T16:18:39Z",
+      "side": 1,
+      "message": "Thank you both. I\u0027m happy to make this change.\n\nIn fact I was having a hard time trying to figure out the best way to make the new path variable visible to both init*.cpp and fs_mgr*.cpp. I haven\u0027t found a neat solution yet, since init/ and fs_mgr/ do not seem to share any global state. In the end I think I should at least avoid parsing the kernel cmdline twice, and I\u0027m doing it in init/, which means I can\u0027t use fs_mgr_get_boot_config().\n\nI\u0027ll upload v2 shortly. Please let me know if my solution is acceptable.",
+      "parentUuid": "3d050f7e_9fb66bf5",
+      "revId": "4756b8ba637e64724ff939d9c4c5cb3ec678d4e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cccc6c01_f8e95183",
         "filename": "init/uevent_listener.cpp",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2017-07-24T17:51:39Z",
       "side": 1,
       "message": "Why though?  This seems to be totally wrong.",
+      "revId": "4756b8ba637e64724ff939d9c4c5cb3ec678d4e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68197c19_6b018376",
+        "filename": "init/uevent_listener.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1057369
+      },
+      "writtenOn": "2017-07-25T16:18:39Z",
+      "side": 1,
+      "message": "We\u0027ll need to root cause this and implement a proper fix. For now I\u0027m moving this hack to a separate patch. But thanks Bo for providing this solution! At least we have a bootable emulator now.",
+      "parentUuid": "cccc6c01_f8e95183",
       "revId": "4756b8ba637e64724ff939d9c4c5cb3ec678d4e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
