@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ffa46aa_e455d26a",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-07-25T20:19:20Z",
+      "side": 1,
+      "message": "android_dt_dir maybe?  I don\u0027t like the name as is as it seems to claim that it\u0027s pointing to the root of the device tree, which it isn\u0027t.  I don\u0027t exactly like android_dt_dir either though, so I\u0027m open to other ideas.\n\nCould we do this without the global too?  The other way of requiring this path to be part of the arguments was slightly better in that it gets rid of the global.\n\nWhat do we do about other users of fs_mgr (vold particularly)?  They\u0027ll need to get this path too.",
+      "range": {
+        "startLine": 316,
+        "startChar": 12,
+        "endLine": 316,
+        "endChar": 22
+      },
+      "revId": "537bef2fe579a67abefab87075bf75d87e997983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8a407c9_544c6e73",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-07-25T20:19:20Z",
+      "side": 1,
+      "message": "Could we maybe have a get_android_dt_dir() function that lazily evaluates this instead of the set function?  I\u0027m concerned that users of fs_mgr won\u0027t call this API before calling other functions.\n\nYou\u0027re right that a lot of this needs to be refactored out so we\u0027re not duplicating code between init and fs_mgr.  A lazy get_android_dt_dir() function in a library that both reference could help, but I\u0027m not sure what that would look like.",
+      "revId": "537bef2fe579a67abefab87075bf75d87e997983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
