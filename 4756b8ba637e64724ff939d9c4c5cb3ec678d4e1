@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3d050f7e_9fb66bf5",
+        "filename": "fs_mgr/fs_mgr_priv_boot_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-07-25T14:04:45Z",
+      "side": 1,
+      "message": "+1\n\nUse kAndroidDtDir as default (so no changes for arm devices).\nFor x86, it can override the default dt_root_path via kernel cmdline. Then get it by:\n\n  std::string dt_root_path;\n  if (!fs_mgr_get_boot_config(\"dt_root_path\", \u0026dt_root_path)) {\n     dt_root_path \u003d kAndroidDtDir;\n  }",
+      "parentUuid": "9713d3e5_19cec737",
+      "revId": "4756b8ba637e64724ff939d9c4c5cb3ec678d4e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cccc6c01_f8e95183",
         "filename": "init/uevent_listener.cpp",
         "patchSetId": 2
