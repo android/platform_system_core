@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17396400_dddc81e6",
+        "filename": "init/service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-07-26T20:57:57Z",
+      "side": 1,
+      "message": "Did we ever figure out why it panic\u0027ed?  I\u0027m guessing the suggestion that it was due to ubsan is correct.\n\nThis is sort of an awful API given that all we\u0027re really trying to do is a read-modify-write and the read gives us int and the write takes unsigned long...\n\nWe could disable ubsan for this function and go back to -1UL \nalternatively if it is ubsan?  Add \n__attribute__((__no_sanitize__(\"unsigned-integer-overflow\"))) to the end of the function?",
+      "revId": "c51433cfef90f5f133e6f9b18326efb5053fdd47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
