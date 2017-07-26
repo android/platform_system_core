@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39c42188_0348b457",
+        "filename": "libion/ion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2017-07-26T19:57:50Z",
+      "side": 1,
+      "message": "This isn\u0027t thread-safe, and ion_is_legacy() will always return 0 unless ion_open() has been called first.\n\nFrom our experience with libsync, try something like:\n\nenum ion_version {\n    ION_VERSION_UNKNOWN,\n    ION_VERSION_MODERN,\n    ION_VERSION_LEGACY\n};\nstatic atomic_int g_ion_version \u003d ATOMIC_VAR_INIT(ION_VERSION_LEGACY);\n\nint ion_is_legacy(int fd) {\n    int version \u003d atomic_load_explicit(\u0026g_ion_version, memory_order_acquire);\n    if (version \u003d\u003d ION_VERSION_UNKNOWN) {\n        struct ion_heap_query query;\n        memset(\u0026query, 0, sizeof(query));\n\n        int err \u003d ion_ioctl(fd, ION_IOC_HEAP_QUERY, \u0026query);\n        version \u003d (err \u003d\u003d -ENOTTY) ? ION_VERSION_LEGACY : ION_VERSION_MODERN;\n        atomic_store_explicit(\u0026g_ion_version, version, memory_order_release);\n\n    }\n\n    return version \u003d\u003d ION_VERSION_LEGACY;\n}",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 32
+      },
+      "revId": "fcd7a8b752a324c82d548eaa12d73de9a28ef83a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70bbbaa1_4ceb2954",
+        "filename": "libion/ion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2017-07-26T19:57:50Z",
+      "side": 1,
+      "message": "What are the rules for alignment with the new ion implementation?  Is it equivalent to setting align \u003d 0 with the old ion?",
+      "range": {
+        "startLine": 74,
+        "startChar": 34,
+        "endLine": 74,
+        "endChar": 46
+      },
+      "revId": "fcd7a8b752a324c82d548eaa12d73de9a28ef83a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "122c5ea7_08bc1f93",
+        "filename": "libion/ion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2017-07-26T19:57:50Z",
+      "side": 1,
+      "message": "Please match the existing style (system/core provides a .clang-format file).",
+      "range": {
+        "startLine": 83,
+        "startChar": 12,
+        "endLine": 83,
+        "endChar": 82
+      },
+      "revId": "fcd7a8b752a324c82d548eaa12d73de9a28ef83a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27b3404e_0268e3ac",
+        "filename": "libion/ion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2017-07-26T19:57:50Z",
+      "side": 1,
+      "message": "It seems like ion_alloc_fd() should call this ioctl, and ion_alloc() should return -EINVAL?\n\nThe new ION_IOC_ALLOC ioctl has basically the same semantics as our userspace ion_alloc_fd(): you get a dma-buf fd back, and should pass it to generic close()/mmap()/etc. routines rather than ion-specific ones.\n\nIf you swap these two around, then a small but useful subset of libion calls will work consistently on all kernels.  IMO this would be helpful for porting efforts.",
+      "range": {
+        "startLine": 89,
+        "startChar": 6,
+        "endLine": 97,
+        "endChar": 5
+      },
+      "revId": "fcd7a8b752a324c82d548eaa12d73de9a28ef83a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7814ee39_11f6d4bb",
+        "filename": "libion/ion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2017-07-26T19:57:50Z",
+      "side": 1,
+      "message": "Can this be emulated using DMA_BUF_IOCTL_SYNC?",
+      "range": {
+        "startLine": 203,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 42
+      },
+      "revId": "fcd7a8b752a324c82d548eaa12d73de9a28ef83a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
