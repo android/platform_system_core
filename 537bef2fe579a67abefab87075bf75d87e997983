@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7672c846_2fe804d2",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1057369
+      },
+      "writtenOn": "2017-07-26T10:22:24Z",
+      "side": 1,
+      "message": "I agree dt_rootdir is a bad name. I\u0027ll rename it to android_dt_dir since I don\u0027t have a better idea.\n\nAfter going through all fs_mgr*.cpp, I realize that fs_mgr is stateless, so introducing a global in the middle of a fs_mgr*.cpp is a bad idea. Let me continue this discussion in my next comment.",
+      "parentUuid": "1ffa46aa_e455d26a",
+      "range": {
+        "startLine": 316,
+        "startChar": 12,
+        "endLine": 316,
+        "endChar": 22
+      },
+      "revId": "537bef2fe579a67abefab87075bf75d87e997983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8a407c9_544c6e73",
         "filename": "fs_mgr/fs_mgr_fstab.cpp",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2017-07-25T20:19:20Z",
       "side": 1,
       "message": "Could we maybe have a get_android_dt_dir() function that lazily evaluates this instead of the set function?  I\u0027m concerned that users of fs_mgr won\u0027t call this API before calling other functions.\n\nYou\u0027re right that a lot of this needs to be refactored out so we\u0027re not duplicating code between init and fs_mgr.  A lazy get_android_dt_dir() function in a library that both reference could help, but I\u0027m not sure what that would look like.",
+      "revId": "537bef2fe579a67abefab87075bf75d87e997983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96df2519_e56d19a9",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1057369
+      },
+      "writtenOn": "2017-07-26T10:22:24Z",
+      "side": 1,
+      "message": "So to summarize the points you\u0027ve made here and above, the desired v3 patch should:\n\na) Remove the global variable.\nb) Require the Android DT path to be passed to every fs_mgr API that reads from DT.\nc) Replace this set function with a lazy fs_mgr_get_android_dt_dir().\n\nIt\u0027s possible to satisfiy all 3 requirements, but I have the following questions:\n\n1) \"Lazy\" implies keeping some internal state in fs_mgr, right? If we don\u0027t use a global, the only option would be to use a static local variable in the get function. Do you have any concern over the use of static locals? I think they are better than globals, and I will use the same technique to get rid of the global in init/.\n\n2) Besides b), you also suggested that the get function be part of the fs_mgr library. So, every user of the library would have to call fs_mgr_read_fstab_dt(), etc. like this:\n\n fs_mgr_read_fstab_dt(fs_mgr_get_android_dt_dir());\n\nNote that this would also affect fs_mgr APIs that use DT indirectly, e.g.:\n\n fs_mgr_read_fstab_default(fs_mgr_get_android_dt_dir());\n\nWould that be too much of a burden? The second example actually comes from vold, which would need to be patched separately.\n\nI don\u0027t think users of the library care about the DT path at all, i.e. they would never save the path returned by the get function and use it elsewhere.\n\nTherefore, I\u0027d prefer that we dropped b), and make the get function private to fs_mgr. I\u0027ll implement v3 this way.",
+      "parentUuid": "d8a407c9_544c6e73",
       "revId": "537bef2fe579a67abefab87075bf75d87e997983",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
