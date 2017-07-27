@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "62c2b930_1c501bd4",
+        "filename": "libion/ion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1052193
+      },
+      "writtenOn": "2017-07-27T14:49:38Z",
+      "side": 1,
+      "message": "Thanks for your review, Greg.\n\nAnd, thanks for this tip - will update.",
+      "parentUuid": "39c42188_0348b457",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 32
+      },
+      "revId": "fcd7a8b752a324c82d548eaa12d73de9a28ef83a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70bbbaa1_4ceb2954",
         "filename": "libion/ion.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-07-26T19:57:50Z",
       "side": 1,
       "message": "What are the rules for alignment with the new ion implementation?  Is it equivalent to setting align \u003d 0 with the old ion?",
+      "range": {
+        "startLine": 74,
+        "startChar": 34,
+        "endLine": 74,
+        "endChar": 46
+      },
+      "revId": "fcd7a8b752a324c82d548eaa12d73de9a28ef83a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c489acb_63d0be34",
+        "filename": "libion/ion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1052193
+      },
+      "writtenOn": "2017-07-27T14:49:38Z",
+      "side": 1,
+      "message": "the new ion kernel implementation just drops the align field since it was being used only for checking bounds, so yes, it should be equivalent to setting align \u003d 0.",
+      "parentUuid": "70bbbaa1_4ceb2954",
       "range": {
         "startLine": 74,
         "startChar": 34,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8c5e719a_69f3557c",
+        "filename": "libion/ion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1052193
+      },
+      "writtenOn": "2017-07-27T14:49:38Z",
+      "side": 1,
+      "message": "I had matched existing style, but this was actually the result of clang-related hooks in \u0027repo upload\u0027 - should I not let the hooks run, then? Or perhaps they need some update?",
+      "parentUuid": "122c5ea7_08bc1f93",
+      "range": {
+        "startLine": 83,
+        "startChar": 12,
+        "endLine": 83,
+        "endChar": 82
+      },
+      "revId": "fcd7a8b752a324c82d548eaa12d73de9a28ef83a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27b3404e_0268e3ac",
         "filename": "libion/ion.c",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "12ea43c8_ed8c880d",
+        "filename": "libion/ion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1052193
+      },
+      "writtenOn": "2017-07-27T14:49:38Z",
+      "side": 1,
+      "message": "Ok, understood. I will update as suggested.",
+      "parentUuid": "27b3404e_0268e3ac",
+      "range": {
+        "startLine": 89,
+        "startChar": 6,
+        "endLine": 97,
+        "endChar": 5
+      },
+      "revId": "fcd7a8b752a324c82d548eaa12d73de9a28ef83a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7814ee39_11f6d4bb",
         "filename": "libion/ion.c",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2017-07-26T19:57:50Z",
       "side": 1,
       "message": "Can this be emulated using DMA_BUF_IOCTL_SYNC?",
+      "range": {
+        "startLine": 203,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 42
+      },
+      "revId": "fcd7a8b752a324c82d548eaa12d73de9a28ef83a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "888131e5_7c25bbd7",
+        "filename": "libion/ion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1052193
+      },
+      "writtenOn": "2017-07-27T14:49:38Z",
+      "side": 1,
+      "message": "Had a quick chat with Laura on this: sync_fd looks semantically similar to SYNC_END, but since there\u0027s no logical place to mark the equivalent SYNC_START, her idea was to do the SYNC_START and SYNC_END back-to-back in ion_sync_fd(). Hope that seems to do the \u0027right\u0027 thing?",
+      "parentUuid": "7814ee39_11f6d4bb",
       "range": {
         "startLine": 203,
         "startChar": 4,
