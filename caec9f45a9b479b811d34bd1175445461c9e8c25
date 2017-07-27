@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51ede6f7_088d72a9",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-07-27T06:08:40Z",
+      "side": 1,
+      "message": "Yup, we will need to fix this separately in long term.\n  \nMaybe we can consider s/get_android_dt_dir/fs_mgr_get_android_dt_dir.\nAnd init/util also invokes fs_mgr_get_android_dt_dir().\nSo we can keep the logic in one place.\n  \nBut having init/util needs to use fs_mgr is weird, too.\nSo I\u0027m ok with current structure in this CL.",
+      "range": {
+        "startLine": 318,
+        "startChar": 3,
+        "endLine": 318,
+        "endChar": 59
+      },
+      "revId": "caec9f45a9b479b811d34bd1175445461c9e8c25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51d88bf6_f5be1951",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-07-27T06:08:40Z",
+      "side": 1,
+      "message": "Is android_dt_dir thread safe?\nSeems need to move it inside the call_once() as well.\n  \nBtw, maybe we can just use initialization of function-local statics?\n\nconst std::string init_android_dt_dir() {\n    std::string android_dt_dir;\n    if (fs_mgr_get_boot_config_from_kernel_cmdline(\"android_dt_dir\", \u0026android_dt_dir)) {         \n        return android_dt_dir;\n    }\n    return kAndroidDtDir;\n}\n\nconst std::string\u0026 get_android_dt_dir() {\n    static std::string android_dt_dir \u003d init_android_dt_dir();\n    return android_dt_dir;\n}",
+      "range": {
+        "startLine": 321,
+        "startChar": 23,
+        "endLine": 321,
+        "endChar": 37
+      },
+      "revId": "caec9f45a9b479b811d34bd1175445461c9e8c25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
