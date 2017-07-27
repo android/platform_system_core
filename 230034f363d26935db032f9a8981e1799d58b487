@@ -46,6 +46,30 @@
       "revId": "230034f363d26935db032f9a8981e1799d58b487",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bad3c584_9ede5d8c",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-07-27T17:53:14Z",
+      "side": 1,
+      "message": "Is it fine?  It still looks problematic to me.  const or not it\u0027s a static reference to a temporary object.  Once the temporary goes out of scope, we\u0027ll have a dangling reference.  So I agree with the original comment, no \u0026",
+      "parentUuid": "86432ac3_84940fbb",
+      "range": {
+        "startLine": 331,
+        "startChar": 28,
+        "endLine": 331,
+        "endChar": 29
+      },
+      "revId": "230034f363d26935db032f9a8981e1799d58b487",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
