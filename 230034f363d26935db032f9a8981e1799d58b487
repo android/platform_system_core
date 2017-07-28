@@ -70,6 +70,30 @@
       "revId": "230034f363d26935db032f9a8981e1799d58b487",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6f8fa2b_1bac4150",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1057369
+      },
+      "writtenOn": "2017-07-28T02:27:00Z",
+      "side": 1,
+      "message": "This is a good question. I was assuming that the temporary object would be assigned the scope of the static local because the static local references it. A quick Google search for \"c++ return value scope\" leads to this post that supports my hypothesis:\n\nhttps://stackoverflow.com/questions/37067773/scope-of-a-return-value-of-a-function\n\n\"Yes, you can bind a reference to the return value of a function. This extends the lifetime of the returned object to that of the reference (if it\u0027s global or function-local), or to the end of the current function (if the reference is a data member).\n\nHowever, you cannot bind a temporary (prvalue) to a non-const lvalue reference.\"\n\nBut this answer doesn\u0027t list any reference. I\u0027ll try to find a more authoritative article on this topic. If I can\u0027t, I\u0027ll be happy just remove the \u0026\u0027s.",
+      "parentUuid": "bad3c584_9ede5d8c",
+      "range": {
+        "startLine": 331,
+        "startChar": 28,
+        "endLine": 331,
+        "endChar": 29
+      },
+      "revId": "230034f363d26935db032f9a8981e1799d58b487",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
