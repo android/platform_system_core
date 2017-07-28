@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e56fa75a_f346ecc6",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-07-28T22:57:17Z",
+      "side": 1,
+      "message": "This is the only contentious part.  I haven\u0027t benchmarked it specifically yet, but I had benchmarked the loop in restart_processes() and it took essentially no time during boot, so I can\u0027t imagine this would be any different.\n\nIf it does matter, then I figure a Service::waiting_for_exec_ static would be the best way rather than roping ServiceManager back in.",
+      "revId": "8cc637e6e9536633b4c1b3e730b4861821a7a299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c9039fe_f885a821",
+        "filename": "init/service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-07-28T22:57:17Z",
+      "side": 1,
+      "message": "Turns out we already have everything we need for timing of exec services without a new timer.\n\nAlthough... this is nanoseconds, no milliseconds so the time stamps are off... I\u0027ll fix this in a second CL:\n\ninit: Service \u0027exec 1 (/system/bin/init.bullhead.qseecomd.sh)\u0027 (pid 351) exited with status 0 waiting took 168710.640625 seconds",
+      "revId": "8cc637e6e9536633b4c1b3e730b4861821a7a299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbb3d0e6_8c2c6f3d",
+        "filename": "init/service.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-07-28T22:57:17Z",
+      "side": 1,
+      "message": "This is really just a static constructor for Service and should be treated like one.",
+      "revId": "8cc637e6e9536633b4c1b3e730b4861821a7a299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
