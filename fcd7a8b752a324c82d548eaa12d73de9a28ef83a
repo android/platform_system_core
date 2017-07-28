@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "53914a75_5d0a31f3",
+        "filename": "libion/ion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2017-07-28T17:13:12Z",
+      "side": 1,
+      "message": "Weird.  Try manually running clang-format --style\u003dfile -i system/core/libion/ion.c and seeing what happens.  On my end clang-format makes a few changes where ion.c doesn\u0027t totally match our style guide, but it keeps the newline in struct declarations intact.",
+      "parentUuid": "8c5e719a_69f3557c",
+      "range": {
+        "startLine": 83,
+        "startChar": 12,
+        "endLine": 83,
+        "endChar": 82
+      },
+      "revId": "fcd7a8b752a324c82d548eaa12d73de9a28ef83a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27b3404e_0268e3ac",
         "filename": "libion/ion.c",
         "patchSetId": 2
@@ -225,6 +249,30 @@
       "side": 1,
       "message": "Had a quick chat with Laura on this: sync_fd looks semantically similar to SYNC_END, but since there\u0027s no logical place to mark the equivalent SYNC_START, her idea was to do the SYNC_START and SYNC_END back-to-back in ion_sync_fd(). Hope that seems to do the \u0027right\u0027 thing?",
       "parentUuid": "7814ee39_11f6d4bb",
+      "range": {
+        "startLine": 203,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 42
+      },
+      "revId": "fcd7a8b752a324c82d548eaa12d73de9a28ef83a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae9d2b35_d0501548",
+        "filename": "libion/ion.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1015340
+      },
+      "writtenOn": "2017-07-28T17:13:12Z",
+      "side": 1,
+      "message": "On second thought, I\u0027m not sure we should be emulating this.  DMA_BUF_IOCTL_SYNC is more targeted than ION_IOC_SYNC (e.g. you can specify a direction), and we should encourage people to use more targeted buffer syncing where it\u0027s available and appropriate.",
+      "parentUuid": "888131e5_7c25bbd7",
       "range": {
         "startLine": 203,
         "startChar": 4,
