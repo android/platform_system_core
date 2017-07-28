@@ -118,6 +118,30 @@
       "revId": "230034f363d26935db032f9a8981e1799d58b487",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0016622_afaec9b3",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-07-28T03:02:46Z",
+      "side": 1,
+      "message": "Oh, Tom is right. I forgot about the \u0027static\u0027 part.\n\nThis is ok: \n  const std::string\u0026 kAndroidDtDir \u003d init_android_dt_dir();\n\nBut not:\n  static const std::string\u0026 kAndroidDtDir \u003d init_android_dt_dir();\n\n\nThe life cycle of static is global, but the \u0027temp\u0027 object life cycle is only within this function.\n\nSo once the function returns, the temp object is no longer available. Then the static reference will become dangling and it won\u0027t be initialized anymore.\n\nChecked the standard:\nhttp://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3690.pdf\n\n12.2 Temporary objects\nThe destruction of a temporary whose lifetime is not extended by being bound to a reference is sequenced\nbefore the destruction of every temporary which is constructed earlier in the same full-expression.\n\nSo, +1 for Tom\u0027s and my original comment.",
+      "parentUuid": "f6f8fa2b_1bac4150",
+      "range": {
+        "startLine": 331,
+        "startChar": 28,
+        "endLine": 331,
+        "endChar": 29
+      },
+      "revId": "230034f363d26935db032f9a8981e1799d58b487",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
