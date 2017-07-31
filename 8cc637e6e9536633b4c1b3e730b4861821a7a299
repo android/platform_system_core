@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4f067e95_30b59fd0",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-07-31T18:31:24Z",
+      "side": 1,
+      "message": "It\u0027s on average one microsecond per call.  In theory there shouldn\u0027t be many calls, but I\u0027m absolutely seeing what looks like a bug that is causing this to be called 100,000 times at once... so that needs to be investigated.\n\nI really do not want to couple ServiceList with whether or not we\u0027re waiting for exec, but it does seem like stashing this away will be worth it.  The code that interacts with this is rather disjoin:\n\ndo_exec(_start)()\nReapOneProcess()\ninit\u0027s main loop",
+      "parentUuid": "e56fa75a_f346ecc6",
+      "revId": "8cc637e6e9536633b4c1b3e730b4861821a7a299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a88b0a0_816bd5c0",
         "filename": "init/init.cpp",
         "patchSetId": 1
