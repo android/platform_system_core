@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2e97bac_2790d9dd",
+        "filename": "libutils/include/utils/Singleton.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-01T21:11:03Z",
+      "side": 1,
+      "message": "This strikes me as a bug in clang complaints, the context is in a location that would get _damaged_ by parenthesis.\n\nFor example, it did not complain about container here:\n\n#define node_to_item(node, container, member) \\\n    (container *) (((char*) (node)) - offsetof(container, member))",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 80
+      },
+      "revId": "5471d022806b926e1a1e98a8e4691424f6486687",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
