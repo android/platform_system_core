@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5be9fdf4_dd7e7d09",
+        "filename": "libsysutils/src/NetlinkEvent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-02T15:39:17Z",
+      "side": 1,
+      "message": "nit: C++ coding style requires this one to be a bool, set to true or false, not 1 or 0.",
+      "range": {
+        "startLine": 587,
+        "startChar": 4,
+        "endLine": 587,
+        "endChar": 18
+      },
+      "revId": "9a0dee3bd71670150422ef34c9bddb824bf07df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06258b5b_fe63d7dc",
+        "filename": "libsysutils/src/NetlinkEvent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-02T15:39:17Z",
+      "side": 1,
+      "message": "nit: C++ is not C, automatics should be defined in the scope of use. All this initialization costs us before the empty buffer check below. _please_ move them down to comply with Android Coding standards while we are here.",
+      "range": {
+        "startLine": 584,
+        "startChar": 0,
+        "endLine": 587,
+        "endChar": 18
+      },
+      "revId": "9a0dee3bd71670150422ef34c9bddb824bf07df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e406448_fd8bd01e",
+        "filename": "libsysutils/src/NetlinkEvent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-02T15:39:17Z",
+      "side": 1,
+      "message": "The _real_ fix should be here and gives us the _correct_ return value.\n\nif ((size \u003d\u003d 0) || (buffer \u003d\u003d nullptr)) return false;",
+      "range": {
+        "startLine": 589,
+        "startChar": 0,
+        "endLine": 590,
+        "endChar": 21
+      },
+      "revId": "9a0dee3bd71670150422ef34c9bddb824bf07df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed31f6c0_aaf2b6f2",
+        "filename": "libsysutils/src/NetlinkEvent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-02T15:39:17Z",
+      "side": 1,
+      "message": "clang got this wrong eh? if s is nullptr, then so is buffer, and here we have a null pointer access.",
+      "range": {
+        "startLine": 593,
+        "startChar": 4,
+        "endLine": 593,
+        "endChar": 26
+      },
+      "revId": "9a0dee3bd71670150422ef34c9bddb824bf07df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9eebbca_03cf0351",
+        "filename": "libsysutils/src/NetlinkEvent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-02T15:39:17Z",
+      "side": 1,
+      "message": "tests every round of the loop, adding to the processing, and worse still results in us returning _true_ when we should be returning _false_.",
+      "range": {
+        "startLine": 596,
+        "startChar": 4,
+        "endLine": 596,
+        "endChar": 26
+      },
+      "revId": "9a0dee3bd71670150422ef34c9bddb824bf07df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
