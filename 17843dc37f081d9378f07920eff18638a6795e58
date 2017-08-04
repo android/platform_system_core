@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "956b437b_66a1f32f",
+        "filename": "liblog/logd_reader.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-04T14:56:57Z",
+      "side": 1,
+      "message": "nit: Discussed and noted that if there is a timeout, it should be managed by a poll action, rather than playing games with alarm. Please file bug if this is not going to be fixed this time around.",
+      "range": {
+        "startLine": 594,
+        "startChar": 0,
+        "endLine": 623,
+        "endChar": 3
+      },
+      "revId": "17843dc37f081d9378f07920eff18638a6795e58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef0f56f2_eb57a5ff",
+        "filename": "liblog/logd_reader.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-04T14:56:57Z",
+      "side": 1,
+      "message": "Consider this a passive aggressive nit :-) Maybe make this part of a second patch in the series?\n\nExample/common code that may be deployed to poll instead of use alarm (in this case with a hard-coded 20ms timeout). So (untested):\n\n+#include \u003clog/log_time.h\u003e\n. . .\n- struct sigaction ignore;\n- struct sigaction old_sigaction;\n- unsigned int old_alarm \u003d 0;\n. . .\n  if (logger_list-\u003emode \u0026 ANDROID_LOG_NONBLOCK) {\n    struct pollfd d;\n    int timeout, r;\n\n    if ((logger_list-\u003emode \u0026 ANDROID_LOG_WRAP) \u0026\u0026\n        (logger_list-\u003estart.tv_sec || logger_list-\u003estart.tv_nsec)) {\n      /* b/64143705 */\n      timeout \u003d MS_PER_SEC *\n (ANDROID_LOG_WRAP_DEFAULT_TIMEOUT * 11) / 10 + 10;\n      logger_list-\u003emode \u0026\u003d ~ANDROID_LOG_WRAP;\n    } else {\n      timeout \u003d MS_PER_SEC * 30;\n    }\n    memset(\u0026p, 0, sizeof(p));\n    p.fd \u003d ret;\n    p.events \u003d POLLIN;\n    r \u003d poll(\u0026p, 1, timeout);\n    e \u003d errno;\n    if (e \u0026\u0026 (r \u003d\u003d -1)) {\n      if (e \u003d\u003d EINTR) {\n        e \u003d EAGAIN;\n      }\n      return -e;\n    }\n    if (!r || ((r \u003e 0) \u0026\u0026 !(p.revents \u0026 POLLIN))) {\n      return -EAGAIN;\n    }\n  }\n\n  /* NOTE: SOCK_SEQPACKET guarantees we read exactly one full entry */\n  memset(log_msg, 0, sizeof(*log_msg));\n  ret \u003d recv(ret, log_msg, LOGGER_ENTRY_MAX_LEN, 0);\n  e \u003d errno;\n  if ((ret \u003d\u003d -1) \u0026\u0026 e) {\n    return -e;\n  }\n  return ret;",
+      "range": {
+        "startLine": 640,
+        "startChar": 0,
+        "endLine": 650,
+        "endChar": 13
+      },
+      "revId": "17843dc37f081d9378f07920eff18638a6795e58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba7dbcd8_f60c48a9",
+        "filename": "liblog/tests/log_id_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-04T14:56:57Z",
+      "side": 1,
+      "message": "concerned fixing (?) this is outside the scope, or should be made a separate patch in the series.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 3
+      },
+      "revId": "17843dc37f081d9378f07920eff18638a6795e58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ca88769_8ea07049",
+        "filename": "liblog/tests/log_wrap_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-04T14:56:57Z",
+      "side": 1,
+      "message": "of course, if we fix this in liblog, code here could be simplified _immensely_.",
+      "range": {
+        "startLine": 76,
+        "startChar": 61,
+        "endLine": 77,
+        "endChar": 48
+      },
+      "revId": "17843dc37f081d9378f07920eff18638a6795e58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49828309_c5e797ce",
+        "filename": "logd/tests/logd_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-04T14:56:57Z",
+      "side": 1,
+      "message": "I like the changes in here, makes code easier to understand/maintain.\n\nBut probably should be in a separate CL in the series.",
+      "range": {
+        "startLine": 648,
+        "startChar": 0,
+        "endLine": 658,
+        "endChar": 47
+      },
+      "revId": "17843dc37f081d9378f07920eff18638a6795e58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
