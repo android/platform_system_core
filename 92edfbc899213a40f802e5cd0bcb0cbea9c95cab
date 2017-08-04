@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e57e3afd_ecda8be7",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-08-04T21:52:27Z",
+      "side": 1,
+      "message": "Done; without the Ok, the implicit cast just works here.",
+      "parentUuid": "e606db39_37a3f2f1",
+      "revId": "92edfbc899213a40f802e5cd0bcb0cbea9c95cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b18c9c9_253f83ad",
         "filename": "init/builtins.cpp",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2017-08-03T23:29:02Z",
       "side": 1,
       "message": "shadows L252?",
+      "range": {
+        "startLine": 255,
+        "startChar": 12,
+        "endLine": 255,
+        "endChar": 20
+      },
+      "revId": "92edfbc899213a40f802e5cd0bcb0cbea9c95cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22f18e49_436f6fb0",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-08-04T21:52:27Z",
+      "side": 1,
+      "message": "Done; Yes, my mistake.",
+      "parentUuid": "6b18c9c9_253f83ad",
       "range": {
         "startLine": 255,
         "startChar": 12,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "942ca150_4ea289fa",
+        "filename": "init/result.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-08-04T21:52:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c89f1551_aaaca0cb",
+      "revId": "92edfbc899213a40f802e5cd0bcb0cbea9c95cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00088aa1_85dfa980",
         "filename": "init/result.h",
         "patchSetId": 1
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "1a628b79_c21aef92",
+        "filename": "init/result.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-08-04T21:52:27Z",
+      "side": 1,
+      "message": "Done; these \u0027helper\u0027 functions don\u0027t really help with anything either, so they\u0027re removed in favor of just constructing the class directly.",
+      "parentUuid": "00088aa1_85dfa980",
+      "range": {
+        "startLine": 100,
+        "startChar": 18,
+        "endLine": 100,
+        "endChar": 21
+      },
+      "revId": "92edfbc899213a40f802e5cd0bcb0cbea9c95cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89391006_b0905249",
         "filename": "init/result.h",
         "patchSetId": 1
@@ -93,6 +177,30 @@
       "writtenOn": "2017-08-03T23:29:02Z",
       "side": 1,
       "message": "(\"Success\" and \"Failure\" seem like the natural dichotomy to me, plus \"Ok\" looks weird!)",
+      "range": {
+        "startLine": 111,
+        "startChar": 21,
+        "endLine": 111,
+        "endChar": 23
+      },
+      "revId": "92edfbc899213a40f802e5cd0bcb0cbea9c95cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68daa2d9_bd5cc079",
+        "filename": "init/result.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-08-04T21:52:27Z",
+      "side": 1,
+      "message": "I reverted this back to allowing implicit construction, so just \n\n`return result` or even `return args-for-constructing-result` is all that\u0027s needed.\n\nI think Error() is still better than Fail() though.  You \u0027return\u0027 an \u0027Error\u0027, right?",
+      "parentUuid": "89391006_b0905249",
       "range": {
         "startLine": 111,
         "startChar": 21,
