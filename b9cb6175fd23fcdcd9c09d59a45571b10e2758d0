@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "729db2c7_637041aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-08-07T22:34:31Z",
+      "side": 1,
+      "message": "Just for my curiosity: so clion will do this analysis with not-Android\u0027s clang? Or do we have some way of telling it to use the clang/clang-tidy in prebuilts/?",
+      "range": {
+        "startLine": 13,
+        "startChar": 22,
+        "endLine": 13,
+        "endChar": 36
+      },
+      "revId": "b9cb6175fd23fcdcd9c09d59a45571b10e2758d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39ca24c0_cf299071",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-08-07T22:34:31Z",
+      "side": 1,
+      "message": "Can we tag this with a bug of some sort to know when we can remove it? This seems like something that should be fixed, whereas most of the workarounds here get around more fundamental limitations of the analyzer (e.g. it can\u0027t see across TUs, ...)",
+      "revId": "b9cb6175fd23fcdcd9c09d59a45571b10e2758d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b3d926d_021da15b",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-08-07T22:34:31Z",
+      "side": 1,
+      "message": "Might this associate some `else` clauses with the wrong `if`?\n\ne.g.\n\nif (foo)\n  CHECK(bar);\nelse\n  baz;\n\n-\u003e\n\nif (foo)\n  if (bar)\n    expr_here;\n  else\n    baz;\n\nI\u0027d imagine something like `if (LIKELY((x))) (void)0; else` would work just as well, but I\u0027m unsure if there are other incantations that are better suited for this.\n\n(I realize that this is inconsistent with the DCHECKs below, but we explicitly test that code like the above works in system/core/base/logging_test.cpp, and we seem to rely on that behavior elsewhere)",
+      "revId": "b9cb6175fd23fcdcd9c09d59a45571b10e2758d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
