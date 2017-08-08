@@ -69,6 +69,30 @@
       "revId": "c6e3b39eb6fe457b64b55a19ea1d8e792c087319",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a087fa0b_afaa151b",
+        "filename": "logd/LogBufferElement.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-08T17:32:09Z",
+      "side": 1,
+      "message": "Not just duplicate messages, but _every_ per-tag message that lands in chatty eliding. In the worst case can result in 20 fold increase in associated memory usage when the logger is being \u0027abused\u0027. You need a platform that spams-a-lot to see this case.\n\nif (isBinary() \u0026\u0026 (mMSgLen \u003e\u003d sizeof(uint32_t)) {\n    uint32_t* tag \u003d new uint32_t(getTag());\n    delete[] mMsg;\n    mMsg \u003d reinterpret_cast\u003cchar*\u003etag;\n} else if (!isBinary() || (mMSgLen \u003c sizeof(uint32_t)) {\n    delete[] mMSg;\n    mMsg \u003d nullptr;\n}\n\nI can not, of course, be sure that aggressive freeing will result in a lower working set given the fragmentation associated with mMsg allocations. It is merely a case of DYB and hope for the space to be reused.",
+      "parentUuid": "e821e1d5_cad8b7e3",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 9
+      },
+      "revId": "c6e3b39eb6fe457b64b55a19ea1d8e792c087319",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
