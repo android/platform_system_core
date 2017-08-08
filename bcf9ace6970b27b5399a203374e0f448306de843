@@ -141,6 +141,30 @@
       "revId": "bcf9ace6970b27b5399a203374e0f448306de843",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c16b4925_394bb154",
+        "filename": "logcat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-08T22:34:18Z",
+      "side": 1,
+      "message": "There are very few examples of cc_prebuilt_binary. Build done, it does not appear to handle the rename from src to target file name:\n\nls -l out/target/product/hikey/system/bin/logpersist*\n-rwxr-x--- 1 salyzyn eng 5546 Aug  8 15:09 out/target/product/hikey/system/bin/logpersist\nlrwxrwxrwx 1 salyzyn eng   10 Aug  8 15:09 out/target/product/hikey/system/bin/logpersist.cat -\u003e logpersist\nlrwxrwxrwx 1 salyzyn eng   10 Aug  8 15:09 out/target/product/hikey/system/bin/logpersist.stop -\u003e logpersist\n\nI did not expect to see logpersist at all, it should be logpersist.start, and the others are supposed to point to it.\n\nDo I have to move the source file logpersist to logpersist.start? I would hope that renaming a binary as it lands on the product is supported.\n\nAnd as per the previous comment, how can I tell it _not_ to land the binary into the symbols tree?",
+      "parentUuid": "8aa100d8_576a3e2b",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 136
+      },
+      "revId": "bcf9ace6970b27b5399a203374e0f448306de843",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
