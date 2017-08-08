@@ -93,6 +93,30 @@
       "revId": "bcf9ace6970b27b5399a203374e0f448306de843",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33a37caa_3b3f112e",
+        "filename": "logcat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-08T16:26:17Z",
+      "side": 1,
+      "message": "\"If you actually want it at all\" was because a significant number of these cases are copy-pastes from elsewhere, and people don\u0027t actually need it on all userdebug devices. It sounds like it is actually needed in this case :)\n\nPRODUCT_PACKAGES_DEBUG would be defined in a product makefile, not here. Probably https://android.googlesource.com/platform/build/+/master/target/product/base.mk#133\n\n\u003e splitting the rc file from the scripts is probably a good idea at this juncture.\n\nIt\u0027s fully supported to specify init_rc: [\"logcatd.rc\"]\n\nThis complete definition would look like:\n\n  cc_prebuilt_binary {\n      name: \"logpersist.start\",\n      srcs: [\"logpersist\"],\n      init_rc: [\"logcatd.rc\"],\n      symlinks: [\"logpersist.stop\", \"logpersist.cat\"],\n  }\n\nThen adding it to the list in build/make:\n\n  # Packages included only for eng or userdebug builds, previously debug tagged\nPRODUCT_PACKAGES_DEBUG :\u003d \\\n    logpersist.start \\\n    perfprofd \\\n    sqlite3",
+      "parentUuid": "d4c51db4_47addeaa",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 136
+      },
+      "revId": "bcf9ace6970b27b5399a203374e0f448306de843",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
