@@ -45,6 +45,30 @@
       "revId": "c6e3b39eb6fe457b64b55a19ea1d8e792c087319",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e821e1d5_cad8b7e3",
+        "filename": "logd/LogBufferElement.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-08-08T17:15:51Z",
+      "side": 1,
+      "message": "If you are worried that there is a bunch of data that will not be freed in the case where there are duplicate messages, then that is true. However, the chance of this affecting PSS is almost nil. You would have to get a message that was 4096 bytes, or you would have to get lucky and wind up with a bunch of these messages in the right way that a bunch of message data winds up in 4096 pages so they can be released. I took some snapshots of the data, and this case was very unlikely. If you have any data that shows this might be an issue, I\u0027d be happy to look at it.",
+      "parentUuid": "7924d97c_a3bb10bf",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 9
+      },
+      "revId": "c6e3b39eb6fe457b64b55a19ea1d8e792c087319",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
