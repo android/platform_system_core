@@ -22,6 +22,30 @@
       "revId": "47091cfe41daf856d8ad14391908dfe52b4d4fbb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34b60edb_61a10637",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-08T16:13:16Z",
+      "side": 1,
+      "message": "If there\u0027s any existing code like\n\n   bool_expr \u0026\u0026 CHECK(FOO)\n\nit would be broken. Today CHECK/LOG etc are \"expressions\" , using L193 is \"statements\". For CLion analysis I\u0027d prefer a few false negatives than an ocean of false positives.\n\nThis whole CHECK/LOG macro complexity is to allow its parameter not to be evaluated\n\n   CHECK(xyz) \u003c\u003c foo;\n\ndoes not evaluate \"foo\" unless the CHECK statement fails.",
+      "parentUuid": "debdaf8c_c10c1961",
+      "range": {
+        "startLine": 193,
+        "startChar": 30,
+        "endLine": 193,
+        "endChar": 69
+      },
+      "revId": "47091cfe41daf856d8ad14391908dfe52b4d4fbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
