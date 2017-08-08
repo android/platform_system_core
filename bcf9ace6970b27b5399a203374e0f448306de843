@@ -69,6 +69,30 @@
       "revId": "bcf9ace6970b27b5399a203374e0f448306de843",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4c51db4_47addeaa",
+        "filename": "logcat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-08T14:39:58Z",
+      "side": 1,
+      "message": "logpersist _must_ land on userdebug on all devices, so I am confused about the \"(if you actually want it at all)\". Our Developer Settings counts on logcatd.rc to land (logpersist.* are cli equivalents). IMHO this is a core debug features like tombstones and bugreports. What is the translation for TAGS for Android.bp? I assume we have to add to this file:\n\nPRODUCT_PACKAGES_DEBUG +\u003d logpersist.start\n\nsplitting the rc file from the scripts is probably a good idea at this juncture.",
+      "parentUuid": "5bcaf460_8c1db172",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 136
+      },
+      "revId": "bcf9ace6970b27b5399a203374e0f448306de843",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
