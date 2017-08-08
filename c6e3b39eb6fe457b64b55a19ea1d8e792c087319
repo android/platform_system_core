@@ -22,6 +22,29 @@
       "revId": "c6e3b39eb6fe457b64b55a19ea1d8e792c087319",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7924d97c_a3bb10bf",
+        "filename": "logd/LogBufferElement.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-08T15:03:08Z",
+      "side": 1,
+      "message": "This means we loose chatty eliding gain of events and security buffer, which can contribute to a considerable memory growth. auditd (at least during early stages of development) is a large source of logspam in the events buffer.\n\nMaybe consider instead to allocate a uint32_to hold the mMsg Tag word content, and free up what was there before?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 9
+      },
+      "revId": "c6e3b39eb6fe457b64b55a19ea1d8e792c087319",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

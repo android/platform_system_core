@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acdca256_bc6001fb",
+        "filename": "logd/LogBufferElement.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-08T15:03:08Z",
+      "side": 0,
+      "message": "I know our official stance is not to support alternate byte orders anymore on Android; but if you remove this, then you have triggered the technical debt to remove all the code in the logger that has been religiously put in place to support alternate byte orders.\n\nAnd to add FUD to the removal ... the logger has been put in place on non-android embedded platforms, liblogd was created to support them, that use logd so constructed to push content over peripheral links. I have not received a clear answer that _all_ peripherals that want to leverage the logger will be LE yet.",
+      "range": {
+        "startLine": 48,
+        "startChar": 17,
+        "endLine": 48,
+        "endChar": 24
+      },
+      "revId": "69ff5009c7d02ba42f714f744c338f258db864bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff1dcf77_e8f07776",
+        "filename": "logd/LogBufferElement.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-08T15:03:08Z",
+      "side": 0,
+      "message": "NB: msg is freed when entry declared chatty, mTag can not be determined at that point, and leads to a leak in statistics.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 48
+      },
+      "revId": "69ff5009c7d02ba42f714f744c338f258db864bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a91ddad7_64c9dff7",
+        "filename": "logd/LogBufferElement.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-08T15:03:08Z",
+      "side": 0,
+      "message": "good catch!",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 32
+      },
+      "revId": "69ff5009c7d02ba42f714f744c338f258db864bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
