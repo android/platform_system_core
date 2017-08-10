@@ -22,6 +22,30 @@
       "revId": "7b983000e0bf424240673a61dd5f2e1641847180",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea97e910_06ad66dc",
+        "filename": "trusty/keymaster/trusty_keymaster_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1125188
+      },
+      "writtenOn": "2017-08-10T23:57:40Z",
+      "side": 1,
+      "message": "Changed trusty_keymaster_disconnect() to reset handle_ to -1, also -1 is now the \"uninitialized\" value for handle_ instead of 0.\n\nIf trusty_keymaster_connect() fails, we will ignore it, and on the next keymaster call trusty_keymaster_call() will fail and try to connect again",
+      "parentUuid": "21eebeb9_00a792c3",
+      "range": {
+        "startLine": 774,
+        "startChar": 0,
+        "endLine": 774,
+        "endChar": 35
+      },
+      "revId": "7b983000e0bf424240673a61dd5f2e1641847180",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
