@@ -22,6 +22,30 @@
       "revId": "9a6c5548d0e746c4d0d3e33a79338c3ac24b452b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53f76cef_e718e8b1",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-08-10T23:32:29Z",
+      "side": 1,
+      "message": "\u003e The assumption is that integrity of file itself can be checked by reading it.\n\nWe\u0027d need to add a hash to the file header to be able to ensure this, right?  Otherwise if we rebooted in the middle of the fsync() we may get a bad file?\n\nUnless you strongly think we should try to recover in this case, I think it\u0027s better to limit this to guarantee that an abrupt reboot won\u0027t corrupt properties, but not try to handle the case of ensuring property writes get recovered if they happen on the edge of an abrupt reboot (especially since we cannot always guarantee this; such as if the reboot happens during the write or fsync()).",
+      "parentUuid": "642e3b86_e307eb18",
+      "range": {
+        "startLine": 720,
+        "startChar": 57,
+        "endLine": 720,
+        "endChar": 85
+      },
+      "revId": "9a6c5548d0e746c4d0d3e33a79338c3ac24b452b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
