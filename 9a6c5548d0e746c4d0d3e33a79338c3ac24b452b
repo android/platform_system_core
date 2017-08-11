@@ -46,6 +46,30 @@
       "revId": "9a6c5548d0e746c4d0d3e33a79338c3ac24b452b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5375ad2_a9acee2b",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2017-08-11T00:51:59Z",
+      "side": 1,
+      "message": "It all depends on how much things we assume from file system. For ext4 with journalling, single write will involve journal, so it is not likely that file contents is corrupt by power loss as long as write is done in one write call. Maybe we can start from that assumption. Then your magic check should be enough as tmp file will be either empty file or fully written file. How does it sound?",
+      "parentUuid": "53f76cef_e718e8b1",
+      "range": {
+        "startLine": 720,
+        "startChar": 57,
+        "endLine": 720,
+        "endChar": 85
+      },
+      "revId": "9a6c5548d0e746c4d0d3e33a79338c3ac24b452b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
