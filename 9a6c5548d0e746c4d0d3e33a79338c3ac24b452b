@@ -70,6 +70,30 @@
       "revId": "9a6c5548d0e746c4d0d3e33a79338c3ac24b452b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59ca846c_aa54c72b",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-08-11T16:45:35Z",
+      "side": 1,
+      "message": "But if the file becomes large enough it will be broken into multiple writes, right?  I guess we\u0027ll still know even without a hash if it\u0027s consistent if we just look at the num_properties.\n\nI\u0027m still not super keen on this.  Unless you\u0027re sure that we\u0027re 100% safe reading from this temporary file, I think the risk of reading corrupted properties is worse than the risk of dropping a property update.  It\u0027s not worse than the current situation either, which also will not recover a property update before its renamed from the temp file to the named property file.",
+      "parentUuid": "f5375ad2_a9acee2b",
+      "range": {
+        "startLine": 720,
+        "startChar": 57,
+        "endLine": 720,
+        "endChar": 85
+      },
+      "revId": "9a6c5548d0e746c4d0d3e33a79338c3ac24b452b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
