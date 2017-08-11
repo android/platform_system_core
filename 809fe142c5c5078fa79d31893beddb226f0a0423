@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49a38b9a_7d1ed0cd",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-11T20:47:51Z",
+      "side": 1,
+      "message": "turns reboot bootloader into bootloader,software\n\nundesirable and YUCK. We originally though that we really only wanted \",software\" for kernel_panic and watchdog, and in those cases they could stay as reboot,kernel_panic and reboot,watchdog respectively and maintain the point.\n\nisNotBlunt Set:\n\n  \"watchdog\" -\u003e reboot,watchdog\n  \"kernel_panic\", -\u003e reboot,kernel_panic\n  \"ota\", -\u003e ota\n  \"factory_reset\", -\u003e factory_reset\n  \"recovery\",     -\u003erecovery\n  \"bootloader\", -\u003e bootloader\n\nso only the pair of kernel-related ones.\n\nAdd isKernelRebootReason() function and alter this code respectively to filter. There are probably other places where isKernelRebootReason() is needed, parsing of last_boot_reason for instance.",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 11
+      },
+      "revId": "809fe142c5c5078fa79d31893beddb226f0a0423",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
