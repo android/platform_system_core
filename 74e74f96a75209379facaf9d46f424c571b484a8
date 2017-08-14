@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c86ec107_37780d99",
+        "filename": "logd/LogBufferElement.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-08-14T17:07:06Z",
+      "side": 1,
+      "message": "This 32 check makes an assumption that android_event_header_t is always the first 32 byte value in the structure. If that changes in the future, this code would cause intermittent crashes. Besides, android_event_header_t is already a 32 byte structure, so this would only become relevant if someone changed the structure in some way, so I don\u0027t think it\u0027s necessary to add a check that can\u0027t happen now.",
+      "parentUuid": "f0b53e29_d1bb6db3",
+      "range": {
+        "startLine": 78,
+        "startChar": 22,
+        "endLine": 78,
+        "endChar": 52
+      },
+      "revId": "74e74f96a75209379facaf9d46f424c571b484a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2ccf2f5_83bbc0c0",
         "filename": "logd/LogBufferElement.cpp",
         "patchSetId": 4
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "For events and security buffers, no nul (or newline as some frameworks code is written to compose) termination for these binary messages. Once assigned mDropped, it is _only_ read to pick up the tag, getMsg() should return nullptr to prevent such expansion.",
       "parentUuid": "d2ccf2f5_83bbc0c0",
+      "range": {
+        "startLine": 80,
+        "startChar": 12,
+        "endLine": 80,
+        "endChar": 72
+      },
+      "revId": "74e74f96a75209379facaf9d46f424c571b484a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "efcb303c_042ee3ab",
+        "filename": "logd/LogBufferElement.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-08-14T17:07:06Z",
+      "side": 1,
+      "message": "As Mark mentioned, after being dropped, the only accessor of mMsg is the getTag function. All other code goes through getMsg() which will always return nullptr after a message has been dropped.",
+      "parentUuid": "b9ad41e3_83aff603",
       "range": {
         "startLine": 80,
         "startChar": 12,
