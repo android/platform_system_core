@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "062ba39e_26c3b54f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-14T15:53:49Z",
+      "side": 1,
+      "message": "Good catch, I thought so too. I guess this gives you an insight into the deepest reaches of my mind \u003casking the universe for forgiveness\u003e. I thought I got rid of this, thesaurus eventually lead to blunt, I used that in code, but forgot that I had it in my commit message.",
+      "parentUuid": "8f183078_bfc982fe",
+      "range": {
+        "startLine": 15,
+        "startChar": 21,
+        "endLine": 15,
+        "endChar": 25
+      },
+      "revId": "809fe142c5c5078fa79d31893beddb226f0a0423",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d781547_91b43546",
         "filename": "bootstat/bootstat.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-14T03:49:10Z",
       "side": 1,
       "message": "Could take this chance to convert all the local stuff to anon namespace if preferred (or static is AOK with me, I know some coding standards prefer anon namespace).",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 6
+      },
+      "revId": "809fe142c5c5078fa79d31893beddb226f0a0423",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af3c887a_61e24614",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-14T15:53:49Z",
+      "side": 1,
+      "message": "or both :-)",
+      "parentUuid": "1d781547_91b43546",
       "range": {
         "startLine": 203,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b3096ae6_65212c34",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-14T15:53:49Z",
+      "side": 1,
+      "message": "Good catch, but it\u0027s correct, but wrong-minded. IDK how this got here in this form, must have migrated from \u003csomething else mumble\u003e to r.find(\u0027,\u0027, pos) \u003d\u003d pos) and then to its current form, when I did the next substr on 253 ...\n\nThis ignored fragment should have been:\n\nif (next[0] \u003d\u003d \u0027,\u0027) continue",
+      "parentUuid": "916c0883_df163de1",
+      "range": {
+        "startLine": 255,
+        "startChar": 26,
+        "endLine": 255,
+        "endChar": 27
+      },
+      "revId": "809fe142c5c5078fa79d31893beddb226f0a0423",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93ee1379_fafe5c25",
         "filename": "bootstat/bootstat.cpp",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2017-08-14T03:49:10Z",
       "side": 1,
       "message": "nit: let\u0027s",
+      "range": {
+        "startLine": 273,
+        "startChar": 47,
+        "endLine": 273,
+        "endChar": 51
+      },
+      "revId": "809fe142c5c5078fa79d31893beddb226f0a0423",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7b4a809_bc0cba88",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-14T15:53:49Z",
+      "side": 1,
+      "message": "Thanks, and oops (I normally self-check, but here I did it wrong, then copy and pasted it!). Maybe I should put lettuce here instead? ;-/",
+      "parentUuid": "93ee1379_fafe5c25",
       "range": {
         "startLine": 273,
         "startChar": 47,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "de081a96_8bfa583c",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-14T15:53:49Z",
+      "side": 1,
+      "message": "userdebug is only one that can do this, so it can not be induced in the field, so there may be no standard. I want to make sure if user process on userdebug triggers the crash as part of a debugging scenario, a responsible robot will know how to parse the trace (in this case, make sure enough preamble of overlapping last logcat and kmsg logs are caught to find out who did it). The other two panics have analternate need for a context...\n\nIn my design document, the goal is to have each of these capture the crash fragment plus context and land it in /data/misc/reboot/ directory. However I had listed that this enhancement needs to go to security review. So for now, just report the reason with no embellishment.",
+      "parentUuid": "217c279d_1e627b58",
+      "range": {
+        "startLine": 368,
+        "startChar": 29,
+        "endLine": 368,
+        "endChar": 34
+      },
+      "revId": "809fe142c5c5078fa79d31893beddb226f0a0423",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1b6590e_26883dbd",
         "filename": "bootstat/bootstat.cpp",
         "patchSetId": 1
@@ -151,6 +271,30 @@
       "writtenOn": "2017-08-14T03:49:10Z",
       "side": 1,
       "message": "healthd is likely to be moved to a vendor-customizable health HAL in the future and the strings might be customized.  Joy.",
+      "range": {
+        "startLine": 389,
+        "startChar": 37,
+        "endLine": 389,
+        "endChar": 56
+      },
+      "revId": "809fe142c5c5078fa79d31893beddb226f0a0423",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64dc8895_cb06f3c8",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-14T15:53:49Z",
+      "side": 1,
+      "message": "Two HALs to participate in, yes joy ...\n\nThe good news is once that happens, this is part of a \u0027default\u0027 fragment of the API that reports first/last battery levels.",
+      "parentUuid": "d1b6590e_26883dbd",
       "range": {
         "startLine": 389,
         "startChar": 37,
@@ -197,6 +341,30 @@
       "writtenOn": "2017-08-14T03:49:10Z",
       "side": 1,
       "message": "Maybe put in new health HAL under discussion.",
+      "range": {
+        "startLine": 473,
+        "startChar": 30,
+        "endLine": 473,
+        "endChar": 63
+      },
+      "revId": "809fe142c5c5078fa79d31893beddb226f0a0423",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aca12b0_a869d6ce",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-14T15:53:49Z",
+      "side": 1,
+      "message": "This and the first/last battery level sniffing in above. Yes, I should participate in the design review of the health HAL.",
+      "parentUuid": "63eb7dda_9bebe677",
       "range": {
         "startLine": 473,
         "startChar": 30,
