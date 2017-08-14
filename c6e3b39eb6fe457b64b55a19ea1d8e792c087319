@@ -117,6 +117,30 @@
       "revId": "c6e3b39eb6fe457b64b55a19ea1d8e792c087319",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f05e3304_f8d4906d",
+        "filename": "logd/LogBufferElement.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-14T16:43:36Z",
+      "side": 1,
+      "message": "I assume \u0027most of the tags are zero\u0027 comment is because it is only set if it is on the events or security buffer; I would be worried that it is zero when it _is_ the events/security buffer (except that we have a set of gTests (on go/apct) and Benchmarks that use tag of zero that could skew that). The check for getTag() \u003d\u003d 0 is in some measure a isBinaryMessage() check ...\n\nGood idea about only reallocating when it is larger, \u003c\u003d32 bytes would probably be not worth the churn or possible fragmentation.",
+      "parentUuid": "99d326e0_e0a560a2",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 9
+      },
+      "revId": "c6e3b39eb6fe457b64b55a19ea1d8e792c087319",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
