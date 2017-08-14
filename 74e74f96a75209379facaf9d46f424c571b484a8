@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a45570e7_d06d82c5",
+        "filename": "logd/LogBufferElement.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-14T17:51:28Z",
+      "side": 1,
+      "message": "android_event_header_t is 4 bytes (32 bits), and houses exactly just the Tag number.\n\nTo reduce churn, I defer to your expert understanding of jemalloc. Is it worth reallocating something equal to or smaller than 32 bytes, to take it down to 4 bytes, or to leave it alone to reduce churn and/or fragmentation. Maybe 64 bytes is the magic number, I do not know.\n\nThe average size of the event log buffer is 150 bytes YMMV.\n\nBefore we were leaking 150 bytes to hold on to 4 bytes, this prevented that leakage (not a memory leak), and I am fine with that.\n\nBut I depend on you to declare how much leakage is OK.",
+      "parentUuid": "c86ec107_37780d99",
+      "range": {
+        "startLine": 78,
+        "startChar": 22,
+        "endLine": 78,
+        "endChar": 52
+      },
+      "revId": "74e74f96a75209379facaf9d46f424c571b484a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2ccf2f5_83bbc0c0",
         "filename": "logd/LogBufferElement.cpp",
         "patchSetId": 4
