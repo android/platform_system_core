@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a3a8b88_eda2daba",
+        "filename": "adb/services.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-15T22:40:05Z",
+      "side": 1,
+      "message": "supplied value freed now that it is no longer needed.",
+      "range": {
+        "startLine": 431,
+        "startChar": 4,
+        "endLine": 431,
+        "endChar": 15
+      },
+      "revId": "5bde6cb058e9bcb077577eb3ec02311933127da1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "053d8f6e_07b3c0a2",
+        "filename": "adb/services.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-15T22:40:05Z",
+      "side": 1,
+      "message": "In any case, unique_ptr will manage freeing the resource on exit from this block.",
+      "range": {
+        "startLine": 446,
+        "startChar": 8,
+        "endLine": 446,
+        "endChar": 58
+      },
+      "revId": "5bde6cb058e9bcb077577eb3ec02311933127da1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95a57bba_2705387d",
+        "filename": "adb/services.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-15T22:40:05Z",
+      "side": 1,
+      "message": "This (or the unique_ptr handling) may cause a use-after-free situation if the service thread has not started yet.\n\nThis _will_ cause a double-free.",
+      "range": {
+        "startLine": 483,
+        "startChar": 0,
+        "endLine": 485,
+        "endChar": 9
+      },
+      "revId": "5bde6cb058e9bcb077577eb3ec02311933127da1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d32fdc87_e78deed3",
+        "filename": "adb/services.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-15T22:40:05Z",
+      "side": 1,
+      "message": "ditto (except connect_service() frees the entity after thread starts (which is the right thing to do and will prevent use-after-free)",
+      "range": {
+        "startLine": 490,
+        "startChar": 0,
+        "endLine": 492,
+        "endChar": 9
+      },
+      "revId": "5bde6cb058e9bcb077577eb3ec02311933127da1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
