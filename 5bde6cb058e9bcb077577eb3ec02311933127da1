@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "a21cbc71_d602c65d",
+        "filename": "adb/services.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-15T23:11:44Z",
+      "side": 1,
+      "message": "std::unique_ptr\u0027s whole purpose in life is to perform a delete of new state_info when it moves out of scope. It will automagically delete as part of the return call on 482. This will result in a double free (on error, thanks for the clarification).\n\nBut this causes another problem in that the return can happen before the thread uses p, which results in a use-after-free problem in the thread.\n\nDropping use of std::unique_ptr and moving the freeing to the thread when it is done using it, with error to delete here might be the full answer.",
+      "parentUuid": "35d1abf7_ad72c104",
+      "range": {
+        "startLine": 483,
+        "startChar": 0,
+        "endLine": 485,
+        "endChar": 9
+      },
+      "revId": "5bde6cb058e9bcb077577eb3ec02311933127da1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d32fdc87_e78deed3",
         "filename": "adb/services.cpp",
         "patchSetId": 2
@@ -106,6 +130,30 @@
       "writtenOn": "2017-08-15T22:40:05Z",
       "side": 1,
       "message": "ditto (except connect_service() frees the entity after thread starts (which is the right thing to do and will prevent use-after-free)",
+      "range": {
+        "startLine": 490,
+        "startChar": 0,
+        "endLine": 492,
+        "endChar": 9
+      },
+      "revId": "5bde6cb058e9bcb077577eb3ec02311933127da1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "844fa165_3d1dac27",
+        "filename": "adb/services.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-15T23:11:44Z",
+      "side": 1,
+      "message": "In this case, if create_service_thread exits with -1, yes, from your comment above, it will need to be freed ... so this part of the fix stands correct.",
+      "parentUuid": "d32fdc87_e78deed3",
       "range": {
         "startLine": 490,
         "startChar": 0,
