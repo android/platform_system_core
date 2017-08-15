@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f8fd2c80_b03f0e79",
+        "filename": "adb/services.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-08-15T23:33:25Z",
+      "side": 1,
+      "message": "\u003e It will automagically delete as part of the return call on 482\n\nNormally, yes, but we\u0027re release()ing it on line 481 (both in the old and new code), so it won\u0027t free anything for us after that. :)\n\nMaybe refactoring this to\n\nint fd \u003d create_service_thread(wait_for_state, sinfo.get());\nif (fd !\u003d -1) {\n  sinfo.release(); // the thread now owns this\n}\n\nwould be more clear?",
+      "parentUuid": "a21cbc71_d602c65d",
+      "range": {
+        "startLine": 483,
+        "startChar": 0,
+        "endLine": 485,
+        "endChar": 9
+      },
+      "revId": "5bde6cb058e9bcb077577eb3ec02311933127da1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d32fdc87_e78deed3",
         "filename": "adb/services.cpp",
         "patchSetId": 2
