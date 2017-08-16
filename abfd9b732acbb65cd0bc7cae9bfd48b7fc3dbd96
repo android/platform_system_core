@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6caaf924_c16aa048",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2017-08-16T22:12:25Z",
+      "side": 1,
+      "message": "I kept the old logic where sync() is for inside emulated_devices.size() \u003e 0 case\n\nif (emulated_devices.size() \u003e 0 \u0026\u0026\n            std::all_of(emulated_devices.begin(), emulated_devices.end(),\n                        [](auto\u0026 entry) { return entry.Umount(); })) {\n            sync();\n        }",
+      "parentUuid": "62aed6f4_ea63a1d9",
+      "revId": "abfd9b732acbb65cd0bc7cae9bfd48b7fc3dbd96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50674b57_dc0889ac",
         "filename": "init/reboot.cpp",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2017-08-16T22:01:54Z",
       "side": 1,
       "message": "unmount_done \u0026\u0026 std::all_of(...) maybe?  It\u0027s a little hard to read the \u0026\u0026 unmount_done at the end.",
+      "range": {
+        "startLine": 291,
+        "startChar": 23,
+        "endLine": 291,
+        "endChar": 34
+      },
+      "revId": "abfd9b732acbb65cd0bc7cae9bfd48b7fc3dbd96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "946bf8b3_efbe003f",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2017-08-16T22:12:25Z",
+      "side": 1,
+      "message": "if unmount_done is false, it sill skip the second one\nthat\u0027s the beauty of \"\u0026\u0026\" operator....",
+      "parentUuid": "50674b57_dc0889ac",
       "range": {
         "startLine": 291,
         "startChar": 23,
@@ -76,6 +118,24 @@
       "writtenOn": "2017-08-16T22:01:54Z",
       "side": 1,
       "message": "It\u0027s impossible to hit this line now, right?  I think it can be removed.",
+      "revId": "abfd9b732acbb65cd0bc7cae9bfd48b7fc3dbd96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66747250_f573c8f9",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2017-08-16T22:12:25Z",
+      "side": 1,
+      "message": "yup, I don\u0027t think we will hit here.",
+      "parentUuid": "a0d9df94_7fe6f242",
       "revId": "abfd9b732acbb65cd0bc7cae9bfd48b7fc3dbd96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
