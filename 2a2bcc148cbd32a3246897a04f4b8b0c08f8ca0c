@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c941e8c2_fb17e635",
+        "filename": "init/action.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-08-17T22:08:54Z",
+      "side": 1,
+      "message": "errno might not be the same as when result.error() was created, so we cannot rely on it.  I am not too keen on adding an errno field to Result just to support this one off use case.  I understand that it\u0027s not pretty but I\u0027m okay with the string comparison especially since it\u0027s a failure use case anyway.",
+      "range": {
+        "startLine": 100,
+        "startChar": 8,
+        "endLine": 100,
+        "endChar": 78
+      },
+      "revId": "2a2bcc148cbd32a3246897a04f4b8b0c08f8ca0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fc335e3_f93967a9",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-08-17T22:08:54Z",
+      "side": 1,
+      "message": "Perhaps a new builtin could be created that explicitly allows for EEXIST as a failure mode and keep this one to report the failures?\n\nThis is definitely better than what we\u0027ve had before (no error reporting here) and it should be trivial to see that a symlink failed due to EEXIST when debugging, which is why I\u0027m okay with doing this as is.",
+      "revId": "2a2bcc148cbd32a3246897a04f4b8b0c08f8ca0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
