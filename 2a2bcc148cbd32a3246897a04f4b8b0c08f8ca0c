@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "668c97dd_ddfc7372",
+        "filename": "init/action.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-08-17T23:59:02Z",
+      "side": 1,
+      "message": "adding an errno field to Result seems much better to me. imagine if you were trying to check against ENOENT or ENOTDIR or something... strings get nasty very quickly.",
+      "parentUuid": "c941e8c2_fb17e635",
+      "range": {
+        "startLine": 100,
+        "startChar": 8,
+        "endLine": 100,
+        "endChar": 78
+      },
+      "revId": "2a2bcc148cbd32a3246897a04f4b8b0c08f8ca0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fc335e3_f93967a9",
         "filename": "init/builtins.cpp",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2017-08-17T22:08:54Z",
       "side": 1,
       "message": "Perhaps a new builtin could be created that explicitly allows for EEXIST as a failure mode and keep this one to report the failures?\n\nThis is definitely better than what we\u0027ve had before (no error reporting here) and it should be trivial to see that a symlink failed due to EEXIST when debugging, which is why I\u0027m okay with doing this as is.",
+      "revId": "2a2bcc148cbd32a3246897a04f4b8b0c08f8ca0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99e73cdd_848ed693",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-08-17T23:59:02Z",
+      "side": 1,
+      "message": "seems like we should really have this builtin be a symlink followed by a readlink-and-unlink-if-wrong-value?",
+      "parentUuid": "7fc335e3_f93967a9",
       "revId": "2a2bcc148cbd32a3246897a04f4b8b0c08f8ca0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
