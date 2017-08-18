@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bf617957_0dccee6b",
+        "filename": "init/action.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-08-18T20:15:00Z",
+      "side": 1,
+      "message": "So the problem there is chaining that errno all the way through.  Currently, I\u0027m doing this in do_write():\n\nif (auto result \u003d WriteFile(args[1], args[2]); !result) {\n        return Error() \u003c\u003c \"Unable to write to file \u0027\" \u003c\u003c args[1] \u003c\u003c \"\u0027: \" \u003c\u003c result.error();\n    }\n\nWe\u0027d lose errno from result when creating the new Result to return.  We can\u0027t use ErrnoError() as errno may have changed.  \n\nI don\u0027t want to add operator\u003c\u003c to Result, since it would be ambiguous (are we outputting the error to the stream or forwarding operator\u003c\u003c to the successful value?)\n\nI could do something like\n\nif (auto result \u003d WriteFile(args[1], args[2]); !result) {\n        return Error(result) \u003c\u003c \"Unable to write to file \u0027\" \u003c\u003c args[1] \u003c\u003c \"\u0027\";\n    }\n\nAnd make that the format for chaining error values (pass through errno and append \": \" + \u003cparameter\u003e.error().\n\nDoes that reasonable?",
+      "parentUuid": "668c97dd_ddfc7372",
+      "range": {
+        "startLine": 100,
+        "startChar": 8,
+        "endLine": 100,
+        "endChar": 78
+      },
+      "revId": "2a2bcc148cbd32a3246897a04f4b8b0c08f8ca0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fc335e3_f93967a9",
         "filename": "init/builtins.cpp",
         "patchSetId": 1
@@ -78,6 +102,29 @@
       "side": 1,
       "message": "seems like we should really have this builtin be a symlink followed by a readlink-and-unlink-if-wrong-value?",
       "parentUuid": "7fc335e3_f93967a9",
+      "revId": "2a2bcc148cbd32a3246897a04f4b8b0c08f8ca0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb53f606_ba20bb8f",
+        "filename": "init/service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-08-18T20:15:00Z",
+      "side": 1,
+      "message": "This could be cleaned up by doing Error(result) too...\n\nAlternatively, I could have a constructor for Result\u003cT\u003e that takes a Result\u003cU\u003e where T !\u003d U and assume that it would only be passed in the failing case and directly assign its error string and errno value.  But, that would make a big assumption in that implicit cast so I\u0027m wanting to avoid it.",
+      "range": {
+        "startLine": 697,
+        "startChar": 12,
+        "endLine": 697,
+        "endChar": 45
+      },
       "revId": "2a2bcc148cbd32a3246897a04f4b8b0c08f8ca0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
