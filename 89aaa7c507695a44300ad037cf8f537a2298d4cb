@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "cb38ebf5_7e3fdee6",
+        "filename": "libbacktrace/backtrace_benchmarks.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-08-19T16:36:32Z",
+      "side": 1,
+      "message": "|O_CLOEXEC\n\nsince this is a benchmark, why not just ReadFileToString + Split + size?\n\nand why bother with the `if` here? the general case works for pid \u003d\u003d getpid() too.",
+      "range": {
+        "startLine": 46,
+        "startChar": 33,
+        "endLine": 46,
+        "endChar": 41
+      },
+      "revId": "89aaa7c507695a44300ad037cf8f537a2298d4cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9e46fbe_c387d4f5",
         "filename": "libunwindstack/Maps.cpp",
         "patchSetId": 3
@@ -19,6 +42,69 @@
         "endLine": 60,
         "endChar": 49
       },
+      "revId": "89aaa7c507695a44300ad037cf8f537a2298d4cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97e0db04_2120635b",
+        "filename": "libunwindstack/Maps.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-08-19T16:36:32Z",
+      "side": 1,
+      "message": "unique_fd?",
+      "range": {
+        "startLine": 165,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 5
+      },
+      "revId": "89aaa7c507695a44300ad037cf8f537a2298d4cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "755dd093_f710696a",
+        "filename": "libunwindstack/Maps.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-08-19T16:36:32Z",
+      "side": 1,
+      "message": "is this actually necessary? shouldn\u0027t you be getting the libc++ \u003cstring.h\u003e with the const-correct overloads?",
+      "range": {
+        "startLine": 185,
+        "startChar": 22,
+        "endLine": 185,
+        "endChar": 45
+      },
+      "revId": "89aaa7c507695a44300ad037cf8f537a2298d4cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2ce5869_44ef939e",
+        "filename": "libunwindstack/Maps.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-08-19T16:36:32Z",
+      "side": 1,
+      "message": "can you benchmark the two halves of this change separately? i can more easily believe that a hand-rolled sscanf is cheaper, but i\u0027m both surprised and concerned that getline is measurably slower than roughly the same code...",
       "revId": "89aaa7c507695a44300ad037cf8f537a2298d4cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
