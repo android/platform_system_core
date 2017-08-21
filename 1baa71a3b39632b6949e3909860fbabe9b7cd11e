@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "5928760c_df8f49aa",
+        "filename": "bootstat/boot_reason_test.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-21T22:49:21Z",
+      "side": 1,
+      "message": "trailing space wanted, but not required for functionality (we accept risk that these may disappear because of errant versions of future selves).",
+      "range": {
+        "startLine": 152,
+        "startChar": 49,
+        "endLine": 152,
+        "endChar": 51
+      },
+      "revId": "1baa71a3b39632b6949e3909860fbabe9b7cd11e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9a2d925_311f444e",
+        "filename": "bootstat/boot_reason_test.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-21T22:49:21Z",
+      "side": 1,
+      "message": "NB: this is what an \u0027escape\u0027 character looks like in gerrit",
+      "range": {
+        "startLine": 594,
+        "startChar": 8,
+        "endLine": 594,
+        "endChar": 9
+      },
+      "revId": "1baa71a3b39632b6949e3909860fbabe9b7cd11e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c319c45a_65050f78",
         "filename": "bootstat/bootstat.cpp",
         "patchSetId": 3
@@ -25,6 +71,76 @@
     },
     {
       "key": {
+        "uuid": "04f1b7cf_86f295d1",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-21T22:49:21Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "c319c45a_65050f78",
+      "range": {
+        "startLine": 218,
+        "startChar": 5,
+        "endLine": 218,
+        "endChar": 9
+      },
+      "revId": "1baa71a3b39632b6949e3909860fbabe9b7cd11e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "628898e6_29de8740",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-21T22:49:21Z",
+      "side": 1,
+      "message": "Refine this, there should only be one ... it needs to be the last one, just in case someone decides to spoof the message.\n\nConsider content.rfind instead (and above on line 374, below on line 391, 394, 398, 400, 401 etc etc)",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 35
+      },
+      "revId": "1baa71a3b39632b6949e3909860fbabe9b7cd11e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fecf5e8c_64cff891",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-21T22:49:21Z",
+      "side": 1,
+      "message": "This catches reboot reasons and helps correct them from the kernel reboot lines. Lines 370-372 above shows us the limits of the reboot reason as reported via a shutdown.\n\nWe should consider having init report\n\n\"init: shutdown system with command \u0027\u003clast_reboot_reason\u003e\u0027\" to match what it records in persist.sys.reboot.reason Android Property on the hail mary that RAM, or pstore ramoops backing _which_ can outlive RAM, retains the value. This will help if the thermal shutdown call was made _before_ /data/ is mounted to record the persistent properties, we can still pick it up.",
+      "range": {
+        "startLine": 374,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 5
+      },
+      "revId": "1baa71a3b39632b6949e3909860fbabe9b7cd11e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7185be59_5e6438f9",
         "filename": "bootstat/bootstat.cpp",
         "patchSetId": 3
@@ -41,6 +157,53 @@
         "startChar": 46,
         "endLine": 469,
         "endChar": 64
+      },
+      "revId": "1baa71a3b39632b6949e3909860fbabe9b7cd11e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8102b887_fe2778d7",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-21T22:49:21Z",
+      "side": 1,
+      "message": "Good catch, but will shorten the comment, but add the following:\n\n#define bootloader_reboot_reason \"ro.boot.bootreason\"\n#define system_reboot_reason \"sys.boot.reason\"\n#define last_reboot_reason \"persist.sys.boot.reason\"\n\nThat way the nomenclature abstraction should be clear at any GetProperty or property_set (I should fix that, SetProperty should be defined in bootstat for consistency?)",
+      "parentUuid": "7185be59_5e6438f9",
+      "range": {
+        "startLine": 469,
+        "startChar": 46,
+        "endLine": 469,
+        "endChar": 64
+      },
+      "revId": "1baa71a3b39632b6949e3909860fbabe9b7cd11e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a12e835_7c71fa16",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-21T22:49:21Z",
+      "side": 1,
+      "message": "here I used the wrong nomenclature, the #define above will help and allow me to shorted this comment \"rewrite, because it is old news\"\n\nNot sure what we want to do with blank values currently in this property. Rewriting breaks from the possible API that it is acceptable for a pop up window to erase it as a form of acknowledgement.",
+      "range": {
+        "startLine": 513,
+        "startChar": 15,
+        "endLine": 513,
+        "endChar": 39
       },
       "revId": "1baa71a3b39632b6949e3909860fbabe9b7cd11e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
