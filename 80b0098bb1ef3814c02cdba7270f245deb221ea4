@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6ec4bcfb_bc33831e",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-22T22:22:24Z",
+      "side": 1,
+      "message": "good catch",
+      "parentUuid": "a31699b1_7e7998ba",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 6
+      },
+      "revId": "80b0098bb1ef3814c02cdba7270f245deb221ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f88ac0d_84947b57",
         "filename": "bootstat/bootstat.cpp",
         "patchSetId": 4
@@ -82,6 +106,30 @@
       "writtenOn": "2017-08-22T21:30:46Z",
       "side": 1,
       "message": "I\u0027m sorry I think I was not clear in my suggestion about how to handle the new scrubbed reason.\n\nI do believe your added logic adds value, and we can keep all of that value by logging it separately from the \u0027unscrubbed\u0027 boot_reason metric, e.g., \u0027system_boot_reason\u0027 or \u0027scrubbed_boot_reason\u0027.\n\n// Log the raw boot_reason property value.\nboot_reason \u003d BootReasonToEnum()\nAddBootEvent(\"boot_reason\", boot_reason);\n\n// Now log the scrubbed/system boot reason.\nAddBootEvent(\"system_boot_reason\", system_boot_reason);\n\n----\n\nDoes that work for you?",
+      "range": {
+        "startLine": 715,
+        "startChar": 4,
+        "endLine": 715,
+        "endChar": 37
+      },
+      "revId": "80b0098bb1ef3814c02cdba7270f245deb221ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5173400b_02a8e50b",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-22T22:22:24Z",
+      "side": 1,
+      "message": "Yup!",
+      "parentUuid": "360e903f_f7daf194",
       "range": {
         "startLine": 715,
         "startChar": 4,
