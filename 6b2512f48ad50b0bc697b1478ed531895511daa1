@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8d7790ef_0cad5959",
+        "filename": "init/action.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-08-22T17:30:48Z",
+      "side": 1,
+      "message": "I can go either way on this.  I think it\u0027s fine as is, since the command string and trigger carry all of the information needed to understand the failure.  The filename and line are really just there to help point people to where it would need to be fixed, not necessarily to add more context.\n\nMight as well leave it as is to keep consistency unless you really think it\u0027d be better that way?",
+      "parentUuid": "c3f11584_6eda0453",
+      "range": {
+        "startLine": 110,
+        "startChar": 80,
+        "endLine": 111,
+        "endChar": 48
+      },
+      "revId": "6b2512f48ad50b0bc697b1478ed531895511daa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d09778a_9059d5e0",
         "filename": "init/builtins.cpp",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2017-08-22T17:02:37Z",
       "side": 1,
       "message": "TODO: check that the existing symlink points to the new location?",
+      "revId": "6b2512f48ad50b0bc697b1478ed531895511daa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2968ca24_207c96af",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-08-22T17:30:48Z",
+      "side": 1,
+      "message": "Wouldn\u0027t we get a failure from symlink() if it didn\u0027t point to the new location?\n\nOr are you saying that I should only return Success() if EEXIST happens and we\u0027re pointing to the new location?  That doesn\u0027t really solve the issue that I\u0027m trying to fix, which is \n\n    # Link /vendor to /system/vendor for devices without a vendor partition.\n    symlink /system/vendor /vendor\n\nwill always fail on any device with /vendor.  Checking if /vendor points to /system/vendor wouldn\u0027t help, since we wouldn\u0027t expect it to.\n\nThe right TODO may be something like having a symlink_expect_fail command?  But I\u0027m not sure it\u0027s worth adding a new command just to get slightly better error reporting.",
+      "parentUuid": "9d09778a_9059d5e0",
       "revId": "6b2512f48ad50b0bc697b1478ed531895511daa1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
