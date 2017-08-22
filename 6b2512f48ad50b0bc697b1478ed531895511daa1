@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0ec0e106_a31cbdb8",
+        "filename": "init/action.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-08-22T17:43:22Z",
+      "side": 1,
+      "message": "i had to scroll a long way to the right to check that your claim of including file:line in the checkin comment was actually true.",
+      "parentUuid": "8d7790ef_0cad5959",
+      "range": {
+        "startLine": 110,
+        "startChar": 80,
+        "endLine": 111,
+        "endChar": 48
+      },
+      "revId": "6b2512f48ad50b0bc697b1478ed531895511daa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d09778a_9059d5e0",
         "filename": "init/builtins.cpp",
         "patchSetId": 3
@@ -78,6 +102,24 @@
       "side": 1,
       "message": "Wouldn\u0027t we get a failure from symlink() if it didn\u0027t point to the new location?\n\nOr are you saying that I should only return Success() if EEXIST happens and we\u0027re pointing to the new location?  That doesn\u0027t really solve the issue that I\u0027m trying to fix, which is \n\n    # Link /vendor to /system/vendor for devices without a vendor partition.\n    symlink /system/vendor /vendor\n\nwill always fail on any device with /vendor.  Checking if /vendor points to /system/vendor wouldn\u0027t help, since we wouldn\u0027t expect it to.\n\nThe right TODO may be something like having a symlink_expect_fail command?  But I\u0027m not sure it\u0027s worth adding a new command just to get slightly better error reporting.",
       "parentUuid": "9d09778a_9059d5e0",
+      "revId": "6b2512f48ad50b0bc697b1478ed531895511daa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76827ea0_e50f0683",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-08-22T17:43:22Z",
+      "side": 1,
+      "message": "no, you get EEXIST no matter where it actually points.\n\nbut, yeah, that specific case is a problem anyway. (if shells weren\u0027t expensive, we could just shell out and have [ ! -d /vendor ], but if shells weren\u0027t expensive, we wouldn\u0027t have this half-baked \"shell-lite\" in init in the first place...)",
+      "parentUuid": "2968ca24_207c96af",
       "revId": "6b2512f48ad50b0bc697b1478ed531895511daa1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
