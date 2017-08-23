@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f3a3c4cd_02b6f9d7",
+        "filename": "libbacktrace/backtrace_benchmarks.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-08-23T21:27:53Z",
+      "side": 1,
+      "message": "definitely needs a comment explaining why, or the next person through will turn this into the otherwise equivalent one-liner.",
+      "parentUuid": "9aece197_0c0b1827",
+      "range": {
+        "startLine": 46,
+        "startChar": 33,
+        "endLine": 46,
+        "endChar": 41
+      },
+      "revId": "89aaa7c507695a44300ad037cf8f537a2298d4cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9e46fbe_c387d4f5",
         "filename": "libunwindstack/Maps.cpp",
         "patchSetId": 3
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "In the test code, I added an explicit line that should not have parsed correctly, but passes.\n\nSee the last test in the verify_parse_line test.",
       "parentUuid": "f9e46fbe_c387d4f5",
+      "range": {
+        "startLine": 60,
+        "startChar": 32,
+        "endLine": 60,
+        "endChar": 49
+      },
+      "revId": "89aaa7c507695a44300ad037cf8f537a2298d4cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1811d32_5b39fbd8",
+        "filename": "libunwindstack/Maps.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-08-23T21:27:53Z",
+      "side": 1,
+      "message": "ah, right. this is WAI, so you should probably fix the comment. (or tell the truth, which is that the performance is the real reason you\u0027re rewriting this, no?)\n\n       ·      A sequence of white-space characters (space, tab, newline, etc.;\n              see isspace(3)).  This directive matches  any  amount  of  white\n              space, including none, in the input.\n\n(i think the trick if you want to use scanf for this is to use a character class %[.)",
+      "parentUuid": "1f2ddcac_d2f7c138",
       "range": {
         "startLine": 60,
         "startChar": 32,
@@ -219,6 +267,24 @@
       "side": 1,
       "message": "I spent some time benchmarking the code, and on a sailfish locked to max, and running on a single cpu at high priority, just the change from getline to this code saves roughly 800ns when parsing a 3000 line maps file.\n\nI suspect that most of my speed up is the fact that I have almost no overhead because I never realloc the internal buffer since I don\u0027t need to carry around the previous data. I can throw it away and keep going.\n\nAs to why I\u0027m optimizing this, my new unwinder depends heavily on this, and I\u0027ll probably have to try and find ways to optimize this even further and/or come up with some other method to go from address to elf data.",
       "parentUuid": "e2ce5869_44ef939e",
+      "revId": "89aaa7c507695a44300ad037cf8f537a2298d4cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffe449aa_ef20756e",
+        "filename": "libunwindstack/Maps.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-08-23T21:27:53Z",
+      "side": 1,
+      "message": "getline shouldn\u0027t realloc either, unless the new line is actually larger than the currently allocated space.\n\nexperimenting with the benchmarks, it does look like (for 4Ki lines) the overhead of copying the bytes is where the rest of the time goes, so that might be as good as stdio can get.",
+      "parentUuid": "9f00272f_3f47d965",
       "revId": "89aaa7c507695a44300ad037cf8f537a2298d4cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
