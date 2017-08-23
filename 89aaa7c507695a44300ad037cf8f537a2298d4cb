@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "27b0b230_b73573a8",
+        "filename": "libbacktrace/backtrace_benchmarks.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-08-23T22:52:18Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "f3a3c4cd_02b6f9d7",
+      "range": {
+        "startLine": 46,
+        "startChar": 33,
+        "endLine": 46,
+        "endChar": 41
+      },
+      "revId": "89aaa7c507695a44300ad037cf8f537a2298d4cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9e46fbe_c387d4f5",
         "filename": "libunwindstack/Maps.cpp",
         "patchSetId": 3
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "I see, how scanf handles whitespace character surprises me. Can you add more details in the comment?",
       "parentUuid": "1f2ddcac_d2f7c138",
+      "range": {
+        "startLine": 60,
+        "startChar": 32,
+        "endLine": 60,
+        "endChar": 49
+      },
+      "revId": "89aaa7c507695a44300ad037cf8f537a2298d4cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "185edf55_a4f94447",
+        "filename": "libunwindstack/Maps.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-08-23T22:52:18Z",
+      "side": 1,
+      "message": "I removed this particular comment because it\u0027s not entirely true.\n\nI found a bug in the sscanf in glibc which caused a crash, but ours didn\u0027t crash. The problem is that sscanf doesn\u0027t handle ignored parameters in a way I would like. For example, if you have any ignored parameters, and the line data doesn\u0027t include that, you don\u0027t get any indication of the failure. I wrote a version of this that properly detected bad parsing (no ignore parameters), but then I found that the whole approach was running really slow.\n\nI mentioned in the CL description that this was done for performance reasons, and I added a small comment here so someone doesn\u0027t try and move this to sscanf in the future.",
+      "parentUuid": "4d30870f_1f02f4d4",
       "range": {
         "startLine": 60,
         "startChar": 32,
@@ -309,6 +357,24 @@
       "side": 1,
       "message": "getline shouldn\u0027t realloc either, unless the new line is actually larger than the currently allocated space.\n\nexperimenting with the benchmarks, it does look like (for 4Ki lines) the overhead of copying the bytes is where the rest of the time goes, so that might be as good as stdio can get.",
       "parentUuid": "9f00272f_3f47d965",
+      "revId": "89aaa7c507695a44300ad037cf8f537a2298d4cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0f64880_86615fde",
+        "filename": "libunwindstack/Maps.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-08-23T22:52:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ffe449aa_ef20756e",
       "revId": "89aaa7c507695a44300ad037cf8f537a2298d4cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
