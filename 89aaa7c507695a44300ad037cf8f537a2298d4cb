@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9aece197_0c0b1827",
+        "filename": "libbacktrace/backtrace_benchmarks.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-08-23T18:07:42Z",
+      "side": 1,
+      "message": "I didn\u0027t want to use the ReadFileToString and split because it winds up allocating a bunch of memory so that you get some new maps created.\n\nI don\u0027t know that it\u0027s strictly necessary to have the same number of maps, but I wanted to make it possible to compare the numbers from the new and old as much as possible.",
+      "parentUuid": "cb38ebf5_7e3fdee6",
+      "range": {
+        "startLine": 46,
+        "startChar": 33,
+        "endLine": 46,
+        "endChar": 41
+      },
+      "revId": "89aaa7c507695a44300ad037cf8f537a2298d4cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9e46fbe_c387d4f5",
         "filename": "libunwindstack/Maps.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-19T03:00:36Z",
       "side": 1,
       "message": "what kind of input can result in error? how to reproduce that?",
+      "range": {
+        "startLine": 60,
+        "startChar": 32,
+        "endLine": 60,
+        "endChar": 49
+      },
+      "revId": "89aaa7c507695a44300ad037cf8f537a2298d4cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f2ddcac_d2f7c138",
+        "filename": "libunwindstack/Maps.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-08-23T18:07:42Z",
+      "side": 1,
+      "message": "In the test code, I added an explicit line that should not have parsed correctly, but passes.\n\nSee the last test in the verify_parse_line test.",
+      "parentUuid": "f9e46fbe_c387d4f5",
       "range": {
         "startLine": 60,
         "startChar": 32,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f04cc370_2503fa7b",
+        "filename": "libunwindstack/Maps.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-08-23T18:07:42Z",
+      "side": 1,
+      "message": "I\u0027m trying to keep this code from using anything Android specific as much as possible. At some point, I want to remove the dependency on libbase completely.",
+      "parentUuid": "97e0db04_2120635b",
+      "range": {
+        "startLine": 165,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 5
+      },
+      "revId": "89aaa7c507695a44300ad037cf8f537a2298d4cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "755dd093_f710696a",
         "filename": "libunwindstack/Maps.cpp",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "6ea0fdb4_17137668",
+        "filename": "libunwindstack/Maps.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-08-23T18:07:42Z",
+      "side": 1,
+      "message": "It doesn\u0027t compile without it since this is a cast from char* to void*.",
+      "parentUuid": "755dd093_f710696a",
+      "range": {
+        "startLine": 185,
+        "startChar": 22,
+        "endLine": 185,
+        "endChar": 45
+      },
+      "revId": "89aaa7c507695a44300ad037cf8f537a2298d4cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2ce5869_44ef939e",
         "filename": "libunwindstack/Maps.cpp",
         "patchSetId": 3
@@ -105,6 +201,24 @@
       "writtenOn": "2017-08-19T16:36:32Z",
       "side": 1,
       "message": "can you benchmark the two halves of this change separately? i can more easily believe that a hand-rolled sscanf is cheaper, but i\u0027m both surprised and concerned that getline is measurably slower than roughly the same code...",
+      "revId": "89aaa7c507695a44300ad037cf8f537a2298d4cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f00272f_3f47d965",
+        "filename": "libunwindstack/Maps.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-08-23T18:07:42Z",
+      "side": 1,
+      "message": "I spent some time benchmarking the code, and on a sailfish locked to max, and running on a single cpu at high priority, just the change from getline to this code saves roughly 800ns when parsing a 3000 line maps file.\n\nI suspect that most of my speed up is the fact that I have almost no overhead because I never realloc the internal buffer since I don\u0027t need to carry around the previous data. I can throw it away and keep going.\n\nAs to why I\u0027m optimizing this, my new unwinder depends heavily on this, and I\u0027ll probably have to try and find ways to optimize this even further and/or come up with some other method to go from address to elf data.",
+      "parentUuid": "e2ce5869_44ef939e",
       "revId": "89aaa7c507695a44300ad037cf8f537a2298d4cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
