@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9dbc5606_155b9c0a",
+        "filename": "liblog/logd_reader.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-25T15:38:04Z",
+      "side": 1,
+      "message": "Note to self, what was I thinking? This silliness (by me, in a fit of IDC) is because we will not land a 0 for sock in the transport. newsock \u003d TEMP_FAILURE_RETRY(dup(sock)) makes a _lot_ more sense.",
+      "range": {
+        "startLine": 478,
+        "startChar": 2,
+        "endLine": 484,
+        "endChar": 3
+      },
+      "revId": "d4a64674e7d2665cc0a317f0c604f26b64c28ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "efab1e51_b929ce84",
+        "filename": "liblog/logd_reader.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-25T15:38:04Z",
+      "side": 1,
+      "message": "I am also not sure that SO_SNDTIMEO works if debuggerd has taken control of logd then asked for a logcat, this needs to be tested. kill -8 `pidof logd`. I can only say alarm worked/tested to break the deadlock. You just can not take a logcat of logd in any case ;-}\n\nIn the ideal world, I would only set up the timeout if the process calling was debuggerd/tombstoned on the off chance it is referencing logd, and save the syscall ;-}\n\nWell, NONBLOCK does carry with it the general expectation that calls do not block, but ANDROID_LOG_NONBLOCK means only that the logs will dump and when they get to the end, we stop and exit. I can see the confusion, and should have added more comments here regarding what/why we are doing.",
+      "range": {
+        "startLine": 538,
+        "startChar": 0,
+        "endLine": 541,
+        "endChar": 79
+      },
+      "revId": "d4a64674e7d2665cc0a317f0c604f26b64c28ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d40da4_e0d7646d",
+        "filename": "liblog/logd_reader.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-25T15:38:04Z",
+      "side": 1,
+      "message": "wrap with TEMP_FAILURE_RETRY.",
+      "range": {
+        "startLine": 541,
+        "startChar": 10,
+        "endLine": 541,
+        "endChar": 78
+      },
+      "revId": "d4a64674e7d2665cc0a317f0c604f26b64c28ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fce3f988_b2649960",
+        "filename": "liblog/logd_reader.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-25T15:38:04Z",
+      "side": 1,
+      "message": "Remove this error/close/propagate, not necessary.\n\nNot being able to set a send timeout does not mean that we should close and fail. The _only_ reason we put an alarm in was because we got a tombstone of logd, and the processes were left there staring at each other because LOGD (and its sockets) were being PTRACED. In all other cases, it is fine if the timeout is not set. I would be satisfied with a (perhaps a more descriptive) note (which was removed in this CL) and basically ignoring the error.",
+      "range": {
+        "startLine": 542,
+        "startChar": 0,
+        "endLine": 546,
+        "endChar": 5
+      },
+      "revId": "d4a64674e7d2665cc0a317f0c604f26b64c28ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5457bfd_f8fe441e",
+        "filename": "liblog/logd_reader.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-25T15:38:04Z",
+      "side": 1,
+      "message": "Now that the alarm is gone, EINTR now has a meaning again! I almost wanted to suggest TEMP_FAILURE_RETRY, but the caller can make the choice as -EINTR (or -EAGAIN) are (both) values to the caller to retry (none do anymore AFAIK).",
+      "range": {
+        "startLine": 548,
+        "startChar": 8,
+        "endLine": 548,
+        "endChar": 41
+      },
+      "revId": "d4a64674e7d2665cc0a317f0c604f26b64c28ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6dacf63d_4525e938",
+        "filename": "liblog/logd_reader.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-25T15:38:04Z",
+      "side": 1,
+      "message": "NB: EAGAIN, EWOULDBLOCK, or EINPROGRESS are all possible here indicating that the write timed out. However, _only_ EAGAIN or EINTR are an issue in the API because they are the KISS values used to indicate that the call should be retried. We do not want to retry if there is a SNDTIMEO set.",
+      "range": {
+        "startLine": 551,
+        "startChar": 13,
+        "endLine": 551,
+        "endChar": 19
+      },
+      "revId": "d4a64674e7d2665cc0a317f0c604f26b64c28ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f19822aa_7c21331c",
+        "filename": "liblog/logd_reader.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-25T15:38:04Z",
+      "side": 1,
+      "message": "KISS:\n\n/* EAGAIN (and EINTR) mean the caller is free to retry, but not if we are NONBLOCKING */\nif ((logger_list-\u003emode \u0026 ANDROID_LOG_NONBLOCK) \u0026\u0026 (e \u003d\u003d EAGAIN)) {\n    e \u003d ETIMEDOUT;\n}\n\nHowever, we may be able to dispense with this errno code rewrite because despite the API requirement, no one is actually using it so the machinations to preserve this make little sense.\n\nThe whole reason this fragment was here is that we did not want a retry on EINTR (popular with wrappers if the ilk TEMP_FAILURE_RETRY). w/o the EINTR/alarm() pollution, we do not care any more. Let EAGAIN (and EWOULDBLOCK and EINPROGRESS) propagate.",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 554,
+        "endChar": 3
+      },
+      "revId": "d4a64674e7d2665cc0a317f0c604f26b64c28ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d93abad2_1f1959ea",
+        "filename": "liblog/logd_reader.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-25T15:38:04Z",
+      "side": 1,
+      "message": "minor nit: not sure if the optimizer would move this into the constant compile time calculations on 594 or 597, adding a runtime multiply. Please change to timeout_ms and merge into the calculations above.",
+      "range": {
+        "startLine": 603,
+        "startChar": 22,
+        "endLine": 603,
+        "endChar": 42
+      },
+      "revId": "d4a64674e7d2665cc0a317f0c604f26b64c28ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8c6560d_008cdd4e",
+        "filename": "liblog/logd_reader.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-08-25T15:38:04Z",
+      "side": 1,
+      "message": "EINTR pollution because we no longer do alarm here, means we no longer need to do the errno propagation rewrite. Lines 611-614 look after the EAGAIN return value required on timeout here.",
+      "range": {
+        "startLine": 606,
+        "startChar": 0,
+        "endLine": 608,
+        "endChar": 5
+      },
+      "revId": "d4a64674e7d2665cc0a317f0c604f26b64c28ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
