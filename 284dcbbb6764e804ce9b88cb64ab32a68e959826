@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "123ee695_dd69f878",
+        "filename": "libbacktrace/UnwindStackMap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-09-01T20:10:36Z",
+      "side": 1,
+      "message": "This should probably just return Memory*? I don\u0027t think you actually want to expose being able to modify what the shared_ptr points to.",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 84
+      },
+      "revId": "284dcbbb6764e804ce9b88cb64ab32a68e959826",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20d5588f_373e74ff",
+        "filename": "libunwindstack/include/unwindstack/MapInfo.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-09-01T20:10:36Z",
+      "side": 1,
+      "message": "IMO these functions should return std::unique_ptr\u003cMemory\u003e. (Also, GetFileMemory should be named CreateFileMemory, because always constructs)\n\nAlso, we probably shouldn\u0027t be passing non-const std::shared_ptr\u003cMemory\u003e\u0026 around, we presumably don\u0027t want process_memory.reset() to apply to a shared_ptr that\u0027s passed in from the outside?",
+      "range": {
+        "startLine": 41,
+        "startChar": 22,
+        "endLine": 44,
+        "endChar": 64
+      },
+      "revId": "284dcbbb6764e804ce9b88cb64ab32a68e959826",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af18c887_22ec6bc8",
+        "filename": "libunwindstack/include/unwindstack/Memory.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-09-01T20:10:36Z",
+      "side": 1,
+      "message": "unique_ptr\u003cMemory\u003e",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "284dcbbb6764e804ce9b88cb64ab32a68e959826",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
