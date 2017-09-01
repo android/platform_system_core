@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea8f8d94_5c86bf06",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-01T20:39:08Z",
+      "side": 1,
+      "message": "const std::string\u0026 filename.\n\nI know that means we\u0027ll need to box this an extra time cause one of the two inputs is already a c string, but I think it\u0027s better to keep everything std::string until the moment it\u0027s literally interacting with a C++ API.  \n\n(Remember the issue we had with .c_str() in do_copy())",
+      "range": {
+        "startLine": 674,
+        "startChar": 38,
+        "endLine": 674,
+        "endChar": 55
+      },
+      "revId": "b769fa1fb6a569b50091c064dcc1f8d5b86576f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e6abc21_55c181c3",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-01T20:39:08Z",
+      "side": 1,
+      "message": "contents? In general, let\u0027s prefer no abbreviations (https://google.github.io/styleguide/cppguide.html#General_Naming_Rules)",
+      "range": {
+        "startLine": 686,
+        "startChar": 20,
+        "endLine": 686,
+        "endChar": 23
+      },
+      "revId": "b769fa1fb6a569b50091c064dcc1f8d5b86576f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "165ba9df_84022c3a",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-01T20:39:08Z",
+      "side": 1,
+      "message": "Maybe we want to handle this ourselves instead of using ReadFdToString().  If we read in large files, that\u0027s going to cause quite a few reallocations and copies of the older content, plus using all of the memory.\n\nWe only need to call read() to get the file system to cache the file contents, right?  We\u0027re just throwing it away once we read it.  Let\u0027s just do the loop ourselves and dump the read contents into a temp buffer on the stack?",
+      "revId": "b769fa1fb6a569b50091c064dcc1f8d5b86576f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "94164280_0f00b545",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-01T20:39:08Z",
+      "side": 1,
+      "message": "I\u0027ve been trying to put the context out here instead of always doing \"\u003c\u003c args\" in the function that\u0027s being called.  So something like\n\nLOG(WARNING) \u003c\u003c \"Unable to readahead \u0027\" \u003c\u003c args[1] \u003c\u003c \"\u0027: \" \u003c\u003c result.error();\n\nthen dropping the \u003c\u003c fname in the function above.\n\n(Also : instead of ,)",
+      "range": {
+        "startLine": 722,
+        "startChar": 32,
+        "endLine": 722,
+        "endChar": 74
+      },
+      "revId": "b769fa1fb6a569b50091c064dcc1f8d5b86576f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
