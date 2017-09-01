@@ -46,6 +46,52 @@
       "revId": "13d3456abbc4f5efdbdfa5b1643c40b06e7248d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2e97e32_fefafc3d",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-09-01T09:47:41Z",
+      "side": 1,
+      "message": "This part is duplicated as the following vendor precompiled.\n\nHow about:\n  \nat line 207:\n  \n    if (access(odm_precompiled_sepolicy, R_OK) \u003d\u003d 0) {\n        *file \u003d odm_precompiled_sepolicy;\n    } else if (access(vendor_precompiled_sepolicy, R_OK) \u003d\u003d 0) {\n        *file \u003d vendor_precompiled_sepolicy;\n    } else {\n        PLOG(INFO) \u003c\u003c \"No precompiled sepolicy\";\n        return false;\n    }\n  \nAnd here, we can have:    \n  \n    std::string precompiled_plat_id;\n    std::string precompiled_sha256 \u003d *file + \".plat_and_mapping.sha256\";\n    if (!ReadFirstLine(precompiled_sha256.c_str(), \u0026precompiled_plat_id)) {\n        PLOG(INFO) \u003c\u003c \"Failed to read \" \u003c\u003c precompiled_sha256;\n        return false;\n    }\n    if ((actual_plat_id.empty()) || (actual_plat_id !\u003d precompiled_plat_id)) {\n        return false;\n    }\n\n    return true;",
+      "range": {
+        "startLine": 218,
+        "startChar": 2,
+        "endLine": 232,
+        "endChar": 20
+      },
+      "revId": "13d3456abbc4f5efdbdfa5b1643c40b06e7248d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51b4aafe_1edb999c",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-09-01T09:47:41Z",
+      "side": 1,
+      "message": "LOG(ERROR) \u003c\u003c \"Missing \" \u003c\u003c nonplat_declaration_cil_file;",
+      "range": {
+        "startLine": 331,
+        "startChar": 8,
+        "endLine": 331,
+        "endChar": 76
+      },
+      "revId": "13d3456abbc4f5efdbdfa5b1643c40b06e7248d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
