@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bdf6c6a4_7f5012f5",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-05T19:47:00Z",
+      "side": 1,
+      "message": "I\u0027m not enamored by the location of this print, but we throw away the credentials after this point.\n\nThe alternative may be to pass the credentials all the way through property_set() until they reach init\u0027s property_changed().  But once property service gets split out of init anyway, that whole code path will change and I\u0027m not sure if we\u0027d want to pass the credentials of who set a property to property change listeners (we almost definitely would not want to in general; perhaps only init?).\n\nSo it seems that for now (and maybe in general) this location, while non-ideal, is fine.",
+      "revId": "85836fb339f9b3635db8f1ee0573ec680956f139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
