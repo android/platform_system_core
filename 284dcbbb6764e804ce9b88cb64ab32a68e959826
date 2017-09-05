@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d619be4_a1b5406e",
+        "filename": "libbacktrace/UnwindStackMap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-09-05T21:30:33Z",
+      "side": 1,
+      "message": "I need to pass the shared memory around, so I need the full thing. However, I changed this to return const so this can\u0027t be modified.",
+      "parentUuid": "123ee695_dd69f878",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 84
+      },
+      "revId": "284dcbbb6764e804ce9b88cb64ab32a68e959826",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "20d5588f_373e74ff",
         "filename": "libunwindstack/include/unwindstack/MapInfo.h",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "46c0bf4c_3db719b4",
+        "filename": "libunwindstack/include/unwindstack/MapInfo.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-09-05T21:30:33Z",
+      "side": 1,
+      "message": "I changed everything that passes a shared_ptr to a const reference to avoid anybody changing the pointer.\n\nI made these two functions private because they aren\u0027t meant to be exposed and used by anything but GetElf. I also moved all of the tests of CreateMemory to tests of GetElf so that the tests are more resilient if there is a refactor, but it should test all of the underlying code.",
+      "parentUuid": "20d5588f_373e74ff",
+      "range": {
+        "startLine": 41,
+        "startChar": 22,
+        "endLine": 44,
+        "endChar": 64
+      },
+      "revId": "284dcbbb6764e804ce9b88cb64ab32a68e959826",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af18c887_22ec6bc8",
         "filename": "libunwindstack/include/unwindstack/Memory.h",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2017-09-01T20:10:36Z",
       "side": 1,
       "message": "unique_ptr\u003cMemory\u003e",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "284dcbbb6764e804ce9b88cb64ab32a68e959826",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d726b76d_75b2af9d",
+        "filename": "libunwindstack/include/unwindstack/Memory.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-09-05T21:30:33Z",
+      "side": 1,
+      "message": "As mentioned on the other comment, this is returning a shared ptr now.",
+      "parentUuid": "af18c887_22ec6bc8",
       "range": {
         "startLine": 35,
         "startChar": 9,
