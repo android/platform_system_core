@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "79ed2ac2_122c6380",
+        "filename": "logd/LogTags.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-09-06T20:21:07Z",
+      "side": 0,
+      "message": "Not just OTAs, but that was were I got the most problems with uniqueness of runtime tags. The algorithm for generating unique runtime tags is a SHA, we have some collision management should the SHA be identical, but for the most part if you register a tag/format you get a unique value from the SHA that very rarely collides. When they do collide, the order the tags are registered will determine the values. OTAs would more-likely introduce a change in the order/timing because of release changes; but it could (but I never managed to prove out) happen on just any reboot.\n\nIt should be noted that I _also_ play _games_ with pmsg to provide some stickiness on all builds, which is probably why I could not reproduce on just plain reboots to the same release.\n\nDuring runtime, with runtime logcat interpretation, this is not a problem of course, but the symptom is that logcat -L (last logcat) output could be wrong. logcat -L is in itself could be critical to debugging only, landing in the bugreport, and for resolving user space playback leading to a kernel crashes.\n\nBy introducing some filesystem stickiness during development and when OTAs are done on a weekly, and sometimes daily, basis, we could ensure that the ordering/timing component disappears completely. We can not do this on \"user\" builds as a security review of this feature signaled this data as a packaging signature.",
+      "parentUuid": "7918e577_6aac5b02",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 5
+      },
+      "revId": "4eb09054ed3a15c6e8049c52b0fe828bb954e795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "190c79ea_b98d3a71",
         "filename": "logd/main.cpp",
         "patchSetId": 2
