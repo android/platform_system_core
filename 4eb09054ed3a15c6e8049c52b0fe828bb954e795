@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a8ba36e5_9035167a",
+        "filename": "logd/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-06T18:03:23Z",
+      "side": 1,
+      "message": "It seems that the intention here is to return the name only for packages.  The caller checks this first and if this returns nullptr, it then checks getpwnam(), etc.  The naming is not clear in this case, I agree.\n\nI have a question myself - what is the android:: namespace in the context of liblogd?  liblogd isn\u0027t actually used by anything other than logd, right, so none of these APIs are public?  In that case it may make sense to remove this from main.cpp and move it next to LogStatistics::uidToName() ?",
+      "parentUuid": "03d7406c_9e65674a",
+      "revId": "4eb09054ed3a15c6e8049c52b0fe828bb954e795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4012f678_6e3a1f9a",
         "filename": "logd/main.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-09-06T17:54:40Z",
       "side": 1,
       "message": "can\u0027t fail",
+      "revId": "4eb09054ed3a15c6e8049c52b0fe828bb954e795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ae16382_50b5f0d3",
+        "filename": "logd/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-06T18:03:23Z",
+      "side": 1,
+      "message": "I\u0027m going to delete all of this code in the next CL anyway, so I figured I\u0027d just leave it for now.",
+      "parentUuid": "4012f678_6e3a1f9a",
       "revId": "4eb09054ed3a15c6e8049c52b0fe828bb954e795",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
