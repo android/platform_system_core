@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "38c399db_3801ff7f",
+        "filename": "logd/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-06T18:34:10Z",
+      "side": 1,
+      "message": "Right.\n\nWhy is AID_SYSTEM even needed though?  Is AID_PACKAGE_INFO not enough to read /data/system/packages.list or is there something else in /data/system that we\u0027re searching for?\n\nIf it\u0027s the latter, that seems like a bug itself.",
+      "parentUuid": "faa7a215_03a4034a",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 64
+      },
+      "revId": "4eb09054ed3a15c6e8049c52b0fe828bb954e795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03d7406c_9e65674a",
         "filename": "logd/main.cpp",
         "patchSetId": 1
@@ -126,6 +150,24 @@
     },
     {
       "key": {
+        "uuid": "c83502af_785a529a",
+        "filename": "logd/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-06T18:34:10Z",
+      "side": 1,
+      "message": "It seems like we\u0027re first checking uid % AID_USER_OFFSET; then userId - (AID_SHARED_GID_START - AID_APP) for the uid here.\n\nI guess in the package list, the uids don\u0027t directly map to actual uids?  I need to check this more.\n\nIn any case, ignoring 0 does seem like a problem.",
+      "parentUuid": "cd83095d_9b8f540a",
+      "revId": "4eb09054ed3a15c6e8049c52b0fe828bb954e795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28e8ee5d_0320c00e",
         "filename": "logd/main.cpp",
         "patchSetId": 1
@@ -137,6 +179,30 @@
       "writtenOn": "2017-09-06T18:12:21Z",
       "side": 1,
       "message": "Please confirm packagelist_parse is itself thread safe.",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 52
+      },
+      "revId": "4eb09054ed3a15c6e8049c52b0fe828bb954e795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "324ab827_cadd548c",
+        "filename": "logd/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-06T18:34:10Z",
+      "side": 1,
+      "message": "I checked; it is.",
+      "parentUuid": "28e8ee5d_0320c00e",
       "range": {
         "startLine": 280,
         "startChar": 0,
