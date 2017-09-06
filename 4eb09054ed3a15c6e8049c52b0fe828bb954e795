@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "c9283ed2_da92b765",
+        "filename": "logd/LogTags.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-06T20:41:29Z",
+      "side": 0,
+      "message": "Understood.\n\nMy intention of removing it is to have it done always in android::ReReadEventLogTags();, once ReinitThread() sees that ro.persistent_properties.ready is true.  This will ensure that it doesn\u0027t happen before /data is mounted but will do it if logd is restarted due to a crash.\n\nI can make it more explicit.  Since ReReadEventLogTags() only reads the debug event log tags, I can rename that function and not even start the thread that watches ro.persistent_properties.ready if it is already true.\n\nDoes that sound acceptable here?",
+      "parentUuid": "79ed2ac2_122c6380",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 5
+      },
+      "revId": "4eb09054ed3a15c6e8049c52b0fe828bb954e795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "190c79ea_b98d3a71",
         "filename": "logd/main.cpp",
         "patchSetId": 2
