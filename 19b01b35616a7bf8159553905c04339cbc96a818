@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8022092_c536038f",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-09-20T15:28:37Z",
+      "side": 1,
+      "message": "We could apply the same fuzzy matching here, the result would be a match to \\n, \\v, \\b,\\x02, \\x0E, \\x1A, *, J and \\x8A. All of them are invalid reason characters, except one can be \u0027corrected\u0027 to lower case.",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 484,
+        "endChar": 35
+      },
+      "revId": "19b01b35616a7bf8159553905c04339cbc96a818",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "453b22c6_fd3df393",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-09-20T15:28:37Z",
+      "side": 1,
+      "message": "A pure fuzzy match here results in:\n\n\u0027, \u0026, %, #, /, 7, \\a, C, \\xA7\n\n5 of which are (currently) acceptable characters for reason, and one can be \u0027corrected\u0027 to lower case. We may be better served by finding first non-printable, excluding \u0027 of course, and converting to lower case.\n\nThis would remove the step above for limiting the search based on newline above too. Something like:\n\nfor (auto it: subReason) {\n   char c \u003d tounderline(*it);\n   if (!::isprint(c) || (c \u003d\u003d \u0027\\\u0027\u0027)) {\n       subReason.erase(it);\n       break;\n   }\n   *it \u003d ::tolower(c);\n}\n\nThe good news is this also serves to validate the content recovered _despite_ the single-bit-error problem; we placed way too much trust here in the last kmsg report providing content we can trust.",
+      "range": {
+        "startLine": 486,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 35
+      },
+      "revId": "19b01b35616a7bf8159553905c04339cbc96a818",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
