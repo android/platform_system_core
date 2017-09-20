@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b24cd9f_8ec9c015",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-09-20T20:18:27Z",
+      "side": 1,
+      "message": "Idea (no action required) and editorial, in the face of the ever increasing complexity of the battery detection code (experiment).\n\nWe are going to way too much trouble over an unlikely feature, this _only works if ramoops is backed by trusted, private and secure one-time-key flash. Yet here we are acting like it is corruptible; we do this really to deal with corruption _causing_ a false signal.\n\nWe can harden this somewhat by checking the last minute, which if the device is awake, would be the last six reports (one every ten seconds). Check for consistency (voting + average or linear regression). Or we can just check all of them, and use linear regression to see a discharge rate and final point.\n\nWe have tools (batterybug etc) that will show us that the device most likely shutdown from battery discharge, we need to use their algorithms. So more study is required.\n\nYes, a _lot_ of work to go to in either case, in order to sense battery should we not provide its own via the bootloader or via user space; especially since it is generally considered _unlikely_ that there would be any pstore information on a battery shutdown unless ramoops is backed by secure one-time-key flash.\n\nThe real expectation is that if there is a preemptive battery shutdown by user space, it would report shutdown,battery. IF the bootloader could detect it from the pmic, it could report it. Otherwise the code here is all about a default backup plan for the devices that have no such support.",
+      "range": {
+        "startLine": 529,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 53
+      },
+      "revId": "8194591f61da162735b39f55cfdf5b2dddda0a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
