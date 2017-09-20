@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7378f235_4d73c9a9",
+        "filename": "bootstat/boot_reason_test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-09-20T17:13:10Z",
+      "side": 1,
+      "message": "This test interferes with test_property (rerun test back-to-back):\n\n[ RUN      ] properties \nINFO: ok \"reboot\" for Android property ro.boot.bootreason\nERROR: expected \"reboot,its_just_so_hard\" got \"reboot,Its Just So Hard\"\n       for Android property persist.sys.boot.reason\nINFO: ok \"reboot,its_just_so_hard\" for Android property sys.boot.reason\n09-20 17:03:16.673  1975  1975 I bootstat: Unknown boot reason: reboot,its_just_so_hard\nINFO: properties test duration 1 second\n[  FAILED  ] properties \n\nWe should re-write persist.sys.boot.reason after this test to valid.\n\nWe do not consider the content placed into persist.sys.boot.reason valid, the CTS test would also fail if this content remained.",
+      "range": {
+        "startLine": 644,
+        "startChar": 0,
+        "endLine": 659,
+        "endChar": 1
+      },
+      "revId": "caead9f805cf965358124b81934cfe35feffc3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
