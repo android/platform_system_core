@@ -34,6 +34,24 @@
       "revId": "5e928cddbbb644553d6d613b338846396f167167",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d10f612_d1e8bc20",
+        "filename": "base/file.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-21T19:05:40Z",
+      "side": 1,
+      "message": "Hm probably worth refactoring the code a bit to move the return false to after the poll and so that poll() will run at least once with timeout \u003d 0 rather than making the timeout arbitrarily 2ms.\n\n(I guess I didn\u0027t care about this case since the timeouts in init_first_stage.cpp are all quite large).\n\nAlso, I\u0027m just remembering that there\u0027s the Timer class in chrono_utils.h too that can be used here instead of doing the elapsed time calculation yourself.",
+      "parentUuid": "70f8bd86_5ec81175",
+      "revId": "5e928cddbbb644553d6d613b338846396f167167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
