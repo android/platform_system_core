@@ -22,6 +22,47 @@
       "revId": "a7faacbfa80518be3ca73527a5ca7b63e2f01c38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb497306_2a7dd747",
+        "filename": "base/file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-21T16:56:58Z",
+      "side": 1,
+      "message": "Not true for the \u0027related header\u0027 of a cpp file, which is android-base/file.h here.\n\nhttps://google.github.io/styleguide/cppguide.html#Names_and_Order_of_Includes - \"However, any includes present in the related header do not need to be included again in the related cc (i.e., foo.cc can rely on foo.h\u0027s includes).\"",
+      "parentUuid": "8d117577_87356ce4",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "a7faacbfa80518be3ca73527a5ca7b63e2f01c38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42433553_83d6aef7",
+        "filename": "base/file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-21T16:56:58Z",
+      "side": 1,
+      "message": "std::chrono has no overflow detection, so this can be dangerous if someone tries to provide milliseconds::max() or some other value large enough to cause overflow.\n\nuevent_listener.cpp has the below that is safer:\n\n            auto now \u003d steady_clock::now();\n            auto time_elapsed \u003d duration_cast\u003cmilliseconds\u003e(now - start_time);\n            if (time_elapsed \u003e relative_timeout) return;\n\n            auto remaining_timeout \u003d relative_timeout - time_elapsed;\n            timeout_ms \u003d remaining_timeout.count();",
+      "revId": "a7faacbfa80518be3ca73527a5ca7b63e2f01c38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
