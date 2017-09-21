@@ -52,6 +52,24 @@
       "revId": "5e928cddbbb644553d6d613b338846396f167167",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0119b652_36d0fd21",
+        "filename": "base/file.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-09-21T19:59:49Z",
+      "side": 1,
+      "message": "Code gets simpler, if we also accept that continuing flow of data can be allowed to extend beyond the timeout. I can drop line 80 and 87, as long as I make sure for the case time_elapsed \u003e timeout that I still hand 0 to poll.\n\nI do not think anyone can disagree with that fundamentally, except on system critical components where a continuous and fast stream of data on a socket could DOS the memory in the calling process ... a fix for that would be the condition 87 dropped below the read; actually,\n\n    if (!remaining_timeout.count()) return false;\n\nAs for Timer class, not sold, since we are dealing with really _one_ line of calculations (and the rest being expansion due to casting and maintenance considerations). I take hard metal over abstraction any day :-)",
+      "parentUuid": "6d10f612_d1e8bc20",
+      "revId": "5e928cddbbb644553d6d613b338846396f167167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
