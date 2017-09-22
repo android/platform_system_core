@@ -46,6 +46,30 @@
       "revId": "816c599d54de2cbf460b48c7cad86513486b209c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dee542a0_f3103c02",
+        "filename": "base/file.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-09-22T16:49:29Z",
+      "side": 1,
+      "message": "chrono literals were supported in C++11 according to the include file ;-/\n\nI can certainly drop the 0ms behavior (but easier said than done).\n\n[TL;DR]\n\nMy thoughts\n\nI described the behavior in the commit message since it did differ from poll; that should have been our first clue that I could run into an expectation issue. I should have placed the comment in the include file...\n\nHowever, if we (simply) do what you ask, a timeout of 0 and poll would result in only reading BUFSIZ content and _would_ get far more complicated to meet the expectation that timeout of 0 \u0027works\u0027. For example we will _always_ report false on timeout of 0, and _that_ certainly does not meet expectations either ;-/\n\nThe expectation that we read until content is exhausted, and (poll) timeout being a cap on how long it takes to wait or read content, are at odds with each other.\n\nIn order to return to a state where we have \u0027defined\u0027 behavior I chose KISS, the ability to cap the timeout, and punt to infinite timeout for 0m, and that usually normal (note pipe or socket) files will fulfill the entire content under any timeout conditions (no truncation of content except corner case if it took too long to read the normal file ;-/).\n\nAlternative 1 (KISS):\n\nDrop 0ms check, and adjust line 101:\n\nif (remaining_timeout.count() \u003c\u003d 0) return n !\u003d BUFSIZ;\n\nand state that the API supports (poll) timeout of 0, but then the maximum buffer we can collect is BUFSIZ (1024, as defined in stdio.h); and that this would also be true for file descriptors that reference files. All you get is 1K of data, that is it.\n\nAlternative 2 (more accurate, but I perceive as dangerous):\n\nDrop 0ms check, and adjust line 101:\n\nif ((remaining_timeout.count() \u003c\u003d 0) \u0026\u0026 (n !\u003d BUFSIZ)) return true;\n\nand perhaps state that the API supports (poll) timeout of 0. But we can greatly extend the time for return on any timeout as there is no real cap anymore. Indicate the BATCH or background priority tasks can DOS the memory or never return if the streaming data comes faster than the CPU cycles granted to process them.\n\nThe good news is that a normal file will fulfill the entire content _always_.\n\nAlternative 3: (add 5 second cap)\n\nMaybe we need to add a 5 second extra cap on the time we can go over to address memory/CPU starvation? remaining_timeout will now be allowed to go negative.\n\nif (remaining_timeout \u003c -seconds(5)) return false;\n\nBut we will have to think/test carefully on an adjustment for line 93 if (rc \u003c\u003d 0) return false:\n\nif (rc \u003c 0) return false;\nif (rc \u003d\u003d 0) return remaining_timeout \u003e -seconds(5);",
+      "parentUuid": "73fd82ba_4760a1cb",
+      "range": {
+        "startLine": 75,
+        "startChar": 17,
+        "endLine": 75,
+        "endChar": 20
+      },
+      "revId": "816c599d54de2cbf460b48c7cad86513486b209c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
