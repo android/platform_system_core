@@ -22,6 +22,30 @@
       "revId": "816c599d54de2cbf460b48c7cad86513486b209c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73fd82ba_4760a1cb",
+        "filename": "base/file.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-22T15:33:34Z",
+      "side": 1,
+      "message": "What is the error you\u0027re seeing?  I don\u0027t see complaints about poll.h not being found in the build results.\n\n(C++14 added literals; I\u0027m unsure of what support we have for it in mingw)\n\nAlso is this the behavior that we want on this line?  ReadFdToString() is blocking if the fd is blocking, so not what I\u0027d expect with timeout \u003d\u003d 0ms.  I\u0027d figure it\u0027d poll() once and return whatever data is present otherwise false.  I should have noted this in the previous patch sets too.",
+      "parentUuid": "b0d4b967_b0673c67",
+      "range": {
+        "startLine": 75,
+        "startChar": 17,
+        "endLine": 75,
+        "endChar": 20
+      },
+      "revId": "816c599d54de2cbf460b48c7cad86513486b209c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
