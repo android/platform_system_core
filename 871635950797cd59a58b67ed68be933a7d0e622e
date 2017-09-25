@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7de2f5e8_e09d62bd",
+        "filename": "base/file.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-09-25T18:38:09Z",
+      "side": 1,
+      "message": "Maybe we need to do:\n\n} else {\n  content-\u003ereserve(max_size);\n}\n\nto help a more efficient operation? Of course we would probably want the default buffer dropped on line 131 to be fulfilled by the read directly into the string data buffer, especially if we are pre-allocating the std::string, i.e.:\n\n  read(fd, content-\u003edata() + offset, content-\u003ecapacity() - offset);\n\nBut that \u0027efficiency\u0027 is outside the scope of this CL, since  the same thing can be explored for all the read calls here.",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 3
+      },
+      "revId": "871635950797cd59a58b67ed68be933a7d0e622e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
