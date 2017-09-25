@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "95756479_e9ee5c45",
+        "filename": "base/file.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-09-25T21:15:37Z",
+      "side": 1,
+      "message": "Should test if content is nullptr?",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 9
+      },
+      "revId": "871635950797cd59a58b67ed68be933a7d0e622e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7de2f5e8_e09d62bd",
         "filename": "base/file.cpp",
         "patchSetId": 9
@@ -18,6 +41,29 @@
         "startChar": 2,
         "endLine": 89,
         "endChar": 3
+      },
+      "revId": "871635950797cd59a58b67ed68be933a7d0e622e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8731d216_335fab18",
+        "filename": "base/file.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-09-25T21:15:37Z",
+      "side": 1,
+      "message": "This no longer makes sense, this is still a remnant of the 5 second thingy we had previously.\n\nif (rc \u003c\u003d 0) return false\n\nHowever turned into an interesting problem for the caller, it can not tell the difference between a bad fd, and hitting the timeout. Fundamentally I believe we need to return true if we hit the timeout (a reversal of my initial API design, because incomplete/truncated content is supposed to return false).",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 52
       },
       "revId": "871635950797cd59a58b67ed68be933a7d0e622e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
