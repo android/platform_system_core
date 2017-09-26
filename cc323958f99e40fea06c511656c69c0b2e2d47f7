@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "601135a1_3ab7b6e1",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-09-26T13:20:52Z",
+      "side": 1,
+      "message": "I was considering \"longest prefix matching\" before.\n\nBut after some thoughts, this seems unneeded and might make the function more complicated/unpredictable.\n\nCurrently, it allows having multiple entries in the fstab file.\n\ne.g.,\n/dev/block/platform/.../by-name/vendor_ext4   /vendor      ext4  ro  wait\n/dev/block/platform/.../by-name/abc_ext4  /vendor/abc   ext4\n/dev/block/platform/.../by-name/abc_f2fs  /vendor/abc   f2fs\n/dev/block/platform/.../by-name/vendor_f2fs   /vendor      ext4  f2fs  wait\n\n\nWith \"start_rec\" and given \"/vendor/abc\" as path, it will return the 2nd entry, 3rd entry and the 4th entry but ignore the 1st one.\n\nSo use \"exact match\" unless we have a compelling reason for \"prefix match\".",
+      "range": {
+        "startLine": 805,
+        "startChar": 12,
+        "endLine": 805,
+        "endChar": 76
+      },
+      "revId": "cc323958f99e40fea06c511656c69c0b2e2d47f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
