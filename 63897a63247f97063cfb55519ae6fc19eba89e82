@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c3aa8ae_9e2461aa",
+        "filename": "init/action.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-09-27T21:37:41Z",
+      "side": 1,
+      "message": "may be it makes sense for a command to _always_ have a context to run with, where the current init is \u0027main context\u0027 and the vendor parts are \u0027vendor context\u0027.\n\nThat just makes the if (execute_in_subcontest) do something else .. parts easier too, since if you know a command is going to run in subcontext, you likely have the \"context\" it should be running it in too .. so why not just pass that while constructing this so the -\u003eInvokeFunc() also becomes much simpler ..",
+      "range": {
+        "startLine": 49,
+        "startChar": 9,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "63897a63247f97063cfb55519ae6fc19eba89e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c50a564_140b2e82",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-09-27T21:37:41Z",
+      "side": 1,
+      "message": "these quirks will also get easier if you have pid \u003d\u003d 1 as \"default_context\" and property_set() can be a method of that context if you want..",
+      "range": {
+        "startLine": 575,
+        "startChar": 1,
+        "endLine": 576,
+        "endChar": 39
+      },
+      "revId": "63897a63247f97063cfb55519ae6fc19eba89e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90e91a2e_127d5640",
+        "filename": "init/subcontext.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-09-27T21:37:41Z",
+      "side": 1,
+      "message": "EINTR (during suspend) will hit this ..",
+      "range": {
+        "startLine": 109,
+        "startChar": 8,
+        "endLine": 111,
+        "endChar": 9
+      },
+      "revId": "63897a63247f97063cfb55519ae6fc19eba89e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d4faa9d_41a0b2b5",
+        "filename": "init/subcontext.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-09-27T21:37:41Z",
+      "side": 1,
+      "message": "send a message to kill itself instead? and do this if there is a timeout on waitpid ?",
+      "range": {
+        "startLine": 174,
+        "startChar": 8,
+        "endLine": 174,
+        "endChar": 27
+      },
+      "revId": "63897a63247f97063cfb55519ae6fc19eba89e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c43bc214_27b9fbcf",
+        "filename": "init/subcontext.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2017-09-27T21:37:41Z",
+      "side": 1,
+      "message": ":)",
+      "range": {
+        "startLine": 220,
+        "startChar": 4,
+        "endLine": 221,
+        "endChar": 24
+      },
+      "revId": "63897a63247f97063cfb55519ae6fc19eba89e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
