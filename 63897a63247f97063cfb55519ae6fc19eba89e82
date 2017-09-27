@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ba96eb27_ac80dad7",
+        "filename": "init/action.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-27T22:24:58Z",
+      "side": 1,
+      "message": "Yes, I was thinking that too then I didn\u0027t like how it was turning out when I was implementing it, but maybe I\u0027ll go back to it.\n\nMy idea was to have a `CommandExecutor` class and have an `InitExecutor` and `SubcontextExecutor` that would run the command in the main process vs a subcontext respectively.",
+      "parentUuid": "3c3aa8ae_9e2461aa",
+      "range": {
+        "startLine": 49,
+        "startChar": 9,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "63897a63247f97063cfb55519ae6fc19eba89e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c50a564_140b2e82",
         "filename": "init/builtins.cpp",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-27T21:37:41Z",
       "side": 1,
       "message": "these quirks will also get easier if you have pid \u003d\u003d 1 as \"default_context\" and property_set() can be a method of that context if you want..",
+      "range": {
+        "startLine": 575,
+        "startChar": 1,
+        "endLine": 576,
+        "endChar": 39
+      },
+      "revId": "63897a63247f97063cfb55519ae6fc19eba89e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bc34b9c_d5322dde",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-27T22:24:58Z",
+      "side": 1,
+      "message": "Agreed.  I probably do need to pipe through the context here in any case, since some of the builtins such as the ones interacting with services may need the context to make the right decision.\n\nIn particular, are we going to allow vendor scripts to start/stop/etc system services?  If we won\u0027t, then I\u0027ll need to pipe the context through.",
+      "parentUuid": "3c50a564_140b2e82",
       "range": {
         "startLine": 575,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "79a27925_f5107609",
+        "filename": "init/subcontext.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-27T22:24:58Z",
+      "side": 1,
+      "message": "Done; Needed TEMP_RETRY_FAILURE()",
+      "parentUuid": "90e91a2e_127d5640",
+      "range": {
+        "startLine": 109,
+        "startChar": 8,
+        "endLine": 111,
+        "endChar": 9
+      },
+      "revId": "63897a63247f97063cfb55519ae6fc19eba89e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d4faa9d_41a0b2b5",
         "filename": "init/subcontext.cpp",
         "patchSetId": 7
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "e0655364_c673246e",
+        "filename": "init/subcontext.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-27T22:24:58Z",
+      "side": 1,
+      "message": "I\u0027m calling this in the case of SendMessage() failing, among others, so my general assumption is that if we get there, that the child process is in a really bad state and our best bet is to kill it and move on.\n\nThis should be an exceptionally rare situation, but of course we do need to handle these failures for robustness.",
+      "parentUuid": "3d4faa9d_41a0b2b5",
+      "range": {
+        "startLine": 174,
+        "startChar": 8,
+        "endLine": 174,
+        "endChar": 27
+      },
+      "revId": "63897a63247f97063cfb55519ae6fc19eba89e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c43bc214_27b9fbcf",
         "filename": "init/subcontext.cpp",
         "patchSetId": 7
@@ -105,6 +201,30 @@
       "writtenOn": "2017-09-27T21:37:41Z",
       "side": 1,
       "message": ":)",
+      "range": {
+        "startLine": 220,
+        "startChar": 4,
+        "endLine": 221,
+        "endChar": 24
+      },
+      "revId": "63897a63247f97063cfb55519ae6fc19eba89e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a2593b2_1bacc5ad",
+        "filename": "init/subcontext.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-27T22:24:58Z",
+      "side": 1,
+      "message": "This is mostly for testing, since otherwise I\u0027d need to handle the cleanup manually whenever I instantiate a Subcontext().  It does force me to write the move constructors too which is annoying, so if you\u0027re opposed to it, I can be rather easily convinced to do something better.\n\nPerhaps I can have a TestSubcontext class that kills pid() in its destructor and leave this alone.",
+      "parentUuid": "c43bc214_27b9fbcf",
       "range": {
         "startLine": 220,
         "startChar": 4,
