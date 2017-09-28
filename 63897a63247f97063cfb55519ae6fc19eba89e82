@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "29cfeb59_0cd741ab",
+        "filename": "init/action.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-28T23:46:20Z",
+      "side": 1,
+      "message": "I\u0027m still siding against this.  It\u0027s just so much boilerplate, and the if execute_in_subcontext_ conditional is always there.  Essentially the only thing that we gain is the removal of \n\nconst std::string\u0026 context \u003d subcontext ? subcontext-\u003econtext() : kInitContext;\n\nand that comes at the cost of 3 additional classes and all the boilerplate around them.  If we ever have a 3rd way to execute something (not via a subcontext socket) then it\u0027ll make sense, but for now I\u0027d rather leave it as is.",
+      "parentUuid": "ba96eb27_ac80dad7",
+      "range": {
+        "startLine": 49,
+        "startChar": 9,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "63897a63247f97063cfb55519ae6fc19eba89e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c50a564_140b2e82",
         "filename": "init/builtins.cpp",
         "patchSetId": 7
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Agreed.  I probably do need to pipe through the context here in any case, since some of the builtins such as the ones interacting with services may need the context to make the right decision.\n\nIn particular, are we going to allow vendor scripts to start/stop/etc system services?  If we won\u0027t, then I\u0027ll need to pipe the context through.",
       "parentUuid": "3c50a564_140b2e82",
+      "range": {
+        "startLine": 575,
+        "startChar": 1,
+        "endLine": 576,
+        "endChar": 39
+      },
+      "revId": "63897a63247f97063cfb55519ae6fc19eba89e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1585d128_9d087c97",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-28T23:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bc34b9c_d5322dde",
       "range": {
         "startLine": 575,
         "startChar": 1,
