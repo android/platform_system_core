@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b55201ee_af16061c",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-09-28T04:59:07Z",
+      "side": 1,
+      "message": "Yup, there are some .c users.\n\nhttps://cs.corp.google.com/search/?q\u003dfs_mgr_get_entry_for_mount_point+p:android\u0026p\u003d1\u0026type\u003dcs\n\nLet me file another issue to inform them.\nAnd use internal/external TreeHugger to see if any issue for moving to std::string.\n\n\nThe conversion for .c users should be trivial: just need to `mv *.c *.cpp` and fix build errors. When invoking this function, the c-style string will be passed to constructor of std::string.\n\nFor `class Fstab`, will do that later but not recently (busy in some GSI utility stuff). In fact I think we need a large refactoring for fs_mgr, the original code isn\u0027t easy to read/extend.",
+      "parentUuid": "f0389563_fc07c25f",
+      "range": {
+        "startLine": 800,
+        "startChar": 4,
+        "endLine": 800,
+        "endChar": 53
+      },
+      "revId": "aa90bb133343bd27f52e0c81a21dd6742fbf8c65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0df1748f_2018bd82",
         "filename": "fs_mgr/fs_mgr_fstab.cpp",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I\u0027m fine with it.  I usually don\u0027t change formatting of code until I modify it, but I\u0027m not massively opposed to it either.  And having the pointer on the wrong (right hand) side is one of my biggest nits with old code too.",
       "parentUuid": "0df1748f_2018bd82",
+      "range": {
+        "startLine": 807,
+        "startChar": 0,
+        "endLine": 811,
+        "endChar": 55
+      },
+      "revId": "aa90bb133343bd27f52e0c81a21dd6742fbf8c65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8e735f6_4296cf76",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2017-09-28T04:59:07Z",
+      "side": 1,
+      "message": "OK, let\u0027s do that when I need to change it.\n\nEither way work for me, I don\u0027t have strong preference.",
+      "parentUuid": "b6b349f8_70b3967c",
       "range": {
         "startLine": 807,
         "startChar": 0,
