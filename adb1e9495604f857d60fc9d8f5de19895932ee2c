@@ -2,6 +2,103 @@
   "comments": [
     {
       "key": {
+        "uuid": "90ebfdfd_559fe120",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-28T17:40:08Z",
+      "side": 1,
+      "message": "How deep would this recursion be if we didn\u0027t have the stack?  Do we gain anything by having the stack?  I\u0027d vote for less code + recursion instead of the stack.\n\n(Ueventd traverses /sys recursively without issue)",
+      "revId": "adb1e9495604f857d60fc9d8f5de19895932ee2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24830740_751a9ec8",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-28T17:40:08Z",
+      "side": 1,
+      "message": "Do you mean wakelocks.clear()?  This line is a no-op currently.",
+      "revId": "adb1e9495604f857d60fc9d8f5de19895932ee2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8a653eb_9ddec336",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-28T17:40:08Z",
+      "side": 1,
+      "message": "Should be formatted as \u0027Dir\u0027 or if that name\u0027s taken something similar.",
+      "range": {
+        "startLine": 500,
+        "startChar": 10,
+        "endLine": 500,
+        "endChar": 15
+      },
+      "revId": "adb1e9495604f857d60fc9d8f5de19895932ee2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f86b91ae_cae81836",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-28T17:40:08Z",
+      "side": 1,
+      "message": "There\u0027s no benefit that I see in storing this in a pair vs having two separate members here.",
+      "revId": "adb1e9495604f857d60fc9d8f5de19895932ee2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c096dcf_6caf90a4",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-28T17:40:08Z",
+      "side": 1,
+      "message": "You don\u0027t actually need the rvalue reference, since you\u0027re not moving it.  But if you do get rid of the pair, then you can use the rvalue reference fully:\n\nDir(std::string\u0026\u0026 name) : name_(std::move(name)), dir_(std::unique_ptr\u003cDIR, int (*)(DIR*)\u003e(opendir(name_.c_str()), closedir))\n\nNote the name_ before .c_str() instead of name; it\u0027s important.\n\nThere\u0027s also an idiom of pass by value then move: https://clang.llvm.org/extra/clang-tidy/checks/modernize-pass-by-value.html that could be used here.  I use it occasionally in other parts of init.",
+      "range": {
+        "startLine": 504,
+        "startChar": 13,
+        "endLine": 504,
+        "endChar": 31
+      },
+      "revId": "adb1e9495604f857d60fc9d8f5de19895932ee2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "411d3ec0_f8662023",
         "filename": "init/reboot.cpp",
         "patchSetId": 2
@@ -18,6 +115,29 @@
         "startChar": 29,
         "endLine": 511,
         "endChar": 30
+      },
+      "revId": "adb1e9495604f857d60fc9d8f5de19895932ee2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2932a99_79f856f7",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-09-28T17:40:08Z",
+      "side": 1,
+      "message": "!dir.empty()",
+      "range": {
+        "startLine": 515,
+        "startChar": 11,
+        "endLine": 515,
+        "endChar": 21
       },
       "revId": "adb1e9495604f857d60fc9d8f5de19895932ee2c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
