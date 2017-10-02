@@ -22,6 +22,30 @@
       "revId": "7685854636ca2d4665d89541a2ec37bee48b2f35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0de48a26_05e87b1a",
+        "filename": "libutils/RefBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-10-02T19:51:00Z",
+      "side": 1,
+      "message": "\u003e Is it possible to include the analyzer message someplace, e.g. in the commit message?\n\nWell, the analyzer message in this case isn\u0027t all that helpful. I\u0027ll add it to the commit message and send you an email with more info. :)\n\n\u003e The analyzer is inferring from a relaxed atomic load that the object is concurrently modifiable? Given that the current language standard has no other mechanism for non-atomic access to atomics, that seems like a really dubious assumption.\n\nYeah... the static analyzer seems to basically treat all atomic ops as black boxes at the moment. My hope was that this issue would go away when the linked bug got fixed, since that would require having some model for atomic operations. Happy to file a second issue specifically for this case if you\u0027d like.",
+      "parentUuid": "ecced8c6_8da3f6f4",
+      "range": {
+        "startLine": 446,
+        "startChar": 4,
+        "endLine": 449,
+        "endChar": 80
+      },
+      "revId": "7685854636ca2d4665d89541a2ec37bee48b2f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
