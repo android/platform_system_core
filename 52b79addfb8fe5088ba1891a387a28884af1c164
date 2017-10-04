@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f9ea485d_da6c252a",
+        "filename": "libsysutils/include/sysutils/NetlinkEvent.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-10-04T16:12:02Z",
+      "side": 1,
+      "message": "Moved to the C++ file and",
+      "parentUuid": "83b8dde2_dae70c62",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 81
+      },
+      "revId": "52b79addfb8fe5088ba1891a387a28884af1c164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5cf90950_b6fecb70",
         "filename": "libsysutils/src/NetlinkEvent.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-03T16:47:43Z",
       "side": 1,
       "message": "Could the code be refactored to avoid the overflow in the first place? E.g. check the below before assigning NLA_START.\n\n  UINT_MAX - NLMSG_ALIGN(hdrlen) \u003c NLMSG_HDRLEN",
+      "range": {
+        "startLine": 650,
+        "startChar": 25,
+        "endLine": 650,
+        "endChar": 49
+      },
+      "revId": "52b79addfb8fe5088ba1891a387a28884af1c164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5327c950_b46b09b5",
+        "filename": "libsysutils/src/NetlinkEvent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-10-04T16:12:02Z",
+      "side": 1,
+      "message": "As written, that has an underflow because hdrlen is size_t (which can be 64 bits) and UINT_MAX is 32 bits.\n\nHow about this instead? I think there\u0027s no overflow, because SSIZE_MAX will be promoted to either a 32-bit unsigned or a 64-bit unsigned integer, but I\u0027m not sure. I also don\u0027t know what NLMSG_ALIGN will behave with respect to integer overflow. Do you?",
+      "parentUuid": "5cf90950_b6fecb70",
       "range": {
         "startLine": 650,
         "startChar": 25,
