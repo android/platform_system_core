@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e07b5fa_32a1a3ad",
+        "filename": "libunwindstack/tests/RegsTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-10-11T02:30:42Z",
+      "side": 1,
+      "message": "I think this would be better as a new test file and done with a template instead of macros.\n\nThe test would do something like:\n\nTEST_F(RegsIterateTest, arm_test) {\n  std::unordered_map\u003cstd::string, uint64_t\u003e names{\n    { \"r0\", ARM_REG_R0 },\n  };\n\n  RegsTest\u003cRegsArm\u003e(names);\n}\n\nAll of the magic would be in RegsTest, and the code could be shared without prologue and epilogue code.",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 1
+      },
+      "revId": "a22f708eb3028ba20bae0f2af8c4a1326f641d8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
