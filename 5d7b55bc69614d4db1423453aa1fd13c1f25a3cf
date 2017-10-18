@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85bbbcdc_70474c11",
+        "filename": "init/subcontext.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-10-18T22:05:10Z",
+      "side": 1,
+      "message": "I\u0027ve been doing copy-then-move recently, a la https://stackoverflow.com/questions/16724657/why-do-we-copy-then-move.\n\nBut I could go full out forwarding references everywhere and save 1 move constructor call per variable!\n\ntemplate \u003ctypename T, typename U\u003e\n    Subcontext(T\u0026\u0026 path_prefix, U\u0026\u0026 context)\n        : path_prefix_(std::forward\u003cT\u003e(path_prefix)), context_(std::forward\u003cU\u003e(context)) {\n\nSince obviously ~24 bytes of copying matters.",
+      "revId": "5d7b55bc69614d4db1423453aa1fd13c1f25a3cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
