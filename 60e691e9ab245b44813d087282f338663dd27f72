@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e987f26_4185f165",
+        "filename": "init/init.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-10-18T21:30:21Z",
+      "side": 1,
+      "message": "Can you add spaces between the functions and structs below?  I\u0027m surprised clang-format doesn\u0027t complain here.",
+      "revId": "60e691e9ab245b44813d087282f338663dd27f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be33e62a_771894dd",
+        "filename": "init/service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-10-18T21:30:21Z",
+      "side": 1,
+      "message": "In general, init puts its arguments in \u0027 \u0027 for error messages, so\n\nreturn Error() \u003c\u003c \"Invalid fully-qualified name for interface \u0027\" \u003c\u003c interface_name \u003c\u003c \"\u0027\";\n\nreturn Error() \u003c\u003c \"Interface name \u0027\" \u003c\u003c interface_name \u003c\u003c \"\u0027 not fully-qualified\";\n\netc.\n\nThe : typically introduces a new level of error message.",
+      "revId": "60e691e9ab245b44813d087282f338663dd27f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "503a3867_06fa114b",
+        "filename": "init/service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-10-18T21:30:21Z",
+      "side": 1,
+      "message": "Why not just \n\nif (svc-\u003einterfaces().count(fullname) \u003d\u003d 1) {\n    return Error() ...\n}\n\nThe continue isn\u0027t needed.",
+      "range": {
+        "startLine": 442,
+        "startChar": 8,
+        "endLine": 447,
+        "endChar": 71
+      },
+      "revId": "60e691e9ab245b44813d087282f338663dd27f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
