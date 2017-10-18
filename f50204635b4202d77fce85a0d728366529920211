@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b8b6f50_8f2c6642",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-18T17:49:51Z",
+      "side": 1,
+      "message": "Thus turns into reboot,by_key in system boot reason. Maybe add that as well so that the enum landed for system boot reason is also known.",
+      "range": {
+        "startLine": 216,
+        "startChar": 4,
+        "endLine": 216,
+        "endChar": 26
+      },
+      "revId": "f50204635b4202d77fce85a0d728366529920211",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d011a69b_ad312291",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-18T17:49:51Z",
+      "side": 1,
+      "message": "What does this one mean? WAG?\n\nTurns into reboot,wdt_by_pass_pwk in canonical system reboot reason. Which seems wrong since it feels like it is making references to a Watch Dog Timer (wdt?) which could be \"watchdog,by_pass_pwk\"?\n\nDo we need heuristics to check for wdt (as we do for wdog).\n\nBTW, the heuristic discussion is for added value, a form of \u0027love\u0027 that is part of the growth of this list, and certainly not indicating any support for this madness. I am happy as \u003cbleep\u003e to leave this alone until the partners produce meaningful and parse-able boot reasons that meet the new CDD.",
+      "range": {
+        "startLine": 217,
+        "startChar": 3,
+        "endLine": 217,
+        "endChar": 28
+      },
+      "revId": "f50204635b4202d77fce85a0d728366529920211",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78b2434f_45f2e18b",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-18T17:49:51Z",
+      "side": 1,
+      "message": "Thus turns into reboot,longkey in system boot reason. So add that as well to cover that side effect?",
+      "range": {
+        "startLine": 218,
+        "startChar": 4,
+        "endLine": 218,
+        "endChar": 27
+      },
+      "revId": "f50204635b4202d77fce85a0d728366529920211",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02768f41_666676e4",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-18T17:49:51Z",
+      "side": 1,
+      "message": "do we want to be case sensitive in this list?",
+      "range": {
+        "startLine": 219,
+        "startChar": 6,
+        "endLine": 219,
+        "endChar": 14
+      },
+      "revId": "f50204635b4202d77fce85a0d728366529920211",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "944183b0_f7489c4a",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-18T17:49:51Z",
+      "side": 1,
+      "message": "This one wipes out anything with wdog in the content changing it into a solitary \"watchdog\". We are thinking of adding wdt as well\n\n{\"watchdog\", \"wdt\"},",
+      "range": {
+        "startLine": 397,
+        "startChar": 8,
+        "endLine": 397,
+        "endChar": 29
+      },
+      "revId": "f50204635b4202d77fce85a0d728366529920211",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01745e7e_e99901ae",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-18T17:49:51Z",
+      "side": 1,
+      "message": "Plus:\n\n{\"cold,powerkey\", \"power_key\"},\n{\"cold,powerkey\", \"power_on\"}, // covers power_on and power_on_key",
+      "range": {
+        "startLine": 398,
+        "startChar": 8,
+        "endLine": 398,
+        "endChar": 38
+      },
+      "revId": "f50204635b4202d77fce85a0d728366529920211",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
