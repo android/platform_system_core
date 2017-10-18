@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13c2fa3e_c1c6d6b0",
+        "filename": "logcat/logcat_system.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-18T23:42:39Z",
+      "side": 1,
+      "message": "this leaks the dup\u0027d fd, should dup succeed, and fdopen fail.\n\nint output_fd \u003d dup(fd);\nif (output_fd \u003c 0) {\n    android_logcat_destroy()\n    return NULL;\n}\nFILE* retval \u003d fdopen(output_fd), \"reb\");\nif (!retval) {\n    close(output_fd);\n    android_logcat_destroy(ctx);\n}\nreturn retval;",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 45
+      },
+      "revId": "e3307c6b0253b2b7ae4a42e7dfa7125b4bc670f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33e5b606_5717a870",
+        "filename": "logcat/logcat_system.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-18T23:42:39Z",
+      "side": 1,
+      "message": "or remove _single_ reference at the last second?\n\nif (output) {\n    if (ctx-\u003efds[0] \u003d\u003d fileno(output)) {\n        ctx-\u003efds[0] \u003d -1; /* output owns fd */\n    }\n    fclose(output);\n}\n\nthe problem is that ctx is opaque here :-( so this is wishful thinking :-( ...",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 31
+      },
+      "revId": "e3307c6b0253b2b7ae4a42e7dfa7125b4bc670f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
