@@ -116,6 +116,30 @@
       "revId": "60e691e9ab245b44813d087282f338663dd27f72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff5a0001_63a41b87",
+        "filename": "init/service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-10-19T16:24:40Z",
+      "side": 1,
+      "message": "Interesting.  This just looks backwards to me.  I like my blocks to end with successes and return early if they encounter an error, so seeing return Error() at the end of a for loop block is out of place to me.  To me it\u0027s \n\nfor (...) {\n  if (bad) break/return;\n  do_good_thing;\n}\n\nwhere do_good_thing here is just skip to the next one, hence nothing.",
+      "parentUuid": "f9bca847_8e894d63",
+      "range": {
+        "startLine": 442,
+        "startChar": 8,
+        "endLine": 447,
+        "endChar": 71
+      },
+      "revId": "60e691e9ab245b44813d087282f338663dd27f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
