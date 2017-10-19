@@ -46,6 +46,30 @@
       "revId": "4ff2607ef719bade2b45538878136a7d71621882",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "258c8b21_54c8af1e",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1837,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-19T15:02:56Z",
+      "side": 0,
+      "message": "I just need to remember and collect my thoughts about this fragment. There is history here.\n\nThis whole block is a can-not-happen (as close_output and close_error separately, or combined manage close of context-\u003efds[1]) and as a minimum the vague comment to that effect is now lost.\n\nThis fragment used to house a log message to report leakage, the errno was saved because ALOG calls damage the errno. When the code was declared bug free, the log message was dropped as noise, but I did not have the heart to remove the insurance aspects of this passage, and left the errno saving in.\n\nThere is now balance in this (insurance) with your change, looking like 1828-1830, but the fact it is a can-not-happen is no longer obvious, and I think it needs to be.\n\nPlease add a comment above line 1832:\n\n// NB: should be marked closed by close_output and close_error",
+      "parentUuid": "cebe06e0_6e802d74",
+      "range": {
+        "startLine": 1837,
+        "startChar": 0,
+        "endLine": 1837,
+        "endChar": 31
+      },
+      "revId": "4ff2607ef719bade2b45538878136a7d71621882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
