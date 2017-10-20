@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e1a7a43_435e7dcd",
+        "filename": "libunwindstack/Memory.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-10-20T20:21:03Z",
+      "side": 1,
+      "message": "I think this function is unnecessary. The two places where this is used are made much more difficult to figure out what\u0027s going on. I think it\u0027s better to leave them as is.",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 33
+      },
+      "revId": "f41f7b7fccb17172c9752f064a6696b5220637bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c035284_dc63930c",
+        "filename": "libunwindstack/Memory.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-10-20T20:21:03Z",
+      "side": 1,
+      "message": "This algorithm has a fatal flaw. If there is an unreadable page or pages somewhere between the start and end, this will return data from the other readable pages as if there were no holes. It really should stop at the first unreadable map.\n\nAlso, it should be very rare to read across memory maps, so I think you should optimize for that  case, rather than do it this way.",
+      "range": {
+        "startLine": 49,
+        "startChar": 14,
+        "endLine": 49,
+        "endChar": 27
+      },
+      "revId": "f41f7b7fccb17172c9752f064a6696b5220637bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c5caf68_ff9799a7",
+        "filename": "libunwindstack/Memory.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-10-20T20:21:03Z",
+      "side": 1,
+      "message": "You should add a comment about why you are doing this.",
+      "range": {
+        "startLine": 187,
+        "startChar": 2,
+        "endLine": 187,
+        "endChar": 25
+      },
+      "revId": "f41f7b7fccb17172c9752f064a6696b5220637bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
