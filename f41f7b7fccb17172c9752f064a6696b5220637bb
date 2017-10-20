@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5af8b3db_4d597887",
+        "filename": "libunwindstack/Memory.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-10-20T21:30:38Z",
+      "side": 1,
+      "message": "Inlined.",
+      "parentUuid": "9e1a7a43_435e7dcd",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 33
+      },
+      "revId": "f41f7b7fccb17172c9752f064a6696b5220637bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c035284_dc63930c",
         "filename": "libunwindstack/Memory.cpp",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "94d71583_2abb028d",
+        "filename": "libunwindstack/Memory.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-10-20T21:30:38Z",
+      "side": 1,
+      "message": "\u003e It really should stop at the first unreadable map.\n\nThat\u0027s what readv does. Added tests to prove that this is the behavior.\n\n\u003e Also, it should be very rare to read across memory maps, so I think you should optimize for that case, rather than do it this way.\n\nYou need to create an iovec array to use process_vm_readv anyway, so this doesn\u0027t really incur any additional cost (a handful of arithmetic instructions, which should count for zero compared to the cost of a syscall).",
+      "parentUuid": "8c035284_dc63930c",
+      "range": {
+        "startLine": 49,
+        "startChar": 14,
+        "endLine": 49,
+        "endChar": 27
+      },
+      "revId": "f41f7b7fccb17172c9752f064a6696b5220637bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c5caf68_ff9799a7",
         "filename": "libunwindstack/Memory.cpp",
         "patchSetId": 10
@@ -68,6 +116,30 @@
       "revId": "f41f7b7fccb17172c9752f064a6696b5220637bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4b1f25d_a32e41b3",
+        "filename": "libunwindstack/Memory.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-10-20T21:30:38Z",
+      "side": 1,
+      "message": "Deleted the check here and moved it into ProcessVmRead, along with a comment.",
+      "parentUuid": "2c5caf68_ff9799a7",
+      "range": {
+        "startLine": 187,
+        "startChar": 2,
+        "endLine": 187,
+        "endChar": 25
+      },
+      "revId": "f41f7b7fccb17172c9752f064a6696b5220637bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
