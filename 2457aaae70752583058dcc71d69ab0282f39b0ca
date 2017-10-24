@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "a4df8da5_4032f411",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-24T14:40:24Z",
+      "side": 1,
+      "message": "this is why we work, the following is _bs_.",
+      "range": {
+        "startLine": 367,
+        "startChar": 11,
+        "endLine": 367,
+        "endChar": 39
+      },
+      "revId": "2457aaae70752583058dcc71d69ab0282f39b0ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf0f8060_ed64cec5",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-24T14:40:24Z",
+      "side": 1,
+      "message": "wth?",
+      "range": {
+        "startLine": 372,
+        "startChar": 8,
+        "endLine": 372,
+        "endChar": 29
+      },
+      "revId": "2457aaae70752583058dcc71d69ab0282f39b0ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8d97ae6_39480f1a",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-24T14:40:24Z",
+      "side": 1,
+      "message": "missing \u0027+ pos\u0027 how did that disappear (was in there in my initial prototype, but never made it to the initial upload).",
+      "range": {
+        "startLine": 375,
+        "startChar": 40,
+        "endLine": 375,
+        "endChar": 41
+      },
+      "revId": "2457aaae70752583058dcc71d69ab0282f39b0ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4685c19b_87008119",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-24T14:40:24Z",
+      "side": 1,
+      "message": "This should be needle, not needle.c_str() (works, but very inefficient and not the intention).",
+      "range": {
+        "startLine": 376,
+        "startChar": 31,
+        "endLine": 376,
+        "endChar": 45
+      },
+      "revId": "2457aaae70752583058dcc71d69ab0282f39b0ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fc022a3_98446aad",
         "filename": "bootstat/bootstat.cpp",
         "patchSetId": 5
@@ -13,6 +105,30 @@
       "writtenOn": "2017-10-24T00:14:49Z",
       "side": 1,
       "message": "numError takes const char * param (and recasts that to a const uint8_t *).  Suggest document what happens to l and r params during that function -- what is l left pointing to?",
+      "range": {
+        "startLine": 378,
+        "startChar": 30,
+        "endLine": 378,
+        "endChar": 34
+      },
+      "revId": "2457aaae70752583058dcc71d69ab0282f39b0ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "daa3197c_1cbc279a",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-24T14:40:24Z",
+      "side": 1,
+      "message": "I do not know why l matters? I assume you want me to document that numError searches from the end and checks backwards? We chat that up in the comment before numError.\n\nl is untouched in numError, and of course p is untouched as it is isolated by the function call (l is an internal parameter). However for cases where ret !\u003d std::string:npos, l, le and p all point to the same place; else l and p point to the same place and le points to the location that last violates the ber rate.",
+      "parentUuid": "5fc022a3_98446aad",
       "range": {
         "startLine": 378,
         "startChar": 30,
