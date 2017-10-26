@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "e197a873_5e1b162c",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2017-10-26T20:42:44Z",
+      "side": 1,
+      "message": "pos \u003c len [?]\n\nSimilar to comment first noted at line 415, comparing zero-relative and one-relative value, pos should never validly be \u003d\u003d len?",
+      "range": {
+        "startLine": 402,
+        "startChar": 29,
+        "endLine": 402,
+        "endChar": 39
+      },
+      "revId": "8171ea9d6b67786d86106b15b566fd9a0029873a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25430f1c_719ee1b2",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2017-10-26T20:42:44Z",
+      "side": 1,
+      "message": "pos \u003c len [?]\n\nIIUC zero-relative pos must subtract one from length values to be converted from or compared against one-relative length values.\n\nIn practice here it\u0027s unlikely to make a difference unless needle length is 1.",
+      "range": {
+        "startLine": 415,
+        "startChar": 27,
+        "endLine": 415,
+        "endChar": 29
+      },
+      "revId": "8171ea9d6b67786d86106b15b566fd9a0029873a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a2223ab_c69724cc",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2017-10-26T20:42:44Z",
+      "side": 1,
+      "message": "would be better to explain what a true/false return from this function really means, or what the callers (sometimes) do with the result",
+      "range": {
+        "startLine": 419,
+        "startChar": 19,
+        "endLine": 419,
+        "endChar": 32
+      },
+      "revId": "8171ea9d6b67786d86106b15b566fd9a0029873a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3429b2f3_401314e6",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2017-10-26T20:42:44Z",
+      "side": 1,
+      "message": "nit: if you don\u0027t mind deviating from the find/rfind function signatures, they could return the number of errors and this could be a check against zero errors.",
+      "range": {
+        "startLine": 420,
+        "startChar": 4,
+        "endLine": 420,
+        "endChar": 64
+      },
+      "revId": "8171ea9d6b67786d86106b15b566fd9a0029873a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b998d095_de6e8587",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2017-10-26T20:42:44Z",
+      "side": 1,
+      "message": "even nittier: could be a !\u003d expression and make lines 422-423 the \"then\" clause.",
+      "range": {
+        "startLine": 420,
+        "startChar": 15,
+        "endLine": 420,
+        "endChar": 18
+      },
+      "revId": "8171ea9d6b67786d86106b15b566fd9a0029873a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d6d804e_8f541b58",
         "filename": "bootstat/bootstat.cpp",
         "patchSetId": 7
