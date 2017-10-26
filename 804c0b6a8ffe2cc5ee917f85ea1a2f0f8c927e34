@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "6b254289_0f42be37",
+        "filename": "bootstat/boot_reason_test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-26T14:51:32Z",
+      "side": 1,
+      "message": "here we carefully add error into save_ret.",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 17
+      },
+      "revId": "804c0b6a8ffe2cc5ee917f85ea1a2f0f8c927e34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb50c25f_ff513a59",
+        "filename": "bootstat/boot_reason_test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-26T14:51:32Z",
+      "side": 1,
+      "message": "and EXPECT_PROPERTY restores the error code, perhaps modified to or in another error.",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 20
+      },
+      "revId": "804c0b6a8ffe2cc5ee917f85ea1a2f0f8c927e34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a10bae40_13ccbd46",
+        "filename": "bootstat/boot_reason_test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-26T14:51:32Z",
+      "side": 1,
+      "message": "and report_bootstat_logs restores the error code.",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 20
+      },
+      "revId": "804c0b6a8ffe2cc5ee917f85ea1a2f0f8c927e34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6c9d8d6_d09c1191",
+        "filename": "bootstat/boot_reason_test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-26T14:51:32Z",
+      "side": 1,
+      "message": "This was in the original implementation of test_Its_Just_So_Hard_reboot, so this test frame never worked because command sets ${?} error code.",
+      "range": {
+        "startLine": 882,
+        "startChar": 0,
+        "endLine": 882,
+        "endChar": 75
+      },
+      "revId": "804c0b6a8ffe2cc5ee917f85ea1a2f0f8c927e34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db1d08d0_2d46a50f",
+        "filename": "bootstat/boot_reason_test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-26T14:51:32Z",
+      "side": 1,
+      "message": "This was added later in 2450cb1a30 compounding the problem.\n\nBut it also is a hack IMHO because we allow an illegal value to remain in persist.sys.boot.reason after test completion on \"user\" builds. We could mitigate it with a (more costly, but worth it) reboot with a legal value and wait, on \"user\" builds.",
+      "range": {
+        "startLine": 883,
+        "startChar": 0,
+        "endLine": 887,
+        "endChar": 4
+      },
+      "revId": "804c0b6a8ffe2cc5ee917f85ea1a2f0f8c927e34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17d3dd23_1ae414fd",
         "filename": "bootstat/boot_reason_test.sh",
         "patchSetId": 1
@@ -13,6 +128,30 @@
       "writtenOn": "2017-10-25T23:09:51Z",
       "side": 1,
       "message": "I don\u0027t understand, why the placement here, in a subshell, prior to lines 889-890?",
+      "range": {
+        "startLine": 888,
+        "startChar": 2,
+        "endLine": 888,
+        "endChar": 35
+      },
+      "revId": "804c0b6a8ffe2cc5ee917f85ea1a2f0f8c927e34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8f150d4_f24b8801",
+        "filename": "bootstat/boot_reason_test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-26T14:51:32Z",
+      "side": 1,
+      "message": "EXPECT_PROPERTY and report_bootstat_logs both preserve the error code $(?) coming in, and only add in their error code if they have one. The _problem_ is the fragment from 881 to 888 _erased_ the error code (from 879 or 880).\n\nThe portable way of placing a variable into ${?} is to use a subshell and pass the argument to exit; or to use a function and pass the value to return.",
+      "parentUuid": "17d3dd23_1ae414fd",
       "range": {
         "startLine": 888,
         "startChar": 2,
