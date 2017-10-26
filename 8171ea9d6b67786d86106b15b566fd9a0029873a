@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d6d804e_8f541b58",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-26T20:35:29Z",
+      "side": 1,
+      "message": "nit:\n\noutside scope of this CL perhaps.\n\nDifficult to debug when in combination with boot_reason_test.sh without adding instrumentation, and the instrumentation would be considered verbose as it effectively stutters with finalized information. bugreport contains enough information to weed through issues though, or we can suggest that unit tests report /sys/fs/pstore/console-ramoops* content (1MB of data(!)). My preference is to add an persistent android property that turns on debugging while the test runs and add detection here to provide logs with context.\n\nsetprop persist.log.tag.bootstat testing\n\n(testing does not block bootstat log tags from being reported, and the string could be used to turn on the deeper and verbose logging)",
+      "range": {
+        "startLine": 571,
+        "startChar": 0,
+        "endLine": 589,
+        "endChar": 9
+      },
+      "revId": "8171ea9d6b67786d86106b15b566fd9a0029873a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
