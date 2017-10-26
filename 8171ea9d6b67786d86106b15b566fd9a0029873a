@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "329d06d9_05eb1991",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-26T21:05:12Z",
+      "side": 1,
+      "message": "see below.\n\nlen should be renamed last_pos for value clarity.",
+      "parentUuid": "e197a873_5e1b162c",
+      "range": {
+        "startLine": 402,
+        "startChar": 29,
+        "endLine": 402,
+        "endChar": 39
+      },
+      "revId": "8171ea9d6b67786d86106b15b566fd9a0029873a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25430f1c_719ee1b2",
         "filename": "bootstat/bootstat.cpp",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "56cb23a9_c81516ac",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-26T21:05:12Z",
+      "side": 1,
+      "message": "len \u003d length of reason minus length of needle, which is the same as (reason.length - 1) - (needle.length - 1). So len is the _wrong_ name for this field.\n\nlast_pos might a more apropos name with regards to clarity of purpose.",
+      "parentUuid": "25430f1c_719ee1b2",
+      "range": {
+        "startLine": 415,
+        "startChar": 27,
+        "endLine": 415,
+        "endChar": 29
+      },
+      "revId": "8171ea9d6b67786d86106b15b566fd9a0029873a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a2223ab_c69724cc",
         "filename": "bootstat/bootstat.cpp",
         "patchSetId": 7
@@ -59,6 +107,30 @@
       "writtenOn": "2017-10-26T20:42:44Z",
       "side": 1,
       "message": "would be better to explain what a true/false return from this function really means, or what the callers (sometimes) do with the result",
+      "range": {
+        "startLine": 419,
+        "startChar": 19,
+        "endLine": 419,
+        "endChar": 32
+      },
+      "revId": "8171ea9d6b67786d86106b15b566fd9a0029873a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e6a2101_7a1ac2dc",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-26T21:05:12Z",
+      "side": 1,
+      "message": "Yes\n\nfor above command comment above \"returns true if a correction was discovered and applied\"",
+      "parentUuid": "0a2223ab_c69724cc",
       "range": {
         "startLine": 419,
         "startChar": 19,
@@ -110,6 +182,54 @@
         "startChar": 15,
         "endLine": 420,
         "endChar": 18
+      },
+      "revId": "8171ea9d6b67786d86106b15b566fd9a0029873a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af14562d_318a596e",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-26T21:05:12Z",
+      "side": 1,
+      "message": "I prefer if (!cond) continue or if (!cond) break instead of incurring an indent and wrap with\n\nif (cond) {\n    // stuff that is 3 characters short of 100\n    //  . . .\n}",
+      "parentUuid": "b998d095_de6e8587",
+      "range": {
+        "startLine": 420,
+        "startChar": 15,
+        "endLine": 420,
+        "endChar": 18
+      },
+      "revId": "8171ea9d6b67786d86106b15b566fd9a0029873a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bf00522_d9243c1f",
+        "filename": "bootstat/bootstat.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-10-26T21:05:12Z",
+      "side": 1,
+      "message": "Given that find and rfind are in-spirit only, I do not mind adding the numError response or \u0027score\u0027; but it would make the methods more complicated:\n\n    if (numError(pos, needle) !\u003d std::string::npos) return pos;\n\nbecomes something like:\n\nsize_t find(const std::string\u0026 needle, size_t start, size_t *return_score) {\n. . .\n    size_t score \u003d numError(pos, needle);\n    if (score !\u003d std::string::npos) {\n        if (return_score) {\n            return_score \u003d score;\n        }\n        return pos;\n    }\n\nand here we would do\n\n    if (return_score \u003d\u003d 0) continue;\n\nIt feels clear and maintainable to check for exact string match here as is; because someone will wonder what does _score_ mean?\n\nI am not in a hurry here, I would buy your proposal if the needle I was providing was 1MB in size though ... fortunately the maximum length of needle is \u003c 60 characters.",
+      "parentUuid": "3429b2f3_401314e6",
+      "range": {
+        "startLine": 420,
+        "startChar": 4,
+        "endLine": 420,
+        "endChar": 64
       },
       "revId": "8171ea9d6b67786d86106b15b566fd9a0029873a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
