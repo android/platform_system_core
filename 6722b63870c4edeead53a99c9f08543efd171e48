@@ -22,6 +22,53 @@
       "revId": "6722b63870c4edeead53a99c9f08543efd171e48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b3a44e4_8c188cee",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1138338
+      },
+      "writtenOn": "2017-10-31T20:44:22Z",
+      "side": 1,
+      "message": "you way want to move std::string hw here now",
+      "parentUuid": "bad39d77_44ec7f29",
+      "range": {
+        "startLine": 716,
+        "startChar": 13,
+        "endLine": 716,
+        "endChar": 29
+      },
+      "revId": "6722b63870c4edeead53a99c9f08543efd171e48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "783a5117_13bf112a",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1138338
+      },
+      "writtenOn": "2017-10-31T20:44:22Z",
+      "side": 1,
+      "message": "if you want to avoid the second break you can use something like this:\n\n[\u0026default_fstab] {\n  for (const char *prop : {\"hardware\", \"hardware.platform\"}) {\n    ...\n    for (const char *prefix : {\"/odm/etc/fstab.\",\"/vendor/etc/fstab.\", \"/fstab.\"}) {\n      ...\n      if (access(check_fstab.c_str(), F_OK) \u003d\u003d 0) {\n         default_fstab \u003d check_fstab;\n         return;\n       }\n     }\n   }\n}();\n\nthat in my option looks better but it is up to you.",
+      "range": {
+        "startLine": 728,
+        "startChar": 12,
+        "endLine": 728,
+        "endChar": 46
+      },
+      "revId": "6722b63870c4edeead53a99c9f08543efd171e48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
