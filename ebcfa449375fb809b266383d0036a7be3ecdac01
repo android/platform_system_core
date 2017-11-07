@@ -22,6 +22,30 @@
       "revId": "ebcfa449375fb809b266383d0036a7be3ecdac01",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6dc50b13_bd8038df",
+        "filename": "adb/transport_usb.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-11-07T23:36:21Z",
+      "side": 0,
+      "message": "Sorry, should have marked this DO NOT SUBMIT. This check was failing for siyamed (b/65063965, comment 9), but I think this patch results in potentially incorrect behavior. AFAICT, OS X is reporting a non-power-of-two burst * the 1024 byte packet size. We actually want to read a multiple of 1024, though, or else we could end up hanging (e.g. if we want to read 1024 bytes, this could try to read a multiple of 1024 and wait for a packet that\u0027s never coming). I think the correct solution is to make usb_get_max_packet_size give the actual max packet size, but I can\u0027t seem to find an API to get the actual endpoint descriptor...",
+      "parentUuid": "ebc51042_4331d09a",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 12
+      },
+      "revId": "ebcfa449375fb809b266383d0036a7be3ecdac01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
