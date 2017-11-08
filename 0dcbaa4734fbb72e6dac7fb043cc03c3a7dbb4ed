@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "cea7fdc7_716f64d1",
+        "filename": "libcutils/include/cutils/qtaguid.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-11-08T17:38:04Z",
+      "side": 1,
+      "message": "not needed?",
+      "revId": "0dcbaa4734fbb72e6dac7fb043cc03c3a7dbb4ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dc19c92_cc0db90d",
+        "filename": "libcutils/qtaguid.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-11-08T17:38:04Z",
+      "side": 1,
+      "message": "weird copyright header.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 2
+      },
+      "revId": "0dcbaa4734fbb72e6dac7fb043cc03c3a7dbb4ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87420548_1140376c",
         "filename": "libcutils/qtaguid.c",
         "patchSetId": 6
@@ -25,6 +65,47 @@
     },
     {
       "key": {
+        "uuid": "47ee8fe5_a8d08c30",
+        "filename": "libcutils/qtaguid.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-11-08T17:38:04Z",
+      "side": 1,
+      "message": "yeah, these should be static. though like lorenzo says, you should probably just switch to C++ and let the compiler handle the thread-safe initialization for you.",
+      "parentUuid": "87420548_1140376c",
+      "range": {
+        "startLine": 41,
+        "startChar": 15,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "0dcbaa4734fbb72e6dac7fb043cc03c3a7dbb4ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59d5ddac_1513b2b7",
+        "filename": "libcutils/qtaguid.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-11-08T17:38:04Z",
+      "side": 1,
+      "message": "dlerror is relatively expensive. just compare the dlsym result against null instead, and only use dlerror if logging?",
+      "revId": "0dcbaa4734fbb72e6dac7fb043cc03c3a7dbb4ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ccbd487_7a97be99",
         "filename": "libcutils/qtaguid.c",
         "patchSetId": 6
@@ -42,6 +123,23 @@
         "endLine": 61,
         "endChar": 54
       },
+      "revId": "0dcbaa4734fbb72e6dac7fb043cc03c3a7dbb4ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a24cdc1_4ca91d81",
+        "filename": "libcutils/qtaguid.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-11-08T17:38:04Z",
+      "side": 1,
+      "message": "leak\n\nswitch to C++ and use unique_fd.",
       "revId": "0dcbaa4734fbb72e6dac7fb043cc03c3a7dbb4ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
