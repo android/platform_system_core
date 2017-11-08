@@ -519,6 +519,30 @@
     },
     {
       "key": {
+        "uuid": "0498ba76_91d6ff37",
+        "filename": "libcutils/qtaguid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-11-08T15:29:57Z",
+      "side": 1,
+      "message": "You\u0027re right, I don\u0027t think there was a race.\n\nI was concerned about was two threads calling qtaguid_tagSocket at the same time. They could race like so:\n\n        CPU 0                CPU 1\n if (!netdTagSocket)\n                      if (!netdTagSocket)\n \n pthread_once(...)    pthread_once(...)\n\nSo we\u0027d call pthread_once twice. But as you say, it\u0027s safe to call pthread_once concurrently on any number of threads, so that wouldn\u0027t be a problem even if it did occur.\n\nThat said, what you have now looks nicer - the if wasn\u0027t needed.",
+      "parentUuid": "56910dfa_457fdd8a",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 24
+      },
+      "revId": "1b51c0fbe125f2d690fae17ed7972bf68489d23b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0f28f75_8b50be94",
         "filename": "libqtaguid/Android.bp",
         "patchSetId": 4
