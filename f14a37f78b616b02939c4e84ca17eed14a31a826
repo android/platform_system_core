@@ -88,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "dfd47b04_8e068a76",
+        "filename": "libcutils/qtaguid.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-11-09T23:03:24Z",
+      "side": 1,
+      "message": "yes, that\u0027s what i mean.\n\nno, it doesn\u0027t mean that. the C++ compiler adds a lock. at most one thread will run the initializer.\n\nwait, no, not inside *each* function. you\u0027d do:\n\n  static netdHandler\u0026 GetHandler() {\n    static netdHandler instance \u003d InitHandler();\n    return instance;\n  }\n\n  int qtaguid_blah() {\n    return GetHandler().blah();\n  }\n\nthe C++ compiler adds the necessary locking to GetHandler for you.",
+      "parentUuid": "976cf966_e65b2643",
+      "revId": "f14a37f78b616b02939c4e84ca17eed14a31a826",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6206c35_68c2e27d",
         "filename": "libcutils/qtaguid.cpp",
         "patchSetId": 8
