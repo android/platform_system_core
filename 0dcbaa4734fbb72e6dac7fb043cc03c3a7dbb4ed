@@ -113,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "22598262_d31ad024",
+        "filename": "libcutils/qtaguid.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-11-09T00:47:55Z",
+      "side": 1,
+      "message": "in C++ given something like\n\n  static T v \u003d init();\n\naccesses to v (including the initialization are always thread-safe). the compiler inserts the locking.\n\nso my suggestion would be to have a class that holds all the function pointers, use the above idiom to get an instance, and then all the callers can ignore the need for thread-safe initialization.",
+      "parentUuid": "0044fabb_6b0527b1",
+      "range": {
+        "startLine": 41,
+        "startChar": 15,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "0dcbaa4734fbb72e6dac7fb043cc03c3a7dbb4ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59d5ddac_1513b2b7",
         "filename": "libcutils/qtaguid.c",
         "patchSetId": 6
