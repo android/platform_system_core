@@ -70,6 +70,24 @@
       "revId": "3af9e40c66839c72c0e4f52ead0c60f20873560a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b1fc549_7cacd446",
+        "filename": "libusbhost/usbhost.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-11-10T21:49:18Z",
+      "side": 1,
+      "message": "I meant what would be the theoretical race if you were to use inotify?\n\nFor example, you could\n1. Create inotify listening to permission changes\n2. stat the device and check permissions\n3. open if permissions are ok\n4. Otherwise wait for inotify events with a timeout, if you get an event check permissions again and open the device if able",
+      "parentUuid": "c1f20e46_4b5a7c9b",
+      "revId": "3af9e40c66839c72c0e4f52ead0c60f20873560a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
