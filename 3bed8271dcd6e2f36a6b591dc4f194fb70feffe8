@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03d87cbc_28aa95a3",
+        "filename": "libcutils/qtaguid.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-11-10T01:17:09Z",
+      "side": 1,
+      "message": "It looks like if the load fails, the pointers will all be null and any code calling them will immediately segfault. Consider:\n\n   int dummyTagSocket(int, uint32_t, uid_t) { return -EREMOTEIO; }\n   int dummyUntagSocket(int) { return -EREMOTEIO; }\n...\n\nnetdHandler initHandler(void) {\n    netdHandler handler \u003d {\n        dummyTagSocket,\n        dummyUntagSocket,\n        ....\n    };",
+      "range": {
+        "startLine": 47,
+        "startChar": 26,
+        "endLine": 47,
+        "endChar": 28
+      },
+      "revId": "3bed8271dcd6e2f36a6b591dc4f194fb70feffe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "746deaac_d8ef5557",
+        "filename": "libcutils/qtaguid.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-11-10T01:17:09Z",
+      "side": 1,
+      "message": "Suggest adding:\n\n  // The language guarantees that this object will be initialized in a thread-safe way.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 6
+      },
+      "revId": "3bed8271dcd6e2f36a6b591dc4f194fb70feffe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10435fc6_6b683ab6",
+        "filename": "libcutils/qtaguid.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-11-10T01:17:09Z",
+      "side": 1,
+      "message": "Add a TODO to move this to netdTagSocket. Also - do we need this check in netdUntagSocket as well?",
+      "range": {
+        "startLine": 88,
+        "startChar": 14,
+        "endLine": 88,
+        "endChar": 15
+      },
+      "revId": "3bed8271dcd6e2f36a6b591dc4f194fb70feffe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
