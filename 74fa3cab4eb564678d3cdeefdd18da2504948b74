@@ -70,6 +70,30 @@
       "revId": "74fa3cab4eb564678d3cdeefdd18da2504948b74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2851c3df_8c78622d",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2017-11-10T07:13:23Z",
+      "side": 1,
+      "message": "hmm... I did some test in the shell and the GID sticky bit only doesn\u0027t seem to work.\n\nchmod 1750 /data/misc/update_engine_log/ \ndrwxr-x--T 2 root log 4096 2009-01-01 23:46 /data/misc/update_engine_log/\n\ntouch /data/misc/update_engine_log/test_file\nchmod 0640 /data/misc/update_engine_log/test_file\n-rw-r-----  1 root   root     0 2009-01-02 08:09 test_file\n\nsu 1007 (switch to log uid)\nls -al /data/misc/update_engine_log\ndrwxr-x--T  2 root   log   4096 2009-01-02 08:09 .\ndrwxrwx--t 52 system misc  4096 2009-01-01 03:18 ..\n-rw-r-----  1 root   root     0 2009-01-02 08:09 test_file\n\ncat /data/misc/update_engine_log/test_file\ncat: /data/misc/update_engine_log/test_file: Permission denied\n\nLooks like the sticky bit only make sense if we have 777 on file permission?",
+      "parentUuid": "9d92c83b_e39bb973",
+      "range": {
+        "startLine": 433,
+        "startChar": 39,
+        "endLine": 433,
+        "endChar": 44
+      },
+      "revId": "74fa3cab4eb564678d3cdeefdd18da2504948b74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
