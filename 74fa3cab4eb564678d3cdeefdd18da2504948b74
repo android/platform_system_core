@@ -94,6 +94,30 @@
       "revId": "74fa3cab4eb564678d3cdeefdd18da2504948b74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01752733_23f7c95c",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1246512
+      },
+      "writtenOn": "2017-11-10T15:06:35Z",
+      "side": 1,
+      "message": "I think the man page of chmod provides a more clear explanation of sticky bit (alias restricted deletion flag):\nhttp://man7.org/linux/man-pages/man1/chmod.1.html\n\n\nI have performed local testing using:\n\n  mkdir /data/misc/update_engine_log 02750 root log\n\nDirectory and log files are created as:\n\n  # ls -la /data/misc/update_engine_log/\n  total 12\n  drwxr-s---  2 root   log  4096 2017-11-10 06:28 .\n  drwxrwx--t 42 system misc 4096 1970-01-02 18:24 ..\n  -rw-r-----  1 root   log   209 2017-11-10 06:28 update_engine.log\n\n\nTest was performed with update engine not being part of log group (comment in https://android-review.googlesource.com/#/c/platform/system/update_engine/+/529081/3/update_engine.rc)",
+      "parentUuid": "2851c3df_8c78622d",
+      "range": {
+        "startLine": 433,
+        "startChar": 39,
+        "endLine": 433,
+        "endChar": 44
+      },
+      "revId": "74fa3cab4eb564678d3cdeefdd18da2504948b74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
