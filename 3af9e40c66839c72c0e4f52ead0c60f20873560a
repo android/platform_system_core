@@ -16,6 +16,24 @@
       "revId": "3af9e40c66839c72c0e4f52ead0c60f20873560a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f814106_67ff7365",
+        "filename": "libusbhost/usbhost.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1247518
+      },
+      "writtenOn": "2017-11-10T19:26:45Z",
+      "side": 1,
+      "message": "Changing the caller inotify to trigger this call only on permissions change would still leave a race in this function.  We should have correct code :)\n\nThis change doesn\u0027t change behavior, eliminates a race where a file granted +rw would still be returned as read only, and shortens the sleep interval on the USB plug-in path.",
+      "parentUuid": "5c593058_516bca1f",
+      "revId": "3af9e40c66839c72c0e4f52ead0c60f20873560a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
