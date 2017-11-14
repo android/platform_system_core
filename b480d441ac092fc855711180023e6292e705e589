@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f66bd699_b2ed37a6",
+        "filename": "init/parser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-11-14T21:59:51Z",
+      "side": 0,
+      "message": "If you\u0027re going to clean this up, data_copy and the push_back(\u0027\\0\u0027) should both move to tokenizer.cpp too, since they\u0027re needed to work around issues with next_token, and have nothing to do with parsing.\n\nYou shouldn\u0027t have init_parser() as a function either, parse_state should become \u0027class Tokenizer\u0027 with a constructor that takes a string as a parameter (aka your init_parser) and has a NextToken() function.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 24
+      },
+      "revId": "b480d441ac092fc855711180023e6292e705e589",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
