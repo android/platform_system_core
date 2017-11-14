@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d12c339_d41acbd0",
+        "filename": "libunwindstack/include/unwindstack/Memory.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-11-14T00:26:29Z",
+      "side": 1,
+      "message": "I changed the behavior of MemoryRange here. My reasoning is that begin, end makes it either impossible to represent \u0027the last page\u0027, or makes the implementation very clunky. MemoryRange never actually cares about the length, and it\u0027s trivially calculated in the one user.\n\n(Should I remove the default offset argument, so that any unsubmitted changes you have lying around are obviously broken instead of silently broken?)",
+      "range": {
+        "startLine": 122,
+        "startChar": 69,
+        "endLine": 123,
+        "endChar": 35
+      },
+      "revId": "7f3d13eb1b1362cc50bbf08ecc830cce1cb16654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
