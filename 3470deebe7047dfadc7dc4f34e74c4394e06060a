@@ -22,6 +22,30 @@
       "revId": "3470deebe7047dfadc7dc4f34e74c4394e06060a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d214e43_24c46851",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1080359
+      },
+      "writtenOn": "2017-11-27T16:19:45Z",
+      "side": 1,
+      "message": "ComputeHash is only used in zip_archive.cc to compute a hash to insert/lookup elements in a map:\nthe two functions using it are EntryToIndex and AddToHash.\nI do not know whether the hash code is used in any other place, and there is one way to know:\n\nI was thinking that all this code could be replaced by plain std::map. I will send a patch and evaluate the performance change when using std::map.",
+      "parentUuid": "d8405495_f4f8cbbb",
+      "range": {
+        "startLine": 159,
+        "startChar": 16,
+        "endLine": 159,
+        "endChar": 27
+      },
+      "revId": "3470deebe7047dfadc7dc4f34e74c4394e06060a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
