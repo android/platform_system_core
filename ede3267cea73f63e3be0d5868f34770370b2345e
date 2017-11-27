@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "413e52f8_f357350d",
+        "filename": "property_service/libpropertycontextparser/Android.bp",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-11-27T23:32:00Z",
+      "side": 1,
+      "message": "sgtm.",
+      "parentUuid": "6620c614_6e1f9c81",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 6
+      },
+      "revId": "ede3267cea73f63e3be0d5868f34770370b2345e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8596757_4c0033ed",
         "filename": "property_service/libpropertycontextserializer/trie_node_arena.h",
         "patchSetId": 10
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I picked it at random.  The actual size on bullhead is 6841, so it isn\u0027t far off.  I figure better to start with something relatively high such that it only reallocates once, otherwise, I could just start with a default initialized string and let it grow a few extra steps.",
       "parentUuid": "f8596757_4c0033ed",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "ede3267cea73f63e3be0d5868f34770370b2345e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "358392cf_a9171af4",
+        "filename": "property_service/libpropertycontextserializer/trie_node_arena.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-11-27T23:32:00Z",
+      "side": 1,
+      "message": "if you\u0027re going to try to size it, why not start with 8192 so you never resize at all? (and add a comment explaining where the number came from.)\n\ni wonder whether gopi can measure the difference between this and just letting the string resize itself...\n\ncould you make a better guess from the property service itself? it knows how many contexts there are in advance.",
+      "parentUuid": "e6aaf506_6279225d",
       "range": {
         "startLine": 28,
         "startChar": 26,
