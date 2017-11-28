@@ -16,6 +16,24 @@
       "revId": "b60d5729359d91ff1e65126f1e1da2a18c334b9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "efe30279_7a1fb7d9",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1080359
+      },
+      "writtenOn": "2017-11-28T23:06:16Z",
+      "side": 1,
+      "message": "windows\u0027 x86_64-w64-mingw32-g++ does not support string_view: it errors out.\n\nthe results with string_view are better and get close to what we get with the patch in https://android-review.googlesource.com/404742\n\n-----------------------------------------------------------------\nBenchmark                          Time           CPU Iterations\n-----------------------------------------------------------------\nFindEntry_no_match          55339872 ns   55195112 ns         13\nFindEntry_no_match          56232628 ns   56069924 ns         13\nFindEntry_no_match          55694103 ns   55255946 ns         13\nFindEntry_no_match          55275064 ns   55120136 ns         13\nFindEntry_no_match          54971987 ns   54944411 ns         13\nFindEntry_no_match_mean     55502731 ns   55317106 ns         13\nFindEntry_no_match_stddev     482032 ns     436766 ns          0\nIterate_all_files          114618611 ns  114487804 ns          6\nIterate_all_files          112552917 ns  112229801 ns          6\nIterate_all_files          111288750 ns  111255044 ns          6\nIterate_all_files          111291528 ns  111259045 ns          6\nIterate_all_files          114347222 ns  113677119 ns          6\nIterate_all_files_mean     112819806 ns  112581763 ns          6\nIterate_all_files_stddev     1606214 ns    1454858 ns          0",
+      "parentUuid": "bd71d246_c18689a9",
+      "revId": "b60d5729359d91ff1e65126f1e1da2a18c334b9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
