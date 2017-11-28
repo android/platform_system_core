@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3e0a08b9_71f17a9d",
+        "filename": "libunwindstack/Elf.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-11-28T23:21:07Z",
+      "side": 1,
+      "message": "Not exactly, it means you can\u0027t be unwinding in two threads trying to call step on the same elf object if the two threads are sharing a map object.\n\nWe could improve this, but there is no evidence to say this happens at a regular enough frequency to inidicate it is worth creating a more complicated lock scheme.",
+      "parentUuid": "4596819f_7d598d0c",
+      "range": {
+        "startLine": 126,
+        "startChar": 41,
+        "endLine": 126,
+        "endChar": 43
+      },
+      "revId": "c27265b4703cdfffae355579b98c16850b3d4254",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a13d4467_9bf8516b",
         "filename": "libunwindstack/include/unwindstack/Elf.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6f95f703_e9259ac8",
+        "filename": "libunwindstack/include/unwindstack/Elf.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-11-28T23:21:07Z",
+      "side": 1,
+      "message": "I added a comment that does something a bit more descriptive than just the variables to protect.",
+      "parentUuid": "a13d4467_9bf8516b",
+      "range": {
+        "startLine": 84,
+        "startChar": 18,
+        "endLine": 84,
+        "endChar": 19
+      },
+      "revId": "c27265b4703cdfffae355579b98c16850b3d4254",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db2dbb06_cbafe7ee",
         "filename": "libunwindstack/include/unwindstack/MapInfo.h",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-11-28T22:50:16Z",
       "side": 1,
       "message": "Comment which variables is this lock trying to protect?",
+      "range": {
+        "startLine": 62,
+        "startChar": 19,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "c27265b4703cdfffae355579b98c16850b3d4254",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1babcba_9902bce5",
+        "filename": "libunwindstack/include/unwindstack/MapInfo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-11-28T23:21:07Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "db2dbb06_cbafe7ee",
       "range": {
         "startLine": 62,
         "startChar": 19,
