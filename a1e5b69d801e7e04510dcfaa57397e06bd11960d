@@ -1,0 +1,418 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb59b7b2_d1f05859",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-11-29T17:10:00Z",
+      "side": 1,
+      "message": "Another _required_ test is the series of logd, liblog and logcat unit tests, they all need to pass \u003calthough some may be flaky if your platform has a lot of logspam\u003e. Those tests are in system/core/\u003cmummble\u003e/tests/. These same tests (minus the flaky ones) are also run in the CTS test suite.",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 52
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af3eb727_8955a184",
+        "filename": "liblog/include/log/log_id.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-11-29T17:10:00Z",
+      "side": 1,
+      "message": "This is an exported API, do not recommend introducing something new without wider stakeholder approval.\n\nLOG_ID_MAX by itself should be a suitable state, recognized as just out-of-range.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 29
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea3a20f4_8261e002",
+        "filename": "logd/FlushCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-11-29T17:10:00Z",
+      "side": 1,
+      "message": "move up into an inline in FlushCommand.h, do not change the implementation and preserve it as the explicit \u0027reader\u0027 constructor, no defaults.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef3c0666_d671f40d",
+        "filename": "logd/FlushCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-11-29T17:10:00Z",
+      "side": 1,
+      "message": "Change test to a mask:\n\nif (!entry-\u003eisWatching(mLogMask)) {\n   LogTimeEntry::unlock();\n   return;\n}\n\nThis will work _better_ because notifications can be grouped appropriately. The most common case of a reader is the default (main, system and crash) and not all, and using a mask will cover this case too.\n\nAdd a logd-local type (I will let you decide an appropriate common logd header, I think LogTimes.h although the heaviest user is LogBufferElement.h ...):\n\ntypedef unsigned int log_mask_t;\n\nand audit all usage that references unsigned int as a mask, and instead make it log_mask_t. This would mean modifications to LogTimes.*\n\nIn LogTimes.h add the following method to LogTimeEntry and ensure no implied type conversions:\n\nexplicit bool isWatching(log_mask_t logMask) const {\n    return mLogMask \u0026 logMask;\n}\n\nalso adjust the existing isWatching:\n\nexplicit bool isWatching(log_id_t id) const {\n    return mLogMask \u0026 (1 \u003c\u003c id);\n}\n\nAudit all calls to isWatching to ensure log_id_t or log_mask_t type is used explicitly (compiler should complain). A quick check check of the code indicates no problems.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 13
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afe2800a_6570bb7e",
+        "filename": "logd/FlushCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-11-29T17:10:00Z",
+      "side": 1,
+      "message": "mLogId contains similar/duplicate information as mLogMask, coalesce",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72ecad60_2b696e8d",
+        "filename": "logd/FlushCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-11-29T17:10:00Z",
+      "side": 1,
+      "message": "Introduce a new type (maybe in LogTimes.h because it will cover both users effectively?)\n\nlog_mask_t",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 16
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3d0a307_3b26dd06",
+        "filename": "logd/FlushCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-11-29T17:10:00Z",
+      "side": 1,
+      "message": "this is effectively LOG_ID_NONSKIP, even more reason to merge the data.",
+      "range": {
+        "startLine": 41,
+        "startChar": 49,
+        "endLine": 41,
+        "endChar": 51
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "100b7d62_2bcf8a8a",
+        "filename": "logd/FlushCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-11-29T17:10:00Z",
+      "side": 1,
+      "message": "inline the constructors here, make a pair. The defaults should be dropped, changed to required.\n\n// for opening a reader\nexplicit FlushCommand(LogReader\u0026 reader, bool nonBlock,\n                      unsigned long tail, log_mask_t logMask\n                      pid_t pid, log_time start,\n                      uint64_t timeout)\n    : mReader(reader),\n      mLogid(logid),\n      mNonBlock(nonBlock),\n      mTail(tail),\n      mLogMask(logMask),\n      mPid(pid),\n      mStart(start),\n      mTimeout((start !\u003d log_time::EPOCH) ? timeout : 0) {\n}\n\n// for notification of an update\nexplicit FlushCommand(logReader\u0026 mReader, log_id_t logId)\n    : mReader(reader),\n      mNonBlock(false),\n      mTail(-1),\n      mLogMask(static_cast\u003clog_mask_t\u003e(1 \u003c\u003c logId)),\n      mPid(0),\n      mStart(log_time::EPOCH),\n      mTimeout(0) {\n}\n\nexplicit FlushCommand(logReader\u0026 mReader, log_mask_t logMask)\n    : mReader(reader),\n      mNonBlock(false),\n      mTail(-1),\n      mLogMask(logMask),\n      mPid(0),\n      mStart(log_time::EPOCH),\n      mTimeout(0) {\n}",
+      "range": {
+        "startLine": 43,
+        "startChar": 47,
+        "endLine": 43,
+        "endChar": 48
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe7770a1_f283a7e6",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-11-29T17:10:00Z",
+      "side": 1,
+      "message": "log_mask_t notify \u003d 0;",
+      "range": {
+        "startLine": 368,
+        "startChar": 4,
+        "endLine": 368,
+        "endChar": 24
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "379d0220_cdcb0ce0",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-11-29T17:10:00Z",
+      "side": 1,
+      "message": "notify |\u003d 1 \u003c\u003c LOG_ID_EVENTS;",
+      "range": {
+        "startLine": 387,
+        "startChar": 12,
+        "endLine": 387,
+        "endChar": 26
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d414a162_d4f0b79e",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-11-29T17:10:00Z",
+      "side": 1,
+      "message": "notify |\u003d 1 \u003c\u003c LOG_ID_MAIN;",
+      "range": {
+        "startLine": 443,
+        "startChar": 12,
+        "endLine": 443,
+        "endChar": 26
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3bb1fe7_ab5818af",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-11-29T17:10:00Z",
+      "side": 1,
+      "message": "reader-\u003enotifyNewLog(notify);",
+      "range": {
+        "startLine": 452,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 9
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebbc32a6_18b27e1f",
+        "filename": "logd/LogListener.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-11-29T17:10:00Z",
+      "side": 1,
+      "message": "nit: Starting to see too many header-\u003eid references, and the latest one needed a cast to make it right. Instead we should house a local to help clarity.\n\nlog_id_t logId \u003d header-\u003eid;\n\nThen use logId everywhere below instead of header-\u003eid",
+      "range": {
+        "startLine": 96,
+        "startChar": 55,
+        "endLine": 96,
+        "endChar": 56
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53c4c882_3550ac0b",
+        "filename": "logd/LogListener.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-11-29T17:10:00Z",
+      "side": 1,
+      "message": "you should be using C++ style casts; however my comment above will make this moot.",
+      "range": {
+        "startLine": 141,
+        "startChar": 33,
+        "endLine": 141,
+        "endChar": 43
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "877ca2bc_b85816e7",
+        "filename": "logd/LogReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-11-29T17:10:00Z",
+      "side": 1,
+      "message": "Two implementations, one for log_id_t, and another for log_mask_t",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 46
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc986973_3174a863",
+        "filename": "logd/LogReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-11-29T17:10:00Z",
+      "side": 1,
+      "message": "This should use an alternate \u0027notify\u0027 constructor.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 39
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9f2381b_62ee8a0b",
+        "filename": "logd/LogReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-11-29T17:10:00Z",
+      "side": 1,
+      "message": "Leave this \u0027reader\u0027 constructor call alone.",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 44
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbe4ad58_786402fd",
+        "filename": "logd/LogReader.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-11-29T17:10:00Z",
+      "side": 1,
+      "message": "Make a pair of explicit versions of these perhaps, notifyNewLog(log_id_t logId) and notifyNewLog(log_mask_t logMask) so that we can either send one, or multiple notifications.",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 8
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
