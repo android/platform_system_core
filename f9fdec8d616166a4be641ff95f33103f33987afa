@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd05fb0f_3d8eda5d",
+        "filename": "property_service/libpropertycontextparser/include/property_context_parser/property_context_parser.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-11-30T00:13:05Z",
+      "side": 1,
+      "message": "In retrospect, this isn\u0027t very future proof, since it\u0027s impossible to add any fields.\n\nI need a new struct for a defining a string + its related info (prefix/name, length, context index, regex index for future, etc).  The benefit there being it can be added to without breaking backwards compatibility.",
+      "revId": "f9fdec8d616166a4be641ff95f33103f33987afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf11c726_87ea34d2",
+        "filename": "property_service/libpropertycontextserializer/trie_serializer.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-11-30T00:13:05Z",
+      "side": 1,
+      "message": "Trying to not repeat some of the mistakes from system properties before, a single \u0027version\u0027 field doesn\u0027t really help anything, since it can\u0027t specify compatibility with previous versions.  Probably better to add a \u0027minimum compatible version\u0027 too.",
+      "revId": "f9fdec8d616166a4be641ff95f33103f33987afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
