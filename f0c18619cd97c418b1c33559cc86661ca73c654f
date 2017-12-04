@@ -88,6 +88,24 @@
       "revId": "f0c18619cd97c418b1c33559cc86661ca73c654f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "daa028f6_4bff135f",
+        "filename": "fastboot/fs.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1051712
+      },
+      "writtenOn": "2017-12-04T23:24:47Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s cleaner to pass env instead of letting child inherit from parent. \n\nAlso, ideally we should add mke2fs.conf to sdk package and install it somewhere on user system. Then we can specify MKE2FS to point to that location and have more flexibility to update configs. If a fixed location is not feasible, we can just put mke2fs.conf in same directory with mke2fs binary. \n\nI remember the problem was that I didn\u0027t figure out a way to define multiple rules to copy mke2fs.conf all over the place, e.g. in addition to device /etc and device recovery /etc, copy to out/host/.../bin/. So I falled back to use built-in conf, which is simpler as built-in config happen to be same as mke2fs.conf.",
+      "parentUuid": "b5ffa45d_d521c6dd",
+      "revId": "f0c18619cd97c418b1c33559cc86661ca73c654f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
