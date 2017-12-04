@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cab363cf_b5e8883b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1253921
+      },
+      "writtenOn": "2017-12-04T07:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb59b7b2_d1f05859",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 52
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af3eb727_8955a184",
         "filename": "liblog/include/log/log_id.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce289241_0d3571a7",
+        "filename": "liblog/include/log/log_id.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1253921
+      },
+      "writtenOn": "2017-12-04T07:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af3eb727_8955a184",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 29
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "35d41f5e_9901e514",
+        "filename": "logd/FlushCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1253921
+      },
+      "writtenOn": "2017-12-04T07:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea3a20f4_8261e002",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef3c0666_d671f40d",
         "filename": "logd/FlushCommand.cpp",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2017-11-29T17:10:00Z",
       "side": 1,
       "message": "Change test to a mask:\n\nif (!entry-\u003eisWatching(mLogMask)) {\n   LogTimeEntry::unlock();\n   return;\n}\n\nThis will work _better_ because notifications can be grouped appropriately. The most common case of a reader is the default (main, system and crash) and not all, and using a mask will cover this case too.\n\nAdd a logd-local type (I will let you decide an appropriate common logd header, I think LogTimes.h although the heaviest user is LogBufferElement.h ...):\n\ntypedef unsigned int log_mask_t;\n\nand audit all usage that references unsigned int as a mask, and instead make it log_mask_t. This would mean modifications to LogTimes.*\n\nIn LogTimes.h add the following method to LogTimeEntry and ensure no implied type conversions:\n\nexplicit bool isWatching(log_mask_t logMask) const {\n    return mLogMask \u0026 logMask;\n}\n\nalso adjust the existing isWatching:\n\nexplicit bool isWatching(log_id_t id) const {\n    return mLogMask \u0026 (1 \u003c\u003c id);\n}\n\nAudit all calls to isWatching to ensure log_id_t or log_mask_t type is used explicitly (compiler should complain). A quick check check of the code indicates no problems.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 13
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72a833fd_18e66a9a",
+        "filename": "logd/FlushCommand.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1253921
+      },
+      "writtenOn": "2017-12-04T07:02:55Z",
+      "side": 1,
+      "message": "Because \u0027explicit\u0027 is only applicable on constructors, we add new method LogTimeEntry::isWatchingMultiple to avoid implied type conversions.",
+      "parentUuid": "ef3c0666_d671f40d",
       "range": {
         "startLine": 60,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d84f346b_da56e27f",
+        "filename": "logd/FlushCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1253921
+      },
+      "writtenOn": "2017-12-04T07:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afe2800a_6570bb7e",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72ecad60_2b696e8d",
         "filename": "logd/FlushCommand.h",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09108346_65b09928",
+        "filename": "logd/FlushCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1253921
+      },
+      "writtenOn": "2017-12-04T07:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72ecad60_2b696e8d",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 16
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "8474be2c_bd8e202f",
+        "filename": "logd/FlushCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1253921
+      },
+      "writtenOn": "2017-12-04T07:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3d0a307_3b26dd06",
+      "range": {
+        "startLine": 41,
+        "startChar": 49,
+        "endLine": 41,
+        "endChar": 51
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "100b7d62_2bcf8a8a",
         "filename": "logd/FlushCommand.h",
         "patchSetId": 1
@@ -183,6 +351,30 @@
       "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "330cbeed_8c1db844",
+        "filename": "logd/FlushCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1253921
+      },
+      "writtenOn": "2017-12-04T07:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "100b7d62_2bcf8a8a",
+      "range": {
+        "startLine": 43,
+        "startChar": 47,
+        "endLine": 43,
+        "endChar": 48
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "d29afff2_bc76fdbd",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1253921
+      },
+      "writtenOn": "2017-12-04T07:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe7770a1_f283a7e6",
+      "range": {
+        "startLine": 368,
+        "startChar": 4,
+        "endLine": 368,
+        "endChar": 24
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "379d0220_cdcb0ce0",
         "filename": "logd/LogAudit.cpp",
         "patchSetId": 1
@@ -229,6 +445,30 @@
       "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40b8edc1_638df337",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1253921
+      },
+      "writtenOn": "2017-12-04T07:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "379d0220_cdcb0ce0",
+      "range": {
+        "startLine": 387,
+        "startChar": 12,
+        "endLine": 387,
+        "endChar": 26
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "e54a07fc_ece83903",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1253921
+      },
+      "writtenOn": "2017-12-04T07:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d414a162_d4f0b79e",
+      "range": {
+        "startLine": 443,
+        "startChar": 12,
+        "endLine": 443,
+        "endChar": 26
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3bb1fe7_ab5818af",
         "filename": "logd/LogAudit.cpp",
         "patchSetId": 1
@@ -275,6 +539,30 @@
       "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed79bf4e_3e8c8a1f",
+        "filename": "logd/LogAudit.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1253921
+      },
+      "writtenOn": "2017-12-04T07:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3bb1fe7_ab5818af",
+      "range": {
+        "startLine": 452,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 9
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "4456f528_1065c050",
+        "filename": "logd/LogListener.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1253921
+      },
+      "writtenOn": "2017-12-04T07:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebbc32a6_18b27e1f",
+      "range": {
+        "startLine": 96,
+        "startChar": 55,
+        "endLine": 96,
+        "endChar": 56
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53c4c882_3550ac0b",
         "filename": "logd/LogListener.cpp",
         "patchSetId": 1
@@ -324,6 +636,30 @@
     },
     {
       "key": {
+        "uuid": "f929d889_180b2fd6",
+        "filename": "logd/LogListener.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1253921
+      },
+      "writtenOn": "2017-12-04T07:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53c4c882_3550ac0b",
+      "range": {
+        "startLine": 141,
+        "startChar": 33,
+        "endLine": 141,
+        "endChar": 43
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "877ca2bc_b85816e7",
         "filename": "logd/LogReader.cpp",
         "patchSetId": 1
@@ -335,6 +671,30 @@
       "writtenOn": "2017-11-29T17:10:00Z",
       "side": 1,
       "message": "Two implementations, one for log_id_t, and another for log_mask_t",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 46
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d59a8c06_dd716f0f",
+        "filename": "logd/LogReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1253921
+      },
+      "writtenOn": "2017-12-04T07:02:55Z",
+      "side": 1,
+      "message": "Because \u0027explicit\u0027 is only applicable on constructors, we revise LogReader::notifyNewLog to accept log_mask_t only and transfer log_id_t to log_mask_t where notifications are sent out.",
+      "parentUuid": "877ca2bc_b85816e7",
       "range": {
         "startLine": 39,
         "startChar": 0,
@@ -370,6 +730,30 @@
     },
     {
       "key": {
+        "uuid": "213e0aa1_581f9dcc",
+        "filename": "logd/LogReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1253921
+      },
+      "writtenOn": "2017-12-04T07:02:55Z",
+      "side": 1,
+      "message": "Same reason as above, we add one FlushCommand constructor to accept log_mask_t only.",
+      "parentUuid": "bc986973_3174a863",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 39
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9f2381b_62ee8a0b",
         "filename": "logd/LogReader.cpp",
         "patchSetId": 1
@@ -393,6 +777,30 @@
     },
     {
       "key": {
+        "uuid": "f41fe669_cc5c7dae",
+        "filename": "logd/LogReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1253921
+      },
+      "writtenOn": "2017-12-04T07:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9f2381b_62ee8a0b",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 44
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbe4ad58_786402fd",
         "filename": "logd/LogReader.h",
         "patchSetId": 1
@@ -404,6 +812,30 @@
       "writtenOn": "2017-11-29T17:10:00Z",
       "side": 1,
       "message": "Make a pair of explicit versions of these perhaps, notifyNewLog(log_id_t logId) and notifyNewLog(log_mask_t logMask) so that we can either send one, or multiple notifications.",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 8
+      },
+      "revId": "a1e5b69d801e7e04510dcfaa57397e06bd11960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37f04053_fdf248c0",
+        "filename": "logd/LogReader.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1253921
+      },
+      "writtenOn": "2017-12-04T07:02:55Z",
+      "side": 1,
+      "message": "Because \u0027explicit\u0027 is only applicable on constructors, we revise LogReader::notifyNewLog to accept log_mask_t only and transfer log_id_t to log_mask_t where notifications are sent out.",
+      "parentUuid": "fbe4ad58_786402fd",
       "range": {
         "startLine": 31,
         "startChar": 4,
