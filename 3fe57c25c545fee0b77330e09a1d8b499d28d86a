@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a94508fb_b1f05e28",
+        "filename": "debuggerd/libdebuggerd/tombstone.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-12-05T21:13:04Z",
+      "side": 1,
+      "message": "I can\u0027t because I didn\u0027t implement the iterator in that way. The line below triggers the read of load bias if it hasn\u0027t already been set. I also do not have a const iterator any more, mostly since it will change the map data.",
+      "parentUuid": "f52c2b7c_825e3714",
+      "range": {
+        "startLine": 432,
+        "startChar": 7,
+        "endLine": 432,
+        "endChar": 11
+      },
+      "revId": "3fe57c25c545fee0b77330e09a1d8b499d28d86a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c506a938_16e39af8",
         "filename": "libunwindstack/MapInfo.cpp",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2017-12-05T20:59:57Z",
       "side": 1,
       "message": "doesn\u0027t this need to cover L136-137 too?",
+      "revId": "3fe57c25c545fee0b77330e09a1d8b499d28d86a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "768d63b4_e44ade17",
+        "filename": "libunwindstack/MapInfo.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-12-05T21:13:04Z",
+      "side": 1,
+      "message": "Nope, the function below is a static function that doesn\u0027t changed any objects (except maybe the memory object if we ever implement caching).\n\nI added a comment to make this more obvious.",
+      "parentUuid": "c506a938_16e39af8",
       "revId": "3fe57c25c545fee0b77330e09a1d8b499d28d86a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
