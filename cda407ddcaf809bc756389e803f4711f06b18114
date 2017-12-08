@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c45dc14_cb32790f",
+        "filename": "rootdir/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-12-08T01:46:19Z",
+      "side": 1,
+      "message": "make this a macro and simplify it:\n\n  ifeq (current,$(PLATFORM_VNDK_VERSION))\n    vndkStem \u003d $(LOCAL_MODULE)\n  else\n    vndkStem \u003d $(basename $(LOCAL_MODULE)).$(PLATFORM_VNDK_VERSION)$(suffix $(LOCAL_MODULE))\n  endif\n\n  ...\n\n  LOCAL_MODULE_STEM :\u003d $(vndkStem)",
+      "revId": "cda407ddcaf809bc756389e803f4711f06b18114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
