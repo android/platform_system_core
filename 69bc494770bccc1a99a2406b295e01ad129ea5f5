@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76f30572_6b2b651c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-12-11T17:46:56Z",
+      "side": 1,
+      "message": "Currently all can write (?) what has been blocking it if your claim is true? There should be no limits (Device Oener security buffer notwithstanding that has been _wired_ to limit to system UIDs _only_).\n\nI suspect you have content, but lack the permissions to read them and may have confused that with lack of write access.\n\nReaders of content, on the other hand, are limited to the specific UID that created them, or the special set of system, root and log are allowed to read them all. Giving yet another UID/GID special access will need a security review, and the complexity of supporting it adds risk to the logging system.\n\nAnd, why do you need to limit who can read/write to the buffer? Given the wide set of sources, why not leave it open rather than the overhead of adding yet another UID/GID to the processes that are permitted, the uid of the source returned by the log reader should be enough to validate at time of reading if you want to ensure content from other sources does not pollute your data.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 51
+      },
+      "revId": "69bc494770bccc1a99a2406b295e01ad129ea5f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
