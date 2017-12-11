@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d8a10a36_4e38c4e0",
+        "filename": "init/property_schema.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-11T22:11:47Z",
+      "side": 1,
+      "message": "if (value.empty() || ...",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "2e50e27c88186edbb7dd1f316dda832f58aa4bc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "acfc71f9_77ebc803",
         "filename": "init/property_schema.cpp",
         "patchSetId": 1
@@ -13,6 +36,92 @@
       "writtenOn": "2017-12-11T21:49:33Z",
       "side": 1,
       "message": "like strtoul. but, yeah, maybe we shouldn\u0027t have allowed that.",
+      "revId": "2e50e27c88186edbb7dd1f316dda832f58aa4bc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46c1c3f9_cf7a139b",
+        "filename": "init/property_schema.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-11T22:11:47Z",
+      "side": 1,
+      "message": "http://cs/android/system/core/base/properties.cpp?l\u003d53\u0026rcl\u003d65cbd2e7e6be3537015546e4b63b1c644b96379b\n\nI would prefer for this to correspond to the values that GetProperty allows in libbase. Otherwise, this will cause a lot more schema failures than we initially thought.\n\n1, y, yes, on,  true\n0, n, no,  off, false\n\nOr is this a bit much?\n\nEven better, warn if the value is other than \"true/false\" but allow these others temporarily.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "2e50e27c88186edbb7dd1f316dda832f58aa4bc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20f88218_c61069ee",
+        "filename": "init/property_schema.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-11T22:11:47Z",
+      "side": 1,
+      "message": "GetProperty also distinguishes int8, int16, etc... Should we here, or should we deprecate the other functions?",
+      "range": {
+        "startLine": 73,
+        "startChar": 24,
+        "endLine": 73,
+        "endChar": 27
+      },
+      "revId": "2e50e27c88186edbb7dd1f316dda832f58aa4bc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dac8fb5_e08a3ecd",
+        "filename": "init/property_schema.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-11T22:11:47Z",
+      "side": 1,
+      "message": "regex/list/union?\n\n1000 is used for current, but you could imagine TARGET_API_LEVEL \"(0|[1-9][0-9]*)|current\"\n\nSome custom things like \"BUILD_ID\" \u003d \"[A-Z]{3}\\.\\d+\\.\\d+....\", mac addresses, ip addresses, etc...\n\nList type \"list\u003cSCHEMA\u003e\" for instance being \"\u003cSCHEMA\u003e,\u003cSCHEMA\u003e,\u003cSCHEMA\u003e\"\n\nSome other things:\n- dalvik.vm.dex2oat-Xms/ro.logd.size \"\\d+[bkmg]\" (there are many of these sizes)\n- ro.bootimage.build.date (time format, although this prop should be deprecated because we already have data.utc)\n\nIf anything, regex would be a nice catch all. Otherwise there are many properties that should be restricted more but won\u0027t be",
+      "revId": "2e50e27c88186edbb7dd1f316dda832f58aa4bc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b216c82_ea2ac424",
+        "filename": "init/property_schema.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-11T22:11:47Z",
+      "side": 1,
+      "message": "nit: given that there are already five types of schemas, why not make them a simple class?",
+      "range": {
+        "startLine": 116,
+        "startChar": 23,
+        "endLine": 116,
+        "endChar": 28
+      },
       "revId": "2e50e27c88186edbb7dd1f316dda832f58aa4bc8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
