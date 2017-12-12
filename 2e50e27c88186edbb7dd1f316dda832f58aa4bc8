@@ -249,6 +249,24 @@
     },
     {
       "key": {
+        "uuid": "114978e1_59bd6234",
+        "filename": "init/property_schema.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-12-12T04:13:54Z",
+      "side": 1,
+      "message": "It\u0027s actually pretty correct.  C++ is really meant to be used with exceptions and having a constructor that throws is way better than having a .Init() function or a .valid() callback.  In the latter case, you can get a partially initialized object, which is something to avoid, but with exceptions (particularly those thrown from a constructor) you either get a completely valid object or an exception, both of which are sane to handle.\n\nI wouldn\u0027t want to rely on checking on the host, especially when the outcome if the host check misses something is init aborts on boot.\n\nI think skipping this for now may be the best idea.  Only other option would be to see if I can get property_service broken out of init by P and make it a non-static executable (meaning that early mount would be 100% required), then I can get exceptions enabled, but that\u0027s too long of a shot.\n\nOr I could link in pcre or another regex library, but I don\u0027t think that\u0027s a good idea either.",
+      "parentUuid": "319a72a2_96a479c4",
+      "revId": "2e50e27c88186edbb7dd1f316dda832f58aa4bc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b216c82_ea2ac424",
         "filename": "init/property_schema.cpp",
         "patchSetId": 1
