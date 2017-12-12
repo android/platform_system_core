@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0ff118b6_3f3ceea7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-12-12T04:21:29Z",
+      "side": 1,
+      "message": "no. all Android apps including the one downloaded from the Play Store.",
+      "parentUuid": "2cc48133_841c4517",
+      "range": {
+        "startLine": 10,
+        "startChar": 42,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "bbcf25ed33c2f40007f393056c7d790aef8c5c63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e033278d_f3456a31",
         "filename": "/COMMIT_MSG",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "bbcf25ed33c2f40007f393056c7d790aef8c5c63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45d74143_f7617786",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-12-12T04:21:29Z",
+      "side": 1,
+      "message": "Because the libraries are made by device manufacturers which own the system partition.\n\nHardware specific libs have been exposed to Android apps via /vendor/etc/public.libraries.txt.\n\nThere is no selinux change needed since these are all for libs in /system/lib[64] which Android apps already have access to.",
+      "parentUuid": "e033278d_f3456a31",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 47
+      },
+      "revId": "bbcf25ed33c2f40007f393056c7d790aef8c5c63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "213e41c1_02097110",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-12-12T04:21:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56d841f9_aaf934f7",
+      "range": {
+        "startLine": 14,
+        "startChar": 13,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "bbcf25ed33c2f40007f393056c7d790aef8c5c63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "180b3e6b_21eb85f3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2017-12-11T23:02:28Z",
       "side": 1,
       "message": "I don\u0027t like this:\n- could potentially conflict\n- requires libraries to be renamed\n- duplicates information in owners field + name for the library",
+      "range": {
+        "startLine": 18,
+        "startChar": 38,
+        "endLine": 18,
+        "endChar": 64
+      },
+      "revId": "bbcf25ed33c2f40007f393056c7d790aef8c5c63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e163ef5_f2f42346",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-12-12T04:21:29Z",
+      "side": 1,
+      "message": "\u003e could potentially conflict\n\nAgree. Different companies might use the same name. But, without this, I am expecting much more conflict in between all OEMs v.s. AOSP. What if an OEM creates libAwesome.so in P and we introduce a new lib with the same name (but with totally different impl) in Q? We can\u0027t know all the libs added/exposed by OEMs.\n\n\u003e requires libraries to be renamed\nTrue. But without this, we will have to request them to rename their things whenever a new lib in AOSP have the same name.\n\n\u003e duplicates information in owners field + name for the library\nThe degree of duplication can be greatly reduced by..\n\nLOCAL_MODULE_OWNER :\u003d acme\nLOCAL_MODULE :\u003d libFoo.$(LOCAL_MODULE_OWNER)",
+      "parentUuid": "180b3e6b_21eb85f3",
       "range": {
         "startLine": 18,
         "startChar": 38,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "4cf4c6a6_fc9966fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-12-12T04:21:29Z",
+      "side": 1,
+      "message": "We should prevent not also accidental exposure, but also intentional exposure. Owner-based enforcement can\u0027t prevent the intentional exposure. I\u0027ve amended the comment accordingly.",
+      "parentUuid": "c7f5be6c_2b549f7b",
+      "range": {
+        "startLine": 18,
+        "startChar": 66,
+        "endLine": 19,
+        "endChar": 70
+      },
+      "revId": "bbcf25ed33c2f40007f393056c7d790aef8c5c63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ffc6b63_ace16b5e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 6
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "f7cf38b6_78277ffc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-12-12T04:21:29Z",
+      "side": 1,
+      "message": "No.",
+      "parentUuid": "0ffc6b63_ace16b5e",
+      "range": {
+        "startLine": 26,
+        "startChar": 62,
+        "endLine": 26,
+        "endChar": 66
+      },
+      "revId": "bbcf25ed33c2f40007f393056c7d790aef8c5c63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a65fec23_d5fefcb4",
         "filename": "libnativeloader/test/Android.bp",
         "patchSetId": 6
@@ -151,6 +295,24 @@
       "writtenOn": "2017-12-11T23:02:28Z",
       "side": 1,
       "message": "licensing header?",
+      "revId": "bbcf25ed33c2f40007f393056c7d790aef8c5c63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c5af4c0_4e36e9ed",
+        "filename": "libnativeloader/test/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-12-12T04:21:29Z",
+      "side": 1,
+      "message": "Done. (also for other added files)",
+      "parentUuid": "a65fec23_d5fefcb4",
       "revId": "bbcf25ed33c2f40007f393056c7d790aef8c5c63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -191,6 +353,48 @@
       "writtenOn": "2017-12-11T23:02:28Z",
       "side": 1,
       "message": "nit: four spaces?",
+      "revId": "bbcf25ed33c2f40007f393056c7d790aef8c5c63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25b02df9_8560cd23",
+        "filename": "libnativeloader/test/test.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-12-12T04:21:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "165ba5db_16467ac1",
+      "range": {
+        "startLine": 5,
+        "startChar": 2,
+        "endLine": 5,
+        "endChar": 30
+      },
+      "revId": "bbcf25ed33c2f40007f393056c7d790aef8c5c63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2762d475_9b4fdc1e",
+        "filename": "libnativeloader/test/test.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-12-12T04:21:29Z",
+      "side": 1,
+      "message": "libnativeloader uses two-space indent",
+      "parentUuid": "642d8f30_f55d30e5",
       "revId": "bbcf25ed33c2f40007f393056c7d790aef8c5c63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
