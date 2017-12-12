@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0e4daf3e_794b29ac",
+        "filename": "init/property_schema.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-12-12T00:44:17Z",
+      "side": 1,
+      "message": "Thanks; done.",
+      "parentUuid": "d8a10a36_4e38c4e0",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "2e50e27c88186edbb7dd1f316dda832f58aa4bc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "acfc71f9_77ebc803",
         "filename": "init/property_schema.cpp",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "e006217f_3bcde4ee",
+        "filename": "init/property_schema.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-12-12T00:44:17Z",
+      "side": 1,
+      "message": "Ya... I was even wondering if we should change ParseUint now to remove it?  I definitely do not want the behavior here; I can\u0027t see when it would ever be useful.",
+      "parentUuid": "acfc71f9_77ebc803",
+      "revId": "2e50e27c88186edbb7dd1f316dda832f58aa4bc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46c1c3f9_cf7a139b",
         "filename": "init/property_schema.cpp",
         "patchSetId": 1
@@ -53,6 +95,30 @@
       "writtenOn": "2017-12-11T22:11:47Z",
       "side": 1,
       "message": "http://cs/android/system/core/base/properties.cpp?l\u003d53\u0026rcl\u003d65cbd2e7e6be3537015546e4b63b1c644b96379b\n\nI would prefer for this to correspond to the values that GetProperty allows in libbase. Otherwise, this will cause a lot more schema failures than we initially thought.\n\n1, y, yes, on,  true\n0, n, no,  off, false\n\nOr is this a bit much?\n\nEven better, warn if the value is other than \"true/false\" but allow these others temporarily.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "2e50e27c88186edbb7dd1f316dda832f58aa4bc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e695d7a0_1898ec44",
+        "filename": "init/property_schema.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-12-12T00:44:17Z",
+      "side": 1,
+      "message": "I checked on bullhead and I only see true/false and 1/0.  I don\u0027t see anything set to only \u0027y\u0027, \u0027yes\u0027, \u0027on\u0027, etc, which is why I went with a more narrow list.\n\nOne of the things enh@ was hoping that these schemas could do is tighten the definition of a bool to be strictly true/false or 1/0.  I started with both since it wouldn\u0027t break anything, but ideally we make it strictly one set of values and get rid of the extra checks in libbase.",
+      "parentUuid": "46c1c3f9_cf7a139b",
       "range": {
         "startLine": 70,
         "startChar": 0,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "1d5d0bda_ba6a7692",
+        "filename": "init/property_schema.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-12-12T00:44:17Z",
+      "side": 1,
+      "message": "I was thinking of adding that, and it\u0027d be easy enough to do so, but I didn\u0027t think that we need it.  I doubt too many people are using GetIntProperty with int16_t with the intention of literally using all of the possible values of an int16_t.  I\u0027m assuming that it\u0027s usually a much more narrow range for most of these properties, and if so, there\u0027d no difference between having \u0027int 0 10000\u0027 and \u0027int16 0 10000\u0027 as a schema.\n\nI figure that the template functions are mostly used such that no matter what data type is used, the correct function exists without casts.  I wouldn\u0027t doubt that some people even use the wrong signed versions, e.g. using GetIntProperty with an `int` data type for a property that only has positive values well below 32/64 bits.\n\nBut if you want, I can add it.",
+      "parentUuid": "20f88218_c61069ee",
+      "range": {
+        "startLine": 73,
+        "startChar": 24,
+        "endLine": 73,
+        "endChar": 27
+      },
+      "revId": "2e50e27c88186edbb7dd1f316dda832f58aa4bc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4dac8fb5_e08a3ecd",
         "filename": "init/property_schema.cpp",
         "patchSetId": 1
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "161e5ccf_9406212a",
+        "filename": "init/property_schema.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-12-12T00:44:17Z",
+      "side": 1,
+      "message": "I did get some push back with having full regexes from others.  Let me add it to this CL anyway and we can see if it seems to make sense.\n\nI\u0027m not sure if I would want a list of multiple schemas.  I think if we do add regex that can cover all of the options along with the ones above.",
+      "parentUuid": "4dac8fb5_e08a3ecd",
+      "revId": "2e50e27c88186edbb7dd1f316dda832f58aa4bc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b216c82_ea2ac424",
         "filename": "init/property_schema.cpp",
         "patchSetId": 1
@@ -116,6 +224,30 @@
       "writtenOn": "2017-12-11T22:11:47Z",
       "side": 1,
       "message": "nit: given that there are already five types of schemas, why not make them a simple class?",
+      "range": {
+        "startLine": 116,
+        "startChar": 23,
+        "endLine": 116,
+        "endChar": 28
+      },
+      "revId": "2e50e27c88186edbb7dd1f316dda832f58aa4bc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13b12b62_225f3c38",
+        "filename": "init/property_schema.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-12-12T00:44:17Z",
+      "side": 1,
+      "message": "I was thinking that I could, and god knows I like having tables that map from string -\u003e object all over init.  But the classes wouldn\u0027t actually contain any state, so I wasn\u0027t as keen on classes.  But perhaps having a dispatch to various function pointers?  I\u0027ll think about it.",
+      "parentUuid": "5b216c82_ea2ac424",
       "range": {
         "startLine": 116,
         "startChar": 23,
