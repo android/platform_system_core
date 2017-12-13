@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "390d1e25_228f66a2",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-12-13T03:11:13Z",
+      "side": 1,
+      "message": "vector is better; we rarely use or want to use list.",
+      "revId": "f468d76ed9e07b2ccf72dfd677b73de85e39b80b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f6b5fbd_af2e36bc",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-12-13T03:11:13Z",
+      "side": 1,
+      "message": "You probably don\u0027t even need this typedef.  You\u0027ll only really use it in one place after you take care of the other comments.\n\n(I, in general, prefer fewer typedefs)",
+      "revId": "f468d76ed9e07b2ccf72dfd677b73de85e39b80b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f0e783c_8de970cb",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-12-13T03:11:13Z",
+      "side": 1,
+      "message": "This should be a lambda done inline below.",
+      "revId": "f468d76ed9e07b2ccf72dfd677b73de85e39b80b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5a6f043_d26e5d31",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-12-13T03:11:13Z",
+      "side": 1,
+      "message": "This essentially just returns an empty string, right?  I\u0027m guessing the break was legacy from when we had clean up work to do before returning.  If that\u0027s the case, it\u0027d be better to return {}; right from here instead of the clear and break.",
+      "revId": "f468d76ed9e07b2ccf72dfd677b73de85e39b80b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d941b8c_cbef3ca9",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-12-13T03:11:13Z",
+      "side": 1,
+      "message": "std::sort() with vector + lambda",
+      "revId": "f468d76ed9e07b2ccf72dfd677b73de85e39b80b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6760c486_e29d679f",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-12-13T03:11:13Z",
+      "side": 1,
+      "message": "You don\u0027t really need or want the overhead of a stream if all you\u0027re doing is appending.\n\nfor (const auto\u0026 [_, dt_entry] : fstab_dt_entries) {\n  fstab_result +\u003d dt_entry + \"\\n\";\n}",
+      "revId": "f468d76ed9e07b2ccf72dfd677b73de85e39b80b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
