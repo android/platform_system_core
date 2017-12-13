@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c58d7e1_fe6ab9d5",
+        "filename": "property_service/libpropertyinfoparser/property_info_parser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1019198
+      },
+      "writtenOn": "2017-12-13T10:34:44Z",
+      "side": 1,
+      "message": "This seems wrong because trie_node is for a root, not for a child having the remaining_name.\nFor example, when CheckPrefixMatch() handles \"persist.radio\" trie_node is for \"persist.\", not for \"persist.radio.\".\n\nSo I believe that CheckPrefixMatch() at line 114 should move after line 125.",
+      "range": {
+        "startLine": 117,
+        "startChar": 7,
+        "endLine": 118,
+        "endChar": 23
+      },
+      "revId": "c33ac181250d55dd3ca25365f97d869169622896",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
