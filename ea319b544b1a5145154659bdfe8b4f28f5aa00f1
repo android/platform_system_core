@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d497bf64_b7160cb0",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-12-13T10:29:40Z",
+      "side": 1,
+      "message": "You shouldn\u0027t need make_pair here.  You can do .emplace_back(mount_point, Join(...));",
+      "revId": "ea319b544b1a5145154659bdfe8b4f28f5aa00f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11a365a2_78893b32",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-12-13T10:29:40Z",
+      "side": 1,
+      "message": "I\u0027m not sure if it\u0027s actually a good thing or not, but I egregiously use `const auto\u0026` as the parameter to my lambdas.  It\u0027s way less verbose than specifying the types, which are dependent on the input, so they should be clear anyway.  \n\nI think of it as equivalent to using `const auto\u0026` in for loops.",
+      "range": {
+        "startLine": 477,
+        "startChar": 17,
+        "endLine": 477,
+        "endChar": 62
+      },
+      "revId": "ea319b544b1a5145154659bdfe8b4f28f5aa00f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d2457a8_5eaa7534",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-12-13T10:29:40Z",
+      "side": 1,
+      "message": "Is this what the current clang-format does?  You\u0027ll probably need to upload with --no-verify.  It should be \n\nconst auto\u0026 [_, dt_entry] : fstab_dt_entries.\n\nIt\u0027s a bug in clang-format that it can\u0027t do this yet.",
+      "revId": "ea319b544b1a5145154659bdfe8b4f28f5aa00f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
