@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "38f574de_1afada48",
+        "filename": "libusbhost/usbhost.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1247518
+      },
+      "writtenOn": "2017-12-13T22:09:11Z",
+      "side": 1,
+      "message": "I prefer not supporting \u0027pass in existing array/length\u0027 to avoid the case where \nUSB returns more than what you provided.  As well, the function that this is\nfixing (usb_device_get_string) returns a malloc\u0027d buffer, so I kept the interface roughly the same.\n\nI return void* because I want it to be clear to the user I\u0027m returning the raw bytes as returned from USB - it\u0027s not a NULL terminated string (though I make sure it\u0027s null terminated to prevent major problems if someone doesn\u0027t realize that) - and be suspicious, it might not be well formed, and it might even have an odd number of bytes.",
+      "parentUuid": "4782dcd9_3378b926",
+      "range": {
+        "startLine": 479,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 3
+      },
+      "revId": "e26accc12a066dc4b9d3ddf864096ab8791e93cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15c69231_6deecf04",
         "filename": "libusbhost/usbhost.c",
         "patchSetId": 2
