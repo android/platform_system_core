@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d312a42b_bba1bb1c",
+        "filename": "debuggerd/handler/debuggerd_fallback.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-12-15T21:25:17Z",
+      "side": 1,
+      "message": "this no longer returns \"\u003cunknown\u003e\" on failure...\n\n  std::string result{\"\u003cunknown\u003e\"};\n  // /proc/self/comm has a trailing newline.\n  if (android::base::ReadFileToString(\"/proc/self/comm\", \u0026result) \u0026\u0026 !result.empty()) result.pop_back();\n  return result;\n\n?",
+      "revId": "85382c7aac63c6eab15cc9395d506b7b52a10d7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
