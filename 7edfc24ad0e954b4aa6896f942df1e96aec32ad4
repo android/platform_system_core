@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6f6ed759_abb5d54e",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2017-12-18T19:32:54Z",
+      "side": 1,
+      "message": "Gah, gotta switch gears from Android Java land back to native.  Done.",
+      "parentUuid": "77198ef8_e11f65f0",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4745d8d4_0adc6050",
         "filename": "libsuspend/autosuspend_wakeup_count.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-18T16:44:17Z",
       "side": 1,
       "message": "static const char mem_sleep_state[] \u003d \"mem\";\n\npass a const char* sleep_state (this) as an argument to do_suspend to (in the future) support auto hibernate/restore cycle as well.\n\nIMHO auto hibernate is probably a bad idea, I expect that suspend to memory is used, resorting to a short wakeup and transition to hibernate for longer sleeps. Force hibernate or suspend, which this change helps facilitate, is like an off switch.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 39
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61107f83_bc8ffacf",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2017-12-18T19:32:54Z",
+      "side": 1,
+      "message": "Agreed that auto-hibernate is a bad idea.  I did consider having do_suspend take an argument to enable hibernate use-case, but wasn\u0027t sure if we\u0027d want different things for hibernate (i.e. does it make sense to call the wakeup_callback?  Or would there be a different hibernate callback?",
+      "parentUuid": "4745d8d4_0adc6050",
       "range": {
         "startLine": 52,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9018a14e_1176c57b",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2017-12-18T19:32:54Z",
+      "side": 1,
+      "message": "I consider the callback function to be part of the suspend operation.  IOW, we shouldn\u0027t initiate another suspend until the callback finishes.  Otherwise, we might suspend again while the callback is executing.  That doesn\u0027t seem right.\n\nw.r.t. multiple callers, the next CL which introduces force suspend should be using this, so seems appropriate to lay the groundwork now.  With single callers, the overhead of the mutex should be small.",
+      "parentUuid": "8bd70646_f3b49bf1",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 35
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17f636c2_6e3fc382",
         "filename": "libsuspend/autosuspend_wakeup_count.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2017-12-18T16:44:17Z",
       "side": 1,
       "message": "read blocks if wakeup events are being processed (eg: includes someone holding a wake lock AFAIK). This means if we are in auto-suspend, the lock (well, semaphore suspend_mutex) is always being held.\n\nA force suspend needs to _ignore_ wake locks (they should be removed in any case, so this point may be moot) but does need to be sensitive to wakeup events and push the state bypassing these checks and balances. The way _I_ handled this was to go straight to the SYS_POWER_STATE w/o SYS_POWER_WAKEUP_COUNT.\n\nI am also wondering if this needs to be a poll activity (timeout) and that incorporated into the force suspend?\n\nSo many experiments come to mind...",
+      "range": {
+        "startLine": 74,
+        "startChar": 42,
+        "endLine": 74,
+        "endChar": 99
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "067dffd5_d68ed651",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2017-12-18T19:32:54Z",
+      "side": 1,
+      "message": "This is where I need assistance.  If I can set mem --\u003e sys/power/state without dealing with wakeup count, that would be ideal.  I was under the impression from the Linux documentation that this was the way to suspend \"correctly\", even in the force suspend case.  I\u0027m happy to experiment, but is there someone else that would know canonically the correct way to do this?\n\nI agree that force suspend should ignore wakelocks, but not sure how to do this properly.  Help!",
+      "parentUuid": "17f636c2_6e3fc382",
       "range": {
         "startLine": 74,
         "startChar": 42,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "933b7ec6_adcb151a",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2017-12-18T19:32:54Z",
+      "side": 1,
+      "message": "Fair enough.  Done.",
+      "parentUuid": "cda6c884_2975dd11",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 12
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9cb014da_c4dca4ac",
         "filename": "libsuspend/autosuspend_wakeup_count.c",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2017-12-18T16:44:17Z",
       "side": 1,
       "message": "nit, maybe KISS:\n\nsuccess \u003d ret \u003e\u003d 0;\nret_val \u003d success ? SUSPEND_RESULT_SUCCESS : SUSPEND_RESULT_ATTEMPTED;",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 9
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23aeb8bd_998fefc0",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2017-12-18T19:32:54Z",
+      "side": 1,
+      "message": "if we\u0027re going to use the ?: operator, why not simply use the if() clause to handle setting success as well?  If we\u0027re taking the branch hit, then might as well make the code clearer.  I opt for readability than compactness; is that wrong?\n\nOtherwise, might as well go full obfuscation and do:\n\n    success \u003d ret \u003e\u003d 0;\n    ret_val \u003d success;\n\n -- or --\n\n    ret_val \u003d success \u003d ret \u003e\u003d 0;\n\nBut I don\u0027t like to do stuff like this unless there\u0027s a good reason.",
+      "parentUuid": "9cb014da_c4dca4ac",
       "range": {
         "startLine": 100,
         "startChar": 0,
@@ -160,6 +304,30 @@
       "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5544a21_7a802e89",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2017-12-18T19:32:54Z",
+      "side": 1,
+      "message": "Agreed.  I like to scope my variables as minimially as possible.\nDone",
+      "parentUuid": "54e00d5c_a30a6aa7",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 12
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -197,6 +365,30 @@
       "writtenOn": "2017-12-18T16:44:17Z",
       "side": 1,
       "message": "We should make this a mutex to relate to its usage.",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 5
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42de000c_8ec44898",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2017-12-18T19:32:54Z",
+      "side": 1,
+      "message": "I couldn\u0027t find mutex in bionic.  I figured we must have one.  Where is it?",
+      "parentUuid": "770e0310_55e89912",
       "range": {
         "startLine": 241,
         "startChar": 0,
