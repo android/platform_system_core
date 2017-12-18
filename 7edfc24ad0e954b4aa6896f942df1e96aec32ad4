@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77198ef8_e11f65f0",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-12-18T16:44:17Z",
+      "side": 1,
+      "message": "enum?",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4745d8d4_0adc6050",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-12-18T16:44:17Z",
+      "side": 1,
+      "message": "static const char mem_sleep_state[] \u003d \"mem\";\n\npass a const char* sleep_state (this) as an argument to do_suspend to (in the future) support auto hibernate/restore cycle as well.\n\nIMHO auto hibernate is probably a bad idea, I expect that suspend to memory is used, resorting to a short wakeup and transition to hibernate for longer sleeps. Force hibernate or suspend, which this change helps facilitate, is like an off switch.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 39
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bd70646_f3b49bf1",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-12-18T16:44:17Z",
+      "side": 1,
+      "message": "generally if you take a mutex, nothing inside should \u0027block\u0027.\n\nDo we trust the user supplied callback function? Wondering if we should unlock then call wakeup_func.\n\nthis lock also assumes multiple callers, maybe introduce this _only_ when you have them?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 35
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17f636c2_6e3fc382",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-12-18T16:44:17Z",
+      "side": 1,
+      "message": "read blocks if wakeup events are being processed (eg: includes someone holding a wake lock AFAIK). This means if we are in auto-suspend, the lock (well, semaphore suspend_mutex) is always being held.\n\nA force suspend needs to _ignore_ wake locks (they should be removed in any case, so this point may be moot) but does need to be sensitive to wakeup events and push the state bypassing these checks and balances. The way _I_ handled this was to go straight to the SYS_POWER_STATE w/o SYS_POWER_WAKEUP_COUNT.\n\nI am also wondering if this needs to be a poll activity (timeout) and that incorporated into the force suspend?\n\nSo many experiments come to mind...",
+      "range": {
+        "startLine": 74,
+        "startChar": 42,
+        "endLine": 74,
+        "endChar": 99
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cda6c884_2975dd11",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-12-18T16:44:17Z",
+      "side": 1,
+      "message": "nit: no need for the else, save an indent, cost is to move bool success and void (*func)(bool)  to the top of the function.\n\nThere are no gains in \u0027scope\u0027 in this case since none of the other blocks have private variables.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 12
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cb014da_c4dca4ac",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-12-18T16:44:17Z",
+      "side": 1,
+      "message": "nit, maybe KISS:\n\nsuccess \u003d ret \u003e\u003d 0;\nret_val \u003d success ? SUSPEND_RESULT_SUCCESS : SUSPEND_RESULT_ATTEMPTED;",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 9
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54e00d5c_a30a6aa7",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-12-18T16:44:17Z",
+      "side": 1,
+      "message": "not even a nitworthy comment, these could be inside the while loop, just sayin\u0027",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 12
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8009293a_ff5e6bb1",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-12-18T16:44:17Z",
+      "side": 1,
+      "message": "We are no longer using the this variable.",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 24
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "770e0310_55e89912",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-12-18T16:44:17Z",
+      "side": 1,
+      "message": "We should make this a mutex to relate to its usage.",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 5
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
