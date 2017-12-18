@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "b12c2539_bf705c33",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-12-18T21:04:06Z",
+      "side": 1,
+      "message": "writing to the same node, in one case \"mem\", in the other \"disk\" ...\n\nautohibernate, just say no. forcehibernate yes.",
+      "parentUuid": "61107f83_bc8ffacf",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 39
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8bd70646_f3b49bf1",
         "filename": "libsuspend/autosuspend_wakeup_count.c",
         "patchSetId": 1
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "I consider the callback function to be part of the suspend operation.  IOW, we shouldn\u0027t initiate another suspend until the callback finishes.  Otherwise, we might suspend again while the callback is executing.  That doesn\u0027t seem right.\n\nw.r.t. multiple callers, the next CL which introduces force suspend should be using this, so seems appropriate to lay the groundwork now.  With single callers, the overhead of the mutex should be small.",
       "parentUuid": "8bd70646_f3b49bf1",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 35
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aae4e87_2fcb5850",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-12-18T21:04:06Z",
+      "side": 1,
+      "message": "I am pushing to move adding this lock split to another patch.\n\ncallback could be coalesced (in yet another separate thread; a non-counting semaphore to trigger). Suspending again while the callback is still executing is a hazard of any asynchronous operations, and has to be thought out when we have multiple users of this do_suspend, but might be _more_ correct to not have them blocking the do_suspend operation(s).",
+      "parentUuid": "9018a14e_1176c57b",
       "range": {
         "startLine": 65,
         "startChar": 0,
@@ -201,6 +249,30 @@
       "side": 1,
       "message": "This is where I need assistance.  If I can set mem --\u003e sys/power/state without dealing with wakeup count, that would be ideal.  I was under the impression from the Linux documentation that this was the way to suspend \"correctly\", even in the force suspend case.  I\u0027m happy to experiment, but is there someone else that would know canonically the correct way to do this?\n\nI agree that force suspend should ignore wakelocks, but not sure how to do this properly.  Help!",
       "parentUuid": "17f636c2_6e3fc382",
+      "range": {
+        "startLine": 74,
+        "startChar": 42,
+        "endLine": 74,
+        "endChar": 99
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6484e306_c481e07c",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-12-18T21:04:06Z",
+      "side": 1,
+      "message": "Do not ignore wakelocks, make sure they are not set, but just in case (race conditions?) we need to deal with them accordingly. In the force-suspend case, we may have to view being blocked by read on /sys/power/state as a failure. Basically the OS is telling you that you can not suspend now. Maybe a few retries or an associated time perhaps; but not too many heuristics.\n\nAdd a timeout parameter to do_suspend? If no timeout set, goes to read, if a timeout, it checks poll first. API for force suspend would look like:\n\n1) turn off all wakelocks\n2) blank screen content properly\n3) libsuspend API does \u0027native\u0027 stuff like turns off all non-power-key wake sources, hail mary blank screen etc?\n4) do_suspend(timeout \u003d 100ms); timeout (b/c someone set a wakelock?) or fail (b/c driver will not suspend() properly) -\u003e power down case\n\nThe logic surrounding two callers to do_suspend makes the timeout interesting, timeout on the acquisition of the mutex? Think carefully about this. You can have both threads progress to the read/poll operation _before_ taking a lock?",
+      "parentUuid": "067dffd5_d68ed651",
       "range": {
         "startLine": 74,
         "startChar": 42,
@@ -304,6 +376,30 @@
       "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91b653e1_73373ad6",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-12-18T21:04:06Z",
+      "side": 1,
+      "message": "optimizer will produce the same code both ways (in fact, because of 1 and 0 value of ret_val, it will actually turn all of this into ret_val \u003d ret \u003e\u003d 0, and will optimize out the success variable before it goes to assembler). It\u0027s all about maintainability, but not about obfuscation. At least to me :-) \u0027success \u003d ret \u003e\u003d 0;\u0027 is very clear and an acceptable one-line action, actions that follow using success as switch for the two enums is also clear. The second line can be placed _after_ the call to wakeup_func and still be subject to optimization that will _not_ introduce a branch hit (even for some other values of suspend responses).\n\nI have used if () { } else { } fragments when there is _more_ to do and we need to provide itemized clarity, the line between each is a personal thing.\n\n_that_ is why I call this a \u0027nit, maybe KISS\u0027",
+      "parentUuid": "23aeb8bd_998fefc0",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 9
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -435,6 +531,30 @@
       "writtenOn": "2017-12-18T20:45:51Z",
       "side": 1,
       "message": "pthread_mutex_t.\n\nor rename this file .cpp and use std::mutex and friends. (and replace all these gotos with RAII, and all the strerror stuff with google3-style `PLOG(ERROR) \u003c\u003c \"Error creating thread\";`.)",
+      "parentUuid": "42de000c_8ec44898",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 5
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bef370a8_1b61df20",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-12-18T21:04:06Z",
+      "side": 1,
+      "message": "pthread_mutex_init and friends.",
       "parentUuid": "42de000c_8ec44898",
       "range": {
         "startLine": 241,
