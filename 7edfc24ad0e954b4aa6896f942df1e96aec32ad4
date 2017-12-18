@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "7e7f5f7e_ee74675e",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2017-12-18T22:06:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b12c2539_bf705c33",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 39
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bd70646_f3b49bf1",
         "filename": "libsuspend/autosuspend_wakeup_count.c",
         "patchSetId": 1
@@ -191,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "f9ed1c0b_dc48602a",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2017-12-18T22:06:28Z",
+      "side": 1,
+      "message": "So you want me to remove the mutex entirely into a separate patch?  I can do that.",
+      "parentUuid": "2aae4e87_2fcb5850",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 35
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec041703_89a94302",
         "filename": "libsuspend/autosuspend_wakeup_count.c",
         "patchSetId": 1
@@ -202,6 +250,30 @@
       "writtenOn": "2017-12-18T20:45:51Z",
       "side": 1,
       "message": "all this strerror_r nonsense is voodoo that you can remove.",
+      "range": {
+        "startLine": 67,
+        "startChar": 8,
+        "endLine": 67,
+        "endChar": 18
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3099cd63_c03797fa",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2017-12-18T22:06:28Z",
+      "side": 1,
+      "message": "thank you!  I was wondering but too afraid to ask about this.",
+      "parentUuid": "ec041703_89a94302",
       "range": {
         "startLine": 67,
         "startChar": 8,
@@ -273,6 +345,30 @@
       "side": 1,
       "message": "Do not ignore wakelocks, make sure they are not set, but just in case (race conditions?) we need to deal with them accordingly. In the force-suspend case, we may have to view being blocked by read on /sys/power/state as a failure. Basically the OS is telling you that you can not suspend now. Maybe a few retries or an associated time perhaps; but not too many heuristics.\n\nAdd a timeout parameter to do_suspend? If no timeout set, goes to read, if a timeout, it checks poll first. API for force suspend would look like:\n\n1) turn off all wakelocks\n2) blank screen content properly\n3) libsuspend API does \u0027native\u0027 stuff like turns off all non-power-key wake sources, hail mary blank screen etc?\n4) do_suspend(timeout \u003d 100ms); timeout (b/c someone set a wakelock?) or fail (b/c driver will not suspend() properly) -\u003e power down case\n\nThe logic surrounding two callers to do_suspend makes the timeout interesting, timeout on the acquisition of the mutex? Think carefully about this. You can have both threads progress to the read/poll operation _before_ taking a lock?",
       "parentUuid": "067dffd5_d68ed651",
+      "range": {
+        "startLine": 74,
+        "startChar": 42,
+        "endLine": 74,
+        "endChar": 99
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1487296e_649f7228",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2017-12-18T22:06:28Z",
+      "side": 1,
+      "message": "I was thinking the retry logic would go into the force_suspend() fxn when that\u0027s written.  do_suspend() is meant to be the low level logic to attempt and complete a suspend cycle.  In the case of auto_suspend, the retry is handled exponentially. For force_suspend, we may be in a tighter loop.\n\nIn any case, I felt do_suspend() was the largest chunk I could separate between force_suspend and autosuspend.",
+      "parentUuid": "6484e306_c481e07c",
       "range": {
         "startLine": 74,
         "startChar": 42,
@@ -403,6 +499,30 @@
     },
     {
       "key": {
+        "uuid": "5b0ef3a9_da9ddc6c",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2017-12-18T22:06:28Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "91b653e1_73373ad6",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 9
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54e00d5c_a30a6aa7",
         "filename": "libsuspend/autosuspend_wakeup_count.c",
         "patchSetId": 1
@@ -461,6 +581,30 @@
       "writtenOn": "2017-12-18T16:44:17Z",
       "side": 1,
       "message": "We are no longer using the this variable.",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 24
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd3adbac_a16ecfa9",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2017-12-18T22:06:28Z",
+      "side": 1,
+      "message": "it is used for the exponential backoff",
+      "parentUuid": "8009293a_ff5e6bb1",
       "range": {
         "startLine": 136,
         "startChar": 0,
@@ -556,6 +700,30 @@
       "side": 1,
       "message": "pthread_mutex_init and friends.",
       "parentUuid": "42de000c_8ec44898",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 5
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d40eead_7296a93b",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2017-12-18T22:06:28Z",
+      "side": 1,
+      "message": "I\u0027ll put the mutex in a separate CL, but .cpp-ify the file in this one.",
+      "parentUuid": "bef370a8_1b61df20",
       "range": {
         "startLine": 241,
         "startChar": 0,
