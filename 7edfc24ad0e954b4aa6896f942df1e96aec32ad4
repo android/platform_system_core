@@ -143,6 +143,29 @@
     },
     {
       "key": {
+        "uuid": "ec041703_89a94302",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-12-18T20:45:51Z",
+      "side": 1,
+      "message": "all this strerror_r nonsense is voodoo that you can remove.",
+      "range": {
+        "startLine": 67,
+        "startChar": 8,
+        "endLine": 67,
+        "endChar": 18
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17f636c2_6e3fc382",
         "filename": "libsuspend/autosuspend_wakeup_count.c",
         "patchSetId": 1
@@ -389,6 +412,30 @@
       "side": 1,
       "message": "I couldn\u0027t find mutex in bionic.  I figured we must have one.  Where is it?",
       "parentUuid": "770e0310_55e89912",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 5
+      },
+      "revId": "7edfc24ad0e954b4aa6896f942df1e96aec32ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "441445c3_be78d4a6",
+        "filename": "libsuspend/autosuspend_wakeup_count.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-12-18T20:45:51Z",
+      "side": 1,
+      "message": "pthread_mutex_t.\n\nor rename this file .cpp and use std::mutex and friends. (and replace all these gotos with RAII, and all the strerror stuff with google3-style `PLOG(ERROR) \u003c\u003c \"Error creating thread\";`.)",
+      "parentUuid": "42de000c_8ec44898",
       "range": {
         "startLine": 241,
         "startChar": 0,
