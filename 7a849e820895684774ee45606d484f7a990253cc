@@ -375,6 +375,30 @@
     },
     {
       "key": {
+        "uuid": "4c4be5f4_aa60f16a",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2017-12-19T19:49:16Z",
+      "side": 1,
+      "message": "Well, not done.\n\nart/dex2oat/dex2oat.cc:541:32: error: \u0027LogLine\u0027 is a private member of \u0027android::base::LogMessage\u0027\n\nHow about having it solved in multiple passes\n1. submit the CL with the old constructor marked with TODO\n2. move the old constructor to private and fix build failures\n3. wait for prebuilts and remove the old constructor entirely",
+      "parentUuid": "0b06a29b_95649f86",
+      "range": {
+        "startLine": 413,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 46
+      },
+      "revId": "7a849e820895684774ee45606d484f7a990253cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc8d087c_32f89276",
         "filename": "base/include/android-base/logging.h",
         "patchSetId": 1
