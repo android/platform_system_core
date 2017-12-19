@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ed952cab_218d78a7",
+        "filename": "init/property_schema.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-12-19T23:02:33Z",
+      "side": 1,
+      "message": "I am anchoring the regexes after, so wouldn\u0027t \u0027^$\u0027 match only empty strings?  In any case, I\u0027d figure it\u0027s a bug if they specify \u0027regex\u0027 without actually providing one.  If they want to match nothing, ^$ should be used.  If they want to match everything, \u0027any\u0027 should just be used instead.",
+      "parentUuid": "178334da_577facd6",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 98,
+        "endChar": 9
+      },
+      "revId": "2e17943db64a5b84e0843653bcbe978ee29fc004",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b684eed_d0208b99",
         "filename": "init/property_schema.cpp",
         "patchSetId": 3
@@ -77,6 +101,24 @@
       "side": 1,
       "message": "Tom, you\u0027re a genius.\n\nBetter would be to have it return the regex if it is valid, don\u0027t you think? SafeRegex?",
       "parentUuid": "97eb151e_d6a63d38",
+      "revId": "2e17943db64a5b84e0843653bcbe978ee29fc004",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b6e3141_412d6c73",
+        "filename": "init/property_schema.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2017-12-19T23:02:33Z",
+      "side": 1,
+      "message": "We\u0027d need shared memory to return the regex if it\u0027s valid, thus making a bad idea even worse.  Unless we really want a regex here for this, I think dropping it (as the latest patchset does) is the right idea.",
+      "parentUuid": "5921cf57_db5a6a17",
       "revId": "2e17943db64a5b84e0843653bcbe978ee29fc004",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
