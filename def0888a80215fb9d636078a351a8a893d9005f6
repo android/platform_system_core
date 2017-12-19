@@ -22,6 +22,30 @@
       "revId": "def0888a80215fb9d636078a351a8a893d9005f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dee4ab11_aa723ada",
+        "filename": "debuggerd/libdebuggerd/tombstone.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-12-19T18:18:21Z",
+      "side": 1,
+      "message": "i think the idea is that you get some logs either side of the stack dumps. (presumably in case dumping stacks takes too long?) but, yeah, maybe a better idea is to just dump_logs(0) here and remove the other call? (and if we need to have the logs come last, change dump_logs to return a std::string that we dump at the current site of the second call?)",
+      "parentUuid": "2d8a3d11_5b5c0238",
+      "range": {
+        "startLine": 637,
+        "startChar": 0,
+        "endLine": 639,
+        "endChar": 3
+      },
+      "revId": "def0888a80215fb9d636078a351a8a893d9005f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
