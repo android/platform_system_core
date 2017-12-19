@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "1003eacb_6bb29074",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-19T00:31:04Z",
+      "side": 1,
+      "message": "Btw, personally, I\u0027m not a big fan of defining LOG_TAG everywhere. I thought the original LOG(*) design made sense. It seems to me something like filename is a much better signal for finding where the log is coming from. That being said, we do have LOG_TAG defined in 10000s of places.",
+      "revId": "7a849e820895684774ee45606d484f7a990253cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1250eb1f_cfcc6ef2",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-19T00:31:04Z",
+      "side": 1,
+      "message": "nit: ifdef _LOG_TAG_INTERNAL #error (for targets that still don\u0027t have -Werror)",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 7
+      },
+      "revId": "7a849e820895684774ee45606d484f7a990253cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0bd4c0fe_f3c1f17a",
         "filename": "base/include/android-base/logging.h",
         "patchSetId": 1
@@ -22,6 +62,93 @@
       "revId": "7a849e820895684774ee45606d484f7a990253cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4288dedc_e46d0062",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-19T00:31:04Z",
+      "side": 1,
+      "message": "Even then, you know prebuilts will be referencing the other.\n\nTomasz, you\u0027ll probably need to keep this even once all the users are cleaned up. If you ping me. Add some attribute like:\n[[deprecated(\"LogMessage with const char* tag preferred.\")]]",
+      "parentUuid": "0bd4c0fe_f3c1f17a",
+      "range": {
+        "startLine": 413,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 46
+      },
+      "revId": "7a849e820895684774ee45606d484f7a990253cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc8d087c_32f89276",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-19T00:31:04Z",
+      "side": 1,
+      "message": "same deprecated here",
+      "range": {
+        "startLine": 425,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 61
+      },
+      "revId": "7a849e820895684774ee45606d484f7a990253cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6771109e_378efec6",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-19T00:31:04Z",
+      "side": 1,
+      "message": "undef _LOG_TAG_INTERNAL",
+      "revId": "7a849e820895684774ee45606d484f7a990253cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f67ef90_42188ad8",
+        "filename": "base/logging.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-19T00:31:04Z",
+      "side": 1,
+      "message": "this was used a lot without anything caring if tag was nullptr or not. Better to say \u0027tag ?: \"null\"\u0027 lest we trigger some undefined behavior. Not sure what android does...",
+      "range": {
+        "startLine": 208,
+        "startChar": 50,
+        "endLine": 208,
+        "endChar": 53
+      },
+      "revId": "7a849e820895684774ee45606d484f7a990253cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
