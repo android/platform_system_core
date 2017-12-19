@@ -16,6 +16,24 @@
       "revId": "632c46dd3f0dc40da9ab6db0f37ac8cd9fb6341c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04b2aef9_25cd1a63",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1128053
+      },
+      "writtenOn": "2017-12-19T09:29:11Z",
+      "side": 1,
+      "message": "Updated to take the lock in the beginning - sorry missed it.\n\nRegarding sorting the real list, here are my thoughts:\n- this will make \"list_transports\" method have an unexpected side-effect\n- I am not sure whether any other places in code assume that the list is in some specific order\n- copying looks like a cheap operation as this is done on the host side.\n\nHaving said that, I acknowledge that I haven\u0027t been writing production C++ code for a while, and never wrote C++ code for Android, so if you think that the points are not valid, please let me know.\n\nAnother way to sort the transports, but not introduce the side-effect to list_transports is to sort it right when the transport is being added to the list (inserting it into the correct place). But this will complicate the implementation a bit. If you think it worth it I can reimplement.",
+      "parentUuid": "cf7966cd_ec52977e",
+      "revId": "632c46dd3f0dc40da9ab6db0f37ac8cd9fb6341c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
