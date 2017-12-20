@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "abbd73c4_15cec0fc",
+        "filename": "libunwindstack/tools/unwind_for_offline.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-12-20T19:23:22Z",
+      "side": 1,
+      "message": "I still prefer using std::unique_ptr for below reasons:\n1. What if the code logic is changed in the future.\n2. What if the code is copied to some other places where file leak is a big problem.\n3. People read this code may realize there is a file leak and send cls to fix it.\n4. The comment is too far away from CopyElfFromFile.",
+      "parentUuid": "2724a7b0_93f735f2",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 145,
+        "endChar": 6
+      },
+      "revId": "14213aedc33b272b0b05f824a5f2fafa621039d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4873d92a_749f0d19",
         "filename": "libunwindstack/tools/unwind_for_offline.cpp",
         "patchSetId": 3
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "The point of this it to convert an in memory only elf map to a file backed one.\n\nI did this because on x86, I would frequently see the first frame in vdso. It also provides a way to test that a partial elf works properly.",
       "parentUuid": "a38b722c_3ca4231e",
+      "range": {
+        "startLine": 212,
+        "startChar": 13,
+        "endLine": 212,
+        "endChar": 32
+      },
+      "revId": "14213aedc33b272b0b05f824a5f2fafa621039d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3957d639_61cc1a3b",
+        "filename": "libunwindstack/tools/unwind_for_offline.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2017-12-20T19:23:22Z",
+      "side": 1,
+      "message": "That makes sense, add a comment?",
+      "parentUuid": "a2eafc3a_26480d5a",
       "range": {
         "startLine": 212,
         "startChar": 13,
