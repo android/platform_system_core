@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cfb9e159_0a284083",
+        "filename": "libunwindstack/tools/unwind_for_offline.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-12-20T02:15:07Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s a better name, changed. I want to avoid system calls since that always leads to a tragedy. Even though there aren\u0027t any security implications with this program, I\u0027d still prefer not to open things up just in case.",
+      "parentUuid": "3040e47d_18c9a561",
+      "range": {
+        "startLine": 144,
+        "startChar": 5,
+        "endLine": 144,
+        "endChar": 22
+      },
+      "revId": "14213aedc33b272b0b05f824a5f2fafa621039d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "58a81bd1_cd48d0ac",
         "filename": "libunwindstack/tools/unwind_for_offline.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-20T00:45:58Z",
       "side": 1,
       "message": "use std::unique_ptr\u003cFILE, decltype(\u0026fclose)\u003e?, so it is closed when return false.",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 145,
+        "endChar": 6
+      },
+      "revId": "14213aedc33b272b0b05f824a5f2fafa621039d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2724a7b0_93f735f2",
+        "filename": "libunwindstack/tools/unwind_for_offline.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-12-20T02:15:07Z",
+      "side": 1,
+      "message": "I don\u0027t care about leaking the file descriptors because failures lead to immediate exits of the program. The only reason I don\u0027t abort immediately is to allow the process to continue and not remain stopped if there is an error.\n\nI added a comment about this.",
+      "parentUuid": "58a81bd1_cd48d0ac",
       "range": {
         "startLine": 145,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5aad2ba4_e765fba5",
+        "filename": "libunwindstack/tools/unwind_for_offline.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-12-20T02:15:07Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "4873d92a_749f0d19",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 151,
+        "endChar": 6
+      },
+      "revId": "14213aedc33b272b0b05f824a5f2fafa621039d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a38b722c_3ca4231e",
         "filename": "libunwindstack/tools/unwind_for_offline.cpp",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2017-12-20T00:45:58Z",
       "side": 1,
       "message": "This may not be necessary, because offline unwinding doesn\u0027t know data in memory except stack.",
+      "range": {
+        "startLine": 212,
+        "startChar": 13,
+        "endLine": 212,
+        "endChar": 32
+      },
+      "revId": "14213aedc33b272b0b05f824a5f2fafa621039d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2eafc3a_26480d5a",
+        "filename": "libunwindstack/tools/unwind_for_offline.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-12-20T02:15:07Z",
+      "side": 1,
+      "message": "The point of this it to convert an in memory only elf map to a file backed one.\n\nI did this because on x86, I would frequently see the first frame in vdso. It also provides a way to test that a partial elf works properly.",
+      "parentUuid": "a38b722c_3ca4231e",
       "range": {
         "startLine": 212,
         "startChar": 13,
