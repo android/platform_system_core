@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "035c8cf4_d09edf6b",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-12-21T22:12:07Z",
+      "side": 1,
+      "message": "not guaranteed IMHO, API does not require a trailing newline.\n\nAlso, this should be done above !wakeup_count_len:\n\nwhile (wakeup_count_len \u0026\u0026 (wakeup_count[wakeup_count_len - 1] \u003d\u003d \u0027\\n\u0027)) {\n   --wakeup_count_len;\n   wakeup_count[wakeup_count_len] \u003d \u0027\\0\u0027;\n}\nif (!wakeup_count_len) {\n   LOG_TO(ERROR, SYSTEM) \u003c\u003c \"empty wakeup count\";\n   continue;\n}",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 47
+      },
+      "revId": "a3d2b2198e4b4e736370dea1479b3d093b891899",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
