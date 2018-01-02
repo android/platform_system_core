@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "7ead7146_c4bd1157",
+        "filename": "adb/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-01-02T22:04:52Z",
+      "side": 1,
+      "message": "My original goal was to allow for the compilation of adbd tests on the host, but that seems impractical because of dependencies, so I\u0027ll switch to use your suggestion.",
+      "parentUuid": "fed537f3_9ca0b112",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 30
+      },
+      "revId": "cd98a3c109fb212970155160bad9b567043925ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c3808f9_ab369193",
         "filename": "adb/Android.bp",
         "patchSetId": 1
@@ -59,6 +83,24 @@
       "writtenOn": "2018-01-02T21:07:20Z",
       "side": 1,
       "message": "We generally prefer not using variables for these, its more readable to just put them inline.  Maybe compile these separately as libadb with host_supportd: true?",
+      "revId": "cd98a3c109fb212970155160bad9b567043925ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d4a78c3_526afe0b",
+        "filename": "adb/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-01-02T22:04:52Z",
+      "side": 1,
+      "message": "It seems pretty messy, since there isn\u0027t actually a target category for \u0027not windows\u0027 (not_windows is host-only). Not using variables means that the posix srcs have to be listed twice, and using variables but only for posix srcs seems weird.",
+      "parentUuid": "8c3808f9_ab369193",
       "revId": "cd98a3c109fb212970155160bad9b567043925ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
