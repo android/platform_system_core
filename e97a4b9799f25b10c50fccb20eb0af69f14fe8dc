@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1190da41_0b6e9c1d",
+        "filename": "libcutils/uevent.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2018-01-03T21:50:17Z",
+      "side": 1,
+      "message": "Please note that this check isn\u0027t needed on modern kernels. As of https://patchwork.kernel.org/patch/1525551/ , it\u0027s not permitted for non-root processes to send netlink messages (with a few exceptions which don\u0027t apply to this code). Lines 125-128 were written prior to the kernel patch being available.\n\nRather than adding a bunch of code to compute namespace UIDs, it would be better to just rely on the kernel patch. The kernel will guarantee that line 125 will always evaluate to false.\n\nIt would be better to revert this patch and just delete the relevant code, rather than add a bunch of extra code + security policy (https://android-review.googlesource.com/c/platform/system/sepolicy/+/528621).",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 0
+      },
+      "revId": "e97a4b9799f25b10c50fccb20eb0af69f14fe8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
