@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6049bff7_be65ec61",
+        "filename": "libsuspend/autosuspend.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-04T23:54:24Z",
+      "side": 1,
+      "message": "This (and above) init paths should \u0027upgrade\u0027 force_only option to autosuspend_and_force option.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 29
+      },
+      "revId": "852e13ab25bb43b5b421188674d61904575b8adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68c937f4_4528983e",
+        "filename": "libsuspend/autosuspend.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-04T23:54:24Z",
+      "side": 1,
+      "message": "A different init path, if not already inited, then chose the force_only option.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 29
+      },
+      "revId": "852e13ab25bb43b5b421188674d61904575b8adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bb03455_85a66325",
+        "filename": "libsuspend/autosuspend.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-04T23:54:24Z",
+      "side": 1,
+      "message": "note: AFAIK this will never be NULL so remains OK.",
+      "range": {
+        "startLine": 109,
+        "startChar": 27,
+        "endLine": 109,
+        "endChar": 40
+      },
+      "revId": "852e13ab25bb43b5b421188674d61904575b8adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03cd33ff_a4d51aa6",
+        "filename": "libsuspend/autosuspend.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-04T23:54:24Z",
+      "side": 1,
+      "message": "return autosuspend_ops-\u003eforce_suspend(timeout_ms);",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 15
+      },
+      "revId": "852e13ab25bb43b5b421188674d61904575b8adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "340aecc7_59f81456",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-04T23:54:24Z",
+      "side": 1,
+      "message": "This is functionally the relaxed force suspend. It is an admirable feature to be made available for future capabilities in the Power Manager, it may be out of scope for an independent process to trigger an immediate force suspend that is being required today.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 1
+      },
+      "revId": "852e13ab25bb43b5b421188674d61904575b8adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce57f353_770ffda9",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-04T23:54:24Z",
+      "side": 1,
+      "message": "I have declared \u0027this is yucky\u0027(tm)\n\nIf force_suspend is only called with timeout_ms \u003d 0 (which is the API case for an independent process ala Automotive Power Manager), there is no need for any of this initialization. How to reconcile that is \u0027interesting\u0027 because one can not access force_suspend until after the autosuspend_wakeup_count_ops are exported; and they can not happen.\n\nIf we are to allow force_suspend with a timeout_ms value (for the relaxed case best utilized when this request is in-process), then we need integration into autosuspend as you have added here. There are several issues to be addressed.\n\nSuggestion:\n\n- Create _two_ autosuspend_ops, each serviced with an associated init() function.\n- One supplied integrated force_suspend with autosuspend; the other provides force_suspend without autosuspend features.\n- In both cases, so that you do not have to implement all this complicated locking or communications, ignore the timeout value (or error out if timeout is set) and act like timeout is zero. One can attack the integration issue later.\n- Caller selects which behavior it wants (integrated, or forced only).",
+      "range": {
+        "startLine": 237,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 41
+      },
+      "revId": "852e13ab25bb43b5b421188674d61904575b8adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
