@@ -22,6 +22,30 @@
       "revId": "f4ca3501fd9f3c760087c0ee253dbcc5af24f323",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8f9b143_84d9f80f",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2018-01-05T23:37:03Z",
+      "side": 1,
+      "message": "If lmkd were small, that\u0027d be a great idea. Unfortunately, it\u0027s not: if we pin without MCL_ONFAULT, we end up using ~10MB additional RAM, forever. That\u0027s too much. And current behavior is accidentally not to pin at all, so this CL is an expedient that improves things on 4.4+ and doesn\u0027t make anything worse on \u003c 4.4.\n\nSubsequent CLs in this series try to make lmkd small enough to just pin without MCL_ONFAULT. We\u0027re close, but b/71605857 still makes this approach too expensive for the moment. Once we resolve the excess stack size problem in b/71605857, we\u0027ll switch to pinning the whole program.",
+      "parentUuid": "5f8a20a5_14e8bd83",
+      "range": {
+        "startLine": 906,
+        "startChar": 19,
+        "endLine": 907,
+        "endChar": 13
+      },
+      "revId": "f4ca3501fd9f3c760087c0ee253dbcc5af24f323",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
