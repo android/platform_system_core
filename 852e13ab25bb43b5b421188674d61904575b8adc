@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "23bff981_8e4b6108",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2018-01-05T05:51:19Z",
+      "side": 1,
+      "message": "Yeah... that\u0027s the problem.\n\nAIUI, in our system, we have two independent processes:\n\n1)  Android PowerManager - it only uses autosuspend\n2)  CarService - it only uses forcesuspend\n\nLife would be so much easier if I could plumb forceSuspend through Android PM.  It doesn\u0027t look that hard; it would be a SMOP to insert it a forcesuspend() call into the binder interface for powermanagerservice and the related java files.\n\nAny idea if that would be a remote possibility if the code was already written?  :)",
+      "parentUuid": "340aecc7_59f81456",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 1
+      },
+      "revId": "852e13ab25bb43b5b421188674d61904575b8adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce57f353_770ffda9",
         "filename": "libsuspend/autosuspend_wakeup_count.cpp",
         "patchSetId": 1
@@ -128,6 +152,30 @@
       "writtenOn": "2018-01-04T23:54:24Z",
       "side": 1,
       "message": "I have declared \u0027this is yucky\u0027(tm)\n\nIf force_suspend is only called with timeout_ms \u003d 0 (which is the API case for an independent process ala Automotive Power Manager), there is no need for any of this initialization. How to reconcile that is \u0027interesting\u0027 because one can not access force_suspend until after the autosuspend_wakeup_count_ops are exported; and they can not happen.\n\nIf we are to allow force_suspend with a timeout_ms value (for the relaxed case best utilized when this request is in-process), then we need integration into autosuspend as you have added here. There are several issues to be addressed.\n\nSuggestion:\n\n- Create _two_ autosuspend_ops, each serviced with an associated init() function.\n- One supplied integrated force_suspend with autosuspend; the other provides force_suspend without autosuspend features.\n- In both cases, so that you do not have to implement all this complicated locking or communications, ignore the timeout value (or error out if timeout is set) and act like timeout is zero. One can attack the integration issue later.\n- Caller selects which behavior it wants (integrated, or forced only).",
+      "range": {
+        "startLine": 237,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 41
+      },
+      "revId": "852e13ab25bb43b5b421188674d61904575b8adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c20e8560_ebdd42b0",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2018-01-05T05:51:19Z",
+      "side": 1,
+      "message": "IMO, the timeout is necessary because reading the wakeup_count can block.\n\nI\u0027m thinking suspend should follow the same process as suspend_thread_func.  In psuedo code, a forcesuspend(int timeout) might look like this:\n\nint forcesuspend(int timeout) {\n  // disable wakelocks\n\n  // do the following block of code in a separate thread to guard against blocking read:\n  {\n    ReadFdToString(wakeup_count_fd, \u0026wakeup_count);\n    WriteStringToFd(wakeup_count, wakeup_count_fd);\n    sem_post(forcesuspend_continue);\n  }\n\n  // Wait until write succeeds or timeout expires\n  sem_wait_timeout(forcesuspend_continue, timout);\n\n  // go to suspend (either safely because write succeeded, or just force it)\n  Write mem --\u003e sys/power/state to suspend\n\n  // now we\u0027ve woken up again\n  // enable wakelocks\n}\n\n\nThe complexity with the multiple semaphores and mutex is to share the read/write of wakeup_count logic with forcesuspend.  After analyzing the function a little more today, I think I have a cleaner way to integrate forcesuspend with autosuspend.\n\nThe complexity I have now is the inter-process aspect of the system.  I really want to be able to call into libsuspend from CarPowerManagerService.  The idea of having two instances of libsuspend running seems very unclean.\n\nI looked at the Android PowerManagerService, and it looks like autosuspend is enabled all the time.  Hence, there\u0027s no easy way to disable it without hacking at PowerManagerService.",
+      "parentUuid": "ce57f353_770ffda9",
       "range": {
         "startLine": 237,
         "startChar": 1,
