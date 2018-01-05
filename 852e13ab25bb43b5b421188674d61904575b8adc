@@ -141,6 +141,30 @@
     },
     {
       "key": {
+        "uuid": "bd989b21_d5f7ed37",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-05T16:04:35Z",
+      "side": 1,
+      "message": "The jni needs to be written anyways. But inserting it into Android PowerManager is beyond our control for the moment. After implementation and tested here at this level, if it is adding a new exported method in the power manager to propagate, you might find less resistance.\n\nAs noted, the force suspend with timeout_ms \u003d 0 (or the force suspend performed at timeout) only needs to take a wakelock to disable the autosuspend mechanics. And that works across processes.",
+      "parentUuid": "23bff981_8e4b6108",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 1
+      },
+      "revId": "852e13ab25bb43b5b421188674d61904575b8adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce57f353_770ffda9",
         "filename": "libsuspend/autosuspend_wakeup_count.cpp",
         "patchSetId": 1
@@ -176,6 +200,30 @@
       "side": 1,
       "message": "IMO, the timeout is necessary because reading the wakeup_count can block.\n\nI\u0027m thinking suspend should follow the same process as suspend_thread_func.  In psuedo code, a forcesuspend(int timeout) might look like this:\n\nint forcesuspend(int timeout) {\n  // disable wakelocks\n\n  // do the following block of code in a separate thread to guard against blocking read:\n  {\n    ReadFdToString(wakeup_count_fd, \u0026wakeup_count);\n    WriteStringToFd(wakeup_count, wakeup_count_fd);\n    sem_post(forcesuspend_continue);\n  }\n\n  // Wait until write succeeds or timeout expires\n  sem_wait_timeout(forcesuspend_continue, timout);\n\n  // go to suspend (either safely because write succeeded, or just force it)\n  Write mem --\u003e sys/power/state to suspend\n\n  // now we\u0027ve woken up again\n  // enable wakelocks\n}\n\n\nThe complexity with the multiple semaphores and mutex is to share the read/write of wakeup_count logic with forcesuspend.  After analyzing the function a little more today, I think I have a cleaner way to integrate forcesuspend with autosuspend.\n\nThe complexity I have now is the inter-process aspect of the system.  I really want to be able to call into libsuspend from CarPowerManagerService.  The idea of having two instances of libsuspend running seems very unclean.\n\nI looked at the Android PowerManagerService, and it looks like autosuspend is enabled all the time.  Hence, there\u0027s no easy way to disable it without hacking at PowerManagerService.",
       "parentUuid": "ce57f353_770ffda9",
+      "range": {
+        "startLine": 237,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 41
+      },
+      "revId": "852e13ab25bb43b5b421188674d61904575b8adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40db62d9_bed0f553",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-05T16:04:35Z",
+      "side": 1,
+      "message": ":-( regarding power manager complexity. A wakelock is the only/best way of stopping the autosuspend.\n\nYour path for forcesuspend where timeout\u003d0 does not require any accesses to wakeup_count_fd and _only_ has the write to /sys/power/state.",
+      "parentUuid": "c20e8560_ebdd42b0",
       "range": {
         "startLine": 237,
         "startChar": 1,
