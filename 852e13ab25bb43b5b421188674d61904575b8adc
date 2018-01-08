@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f0f27432_960150d0",
+        "filename": "libsuspend/autosuspend.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2018-01-08T00:51:56Z",
+      "side": 1,
+      "message": "I\u0027m not sure I want to do two separate init() functions....\nIf PowerManager doesn\u0027t use forceSuspend, it doesn\u0027t need to worry about the extra interface.  If I\u0027ve already coded up \u0027autosuspend_and_force\u0027, then there\u0027s no need to make a \u0027force_only\u0027.\n\nAlso, I suspect force really does want to go through the autosuspend path.  The more I look at power manager, that wakeup_count dance is the right sequence of stuff to do.",
+      "parentUuid": "6049bff7_be65ec61",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 29
+      },
+      "revId": "852e13ab25bb43b5b421188674d61904575b8adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68c937f4_4528983e",
         "filename": "libsuspend/autosuspend.c",
         "patchSetId": 1
@@ -224,6 +248,30 @@
       "side": 1,
       "message": ":-( regarding power manager complexity. A wakelock is the only/best way of stopping the autosuspend.\n\nYour path for forcesuspend where timeout\u003d0 does not require any accesses to wakeup_count_fd and _only_ has the write to /sys/power/state.",
       "parentUuid": "c20e8560_ebdd42b0",
+      "range": {
+        "startLine": 237,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 41
+      },
+      "revId": "852e13ab25bb43b5b421188674d61904575b8adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd37033b_b7fdc2d0",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2018-01-08T00:51:56Z",
+      "side": 1,
+      "message": "I thought using wakeup_count_fd is a way to sequence the suspend in a \u0027safe\u0027 manner.  Otherwise, as soon as I write mem-\u003epower/state, the system will either:\n\na)  Not suspend entirely\nb)  Wakeup immediately due to pending wakeevent\n\nAIUI, the wakeup_count dance is used to make sure the system is in a suitable state to perform suspend for any reasonable length of time.  Forcing mem-\u003epower/state is sort of a last resort that is not likely to work, but does force an attempt to suspend.\n\nTo avoid replicating the logic in two places, I think we still need some synchronization.  Maybe we do something like this:\n\nforce_suspend() {\n  // take a wakelock to prevent libsuspend from activating\n  // disable all other wakelocks\n  // sem_post() (in case libsuspend is NOT active)\n  // release the wakelock to allow libsuspend to sleep.\n\n\u003cfollowing happens in thread once the wakelock is released\u003e\n  // call HAL specific interface \n  // mem -\u003e power/state\n  // \u003con wakeup\u003e call HAL specific interface to wakeup\n\n\u003creturn control to force_suspend via separate semaphore\u003e\n  // re-enable wakelocks\n}\n\nI\u0027m trying to write this logic now to post as an example.",
+      "parentUuid": "40db62d9_bed0f553",
       "range": {
         "startLine": 237,
         "startChar": 1,
