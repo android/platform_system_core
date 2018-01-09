@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "697279a7_4ea832a3",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2018-01-09T19:39:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ee42832d_227ab618",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 23
+      },
+      "revId": "20fc26c6fa896f31a320c014dc774fb7317cd330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48c2e89f_42347426",
         "filename": "libsuspend/autosuspend_wakeup_count.cpp",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e3939d18_f4d1ec61",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2018-01-09T19:39:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "48c2e89f_42347426",
+      "range": {
+        "startLine": 185,
+        "startChar": 18,
+        "endLine": 185,
+        "endChar": 33
+      },
+      "revId": "20fc26c6fa896f31a320c014dc774fb7317cd330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7cdddba1_cc67b5f9",
         "filename": "libsuspend/autosuspend_wakeup_count.cpp",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2018-01-09T18:46:00Z",
       "side": 1,
       "message": "We expect the caller has released, or is in the process of releasing (eg: driver or HAL completing an action), all wakelocks. We should not be actively releasing wakelocks (except a libsuspend one used for preventing autosuspend?). The whole idea of a relaxed autosuspend is to find an appropriate juncture for a clean-ish shutdown for when the activities have acquiesce, and if they take too long, then pull the rug.",
+      "range": {
+        "startLine": 190,
+        "startChar": 22,
+        "endLine": 190,
+        "endChar": 35
+      },
+      "revId": "20fc26c6fa896f31a320c014dc774fb7317cd330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbe9db47_f46ed166",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2018-01-09T19:39:30Z",
+      "side": 1,
+      "message": "I thought we were going to remove all active wakelocks anyway, just in case?",
+      "parentUuid": "7cdddba1_cc67b5f9",
       "range": {
         "startLine": 190,
         "startChar": 22,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "5e1c601e_2ece72ce",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2018-01-09T19:39:30Z",
+      "side": 1,
+      "message": "My thinking is that:\n\n1)  Holding a wakelock at the beginning of this function will prevent libsuspend from running.\n2)  Just in case libsuspend did perform a suspend event *right* before we grab the wakelock, then there\u0027s some time for this to execute before we set the forcesuspend_enable flag.\n\nI want this to be the last thing to happen before we post the semaphore that unblocks the thread.",
+      "parentUuid": "62c0cb95_03efe404",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 28
+      },
+      "revId": "20fc26c6fa896f31a320c014dc774fb7317cd330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf596b51_83e0663f",
         "filename": "libsuspend/autosuspend_wakeup_count.cpp",
         "patchSetId": 2
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "74d123fa_99d37d50",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2018-01-09T19:39:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cf596b51_83e0663f",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 9
+      },
+      "revId": "20fc26c6fa896f31a320c014dc774fb7317cd330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "076e160f_ddca517c",
         "filename": "libsuspend/autosuspend_wakeup_count.cpp",
         "patchSetId": 2
@@ -128,6 +248,30 @@
       "writtenOn": "2018-01-09T18:46:00Z",
       "side": 1,
       "message": "This one disturbs me the most, since you could end up running multiple autosuspend threads, where there should only be one.\n\nAnd since you do not want to init routines, maybe you split the init to operate on an as-need basis (on first enable() call, or first force_suspend with a non-zero timeout). Maybe devote a cross-process flock() (/dev/libsuspend.lock, NB: not /dev/libsuspend.sem) to prevent multiple instances?",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 5
+      },
+      "revId": "20fc26c6fa896f31a320c014dc774fb7317cd330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22fa997d_4c7b751b",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2018-01-09T19:39:30Z",
+      "side": 1,
+      "message": "I see.  You\u0027re right - if we include libsuspend inside of multiple processes, this is a problem.  However, if we are able to make the changes to PowerManager to include the forceSuspend() call, then we don\u0027t have to worry about this.",
+      "parentUuid": "076e160f_ddca517c",
       "range": {
         "startLine": 257,
         "startChar": 0,
