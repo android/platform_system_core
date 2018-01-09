@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "72b520fd_dbf1562b",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2018-01-09T22:06:02Z",
+      "side": 1,
+      "message": "Unfortunately, there isn\u0027t an easy interface to disable autosuspend at the higher level.  CarPowerManager is working orthogonal to AndroidPowerManager.\n\nAutosuspend is handled by powermanager.  It looks like autosuspend is being enabled/disabled on display state changes and updates to interactive mode (not sure what that is).  Since we\u0027re not  coordinating with PowerManager to forceSuspend, I don\u0027t want to push too much to the higher level.  By grabbing the wakelock inside of libsuspend.force_suspend(), that should be similar to disabling libsuspend from above.\n\n\nRegarding sensor hub - I have no idea about the rest of the Android system.  Certainly it would be better to have all that integration done, but I don\u0027t think that\u0027s realistic for P.  We can certainly do a lot more to squeeze out power savings everywhere.  But for V1, I just want this to work.",
+      "parentUuid": "4815cee6_c434ef4f",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 28
+      },
+      "revId": "20fc26c6fa896f31a320c014dc774fb7317cd330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf596b51_83e0663f",
         "filename": "libsuspend/autosuspend_wakeup_count.cpp",
         "patchSetId": 2
