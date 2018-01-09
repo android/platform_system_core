@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "4815cee6_c434ef4f",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-09T19:59:42Z",
+      "side": 1,
+      "message": "The problem is if you get an autosuspend happening when you have only partially powered down and/or disabled all the wakesources, then you may go into a higher-power suspend state.\n\nYou may be OK, but you have to _disable_ autosuspend higher up, and this here is only _insurance_ in that case.\n\nHowever, this _also_ is something that may be better handled from a higher level from other perpsectives. Eg: the _best_ way to stop a sensor hub from waking us up is to turn off all sensor hub requests, and possibly communicate to the sensor HAL to power down the sensor hub, then expect _that_ to kill the wake source. Maybe all that happens if you stop the sensor service, but still an operation that is done at a higher level. As soon as you do that, autosuspend could trigger and yet there may be more to do to _cheaply_ _quickly_ _moderate_ _latency_ reduce the overall hardware power consumption associated with peripherals, for example the next step may be to turn off the LTE radio and it remains taking power. For autosuspend, we would never do any of the peripheral power reduction because we will be back, autosuspend is but a CPU/GPU power savings only, but the gain is a lower latency return to normal operation; whereas for force suspend you can accept that the LTE radio or sensor hub can take a longer path to starting back up.",
+      "parentUuid": "5e1c601e_2ece72ce",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 28
+      },
+      "revId": "20fc26c6fa896f31a320c014dc774fb7317cd330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf596b51_83e0663f",
         "filename": "libsuspend/autosuspend_wakeup_count.cpp",
         "patchSetId": 2
