@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06098120_d5e4511f",
+        "filename": "libsuspend/autosuspend.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-11T17:17:52Z",
+      "side": 1,
+      "message": "KISS: autosuspend_inited is now \u003d\u003d !!autosuspend_ops, drop autosuspend_inited.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 5
+      },
+      "revId": "4c9ae6380a894abbef1366946d016171d5d81290",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83343b49_0d4143f8",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-11T17:17:52Z",
+      "side": 1,
+      "message": "static int state_fd \u003d -1;\n\nsee below.",
+      "range": {
+        "startLine": 40,
+        "startChar": 19,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "4c9ae6380a894abbef1366946d016171d5d81290",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4465eb5a_c24ce6ee",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-11T17:17:52Z",
+      "side": 1,
+      "message": "(I) prefer static constexpr char sleep_state[] \u003d \"mem\";",
+      "range": {
+        "startLine": 49,
+        "startChar": 13,
+        "endLine": 49,
+        "endChar": 39
+      },
+      "revId": "4c9ae6380a894abbef1366946d016171d5d81290",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20654718_0c6b5c28",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-11T17:17:52Z",
+      "side": 1,
+      "message": "move scope into block? just an idea, no action required.\n\nfor (bool success \u003d true; true; ) {\n\n_meh_ seems uglier than\n\nbool success \u003d true;\nwhile (true) {",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 15
+      },
+      "revId": "4c9ae6380a894abbef1366946d016171d5d81290",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b1a12df_fde0e46d",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-11T17:17:52Z",
+      "side": 1,
+      "message": "I would prefer a name that matches the function, perhaps init_state_fd for 100% clarity?",
+      "range": {
+        "startLine": 115,
+        "startChar": 11,
+        "endLine": 115,
+        "endChar": 23
+      },
+      "revId": "4c9ae6380a894abbef1366946d016171d5d81290",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d427f2e4_0d703ae1",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-11T17:17:52Z",
+      "side": 1,
+      "message": "If one initializes state_fd to -1, it can replace forcesuspend_is_init:\n\nif (state_fd \u003e\u003d 0) return 0;\nint fd \u003d TEMP_FAILURE_RETRY(open(sys_power_state, O_RDWR));\nif (fd \u003c 0) {\n    PLOG(ERROR) \u003c\u003c \"error opening \" \u003c\u003c sys_power_state;\n    return -1;\n}\nstate_fd \u003d fd;\nLOG(VERBOSE) \u003c\u003c \"init_state_fd success\";\nreturn 0;",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 5
+      },
+      "revId": "4c9ae6380a894abbef1366946d016171d5d81290",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eda70a31_eb201d1e",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-11T17:17:52Z",
+      "side": 1,
+      "message": "log stutter, init_state_fd (nee forcesuspend_init) already logs success _and_ failure.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 51
+      },
+      "revId": "4c9ae6380a894abbef1366946d016171d5d81290",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77c06e2d_618df125",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-11T17:17:52Z",
+      "side": 1,
+      "message": "lets downgrade to VERBOSE?",
+      "range": {
+        "startLine": 162,
+        "startChar": 8,
+        "endLine": 162,
+        "endChar": 12
+      },
+      "revId": "4c9ae6380a894abbef1366946d016171d5d81290",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3921515e_89713647",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-11T17:17:52Z",
+      "side": 1,
+      "message": "ditto, success and failure is already logged.",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 51
+      },
+      "revId": "4c9ae6380a894abbef1366946d016171d5d81290",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22ea1b64_007d5778",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-11T17:17:52Z",
+      "side": 1,
+      "message": "KISS:\n\nreturn WriteStringToFd(sleep_state, state_fd) ? 0 : -1;\n\n(yes, I know, if you have to make libsuspend work across processes, or when you add the timeout, this fragment shape will return).",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 15
+      },
+      "revId": "4c9ae6380a894abbef1366946d016171d5d81290",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
