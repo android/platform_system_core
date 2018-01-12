@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5fb9f1ae_eef62f59",
+        "filename": "libunwindstack/JitDebug.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-01-12T19:22:14Z",
+      "side": 1,
+      "message": "Well this sucks, it turns out x86 and arm have different sized structures for JITCodeEntry. I added a per arch version of this and use this instead.",
+      "parentUuid": "f63ef6c7_ae398f24",
+      "revId": "cf69de18a792c5e31da2b57934fdad6ae0641160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20b403a8_d26a09e1",
         "filename": "libunwindstack/include/unwindstack/JitDebug.h",
         "patchSetId": 6
@@ -30,6 +48,30 @@
       "writtenOn": "2018-01-12T05:59:36Z",
       "side": 1,
       "message": "you probably want this to be explicit",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "cf69de18a792c5e31da2b57934fdad6ae0641160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae894afe_c917991b",
+        "filename": "libunwindstack/include/unwindstack/JitDebug.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-01-12T19:22:14Z",
+      "side": 1,
+      "message": "Good point, done.",
+      "parentUuid": "20b403a8_d26a09e1",
       "range": {
         "startLine": 36,
         "startChar": 2,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "9c778f1a_e4b508c3",
+        "filename": "libunwindstack/include/unwindstack/JitDebug.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-01-12T19:22:14Z",
+      "side": 1,
+      "message": "Technically, I don\u0027t need it but I usually leave it in case they get added in the future. It does make the object slightly larger. I\u0027ll take it off since I think the compiler will catch me if screw this up.",
+      "parentUuid": "e01874cf_ae2c94d6",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 9
+      },
+      "revId": "cf69de18a792c5e31da2b57934fdad6ae0641160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6476c302_b844f819",
         "filename": "libunwindstack/include/unwindstack/JitDebug.h",
         "patchSetId": 6
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "0851cdfe_25524d7b",
+        "filename": "libunwindstack/include/unwindstack/JitDebug.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-01-12T19:22:14Z",
+      "side": 1,
+      "message": "I really don\u0027t like a vector of std::unique_ptr objects. It is a little easier because there is no need for an explicit destructor, but then I\u0027m carrying around all of these extra objects that I don\u0027t think are really that useful.",
+      "parentUuid": "6476c302_b844f819",
+      "range": {
+        "startLine": 50,
+        "startChar": 14,
+        "endLine": 50,
+        "endChar": 18
+      },
+      "revId": "cf69de18a792c5e31da2b57934fdad6ae0641160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e6e825b_95fff1dc",
         "filename": "libunwindstack/include/unwindstack/Memory.h",
         "patchSetId": 6
@@ -99,6 +189,30 @@
       "writtenOn": "2018-01-12T05:59:36Z",
       "side": 1,
       "message": "std::unique_ptr\u003cMemoryOffline\u003e?",
+      "range": {
+        "startLine": 164,
+        "startChar": 14,
+        "endLine": 164,
+        "endChar": 27
+      },
+      "revId": "cf69de18a792c5e31da2b57934fdad6ae0641160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f91a859_99c417d4",
+        "filename": "libunwindstack/include/unwindstack/Memory.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-01-12T19:22:14Z",
+      "side": 1,
+      "message": "Same as before, I really prefer not to use a vector of unique_ptrs.",
+      "parentUuid": "4e6e825b_95fff1dc",
       "range": {
         "startLine": 164,
         "startChar": 14,
