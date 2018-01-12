@@ -22,6 +22,30 @@
       "revId": "b0e17c9e91bd51a129933e46ef1b68e57bb4b5f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e98b385c_20d520e6",
+        "filename": "liblog/include/log/log_main.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-01-12T16:35:36Z",
+      "side": 1,
+      "message": "if you\u0027re not using our prebuilt clang, you\u0027re unsupported.\n\nif you\u0027re not using bionic, you\u0027re unsupported.\n\nso \"don\u0027t care\" :-)\n\nalso: L258 was already assuming you had \u003cstdbool.h\u003e included, so this is arguably just fixing an already-missing include.\n\n...and if you\u0027re stupid enough to have written something like the code that\u0027s causing the presubmit failure:\n\n  system/extras/tests/lib/testUtil/testUtil.c:36:9: error: \u0027true\u0027 macro redefined [-Werror,-Wmacro-redefined]\n  #define true (0 \u003d\u003d 0)\n          ^\n\ni\u0027ll come and rewrite your crappy code: https://android-review.googlesource.com/#/c/platform/system/extras/+/587614/",
+      "parentUuid": "221145f6_e0a5b092",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "b0e17c9e91bd51a129933e46ef1b68e57bb4b5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
