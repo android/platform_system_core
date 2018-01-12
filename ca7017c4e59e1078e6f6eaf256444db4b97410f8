@@ -22,6 +22,30 @@
       "revId": "ca7017c4e59e1078e6f6eaf256444db4b97410f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6adf29e9_c8493470",
+        "filename": "rootdir/etc/ld.config.txt.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2018-01-12T01:45:56Z",
+      "side": 1,
+      "message": "I would like to roll out these feature step by step.  This CL only tries to address the need to add function to vndk/vndk-sp and use it from vendor modules.  The case that vndk libs need vendor libs will be addressed later.\n\nThe solution in my mind is either adding a configurable unfiltered edge between namespaces or having something like /vendor/etc/public.libraries.txt (but for vndk to default in vendor process).\n\nBefore the changes to dynamic linker are merged, as a temporary workaround, they may manually specify relative_install_path to \"vndk\".  This avoids the double installation destination and double loading issues.\n\nHowever, we may want to check the files in /vendor/lib[64]/vndk in the future, so moving libs into /vendor/lib[64]/vndk should be considered as a temporary workaround.",
+      "parentUuid": "9c046c48_82050445",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 47
+      },
+      "revId": "ca7017c4e59e1078e6f6eaf256444db4b97410f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
