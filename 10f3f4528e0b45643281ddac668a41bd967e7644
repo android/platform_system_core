@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06da438e_64611255",
+        "filename": "libsuspend/autosuspend.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-12T17:16:52Z",
+      "side": 1,
+      "message": "bug:\n\nif (autosuspend !\u003d NULL) {\n\nor to match if (!autosuspend_ops) { below on line 36:\n\nif (!!autosuspend_ops) {\n\n(consistent style, I _feel_ developers can choose NULL or boolean operations)",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "10f3f4528e0b45643281ddac668a41bd967e7644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8888d765_c8204b3a",
+        "filename": "libsuspend/autosuspend_ops.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-12T17:16:52Z",
+      "side": 1,
+      "message": "NB: (NO ACTION REQUIRED, at your option) I still wish/want for a void (*close)(void) operation to help stop threads and cleanup any open files or allocations. We ran into troubles with other libraries that did not have this functionality when security focus was on closing all unnecessary descriptors before forking. There is no forking here, but there could be, and if anyone adds it, they will _need_ a close operation for this in the fork\u0027d process. Adding that is for another CL though at time of need, or now to close the issue?",
+      "range": {
+        "startLine": 20,
+        "startChar": 23,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "10f3f4528e0b45643281ddac668a41bd967e7644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87d80036_603f61c2",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-12T17:16:52Z",
+      "side": 1,
+      "message": "while (true) { is preferred.\n\nNB: When I did:\n\nfor (bool success \u003d true; true;) {\n\nit subtly moved the scope of success into the for loop taking advantage of the required pre-loop initialization. I did state I did not particularly like it from a style perspective, but if there was a loop operation to add to the third stanza, would _then_ likely be for it.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 14
+      },
+      "revId": "10f3f4528e0b45643281ddac668a41bd967e7644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baa5a588_32599f2b",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-12T17:16:52Z",
+      "side": 1,
+      "message": "We could return state_fd instead of 0 here?",
+      "range": {
+        "startLine": 117,
+        "startChar": 15,
+        "endLine": 117,
+        "endChar": 16
+      },
+      "revId": "10f3f4528e0b45643281ddac668a41bd967e7644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eba9cf8f_78e47103",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-12T17:16:52Z",
+      "side": 1,
+      "message": "could be return fd; here, which may play into additional optimizations if also returned on line 128.",
+      "range": {
+        "startLine": 123,
+        "startChar": 15,
+        "endLine": 123,
+        "endChar": 17
+      },
+      "revId": "10f3f4528e0b45643281ddac668a41bd967e7644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2916e4cd_559b1825",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-12T17:16:52Z",
+      "side": 1,
+      "message": "and here? (but as return fd; ? to take advantage of local automatic)",
+      "range": {
+        "startLine": 128,
+        "startChar": 11,
+        "endLine": 128,
+        "endChar": 12
+      },
+      "revId": "10f3f4528e0b45643281ddac668a41bd967e7644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d7d4cf1_53d1ef0d",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-12T17:16:52Z",
+      "side": 1,
+      "message": "FYI: Android coding style (and only because you see me referencing this style choice in my comments):\n\nif (autosuspend_is_init) {\n    return 0;\n}\n\nor\n\nif (autosuspend_is_init) return 0;\n\ndeveloper choice.\n\nbut _not_\n\nif (autosuspend_is_init)\n    return 0;\n\nalthough clang-format does not check/fix for this last one, so it is starting to leak in.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 5
+      },
+      "revId": "10f3f4528e0b45643281ddac668a41bd967e7644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9c81826_3fda27df",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-12T17:16:52Z",
+      "side": 1,
+      "message": "if all a goto does is perform return -1;, then _that_ is preferred here.\n\nSubtlety is that we do not close the result of init_state_fd here, or further down, and could constitute a \u0027leak\u0027. But the other thing is we do _not_ want to close the fd if it was _already_ opened because of a force suspend, a decision that is abstracted here. You can fix the problem with some incest (I guess stylistically permitted to do so _especially_ since we have named the function init_state_fd(), in essence accepting it as a helper that holds on to _how_ the state_fd is opened):\n\n    int fd \u003d state_fd;\n    if (init_state_fd() \u003c 0) return -1;\n    . . .\n    int ret \u003d sem_init(\u0026suspend_lockout, 0, 0);\n    . . .\nerr_sem_init:\n    close(wakeup_count_fd);\n    wakeup_count_fd \u003d -1;  // NB: race here only with TBA close() op, but not with suspend_thread which could not be running.\n    if (fd \u003c 0) {\n        fd \u003d state_fd;  // deal with any close race conditions with either TBA close() op or with force suspend, but not suspend_thread, keep fd open for longer than the reference in state_fd.\n        state_fd \u003d -1;\n        close(fd);\n    }\n    return -1;\n}\n\nThis continues the case I made in the header for a static void autosuspend_close(void) that shuts the library instantiation down, in the operations table so that the caller can plug any possible \u0027leak\u0027s.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 35
+      },
+      "revId": "10f3f4528e0b45643281ddac668a41bd967e7644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00a0506b_fb163611",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-12T17:16:52Z",
+      "side": 1,
+      "message": "if init_state_fd() returned state_fd as noted above, then KISS:\n\nint fd \u003d init_state_fd();\nif (fd \u003c 0) return fd;\nreturn WriteStringToFd(sleep_state, fd) ? 0 : -1;",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 30
+      },
+      "revId": "10f3f4528e0b45643281ddac668a41bd967e7644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
