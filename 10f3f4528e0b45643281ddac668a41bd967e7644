@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "62943d76_198c3595",
+        "filename": "libsuspend/autosuspend.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2018-01-16T07:16:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06da438e_64611255",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "10f3f4528e0b45643281ddac668a41bd967e7644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8888d765_c8204b3a",
         "filename": "libsuspend/autosuspend_ops.h",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-12T17:16:52Z",
       "side": 1,
       "message": "NB: (NO ACTION REQUIRED, at your option) I still wish/want for a void (*close)(void) operation to help stop threads and cleanup any open files or allocations. We ran into troubles with other libraries that did not have this functionality when security focus was on closing all unnecessary descriptors before forking. There is no forking here, but there could be, and if anyone adds it, they will _need_ a close operation for this in the fork\u0027d process. Adding that is for another CL though at time of need, or now to close the issue?",
+      "range": {
+        "startLine": 20,
+        "startChar": 23,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "10f3f4528e0b45643281ddac668a41bd967e7644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4433f7b_e965c34a",
+        "filename": "libsuspend/autosuspend_ops.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2018-01-16T07:16:42Z",
+      "side": 1,
+      "message": "Agreed that this should be done in a separate CL when it is needed.\nDoing it now seems unnecessary.",
+      "parentUuid": "8888d765_c8204b3a",
       "range": {
         "startLine": 20,
         "startChar": 23,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "93d18d0f_fd0896f9",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2018-01-16T07:16:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87d80036_603f61c2",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 14
+      },
+      "revId": "10f3f4528e0b45643281ddac668a41bd967e7644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa5a588_32599f2b",
         "filename": "libsuspend/autosuspend_wakeup_count.cpp",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2018-01-12T17:16:52Z",
       "side": 1,
       "message": "We could return state_fd instead of 0 here?",
+      "range": {
+        "startLine": 117,
+        "startChar": 15,
+        "endLine": 117,
+        "endChar": 16
+      },
+      "revId": "10f3f4528e0b45643281ddac668a41bd967e7644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25314464_24bff807",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2018-01-16T07:16:42Z",
+      "side": 1,
+      "message": "I figure it\u0027s better to just have 0/-1 and not propagate fd semantics up to higher layer, no?",
+      "parentUuid": "baa5a588_32599f2b",
       "range": {
         "startLine": 117,
         "startChar": 15,
@@ -163,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "74105953_53c8d2ab",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2018-01-16T07:16:42Z",
+      "side": 1,
+      "message": "Thanks!  I prefer the former; I\u0027ve never liked the other two formats since they are error prone when code is modified.",
+      "parentUuid": "1d7d4cf1_53d1ef0d",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 5
+      },
+      "revId": "10f3f4528e0b45643281ddac668a41bd967e7644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a9c81826_3fda27df",
         "filename": "libsuspend/autosuspend_wakeup_count.cpp",
         "patchSetId": 6
@@ -186,6 +306,30 @@
     },
     {
       "key": {
+        "uuid": "6028faec_bfda4e50",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2018-01-16T07:16:42Z",
+      "side": 1,
+      "message": "I added the return -1 for init_state_fd.\nI\u0027ll leave the rest as-is for now, especially since I don\u0027t want to close state_fd since there\u0027s force_suspend interactions.  We\u0027ll leave it open, in case force_suspend is in effect.",
+      "parentUuid": "a9c81826_3fda27df",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 35
+      },
+      "revId": "10f3f4528e0b45643281ddac668a41bd967e7644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "00a0506b_fb163611",
         "filename": "libsuspend/autosuspend_wakeup_count.cpp",
         "patchSetId": 6
@@ -197,6 +341,30 @@
       "writtenOn": "2018-01-12T17:16:52Z",
       "side": 1,
       "message": "if init_state_fd() returned state_fd as noted above, then KISS:\n\nint fd \u003d init_state_fd();\nif (fd \u003c 0) return fd;\nreturn WriteStringToFd(sleep_state, fd) ? 0 : -1;",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 30
+      },
+      "revId": "10f3f4528e0b45643281ddac668a41bd967e7644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "123b8d33_596af8a1",
+        "filename": "libsuspend/autosuspend_wakeup_count.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2018-01-16T07:16:42Z",
+      "side": 1,
+      "message": "I don\u0027t see much difference here, aside from avoid the use of the global variable, which would then be moved into the init_state_fd function.",
+      "parentUuid": "00a0506b_fb163611",
       "range": {
         "startLine": 212,
         "startChar": 0,
