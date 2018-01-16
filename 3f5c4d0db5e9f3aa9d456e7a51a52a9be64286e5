@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f9b903a_ff6ee3de",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-01-16T15:01:49Z",
+      "side": 1,
+      "message": "For your use case, are all entries in fstab_recs on the sdcard? (no fstab-entry is on the main flash)",
+      "range": {
+        "startLine": 417,
+        "startChar": 34,
+        "endLine": 417,
+        "endChar": 51
+      },
+      "revId": "3f5c4d0db5e9f3aa9d456e7a51a52a9be64286e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6d76f61_7e9ffb4f",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-01-16T15:01:49Z",
+      "side": 1,
+      "message": "This might be an issue if there are different blk_path in a fstab file.\n\ne.g., in the fstab:\n/dev/block/platform/soc.0/f9824900.sdhci/by-name/vendor\n\n/dev/block/platform/soc.0/f1234567.sdhci/by-name/system\n\nIf you get uevent of \".../f9824900.sdhci/by-name/system\", valid_uevent is true. This might end up exit the early mount uevent process and cannot find \"f1234567.sdhci/by-name/system\" .",
+      "range": {
+        "startLine": 425,
+        "startChar": 20,
+        "endLine": 425,
+        "endChar": 33
+      },
+      "revId": "3f5c4d0db5e9f3aa9d456e7a51a52a9be64286e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
