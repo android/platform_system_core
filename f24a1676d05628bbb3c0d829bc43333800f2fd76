@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5df3881c_07a7e90f",
+        "filename": "init/stable_properties.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-01-16T19:03:21Z",
+      "side": 1,
+      "message": "Why have partner_prefixes_ instead of just using kPartnerPrefixes?  Were you thinking of adding more than just kPartnerPrefixes to it?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 9
+      },
+      "revId": "f24a1676d05628bbb3c0d829bc43333800f2fd76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c155a12_fd45d951",
+        "filename": "init/stable_properties.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-01-16T19:03:21Z",
+      "side": 1,
+      "message": "Same question here.",
+      "revId": "f24a1676d05628bbb3c0d829bc43333800f2fd76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32268e9a_69dfefec",
+        "filename": "init/stable_properties.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-01-16T19:03:21Z",
+      "side": 1,
+      "message": "The file is probably small enough that you can use android::base::Split(data, \"\\n\");  Then you can have a const input to the function too since you won\u0027t mutate the string.  You\u0027ll want to pass const std::string\u0026 data.",
+      "revId": "f24a1676d05628bbb3c0d829bc43333800f2fd76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb4f2189_b8fd11e4",
+        "filename": "init/stable_properties.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-01-16T19:03:21Z",
+      "side": 1,
+      "message": "How do these fit into the design?  Seems like they\u0027re opening up a backdoor to allow vendors and odms to action off of properties that we\u0027d otherwise prevent.  I\u0027d think only /system should be able to list which properties are actionable (and to that end, it can be literally just the hardcoded lists inside init).",
+      "revId": "f24a1676d05628bbb3c0d829bc43333800f2fd76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6294d34_04a9f940",
+        "filename": "init/stable_properties.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-01-16T19:03:21Z",
+      "side": 1,
+      "message": "I think if some of the above comments are taken care of, this whole thing can be simplified to not even be a class.  Really just this one function that checks ro.compatible_property.enabled (and may store the result in a static), then checks if the prop_name is in the list of actionable properties or prefixes.",
+      "revId": "f24a1676d05628bbb3c0d829bc43333800f2fd76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
