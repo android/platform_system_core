@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "ee9562cc_7266235f",
+        "filename": "init/stable_properties.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1019198
+      },
+      "writtenOn": "2018-01-17T03:14:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bc34522_0ce9f47c",
+      "revId": "f24a1676d05628bbb3c0d829bc43333800f2fd76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32268e9a_69dfefec",
         "filename": "init/stable_properties.cpp",
         "patchSetId": 2
@@ -190,6 +208,24 @@
     },
     {
       "key": {
+        "uuid": "a4df9f2a_62a2e43c",
+        "filename": "init/stable_properties.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1019198
+      },
+      "writtenOn": "2018-01-17T03:14:51Z",
+      "side": 1,
+      "message": "I will remove this backdoor. Instead I will add a debugging flag to check easily violations.",
+      "parentUuid": "bc59fa62_0dbf2d1c",
+      "revId": "f24a1676d05628bbb3c0d829bc43333800f2fd76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f6294d34_04a9f940",
         "filename": "init/stable_properties.cpp",
         "patchSetId": 2
@@ -237,6 +273,24 @@
       "side": 1,
       "message": "Understood.  I\u0027m still iffy on that, and the below single function seems to be super concise to me:\n\nbool IsPropertyActionable(const std::string\u0026 prop_name) {\n  static bool enabled \u003d android::base::GetBoolProperty(\"ro.compatible_property.enabled\", false);\n  if (!enabled) return true;\n\n  const static std::set\u003cstd::string\u003e exported_actionable_properties{\"init.svc.zygote\",         \n        \"persist.bluetooth.btsnoopenable\",\n        \"persist.sys.crash_rcu\",   \"persist.sys.zram_enabled\",\n        \"ro.boot.revision\",        \"ro.bootmode\",\n        \"ro.build.type\",           \"sys.boot_completed\",\n        \"sys.retaildemo.enabled\",  \"sys.shutdown.requested\",\n        \"sys.usb.config\",          \"sys.usb.configfs\",\n        \"sys.usb.ffs.mtp.ready\",   \"sys.usb.ffs.ready\",\n        \"sys.user.0.ce_available\", \"sys.vdso\",\n        \"vts.native_server.on\"};\n  if (exported_actionable_properties.count(prop_name) \u003d\u003d 1) return true;\n\n  const static std::set\u003cstd::string\u003e extended_actionable_properties \u003d LoadExtendedActionableProperties();\n  if (extended_actionable_properties.count(prop_name) \u003d\u003d 1) return true;\n\n  static constexpr const char* kPartnerPrefixes[] \u003d {\n    \"init.svc.vendor.\", \"ro.vendor.\", \"persist.vendor.\", \"vendor.\",\n    \"init.svc.odm.\",    \"ro.odm.\",    \"persist.odm.\",    \"odm.\",\n  };\n  for (const auto\u0026 prefix : kPartnerPrefixes) {\n    if (android::base::StartsWith(prop_name, prefix)) {\n      return true;\n    }\n  }\n  return false;\n}",
       "parentUuid": "a03083b8_0a451388",
+      "revId": "f24a1676d05628bbb3c0d829bc43333800f2fd76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "660711eb_4ed89fb8",
+        "filename": "init/stable_properties.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1019198
+      },
+      "writtenOn": "2018-01-17T03:14:51Z",
+      "side": 1,
+      "message": "I will apply your idea except that I will keep the whitelist in stable_properties.h because that was an original design.",
+      "parentUuid": "e16976fe_22ce5051",
       "revId": "f24a1676d05628bbb3c0d829bc43333800f2fd76",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
