@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "662f63e4_2d0fc0ac",
+        "filename": "init/action.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-01-17T17:38:44Z",
+      "side": 1,
+      "message": "I think this was cleaner before with the nested if statements.  Otherwise, I\u0027d pass subcontext_ as is and let IsActionableProperty() check if it\u0027s nullptr rather than putting the check here.  \n\nThat may be the best since it\u0027d open us up to being able to restrict actionable properties for any subcontext_ and not just vendor (e.g. if /odm had a different list of actionable properties?)",
+      "revId": "c2413a9071eeea0749dff31c9134cb1215372029",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c57833a2_7885bc5f",
+        "filename": "init/stable_properties.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-01-17T17:38:44Z",
+      "side": 1,
+      "message": "Now that this is just one function, perhaps we can move it to action.cpp?  Keeping the list of properties in the header file is the right idea, but this logic doesn\u0027t really need its own file anymore.",
+      "revId": "c2413a9071eeea0749dff31c9134cb1215372029",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65795410_38817279",
+        "filename": "init/stable_properties.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-01-17T17:38:44Z",
+      "side": 1,
+      "message": "It shouldn\u0027t change much, but as far as I know, you only need the { here.",
+      "range": {
+        "startLine": 31,
+        "startChar": 64,
+        "endLine": 31,
+        "endChar": 66
+      },
+      "revId": "c2413a9071eeea0749dff31c9134cb1215372029",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
