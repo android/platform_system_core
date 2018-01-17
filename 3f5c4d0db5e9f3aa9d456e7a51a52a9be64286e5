@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "b3153e85_1f77e18c",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-01-17T05:07:19Z",
+      "side": 1,
+      "message": "Note that mount point isn\u0027t necessarily partition_name.\n\ne.g.,\nit\u0027s possible to mount /dev/block/platform/soc.0/f9824900.sdhci/by-name/vendor under /vendor_test or something else",
+      "range": {
+        "startLine": 423,
+        "startChar": 21,
+        "endLine": 423,
+        "endChar": 69
+      },
+      "revId": "3f5c4d0db5e9f3aa9d456e7a51a52a9be64286e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6d76f61_7e9ffb4f",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 4
@@ -60,6 +83,30 @@
       "side": 1,
       "message": "Bowgo,\nThis logic can work both below scenes.\nall partition are in the same flash ;\nsome partition in sdcard, other partition are in emmc.\ne.g:\nfstab:\n/dev/block/platform/soc.0/f9824900.sdhci/by-name/vendor\n/dev/block/platform/soc.0/f1234567.sdhci/by-name/system\n\nget uevent of \".../f9824900.sdhci/by-name/system\", it will compare both \"f9824900.sdhci\" and \"system\", so valid_uevent will be false. Only partition name and the block device in uevent both meet the fstab,this uevent can be a valid event.",
       "parentUuid": "d6d76f61_7e9ffb4f",
+      "range": {
+        "startLine": 425,
+        "startChar": 20,
+        "endLine": 425,
+        "endChar": 33
+      },
+      "revId": "3f5c4d0db5e9f3aa9d456e7a51a52a9be64286e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac58c5e3_0f0e95de",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-01-17T05:07:19Z",
+      "side": 1,
+      "message": "Ah, sorry, didn\u0027t notice you\u0027re checking both.\n\nSo for boot/vbmeta, valid_uevent is always false, right?\nBecause boot/vbmeta isn\u0027t in the fstab-dt.",
+      "parentUuid": "9be47054_d18df9c0",
       "range": {
         "startLine": 425,
         "startChar": 20,
