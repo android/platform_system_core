@@ -198,6 +198,24 @@
     },
     {
       "key": {
+        "uuid": "81d7705c_e4c8a328",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-01-17T14:18:06Z",
+      "side": 1,
+      "message": "By this line, /vendor/lib/*.so can be loaded into the classloader-namespace. At the same time, since this is an Android app, SP-HAL libraries (EGL/GLES, Vulkan, ...) in the vendor partition may have been loaded into the \u0027sphal\u0027 namespace. So, yes, if a vendor app calls System.loadLibrary(\"/vendor/lib/hw/libGLES_adreno.so\") then it is dual loaded in the classloader ns and the sphal ns.\n\nHowever, since the sp-hal libraries set is fixed and cannot be extended by vendors, and they are never meant to be directly loaded by apps (but always indirectly via corresponding loaders, for example libEGL is a loader for libEGL_\u003cvendor\u003e.so), this shouldn\u0027t be a practical problem. In short, a random vendor library can\u0027t be double loaded.",
+      "parentUuid": "e2953138_d5036bdc",
+      "revId": "e031994f2f7adfe8f3358bfdc3073c47fb61fa69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8901ce93_4724e2fd",
         "filename": "libnativeloader/native_loader.cpp",
         "patchSetId": 1
@@ -209,6 +227,24 @@
       "writtenOn": "2018-01-17T11:16:59Z",
       "side": 1,
       "message": "and if these are bundled vendor apps? (is_shared \u003d\u003d true)\n\nIf such thing is not supported please add a CHECK (LOG_ALWAYS_FATAL_IF)",
+      "revId": "e031994f2f7adfe8f3358bfdc3073c47fb61fa69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bab1819_538b2071",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-01-17T14:18:06Z",
+      "side": 1,
+      "message": "If is_shared is true for vendor apks, then it means the device is not fully treble-ized (\u003d the default namespace has /vendor/lib in its search paths). In that case, system/vendor separation does not make sense, so we don\u0027t hide oem libs to vendor apks.",
+      "parentUuid": "8901ce93_4724e2fd",
       "revId": "e031994f2f7adfe8f3358bfdc3073c47fb61fa69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
