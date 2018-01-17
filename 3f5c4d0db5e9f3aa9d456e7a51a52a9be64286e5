@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "2402c0e1_403568c2",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-01-17T09:11:20Z",
+      "side": 1,
+      "message": "fstab_rec-\u003eblk_device will be \"/dev/block/platform/soc.0/f1234567.sdhci/by-name/vendor_a\" if you have \u0027slotselect\u0027 in the fstab entry.",
+      "parentUuid": "e3bb23cc_d9007d53",
+      "range": {
+        "startLine": 423,
+        "startChar": 21,
+        "endLine": 423,
+        "endChar": 69
+      },
+      "revId": "3f5c4d0db5e9f3aa9d456e7a51a52a9be64286e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6d76f61_7e9ffb4f",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 4
@@ -251,6 +275,30 @@
       "side": 1,
       "message": "we only mount the vendor partition in first stage now.\nAnd we do not enable verify work for vendor partition.\nWhere is vbmeta/boot defined in your env?",
       "parentUuid": "c02df1f9_29e32d1d",
+      "range": {
+        "startLine": 425,
+        "startChar": 20,
+        "endLine": 425,
+        "endChar": 33
+      },
+      "revId": "3f5c4d0db5e9f3aa9d456e7a51a52a9be64286e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24d1ec76_6911e6cd",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-01-17T09:11:20Z",
+      "side": 1,
+      "message": "Then it\u0027s weird.\n\nWhy the code goes into this function?\nFirstStageMountVBootV2::UeventCallback().\n\nYou should have vbmeta settings in device tree.\nstatic inline bool IsDtVbmetaCompatible() {                                                                                                                                  \n    return is_android_dt_value_expected(\"vbmeta/compatible\", \"android,vbmeta\"); \n}",
+      "parentUuid": "97e3736d_6f273746",
       "range": {
         "startLine": 425,
         "startChar": 20,
