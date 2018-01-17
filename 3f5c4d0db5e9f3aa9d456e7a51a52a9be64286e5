@@ -45,6 +45,30 @@
       "revId": "3f5c4d0db5e9f3aa9d456e7a51a52a9be64286e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9be47054_d18df9c0",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1103773
+      },
+      "writtenOn": "2018-01-17T01:57:57Z",
+      "side": 1,
+      "message": "Bowgo,\nThis logic can work both below scenes.\nall partition are in the same flash ;\nsome partition in sdcard, other partition are in emmc.\ne.g:\nfstab:\n/dev/block/platform/soc.0/f9824900.sdhci/by-name/vendor\n/dev/block/platform/soc.0/f1234567.sdhci/by-name/system\n\nget uevent of \".../f9824900.sdhci/by-name/system\", it will compare both \"f9824900.sdhci\" and \"system\", so valid_uevent will be false. Only partition name and the block device in uevent both meet the fstab,this uevent can be a valid event.",
+      "parentUuid": "d6d76f61_7e9ffb4f",
+      "range": {
+        "startLine": 425,
+        "startChar": 20,
+        "endLine": 425,
+        "endChar": 33
+      },
+      "revId": "3f5c4d0db5e9f3aa9d456e7a51a52a9be64286e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
