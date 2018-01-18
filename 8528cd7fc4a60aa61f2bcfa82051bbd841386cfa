@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "d8948801_8ca65239",
+        "filename": "adb/fastdeploy/deployagent/src/com/android/fastdeploy/DeployAgent.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1269249
+      },
+      "writtenOn": "2018-01-18T15:20:03Z",
+      "side": 1,
+      "message": "Ok. Thanks for the clarification - not parsing output SGTM :)\n\nHowever, looking at frameworks/base/cmds/pm/src/com/android/commands/pm/Pm.java it doesn\u0027t appear to call into PackageManager directly either. It looks like it runs a \"package\" shell command which I assume ends up running the code in frameworks/base/services/core/java/com/android/server/pm/PackageManagerShellCommand.java. \n\nIs this the pattern you are suggesting? It sounds like you\u0027re suggesting I can just call PackageManager.getPackageInfo() directly but all the examples of this I can see require a Context to get a reference to PackageManager. Running as a .jar means I don\u0027t have a Context, is there another way to get a reference to the PackageManager?",
+      "parentUuid": "832a63a9_c4c963c1",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 68
+      },
+      "revId": "8528cd7fc4a60aa61f2bcfa82051bbd841386cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c32213ee_df3c9b88",
         "filename": "adb/fastdeploy/deployagent/src/com/android/fastdeploy/DeployAgent.java",
         "patchSetId": 1
