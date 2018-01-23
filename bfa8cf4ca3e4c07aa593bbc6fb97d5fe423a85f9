@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "992ae1a7_5f7d0511",
+        "filename": "libcutils/tests/AshmemTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-23T19:27:36Z",
+      "side": 1,
+      "message": "EFAULT has been recognized as acceptable response by upstream for passing a NULL pointer for a known command. The concern I have is that ASHMEM_GET_SIZE should be completely orthogonal and never be viewed as a known command.\n\nThe failure report (below) is a signal that may be viewed as unfixable on some drivers (eg: layers: net/core/dev_ioctl.c dev_ioctl() function for example because _all_ ioctls require the ability to take a struct ifreq for a class of vendor private commands that get propagated to the hardware driver for further processing and for return back to caller).",
+      "range": {
+        "startLine": 429,
+        "startChar": 31,
+        "endLine": 429,
+        "endChar": 37
+      },
+      "revId": "bfa8cf4ca3e4c07aa593bbc6fb97d5fe423a85f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
