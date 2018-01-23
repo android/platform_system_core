@@ -94,6 +94,75 @@
     },
     {
       "key": {
+        "uuid": "898546f8_81888e2b",
+        "filename": "libcutils/tests/AshmemTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-23T00:27:26Z",
+      "side": 1,
+      "message": "Not sure if this is necessary, but it does allow us to \u0027attack\u0027 most of the actually used content letting Android in-effect decide what is important to look at. It fails to make connection to unnamed pipes (no ioctl, so we are good) or active socket sessions (we instead use the following loop through /dev/ to hit the actual sockets with our own sessions).\n\nI would drop this in an instant for minor resistance, especially since this is complicated and fraught with permissions issues.",
+      "range": {
+        "startLine": 408,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 5
+      },
+      "revId": "4fa3a64b8d6603998723259e86a8313fc21112d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a03283c_f59fed53",
+        "filename": "libcutils/tests/AshmemTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-23T00:27:26Z",
+      "side": 1,
+      "message": "make this a function, used here and above in recurseAshmem (or better yet, recognize recurseAshmem ...).",
+      "range": {
+        "startLine": 463,
+        "startChar": 12,
+        "endLine": 463,
+        "endChar": 72
+      },
+      "revId": "4fa3a64b8d6603998723259e86a8313fc21112d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bd39e0a_43d1da9e",
+        "filename": "libcutils/tests/AshmemTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-23T00:27:26Z",
+      "side": 1,
+      "message": "This is actually recurseAshmem, so stop the duplication, call it directly!",
+      "range": {
+        "startLine": 460,
+        "startChar": 0,
+        "endLine": 484,
+        "endChar": 5
+      },
+      "revId": "4fa3a64b8d6603998723259e86a8313fc21112d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "152b658b_e76198b7",
         "filename": "libcutils/tests/AshmemTest.cpp",
         "patchSetId": 1
