@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ab60f7a_500d5562",
+        "filename": "logd/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1111544
+      },
+      "writtenOn": "2018-01-25T08:10:55Z",
+      "side": 1,
+      "message": "Hello, Mark:\n\nHere, 600 is not pass through to SocketListener().\n\nLogListener::LogListener(LogBufferInterface* buf, LogReader* reader)\n    : SocketListener(getLogSocket(), false), logbuf(buf), reader(reader) {\n}\n\nWe encounter a problem that some log missed. As peer socket(logd) is full, kernel\nreturn EAGAIN to logd_writer.c, then the log is dropped by liblog.\n\nThanks.",
+      "range": {
+        "startLine": 425,
+        "startChar": 27,
+        "endLine": 425,
+        "endChar": 30
+      },
+      "revId": "39944c89a9223ee646cd9263317b284149baa4f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
