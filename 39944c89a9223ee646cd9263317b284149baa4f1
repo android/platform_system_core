@@ -22,6 +22,30 @@
       "revId": "39944c89a9223ee646cd9263317b284149baa4f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31b9a719_9fc5775f",
+        "filename": "logd/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-25T17:01:25Z",
+      "side": 1,
+      "message": "You sure? When I had this at 300 (circa Lollipop) I confirmed with printfs that it propagated to listen(mSock, backlog) where it was needed. Of course, listen will max it out it if /proc/sys/net/unix/max_dgram_qlen is less than the value passed. Please instrument the listener socket to be sure of these claims.\n\nEAGAIN pushback is used to generate \"liblog\" events so that one can spot when and how much logs have been lost. These signal a need to improve the S/N ratio of the logs.\n\nWe get this on a regular basis when system is far too spammy (600 messages in less than the time it takes logd to process them, between 3ms-100ms). We made a design decision that rates that high needed the ratelimiting of max_dgram_qlen. 600 means the kernel allocates 2.5MB of memory for the socket to deal with the flow, any larger and we would view this as too large of a memory carve out.\n\nGiven that the log buffer is only 256KB and on some system 1MB, this logging rate will exhaust the logs before 30 seconds, making them basically useless (bugreports collect the logcat results 30 seconds _after_ they have been requested).\n\nSince it takes 20us to process a log message, this 600 message burst represents 12ms of time as well impacting battery and power usage.\n\nIf one needs faster debug logging, one is to use atrace.",
+      "parentUuid": "3ab60f7a_500d5562",
+      "range": {
+        "startLine": 425,
+        "startChar": 27,
+        "endLine": 425,
+        "endChar": 30
+      },
+      "revId": "39944c89a9223ee646cd9263317b284149baa4f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
