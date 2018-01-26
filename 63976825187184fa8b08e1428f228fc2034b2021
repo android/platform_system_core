@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9290ddbd_a3475732",
+        "filename": "liblog/include/log/log_event_list.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-01-26T20:38:59Z",
+      "side": 1,
+      "message": "May have overstepped, but this at least solves the sorted include order problem as we only get one chance at this. I have confirmed that build works, but I suspect it does because for those that do not include libutils, we are using the common headers (system/core/include) which is introducing technical debt.\n\nThe good news if this is not acceptable and we must drop these includes, is String8 has an operator to convert to char*, albeit more expensive than the direct implementation, works. String16 will break with a loud bang?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 26
+      },
+      "revId": "63976825187184fa8b08e1428f228fc2034b2021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
