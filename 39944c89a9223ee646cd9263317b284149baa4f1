@@ -46,6 +46,30 @@
       "revId": "39944c89a9223ee646cd9263317b284149baa4f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1060cb6a_5ca86884",
+        "filename": "logd/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1111544
+      },
+      "writtenOn": "2018-01-29T04:25:23Z",
+      "side": 1,
+      "message": "\u003e You sure? When I had this at 300 (circa Lollipop) I confirmed with printfs that it propagated to listen(mSock, backlog) where it was needed. Of course, listen will max it out it if /proc/sys/net/unix/max_dgram_qlen is less than the value passed. Please instrument the listener socket to be sure of these claims.\n\nYes, I confirmed in Android N.\n----\nLogListener::LogListener(LogBufferInterface* buf, LogReader* reader)\n    : SocketListener(getLogSocket(), false), logbuf(buf), reader(reader) {\n}\n----\nHere, SocketListener(x, false), will set SocketListener::mListen false.\n\nWhen logd call swl-\u003estartListener(600), the 600 will not work.\n----\nint SocketListener::startListener(int backlog) {\n    if (mListen \u0026\u0026 listen(mSock, backlog) \u003c 0) {\n        SLOGE(\"Unable to listen on socket (%s)\", strerror(errno));\n        return -1;\n    }\n}\n----\nBecause the mListen is false, so the listen(mSock, 600) will not be called.\n\nAnd even if listen(mSock, 600) is called, it will not set sock-\u003esk_max_ack_backlog in kernel.\nBecause for PF_UNIX \u0026\u0026 DGRAM protocol, it does not support listen()\n----\naf_unix.c\n\nstatic const struct proto_ops unix_dgram_ops \u003d {\n\t.listen \u003d\tsock_no_listen,\n----\nsock_no_listen() will only return -EOPNOTSUPP\n\nBTW, I checked the kernel code, if we set listen(x, backlog) where the backlog \u003e /proc/sys/net/unix/max_dgram_qlen, sock-\u003esk_max_ack_backlog will also be set\nas backlog. It seems max_dgram_qlen is only used as init value for sk_max_ack_backlog \nin af_unix.c\n----\nstatic int unix_listen(struct socket *sock, int backlog)\n{\n\tsk-\u003esk_max_ack_backlog\t\u003d backlog;\n}\n----\n\n\u003e \n\u003e EAGAIN pushback is used to generate \"liblog\" events so that one can spot when and how much logs have been lost. These signal a need to improve the S/N ratio of the logs.\n\u003e \n\u003e We get this on a regular basis when system is far too spammy (600 messages in less than the time it takes logd to process them, between 3ms-100ms). We made a design decision that rates that high needed the ratelimiting of max_dgram_qlen. 600 means the kernel allocates 2.5MB of memory for the socket to deal with the flow, any larger and we would view this as too large of a memory carve out.\n\u003e \n\u003e Given that the log buffer is only 256KB and on some system 1MB, this logging rate will exhaust the logs before 30 seconds, making them basically useless (bugreports collect the logcat results 30 seconds _after_ they have been requested).\n\u003e \n\u003e Since it takes 20us to process a log message, this 600 message burst represents 12ms of time as well impacting battery and power usage.\n\u003e \n\u003e If one needs faster debug logging, one is to use atrace.\n\nThanks for your explanation, I learn a lot from you.\nThanks.",
+      "parentUuid": "31b9a719_9fc5775f",
+      "range": {
+        "startLine": 425,
+        "startChar": 27,
+        "endLine": 425,
+        "endChar": 30
+      },
+      "revId": "39944c89a9223ee646cd9263317b284149baa4f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
