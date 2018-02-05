@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e63cac5d_c6157e44",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-02-05T17:26:56Z",
+      "side": 1,
+      "message": "Q: does the compiler treat the scope of both of these variables correctly (and land them as a union on the stack)? Be advised that PATH_MAX is 4K in size, placing a terrible burden on the stack space, especially since we know the size to be so small (33 bytes absolute maximum worst case where int is 64-bit).\n\n(suggestion: reuse a single buffer).",
+      "range": {
+        "startLine": 538,
+        "startChar": 0,
+        "endLine": 539,
+        "endChar": 24
+      },
+      "revId": "b19c1198ae1e5048a05957037631036fb40615f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "befbf630_aaa0487a",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-02-05T17:26:56Z",
+      "side": 1,
+      "message": "nit: close(fd) can be moved to underneath read_all, drop close close(fd) after sscanf below.",
+      "range": {
+        "startLine": 552,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 18
+      },
+      "revId": "b19c1198ae1e5048a05957037631036fb40615f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "663e4e4c_45fe14e7",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-02-05T17:26:56Z",
+      "side": 1,
+      "message": "if sscanf returns \u003c 2 (an error), we return 0, shouldn\u0027t we return an error?\n\n(suggestion: initialize rss \u003d -1 on line 541)",
+      "range": {
+        "startLine": 556,
+        "startChar": 0,
+        "endLine": 556,
+        "endChar": 41
+      },
+      "revId": "b19c1198ae1e5048a05957037631036fb40615f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38489dcb_d7bf9d4f",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-02-05T17:26:56Z",
+      "side": 1,
+      "message": "ditto with above, but recognize reuse is going to a static location, sgtm.",
+      "range": {
+        "startLine": 562,
+        "startChar": 4,
+        "endLine": 562,
+        "endChar": 24
+      },
+      "revId": "b19c1198ae1e5048a05957037631036fb40615f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26370a37_e7e30438",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-02-05T17:26:56Z",
+      "side": 1,
+      "message": "IMHO: Failure of either of these should not bypass the kill, and a partial logging message is still possible.\n\nThe concern is we issue a kill to a non-existent pid \u003cVan Gogh \"The Scream\" inserted here\u003e it certainly does not prevent us from killing a pid that has wrapped around and been reused ...",
+      "range": {
+        "startLine": 597,
+        "startChar": 0,
+        "endLine": 607,
+        "endChar": 5
+      },
+      "revId": "b19c1198ae1e5048a05957037631036fb40615f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
