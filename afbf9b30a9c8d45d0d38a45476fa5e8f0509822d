@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26ee45db_281f58e3",
+        "filename": "libunwindstack/DwarfSection.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-02-13T13:59:09Z",
+      "side": 1,
+      "message": "I can not figure out why this block is needed. Can it be deleted?",
+      "range": {
+        "startLine": 137,
+        "startChar": 6,
+        "endLine": 137,
+        "endChar": 8
+      },
+      "revId": "afbf9b30a9c8d45d0d38a45476fa5e8f0509822d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99a19863_beee2158",
+        "filename": "libunwindstack/RegsInfo.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-02-13T13:59:09Z",
+      "side": 1,
+      "message": "I know it can not happen right now, but the buffer overflow makes me a little uncomfortable.\n\nHow about:\nif (reg \u003c 64 \u0026\u0026 reg \u003c res.total_regs()) {\n  ...\n}\nreturn nullptr;\n\nand handle the nullptr in the caller?\n\nOr maybe just guard the first two lines with \"if (reg \u003c 64)\".\n\nUp to you.",
+      "range": {
+        "startLine": 43,
+        "startChar": 15,
+        "endLine": 43,
+        "endChar": 18
+      },
+      "revId": "afbf9b30a9c8d45d0d38a45476fa5e8f0509822d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
