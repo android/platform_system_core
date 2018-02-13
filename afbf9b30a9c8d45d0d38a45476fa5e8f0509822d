@@ -25,6 +25,53 @@
     },
     {
       "key": {
+        "uuid": "1e0422fe_909e8eb0",
+        "filename": "libunwindstack/DwarfSection.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-02-13T22:14:22Z",
+      "side": 1,
+      "message": "This was due to a misinterpretation of the way this worked. For some reason I thought that you need to use the value computed this cycle of the register. Since that\u0027s not true, I can delete this block and make another small change.",
+      "parentUuid": "26ee45db_281f58e3",
+      "range": {
+        "startLine": 137,
+        "startChar": 6,
+        "endLine": 137,
+        "endChar": 8
+      },
+      "revId": "afbf9b30a9c8d45d0d38a45476fa5e8f0509822d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20018803_039bff80",
+        "filename": "libunwindstack/DwarfSection.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-02-13T22:14:22Z",
+      "side": 1,
+      "message": "I wound up moving this into DwarfOp so that I don\u0027t have to reread memory.",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 9
+      },
+      "revId": "afbf9b30a9c8d45d0d38a45476fa5e8f0509822d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "99a19863_beee2158",
         "filename": "libunwindstack/RegsInfo.h",
         "patchSetId": 5
@@ -36,6 +83,30 @@
       "writtenOn": "2018-02-13T13:59:09Z",
       "side": 1,
       "message": "I know it can not happen right now, but the buffer overflow makes me a little uncomfortable.\n\nHow about:\nif (reg \u003c 64 \u0026\u0026 reg \u003c res.total_regs()) {\n  ...\n}\nreturn nullptr;\n\nand handle the nullptr in the caller?\n\nOr maybe just guard the first two lines with \"if (reg \u003c 64)\".\n\nUp to you.",
+      "range": {
+        "startLine": 43,
+        "startChar": 15,
+        "endLine": 43,
+        "endChar": 18
+      },
+      "revId": "afbf9b30a9c8d45d0d38a45476fa5e8f0509822d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a7fa63b_c2512611",
+        "filename": "libunwindstack/RegsInfo.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-02-13T22:14:22Z",
+      "side": 1,
+      "message": "I added aborts and a comment describing why this should never happen (famous last words though).",
+      "parentUuid": "99a19863_beee2158",
       "range": {
         "startLine": 43,
         "startChar": 15,
