@@ -22,6 +22,30 @@
       "revId": "8b60c35b56a5bc2c33f40d6e363500c75e71b412",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c56c3e2_674a387b",
+        "filename": "libunwindstack/Elf.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-02-16T22:52:51Z",
+      "side": 1,
+      "message": "This takes care of the situation where you have an odex file that has multiple mmap\u0027d maps from the elf.\n\nDoing this means that if you see these two maps:\n\nboot.odex:1000\nboot.odex:2000\n\nThey will both use the same elf object. Otherwise, you would wind up with two different objects for the same elf file because there is no way for them to know that the whole elf object already exists.\n\nIn this case, there would three cache entries (boot.odex, boot.odex:1000, and boot.odex:2000).\n\nCacheAfterCreatememory is designed to handle this case by looking for the root object cached in the elf only if elf_offset !\u003d0.",
+      "parentUuid": "6cf54c8d_b75890de",
+      "range": {
+        "startLine": 334,
+        "startChar": 59,
+        "endLine": 334,
+        "endChar": 60
+      },
+      "revId": "8b60c35b56a5bc2c33f40d6e363500c75e71b412",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
