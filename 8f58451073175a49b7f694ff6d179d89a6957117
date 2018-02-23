@@ -22,6 +22,30 @@
       "revId": "8f58451073175a49b7f694ff6d179d89a6957117",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac07f420_ee56705e",
+        "filename": "debuggerd/handler/debuggerd_fallback.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-02-23T00:22:04Z",
+      "side": 1,
+      "message": "This happens if we enter the signal handler twice from the same thread (other threads will be blocked waiting for the mutex). This only happens if we aborted from inside the signal handler, and previously the behavior would be to just hang forever.\n\n(Although, now that I look at this again, this should be _exit(0) to avoid calling atexit handlers)",
+      "parentUuid": "e803e95e_1ef7faa7",
+      "range": {
+        "startLine": 308,
+        "startChar": 4,
+        "endLine": 308,
+        "endChar": 12
+      },
+      "revId": "8f58451073175a49b7f694ff6d179d89a6957117",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
