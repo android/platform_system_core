@@ -22,6 +22,30 @@
       "revId": "c9fec9d2be73a26a4f4b297ee6bee9f9c62cb854",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0fcb90fe_37b42351",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-02-26T17:40:08Z",
+      "side": 1,
+      "message": "I think we\u0027ll be fine.  We have the conversion from CLOCK_REALTIME to CLOCK_MONOTONIC in the bionic code for all of these waits.  It still has a slight window, but we shouldn\u0027t hit it.  And unfortunately sem_* don\u0027t have an option to use CLOCK_MONOTONIC directly.",
+      "parentUuid": "b7f88128_1372a099",
+      "range": {
+        "startLine": 449,
+        "startChar": 22,
+        "endLine": 449,
+        "endChar": 36
+      },
+      "revId": "c9fec9d2be73a26a4f4b297ee6bee9f9c62cb854",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
