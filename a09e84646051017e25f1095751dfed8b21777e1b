@@ -45,6 +45,30 @@
       "revId": "a09e84646051017e25f1095751dfed8b21777e1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4ed3b33_2504249a",
+        "filename": "init/parser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-02-28T18:01:37Z",
+      "side": 1,
+      "message": "I\u0027d though of that but there\u0027re really two different errors that we\u0027re reporting here,\n\n1) Whether or not the file or directory even exists, such that `import ...` can report that it couldn\u0027t find the script to import.\n2) This new set of how many parse errors there are.  `import ...` doesn\u0027t care about this, since those errors will be reported during the parsing of the imported script.\n\nI didn\u0027t want to break this into two functions either, where the import function would first \u0027load\u0027 the file then later \u0027parse it\u0027.\n\nMaybe in some magical world with exceptions, I could throw for file not found and throw for parse errors being present...",
+      "parentUuid": "7ea1a311_b39c1d3f",
+      "range": {
+        "startLine": 169,
+        "startChar": 50,
+        "endLine": 169,
+        "endChar": 76
+      },
+      "revId": "a09e84646051017e25f1095751dfed8b21777e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
