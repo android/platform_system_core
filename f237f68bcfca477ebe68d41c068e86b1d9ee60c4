@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80277b13_1fd83ecf",
+        "filename": "libutils/String16.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-03-06T17:41:55Z",
+      "side": 1,
+      "message": "thoughts on this? I could add the destructor back in __attribute__((destructor)) to do a release but notice the destructor before (terminate_string16) doesn\u0027t actually call dealloc on the SharedBuffer, so seems like repeatedly loading and then unloading the library wasn\u0027t optimized for.",
+      "range": {
+        "startLine": 28,
+        "startChar": 25,
+        "endLine": 28,
+        "endChar": 40
+      },
+      "revId": "f237f68bcfca477ebe68d41c068e86b1d9ee60c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
