@@ -106,6 +106,24 @@
       "revId": "6eb674a5f3d1842412bd290ac0d3d1ad46e073dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b3e1d10_fc6a12aa",
+        "filename": "base/logging.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-03-06T22:16:58Z",
+      "side": 1,
+      "message": "eh, I can think of some hypothetical logging functions that aren\u0027t *completely* insane...\n\ne.g.:\n\nstatic unique_fd file_fd;\nvoid logger(...) {\n    if (file_fd !\u003d -1 \u0026\u0026 !write_to_file_that_should_always_succeed(file_fd.get())) {\n       file_fd.reset();\n       LOG(FATAL) \u003c\u003c \"failed to write to file\";\n    }\n    DefaultLogger(...);\n}",
+      "parentUuid": "1e0faf74_c6a85183",
+      "revId": "6eb674a5f3d1842412bd290ac0d3d1ad46e073dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
