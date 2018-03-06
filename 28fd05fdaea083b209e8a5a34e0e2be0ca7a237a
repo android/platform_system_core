@@ -46,6 +46,53 @@
       "revId": "28fd05fdaea083b209e8a5a34e0e2be0ca7a237a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa081bd4_bf8f52cf",
+        "filename": "libunwindstack/JitDebug.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-03-06T22:55:08Z",
+      "side": 1,
+      "message": "Why will it always be odd for crashed processes? It will remain odd if the process crashed while writing the data structure, in which case the data structure is inconsistent, and we can make no guarantees. E.g. desc.first_entry could conceivably be half of one pointer, and half another. We can still try to read it on a best-effort basis, but we\u0027re well into heuristic territory. My strong intuition is that case needs to be handled separately; if it is useful to wait for a consistent snapshot, we almost certainly want to do that. But if the process is dead, we have to do the best we can.",
+      "parentUuid": "cecc1ff1_c06d6432",
+      "range": {
+        "startLine": 215,
+        "startChar": 2,
+        "endLine": 217,
+        "endChar": 3
+      },
+      "revId": "28fd05fdaea083b209e8a5a34e0e2be0ca7a237a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22bb55ff_68de44cc",
+        "filename": "libunwindstack/JitDebug.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-03-06T22:55:08Z",
+      "side": 1,
+      "message": "Entry_addr was previously read from the seq_lock-protected data structure. That means the data structure it points to may be deallocated just before the SafeRead here, if there is a concurrent deleteJITCodeEntryInternal. This has nothing to do with fences or memory ordering. This means we always assume the the reader will not crash as a result of reading a bogus address? SafeRead is safe in the sense that it can\u0027t SEGV? If so, that\u0027s again a strong assumption on all readers that should be stated.\n\nIt seems to me that this is central here. If we have to avoid reader SEGV\u0027s, then I think we need a mechanism like hazard pointers to ensure that the writer doesn\u0027t deallocate anything we\u0027re still looking at, and we fundamentally need the writer to know about readers. At that point, some form of rwlock starts to look much more attractive to me. If the reader code is always safe against SEGVs, then I think we can make this logic work, though it\u0027s still really tricky to do it in a way that\u0027s at least mostly compatible with the C++ memory model.",
+      "range": {
+        "startLine": 237,
+        "startChar": 4,
+        "endLine": 237,
+        "endChar": 70
+      },
+      "revId": "28fd05fdaea083b209e8a5a34e0e2be0ca7a237a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
