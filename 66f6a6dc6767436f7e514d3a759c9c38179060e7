@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab39da4b_08a9c97e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-03-07T18:16:58Z",
+      "side": 1,
+      "message": "With system-as-root in P, ramdisk will be merged in system.img. But vendor kernel still in /boot, where the fstab_dt setting comes from.",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "66f6a6dc6767436f7e514d3a759c9c38179060e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ff07ca9_7c24658c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-03-07T18:16:58Z",
+      "side": 1,
+      "message": "Looks like OEM\u0027s init might want to have a more flexible method to decide fstab-\u003eblk_device at runtime.\n\ne.g., in fstab_dt it can just store \u0027by-name/system\u0027 and then init gets the prefix from somewhere (e.g., a system prop) to prepends the prefix.\n\nThis is similar to vboot 1.0 design, where it only stores  \u0027/dev/block/bootdevice/by-name/vendor\u0027 on the dm-verity table at the end of vendor.img. Then replace the \u0027/dev/block/bootdevice/\u0027 with a proper prefix, before loading dm-verity table into kernel.\n\nhttps://android.googlesource.com/platform/system/core/+/master/fs_mgr/fs_mgr_verity.cpp#699\n\n\n+Sandeep to comment\nOur suggested approach will probably be using dtbo, to dynamically loads fstab_dt in bootloader based on board#ID.\nhttps://source.android.com/devices/architecture/dto/multiple#setting",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "66f6a6dc6767436f7e514d3a759c9c38179060e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
