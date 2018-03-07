@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "020c9ae7_0bb09087",
+        "filename": "libunwindstack/JitDebug.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-03-07T18:40:58Z",
+      "side": 1,
+      "message": "The C++ language allows first_entry to be torn. That\u0027s probably unlikely, given the ARM instruction set and alignment rules, but it\u0027s certainly allowed. And in fact some memcpy implementations do byte-by-byte copies on short structures. Certainly the backpointer in the first entry of the list can point to a node that\u0027s not reachable by forward traversal, or vice-versa, etc.\n\nThere is a substantial literature on obstruction-free and lock-free linked lists that are designed precisely to address this kind of issue, and keep the list usable at all times. This is not a correct algorithm to do that, nor do you probably want to use one of those here.\n\nA lot of this probably becomes easier if the list here is contiguous in memory, so it can be read with a single memcpy. I don\u0027t know whether that\u0027s a possibility.\n\nI think the rules for traversing this structure with an odd counter are fundamentally different. You can probably keep most of the code common. But I do think that a debugger wants to try quite hard to read a consistent version before proceeding with the odd counter. As a user, I\u0027d certainly be willing to wait for a one second timeout before taking the risk of garbled data.",
+      "parentUuid": "5838b5c9_23dc2f1f",
+      "range": {
+        "startLine": 215,
+        "startChar": 2,
+        "endLine": 217,
+        "endChar": 3
+      },
+      "revId": "28fd05fdaea083b209e8a5a34e0e2be0ca7a237a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "22bb55ff_68de44cc",
         "filename": "libunwindstack/JitDebug.cpp",
         "patchSetId": 2
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Correct, the reader needs to be safe from SEGVs, although I still don\u0027t think we need lock to achieve.\n\nlibunwind uses process_vm_readv for memory reading which I believe fails gracefully for unmmaped memory.\n\nanother alternative would be to just handle the SEGV, but that is not as neat.\n\nfinally, Chris is planning to wrap m(un)map for debug-malloc, which means if we run in-process we can synchronize between the read and munmap.",
       "parentUuid": "22bb55ff_68de44cc",
+      "range": {
+        "startLine": 237,
+        "startChar": 4,
+        "endLine": 237,
+        "endChar": 70
+      },
+      "revId": "28fd05fdaea083b209e8a5a34e0e2be0ca7a237a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "188e7304_45563652",
+        "filename": "libunwindstack/JitDebug.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-03-07T18:40:58Z",
+      "side": 1,
+      "message": "Good. That works, but needs to be documented.",
+      "parentUuid": "bc013e0f_2f3b3fd4",
       "range": {
         "startLine": 237,
         "startChar": 4,
