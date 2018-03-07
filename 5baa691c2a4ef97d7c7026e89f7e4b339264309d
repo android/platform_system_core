@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c20c4a21_bf77c7c7",
+        "filename": "adb/adb.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2018-03-07T03:17:31Z",
+      "side": 1,
+      "message": "I\u0027m concerned that the driver exposes the same USB descriptor no matter what the underlying protocol actually is. Yes, this seems to be allowed by the USB debug class spec, but it still creates the problem that many different devices could be connected to one host doing the debugging, and it is possible that adb could claim devices that are not actually Android and hence don\u0027t use adb. Can you ask the developer of the driver to add sysfs nodes to set the class, subclass, protocol, and strings of the exposed interface? Then we could continue using the same descriptors, and it would be backwards compatible as well.",
+      "revId": "5baa691c2a4ef97d7c7026e89f7e4b339264309d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
