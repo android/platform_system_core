@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "b8cf3f0e_db27938c",
+        "filename": "libunwindstack/JitDebug.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-03-09T21:13:19Z",
+      "side": 1,
+      "message": "I am assuming that in practice reading or writting of an aligned pointer will be always atomic on all the architectures we care about. Hence I down\u0027t worry about it being torn.\n\nI don\u0027t care about memcpy being torn. Those must be always verified later by the (atomic) seqlock.\n\nThe linked list is only iterated from head forward, so the backpointer is irrelevant. \n\nSo I still argue that the algorithm, as written, is in practice safe.\n\n\nThe list could be made contiguous in memory (at least least allocated in blocks), but I don\u0027t see the benefit.\n\nI am worried about starting to put timeouts in.  I don\u0027t think potentially blocking in the backtrace for a second is acceptable.\n\nThe only thing that I somewhat worry about is the properties of process_vm_readv.  Plain old pointer read in process should be in-practice always atomic.  I am not sure if the same is true of process_vm_readv.  I would trust ptrace a bit more, but still, I can not find discussion of it online.",
+      "parentUuid": "020c9ae7_0bb09087",
+      "range": {
+        "startLine": 215,
+        "startChar": 2,
+        "endLine": 217,
+        "endChar": 3
+      },
+      "revId": "28fd05fdaea083b209e8a5a34e0e2be0ca7a237a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "22bb55ff_68de44cc",
         "filename": "libunwindstack/JitDebug.cpp",
         "patchSetId": 2
