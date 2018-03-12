@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50ef3e84_27275d3a",
+        "filename": "lmkd/tests/lmkd_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-03-12T17:21:38Z",
+      "side": 1,
+      "message": "Please add comment\n\n// exec path as utf8z c_str(). std::string contains _all_ nul terminated argv[] strings.\n\n[TL;DR]\n\ncontent is of the form:\n\n$ od -c /proc/1/cmdline\n0000000   /   s   b   i   n   /   i   n   i   t  \\0   s   p   l   a   s\n0000020   h  \\0\n\nReadFileToString _can_ read all the content with multiple terminating nuls. This works b/c path.c_str() is used to propagate the content to the various \u0027C\u0027 calls. This subtlety should be noted as a comment here just in case the std::string path is used in its entirety (either to a C++ interface, or for non-utf8z use along with path.length()).",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 72
+      },
+      "revId": "b414b23e9452469b81836ffbbbce786c5752bc8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7516281_38c8cff2",
+        "filename": "lmkd/tests/lmkd_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-03-12T17:21:38Z",
+      "side": 1,
+      "message": "...%s --gtest_filter\u003dlmkd.check_for_oom 2\u003e\u00261\"\n\nDeals with making sure we _only_ run this one test su to root. If additional individual tests are added to this gTest, this exec string will run _all_ the tests which is not desire behavior.",
+      "range": {
+        "startLine": 310,
+        "startChar": 31,
+        "endLine": 310,
+        "endChar": 32
+      },
+      "revId": "b414b23e9452469b81836ffbbbce786c5752bc8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
