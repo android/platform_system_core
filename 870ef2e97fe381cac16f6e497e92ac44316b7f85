@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac00b2f2_669eef1a",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-03-12T18:19:57Z",
+      "side": 1,
+      "message": "Should call getpwname(\"system\")-\u003egr_uid to be \"correct\" and eliminate the dependency on proiate/android_filesystem_config.h. But we may need to cache the results to prevent a latency impact.\n\nMaybe even search for /dev/memcg/\u003cpw_name\u003e/ directory entries to eliminate them\n(except apps) should other uid-names be landed in the future and allow them to be handled automagically? Doing so may be used as an exploit, an application writing to /dev/memcg/ could create its own (or rather protected) memory cgroup, and that may be undesirable?",
+      "range": {
+        "startLine": 297,
+        "startChar": 22,
+        "endLine": 297,
+        "endChar": 32
+      },
+      "revId": "870ef2e97fe381cac16f6e497e92ac44316b7f85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
