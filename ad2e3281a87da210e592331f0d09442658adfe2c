@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5b1c6c7f_0e34590c",
+        "filename": "libunwindstack/DwarfCfa.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-03-20T21:25:17Z",
+      "side": 1,
+      "message": "You can move this above the first if and remove the setting it before the loop starts. Or maybe, you could set it unconditionally only in the two return true cases since there are no other ways out of the loop.",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "ad2e3281a87da210e592331f0d09442658adfe2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66765515_a0cefbfa",
         "filename": "libunwindstack/include/unwindstack/DwarfLocation.h",
         "patchSetId": 1
@@ -66,6 +89,53 @@
         "startChar": 23,
         "endLine": 46,
         "endChar": 24
+      },
+      "revId": "ad2e3281a87da210e592331f0d09442658adfe2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0c3e21b_4680851f",
+        "filename": "libunwindstack/include/unwindstack/DwarfLocation.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-03-20T21:25:17Z",
+      "side": 1,
+      "message": "Yeah, I would probably init to zero too. Mostly, I assume that it might be possible to optimize the creation of the structure if everything is init\u0027d to zero, but I might be overthinking this.\n\nAlthough, looking at the code, there is no way to get out without setting both of these values, but this would help catch a logic bug.",
+      "parentUuid": "8d16331b_5f54bcc0",
+      "range": {
+        "startLine": 46,
+        "startChar": 23,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "ad2e3281a87da210e592331f0d09442658adfe2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03231a14_56d8afac",
+        "filename": "libunwindstack/include/unwindstack/DwarfSection.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-03-20T21:25:17Z",
+      "side": 1,
+      "message": "Is there a reason this is a pointer and not just the DwarfCie struct itself? I looked and it doesn\u0027t appear it avoids any copies because you still need to do the new which should be equivalent.\n\nMy understanding of the way I am using the unordered_map does the equivalent of a new, and the DwarfCie object itself should not be copied around.\n\nHowever, my knowledge of the internals of the STL is not very large, so I could be wrong.",
+      "range": {
+        "startLine": 114,
+        "startChar": 31,
+        "endLine": 114,
+        "endChar": 56
       },
       "revId": "ad2e3281a87da210e592331f0d09442658adfe2c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
