@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c330e178_2dd131fa",
+        "filename": "libsysutils/src/NetlinkEvent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-20T22:33:48Z",
+      "side": 1,
+      "message": "Isn\u0027t rta at this point invalid memory? The earlier loop is:\n\n    for (rta \u003d RTM_RTA(rtm); RTA_OK(rta, len); rta \u003d RTA_NEXT(rta, len)) {\n\nwhich means that when we get here, RTA_OK(rta, ...) is false.\n\nI think you instead need to do something like:\n\n    int ifindex \u003d 0;\n...\n...\n        case RTA_OIF:\n            ifindex \u003d * (int *) RTA_DATA(rta);\n            if (!if_indextoname(ifindex), dev))\n                return false;\n...\n...\n    asprintf(\u0026mParams[3], \"IFINDEX\u003d%d\", ifindex);",
+      "range": {
+        "startLine": 407,
+        "startChar": 60,
+        "endLine": 407,
+        "endChar": 63
+      },
+      "revId": "d3c660f09fe657aee3657bb31f0b8a20ce1edb42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
