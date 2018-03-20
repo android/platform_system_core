@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf3375b6_8283e2b5",
+        "filename": "adb/sockets.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-03-20T21:24:14Z",
+      "side": 1,
+      "message": "This is a behavioral change from the original code (on line 136) to be consistent with the local socket behavior of \"-1 means s was possibly deleted\", but I don\u0027t believe this affects anything (because adb.cpp checks for enqueue() !\u003d 0, and nothing else checks the return value of enqueue... (except for device_tracker_send in transport.cpp, which returns the value to a bunch of callers that just throw it away))",
+      "revId": "743422350309f116179ddc7541a3303ad54275eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
