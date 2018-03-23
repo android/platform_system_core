@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "dae067a5_a97f7503",
+        "filename": "libunwindstack/DwarfCfa.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-03-23T02:57:55Z",
+      "side": 1,
+      "message": "Oops, yeah forget I said anything.",
+      "parentUuid": "f702872c_9eefa11a",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "ad2e3281a87da210e592331f0d09442658adfe2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66765515_a0cefbfa",
         "filename": "libunwindstack/include/unwindstack/DwarfLocation.h",
         "patchSetId": 1
@@ -203,6 +227,30 @@
       "side": 1,
       "message": "I am not STL expert either.  I would assume that the hashmap could move the data when entries are added/removed.  I certainly wouldn\u0027t expect the hashmap do heap allocation for each entry.\n\nBut there is no strong reason - I needed CIE pointer at some point, and felt really uncomfortable having pointer to inside the internals of the hashmap.\n\nBetter safe than sorry?  CIEs are so rare the cost does not matter.",
       "parentUuid": "03231a14_56d8afac",
+      "range": {
+        "startLine": 114,
+        "startChar": 31,
+        "endLine": 114,
+        "endChar": 56
+      },
+      "revId": "ad2e3281a87da210e592331f0d09442658adfe2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1517ea48_aa8a609c",
+        "filename": "libunwindstack/include/unwindstack/DwarfSection.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-03-23T02:57:55Z",
+      "side": 1,
+      "message": "I forgot that I had looked this up before because I rely on this behavior. Here\u0027s the info from the stl on this:\n\nReferences and pointers to either key or data stored in the container are only invalidated by erasing that element, even when the corresponding iterator is invalidated.\n\nhttp://en.cppreference.com/w/cpp/container/unordered_map\n\nSo you don\u0027t need to do the unique_ptr stuff, you can keep a pointer to it without causing any issues (assuming our version of the STL conforms to the above).",
+      "parentUuid": "5036ca3e_fd5a573d",
       "range": {
         "startLine": 114,
         "startChar": 31,
