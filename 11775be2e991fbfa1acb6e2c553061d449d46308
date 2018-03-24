@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4088a92e_55317b3d",
+        "filename": "libbacktrace/UnwindStack.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-03-24T01:14:23Z",
+      "side": 1,
+      "message": "I moved the creation here because I needed the Arch() to create the JitDebug object.  I felt like the objects didn\u0027t really belong to BacktraceMap anyway....",
+      "range": {
+        "startLine": 59,
+        "startChar": 23,
+        "endLine": 59,
+        "endChar": 44
+      },
+      "revId": "11775be2e991fbfa1acb6e2c553061d449d46308",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1cc72cfb_d0329f16",
+        "filename": "libunwindstack/DexFile.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-03-24T01:14:23Z",
+      "side": 1,
+      "message": "Matches the API of ELF object",
+      "range": {
+        "startLine": 41,
+        "startChar": 7,
+        "endLine": 41,
+        "endChar": 38
+      },
+      "revId": "11775be2e991fbfa1acb6e2c553061d449d46308",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d9a31d2_da3721a5",
+        "filename": "libunwindstack/Elf.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-03-24T01:14:23Z",
+      "side": 1,
+      "message": "For both ELF and DEX, I need the valid range so I can manage the lookup map from PC to symbol file.",
+      "range": {
+        "startLine": 236,
+        "startChar": 10,
+        "endLine": 236,
+        "endChar": 25
+      },
+      "revId": "11775be2e991fbfa1acb6e2c553061d449d46308",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70787e2f_b539903b",
+        "filename": "libunwindstack/JitDebug.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-03-24T01:14:23Z",
+      "side": 1,
+      "message": "Turns out the if pc_start is the key, the lookup is fiddly...",
+      "range": {
+        "startLine": 200,
+        "startChar": 23,
+        "endLine": 200,
+        "endChar": 34
+      },
+      "revId": "11775be2e991fbfa1acb6e2c553061d449d46308",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "586c4e86_dfc0e6e2",
+        "filename": "libunwindstack/JitDebug.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-03-24T01:14:23Z",
+      "side": 1,
+      "message": "This is also one of the reasons we need the valid-pc ranges.\nThe algorithm effectively ignores deletions from the linked list.\nInstead, if pc ranges overlap, any old symbols files are removed.",
+      "range": {
+        "startLine": 348,
+        "startChar": 8,
+        "endLine": 348,
+        "endChar": 27
+      },
+      "revId": "11775be2e991fbfa1acb6e2c553061d449d46308",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13647e0b_173b6d3a",
+        "filename": "libunwindstack/include/unwindstack/JitDebug.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-03-24T01:14:23Z",
+      "side": 1,
+      "message": "Symfile is either DexFile or Elf",
+      "range": {
+        "startLine": 35,
+        "startChar": 19,
+        "endLine": 35,
+        "endChar": 26
+      },
+      "revId": "11775be2e991fbfa1acb6e2c553061d449d46308",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
