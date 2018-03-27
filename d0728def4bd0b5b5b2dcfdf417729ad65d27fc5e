@@ -22,6 +22,53 @@
       "revId": "d0728def4bd0b5b5b2dcfdf417729ad65d27fc5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "866ee895_299fe20e",
+        "filename": "mkbootimg/bootimg.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-03-27T22:01:32Z",
+      "side": 1,
+      "message": "my assumption was that you\u0027d have `boot_img_hdr` always typedef\u0027ed to the *newest* struct. so anyone who doesn\u0027t care gets automatically moved along.\n\nbut if you\u0027re saying \"everyone needs to choose the right one\", i think the right thing to do is *not* have a typedef at all. and force callers to explicitly specify.\n\nor, if you think you can trust `header_version`, you can do what dimitry@ did in the dynamic linker: you have one struct, but only the \"v0\" fields are public. anything in v1 is hidden behind getters/setters, and they check the version before accessing any data. (and you can either return default values or abort, as appropriate.)",
+      "parentUuid": "e53b0f18_6a58e1da",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 44
+      },
+      "revId": "d0728def4bd0b5b5b2dcfdf417729ad65d27fc5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baf56e70_88c7efc6",
+        "filename": "mkbootimg/bootimg.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-03-27T22:01:32Z",
+      "side": 1,
+      "message": "i can see that you\u0027re never going to have a \u003e4GiB dtbo image, but shouldn\u0027t the physical load address be 64-bit?",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 59
+      },
+      "revId": "d0728def4bd0b5b5b2dcfdf417729ad65d27fc5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
