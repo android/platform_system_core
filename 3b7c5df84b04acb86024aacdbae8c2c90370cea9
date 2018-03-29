@@ -16,6 +16,24 @@
       "revId": "3b7c5df84b04acb86024aacdbae8c2c90370cea9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12287cb9_116e9500",
+        "filename": "adb/sysdeps_win32.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-03-29T20:54:58Z",
+      "side": 1,
+      "message": "It\u0027s what poll is defined to do (if you give it garbage, it\u0027ll tell you how many instances of garbage you gave it, and set POLLNVAL for each of them).\n\nI realized that a better way of doing this would be to set the timeout to 0 if we have any invalid FDs, though, so I\u0027m going to do that instead.",
+      "parentUuid": "94c0274a_08d8366f",
+      "revId": "3b7c5df84b04acb86024aacdbae8c2c90370cea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
