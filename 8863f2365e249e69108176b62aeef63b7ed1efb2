@@ -71,6 +71,154 @@
     },
     {
       "key": {
+        "uuid": "50c1f683_ef53f6a1",
+        "filename": "logcat/include/log/logcat.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-03T20:44:54Z",
+      "side": 1,
+      "message": "If you\u0027re going to suffix command with _, then all should be suffixed.",
+      "range": {
+        "startLine": 130,
+        "startChar": 16,
+        "endLine": 130,
+        "endChar": 24
+      },
+      "revId": "8863f2365e249e69108176b62aeef63b7ed1efb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f3a11b6_a37b5ab2",
+        "filename": "logcat/include/log/logcat.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-03T20:44:54Z",
+      "side": 1,
+      "message": "For constructors and normal functions like below, an empty set of () is preferable to (void) in C++.  They mean the same thing; allowing void is just to maintain backwards compatibility with C.",
+      "range": {
+        "startLine": 137,
+        "startChar": 17,
+        "endLine": 137,
+        "endChar": 23
+      },
+      "revId": "8863f2365e249e69108176b62aeef63b7ed1efb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdd327c7_fd950907",
+        "filename": "logcat/include/log/logcat.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-03T20:44:54Z",
+      "side": 1,
+      "message": "Answering your other question, yes, single argument constructors should be explicit.\n\nThis constructor is unnecessary however.  You can just have the const std::string\u0026 constructor that will do the conversion to std::string for you.  And since you\u0027re storing this as a std::string, there won\u0027t be much penalty.",
+      "revId": "8863f2365e249e69108176b62aeef63b7ed1efb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0a67443_1a661bd0",
+        "filename": "logcat/include/log/logcat.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-03T20:44:54Z",
+      "side": 1,
+      "message": "You probably don\u0027t need to worry about efficiency of this single copy enough to have an rvalue overload.  I\u0027d drop this constructor too, and just have the single const std::string\u0026 one.",
+      "revId": "8863f2365e249e69108176b62aeef63b7ed1efb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "606faf3c_a37aaffb",
+        "filename": "logcat/include/log/logcat.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-03T20:44:54Z",
+      "side": 1,
+      "message": "You don\u0027t need this line, the above one with const is sufficient.\n\nYou do need to delete the copy/move assignment constructors too though,\n\nvoid operator\u003d(const AndroidLogcat\u0026) \u003d delete;\nvoid operator\u003d(AndroidLogcat\u0026\u0026) \u003d delete;",
+      "revId": "8863f2365e249e69108176b62aeef63b7ed1efb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23b725ec_a4e236b8",
+        "filename": "logcat/include/log/logcat.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-03T20:44:54Z",
+      "side": 1,
+      "message": "I\u0027d drop this in favor of the const std::string\u0026 version.  A conversation from const char* to std::string costs almost nothing.\n\nSame with the std::string\u0026\u0026 one.",
+      "revId": "8863f2365e249e69108176b62aeef63b7ed1efb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae8fefd9_1fc974f0",
+        "filename": "logcat/include/log/logcat.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-03T20:44:54Z",
+      "side": 1,
+      "message": "Why?  I\u0027d prefer not giving this overload to people, I don\u0027t think it\u0027s clear what reassigning a string to this type would do.",
+      "revId": "8863f2365e249e69108176b62aeef63b7ed1efb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1aebceb4_655fe9cf",
+        "filename": "logcat/include/log/logcat.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-03T20:44:54Z",
+      "side": 1,
+      "message": "I\u0027m not convinced this or the below overload are needed.  I\u0027d rather KISS and just have the accessor functions.",
+      "revId": "8863f2365e249e69108176b62aeef63b7ed1efb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31a229ef_2451da6c",
         "filename": "logcat/logcat.cpp",
         "patchSetId": 9
