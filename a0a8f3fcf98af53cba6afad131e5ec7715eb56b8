@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "095ca04f_9ea4fb67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-04T23:27:00Z",
+      "side": 1,
+      "message": "Is that actually what the shell does?  I don\u0027t see that in the few commands that I ran.\n\nIn any case, I\u0027d rather not bake this in.  I almost wish we hadn\u0027t had a string for command for the API into liblogcat.  We could have had a LogcatCommand class where users filled out the information they wanted explicitly with setters.  It would have prevented the need for getopt_long_r() and been much more intuitive in situations like this.",
+      "revId": "a0a8f3fcf98af53cba6afad131e5ec7715eb56b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d61b94bc_87f2ae60",
+        "filename": "logcat/file.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-04T23:27:00Z",
+      "side": 1,
+      "message": "Perhaps we just have an int* retval as a parameter and fill it out as long as we didn\u0027t get a nullptr for input?\n\nThen this function itself can return whether or not the popen() succeeded and *retval will be the result of the actual logcat command.",
+      "revId": "a0a8f3fcf98af53cba6afad131e5ec7715eb56b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
