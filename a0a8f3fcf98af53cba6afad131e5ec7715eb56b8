@@ -123,6 +123,24 @@
       "revId": "a0a8f3fcf98af53cba6afad131e5ec7715eb56b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99aa9f5b_2805d823",
+        "filename": "logcat/file.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-05T18:29:24Z",
+      "side": 1,
+      "message": "\u003e As for return value, I want this to be KISS since we expect to replace executeShellCommand, runShellCommand (or open-coded equivalents that are littered throughout our codebase) with executeLogcatCommand with runLogcatCommand respectively; I want the cleanup to be near effortless and fluid.\n\nThis is the wrong goal to me.  I\u0027d rather spend the effort up front to convert people from executeShellCommand() to a new future looking interface than do what\u0027s easier now at the cost of future maintenance.  Like I said earlier, we wouldn\u0027t have ever needed getopt_long_r() if we had a more traditional interface where users create a LogcatCommand class, specific the options they want, then get the options to .Run(), .RunInThread(), etc it.  They could then query the string result, int retval, etc through other accessors as well.",
+      "parentUuid": "336c3789_32567a90",
+      "revId": "a0a8f3fcf98af53cba6afad131e5ec7715eb56b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
