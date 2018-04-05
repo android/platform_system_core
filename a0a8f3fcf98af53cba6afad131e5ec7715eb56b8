@@ -105,6 +105,24 @@
       "revId": "a0a8f3fcf98af53cba6afad131e5ec7715eb56b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "336c3789_32567a90",
+        "filename": "logcat/file.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-04-05T18:24:21Z",
+      "side": 1,
+      "message": "https://www.youtube.com/watch?v\u003dKBKXu3Kg4yg\n\nAll java, C or C++ users that pipe/fork/exec the logcat executable currently need to transition to liblogcat.so (see the associated bugs).\n\nThe alternative is to use the (Java/C++/C) log reader interface (introduced in L) and process the binary event data directly.\n\nIt is considered a security issue to use exec as an API.\n\nAs for return value, I want this to be KISS since we expect to replace executeShellCommand, runShellCommand (or open-coded equivalents that are littered throughout our codebase) with executeLogcatCommand with runLogcatCommand respectively; I want the cleanup to be near effortless and fluid.",
+      "parentUuid": "63761e33_d6a0869a",
+      "revId": "a0a8f3fcf98af53cba6afad131e5ec7715eb56b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
