@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "29883b61_90b717a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-05T18:11:43Z",
+      "side": 1,
+      "message": "\u003e I did not want to complicate the argument list more because _most_ (of the hundreds of possible) of callers do not care.\n\nOne optional parameter (let them set it to nullptr) doesn\u0027t complicate the argument list, especially not compared to the explicitly complicated interface of asking callers to add a 2\u003e\u00261 and then asking them to parse the output string to get the retval.\n\nAre there really hundreds of possible callers for this?  How many processes call logcat in this way?  I\u0027d be interested in seeing which ones besides the obvious (dumpstate, bootstat).\n\n\u003e FYI: each additional argument costs roughly 45ns in overlead.\n\nThis is orders of magnitude lower than anything we should care about.\n\n\u003e And there you see \"\\n1|\" in the output from the shell ...\n\nI guess that only happens for non-zero retval.  It also happens with or without 2\u003e\u00261, so that makes this an even more confusing option.",
+      "parentUuid": "d9984de0_69da1d94",
+      "revId": "a0a8f3fcf98af53cba6afad131e5ec7715eb56b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d61b94bc_87f2ae60",
         "filename": "logcat/file.cpp",
         "patchSetId": 3
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "I\u0027ll can buy that, but then the jni gets correspondingly uglier too (where each parameter requires considerable more overhead to process). If I follow w/o a retval and encode the string accordingly, then jni call pattern is roughly the same as the ReadLogcatToString call pattern.\n\nThe jni returns a string, and additional parameter references are an anti-pattern.\n\nHowever we can return nullptr as the error return.\n\nBut that does not deal with partial return, which for logcat is very important.",
       "parentUuid": "d61b94bc_87f2ae60",
+      "revId": "a0a8f3fcf98af53cba6afad131e5ec7715eb56b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63761e33_d6a0869a",
+        "filename": "logcat/file.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-05T18:11:43Z",
+      "side": 1,
+      "message": "What JNI users are there for this?  \n\nCan we return a data class with both the string and the int?  That seems to be the most \u0027java-esque\u0027 pattern here.",
+      "parentUuid": "2a7264a4_4f4977c5",
       "revId": "a0a8f3fcf98af53cba6afad131e5ec7715eb56b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
