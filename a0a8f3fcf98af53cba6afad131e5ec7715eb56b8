@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d9984de0_69da1d94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-04-05T16:09:16Z",
+      "side": 1,
+      "message": "Just reporting rationalization for possible tacit approval. Does not mean I am tied to this form.\n\nI wanted it to look like the same call signature as android::base::ReadXXXXToString\n\nI needed _something_ to be _guaranteed_ in the output stream for callers to determine if the error was catastrophic, or from an error return from the command execution. If the command had _no_ output (stdout or stderr) and an error return value then we have an issue in callers that wish to differentiate command success or failure. I did not want to complicate the argument list more because _most_ (of the hundreds of possible) of callers do not care. content.empty() thus differentiates catastrophic unexpected failure from return code; with the added benefit if they want to expand on the return code, it is in the data stream in an easy-to-parse form (last character is a \u0027|\u0027), but that is not the point (and probably should be dropped as an API).\n\nI _should_ have stated in the comment something like if the command was spawned and reported an error code in execution, that A) function returns false and B) that content.empty() is guaranteed to return false _only_ if \"2\u003e\u00261\" redirection has been added to the command string. If some other system error prevented execution, that A) function returns false and B) that content.empty() returns true.\n\nFYI: each additional argument costs roughly 45ns in overlead.\n\n$ adb $H1 shell\nhikey:/ $ false\n1|hikey:/ $\n\nAnd there you see \"\\n1|\" in the output from the shell ...",
+      "parentUuid": "095ca04f_9ea4fb67",
+      "revId": "a0a8f3fcf98af53cba6afad131e5ec7715eb56b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d61b94bc_87f2ae60",
         "filename": "logcat/file.cpp",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2018-04-04T23:27:00Z",
       "side": 1,
       "message": "Perhaps we just have an int* retval as a parameter and fill it out as long as we didn\u0027t get a nullptr for input?\n\nThen this function itself can return whether or not the popen() succeeded and *retval will be the result of the actual logcat command.",
+      "revId": "a0a8f3fcf98af53cba6afad131e5ec7715eb56b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a7264a4_4f4977c5",
+        "filename": "logcat/file.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-04-05T16:09:16Z",
+      "side": 1,
+      "message": "I\u0027ll can buy that, but then the jni gets correspondingly uglier too (where each parameter requires considerable more overhead to process). If I follow w/o a retval and encode the string accordingly, then jni call pattern is roughly the same as the ReadLogcatToString call pattern.\n\nThe jni returns a string, and additional parameter references are an anti-pattern.\n\nHowever we can return nullptr as the error return.\n\nBut that does not deal with partial return, which for logcat is very important.",
+      "parentUuid": "d61b94bc_87f2ae60",
       "revId": "a0a8f3fcf98af53cba6afad131e5ec7715eb56b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
