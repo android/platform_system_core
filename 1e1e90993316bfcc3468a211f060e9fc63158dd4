@@ -39,6 +39,30 @@
       "revId": "1e1e90993316bfcc3468a211f060e9fc63158dd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1fea1c1_b0beefa1",
+        "filename": "base/logging.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-04-06T21:12:02Z",
+      "side": 1,
+      "message": "st_mode is the filesystem permission mode/type, not the open flags. So we need both (if my check for O_WRONLY is OK that is, O_RDWR is OK, but we currently do not do so)\n\nif rdev \u003d\u003d kmsg I was not initially not brave enough, non zero was good enough, despite the fact it is always the same, pedantically does not mean it is going to always be the same? \n\n#define MEM_MAJOR 1\n. . .\n#ifdef CONFIG_PRINTK\n        [11] \u003d { \"kmsg\", 0644, \u0026kmsg_fops, NULL },\n#endif\n\nConcerned about making the code _that_ fragile, but given this has not changed since linux epoch (or at least 2005) I expect its OK.",
+      "parentUuid": "df9541ee_7a6eaaa0",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 91
+      },
+      "revId": "1e1e90993316bfcc3468a211f060e9fc63158dd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
