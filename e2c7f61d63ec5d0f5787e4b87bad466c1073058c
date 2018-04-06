@@ -22,6 +22,30 @@
       "revId": "e2c7f61d63ec5d0f5787e4b87bad466c1073058c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ed42278_e2869ecf",
+        "filename": "base/logging.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-06T22:22:17Z",
+      "side": 1,
+      "message": "Per the man page, fcntl with F_GETFL will not fail with EINTR, which is what we care about with TEMP_FAILURE_RETRY().\n\nThis line is a little bit scary since if fcntl() fails it returns -1.  It will fail the check after the mask luckily so it\u0027s safe, but perhaps not straight-forward to read.  Something like \n\nauto fl_result \u003d fcntl(...);\nif (fl_result !\u003d -1 \u0026\u0026 (fl_result \u0026 O_ACCMODE) \u003d\u003d O_WRONLY)) ...\n\nwould make it clear that we\u0027re doing the first check.",
+      "parentUuid": "255d9b65_e622e31f",
+      "range": {
+        "startLine": 96,
+        "startChar": 10,
+        "endLine": 96,
+        "endChar": 28
+      },
+      "revId": "e2c7f61d63ec5d0f5787e4b87bad466c1073058c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
