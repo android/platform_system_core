@@ -70,6 +70,30 @@
       "revId": "e2c7f61d63ec5d0f5787e4b87bad466c1073058c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2847972e_87fd1f50",
+        "filename": "base/logging.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2018-04-06T23:48:59Z",
+      "side": 1,
+      "message": "\u003e O_ACCMODE by _design_ will result in an illegal open mode for value of -1\n\nSeems clear enough to me, FWIW. It\u0027s pretty clear that O_WRONLY can\u0027t be -1. (POSIX explicitly requires two\u0027s complement representation of integers, forcing -1 to be all one bits, making it useless as a bitwise flag.)\n\n\u003e selinux audit messages\n\nTASK_UNINTERRUPTIBLE though, so any blocking isn\u0027t observable at the system call boundary.",
+      "parentUuid": "599db61f_7c6df037",
+      "range": {
+        "startLine": 96,
+        "startChar": 10,
+        "endLine": 96,
+        "endChar": 28
+      },
+      "revId": "e2c7f61d63ec5d0f5787e4b87bad466c1073058c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
