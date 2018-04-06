@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0e87959_e439671d",
+        "filename": "base/logging.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-06T20:08:14Z",
+      "side": 1,
+      "message": "From libcutils, this is only not defined on MAC, so let\u0027s skip this check and just assume we have it, given that we\u0027re already checking __linux__ above?\n\nOr better, why are we optimizing this instead of just using the more generic fstat() everywhere?  This code is run effectively once ever and shouldn\u0027t take more than microseconds to complete.",
+      "revId": "febea3d2ce55761311222b9518b7f668e34d8cc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99e3ecc1_558dab9b",
+        "filename": "base/logging.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-06T20:08:14Z",
+      "side": 1,
+      "message": "Same question for __predict_true().  This code is run exactly once and from the cdefs.h comment, is not a good candidate for this optimization:\n\n *\t* These are meant to be used in places that are run `a lot\u0027.\n *\t  It is wasteful to make predictions in code that is run\n *\t  seldomly (e.g. at subsystem initialization time) as the\n *\t  basic block reordering that this affects can often generate\n *\t  larger code.",
+      "revId": "febea3d2ce55761311222b9518b7f668e34d8cc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
