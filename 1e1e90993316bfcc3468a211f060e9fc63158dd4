@@ -63,6 +63,30 @@
       "revId": "1e1e90993316bfcc3468a211f060e9fc63158dd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2426060a_cd5b0f28",
+        "filename": "base/logging.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-06T21:19:34Z",
+      "side": 1,
+      "message": "\u003e st_mode is the filesystem permission mode/type, not the open flags. So we need both (if my check for O_WRONLY is OK that is, O_RDWR is OK, but we currently do not do so)\n\nUnderstood.\n\n\u003e if rdev \u003d\u003d kmsg I was not initially not brave enough, non zero was good enough, despite the fact it is always the same, pedantically does not mean it is going to always be the same? \n\nI am comfortable that it will never change.  Init hard codes this during device creation as well, https://cs.corp.google.com/android/system/core/init/init.cpp?q\u003dfile:init.cpp\u0026sq\u003dpackage:%5Eandroid$\u0026dr\u0026l\u003d589\n\nI\u0027m also comfortable skipping all of these checks and just ensuring that the fd is valid.",
+      "parentUuid": "a1fea1c1_b0beefa1",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 91
+      },
+      "revId": "1e1e90993316bfcc3468a211f060e9fc63158dd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
