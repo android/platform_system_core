@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebf653d4_7cca7ed5",
+        "filename": "base/logging.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-06T20:49:08Z",
+      "side": 1,
+      "message": "Drop inline, it\u0027s cleaner and the compiler will figure this out anyway.\n\nOpenKmsg() is how this should be formatted (we go by g3 style here).",
+      "revId": "1e1e90993316bfcc3468a211f060e9fc63158dd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df9541ee_7a6eaaa0",
+        "filename": "base/logging.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-06T20:49:08Z",
+      "side": 1,
+      "message": "We only need one of F_GETFL and fstat(), right?  fstat()\u0027s st_mode gives us the mode that we can check for O_WRONLY.  We should check that fstat() returns \u003d\u003d 0 for success instead of \u003e\u003d.\n\nAlthough, are these checks needed?  I\u0027d either check 1) simply if the fd is valid or 2) check the rdev is actually kmsg.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 91
+      },
+      "revId": "1e1e90993316bfcc3468a211f060e9fc63158dd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
