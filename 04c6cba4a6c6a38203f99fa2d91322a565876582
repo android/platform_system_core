@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af01452a_97b8d526",
+        "filename": "adb/benchmark_device.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2018-04-09T20:53:39Z",
+      "side": 1,
+      "message": "This escaping is a little broken, but maybe it\u0027s good enough.\n\ne.g. I\u0027d normally expect to see:\n\nfor x in item1 item2; do\n   cmd1\n   cmd2\ndone\n\nThat doesn\u0027t work if we replace the newlines with semicolons, though, so the \"do\" is moved to before the first command.\n\nIs the newline-\u003esemicolon replacement actually needed?\n\ne.g.\n\n    rprichard@cashew:~/android/ndk/development/python-packages$ python3 -c \u0027import adb ; print(adb.get_device(\"\u0027$hikey\u0027\").shell([\"echo 1 \\n echo 2 \\n echo 3\"]))\u0027\n    (\u00271\\n2\\n3\\n\u0027, \u0027\u0027)\n    \n    rprichard@cashew:~/android/ndk/development/python-packages$ python3 -c \u0027import adb ; print(adb.get_device(\"\u0027$nexuss\u0027\").shell([\"echo 1 \\n echo 2 \\n echo 3\"]))\u0027\n    (\u00271\\r\\n2\\r\\n3\\r\\n\u0027, \u0027\u0027)",
+      "revId": "04c6cba4a6c6a38203f99fa2d91322a565876582",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
