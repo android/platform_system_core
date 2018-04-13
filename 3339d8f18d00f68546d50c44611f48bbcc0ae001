@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "06fc4469_4da7e9a4",
+        "filename": "llkd/include/llkd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-04-13T20:01:19Z",
+      "side": 1,
+      "message": "We have C++ tools and daemons that explicitly do not use LIBCXX, if one of them includes this file to reference the properties, then they will get a compile error for the following, most notably #include \u003cchrono\u003e.\n\nNone do, but this is general cleanliness guideline for headers.",
+      "parentUuid": "be6e3685_54bcf325",
+      "range": {
+        "startLine": 56,
+        "startChar": 26,
+        "endLine": 56,
+        "endChar": 51
+      },
+      "revId": "3339d8f18d00f68546d50c44611f48bbcc0ae001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2cb6811_ba9624da",
         "filename": "llkd/include/llkd.h",
         "patchSetId": 1
@@ -105,6 +129,30 @@
       "writtenOn": "2018-04-13T19:51:02Z",
       "side": 1,
       "message": "Is this needed?  C++ linkage is the default.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 14
+      },
+      "revId": "3339d8f18d00f68546d50c44611f48bbcc0ae001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "680f022d_f52b3db0",
+        "filename": "llkd/include/llkd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-04-13T20:01:19Z",
+      "side": 1,
+      "message": "Headers are sometimes included wrapped by extern \"C\" {\n\neg:\n\n__BEGIN_DECLS\n\n#include \u003clmkd.h\u003e\n\n__END_DECLS\n\nwill result in a compilation error.\n\nAlso a general cleanliness guideline for headers.",
+      "parentUuid": "d2cb6811_ba9624da",
       "range": {
         "startLine": 57,
         "startChar": 0,
@@ -140,6 +188,30 @@
     },
     {
       "key": {
+        "uuid": "59dc1ae1_6c979c9d",
+        "filename": "llkd/include/llkd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-04-13T20:01:19Z",
+      "side": 1,
+      "message": "Good point! missing header cleanliness!",
+      "parentUuid": "7a27c1ed_bd5924f9",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 37
+      },
+      "revId": "3339d8f18d00f68546d50c44611f48bbcc0ae001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1533be8_323d0961",
         "filename": "llkd/include/llkd.h",
         "patchSetId": 1
@@ -151,6 +223,30 @@
       "writtenOn": "2018-04-13T19:51:02Z",
       "side": 1,
       "message": "__{BEGIN,END}_DECLS disable C++ name mangling (for the benefit of C++ code linking against C libraries).  Since you\u0027re overloading llkInit(), it seems like you actually want C++ name mangling here, though?",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 13
+      },
+      "revId": "3339d8f18d00f68546d50c44611f48bbcc0ae001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2a72aba_0b075a26",
+        "filename": "llkd/include/llkd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-04-13T20:01:19Z",
+      "side": 1,
+      "message": "You are allowed to have BOBW.\n\nNote that we _need_ llkInit to have C linkage (established at line 29), this line does _not_ overload llkInit, it _adds_ the ability to default the parameter to nullptr when references in C++ code.",
+      "parentUuid": "a1533be8_323d0961",
       "range": {
         "startLine": 63,
         "startChar": 0,
