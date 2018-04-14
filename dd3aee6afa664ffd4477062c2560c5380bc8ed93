@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ca609d5_64758c86",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1407,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2018-04-14T00:27:58Z",
+      "side": 1,
+      "message": "IMHO, epoll_wait failing should be a plain abort. There\u0027s no legitimate reason for it to fail, so if it _does_ fail, something has gone terribly wrong. And here, you just log that something\u0027s gone wrong and retry! What if you retry in a loop, and we end up pinning a core with a SCHED_FIFO process?\n\nBy aborting, you at least have a hope of getting back into a known state.\n\nDon\u0027t take my word for it: GMS\u0027s casting network-dispatch doohickey has a chronic bug involving its own epoll returning early with an unexpected error condition, causing the event processing loop to spin on a core forever, chewing through battery.\n\nIt\u0027s good to fail fast in impossible situations, but I think it\u0027s especially important to fail fast in critical system daemons like this one.",
+      "range": {
+        "startLine": 1407,
+        "startChar": 12,
+        "endLine": 1407,
+        "endChar": 20
+      },
+      "revId": "dd3aee6afa664ffd4477062c2560c5380bc8ed93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
