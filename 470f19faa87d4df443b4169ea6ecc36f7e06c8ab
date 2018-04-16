@@ -70,6 +70,24 @@
       "revId": "470f19faa87d4df443b4169ea6ecc36f7e06c8ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "891bfba8_7c82c1ee",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-16T21:20:34Z",
+      "side": 1,
+      "message": "Services are virtually always going to be run incorrectly unless run by init (or a tool that parses them .  Even with fs_config setting the capability bits, users, groups, SELinux domains, etc all need to be set up.\n\nsu can set up users and groups, but not selinux domains or capabilities\nfs_config can set up capabilities and users but not all groups of selinux domains\nrun-as can set up users and selinux domains but not capabilities or all groups\n\nNot to mention the files and sockets that init can open, etc.\n\nThe chances of developers getting that all right is 0%.\n\nGiven that, I don\u0027t see any reason to include these bits in fs_config and especially not duplicate them.  Developers should not be starting init services from the shell at all right now.\n\nAs for the tool: it shouldn\u0027t take too long to create.  It\u0027d probably be split from run-as since it\u0027ll share a majority of its code with init as it\u0027ll directly take an init script as an input parameter.  It would be userdebug/eng only and only intended for developers.  It would need to be started as root, so it wouldn\u0027t be able to open any holes.",
+      "parentUuid": "5862bb53_2f173582",
+      "revId": "470f19faa87d4df443b4169ea6ecc36f7e06c8ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
