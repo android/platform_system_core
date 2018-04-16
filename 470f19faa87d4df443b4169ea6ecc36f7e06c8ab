@@ -135,6 +135,30 @@
       "revId": "470f19faa87d4df443b4169ea6ecc36f7e06c8ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80370b7d_2d667b48",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-04-16T22:03:59Z",
+      "side": 1,
+      "message": "The Rule we are establishing:\n\n1) files that can be directly executed by shell or indirectly through fork/exec, land capabilities in fs_config and follow POSIX filesystem rules.\n2) executable files that are only executed by init, land capabilities in associated .rc file\n\nToDo:\n1) a shell and gdb server tool that allows execution to follow .rc file rules. Association should be automated, startup by service name only? What about exec rules (executables that for all intents and purposes can be also run from shell)?\n2) daemons that can only be started by init should have MAC/DAC rules to prevent them from ever being executed directly by shell/adb/gdb. Perhaps daemons should move out of /system/bin ?",
+      "parentUuid": "a2f42b1b_473f38cf",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 66
+      },
+      "revId": "470f19faa87d4df443b4169ea6ecc36f7e06c8ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
