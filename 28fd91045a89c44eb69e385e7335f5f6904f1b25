@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "908bf375_c9ad8a8c",
+        "filename": "base/include/android-base/process.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-04-16T22:26:16Z",
+      "side": 1,
+      "message": "that\u0027s what i thought initially, but looking at the callers, no-one wants this. all they want is a string for the user.",
+      "parentUuid": "6b2efd4f_730bb98b",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "28fd91045a89c44eb69e385e7335f5f6904f1b25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf931686_0d638ed2",
         "filename": "base/include/android-base/process.h",
         "patchSetId": 1
@@ -100,6 +124,24 @@
       "writtenOn": "2018-04-13T21:21:54Z",
       "side": 1,
       "message": "As in run in the child process after fork and before exec?  Opens up some dangers but definitely more flexible.",
+      "revId": "28fd91045a89c44eb69e385e7335f5f6904f1b25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38848355_662d1c77",
+        "filename": "base/include/android-base/process.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-04-16T22:26:16Z",
+      "side": 1,
+      "message": "vold\u0027s use case is that they need to run setexeccon. that doesn\u0027t seem like something we want explicit support for. posix_spawn has a small fixed set of such things, but that seems worse in every way than just saying \"and if you\u0027re doing something unusual... be my guest\".",
+      "parentUuid": "8d06f8bf_70a7f3fa",
       "revId": "28fd91045a89c44eb69e385e7335f5f6904f1b25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
