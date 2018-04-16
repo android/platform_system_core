@@ -52,6 +52,24 @@
       "revId": "470f19faa87d4df443b4169ea6ecc36f7e06c8ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5862bb53_2f173582",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-04-16T20:34:30Z",
+      "side": 1,
+      "message": "Until a tool is available, I would be tempted to set _both_ places ... Should we wait for this tool? Should probably be integrated into something very close to run-as, or a library that gdb server could count on? I would be concerned such a tool represents a security risk itself (can not be delivered on \"user\" builds) since it would need to be granted full set of capabilities in order to provide service. At least with fs_config it would come up the wrong user from shell, but the accurate capabilities without creating a security hole.\n\nWith a tool, there remains the various gotchas through mistakes bypassing them (su root /system/bin/lmkd will execute _wrong_ w/o fs_config).",
+      "parentUuid": "f95d1354_0970f01a",
+      "revId": "470f19faa87d4df443b4169ea6ecc36f7e06c8ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
