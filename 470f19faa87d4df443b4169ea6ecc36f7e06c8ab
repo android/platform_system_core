@@ -111,6 +111,30 @@
       "revId": "470f19faa87d4df443b4169ea6ecc36f7e06c8ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2f42b1b_473f38cf",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-16T21:41:55Z",
+      "side": 1,
+      "message": "Those lines plus the procedure here, https://cs.corp.google.com/android/system/core/logd/main.cpp?l\u003d68 right?  I don\u0027t see anywhere where the system package_info readproc groups are added, so this still isn\u0027t quite 100% what the init scripts would do.\n\nRegardless, that\u0027s a huge bit of complexity that no developer should need to go through.  Currently, the best option would be attaching gdb at runtime and I can write a tool that starts a service precisely as init would.  \n\nIn any case, I think this is the wrong file to specify capabilities.  It is better to keep them along with the rest of the collateral for starting a service in the init script in the same directory as the service itself.",
+      "parentUuid": "d45912d7_34736158",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 66
+      },
+      "revId": "470f19faa87d4df443b4169ea6ecc36f7e06c8ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
