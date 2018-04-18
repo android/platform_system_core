@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94b4860c_0d0e4c20",
+        "filename": "llkd/libllkd.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2018-04-18T04:42:48Z",
+      "side": 1,
+      "message": "I\u0027m missing something. What\u0027s the point of this math of multiplying by (N+1)/N?",
+      "range": {
+        "startLine": 80,
+        "startChar": 59,
+        "endLine": 81,
+        "endChar": 74
+      },
+      "revId": "0645eeaf3a0517fdca27a9fccab9a212762bf810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f7e6634_ba34aa21",
+        "filename": "llkd/libllkd.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2018-04-18T04:42:48Z",
+      "side": 1,
+      "message": "Don\u0027t you need to reset available_bytes and next pointer?",
+      "range": {
+        "startLine": 166,
+        "startChar": 8,
+        "endLine": 167,
+        "endChar": 5
+      },
+      "revId": "0645eeaf3a0517fdca27a9fccab9a212762bf810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62e3bfb1_6a5f4805",
+        "filename": "llkd/libllkd.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2018-04-18T04:42:48Z",
+      "side": 1,
+      "message": "nit: The API of this function relies too much on file read success (see its usage and it\u0027s obvious all its users do not handle a failure case). From that point of view I think android::base::ReadFileToString() provides more honest API and I don\u0027t see reasons not to use it directly and handle failure cases properly.",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 40
+      },
+      "revId": "0645eeaf3a0517fdca27a9fccab9a212762bf810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1690b28d_7a7a8b32",
+        "filename": "llkd/libllkd.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2018-04-18T04:42:48Z",
+      "side": 1,
+      "message": "I would expect normally content[pos] to be \u0027\\n\u0027 at this point. If so isblank(\u0027\\n\u0027) will be returning false. Should isspace() be used here instead?",
+      "range": {
+        "startLine": 237,
+        "startChar": 36,
+        "endLine": 237,
+        "endChar": 46
+      },
+      "revId": "0645eeaf3a0517fdca27a9fccab9a212762bf810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b29f99a_5dce551f",
+        "filename": "llkd/libllkd.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2018-04-18T04:42:48Z",
+      "side": 1,
+      "message": "nit: explicitly cast to uid_t? Should be safe since we know we read a valid uid.",
+      "range": {
+        "startLine": 244,
+        "startChar": 11,
+        "endLine": 244,
+        "endChar": 18
+      },
+      "revId": "0645eeaf3a0517fdca27a9fccab9a212762bf810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
