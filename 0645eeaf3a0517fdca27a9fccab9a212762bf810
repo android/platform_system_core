@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b733d561_4681c12b",
+        "filename": "llkd/libllkd.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-04-18T14:29:00Z",
+      "side": 1,
+      "message": "Ok,needs comment.\n\nkhtTimeout must be larger than the granularity of the llkTimeoutMs.",
+      "parentUuid": "94b4860c_0d0e4c20",
+      "range": {
+        "startLine": 80,
+        "startChar": 59,
+        "endLine": 81,
+        "endChar": 74
+      },
+      "revId": "0645eeaf3a0517fdca27a9fccab9a212762bf810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f7e6634_ba34aa21",
         "filename": "llkd/libllkd.cpp",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-18T04:42:48Z",
       "side": 1,
       "message": "Don\u0027t you need to reset available_bytes and next pointer?",
+      "range": {
+        "startLine": 166,
+        "startChar": 8,
+        "endLine": 167,
+        "endChar": 5
+      },
+      "revId": "0645eeaf3a0517fdca27a9fccab9a212762bf810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa8660f1_1eefcb6e",
+        "filename": "llkd/libllkd.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-04-18T14:29:00Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "6f7e6634_ba34aa21",
       "range": {
         "startLine": 166,
         "startChar": 8,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9a2edfe9_fa5e7300",
+        "filename": "llkd/libllkd.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-04-18T14:29:00Z",
+      "side": 1,
+      "message": "In all the cases, empty string communicates acceptable failure. This function was introduced because we had many sites with the check for bool return on ReadFileToString and a logged an error, continuing with an empty string.",
+      "parentUuid": "62e3bfb1_6a5f4805",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 40
+      },
+      "revId": "0645eeaf3a0517fdca27a9fccab9a212762bf810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1690b28d_7a7a8b32",
         "filename": "llkd/libllkd.cpp",
         "patchSetId": 6
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "e6886a60_8cbd5b17",
+        "filename": "llkd/libllkd.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-04-18T14:29:00Z",
+      "side": 1,
+      "message": "In _all_ cases a blank would be here, a newline would indicate a failure IMHO.\n\nUid:\t0\t0\t0\t0\n\nWill add a comment.",
+      "parentUuid": "1690b28d_7a7a8b32",
+      "range": {
+        "startLine": 237,
+        "startChar": 36,
+        "endLine": 237,
+        "endChar": 46
+      },
+      "revId": "0645eeaf3a0517fdca27a9fccab9a212762bf810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b29f99a_5dce551f",
         "filename": "llkd/libllkd.cpp",
         "patchSetId": 6
@@ -105,6 +201,30 @@
       "writtenOn": "2018-04-18T04:42:48Z",
       "side": 1,
       "message": "nit: explicitly cast to uid_t? Should be safe since we know we read a valid uid.",
+      "range": {
+        "startLine": 244,
+        "startChar": 11,
+        "endLine": 244,
+        "endChar": 18
+      },
+      "revId": "0645eeaf3a0517fdca27a9fccab9a212762bf810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db7527e9_cce317d3",
+        "filename": "llkd/libllkd.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-04-18T14:29:00Z",
+      "side": 1,
+      "message": "Actually, we can not be sure as the goal is to parse, I should use ParseUint here (!)\n\nIn all call sites where I use ato? ...",
+      "parentUuid": "1b29f99a_5dce551f",
       "range": {
         "startLine": 244,
         "startChar": 11,
