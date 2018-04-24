@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65366536_f5745822",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1066743
+      },
+      "writtenOn": "2018-04-24T21:01:31Z",
+      "side": 1,
+      "message": "All these accesses to attempt.transport-\u003eserial _should_ be safe because they are only modified once before the atransport* is given to any other thread.",
+      "range": {
+        "startLine": 176,
+        "startChar": 63,
+        "endLine": 176,
+        "endChar": 88
+      },
+      "revId": "ccb616470781558ce0d0826a62e039abdda98dfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf1915cb_6ad82f45",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1066743
+      },
+      "writtenOn": "2018-04-24T21:01:31Z",
+      "side": 1,
+      "message": "These calls to remove_transport() _should_ be safe because, for some of the atransport*s, we are replacing a call to remove_transport() with a call to TrackTransport(). So the ownership of the atransport* is not given to the ReconnectHandler.",
+      "range": {
+        "startLine": 177,
+        "startChar": 16,
+        "endLine": 177,
+        "endChar": 32
+      },
+      "revId": "ccb616470781558ce0d0826a62e039abdda98dfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ba63d0e_11bc9180",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 908,
+      "author": {
+        "id": 1066743
+      },
+      "writtenOn": "2018-04-24T21:01:31Z",
+      "side": 1,
+      "message": "|kicked_| is now being read from multiple threads, so this should make things safer.",
+      "range": {
+        "startLine": 908,
+        "startChar": 9,
+        "endLine": 908,
+        "endChar": 16
+      },
+      "revId": "ccb616470781558ce0d0826a62e039abdda98dfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78818a3d_1c0f6e7b",
+        "filename": "adb/transport_local.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1066743
+      },
+      "writtenOn": "2018-04-24T21:01:31Z",
+      "side": 1,
+      "message": "This _should_ be safe because it\u0027s only invoked from the reconnection thread. The atransport should be in the same state it was during connect_device() (in the sense that there is only one thread that can modify it).\n\nThe only thing I\u0027m not 100% convinced is whether while it is in that state, no other thread should be able to touch its |connection| member.",
+      "range": {
+        "startLine": 121,
+        "startChar": 15,
+        "endLine": 121,
+        "endChar": 36
+      },
+      "revId": "ccb616470781558ce0d0826a62e039abdda98dfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
