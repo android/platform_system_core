@@ -91,6 +91,30 @@
       "revId": "ccb616470781558ce0d0826a62e039abdda98dfa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1325183_d5c0c935",
+        "filename": "adb/transport_local.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1066743
+      },
+      "writtenOn": "2018-04-25T20:47:41Z",
+      "side": 1,
+      "message": "I *think* it\u0027s possible for this to be racy because I couldn\u0027t see anything that would guarantee that the Connection object was only accessed in a safe way, so I made that thread-safe instead: https://android-review.googlesource.com/c/platform/system/core/+/672426\n\nI let the reconnection test run in a loop for 1000 times and saw no crashes/errors :D so i\u0027m feeling a bit less worried now.",
+      "parentUuid": "78818a3d_1c0f6e7b",
+      "range": {
+        "startLine": 121,
+        "startChar": 15,
+        "endLine": 121,
+        "endChar": 36
+      },
+      "revId": "ccb616470781558ce0d0826a62e039abdda98dfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
