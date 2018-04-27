@@ -16,6 +16,75 @@
       "revId": "bbd3147b7645ccb0962ef1a9c0c45007fb15ab13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ba9d4f1_04efa78b",
+        "filename": "init/devices.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-04-27T09:13:43Z",
+      "side": 1,
+      "message": "Please use std::string instead of c-style string.",
+      "range": {
+        "startLine": 336,
+        "startChar": 12,
+        "endLine": 336,
+        "endChar": 40
+      },
+      "revId": "bbd3147b7645ccb0962ef1a9c0c45007fb15ab13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e08c9bca_40b96b85",
+        "filename": "init/devices.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-04-27T09:13:43Z",
+      "side": 1,
+      "message": "also don\u0027t assume the length of fs_mgr_get_slot_suffix() is 2. You can use .length() to get that.\n\nBy the way, when you need to remove ab_suffix here?\n\nAs I commented in another file, as long as you have \u0027slotselect\u0027 in fstab file, fs_mgr will append ab_suffix into fstab_rec-\u003eblk_device.",
+      "range": {
+        "startLine": 344,
+        "startChar": 45,
+        "endLine": 344,
+        "endChar": 46
+      },
+      "revId": "bbd3147b7645ccb0962ef1a9c0c45007fb15ab13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb2ff00b_6bdece73",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-04-27T09:13:43Z",
+      "side": 1,
+      "message": "why need to add ab_suffix here?\n\nfs_mgr will automatically append ab_suffix to fstab_rec-\u003eblk_device, when \u0027slotselect\u0027 is specified for an entry.\n\nhttps://android.googlesource.com/device/google/wahoo/+/master/fstab.hardware",
+      "range": {
+        "startLine": 383,
+        "startChar": 84,
+        "endLine": 383,
+        "endChar": 93
+      },
+      "revId": "bbd3147b7645ccb0962ef1a9c0c45007fb15ab13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
