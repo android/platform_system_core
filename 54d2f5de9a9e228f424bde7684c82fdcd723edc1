@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "294c5a9d_7be29dd4",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-30T17:34:50Z",
+      "side": 1,
+      "message": "Maybe just handle this outside of the loop?",
+      "revId": "54d2f5de9a9e228f424bde7684c82fdcd723edc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b25c312_b631eb9f",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-30T17:34:50Z",
+      "side": 1,
+      "message": "I\u0027m not super opposed to this, but this would be the first time we\u0027re explicitly labeling out parameters as such.  \n\nAnd typically, at least per the g3 coding standard that we try to follow, we would already know that this is an out or in/out parameter since if it were purely an input it would be passed by value or by const ref.  So this is telling us something we already know.",
+      "range": {
+        "startLine": 695,
+        "startChar": 41,
+        "endLine": 695,
+        "endChar": 45
+      },
+      "revId": "54d2f5de9a9e228f424bde7684c82fdcd723edc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "754281b1_1739dd44",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-30T17:34:50Z",
+      "side": 1,
+      "message": ":\u0027(  I see why this is needed.  We really just need exceptions.",
+      "revId": "54d2f5de9a9e228f424bde7684c82fdcd723edc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fb27649_8554bbba",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-30T17:34:50Z",
+      "side": 1,
+      "message": "Is this an error in this case?  Seems more like it would be LOG(INFO) since presumably it\u0027s intentional that there are skipped entries.\n\nBack to the original bug, the fact that they\u0027re using status\u003ddisabled isn\u0027t even strictly required.  Their use case should work if there is simply no DT fstab but this code would still fail it with a LOG(FATAL).\n\nPerhaps we just drop this whole line to LOG(INFO) regardless of if there are skipped DT entries?  It was useful as FATAL while we were first starting off with first stage mount, but at this point perhaps it\u0027s causing more harm than good.  It should be super obvious to developers during bring up if their system isn\u0027t booting since all of its partitions are not mounted now anyway.",
+      "revId": "54d2f5de9a9e228f424bde7684c82fdcd723edc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
