@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4eddd632_b893cf51",
+        "filename": "init/devices.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-30T17:49:01Z",
+      "side": 1,
+      "message": "This would detect both of the by-name symlinks, not just the one you\u0027re adding.\n\nI think we can drop this check in any case.  Honestly, the check for EEXIST seems a bit inappropriate.  We shouldn\u0027t have ever failed such a check before and if we did, reporting an error seems to make sense.",
+      "range": {
+        "startLine": 358,
+        "startChar": 27,
+        "endLine": 358,
+        "endChar": 86
+      },
+      "revId": "fe9889814627b511e5b34dcc86fe8f8e5816959a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7db6f636_226c3056",
+        "filename": "init/devices.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-04-30T17:49:01Z",
+      "side": 1,
+      "message": "Same with this check, I\u0027d just report all of these as errors.\n\nI wouldn\u0027t make this FATAL though.  We\u0027ve never had the restriction that people cannot have the same partition name on multiple devices.  If anything, I\u0027d probably remove the existing link when this happens, so people don\u0027t depend on it being there when some other device may provide it.\n\nAlso, how does this interact with removable storage?  USB storage gets handled at a higher level, right?  The PCI storage is really just built in storage; we don\u0027t support PCIe hotswap, right?  I just want to make sure there\u0027s nothing a user can do to trigger this and that only built-in storage devices would go through this code path.",
+      "range": {
+        "startLine": 362,
+        "startChar": 24,
+        "endLine": 362,
+        "endChar": 76
+      },
+      "revId": "fe9889814627b511e5b34dcc86fe8f8e5816959a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
