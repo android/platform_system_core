@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "45971899_434e644c",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-01T23:34:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f12127cf_6af73564",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 17
+      },
+      "revId": "7bba5b5f98e64d8023bc672040d7413ff7424dee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7878447_af920a1a",
         "filename": "init/init.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-01T22:33:29Z",
       "side": 1,
       "message": "Q (or rather a requested lesson in C++ libcxx), std::map has logarithmic complexity, while std::unordered_map has constant time. I assume that because the number of epoll_handlers is in the range of dozens, that std::map is preferred?",
+      "range": {
+        "startLine": 133,
+        "startChar": 7,
+        "endLine": 133,
+        "endChar": 15
+      },
+      "revId": "7bba5b5f98e64d8023bc672040d7413ff7424dee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d20c559_c317a406",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-01T23:34:49Z",
+      "side": 1,
+      "message": "It\u0027s really a toss-up with such small N with regards to performance and memory.  std::map has iterators that don\u0027t get invalidated during subsequent updates to the map, whereas std::unordered_map has iterators that do get invalidated.  I want to use that property of std::map here.\n\nIn general, I\u0027ve been using std::map in init just out of consistency and because all of the look ups are small enough to not make a difference.",
+      "parentUuid": "a7878447_af920a1a",
       "range": {
         "startLine": 133,
         "startChar": 7,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "50b87149_5854edfa",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-01T23:34:49Z",
+      "side": 1,
+      "message": "I think std::invoke makes the intent clearer than the trailing ().  Same with where I use it with the pointer to member functions elsewhere.  They were getting very ugly before, but std::invoke makes it clear that a function call is taking place.\n\nstd::invoke compiles down to essentially nothing.  Even in the argument forwarding case, the forwarding is done at compile time.",
+      "parentUuid": "7d320f9a_d6626c1b",
+      "range": {
+        "startLine": 831,
+        "startChar": 12,
+        "endLine": 831,
+        "endChar": 24
+      },
+      "revId": "7bba5b5f98e64d8023bc672040d7413ff7424dee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "54e60219_894fcb9e",
         "filename": "init/init.h",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2018-05-01T22:33:29Z",
       "side": 1,
       "message": "Does C++ automatically create an rval instance of std::function\u003cvoid()\u003e out of a supplied void (*fn)()? Cool.",
+      "range": {
+        "startLine": 45,
+        "startChar": 36,
+        "endLine": 45,
+        "endChar": 65
+      },
+      "revId": "7bba5b5f98e64d8023bc672040d7413ff7424dee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cc4ce39_f83a5b8f",
+        "filename": "init/init.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-01T23:34:49Z",
+      "side": 1,
+      "message": "Yes it implicitly constructs it.",
+      "parentUuid": "54e60219_894fcb9e",
       "range": {
         "startLine": 45,
         "startChar": 36,
