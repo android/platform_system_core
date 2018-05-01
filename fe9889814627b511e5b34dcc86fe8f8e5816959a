@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "16abee82_28ec7b08",
+        "filename": "init/devices.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-01T07:48:46Z",
+      "side": 1,
+      "message": "The following check should exclude other by-name symlinks.\n  pos \u003c\u003d std::string(\"/dev/block/platform/\").size()\n\nAnyway, I was thinking about the same thing:\nJust reporting LOG(ERROR) seems enough to me.",
+      "parentUuid": "4eddd632_b893cf51",
+      "range": {
+        "startLine": 358,
+        "startChar": 27,
+        "endLine": 358,
+        "endChar": 86
+      },
+      "revId": "fe9889814627b511e5b34dcc86fe8f8e5816959a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7db6f636_226c3056",
         "filename": "init/devices.cpp",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-30T17:49:01Z",
       "side": 1,
       "message": "Same with this check, I\u0027d just report all of these as errors.\n\nI wouldn\u0027t make this FATAL though.  We\u0027ve never had the restriction that people cannot have the same partition name on multiple devices.  If anything, I\u0027d probably remove the existing link when this happens, so people don\u0027t depend on it being there when some other device may provide it.\n\nAlso, how does this interact with removable storage?  USB storage gets handled at a higher level, right?  The PCI storage is really just built in storage; we don\u0027t support PCIe hotswap, right?  I just want to make sure there\u0027s nothing a user can do to trigger this and that only built-in storage devices would go through this code path.",
+      "range": {
+        "startLine": 362,
+        "startChar": 24,
+        "endLine": 362,
+        "endChar": 76
+      },
+      "revId": "fe9889814627b511e5b34dcc86fe8f8e5816959a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f6d07e7_bd7f9b78",
+        "filename": "init/devices.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-01T07:48:46Z",
+      "side": 1,
+      "message": "OK, +1\n\nI\u0027m not sure about the case of removable, USB or PCI.\nI agree that we should only add the new by-name symlinks for \"built-in\" storage. Will check how to do this. (at least, only apply to type \u003d\u003d \"platform\").",
+      "parentUuid": "7db6f636_226c3056",
       "range": {
         "startLine": 362,
         "startChar": 24,
