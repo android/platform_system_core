@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f12127cf_6af73564",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-01T22:33:29Z",
+      "side": 1,
+      "message": "nit: missing #include \u003cmap\u003e\nnit: C++ includes are supposed to come before Android includes.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 17
+      },
+      "revId": "7bba5b5f98e64d8023bc672040d7413ff7424dee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7878447_af920a1a",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-01T22:33:29Z",
+      "side": 1,
+      "message": "Q (or rather a requested lesson in C++ libcxx), std::map has logarithmic complexity, while std::unordered_map has constant time. I assume that because the number of epoll_handlers is in the range of dozens, that std::map is preferred?",
+      "range": {
+        "startLine": 133,
+        "startChar": 7,
+        "endLine": 133,
+        "endChar": 15
+      },
+      "revId": "7bba5b5f98e64d8023bc672040d7413ff7424dee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d320f9a_d6626c1b",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-01T22:33:29Z",
+      "side": 1,
+      "message": "Q: (or rather a requested lesson in C++ library) can you offer the reasoning why std::invoke is preferred as compared to directly calling the (std::function)()? To me it feels like I am wrapping a callable entity by a callable object with no arguments, then providing it to an argument abstracter to call the entity, but then not using its argument abstraction? The implementation of std::invoke is all about argument forwarding, but without the arguments, is it efficient?",
+      "range": {
+        "startLine": 831,
+        "startChar": 12,
+        "endLine": 831,
+        "endChar": 24
+      },
+      "revId": "7bba5b5f98e64d8023bc672040d7413ff7424dee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54e60219_894fcb9e",
+        "filename": "init/init.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-01T22:33:29Z",
+      "side": 1,
+      "message": "Does C++ automatically create an rval instance of std::function\u003cvoid()\u003e out of a supplied void (*fn)()? Cool.",
+      "range": {
+        "startLine": 45,
+        "startChar": 36,
+        "endLine": 45,
+        "endChar": 65
+      },
+      "revId": "7bba5b5f98e64d8023bc672040d7413ff7424dee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
