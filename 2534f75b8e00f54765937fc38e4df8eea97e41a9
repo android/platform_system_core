@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "d4d4dd39_e9344f40",
+        "filename": "fs_mgr/fs_mgr_lrap_dm_ioctl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-02T02:39:27Z",
+      "side": 1,
+      "message": "See https://google.github.io/styleguide/cppguide.html#Names_and_Order_of_Includes for proper include order.",
+      "revId": "2534f75b8e00f54765937fc38e4df8eea97e41a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3a8df688_6783b60d",
         "filename": "fs_mgr/fs_mgr_lrap_dm_ioctl.cpp",
         "patchSetId": 1
@@ -41,6 +58,53 @@
         "startChar": 0,
         "endLine": 37,
         "endChar": 16
+      },
+      "revId": "2534f75b8e00f54765937fc38e4df8eea97e41a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "595373d4_89b0ac57",
+        "filename": "fs_mgr/fs_mgr_lrap_dm_ioctl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-02T02:39:27Z",
+      "side": 1,
+      "message": "I don\u0027t have a strong opinion.  We had some CLs that were going to start android::fs_mgr as a namespace, but I guess those didn\u0027t get submitted.\n\nWhat does lrap mean though?  It\u0027d be better to not have any acronyms.",
+      "parentUuid": "3a8df688_6783b60d",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 16
+      },
+      "revId": "2534f75b8e00f54765937fc38e4df8eea97e41a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0735a8e_ebfca545",
+        "filename": "fs_mgr/fs_mgr_lrap_dm_ioctl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-02T02:39:27Z",
+      "side": 1,
+      "message": "Pass read-only parameters by const ref, https://google.github.io/styleguide/cppguide.html#Reference_Arguments",
+      "range": {
+        "startLine": 39,
+        "startChar": 58,
+        "endLine": 39,
+        "endChar": 84
       },
       "revId": "2534f75b8e00f54765937fc38e4df8eea97e41a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -89,6 +153,23 @@
         "endLine": 40,
         "endChar": 31
       },
+      "revId": "2534f75b8e00f54765937fc38e4df8eea97e41a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2d5432e_6e5bbd69",
+        "filename": "fs_mgr/fs_mgr_lrap_dm_ioctl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-02T02:39:27Z",
+      "side": 1,
+      "message": "This is probably fine as is, but it may be cleaner if you had a member function of PartitionExtent that serialized it to a std::string, including the padding.  Then you could just join them all together (again as std::string) and not need to have the first loop to calculate the exact size up front.\n\nNot that we do a good job testing fs_mgr, but it\u0027d make it more testable too.  You would be able to directly test your PartitionExtent::Serialize() function.",
       "revId": "2534f75b8e00f54765937fc38e4df8eea97e41a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -446,6 +527,23 @@
     },
     {
       "key": {
+        "uuid": "21574008_203e74c3",
+        "filename": "fs_mgr/include/fs_mgr_lrap.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-02T02:39:27Z",
+      "side": 1,
+      "message": "Why not std::string?  I generally prefer keeping everything as a std::string right until the moment it needs to interact with a C API.  It\u0027s safer and more maintainable.",
+      "revId": "2534f75b8e00f54765937fc38e4df8eea97e41a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d4b546ba_61d6ba06",
         "filename": "fs_mgr/include/fs_mgr_lrap.h",
         "patchSetId": 1
@@ -457,6 +555,30 @@
       "writtenOn": "2018-05-02T01:33:46Z",
       "side": 1,
       "message": "why not just a vector\n/",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 47
+      },
+      "revId": "2534f75b8e00f54765937fc38e4df8eea97e41a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fea1bcad_4c8895f4",
+        "filename": "fs_mgr/include/fs_mgr_lrap.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-02T02:39:27Z",
+      "side": 1,
+      "message": "+1 here and below.",
+      "parentUuid": "d4b546ba_61d6ba06",
       "range": {
         "startLine": 54,
         "startChar": 4,
@@ -509,6 +631,52 @@
         "startChar": 4,
         "endLine": 67,
         "endChar": 49
+      },
+      "revId": "2534f75b8e00f54765937fc38e4df8eea97e41a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41e70762_a3092905",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-02T02:39:27Z",
+      "side": 1,
+      "message": "I don\u0027t mind it, but enh@ dislikes the notion that namespaces are nested, so he\u0027d say android::lrap::PartitionTable here and below, etc.",
+      "range": {
+        "startLine": 75,
+        "startChar": 20,
+        "endLine": 75,
+        "endChar": 40
+      },
+      "revId": "2534f75b8e00f54765937fc38e4df8eea97e41a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3ab0d40_4b9d664a",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-02T02:39:27Z",
+      "side": 1,
+      "message": "Same here.  Which is why we really commonly have using android::base::unique_fd, etc at the top of our files.",
+      "range": {
+        "startLine": 235,
+        "startChar": 8,
+        "endLine": 235,
+        "endChar": 23
       },
       "revId": "2534f75b8e00f54765937fc38e4df8eea97e41a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
