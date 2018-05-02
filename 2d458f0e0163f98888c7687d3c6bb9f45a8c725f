@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "5f4add82_5f45525c",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-02T15:54:06Z",
+      "side": 1,
+      "message": "From what I understand: Both maps require locks.  Reader/writer locks are sufficient.  You can use a reference to std::map\u0027s value after unlocking since the iterators don\u0027t invalidate (As long as nothing is concurrently deleting that entry), but you need to hold the lock until you\u0027ve stopped using the reference for std::unordered_map.  \n\nIf your unordered_map values are unique_ptr\u0027s, then you can unlock once you\u0027ve used .get() to get a pointer (better to deference too and take a reference) to the value contained within the unique_ptr.\n\n\u003e Is there a way we could emulate read-copy-update locking in user space with libcxx\n\nAs in have the same RCU behavior as the kernel but with libcxx?  Nothing I\u0027ve seen would do this.",
+      "parentUuid": "2e9be5b2_504a6a29",
+      "range": {
+        "startLine": 134,
+        "startChar": 12,
+        "endLine": 134,
+        "endChar": 15
+      },
+      "revId": "2d458f0e0163f98888c7687d3c6bb9f45a8c725f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10ffebef_52ffa92c",
         "filename": "init/init.cpp",
         "patchSetId": 3
@@ -228,6 +252,30 @@
       "side": 1,
       "message": "For clearly _documenting_ that a function is being called (it is better than adding a comment IMHO), I am all for it as long as it does not cause undue run-time overhead. I am satisfied that if tomcherry@ sez no overhead, all is good :-)",
       "parentUuid": "55c73407_1e3df5e3",
+      "range": {
+        "startLine": 832,
+        "startChar": 12,
+        "endLine": 832,
+        "endChar": 65
+      },
+      "revId": "2d458f0e0163f98888c7687d3c6bb9f45a8c725f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1f46ccd_f4438c66",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-02T15:54:06Z",
+      "side": 1,
+      "message": "Yup, exactly what I use it.",
+      "parentUuid": "5b903c66_e37b1a9b",
       "range": {
         "startLine": 832,
         "startChar": 12,
