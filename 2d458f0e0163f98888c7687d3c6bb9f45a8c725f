@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "0479b7e0_aadcf925",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2018-05-02T16:05:09Z",
+      "side": 1,
+      "message": "Huh? As Tom says, the contains have the same concurrency behavior. If you\u0027re been hit with \"validity/corruption issues\", perhaps you weren\u0027t playing by the iterator invalidation rules.\n\nRe RCU: there are various user-space RCU implementations available. None of them is warranted here.",
+      "parentUuid": "5f4add82_5f45525c",
+      "range": {
+        "startLine": 134,
+        "startChar": 12,
+        "endLine": 134,
+        "endChar": 15
+      },
+      "revId": "2d458f0e0163f98888c7687d3c6bb9f45a8c725f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10ffebef_52ffa92c",
         "filename": "init/init.cpp",
         "patchSetId": 3
@@ -276,6 +300,30 @@
       "side": 1,
       "message": "Yup, exactly what I use it.",
       "parentUuid": "5b903c66_e37b1a9b",
+      "range": {
+        "startLine": 832,
+        "startChar": 12,
+        "endLine": 832,
+        "endChar": 65
+      },
+      "revId": "2d458f0e0163f98888c7687d3c6bb9f45a8c725f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f95f2339_54ee9083",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2018-05-02T16:05:09Z",
+      "side": 1,
+      "message": "Then why aren\u0027t you using std::invoke to call epoll_wait above? Or printf? Or exit? In C++, parenthesis after an identifier already indicate calling, so invoke is redundant. You need neither a comment nor invoke here.\n\n\u003e I am satisfied that if tomcherry@ sez no overhead, all is good :-)\n\nI put my trust in objdump, not people.",
+      "parentUuid": "b1f46ccd_f4438c66",
       "range": {
         "startLine": 832,
         "startChar": 12,
