@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "f0310e2d_3508f563",
+        "filename": "init/devices.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1315132
+      },
+      "writtenOn": "2018-05-02T11:33:32Z",
+      "side": 1,
+      "message": "For A/B devices, some partition suffix is \"_a\" or \"_b\", but some partiton has no _a/_b suffix, like \"userdata\". So, the device, for \"userdata\", we directly links to bootdevice/by-name/userdata.\nAnd ab_suffix value is from fs_mgr_get_boot_config, which get the value from cmdline, property or device-tree, further more it tells us that the system is boot from _a partition or _b partition. So, if boot from _a partition, we only links the _a partition to bootdevice/by-name/... and _b partition will be passed",
+      "parentUuid": "2d597c93_308ac42c",
+      "range": {
+        "startLine": 348,
+        "startChar": 15,
+        "endLine": 348,
+        "endChar": 77
+      },
+      "revId": "02e263b8d31b3d4a4927379d0040e3b5c302e050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b76560b_fdf996b9",
         "filename": "init/devices.cpp",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2018-05-02T09:53:43Z",
       "side": 1,
       "message": "why ab_suffix need to be trimmed?",
+      "range": {
+        "startLine": 359,
+        "startChar": 20,
+        "endLine": 359,
+        "endChar": 94
+      },
+      "revId": "02e263b8d31b3d4a4927379d0040e3b5c302e050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67a8268d_584ebae4",
+        "filename": "init/devices.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1315132
+      },
+      "writtenOn": "2018-05-02T11:33:32Z",
+      "side": 1,
+      "message": "bootdevice only links to the partition which the system boot from, I think!",
+      "parentUuid": "2b76560b_fdf996b9",
       "range": {
         "startLine": 359,
         "startChar": 20,
