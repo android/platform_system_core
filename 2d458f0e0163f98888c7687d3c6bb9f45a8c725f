@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "2e9be5b2_504a6a29",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-02T15:00:24Z",
+      "side": 1,
+      "message": "Thanks for the explanation, std::map may just solve a std::unordered_map gotcha.\n\n[TL;DR]\n\nAfterthoughts: I have been hit with std::unordered_map validity/corruption and multithreading issues. The maps were _large_ and needed to scale, so I do not think I had a choice. logd has r/w locks and iterator requisition; perhaps other profiles of list/maps/tables could unburden some of the coarse locks and aid performance? In some of the places, if an iterator could remain valid through unlocked manipulation, all could be better.\n\nAfterQuestions: Is there a way we could emulate read-copy-update locking in user space with libcxx?",
+      "parentUuid": "a93e8349_a9bccd3e",
+      "range": {
+        "startLine": 134,
+        "startChar": 12,
+        "endLine": 134,
+        "endChar": 15
+      },
+      "revId": "2d458f0e0163f98888c7687d3c6bb9f45a8c725f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10ffebef_52ffa92c",
         "filename": "init/init.cpp",
         "patchSetId": 3
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "I\u0027m not for or against it --- I was just curious.",
       "parentUuid": "12e465c9_4792b657",
+      "range": {
+        "startLine": 832,
+        "startChar": 12,
+        "endLine": 832,
+        "endChar": 65
+      },
+      "revId": "2d458f0e0163f98888c7687d3c6bb9f45a8c725f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b903c66_e37b1a9b",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-02T15:00:24Z",
+      "side": 1,
+      "message": "For clearly _documenting_ that a function is being called (it is better than adding a comment IMHO), I am all for it as long as it does not cause undue run-time overhead. I am satisfied that if tomcherry@ sez no overhead, all is good :-)",
+      "parentUuid": "55c73407_1e3df5e3",
       "range": {
         "startLine": 832,
         "startChar": 12,
