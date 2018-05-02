@@ -138,6 +138,30 @@
       "revId": "79ed568c8ac26e8c896eb5bf9b1a46804bd202a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aefe4ca6_fac0fa44",
+        "filename": "init/devices.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-02T20:55:04Z",
+      "side": 1,
+      "message": "I checked with a USB hard drive and I see by-num symlinks in \n\n/dev/block/platform/soc/6a00000.ssusb/6a00000.dwc3/xhci-hcd.0.auto\n\nI don\u0027t see by-name symlinks there, but I\u0027m guessing that the drive I\u0027m using just isn\u0027t formatted right, since the by-name and by-num symlinks are created in the same function.  We\u0027ll need to find a way to distinguish internal and external storage devices before we add this.\n\nPerhaps we can modify FindPlatformDevice() to fail if it doesn\u0027t find purely platform devices all the way up to the sysfs root?  Similar changes would need to be made for FindPciDevicePrefix(), etc.  We\u0027ll want to drop the check for only making these symlinks for platform devices too, as we\u0027ll want the symlinks for Pci and Vbd devices, as the root device is on those.  I\u0027m not sure about SDCards though; they may enumerate entirely through platform devices...\n\nI wouldn\u0027t want to rely on timing either as it\u0027s possible for the external devices to be plugged in since system boot.",
+      "parentUuid": "fe9c168d_35d94ff1",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 15
+      },
+      "revId": "79ed568c8ac26e8c896eb5bf9b1a46804bd202a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
