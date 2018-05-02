@@ -117,6 +117,30 @@
       "revId": "fe9889814627b511e5b34dcc86fe8f8e5816959a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d033b095_cbb9383c",
+        "filename": "init/devices.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-02T14:29:19Z",
+      "side": 1,
+      "message": "Hi,\nThat\u0027s already the case today.\n\ne.g., in Taimen\n/dev/block/platform/soc/1da4000.ufshc/by-name/system_a\n/dev/block/platform/soc/1da4000.ufshc/by-name/system_b\n\nThis CL just adds another symlinks by removing the \"platform/soc/1da4......\" part from above. So it becomes \"generic\" across devices.\n\n/dev/block/by-name/system_a\n/dev/block/by-name/system_b\n\nJust add \u0027slotselect\u0027 fsmgr_flags in the fstab.\n\n/ {\n  firmware {\n    android {\n      compatible \u003d \"android,firmware\";\n      fstab {\n        compatible \u003d \"android,fstab\";\n        vendor {\n          compatible \u003d \"android,vendor\";\n          dev \u003d \"/dev/block/platform/soc/624000.ufshc/by-name/vendor\";\n          type \u003d \"ext4\";\n          mnt_flags \u003d \"ro,barrier\u003d1,discard\";\n          fsmgr_flags \u003d \"wait,slotselect,verify\"; \u003c--\n        };\n      };\n    };\n  };\n};\n\n\nThen fs_mgr_update_for_slotselect() will append ab_suffix to the device path.\nhttps://android.googlesource.com/platform/system/core/+/master/fs_mgr/fs_mgr_slotselect.cpp#34",
+      "parentUuid": "0cf1863b_9adf5a81",
+      "range": {
+        "startLine": 362,
+        "startChar": 24,
+        "endLine": 362,
+        "endChar": 76
+      },
+      "revId": "fe9889814627b511e5b34dcc86fe8f8e5816959a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
