@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f8d94b9f_79a2d52f",
+        "filename": "init/devices.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-03T02:52:07Z",
+      "side": 1,
+      "message": "OK, I see. I must have misunderstood the statement here.\nThanks for the detailed explanation.",
+      "parentUuid": "f0310e2d_3508f563",
+      "range": {
+        "startLine": 348,
+        "startChar": 15,
+        "endLine": 348,
+        "endChar": 77
+      },
+      "revId": "02e263b8d31b3d4a4927379d0040e3b5c302e050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b76560b_fdf996b9",
         "filename": "init/devices.cpp",
         "patchSetId": 2
@@ -107,6 +131,30 @@
       "side": 1,
       "message": "bootdevice only links to the partition which the system boot from, I think!",
       "parentUuid": "2b76560b_fdf996b9",
+      "range": {
+        "startLine": 359,
+        "startChar": 20,
+        "endLine": 359,
+        "endChar": 94
+      },
+      "revId": "02e263b8d31b3d4a4927379d0040e3b5c302e050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14d717a9_f03a18cf",
+        "filename": "init/devices.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-03T02:52:07Z",
+      "side": 1,
+      "message": "Got your idea and also discussed with the owner.\n\nSeems everyone forgets there is \u0027slotselect\u0027 in fstab :)\nIt will smartly append ab_suffix for you. So during uevent processing for symlink, it\u0027s ok to always keep the ab_suffix. \n\nIn sum, two approaches to deal with A/B:\n  1. fs_mgr appends ab_suffix to each A/B partitions in the fstab (via slotselect). And keep ab_suffix when creating symlinks.\n\n  2. Remove ab_suffix during uevent processing, and creates no-ab_suffix symlinks for fstab to use.\n\nI was thinking about 1. so didn\u0027t get that you\u0027re doing 2 (sorry!).",
+      "parentUuid": "67a8268d_584ebae4",
       "range": {
         "startLine": 359,
         "startChar": 20,
