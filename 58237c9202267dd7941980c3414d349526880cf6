@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f523bf9b_99468e16",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2018-05-03T20:01:31Z",
+      "side": 1,
+      "message": "Is this going to break anything else? In selinux policy I currently see:\n\nallow appdomain cgroup:dir { write search };\nallow appdomain cgroup:file { map read lock getattr write ioctl open append };\n\nWhich says that all apps may read/write to cgroups. Is that still necessary?\n\nI also see:\nallow domain cgroup:dir { write search };\nallow domain cgroup:file { write lock open append map };\n\nWhich says that all processes may write to cgroups.\n\nAre these stale rules?",
+      "range": {
+        "startLine": 159,
+        "startChar": 12,
+        "endLine": 159,
+        "endChar": 14
+      },
+      "revId": "58237c9202267dd7941980c3414d349526880cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
