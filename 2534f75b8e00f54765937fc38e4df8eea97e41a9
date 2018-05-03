@@ -886,6 +886,92 @@
     },
     {
       "key": {
+        "uuid": "d85ee605_402c62c6",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-03T14:55:12Z",
+      "side": 1,
+      "message": "How about move line 234-248 to a new function and then:\n\n   if (!CreateLogicalPartitions()) return false;",
+      "revId": "2534f75b8e00f54765937fc38e4df8eea97e41a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "798c9e6e_81577bfa",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-03T14:55:12Z",
+      "side": 1,
+      "message": "How about rename this to: GetDmVerityDevices().",
+      "range": {
+        "startLine": 169,
+        "startChar": 9,
+        "endLine": 169,
+        "endChar": 27
+      },
+      "revId": "2534f75b8e00f54765937fc38e4df8eea97e41a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "306c7d71_e4c23750",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-03T14:55:12Z",
+      "side": 1,
+      "message": "How about move this inside a new/common member function: GetDmLinearDevices().",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 5
+      },
+      "revId": "2534f75b8e00f54765937fc38e4df8eea97e41a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8746b86f_ec474e97",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-03T14:55:12Z",
+      "side": 1,
+      "message": "Then have:\n  return GetDmLinearDevices() \u0026\u0026 GetDmVerityDevices() \u0026\u0026 InitRequiredDevices();",
+      "range": {
+        "startLine": 179,
+        "startChar": 11,
+        "endLine": 179,
+        "endChar": 30
+      },
+      "revId": "2534f75b8e00f54765937fc38e4df8eea97e41a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3ab0d40_4b9d664a",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 1
@@ -902,6 +988,29 @@
         "startChar": 8,
         "endLine": 235,
         "endChar": 23
+      },
+      "revId": "2534f75b8e00f54765937fc38e4df8eea97e41a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aafdc596_95645d94",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-03T14:55:12Z",
+      "side": 1,
+      "message": "nit: the responsibility of InitRequiredDevices() is to Regenerate Uevents for those devices.\n\nHow about move this into a new function:\n   CreateLogicalPartitions(), and invoke it before MountPartitions()?",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 0
       },
       "revId": "2534f75b8e00f54765937fc38e4df8eea97e41a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
