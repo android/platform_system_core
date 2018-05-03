@@ -94,6 +94,63 @@
     },
     {
       "key": {
+        "uuid": "92b8014d_ceb1dc9a",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-03T22:38:47Z",
+      "side": 1,
+      "message": "Maybe more clear if this were called something like \u0027notified\u0027 to make it clear that this indicates that this KeychordEntry has already been notified.  That is what this is used for, right?",
+      "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5276673_f3601a63",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-03T22:38:47Z",
+      "side": 1,
+      "message": "Move constructors are auto generated, so this does nothing.",
+      "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a50d79aa_2e345606",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-03T22:38:47Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be a member function.  This should be put in add_service_keycodes() and only checked once there.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 5
+      },
+      "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8458b303_54dd96a5",
         "filename": "init/keychords.cpp",
         "patchSetId": 1
@@ -111,6 +168,64 @@
         "endLine": 131,
         "endChar": 5
       },
+      "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2687d83f_a20f9e3c",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-03T22:38:47Z",
+      "side": 1,
+      "message": "I\u0027m okay dropping the corner case.  We didn\u0027t support multiple services with the same keychord before, and I don\u0027t see anyone asking for it.",
+      "parentUuid": "8458b303_54dd96a5",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 5
+      },
+      "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c686c28a_40895b97",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-03T22:38:47Z",
+      "side": 1,
+      "message": "In the new event code, this is only ever iterated over, so this would be better as a simple vector with the id as a member of KeychordEntry.",
+      "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c918753_dc337db5",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-03T22:38:47Z",
+      "side": 1,
+      "message": "Why not just have a static that counts up from 1?  We never remove keychord entries, so the returned IDs will only ever monotonically increase.",
       "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -140,6 +255,30 @@
     },
     {
       "key": {
+        "uuid": "b1845918_204d3927",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-03T22:38:47Z",
+      "side": 1,
+      "message": "You don\u0027t need the make_pair.  emplace() forwards its args to the actual pair constructor within the map.",
+      "parentUuid": "d48eb31d_9df9ea8a",
+      "range": {
+        "startLine": 252,
+        "startChar": 5,
+        "endLine": 252,
+        "endChar": 15
+      },
+      "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dabf42b1_248d137b",
         "filename": "init/keychords.cpp",
         "patchSetId": 1
@@ -156,6 +295,116 @@
         "startChar": 0,
         "endLine": 263,
         "endChar": 41
+      },
+      "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ca0f150_ade0729a",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-03T22:38:47Z",
+      "side": 1,
+      "message": "The costs are identical as long as you\u0027re packing the bits in mask_t, which you are.  You have the benefit that the latter is directly usable by the ioctls and that the former takes care of the bit manipulation to get/set a specific bit for you.\n\nI am okay with this being std::vector\u003cbool\u003e to have the simple IsBitSet().  Separately, I have a comment that shows that _IsBitSet() is unneeded anyway.",
+      "parentUuid": "dabf42b1_248d137b",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 41
+      },
+      "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fdf2d69_7b831299",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-03T22:38:47Z",
+      "side": 1,
+      "message": "state.first \u003d\u003d fd. right?  No need to do any find above, this handler already knows what its is handling.  In which case, KeychordState also doesn\u0027t really make sense to be a map, since no one else calls find() on it.",
+      "range": {
+        "startLine": 282,
+        "startChar": 41,
+        "endLine": 282,
+        "endChar": 52
+      },
+      "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd420a12_4aa10678",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-03T22:38:47Z",
+      "side": 1,
+      "message": "No need to increase the size of KeychordCurrent here.  It can be sized to the max size of whatever keychords that we care about and everything above that can be ignored.",
+      "range": {
+        "startLine": 284,
+        "startChar": 8,
+        "endLine": 289,
+        "endChar": 9
+      },
+      "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d67ba35b_00bd0206",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-03T22:38:47Z",
+      "side": 1,
+      "message": "The kernel driver only supports EV_KEY, we shouldn\u0027t support anything else.\n\nhttps://android.googlesource.com/kernel/common/+/android-4.4/drivers/input/misc/keychord.c#94 for reference.\n\nYou can probably even have a EVIOCGBIT check in GeteventOpenDevice() that ignores anything except devices with non-zero keys for EV_KEY.",
+      "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da280a6c_f37a668c",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-03T22:38:47Z",
+      "side": 1,
+      "message": "You can just and the bits returned and the bits in the mask.  You don\u0027t even need to worry about the length, since you know you have the same size in both defaulted to 0.\n\nfor (size_t i \u003d 0; i \u003c bits.size(); ++i) {\n  if (bits[i] \u0026 mask[i] !\u003d 0) {\n    // at least one bit is set\n  }\n}",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 17
       },
       "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
