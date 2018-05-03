@@ -170,6 +170,24 @@
     },
     {
       "key": {
+        "uuid": "29f4362a_e8dcba3f",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-03T23:33:37Z",
+      "side": 1,
+      "message": "Hm.  Probably better to just make a deep copy anyway.  It\u0027s going to cost trivial memory for the copy and it\u0027s better than taking a reference to a different class anyway.",
+      "parentUuid": "285072f6_4f46465c",
+      "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a50d79aa_2e345606",
         "filename": "init/keychords.cpp",
         "patchSetId": 1
@@ -392,6 +410,30 @@
     },
     {
       "key": {
+        "uuid": "e4468fa7_6049b759",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-03T23:33:37Z",
+      "side": 1,
+      "message": "Hm, where did you read that?  It\u0027s \u0027implementation defined\u0027 but cppreference says it\u0027s a bitmask, http://en.cppreference.com/w/cpp/container/vector_bool.\n\nThis is what libcxx does too.  See https://cs.corp.google.com/android/external/libcxx/include/vector?q\u003dfile:libcxx+vector%3Cbool%3E\u0026sq\u003dpackage:%5Eandroid$\u0026dr\u003dC\u0026l\u003d3240; that\u0027s implemented as if it were a bitmask.",
+      "parentUuid": "be9e3fc9_6956a33d",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 41
+      },
+      "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6fdf2d69_7b831299",
         "filename": "init/keychords.cpp",
         "patchSetId": 1
@@ -473,6 +515,24 @@
     },
     {
       "key": {
+        "uuid": "b25c3d76_3a3db6d2",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-03T23:33:37Z",
+      "side": 1,
+      "message": "I meant the kernel keychord driver.  We don\u0027t need to support anything more than it does.\n\nIf you\u0027re able to route SW key events as EV_KEY, then that\u0027s perfect.",
+      "parentUuid": "9017fb42_0166ee48",
+      "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da280a6c_f37a668c",
         "filename": "init/keychords.cpp",
         "patchSetId": 1
@@ -508,6 +568,30 @@
       "side": 1,
       "message": "Thought about doing that, speed is not of the essence here, maintainability doing one bit at a time seemed cleaner; especially since (at least before) when each source was a different bitmask type.",
       "parentUuid": "da280a6c_f37a668c",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 17
+      },
+      "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00167ffd_7a16a59a",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-03T23:33:37Z",
+      "side": 1,
+      "message": "I\u0027m not worried about speed either; I think it\u0027s more maintainable to just and the two values.  It\u0027ll allow you to not implement _IsBitSet() too, which is a big bonus.",
+      "parentUuid": "0d8dab9a_397c716a",
       "range": {
         "startLine": 351,
         "startChar": 0,
