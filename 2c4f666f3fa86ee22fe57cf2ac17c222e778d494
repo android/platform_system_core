@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "045f93fa_504c3d2b",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-03T23:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef669009_c91c7191",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 29
+      },
+      "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92b8014d_ceb1dc9a",
         "filename": "init/keychords.cpp",
         "patchSetId": 1
@@ -122,6 +146,24 @@
       "writtenOn": "2018-05-03T22:38:47Z",
       "side": 1,
       "message": "Move constructors are auto generated, so this does nothing.",
+      "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "285072f6_4f46465c",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-03T23:19:42Z",
+      "side": 1,
+      "message": "And yet the compiler complained that it did not know what to do. The problem is that a reference (a pointer) has to be evaluated by the developer to decide if an allocation needs to be performed.",
+      "parentUuid": "a5276673_f3601a63",
       "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -326,6 +368,30 @@
     },
     {
       "key": {
+        "uuid": "be9e3fc9_6956a33d",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-03T23:19:42Z",
+      "side": 1,
+      "message": "vector\u003cbool\u003e is not 1:1 to bool bits. It is documented that the implementation detail is able to encode itself as spans of 1s and spans of 0s rather than actually landing 1s or 0s in a bitmask.",
+      "parentUuid": "2ca0f150_ade0729a",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 41
+      },
+      "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6fdf2d69_7b831299",
         "filename": "init/keychords.cpp",
         "patchSetId": 1
@@ -389,6 +455,24 @@
     },
     {
       "key": {
+        "uuid": "9017fb42_0166ee48",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-03T23:19:42Z",
+      "side": 1,
+      "message": "That is not true about the event driver, it does support EV_SW for example. However, the point is taken that if we tell it to filter out EV_SW (which we do when we issue the EV_SYN bitmask, which limits the event types) there should be no need to also send zero bits off to the EV_SW filter table as I have done here. I should send EV_KEY to the EV_SYN mask table, and send the keycode masks to the EV_KEY mask table and be done with it.\n\nIn likbeychord I wanted to support EV_KEY and EV_SW entries in the chords (eg, one could imagine doing volume up, volume down and Lid Switch to trigger a bugreport).\n\nI understand that is not necessary this go around.",
+      "parentUuid": "d67ba35b_00bd0206",
+      "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da280a6c_f37a668c",
         "filename": "init/keychords.cpp",
         "patchSetId": 1
@@ -400,6 +484,30 @@
       "writtenOn": "2018-05-03T22:38:47Z",
       "side": 1,
       "message": "You can just and the bits returned and the bits in the mask.  You don\u0027t even need to worry about the length, since you know you have the same size in both defaulted to 0.\n\nfor (size_t i \u003d 0; i \u003c bits.size(); ++i) {\n  if (bits[i] \u0026 mask[i] !\u003d 0) {\n    // at least one bit is set\n  }\n}",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 17
+      },
+      "revId": "2c4f666f3fa86ee22fe57cf2ac17c222e778d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d8dab9a_397c716a",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-03T23:19:42Z",
+      "side": 1,
+      "message": "Thought about doing that, speed is not of the essence here, maintainability doing one bit at a time seemed cleaner; especially since (at least before) when each source was a different bitmask type.",
+      "parentUuid": "da280a6c_f37a668c",
       "range": {
         "startLine": 351,
         "startChar": 0,
