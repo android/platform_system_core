@@ -22,6 +22,30 @@
       "revId": "58237c9202267dd7941980c3414d349526880cf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28a74f89_023e06e6",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1041495
+      },
+      "writtenOn": "2018-05-04T14:52:45Z",
+      "side": 1,
+      "message": "\u003e Is this going to break anything else?\n\nNot as far as I could tell.\n\nThose appdomain rules were added in commit \"Allow appdomains to write on cgroup so it can start threads.\" https://android.googlesource.com/platform/system/sepolicy/+/d618eb6f9cca63509fa05917680b7395ffc5fe60\n\nI assume that violation happened as part of a clone syscall, not by the app trying to open the tasks file through the file system.\n\n\u003e Which says that all apps may read/write to cgroups. Is that still necessary?\n\nIt seems weird to me to allow apps to write to the root tasks file; it\u0027s a great way to escape any disadvantageous cgroup (like the background group back when that existed, or my new per-app groups).\n\nI\u0027m a dirty outsider, so I don\u0027t know for sure, but there may be more info in b/25945485 mentioned in the original commit message.\n\n\u003e I also see:\n\nThe general domain write rule seems to have been originally added in https://android.googlesource.com/platform/system/sepolicy/+/c70dc4e3c745e3e63b2186b78adc96ccb71bd120 -- unfortunately, the full commit message is \"domain writes to cgroup pseudo filesystem\".",
+      "parentUuid": "f523bf9b_99468e16",
+      "range": {
+        "startLine": 159,
+        "startChar": 12,
+        "endLine": 159,
+        "endChar": 14
+      },
+      "revId": "58237c9202267dd7941980c3414d349526880cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
