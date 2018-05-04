@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac6c4e3e_5f09b101",
+        "filename": "fs_mgr/fs_mgr_dm_linear.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-04T02:56:23Z",
+      "side": 1,
+      "message": "#include \"fs_mgr_dm_linear.h\"\n\n#include \u003clinux/dm-ioctl.h\u003e\n#include \u003cstring.h\u003e\n#include \u003csys/ioctl.h\u003e\n#include \u003csys/stat.h\u003e\n#include \u003cunistd.h\u003e\n\n#include \u003csstream\u003e\n\n#include \u003candroid-base/logging.h\u003e\n#include \u003candroid-base/strings.h\u003e\n\n#include \"fs_mgr_priv.h\"\n#include \"fs_mgr_priv_dm_ioctl.h\"\n\nIs the right format.  As a rule you don\u0027t need to include headers that your associated header (fs_mgr_dm_linear.h) contain, so you can drop vector.",
+      "revId": "0e3376a17c7e8f9163e247dccb1352fd9a0af945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "075068f4_dfd4749a",
+        "filename": "fs_mgr/fs_mgr_dm_linear.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-04T02:56:23Z",
+      "side": 1,
+      "message": "Probably better to not use stringstream.  We have android::base::StringPrintf, which is the more common option.",
+      "revId": "0e3376a17c7e8f9163e247dccb1352fd9a0af945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4dd86ef_2200d5dc",
+        "filename": "fs_mgr/fs_mgr_dm_linear.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-04T02:56:23Z",
+      "side": 1,
+      "message": "You almost definitely don\u0027t want stringstream for a simple concatenation.  You should be able to simply \n\nreturn std::string{static_cast\u003cchar*\u003e(\u0026spec), sizeof(spec)} + argv;",
+      "revId": "0e3376a17c7e8f9163e247dccb1352fd9a0af945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecc996e3_e1bd8093",
+        "filename": "fs_mgr/fs_mgr_dm_linear.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-04T02:56:23Z",
+      "side": 1,
+      "message": "Looks great to me now like this!",
+      "revId": "0e3376a17c7e8f9163e247dccb1352fd9a0af945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0339a147_2958024f",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-04T02:56:23Z",
+      "side": 1,
+      "message": "You can just use auto here.  You\u0027ll then have the space to use \u0027partition\u0027 in place of pt.  Full names are preferred except for very common things abbreviations (num, fd, etc).",
+      "range": {
+        "startLine": 186,
+        "startChar": 15,
+        "endLine": 186,
+        "endChar": 41
+      },
+      "revId": "0e3376a17c7e8f9163e247dccb1352fd9a0af945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f6f7c83_908ed5df",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-04T02:56:23Z",
+      "side": 1,
+      "message": "There is android::base::Basename() that wraps basename() for C++.",
+      "range": {
+        "startLine": 189,
+        "startChar": 54,
+        "endLine": 189,
+        "endChar": 62
+      },
+      "revId": "0e3376a17c7e8f9163e247dccb1352fd9a0af945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
