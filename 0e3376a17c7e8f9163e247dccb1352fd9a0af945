@@ -36,6 +36,29 @@
     },
     {
       "key": {
+        "uuid": "3a5da68d_52137394",
+        "filename": "fs_mgr/fs_mgr_dm_linear.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-04T11:25:18Z",
+      "side": 1,
+      "message": "Looks like those are data members.\nLet\u0027s add a trailing underscore for them.\n\nhttps://google.github.io/styleguide/cppguide.html#Variable_Names\nData members of classes, both static and non-static, are named like ordinary nonmember variables, but with a trailing underscore.",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 55
+      },
+      "revId": "0e3376a17c7e8f9163e247dccb1352fd9a0af945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e4dd86ef_2200d5dc",
         "filename": "fs_mgr/fs_mgr_dm_linear.cpp",
         "patchSetId": 2
@@ -70,6 +93,29 @@
     },
     {
       "key": {
+        "uuid": "a92fb412_6088dac4",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-04T11:25:18Z",
+      "side": 1,
+      "message": "Since this parameter is consumed by init (userland), instead of kernel, how about move this to device-tree? And use is_android_dt_value_expected(\"lrap\", \"1\");\n\ncontext: b/78615592, kernel cmdline might be getting full\nThe rule is that /proc/cmdline is for bootloader --\u003e kernel, while device-tree is for bootloader --\u003e init/userland.\n\nAlso, init can import device-tree to ro.boot.* properties.\nhttps://android-review.googlesource.com/c/platform/system/core/+/143005\n\nNot sure if there are more \u0027lrap\u0027-related params will be added in the future.\nIf so, maybe use \"ro.boot.lrap.enable\"\u003d\"1\", so you can add ro.boot.lrap.other_name later.",
+      "range": {
+        "startLine": 126,
+        "startChar": 24,
+        "endLine": 126,
+        "endChar": 40
+      },
+      "revId": "0e3376a17c7e8f9163e247dccb1352fd9a0af945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0339a147_2958024f",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 2
@@ -81,6 +127,30 @@
       "writtenOn": "2018-05-04T02:56:23Z",
       "side": 1,
       "message": "You can just use auto here.  You\u0027ll then have the space to use \u0027partition\u0027 in place of pt.  Full names are preferred except for very common things abbreviations (num, fd, etc).",
+      "range": {
+        "startLine": 186,
+        "startChar": 15,
+        "endLine": 186,
+        "endChar": 41
+      },
+      "revId": "0e3376a17c7e8f9163e247dccb1352fd9a0af945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc246487_260b991f",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-04T11:25:18Z",
+      "side": 1,
+      "message": "+1 for s/pt/partition",
+      "parentUuid": "0339a147_2958024f",
       "range": {
         "startLine": 186,
         "startChar": 15,
@@ -109,6 +179,29 @@
         "startChar": 54,
         "endLine": 189,
         "endChar": 62
+      },
+      "revId": "0e3376a17c7e8f9163e247dccb1352fd9a0af945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5197dba7_ad5d0dae",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-04T11:25:18Z",
+      "side": 1,
+      "message": "nit: failed to open ... seems more common",
+      "range": {
+        "startLine": 257,
+        "startChar": 49,
+        "endLine": 257,
+        "endChar": 63
       },
       "revId": "0e3376a17c7e8f9163e247dccb1352fd9a0af945",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
