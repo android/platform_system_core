@@ -117,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "6c34a5c7_46847fa6",
+        "filename": "fs_mgr/fs_mgr_dm_linear.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-05-05T00:25:45Z",
+      "side": 1,
+      "message": "the problem with creating it like this is also that it won\u0027t have selinux labels appplied etc. ueventd takes care of all that for you automagically.\n(sorry, I didn\u0027t reply to your original respond when I pointed out we shouldn\u0027t do this here).\n\ntomcherry@, any better way to have a /dev/block/dm-\u003cname\u003e node create? or is this ok?",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 73
+      },
+      "revId": "0e3376a17c7e8f9163e247dccb1352fd9a0af945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a92fb412_6088dac4",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 2
@@ -152,6 +175,30 @@
       "side": 1,
       "message": "Originally it was in device-tree, but @sspatil requested it to be a kernel cmdline flag since it\u0027s a temporary thing for testing. I don\u0027t particularly mind either way.",
       "parentUuid": "a92fb412_6088dac4",
+      "range": {
+        "startLine": 126,
+        "startChar": 24,
+        "endLine": 126,
+        "endChar": 40
+      },
+      "revId": "0e3376a17c7e8f9163e247dccb1352fd9a0af945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "226b11a1_1035b067",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-05-05T00:25:45Z",
+      "side": 1,
+      "message": "yeah, we actually don\u0027t want this to be cmdline parameter eventually. That said, eventually these androidboot.XYZ things are there to stay and just that we may\nrequire them to come out of DT instead of cmdline.\n\nThe cmdline usage for this particular one is convenient since we can easily change it and do \u0027make bootimage\u0027 and to add / remove the flag.",
+      "parentUuid": "dc974944_35a08a62",
       "range": {
         "startLine": 126,
         "startChar": 24,
@@ -234,6 +281,29 @@
     },
     {
       "key": {
+        "uuid": "eca0f1ca_54adbc6a",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-05-05T00:25:45Z",
+      "side": 1,
+      "message": "this can very easily just be the fs-mgr API, so you hide the details of where you read the partition / mapping metadata from Init code completely.",
+      "range": {
+        "startLine": 250,
+        "startChar": 22,
+        "endLine": 250,
+        "endChar": 45
+      },
+      "revId": "0e3376a17c7e8f9163e247dccb1352fd9a0af945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5197dba7_ad5d0dae",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 2
@@ -250,6 +320,52 @@
         "startChar": 49,
         "endLine": 257,
         "endChar": 63
+      },
+      "revId": "0e3376a17c7e8f9163e247dccb1352fd9a0af945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34af7104_9e1f0256",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-05-05T00:25:45Z",
+      "side": 1,
+      "message": "I think this whole block can be moved to fs_mgr and into CreateDmDeviceForPartition(). We aren\u0027t doing anything with it here.\nAlso, is consistent with how dm-verity devices get created.",
+      "range": {
+        "startLine": 255,
+        "startChar": 1,
+        "endLine": 259,
+        "endChar": 5
+      },
+      "revId": "0e3376a17c7e8f9163e247dccb1352fd9a0af945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4794e5f_8e394896",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-05-05T00:25:45Z",
+      "side": 1,
+      "message": "auto?",
+      "range": {
+        "startLine": 260,
+        "startChar": 15,
+        "endLine": 260,
+        "endChar": 42
       },
       "revId": "0e3376a17c7e8f9163e247dccb1352fd9a0af945",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
