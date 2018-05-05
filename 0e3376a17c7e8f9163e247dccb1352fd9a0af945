@@ -176,6 +176,30 @@
     },
     {
       "key": {
+        "uuid": "b25529a6_936190d0",
+        "filename": "fs_mgr/fs_mgr_dm_linear.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-05-05T01:15:48Z",
+      "side": 1,
+      "message": "So it turns out this doesn\u0027t play well with fs_mgr, neither does updating blk_device in the fstab rec. A bunch of code expects basename(blk_device) to be a partition name and it\u0027s kind of gross to add \"dm-\" pattern matching to it.\n\nIt might be worth adding an explicit \"partition_name\" field to fstab recs so we can use the numbered device?",
+      "parentUuid": "6c34a5c7_46847fa6",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 73
+      },
+      "revId": "0e3376a17c7e8f9163e247dccb1352fd9a0af945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a92fb412_6088dac4",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 2
