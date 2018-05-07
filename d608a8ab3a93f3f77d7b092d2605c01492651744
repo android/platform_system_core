@@ -1,0 +1,256 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0c4a4fc_c48db5a6",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-07T21:59:33Z",
+      "side": 1,
+      "message": "Why unsigned char?  There\u0027s no reason this can\u0027t grow larger; int should be fine.\n\nIn general, I dislike typedefs as I think they rarely make things more clear and this case is no exception.  New types should be formatted like other types, so EventId and \u0027using\u0027 is preferable to \u0027typedef\u0027 : https://google.github.io/styleguide/cppguide.html#Aliases",
+      "revId": "d608a8ab3a93f3f77d7b092d2605c01492651744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47de1b05_14e53381",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-07T21:59:33Z",
+      "side": 1,
+      "message": "This is a little scary to me.  Why not take id as a constructor parameter and let the caller both increment keychords_count and provide the correct value here?",
+      "range": {
+        "startLine": 55,
+        "startChar": 50,
+        "endLine": 55,
+        "endChar": 69
+      },
+      "revId": "d608a8ab3a93f3f77d7b092d2605c01492651744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff256f56_d2e2b766",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-07T21:59:33Z",
+      "side": 1,
+      "message": "constexpr const static kDevicePath[]",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 27
+      },
+      "revId": "d608a8ab3a93f3f77d7b092d2605c01492651744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39d14262_4c63dc20",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-07T21:59:33Z",
+      "side": 1,
+      "message": "HandleKeychord",
+      "range": {
+        "startLine": 63,
+        "startChar": 5,
+        "endLine": 63,
+        "endChar": 20
+      },
+      "revId": "d608a8ab3a93f3f77d7b092d2605c01492651744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a3f485e_c44b29f4",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-07T21:59:33Z",
+      "side": 1,
+      "message": "Probably best if this were a member of a class,\n\nclass Mask {\n  public:\n    void SetBit(size_t bit, bool value);\n    void GetBit(size_t bit) const;\n...\n};\n\nEspecially since the logic to set a bit is duplicated in KeychordLambdaHelper() and the logic to find a given index for a bit is duplicated in KeychordLambdaCheck as well.\n\nIt\u0027s really a shame that neither std::bitset nor std::vector\u003cbool\u003e actually do what we need here.\n\nYou can also then get rid of the mask_t typedef or have it as a private one inside the class.",
+      "revId": "d608a8ab3a93f3f77d7b092d2605c01492651744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb117263_8d8090e7",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-07T21:59:33Z",
+      "side": 1,
+      "message": "has_any_keycodes or similar",
+      "range": {
+        "startLine": 153,
+        "startChar": 9,
+        "endLine": 153,
+        "endChar": 18
+      },
+      "revId": "d608a8ab3a93f3f77d7b092d2605c01492651744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aae770e5_db1f25fa",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-07T21:59:33Z",
+      "side": 1,
+      "message": "The top bits of available default to 0 and will be untouched if res is smaller, right?  Can\u0027t we just always check the full len to make this more simple, especially since this is already checking a handful more bits when res isn\u0027t a multiple of 32.",
+      "revId": "d608a8ab3a93f3f77d7b092d2605c01492651744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "277e0d23_9f887866",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-07T21:59:33Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "d608a8ab3a93f3f77d7b092d2605c01492651744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94817b82_5726d293",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-07T21:59:33Z",
+      "side": 1,
+      "message": "const std::string\u0026",
+      "range": {
+        "startLine": 184,
+        "startChar": 24,
+        "endLine": 184,
+        "endChar": 36
+      },
+      "revId": "d608a8ab3a93f3f77d7b092d2605c01492651744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d257e963_e57d1bbe",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-07T21:59:33Z",
+      "side": 1,
+      "message": "decltype(\u0026closedir) is better",
+      "range": {
+        "startLine": 196,
+        "startChar": 25,
+        "endLine": 196,
+        "endChar": 38
+      },
+      "revId": "d608a8ab3a93f3f77d7b092d2605c01492651744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2e780ea_7633f5c5",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-07T21:59:33Z",
+      "side": 1,
+      "message": "AddServiceKeycodes",
+      "range": {
+        "startLine": 208,
+        "startChar": 5,
+        "endLine": 208,
+        "endChar": 25
+      },
+      "revId": "d608a8ab3a93f3f77d7b092d2605c01492651744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a493e49_7bc361c2",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-07T21:59:33Z",
+      "side": 1,
+      "message": "We should reformat this too.  Generally I reformat function names when I majorly change them.",
+      "range": {
+        "startLine": 220,
+        "startChar": 5,
+        "endLine": 220,
+        "endChar": 18
+      },
+      "revId": "d608a8ab3a93f3f77d7b092d2605c01492651744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
