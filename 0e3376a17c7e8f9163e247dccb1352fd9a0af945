@@ -101,6 +101,30 @@
     },
     {
       "key": {
+        "uuid": "4d7c8482_a79c889a",
+        "filename": "fs_mgr/fs_mgr_dm_linear.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-07T08:49:46Z",
+      "side": 1,
+      "message": "Ah, I see. Yup, struct doesn\u0027t need the underscore.\n\nI don\u0027t have a strong opinion for class v.s. struct. (I just can\u0027t find \u0027block_device\u0027, \u0027fist_sector\u0027 when reading the code here).\n\nHowever, based on the following rationale, maybe we should convert it to a class?\nhttps://google.github.io/styleguide/cppguide.html#Structs_vs._Classes\n\nMethods should not provide behavior but should only be used to set up the data members, e.g., constructor, destructor, Initialize(), Reset(), Validate().\nIf more functionality is required, a class is more appropriate. If in doubt, make it a class.",
+      "parentUuid": "4d99d262_f9f61cf0",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 55
+      },
+      "revId": "0e3376a17c7e8f9163e247dccb1352fd9a0af945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e4dd86ef_2200d5dc",
         "filename": "fs_mgr/fs_mgr_dm_linear.cpp",
         "patchSetId": 2
@@ -200,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "db2be3f1_6bd2f1bf",
+        "filename": "fs_mgr/fs_mgr_dm_linear.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-07T08:49:46Z",
+      "side": 1,
+      "message": "We have InitVerityDevice(\"/dev/block/dm-\u003cN\u003e\"), which invokes \"device_handler_.HandleDeviceEvent(uevent);\" to create the node with proper SELinux setup (in  DeviceHandler::MakeDevice()).\n\nhttps://cs.corp.google.com/android/system/core/init/init_first_stage.cpp?type\u003dcs\u0026q\u003dInitVerityDevice+p:android\u0026g\u003d0\u0026l\u003d344\n\nBut this is probably not work for /dev/block/dm-\u003cpartition_name\u003e, does it?\n\nBtw, may I know who will be using /dev/block/dm-\u003cpartition_name\u003e ?\nIs it for fstab to mount /dev/block/dm-system, dm-vendor, etc?",
+      "parentUuid": "b25529a6_936190d0",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 73
+      },
+      "revId": "0e3376a17c7e8f9163e247dccb1352fd9a0af945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a92fb412_6088dac4",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 2
@@ -259,6 +307,30 @@
       "side": 1,
       "message": "yeah, we actually don\u0027t want this to be cmdline parameter eventually. That said, eventually these androidboot.XYZ things are there to stay and just that we may\nrequire them to come out of DT instead of cmdline.\n\nThe cmdline usage for this particular one is convenient since we can easily change it and do \u0027make bootimage\u0027 and to add / remove the flag.",
       "parentUuid": "dc974944_35a08a62",
+      "range": {
+        "startLine": 126,
+        "startChar": 24,
+        "endLine": 126,
+        "endChar": 40
+      },
+      "revId": "0e3376a17c7e8f9163e247dccb1352fd9a0af945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11f22ae3_dbf808c7",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-07T08:49:46Z",
+      "side": 1,
+      "message": "OK, then let\u0027s keep it in cmdline for now, agree it\u0027s more convenient.\nThanks for providing the contexts.",
+      "parentUuid": "226b11a1_1035b067",
       "range": {
         "startLine": 126,
         "startChar": 24,
