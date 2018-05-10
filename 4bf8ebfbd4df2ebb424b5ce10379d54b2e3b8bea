@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e8d804c_379d22ed",
+        "filename": "libfdsan/Android.bp",
+        "patchSetId": 12
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2018-05-10T04:59:22Z",
+      "side": 1,
+      "message": "Is libfdsan_standalone.so meant to be usable with multiple versions of libc.so? If so, I think bionic_tls is an issue.\n\ne.g. I see calls to strerror, which calls __get_bionic_tls (inlined), which finds bionic_tls as the last field of pthread_internal_t. Any change to pthread_internal_t (other than adding fields at the end) would break things.\n\nYou had a suggestion here (http://b/20464031#comment23) about pthread_setspecific that might be relevant?",
+      "revId": "4bf8ebfbd4df2ebb424b5ce10379d54b2e3b8bea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
