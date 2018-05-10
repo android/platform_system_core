@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a2d3172_a93ae9dd",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-10T20:08:11Z",
+      "side": 1,
+      "message": "This and the above two functions need to be made thread-safe.  \n\nAlternatively and probably better, you could batch the opened fd\u0027s and only register them to the epoll handler after you\u0027ve called this function for each of them.  In this case, you\u0027d know that any modification of keychord_current, etc is done in one thread at a time.",
+      "revId": "a1504bf6815f55218f0df43ceaad131bb1628fab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d032462e_b0852a6e",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-10T20:08:11Z",
+      "side": 1,
+      "message": "This would need to be made thread safe.",
+      "range": {
+        "startLine": 298,
+        "startChar": 25,
+        "endLine": 298,
+        "endChar": 47
+      },
+      "revId": "a1504bf6815f55218f0df43ceaad131bb1628fab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e031791a_f2ee9e2e",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-10T20:08:11Z",
+      "side": 1,
+      "message": "Is the cast needed?  I\u0027d hope that just GeteventOpenDevice would work.",
+      "range": {
+        "startLine": 317,
+        "startChar": 37,
+        "endLine": 317,
+        "endChar": 60
+      },
+      "revId": "a1504bf6815f55218f0df43ceaad131bb1628fab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
