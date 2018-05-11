@@ -16,6 +16,24 @@
       "revId": "29094806bff8f8582cba804a085f3f5b0aa2a2ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9f8c993_115693b0",
+        "filename": "libprocinfo/include/procinfo/process_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2018-05-11T22:22:37Z",
+      "side": 1,
+      "message": "Done. Below is the benmark result on walleye:\nBefore using libprocinfo in libbacktrace and libunwindstack:\narm64:\nBenchmark                          Time           CPU Iterations\n-----------------------------------------------------------------\nBM_ReadMapFile               1357101 ns    1351972 ns        398\nBM_unwindstack_FileMaps      1967884 ns    1961659 ns        361\nBM_unwindstack_BufferMaps    2031380 ns    2025983 ns        348\nBM_backtrace_BacktraceMap     329223 ns     328285 ns       2135\n\narm:\nBenchmark                          Time           CPU Iterations\n-----------------------------------------------------------------\nBM_ReadMapFile               3693888 ns    3681873 ns        191\nBM_unwindstack_FileMaps      5861227 ns    5846617 ns        114\nBM_unwindstack_BufferMaps    5965772 ns    5953938 ns        115\nBM_backtrace_BacktraceMap     397368 ns     396246 ns       1780\n\n\nBefore using libprocinfo in libbacktrace and libunwindstack:\narm64:\nBenchmark                          Time           CPU Iterations\n-----------------------------------------------------------------\nBM_ReadMapFile               1366208 ns    1361254 ns        454\nBM_unwindstack_FileMaps      1629199 ns    1619947 ns        438\nBM_unwindstack_BufferMaps    1447421 ns    1442620 ns        480\nBM_backtrace_BacktraceMap     214357 ns     213695 ns       3308\n\narm:\nBenchmark                          Time           CPU Iterations\n-----------------------------------------------------------------\nBM_ReadMapFile               3709092 ns    3695109 ns        184\nBM_unwindstack_FileMaps      3781539 ns    3767532 ns        187\nBM_unwindstack_BufferMaps    3649625 ns    3639256 ns        192\nBM_backtrace_BacktraceMap     316918 ns     316034 ns       2197",
+      "parentUuid": "9314b0ed_0d25e4fb",
+      "revId": "29094806bff8f8582cba804a085f3f5b0aa2a2ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
