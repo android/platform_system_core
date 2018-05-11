@@ -210,6 +210,30 @@
       "revId": "79ed568c8ac26e8c896eb5bf9b1a46804bd202a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ba3dda6_aa15028a",
+        "filename": "init/devices.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-11T10:58:57Z",
+      "side": 1,
+      "message": "I inserted a USB3 disk on the DUT, the uevent will be generated:\n  \nuevent.path\u003d\u0027/devices/soc/a800000.ssusb/a800000.dwc3/xhci-hcd.0.auto/usb2/2-1/2-1.4/2-1.4:1.0/host4/target4:0:0/4:0:0:0/block/sdi/sdi1\u0027, uevent.subsystem\u003d\u0027block\u0027, uevent.partition_num: 1, uevent.partition_name: \u0027system_c\u0027\n\nResulting in two symlinks generated:\n/dev/block/platform/soc/a800000.ssusb/a800000.dwc3/xhci-hcd.0.auto/by-name/system_c\n/dev/block/by-name/system_c\n  \n  \n  \nI also tried a SD card (on another DUT), the result is similar.\nuevent.path\u003d\u0027/devices/platform/externdevice/mmc_host/mmc1/mmc1:0002/block/mmcblk1/mmcblk1p1\u0027, uevent.subsystem\u003d\u0027block\u0027, uevent.partition_num: 1, uevent.partition_name: \u0027system_d\u0027\n  \n/dev/block/platform/externdevice/by-name/system_d\n/dev/block/by-name/system_d\n  \nCan you elaborate more about \"FindPlatformDevice() to fail if it doesn\u0027t find purely platform devices all the way up to the sysfs root? \"  I can think of a method to detect \"purely platform\" devices.\n  \nps: I used \u0027gparted\u0027 to specifically set partition_name.",
+      "parentUuid": "609c9eda_fb4d035a",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 15
+      },
+      "revId": "79ed568c8ac26e8c896eb5bf9b1a46804bd202a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
