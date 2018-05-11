@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd2e2979_3e63ad76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-11T04:08:41Z",
+      "side": 1,
+      "message": "Can you provide an fstab example (e.g., for a partition, let\u0027s assume /vendor) for this CL?\n\ne.g., the how will the fstab-dt and fstab file be, respectively.\n\nhttps://source.android.com/devices/architecture/kernel/modular-kernels#early-mounting-device-tree-vboot-1-0",
+      "revId": "d563f1261f88b52a3b3ef4fa23188845825610b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc57a4bb_9bd43a98",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-11T04:08:41Z",
+      "side": 1,
+      "message": "this will be \"dm-N\", right?",
+      "range": {
+        "startLine": 812,
+        "startChar": 65,
+        "endLine": 812,
+        "endChar": 76
+      },
+      "revId": "d563f1261f88b52a3b3ef4fa23188845825610b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aeee971_f9f10129",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-11T04:08:41Z",
+      "side": 1,
+      "message": "Btw, early mount partitions won\u0027t go through this code path as FirstStageMount::MountPartitions() --\u003e fs_mgr_do_mount_one().\n\nIt seems to me (take /vendor as an example):\n  /vendor physical device will be mounted during FirstStageMount::MountPartitions() as before.\n  /vendor (with MF_LOGICAL) will be in the fstab file, too. And mount_all will mount this linear device again? Do you need to umount /vendor before mount this dm-N under /vendor again?",
+      "range": {
+        "startLine": 872,
+        "startChar": 17,
+        "endLine": 872,
+        "endChar": 48
+      },
+      "revId": "d563f1261f88b52a3b3ef4fa23188845825610b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
