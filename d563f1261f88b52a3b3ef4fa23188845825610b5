@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "c6f37b25_b36579ef",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-11T17:58:36Z",
+      "side": 1,
+      "message": "For my own education here, how will this work with verity?  Do we first create a logical partition for dm-linear, then create another logical partition for dm-verity that references the first logical partition?\n\nHow does this interact with https://cs.corp.google.com/android/system/core/fs_mgr/fs_mgr_verity.cpp?q\u003dfs_mgr_dm_get_device_name\u0026sq\u003dpackage:%5Eandroid$\u0026g\u003d0\u0026l\u003d814 ?  Is that all magically handled if blk_device gets updated to the logical device name, which it is in this function?",
+      "parentUuid": "dc57a4bb_9bd43a98",
+      "range": {
+        "startLine": 812,
+        "startChar": 65,
+        "endLine": 812,
+        "endChar": 76
+      },
+      "revId": "d563f1261f88b52a3b3ef4fa23188845825610b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0aeee971_f9f10129",
         "filename": "fs_mgr/fs_mgr.cpp",
         "patchSetId": 4
@@ -58,6 +82,53 @@
         "startChar": 17,
         "endLine": 872,
         "endChar": 48
+      },
+      "revId": "d563f1261f88b52a3b3ef4fa23188845825610b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02b2fc13_f3faa0f5",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-11T17:58:36Z",
+      "side": 1,
+      "message": "That seems wrong.  If vendor is logical then vendor must always be mounted as logical, right?  We\u0027ll need first stage mount to mount the logical version.",
+      "parentUuid": "0aeee971_f9f10129",
+      "range": {
+        "startLine": 872,
+        "startChar": 17,
+        "endLine": 872,
+        "endChar": 48
+      },
+      "revId": "d563f1261f88b52a3b3ef4fa23188845825610b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c087cd00_9e4d1097",
+        "filename": "fs_mgr/fs_mgr_dm_linear.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-11T17:58:36Z",
+      "side": 1,
+      "message": "Is Map the right verb here?  This is just creating the dm entries for each of the partitions that require them, right?  Perhaps it should be called Create?",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 8
       },
       "revId": "d563f1261f88b52a3b3ef4fa23188845825610b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -82,6 +153,81 @@
         "endLine": 114,
         "endChar": 29
       },
+      "revId": "d563f1261f88b52a3b3ef4fa23188845825610b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb2efd40_40d01fde",
+        "filename": "fs_mgr/fs_mgr_priv.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-11T17:58:36Z",
+      "side": 1,
+      "message": "Probably clang-format suggests this.  It doesn\u0027t believe in alignment.  I don\u0027t have a strong opinion either way.",
+      "parentUuid": "f8be8e27_bf6623a1",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 29
+      },
+      "revId": "d563f1261f88b52a3b3ef4fa23188845825610b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6e6856e_9320e3bd",
+        "filename": "fs_mgr/include/fs_mgr_dm_linear.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-11T17:58:36Z",
+      "side": 1,
+      "message": "This is only valid for DmLinear, right?  Could we call this DmLinearPartitionTable or make it clearer that it\u0027s specifically for that?  The same for Partition and PartitionExtent above.",
+      "revId": "d563f1261f88b52a3b3ef4fa23188845825610b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3de70cf7_819124c8",
+        "filename": "fs_mgr/include/fs_mgr_dm_linear.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-11T17:58:36Z",
+      "side": 1,
+      "message": "This comment isn\u0027t true in the most recent patch set, right?",
+      "revId": "d563f1261f88b52a3b3ef4fa23188845825610b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d9c076c_59613b26",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-11T17:58:36Z",
+      "side": 1,
+      "message": "What does this do?  If I understand this code, these partition_name\u0027s are going to be the same as what is found in the fstab and added to this set via https://cs.corp.google.com/android/system/core/init/init_first_stage.cpp?type\u003dcs\u0026q\u003dinit_first_\u0026sq\u003dpackage:%5Eandroid$\u0026g\u003d0\u0026l\u003d325 or the equivalent V2 version?\n\nWe need to have the dm nodes created through fs_mgr_update_logical_partition() added to the set, right?  Where is this done (I don\u0027t think it\u0027s done here).",
       "revId": "d563f1261f88b52a3b3ef4fa23188845825610b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
