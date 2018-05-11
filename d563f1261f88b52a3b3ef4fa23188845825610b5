@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7f643012_46d3a55c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-05-11T19:49:29Z",
+      "side": 1,
+      "message": "walleye\u0027s fstab-dt for vendor looks like this:\n\n                vendor {\n                        compatible \u003d \"android,vendor\";\n                        dev \u003d \"vendor\";\n                        type \u003d \"ext4\";\n                        mnt_flags \u003d \"ro,barrier\u003d1\";\n                        fsmgr_flags \u003d \"wait,slotselect,avb,logical\";\n                };\n\nhikey960\u0027s fstab entry for vendor looks like this:\n\n  vendor              /vendor    ext4    ro                  wait,logical",
+      "parentUuid": "fd2e2979_3e63ad76",
+      "revId": "d563f1261f88b52a3b3ef4fa23188845825610b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc57a4bb_9bd43a98",
         "filename": "fs_mgr/fs_mgr.cpp",
         "patchSetId": 4
@@ -66,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "efffa13a_de0e255a",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-05-11T19:49:29Z",
+      "side": 1,
+      "message": "I\u0027ll fold the next CL into this one so it\u0027s clearer how it\u0027s handled.",
+      "parentUuid": "c6f37b25_b36579ef",
+      "range": {
+        "startLine": 812,
+        "startChar": 65,
+        "endLine": 812,
+        "endChar": 76
+      },
+      "revId": "d563f1261f88b52a3b3ef4fa23188845825610b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0aeee971_f9f10129",
         "filename": "fs_mgr/fs_mgr.cpp",
         "patchSetId": 4
@@ -101,6 +143,30 @@
       "side": 1,
       "message": "That seems wrong.  If vendor is logical then vendor must always be mounted as logical, right?  We\u0027ll need first stage mount to mount the logical version.",
       "parentUuid": "0aeee971_f9f10129",
+      "range": {
+        "startLine": 872,
+        "startChar": 17,
+        "endLine": 872,
+        "endChar": 48
+      },
+      "revId": "d563f1261f88b52a3b3ef4fa23188845825610b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49292557_aaff5178",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-05-11T19:49:29Z",
+      "side": 1,
+      "message": "All the dm-linear devices are created early in the first stage, so mounting can work as normal whether it\u0027s in fstab-dt or fstab. But, maybe we want to change that.",
+      "parentUuid": "02b2fc13_f3faa0f5",
       "range": {
         "startLine": 872,
         "startChar": 17,
@@ -183,6 +249,30 @@
     },
     {
       "key": {
+        "uuid": "87e1719f_1e01419c",
+        "filename": "fs_mgr/fs_mgr_priv.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-05-11T19:49:29Z",
+      "side": 1,
+      "message": "Yes... I had it as you suggested and clang-format rejected it :)",
+      "parentUuid": "eb2efd40_40d01fde",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 29
+      },
+      "revId": "d563f1261f88b52a3b3ef4fa23188845825610b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6e6856e_9320e3bd",
         "filename": "fs_mgr/include/fs_mgr_dm_linear.h",
         "patchSetId": 4
@@ -246,6 +336,24 @@
       "side": 1,
       "message": "It\u0027s done in the second CL I see now.\n\nMy original question remains: is this code needed?  I think it can be removed and everything would still work.",
       "parentUuid": "3d9c076c_59613b26",
+      "revId": "d563f1261f88b52a3b3ef4fa23188845825610b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83b22b20_133ab01a",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-05-11T19:49:29Z",
+      "side": 1,
+      "message": "On a system designed to use dm-linear, there would only be one required device, and we would add it in GetDmLinearDevices(). Every extent would then map to a different region on the same block device. So we\u0027ll need *something* here, and the code would ideally look like this, because it ensures in any case that all extents are handled.\n\nOn the other hand, you\u0027re right that it\u0027s almost redundant for testing on walleye. It\u0027s still needed, because MapLogicalPartitions() doesn\u0027t check fstab, it just tries to create devices for everything. So it needs the backing devices for \"vendor_a\" and \"vendor_b\", whereas GetDmVerityDevices would only ensure the current slot.\n\nTo change that, we\u0027d need to split up when we create logical devices. Once in the first stage for devices in fstab-dt, and again in fs_mgr_mount_all/fs_mgr_do_mount_one.",
+      "parentUuid": "7b9ecd95_213efe6a",
       "revId": "d563f1261f88b52a3b3ef4fa23188845825610b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
