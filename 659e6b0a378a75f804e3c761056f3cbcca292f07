@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c2027326_729b0714",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-05-14T19:32:31Z",
+      "side": 1,
+      "message": "Yes, exactly - logical_partition_name will be what AVB expects. Okay, I\u0027ll include sample fstabs.",
+      "parentUuid": "5a44fd8b_090b5ff2",
+      "range": {
+        "startLine": 590,
+        "startChar": 8,
+        "endLine": 590,
+        "endChar": 22
+      },
+      "revId": "659e6b0a378a75f804e3c761056f3cbcca292f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac436558_711f7990",
         "filename": "fs_mgr/fs_mgr_avb.cpp",
         "patchSetId": 6
@@ -83,6 +107,30 @@
       "writtenOn": "2018-05-14T10:59:08Z",
       "side": 1,
       "message": "This might break vboot 1.0 as well.\nhttps://android.googlesource.com/platform/system/core/+/master/fs_mgr/fs_mgr_verity.cpp#696\n\nIn the above function, it updates \u0027data_dev\u0027 and \u0027hash_dev\u0027 in the dm-verity params to\n\"/dev/block/platform/soc.0/f9824900.sdhci/by-name/vendor_a\".\nhttps://gitlab.com/cryptsetup/cryptsetup/wikis/DMVerity\n\nAs this is done after \"dm-linear\" now, so the data_dev and hash_dev used in DM_TABLE_LOAD will become \"/dev/block/dm-\u003cN\u003e\", right?",
+      "range": {
+        "startLine": 327,
+        "startChar": 17,
+        "endLine": 327,
+        "endChar": 48
+      },
+      "revId": "659e6b0a378a75f804e3c761056f3cbcca292f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9c64398_413b4686",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-05-14T19:32:31Z",
+      "side": 1,
+      "message": "I tested vboot 2.0, which works - but I didn\u0027t test vboot 1.0. We\u0027re not sure if dm-linear + vboot 1 will be a supported configuration yet.",
+      "parentUuid": "985c2d34_701eef2e",
       "range": {
         "startLine": 327,
         "startChar": 17,
