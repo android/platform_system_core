@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "906e5e0f_d31d4ffb",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-14T10:59:08Z",
+      "side": 1,
+      "message": "The partition_name becomes \"/dev/block/dm-\u003cN\u003e\" (after dm-linear), correct?\n\nNote that this will break AVB because it bakes \u0027partition_name\u0027 into the metadata.\n\n$ avbtool info_image --image $OUT/vbmeta.img \n Hashtree descriptor:\n      Version of dm-verity:  1\n      Image Size:            515936256 bytes\n      Tree Offset:           515936256\n      Tree Size:             4071424 bytes\n      Data Block Size:       4096 bytes\n      Hash Block Size:       4096 bytes\n      FEC num roots:         2\n      FEC offset:            520007680\n      FEC size:              4112384 bytes\n      Hash Algorithm:        sha1\n      Partition Name:        vendor  \u003c--- HERE is the partition name\n      Salt:                  2e9635a4329d4ff96c1d0dc5b26e8880832d30eb\n      Root Digest:           5a9a867aaf21f55b1d41897c7e817bb34cfeb1e0\n      Flags:                 0\n\nhttps://android.googlesource.com/platform/external/avb/+/master/libavb/avb_ops.h#128",
+      "range": {
+        "startLine": 590,
+        "startChar": 8,
+        "endLine": 590,
+        "endChar": 22
+      },
+      "revId": "659e6b0a378a75f804e3c761056f3cbcca292f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac436558_711f7990",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-14T10:59:08Z",
+      "side": 1,
+      "message": "get_hashtree_descriptor(\"/dev/block/dm-\u003cN\u003e\") will return false because the \u0027partition_name\u0027 in vbmeta is determined on build time.",
+      "range": {
+        "startLine": 605,
+        "startChar": 9,
+        "endLine": 605,
+        "endChar": 47
+      },
+      "revId": "659e6b0a378a75f804e3c761056f3cbcca292f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "985c2d34_701eef2e",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-14T10:59:08Z",
+      "side": 1,
+      "message": "This might break vboot 1.0 as well.\nhttps://android.googlesource.com/platform/system/core/+/master/fs_mgr/fs_mgr_verity.cpp#696\n\nIn the above function, it updates \u0027data_dev\u0027 and \u0027hash_dev\u0027 in the dm-verity params to\n\"/dev/block/platform/soc.0/f9824900.sdhci/by-name/vendor_a\".\nhttps://gitlab.com/cryptsetup/cryptsetup/wikis/DMVerity\n\nAs this is done after \"dm-linear\" now, so the data_dev and hash_dev used in DM_TABLE_LOAD will become \"/dev/block/dm-\u003cN\u003e\", right?",
+      "range": {
+        "startLine": 327,
+        "startChar": 17,
+        "endLine": 327,
+        "endChar": 48
+      },
+      "revId": "659e6b0a378a75f804e3c761056f3cbcca292f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
