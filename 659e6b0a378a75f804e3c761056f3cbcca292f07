@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "67ae296c_881d5e40",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-05-15T18:32:15Z",
+      "side": 1,
+      "message": "For my initial test, it did align with the partition size. But it doesn\u0027t have to: I just added a 512-sector extent from system_a as you suggested, and:\n\nlrwxrwxrwx 1 root root 16 1970-07-29 22:44 vendor_a -\u003e /dev/block/sda20\n\nwalleye:/ # cat /sys/block/dm-1/dm/name                                                                                                                                                       \nvendor_a\nwalleye:/ # cat /sys/block/dm-1/size                                                                                                                                                          \n1024512\nwalleye:/ # cat /sys/block/sda/sda20/size                                                                                                                                                     \n1024000\n\nThe new device is 512 sectors larger as expected.",
+      "parentUuid": "805167e1_23cbffd6",
+      "range": {
+        "startLine": 327,
+        "startChar": 17,
+        "endLine": 327,
+        "endChar": 48
+      },
+      "revId": "659e6b0a378a75f804e3c761056f3cbcca292f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "34f06078_00759ec8",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 6
@@ -202,6 +226,30 @@
       "side": 1,
       "message": "As I understand it, dm-1 isn\u0027t ever mounted, but it is used as the input block device for the verity device (dm-2).  So there are two layers of virtual block devices (dm-verity -\u003e dm-linear -\u003e physical block device(s)).",
       "parentUuid": "34f06078_00759ec8",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 5
+      },
+      "revId": "659e6b0a378a75f804e3c761056f3cbcca292f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be5f22f9_dea7f541",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-05-15T18:32:15Z",
+      "side": 1,
+      "message": "Right, indeed. /dev/block/dm-1 is used by the mapping for /dev/block/dm-2 and in fact device-mapper won\u0027t let you remove it until dm-2 is removed.",
+      "parentUuid": "2e0d564b_547d5199",
       "range": {
         "startLine": 327,
         "startChar": 0,
