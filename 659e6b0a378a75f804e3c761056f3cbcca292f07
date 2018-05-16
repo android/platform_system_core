@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2563b617_6172ce3c",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-16T22:28:02Z",
+      "side": 1,
+      "message": "FWIW, I don\u0027t think this is an issue either.  From what I understand, we\u0027re only going to do a resize when the partition is updated, at which point we\u0027d need to update the AVB partition too.  We\u0027d never resize system_other, then try to mount it without updating it and its corresponding AVB information.\n\nA verity failure if we resize the partition without updating the AVB information seems to be WAI to me.",
+      "parentUuid": "a4421418_4a5f02f7",
+      "range": {
+        "startLine": 261,
+        "startChar": 83,
+        "endLine": 261,
+        "endChar": 93
+      },
+      "revId": "659e6b0a378a75f804e3c761056f3cbcca292f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8dd1213_2b6dc953",
         "filename": "fs_mgr/fs_mgr_avb.cpp",
         "patchSetId": 6
