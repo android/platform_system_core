@@ -22,6 +22,30 @@
       "revId": "c7624b30f71b9d14148e07f5dbd481a0bb8cbd47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93c5e09c_047e13b0",
+        "filename": "init/devices.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-16T20:57:14Z",
+      "side": 1,
+      "message": "These names (sda1, sdd1, etc) come from the uevent itself, so the driver itself is claiming that there are multiple devices.  Perhaps they\u0027re physical partitions, since some flash chips have the notion of partitions?  In any case, it\u0027s probably okay.\n\nHonestly, I don\u0027t know of a single user of the by-num symlinks.  If we are seeing collisions with these symlinks, then presumably they\u0027re not usable anyway.  Maybe this would be a good time to just remove them.",
+      "parentUuid": "6bc3c357_e75fab5d",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 77
+      },
+      "revId": "c7624b30f71b9d14148e07f5dbd481a0bb8cbd47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
