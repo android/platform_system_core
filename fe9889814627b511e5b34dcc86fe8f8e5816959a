@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9483b14f_275a638d",
+        "filename": "init/devices.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1315132
+      },
+      "writtenOn": "2018-05-16T14:06:46Z",
+      "side": 1,
+      "message": "Maybe, we could set the platform device name in dts node, possibility used by current SoC!\nand by comparing the device name string with the dts node name, deciding whether using \"dev/block/platform/by-name\" links.\nFor example, we set device name to \"f1122334.sdhci\" and \"f9988776.ufs\", which meaning that the internal Storage device may be used on current SoC paltform, in \"android, firmware\" dts node. Now in this func, we can compare the current device string with the dts node device name. If true, we could set the \"dev/block/platform/by-name/system\" links, as links[1].",
+      "range": {
+        "startLine": 332,
+        "startChar": 6,
+        "endLine": 332,
+        "endChar": 8
+      },
+      "revId": "fe9889814627b511e5b34dcc86fe8f8e5816959a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4eddd632_b893cf51",
         "filename": "init/devices.cpp",
         "patchSetId": 6
