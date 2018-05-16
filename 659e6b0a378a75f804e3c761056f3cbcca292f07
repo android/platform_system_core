@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "d05b1e19_60c790e6",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-16T03:23:35Z",
+      "side": 1,
+      "message": "Those dm-verity parameters are generated at build time, and they won\u0027t be changed after dm-linear. That\u0027s my only concern now.",
+      "range": {
+        "startLine": 255,
+        "startChar": 25,
+        "endLine": 257,
+        "endChar": 45
+      },
+      "revId": "659e6b0a378a75f804e3c761056f3cbcca292f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36c8e3c7_4167380e",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-16T03:23:35Z",
+      "side": 1,
+      "message": "Same as above.\n\nThe blk_device here is after dm-lnear, assuming it\u0027s /dev/block/dm-1.\nThis might lead to incorrect hash tree data location because hashtree_desc.tree_offset is generated at build time based on \"image size\".\n\nThe dm-verity params is likely:\n1 /dev/block/dm-1 /dev/block/dm-1 4096 4096 125961 125961 sha1 d56fe352cd3e27767d169131e0c551504349b11e cbf37c3a2486698e668a4b6c1d73a985f016358f 10 use_fec_from_device /dev/block/dm-1 fec_roots 2 fec_blocks 126955 fec_start 126955 restart_on_corruption ignore_zero_blocks",
+      "range": {
+        "startLine": 261,
+        "startChar": 83,
+        "endLine": 261,
+        "endChar": 93
+      },
+      "revId": "659e6b0a378a75f804e3c761056f3cbcca292f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8dd1213_2b6dc953",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-16T03:23:35Z",
+      "side": 1,
+      "message": "We can check the log here.",
+      "range": {
+        "startLine": 324,
+        "startChar": 4,
+        "endLine": 324,
+        "endChar": 62
+      },
+      "revId": "659e6b0a378a75f804e3c761056f3cbcca292f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "906e5e0f_d31d4ffb",
         "filename": "fs_mgr/fs_mgr_avb.cpp",
         "patchSetId": 6
@@ -73,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "71d9e455_7df12435",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-16T03:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2027326_729b0714",
+      "range": {
+        "startLine": 590,
+        "startChar": 8,
+        "endLine": 590,
+        "endChar": 22
+      },
+      "revId": "659e6b0a378a75f804e3c761056f3cbcca292f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac436558_711f7990",
         "filename": "fs_mgr/fs_mgr_avb.cpp",
         "patchSetId": 6
@@ -93,6 +186,30 @@
       "revId": "659e6b0a378a75f804e3c761056f3cbcca292f07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d0b28c1_f3983680",
+        "filename": "fs_mgr/fs_mgr_avb.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-16T03:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac436558_711f7990",
+      "range": {
+        "startLine": 605,
+        "startChar": 9,
+        "endLine": 605,
+        "endChar": 47
+      },
+      "revId": "659e6b0a378a75f804e3c761056f3cbcca292f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -191,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "87494f3a_31ce99eb",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-16T03:23:35Z",
+      "side": 1,
+      "message": "That\u0027s great, would you mind dumping the statistic of dm-2 (assuming it\u0027s dm-verity)?",
+      "parentUuid": "67ae296c_881d5e40",
+      "range": {
+        "startLine": 327,
+        "startChar": 17,
+        "endLine": 327,
+        "endChar": 48
+      },
+      "revId": "659e6b0a378a75f804e3c761056f3cbcca292f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "34f06078_00759ec8",
         "filename": "init/init_first_stage.cpp",
         "patchSetId": 6
@@ -259,6 +400,30 @@
       "revId": "659e6b0a378a75f804e3c761056f3cbcca292f07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85da5d05_0688bd77",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-05-16T03:23:35Z",
+      "side": 1,
+      "message": "Understood, thanks!\n\nBtw, my actual concern is dm-verity params, but I didn\u0027t state it well (sorry!)",
+      "parentUuid": "be5f22f9_dea7f541",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 5
+      },
+      "revId": "659e6b0a378a75f804e3c761056f3cbcca292f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
