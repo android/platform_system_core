@@ -59,6 +59,29 @@
     },
     {
       "key": {
+        "uuid": "e2d0bba3_dbbae0eb",
+        "filename": "init/epoll.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-17T22:22:54Z",
+      "side": 1,
+      "message": "Given all other are using Result\u003cSuccess\u003e, do we want Result\u003cSuccess\u003e Epoll::Wait() and return Error() instead and let caller propagate the message to logging?",
+      "range": {
+        "startLine": 78,
+        "startChar": 8,
+        "endLine": 78,
+        "endChar": 43
+      },
+      "revId": "536064a461156c00ef91726e325f541b88c7ae72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b6824ba_2fc86944",
         "filename": "init/init.cpp",
         "patchSetId": 1
@@ -70,6 +93,29 @@
       "writtenOn": "2018-05-17T21:47:33Z",
       "side": 1,
       "message": "One less global, yay.",
+      "revId": "536064a461156c00ef91726e325f541b88c7ae72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc34af4f_616bd873",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-17T22:22:54Z",
+      "side": 1,
+      "message": "Hmmm looking at this on the \"big screen\"(tm), given that bugreport collection is useless until /data is mounted, we could probably move this downwards. And, for instance I do not expect this to function if we are in \"charger\" mode, but if \"charger\" transitions to \"running (instead of intervening reboot) maybe then?",
+      "range": {
+        "startLine": 733,
+        "startChar": 0,
+        "endLine": 738,
+        "endChar": 24
+      },
       "revId": "536064a461156c00ef91726e325f541b88c7ae72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
