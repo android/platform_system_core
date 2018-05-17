@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94d201b0_85e9b041",
+        "filename": "init/epoll.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-17T21:47:33Z",
+      "side": 1,
+      "message": "Figure once this is used in a test ASSERT_TRUE(epoll.Open()); will be appropriate instead of having this function call PLOG(FATAL).",
+      "revId": "536064a461156c00ef91726e325f541b88c7ae72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29b7873d_5c53b071",
+        "filename": "init/epoll.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-17T21:47:33Z",
+      "side": 1,
+      "message": "Same here.\n\nAnd since there are two error cases here, we\u0027re stuck with Result\u003cSuccess\u003e or exceptions which we don\u0027t have...",
+      "revId": "536064a461156c00ef91726e325f541b88c7ae72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e4375f5_d04f1f58",
+        "filename": "init/epoll.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-17T21:47:33Z",
+      "side": 1,
+      "message": "I don\u0027t trust std::chrono::*::max() at all, given that any arithmetic with std::chrono blows up if you\u0027re \u003e +/- 292 years.  In a perfect world, it would saturate towards a std::chrono::infinity (abseil does this), but alas...\n\nI\u0027m using std::optional\u003cstd::chrono::milliseconds\u003e already in uevent_listener.cpp and similar with RestartProcesses()\n* No option \u003d no timeout\n* 0ms \u003d 0ms timeout aka immediate\n* non-0ms timeout \u003d that timeout.",
+      "range": {
+        "startLine": 70,
+        "startChar": 17,
+        "endLine": 70,
+        "endChar": 57
+      },
+      "revId": "536064a461156c00ef91726e325f541b88c7ae72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b6824ba_2fc86944",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-17T21:47:33Z",
+      "side": 1,
+      "message": "One less global, yay.",
+      "revId": "536064a461156c00ef91726e325f541b88c7ae72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6a349be_aa1f03fb",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-17T21:47:33Z",
+      "side": 1,
+      "message": "In the future, assuming this is a class and testable, you\u0027ll want to have this as a member variable, such that you can have your own epoll handling loop, but for now, I put it here.\n\nIn any case, better as a static here than global to everything.",
+      "revId": "536064a461156c00ef91726e325f541b88c7ae72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c3fdd43_ddac53b5",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-17T21:47:33Z",
+      "side": 1,
+      "message": "In retrospect, we probably should always have had a fatal log in this case (however improbably it may be)",
+      "revId": "536064a461156c00ef91726e325f541b88c7ae72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
