@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "253c72c0_3b4eddc3",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-18T16:04:39Z",
+      "side": 1,
+      "message": "Maybe use std::optional for duration and matched? I made the choice to accept 0ms as the not-set flag, making this less maintainable...",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 65
+      },
+      "revId": "b4ce5e27d5f8c88acab2454ba8e5fb10248258bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecfa87cc_f1b8161d",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-18T16:04:39Z",
+      "side": 1,
+      "message": "Ensure that the last entry is the timeout, whereas we could relax the requirement a but if we allowed _one_ negative entry at any position to set the debounce time?",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 5
+      },
+      "revId": "b4ce5e27d5f8c88acab2454ba8e5fb10248258bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "803f8275_26aa5942",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-18T16:04:39Z",
+      "side": 1,
+      "message": "Getting the CLOCK_BOOTTIME takes a syscall (Pixel devices have vDSO support for it), so we optimize by grabbing it only on an as-need basis to keep this function fast as it could be hot in init\u0027s epoll loop.\n\nI have been accused of taking questionable optimizations before sacrificing some maintainability ...",
+      "range": {
+        "startLine": 331,
+        "startChar": 1,
+        "endLine": 331,
+        "endChar": 73
+      },
+      "revId": "b4ce5e27d5f8c88acab2454ba8e5fb10248258bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
