@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a95a3831_541b9173",
+        "filename": "init/host_init_stubs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-18T22:01:18Z",
+      "side": 1,
+      "message": "keychords.cpp + epoll.cpp added to host build\n\nA second CL is planned to reshape this to bool RegisterKeychord(const std::set\u003cint\u003e\u0026 keycodes) along with HandleKeychord(const std::set\u003cint\u003e\u0026 keycodes). This second CL will make it more difficult to reinstate kernel kechord driver (backup plan).",
+      "parentUuid": "a76b69f2_533b154a",
+      "revId": "2e09ccbb9257a9567ebf4310f977d6b247c73d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b133cda0_32ff5427",
         "filename": "init/keychords.cpp",
         "patchSetId": 1
@@ -54,6 +72,30 @@
       "side": 1,
       "message": "I\u0027m okay with that.  Might as well get this compiled on host now anyway.",
       "parentUuid": "b133cda0_32ff5427",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 43
+      },
+      "revId": "2e09ccbb9257a9567ebf4310f977d6b247c73d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3ec87fc_7e26e1de",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-18T22:01:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bd16f56_24fa3c97",
       "range": {
         "startLine": 156,
         "startChar": 0,
@@ -113,6 +155,30 @@
     },
     {
       "key": {
+        "uuid": "0a596417_f602cbd7",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-18T22:01:18Z",
+      "side": 1,
+      "message": "Moved all checking to ParseKeycodes()",
+      "parentUuid": "03d2e25b_479632e4",
+      "range": {
+        "startLine": 290,
+        "startChar": 8,
+        "endLine": 290,
+        "endChar": 54
+      },
+      "revId": "2e09ccbb9257a9567ebf4310f977d6b247c73d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9bfbeb4a_a18e19a1",
         "filename": "init/keychords_handler.cpp",
         "patchSetId": 1
@@ -163,6 +229,24 @@
       "revId": "2e09ccbb9257a9567ebf4310f977d6b247c73d5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d08940dd_6e606539",
+        "filename": "init/keychords_handler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-18T22:01:18Z",
+      "side": 1,
+      "message": "Could not move HandleKeychord to init.cpp. Dropped keychord_handler.h since the definition can remain in keychord.h as the _proper_ interface definition.",
+      "parentUuid": "b75a7269_5146f8aa",
+      "revId": "2e09ccbb9257a9567ebf4310f977d6b247c73d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -225,6 +309,30 @@
       "side": 1,
       "message": "The main refactor was to extricate service awareness from keychord.\n\nDropping keychord_id makes allowing discovery of keychord driver if available as \u0027backup plan\u0027 more difficult (still can be abstracted in keychord.cpp though). I would like to see 1mo of actual testing in a _real_ population before I can abandon a keychord driver backup plan.\n\nstd::set ... I just learned something new today :-) Thanks.\n\nI think I\u0027d prefer to split some of this in a follow-up patch, will think about it and merge the ideas I am comfortable introducing now once I get to it.",
       "parentUuid": "50be8c65_124261ed",
+      "range": {
+        "startLine": 1176,
+        "startChar": 34,
+        "endLine": 1176,
+        "endChar": 68
+      },
+      "revId": "2e09ccbb9257a9567ebf4310f977d6b247c73d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "532c47bd_67203551",
+        "filename": "init/service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-18T22:01:18Z",
+      "side": 1,
+      "message": "Moved \u0027back\u0027 to initialization, made the scanning of the services part of the Lambda in init instead.\n\nA second (TBI) CL will move towards std::set for all keychords (renaming GetKeychordId to RegisterKeychord)",
+      "parentUuid": "79c8171d_730ad838",
       "range": {
         "startLine": 1176,
         "startChar": 34,
