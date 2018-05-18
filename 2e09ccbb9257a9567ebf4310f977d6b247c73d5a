@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b133cda0_32ff5427",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-18T15:45:30Z",
+      "side": 1,
+      "message": "This part of the change not strictly needed, but will allow (future) testing on local linux host.",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 43
+      },
+      "revId": "2e09ccbb9257a9567ebf4310f977d6b247c73d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2258ce9d_264e30c4",
+        "filename": "init/service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-18T15:45:30Z",
+      "side": 1,
+      "message": "This reaches into keychords.cpp, does this bother you wrt service class independence?\n\nI see a possible minor advantage to this, each keychodes() evaluation is distributed during parsing where file I/O can bury it as reading is the blocker and not CPU. We are more CPU bound evaluateding queued up ActivityManager operations when it is done in the epoll loop.",
+      "range": {
+        "startLine": 1176,
+        "startChar": 34,
+        "endLine": 1176,
+        "endChar": 68
+      },
+      "revId": "2e09ccbb9257a9567ebf4310f977d6b247c73d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
