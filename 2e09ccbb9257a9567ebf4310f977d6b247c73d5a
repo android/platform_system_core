@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a76b69f2_533b154a",
+        "filename": "init/host_init_stubs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-18T19:01:16Z",
+      "side": 1,
+      "message": "Probably better to include keychords.cpp in the host build instead.  There\u0027s nothing preventing this, right?\n\nAlternatively, my comment in service.cpp gives a way to not have this function in its current form.",
+      "revId": "2e09ccbb9257a9567ebf4310f977d6b247c73d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b133cda0_32ff5427",
         "filename": "init/keychords.cpp",
         "patchSetId": 1
@@ -25,6 +42,70 @@
     },
     {
       "key": {
+        "uuid": "7bd16f56_24fa3c97",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-18T19:01:16Z",
+      "side": 1,
+      "message": "I\u0027m okay with that.  Might as well get this compiled on host now anyway.",
+      "parentUuid": "b133cda0_32ff5427",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 43
+      },
+      "revId": "2e09ccbb9257a9567ebf4310f977d6b247c73d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16504e69_fbc3637d",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-18T19:01:16Z",
+      "side": 1,
+      "message": "I know this code was here before, but it\u0027s probably better in Service::ParseKeycodes() since that way host init verifier (which at some point I\u0027ll get enabled...) will catch invalid keycode entries.",
+      "range": {
+        "startLine": 290,
+        "startChar": 8,
+        "endLine": 290,
+        "endChar": 54
+      },
+      "revId": "2e09ccbb9257a9567ebf4310f977d6b247c73d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bfbeb4a_a18e19a1",
+        "filename": "init/keychords_handler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-18T19:01:16Z",
+      "side": 1,
+      "message": "Might as well just put this in init.cpp?  It isn\u0027t really a stand-alone piece of code nor anything that we\u0027ll test separately.",
+      "revId": "2e09ccbb9257a9567ebf4310f977d6b247c73d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2258ce9d_264e30c4",
         "filename": "init/service.cpp",
         "patchSetId": 1
@@ -36,6 +117,30 @@
       "writtenOn": "2018-05-18T15:45:30Z",
       "side": 1,
       "message": "This reaches into keychords.cpp, does this bother you wrt service class independence?\n\nI see a possible minor advantage to this, each keychodes() evaluation is distributed during parsing where file I/O can bury it as reading is the blocker and not CPU. We are more CPU bound evaluateding queued up ActivityManager operations when it is done in the epoll loop.",
+      "range": {
+        "startLine": 1176,
+        "startChar": 34,
+        "endLine": 1176,
+        "endChar": 68
+      },
+      "revId": "2e09ccbb9257a9567ebf4310f977d6b247c73d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50be8c65_124261ed",
+        "filename": "init/service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-18T19:01:16Z",
+      "side": 1,
+      "message": "I was figuring that there\u0027d be a similar loop that would grab all of the services\u0027 keychords and assign the keychord_id\u0027s then initialize the input devices.  Just that it\u0027d be refactored a bit to not necessarily have keychords.cpp depend on service.cpp.  For example have KeychordInit take a map of keychord_id to keychords?  \n\nAs it stands right now, this looks like it may work for the late_import case, but there\u0027s no call to re-initialize the input device EVIOCSMASK, so it will miss newly added keycodes.\n\nAlso, keychord_id isn\u0027t really needed anymore.  The costs to search for a service that has a given set of keychords is essentially just as cheap as searching for a service with a given keychord_id, especially for how in-often this search needs to happen.  On the plus side here too, we\u0027d fix the \u0027multiple services having the same keychord\u0027 issue (for better or for worse).\n\nIn the end, it may be easier code across the board (and solving the late_import and multiple services with a keychord case) if the code were something like this:\n\n\u003cSometime after late_init\u003e\nloop through all services and create a list of keychords.  Don\u0027t assign keychord IDs.  Pass this list of keychords into KeychordInit() (or a Keychord class).  Have KeychordEntries::keycodes a std::set\u003cint\u003e for comparison purposes\n\n\u003cWhenever a keychord is triggered\u003e\nsearch through all services for service(s) with a given keychord entry and start them",
+      "parentUuid": "2258ce9d_264e30c4",
       "range": {
         "startLine": 1176,
         "startChar": 34,
