@@ -22,6 +22,30 @@
       "revId": "ca2d572e05255f8c9b6b004b51e7a0471184d1e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ba80f88_b272d9d4",
+        "filename": "libunwindstack/ElfInterface.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-05-21T21:04:04Z",
+      "side": 1,
+      "message": "Yeah, I can drop the whole CL, actually, and just use the loop locally. The naming in LoadInfo could use some improvement, IMHO. Why was vaddr \"translated\" to \"table_offset?\" Not super intuitive.\n\nUse: to figure out addresses from absolute address + map-begin. GetFuncName requires that, as LoadBias isn\u0027t correct for cases where the segment isn\u0027t loaded at 0 (just chat with yabinc about simpleperf).",
+      "parentUuid": "ae1eaae4_ad26abd1",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 18
+      },
+      "revId": "ca2d572e05255f8c9b6b004b51e7a0471184d1e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
