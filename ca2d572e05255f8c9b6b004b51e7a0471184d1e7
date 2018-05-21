@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae1eaae4_ad26abd1",
+        "filename": "libunwindstack/ElfInterface.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-05-21T20:51:55Z",
+      "side": 1,
+      "message": "It\u0027s not clear how this would be used. I think you could modify this slightly:\n\nif (!pt_loads_.empty()) {\n  uint64_t smallest \u003d std::numeric_limits\u003cuint64_t\u003e::max();\n  for (const auto\u0026 load_info : pt_loads) {\n    if (load_info.table_offset \u003c smallest) {\n      smallest \u003d load_info.table_offset;\n    }\n  }\n  return smallest;\n}\n\nI assume in most cases, the init code has been called and the pt_loads_ values have been read and saved.",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 18
+      },
+      "revId": "ca2d572e05255f8c9b6b004b51e7a0471184d1e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
