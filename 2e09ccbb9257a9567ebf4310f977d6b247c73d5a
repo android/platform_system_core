@@ -250,6 +250,24 @@
     },
     {
       "key": {
+        "uuid": "4f40c0a0_7a128958",
+        "filename": "init/keychords_handler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-21T17:44:55Z",
+      "side": 1,
+      "message": "You should have KeychordInit() take a function pointer (or likely preferably, a std::function) that it stores for HandleKeychord().  That will make it a more easily tested interface, instead of having to rely on the right HandleKeychord() symbol being included in the test executable.\n\nIf you do that, then there\u0027ll be no problem moving this to init.cpp.  It\u0027ll be a static function there and passed as a pointer to KeychordInit().\n\nYou won\u0027t need to do anything with host_init_stubs.cpp in this case either.",
+      "parentUuid": "d08940dd_6e606539",
+      "revId": "2e09ccbb9257a9567ebf4310f977d6b247c73d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2258ce9d_264e30c4",
         "filename": "init/service.cpp",
         "patchSetId": 1
