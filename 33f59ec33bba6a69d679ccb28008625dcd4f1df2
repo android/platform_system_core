@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "df0df658_8d7d1f8a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-05-21T20:15:38Z",
+      "side": 1,
+      "message": "since \"fastboot\" already causes a lot of confusion:\n* the fastboot command-line tool\n* the fastboot protocol\n* the bootloader fastboot mode\n\nlet\u0027s try to be careful and consistently say \"fastbootd\" rather than add yet another overloaded meaning :-)\n\n(you had me excited for a minute: i thought you were actually going to move the fastboot command-line tool over to the adb backend.)",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "33f59ec33bba6a69d679ccb28008625dcd4f1df2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a3837c4_621d60b2",
         "filename": "adb/Android.bp",
         "patchSetId": 2
@@ -13,6 +36,24 @@
       "writtenOn": "2018-05-16T21:48:35Z",
       "side": 1,
       "message": "add a daemon/include directory to export instead, since you\u0027re moving usb.h away from usb.cpp anyway?",
+      "revId": "33f59ec33bba6a69d679ccb28008625dcd4f1df2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ac32b9d_04b6c0d4",
+        "filename": "adb/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-05-21T20:15:38Z",
+      "side": 1,
+      "message": "...and make sure you add a layer like adb-daemon so that it\u0027s #include \"adb-daemon/whatever.h\" at the call sites. we try not to export header files that aren\u0027t in a subdirectory. (and the subdirectory should try to be globally unique --- \"daemon\" would be insufficient.)\n\n[jmgao\u0027s \"adbd\" suggestion is fine too. but not nothing, nor \"adb\"... they\u0027re too ambiguous.]",
+      "parentUuid": "5a3837c4_621d60b2",
       "revId": "33f59ec33bba6a69d679ccb28008625dcd4f1df2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
