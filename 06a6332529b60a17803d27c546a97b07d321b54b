@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4afac47_a0653b1e",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-21T17:22:11Z",
+      "side": 1,
+      "message": "When is errno here useful?  This case only happens once timeout_ms \u003c\u003d0, but there aren\u0027t any system calls that would set errno when that becomes true.  The only meaningful system call is poll() and there is already a PLOG above if it fails and sets errno.",
+      "revId": "06a6332529b60a17803d27c546a97b07d321b54b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be6c12a2_c5ea4a53",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-21T17:22:11Z",
+      "side": 1,
+      "message": "You don\u0027t need a tailing space here or below.\n\nDo you need this print though?  PollIn() already handles its own logging on failure.",
+      "range": {
+        "startLine": 369,
+        "startChar": 56,
+        "endLine": 369,
+        "endChar": 57
+      },
+      "revId": "06a6332529b60a17803d27c546a97b07d321b54b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ebeb6f6_054a98fa",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-21T17:22:11Z",
+      "side": 1,
+      "message": "This looks like a good log to add.\n\nWithout the trailing space though, and it would be better to fully type \u0027error\u0027.",
+      "revId": "06a6332529b60a17803d27c546a97b07d321b54b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da7daf19_087fd2e0",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-21T17:22:11Z",
+      "side": 1,
+      "message": "Same question regarding errno here.  Given the above log added if recv() fails and the logs within PollIn() when its system calls fail, the only paths that reach here with errno set are paths where a PLOG statement has already been issued.  \n\nA LOG() here would be fine, but not PLOG().",
+      "revId": "06a6332529b60a17803d27c546a97b07d321b54b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
