@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "2ad39e12_afdfe041",
+        "filename": "init/init.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-05-22T15:52:48Z",
+      "side": 1,
+      "message": "why? this way all the code is a little uglier (and more error prone), but with no real benefit. why do you care if the gtest aborts? that\u0027s still a failure. (and if you don\u0027t run with the superior bionic gtest runner that does the automatic isolation, that\u0027s a one-line makefile change.)",
+      "parentUuid": "34c93966_118dba63",
+      "revId": "6c6ec7240c561934437b2f23065bcd9a3e9811f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "486b8885_fbcb17bf",
         "filename": "init/keychords.cpp",
         "patchSetId": 6
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "+1 the point here is that this will become a class in a future CL and it\u0027ll be better for testing, etc to provide the pointer than having a singleton.",
       "parentUuid": "ea699f2c_cf6a76c9",
+      "revId": "6c6ec7240c561934437b2f23065bcd9a3e9811f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fafa8e99_d3fc3d0c",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-05-22T15:52:48Z",
+      "side": 1,
+      "message": "if Keychord actually owned the Epoll, sure. but that would be weird in a different: the Epoll (which on reflection should probably have been the Epoll*er*, since it\u0027s a class with behavior rather than just data) isn\u0027t just used for keychords.\n\nmoving a pointer to some on-stack data into a class is no better than the global. there are two things that are weird here:\n\n* a non-stack pointer to an on-stack object (even though that particular piece of stack is currently long-lived)\n\n* another class persistently keeping a pointer to that\n\nseems like if it\u0027s needed \"globally\", it should be \"global\" itself: either as a singleton or via something like Init::GetPoller() on a hypothetical Init class (which makes more sense if you have a bunch of other \"globals\", like ART does).",
+      "parentUuid": "bc3b720b_6795adf4",
       "revId": "6c6ec7240c561934437b2f23065bcd9a3e9811f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
