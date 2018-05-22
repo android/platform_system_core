@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "cd882c4b_84cb8d7f",
+        "filename": "init/init.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-22T16:47:15Z",
+      "side": 1,
+      "message": "I figure if we\u0027re taking the effort to put this into a class, then that class shouldn\u0027t have the responsibility of controlling the life of the overall application.  The test highlights the example.  Sure a gtest abort is still a failure, but isn\u0027t that why we have ASSERT anyway?  To prevent crashes when we know we\u0027re heading into a failing state?\n\nThis all should just be exceptions anyway.  Open shouldn\u0027t exist, the constructor should call epoll_create1() and throw on failure.",
+      "parentUuid": "2ad39e12_afdfe041",
+      "revId": "6c6ec7240c561934437b2f23065bcd9a3e9811f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "486b8885_fbcb17bf",
         "filename": "init/keychords.cpp",
         "patchSetId": 6
@@ -137,6 +155,24 @@
       "side": 1,
       "message": "if Keychord actually owned the Epoll, sure. but that would be weird in a different: the Epoll (which on reflection should probably have been the Epoll*er*, since it\u0027s a class with behavior rather than just data) isn\u0027t just used for keychords.\n\nmoving a pointer to some on-stack data into a class is no better than the global. there are two things that are weird here:\n\n* a non-stack pointer to an on-stack object (even though that particular piece of stack is currently long-lived)\n\n* another class persistently keeping a pointer to that\n\nseems like if it\u0027s needed \"globally\", it should be \"global\" itself: either as a singleton or via something like Init::GetPoller() on a hypothetical Init class (which makes more sense if you have a bunch of other \"globals\", like ART does).",
       "parentUuid": "bc3b720b_6795adf4",
+      "revId": "6c6ec7240c561934437b2f23065bcd9a3e9811f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a32b6c4_6f1175da",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-22T16:47:15Z",
+      "side": 1,
+      "message": "The stack/global-ness goes away in subsequent CLs.  The Keychord class should be a stack variable in init as well, so lifetimes is sane there.\n\nI am very much trying to avoid a back-reference to Init, since these classes should be testable on their own.  \n\nI am trying to avoid a global epoll as it is stateful and that also complicates any tests.  I guess the bionic test runner avoids that, but I always considered that to be a work around C code being annoyingly stateful, vs C++ where classes can be instantiated and passed to their users.",
+      "parentUuid": "fafa8e99_d3fc3d0c",
       "revId": "6c6ec7240c561934437b2f23065bcd9a3e9811f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
