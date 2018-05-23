@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b812f6bc_1dd70def",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-05-23T18:50:22Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "3c9b5663_ac264abd",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 17
+      },
+      "revId": "5836b2cd85c43678efa744bb58a98b2b8ef1a2af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dffa1814_d29bbf14",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "c23f2198_16049a26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-05-23T18:50:22Z",
+      "side": 1,
+      "message": "Woah, glibc is bad!",
+      "parentUuid": "dffa1814_d29bbf14",
+      "revId": "5836b2cd85c43678efa744bb58a98b2b8ef1a2af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "751ac9ef_bed7aace",
         "filename": "libsysutils/src/SocketListener.cpp",
         "patchSetId": 2
@@ -53,6 +95,30 @@
       "writtenOn": "2018-05-23T16:07:51Z",
       "side": 1,
       "message": "missing lock.",
+      "range": {
+        "startLine": 156,
+        "startChar": 24,
+        "endLine": 156,
+        "endChar": 32
+      },
+      "revId": "5836b2cd85c43678efa744bb58a98b2b8ef1a2af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3c555ec_c7075807",
+        "filename": "libsysutils/src/SocketListener.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-05-23T18:50:22Z",
+      "side": 1,
+      "message": "oops! Done.\n\nI\u0027ll remember to add thread annotations while converting to std::mutex.",
+      "parentUuid": "751ac9ef_bed7aace",
       "range": {
         "startLine": 156,
         "startChar": 24,
@@ -85,6 +151,30 @@
       "revId": "5836b2cd85c43678efa744bb58a98b2b8ef1a2af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b4af739_a22197d2",
+        "filename": "libsysutils/src/SocketListener.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-05-23T18:50:22Z",
+      "side": 1,
+      "message": "There\u0027s no need to set POLLHUP in events, according to the manpage.\n\nAlso, I think there\u0027s no need to check explicitly for POLLHUP because a a hungup socket will also be readable, and any read() will signal EOF (which we must have the same way as we did before with select()).",
+      "parentUuid": "309fbb9b_a1dab1b9",
+      "range": {
+        "startLine": 158,
+        "startChar": 53,
+        "endLine": 158,
+        "endChar": 59
+      },
+      "revId": "5836b2cd85c43678efa744bb58a98b2b8ef1a2af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
