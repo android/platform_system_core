@@ -33,6 +33,24 @@
       "revId": "5e03798f2b583081e352d03c48a0c2e43f17fc37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d5b8935_c19dd39c",
+        "filename": "init/keychords_test.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-24T17:31:03Z",
+      "side": 1,
+      "message": "Actually, did not _test_ if this occurred during _these_ test sequences, but this same copy and pasted code from other gTests I have, this has happened and thus I am reflecting some FUD. I have (long since) confirmed that a transitory virtual event source can be do-instantiated in the kernel before the delivery of the queued key (the extreme case of popping in and out without tracking feedback, basically if you want to Koala (eats shoots and leaves)). The driver is instantiated asynchronously, although (as demonstrated here) 1ms is more than enough of a delay to guarantee it exists.\n\nI will explore how much of a delay, if any, I require if I de-instantiated for each test.\n\nNB: The advantage of a global EventHandler is we do not burn through /dev/input/inputXXXX node names. On the flip side maybe I should consider adding a test that _does_ burn through node names to test the limits/scaling of the Keychords interface?",
+      "parentUuid": "39804c56_f248e092",
+      "revId": "5e03798f2b583081e352d03c48a0c2e43f17fc37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
