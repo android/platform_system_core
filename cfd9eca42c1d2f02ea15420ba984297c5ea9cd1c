@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "45cbcf6f_ce84323b",
+        "filename": "init/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-24T20:48:53Z",
+      "side": 1,
+      "message": "Add comment about the maximum timeout allowed.\n\nMakes sense to set this to 30000ms, which would have the side-effect of only requiring a more space efficient int16_t to store keycodes and timeouts.",
+      "range": {
+        "startLine": 227,
+        "startChar": 47,
+        "endLine": 227,
+        "endChar": 55
+      },
+      "revId": "cfd9eca42c1d2f02ea15420ba984297c5ea9cd1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5fd5bbf2_07a4fb46",
         "filename": "init/init.cpp",
         "patchSetId": 6
@@ -18,6 +41,53 @@
         "startChar": 37,
         "endLine": 831,
         "endChar": 51
+      },
+      "revId": "cfd9eca42c1d2f02ea15420ba984297c5ea9cd1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d55d8ce4_5fcba2cd",
+        "filename": "init/init.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-24T20:48:53Z",
+      "side": 1,
+      "message": "CheckAndCalculateNextIfLess",
+      "parentUuid": "5fd5bbf2_07a4fb46",
+      "range": {
+        "startLine": 831,
+        "startChar": 37,
+        "endLine": 831,
+        "endChar": 51
+      },
+      "revId": "cfd9eca42c1d2f02ea15420ba984297c5ea9cd1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a91e0543_8d91ab7e",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-24T20:48:53Z",
+      "side": 1,
+      "message": "because routine is _hot_\n\nif (wait \u0026\u0026 (wait \u003c\u003d 1ms)) return wait;\n\nBasically bypass checking if called while am has a lot queued, we can defer this calculation and spawning of callback function.\n\nthe check could be _outside_ this function in init.cpp where the knowledge of am queue is better understood though. Comment here to indicate that responsibility in the caller.",
+      "range": {
+        "startLine": 303,
+        "startChar": 36,
+        "endLine": 303,
+        "endChar": 37
       },
       "revId": "cfd9eca42c1d2f02ea15420ba984297c5ea9cd1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -42,6 +112,24 @@
     },
     {
       "key": {
+        "uuid": "4edbd0bb_5415451b",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-24T20:48:53Z",
+      "side": 1,
+      "message": "I commented about this earlier. Should have turned it into a comment with details.\n\nThis is a nod to the fact that _only_ pixel devices have vdso access to CLOCK_BOOTTIME, in android common and current upstream it is a system call. So yes, I expect this routine to be _hot_ and as such do not want to incur the 300ns++ penalty when calling through to this on non-pixel devices.",
+      "parentUuid": "31df9ae4_f6ee1838",
+      "revId": "cfd9eca42c1d2f02ea15420ba984297c5ea9cd1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "144f5eae_51804cb4",
         "filename": "init/keychords.cpp",
         "patchSetId": 6
@@ -59,6 +147,24 @@
     },
     {
       "key": {
+        "uuid": "13c1418f_c21e60d5",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-24T20:48:53Z",
+      "side": 1,
+      "message": ":-)",
+      "parentUuid": "144f5eae_51804cb4",
+      "revId": "cfd9eca42c1d2f02ea15420ba984297c5ea9cd1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3a953ef0_59258df2",
         "filename": "init/service.cpp",
         "patchSetId": 6
@@ -70,6 +176,24 @@
       "writtenOn": "2018-05-24T01:57:08Z",
       "side": 1,
       "message": "I\u0027d pull this out of the loop instead of depending on which iteration of the loop it is.",
+      "revId": "cfd9eca42c1d2f02ea15420ba984297c5ea9cd1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11aac9a2_86a298eb",
+        "filename": "init/service.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-24T20:48:53Z",
+      "side": 1,
+      "message": "Not sure if it would be easier to maintain? Although I could add another test for _missing_ keycodes because of the complication of last entry can be timeout _only_ if there are 2 or more arguments. The missing keycodes check should be part of the restructure CL and not here. I assume you would want to see something like this instead?\n\n   if (args.size() \u003c\u003d 1) return Error() \u003c\u003c \"missing keycode arguments\";\n   int code;\n   std::size_t i \u003d 1;\n   do {\n        if (!ParseInt(args[i], \u0026code, 0, KEY_MAX)) return Error() \u003c\u003c \"invalid keycode: \" \u003c\u003c args[i];\n        keycodes_.emplace(code);\n        if (++i \u003e\u003d args.size()) return Success();\n    } while (i \u003c args.size () - 1);\n    if (!ParseInt(args[i], \u0026code, -KEYCODES_MAXIMUM_TIMEOUT, KEY_MAX)) return Error() \u003c\u003c \"invalid keycode (or timeout): \" \u003c\u003c args[i];\n    keycodes_.emplace(code);\n    return Success();",
+      "parentUuid": "3a953ef0_59258df2",
       "revId": "cfd9eca42c1d2f02ea15420ba984297c5ea9cd1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
