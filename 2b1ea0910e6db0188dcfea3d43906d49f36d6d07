@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e8b39e51_e09a3429",
+        "filename": "libunwindstack/Maps.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-05-24T03:02:20Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment. This is a MapInfo structure always created through a new (see the Parse function).\n\nFrom malloc debug, yes this whole chain can be triggered from a malloc, but there are all sorts of news in that path. The malloc debug code protects itself from recursive malloc calls already.",
+      "parentUuid": "92cb4f45_39826b71",
+      "range": {
+        "startLine": 136,
+        "startChar": 41,
+        "endLine": 137,
+        "endChar": 28
+      },
+      "revId": "2b1ea0910e6db0188dcfea3d43906d49f36d6d07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa0f2637_75b6b384",
         "filename": "libunwindstack/include/unwindstack/LocalUnwinder.h",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e2490720_484996e5",
+        "filename": "libunwindstack/include/unwindstack/LocalUnwinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-05-24T03:02:20Z",
+      "side": 1,
+      "message": "Good point, renamed.",
+      "parentUuid": "aa0f2637_75b6b384",
+      "range": {
+        "startLine": 69,
+        "startChar": 7,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "2b1ea0910e6db0188dcfea3d43906d49f36d6d07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1367b8c3_3007f561",
         "filename": "libunwindstack/include/unwindstack/LocalUnwinder.h",
         "patchSetId": 3
@@ -59,6 +107,24 @@
       "writtenOn": "2018-05-24T01:45:10Z",
       "side": 1,
       "message": "not a set?",
+      "revId": "2b1ea0910e6db0188dcfea3d43906d49f36d6d07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f25914c0_4c9ad661",
+        "filename": "libunwindstack/include/unwindstack/LocalUnwinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-05-24T03:02:20Z",
+      "side": 1,
+      "message": "The idea is that this is immutable because this whole object is designed to be created once and then have Unwind many times. I didn\u0027t see a reason to add a setter yet.",
+      "parentUuid": "1367b8c3_3007f561",
       "revId": "2b1ea0910e6db0188dcfea3d43906d49f36d6d07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
