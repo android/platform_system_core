@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3e677cf_e4556598",
+        "filename": "libsysutils/src/SocketListener.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2018-05-24T07:50:18Z",
+      "side": 1,
+      "message": "I think if (!mListen) this leaves one trailing pollfd struct with .fd \u003d\u003d 0 in the list that gets passed to poll(2) below...maybe?",
+      "range": {
+        "startLine": 164,
+        "startChar": 8,
+        "endLine": 164,
+        "endChar": 9
+      },
+      "revId": "55100cfe579161a2b60faf20b49b1dd20d0afc9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8aeb9ab_15471437",
+        "filename": "libsysutils/src/SocketListener.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2018-05-24T07:50:18Z",
+      "side": 1,
+      "message": "This branch won\u0027t ever run?",
+      "range": {
+        "startLine": 236,
+        "startChar": 8,
+        "endLine": 236,
+        "endChar": 18
+      },
+      "revId": "55100cfe579161a2b60faf20b49b1dd20d0afc9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba2c4ef6_ef9c4720",
+        "filename": "libsysutils/src/SocketListener.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2018-05-24T07:50:18Z",
+      "side": 1,
+      "message": "maybe move up one line (see below)",
+      "range": {
+        "startLine": 251,
+        "startChar": 38,
+        "endLine": 251,
+        "endChar": 39
+      },
+      "revId": "55100cfe579161a2b60faf20b49b1dd20d0afc9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feb2285e_1d133517",
+        "filename": "libsysutils/src/SocketListener.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2018-05-24T07:50:18Z",
+      "side": 1,
+      "message": "I might put this line above the lock, so that when we want to switch to lock_guard/mutex it looks like:\n\n    std::vector\u003cSocketClient*\u003e clients;\n    {\n        std::lock_guard\u003cstd::mutex\u003e lock(mClientsLock);\n        ...\n    }",
+      "range": {
+        "startLine": 273,
+        "startChar": 38,
+        "endLine": 273,
+        "endChar": 39
+      },
+      "revId": "55100cfe579161a2b60faf20b49b1dd20d0afc9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
