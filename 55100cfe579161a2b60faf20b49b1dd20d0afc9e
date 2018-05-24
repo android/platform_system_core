@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "567361c1_22f02d56",
+        "filename": "libsysutils/src/SocketListener.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-05-24T14:19:46Z",
+      "side": 1,
+      "message": "Yes, it leaves an empty slot in the backing buffer allocated via fds.reserve(), but fds.size() will be still the correct value to pass to poll() below.\n\nBy the way, push_back() continuously checks if the vector needs to be extended; it might be faster to resize() the vector once and then fill-in the slots via operator[]. I\u0027ll keep this in mind in the upcoming changes.",
+      "parentUuid": "d3e677cf_e4556598",
+      "range": {
+        "startLine": 164,
+        "startChar": 8,
+        "endLine": 164,
+        "endChar": 9
+      },
+      "revId": "55100cfe579161a2b60faf20b49b1dd20d0afc9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8aeb9ab_15471437",
         "filename": "libsysutils/src/SocketListener.cpp",
         "patchSetId": 6
