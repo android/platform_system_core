@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fd5bbf2_07a4fb46",
+        "filename": "init/init.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-24T01:57:08Z",
+      "side": 1,
+      "message": "I\u0027d rather this were named something different and on its own line.  The name should make it clear that this will invoke services if the timeout has expired and not just that its calculating a wait.",
+      "range": {
+        "startLine": 831,
+        "startChar": 37,
+        "endLine": 831,
+        "endChar": 51
+      },
+      "revId": "cfd9eca42c1d2f02ea15420ba984297c5ea9cd1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31df9ae4_f6ee1838",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-24T01:57:08Z",
+      "side": 1,
+      "message": "I don\u0027t understand this line.  Why isn\u0027t now just always set to boot_clock::now()?  Are you trying to save on the call to clock_gettime()?  Is it that much of a penalty?",
+      "revId": "cfd9eca42c1d2f02ea15420ba984297c5ea9cd1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "144f5eae_51804cb4",
+        "filename": "init/keychords.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-24T01:57:08Z",
+      "side": 1,
+      "message": "I saw this on the other CL too.  I get what dancol@ was saying now for his complaints with mine.  handler is std::function with no special things (no pointers, no casts needed, etc), might as well drop the invoke and just use operator().",
+      "revId": "cfd9eca42c1d2f02ea15420ba984297c5ea9cd1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a953ef0_59258df2",
+        "filename": "init/service.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-24T01:57:08Z",
+      "side": 1,
+      "message": "I\u0027d pull this out of the loop instead of depending on which iteration of the loop it is.",
+      "revId": "cfd9eca42c1d2f02ea15420ba984297c5ea9cd1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
