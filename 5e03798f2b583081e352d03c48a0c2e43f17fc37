@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1c0b15a_7b2b330e",
+        "filename": "init/keychords_test.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-24T01:43:05Z",
+      "side": 1,
+      "message": "For the sake of include order, I believe it\u0027s okay to consider keychords.h (the header for the file you\u0027re testing here) to be considered a \u0027related header\u0027 and put at the top (and not needing to duplicate its includes here).\n\nAbseil does this for example, https://github.com/abseil/abseil-cpp/blob/master/absl/time/time_test.cc#L15\n\nI do it too, https://cs.corp.google.com/android/system/core/init/service_test.cpp?q\u003dfile:service_test.cpp\u0026sq\u003dpackage:%5Eandroid$\u0026dr\u0026l\u003d17",
+      "revId": "5e03798f2b583081e352d03c48a0c2e43f17fc37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39804c56_f248e092",
+        "filename": "init/keychords_test.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-24T01:43:05Z",
+      "side": 1,
+      "message": "Is this true?\n\nWhat about registering the epoll handlers and calling the rest of initialize?\n\nI\u0027d rather the tests didn\u0027t share state.  Registering a new epoll handler and iterating through the input devices per test shouldn\u0027t be too costly and should clean this up.\n\nIf you go down that route, you could put a lot of the initialization and the test functions into its own class.  That\u0027d make it clear that you\u0027d start each test with a fresh state, since you\u0027d instantiate a new class for each test.",
+      "revId": "5e03798f2b583081e352d03c48a0c2e43f17fc37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
