@@ -99,6 +99,47 @@
     },
     {
       "key": {
+        "uuid": "38d95181_94c1c906",
+        "filename": "init/keychords_test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-25T20:20:55Z",
+      "side": 1,
+      "message": "Always test assumptions. Failure here invalidates all following tests. (Test used to check the running init, and if no chords were configured for the platform, then we would bail clearly; I reserve the right to add tests that also check the running init)\n\nThere will be no inotify fd if the chords are not accepted/registered, and no error was propagated. This is an end-to-end check to ensure that the basic class assumptions work, because all test that follow depend on this. if we hand chords, that we expect to see inotify.\n\nRemember, we added inotify support in a followup CL, so if someone cherry-picked keychord CL w/o inotify CL followup, we want to fail.\n\nI wanted to also check that _no_ inotify exists if no chords are supplied, but _forgot_ about that test and will add it.",
+      "parentUuid": "98cd6d3f_c8886db2",
+      "revId": "2ef1fae10123523d23ad21eaec84a00e17a55c85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a161c909_94a31ed3",
+        "filename": "init/keychords_test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-25T20:20:55Z",
+      "side": 1,
+      "message": "probably misnamed given we are testing our _own_ fds, not inits ...",
+      "range": {
+        "startLine": 213,
+        "startChar": 16,
+        "endLine": 213,
+        "endChar": 30
+      },
+      "revId": "2ef1fae10123523d23ad21eaec84a00e17a55c85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27e73695_ae1e0253",
         "filename": "init/keychords_test.cpp",
         "patchSetId": 8
