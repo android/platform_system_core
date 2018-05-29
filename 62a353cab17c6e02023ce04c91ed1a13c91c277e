@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7c63fad_b2628a66",
+        "filename": "init/service.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-05-29T16:29:07Z",
+      "side": 1,
+      "message": "NB: This change is not strictly needed this \u0027pass\u0027, it benefits the following cases:\n\n1) an optimization that guarantees one entry for identical set of keys (simulates std::set behavior but in a simpler std::vector class) but is a can-not-happen (academic at best).\n2) ensures that a negative value for timeout in following CL is first and easy to find (future proofing).\n3) places a (soft) restriction that all other composers (gTest in future CL) should also be in sorted order, when this is ultimately a Keychord class requirement and a imposition on callers.\n\nAs noted in a previous (unanswered) comment, maybe parsing/validation/sorting should be part of the Keycord\u0027s class?",
+      "range": {
+        "startLine": 552,
+        "startChar": 12,
+        "endLine": 552,
+        "endChar": 95
+      },
+      "revId": "62a353cab17c6e02023ce04c91ed1a13c91c277e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
