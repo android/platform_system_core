@@ -22,6 +22,30 @@
       "revId": "959999aa9b001399afd3b3367a9b8cb7c67f5e06",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "341da3f4_cd8e5e35",
+        "filename": "init/service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-29T21:50:00Z",
+      "side": 1,
+      "message": "I was figuring you\u0027d build some data structure with a separate timeout and keycodes, which would lend especially well to doing something like this:\n\nauto end \u003d args.size();\nif (ParseInt(args.back(), \u0026timeout, -INT_MAX, 0)) {\n  end--;\n}\n\nfor (std::size_t i \u003d 1; i \u003c end; i++) {\n  // normal ParseInt for keycodes\n}\n\nIn any case, avoiding position dependent behavior in loops is always a good thing.",
+      "parentUuid": "27636332_21e3606b",
+      "range": {
+        "startLine": 546,
+        "startChar": 0,
+        "endLine": 564,
+        "endChar": 87
+      },
+      "revId": "959999aa9b001399afd3b3367a9b8cb7c67f5e06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

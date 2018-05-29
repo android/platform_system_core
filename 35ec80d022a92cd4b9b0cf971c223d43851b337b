@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec274e07_eb14870b",
+        "filename": "init/init.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-29T21:50:00Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we always check, since we may need to start a service?",
+      "revId": "35ec80d022a92cd4b9b0cf971c223d43851b337b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffdc27fb_1726af35",
+        "filename": "init/keychords.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-05-29T21:50:00Z",
+      "side": 1,
+      "message": "A lot of this could probably be simplified if you had\n\nstd::optional\u003cstd::chrono::milliseconds\u003e duration;\nstd::optional\u003candroid::base::boot_clock::time_point\u003e matched;\n\nYou would be able to get rid of the kDurationOff and kMatchedOff constants, and the checks would be more intuitive,\n\ne.g.\n\ninstead of\n\n        if (e.second.duration !\u003d e.second.kDurationOff) {\n            e.second.matched \u003d android::base::boot_clock::now() + e.second.duration;\n            continue;\n        }\n\nyou\u0027d have\n\n        if (e.second.duration) {\n            e.second.matched \u003d android::base::boot_clock::now() + *e.second.duration;\n            continue;\n        }",
+      "revId": "35ec80d022a92cd4b9b0cf971c223d43851b337b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
