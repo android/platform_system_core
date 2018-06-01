@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7adc1554_abe89cf5",
+        "filename": "libunwindstack/tools/unwind_reg_info.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2018-06-01T23:45:00Z",
+      "side": 1,
+      "message": "I feel here conflicts with https://cs.corp.google.com/android/system/core/libunwindstack/ElfInterface.cpp?type\u003dcs\u0026q\u003dElfInterface.cpp+package:%5Eandroid$\u0026g\u003d0\u0026l\u003d487. That one uses pc - load_bias.\n\nMy understanding is: the start address of a function in FDE can be encoded in more than one way. For example, in my environment, generic_arm64/symbols/system/lib/libbase.so has FDE entries of debug_frame encoded in 0x00, and generic_arm64/symbols/system/lib64/libbase.so has FDE entries of debug_frame encoded in 0x1b. If encoded in 0x00, then using pc is correct; If encoded in 0x1b, then using pc - load_bias is correct.\n\nCan you verify if my idea is wrong? I think at least we should add testcases for both encodings.",
+      "range": {
+        "startLine": 210,
+        "startChar": 41,
+        "endLine": 210,
+        "endChar": 43
+      },
+      "revId": "35c2893c957da08ad801c5f9e5d619fa6e5112f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
