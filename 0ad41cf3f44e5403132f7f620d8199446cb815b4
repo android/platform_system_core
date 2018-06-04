@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a562de48_c34d0b74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-06-04T01:49:52Z",
+      "side": 1,
+      "message": "Did you also run netd_unit_test, netd_integration_test, and the benchmarks in system/netd/tests/benchmarks? If so, please run them, and make sure none of the new error messages you added in this CL, such as \"fd vanished\" appear in the logs.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 47
+      },
+      "revId": "0ad41cf3f44e5403132f7f620d8199446cb815b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0702e33d_5bb1d552",
+        "filename": "libsysutils/src/SocketListener.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-06-04T01:49:52Z",
+      "side": 1,
+      "message": "Storing clients in a map indexed by fd means that if the socket is closed before the entry is removed from the map, a subsequent accept4() could return the same fd number, causing us to overwrite an existing map entry.\n\nI looked at this CL and couldn\u0027t see any uses of decRef() before release(), so I don\u0027t think this can happen. Did you check this while writing the change as well?",
+      "range": {
+        "startLine": 191,
+        "startChar": 12,
+        "endLine": 191,
+        "endChar": 23
+      },
+      "revId": "0ad41cf3f44e5403132f7f620d8199446cb815b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
