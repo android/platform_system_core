@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ddc2cd2a_5f560774",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-06-04T06:12:25Z",
+      "side": 1,
+      "message": "I ran netd_benchmark with and without this patch applied, and all results seem comparable:\n\nSelect: https://paste.googleplex.com/6233622524723200?raw\nPoll: https://paste.googleplex.com/5928896407011328?raw\n\nI ran all benchmarks on a marlin with just one core enabled and clock scaling disabled.\nI did 3 runs of the poll() benchmark to make sure the jitter was in the same order of magnitude of the difference.\n\nThe only tests were poll() seems to be slower than select are:\n\n  DnsFixture/getaddrinfo_log_nothing/real_time/threads:16 +15%\n  DnsFixture/getaddrinfo_log_nothing/real_time/threads:32 +7%\n\nWe should probably come up with narrower microbenchmarks if we want to ensure that this and future changes are a performance win... I could bake this into the unit tests I\u0027m currently writing.\n\nEven if we decide that C10K scalability isn\u0027t something worth pursuing on a mobile device, a microbenchmark would ensure that we don\u0027t accidentally introduce a huge performance regression which which hurts even with a few hundreds sockets.",
+      "parentUuid": "a562de48_c34d0b74",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 47
+      },
+      "revId": "0ad41cf3f44e5403132f7f620d8199446cb815b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0702e33d_5bb1d552",
         "filename": "libsysutils/src/SocketListener.cpp",
         "patchSetId": 7
