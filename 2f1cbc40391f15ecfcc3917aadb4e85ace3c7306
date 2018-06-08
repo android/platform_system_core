@@ -1,0 +1,198 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "234ca119_78557599",
+        "filename": "fs_mgr/include/lp/builder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-08T22:38:26Z",
+      "side": 1,
+      "message": "Only one private: is needed",
+      "revId": "2f1cbc40391f15ecfcc3917aadb4e85ace3c7306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ca52b2d_8ef0afd7",
+        "filename": "fs_mgr/include/lp/builder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-08T22:38:26Z",
+      "side": 1,
+      "message": "Why both of these?  I assume the map is there for performance?  I\u0027d drop it as I doubt look up speed is going to be a significant bottle neck.\n\nYou could then use a unique_ptr or even better just std::vector\u003cPartition\u003e if you do so, which is preferable.  Especially since returning shared_ptr from Add/FindPartition implies that users can store these pointers elsewhere and extend their lifetime, which I doubt is something you\u0027d want to do.  They can just return a raw pointer with the assumption that it\u0027s non-owning.",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 71
+      },
+      "revId": "2f1cbc40391f15ecfcc3917aadb4e85ace3c7306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4faa53c4_e3dc8a4f",
+        "filename": "fs_mgr/include/lp/builder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-08T22:38:26Z",
+      "side": 1,
+      "message": "This seems best as a local variable in Export() instead of a member variable.",
+      "revId": "2f1cbc40391f15ecfcc3917aadb4e85ace3c7306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9e559f8_54c739c0",
+        "filename": "fs_mgr/lp_builder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-08T22:38:26Z",
+      "side": 1,
+      "message": "Is there any benefit in having a more algorithmic approach?  I\u0027d guess fewer extents overall is better?  Perhaps a topic for a further CL though, probably best to submit this as is now, but come back to it if that is worthwhile.",
+      "revId": "2f1cbc40391f15ecfcc3917aadb4e85ace3c7306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b0adac1_4b0c9285",
+        "filename": "fs_mgr/lp_builder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-08T22:38:26Z",
+      "side": 1,
+      "message": "This looks wrong to me.  Shouldn\u0027t this be only adding the Extents based on first_extent_index and num_extents?",
+      "revId": "2f1cbc40391f15ecfcc3917aadb4e85ace3c7306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "670753af_8b97bd70",
+        "filename": "fs_mgr/lp_builder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-08T22:38:26Z",
+      "side": 1,
+      "message": "non-const parameters should be passed as pointers.",
+      "range": {
+        "startLine": 204,
+        "startChar": 36,
+        "endLine": 204,
+        "endChar": 46
+      },
+      "revId": "2f1cbc40391f15ecfcc3917aadb4e85ace3c7306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f019209f_fc41a693",
+        "filename": "fs_mgr/lp_builder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-08T22:38:26Z",
+      "side": 1,
+      "message": "intervals.emplace_back(linear-\u003ephysical_sector(), linear-\u003ephysical_sector() + extent-\u003enum_sectors())\n\n?",
+      "range": {
+        "startLine": 231,
+        "startChar": 12,
+        "endLine": 232,
+        "endChar": 93
+      },
+      "revId": "2f1cbc40391f15ecfcc3917aadb4e85ace3c7306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c003974f_8170d0df",
+        "filename": "fs_mgr/lp_utility.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-08T22:38:26Z",
+      "side": 1,
+      "message": "android::base::ReadFdToString ?\n\nI guess this is taking void* for binary data, but if you could use std::string to store the buffers, you could use the existing code for this.",
+      "revId": "2f1cbc40391f15ecfcc3917aadb4e85ace3c7306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bf04661_9ab56b53",
+        "filename": "fs_mgr/lp_utility.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-08T22:38:26Z",
+      "side": 1,
+      "message": "android::base::WriteStringToFd ?",
+      "revId": "2f1cbc40391f15ecfcc3917aadb4e85ace3c7306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a04b7419_426c2313",
+        "filename": "fs_mgr/lp_writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-08T22:38:26Z",
+      "side": 1,
+      "message": "android::base::WriteStringToFile() ?",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 16
+      },
+      "revId": "2f1cbc40391f15ecfcc3917aadb4e85ace3c7306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
