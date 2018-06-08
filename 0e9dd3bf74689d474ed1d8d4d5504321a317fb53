@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "77cc753d_68dcf0e6",
+        "filename": "fs_mgr/fs_mgr_boot_config.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-08T21:36:26Z",
+      "side": 1,
+      "message": "Yes, empty string before, that is an anti-pattern now :-)\n\nDropping the delimiter means it is now special case to kernel config.\n\nIn that case I can name it std::vector\u003cstd::string\u003e fs_mgr_get_boot_config_parse_kernel(const std::string\u0026 cmdline) ... the dependent patch to deal with - and _ _may- need to be rethought if this is the parser? eg: return is std::vector\u003cstd::pair\u003cstd::string, std::string\u003e\u003e instead with key automatically changed from - to _ when parsed in the second CL.",
+      "parentUuid": "ef8fb4b9_bcd536e8",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 42
+      },
+      "revId": "0e9dd3bf74689d474ed1d8d4d5504321a317fb53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c5d8700_0cb1c8a8",
         "filename": "fs_mgr/fs_mgr_boot_config.cpp",
         "patchSetId": 3
