@@ -22,6 +22,30 @@
       "revId": "35c2893c957da08ad801c5f9e5d619fa6e5112f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fac8d2e_f5f014c1",
+        "filename": "libunwindstack/tools/unwind_reg_info.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-06-08T02:05:28Z",
+      "side": 1,
+      "message": "Yes, you are correct, and this means my handling of load bias values is not really correct.\n\nI\u0027ve uploaded cl:\n\nhttps://android-review.googlesource.com/c/platform/system/core/+/701864\n\nThat should fix this and include these changes.\n\nI\u0027ve also added an offline test that includes a library with only a debug frame that has a fde encoding of 0xb (no pc relative). There are already offline unwinding tests that cover a non-zero load bias with 0x1b fde endcodings.",
+      "parentUuid": "7adc1554_abe89cf5",
+      "range": {
+        "startLine": 210,
+        "startChar": 41,
+        "endLine": 210,
+        "endChar": 43
+      },
+      "revId": "35c2893c957da08ad801c5f9e5d619fa6e5112f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
