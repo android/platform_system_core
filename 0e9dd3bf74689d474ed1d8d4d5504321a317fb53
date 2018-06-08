@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b82d4a4f_94e76aec",
+        "filename": "fs_mgr/fs_mgr_boot_config.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-08T19:50:36Z",
+      "side": 1,
+      "message": "The proper response here is to return one element with s stripped of the quote characters in it. Which is exactly what happens if delimiters is empty ...\n\nSuggest dropping check and add a test to confirm this behavior (does not blow up).",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 42
+      },
+      "revId": "0e9dd3bf74689d474ed1d8d4d5504321a317fb53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c5d8700_0cb1c8a8",
         "filename": "fs_mgr/fs_mgr_boot_config.cpp",
         "patchSetId": 3
@@ -19,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "36e54d83_6de83d61",
+        "filename": "fs_mgr/fs_mgr_boot_config.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-08T19:50:36Z",
+      "side": 1,
+      "message": "This is not an exported function. These used to be documented with __predict_false() because they were impossible to happen cases.\n\nThe correct response may be to ignore it, and in effect treat the delimiters as _missing_ the quote character in its list (which is what happens anyways without changing the code below).\n\nsuggest dropping check as superfluous, and add a test to confirm this behavior (does not blow up).",
+      "parentUuid": "8c5d8700_0cb1c8a8",
+      "revId": "0e9dd3bf74689d474ed1d8d4d5504321a317fb53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37c49ace_a3d84efc",
         "filename": "fs_mgr/fs_mgr_boot_config.cpp",
         "patchSetId": 3
@@ -30,6 +71,24 @@
       "writtenOn": "2018-06-08T18:28:56Z",
       "side": 1,
       "message": "This is a while loop such that \"string a\"\"string b\" is parsed as a single token (assuming a space delimiter), right?  Is there a test for this?",
+      "revId": "0e9dd3bf74689d474ed1d8d4d5504321a317fb53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad191d5f_9a488860",
+        "filename": "fs_mgr/fs_mgr_boot_config.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-08T19:50:36Z",
+      "side": 1,
+      "message": "True, that is a general side-effect, is on compliance with kernel parsing, but not a requirement for our purposes.\n\nstring\u003d\"string b\" is the specific case we are concerned with.\n\nCurrently we only test with \"androidboot.space\u003d\\\"sha256 5248 androidboot.nospace\u003dnope\\\" \" and \"androidboot.vbmeta.avb_version\u003d\\\"1.1\\\" \" as these are the only use cases we are concerned with.\n\nI will add one or two for the general case so as to ensure that it does not blow up ...",
+      "parentUuid": "37c49ace_a3d84efc",
       "revId": "0e9dd3bf74689d474ed1d8d4d5504321a317fb53",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -59,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "7cd8850f_3dc2c9a9",
+        "filename": "fs_mgr/fs_mgr_boot_config.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-08T19:50:36Z",
+      "side": 1,
+      "message": "Kernel does not abandon the parse in this case and this is the correct action.\n\nHowever, 48-54 handles this case differently than the kernel parser, it requires a matched pair, whereas we should allow ourselves to drop the leading quote even if the trailing quote is not there.",
+      "parentUuid": "5a2f7c27_23e23673",
+      "range": {
+        "startLine": 43,
+        "startChar": 62,
+        "endLine": 43,
+        "endChar": 68
+      },
+      "revId": "0e9dd3bf74689d474ed1d8d4d5504321a317fb53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7498c6cf_bea0ac82",
         "filename": "fs_mgr/fs_mgr_boot_config.cpp",
         "patchSetId": 3
@@ -70,6 +153,30 @@
       "writtenOn": "2018-06-08T18:28:56Z",
       "side": 1,
       "message": "This tries to remove all quotes from the piece, right?  In the above example of `\"string a\"\"string b\"`, it results in `string astring b` ?  That\u0027s a bit of a corner case, but it seems like the right way to handle that given the above assumptions.\n\nThis could be simplified though with http://en.cppreference.com/w/cpp/algorithm/remove_copy I think.  In any case, erase is going to do a lot of copies as it shifts the letters, so better to just loop through and discard the quotes.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 9
+      },
+      "revId": "0e9dd3bf74689d474ed1d8d4d5504321a317fb53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e98ab83_3ad812d2",
+        "filename": "fs_mgr/fs_mgr_boot_config.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-08T19:50:36Z",
+      "side": 1,
+      "message": "std::remove_copy also solves the problem itemized in #43 for unbalanced \"!\n\n(it should be noted that this code was part of the case where we handled \u0027, ` and \" which looked and required balance, but case for \" only does not need to)",
+      "parentUuid": "7498c6cf_bea0ac82",
       "range": {
         "startLine": 48,
         "startChar": 0,
