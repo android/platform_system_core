@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ef8fb4b9_bcd536e8",
+        "filename": "fs_mgr/fs_mgr_boot_config.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-08T21:20:44Z",
+      "side": 1,
+      "message": "This returns an empty string as is though, right?  \n\nAgreed with dropping the check and the below one.  In fact, if we don\u0027t export this, might as well not even take delimiters as an argument and instead have this function be hard coded to split on spaces.  Might as well make the logic purely special case for the kernel command line.",
+      "parentUuid": "b82d4a4f_94e76aec",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 42
+      },
+      "revId": "0e9dd3bf74689d474ed1d8d4d5504321a317fb53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c5d8700_0cb1c8a8",
         "filename": "fs_mgr/fs_mgr_boot_config.cpp",
         "patchSetId": 3
@@ -89,6 +113,24 @@
       "side": 1,
       "message": "True, that is a general side-effect, is on compliance with kernel parsing, but not a requirement for our purposes.\n\nstring\u003d\"string b\" is the specific case we are concerned with.\n\nCurrently we only test with \"androidboot.space\u003d\\\"sha256 5248 androidboot.nospace\u003dnope\\\" \" and \"androidboot.vbmeta.avb_version\u003d\\\"1.1\\\" \" as these are the only use cases we are concerned with.\n\nI will add one or two for the general case so as to ensure that it does not blow up ...",
       "parentUuid": "37c49ace_a3d84efc",
+      "revId": "0e9dd3bf74689d474ed1d8d4d5504321a317fb53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c438dc9_d783514d",
+        "filename": "fs_mgr/fs_mgr_boot_config.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-08T21:20:44Z",
+      "side": 1,
+      "message": "Understood.  I was just confused at first for why this needs to be a loop until I realized back to back quotes are the part that needs to be parsed.  Assuming the code supports it, might as well test it.",
+      "parentUuid": "ad191d5f_9a488860",
       "revId": "0e9dd3bf74689d474ed1d8d4d5504321a317fb53",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -177,6 +219,30 @@
       "side": 1,
       "message": "std::remove_copy also solves the problem itemized in #43 for unbalanced \"!\n\n(it should be noted that this code was part of the case where we handled \u0027, ` and \" which looked and required balance, but case for \" only does not need to)",
       "parentUuid": "7498c6cf_bea0ac82",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 9
+      },
+      "revId": "0e9dd3bf74689d474ed1d8d4d5504321a317fb53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5388b88_b2ac76c4",
+        "filename": "fs_mgr/fs_mgr_boot_config.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-08T21:20:44Z",
+      "side": 1,
+      "message": "Understood.  Looks like remove_copy is the way to go then.",
+      "parentUuid": "7e98ab83_3ad812d2",
       "range": {
         "startLine": 48,
         "startChar": 0,
