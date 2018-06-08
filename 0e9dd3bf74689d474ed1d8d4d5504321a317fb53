@@ -2,6 +2,137 @@
   "comments": [
     {
       "key": {
+        "uuid": "8c5d8700_0cb1c8a8",
+        "filename": "fs_mgr/fs_mgr_boot_config.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-08T18:28:56Z",
+      "side": 1,
+      "message": "Per my below comment, perhaps returning an error if this is the case instead of an empty result is the better option.",
+      "revId": "0e9dd3bf74689d474ed1d8d4d5504321a317fb53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37c49ace_a3d84efc",
+        "filename": "fs_mgr/fs_mgr_boot_config.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-08T18:28:56Z",
+      "side": 1,
+      "message": "This is a while loop such that \"string a\"\"string b\" is parsed as a single token (assuming a space delimiter), right?  Is there a test for this?",
+      "revId": "0e9dd3bf74689d474ed1d8d4d5504321a317fb53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a2f7c27_23e23673",
+        "filename": "fs_mgr/fs_mgr_boot_config.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-08T18:28:56Z",
+      "side": 1,
+      "message": "Is break the right thing to do here?  It seems that if we ran into this case, that we have a malformed input and may want to return an error?  Perhaps make this function a bool indicating successful parsing and return \u0027result\u0027 as an out param.\n\nIs there an explicit test for this case?  There should be if not.",
+      "range": {
+        "startLine": 43,
+        "startChar": 62,
+        "endLine": 43,
+        "endChar": 68
+      },
+      "revId": "0e9dd3bf74689d474ed1d8d4d5504321a317fb53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7498c6cf_bea0ac82",
+        "filename": "fs_mgr/fs_mgr_boot_config.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-08T18:28:56Z",
+      "side": 1,
+      "message": "This tries to remove all quotes from the piece, right?  In the above example of `\"string a\"\"string b\"`, it results in `string astring b` ?  That\u0027s a bit of a corner case, but it seems like the right way to handle that given the above assumptions.\n\nThis could be simplified though with http://en.cppreference.com/w/cpp/algorithm/remove_copy I think.  In any case, erase is going to do a lot of copies as it shifts the letters, so better to just loop through and discard the quotes.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 9
+      },
+      "revId": "0e9dd3bf74689d474ed1d8d4d5504321a317fb53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8491efa5_eba3419f",
+        "filename": "fs_mgr/fs_mgr_priv_boot_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-08T18:28:56Z",
+      "side": 1,
+      "message": "I wouldn\u0027t have these function pointers for testing; I\u0027d just expose the functions.  This is an internal header anyway, so it\u0027s not going to leak anything.\n\nAlternatively, this all does belong in its own file else where for init to reference as well, which would make it more easily tested.",
+      "revId": "0e9dd3bf74689d474ed1d8d4d5504321a317fb53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5da0e204_0630eb91",
+        "filename": "fs_mgr/tests/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-08T18:28:56Z",
+      "side": 1,
+      "message": "tab? run `bpfmt` ?",
+      "revId": "0e9dd3bf74689d474ed1d8d4d5504321a317fb53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c754755b_237cc458",
+        "filename": "fs_mgr/tests/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-08T18:28:56Z",
+      "side": 1,
+      "message": "Why not drop this and just let it compile both?",
+      "revId": "0e9dd3bf74689d474ed1d8d4d5504321a317fb53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4979207f_a9959cdb",
         "filename": "fs_mgr/tests/fs_mgr_test.cpp",
         "patchSetId": 3
