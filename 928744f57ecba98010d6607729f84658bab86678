@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e6e0e43f_6017a5e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-06-08T22:18:07Z",
+      "side": 1,
+      "message": "I only added one offline test, the debug_frame_load_bias_arm one.\n\nI intentionally removed the arm exidx sections from the libbinder.so library and left only the debug_frame which has 0xb as the fde encoding.",
+      "parentUuid": "f7de39d8_f9e70abb",
+      "range": {
+        "startLine": 22,
+        "startChar": 13,
+        "endLine": 22,
+        "endChar": 63
+      },
+      "revId": "928744f57ecba98010d6607729f84658bab86678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ce766a5_35adb722",
         "filename": "libunwindstack/DwarfEhFrameWithHdr.cpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-08T20:06:43Z",
       "side": 1,
       "message": "It seems we are sure the table_encoding_ can\u0027t be DW_EH_PE_absptr, add a check in init?",
+      "range": {
+        "startLine": 113,
+        "startChar": 31,
+        "endLine": 113,
+        "endChar": 32
+      },
+      "revId": "928744f57ecba98010d6607729f84658bab86678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0981cba1_f731c94c",
+        "filename": "libunwindstack/DwarfEhFrameWithHdr.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-06-08T22:18:07Z",
+      "side": 1,
+      "message": "I looked at the arm/x86/x86_64 non-zero load bias generated eh_frames and all of them require this add.\n\nThe table encodings:\n\narm: 0xb\nx86/x86_64: 0x3b\n\nTechnically, the first one is an absolute and the other two are not pc relative. The eh_frame header doesn\u0027t appear to ever include the load bias offset.",
+      "parentUuid": "5ce766a5_35adb722",
       "range": {
         "startLine": 113,
         "startChar": 31,
