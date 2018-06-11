@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "8b6f02b2_682301ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-06-11T19:26:54Z",
+      "side": 1,
+      "message": "I added a comment above the test indicating what it is.",
+      "parentUuid": "d1f872d6_cef1a612",
+      "range": {
+        "startLine": 22,
+        "startChar": 13,
+        "endLine": 22,
+        "endChar": 63
+      },
+      "revId": "928744f57ecba98010d6607729f84658bab86678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ce766a5_35adb722",
         "filename": "libunwindstack/DwarfEhFrameWithHdr.cpp",
         "patchSetId": 2
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "I searched some libs on arm, they all have 0x3b table enc. which lib on arm did you find having 0xb table encoding?",
       "parentUuid": "0981cba1_f731c94c",
+      "range": {
+        "startLine": 113,
+        "startChar": 31,
+        "endLine": 113,
+        "endChar": 32
+      },
+      "revId": "928744f57ecba98010d6607729f84658bab86678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02511b21_4597faae",
+        "filename": "libunwindstack/DwarfEhFrameWithHdr.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-06-11T19:26:54Z",
+      "side": 1,
+      "message": "All of the non-zero load bias arm libraries that I\u0027ve found are all encoding the debug frame as 0xb.\n\nExamples:\n\nlibbinder.so\nlibc++.so\n\nAre you looking in the right place for the fde encoding? It\u0027s in the cie entry. You also have to look in the symbols/system/lib directory because the debug frame is usually stripped.\n\nAlso, the libbinder.so in the debug_frame_load_bias_arm has fde entries encoded as 0xb.",
+      "parentUuid": "6a817f54_c721d0ba",
       "range": {
         "startLine": 113,
         "startChar": 31,
