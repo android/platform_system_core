@@ -1,0 +1,307 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2da947d9_dd25da45",
+        "filename": "fs_mgr/libdm/include/dm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-11T22:15:13Z",
+      "side": 1,
+      "message": "Does this and Find() below allocate the result?  It should return a unique_ptr in this case.",
+      "revId": "62de69d0b9892b495796dd084fcc82fbce310618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81c25115_3ebcf8a8",
+        "filename": "fs_mgr/libdm/include/dm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-11T22:15:13Z",
+      "side": 1,
+      "message": "Out parameters should be pointers, so std::vector\u003cDmTarget\u003e*",
+      "range": {
+        "startLine": 49,
+        "startChar": 29,
+        "endLine": 49,
+        "endChar": 51
+      },
+      "revId": "62de69d0b9892b495796dd084fcc82fbce310618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7670f87f_a08e74f6",
+        "filename": "fs_mgr/libdm/include/dm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-11T22:15:13Z",
+      "side": 1,
+      "message": "The linker might do the right thing here, but it\u0027d probably be safer if this were explicitly in a .cpp file.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 5
+      },
+      "revId": "62de69d0b9892b495796dd084fcc82fbce310618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d75e2859_0db6a18f",
+        "filename": "fs_mgr/libdm/include/dm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-11T22:15:13Z",
+      "side": 1,
+      "message": "You\u0027ll also want \n\nDeviceMapper\u0026 operator\u003d(DeviceMapper\u0026\u0026) \u003d delete;\n\nhttps://en.cppreference.com/w/cpp/language/move_assignment",
+      "revId": "62de69d0b9892b495796dd084fcc82fbce310618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3bb6dd7_31fcb09e",
+        "filename": "fs_mgr/libdm/include/dm_device.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-11T22:15:13Z",
+      "side": 1,
+      "message": "No (void) in C++, only ().\n\nSimple accessors should be just named name(), state(), table(), etc",
+      "revId": "62de69d0b9892b495796dd084fcc82fbce310618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dbcffcb_b04b7a37",
+        "filename": "fs_mgr/libdm/include/dm_table.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-11T22:15:13Z",
+      "side": 1,
+      "message": "if",
+      "range": {
+        "startLine": 42,
+        "startChar": 7,
+        "endLine": 42,
+        "endChar": 10
+      },
+      "revId": "62de69d0b9892b495796dd084fcc82fbce310618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "057fe4a2_aa3c7ee6",
+        "filename": "fs_mgr/libdm/include/dm_table.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-11T22:15:13Z",
+      "side": 1,
+      "message": "You probably want std::vector\u003cstd::unique_ptr\u003cDmTarget\u003e\u003e otherwise, you may slice the subclasses of DmTarget here.\n\nSame with AddTarget() otherwise you\u0027ll slice at that point.",
+      "revId": "62de69d0b9892b495796dd084fcc82fbce310618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d47cc3cc_47383bde",
+        "filename": "fs_mgr/libdm/include/dm_table.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-11T22:15:13Z",
+      "side": 1,
+      "message": "sectors",
+      "range": {
+        "startLine": 67,
+        "startChar": 35,
+        "endLine": 67,
+        "endChar": 43
+      },
+      "revId": "62de69d0b9892b495796dd084fcc82fbce310618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f0184f3_3b11210b",
+        "filename": "fs_mgr/libdm/include/dm_target.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-11T22:15:13Z",
+      "side": 1,
+      "message": "You shouldn\u0027t need this.",
+      "range": {
+        "startLine": 62,
+        "startChar": 15,
+        "endLine": 62,
+        "endChar": 27
+      },
+      "revId": "62de69d0b9892b495796dd084fcc82fbce310618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d0b4261_8515548d",
+        "filename": "fs_mgr/tools/dmctl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-11T22:15:13Z",
+      "side": 1,
+      "message": "Handler",
+      "range": {
+        "startLine": 52,
+        "startChar": 33,
+        "endLine": 52,
+        "endChar": 39
+      },
+      "revId": "62de69d0b9892b495796dd084fcc82fbce310618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7f8d231_eea373f2",
+        "filename": "fs_mgr/tools/dmctl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-11T22:15:13Z",
+      "side": 1,
+      "message": "for (const auto\u0026 target : targets) ?",
+      "revId": "62de69d0b9892b495796dd084fcc82fbce310618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d645112_3c58f9c9",
+        "filename": "fs_mgr/tools/dmctl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-11T22:15:13Z",
+      "side": 1,
+      "message": "It\u0027s typical to just not name the arguments if they\u0027re unused.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 17
+      },
+      "revId": "62de69d0b9892b495796dd084fcc82fbce310618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c25a452f_bcb14cb0",
+        "filename": "fs_mgr/tools/dmctl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-11T22:15:13Z",
+      "side": 1,
+      "message": "These aren\u0027t actually used.",
+      "range": {
+        "startLine": 129,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 16
+      },
+      "revId": "62de69d0b9892b495796dd084fcc82fbce310618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af237063_eb843189",
+        "filename": "fs_mgr/tools/dmctl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-11T22:15:13Z",
+      "side": 1,
+      "message": "Likely a good candidate for // clang-format off and a more human readable table format.",
+      "revId": "62de69d0b9892b495796dd084fcc82fbce310618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9514a4c7_b99ee37e",
+        "filename": "fs_mgr/tools/dmctl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-11T22:15:13Z",
+      "side": 1,
+      "message": "Even this should be able to be for (const auto\u0026 handler : CmdMap)",
+      "revId": "62de69d0b9892b495796dd084fcc82fbce310618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
