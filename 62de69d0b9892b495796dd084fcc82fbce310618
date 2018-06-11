@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "a4bee75d_139efd35",
+        "filename": "fs_mgr/libdm/include/dm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-06-11T22:20:38Z",
+      "side": 1,
+      "message": "dvander@, although this is sort of in-line with our class diagram, I\u0027m not really sure about this. While -\u003eCreate() and -\u003eDelete() are device-mapper control device operations, so are LoadTable(), setState() etc.\n\nI know that we would like DmDevice() class to have the property, where each dm-%d is associated with a DmDevice() and if DmDevice() is invalid the dm-%d must get deleted in ~DmDevice().\n\nMay be we just maintain a list of DmDevice()s here and keep their state up-to-date with what the kernel has in the DeviceMapper() class. So, the add / remove / load table / get table can just be DeviceMapper() operations.\nDmDevice() then just becomes a passive attributes-only class that basically stores the table and other attributes of a dm-%d device.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 52
+      },
+      "revId": "62de69d0b9892b495796dd084fcc82fbce310618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81c25115_3ebcf8a8",
         "filename": "fs_mgr/libdm/include/dm.h",
         "patchSetId": 2
