@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d8b8e0f3_6cc6c390",
+        "filename": "fs_mgr/libdm/dm.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-06-12T21:37:12Z",
+      "side": 1,
+      "message": "\u003e What is this function going to do?  Delete the physical /dev/block/dm-# node?  \nThats the side-effect, but what this does call DM_DEV_REMOVE and removes the device from device-mapper.\nThe /dev/dm-X (which gets created after DM_DEV_CREATE) is dormant when created and will always return -EIO until its successfully resumed by loading a working table.\n\nThat said, the delete device question is the one I asked dvander@ in previous patchset. We wanted the property of ~DmDevice() deleting a dormant /dev/dm-X automatically. However, the \"delete device\" is a function of device mapper control and not the device itself. \n\nThe classes currently reflect (losely) how kernel handles this. So, I probably will move the loadTable() and getTable() out of DmDevice() into DeviceMapper() class as well.\n\nIn kernel - \n\n/dev/device-mapper - Does device mapper control (For example: add, remove, status, list, loadtable, readtable operations on a dm-device (/dev/dm-X) _and_ Also list device mapper targets or pass target specific messages via ioctl)\n/dev/dm-X - Nothing but a block device and has zero knowledge about device mapper itself.\n(Internals)\nThere\u0027s a 1:1 mapping between /dev/dm-X and Table that is maintained by device-mapper, where - \ntable - can have multiple targets, each target has target specific parameters and configuration.\n\n(let me talk offline)",
+      "parentUuid": "ea41b9ca_edaf5329",
+      "range": {
+        "startLine": 47,
+        "startChar": 32,
+        "endLine": 47,
+        "endChar": 45
+      },
+      "revId": "e382c126cf37c30d790afebfa0badd6c8fd6682b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c37bcffe_dfd493dd",
         "filename": "fs_mgr/libdm/dm.cpp",
         "patchSetId": 4
@@ -59,6 +83,30 @@
       "writtenOn": "2018-06-12T20:14:34Z",
       "side": 1,
       "message": "This differs from the default class initialization of 0,0,0 ?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 23
+      },
+      "revId": "e382c126cf37c30d790afebfa0badd6c8fd6682b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f682ed8_ad57022c",
+        "filename": "fs_mgr/libdm/dm.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-06-12T21:37:12Z",
+      "side": 1,
+      "message": "This represents the device mapper version and not the device mapper target version that the class has. DeviceMapper() doesn\u0027t have the version at all in this case.",
+      "parentUuid": "18c87b77_fdf07189",
       "range": {
         "startLine": 74,
         "startChar": 0,
