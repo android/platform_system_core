@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea41b9ca_edaf5329",
+        "filename": "fs_mgr/libdm/dm.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-12T20:10:57Z",
+      "side": 1,
+      "message": "What is this function going to do?  Delete the physical /dev/block/dm-# node?  You only want that done when this function is explicitly called, not every time when a unique_ptr is destructed, right?  That would make sense to me.\n\nIn any case, the change I actually am requesting is that this takes std::unique_ptr as well.  `delete dev` doesn\u0027t make sense here as you\u0027re creating the DmDevice with a unique_ptr, and you should make this function a sink for it, otherwise you\u0027re going to have the contents of the unique_ptr who\u0027s dev you reference here in a bad state.",
+      "range": {
+        "startLine": 47,
+        "startChar": 32,
+        "endLine": 47,
+        "endChar": 45
+      },
+      "revId": "e382c126cf37c30d790afebfa0badd6c8fd6682b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a52e8546_4b02d570",
+        "filename": "fs_mgr/libdm/dm_device.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-12T20:10:57Z",
+      "side": 1,
+      "message": "These can (and should) all just be inlined in the header file too.",
+      "revId": "e382c126cf37c30d790afebfa0badd6c8fd6682b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96561d00_1a98759f",
+        "filename": "fs_mgr/tools/.clang-format",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-12T20:10:57Z",
+      "side": 1,
+      "message": "Drop this too?",
+      "revId": "e382c126cf37c30d790afebfa0badd6c8fd6682b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "600152d3_c98d1ac0",
+        "filename": "fs_mgr/tools/dmctl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-12T20:10:57Z",
+      "side": 1,
+      "message": "You don\u0027t have to make this change, but I\u0027m typically against typedefs.  (https://google.github.io/styleguide/cppguide.html#Aliases agrees that local typedefs aren\u0027t good).\n\nIn this case specifically, CommandHandler is only referenced once, so it\u0027s more clear to just use the contents inline than have the typedef.",
+      "revId": "e382c126cf37c30d790afebfa0badd6c8fd6682b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
