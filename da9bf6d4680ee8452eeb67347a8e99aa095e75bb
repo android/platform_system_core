@@ -48,6 +48,46 @@
     },
     {
       "key": {
+        "uuid": "6e9b3aa7_80f0f19c",
+        "filename": "fs_mgr/libdm/include/dm_table.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-06-12T15:28:07Z",
+      "side": 1,
+      "message": "This (and below) will probably have to change to |std::unique_ptr\u003cDmTarget\u003e\u0026\u0026 target| or something similar. It looks tricky to implement otherwise.",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 18
+      },
+      "revId": "da9bf6d4680ee8452eeb67347a8e99aa095e75bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32fc8eec_98f591b5",
+        "filename": "fs_mgr/libdm/include/dm_table.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-06-12T15:28:07Z",
+      "side": 1,
+      "message": "Is the idea here that you could query an existing table from a device, then remove individual targets?",
+      "revId": "da9bf6d4680ee8452eeb67347a8e99aa095e75bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9051b8af_49027450",
         "filename": "fs_mgr/libdm/include/dm_table.h",
         "patchSetId": 3
@@ -65,6 +105,47 @@
         "endLine": 53,
         "endChar": 12
       },
+      "revId": "da9bf6d4680ee8452eeb67347a8e99aa095e75bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4db42380_9ca09559",
+        "filename": "fs_mgr/libdm/include/dm_table.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-06-12T15:28:07Z",
+      "side": 1,
+      "message": "uint64_t seems better, since the maximum size is bounded by the disk size, not address space. (And it\u0027s u64 in dm_target_spec).",
+      "parentUuid": "9051b8af_49027450",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 12
+      },
+      "revId": "da9bf6d4680ee8452eeb67347a8e99aa095e75bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed5cd0fe_f5b1aa13",
+        "filename": "fs_mgr/libdm/include/dm_target.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-06-12T15:28:07Z",
+      "side": 1,
+      "message": "nit: dm_target_spec asks for \"length\" (in 512-byte sectors) instead of \"end\".\n\nv0, v1 etc are uninitialized in this constructor, so version() can have undefined results",
       "revId": "da9bf6d4680ee8452eeb67347a8e99aa095e75bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -111,6 +192,23 @@
         "endLine": 43,
         "endChar": 26
       },
+      "revId": "da9bf6d4680ee8452eeb67347a8e99aa095e75bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5311f62_cc0000c2",
+        "filename": "fs_mgr/libdm/include/dm_target.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-06-12T15:28:07Z",
+      "side": 1,
+      "message": "It might be easier to have a non-virtual Serialize that handles the base dm_target_spec stuff and then add a protected pure virtual method that returns the target-specific payload.",
       "revId": "da9bf6d4680ee8452eeb67347a8e99aa095e75bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
