@@ -255,6 +255,30 @@
     },
     {
       "key": {
+        "uuid": "202a0017_11a0938e",
+        "filename": "fs_mgr/libdm/include/dm_table.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-06-12T18:56:34Z",
+      "side": 1,
+      "message": "yes, uint64_t because its also in number of sectors and not size-in-bytes. I\u0027ll include the stdint above though.",
+      "parentUuid": "4db42380_9ca09559",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 12
+      },
+      "revId": "da9bf6d4680ee8452eeb67347a8e99aa095e75bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed5cd0fe_f5b1aa13",
         "filename": "fs_mgr/libdm/include/dm_target.h",
         "patchSetId": 3
@@ -329,6 +353,24 @@
       "writtenOn": "2018-06-12T15:28:07Z",
       "side": 1,
       "message": "It might be easier to have a non-virtual Serialize that handles the base dm_target_spec stuff and then add a protected pure virtual method that returns the target-specific payload.",
+      "revId": "da9bf6d4680ee8452eeb67347a8e99aa095e75bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "729cfc50_cc0c9be0",
+        "filename": "fs_mgr/libdm/include/dm_target.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-06-12T18:56:34Z",
+      "side": 1,
+      "message": "I haven\u0027t really finalized this yet. I am yet to expand this to a target_spec string. If the sector boundaries are common in how they are specified in the target_spec for *all* targets, I\u0027ll certainly do what you said. For now though, this is unimplemented and we can change it that way for when we start adding implementation around targets.",
+      "parentUuid": "a5311f62_cc0000c2",
       "revId": "da9bf6d4680ee8452eeb67347a8e99aa095e75bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
