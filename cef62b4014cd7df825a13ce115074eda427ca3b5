@@ -22,6 +22,30 @@
       "revId": "cef62b4014cd7df825a13ce115074eda427ca3b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0cf5df1_f697eed6",
+        "filename": "logd/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-06-13T18:30:48Z",
+      "side": 1,
+      "message": "if you\u0027re checking _for_ error, `\u003d\u003d -1` is clearest. `\u003c 0` implies that this isn\u0027t a typical unix function and that there are other negative cases to consider. `!\u003d 0` (or `\u003d\u003d 0` and an `else`) implies that we might be checking something more subtle (like EOF, say). `\u003d\u003d -1` is the least ambiguous \"is this an error?\".\n\n(yeah, i should probably have left this alone since i\u0027m not cleaning up all the code. if i was, i should have made this return bool too. and removed the useless cast on L97. and moved L90 down to L97. and switched from errno to strerror on L158. and ... well, you see why i didn\u0027t :-) )",
+      "parentUuid": "dfad609f_6bd16e6a",
+      "range": {
+        "startLine": 108,
+        "startChar": 33,
+        "endLine": 108,
+        "endChar": 39
+      },
+      "revId": "cef62b4014cd7df825a13ce115074eda427ca3b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
