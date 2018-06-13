@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "e2fef633_88ab975e",
+        "filename": "fs_mgr/libdm/dm.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-06-13T18:55:21Z",
+      "side": 1,
+      "message": "There is a bug here where we are overallocating. \u0027dm_ioctl\u0027 doesn\u0027t need to be multiplied by the kMaxPossibleDmTargets below. I\u0027ll fix this in the next PS and also\nadd core to make sure \u0027targets\u0027 is not nullptr and _is_ empty() before we make that assumption in lines 102-104 below.",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 80
+      },
+      "revId": "1c4fc6f76e99078da76aeb3e57d05ebc404ad2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d26a48b_b880a426",
+        "filename": "fs_mgr/libdm/dm.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-06-13T18:55:21Z",
+      "side": 1,
+      "message": "this can easily be templatized, it will repeat itself when we read the current list of devices, target specs from a device etc. I, will add a TODO.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 0
+      },
+      "revId": "1c4fc6f76e99078da76aeb3e57d05ebc404ad2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e523493_35b7e67f",
         "filename": "fs_mgr/libdm/dm_table.cpp",
         "patchSetId": 5
@@ -13,6 +59,24 @@
       "writtenOn": "2018-06-13T17:46:19Z",
       "side": 1,
       "message": "Probably good to not keep this.  You\u0027d want a vector\u003cunique_ptr\u003cDmTarget\u003e\u003e if you did have it otherwise you\u0027d risk slicing DmTarget, and chances are there aren\u0027t going to be many callers that already use that structure.",
+      "revId": "1c4fc6f76e99078da76aeb3e57d05ebc404ad2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e6fc8de_672bb6e7",
+        "filename": "fs_mgr/libdm/dm_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-06-13T18:55:21Z",
+      "side": 1,
+      "message": "yes, forgot about this completely. will remove.",
+      "parentUuid": "5e523493_35b7e67f",
       "revId": "1c4fc6f76e99078da76aeb3e57d05ebc404ad2a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -54,6 +118,24 @@
     },
     {
       "key": {
+        "uuid": "c6fde793_e3a716f4",
+        "filename": "fs_mgr/libdm/include/dm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-06-13T18:55:21Z",
+      "side": 1,
+      "message": "I can\u0027t think of a case right now that will create a device without loading a table. I guess handling the table failure within the class also makes sense, as we don\u0027t have to rely on the caller to cleanup the new device.\nI\u0027ll make the change.\n\nHowever, any pointers as to how I unit test just the *device creation* part. I am doing this while I add functionality to \u0027dmctl\u0027 as well and test it. (A lot of it will also become gTests for libdm too).\nI guess for now, I can do LoadTable with default to just create the device and leave.",
+      "parentUuid": "73abb1e6_3f5bc376",
+      "revId": "1c4fc6f76e99078da76aeb3e57d05ebc404ad2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55107089_bab7f622",
         "filename": "fs_mgr/libdm/include/dm.h",
         "patchSetId": 5
@@ -65,6 +147,24 @@
       "writtenOn": "2018-06-13T17:46:19Z",
       "side": 1,
       "message": "Same question, who would call DeleteDevice() ?  I know the one use case is if a table being loaded isn\u0027t valid, but \n\n1) Isn\u0027t that just a completely fatal abort\n2) If LoadTable() creates the device then it can easily delete it when it fails and let the caller deal with the error.",
+      "revId": "1c4fc6f76e99078da76aeb3e57d05ebc404ad2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f9480c9_9e54e647",
+        "filename": "fs_mgr/libdm/include/dm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-06-13T18:55:21Z",
+      "side": 1,
+      "message": "\u003e Same question, who would call DeleteDevice() ?  I know the one use case is if a table being loaded isn\u0027t valid, but \n\u003e \n\u003e 1) Isn\u0027t that just a completely fatal abort\n\nNot fatal abort as far as the library is concerned. The fatal/non-fatal is decided by the caller in this case. \n\n\u003e 2) If LoadTable() creates the device then it can easily delete it when it fails and let the caller deal with the error.\nI agree with that, I\u0027ll make the change to make CreateDevice() private. However, we do need a public method to \"remove\" a device as well.\nWe will be creating these on-the-fly for the \"other\" partitions in A/B, so we need a way to suspend + remove the device. Which is what I intended\nDeleteDevice to do. \"CreateDevice\" was just a symmetrical API, which doesn\u0027t need to be there as you pointed out.\n\nDeleteDevice will eventually need to do - \n1. Suspend the device if its active (this may fail if the device is open from somewhere else, we can check for it too).\n2. Delete the device.",
+      "parentUuid": "55107089_bab7f622",
       "revId": "1c4fc6f76e99078da76aeb3e57d05ebc404ad2a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
