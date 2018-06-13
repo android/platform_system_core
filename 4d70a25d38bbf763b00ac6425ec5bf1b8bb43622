@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df9c5bf4_32c22363",
+        "filename": "fs_mgr/libdm/dm.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-13T19:56:30Z",
+      "side": 1,
+      "message": "Typically, we assume that out parameters are non-null.  We\u0027re also okay with them being non-empty, and clear them ourselves.\n\nSee https://cs.corp.google.com/android/system/core/base/file.cpp?type\u003dcs\u0026q\u003dreadfdtostring\u0026sq\u003dpackage:%5Eandroid$\u0026g\u003d0\u0026l\u003d52 as an example.\n\nI probably should have mentioned this for GetAvailableTargets() too.",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 5
+      },
+      "revId": "4d70a25d38bbf763b00ac6425ec5bf1b8bb43622",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e61b52f3_a58cce72",
+        "filename": "fs_mgr/libdm/include/dm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-13T19:56:30Z",
+      "side": 1,
+      "message": "These are different than https://cs.corp.google.com/android/bionic/libc/include/sys/sysmacros.h?q\u003dmakedev+case:Yes\u0026sq\u003dpackage:%5Eandroid$\u0026g\u003d0\u0026l\u003d40 is that intentional?\n\nAlso, if not, we might as well use the macros in the headers since they\u0027re available to us.",
+      "revId": "4d70a25d38bbf763b00ac6425ec5bf1b8bb43622",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
