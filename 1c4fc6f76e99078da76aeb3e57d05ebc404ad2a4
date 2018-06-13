@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e523493_35b7e67f",
+        "filename": "fs_mgr/libdm/dm_table.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-13T17:46:19Z",
+      "side": 1,
+      "message": "Probably good to not keep this.  You\u0027d want a vector\u003cunique_ptr\u003cDmTarget\u003e\u003e if you did have it otherwise you\u0027d risk slicing DmTarget, and chances are there aren\u0027t going to be many callers that already use that structure.",
+      "revId": "1c4fc6f76e99078da76aeb3e57d05ebc404ad2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68fe0f1c_29688d0d",
+        "filename": "fs_mgr/libdm/include/dm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-13T17:46:19Z",
+      "side": 1,
+      "message": "Is anyone going to call CreateDevice() without calling LoadTable() afterwards?  Perhaps this can be just a part of LoadTable?",
+      "revId": "1c4fc6f76e99078da76aeb3e57d05ebc404ad2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55107089_bab7f622",
+        "filename": "fs_mgr/libdm/include/dm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-13T17:46:19Z",
+      "side": 1,
+      "message": "Same question, who would call DeleteDevice() ?  I know the one use case is if a table being loaded isn\u0027t valid, but \n\n1) Isn\u0027t that just a completely fatal abort\n2) If LoadTable() creates the device then it can easily delete it when it fails and let the caller deal with the error.",
+      "revId": "1c4fc6f76e99078da76aeb3e57d05ebc404ad2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
