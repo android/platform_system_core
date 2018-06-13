@@ -136,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "d05fc04a_0c1ba079",
+        "filename": "fs_mgr/libdm/include/dm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-13T19:36:12Z",
+      "side": 1,
+      "message": "\u003e However, any pointers as to how I unit test just the *device creation* part.\n\nYa... There\u0027s no good way to really do this.  Might as well just leave it public.  There should be few enough users that no one tries to do anything crazy with it.  \n\nStill seems to me a good idea to have the LoadTable() function take care of creating the device, loading the table, and setting active.  Or perhaps better to have more atomic parts to test, keep all of these functions as if then have a new CreateDeviceWithTable() function that handles everything?  Presumably client APIs would strictly want to use that one.  This can be done later though.",
+      "parentUuid": "c6fde793_e3a716f4",
+      "revId": "1c4fc6f76e99078da76aeb3e57d05ebc404ad2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55107089_bab7f622",
         "filename": "fs_mgr/libdm/include/dm.h",
         "patchSetId": 5
@@ -165,6 +183,24 @@
       "side": 1,
       "message": "\u003e Same question, who would call DeleteDevice() ?  I know the one use case is if a table being loaded isn\u0027t valid, but \n\u003e \n\u003e 1) Isn\u0027t that just a completely fatal abort\n\nNot fatal abort as far as the library is concerned. The fatal/non-fatal is decided by the caller in this case. \n\n\u003e 2) If LoadTable() creates the device then it can easily delete it when it fails and let the caller deal with the error.\nI agree with that, I\u0027ll make the change to make CreateDevice() private. However, we do need a public method to \"remove\" a device as well.\nWe will be creating these on-the-fly for the \"other\" partitions in A/B, so we need a way to suspend + remove the device. Which is what I intended\nDeleteDevice to do. \"CreateDevice\" was just a symmetrical API, which doesn\u0027t need to be there as you pointed out.\n\nDeleteDevice will eventually need to do - \n1. Suspend the device if its active (this may fail if the device is open from somewhere else, we can check for it too).\n2. Delete the device.",
       "parentUuid": "55107089_bab7f622",
+      "revId": "1c4fc6f76e99078da76aeb3e57d05ebc404ad2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "528b0e7d_f171bdda",
+        "filename": "fs_mgr/libdm/include/dm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-13T19:36:12Z",
+      "side": 1,
+      "message": "\u003e Not fatal abort as far as the library is concerned. The fatal/non-fatal is decided by the caller in this case. \n\nAgreed.  I\u0027m just saying it\u0027s not likely that there\u0027s going to be a useful client case for DeleteDevice().  Fine to leave this as is, especially for dmtool, etc.",
+      "parentUuid": "0f9480c9_9e54e647",
       "revId": "1c4fc6f76e99078da76aeb3e57d05ebc404ad2a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
