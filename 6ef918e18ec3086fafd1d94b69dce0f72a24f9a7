@@ -34,6 +34,24 @@
       "revId": "6ef918e18ec3086fafd1d94b69dce0f72a24f9a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3249cd9d_e19b0a57",
+        "filename": "include/filemap",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-15T16:28:06Z",
+      "side": 1,
+      "message": "The links are there for legacy cases where libraries have header-only features (like utils/Atomic.h), and modules were getting away with using them out of the global include directory without declaring a dependency.  They also sometimes get used for transitive static library dependencies.  If there is no build breakage without the symlink then skip it.\n\nWe are slowly cleaning up the existing ones, but some of them require touching lots of targets.\n\nYou\u0027ll have to touch .mk files anywhere we haven\u0027t finished the conversion to .bp.",
+      "parentUuid": "1b4c54c5_bb2a2dd2",
+      "revId": "6ef918e18ec3086fafd1d94b69dce0f72a24f9a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
