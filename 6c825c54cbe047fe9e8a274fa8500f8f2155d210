@@ -1,0 +1,717 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd4e0c46_181e5485",
+        "filename": "adb/client/adb_install.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "fix this up to `for (int i \u003d 1;` while you\u0027re at it?\n\n(this probably would have been easier to read as two commits: one to move `adb install` out of commandline.cpp, and one to add fast deploy)",
+      "range": {
+        "startLine": 86,
+        "startChar": 20,
+        "endLine": 86,
+        "endChar": 36
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81cc5448_97f0df86",
+        "filename": "adb/client/adb_install.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "argv[0] isn\u0027t necessarily a path, it could just be \u0027adb\u0027 if the binary is on your $PATH",
+      "range": {
+        "startLine": 409,
+        "startChar": 84,
+        "endLine": 409,
+        "endChar": 91
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0abb1ca7_a4fb9301",
+        "filename": "adb/client/commandline.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "isn\u0027t -p used already?",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 105
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0e21ff0_d391f824",
+        "filename": "adb/client/commandline.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 1131,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "looks like you accidentally brought this comment back when resolving a conflict",
+      "range": {
+        "startLine": 1130,
+        "startChar": 0,
+        "endLine": 1131,
+        "endChar": 77
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d943c4b_0388bd2a",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "That\u0027s true for all of the other arguments too, isn\u0027t it? (this also seems more obvious than other important stuff, like the fact that local_path has to have a leading slash)",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 71
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05c13a6a_d8ba7774",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "I don\u0027t think this cast is safe? mingw\u0027s dirname doesn\u0027t seem to use a thread local buffer like glibc/bionic. I think this ends up mutating argv[0].",
+      "range": {
+        "startLine": 72,
+        "startChar": 12,
+        "endLine": 73,
+        "endChar": 67
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e73a520_bfa7b099",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "Do we actually need to perform this translation? AIUI, windows accepts forward slashes as well as backslashes in paths.",
+      "range": {
+        "startLine": 77,
+        "startChar": 78,
+        "endLine": 78,
+        "endChar": 74
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a192bb5_deaec8ce",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "use a std::vector\u003cchar\u003e instead?",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 47
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f34c41e5_f53e563f",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "Can you use std::u16string instead, or do you have dependencies on String16 elsewhere?",
+      "range": {
+        "startLine": 212,
+        "startChar": 16,
+        "endLine": 212,
+        "endChar": 24
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aff1c662_e4f6faec",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "make this size_t instead of casting?",
+      "range": {
+        "startLine": 214,
+        "startChar": 25,
+        "endLine": 214,
+        "endChar": 28
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e773b5e_feda42be",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "char*, you don\u0027t want to actually construct a std::string",
+      "range": {
+        "startLine": 252,
+        "startChar": 10,
+        "endLine": 252,
+        "endChar": 21
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f2006dd_5c8b53b9",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "the raw %s here and below seems sketchy w.r.t. paths with embedded spaces and the like.",
+      "range": {
+        "startLine": 271,
+        "startChar": 58,
+        "endLine": 271,
+        "endChar": 60
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e92e2218_72032024",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "same comment as comment above re: win32 dirname modifying its buffer",
+      "range": {
+        "startLine": 279,
+        "startChar": 87,
+        "endLine": 280,
+        "endChar": 67
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57664fc4_fcbde072",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "!push_ok",
+      "range": {
+        "startLine": 326,
+        "startChar": 7,
+        "endLine": 326,
+        "endChar": 25
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcb102d5_68117f0a",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be going to stderr? (which then leads to asking why we\u0027re not just calling send_shell_command(applyPatchCommand))",
+      "range": {
+        "startLine": 341,
+        "startChar": 8,
+        "endLine": 341,
+        "endChar": 87
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f520751_d5f2d81e",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "!push_ok",
+      "range": {
+        "startLine": 367,
+        "startChar": 7,
+        "endLine": 367,
+        "endChar": 25
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f127f2f1_d3f311c2",
+        "filename": "adb/client/fastdeploy.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "`#pragma once` instead",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ddb6d00_57204f6f",
+        "filename": "adb/client/fastdeploy.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "static constexpr",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 5
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df28355a_37540f35",
+        "filename": "adb/client/fastdeploycallbacks.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "Any reason you\u0027re using `unsigned char` here and below? It seems like almost everywhere you\u0027re using these, you have a cast to a regular char*.",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 24
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc9eaca1_d94f5e45",
+        "filename": "adb/client/fastdeploycallbacks.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "It might be better to just expose a function that does what you want implemented via this, instead of exposing this, since it looks like every instance of this looks identical.\n\nsomething like: bool run_shell_command(const char* cmd, int* rc, std::vector\u003cchar\u003e* out, std::vector\u003cchar\u003e* err);\n\n(the name is confusingingly similar to send_shell_command, but I can\u0027t think of a better one that isn\u0027t something obnoxiously long. maybe something like shell_capture?)",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 75
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe882d4c_15e97273",
+        "filename": "adb/fastdeploy/deployagent/src/com/android/fastdeploy/DeployAgent.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 31,
+        "startChar": 21,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "419f2c3f_da74631c",
+        "filename": "adb/fastdeploy/deployagent/src/com/android/fastdeploy/DeployAgent.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "!\u003d",
+      "range": {
+        "startLine": 70,
+        "startChar": 32,
+        "endLine": 70,
+        "endChar": 33
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f26ca5f2_48009f53",
+        "filename": "adb/fastdeploy/deployagent/src/com/android/fastdeploy/DeployAgent.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "it\u0027s a bit strange to carve this out (and since the default is to send it to pm, you don\u0027t really need a way to specify it?)",
+      "range": {
+        "startLine": 95,
+        "startChar": 18,
+        "endLine": 97,
+        "endChar": 18
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24ffc788_fa03cc5b",
+        "filename": "adb/fastdeploy/deployagent/src/com/android/fastdeploy/DeployAgent.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "should there be separators here?",
+      "range": {
+        "startLine": 115,
+        "startChar": 56,
+        "endLine": 116,
+        "endChar": 50
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfacef7a_486707d9",
+        "filename": "adb/fastdeploy/deployagent/src/com/android/fastdeploy/DeployAgent.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "why does version print to stderr?",
+      "range": {
+        "startLine": 125,
+        "startChar": 23,
+        "endLine": 125,
+        "endChar": 26
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deb5f22c_4be14f6c",
+        "filename": "adb/fastdeploy/deployagent/src/com/android/fastdeploy/DeployAgent.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "having -o here seems a bit misleading when you ignore it for version and extract. maybe you should organize it something like this?\n\n  usage: deployagent \u003ccommand\u003e [\u003cargs\u003e]\n\n  commands:\n    version                             get the version\n    extract PKGNAME                     extract an installed package\u0027s metadata\n    apply [-o OUT] PKGNAME PATCHFILE    apply a patch from PATCHFILE (- for stdin) to an installed package\n      -o  redirects output to OUT (- for stdout) instead of package manager",
+      "range": {
+        "startLine": 139,
+        "startChar": 20,
+        "endLine": 139,
+        "endChar": 86
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ad1c3fb_5b91c593",
+        "filename": "adb/fastdeploy/deployagent/src/com/android/fastdeploy/DeployAgent.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "-o FILE",
+      "range": {
+        "startLine": 139,
+        "startChar": 83,
+        "endLine": 139,
+        "endChar": 85
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be99e70c_ee4e35dd",
+        "filename": "adb/fastdeploy/deployagent/src/com/android/fastdeploy/DeployAgent.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "Integer.parseInt",
+      "range": {
+        "startLine": 200,
+        "startChar": 23,
+        "endLine": 200,
+        "endChar": 34
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5de50ed0_d2fea921",
+        "filename": "adb/fastdeploy/deployagent/src/com/android/fastdeploy/DeployAgent.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "all lowercase to match with the other exceptions?",
+      "range": {
+        "startLine": 239,
+        "startChar": 17,
+        "endLine": 239,
+        "endChar": 37
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "209a8187_b4fa4e92",
+        "filename": "adb/fastdeploy/deployagent/src/com/android/fastdeploy/DeployAgent.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "Signature in the context of APKs is misleading. Change it to magic number?",
+      "range": {
+        "startLine": 244,
+        "startChar": 24,
+        "endLine": 244,
+        "endChar": 37
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af4231fc_f752cd1a",
+        "filename": "adb/fastdeploy/deploypatchgenerator/src/com/android/fastdeploy/DeployPatchGenerator.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-06-16T00:37:01Z",
+      "side": 1,
+      "message": "TODONE?",
+      "range": {
+        "startLine": 50,
+        "startChar": 36,
+        "endLine": 50,
+        "endChar": 88
+      },
+      "revId": "6c825c54cbe047fe9e8a274fa8500f8f2155d210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
