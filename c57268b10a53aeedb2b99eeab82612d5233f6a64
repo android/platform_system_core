@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "091160a9_cd731214",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-19T22:58:18Z",
+      "side": 1,
+      "message": "need to push this entry into the mounted list because although not mounted here, should be reported since this is the first check.\n\nAnother side topic: could be if init manually mounted /system and /vendor, for example, during First Stage \u0027DoFirstSTageMount()\u0027, then they would be skipped (?) here, but we really should enumerate them as successfully (pre)mounted in mount_all. Investigate this possibility to make sure we report completely.\n\nThe reason we need to be complete is that future CLs make the assumption that if we mount something (here, or previously) that we will explore checking if an overlayfs mount needs to be wrapped around it.",
+      "range": {
+        "startLine": 856,
+        "startChar": 8,
+        "endLine": 861,
+        "endChar": 9
+      },
+      "revId": "c57268b10a53aeedb2b99eeab82612d5233f6a64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
