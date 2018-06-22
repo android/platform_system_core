@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "433ce446_75698c28",
+        "filename": "fs_mgr/libdm/include/libdm/loop_control.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-22T17:54:52Z",
+      "side": 1,
+      "message": "Probably better to use unique_fd here, looks like you can get rid of the Destructor and avoid the issues entirely if you do.",
+      "parentUuid": "d165f13a_893a5108",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "2e3b04b19a052044ac03956dbb4fb70ec8b784c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "16507c31_b0ecc322",
         "filename": "fs_mgr/libdm/include/libdm/loop_control.h",
         "patchSetId": 5
@@ -59,6 +83,30 @@
       "writtenOn": "2018-06-22T17:31:33Z",
       "side": 1,
       "message": "ditto copy constructors.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 18
+      },
+      "revId": "2e3b04b19a052044ac03956dbb4fb70ec8b784c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed625310_ed69d726",
+        "filename": "fs_mgr/libdm/include/libdm/loop_control.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-22T17:54:52Z",
+      "side": 1,
+      "message": "+1.  unique_fd doesn\u0027t really help here either, so you\u0027ll need the rest of your constructors.  Seems reasonable to delete the copy constructors and have default move constructors.",
+      "parentUuid": "b529f488_66da7eda",
       "range": {
         "startLine": 50,
         "startChar": 0,
