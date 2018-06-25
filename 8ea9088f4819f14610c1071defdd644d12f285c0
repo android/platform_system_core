@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "23a246a6_c1579066",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-25T22:06:48Z",
+      "side": 1,
+      "message": "Because that is the primary use case that needs to be supported automatically.\n\nWe have additional CLs to add other automatic selection use cases. Additional CLs add the ability to force or disable.",
+      "parentUuid": "4fc107ba_642e0223",
+      "range": {
+        "startLine": 17,
+        "startChar": 34,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2940324_bb1fb6ba",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2018-06-25T21:03:50Z",
       "side": 1,
       "message": "Would it not be easier to mandate that the fstab entry includes upperdir, lowerdir, and workdir instead of trying to figure this out automatically?  I think it\u0027d be better to have marginally more specification in the fstab, which would reduce this code size and make the overlayfs mount deterministic.",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac9da48a_2ff53fe6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-25T22:06:48Z",
+      "side": 1,
+      "message": "The first reason I came up with having the entries specified is that there are 5 possible overlayfs mounts, a number that may increase over time (they added /product last release), each has an option of three possible upper and workdir locations (two on most practical installation, but three on Logical resizable partition). Adding 15 overlayfs entries to the fstab to enable a moderately esoteric debug-only feature places a lot of burden on the default use case.\n\nAll the entries are to be discarded on a \"user\" build, we have no mechanism for doing so.\n\nActually, there is no use case for overriding them IMHO. But I would be remiss in not being able to allow a means to override them ;-/ for those that want determinism.\n\nI have discovered determinism is a goal that is counter to bootability in a development environment. What if /cache (always smaller) can be mounted, but /data (larger) can not, then what do we do to allow an adb remount + reboot cycle? I should really split all the code that reads the fstab for overlayfs and add them in later CLs, but then there would be complaints in the current API over unused parameters...\n\nMy biggest worry about affing overlayfs entries is they are only used on userdebug, and their presence on \"user\" is a security risk.\n\nI was thinking of adding a flag \"userdebug\" that is part of the fstab manager flags field and have them ignored on \"user\". Since there are only 4 flag bits left, I felt that was a limited space problem. I eventually settled on \"wait\" as the _ignore_ flag.",
+      "parentUuid": "f2940324_bb1fb6ba",
       "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -59,6 +101,47 @@
     },
     {
       "key": {
+        "uuid": "2c05ef0f_ff9af3a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-25T22:06:48Z",
+      "side": 1,
+      "message": "If there is no context xattr at the \u003cmount_point\u003e (remember, this is for a debug device that can be setup incorrectly), then we have to survive and still boot far enough for us to get adb and shell going. I explored that as one of the use cases and had to add the guess for the root node\u0027s context. I should really collect it from /plat_file_contexts, but the complexity of adding a pgrep got to me; and the fact that it lists an incorrect context for /oem (u:object_r:oemfs:s0) also presented a problem.",
+      "parentUuid": "c2d711c9_2c899a53",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4c45971_03248ca5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-25T22:06:48Z",
+      "side": 1,
+      "message": "Hmmm, I thought I noted to myself to pass in the fstab as supplied by mount_all. I failed to make this change ...",
+      "range": {
+        "startLine": 28,
+        "startChar": 30,
+        "endLine": 29,
+        "endChar": 27
+      },
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05ee5d72_d1a576ee",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -70,6 +153,24 @@
       "writtenOn": "2018-06-25T21:03:50Z",
       "side": 1,
       "message": "Why does /proc/mounts need to be traversed?  Why not simply mount all of the overlayfs entries in the fstab?",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "010a91a3_c7d39d55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-25T22:06:48Z",
+      "side": 1,
+      "message": "We do not want to remount overlayfs overtop an overlayfs. Detecting if it is there or not already helps. Later versions of overlayfs (ToT upstream) have busy checks and will reject the later mount attempts, but still, do not want to attempt a remount that I know will result in an error.\n\nThere are no overlayfs\u0027 in the fstab :-). Making the partners add them could be informational, but in 99.9% of the cases of no use. We do not want the entries to exist on \"user\" builds, then they represent \"risk\". But frankly, I don\u0027t want any there because they will get it wrong. I would be remiss in not supporting them and using some of the flags to direct activities, but it is so easy to get the mount parameters wrong especially since we have to introduce overlayfs driver changes to support Android (if they chose to remove override_cred\u003d b/c their kernel does not support it, overlayfs will not allow a successful boot.).",
+      "parentUuid": "05ee5d72_d1a576ee",
       "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -99,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "4ab84423_abb0753c",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-25T22:06:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "226b80ff_7bde142b",
+      "range": {
+        "startLine": 105,
+        "startChar": 9,
+        "endLine": 105,
+        "endChar": 13
+      },
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db77526b_fa265abb",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 3
@@ -110,6 +235,24 @@
       "writtenOn": "2018-06-25T21:03:50Z",
       "side": 1,
       "message": "This seems wrong.  The map is unconditionally cleared at the end of this function?",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de399d45_0f1862ff",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-25T22:06:48Z",
+      "side": 1,
+      "message": "No, it does not, it is a global\n\nWish it was not so, but the fs_mgr_update_verity_state has no object var that can be passed in its current interface.\n\nI do not think that is a bad thing (for now).",
+      "parentUuid": "db77526b_fa265abb",
       "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -133,6 +276,47 @@
     },
     {
       "key": {
+        "uuid": "9bc59b38_b42a9983",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-25T22:06:48Z",
+      "side": 1,
+      "message": "I can return a std::pair\u003cbool, bool\u003e I guess. But that success information is useless to the caller (has no action for the info, the logs will tell us why and how it failed, especially if it was partial, and a bug can be filed). What is success, if we are imbalanced and can perform and adb remount?\n\nIf the partner choses deterministic (overlayfs entries), then failure can more easily be determined too. But what action do we take? The most probable is to keep what we have, reboot, and try again.\n\nFor userdebug, even a partial layout is helpful (eg: provide override for /system, but not /vendor; or imbalanced /system on /data and /vendor on /scratch), so rolling back also seemed like a bad plan. The user will see the problem during adb sync or adb push, and file a bug; the logs will tell us what we got wrong. Given that before this change no facility existed for successful operations of these commands for squashfs, I can live with that.\n\nIf nothing needed to change (including a failure to change anything), then the caller does not need to reboot. That is the purpose of the return, because we can move on to adb remount immediately. That is why we have to comment this unusual return condition.",
+      "parentUuid": "53b94576_1eecf2fa",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeebda9f_a3f52a54",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-25T22:06:48Z",
+      "side": 1,
+      "message": "Ooops, forgot to add const fstab* fstab to the argument list to be the primary source of fstab, and not fs_mgr_read_fstab_default(). I added it to the others above, but missed this spot.",
+      "range": {
+        "startLine": 432,
+        "startChar": 31,
+        "endLine": 432,
+        "endChar": 33
+      },
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db0b78e8_3ad0f052",
         "filename": "fs_mgr/include/fs_mgr_overlayfs.h",
         "patchSetId": 3
@@ -144,6 +328,24 @@
       "writtenOn": "2018-06-25T21:03:50Z",
       "side": 1,
       "message": "Any use case for allowing users to specify an fstab that isn\u0027t just the default one?",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9aa0c1b_31c238e6",
+        "filename": "fs_mgr/include/fs_mgr_overlayfs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-25T22:06:48Z",
+      "side": 1,
+      "message": "For now, there isn\u0027t, but the non-standard ones just keep on coming up and one day I hope we fix it ...",
+      "parentUuid": "db0b78e8_3ad0f052",
       "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
