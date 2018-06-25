@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fc107ba_642e0223",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-25T21:03:50Z",
+      "side": 1,
+      "message": "Why limit to squashfs?",
+      "range": {
+        "startLine": 17,
+        "startChar": 34,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2940324_bb1fb6ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-25T21:03:50Z",
+      "side": 1,
+      "message": "Would it not be easier to mandate that the fstab entry includes upperdir, lowerdir, and workdir instead of trying to figure this out automatically?  I think it\u0027d be better to have marginally more specification in the fstab, which would reduce this code size and make the overlayfs mount deterministic.",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2d711c9_2c899a53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-25T21:03:50Z",
+      "side": 1,
+      "message": "Why three options?  I can understand defaulting to \u003cmount_point\u003e and allowing an override, but I don\u0027t see a reason to have the third.",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05ee5d72_d1a576ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-25T21:03:50Z",
+      "side": 1,
+      "message": "Why does /proc/mounts need to be traversed?  Why not simply mount all of the overlayfs entries in the fstab?",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "226b80ff_7bde142b",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-25T21:03:50Z",
+      "side": 1,
+      "message": "const auto\u0026 here and in a few other places too.",
+      "range": {
+        "startLine": 105,
+        "startChar": 9,
+        "endLine": 105,
+        "endChar": 13
+      },
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db77526b_fa265abb",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-25T21:03:50Z",
+      "side": 1,
+      "message": "This seems wrong.  The map is unconditionally cleared at the end of this function?",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53b94576_1eecf2fa",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-25T21:03:50Z",
+      "side": 1,
+      "message": "Probably not a good way to use a return value.  Why isn\u0027t just true if everything is set up correctly and false with rollbacks if things were not set up?",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db0b78e8_3ad0f052",
+        "filename": "fs_mgr/include/fs_mgr_overlayfs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-25T21:03:50Z",
+      "side": 1,
+      "message": "Any use case for allowing users to specify an fstab that isn\u0027t just the default one?",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
