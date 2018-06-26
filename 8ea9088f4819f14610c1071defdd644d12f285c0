@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "582d5aae_624c2269",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-26T22:12:00Z",
+      "side": 1,
+      "message": "1) if /data can not mount, we may have to rely on /cache in order to provide adb push or adb sync updates to diagnose why /data did not mount, so the list of entries will be list the preferences. I have already used this feature prototype and debugging for _this_ CL\u0027s features. (you can not imagine how good I felt having this automation help me develop this, adb sync just worked and I felt a warm glow, despite it not being deterministic). Now I am just one user, but I would prefer that if a resource for overlayfs is inaccessible, that another is found so we can move on. So many times I have sat there at the boot animation (/data not mounting) and would be annoyed if I could not do an adb push to investigate/fix the problem.\n\n2) I fully understand why you want determinism. I was admittedly seeing it as an afterthought to even allow fstab overrides, but I also know how many engineers _hate_ a system that is too smart for its own good. I imagined a fully deterministic setup, and imagined the bring-up engineers populating these entries as a \"why bother\" scenario, much like what happens when trying to run gdb without a symbol table handy, others that utilize such setups just live with the restriction rather than investigating how to do it right until it is downright inconvenient. I still think I can make this all happen for everyone without the fstab entries for overlayfs, and hence I do have some resistance, but I am listening (and worrying) because it _is_ simpler to implement, but its utility will drop somewhat.\n\n3) /cache can be mounted early, so it makes a great case for this early overlayfs issue, but its size is small (256MB). So some cases /cache is best, and other cases /data is best, and I can even imagine a scenario where /cache is best for /system and /data is best for /product. However, the largest users of the adb-sync feature are not bringup folks, but frameworks, where late mounting is not a problem.\n\nFor A/B devices with LRAP, we intend to create a /scratch directory to a \u0027free space\u0027 or \u0027dm-scavenge\u0027 resource that should early mount. /scratch would be a priority if available, and a fs_mgr_mount_all(nullptr) should work off device tree and at the first stage.\n\nBecause of multiple use cases, all anyone can do is mount as early as possible. As it stands _today_ and you will find that if /data is late mounted, that the code will mount to /cache, For LRAP it will mount to /scratch as it is larger and available immediately, and for cases where there is no /scratch, and /data and /cache mount at the same phase (hikey BTW), that it will use /data. It works as you desire without overrides ... and if we wanted fstab overrides to make it deterministic, they get baked into the kernel (YOW) device tree, which I want no part of.\n\nI had a late overlayfs handle, after adbd was up. I even used that adbd to mount to /data. I then restarted adbd and it started using the _new_ one and agave me the diagnosis I needed. Although not as straightforward as an early deployment of overlayfs, and despite that the content needed came late, I had an option that a bring-up artist could use.\n\nRegardless, there has to be some runtime logic because overlayfs is a security issue on \"user\" builds, and some of the logic can not happen at FirstMount init phase. None of the ro.* properties exist, if I allowed it to happen at FirstMount on \"user\" then I have to cancel the feature ...",
+      "parentUuid": "06841892_749e2ca6",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2d711c9_2c899a53",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -149,6 +167,24 @@
       "side": 1,
       "message": "\u003e If there is no context xattr at the \u003cmount_point\u003e (remember, this is for a debug device that can be setup incorrectly), then we have to survive and still boot far enough for us to get adb and shell going\n\nNo, we don\u0027t.  Debug device or not, I think it\u0027s a safe assumption to say that overlayfs is only going to work if the underlying FS is well formed.  If developers *really* need to work with a system where there\u0027s no context xattr, then rootcontext\u003d seems allowable as an override, but not the third option to try to guess it.",
       "parentUuid": "2c05ef0f_ff9af3a9",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd6e8d5b_021aaab2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-26T22:12:00Z",
+      "side": 1,
+      "message": "rootcontext\u003d was only needed if things were not well formed (upperdir\u003d and lowerdir\u003d had to _both_ be set, if they weren\u0027t, things got ugly and device did not boot, or prevented shell from executing). I require it because this is not the case if we used a _real_ remount of an ext4 filesystem, it provided on-par behavior.\n\nThe guess is not from left field:\n\n// list of known mount points and default selinux label\nconst std::map\u003cstd::string, std::string\u003e default_label_from_mount_point \u003d {\n        {\"/system\",  \"system_file\"},\n        {\"/product\", \"system_file\"},\n        {\"/vendor\",  \"vendor_file\"},\n        {\"/odm\",     \"vendor_file\"},\n        {\"/oem\",     \"vendor_file\"},\n};\n\nand let\u0027s say we added a /google partition (without a table entry), what would be so wrong about guessing google_file?",
+      "parentUuid": "821f027e_6202bb2b",
       "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -225,6 +261,24 @@
       "side": 1,
       "message": "Understood why to have the /proc/mounts traversal.\n\nThat\u0027s not what the code seems to do though.  It traverses the provided fstab, which looks like its the default fstab in the adb case, then checks that the mounts are not already in /proc/mounts before it tries to mount them.  I don\u0027t see the logic that attempts to find suitable overlayfs mounts then checks that they\u0027re not in the fstab, then mounts them.  fs_mgr_overlayfs_setup() attempts to set up the directories, but I don\u0027t see it actually mount them.",
       "parentUuid": "010a91a3_c7d39d55",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db0f30e3_cde8903b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-26T22:12:00Z",
+      "side": 1,
+      "message": "fs_mgr_overlayfs_mount_all() does this. If you don\u0027t see it, means my code is obfuscated and needs to be written more clearly. I am already doing so in my working branch, I see that it was not clear and became much clearer when I used a subroutine to do the search and find ...",
+      "parentUuid": "7d8f08d7_9dd5cfae",
       "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -331,6 +385,24 @@
     },
     {
       "key": {
+        "uuid": "51095902_6c979f19",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-26T22:12:00Z",
+      "side": 1,
+      "message": "agreed, we are like minded, I am just a little lazier :-}",
+      "parentUuid": "b10a373f_7b99a521",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "53b94576_1eecf2fa",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 3
@@ -402,6 +474,24 @@
     },
     {
       "key": {
+        "uuid": "d0b0cacf_6b9a2774",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-26T22:12:00Z",
+      "side": 1,
+      "message": "I had already switch gears in my internal branch and went with bool return and bool* changed ... :-)\n\nIf we change it, we want a reboot for an earlier mount. But I have half a mind to support late mount as-is, expecting adb sync _then_ reboot by the caller to take advantage of an early-mount. So I may be waffling a bit on even needing change boolean to manage when to take a reboot or not.",
+      "parentUuid": "e16d2042_c1e6d2ec",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47dffb99_fecf3b70",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 3
@@ -413,6 +503,24 @@
       "writtenOn": "2018-06-26T18:28:23Z",
       "side": 1,
       "message": "Just noticing this.  You should probably just use setfscreatecon() before the mkdir() instead.  It\u0027s safer and less code.",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2914caf_32bc63d0",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-26T22:12:00Z",
+      "side": 1,
+      "message": "Thanks",
+      "parentUuid": "47dffb99_fecf3b70",
       "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -454,6 +562,30 @@
       "side": 1,
       "message": "Why would there be a different fstab besides fs_mgr_read_fstab_default()?  I\u0027m suggesting that none of these functions should take fstab* as an argument.",
       "parentUuid": "eeebda9f_a3f52a54",
+      "range": {
+        "startLine": 432,
+        "startChar": 31,
+        "endLine": 432,
+        "endChar": 33
+      },
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "833ab5fd_4ee179a1",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-26T22:12:00Z",
+      "side": 1,
+      "message": "Alas, we have a non-standard fstab supplied to mount_all, and this allows us to support that.\n\n(I have since pressured the developers to change to a standard fstab).\n\nMaybe you need to add checking if the mount_all is pointing to standard fstab, and report an error in your buildtime check? Then I would be more comfortable w/o an fstab parameter to this new API?",
+      "parentUuid": "6b81f098_447f925e",
       "range": {
         "startLine": 432,
         "startChar": 31,
