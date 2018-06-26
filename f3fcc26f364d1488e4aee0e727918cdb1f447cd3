@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "32d217db_501c3865",
+        "filename": "fs_mgr/libdm/include/libdm/dm_target.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-06-26T18:17:11Z",
+      "side": 1,
+      "message": "So, it could be used, it\u0027s just that this code is really hairy. It pulls the initial table string from libfec, so fs_mgr gets a full parameter string back (fec_verity_get_metadata). It then splits the string into separate parameters, mucks with them, and re-assembles it. Then it repeatedly tries concatenating that with other arguments in various ways until it can get a successful device back (format_verity_table, format_verity_legacy_table). It doesn\u0027t fit into DmTargetVerity\u0027s design of explicit, well-typed parameters.\n\nTwo ways to make it work with DmTargetVerity: (1) add a new constructor that splits a string and fills base_args_, and then add a method to concatenate optional arg strings. And then the fs_mgr_verity.cpp code could be largely preserved and not need a separate DmTargetVerityString class. Or (2), go whole-hog and Split() the string, decode it into typed parameters, and feed those back into DmTargetVerity. I was hoping to not go that route since AVB2 is now preferred, and it seems low value, but I don\u0027t mind doing (1) if you think that\u0027s worthwhile.\n\nre: Enough to delete fs_mgr_dm_ioctl.cpp? There are a few stragglers, I need a replacement for a DM_TABLE_STATUS use case in fs_mgr.cpp. But otherwise yeah this is one of the last consumers.",
+      "parentUuid": "4c2f348c_a465453c",
+      "revId": "f3fcc26f364d1488e4aee0e727918cdb1f447cd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "53a585ef_0344a890",
         "filename": "fs_mgr/libdm/include/libdm/dm_target.h",
         "patchSetId": 1
