@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "06841892_749e2ca6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-26T18:28:23Z",
+      "side": 1,
+      "message": "\u003e each has an option of three possible upper and workdir locations\n\nWhy?  I would assume that a given device would have a single set of upper/workdir locations.  \n\n\u003e But I would be remiss in not being able to allow a means to override them ;-/ for those that want determinism.\n\nI assume that everyone wants determinism, which is why I figure having one set in the fstab and no automatic searching is best for everyone.\n\n\u003e I have discovered determinism is a goal that is counter to bootability in a development environment. What if /cache (always smaller) can be mounted, but /data (larger) can not, then what do we do to allow an adb remount + reboot cycle? \n\nMount /cache?  I feel like using /data is a bad idea in general, especially since all Treble devices have first stage mount, so they\u0027ll be running off of system way before data is mounted.  There will be a whole slew of executables and libraries that won\u0027t be possible to change via overlayfs, which is a pretty big negative.  \n\nRealistically, the only way to do this safely is that overlayfs mounts need to happen very early and only use upper/workdir paths that can be early mounted.  I guess this may be hard for A/B devices without /cache (or at least without a large one) and without dm-linear\u0027s extra space, but I don\u0027t think we\u0027re going to have that combination of devices in the future, right? (A/B with squashfs without dm-linear) ?",
+      "parentUuid": "ac9da48a_2ff53fe6",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2d711c9_2c899a53",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -113,6 +131,24 @@
       "side": 1,
       "message": "If there is no context xattr at the \u003cmount_point\u003e (remember, this is for a debug device that can be setup incorrectly), then we have to survive and still boot far enough for us to get adb and shell going. I explored that as one of the use cases and had to add the guess for the root node\u0027s context. I should really collect it from /plat_file_contexts, but the complexity of adding a pgrep got to me; and the fact that it lists an incorrect context for /oem (u:object_r:oemfs:s0) also presented a problem.",
       "parentUuid": "c2d711c9_2c899a53",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "821f027e_6202bb2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-26T18:28:23Z",
+      "side": 1,
+      "message": "\u003e If there is no context xattr at the \u003cmount_point\u003e (remember, this is for a debug device that can be setup incorrectly), then we have to survive and still boot far enough for us to get adb and shell going\n\nNo, we don\u0027t.  Debug device or not, I think it\u0027s a safe assumption to say that overlayfs is only going to work if the underlying FS is well formed.  If developers *really* need to work with a system where there\u0027s no context xattr, then rootcontext\u003d seems allowable as an override, but not the third option to try to guess it.",
+      "parentUuid": "2c05ef0f_ff9af3a9",
       "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -171,6 +207,24 @@
       "side": 1,
       "message": "We do not want to remount overlayfs overtop an overlayfs. Detecting if it is there or not already helps. Later versions of overlayfs (ToT upstream) have busy checks and will reject the later mount attempts, but still, do not want to attempt a remount that I know will result in an error.\n\nThere are no overlayfs\u0027 in the fstab :-). Making the partners add them could be informational, but in 99.9% of the cases of no use. We do not want the entries to exist on \"user\" builds, then they represent \"risk\". But frankly, I don\u0027t want any there because they will get it wrong. I would be remiss in not supporting them and using some of the flags to direct activities, but it is so easy to get the mount parameters wrong especially since we have to introduce overlayfs driver changes to support Android (if they chose to remove override_cred\u003d b/c their kernel does not support it, overlayfs will not allow a successful boot.).",
       "parentUuid": "05ee5d72_d1a576ee",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d8f08d7_9dd5cfae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-26T18:28:23Z",
+      "side": 1,
+      "message": "Understood why to have the /proc/mounts traversal.\n\nThat\u0027s not what the code seems to do though.  It traverses the provided fstab, which looks like its the default fstab in the adb case, then checks that the mounts are not already in /proc/mounts before it tries to mount them.  I don\u0027t see the logic that attempts to find suitable overlayfs mounts then checks that they\u0027re not in the fstab, then mounts them.  fs_mgr_overlayfs_setup() attempts to set up the directories, but I don\u0027t see it actually mount them.",
+      "parentUuid": "010a91a3_c7d39d55",
       "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -259,6 +313,24 @@
     },
     {
       "key": {
+        "uuid": "b10a373f_7b99a521",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-26T18:28:23Z",
+      "side": 1,
+      "message": "Why is it a map then if the purpose is just to check if the mount_point was verified?\n\nIn any case, the fs_mgr is a static lib and we make no guarantees that functions are not changed. \n So it\u0027s probably best to fix fs_mgr_update_verity_state() to take a std::function for the callback so you can use a lambda here with a capture that does what you actually want instead of the thread-unsafe (though all the callers are single threaded anyway, right?) global.",
+      "parentUuid": "de399d45_0f1862ff",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "53b94576_1eecf2fa",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 3
@@ -312,6 +384,41 @@
     },
     {
       "key": {
+        "uuid": "e16d2042_c1e6d2ec",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-26T18:28:23Z",
+      "side": 1,
+      "message": "What is change needed for?  I took a look at the adb code, which I think is the user of changed and it seems that changed implies something changed that requires a reboot.  Is that necessarily true for these changes?  Making a directory doesn\u0027t seem to be something that requires a reboot.\n\nIn any case if this is needed, having a bool return for success and a bool* changed as an out parameter may be the most clear.",
+      "parentUuid": "9abc685a_71f18752",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47dffb99_fecf3b70",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-26T18:28:23Z",
+      "side": 1,
+      "message": "Just noticing this.  You should probably just use setfscreatecon() before the mkdir() instead.  It\u0027s safer and less code.",
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eeebda9f_a3f52a54",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 3
@@ -323,6 +430,30 @@
       "writtenOn": "2018-06-25T22:06:48Z",
       "side": 1,
       "message": "Ooops, forgot to add const fstab* fstab to the argument list to be the primary source of fstab, and not fs_mgr_read_fstab_default(). I added it to the others above, but missed this spot.",
+      "range": {
+        "startLine": 432,
+        "startChar": 31,
+        "endLine": 432,
+        "endChar": 33
+      },
+      "revId": "8ea9088f4819f14610c1071defdd644d12f285c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b81f098_447f925e",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-26T18:28:23Z",
+      "side": 1,
+      "message": "Why would there be a different fstab besides fs_mgr_read_fstab_default()?  I\u0027m suggesting that none of these functions should take fstab* as an argument.",
+      "parentUuid": "eeebda9f_a3f52a54",
       "range": {
         "startLine": 432,
         "startChar": 31,
