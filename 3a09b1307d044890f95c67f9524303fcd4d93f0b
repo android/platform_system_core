@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "f5877020_f73fecac",
+        "filename": "libtypedsysprop/TypedSystemProperty.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-06-26T08:28:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6d8b1748_45a85264",
+      "range": {
+        "startLine": 235,
+        "startChar": 72,
+        "endLine": 236,
+        "endChar": 58
+      },
+      "revId": "3a09b1307d044890f95c67f9524303fcd4d93f0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43366bfb_8a3a611e",
         "filename": "libtypedsysprop/TypedSystemProperty.cpp",
         "patchSetId": 4
@@ -195,6 +219,30 @@
       "side": 1,
       "message": "That\u0027s possible, but to do that we should choose either\n\n1) Passing constructor with type: WorldReadonly\u003cdouble\u003e, WorldReadonly\u003cstd::string\u003e, etc.\n2) Expose implementation to header with lambda: inline static constexpr auto WorldReadonly \u003d [](const auto\u0026 prop, bool write) { ... }\n3) Make or add constructor which accepts only function pointers so that compiler can automatically resolve overloading\n\nI thought that using like IntegerSystemProperty::WorldReadonly seems better than those options. Do you have any other ideas?",
       "parentUuid": "677c7779_53fa24ab",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 75
+      },
+      "revId": "3a09b1307d044890f95c67f9524303fcd4d93f0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab1ee258_23aec498",
+        "filename": "libtypedsysprop/include/TypedSystemProperty.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-06-26T08:28:26Z",
+      "side": 1,
+      "message": "Oh, is this due to the template parameter? Why don\u0027t you drop the first argument of the accessor? It\u0027s not used actually.",
+      "parentUuid": "5ae3bff0_41e8e037",
       "range": {
         "startLine": 39,
         "startChar": 0,
