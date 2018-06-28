@@ -16,6 +16,24 @@
       "revId": "3a8fda94c82d7b626d4447f845bd0db488158640",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e13e879_b7faf997",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-28T18:00:30Z",
+      "side": 1,
+      "message": "A) plan is changing to _drop_ the idea that we can provide fstab entries to override, making the overlayfs mounts _always_ automatically constructed, so there should be no example of an fstab necessary at this feature set.\nB) In _this_ specific check, this fstab is parsed from /proc/mounts. and is used as a \u0027busy\u0027 check of sorts to prevent an overlayfs overtop an overlayfs. In this case the entry looks like:\n\noverlay /system overlay ro,rootcontext\u003du:object_r:system_file:s0,seclabel,relatime,lowerdir\u003d/system,upperdir\u003d/data/overlay/system/upper,workdir\u003d/data/overlay/system/work,override_creds\u003doff 0 0\noverlay /vendor overlay ro,rootcontext\u003du:object_r:vendor_file:s0,seclabel,relatime,lowerdir\u003d/vendor,upperdir\u003d/data/overlay/vendor/upper,workdir\u003d/data/overlay/vendor/work,override_creds\u003doff 0 0",
+      "parentUuid": "53c09c1a_ee659850",
+      "revId": "3a8fda94c82d7b626d4447f845bd0db488158640",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
