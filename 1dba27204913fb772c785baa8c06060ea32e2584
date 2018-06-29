@@ -59,6 +59,24 @@
     },
     {
       "key": {
+        "uuid": "78e03af2_b530d11f",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-29T22:03:02Z",
+      "side": 1,
+      "message": "The following is the test used by the driver, having permissions to create a directory is one thing, but they want to address filesystems in readonly mode, a full filesystem, and having both MAC and DAC permissions to do so. stat does not clue us into MAC permissions or whether the filesystem is full (inode or space).",
+      "parentUuid": "5fddd4d3_d29aaa3c",
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "522069de_d2752f3e",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 6
@@ -70,6 +88,24 @@
       "writtenOn": "2018-06-29T21:33:18Z",
       "side": 1,
       "message": "I\u0027m still a little iffy about having both options.  Where is fs_mgr_overlayfs_mount_all() going to be called?  If it\u0027s in mount_all --late, then it\u0027ll always pick data if it exists.  I guess that\u0027s your intention though?\n\nAs a side note, enh@ filed b/110824790 recently which would make debugging directly if data doesn\u0027t mount impossible.",
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b800c65e_45735a39",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-29T22:03:02Z",
+      "side": 1,
+      "message": "If /cache mounts in --early, and /data mounts in --late, then we will mount_all /cache, and busy/want checks will prevent /data. (future CL for other locations like \"/scratch\" to be introduced for LRAP)",
+      "parentUuid": "522069de_d2752f3e",
       "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -110,6 +146,24 @@
     },
     {
       "key": {
+        "uuid": "28f24e7b_84043492",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-29T22:03:02Z",
+      "side": 1,
+      "message": "If workdir exists and is not writable (eg, filesystem is full), and there are no candidates that are r/w, then perhaps the upperdir may have r/o overrides we need to use _anyways_, otherwise as soon as the filesystem is full, we end up throwing away everything we have pushed to the device. \n\nWe will not be able to do a adb remount, but at least a weak candidate overlayfs mounted. What I should check is for _any_ files in the upperdir, because if it is empty of content, it is not a candidate for mounting broken (readonly).\n\nBut this does bring up another check I am missing: workdir and upperdir _must_ be on the same filesystem, we need to do a stat on each directory to make sure they match st_dev. If they are not, then the overlayfs override work readonly then.",
+      "parentUuid": "78b1532e_d1f24764",
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c17c2e57_13344c29",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 6
@@ -127,6 +181,24 @@
     },
     {
       "key": {
+        "uuid": "4fe84497_05a225d9",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-29T22:03:02Z",
+      "side": 1,
+      "message": "Note to self: check what happens if rootcontext\u003d is not provided, and retest all failure conditions surrounding it. It\u0027s main purpose is to ensure that /system lower is assigned to /system mount, and does not inherit a (broken) /system upper context.",
+      "parentUuid": "c17c2e57_13344c29",
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca259536_6c41c963",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 6
@@ -138,6 +210,24 @@
       "writtenOn": "2018-06-29T21:33:18Z",
       "side": 1,
       "message": "Why isn\u0027t the default Fstab always used?  I wouldn\u0027t even let users of this API pass a different Fstab as we\u0027ve never shown a valid use case for this.",
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a1e0407_978be721",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-29T22:03:02Z",
+      "side": 1,
+      "message": "This is all about propagating non-default fstabs to mount_all and still having it work. Until it is _impossible_, we must propagate it.",
+      "parentUuid": "ca259536_6c41c963",
       "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -207,6 +297,30 @@
     },
     {
       "key": {
+        "uuid": "76e23247_fc9a899a",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-29T22:03:02Z",
+      "side": 1,
+      "message": "And, yet, there are ones passed to mount_all ... please fix/enforce that in init?",
+      "parentUuid": "f1dd3814_bced0bb3",
+      "range": {
+        "startLine": 303,
+        "startChar": 32,
+        "endLine": 303,
+        "endChar": 50
+      },
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "202b1007_50367773",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 6
@@ -218,6 +332,24 @@
       "writtenOn": "2018-06-29T21:33:18Z",
       "side": 1,
       "message": "fs_mgr_read_fstab_default() already includes entries from DT.",
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21a37997_dc4948a1",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-06-29T22:03:02Z",
+      "side": 1,
+      "message": "True, but not when a file is specified to mount_all command.",
+      "parentUuid": "202b1007_50367773",
       "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
