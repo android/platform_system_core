@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10ba783b_b7128b77",
+        "filename": "adb/daemon/file_sync_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2018-06-29T22:17:56Z",
+      "side": 1,
+      "message": "This isn\u0027t a new problem, but calling back() on an empty std::string is UB.\n\nAside: It looks like Split() doesn\u0027t discard empty ranges, so the first path component will always be \"\". I think should_use_fs_config() is called for \"/\" and \"/data\" and returns true for both.",
+      "revId": "b61c36339e99c05592c12467480bd6cca6d028a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
