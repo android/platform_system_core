@@ -1,0 +1,260 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "925dcc5f_5fede717",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-29T21:33:18Z",
+      "side": 1,
+      "message": "S_ISDIR(st.st_mode);",
+      "range": {
+        "startLine": 65,
+        "startChar": 38,
+        "endLine": 65,
+        "endChar": 73
+      },
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5b41df8_49e901f9",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-29T21:33:18Z",
+      "side": 1,
+      "message": "Drop this comment since we no longer make them up.",
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fddd4d3_d29aaa3c",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-29T21:33:18Z",
+      "side": 1,
+      "message": "Why isn\u0027t checking the permissions bits from stat() good enough?\n\nWhen would this ever not be true?  If setup() failed?  Does mount() fail in the case that this isn\u0027t writable or do we get a latent error later when trying to use the mount?",
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "522069de_d2752f3e",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-29T21:33:18Z",
+      "side": 1,
+      "message": "I\u0027m still a little iffy about having both options.  Where is fs_mgr_overlayfs_mount_all() going to be called?  If it\u0027s in mount_all --late, then it\u0027ll always pick data if it exists.  I guess that\u0027s your intention though?\n\nAs a side note, enh@ filed b/110824790 recently which would make debugging directly if data doesn\u0027t mount impossible.",
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "201889a7_ec09dfe7",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-29T21:33:18Z",
+      "side": 1,
+      "message": "You can drop this check.  This is a static function and all of the callers pass a non-null entry.\n\nBetter, why not just pass this as a std::string?  It\u0027s better to always work with std::strings until needing to interact with C APIs.  (The fact that we really could/should/maybe will rewrite fstab and fstab_rec notwithstanding)",
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78b1532e_d1f24764",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-29T21:33:18Z",
+      "side": 1,
+      "message": "Would you even want this to happen if it were possible?  It seems to imply that the work dir exists but is not writable.  Wouldn\u0027t it be better to not set this and let this function return an empty string?",
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c17c2e57_13344c29",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-29T21:33:18Z",
+      "side": 1,
+      "message": "It should be an error if context is empty, right?\n\nDid you check whether or not the context is set automatically if the context of the upper and work dir are the context of the mount?  It\u0027d be ideal if so.  Perhaps the checks can be to fail with an error message if the contexts are not all the same and then not need to specify rootcontext (since we\u0027ll already have checked that they\u0027re proper).",
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca259536_6c41c963",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-29T21:33:18Z",
+      "side": 1,
+      "message": "Why isn\u0027t the default Fstab always used?  I wouldn\u0027t even let users of this API pass a different Fstab as we\u0027ve never shown a valid use case for this.",
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "956f1efb_bed6e078",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-29T21:33:18Z",
+      "side": 1,
+      "message": "setfscreatecon() instead.",
+      "range": {
+        "startLine": 246,
+        "startChar": 3,
+        "endLine": 257,
+        "endChar": 5
+      },
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b067d61_4ba3f0ca",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-29T21:33:18Z",
+      "side": 1,
+      "message": "You\u0027re a private function and your only caller already ensures this.",
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1dd3814_bced0bb3",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-29T21:33:18Z",
+      "side": 1,
+      "message": "I wouldn\u0027t accept other fstabs.",
+      "range": {
+        "startLine": 303,
+        "startChar": 32,
+        "endLine": 303,
+        "endChar": 50
+      },
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "202b1007_50367773",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-29T21:33:18Z",
+      "side": 1,
+      "message": "fs_mgr_read_fstab_default() already includes entries from DT.",
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b693aced_892a488f",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-29T21:33:18Z",
+      "side": 1,
+      "message": "What is all the logic for !fstab here?  This should be simpler.  Read the default Fstab, which includes the DT fstab and won\u0027t be null (otherwise the system isn\u0027t going to boot...) and call fs_mgr_overlayfs_setup() with the folders in overlay_mount_points.",
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8d8f865_8b35fd8e",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-06-29T21:33:18Z",
+      "side": 1,
+      "message": "Similarly this looks like it could be more simple if just always use the default fstab.",
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
