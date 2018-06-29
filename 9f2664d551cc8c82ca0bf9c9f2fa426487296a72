@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3835f895_55e2952e",
+        "filename": "fastboot/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2018-06-29T01:47:22Z",
+      "side": 1,
+      "message": "I think its a transitive dependency from a lot of different libraries. fs_mgr is something that uses it",
+      "parentUuid": "c30fc0a0_18394b6f",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 20
+      },
+      "revId": "9f2664d551cc8c82ca0bf9c9f2fa426487296a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70e4c47f_9e17c801",
         "filename": "fastboot/device/commands.cpp",
         "patchSetId": 2
@@ -358,6 +382,30 @@
       "writtenOn": "2018-06-25T20:21:22Z",
       "side": 1,
       "message": "isn\u0027t this going to break any upgrading devices or devices that device to _not_ use fastbootd (or resizable partitions)?\n(Also can be a separate CL clubbed with the fs_mgr one)",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 0
+      },
+      "revId": "9f2664d551cc8c82ca0bf9c9f2fa426487296a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65d4202a_9377177f",
+        "filename": "init/init_first_stage.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2018-06-29T01:47:22Z",
+      "side": 1,
+      "message": "Not sure what circumstances you mean this would break. Do you mean system only upgrades? in this case, when booted into system, neither sbin/ nor system/bin recovery will exist, so it will still work correctly",
+      "parentUuid": "522fdc90_652f67e5",
       "range": {
         "startLine": 121,
         "startChar": 0,
