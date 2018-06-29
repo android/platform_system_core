@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "7848bd55_f842c6a8",
+        "filename": "libsysprop/sysprop.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2018-06-29T09:26:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b1937d5e_8ff8c19d",
+      "revId": "ce33be6f14e1bbdcf9badea2872ba02fe62ef732",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68a30332_76a9a6e5",
         "filename": "libsysprop/sysprop.cpp",
         "patchSetId": 12
@@ -47,6 +65,24 @@
       "writtenOn": "2018-06-29T08:21:26Z",
       "side": 1,
       "message": "Can we guard overflows? For example, passing \"123847234587\" could return something.\nstd::stol handles invalid input, but I am not sure if it is okay to use it.",
+      "revId": "ce33be6f14e1bbdcf9badea2872ba02fe62ef732",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10458cb6_d785b956",
+        "filename": "libsysprop/sysprop.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2018-06-29T09:26:06Z",
+      "side": 1,
+      "message": "Yeah, it\u0027ll be nice if we guard overflows. In this case std::strtol or android::base::ParseInt I think are best as std::stol can generate c++ exception which we don\u0027t want.",
+      "parentUuid": "68a30332_76a9a6e5",
       "revId": "ce33be6f14e1bbdcf9badea2872ba02fe62ef732",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
