@@ -16,6 +16,24 @@
       "revId": "55334337dbf6df5136a3c78b830e6fc0a0900d81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c4ed762_d46fd023",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-02T20:11:34Z",
+      "side": 1,
+      "message": "overlayfs driver does not do what you think. If it can not create the directory (out of space) inside workdir it actually hard-codes the overlayfs stack to be read-only, so you do _not_ get out of space errors. I think it refuses to remount rw. It would behave the same if you did not specify the workdir.\n\nWe introduce ro.adbd.remount.overlayfs in a later CL. Currently it operates nearly as a bool to true/false/default. But we could make it instead take an overlay tree (eg: /mnt/scratch/overlay) and use that as the specification of which one to use. I would suggest that we change it to the following value-set:\n\ntrue -\u003e automatic directory selection\nfalse -\u003e disable feature\n/data/overlay -\u003e use /data/overlay directory only.\n\u003cempty\u003e - automatic directory selection, automatic reasoning (check if filesystem is squashfs and enable).\n\nThe issue with this is during init earlymount, there are _no_ properties. However, during setup it will work and create the associated directory trees., but if it is presented with a non-standard directory, it will _not_ be searched for at init earlymount time; we would need to provide _all_ possible choices into the overlay_mount_point array for it to work unimpeded.\n\nSimilar to the current problem with mount_all and partners specifying a non-standard fstab location...",
+      "parentUuid": "19935a02_232042cf",
+      "revId": "55334337dbf6df5136a3c78b830e6fc0a0900d81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
