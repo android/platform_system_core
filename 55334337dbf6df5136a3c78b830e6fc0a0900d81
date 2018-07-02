@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19935a02_232042cf",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-02T18:57:29Z",
+      "side": 1,
+      "message": "I see what you\u0027re doing here, but this still seems too complex to me.  Instead of having logic to determine if a directory has files in it or if it is writable, etc, could we do something like the following:\n\nDuring overlayfs setup, take a parameter from the user (defaults to /data, since you\u0027ve mentioned frameworks team is the most common requester and that want /data) for which mount point to use (/cache, or /data).  Throw an error if there is a non-empty mount point in the other locations, otherwise remove the empty upper and work dirs from the other mount point options.\n\nThen during the mount, iterate through the mount points and use the first mount point that has a upper and work directory.\n\nAs an aside, what happens if the mount point is filled or not writable (permissions)?  \n\nIn the former case do we get out of space errors when writing?  That would be the correct behavior to me.\n\nIn the latter case, does the mount() fail due to permissions or do subsequent writes fail due to permissions?  Either seem to be acceptable to me.",
+      "revId": "55334337dbf6df5136a3c78b830e6fc0a0900d81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

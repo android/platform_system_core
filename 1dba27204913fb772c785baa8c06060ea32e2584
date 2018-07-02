@@ -234,6 +234,24 @@
     },
     {
       "key": {
+        "uuid": "398db8cb_1229dead",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-02T18:57:29Z",
+      "side": 1,
+      "message": "Do we though?  I can look into removing that option from init (we\u0027ve historically kept backwards compatibility, though it may be time to change the language based on shipping API level so we can deprecate some of the mistakes anyway).\n\nBut just because we\u0027re living with a bad API from init doesn\u0027t mean that we need to propagate its mistakes.  I don\u0027t think it\u0027s unreasonable to say that fs_mgr \"creates overlayfs mounts for all applicable partitions in the default fstab\" and ignore the non-default fstabs in mount_all, of which we have 0 internal users.",
+      "parentUuid": "5a1e0407_978be721",
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "956f1efb_bed6e078",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 6
@@ -269,6 +287,30 @@
       "side": 1,
       "message": "I did want it to report \u0027change\u0027 if the directory was something else and got corrected by the action. setfscreatecon will not change the context if the directory already exists AFAIK?",
       "parentUuid": "956f1efb_bed6e078",
+      "range": {
+        "startLine": 246,
+        "startChar": 3,
+        "endLine": 257,
+        "endChar": 5
+      },
+      "revId": "1dba27204913fb772c785baa8c06060ea32e2584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19ffc1f0_e24e0f0b",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-02T18:57:29Z",
+      "side": 1,
+      "message": "I guess not in that case then.",
+      "parentUuid": "47819ce3_b198f59f",
       "range": {
         "startLine": 246,
         "startChar": 3,
