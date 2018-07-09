@@ -130,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "a548280c_e614e643",
+        "filename": "fastboot/engine.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-09T20:19:07Z",
+      "side": 1,
+      "message": "fb_init() would have to stay, unless I reworked engine.cpp and turned it into a class and did the work in the constructor.\n\nI don\u0027t consider the latter two cruft. Doing it this way avoids the need to pass around the fastboot instance across every single function that uses it. Look at fastboot.cpp before and note how nearly every method has a transport pointer argument; to me that is far more crufty.\nThis works because the fastboot tool should never need to have more than one fastboot instance at once.\n\nI would agree though that turning engine.cpp into a class would be far cleaner.",
+      "parentUuid": "5d3abdb4_e0beeb69",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 0
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7b237c43_9ccd4d71",
         "filename": "fastboot/engine.cpp",
         "patchSetId": 13
