@@ -1,0 +1,302 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1dbc13c_c8b952f9",
+        "filename": "fastboot/Android.bp",
+        "patchSetId": 13
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-09T19:33:15Z",
+      "side": 1,
+      "message": "why 2?",
+      "range": {
+        "startLine": 2,
+        "startChar": 11,
+        "endLine": 2,
+        "endChar": 23
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94f65d0b_78f46891",
+        "filename": "fastboot/Android.bp",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-09T19:33:15Z",
+      "side": 1,
+      "message": "exported headers should always be in their own directory. you don\u0027t want callers to be saying `#include \u003cutils.h\u003e`... everyone has a \"utils.h\". `#include \u003cfastboot/utils.h\u003e` makes that unambiguous.\n\nso create an include/fastboot/ and move the exported headers there (and leave the private ones here).",
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dcbaf36_b4250ded",
+        "filename": "fastboot/Android.mk",
+        "patchSetId": 13
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-09T19:33:15Z",
+      "side": 1,
+      "message": "tabs\n\n(where order isn\u0027t otherwise meaningful, lists should be sorted alphabetically)",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d3abdb4_e0beeb69",
+        "filename": "fastboot/engine.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-09T19:33:15Z",
+      "side": 1,
+      "message": "were you planning on having a follow-on patch to remove all this cruft and just use the new API directly?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 0
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b237c43_9ccd4d71",
+        "filename": "fastboot/engine.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-09T19:33:15Z",
+      "side": 1,
+      "message": "why do we need to copy?",
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae63ec71_d2dca4fd",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 1469,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-09T19:33:15Z",
+      "side": 1,
+      "message": "if you\u0027re going to be exporting all these types, they should probably be in a `namespace fb`.",
+      "range": {
+        "startLine": 1469,
+        "startChar": 4,
+        "endLine": 1469,
+        "endChar": 13
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cec9b09_d8d1c69e",
+        "filename": "fastboot/fastboot_api.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-09T19:33:15Z",
+      "side": 1,
+      "message": "it doesn\u0027t really seem like there\u0027s a lot of value to this class? *especially* not if you\u0027re also exposing \"Driver\" to callers anyway.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 0
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "003a488b_95a7a2be",
+        "filename": "fastboot/fastboot_api.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-09T19:33:15Z",
+      "side": 1,
+      "message": "\"API\" is a weird name for this.",
+      "range": {
+        "startLine": 45,
+        "startChar": 6,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8ce2092_633d4ccd",
+        "filename": "fastboot/fastboot_api.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-09T19:33:15Z",
+      "side": 1,
+      "message": "no C-style casts.\n\nto do what you\u0027re trying to do here, just don\u0027t name the argument.",
+      "range": {
+        "startLine": 48,
+        "startChar": 80,
+        "endLine": 48,
+        "endChar": 89
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1523230_6a24f51b",
+        "filename": "fastboot/fastboot_api.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-09T19:33:15Z",
+      "side": 1,
+      "message": "https://google.github.io/styleguide/cppguide.html#Reference_Arguments",
+      "range": {
+        "startLine": 54,
+        "startChar": 48,
+        "endLine": 54,
+        "endChar": 65
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24723b32_2f1cbb6a",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-09T19:33:15Z",
+      "side": 1,
+      "message": "i\u0027m not sure i understand this name either.",
+      "range": {
+        "startLine": 43,
+        "startChar": 14,
+        "endLine": 43,
+        "endChar": 20
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9194c7f8_f718484b",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-09T19:33:15Z",
+      "side": 1,
+      "message": "normally i\u0027d say \"use chrono_literals\", but pirama\u0027s not quite there with libc++ for win32 yet :-(",
+      "range": {
+        "startLine": 47,
+        "startChar": 45,
+        "endLine": 47,
+        "endChar": 58
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95b6abb1_5210d870",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-09T19:33:15Z",
+      "side": 1,
+      "message": "not obvious what the scope of this comment is.",
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a14361a8_15e9c527",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-09T19:33:15Z",
+      "side": 1,
+      "message": "so hide them and make the test class a `friend`?",
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
