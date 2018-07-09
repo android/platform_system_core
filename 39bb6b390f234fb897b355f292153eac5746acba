@@ -337,6 +337,30 @@
     },
     {
       "key": {
+        "uuid": "76c06d93_6d849f22",
+        "filename": "fastboot/fastboot_api.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-09T21:19:53Z",
+      "side": 1,
+      "message": "The main reason for the split classes, is separating fastboot into the \"command level\" (the driver class) and the \"transaction level\" (API class).\n\nFor example. Executing a single transaction: \"fastboot flash partition\" at the fastboot command granularity is:\nSend: \"download:0x...\", Recv: info messages and a response \"DATA\" message\nSend: binary payload, Recv: info messages and a response \"OKAY\" message\nSend: \"flash:partition\", Recv: info messages and a response \"OKAY\" message\n\nNote: Download\u0027s and Upload\u0027s implementation should be moved to the API class.\n\n\nSomeone who only cares about fastboot issuing fastboot transactions (such as the fastboot tool) should not touch or be exposed to any methods in the driver instance. However, when testing a device\u0027s fastboot implementation, one is testing at the granularity of fastboot commands and hence needs access to the lower level \"driver\" methods. I believe these two \"Driver\" and API use cases are basically orthogonal.\n\n\nPerhaps if I get rid of the Driver() getter and move Download() and Upload() to the API class, you will be happier.",
+      "parentUuid": "c5377b19_42057de6",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 0
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "003a488b_95a7a2be",
         "filename": "fastboot/fastboot_api.h",
         "patchSetId": 13
