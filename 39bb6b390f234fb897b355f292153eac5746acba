@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2fe01939_5e7ea2fd",
+        "filename": "fastboot/Android.bp",
+        "patchSetId": 13
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-09T20:03:36Z",
+      "side": 1,
+      "message": "Once the API is stable, I was planning to kill the original libfastboot. Then this one can be renamed to libfastboot.\n\nSince I haven\u0027t migrated fastboot_test yet to use the new library, I didn\u0027t want to break the build. Otherwise, I would have already done this.",
+      "parentUuid": "f1dbc13c_c8b952f9",
+      "range": {
+        "startLine": 2,
+        "startChar": 11,
+        "endLine": 2,
+        "endChar": 23
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "94f65d0b_78f46891",
         "filename": "fastboot/Android.bp",
         "patchSetId": 13
@@ -36,6 +60,24 @@
       "writtenOn": "2018-07-09T19:33:15Z",
       "side": 1,
       "message": "exported headers should always be in their own directory. you don\u0027t want callers to be saying `#include \u003cutils.h\u003e`... everyone has a \"utils.h\". `#include \u003cfastboot/utils.h\u003e` makes that unambiguous.\n\nso create an include/fastboot/ and move the exported headers there (and leave the private ones here).",
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e68c06e7_9bf65137",
+        "filename": "fastboot/Android.bp",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-09T20:03:36Z",
+      "side": 1,
+      "message": "Yep, this is on my todo list. I haven\u0027t done it yet because it involves modifying the original Android.mk for fastboot to look for headers in the new include folder.",
+      "parentUuid": "94f65d0b_78f46891",
       "revId": "39bb6b390f234fb897b355f292153eac5746acba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -128,6 +170,30 @@
     },
     {
       "key": {
+        "uuid": "8192d6ca_dccbe61c",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 1469,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-09T20:03:36Z",
+      "side": 1,
+      "message": "Ok, I can do that. Although the original library did not do this. I only added two classes: FastBootAPI, FastBootDriver. Everything else is from the original library, or nested inside the classes namespace.",
+      "parentUuid": "ae63ec71_d2dca4fd",
+      "range": {
+        "startLine": 1469,
+        "startChar": 4,
+        "endLine": 1469,
+        "endChar": 13
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8cec9b09_d8d1c69e",
         "filename": "fastboot/fastboot_api.cpp",
         "patchSetId": 13
@@ -139,6 +205,30 @@
       "writtenOn": "2018-07-09T19:33:15Z",
       "side": 1,
       "message": "it doesn\u0027t really seem like there\u0027s a lot of value to this class? *especially* not if you\u0027re also exposing \"Driver\" to callers anyway.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 0
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e187c5cd_1d239d23",
+        "filename": "fastboot/fastboot_api.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-09T20:03:36Z",
+      "side": 1,
+      "message": "The main purpose is to store the response and info messages from the device. The caller can then query them from the last transaction as needed.\n\nIt also performs the higher level fastboot transactions that are composed on many fastboot driver commands (Require() and getting a list of Partitions()).",
+      "parentUuid": "8cec9b09_d8d1c69e",
       "range": {
         "startLine": 83,
         "startChar": 0,
@@ -174,6 +264,30 @@
     },
     {
       "key": {
+        "uuid": "5075147a_60ac7105",
+        "filename": "fastboot/fastboot_api.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-09T20:03:36Z",
+      "side": 1,
+      "message": "I have no problem changing it.\n\nJust tell me what you think an appropriate name is and I can find and replace.",
+      "parentUuid": "003a488b_95a7a2be",
+      "range": {
+        "startLine": 45,
+        "startChar": 6,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e8ce2092_633d4ccd",
         "filename": "fastboot/fastboot_api.h",
         "patchSetId": 13
@@ -185,6 +299,30 @@
       "writtenOn": "2018-07-09T19:33:15Z",
       "side": 1,
       "message": "no C-style casts.\n\nto do what you\u0027re trying to do here, just don\u0027t name the argument.",
+      "range": {
+        "startLine": 48,
+        "startChar": 80,
+        "endLine": 48,
+        "endChar": 89
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c08e350_3801ef30",
+        "filename": "fastboot/fastboot_api.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-09T20:03:36Z",
+      "side": 1,
+      "message": "Yeah, I was just trying to suppress the unused warning. Did not know you could just leave the argument out.",
+      "parentUuid": "e8ce2092_633d4ccd",
       "range": {
         "startLine": 48,
         "startChar": 80,
@@ -243,6 +381,30 @@
     },
     {
       "key": {
+        "uuid": "84ff35e1_86278e06",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-09T20:03:36Z",
+      "side": 1,
+      "message": "What name would you suggest? \n\nFrom wikipedia a driver is:\n\"a device driver is a computer program that operates or controls a particular type of device that is attached to a computer.\"\n\nThis is exactly what this class is doing.",
+      "parentUuid": "24723b32_2f1cbb6a",
+      "range": {
+        "startLine": 43,
+        "startChar": 14,
+        "endLine": 43,
+        "endChar": 20
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9194c7f8_f718484b",
         "filename": "fastboot/fastboot_driver.h",
         "patchSetId": 13
@@ -254,6 +416,30 @@
       "writtenOn": "2018-07-09T19:33:15Z",
       "side": 1,
       "message": "normally i\u0027d say \"use chrono_literals\", but pirama\u0027s not quite there with libc++ for win32 yet :-(",
+      "range": {
+        "startLine": 47,
+        "startChar": 45,
+        "endLine": 47,
+        "endChar": 58
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05bd39ab_12c3ffd3",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-09T20:03:36Z",
+      "side": 1,
+      "message": "Windows is building with std\u003dc++11 right? I will look and see if there are any appropriate literals that are available.",
+      "parentUuid": "9194c7f8_f718484b",
       "range": {
         "startLine": 47,
         "startChar": 45,
@@ -294,6 +480,24 @@
       "writtenOn": "2018-07-09T19:33:15Z",
       "side": 1,
       "message": "so hide them and make the test class a `friend`?",
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e3cada2_8d7772cc",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-09T20:03:36Z",
+      "side": 1,
+      "message": "I was originally going to do this, but decided against it when I realized friend classes are not inherited. \n\nMy tester is composed of tests that all inherit from a FastBootTest ABC. All of these classes need access to these lower level commands. However, due to C++ semantics friend classes are not inherited, so I can not just declare FastBootTest as a friend. I would have to declare every single derived class which would be a mess and make it too closely coupled with the library.",
+      "parentUuid": "a14361a8_15e9c527",
       "revId": "39bb6b390f234fb897b355f292153eac5746acba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
