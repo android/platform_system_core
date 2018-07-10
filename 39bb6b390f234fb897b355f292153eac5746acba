@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "2423e64e_355702dd",
+        "filename": "fastboot/Android.bp",
+        "patchSetId": 13
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-10T16:13:14Z",
+      "side": 1,
+      "message": "yeah, i think that doing this in two stages makes sense. just wanted to check there was a plan.",
+      "parentUuid": "d3093bdd_828467ac",
+      "range": {
+        "startLine": 2,
+        "startChar": 11,
+        "endLine": 2,
+        "endChar": 23
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e7c0364_7c40ea56",
         "filename": "fastboot/Android.bp",
         "patchSetId": 13
@@ -331,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "eb7501d9_8440a3b9",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 1469,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-10T16:13:14Z",
+      "side": 1,
+      "message": "the original \"library\" was only a build convenience, not really API.",
+      "parentUuid": "8192d6ca_dccbe61c",
+      "range": {
+        "startLine": 1469,
+        "startChar": 4,
+        "endLine": 1469,
+        "endChar": 13
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8cec9b09_d8d1c69e",
         "filename": "fastboot/fastboot_api.cpp",
         "patchSetId": 13
@@ -414,6 +462,30 @@
       "side": 1,
       "message": "The main reason for the split classes, is separating fastboot into the \"command level\" (the driver class) and the \"transaction level\" (API class).\n\nFor example. Executing a single transaction: \"fastboot flash partition\" at the fastboot command granularity is:\nSend: \"download:0x...\", Recv: info messages and a response \"DATA\" message\nSend: binary payload, Recv: info messages and a response \"OKAY\" message\nSend: \"flash:partition\", Recv: info messages and a response \"OKAY\" message\n\nNote: Download\u0027s and Upload\u0027s implementation should be moved to the API class.\n\n\nSomeone who only cares about fastboot issuing fastboot transactions (such as the fastboot tool) should not touch or be exposed to any methods in the driver instance. However, when testing a device\u0027s fastboot implementation, one is testing at the granularity of fastboot commands and hence needs access to the lower level \"driver\" methods. I believe these two \"Driver\" and API use cases are basically orthogonal.\n\n\nPerhaps if I get rid of the Driver() getter and move Download() and Upload() to the API class, you will be happier.",
       "parentUuid": "c5377b19_42057de6",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 0
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f2e10e3_39f0a447",
+        "filename": "fastboot/fastboot_api.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-10T16:13:14Z",
+      "side": 1,
+      "message": "yeah, if the caller needs both \"API\" and \"Driver\" then \"API\" isn\u0027t independently useful and should just be rolled in to \"Driver\". but if \"API\" actually does let us hide \"Driver\", then, yeah, that\u0027s worthwhile.\n\nso looking at the existing \"[fb::]Transport\", it seems like \"Driver\" should be \"[fb::]Protocol\"? i\u0027m still struggling with \"API\" though. \"[fb::]Session\"? (\"transaction\" seems wrong because the existing \"Action\" is closer to a single transaction.)",
+      "parentUuid": "76c06d93_6d849f22",
       "range": {
         "startLine": 83,
         "startChar": 0,
@@ -560,6 +632,29 @@
         "startChar": 48,
         "endLine": 54,
         "endChar": 65
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e164be17_caac6f3e",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-10T16:13:14Z",
+      "side": 1,
+      "message": "these then don\u0027t fit your model -- since they\u0027re just wrappers around the actual implementation -- and should be in the other class.\n\nhow many callers do they have? i\u0027m tempted to say that we _shouldn\u0027t_ make it easy for callers to throw away the detailed response.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 0
       },
       "revId": "39bb6b390f234fb897b355f292153eac5746acba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -831,6 +926,30 @@
       "writtenOn": "2018-07-10T05:35:50Z",
       "side": 1,
       "message": "Why did you make these changes about timeout and sleep delay?",
+      "range": {
+        "startLine": 451,
+        "startChar": 0,
+        "endLine": 452,
+        "endChar": 0
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "043af3e5_a8079922",
+        "filename": "fastboot/usb_linux.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-10T16:13:14Z",
+      "side": 1,
+      "message": "yeah, the USB changes seem like they should be a separate patch for jerryzhang and jmgao to review.",
+      "parentUuid": "78b92dda_b87bfa37",
       "range": {
         "startLine": 451,
         "startChar": 0,
