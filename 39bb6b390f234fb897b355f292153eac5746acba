@@ -498,6 +498,30 @@
     },
     {
       "key": {
+        "uuid": "194808ef_12137afd",
+        "filename": "fastboot/fastboot_api.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-10T18:19:16Z",
+      "side": 1,
+      "message": "I thought about it some more, and really the only use case where someone would need access to this lower level single \"command\" interface is a tester (like what I am currently doing) that is trying to create malformed and/or illegal fastboot commands.\n\nI think what I will do is go back to the single class approach like you suggested, and make these transaction methods public, and the command methods protected. Then I will use friendship in my tester to access these protected methods.",
+      "parentUuid": "3f2e10e3_39f0a447",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 0
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "003a488b_95a7a2be",
         "filename": "fastboot/fastboot_api.h",
         "patchSetId": 13
