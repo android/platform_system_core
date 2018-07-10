@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "49a3dabb_d8a69a5e",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-07-10T02:22:19Z",
+      "side": 1,
+      "message": "OK, adding this under \u0027oem\u0027 sounds a better approach (then seems we don\u0027t have to do anything here?). Presumably not many partners need this command because it\u0027s only needed for devices without /vbmeta to use AVB.\n\n\n[Details]\nThe major reason to add this command is that some partners wanted to switch to AVB on upgrading devices (but there is no /vbmeta partition). The top-level vbmeta is then packed at the end of /boot partition.\n\nDuring GSI/VTS testing, we have to flash a special vbmeta.img on /vbmeta, to disable AVB.\nhttps://android-review.googlesource.com/c/platform/system/core/+/453236\n\nHowever, it\u0027s not easy to update the vbmeta at the end of /boot. \nThat\u0027s why we are adding this command.",
+      "parentUuid": "722436b5_1b926c7d",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 0
+      },
+      "revId": "ca43ccde65ce0f068becf78709fe28327c961c16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dfe893c6_78f1e6b0",
         "filename": "fastboot/fastboot.cpp",
         "patchSetId": 3
@@ -82,6 +106,30 @@
       "writtenOn": "2018-07-09T15:56:15Z",
       "side": 1,
       "message": "what does this look like in practice? i worry that this too long to fit in the column?",
+      "range": {
+        "startLine": 1665,
+        "startChar": 38,
+        "endLine": 1665,
+        "endChar": 72
+      },
+      "revId": "ca43ccde65ce0f068becf78709fe28327c961c16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef477040_ec0182c8",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1665,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-07-10T02:22:19Z",
+      "side": 1,
+      "message": "did you mean does it exceed 80 chars?\n\nYup, it will be something like this:\nfastboot AVB command: avb-disable-verification     FAILED (remote: unknown command)",
+      "parentUuid": "9d5953d5_7219c82a",
       "range": {
         "startLine": 1665,
         "startChar": 38,
