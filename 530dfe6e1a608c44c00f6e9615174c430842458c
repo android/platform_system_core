@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6db0babd_2126c4bc",
+        "filename": "adb/adb_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2018-07-10T22:37:03Z",
+      "side": 1,
+      "message": "Seems OK to me. We would never/rarely realloc in practice, but we would for some strings (e.g. those that only have quotes in them).\n\nWe could also calculate the exact size:\n\nresult.reserve(s.size() + 2 + std::count(s.begin(), s.end(), \u0027\\\u0027\u0027) * 3);",
+      "parentUuid": "b0e03f83_84b94ac4",
+      "range": {
+        "startLine": 88,
+        "startChar": 21,
+        "endLine": 89,
+        "endChar": 31
+      },
+      "revId": "530dfe6e1a608c44c00f6e9615174c430842458c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba44a8b1_76ffe524",
         "filename": "adb/adb_utils.cpp",
         "patchSetId": 1
@@ -72,6 +96,24 @@
       "side": 1,
       "message": "what\u0027s the plan for adb? 2 or 4? we should just reformat the odd ones out to match what you\u0027re aiming for...",
       "parentUuid": "abdcc370_5cd67f84",
+      "revId": "530dfe6e1a608c44c00f6e9615174c430842458c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8894226e_94a366dc",
+        "filename": "adb/adb_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2018-07-10T22:37:03Z",
+      "side": 1,
+      "message": "No opinion on adb\u0027s indentation level, but I\u0027ll switch my edits to 2 to match the surrounding code.",
+      "parentUuid": "0e5a4759_c8389e41",
       "revId": "530dfe6e1a608c44c00f6e9615174c430842458c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
