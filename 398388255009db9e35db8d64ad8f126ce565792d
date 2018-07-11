@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "aac4677d_e4c76e2d",
+        "filename": "libsysprop/sysprop.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2018-07-11T16:29:06Z",
+      "side": 1,
+      "message": "I wanted nan to be stored and loaded correctly. android::base::ParseDouble can parse \"nan\", but I didn\u0027t want to include the code \"if (res \u003c min || max \u003c res)\".",
+      "parentUuid": "2c680e83_57026f8a",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 22
+      },
+      "revId": "398388255009db9e35db8d64ad8f126ce565792d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "13bcfe92_20c09add",
         "filename": "libsysprop/sysprop.cpp",
         "patchSetId": 14
@@ -59,6 +83,24 @@
       "writtenOn": "2018-07-11T15:21:57Z",
       "side": 1,
       "message": "what\u0027s this function for? if you want to be able to round-trip through a text representation you should probably use hex floats...",
+      "revId": "398388255009db9e35db8d64ad8f126ce565792d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81ec23a3_0d3027e8",
+        "filename": "libsysprop/sysprop.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2018-07-11T16:29:06Z",
+      "side": 1,
+      "message": "C++ guarantees that conversion from double to string and back is identity if precision of at least max_digits10 is used. And it would be helpful if we use human-readable text.",
+      "parentUuid": "13bcfe92_20c09add",
       "revId": "398388255009db9e35db8d64ad8f126ce565792d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
