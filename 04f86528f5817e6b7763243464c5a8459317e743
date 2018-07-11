@@ -34,6 +34,24 @@
       "revId": "04f86528f5817e6b7763243464c5a8459317e743",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6784f34f_b5dbb984",
+        "filename": "fs_mgr/liblp/writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-11T17:04:04Z",
+      "side": 1,
+      "message": "Hm PS1 looks better to me than PS2.  I wouldn\u0027t expect ValidateGeometryAndMetadata() to also be responsible for serializing the metadata.\n\nMy issue isn\u0027t the code duplication as much as how calling FlashPartitionTable() actually ends up calling SerializeMetadata() and ValidateGeometryAndMetadata() twice.  I figure that those checks can be skipped by having a 3rd function, that starts where I made this comment.  In this case you have\n\nFlashMetadata():\n- Validate\n- Flash\n- Call 3rd function\n\nUpdateMetadata():\n- Validate\n- Verify or return\n- Call 3rd function\n\nBut I mean it\u0027s really just a nit, if this makes sense to you now, roll with it.",
+      "parentUuid": "d30404c9_1bd3bd78",
+      "revId": "04f86528f5817e6b7763243464c5a8459317e743",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
