@@ -963,6 +963,30 @@
     },
     {
       "key": {
+        "uuid": "7d98cfa7_88b7e857",
+        "filename": "fastboot/usb.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-11T21:56:24Z",
+      "side": 1,
+      "message": "It means blocking, with no timeout.",
+      "parentUuid": "6d832507_b78e37ef",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 36
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78b92dda_b87bfa37",
         "filename": "fastboot/usb_linux.cpp",
         "patchSetId": 13
@@ -998,6 +1022,30 @@
       "side": 1,
       "message": "yeah, the USB changes seem like they should be a separate patch for jerryzhang and jmgao to review.",
       "parentUuid": "78b92dda_b87bfa37",
+      "range": {
+        "startLine": 451,
+        "startChar": 0,
+        "endLine": 452,
+        "endChar": 0
+      },
+      "revId": "39bb6b390f234fb897b355f292153eac5746acba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85efdfd4_e35fdb1e",
+        "filename": "fastboot/usb_linux.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-11T21:56:24Z",
+      "side": 1,
+      "message": "The reason was without it, a malfunctioning and/or broken boot loader implementation might not respond to USB read/writes when it is supposed to. This will cause the caller to hang forever in the ioctl call because it was set with timeout\u003d0 (blocking). I was just changing it so it would eventually timeout.\n\nAnyways, I will move this to a separate patch.",
+      "parentUuid": "043af3e5_a8079922",
       "range": {
         "startLine": 451,
         "startChar": 0,
