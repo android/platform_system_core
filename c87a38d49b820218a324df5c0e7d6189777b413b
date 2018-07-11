@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "1335d8a1_2e867113",
+        "filename": "fastboot/engine.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-11T23:25:32Z",
+      "side": 1,
+      "message": "This will go away once I migrate fastboot.cpp and engine.cpp to use the new API. I will then directly pass a vector instead of having to convert a C array to it.\n\n\nAlso, this will not build on 32-bit platforms, as libadb (a dependency) refuses to compile for 32-bit mode.",
+      "parentUuid": "752ed26d_c493204e",
+      "revId": "c87a38d49b820218a324df5c0e7d6189777b413b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "435e9bb5_fcb5e892",
         "filename": "fastboot/engine.h",
         "patchSetId": 15
@@ -185,6 +203,30 @@
       "writtenOn": "2018-07-11T22:24:38Z",
       "side": 1,
       "message": "i think something like the existing Action makes more sense than all this copy \u0026 paste. this feels like it\u0027s obfuscating what\u0027s going on without adding anything in return.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 0
+      },
+      "revId": "c87a38d49b820218a324df5c0e7d6189777b413b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c78e5f4a_d174b054",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-11T23:25:32Z",
+      "side": 1,
+      "message": "The real benefit occurs once you migrate engine.cpp to use this. Instead of having to queue the messy Action structs, you can queue the Commands themselves, then process them through their polymorphic interface. That was the real reason for doing this.\n\n\nAdditionally, it completely isolates knowledge of how to read and write from files, decode sparse files, etc... from the fastboot implementation.",
+      "parentUuid": "0f797ac1_f6a15575",
       "range": {
         "startLine": 52,
         "startChar": 0,
