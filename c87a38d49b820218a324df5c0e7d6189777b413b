@@ -239,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "4278d534_268f831a",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-11T23:37:33Z",
+      "side": 1,
+      "message": "Also, another major issue with engine.cpp and the Action struct enum way of doing it, is that engine.cpp should not be responsible for knowing that, for example, a \"getvar\" command requires concatenating a \"gevar:\" + \"var\". Or flash is \"flash:\" + partition. \n\nIt should not have to know about this, or care about it. If you tried to abstract this away with the current design, you will end up with a million enum codes, and an even larger mess of:\n\nif (enum \u003d\u003d OP_XXXXX) { call something }\n\n\nSeeing a pattern like this is begging to be implemented in polymorphic way, which is exactly what the Command class accomplishes.",
+      "parentUuid": "c78e5f4a_d174b054",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 0
+      },
+      "revId": "c87a38d49b820218a324df5c0e7d6189777b413b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f575ad2_d75a8afb",
         "filename": "fastboot/usb.h",
         "patchSetId": 15
