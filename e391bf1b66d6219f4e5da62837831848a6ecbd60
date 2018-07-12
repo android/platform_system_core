@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "463d7adb_87b3fc37",
+        "filename": "libcutils/include/cutils/threads.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-12T00:47:51Z",
+      "side": 1,
+      "message": "alternatively, you could sidestep the issue with:\n```\n  pthread_mutexattr_t attrs;\n  pthread_mutexattr_init(\u0026attrs);\n  return pthread_mutex_init(lock, \u0026attrs);\n```\n\nthis is almost unused anyway: https://cs.corp.google.com/search/?q\u003dcutils/threads.h+mutex_init\u0026m\u003d100\u0026sort\u003d1\u0026sq\u003dpackage:%5Eandroid$\u0026type\u003dcs\n\nwe can switch cutils over to pthreads (since we don\u0027t use the hashmap on windows and any new code shouldn\u0027t use this anyway) and then move these functions into the one remaining user (which is C++ anyway).",
+      "revId": "e391bf1b66d6219f4e5da62837831848a6ecbd60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c82bef17_8cb11777",
+        "filename": "liblog/include/log/log_read.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-07-12T00:47:51Z",
+      "side": 1,
+      "message": "the only reference to `nullptr` in this file is already in a #if __cplusplus, so you don\u0027t need this.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "e391bf1b66d6219f4e5da62837831848a6ecbd60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
