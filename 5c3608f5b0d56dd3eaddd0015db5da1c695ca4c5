@@ -1,0 +1,312 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "963029d3_2ce6cf56",
+        "filename": "fastboot/fastboot_commands.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T17:21:52Z",
+      "side": 1,
+      "message": "Please use \n\nnamespace fastboot {\nnamespace commands {\n\n...\n\n\nOr something equivalent instead.\n\nhttps://google.github.io/styleguide/cppguide.html#Namespace_Formatting",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cd94336_2f821a77",
+        "filename": "fastboot/fastboot_commands.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T17:21:52Z",
+      "side": 1,
+      "message": "Reference parameters are only for in parameters and must be const.  Out parameters are pointers.\n\nhttps://google.github.io/styleguide/cppguide.html#Reference_Arguments",
+      "range": {
+        "startLine": 12,
+        "startChar": 45,
+        "endLine": 13,
+        "endChar": 61
+      },
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53746e8e_081d6f9a",
+        "filename": "fastboot/fastboot_commands.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T17:21:52Z",
+      "side": 1,
+      "message": "No abbreviations; again, it would drastically help readability.  This applies to things like \u0027s\u0027 above too.\n\nhttps://google.github.io/styleguide/cppguide.html#General_Naming_Rules",
+      "range": {
+        "startLine": 21,
+        "startChar": 11,
+        "endLine": 21,
+        "endChar": 22
+      },
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1b12f66_0b817dd6",
+        "filename": "fastboot/fastboot_commands.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T17:21:52Z",
+      "side": 1,
+      "message": "You have unneeded levels of indirection here.  Package everything (this, tpbuf, err, transfer) into a local struct and pass it as priv.  Pass a lambda (without captures) as write that unpackages the struct from priv and calls SparseWriteCallback() with the values contained.",
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e502b777_76b40ac9",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T17:21:52Z",
+      "side": 1,
+      "message": "Call this error() and have it in the header.  \n\nhttps://google.github.io/styleguide/cppguide.html#Function_Names",
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "535db964_f8679ee8",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T17:21:52Z",
+      "side": 1,
+      "message": "Feel free to use \u0027auto\u0027 especially when declaring lambdas like these.",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 43
+      },
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b73127bc_597d0258",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T17:21:52Z",
+      "side": 1,
+      "message": "I don\u0027t understand this?  Once you fail, you continue to fail?  I get the idea of not continuing to try to do things, but shouldn\u0027t the Commands themselves handle failing once their read/writes fail?",
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "137221ed_92886370",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T17:21:52Z",
+      "side": 1,
+      "message": "Same, seems like the command should set err appropriately when it has failed.",
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f243a52c_e834e41f",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T17:21:52Z",
+      "side": 1,
+      "message": "const auto\u0026",
+      "range": {
+        "startLine": 255,
+        "startChar": 9,
+        "endLine": 255,
+        "endChar": 13
+      },
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe9240e4_8861ab66",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T17:21:52Z",
+      "side": 1,
+      "message": "resp \u003d\u003d s",
+      "range": {
+        "startLine": 257,
+        "startChar": 12,
+        "endLine": 257,
+        "endChar": 28
+      },
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b21a082_7147ca43",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T17:21:52Z",
+      "side": 1,
+      "message": "This should be in a separate commands.h header.",
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17e2b9bf_b2f572c6",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T17:21:52Z",
+      "side": 1,
+      "message": "What is Buf() vs Execute()?  From the implementation, Execute() simply calls Buf() with a parameter dropped.  It seems better to just drop this from the class hierarchy and have the transfer commands directly transfer their data during Execute().",
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20cd6d87_a32285b2",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T17:21:52Z",
+      "side": 1,
+      "message": "Is this ever planned to be subclassed?  There is a general pattern to keep private members private unless explicitly planned to be used by subclasses.\n\nhttps://google.github.io/styleguide/cppguide.html#Inheritance",
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c0a2af1_da43faea",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T17:21:52Z",
+      "side": 1,
+      "message": "Private variables get an _ suffix.  You don\u0027t want to use g_ here either (this isn\u0027t actually a global).\n\nhttps://google.github.io/styleguide/cppguide.html#Variable_Names",
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d977457_91e90222",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T17:21:52Z",
+      "side": 1,
+      "message": "Why should this class store this?  It seems better to simply return it from Command() / RawCommand().",
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b63d3855_8ef42f77",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T17:21:52Z",
+      "side": 1,
+      "message": "Same question as above.",
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
