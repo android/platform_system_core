@@ -88,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "05b07681_4688e6f6",
+        "filename": "fastboot/fastboot_commands.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-12T18:17:44Z",
+      "side": 1,
+      "message": "If I understand you correctly, this is not possible, as the signature for sparse_file_callback is:\nint sparse_file_callback(struct sparse_file *s, bool sparse, bool crc,\n\t\tint (*write)(void *priv, const void *data, size_t len), void *priv);\n\n\nThis write argument must be a C function pointer, any C++ std::function or similar will not typecheck. Additionally, since this is a C function pointer, only static methods can be used, since the \"this\" context is not captured with a function pointer which would be required for methods to work.\n\nSo only a C function, or a static method with this signature can be used: \"int (*write)(void *priv, const void *data, size_t len)\".",
+      "parentUuid": "e1b12f66_0b817dd6",
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e502b777_76b40ac9",
         "filename": "fastboot/fastboot_driver.cpp",
         "patchSetId": 16
@@ -128,6 +146,30 @@
     },
     {
       "key": {
+        "uuid": "22e5bbb2_8b3b9a46",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-12T18:17:44Z",
+      "side": 1,
+      "message": "The reason I didn\u0027t do this, is auto will infer the type to be:\n\n[\u0026](std::vector\u003cchar\u003e\u0026) -\u003e bool which is an internal compiler specific dependent type as mandated by the C++ spec.\n\nHowever, now that I think of it, it should automatically construct a std::function wrapper when it is used on line 148.",
+      "parentUuid": "535db964_f8679ee8",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 43
+      },
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b73127bc_597d0258",
         "filename": "fastboot/fastboot_driver.cpp",
         "patchSetId": 16
@@ -145,6 +187,24 @@
     },
     {
       "key": {
+        "uuid": "7ff62a7a_7cf66deb",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-12T18:17:44Z",
+      "side": 1,
+      "message": "This was done for a couple reasons.\nFirst, to not trust the return code from calling Execute() returning false if a write/read fails.\n\nSecondly, Execute has a boolean return code. I need to figure out the exact reason for failure, since Command() needs to return a RetCode.\n\nSo if a Read or Write fails, I know the exact reason for it\u0027s failure. If only Execute return false, then I know it is an internal error with Execute.",
+      "parentUuid": "b73127bc_597d0258",
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "137221ed_92886370",
         "filename": "fastboot/fastboot_driver.cpp",
         "patchSetId": 16
@@ -156,6 +216,24 @@
       "writtenOn": "2018-07-12T17:21:52Z",
       "side": 1,
       "message": "Same, seems like the command should set err appropriately when it has failed.",
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65914e2e_f9a28fd8",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-12T18:17:44Z",
+      "side": 1,
+      "message": "It will, trans uses Readbuffer or SendBuffer, which both set err appropriately.",
+      "parentUuid": "137221ed_92886370",
       "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -225,6 +303,24 @@
     },
     {
       "key": {
+        "uuid": "b7232c6e_5a944d2e",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-12T18:17:44Z",
+      "side": 1,
+      "message": "Good call.",
+      "parentUuid": "0b21a082_7147ca43",
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17e2b9bf_b2f572c6",
         "filename": "fastboot/fastboot_driver.h",
         "patchSetId": 16
@@ -242,6 +338,24 @@
     },
     {
       "key": {
+        "uuid": "799b7a4e_c039128c",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-12T18:17:44Z",
+      "side": 1,
+      "message": "Ok, I can fix that. I guess part of the reason was to avoid the messy cruft of an argument that in many cases are not even used.\n\nWhat if I do what you said above, and change Execute to accept a struct that contains all these arguments? Then it only needs to use what is required inside the struct. It will also make the Execute\u0027s signature a lot cleaner:\n\nExecute(struct foo \u0026a);",
+      "parentUuid": "17e2b9bf_b2f572c6",
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "20cd6d87_a32285b2",
         "filename": "fastboot/fastboot_driver.h",
         "patchSetId": 16
@@ -253,6 +367,24 @@
       "writtenOn": "2018-07-12T17:21:52Z",
       "side": 1,
       "message": "Is this ever planned to be subclassed?  There is a general pattern to keep private members private unless explicitly planned to be used by subclasses.\n\nhttps://google.github.io/styleguide/cppguide.html#Inheritance",
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f89443e7_bf3ceedf",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-12T18:17:44Z",
+      "side": 1,
+      "message": "Ok, will move then all private.",
+      "parentUuid": "20cd6d87_a32285b2",
       "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -287,6 +419,24 @@
       "writtenOn": "2018-07-12T17:21:52Z",
       "side": 1,
       "message": "Why should this class store this?  It seems better to simply return it from Command() / RawCommand().",
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9cbeb2f_bfad0e64",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-12T18:17:44Z",
+      "side": 1,
+      "message": "Ok, I can do that.\n\nI will just make them pointer arguments that will be default to nullptr if you don\u0027t care about them.",
+      "parentUuid": "2d977457_91e90222",
       "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
