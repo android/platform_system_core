@@ -154,6 +154,24 @@
     },
     {
       "key": {
+        "uuid": "393a2990_99fd38a1",
+        "filename": "fastboot/fastboot_commands.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T19:11:55Z",
+      "side": 1,
+      "message": "A lambda with no captures can also be passed.",
+      "parentUuid": "05b07681_4688e6f6",
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e502b777_76b40ac9",
         "filename": "fastboot/fastboot_driver.cpp",
         "patchSetId": 16
@@ -260,6 +278,30 @@
     },
     {
       "key": {
+        "uuid": "e2c5a29c_15730ece",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T19:11:55Z",
+      "side": 1,
+      "message": "You need the std::function to be const, which you want it to be anyway as an input parameter.",
+      "parentUuid": "7198c0d7_ab720144",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 43
+      },
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b73127bc_597d0258",
         "filename": "fastboot/fastboot_driver.cpp",
         "patchSetId": 16
@@ -289,6 +331,24 @@
       "side": 1,
       "message": "This was done for a couple reasons.\nFirst, to not trust the return code from calling Execute() returning false if a write/read fails.\n\nSecondly, Execute has a boolean return code. I need to figure out the exact reason for failure, since Command() needs to return a RetCode.\n\nSo if a Read or Write fails, I know the exact reason for it\u0027s failure. If only Execute return false, then I know it is an internal error with Execute.",
       "parentUuid": "b73127bc_597d0258",
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "249cfbb8_d847676e",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T19:11:55Z",
+      "side": 1,
+      "message": "\u003e First, to not trust the return code from calling Execute() returning false if a write/read fails.\n\nI\u0027d trust them.\n\n\u003e Execute has a boolean return code.\n\nYou control the API of Execute though, so why not return a return code or rely on the \u0027err\u0027 parameter.",
+      "parentUuid": "7ff62a7a_7cf66deb",
       "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -506,6 +566,24 @@
       "side": 1,
       "message": "Ok, I can fix that. I guess part of the reason was to avoid the messy cruft of an argument that in many cases are not even used.\n\nWhat if I do what you said above, and change Execute to accept a struct that contains all these arguments? Then it only needs to use what is required inside the struct. It will also make the Execute\u0027s signature a lot cleaner:\n\nExecute(struct foo \u0026a);",
       "parentUuid": "17e2b9bf_b2f572c6",
+      "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78cad2a8_a069ea0e",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T19:11:55Z",
+      "side": 1,
+      "message": "That\u0027d be fine to me.  The extra parameters don\u0027t seem like a huge hassle to me though either.",
+      "parentUuid": "799b7a4e_c039128c",
       "revId": "5c3608f5b0d56dd3eaddd0015db5da1c695ca4c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
