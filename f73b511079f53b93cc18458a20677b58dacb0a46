@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef6623b1_fdf163c6",
+        "filename": "fastboot/fastboot_commands.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T21:13:21Z",
+      "side": 1,
+      "message": "I\u0027d put the definition of this struct here too and use struct initialization,\n\nstruct SparseCBPrivate {\n    SparseFileTransfer* const self;\n    std::vector\u003cchar\u003e tpbuf;\n    const std::function\u003cbool(const std::vector\u003cchar\u003e\u0026)\u003e\u0026 send;\n    std::string\u0026 err;\n} private \u003d {\n  .self \u003d this,\n  .send \u003d send,\n  .err \u003d err,\n};\n\nKeeps it all local and makes it super clear.",
+      "revId": "f73b511079f53b93cc18458a20677b58dacb0a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cc0995b_bbdf2c7b",
+        "filename": "fastboot/fastboot_commands.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-12T21:13:21Z",
+      "side": 1,
+      "message": "Why even have this class though?  Is there ever a case where you\u0027re going to specifically have a collection of \u0027Transfer\u0027 objects instead of just a collection of \u0027Command\u0027 objects?",
+      "revId": "f73b511079f53b93cc18458a20677b58dacb0a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
