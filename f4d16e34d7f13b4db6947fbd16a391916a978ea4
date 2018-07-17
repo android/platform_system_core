@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "03f114b6_62adbc96",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-17T15:20:23Z",
+      "side": 1,
+      "message": "Many of these will have callers once I submit my updates to engine.cpp. For example, \"fb_queue_erase()\" will queue a call to FastBootDriver::Erase(), \"fb_queue_reboot()\" will queue a FastBootDriver::Reboot() call, etc...\n\nI\u0027m still not sure I understand your comment however. The fastboot protocol (see README.md) defines a way to powerdown the device, so there absolutely should be hooks in libfastboot to do this--regardless of if anyone is currently using this feature. This is the case with all these methods.\n\nIf it was discovered that for some reason in all of Android nobody was using std::vector::pop_back(), would you suggest that std::vector::pop_back() be removed from the std library implementation linked with Android? It seems to me this is effectively what you are suggesting here... I must be misunderstanding you.",
+      "parentUuid": "59c611c8_b7c63bcd",
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a494f8a_5fc2116c",
         "filename": "fastboot/fastboot_driver.h",
         "patchSetId": 22
@@ -30,6 +48,24 @@
       "writtenOn": "2018-07-16T23:35:54Z",
       "side": 1,
       "message": "I\u0027d just hardcode these into the functions...  There\u0027s no reason to have these as constants.",
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "620620fe_2bc30ecc",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-17T15:20:23Z",
+      "side": 1,
+      "message": "I actually really disagree with this suggestion. It is bad practice to have a bunch of magic string literals scattered throughout the code and doing it this way makes it far more maintainable... especially if you consider someone could inherit from this class, forcing them to define even more of the same magic string literals.\n\nI am however completely open to suggestions for how to define this constants. Whether that be through macros, a separate header file, static class variables, etc...",
+      "parentUuid": "5a494f8a_5fc2116c",
       "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
