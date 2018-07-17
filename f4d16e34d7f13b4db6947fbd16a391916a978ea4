@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "62deab9c_5a58cef7",
+        "filename": "fastboot/engine.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-17T21:31:56Z",
+      "side": 1,
+      "message": "enh@ mentioned this in a previous patchset, but this copy really should be avoided.  This buffer can be very large so this copy ends up increasing memory usage significantly.  It\u0027d be better if there were a Download() overload that took a pointer and size or if the callers of fb_queue_download() wrote into a std::vector\u003cchar\u003e in the first place.",
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59c611c8_b7c63bcd",
         "filename": "fastboot/fastboot_driver.cpp",
         "patchSetId": 22
@@ -55,6 +72,109 @@
     },
     {
       "key": {
+        "uuid": "aeeffb0d_0976ce70",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-17T21:31:56Z",
+      "side": 1,
+      "message": "const auto\u0026 here and in other places.\n\nYou really want the \u0027\u0026\u0027; you get deep copies otherwise.",
+      "range": {
+        "startLine": 138,
+        "startChar": 9,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7295646_ffa7596d",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-17T21:31:56Z",
+      "side": 1,
+      "message": "You probably want android::base::WriteFully() here instead to avoid the copy to the std::string as I believe this can be a large buffer too.",
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dae9a4a_121b048a",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-17T21:31:56Z",
+      "side": 1,
+      "message": "You probably want const std::string\u0026 here otherwise you\u0027ll end up with two copy operations (one since this is by-value and one for the internal copy with operator\u003d); same below.",
+      "range": {
+        "startLine": 352,
+        "startChar": 35,
+        "endLine": 352,
+        "endChar": 48
+      },
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2622a670_18e553c1",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-17T21:31:56Z",
+      "side": 1,
+      "message": "This is unreachable as an else condition, no?  Should be a check that it isn\u0027t \u003e FB_RESPONSE_SZ ?",
+      "range": {
+        "startLine": 366,
+        "startChar": 8,
+        "endLine": 366,
+        "endChar": 27
+      },
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b392b8d_c8151b60",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-17T21:31:56Z",
+      "side": 1,
+      "message": "Is rfind what you want?  Your below substr() call isn\u0027t taking the position of where \u0027INFO\u0027 was found, but rather just sets tmp to what follows from INFO.\n\nDo you mean android::base::StartsWith() ?",
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a494f8a_5fc2116c",
         "filename": "fastboot/fastboot_driver.h",
         "patchSetId": 22
@@ -102,6 +222,40 @@
       "side": 1,
       "message": "My general rule of thumb is that constants only need broken out into a separate constant if they have more than one user, which except for \u0027FLASH\u0027 these don\u0027t.  Though I guess you want to let subclasses use these which is why you have them as protected.\n\nIn any case this comment is moot now that https://android-review.googlesource.com/c/platform/system/core/+/688447 went in.",
       "parentUuid": "620620fe_2bc30ecc",
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "100aeb8a_61f15c22",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-17T21:31:56Z",
+      "side": 1,
+      "message": "It\u0027d be better if errors were returned from the commands themselves instead of as a separate callback, especially since I don\u0027t see _error being cleared when a subsequent call succeeds.\n\nThree output parameters may be a bit rough, but you could encompass these all in a struct (either as a return value with Retcode or as an output parameter) if that seemed better.",
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "165f57ea_71c33012",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-17T21:31:56Z",
+      "side": 1,
+      "message": "It\u0027s info_cb_ not _info_cb.\n\nhttps://google.github.io/styleguide/cppguide.html#Variable_Names",
       "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
