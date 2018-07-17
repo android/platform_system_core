@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ecd8f14d_521bd896",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-17T20:23:19Z",
+      "side": 1,
+      "message": "Sorry, that was a bit of an hyper-correction stemming from the engine.cpp classes.  I understand it; you want to define this as an API for everything else to use, so implementing all of these functions is the right way to go.\n\n\u003e If it was discovered that for some reason in all of Android nobody was using std::vector::pop_back(), would you suggest that std::vector::pop_back() be removed from the std library implementation linked with Android? \n\nNot with libc++ since that\u0027s actually a standard, but with the rest of our libraries in system/core, especially the ones that are deprecated but still used, we literally have been doing that.  Unused code bitrots and internal only libraries are easily changed, so it\u0027s best to introduce code only when there\u0027s a clear use case for it / caller of it.",
+      "parentUuid": "03f114b6_62adbc96",
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a494f8a_5fc2116c",
         "filename": "fastboot/fastboot_driver.h",
         "patchSetId": 22
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "I actually really disagree with this suggestion. It is bad practice to have a bunch of magic string literals scattered throughout the code and doing it this way makes it far more maintainable... especially if you consider someone could inherit from this class, forcing them to define even more of the same magic string literals.\n\nI am however completely open to suggestions for how to define this constants. Whether that be through macros, a separate header file, static class variables, etc...",
       "parentUuid": "5a494f8a_5fc2116c",
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa6d1472_48591c7b",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-17T20:23:19Z",
+      "side": 1,
+      "message": "My general rule of thumb is that constants only need broken out into a separate constant if they have more than one user, which except for \u0027FLASH\u0027 these don\u0027t.  Though I guess you want to let subclasses use these which is why you have them as protected.\n\nIn any case this comment is moot now that https://android-review.googlesource.com/c/platform/system/core/+/688447 went in.",
+      "parentUuid": "620620fe_2bc30ecc",
       "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
