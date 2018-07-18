@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb86fa6f_d9b1e996",
+        "filename": "fs_mgr/liblp/images.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-18T21:20:31Z",
+      "side": 1,
+      "message": "Maybe better to use mkstemp() so you get an fd instead of a FILE*.  Then you can return a unique_fd from this function that AddPartitionImage() will then close (you don\u0027t need it outside of this function, right?).  That way you can skip the vectors.",
+      "range": {
+        "startLine": 305,
+        "startChar": 55,
+        "endLine": 305,
+        "endChar": 62
+      },
+      "revId": "0b3f9a7c3ad38a9611eddbb848724d9222abfa25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
