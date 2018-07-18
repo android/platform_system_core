@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1e68fd5b_c9757fb0",
+        "filename": "fastboot/engine.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-18T16:23:42Z",
+      "side": 1,
+      "message": "Ok, I made a temporary Download overload that accepts a C buffer. In a separate patch, I will fix the fastboot tool to pass a vector in the first place, then delete this overload.",
+      "parentUuid": "62deab9c_5a58cef7",
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59c611c8_b7c63bcd",
         "filename": "fastboot/fastboot_driver.cpp",
         "patchSetId": 22
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "6a5c5be0_991031d3",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-18T16:23:42Z",
+      "side": 1,
+      "message": "No worries. I think there was initially a bit of a misunderstanding of the purpose of this library. As you said, it is intended to be an API for everyone else to use.",
+      "parentUuid": "ecd8f14d_521bd896",
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aeeffb0d_0976ce70",
         "filename": "fastboot/fastboot_driver.cpp",
         "patchSetId": 22
@@ -95,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "466db464_843f3522",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-18T16:23:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aeeffb0d_0976ce70",
+      "range": {
+        "startLine": 138,
+        "startChar": 9,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7295646_ffa7596d",
         "filename": "fastboot/fastboot_driver.cpp",
         "patchSetId": 22
@@ -112,6 +172,24 @@
     },
     {
       "key": {
+        "uuid": "8be146c7_f0b5eb47",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-18T16:23:42Z",
+      "side": 1,
+      "message": "Ok, good point. I just switched it to use std::ofstream.",
+      "parentUuid": "f7295646_ffa7596d",
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dae9a4a_121b048a",
         "filename": "fastboot/fastboot_driver.cpp",
         "patchSetId": 22
@@ -123,6 +201,30 @@
       "writtenOn": "2018-07-17T21:31:56Z",
       "side": 1,
       "message": "You probably want const std::string\u0026 here otherwise you\u0027ll end up with two copy operations (one since this is by-value and one for the internal copy with operator\u003d); same below.",
+      "range": {
+        "startLine": 352,
+        "startChar": 35,
+        "endLine": 352,
+        "endChar": 48
+      },
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67841e0b_b3ef1f75",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-18T16:23:42Z",
+      "side": 1,
+      "message": "It refused to compile when I switched it:\n\"candidate function not viable: expects an l-value for 1st argument\"\n\nAlso, I\u0027m pretty sure this way ends up being better. By passing by value, the compiler can use pass by value copy elision, since the argument sub-strings are temporaries that are out of scope after the function call. When the substring are not directly passed as arguments, it should still be able to use move semantics. Then, by passing by value, it now allows the compiler to use move semantics when inserting into the vector or assigning to a string in the lambda. https://engdoc.corp.google.com/eng/doc/devguide/cpp/primer.md#copy-elision",
+      "parentUuid": "2dae9a4a_121b048a",
       "range": {
         "startLine": 352,
         "startChar": 35,
@@ -158,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "08778ec6_134a6b76",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-18T16:23:42Z",
+      "side": 1,
+      "message": "This is reachable. The unreachable condition would be the other order: if (r \u003c 4) {} else if (r \u003c 0). Read is guaranteed to never return a block larger then FB_RESPONSE_SZ. \n\nThis code is kinda pointless anyways. This is leftover from protocol.cpp to prevent what used to cause a buffer overrun, since the string compare used to be done on the raw buffer, and would happen if the response was shorter than \"INFO\", \"OKAY\", \"FAIL\", etc... (4 bytes) .",
+      "parentUuid": "2622a670_18e553c1",
+      "range": {
+        "startLine": 366,
+        "startChar": 8,
+        "endLine": 366,
+        "endChar": 27
+      },
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b392b8d_c8151b60",
         "filename": "fastboot/fastboot_driver.cpp",
         "patchSetId": 22
@@ -172,6 +298,24 @@
       "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9ae20d4_76c2a895",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-18T16:23:42Z",
+      "side": 1,
+      "message": "Yeah, you are right. I switched it to android::base::StartsWith() .",
+      "parentUuid": "0b392b8d_c8151b60",
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -228,6 +372,24 @@
     },
     {
       "key": {
+        "uuid": "045be10b_cbe7eb96",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-18T16:23:42Z",
+      "side": 1,
+      "message": "Yeah, FLASH is used several times, and things could potentially be used more by subclasses.\n\nIt looks like that patch used macros. I think it would be best if macros could be avoided, so that these constants can be put in the fastboot namespace.",
+      "parentUuid": "fa6d1472_48591c7b",
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "100aeb8a_61f15c22",
         "filename": "fastboot/fastboot_driver.h",
         "patchSetId": 22
@@ -239,6 +401,24 @@
       "writtenOn": "2018-07-17T21:31:56Z",
       "side": 1,
       "message": "It\u0027d be better if errors were returned from the commands themselves instead of as a separate callback, especially since I don\u0027t see _error being cleared when a subsequent call succeeds.\n\nThree output parameters may be a bit rough, but you could encompass these all in a struct (either as a return value with Retcode or as an output parameter) if that seemed better.",
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0842ba32_776f3d8b",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-18T16:23:42Z",
+      "side": 1,
+      "message": "Error is cleared for almost all the methods in RawCommand(). The only missing place where it was not being cleared is at the beginning of the Download() methods, which I just fixed.\n\nYeah, the output parameters are a bit verbose... I\u0027m not sure it is that big of a deal though, because the caller will never have to worry about them due to the default arguments. The only bad thing about this is it makes the header file a bit messy. I think using a struct passed as an argument, to hold only two arguments, will inconvenience the caller too much. I\u0027m not sure though.\n\nDo we want to add another output parameter for error? I think this likely will end up messier, because now there will have to be a ton of nullptr checking on the error output parameter.",
+      "parentUuid": "100aeb8a_61f15c22",
       "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -259,6 +439,24 @@
       "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2974352_0e110b26",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-18T16:23:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "165f57ea_71c33012",
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
