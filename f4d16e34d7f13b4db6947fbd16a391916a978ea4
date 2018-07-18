@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "563c485f_738e5668",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-18T18:46:04Z",
+      "side": 1,
+      "message": "\u003e It refused to compile when I switched it:\n\u003e \"candidate function not viable: expects an l-value for 1st argument\"\n\nDid you use `const std::string\u0026` or `std::string\u0026`.  The former shouldn\u0027t have that issue.\n\nThe copy elision sounds good.  I usually explicitly put a std::move() around the parameter since I don\u0027t totally trust the compiler to always elide and \"pass by value then move\" is a bit of an idiom in modern C++.\n\nauto\u0026\u0026 / std::forward is ideal here though it\u0027s a bit overkill and not exactly maintainable syntax since it\u0027s rarely used.",
+      "parentUuid": "67841e0b_b3ef1f75",
+      "range": {
+        "startLine": 352,
+        "startChar": 35,
+        "endLine": 352,
+        "endChar": 48
+      },
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2622a670_18e553c1",
         "filename": "fastboot/fastboot_driver.cpp",
         "patchSetId": 22
@@ -281,6 +305,30 @@
       "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "451ed43e_3da0c24e",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-18T18:46:04Z",
+      "side": 1,
+      "message": "I kept reading that as r \u003c -4 in my mind.  I apparently couldn\u0027t read yesterday.",
+      "parentUuid": "08778ec6_134a6b76",
+      "range": {
+        "startLine": 366,
+        "startChar": 8,
+        "endLine": 366,
+        "endChar": 27
+      },
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -419,6 +467,24 @@
       "side": 1,
       "message": "Error is cleared for almost all the methods in RawCommand(). The only missing place where it was not being cleared is at the beginning of the Download() methods, which I just fixed.\n\nYeah, the output parameters are a bit verbose... I\u0027m not sure it is that big of a deal though, because the caller will never have to worry about them due to the default arguments. The only bad thing about this is it makes the header file a bit messy. I think using a struct passed as an argument, to hold only two arguments, will inconvenience the caller too much. I\u0027m not sure though.\n\nDo we want to add another output parameter for error? I think this likely will end up messier, because now there will have to be a ton of nullptr checking on the error output parameter.",
       "parentUuid": "100aeb8a_61f15c22",
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64615b1b_01299632",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-18T18:46:04Z",
+      "side": 1,
+      "message": "\u003e Error is cleared for almost all the methods in RawCommand(). The only missing place where it was not being cleared is at the beginning of the Download() methods, which I just fixed.\n\nAh, I must have missed that.  Still though, it doesn\u0027t seem good for the driver to maintain this state, since it\u0027s effectively a wrapper around Transport and it would be nice for it to be stateless (excepting Transport itself).  Assuming too that info_cb_ isn\u0027t exactly considered \u0027state\u0027 since it won\u0027t change through the typical commands.\n\nI don\u0027t really have that strong of an opinion here since there are trade-offs with all of the approaches, but I think the struct is the cleanest especially if it is a return value instead of a parameter.\n\nI\u0027m assuming that the struct would contain the output objects themselves and not pointers, so it shouldn\u0027t inconvenience callers.  If anything, callers that care about all of response, info, and error, will only need to declare one thing (the struct).\n\nBut you lose the ability to pass nullptr and skip those writes.  That said, unlike the other writes that I care more about optimizing, it doesn\u0027t seem that the INFO or response strings are particularly large, so copying them unconditionally doesn\u0027t seem to be too bad and the code will be a bit smaller since you\u0027d be able to remove the null checks on them.\n\nIf you return the struct by value, RVO will ensure there\u0027re no copies being made.  But then you couldn\u0027t do things like \n\n  if ((ret \u003d DownloadCommand(size, response, info))) {",
+      "parentUuid": "0842ba32_776f3d8b",
       "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
