@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "7c4c0a2c_3f9cd71d",
+        "filename": "fastboot/constants.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-19T20:16:28Z",
+      "side": 0,
+      "message": "The new API being your change here?  Note that that change is an implementation of a device side fastboot, so it\u0027s the other side API, not another user.  That\u0027s part of why I like this being moved into a common header, since both the host side (your change) and the device side (that change) can share the same strings for the protocol.",
+      "parentUuid": "10698d00_dc410fd8",
+      "revId": "1fefb9f1294d3e270f1711f41e7c77a61213742b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36ce3e0a_11dfb10f",
         "filename": "fastboot/constants.h",
         "patchSetId": 27
@@ -66,6 +84,24 @@
       "side": 0,
       "message": "Ok, I restored these.\n\nI could use the constants from line 32-35, but I would much prefer to refactor it later for these to be static const variables somewhere inside the fastboot namespace. I think introducing macros should be avoided if possible, since they are currently not being used and would break the namespace stuff.\n\nThe constants on line 37 and 38 are already defined as static consts and used internally.",
       "parentUuid": "36ce3e0a_11dfb10f",
+      "revId": "1fefb9f1294d3e270f1711f41e7c77a61213742b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39cfea93_7cea27c2",
+        "filename": "fastboot/constants.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-19T20:16:28Z",
+      "side": 0,
+      "message": "sgtm.  Given how infrequently this is going to be included, this all could be simply\n\nnamespace fastboot {\nnamespace commands {\nstatic constexpr const char* download \u003d \"download\"\n....\n\n\nIt\u0027ll have the right namespacing and string literals make for better constants than std::strings anyway.  We don\u0027t follow this as closely as we probably should in system/core, but https://google.github.io/styleguide/cppguide.html#Static_and_Global_Variables for reference on this.",
+      "parentUuid": "35b7a631_aeec5c51",
       "revId": "1fefb9f1294d3e270f1711f41e7c77a61213742b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
