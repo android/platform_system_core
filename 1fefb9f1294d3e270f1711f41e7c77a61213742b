@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "10698d00_dc410fd8",
+        "filename": "fastboot/constants.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-19T20:06:24Z",
+      "side": 0,
+      "message": "Hmmmm. I took a quick look at the change. I have a feeling the constants up to line 30 will no longer be necessary if that change is updated to use the new API that abstracts this away.\n\nOnce those other changes go in, I will look and see how things can be refactored, so constants don\u0027t end up being defined twice.",
+      "parentUuid": "78048a8a_a5143d6a",
+      "revId": "1fefb9f1294d3e270f1711f41e7c77a61213742b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36ce3e0a_11dfb10f",
         "filename": "fastboot/constants.h",
         "patchSetId": 27
@@ -30,6 +48,24 @@
       "writtenOn": "2018-07-19T19:30:01Z",
       "side": 0,
       "message": "These are going to be used in follow up patches from the author of this file, so they shouldn\u0027t be removed.  Could even use them in HandleResponse() since these strings are duplicated there.",
+      "revId": "1fefb9f1294d3e270f1711f41e7c77a61213742b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35b7a631_aeec5c51",
+        "filename": "fastboot/constants.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-19T20:06:24Z",
+      "side": 0,
+      "message": "Ok, I restored these.\n\nI could use the constants from line 32-35, but I would much prefer to refactor it later for these to be static const variables somewhere inside the fastboot namespace. I think introducing macros should be avoided if possible, since they are currently not being used and would break the namespace stuff.\n\nThe constants on line 37 and 38 are already defined as static consts and used internally.",
+      "parentUuid": "36ce3e0a_11dfb10f",
       "revId": "1fefb9f1294d3e270f1711f41e7c77a61213742b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
