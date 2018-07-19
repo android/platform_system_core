@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "52a13b4b_840a5416",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-19T16:02:00Z",
+      "side": 1,
+      "message": "Ok, I added an explicit std::move.",
+      "parentUuid": "563c485f_738e5668",
+      "range": {
+        "startLine": 352,
+        "startChar": 35,
+        "endLine": 352,
+        "endChar": 48
+      },
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2622a670_18e553c1",
         "filename": "fastboot/fastboot_driver.cpp",
         "patchSetId": 22
@@ -320,6 +344,30 @@
       "side": 1,
       "message": "I kept reading that as r \u003c -4 in my mind.  I apparently couldn\u0027t read yesterday.",
       "parentUuid": "08778ec6_134a6b76",
+      "range": {
+        "startLine": 366,
+        "startChar": 8,
+        "endLine": 366,
+        "endChar": 27
+      },
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8480cfa_663fde74",
+        "filename": "fastboot/fastboot_driver.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-19T16:02:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "451ed43e_3da0c24e",
       "range": {
         "startLine": 366,
         "startChar": 8,
@@ -485,6 +533,24 @@
       "side": 1,
       "message": "\u003e Error is cleared for almost all the methods in RawCommand(). The only missing place where it was not being cleared is at the beginning of the Download() methods, which I just fixed.\n\nAh, I must have missed that.  Still though, it doesn\u0027t seem good for the driver to maintain this state, since it\u0027s effectively a wrapper around Transport and it would be nice for it to be stateless (excepting Transport itself).  Assuming too that info_cb_ isn\u0027t exactly considered \u0027state\u0027 since it won\u0027t change through the typical commands.\n\nI don\u0027t really have that strong of an opinion here since there are trade-offs with all of the approaches, but I think the struct is the cleanest especially if it is a return value instead of a parameter.\n\nI\u0027m assuming that the struct would contain the output objects themselves and not pointers, so it shouldn\u0027t inconvenience callers.  If anything, callers that care about all of response, info, and error, will only need to declare one thing (the struct).\n\nBut you lose the ability to pass nullptr and skip those writes.  That said, unlike the other writes that I care more about optimizing, it doesn\u0027t seem that the INFO or response strings are particularly large, so copying them unconditionally doesn\u0027t seem to be too bad and the code will be a bit smaller since you\u0027d be able to remove the null checks on them.\n\nIf you return the struct by value, RVO will ensure there\u0027re no copies being made.  But then you couldn\u0027t do things like \n\n  if ((ret \u003d DownloadCommand(size, response, info))) {",
       "parentUuid": "0842ba32_776f3d8b",
+      "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1a889c3_7ff7a71e",
+        "filename": "fastboot/fastboot_driver.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-19T16:02:00Z",
+      "side": 1,
+      "message": "\u003e Ah, I must have missed that.  Still though, it doesn\u0027t seem good for the driver to maintain this state, since it\u0027s effectively a wrapper around Transport and it would be nice for it to be stateless (excepting Transport itself).  Assuming too that info_cb_ isn\u0027t exactly considered \u0027state\u0027 since it won\u0027t change through the typical commands.\n\nI see your point, but fastboot tool is currently written to use fb_get_error(), which just calls Error(). If we were to change it so error was inside a struct output parameter, then to maintain compatibility with this fb_get_error() function, we would have to store this error string in some global variable in engine.cpp and update it on every fastboot call. But since you don\u0027t want to use a pointer for output params in the struct, this would involve a copy to this global error variable on every fastboot call (or at least a std::move). All this does is move the error state storage to engine.cpp instead of the driver.\n\n\u003e But you lose the ability to pass nullptr and skip those writes.  That said, unlike the other writes that I care more about optimizing, it doesn\u0027t seem that the INFO or response strings are particularly large, so copying them unconditionally doesn\u0027t seem to be too bad and the code will be a bit smaller since you\u0027d be able to remove the null checks on them. If you return the struct by value, RVO will ensure there\u0027re no copies being made.  But then you couldn\u0027t do things like \n\nYeah the response string are pretty small, so the copy would not be a problem. I think loosing easy access to the return code though is not great, especially if you consider the fact that the response and info output parameters are in most cases completely ignored and unused. In fact engine.cpp only uses response for getvar commands. In all the other method calls the default nullptr is passed in. \n\nI think optimizing ease of use for this common case, is more important than making the less common case cleaner.",
+      "parentUuid": "64615b1b_01299632",
       "revId": "f4d16e34d7f13b4db6947fbd16a391916a978ea4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
