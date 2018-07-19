@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e210924_02ee7b4c",
+        "filename": "fs_mgr/liblp/images.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-07-19T14:31:09Z",
+      "side": 1,
+      "message": "Do you still need temp_fds_?  It looks to me like AddPartitionImage() literally copies from the source / temp file to the output file.  Can\u0027t you return unique_fd from this function and let the file be closed when AddPartitionImage() is done with it and not need the vector?",
+      "revId": "9555f3dcf6f284348f70feef3c185df8a7d5773c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
