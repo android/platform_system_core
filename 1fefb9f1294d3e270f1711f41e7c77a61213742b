@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "ecd3ba80_229a519c",
+        "filename": "fastboot/constants.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-19T20:22:03Z",
+      "side": 0,
+      "message": "Oh, I did not realize that. Yeah, I agree then, this should just be a common header file that defines all these constants somewhere inside the fastboot namespace as static constexpr char[]\u0027s.",
+      "parentUuid": "7c4c0a2c_3f9cd71d",
+      "revId": "1fefb9f1294d3e270f1711f41e7c77a61213742b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36ce3e0a_11dfb10f",
         "filename": "fastboot/constants.h",
         "patchSetId": 27
@@ -102,6 +120,24 @@
       "side": 0,
       "message": "sgtm.  Given how infrequently this is going to be included, this all could be simply\n\nnamespace fastboot {\nnamespace commands {\nstatic constexpr const char* download \u003d \"download\"\n....\n\n\nIt\u0027ll have the right namespacing and string literals make for better constants than std::strings anyway.  We don\u0027t follow this as closely as we probably should in system/core, but https://google.github.io/styleguide/cppguide.html#Static_and_Global_Variables for reference on this.",
       "parentUuid": "35b7a631_aeec5c51",
+      "revId": "1fefb9f1294d3e270f1711f41e7c77a61213742b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "534f1e92_5defb582",
+        "filename": "fastboot/constants.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-07-19T20:22:03Z",
+      "side": 0,
+      "message": "Okay, I will fix this in a separate patch after things slow down a bit.",
+      "parentUuid": "39cfea93_7cea27c2",
       "revId": "1fefb9f1294d3e270f1711f41e7c77a61213742b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
