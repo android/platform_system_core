@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "464d9da6_0c804a86",
+        "filename": "fastboot/device/usb_client.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-07-20T18:46:14Z",
+      "side": 1,
+      "message": "Do you want the endpoint numbers to be different? Walleye\u0027s bootloader has them on the same number:\n\n      iInterface              4 fastboot\n      Endpoint Descriptor:\n        bLength                 7\n        bDescriptorType         5\n        bEndpointAddress     0x81  EP 1 IN\n        bmAttributes            2\n          Transfer Type            Bulk\n          Synch Type               None\n          Usage Type               Data\n        wMaxPacketSize     0x0200  1x 512 bytes\n        bInterval               0\n      Endpoint Descriptor:\n        bLength                 7\n        bDescriptorType         5\n        bEndpointAddress     0x01  EP 1 OUT\n        bmAttributes            2\n          Transfer Type            Bulk\n          Synch Type               None\n          Usage Type               Data\n        wMaxPacketSize     0x0200  1x 512 bytes\n        bInterval               1\n\n\nThis presumably doesn\u0027t actually matter, but it might be good to be consistent if this is actually universally true.",
+      "range": {
+        "startLine": 90,
+        "startChar": 59,
+        "endLine": 91,
+        "endChar": 59
+      },
+      "revId": "63af9759e3fad9edac50dcc2e0fc458fa3bc6f8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19aaf357_9a2b3eaa",
+        "filename": "fastboot/device/usb_client.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-07-20T18:46:14Z",
+      "side": 1,
+      "message": "rename to bytes_written? It\u0027s a bit confusing to have one \"ret\" mean \"the thing I\u0027m returning\" and another mean \"the thing that\u0027s being returned to me\".",
+      "range": {
+        "startLine": 264,
+        "startChar": 12,
+        "endLine": 264,
+        "endChar": 15
+      },
+      "revId": "63af9759e3fad9edac50dcc2e0fc458fa3bc6f8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
