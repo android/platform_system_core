@@ -22,6 +22,53 @@
       "revId": "87a1b688f1cc64a0220f745689ef3d38da5f2d47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23e0fc35_fee6d1d0",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-23T22:10:43Z",
+      "side": 1,
+      "message": "Good point. However, Device Tree instead, first_stage_mount depends on the fstab coming from Device Tree, so this switch can be co-located.\n\nI added persist.adb.remount.overlayfs to allow persistent runtime choice, kernel cmdline and Device Tree are readonly properties; so on par with the following ro.adbd.remount.overlayfs. There is really no analog for tuntime choice at kernel cmdline; but I like the idea that Device Tree takes priority over the ro Android property.\n\nI have made a case for empty default enabled for some \u0027automagic\u0027 in the policy, so the property is actually only there to turn the feature off, or to possibly guarantee a deterministic selection when multiple are available. In the case of first_state_mount, although possible in an esoteric setup to mount several candidates at this phase (eg: mount /cache (characteristically available on non-A/B) and /mnt/scratch (a proposed alternate for A/B systems)), there really should only be _one_ backing store mounted to facilitate; and if multiple, determinism actually comes from \u0027adb disable-verity\u0027 populating the one it selected _then_ rebooting making the choice _very_ clear.\n\n(I wrote these thoughts out here to help me compose the comment when I change the code in the _other_ CL where this snippet was introduced)",
+      "parentUuid": "68ce8f4b_25452f89",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 0
+      },
+      "revId": "87a1b688f1cc64a0220f745689ef3d38da5f2d47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12feee8a_bbfcf119",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-23T22:10:43Z",
+      "side": 1,
+      "message": "Do I want this to be configurable?",
+      "range": {
+        "startLine": 135,
+        "startChar": 3,
+        "endLine": 135,
+        "endChar": 7
+      },
+      "revId": "87a1b688f1cc64a0220f745689ef3d38da5f2d47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
