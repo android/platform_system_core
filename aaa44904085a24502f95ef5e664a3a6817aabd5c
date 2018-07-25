@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fbfcadc_92e3189a",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-25T15:50:30Z",
+      "side": 1,
+      "message": "Android thanks you!",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 42
+      },
+      "revId": "aaa44904085a24502f95ef5e664a3a6817aabd5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d804af84_60dc644a",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-25T15:50:30Z",
+      "side": 1,
+      "message": "#include \u003clog/log_time.h\u003e (which is already included in #include \u003clog/log.h\u003e as side-effect) defines\n\nNS_PER_SEC\nUS_PER_SEC\nMS_PER_SEC\n\nreturn (to-\u003etv_sec - from-\u003etv_sec) * MS_PER_SEC +\n        (to-\u003etv_usec - from-\u003etv_usec) / (US_PER_SEC / MS_PER_SEC);",
+      "range": {
+        "startLine": 446,
+        "startChar": 41,
+        "endLine": 446,
+        "endChar": 46
+      },
+      "revId": "aaa44904085a24502f95ef5e664a3a6817aabd5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9725483b_2ea80970",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-25T15:50:30Z",
+      "side": 1,
+      "message": "How fast must cmd_target be, I expect you wish it took as _little_ time as possible right? comments below regarding optimization thoughts ...",
+      "range": {
+        "startLine": 557,
+        "startChar": 12,
+        "endLine": 557,
+        "endChar": 22
+      },
+      "revId": "aaa44904085a24502f95ef5e664a3a6817aabd5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a36f6ec0_c90f8f1e",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-25T15:50:30Z",
+      "side": 1,
+      "message": "FYI we added time() vDSO call in latest kernels. Originally as a wrapper for gettimeofday in bionic libc with about 15ns overhead w.r.t a more direct gettimeofday() call, it will if available use the vDSO path which is between 10 to 100 times _faster_ depending on specific device architecture than gettimeofday (150-500ns if going to vDSO) as it will not pick up any sub-second counter/timer. Of course the \u0027cost\u0027 is that a time() call will have a one second granularity; but it is blisteringly fast to get it (3-10ns).\n\nIf the cost of second granularity is too high, then clock_gettime(CLOCK_MONOTONIC_COARSE,\u0026ts) is about 5 times faster to execute than gettimeofday, as the result will be in jiffy (300Hz on most of our products) precision and not go to the CP15 timer (which bypasses a kernel trap after the security update). Then a clock_diff_ms would do nanosecond math (with roughly millisecond precision) and reduce time overhead for the operation to a measureable amount.\n\nBTW, the bonus of ratelimiting property_set is that is takes about 2-5us to perform, skipping it when lmkd is being highly reactive is a good thing.",
+      "range": {
+        "startLine": 572,
+        "startChar": 0,
+        "endLine": 573,
+        "endChar": 48
+      },
+      "revId": "aaa44904085a24502f95ef5e664a3a6817aabd5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4330005_b4f0b4be",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-25T15:50:30Z",
+      "side": 1,
+      "message": "I was proposing to ratelimit the property_set _only_, you still want the has_inkernel_module portion below that pokes _fast_ sysfs nodes to _always_ update I expect?",
+      "range": {
+        "startLine": 573,
+        "startChar": 0,
+        "endLine": 574,
+        "endChar": 15
+      },
+      "revId": "aaa44904085a24502f95ef5e664a3a6817aabd5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "344cef7e_3adab14c",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-25T15:50:30Z",
+      "side": 1,
+      "message": "BUG: scared as \u003cexpeltive deleted\u003e about sprintf blowing past the PROPERTY_VALUE_MAX length (96 bytes currently BTW), please use snprintf, or as noted below create your own open-coded itolcata() (?), or some such function, to make this much faster and lower overhead. Of course it is likely to get \u0027clunkier\u0027 overall, so that represents a maintenance issue as demonstrated:\n\nlen \u003d itona(pstr, plen, target.minfree);\npstr +\u003d len\nplen -\u003d len;\nif (!plen) continue;\n*pstr++ \u003d \u0027:\u0027;\n--plen;\nlen \u003d itona(pstr, plen, target.oom_adj_score);\npstr +\u003d len;\nplen -\u003d len;\nif (!plen) continue\n*pstr++ \u003d \u0027,\u0027\n--plen;\n\nafterthought: itona(char** pstr, size_t* plen, int val, char suffix_char) might work well here instead so it reduces to just two lines.",
+      "range": {
+        "startLine": 582,
+        "startChar": 16,
+        "endLine": 582,
+        "endChar": 23
+      },
+      "revId": "aaa44904085a24502f95ef5e664a3a6817aabd5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "493c2e82_118201d8",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-25T15:50:30Z",
+      "side": 1,
+      "message": "NB: snprintf takes 5-15us to perform the string conversion operation as it has a lot of general purpose layering, cruft, checking, buffering, parsing.\n\nYou can greatly reduce the overhead of snprintf(val, sizeof(val), \"%d\", ...) operations with some open-coding and supply your own size_t itona(buf, len, val) function. Even more of a bonus if you integrate the strlcat functionality into a custom function itolcata() function?\n\nThe rewrite is doable because you have the same problem with the string construction for the property that you added above. This whole area might get \u0027simpler/faster\u0027 by leveraging/reusing pstr variable (plus another).",
+      "range": {
+        "startLine": 608,
+        "startChar": 12,
+        "endLine": 608,
+        "endChar": 88
+      },
+      "revId": "aaa44904085a24502f95ef5e664a3a6817aabd5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
