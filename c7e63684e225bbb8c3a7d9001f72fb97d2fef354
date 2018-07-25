@@ -448,6 +448,30 @@
       "revId": "c7e63684e225bbb8c3a7d9001f72fb97d2fef354",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8aa294e_b53f473c",
+        "filename": "fastboot/device/main.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-25T18:44:01Z",
+      "side": 1,
+      "message": "liblog logs to /dev/pmsg0 (w or w/o logd), and provides bugreport content (like last kmsg); the difference is kmsg will provide _live_ content on serial console (which should be _off_ if this is secure). recovery is run with the assumption of \u0027headless\u0027 I thought, same condition as fastbootd? On recovery we use liblog to record logs _and_ transfer files on A/B systems through a reboot because we have no access to persistent (flash) storage; also the same issue with fastbootd.\n\nI know this is a subtlety, and splitting hairs. The question was just that, a question ;-}",
+      "parentUuid": "8dc31d39_33063b52",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 67
+      },
+      "revId": "c7e63684e225bbb8c3a7d9001f72fb97d2fef354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
