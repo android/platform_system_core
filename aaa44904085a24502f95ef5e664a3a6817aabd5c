@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "c96d4eb7_605a9f13",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2018-07-25T22:44:22Z",
+      "side": 1,
+      "message": "We don\u0027t expect this function to be called often. Just once to set the limits but your comments on gettimeofday() performance I will use for the hotpath case. Thanks!",
+      "parentUuid": "9725483b_2ea80970",
+      "range": {
+        "startLine": 557,
+        "startChar": 12,
+        "endLine": 557,
+        "endChar": 22
+      },
+      "revId": "aaa44904085a24502f95ef5e664a3a6817aabd5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a36f6ec0_c90f8f1e",
         "filename": "lmkd/lmkd.c",
         "patchSetId": 2
@@ -118,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "bed4d0ae_326fba74",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2018-07-25T22:44:22Z",
+      "side": 1,
+      "message": "Will us clock_gettime() because sec precision is too coarse in the hotpath and I want to reuse the mechanism in both cases.",
+      "parentUuid": "a36f6ec0_c90f8f1e",
+      "range": {
+        "startLine": 572,
+        "startChar": 0,
+        "endLine": 573,
+        "endChar": 48
+      },
+      "revId": "aaa44904085a24502f95ef5e664a3a6817aabd5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4330005_b4f0b4be",
         "filename": "lmkd/lmkd.c",
         "patchSetId": 2
@@ -129,6 +177,30 @@
       "writtenOn": "2018-07-25T15:50:30Z",
       "side": 1,
       "message": "I was proposing to ratelimit the property_set _only_, you still want the has_inkernel_module portion below that pokes _fast_ sysfs nodes to _always_ update I expect?",
+      "range": {
+        "startLine": 573,
+        "startChar": 0,
+        "endLine": 574,
+        "endChar": 15
+      },
+      "revId": "aaa44904085a24502f95ef5e664a3a6817aabd5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a7b5bea_6188ba9e",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2018-07-25T22:44:22Z",
+      "side": 1,
+      "message": "this update should not normally happen at a high rate, so if it does it\u0027s most likely is an attack, in which case we want to ignore the whole request.",
+      "parentUuid": "b4330005_b4f0b4be",
       "range": {
         "startLine": 573,
         "startChar": 0,
