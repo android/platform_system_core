@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6aa0757_6d166d53",
+        "filename": "fastboot/device/commands.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-25T15:04:30Z",
+      "side": 1,
+      "message": "\"shutdown,fastboot\" ?",
+      "range": {
+        "startLine": 57,
+        "startChar": 53,
+        "endLine": 57,
+        "endChar": 62
+      },
+      "revId": "c7e63684e225bbb8c3a7d9001f72fb97d2fef354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d9b07f9_65f1fe9d",
+        "filename": "fastboot/device/commands.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-25T15:04:30Z",
+      "side": 1,
+      "message": "Would be nice is this path had a triageable name in a bugreport.\n\n\"reboot,from_fastboot\" ?",
+      "range": {
+        "startLine": 64,
+        "startChar": 52,
+        "endLine": 64,
+        "endChar": 60
+      },
+      "revId": "c7e63684e225bbb8c3a7d9001f72fb97d2fef354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3a9324f_59c5288f",
+        "filename": "fastboot/device/commands.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-25T15:04:30Z",
+      "side": 1,
+      "message": "Q: does the switch to recovery as a side effect attempt to update persist.sys.boot.reason (WAG I expect reboot,recovery to land there)?\n\nNB: android::base::SetProperty(ANDROID_RB_PROPERTY, \"reboot,fastboot\"); for example has the side effect of writing reboot,fastboot into persist.sys.boot.reason within init().",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 83
+      },
+      "revId": "c7e63684e225bbb8c3a7d9001f72fb97d2fef354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8204a11c_6747a3d7",
+        "filename": "fastboot/device/commands.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-25T15:04:30Z",
+      "side": 1,
+      "message": "const std::vector\u003cchar\u003e\u0026 ?",
+      "range": {
+        "startLine": 34,
+        "startChar": 34,
+        "endLine": 34,
+        "endChar": 52
+      },
+      "revId": "c7e63684e225bbb8c3a7d9001f72fb97d2fef354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f84b5afc_a6b14736",
+        "filename": "fastboot/device/fastboot_device.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-25T15:04:30Z",
+      "side": 1,
+      "message": "nit: I would flip the coin and instead size_t(message.size()) on the rref?",
+      "range": {
+        "startLine": 60,
+        "startChar": 31,
+        "endLine": 60,
+        "endChar": 58
+      },
+      "revId": "c7e63684e225bbb8c3a7d9001f72fb97d2fef354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92967ba8_e4d5498c",
+        "filename": "fastboot/device/fastboot_device.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-25T15:04:30Z",
+      "side": 1,
+      "message": "nit: What is here is OK, but:\n\nstatic const char result_strs[response_reason_size][num_response_types] \u003d\n\nwill ensure that not one of the strings is short or long in the array; if a response of \"NO\" is added at some future date, for example, it will be zero padded to four bytes allowing it to be suitable for the memcpy on line 71. The added bonus is the string \"FAIL\" will be four bytes exactly, and not five (with terminating nul).",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 58
+      },
+      "revId": "c7e63684e225bbb8c3a7d9001f72fb97d2fef354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8235351f_01c10094",
+        "filename": "fastboot/device/fastboot_device.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-25T15:04:30Z",
+      "side": 1,
+      "message": "const std::vector\u003cchar\u003e\u0026 GetDownloadData() const { return download_data; } ?",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 47
+      },
+      "revId": "c7e63684e225bbb8c3a7d9001f72fb97d2fef354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c9cf8ea_9fcbf5e4",
+        "filename": "fastboot/device/main.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-25T15:04:30Z",
+      "side": 1,
+      "message": "Q: can logd be running?\n\nExecution order is supposed to be kernel -\u003e init -\u003e kernel-threads -\u003e init first stage -\u003e init second stage -\u003e ueventd -\u003e watchdogd -\u003e logd -\u003e everything else ...",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 67
+      },
+      "revId": "c7e63684e225bbb8c3a7d9001f72fb97d2fef354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
