@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97b98bda_adbe4fdf",
+        "filename": "libsparse/output_file.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2018-07-26T03:13:16Z",
+      "side": 1,
+      "message": "Build cop here. Looks like this broke the mac build. I will prepare a revert?\n\nIn file included from system/core/libsparse/sparse.cpp:26:\nsystem/core/libsparse/output_file.h:34:72: error: unknown type name \u0027off64_t\u0027; did you mean \u0027off_t\u0027?\nint (*skip_write)(void*, off64_t), void* priv,\n^~~~~~~\noff_t\n/Applications/Xcode6.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/include/sys/_types/_off_t.h:30:25: note: \u0027off_t\u0027 declared here\ntypedef __darwin_off_t off_t;\n^\n1 error generated.",
+      "range": {
+        "startLine": 34,
+        "startChar": 71,
+        "endLine": 34,
+        "endChar": 78
+      },
+      "revId": "db69f0d47f3ccb3ff656c56fe2b68aaf5ab853f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
