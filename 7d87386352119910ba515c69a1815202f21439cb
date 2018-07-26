@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "7c500b8b_93879e9c",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-26T16:26:45Z",
+      "side": 1,
+      "message": "+1 (_except_ for hot paths in lmkd as previously discussed. serenb@ already noted that _these_ paths are not a _hot_, so) snprintf will do wrapped in this function. Thanks for centering us back on the point. snprintf is measured to take multiples of micro-seconds (exceeds a system call overhead) to do its job.\n\nThe itona function merely may be used _simplify_ code maintenance as the fragment using it is repeated three times in the following and introduced moderately complex mechanics surrounding suffix characters and overflow that could easily be encapsulated. Thus (based on above proposal, untested):\n\nstatic char* itona_suffix(int val, char* str, size_t len, char suffix) {\n    size_t size \u003d snprintf(str, len, \"%d%c\", val, suffix);\n    if (size \u003e len) return str + len;\n    return str + size - 1;\n}",
+      "parentUuid": "b57e34bb_e440d9dc",
+      "revId": "7d87386352119910ba515c69a1815202f21439cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6080e711_1901ab9c",
         "filename": "lmkd/lmkd.c",
         "patchSetId": 3
