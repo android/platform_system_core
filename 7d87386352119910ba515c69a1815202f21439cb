@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb26962d_433a492f",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-26T16:04:57Z",
+      "side": 1,
+      "message": "KISS? (recursion, untested)\n\nstatic char* unsigned_to_str(unsigned val, char *str, char *end) {\n    int div_val \u003d val / 10;\n    if (div_val) str \u003d unsigned_to_str(div_val, str, end);\n    if (str \u003d\u003d end) return str;\n    *str++ \u003d \u00270\u0027 + (val % 10);\n    return str;\n}\n\nstatic char* int_to_str(int val, char *str, char *end) {\n    if (val \u003c 0) {\n        if (str \u003d\u003d end) return str;\n        *str++ \u003d \u0027-\u0027;\n        val \u003d -val;\n    }\n    return unsigned_to_str(val, str, end);\n}\n\nstatic char* itona_suffix(int val, char* str, char* end, char suffix) {\n    str \u003d int_to_str(val, str, end)\n    if (str \u003d\u003d end) return str;\n    if (suffix) { /* all callers have a suffix, so drop check? but offers flexibility for more general purpose use as-is */\n        *str++ \u003d suffix;\n        if (str \u003d\u003d end) return str;\n    }\n    *str \u003d \u0027\\0\u0027;\n    return str;\n}\n. . .\n                pstr \u003d itona(target.oom_adj_score, pstr, \u0026minfree_str[PROPERTY_VALUE_MAX], \u0027:\u0027);\n                if (pstr \u003d\u003d \u0026minfree_str[PROPERTY_VALUE_MAX]) break;",
+      "range": {
+        "startLine": 277,
+        "startChar": 1,
+        "endLine": 316,
+        "endChar": 1
+      },
+      "revId": "7d87386352119910ba515c69a1815202f21439cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6080e711_1901ab9c",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-26T16:04:57Z",
+      "side": 1,
+      "message": "This is a repeating fragment in all use cases (so adjusted code suggestion above to handle),",
+      "range": {
+        "startLine": 676,
+        "startChar": 0,
+        "endLine": 680,
+        "endChar": 29
+      },
+      "revId": "7d87386352119910ba515c69a1815202f21439cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
