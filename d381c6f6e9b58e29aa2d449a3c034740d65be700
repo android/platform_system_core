@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea56a3e3_dd07090b",
+        "filename": "fastboot/device/usb_client.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-07-26T01:32:27Z",
+      "side": 1,
+      "message": "Isn\u0027t this already done by usb_handle::close, which gets set by create_usb_handle?",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 1
+      },
+      "revId": "d381c6f6e9b58e29aa2d449a3c034740d65be700",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d6812cd_cd1dea84",
+        "filename": "fastboot/device/usb_client.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-07-26T01:32:27Z",
+      "side": 1,
+      "message": "This is a bit confusing. Can we do something along the lines of:\n\n  if (bytes_read_now \u003c 0) {\n    return bytes_read_now; // or maybe bytes_read_total? do we actually want to return -1 if we read some data?\n  }\n  bytes_read_total +\u003d bytes_read_now;\n  char_data +\u003d bytes_read_now;\n  if (bytes_read_now \u003c bytes_to_read) {\n    break;\n  }\n\n(sorry about not bringing this up previously)",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 35
+      },
+      "revId": "d381c6f6e9b58e29aa2d449a3c034740d65be700",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd23cde3_bafbc278",
+        "filename": "fastboot/device/usb_client.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-07-26T01:32:27Z",
+      "side": 1,
+      "message": "I think you might actually want handle_-\u003eclose(handle.get()), here?",
+      "range": {
+        "startLine": 304,
+        "startChar": 5,
+        "endLine": 305,
+        "endChar": 35
+      },
+      "revId": "d381c6f6e9b58e29aa2d449a3c034740d65be700",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
