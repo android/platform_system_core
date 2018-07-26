@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "88aa42e3_dd3c9135",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-26T16:38:10Z",
+      "side": 1,
+      "message": "Not an error if /data, /cache and /mnt/scratch not setup with the directory tree, that is the normal \u0027adb enable-verity\u0027 case on userdebug builds.\n\nThe logic ensures that once a directory is setup, and/or contains an override we stick to, we can use it. View this as a \u0027probe\u0027 function, not a error detector. Since this decision is investigated at three different phases of boot up, init first_stage_mount (where no product properties are visible), init early-mount and init late-mount. and deals with each possibility.\n\nThis code is ifdefed out on user builds.",
+      "parentUuid": "d01129cb_b3c52f10",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 0
+      },
+      "revId": "21e445a7de34a14a6d47ac538709081eaa7f4ff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b2afaff_97513660",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 9
@@ -36,6 +60,47 @@
       "writtenOn": "2018-07-09T20:59:00Z",
       "side": 1,
       "message": "Should be \u003c\n\n\"comparison function object (i.e. an object that satisfies the requirements of Compare) which returns ​true if the first argument is less than the second. \"  https://en.cppreference.com/w/cpp/algorithm/max_element",
+      "revId": "21e445a7de34a14a6d47ac538709081eaa7f4ff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bb9dee9_3cdc71fb",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-26T16:38:10Z",
+      "side": 1,
+      "message": "Thanks.\n\n(was fixed in my internal branch, _right_ after I posted this CL update, I was heading out the door for a 3 week vacation and failed to point this fix/bug out).",
+      "parentUuid": "8b2afaff_97513660",
+      "revId": "21e445a7de34a14a6d47ac538709081eaa7f4ff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "566da63d_9ebb735d",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-26T16:38:10Z",
+      "side": 1,
+      "message": "Move this message into fs_mgr_overlayfs_mount, especially since candidate directory selected is too abstract here and we wish to post it as part of the __mount message content.",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 93
+      },
       "revId": "21e445a7de34a14a6d47ac538709081eaa7f4ff2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
