@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eae1956e_30925d2e",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-30T18:21:44Z",
+      "side": 1,
+      "message": "NB:\n\n(Certainly after all CLs in this stack are considered), After trigger load_persist_propose_action / on load_persist_propose_action is pedantically the point we want this to turn true; as the earlier this is, the more likely the adb commands that affect the overlayfs storage will return done, rather than \"busy, try again\" or EBUSY (see line 438 and 540).\n\nadb wait-for-device\nadb enable-verity\n\ndoes not work and needs an indeterminate sleep. We would to address this, but it may involve related adjustments to the init.rc to do so.",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 1
+      },
+      "revId": "eb8984be7bbc6e8d566c15e6e40491916e30cf64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
