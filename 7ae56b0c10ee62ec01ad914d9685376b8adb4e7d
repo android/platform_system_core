@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca5d913e_ce479c76",
+        "filename": "fastboot/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-30T17:52:52Z",
+      "side": 1,
+      "message": "If these are added for _new_ code, these issues may need to be addressed before submitting, please audit. If referencing existing code, they turn into technical debt, which for expediency is somewhat acceptable.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 16
+      },
+      "revId": "7ae56b0c10ee62ec01ad914d9685376b8adb4e7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "846d86d0_fa70f2f4",
+        "filename": "fastboot/device/commands.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-30T17:52:52Z",
+      "side": 1,
+      "message": "in C++, especially new code, unused arguments are handled by removing, or /* */ commenting if name is critical. The names are reported in the prototypes, so dropping the argument names is probably OK.",
+      "range": {
+        "startLine": 50,
+        "startChar": 78,
+        "endLine": 50,
+        "endChar": 82
+      },
+      "revId": "7ae56b0c10ee62ec01ad914d9685376b8adb4e7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60cc846a_a53b1fe8",
+        "filename": "fastboot/device/commands.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-30T17:52:52Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 50,
+        "startChar": 38,
+        "endLine": 50,
+        "endChar": 44
+      },
+      "revId": "7ae56b0c10ee62ec01ad914d9685376b8adb4e7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca5bc8ab_a88a1d10",
+        "filename": "fastboot/device/commands.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-30T17:52:52Z",
+      "side": 1,
+      "message": "This is _not_ a compliant boot reason, tailing , is not right, trailing comma (,) is not valid.\n\nshutdown,from_fastboot (to not confuse with \"reboot,fastboot\" which is both a shutdown reason and a _hint_ as to what to do upon reboot) maybe? shutdown,userrequested,fastboot? something meaningful to anyone that has to triage a bug where fastboot daemon somehow is implicated.",
+      "range": {
+        "startLine": 57,
+        "startChar": 53,
+        "endLine": 57,
+        "endChar": 62
+      },
+      "revId": "7ae56b0c10ee62ec01ad914d9685376b8adb4e7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62b6b524_e5ee317f",
+        "filename": "fastboot/device/commands.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-30T17:52:52Z",
+      "side": 1,
+      "message": "This is compliant, but is not informative. One would prefer to see something here in a bugreport so that we can see what caused us to get to this \u0027place\u0027 upon reboot.\n\nPerhaps reboot,from_fastboot or reboot,userrequested,fastboot to match my above suggestions?\n\nIn _all_ cases, require newly created enums to be added to bootstat/bootstat.cpp and to the TRON list in \n//depot/google3/analysis/uma/configs/clearcut/TRON/histograms.xml\n\nThe newly created entries can certainly be added _after_ (or _before_ to reserve them) in a separate set of CLs.",
+      "range": {
+        "startLine": 64,
+        "startChar": 52,
+        "endLine": 64,
+        "endChar": 60
+      },
+      "revId": "7ae56b0c10ee62ec01ad914d9685376b8adb4e7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "844311b1_a2f29065",
+        "filename": "fastboot/device/commands.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-30T17:52:52Z",
+      "side": 1,
+      "message": "Correct, and uses existing enum 47 which is for the \u0027same\u0027 reason.",
+      "range": {
+        "startLine": 71,
+        "startChar": 52,
+        "endLine": 71,
+        "endChar": 71
+      },
+      "revId": "7ae56b0c10ee62ec01ad914d9685376b8adb4e7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e515f6c6_bd359b74",
+        "filename": "fastboot/device/commands.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-30T17:52:52Z",
+      "side": 1,
+      "message": "A totally new string, needs to be added to end of  bootstat/bootstat.cpp kBootReasonMap so that it can be reported to TRON.",
+      "range": {
+        "startLine": 78,
+        "startChar": 52,
+        "endLine": 78,
+        "endChar": 69
+      },
+      "revId": "7ae56b0c10ee62ec01ad914d9685376b8adb4e7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94108e7b_90f257c7",
+        "filename": "fastboot/device/commands.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-30T17:52:52Z",
+      "side": 1,
+      "message": "Please investigate if the boot reason is properly propagated to bootstat resources by the recovery daemon. It is probably fine, but this path is news to me ;-}",
+      "range": {
+        "startLine": 83,
+        "startChar": 12,
+        "endLine": 83,
+        "endChar": 29
+      },
+      "revId": "7ae56b0c10ee62ec01ad914d9685376b8adb4e7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "697bb797_53fac17f",
+        "filename": "fastboot/device/fastboot_device.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-30T17:52:52Z",
+      "side": 1,
+      "message": "If max_message_size + response_reason_size \u003e FB_RESPONSE_SZ, we will be in grave trouble overwriting the buffer. There should be some protection against this. I propose that constexpr size_t max_message_size \u003d sizeof(buf) - response_reason_size be the \u0027answer\u0027.",
+      "range": {
+        "startLine": 56,
+        "startChar": 40,
+        "endLine": 56,
+        "endChar": 42
+      },
+      "revId": "7ae56b0c10ee62ec01ad914d9685376b8adb4e7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7305f056_838385a6",
+        "filename": "fastboot/device/fastboot_device.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-07-30T17:52:52Z",
+      "side": 1,
+      "message": "nit: I would prefer to see \u0027 !\u003d 1\u0027 only because command_map type, comparison and content values is abstracted here. unordered_map will only return 0 or 1, so _this_ is not a problem and I will only report this nit once ...\n\nBut if the type is changed in the future, then we really do expect only one match, and if multiple we should error out. \u003ceek\u003e Or for bugus use cases, for example, if command comparison allows unique sub-match or wildcards in the future? If sloppy definitions of FB_CMD_* strings?",
+      "range": {
+        "startLine": 104,
+        "startChar": 39,
+        "endLine": 104,
+        "endChar": 43
+      },
+      "revId": "7ae56b0c10ee62ec01ad914d9685376b8adb4e7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
