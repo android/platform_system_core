@@ -22,6 +22,30 @@
       "revId": "7465a677ea1695f49ff3670765f289aea6cf0319",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "313fc26f_6cbc484d",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-07-31T08:25:57Z",
+      "side": 1,
+      "message": "Correct, this was an intentional change that probably should be split off into a separate commit. My reasoning is that it probably doesn\u0027t make much sense to wait 10 seconds before trying to reconnect: the common cases for a disconnection are things along the lines of `adb root`, `adb shell killall adbd`, adbd crashing, where we want to reconnect immediately, and the network being interrupted, in which case we\u0027re probably not going to find out that the socket is dead until way later anyway.",
+      "parentUuid": "73f09a24_772114e0",
+      "range": {
+        "startLine": 151,
+        "startChar": 61,
+        "endLine": 151,
+        "endChar": 93
+      },
+      "revId": "7465a677ea1695f49ff3670765f289aea6cf0319",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
