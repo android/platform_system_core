@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "10dbe6c4_9cc09d7f",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1066743
+      },
+      "writtenOn": "2018-07-31T16:37:05Z",
+      "side": 1,
+      "message": "Can this incorporate some time concept into the variable name? What about |reconnect_timestamp|? Or just |timestamp|.",
+      "range": {
+        "startLine": 105,
+        "startChar": 46,
+        "endLine": 105,
+        "endChar": 58
+      },
+      "revId": "7465a677ea1695f49ff3670765f289aea6cf0319",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73f09a24_772114e0",
         "filename": "adb/transport.cpp",
         "patchSetId": 1
@@ -42,6 +65,53 @@
         "startChar": 61,
         "endLine": 151,
         "endChar": 93
+      },
+      "revId": "7465a677ea1695f49ff3670765f289aea6cf0319",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51a3ea7a_2b76a3d6",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1066743
+      },
+      "writtenOn": "2018-07-31T16:37:05Z",
+      "side": 1,
+      "message": "oh that\u0027s a good point. in Android-on-Chrome OS the typical case is that the container dies and it normally takes a few seconds to restart, so I was looking at this with container-tinted glasses.\n\nthis change makes sense, although maybe add a comment here that this will attempt to reconnect immediately, but will wait on future reconnection attempts.\n\nAlthough previously since all the attempts were added in monotonic order, a queue sufficed since they would end up being sorted. this time around, some entries will be added without the timeout bias, so the entries are not going to be sorted. so can you change |reconnect_queue_| to be a std::priority_queue?",
+      "parentUuid": "313fc26f_6cbc484d",
+      "range": {
+        "startLine": 151,
+        "startChar": 61,
+        "endLine": 151,
+        "endChar": 93
+      },
+      "revId": "7465a677ea1695f49ff3670765f289aea6cf0319",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dba8c88_3a1eee3b",
+        "filename": "adb/transport.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1066743
+      },
+      "writtenOn": "2018-07-31T16:37:05Z",
+      "side": 1,
+      "message": "Something I missed doing in the previous change was add comments to the predicate. So can you add something along the lines of\n\n // Go back to sleep in case |reconnect_cv_| woke up spuriously and we still\n // have more time to wait for the current attempt.",
+      "range": {
+        "startLine": 178,
+        "startChar": 16,
+        "endLine": 178,
+        "endChar": 59
       },
       "revId": "7465a677ea1695f49ff3670765f289aea6cf0319",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
