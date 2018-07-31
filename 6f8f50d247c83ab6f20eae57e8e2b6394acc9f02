@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c4866fe3_67899f15",
+        "filename": "libutils/include/utils/CallStack.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-07-31T23:28:44Z",
+      "side": 1,
+      "message": "Based on a grep, yes, but not by much. I\u0027ll change it if/when I touch this again anyway.",
+      "parentUuid": "d990e6b1_df77ead7",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 28
+      },
+      "revId": "6f8f50d247c83ab6f20eae57e8e2b6394acc9f02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce49ac89_f4ee9fe5",
         "filename": "libutils/include/utils/CallStack.h",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-31T00:25:07Z",
       "side": 1,
       "message": "std::string?",
+      "range": {
+        "startLine": 101,
+        "startChar": 11,
+        "endLine": 101,
+        "endChar": 18
+      },
+      "revId": "6f8f50d247c83ab6f20eae57e8e2b6394acc9f02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c943b220_3f15a607",
+        "filename": "libutils/include/utils/CallStack.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-07-31T23:28:44Z",
+      "side": 1,
+      "message": "This interface seems to traffic in String8s and other libutils objects like Printer fairly consistently. We could use it just here, but I suspect it adds a copy. If we want to get away from all of this, I guess we could instead add this kind of interface to libbacktrace directly, using something like the code from https://android-review.googlesource.com/c/platform/system/core/+/694543/7/libutils/RefBase.cpp, at the cost of some code duplication.",
+      "parentUuid": "ce49ac89_f4ee9fe5",
       "range": {
         "startLine": 101,
         "startChar": 11,
