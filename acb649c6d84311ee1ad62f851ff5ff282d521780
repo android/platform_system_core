@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "966dc981_0e8de5c5",
+        "filename": "adb/daemon/set_verity_enable_state_service.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-08-01T17:30:12Z",
+      "side": 1,
+      "message": "for adb disable-verity, we could consider wiping out any previous content before setting back up again?\n\nOf course, adb enable-verity -\u003e adb disable-verity as-is will allow us to erase any accumulating overrides.\n\nif (!fs_mgr_overlayfs_teardown(nullptr, \u0026change)) {\n    WriteFdFmt(fd, \"Overlayfs teardown failed.\\n\");\n}\nauto save_change \u003d change;\nif (!enable \u0026\u0026 !fs_mgr_overlayfs_setup(nullptr, \u0026change)) {\n    WriteFdFmt(fd, \"Overlayfs setup failed.\\n\");\n}\nreturn save_change || change;",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 5
+      },
+      "revId": "acb649c6d84311ee1ad62f851ff5ff282d521780",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
