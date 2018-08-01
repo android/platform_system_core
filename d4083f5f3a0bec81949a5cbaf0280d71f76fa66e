@@ -140,6 +140,138 @@
     },
     {
       "key": {
+        "uuid": "549a0dc0_1480c839",
+        "filename": "fastboot/device/fastboot_device.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-01T17:15:39Z",
+      "side": 1,
+      "message": "Just \u0027SetActiveHandler\u0027 since there are already two args, similar to DownloadHandler ?  \n\nI wonder if it\u0027d be cleaner to always have these functions take both the FastbootDevice and args parameters and not need to deal with bind at all.  Not passing the arguments doesn\u0027t really gain much, but it does make a mess of this table.",
+      "range": {
+        "startLine": 30,
+        "startChar": 34,
+        "endLine": 30,
+        "endChar": 78
+      },
+      "revId": "d4083f5f3a0bec81949a5cbaf0280d71f76fa66e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c55e6249_7f9f4cbb",
+        "filename": "fastboot/device/fastboot_device.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-01T17:15:39Z",
+      "side": 1,
+      "message": "const std::string\u0026",
+      "range": {
+        "startLine": 47,
+        "startChar": 56,
+        "endLine": 47,
+        "endChar": 67
+      },
+      "revId": "d4083f5f3a0bec81949a5cbaf0280d71f76fa66e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03976ac4_da2255b0",
+        "filename": "fastboot/device/fastboot_device.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-01T17:15:39Z",
+      "side": 1,
+      "message": "std::vector\u003cchar\u003e* for out parameters.  They tend to come after input parameters too.\n\nhttps://google.github.io/styleguide/cppguide.html#Output_Parameters",
+      "range": {
+        "startLine": 75,
+        "startChar": 32,
+        "endLine": 75,
+        "endChar": 50
+      },
+      "revId": "d4083f5f3a0bec81949a5cbaf0280d71f76fa66e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a81f71d_2bb8bab6",
+        "filename": "fastboot/device/fastboot_device.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-01T17:15:39Z",
+      "side": 1,
+      "message": "Just \u0027ret\u0027 now that there is no other \u0027ret\u0027 that this conflicts with?",
+      "range": {
+        "startLine": 87,
+        "startChar": 13,
+        "endLine": 87,
+        "endChar": 20
+      },
+      "revId": "d4083f5f3a0bec81949a5cbaf0280d71f76fa66e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7f9b214_33164674",
+        "filename": "fastboot/device/fastboot_device.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-01T17:15:39Z",
+      "side": 1,
+      "message": "*found_command(this, args)\n\nNow that you have the iterator, you don\u0027t need to call at.  Dereferencing the iterator is what saves you from the 2nd map look up.",
+      "range": {
+        "startLine": 101,
+        "startChar": 13,
+        "endLine": 101,
+        "endChar": 49
+      },
+      "revId": "d4083f5f3a0bec81949a5cbaf0280d71f76fa66e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29578f3d_fce03087",
+        "filename": "fastboot/device/fastboot_device.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-01T17:15:39Z",
+      "side": 1,
+      "message": "nit, but constructors should come before other functions.  Typically, accessors come last.\n\nhttps://google.github.io/styleguide/cppguide.html#Declaration_Order\n\naccessors tend to be named like variables, so transport() and set_upload_data(), etc.\n\nhttps://google.github.io/styleguide/cppguide.html#Function_Names",
+      "revId": "d4083f5f3a0bec81949a5cbaf0280d71f76fa66e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "770a7ccd_12d6c8da",
         "filename": "fastboot/device/usb_client.cpp",
         "patchSetId": 23
