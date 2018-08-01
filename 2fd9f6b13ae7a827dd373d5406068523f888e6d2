@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0c33898_e2809909",
+        "filename": "fs_mgr/liblp/builder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-08-01T15:00:58Z",
+      "side": 1,
+      "message": "if you use std::set instead of std::vector, there is no need to sort.",
+      "range": {
+        "startLine": 326,
+        "startChar": 4,
+        "endLine": 326,
+        "endChar": 46
+      },
+      "revId": "2fd9f6b13ae7a827dd373d5406068523f888e6d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85ed3525_08eedace",
+        "filename": "fs_mgr/liblp/builder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-08-01T15:00:58Z",
+      "side": 1,
+      "message": "This is really a free list, maybe rename intervals to something more meaningful?",
+      "range": {
+        "startLine": 330,
+        "startChar": 26,
+        "endLine": 330,
+        "endChar": 35
+      },
+      "revId": "2fd9f6b13ae7a827dd373d5406068523f888e6d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b938eab_0f03ac29",
+        "filename": "fs_mgr/liblp/builder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-08-01T15:00:58Z",
+      "side": 1,
+      "message": "I believe iterators would be more efficient than a pair of index references here (excuse style, untested syntax):\n\nfor (const_iterator auto it \u003d extents.begin(); it !\u003d extents.end(); break) {\n    for (const auto\u0026 previous \u003d *it; ++it !\u003d extents.end(); previous \u003d *it) {\n        const auto\u0026 current \u003d *it;\n        auto aligned \u003d AlignSector(previous.end);\n        // previous.end is start, current.start is end\n        if (aligned \u003c current.start) gaps.emplace_back(aligned, current.start);\n    }\n}",
+      "range": {
+        "startLine": 331,
+        "startChar": 4,
+        "endLine": 333,
+        "endChar": 47
+      },
+      "revId": "2fd9f6b13ae7a827dd373d5406068523f888e6d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0801f7e8_1d6fe4e0",
+        "filename": "fs_mgr/liblp/builder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-08-01T15:00:58Z",
+      "side": 1,
+      "message": "Interval(uint64_t start, uint64_t end), this may need a comment to ensure future selves do not (even momentarily) panic; as the end is a start and the start is the end ;-\u003e",
+      "range": {
+        "startLine": 343,
+        "startChar": 31,
+        "endLine": 343,
+        "endChar": 53
+      },
+      "revId": "2fd9f6b13ae7a827dd373d5406068523f888e6d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
