@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "746e162f_bd54e2ed",
+        "filename": "fastboot/device/usb_client.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2018-08-01T06:33:56Z",
+      "side": 1,
+      "message": "Actually, we need to reimplement it since usb_handle::close keeps the control EP open for reuse and we do not want that.",
+      "parentUuid": "ea56a3e3_dd07090b",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 1
+      },
+      "revId": "d381c6f6e9b58e29aa2d449a3c034740d65be700",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d6812cd_cd1dea84",
         "filename": "fastboot/device/usb_client.cpp",
         "patchSetId": 18
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-26T01:32:27Z",
       "side": 1,
       "message": "This is a bit confusing. Can we do something along the lines of:\n\n  if (bytes_read_now \u003c 0) {\n    return bytes_read_now; // or maybe bytes_read_total? do we actually want to return -1 if we read some data?\n  }\n  bytes_read_total +\u003d bytes_read_now;\n  char_data +\u003d bytes_read_now;\n  if (bytes_read_now \u003c bytes_to_read) {\n    break;\n  }\n\n(sorry about not bringing this up previously)",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 35
+      },
+      "revId": "d381c6f6e9b58e29aa2d449a3c034740d65be700",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bac47c0_c237fc2d",
+        "filename": "fastboot/device/usb_client.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2018-08-01T06:33:56Z",
+      "side": 1,
+      "message": "Done, the client code expects Read() to return -1 if unable to read the required number of bytes though so keeping that logic the same.",
+      "parentUuid": "6d6812cd_cd1dea84",
       "range": {
         "startLine": 269,
         "startChar": 0,
@@ -65,6 +113,23 @@
         "endLine": 305,
         "endChar": 35
       },
+      "revId": "d381c6f6e9b58e29aa2d449a3c034740d65be700",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2af20d7f_a0ddcc00",
+        "filename": "fastboot/device/usb_client.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2018-08-01T06:33:56Z",
+      "side": 1,
+      "message": "Using this instead of handle_-\u003eclose to close control fd as well.",
       "revId": "d381c6f6e9b58e29aa2d449a3c034740d65be700",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
