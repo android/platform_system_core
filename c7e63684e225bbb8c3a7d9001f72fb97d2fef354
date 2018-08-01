@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "9c2fd2a3_016db964",
+        "filename": "fastboot/device/commands.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-08-01T15:21:52Z",
+      "side": 1,
+      "message": "But once you switch, the _effective_ path could have been a reboot,recovery. A design decision should be made, if recovery reports errors, but the reboot reason was reboot,fastboot, do we want it(?) to report such?\n\nThe question is to ask if we _want_ it to alter sys.boot.reason given that we are taking a shortcut (saving a reboot)? (and when kexec was part of the picture, that was an effective reboot too).\n\nreboot,recovery,fastboot (to denote the unique path) ?\n\nI have not _answered_ the question, the answer may be to add a comment here that we would prefer recovery to have the (left over) canonical boot reason reboot,fastboot so that it was clear that we did not have a reboot,recovery to get there.",
+      "parentUuid": "a2c27dec_fe298efc",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 83
+      },
+      "revId": "c7e63684e225bbb8c3a7d9001f72fb97d2fef354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b3bc52b_666b4200",
         "filename": "fastboot/device/commands.cpp",
         "patchSetId": 17
