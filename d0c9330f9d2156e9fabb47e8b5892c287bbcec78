@@ -94,6 +94,30 @@
       "revId": "d0c9330f9d2156e9fabb47e8b5892c287bbcec78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df8156ae_5ae2ed2a",
+        "filename": "adb/daemon/services.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-08-02T03:27:02Z",
+      "side": 1,
+      "message": "The problem with that is that we\u0027re not guaranteed to actually be restarted by init when we set this property. (i.e. if we happen to be setting it to the same value.) If init doesn\u0027t restart us, then we leak a thread and fd, and the client waits forever.\n\nWe can do something like fetch, compare, set, but that seems inherently racy in a worse way than this.",
+      "parentUuid": "ffdd81cb_9af1a4fa",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 12
+      },
+      "revId": "d0c9330f9d2156e9fabb47e8b5892c287bbcec78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
