@@ -118,6 +118,30 @@
       "revId": "d0c9330f9d2156e9fabb47e8b5892c287bbcec78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04fda4cd_2a6ec165",
+        "filename": "adb/daemon/services.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-02T15:58:46Z",
+      "side": 1,
+      "message": "We probably should just remove the init trigger then?  I only see \"on property:service.adb.root\u003d1\" or \"restart adbd\" in the recovery init.rc.  The rest of the start/stop of adbd that I see is when changing USB configuration away from adb, not due to root or not.\n\nIf you remove that, then there\u0027s no race given that property set is synchronous.\n\nThough there is one problem that you\u0027ll need to contend with, that init rate limits restarting services to only restart services 5 seconds after they\u0027ve last started.  So something like `adb root; adb unroot; adb shell` will have init delay 5 seconds before starting adbd again after the adb unroot.  That may be a limitation we\u0027re okay with?",
+      "parentUuid": "df8156ae_5ae2ed2a",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 12
+      },
+      "revId": "d0c9330f9d2156e9fabb47e8b5892c287bbcec78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
