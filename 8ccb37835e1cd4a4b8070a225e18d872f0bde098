@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "576c3509_4d1a3687",
+        "filename": "adb/daemon/services.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-08-02T23:27:27Z",
+      "side": 1,
+      "message": "Move this down to the block where it\u0027s used?",
+      "revId": "8ccb37835e1cd4a4b8070a225e18d872f0bde098",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7d15bbd_4355c00c",
+        "filename": "adb/daemon/services.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-08-02T23:27:27Z",
+      "side": 1,
+      "message": "This seems potentially racy. adbd exits some time after returning from this function, so I think is a potential sequence of events:\n\n    adbd writes to recovery socket\n    adbd exits\n    init restarts adbd\n    recovery sets usb mode to fastboot\n    init starts fastbootd, which probably fails because adbd is still running?\n\n(on that note: are adbd and fastbootd actually mutually exclusive? Can\u0027t we have fastbootd running on one interface descriptor and adbd on another?)",
+      "range": {
+        "startLine": 126,
+        "startChar": 9,
+        "endLine": 131,
+        "endChar": 9
+      },
+      "revId": "8ccb37835e1cd4a4b8070a225e18d872f0bde098",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "587efc70_59856b42",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-08-02T23:27:27Z",
+      "side": 1,
+      "message": "It seems to me that it might be surprising that the proper way to use fastboot on some devices is to use `adb reboot fastboot` and `adb reboot bootloader` on other devices. I\u0027m not sure what we can do about this though...",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 520,
+        "endChar": 53
+      },
+      "revId": "8ccb37835e1cd4a4b8070a225e18d872f0bde098",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
