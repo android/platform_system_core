@@ -70,6 +70,30 @@
       "revId": "d0c9330f9d2156e9fabb47e8b5892c287bbcec78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffdd81cb_9af1a4fa",
+        "filename": "adb/daemon/services.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1066743
+      },
+      "writtenOn": "2018-08-02T02:52:17Z",
+      "side": 1,
+      "message": "oh nevermind, i just realized that most Android devices have an init stanza where it restarts adbd when this one property changes. then IIRC you\u0027re right and the actions taken upon that property having changed are queued and dealt with after this returns.\n\ngiven that this eventually bubbles up a single-threaded handler, would it be better to use the pause() trick that reboot_service() used to do only for the services that change properties that init will then recognize as signals to restart adb?",
+      "parentUuid": "fb0ecbc0_02cb2160",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 12
+      },
+      "revId": "d0c9330f9d2156e9fabb47e8b5892c287bbcec78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
