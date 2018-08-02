@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ada73cf2_535f1966",
+        "filename": "fs_mgr/liblp/builder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-08-02T14:37:22Z",
+      "side": 1,
+      "message": "Specified uint32_t in structure, this element is an int. For maintenance, use a local var of the correct type. Please audit any other ioctls where structure element size is assumed (eg, line 47 and 51 above for example).\n\nint arg;\nif (ioctl(fd, BLKSSZGET, \u0026arg) \u003c 0) {\n    . . .\n}\ndevice_info-\u003elogical_block_size \u003d arg;",
+      "range": {
+        "startLine": 55,
+        "startChar": 43,
+        "endLine": 55,
+        "endChar": 61
+      },
+      "revId": "cdd7ef0514e550f5623f2a966dbc646ffb466381",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
