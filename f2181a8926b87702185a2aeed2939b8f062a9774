@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13f0e805_4ca02fde",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1064,
+      "author": {
+        "id": 1056365
+      },
+      "writtenOn": "2018-08-03T15:38:47Z",
+      "side": 1,
+      "message": "nit: `return fb_getvar(\"partition-size:\" + partition_name, \u0026partition_size);`",
+      "range": {
+        "startLine": 1061,
+        "startChar": 4,
+        "endLine": 1064,
+        "endChar": 16
+      },
+      "revId": "f2181a8926b87702185a2aeed2939b8f062a9774",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "586bd102_ae0d1471",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1056365
+      },
+      "writtenOn": "2018-08-03T15:38:47Z",
+      "side": 1,
+      "message": "I think I get the intention of these checks, but it looks confusing. The cause is the two flags give opposite meanings when being true.\n\nimage_required: the flashing can NOT be skipped if true;\npartition_check_required: the flashing can be skipped if true\n\nThen we have the conflicting case of which one takes a priority if both true (based on your code, image_required wins).\n\nShall we change them to the following?\nflashing-is-optional-if-image-doesn\u0027t-exist\nflashing-is-optional-if-partition-doesn\u0027t-exist\n\nUpon seeing the override of \"require partition-exists\u003dx\", both of the two flags should be set to false.\n\n(Running into this issue looks less ideal. We are mixing two sets of fastboot modes and two sets of images, by trying to handle them with the same protocol.)",
+      "range": {
+        "startLine": 1118,
+        "startChar": 8,
+        "endLine": 1127,
+        "endChar": 9
+      },
+      "revId": "f2181a8926b87702185a2aeed2939b8f062a9774",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
