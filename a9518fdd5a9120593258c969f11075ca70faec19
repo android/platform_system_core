@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "73fde0a3_2b096e85",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1269249
+      },
+      "writtenOn": "2018-08-03T10:25:08Z",
+      "side": 1,
+      "message": ".data() in this context returns a const char*. According to this:\n\nhttps://en.cppreference.com/w/cpp/string/basic_string/data\n\nThe behavior you describe was added in C++17, so I think this is WAI.\n\nI\u0027ve changed the implementation to use const_cast on the return value of .data(). That makes it as similar as possible to the arrangement you describe above, so it will be easier to get there if/when the code moves to C++17.",
+      "parentUuid": "29e28bbb_b4902d99",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "a9518fdd5a9120593258c969f11075ca70faec19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e3807364_8d18aa9c",
         "filename": "adb/client/fastdeploy.cpp",
         "patchSetId": 25
