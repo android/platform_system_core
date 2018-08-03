@@ -159,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "fca96b7b_177a551c",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-08-03T17:33:27Z",
+      "side": 1,
+      "message": "Yes, we do need a reboot after teardown, b/c overlayfs still points to them (holding one last reference in the filesystem to the contents). If anything changed underneath, we want a reboot so that overlayfs is no longer present (and to correctly embody the adb enable-verity guarantees).",
+      "parentUuid": "42ccd896_921d83c3",
+      "revId": "8e13fd7717e6e08865722d3289efaf6a0e283ca5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7dda1c18_5e7ee924",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 11
