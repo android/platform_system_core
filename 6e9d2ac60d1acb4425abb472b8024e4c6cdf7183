@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58ce4823_318e64d2",
+        "filename": "fastboot/device/commands.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-08T18:08:57Z",
+      "side": 1,
+      "message": "Is this accurate?  Flash() kicks off a thread to do the flashing and can still fail.",
+      "revId": "6e9d2ac60d1acb4425abb472b8024e4c6cdf7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d389ad7b_21aa93cb",
+        "filename": "fastboot/device/fastboot_device.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-08T18:08:57Z",
+      "side": 1,
+      "message": "Same thoughts as on the GetVar CL; these seem better in flashing.cpp and not in FastbootDevice.  They don\u0027t depend on any internal state to FastbootDevice and it seems better to me to keep this class strictly for dispatching the USB commands and handling object lifetime.\n\nThe PartitionHandle class could then be moved to flashing.h, which seems like a much more appropriate place for it.",
+      "revId": "6e9d2ac60d1acb4425abb472b8024e4c6cdf7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ef2d26a_2947aa44",
+        "filename": "fastboot/device/fastboot_device.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-08T18:08:57Z",
+      "side": 1,
+      "message": "Given the above comment, I\u0027d still think this function could go in flashing.cpp.  flash_thread_ can continue to be a part of FastbootDevice for lifetime management, but the rest of this seems out of place.",
+      "revId": "6e9d2ac60d1acb4425abb472b8024e4c6cdf7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "809fe0f1_f2e3c544",
+        "filename": "fastboot/device/fastboot_device.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-08T18:08:57Z",
+      "side": 1,
+      "message": "Fine to be explicit, but since you have a unique_fd and it\u0027s move only, your class is already move only by virtue of that, so none of the copy/move constructors here are needed.",
+      "revId": "6e9d2ac60d1acb4425abb472b8024e4c6cdf7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6ad361b_9cb06f05",
+        "filename": "fastboot/device/flashing.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-08T18:08:57Z",
+      "side": 1,
+      "message": "These go after the libc++ includes.",
+      "revId": "6e9d2ac60d1acb4425abb472b8024e4c6cdf7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42f256af_973e697c",
+        "filename": "fastboot/device/flashing.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-08T18:08:57Z",
+      "side": 1,
+      "message": "We added /dev/block/by-name/\u003cpartition_name\u003e since a lot of people were doing something similar themselves.  It\u0027ll save you from needing to search for the partition.\n\nhttps://cs.corp.google.com/android/system/core/init/devices.cpp?q\u003df:devices.cpp\u0026sq\u003dpackage:%5Eandroid$\u0026dr\u0026l\u003d331",
+      "revId": "6e9d2ac60d1acb4425abb472b8024e4c6cdf7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6287688a_8a1d6ad6",
+        "filename": "fastboot/device/flashing.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-08T18:08:57Z",
+      "side": 1,
+      "message": "This line doesn\u0027t seem right.  Shouldn\u0027t this be stat()\u0027ing the entry of subsoc-\u003ed_name in the directory that you\u0027re iterating through?\n\nCoincidentally, I just wrote this same code - https://android-review.googlesource.com/c/platform/system/core/+/727609/1/init/init_first_stage.cpp#74.  One of the two of these is (hopefully) the right way.\n\nThat said, it may be worth checking if tmpfs has \u0027full support\u0027 for returning d_type (as the man page says), since if it does, this whole block can be dropped.",
+      "revId": "6e9d2ac60d1acb4425abb472b8024e4c6cdf7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13ac10e2_1fc6dd6d",
+        "filename": "fastboot/device/flashing.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-08T18:08:57Z",
+      "side": 1,
+      "message": "false is probably not what you want given this is otherwise returning -errno and - for success.",
+      "range": {
+        "startLine": 111,
+        "startChar": 8,
+        "endLine": 111,
+        "endChar": 21
+      },
+      "revId": "6e9d2ac60d1acb4425abb472b8024e4c6cdf7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
