@@ -94,6 +94,30 @@
       "revId": "77c2038786e5853e7d22c7a6275e2e7322685e7c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "626ddd96_f0700dd5",
+        "filename": "libunwindstack/include/unwindstack/RegsGetLocal.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-08-08T17:58:36Z",
+      "side": 1,
+      "message": "I don\u0027t know what exactly __always_inline, but I think it might just be a shortcut to __attribute__(always_inline).\n\nGiven that, the difference is that \u0027inline\u0027 is just a hint to the compiler, whereas __attribute__(always_inline) forces the compiler to inline the function (for instance, even during -O0).\n\nThe \u0027inline\u0027 is also needed to avoid the function from being exported.  I think PS9 is correct.",
+      "parentUuid": "75e87db4_9e832248",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 59
+      },
+      "revId": "77c2038786e5853e7d22c7a6275e2e7322685e7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
