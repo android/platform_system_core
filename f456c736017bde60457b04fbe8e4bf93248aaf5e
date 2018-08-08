@@ -49,6 +49,154 @@
     },
     {
       "key": {
+        "uuid": "1602a7aa_7822ab38",
+        "filename": "fastboot/device/commands.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-08T01:39:10Z",
+      "side": 1,
+      "message": "2 ?",
+      "range": {
+        "startLine": 69,
+        "startChar": 22,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "f456c736017bde60457b04fbe8e4bf93248aaf5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f03746b0_0e1fe4ee",
+        "filename": "fastboot/device/commands.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-08T01:39:10Z",
+      "side": 1,
+      "message": "1 ?.  args[0] is \u0027set_active\u0027 now that we\u0027re passing the command name as args[0], right?",
+      "range": {
+        "startLine": 75,
+        "startChar": 36,
+        "endLine": 75,
+        "endChar": 37
+      },
+      "revId": "f456c736017bde60457b04fbe8e4bf93248aaf5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61e11e97_06ae6eb3",
+        "filename": "fastboot/device/commands.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-08T01:39:10Z",
+      "side": 1,
+      "message": "Can this fail?  Is that what the \u0027CommandResult error\u0027 is for above?  We should handle it if so.",
+      "revId": "f456c736017bde60457b04fbe8e4bf93248aaf5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07757fd7_4282e1ce",
+        "filename": "fastboot/device/fastboot_device.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-08T01:39:10Z",
+      "side": 1,
+      "message": "Like the above map, does std::bind make this better?  I generally prefer to have all of my handlers take all of the possible arguments, even if they\u0027re not used and not need std::bind.",
+      "revId": "f456c736017bde60457b04fbe8e4bf93248aaf5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35eb5031_baf51e74",
+        "filename": "fastboot/device/fastboot_device.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-08T01:39:10Z",
+      "side": 1,
+      "message": "Is there any reason why this needs to be in FastbootDevice?  Why not have the map as a static in GetVariable() in commands.cpp and have that function handle this logic directly?",
+      "revId": "f456c736017bde60457b04fbe8e4bf93248aaf5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "507bf7a7_2a770b6f",
+        "filename": "fastboot/device/fastboot_device.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-08T01:39:10Z",
+      "side": 1,
+      "message": "Better to use iterators like when accessing kCommandMap.",
+      "revId": "f456c736017bde60457b04fbe8e4bf93248aaf5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72961382_f9964598",
+        "filename": "fastboot/device/fastboot_device.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-08T01:39:10Z",
+      "side": 1,
+      "message": "Same as below; seems like this could be a utility function elsewhere?  Or even just put all of this directly in the GetCurrentSlot() function in Variables.cpp?  Do you foresee other places where it would need to be called?",
+      "revId": "f456c736017bde60457b04fbe8e4bf93248aaf5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2be2277e_b9a6dd59",
+        "filename": "fastboot/device/fastboot_device.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-08T01:39:10Z",
+      "side": 1,
+      "message": "Is this function appropriate for FastbootDevice?  It isn\u0027t using any member variables or functions.\n\nSeems like it should be someplace else as a utility.  Maybe even as a static in variables.cpp?  Are there other potential callers of this?\n\nAlso, do we support slots besides \u0027a\u0027 and \u0027b\u0027?  I think we originally had but may have dropped that and officially only support those two?",
+      "revId": "f456c736017bde60457b04fbe8e4bf93248aaf5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12711a72_bb27fa7c",
         "filename": "fastboot/device/variables.cpp",
         "patchSetId": 13
@@ -90,6 +238,47 @@
         "endLine": 32,
         "endChar": 15
       },
+      "revId": "f456c736017bde60457b04fbe8e4bf93248aaf5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f9f326b_37e540d3",
+        "filename": "fastboot/device/variables.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-08T01:39:10Z",
+      "side": 1,
+      "message": "+1. This should be a string.",
+      "parentUuid": "12711a72_bb27fa7c",
+      "range": {
+        "startLine": 32,
+        "startChar": 10,
+        "endLine": 32,
+        "endChar": 15
+      },
+      "revId": "f456c736017bde60457b04fbe8e4bf93248aaf5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "023cb81d_8e6c9fde",
+        "filename": "fastboot/device/variables.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-08T01:39:10Z",
+      "side": 1,
+      "message": "GetBoolProperty() ?",
       "revId": "f456c736017bde60457b04fbe8e4bf93248aaf5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
