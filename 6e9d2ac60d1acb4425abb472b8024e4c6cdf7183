@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a4d118db_7edb65a3",
+        "filename": "fastboot/device/commands.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-08-09T01:26:31Z",
+      "side": 1,
+      "message": "I\u0027ve removed the thread for now. It seems unsafe to have this going on in the background while new commands come in on the main thread. Even if the transport is thread-safe (I didn\u0027t look), we probably don\u0027t want fastboot commands racing with each other.\n\nIf we want the UI to be interruptible, we should probably just issue all the commands on another thread.",
+      "parentUuid": "58ce4823_318e64d2",
+      "revId": "6e9d2ac60d1acb4425abb472b8024e4c6cdf7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d389ad7b_21aa93cb",
         "filename": "fastboot/device/fastboot_device.cpp",
         "patchSetId": 14
@@ -33,6 +51,24 @@
       "revId": "6e9d2ac60d1acb4425abb472b8024e4c6cdf7183",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "352f6770_78351eef",
+        "filename": "fastboot/device/fastboot_device.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-08-09T01:26:31Z",
+      "side": 1,
+      "message": "Done - moved partition stuff to utility.h instead.",
+      "parentUuid": "d389ad7b_21aa93cb",
+      "revId": "6e9d2ac60d1acb4425abb472b8024e4c6cdf7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "7bc5c080_ff06defa",
+        "filename": "fastboot/device/fastboot_device.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-08-09T01:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ef2d26a_2947aa44",
+      "revId": "6e9d2ac60d1acb4425abb472b8024e4c6cdf7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "809fe0f1_f2e3c544",
         "filename": "fastboot/device/fastboot_device.h",
         "patchSetId": 14
@@ -67,6 +121,24 @@
       "revId": "6e9d2ac60d1acb4425abb472b8024e4c6cdf7183",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96b05cb1_11109cd8",
+        "filename": "fastboot/device/fastboot_device.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-08-09T01:26:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "809fe0f1_f2e3c544",
+      "revId": "6e9d2ac60d1acb4425abb472b8024e4c6cdf7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "453ee1c3_4f34ec54",
+        "filename": "fastboot/device/flashing.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-08-09T01:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6ad361b_9cb06f05",
+      "revId": "6e9d2ac60d1acb4425abb472b8024e4c6cdf7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42f256af_973e697c",
         "filename": "fastboot/device/flashing.cpp",
         "patchSetId": 14
@@ -98,6 +188,24 @@
       "writtenOn": "2018-08-08T18:08:57Z",
       "side": 1,
       "message": "We added /dev/block/by-name/\u003cpartition_name\u003e since a lot of people were doing something similar themselves.  It\u0027ll save you from needing to search for the partition.\n\nhttps://cs.corp.google.com/android/system/core/init/devices.cpp?q\u003df:devices.cpp\u0026sq\u003dpackage:%5Eandroid$\u0026dr\u0026l\u003d331",
+      "revId": "6e9d2ac60d1acb4425abb472b8024e4c6cdf7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a93d882_a2f65038",
+        "filename": "fastboot/device/flashing.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-08-09T01:26:31Z",
+      "side": 1,
+      "message": "Cool - this whole method becomes way simpler then.",
+      "parentUuid": "42f256af_973e697c",
       "revId": "6e9d2ac60d1acb4425abb472b8024e4c6cdf7183",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "367e2531_bb4e78b4",
+        "filename": "fastboot/device/flashing.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-08-09T01:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6287688a_8a1d6ad6",
+      "revId": "6e9d2ac60d1acb4425abb472b8024e4c6cdf7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13ac10e2_1fc6dd6d",
         "filename": "fastboot/device/flashing.cpp",
         "patchSetId": 14
@@ -141,6 +267,30 @@
       "revId": "6e9d2ac60d1acb4425abb472b8024e4c6cdf7183",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "585f0916_a9720e8c",
+        "filename": "fastboot/device/flashing.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-08-09T01:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13ac10e2_1fc6dd6d",
+      "range": {
+        "startLine": 111,
+        "startChar": 8,
+        "endLine": 111,
+        "endChar": 21
+      },
+      "revId": "6e9d2ac60d1acb4425abb472b8024e4c6cdf7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
