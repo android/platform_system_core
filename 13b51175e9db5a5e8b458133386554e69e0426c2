@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "17a7b6c5_56add178",
+        "filename": "init/Android.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-10T17:59:27Z",
+      "side": 1,
+      "message": "Yes and importantly, always include TARGET_ROOT_OUT in system.img.",
+      "parentUuid": "e74cd119_52afc3c8",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 37
+      },
+      "revId": "13b51175e9db5a5e8b458133386554e69e0426c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33130c95_10ee2519",
         "filename": "init/Android.mk",
         "patchSetId": 7
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "Correct, for system-as-root, system will be mounted by kernel so no need to specify it in fstab-dt. But we still need to specify \"/\" in the fstab file, for update_verity_stage and recovery to work.\n\nhttps://android.googlesource.com/device/google/wahoo/+/master/fstab.hardware#4\n\nupdate_verity_state:\nhttps://android.googlesource.com/platform/system/core/+/master/fs_mgr/fs_mgr.cpp#1395\n\nrecovery:\nhttps://android.googlesource.com/platform/bootable/recovery/+/master/recovery.cpp#844\n\n\"/\" mount points will be skipped by fs_mgr anyway.\nhttps://android.googlesource.com/platform/system/core/+/master/fs_mgr/fs_mgr.cpp#854\n\n\n\nI meant for non-system-as-root, if the author of fstab look into the content of system.img, they might mount it under \"/\". Because they might thought mounting under /system will create a strange dir layout, like /system/system/etc/, /system/system/bin, etc. \n\n\u003e it\u0027ll show a mount point at /system that is currently mounted at /.  Do you think that would present any problems or are we okay there? \n\nI\u0027m not sure currently, need more time to think about it.\nBut perhaps the check in recovery will break? because there is no \"/\" in non-system-as-root fstab file.\n   if (ensure_path_mounted_at(\"/\", \"/mnt/system\") !\u003d -1) {\n   }",
       "parentUuid": "3ce239e9_6d8480f4",
+      "range": {
+        "startLine": 366,
+        "startChar": 75,
+        "endLine": 366,
+        "endChar": 82
+      },
+      "revId": "13b51175e9db5a5e8b458133386554e69e0426c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bade4fd9_ffc6e271",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-10T17:59:27Z",
+      "side": 1,
+      "message": "I think all of those cases work with this strategy.  ro.build.system_root_image will still be set the same as it is now (devices that actually use system.img as rootfs have it set, others don\u0027t).  So all of these conditionals will find /system in the fstab when it\u0027s not set and work correctly.\n\nActually seems a bit mandatory that we continue this separation given the second link, since vroot vs system will always be a difference regardless of what mount point we use.\n\nThe last link is the only that may need a change.  We should probably skip /system as well.",
+      "parentUuid": "6ecfd5b6_83abaa01",
       "range": {
         "startLine": 366,
         "startChar": 75,
