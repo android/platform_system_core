@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "fae61a7f_118a6f91",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-08-10T22:00:15Z",
+      "side": 1,
+      "message": "Can that specific scenario happen? Does \"make dist\" delete individual images? But this made me realize something else is broken: if an initial super.img is not flashed yet (i.e., the metadata is missing), flashall will break after this patch.\n\nMaybe fastboot should derive from the build which partitions should be logical, and then if the device has not configured \"super\" yet, make a minimal super.img and flash that first.?",
+      "parentUuid": "3060f6dc_5cdf07d1",
+      "range": {
+        "startLine": 1228,
+        "startChar": 0,
+        "endLine": 1228,
+        "endChar": 70
+      },
+      "revId": "8f6940bb80d60b2dbe8a0b326d60666c52db32f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f907192_a4f397cd",
         "filename": "fastboot/fastboot.cpp",
         "patchSetId": 2
