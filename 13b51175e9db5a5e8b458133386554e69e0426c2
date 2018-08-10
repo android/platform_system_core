@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81160460_511e3d1a",
+        "filename": "init/Android.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-08-10T13:56:42Z",
+      "side": 1,
+      "message": "Now this specifies whether ramdisk should be included in boot.img or system.img.\n\nAnd system.img should always be mounted as \"/\", not matter ramdisk or no-ramdisk.\ne.g., inside the system.img.\n  system/\n      - bin/\n      - etc/\n      - lib/\n      ...",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 37
+      },
+      "revId": "13b51175e9db5a5e8b458133386554e69e0426c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33130c95_10ee2519",
+        "filename": "init/Android.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-08-10T13:56:42Z",
+      "side": 1,
+      "message": "The ramdisk is still included in boot.img, right?\n\nWhether to put the ramdisk.img in a dedicated /ramdisk partition should be discussed separately. (for compliance test, to make sure this is a generic ramdisk).",
+      "range": {
+        "startLine": 62,
+        "startChar": 23,
+        "endLine": 62,
+        "endChar": 41
+      },
+      "revId": "13b51175e9db5a5e8b458133386554e69e0426c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fc6dc8d_2388e3c6",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-08-10T13:56:42Z",
+      "side": 1,
+      "message": "\"Technically\", this should be \"/\" if there is no SwitchRoot(\"/system\") below.\nBecause system.img now contains /system folder.\n\nAnyway, using \"/system\" as an indicator to SwitchRoot(\"/system\") LGTM.",
+      "range": {
+        "startLine": 366,
+        "startChar": 75,
+        "endLine": 366,
+        "endChar": 82
+      },
+      "revId": "13b51175e9db5a5e8b458133386554e69e0426c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
