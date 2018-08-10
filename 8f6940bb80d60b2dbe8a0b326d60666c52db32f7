@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2d5115ad_ce312339",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-10T21:57:38Z",
+      "side": 1,
+      "message": "services",
+      "range": {
+        "startLine": 23,
+        "startChar": 59,
+        "endLine": 23,
+        "endChar": 66
+      },
+      "revId": "8f6940bb80d60b2dbe8a0b326d60666c52db32f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73e24cb5_2aebf6d0",
         "filename": "fastboot/fastboot.cpp",
         "patchSetId": 2
@@ -41,6 +64,46 @@
         "startChar": 0,
         "endLine": 1228,
         "endChar": 70
+      },
+      "revId": "8f6940bb80d60b2dbe8a0b326d60666c52db32f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f907192_a4f397cd",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1235,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-10T21:57:38Z",
+      "side": 1,
+      "message": "This comment doesn\u0027t match what the code does.  The code is resizing only this one partition to 0.\n\nI figure the code is the intended behavior, right?  In case something like /persist or /data ends up in a logical partition, we would need to maintain its contents and thus cannot resize all logical partitions to 0, right?\n\nI wonder it\u0027d be worth having a house-cleaning step here too?  If we are keeping some logical partitions in the super partition, move them to the front such that the subsequent images won\u0027t ever need to be broken up into multiple extents if they cross over the older partitions?  Probably not worth it, but at least worth thinking about?",
+      "revId": "8f6940bb80d60b2dbe8a0b326d60666c52db32f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e1f95a2_f0b3ee1d",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1245,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-10T21:57:38Z",
+      "side": 1,
+      "message": "We have c++17 enabled here, don\u0027t we?  const auto\u0026 [image, slot] ?",
+      "range": {
+        "startLine": 1245,
+        "startChar": 21,
+        "endLine": 1245,
+        "endChar": 26
       },
       "revId": "8f6940bb80d60b2dbe8a0b326d60666c52db32f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
