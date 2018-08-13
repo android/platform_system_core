@@ -236,6 +236,30 @@
       "revId": "13b51175e9db5a5e8b458133386554e69e0426c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d315e923_4d968865",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-08-13T13:13:35Z",
+      "side": 1,
+      "message": "After more thoughts, I agree with your idea.\nYup, as long as ro.build.system_root_image will still be set for kernel mounts system.img as rootfs, everything works fine.\n\nThe last link probably no need to change, because it\u0027s in \"mount_all\".\nAs /system is always in first-stage-mount, there shouldn\u0027t be another /system in mount_all.\n\n\nFor non-system-as-root in recovery, it still can mount.\nBut the layout becomes /mnt/system/system/etc/, /mnt/system/system/bin, etc.\nWhich is the same layout as ensure_path_mounted_at(\"/\", \"/mnt/system\");\nSo it should have no problem, adding tbao@ to confirm.",
+      "parentUuid": "bade4fd9_ffc6e271",
+      "range": {
+        "startLine": 366,
+        "startChar": 75,
+        "endLine": 366,
+        "endChar": 82
+      },
+      "revId": "13b51175e9db5a5e8b458133386554e69e0426c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
