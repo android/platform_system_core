@@ -130,6 +130,24 @@
     },
     {
       "key": {
+        "uuid": "8a129085_a9bc54ec",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-13T22:07:14Z",
+      "side": 1,
+      "message": "\u003e Too bad we don\u0027t have a similar signal to say that all product ro[.] properties have been read in and settled?\n\nProbably hard to do since ro. properties can be set from anywhere, not just the property files.  I do want to make it such that all property files are loaded before init starts running, as opposed to some of the properties being loaded at post-fs like they are now, but that is going to present all sorts of compatibility issues.\n\n\u003e The one I suspect I can count on is !android::base::GetProperty(\"ro.debuggable\", \"\").empty(), what do you think?\n\nI think it depends on where these properties end up.  ro.debuggable ends up in default.prop which is loaded before init scripts start executing.  If your properties end up in the set of default.prop files, that\u0027s fine, but also means it\u0027s defacto true for everything other than first stage mount.",
+      "parentUuid": "3430432f_ae6ff61c",
+      "revId": "6764b2bc3fb27a5b97d88de03bea425ac7cc083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ec2ee26_9b9c7227",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 17
@@ -159,6 +177,24 @@
       "side": 1,
       "message": "Sounds like I would need to remove the persist.* variant of the property as too controversial because of side-effects. I\u0027d prefer not.\n\nThe intent is that the only place persist.* checking for this would be active is in adb disable-verity and adb remount.\n\nI envisioned persist.* property possibly being set in a developer option where some checking could manage expectations, or by the developer that knows what he is doing, so it is an API. The main purpose of the persist property is to enable overlayfs when it otherwise would not be (eg: set to 100%). The alternative, when reducing the value, is as you say dangerous, and would _only_ have an effect on mount_all --late. I do not believe we have any devices currently that would cause a problem (not even Hikey which mounts /cache and /data in the same mount_all cycle).\n\nI think the only action I should take is to itemize caveats for the persist option in the README.md.",
       "parentUuid": "0ec2ee26_9b9c7227",
+      "revId": "6764b2bc3fb27a5b97d88de03bea425ac7cc083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a1a661_100457b2",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-13T22:07:14Z",
+      "side": 1,
+      "message": "\u003e The intent is that the only place persist.* checking for this would be active is in adb disable-verity and adb remount.\n\nThen don\u0027t put it in this function, since this function is also called in fs_mgr_overlayfs_mount() ?  It would solve my issue with mount_all.  \n\nWhy wouldn\u0027t hikey be impacted by it?  I think it would be, since it does overlayfs in mount_all, right?\n\nAlternatively, since you\u0027re envisioning this as a dev option and I\u0027m figuring it should only impact the creation of the upper/work dirs, then what if this were an override to disable-verity?  It would put the choice directly at the command that creates these directories too for maximum clarity.",
+      "parentUuid": "79643141_422fffcb",
       "revId": "6764b2bc3fb27a5b97d88de03bea425ac7cc083f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
