@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e01b35c4_922a7ca6",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-08-13T18:13:21Z",
+      "side": 1,
+      "message": "false return means we will wrap with overlayfs.\n\nInteresting point, there was an intention that if we lack the permissions, or the mount point does not exist (!), we did not want a result that would end up using the storage as backing for overlayfs. Failure of the request meant unusable, skip even considering wrapping overlayfs.\n\nBut note above if we are not at boot complete, we lie and say there is not enough storage, because we can not read the property to make a calculated determination.\n\nI believe we should check statvfs, and if it reports failure, return true; then check if boot completed and return false because we lack access to the properties to make a determination.\n\nre-ordering in such a manner will abate the confusion over the inconsistency, but will add comments to fortify.",
+      "parentUuid": "1c27a110_e28d0540",
+      "revId": "410b465aadb21b59c3ce06dbbd8fbdbc069e8b0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "99a5018a_60801418",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 16
