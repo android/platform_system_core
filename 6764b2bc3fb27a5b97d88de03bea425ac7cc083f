@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1b81a06b_b607f8f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-08-13T21:32:12Z",
+      "side": 1,
+      "message": "agreed",
+      "parentUuid": "80d102b1_5a0478d7",
+      "range": {
+        "startLine": 10,
+        "startChar": 41,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "6764b2bc3fb27a5b97d88de03bea425ac7cc083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d0b9369_fdaded55",
         "filename": "/COMMIT_MSG",
         "patchSetId": 17
@@ -88,6 +112,24 @@
     },
     {
       "key": {
+        "uuid": "3430432f_ae6ff61c",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-08-13T21:32:12Z",
+      "side": 1,
+      "message": "Thanks, will switch and add the sepolicy in a separate CL we will depend upon. Too bad we don\u0027t have a similar signal to say that all product ro[.] properties have been read in and settled?\n\nThe one I suspect I can count on is !android::base::GetProperty(\"ro.debuggable\", \"\").empty(), what do you think?",
+      "parentUuid": "13fa8335_1d4ea027",
+      "revId": "6764b2bc3fb27a5b97d88de03bea425ac7cc083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ec2ee26_9b9c7227",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 17
@@ -99,6 +141,24 @@
       "writtenOn": "2018-08-13T20:23:45Z",
       "side": 1,
       "message": "This is checked both before creating the upper/work dir and before mounting the overlayfs, right?  This seems slightly dangerous if so.  What if someone has files in their upper dir, then changes the property such that it would no longer have overlayfs applied; do you want to no longer mount the overlayfs?  That seems a bit counter-intuitive.  Its confusion is compounded by the fact that the property cannot be checked during first stage mount, so it\u0027ll only impact mounts done during mount_all.\n\nI\u0027m still generally of the opinion that the existence of the upper/work dir should be the only information we use to determine if we\u0027re going to mount or not.  This property can be used to indicate whether or not we\u0027re going to create the upper/work dir.",
+      "revId": "6764b2bc3fb27a5b97d88de03bea425ac7cc083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79643141_422fffcb",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-08-13T21:32:12Z",
+      "side": 1,
+      "message": "Sounds like I would need to remove the persist.* variant of the property as too controversial because of side-effects. I\u0027d prefer not.\n\nThe intent is that the only place persist.* checking for this would be active is in adb disable-verity and adb remount.\n\nI envisioned persist.* property possibly being set in a developer option where some checking could manage expectations, or by the developer that knows what he is doing, so it is an API. The main purpose of the persist property is to enable overlayfs when it otherwise would not be (eg: set to 100%). The alternative, when reducing the value, is as you say dangerous, and would _only_ have an effect on mount_all --late. I do not believe we have any devices currently that would cause a problem (not even Hikey which mounts /cache and /data in the same mount_all cycle).\n\nI think the only action I should take is to itemize caveats for the persist option in the README.md.",
+      "parentUuid": "0ec2ee26_9b9c7227",
       "revId": "6764b2bc3fb27a5b97d88de03bea425ac7cc083f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
