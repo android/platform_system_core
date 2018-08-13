@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80d102b1_5a0478d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-13T20:23:45Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be \u0027maxfree\u0027 ?\n\n1% \u0027minfree\u0027 would mean \"enable this for devices with 1% or more free space\" 1% \u0027max\u0027 free would mean \"enable this for devices with at most 1% free space\"  It\u0027s the latter that we want, right?",
+      "range": {
+        "startLine": 10,
+        "startChar": 41,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "6764b2bc3fb27a5b97d88de03bea425ac7cc083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d0b9369_fdaded55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-13T20:23:45Z",
+      "side": 1,
+      "message": "than",
+      "range": {
+        "startLine": 17,
+        "startChar": 57,
+        "endLine": 17,
+        "endChar": 63
+      },
+      "revId": "6764b2bc3fb27a5b97d88de03bea425ac7cc083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dab0334_97072586",
+        "filename": "fs_mgr/README.property.md",
+        "patchSetId": 17
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-13T20:23:45Z",
+      "side": 1,
+      "message": "parameter",
+      "range": {
+        "startLine": 16,
+        "startChar": 49,
+        "endLine": 16,
+        "endChar": 57
+      },
+      "revId": "6764b2bc3fb27a5b97d88de03bea425ac7cc083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13fa8335_1d4ea027",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-13T20:23:45Z",
+      "side": 1,
+      "message": "You can check ro.persistent_properties.ready to be true directly.\n\nhttps://cs.corp.google.com/android/system/core/init/property_service.cpp?q\u003df:property_service.cpp\u0026sq\u003dpackage:%5Eandroid$\u0026dr\u0026l\u003d732",
+      "revId": "6764b2bc3fb27a5b97d88de03bea425ac7cc083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ec2ee26_9b9c7227",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-13T20:23:45Z",
+      "side": 1,
+      "message": "This is checked both before creating the upper/work dir and before mounting the overlayfs, right?  This seems slightly dangerous if so.  What if someone has files in their upper dir, then changes the property such that it would no longer have overlayfs applied; do you want to no longer mount the overlayfs?  That seems a bit counter-intuitive.  Its confusion is compounded by the fact that the property cannot be checked during first stage mount, so it\u0027ll only impact mounts done during mount_all.\n\nI\u0027m still generally of the opinion that the existence of the upper/work dir should be the only information we use to determine if we\u0027re going to mount or not.  This property can be used to indicate whether or not we\u0027re going to create the upper/work dir.",
+      "revId": "6764b2bc3fb27a5b97d88de03bea425ac7cc083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
