@@ -16,6 +16,24 @@
       "revId": "7c02e4cd00c32d586ac3c76273ed0a816660fec3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce0840b5_077b5c1d",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-08-14T19:53:39Z",
+      "side": 1,
+      "message": "fsrec-\u003emount_point and fsrec-\u003eblk_device can be null. Either on purpose, or by accident (!)\n\nWe could do std::string, but that would require more validity checking in fs_mgr_overlayfs_enabled() above, and largely unnecessary transitory allocation. This is (honestly, used to be as of 11am this morning, but not anymore, but who is to say what the future is with a library) called during First Stage init; I\u0027d prefer to keep allocations and boot delays at a minimum.",
+      "parentUuid": "d5e89e03_3cd6b738",
+      "revId": "7c02e4cd00c32d586ac3c76273ed0a816660fec3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
