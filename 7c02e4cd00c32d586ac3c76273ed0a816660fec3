@@ -34,6 +34,24 @@
       "revId": "7c02e4cd00c32d586ac3c76273ed0a816660fec3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca62c43f_76f5e2e7",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-14T20:51:17Z",
+      "side": 1,
+      "message": "\u003e \u003e nit: Can mount_point or blk_device be null? If not, could these be std::string instead?\n\u003e fsrec-\u003emount_point and fsrec-\u003eblk_device can be null. Either on purpose, or by accident (!)\n\nEh, in practice they never can be.  The only places we alloc fstab_rec\u0027s in fs_mgr_fstab.cpp always set these.  We unapologetically skip the null checks in first_stage_mount and the rest of fs_mgr.  There\u0027s not really any graceful fall back if they were null either, so I\u0027m more than happy to just blow up - basically just a corollary  to the idea \"don\u0027t catch exceptions that you can\u0027t handle\"\n\nWe also rather unapologetically convert these to std::strings in first stage mount.  The allocation overhead is trivial compared to the rest of the operation.\n\nBowgo and I have stated that we want to rewrite this code about 100 times, but neither of us have found time.  If anyone\u0027s free to, replacing all of struct fstab with a class that just has a sane vector\u003cFstabEntry\u003e element, where FstabEntry is a class containing the fstab information as std::string\u0027s would be a very welcome change.",
+      "parentUuid": "ce0840b5_077b5c1d",
+      "revId": "7c02e4cd00c32d586ac3c76273ed0a816660fec3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
