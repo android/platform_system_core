@@ -22,6 +22,29 @@
       "revId": "fbd49253bb72b75a5e87e4702636454f236bc3ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bbc69e5_79af7319",
+        "filename": "init/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1056365
+      },
+      "writtenOn": "2018-08-15T23:06:44Z",
+      "side": 1,
+      "message": "ccross@: I hit one issue when verifying the native of `init_tests`, due to missing .so files on device. In particular, the 32-bit version of the test would fail while running on marlin (this is the config actively running on go/apct). Because we don\u0027t install all the 32-bit shared libs on device (e.g. we don\u0027t have libfs_mgr.so, libext4_utils.so, libbootloader_message.so).\n\nI was looking for a way to statically link in these libs, but for cc_test only. Something like \"use init_defaults, but exclude these shared libs and add the following static libs instead\", but couldn\u0027t find any. Adding another cc_defaults works, but looks less clean.\n\ncc_defaults: [\n    name: \"init_defaults_core\",\n...\n}\n\nSHARED_LIBS_UNLESS_IN_TESTS \u003d [\n    \"libfs_mgr\", ...\n]\n\ncc_defaults: [\n    name: \"init_defaults\",\n    defaults: [\"init_defaults_core\"],\n    shared_libs: SHARED_LIBS_UNLESS_IN_TESTS,\n}\n\ncc_test {\n    defaults: [\"init_defaults_core\"],\n    static_libs: SHARED_LIBS_UNLESS_IN_TESTS,\n}\n\nIs there a cleaner way to achieve this?",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 7
+      },
+      "revId": "fbd49253bb72b75a5e87e4702636454f236bc3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
