@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f1e93d8c_c8d6db75",
+        "filename": "fastboot/fuzzy_fastboot/main.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-08-16T18:20:26Z",
+      "side": 1,
+      "message": "Yeah, isprint will work better. I will change it",
+      "parentUuid": "67ca47aa_db34332e",
+      "range": {
+        "startLine": 165,
+        "startChar": 59,
+        "endLine": 165,
+        "endChar": 85
+      },
+      "revId": "d30fb2a851f2b67b8a437a9db7a536d1956cebf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd133cd7_26d7ff74",
         "filename": "fastboot/fuzzy_fastboot/main.cpp",
         "patchSetId": 14
@@ -36,6 +60,30 @@
       "writtenOn": "2018-08-01T20:40:45Z",
       "side": 1,
       "message": "can we replace it for a function which breaks to the first no_print value? maybe std::find_if. Since we don\u0027t need to continue once we get 1 on_print char",
+      "range": {
+        "startLine": 174,
+        "startChar": 16,
+        "endLine": 174,
+        "endChar": 29
+      },
+      "revId": "d30fb2a851f2b67b8a437a9db7a536d1956cebf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a909b6e_d9ec3d23",
+        "filename": "fastboot/fuzzy_fastboot/main.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-08-16T18:20:26Z",
+      "side": 1,
+      "message": "I don\u0027t think this is a huge deal because it never scans through more than max_chars. If it was scanning through the entire buffer, that would have a ton of overhead.",
+      "parentUuid": "bd133cd7_26d7ff74",
       "range": {
         "startLine": 174,
         "startChar": 16,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "798605ad_b2498813",
+        "filename": "fastboot/fuzzy_fastboot/main.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-08-16T18:20:26Z",
+      "side": 1,
+      "message": "The problem is at line 247, I call buf.resize(1000), so if nothing is read, I need to shrink it back down to size 0.",
+      "parentUuid": "788354cf_65f9c0c4",
+      "range": {
+        "startLine": 257,
+        "startChar": 8,
+        "endLine": 257,
+        "endChar": 26
+      },
+      "revId": "d30fb2a851f2b67b8a437a9db7a536d1956cebf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cb2802f_d15db392",
         "filename": "fastboot/fuzzy_fastboot/main.cpp",
         "patchSetId": 14
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "4ebd2311_c9ce52cf",
+        "filename": "fastboot/fuzzy_fastboot/main.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-08-16T18:20:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cb2802f_d15db392",
+      "range": {
+        "startLine": 351,
+        "startChar": 12,
+        "endLine": 351,
+        "endChar": 34
+      },
+      "revId": "d30fb2a851f2b67b8a437a9db7a536d1956cebf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd30da9d_2245474d",
         "filename": "fastboot/fuzzy_fastboot/main.cpp",
         "patchSetId": 14
@@ -105,6 +201,30 @@
       "writtenOn": "2018-08-01T20:40:45Z",
       "side": 1,
       "message": "should we timeout?",
+      "range": {
+        "startLine": 391,
+        "startChar": 12,
+        "endLine": 392,
+        "endChar": 41
+      },
+      "revId": "d30fb2a851f2b67b8a437a9db7a536d1956cebf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27f0a7b1_b91f1030",
+        "filename": "fastboot/fuzzy_fastboot/main.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-08-16T18:20:26Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to. Most of the tests run without user interaction. So I could imagine someone starting these tests, and walking away for a while. I don\u0027t think we should force the user to monitor the tests closely, so they can click the OK button the device before a timeout happens.",
+      "parentUuid": "dd30da9d_2245474d",
       "range": {
         "startLine": 391,
         "startChar": 12,
@@ -137,6 +257,30 @@
       "revId": "d30fb2a851f2b67b8a437a9db7a536d1956cebf2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ac70c56_0df03151",
+        "filename": "fastboot/fuzzy_fastboot/main.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1336956
+      },
+      "writtenOn": "2018-08-16T18:20:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea9139f5_1b41fd7b",
+      "range": {
+        "startLine": 437,
+        "startChar": 8,
+        "endLine": 437,
+        "endChar": 30
+      },
+      "revId": "d30fb2a851f2b67b8a437a9db7a536d1956cebf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
