@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c4c35e6b_22a8c146",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-08-17T22:14:18Z",
+      "side": 1,
+      "message": "The message comes from this log:\n  https://b.corp.google.com/issues/79674503#comment6\n\nThe value 128 was the size of the array in bytes (128 bytes -\u003e 1024 bits)\n\nThe code was later changed to print 1024 so it\u0027s less confusing:\n  https://android-review.googlesource.com/c/platform/bionic/+/640099",
+      "parentUuid": "5a165882_3a05e66c",
+      "revId": "a28c33cf80b1c552b287a0141b857d40ac2fbaa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "003047c1_af92f365",
         "filename": "libsysutils/include/sysutils/SocketListener.h",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "a28c33cf80b1c552b287a0141b857d40ac2fbaa4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e34b50cc_d191f68f",
+        "filename": "libsysutils/include/sysutils/SocketListener.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-08-17T22:14:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "003047c1_af92f365",
+      "revId": "a28c33cf80b1c552b287a0141b857d40ac2fbaa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "14f6868b_6b8c0184",
+        "filename": "libsysutils/src/SocketListener.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-08-17T22:14:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d65a9bd8_a71f43e6",
+      "revId": "a28c33cf80b1c552b287a0141b857d40ac2fbaa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a281b6c0_ff3dba45",
         "filename": "libsysutils/src/SocketListener.cpp",
         "patchSetId": 2
@@ -67,6 +121,24 @@
       "revId": "a28c33cf80b1c552b287a0141b857d40ac2fbaa4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fef4190c_f27ae8cc",
+        "filename": "libsysutils/src/SocketListener.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-08-17T22:14:18Z",
+      "side": 1,
+      "message": "Hmm... it would be more correct to let the refcount drop to zero; it would help in case someone someone calls stopListener() from within an onDataAvailable() callback, I guess?\n\n*BUT*... since we call pthread_join() above, I think stopListener() would deadlock if invoked on the context of mThread.\n\nSo perhaps we should simply check that refCnt is 1 for consistency and SLOGE() in case it isn\u0027t? But I\u0027d be inclined to do this in a separate change, in case it breaks some obscure user...",
+      "parentUuid": "a281b6c0_ff3dba45",
+      "revId": "a28c33cf80b1c552b287a0141b857d40ac2fbaa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -90,6 +162,30 @@
       "revId": "a28c33cf80b1c552b287a0141b857d40ac2fbaa4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea1f9c92_1d3cd644",
+        "filename": "libsysutils/src/SocketListener.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-08-17T22:14:18Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "28f32dea_fe810074",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 0
+      },
+      "revId": "a28c33cf80b1c552b287a0141b857d40ac2fbaa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
