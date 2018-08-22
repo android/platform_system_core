@@ -46,6 +46,30 @@
       "revId": "8253cf621be19b03b6f39e16a63cb5ddb643b6b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8428d742_daf6abe8",
+        "filename": "fs_mgr/liblp/reader.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-22T16:22:05Z",
+      "side": 1,
+      "message": "It is.  ReadFully() isn\u0027t marked as const and can\u0027t be since the memory backed Reader subclass needs to modify its internal state when its ReadFully() is called.\n\nOtherwise this would be `const Reader\u0026` but that\u0027s not possible given the above.",
+      "parentUuid": "bea7b614_f8733e6b",
+      "range": {
+        "startLine": 193,
+        "startChar": 49,
+        "endLine": 193,
+        "endChar": 56
+      },
+      "revId": "8253cf621be19b03b6f39e16a63cb5ddb643b6b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
