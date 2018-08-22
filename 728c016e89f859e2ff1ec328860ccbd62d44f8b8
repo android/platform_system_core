@@ -33,6 +33,52 @@
       "revId": "728c016e89f859e2ff1ec328860ccbd62d44f8b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5785abd_e56e5210",
+        "filename": "fastboot/device/flashing.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-08-22T17:02:15Z",
+      "side": 1,
+      "message": "Thanks!\n\nIf \"scratch\" is specified in the new metadata, I expect this is a can\u0027t happen (?) so clearing it should be ok.\n\nAre there any paths (in the host caller) where this is called and a system class partition (/system, /vendor, /odm, /oem) is not being updated? I expect not, but maybe _document_/_comment_ that \"scratch\" will always be deleted further up the stack (here and in the host caller) so future selves don\u0027t have to look down here to find out or trip over this.",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 5
+      },
+      "revId": "728c016e89f859e2ff1ec328860ccbd62d44f8b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0633a8f8_e355eb26",
+        "filename": "fastboot/device/flashing.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-08-22T17:02:15Z",
+      "side": 1,
+      "message": "If slot X fails, does not mean slot X + 1 will, do we want to write all the slots to preserve what we can, report an accumulated failure?",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 5
+      },
+      "revId": "728c016e89f859e2ff1ec328860ccbd62d44f8b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
