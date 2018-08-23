@@ -117,6 +117,30 @@
       "revId": "275f65c28fe0512bf99269f5307debb176321755",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfb85ad8_405b9414",
+        "filename": "adb/test_device.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1308,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2018-08-23T20:04:00Z",
+      "side": 1,
+      "message": "It would not break me, but that\u0027s because I don\u0027t have automation that runs adb shell. I may be a sophisticated user, but I\u0027m only a sophisticated user of a subset of features. I actually think that I\u0027m the wrong person to ask about this sort of change. Some ideas on who is right to ask:\n\n1. ISVs who write Android apps, from startups to \"regular\" companies that release apps. They probably have test automation that runs adb shell. The question is whether they do it on Windows or not.\n2. Maybe the Android Studio guys have some ideas on who to ask, or they have a method of surveying end-users.\n3. Same goes for the Android Emulator team. The emulator even runs `adb shell getprop dev.bootcomplete\u0027 and redirects it to a file.\n4. Maybe the XDA-Developers community?\n\nA few years ago didn’t you guys fix the adb shell argument escaping? How did you carefully roll-out that fix so that it wouldn’t break people?\n\nEssentially the question is how to decide on a breaking change and how to deploy it. Does your team have Program Managers who work on this stuff like other big companies?\n\nIf you make the change, it should probably be accompanied by a cmd line arg (and maybe env var as well) to switch back to the old \\r\\n behavior, in case someone needs it.\n\nWe already have Windows users who are inconvenienced by adb shell using \\r\\n: us! (the unit tests) :) BTW, there are other people inconvenienced by the fact that adb shell uses \\r\\n: https://stackoverflow.com/questions/13578416/read-binary-stdout-data-from-adb-shell . One of the answers was to use exec-out which is raw on Windows (maybe that should be the official recommendation for test automation).\n\nI just checked on the latest version of Windows 10 and Notepad.exe still doesn’t handle \\n. It would be kind of lame if redirecting adb shell to a file would currently not look right in Notepad, so my guess is that making such a change now is too early (modulo the stackoverflow above). But that’s just my guess. Maybe I’m just worrying too much about a non-problem?",
+      "parentUuid": "13912061_ad7f878e",
+      "range": {
+        "startLine": 1301,
+        "startChar": 0,
+        "endLine": 1308,
+        "endChar": 56
+      },
+      "revId": "275f65c28fe0512bf99269f5307debb176321755",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
