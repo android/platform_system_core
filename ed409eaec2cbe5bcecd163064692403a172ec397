@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "82fc5e3b_1590ea71",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-08-23T15:08:06Z",
+      "side": 1,
+      "message": "chh,gibv: clang static analyzer doesn\u0027t spot this?",
+      "parentUuid": "e4e6dc28_7a149bd6",
+      "revId": "ed409eaec2cbe5bcecd163064692403a172ec397",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64ff0261_8b224f82",
         "filename": "adb/client/fastdeploy.cpp",
         "patchSetId": 32
@@ -30,6 +48,24 @@
       "writtenOn": "2018-08-23T14:58:02Z",
       "side": 1,
       "message": "send_shell_command() takes a std::string.  It\u0027s (mildly) inefficient to pass in a \"const char*\", which then implicitly constructs a new std::string.  We should just pass \"chmodCommand\" here.",
+      "revId": "ed409eaec2cbe5bcecd163064692403a172ec397",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fe058c0_40fa1c4c",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-08-23T15:08:06Z",
+      "side": 1,
+      "message": "chh,gbiv: i thought i\u0027d seen you reporting instances of this already? is it not as semi-automated as the \"you introduced a memory leak\" stuff?\n\nis there any way we can get these checks into the regular build, since they\u0027re quite common mistakes but trivially fixed?",
+      "parentUuid": "64ff0261_8b224f82",
       "revId": "ed409eaec2cbe5bcecd163064692403a172ec397",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
