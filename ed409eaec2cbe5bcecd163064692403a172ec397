@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4e6dc28_7a149bd6",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2018-08-23T14:58:02Z",
+      "side": 1,
+      "message": "We\u0027re checking \"statusCode \u003d\u003d 0\" twice here.  Did we intend to check something else instead, or is this just an accidental second check of the same thing?",
+      "revId": "ed409eaec2cbe5bcecd163064692403a172ec397",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64ff0261_8b224f82",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2018-08-23T14:58:02Z",
+      "side": 1,
+      "message": "send_shell_command() takes a std::string.  It\u0027s (mildly) inefficient to pass in a \"const char*\", which then implicitly constructs a new std::string.  We should just pass \"chmodCommand\" here.",
+      "revId": "ed409eaec2cbe5bcecd163064692403a172ec397",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0186b5a6_ee4794d9",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2018-08-23T14:58:02Z",
+      "side": 1,
+      "message": "send_shell_command() takes a std::string.  It\u0027s (mildly) inefficient to pass in a \"const char*\", which then implicitly constructs a new std::string.  We should just pass \"extractCommand\" here.",
+      "revId": "ed409eaec2cbe5bcecd163064692403a172ec397",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
