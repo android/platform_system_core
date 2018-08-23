@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "880764cd_168ba2e6",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2018-08-23T18:08:01Z",
+      "side": 1,
+      "message": "\u003e chh,gibv: clang static analyzer doesn\u0027t spot this?\n\nSeems like something we should check for as a clang warning, given that we have things like -Wtautological-overlap-compare. -Weverything doesn\u0027t complain, though: https://godbolt.org/z/YXZ0uP :/",
+      "parentUuid": "cbe81ae3_1d169eba",
+      "revId": "ed409eaec2cbe5bcecd163064692403a172ec397",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64ff0261_8b224f82",
         "filename": "adb/client/fastdeploy.cpp",
         "patchSetId": 32
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "5fe058c0_40fa1c4c",
+      "revId": "ed409eaec2cbe5bcecd163064692403a172ec397",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebea19b6_4a4d48c9",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2018-08-23T18:08:01Z",
+      "side": 1,
+      "message": "\u003e chh,gbiv: i thought i\u0027d seen you reporting instances of this already?\n\n(The only related things I remember reporting were \"there\u0027s a memory leak here, and this is an obvious additional improvement, FWIW)\n\nLooks like it\u0027s part of the clang-tidy `readability-redundant-string-cstr` checks. That primarily handles things like \"std::string foo \u003d string2.c_str();` (hence \u0027readability\u0027), but tests indicate that it can also detect calling `foo(const string \u0026)` like `foo(cmd.c_str())`.\n\n\u003e is it not as semi-automated as the \"you introduced a memory leak\" stuff?\n\nWe get tidy lints as a part of the static analyzer pipeline, yeah. They\u0027re all classified as tiny style or perf nits rather than high-priority issues, though, so we don\u0027t have alerting set up when they get introduced. Looks like we blanket disable readability-* checks. We could enable this readability check, but that won\u0027t make people start caring until we start gating builds on it. :)\n\ne.g. \n\t\nhttps://android-build.googleplex.com/builds/submitted/4972266/taimen_analyzer-userdebug/latest/logs/warnings.html\n\n\u003e is there any way we can get these checks into the regular build, since they\u0027re quite common mistakes but trivially fixed?\n\nchh@ knows more about what can be done with per-project tidy settings than I do. If a project can reject CLs that introduce instances of a new tidy warning, though ...",
+      "parentUuid": "5a8cd63c_6e8b7f22",
       "revId": "ed409eaec2cbe5bcecd163064692403a172ec397",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
