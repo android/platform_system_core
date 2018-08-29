@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "502c99d0_f3cabec1",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1269249
+      },
+      "writtenOn": "2018-08-29T11:50:34Z",
+      "side": 1,
+      "message": "Even if I take these out of the struct I still get:\n\nsystem/core/adb/client/fastdeploy.cpp:35:20: error: declaration requires an exit-time destructor [-Werror,-Wexit-time-destructors]\nstatic std::string config_adb_path;\n\n-Wexit-time-destructors feels overly restrictive to me, but I assume that there\u0027s some better pattern that\u0027s expected here.\n\nI\u0027ve changed this so that the config struct is explicitly allocated/deallocated so it won\u0027t leak and is actually somewhat nicer. Still seems way OTT to me but I\u0027m hoping Josh has canonical pattern for this.",
+      "parentUuid": "f9223eca_c78620e0",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 69
+      },
+      "revId": "a37d1333b75d82b4d5aaac8e1a8aecfb6775d3f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b95c5f5f_f5f4bf79",
         "filename": "adb/client/fastdeploy.cpp",
         "patchSetId": 4
