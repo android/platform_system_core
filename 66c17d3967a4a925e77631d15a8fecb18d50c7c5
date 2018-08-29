@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60d85f7d_8ae61370",
+        "filename": "base/utf8.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2018-08-29T19:43:15Z",
+      "side": 1,
+      "message": "MSDN https://docs.microsoft.com/en-us/windows/desktop/api/FileAPI/nf-fileapi-getfullpathnamea says that this API call requires prefixing with \\\\?\\ if the path is long? I\u0027m not sure if that is really true or if this a doc bug. You probably know the right answer if you\u0027ve already run tests with long filenames.",
+      "range": {
+        "startLine": 172,
+        "startChar": 31,
+        "endLine": 172,
+        "endChar": 47
+      },
+      "revId": "66c17d3967a4a925e77631d15a8fecb18d50c7c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86c4a52c_cacf5db2",
+        "filename": "base/utf8.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2018-08-29T19:43:15Z",
+      "side": 1,
+      "message": "Why not use !\u003d instead of \u003e? Too fragile?",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 35
+      },
+      "revId": "66c17d3967a4a925e77631d15a8fecb18d50c7c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86e8d8c0_fb8731e7",
+        "filename": "base/utf8.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2018-08-29T19:43:15Z",
+      "side": 1,
+      "message": "If GetFullPathNameW() succeeded, utf16 seems like its size would include the space for the NULL terminator (which was written by GetFullPathNameW()). Maybe resize utf16 to remove the extraneous last char? Maybe have a unittest to verify that the string length() \u003d\u003d strlen(the string)?",
+      "range": {
+        "startLine": 193,
+        "startChar": 4,
+        "endLine": 193,
+        "endChar": 5
+      },
+      "revId": "66c17d3967a4a925e77631d15a8fecb18d50c7c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
