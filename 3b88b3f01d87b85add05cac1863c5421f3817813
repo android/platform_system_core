@@ -106,6 +106,24 @@
       "revId": "3b88b3f01d87b85add05cac1863c5421f3817813",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f976e827_af5677cc",
+        "filename": "base/include/android-base/parseint.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-08-29T16:59:45Z",
+      "side": 1,
+      "message": "\u003e You do agree that we need to set something here, right?\n\nnot really. i\u0027m fairly skeptical of the value of being overly specific. that\u0027s what i meant by:\n\npersonally i\u0027m struggling to imagine that there\u0027s much value to saying anything more specific than \"invalid whatever: 9999999999\" or \"invalid whatever (max 666): 1234\" if we think the upper bound is non-obvious. a specific use case might help motivate this...\n\ntoo often i feel like it clutters up the code without actually benefiting any real user. i used to lean towards being maximally specific, but over time i\u0027ve taken a stronger YAGNI attitude and wait until i\u0027ve actually seen a user who would have been helped by a more specific error. because often the detail they were missing isn\u0027t something i\u0027d have expected myself.\n\n(if i\u0027d felt there was real value in distinguishing different kinds of failures, i\u0027d not have returned bool :-) )\n\nbut i don\u0027t really care, as long as we consistently do or don\u0027t set errno. (it\u0027s kind of weird that we *clobber* errno in this function as it stands. i also feel like -- especially if we\u0027re making errno part of the contract -- we should either *always* clobber errno [so 0 is meaningful too] or restore errno if we return true. i hate errno.)",
+      "parentUuid": "5cad1002_2d3bd845",
+      "revId": "3b88b3f01d87b85add05cac1863c5421f3817813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
