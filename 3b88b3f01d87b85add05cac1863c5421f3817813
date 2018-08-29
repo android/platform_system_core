@@ -124,6 +124,24 @@
       "revId": "3b88b3f01d87b85add05cac1863c5421f3817813",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e981660_db55806c",
+        "filename": "base/include/android-base/parseint.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-29T17:34:56Z",
+      "side": 1,
+      "message": "Well at the least we either need to stop setting errno as we are doing now or do this.\n\nI checked through the code for the places we\u0027re calling PLOG after these two functions; I figured we would have more than I saw.  \n\nParseInt() followed by PLOG has 3 results: https://cs.corp.google.com/search/?q\u003dpcre:yes+case:yes+(?m)ParseInt.*%5Cn.*PLOG\u0026m\u003d100\u0026sq\u003dpackage:%5Eandroid$\u0026type\u003dcs\nParseUint() followed by PLOG has 0 results: https://cs.corp.google.com/search/?q\u003dpcre:yes+case:yes+(?m)ParseUint.*%5Cn.*PLOG\u0026m\u003d100\u0026sq\u003dpackage:%5Eandroid$\u0026type\u003dcs\n\nSo looks like the real solution is to stop clobbering errno and make those PLOGs into LOGs?",
+      "parentUuid": "f976e827_af5677cc",
+      "revId": "3b88b3f01d87b85add05cac1863c5421f3817813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
