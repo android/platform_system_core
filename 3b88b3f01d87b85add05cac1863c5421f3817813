@@ -88,6 +88,24 @@
       "revId": "3b88b3f01d87b85add05cac1863c5421f3817813",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cad1002_2d3bd845",
+        "filename": "base/include/android-base/parseint.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-29T01:43:49Z",
+      "side": 1,
+      "message": "We\u0027re already setting errno given `if (errno !\u003d 0 || end \u003d\u003d s) return false;` so we definitely should set it in these other two returns.  EINVAL sounds a bit better to me, in case of \"-blah\".  I think it\u0027s fine to generalize to say any negative number is EINVAL too, so I should take back my ERANGE sgtm.\n\nYou do agree that we need to set something here, right?",
+      "parentUuid": "b3139cd6_fc338475",
+      "revId": "3b88b3f01d87b85add05cac1863c5421f3817813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
