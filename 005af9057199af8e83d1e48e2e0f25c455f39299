@@ -87,6 +87,24 @@
       "revId": "005af9057199af8e83d1e48e2e0f25c455f39299",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2d0f4f2_6507bcf2",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-08-30T20:13:26Z",
+      "side": 1,
+      "message": "I pondered nofail over meetings and lunch, and came to the conclusion for KISS and consistency that nofail be moved to 379. Stop worrying about the subtly where I want partitions to missed, but if present, required. nofail functionality needs to be _clear_.\n\nBut doing so means that if /mnt/scratch does not mount (filesystem damaged?) then the adb remount overrides disappear _silently_ (minus logs), and an engineer spends several hours wondering why his change is not fixing a problem, and retries with more instrumentation to find out why, then discovers that the adb remount was _borken_ ...\n\nwith_alternatives, consider it when (And if) we need it?\n\nAbout the other ideas \u003cscratches head\u003e do we want to rewrite this to _use_ fs_mgr_mount_all (since fstab is missing at this phase anyways, only dt is present)? Out of scope for my feature, but sounds like we then have implied mount_all --early with only dt (fstab in ramdisk?), mount_all --early in second phase with all fstabs, and mount_all --late.\n\nOut of scope for _this_ one change, but should be a unification effort by _someone_.",
+      "parentUuid": "02ac837a_14d7f618",
+      "revId": "005af9057199af8e83d1e48e2e0f25c455f39299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
