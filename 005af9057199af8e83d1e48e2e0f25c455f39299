@@ -105,6 +105,24 @@
       "revId": "005af9057199af8e83d1e48e2e0f25c455f39299",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8829bdd_f1bcc9e1",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-08-30T20:53:36Z",
+      "side": 1,
+      "message": "I think we probably should merge it with fs_mgr_mount_all() at some point.  I\u0027ll add it to my list.\n\nmount_with_alternatives() is a function that exists already by the way and is used in fs_mgr_mount_all().  It\u0027s intended to do precisely what you\u0027re trying to do here.  But in the shorter term what you\u0027re doing here is probably okay.\n\nOn a side note, why would we need an ext4 and f2fs version of /scratch?  Especially in the same fstab?\n\nAlso /mnt/scratch won\u0027t work since vold takes over /mnt/... (except /mnt/{vendor,product})",
+      "parentUuid": "a2d0f4f2_6507bcf2",
+      "revId": "005af9057199af8e83d1e48e2e0f25c455f39299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
