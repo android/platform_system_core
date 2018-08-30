@@ -123,6 +123,24 @@
       "revId": "005af9057199af8e83d1e48e2e0f25c455f39299",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41c11faf_df2d6dc1",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-08-30T21:04:37Z",
+      "side": 1,
+      "message": "I do not need ext4 and f2fs, it was however a good example of a feature that may be desireable but currently unneeded. It would allow fs_mgr_overlay_setup to pick a filesystem (assuming tools are there); but more importantly it would work generically. First mount would merely mount it regardless of the file system chosen if it had two entries.\n\nI am expecting a dtbo.img and a dtbo-eng.img, where the later has scratch added, for possible security issues. It would most likely only support _one_ entry, tied to the design of the device.\n\nI am still in design/prototyping phase, so I may decide _not_ to have scratch mount in MountPartitions, but automatically in fs_mgr_overlayfs_mount_all. In that case, the nofail flag is no longer necessary, but I felt like we should add it now just in case someone else needs it. Solves my two dtop problem, and hides away the automation. \n\nIn that case, ignore all of this, and decide if you _like_ this change on its merits alone.",
+      "parentUuid": "e8829bdd_f1bcc9e1",
+      "revId": "005af9057199af8e83d1e48e2e0f25c455f39299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
