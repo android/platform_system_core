@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "180101e8_a6deb834",
+        "filename": "fastboot/engine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-09-04T21:52:48Z",
+      "side": 1,
+      "message": "Do we actually need to get the old transport back out of FastBootDriver?  I figure if we own the transport, then we know the status of it directly.  I guess this is needed since transport is a local in FastBootTool::Main() and not accessible in this function, right?  \n\nIn some ideal world, I figure we\u0027d have these all as member functions of FastBootTool (or at least able to access it), a unique_ptr\u003cTransport\u003e that contains the transport (and thus not needing new/delete), then passing the pointer to FastBootDriver, which we would initialize second and therefore guarantee the lifetime is sane.\n\nMaybe we\u0027ll get there, for now this is good enough though.",
+      "revId": "4b3ccda56ce91616944947312436872be2cc2e44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b156d5a9_109f8b69",
+        "filename": "fastboot/engine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-09-04T21:52:48Z",
+      "side": 1,
+      "message": "Call fb_reinit() here and limit the number of places that we need to copy these lines?",
+      "revId": "4b3ccda56ce91616944947312436872be2cc2e44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
