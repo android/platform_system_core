@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "38281a49_0108c76e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-09-04T21:54:57Z",
+      "side": 1,
+      "message": "I added an explicit Reset function because I do think it\u0027s not clear that Stopping then Starting does a reset.\n\nI\u0027d prefer to force the caller to do an explicit Stop() call. Especially, since the str() call happens a lot in a gtest macro, and I\u0027m always worried that something will occur out of order and not call the Stop when expected.",
+      "parentUuid": "e4dd50a2_7d1c180a",
+      "range": {
+        "startLine": 15,
+        "startChar": 58,
+        "endLine": 16,
+        "endChar": 61
+      },
+      "revId": "71f4b3b6d69d2bb94f52f376dfa00a9e9a41bbac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cbc07d3_2687eb73",
         "filename": "base/logging_test.cpp",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2018-09-04T16:52:37Z",
       "side": 1,
       "message": "I\u0027d somewhat prefer the ASSERT_NO_FATAL/style fixes in a separate CL, as they\u0027re technically unrelated and somewhat hide the impact of the Cap API changes. But not a biggie.",
+      "revId": "71f4b3b6d69d2bb94f52f376dfa00a9e9a41bbac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d0c233c_4eb93cb1",
+        "filename": "base/logging_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-09-04T21:54:57Z",
+      "side": 1,
+      "message": "Yeah, but I did it because I introduced a few bugs that were hard to figure out without the ASSERT_NO_FATAL calls. Since I\u0027m modifying the file anyway, it doesn\u0027t seem useful to back out the changes now.",
+      "parentUuid": "0cbc07d3_2687eb73",
       "revId": "71f4b3b6d69d2bb94f52f376dfa00a9e9a41bbac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "d15771c9_cd1c2523",
+        "filename": "base/logging_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-09-04T21:54:57Z",
+      "side": 1,
+      "message": "Fixed. I originally thought I wasn\u0027t going to have a variable to pass through.",
+      "parentUuid": "2ede1b85_8376edfc",
+      "range": {
+        "startLine": 209,
+        "startChar": 25,
+        "endLine": 209,
+        "endChar": 36
+      },
+      "revId": "71f4b3b6d69d2bb94f52f376dfa00a9e9a41bbac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc71d018_e2cc0193",
         "filename": "base/test_utils.cpp",
         "patchSetId": 3
@@ -76,6 +142,30 @@
       "writtenOn": "2018-09-04T16:52:37Z",
       "side": 1,
       "message": "I think this should be a CHECK. Is there a reason to allow Stop w/o Start? This can mask usage errors...",
+      "range": {
+        "startLine": 162,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 22
+      },
+      "revId": "71f4b3b6d69d2bb94f52f376dfa00a9e9a41bbac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f393c138_e02227d5",
+        "filename": "base/test_utils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-09-04T21:54:57Z",
+      "side": 1,
+      "message": "Changed this to a CHECK and modified the destructor to only call Stop() if the old_fd_ !\u003d -1.",
+      "parentUuid": "bc71d018_e2cc0193",
       "range": {
         "startLine": 162,
         "startChar": 2,
