@@ -1,0 +1,210 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1c4dfab_1ed5682f",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-09-04T16:30:43Z",
+      "side": 1,
+      "message": "fast\n\n(and inconsistent capitalization with the other logging.)",
+      "range": {
+        "startLine": 69,
+        "startChar": 25,
+        "endLine": 69,
+        "endChar": 35
+      },
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61d8109e_861bc31f",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-09-04T16:30:43Z",
+      "side": 1,
+      "message": "is there a reason you don\u0027t just call the initializer? or use the\n\n```\n  static T* GetT() {\n    static T t;\n    return \u0026t;\n  }\n```\n\nstyle rather than a bare global?",
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2de2cb6f_11b980e6",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-09-04T16:30:43Z",
+      "side": 1,
+      "message": "no logging on failure in this function?",
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "658b16eb_22bd8636",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-09-04T16:30:43Z",
+      "side": 1,
+      "message": "overloading standard library functions is confusing. at least use a capital letter? (also, this is more like system(3) than exec(2).)",
+      "range": {
+        "startLine": 200,
+        "startChar": 11,
+        "endLine": 200,
+        "endChar": 15
+      },
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbf09941_d024b7a4",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-09-04T16:30:43Z",
+      "side": 1,
+      "message": "BUFSIZ?",
+      "range": {
+        "startLine": 201,
+        "startChar": 21,
+        "endLine": 201,
+        "endChar": 40
+      },
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9303e88e_6d5584f5",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-09-04T16:30:43Z",
+      "side": 1,
+      "message": "\"re\"",
+      "range": {
+        "startLine": 202,
+        "startChar": 29,
+        "endLine": 202,
+        "endChar": 30
+      },
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1a2b90f_42f6707e",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-09-04T16:30:43Z",
+      "side": 1,
+      "message": "no logging?",
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e4fcc3c_d3c62c31",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-09-04T16:30:43Z",
+      "side": 1,
+      "message": "fgets? if you\u0027re just reading lines rather than binary data, getline(3)?\n\nor android::base::ReadFdToString?",
+      "range": {
+        "startLine": 209,
+        "startChar": 12,
+        "endLine": 209,
+        "endChar": 17
+      },
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4693f8b_bd12bd79",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-09-04T16:30:43Z",
+      "side": 1,
+      "message": "std::unique_ptr?",
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94767da7_466c2134",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-09-04T16:30:43Z",
+      "side": 1,
+      "message": "0xa is \u0027\\n\u0027. did you actually mean \u0027\\r\u0027?",
+      "range": {
+        "startLine": 227,
+        "startChar": 21,
+        "endLine": 227,
+        "endChar": 25
+      },
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
