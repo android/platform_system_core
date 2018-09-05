@@ -120,6 +120,24 @@
     },
     {
       "key": {
+        "uuid": "c8399406_d2769058",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-09-05T16:36:54Z",
+      "side": 1,
+      "message": "correct, but leaking is what adb already uses as its solution to the construction/destruction order problem. (adding a new problem, but one that doesn\u0027t really matter.)",
+      "parentUuid": "da5f3454_77ab32cf",
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2de2cb6f_11b980e6",
         "filename": "adb/client/fastdeploy.cpp",
         "patchSetId": 7
@@ -532,6 +550,30 @@
       "side": 1,
       "message": "I think that this is arguably correct... I mean the flag is supposedly their for human use as well and people appreciate the \u0027\\n\u0027 to avoid the \u0027prompt for next command on same line as output from previous command\u0027 problem.",
       "parentUuid": "12b7d4c1_d01e5424",
+      "range": {
+        "startLine": 227,
+        "startChar": 21,
+        "endLine": 227,
+        "endChar": 25
+      },
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a5d9424_24c8a8d4",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-09-05T16:36:54Z",
+      "side": 1,
+      "message": "oh, there aren\u0027t *two* \u0027\\n\u0027s? sorry, yes, fgets(3) does return the \u0027\\n\u0027, so this is expected and Trim makes sense.",
+      "parentUuid": "e2e80917_d7ca0190",
       "range": {
         "startLine": 227,
         "startChar": 21,
