@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "da5f3454_77ab32cf",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1269249
+      },
+      "writtenOn": "2018-09-05T16:30:39Z",
+      "side": 1,
+      "message": "*new T is prone to create memory leaks (this was feedback from patchset ~4). I experimented quite a bit with \u0027auto\u0027 myself when I ran into this, but I could not find a formulation of it which would remove the error without creating a memory leak (or being as boilerplate as my current implementation). \n\nAfter 30 seconds of reading up on this new-fangled keyword here: https://en.cppreference.com/w/cpp/language/auto\n\nI don\u0027t think there\u0027s any reason that it should help me in this instance as all it does is allow the type to be deduced from the initializer - but the sequence of allocation/deallocation should remain unchanged?",
+      "parentUuid": "0ddd3ad3_60da97b4",
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2de2cb6f_11b980e6",
         "filename": "adb/client/fastdeploy.cpp",
         "patchSetId": 7
@@ -413,6 +431,24 @@
     },
     {
       "key": {
+        "uuid": "495ea6cf_b7fd6445",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1269249
+      },
+      "writtenOn": "2018-09-05T16:30:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f92141c7_83704d6e",
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94767da7_466c2134",
         "filename": "adb/client/fastdeploy.cpp",
         "patchSetId": 7
@@ -472,6 +508,30 @@
       "side": 1,
       "message": "seems like a bug in aapt?\n\nthey call\n\n  printer.Println(StringPrintf(\"%s\", attr-\u003evalue.c_str()));\n\nso presumably their packagename \"value\" already includes a \u0027\\n\u0027, so this should be Print rather than Println?",
       "parentUuid": "0c667735_7b94cc5a",
+      "range": {
+        "startLine": 227,
+        "startChar": 21,
+        "endLine": 227,
+        "endChar": 25
+      },
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2e80917_d7ca0190",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1269249
+      },
+      "writtenOn": "2018-09-05T16:30:39Z",
+      "side": 1,
+      "message": "I think that this is arguably correct... I mean the flag is supposedly their for human use as well and people appreciate the \u0027\\n\u0027 to avoid the \u0027prompt for next command on same line as output from previous command\u0027 problem.",
+      "parentUuid": "12b7d4c1_d01e5424",
       "range": {
         "startLine": 227,
         "startChar": 21,
