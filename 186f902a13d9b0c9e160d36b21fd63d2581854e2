@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "478639a6_72a9d777",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1269249
+      },
+      "writtenOn": "2018-09-05T12:08:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1c4dfab_1ed5682f",
+      "range": {
+        "startLine": 69,
+        "startChar": 25,
+        "endLine": 69,
+        "endChar": 35
+      },
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61d8109e_861bc31f",
         "filename": "adb/client/fastdeploy.cpp",
         "patchSetId": 7
@@ -36,6 +60,24 @@
       "writtenOn": "2018-09-04T16:30:43Z",
       "side": 1,
       "message": "is there a reason you don\u0027t just call the initializer? or use the\n\n```\n  static T* GetT() {\n    static T t;\n    return \u0026t;\n  }\n```\n\nstyle rather than a bare global?",
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68102aa7_ac41e329",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1269249
+      },
+      "writtenOn": "2018-09-05T12:08:51Z",
+      "side": 1,
+      "message": "This approach gives me:\n\nsystem/core/adb/client/fastdeploy.cpp:40:30: error: declaration requires an exit-time destructor [-Werror,-Wexit-time-destructors]\n    static TFastDeployConfig instance;\n\nWe discussed this a few patches back: https://android-review.googlesource.com/c/platform/system/core/+/740521/4..5/adb/client/fastdeploy.cpp#b39\n\nIMO -Wexit-time-destructors is a bit too strong but I didn\u0027t feel comfortable changing such settings.",
+      "parentUuid": "61d8109e_861bc31f",
       "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -56,6 +98,24 @@
       "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c2f3925_952749af",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1269249
+      },
+      "writtenOn": "2018-09-05T12:08:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2de2cb6f_11b980e6",
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "a1c3c137_6ba58e27",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1269249
+      },
+      "writtenOn": "2018-09-05T12:08:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "658b16eb_22bd8636",
+      "range": {
+        "startLine": 200,
+        "startChar": 11,
+        "endLine": 200,
+        "endChar": 15
+      },
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbf09941_d024b7a4",
         "filename": "adb/client/fastdeploy.cpp",
         "patchSetId": 7
@@ -102,6 +186,30 @@
       "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5630975c_fe9d48ae",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1269249
+      },
+      "writtenOn": "2018-09-05T12:08:51Z",
+      "side": 1,
+      "message": "Now eliminated due to leveraging ReadFdToString.",
+      "parentUuid": "fbf09941_d024b7a4",
+      "range": {
+        "startLine": 201,
+        "startChar": 21,
+        "endLine": 201,
+        "endChar": 40
+      },
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "f17dc2cd_3a7dffd8",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1269249
+      },
+      "writtenOn": "2018-09-05T12:08:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9303e88e_6d5584f5",
+      "range": {
+        "startLine": 202,
+        "startChar": 29,
+        "endLine": 202,
+        "endChar": 30
+      },
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1a2b90f_42f6707e",
         "filename": "adb/client/fastdeploy.cpp",
         "patchSetId": 7
@@ -142,6 +274,24 @@
       "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a608f7fc_6c68b998",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1269249
+      },
+      "writtenOn": "2018-09-05T12:08:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1a2b90f_42f6707e",
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -168,6 +318,30 @@
     },
     {
       "key": {
+        "uuid": "16bac51e_24498f34",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1269249
+      },
+      "writtenOn": "2018-09-05T12:08:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e4fcc3c_d3c62c31",
+      "range": {
+        "startLine": 209,
+        "startChar": 12,
+        "endLine": 209,
+        "endChar": 17
+      },
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4693f8b_bd12bd79",
         "filename": "adb/client/fastdeploy.cpp",
         "patchSetId": 7
@@ -179,6 +353,24 @@
       "writtenOn": "2018-09-04T16:30:43Z",
       "side": 1,
       "message": "std::unique_ptr?",
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b42f353_71730833",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1269249
+      },
+      "writtenOn": "2018-09-05T12:08:51Z",
+      "side": 1,
+      "message": "IIUC this would make me lose the return code from pclose, which I think is important to pass to the caller in this case?",
+      "parentUuid": "a4693f8b_bd12bd79",
       "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -205,6 +397,30 @@
       "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c667735_7b94cc5a",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1269249
+      },
+      "writtenOn": "2018-09-05T12:08:51Z",
+      "side": 1,
+      "message": "0x0A is what\u0027s at the end of the string that comes out of aapt2. It\u0027s unclear to me why this is - I thought it might actually be both and that fgets was removing \u0027\\r\u0027 but that does not appear to be the case. \n\nI\u0027ve modified this logic to strip both anyway (either will cause problems further into the execution) and replaced the hex with friendlier char codes.",
+      "parentUuid": "94767da7_466c2134",
+      "range": {
+        "startLine": 227,
+        "startChar": 21,
+        "endLine": 227,
+        "endChar": 25
+      },
+      "revId": "186f902a13d9b0c9e160d36b21fd63d2581854e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
