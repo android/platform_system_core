@@ -16,6 +16,24 @@
       "revId": "0f6266305ebf1747c91bafc6609b798ff07b25a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8b47a52_f7d7792b",
+        "filename": "fastboot/device/variables.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2018-09-05T16:55:52Z",
+      "side": 1,
+      "message": "Tom Cherry has pointed out that my understanding here is incorrect.  Specifically, he notes:\n\nDespite using an \u0027\u003d, this uses the move constructor and not the move assignment operator (https://en.cppreference.com/w/cpp/language/move_constructor explains).  And the standard guarantees that \u0027other\u0027 is empty() after move construction: https://en.cppreference.com/w/cpp/container/vector/vector (constructor 6).\n\n\nSorry for the noise here.",
+      "parentUuid": "ae5d476f_223182d6",
+      "revId": "0f6266305ebf1747c91bafc6609b798ff07b25a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
