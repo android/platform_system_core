@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "987b25c5_ac175b63",
+        "filename": "fastboot/fuzzy_fastboot/usb_transport_sniffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2018-09-05T15:14:29Z",
+      "side": 1,
+      "message": "Close() is a virtual method.  This invocation is okay right now, but if another class were to inherit from UsbTransportSniffer and override Close(), this wouldn\u0027t work as we\u0027d expect.\n\nI\u0027ve put up a defensive CL to address this: https://android-review.googlesource.com/c/platform/system/core/+/747709",
+      "revId": "03de645aac4dac3b19900b3d30a29b2d10249ad6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
