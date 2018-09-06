@@ -70,6 +70,24 @@
       "revId": "3693441d9be6fd1123443afc36cc701f16c40620",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdabbf31_5a68e301",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-09-06T17:26:23Z",
+      "side": 1,
+      "message": "Its granular to 1 second, meaning you could get another update within ns, or \u003e 1 second later. That might be OK.\n\nIF_ALOG_RATELIMIT uses trylock and time() (both relatively fast), whereas this open-coded implementation here does not suffer from granularity, but uses a slower clock_gettime call (that I believe is longer than the trylock and time calls, but do not know for a fact).",
+      "parentUuid": "25605145_35561f9f",
+      "revId": "3693441d9be6fd1123443afc36cc701f16c40620",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
