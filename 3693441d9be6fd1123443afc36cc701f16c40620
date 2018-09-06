@@ -106,6 +106,24 @@
       "revId": "3693441d9be6fd1123443afc36cc701f16c40620",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b77803a_fce9cafb",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2018-09-06T18:22:34Z",
+      "side": 1,
+      "message": "Hmm. It doesn\u0027t really work in my case. IF_ALOG_RATELIMIT_LOCAL(FAIL_REPORT_RLIMIT_SEC, \u0026last_report_tm) is called only when we failed to reclaim any memory, therefore last_report_tm gets reset only in the failed case. Meanwhile I have to reset last_report_tm every time we report anything (in case of successful or partially successful reclaim). Dealing with that would complicate the code, so I\u0027ll leave it as is.",
+      "parentUuid": "464e4a03_0f4feaf5",
+      "revId": "3693441d9be6fd1123443afc36cc701f16c40620",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
