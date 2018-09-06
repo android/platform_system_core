@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "91f0f4ed_ffd97ec2",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2018-09-06T22:46:39Z",
+      "side": 1,
+      "message": "I think android::base::GetExecutablePath() (called by GetExecutablePath()) needs to be fixed to return a UTF-8 string on Windows to deal with Unicode paths (i.e. a Unicode username which leads to a Unicode home dir path where the Android tools are). To fix GetExecutablePath(), you can have it call GetModuleFileNameW() and then call android::base::WideToUTF8() (one can search the codebase for similar examples). (And to prevent this problem in the future, base should really be compiled with -DUNICODE and -D_UNICODE like adb).",
+      "range": {
+        "startLine": 70,
+        "startChar": 26,
+        "endLine": 70,
+        "endChar": 63
+      },
+      "revId": "578e3bd7be27c5111ae9888b7bac7f29216c7685",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7133ed15_fbfb0094",
         "filename": "adb/client/fastdeploy.cpp",
         "patchSetId": 3
@@ -49,6 +72,52 @@
     },
     {
       "key": {
+        "uuid": "3738d4a6_f0044572",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2018-09-06T22:46:39Z",
+      "side": 1,
+      "message": "For Windows, I don\u0027t think this will work correctly if cmd has Unicode chars. You may need to make a utf8::popen() wrapper in base/utf8.cpp.",
+      "range": {
+        "startLine": 159,
+        "startChar": 17,
+        "endLine": 159,
+        "endChar": 22
+      },
+      "revId": "578e3bd7be27c5111ae9888b7bac7f29216c7685",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e394d18_0777683d",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2018-09-06T22:46:39Z",
+      "side": 1,
+      "message": "I think this could have spaces in the path, so this should be quoted.",
+      "range": {
+        "startLine": 179,
+        "startChar": 50,
+        "endLine": 179,
+        "endChar": 52
+      },
+      "revId": "578e3bd7be27c5111ae9888b7bac7f29216c7685",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "57bb77e5_afef5a90",
         "filename": "adb/client/fastdeploy.cpp",
         "patchSetId": 3
@@ -65,6 +134,98 @@
         "startChar": 0,
         "endLine": 190,
         "endChar": 5
+      },
+      "revId": "578e3bd7be27c5111ae9888b7bac7f29216c7685",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2b51a43_75a5434f",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2018-09-06T22:46:39Z",
+      "side": 1,
+      "message": "1. I\u0027m not sure if users will have Java installed -- I thought Android Studio includes its own JDK, so the user might not have a \u0027system\u0027 JDK. I\u0027m not 100% sure on this.\n2. If the user has Java installed, I don\u0027t know if it\u0027ll be in the PATH. Maybe if adb is being run from Android Studio, Android Studio will add its JDK to the PATH? I\u0027m not sure.",
+      "range": {
+        "startLine": 227,
+        "startChar": 42,
+        "endLine": 227,
+        "endChar": 47
+      },
+      "revId": "578e3bd7be27c5111ae9888b7bac7f29216c7685",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c013299f_5a6791c8",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2018-09-06T22:46:39Z",
+      "side": 1,
+      "message": "I don\u0027t think this will work correctly if the command has Unicode UTF-8 chars on Windows, so, like popen(), this might need a utf8::system() wrapper in base.",
+      "range": {
+        "startLine": 235,
+        "startChar": 11,
+        "endLine": 235,
+        "endChar": 17
+      },
+      "revId": "578e3bd7be27c5111ae9888b7bac7f29216c7685",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb972807_9d66ebdf",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2018-09-06T22:46:39Z",
+      "side": 1,
+      "message": "It is my understanding that outputPath is derived from the user-provided APK filename which might be like \"Texas Hold\u0027em.apk\", so it might have spaces, quotes, etc. So it needs quoting and escaping, maybe escape_arg()?",
+      "range": {
+        "startLine": 246,
+        "startChar": 94,
+        "endLine": 246,
+        "endChar": 96
+      },
+      "revId": "578e3bd7be27c5111ae9888b7bac7f29216c7685",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f31bccaa_961b6af6",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2018-09-06T22:46:39Z",
+      "side": 1,
+      "message": "Does this need escape_arg()? I\u0027m not really sure how complex these args can be.",
+      "range": {
+        "startLine": 282,
+        "startChar": 26,
+        "endLine": 282,
+        "endChar": 33
       },
       "revId": "578e3bd7be27c5111ae9888b7bac7f29216c7685",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
