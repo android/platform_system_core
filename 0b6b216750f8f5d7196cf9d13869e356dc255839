@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "135f6c14_364f970c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-09-07T01:43:45Z",
+      "side": 1,
+      "message": "The real issue should be that DM_NAME isn\u0027t sent (and it\u0027s not sent, right?)  If it were sent, it\u0027d be trivial to parse it in ueventd.\n\nIt doesn\u0027t send PARTNAME\u003d either?  Seems like that\u0027s a bit of a bug in device-mapper itself, isn\u0027t it?",
+      "revId": "0b6b216750f8f5d7196cf9d13869e356dc255839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07521219_28f84c18",
         "filename": "fs_mgr/libdm/dm.cpp",
         "patchSetId": 1
@@ -13,6 +30,46 @@
       "writtenOn": "2018-09-06T23:59:15Z",
       "side": 1,
       "message": "nit: std::string mapper \u003d \"/dev/block/mapper/\" + name; ?",
+      "revId": "0b6b216750f8f5d7196cf9d13869e356dc255839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fea0e1dd_17a3d45b",
+        "filename": "init/devices.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-09-07T01:43:45Z",
+      "side": 1,
+      "message": "You don\u0027t need std::string here.  You should be able to concatenate a const char* + std::string without issue.",
+      "range": {
+        "startLine": 114,
+        "startChar": 26,
+        "endLine": 114,
+        "endChar": 38
+      },
+      "revId": "0b6b216750f8f5d7196cf9d13869e356dc255839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d6faf78_31c301e3",
+        "filename": "init/devices.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-09-07T01:43:45Z",
+      "side": 1,
+      "message": "What do the final symlinks look like?  If the partition name is \u0027device\u0027, then it seems like this will add an additional dm-X at the end?  /dev/block/mapper/system/dm-0?",
       "revId": "0b6b216750f8f5d7196cf9d13869e356dc255839",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
