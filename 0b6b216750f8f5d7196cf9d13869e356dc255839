@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8c4264c6_c7032a43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-09-07T14:47:47Z",
+      "side": 1,
+      "message": "Ten years ago, in another life, I had identified a kernel bug (that I never solved b/c of time constraints and locked [REDHAT] OS version) where DM_NAME was not sent. No one cared because the udev rules used \".../dm/name\" and the tools deleted the symbolic links when tearing down. We just lived with it, and supposed it was us doing something wrong, but the mdadm tools also lived with it ...\n\nI had long forgotten about that until I started implementing this, and when I inspected the exact contents of the ueventd message (4.9 kernel), it _still_ does not issue it and I smacked my forehead. There are no clues in any of the ueventd messages regarding the name of the dm module to leverage. Originally I _was_ picking up DM_NAME and it didn\u0027t work until I dived into debugging it.\n\nI discussed this with dvander@ and we decided to live with it, and look into finding out _why_ later with a fixup (I am on a week and a half vacation, other members are out too, and dvander@ is overloaded with the new specifications). But I did not want to make any promises in this Commit Message that we would solve it, nor did I want to declare it a bug, but I wanted to NOTE that DM_NAME is not sent so it was visible. I settled on a short one line message.",
+      "parentUuid": "135f6c14_364f970c",
+      "revId": "0b6b216750f8f5d7196cf9d13869e356dc255839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07521219_28f84c18",
         "filename": "fs_mgr/libdm/dm.cpp",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "0b6b216750f8f5d7196cf9d13869e356dc255839",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "526a4da5_77156951",
+        "filename": "fs_mgr/libdm/dm.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-09-07T14:47:47Z",
+      "side": 1,
+      "message": "And yet, I have seen this fail on other sources requiring me to do \"/dev/block/mapper\"s + name; is there subtlety between C++ standards where this doesn\u0027t work?\n\nYes, this change (and the other in devices.cpp) you suggest works so I will stop being \u0027afraid\u0027 of it.",
+      "parentUuid": "07521219_28f84c18",
+      "revId": "0b6b216750f8f5d7196cf9d13869e356dc255839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,53 @@
     },
     {
       "key": {
+        "uuid": "7596293e_1c0e912e",
+        "filename": "init/devices.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-09-07T14:47:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fea0e1dd_17a3d45b",
+      "range": {
+        "startLine": 114,
+        "startChar": 26,
+        "endLine": 114,
+        "endChar": 38
+      },
+      "revId": "0b6b216750f8f5d7196cf9d13869e356dc255839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ebbc564_2176af0a",
+        "filename": "init/devices.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-09-07T14:47:47Z",
+      "side": 1,
+      "message": "Drop this for KISS, otherwise the delete functionality needs to also sanitize the name.",
+      "range": {
+        "startLine": 330,
+        "startChar": 8,
+        "endLine": 330,
+        "endChar": 39
+      },
+      "revId": "0b6b216750f8f5d7196cf9d13869e356dc255839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d6faf78_31c301e3",
         "filename": "init/devices.cpp",
         "patchSetId": 1
@@ -73,6 +156,24 @@
       "revId": "0b6b216750f8f5d7196cf9d13869e356dc255839",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c437d19_cf2601ab",
+        "filename": "init/devices.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-09-07T14:47:47Z",
+      "side": 1,
+      "message": "Good catch, need to \u0027fix\u0027 this, I had to admit I stopped looking at line 341, I really wanted device nodes inside mapper dir and glossed over the directories as follows (I _missed_ the \u0027d\u0027) in the manual testing:\n\n# ls -l /dev/block/mapper/                                          \ntotal 0\ndrwxr-xr-x 2 root root 60 1970-01-07 17:43 product_a\ndrwxr-xr-x 2 root root 60 1970-01-07 17:43 product_services_a\ndrwxr-xr-x 2 root root 60 1970-01-07 17:43 userdata\ndrwxr-xr-x 2 root root 60 1970-01-07 17:43 vendor_a\n\nWhen I should have done this to see my mistake:\n\n# ls -lR /dev/block/mapper/                                         \n/dev/block/mapper/:\ntotal 0\ndrwxr-xr-x 2 root root 60 1970-01-07 17:43 product_a\ndrwxr-xr-x 2 root root 60 1970-01-07 17:43 product_services_a\ndrwxr-xr-x 2 root root 60 1970-01-07 17:43 userdata\ndrwxr-xr-x 2 root root 60 1970-01-07 17:43 vendor_a\n\n/dev/block/mapper/product_a:\ntotal 0\nlrwxrwxrwx 1 root root 15 1970-01-07 17:43 dm-1 -\u003e /dev/block/dm-1\n\n/dev/block/mapper/product_services_a:\ntotal 0\nlrwxrwxrwx 1 root root 15 1970-01-07 17:43 dm-2 -\u003e /dev/block/dm-2\n\n/dev/block/mapper/userdata:\ntotal 0\nlrwxrwxrwx 1 root root 15 1970-01-07 17:43 dm-3 -\u003e /dev/block/dm-3\n\n/dev/block/mapper/vendor_a:\ntotal 0\nlrwxrwxrwx 1 root root 15 1970-01-07 17:43 dm-0 -\u003e /dev/block/dm-0\n\nWill (type \u003d\u003d \"mapper\" around this fragment.",
+      "parentUuid": "7d6faf78_31c301e3",
+      "revId": "0b6b216750f8f5d7196cf9d13869e356dc255839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
