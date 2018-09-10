@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "006f1692_8b64aeec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-09-10T17:17:17Z",
+      "side": 1,
+      "message": "Understood.  That\u0027s a shame.",
+      "parentUuid": "87d022c5_6d093049",
+      "revId": "0b6b216750f8f5d7196cf9d13869e356dc255839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07521219_28f84c18",
         "filename": "fs_mgr/libdm/dm.cpp",
         "patchSetId": 1
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "And yet, I have seen this fail on other sources requiring me to do \"/dev/block/mapper\"s + name; is there subtlety between C++ standards where this doesn\u0027t work?\n\nYes, this change (and the other in devices.cpp) you suggest works so I will stop being \u0027afraid\u0027 of it.",
       "parentUuid": "07521219_28f84c18",
+      "revId": "0b6b216750f8f5d7196cf9d13869e356dc255839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aefde728_696dfc79",
+        "filename": "fs_mgr/libdm/dm.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-09-10T17:17:17Z",
+      "side": 1,
+      "message": "https://en.cppreference.com/w/cpp/string/basic_string/operator%2B are all of the operator+ calls for std::string.  \n\nBasically as long as there is always a std::string on one side of the operator+ (no adding char* + char*) then you\u0027re okay.  It\u0027s left to right associative, so you can do std::string + char* + char* + ..., but you can\u0027t do char* + char* + std::string.",
+      "parentUuid": "526a4da5_77156951",
       "revId": "0b6b216750f8f5d7196cf9d13869e356dc255839",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -192,6 +228,24 @@
       "revId": "0b6b216750f8f5d7196cf9d13869e356dc255839",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b82f58e_46648ef7",
+        "filename": "init/devices.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-09-10T17:17:17Z",
+      "side": 1,
+      "message": "I wonder if it might be better to just do this return in the } else if (FindDmDevicePrefix(uevent.path, \u0026device)) { block?  The rest of the logic in this function doesn\u0027t apply for the \u0027mapper\u0027 type.  Even the name FindDmDevicePrefix() isn\u0027t accurate in light of this new conditional, since we\u0027re not returning a prefix, but actually the partition name itself.  I think the below would be more clear:\n\nelse if (FindDmDevicePartition(uevent.path, \u0026partition)) {\n    return {\"/dev/block/mapper/\" + partition};\n}",
+      "parentUuid": "2c437d19_cf2601ab",
+      "revId": "0b6b216750f8f5d7196cf9d13869e356dc255839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
