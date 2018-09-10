@@ -22,6 +22,30 @@
       "revId": "f1c02f0a03e2d79f124941d49b458f387abf5b96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0dd3343_fa25b119",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-09-10T18:05:27Z",
+      "side": 1,
+      "message": "I think the issue here is that this is technically hard to do after we\u0027ve already booted into the kernel as opposed to typical fastboot implementations that run in the bootloader.  \n\nkexec is a pretty big hammer that would get us around this situation, but even with out it we still have things such SEPolicy that would be set up when we\u0027ve booted into recovery, so if we try to boot Android from this point, we\u0027d need to replace the SEPolicy and that\u0027s something we disallow currently.  I\u0027m sure there are some other items we\u0027d need to think about here too.\n\nA lot of that does have overlap with the work howardsoc@ is thinking of doing for his efforts too.  Adding him here too.\n\n(Also, there is `fastboot boot` that we should think of how to implement, since that would require the same mechanism as `fastboot continue` just with a boot image loaded into memory instead of flashed)",
+      "parentUuid": "289a9bbf_4d229ee8",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "f1c02f0a03e2d79f124941d49b458f387abf5b96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
