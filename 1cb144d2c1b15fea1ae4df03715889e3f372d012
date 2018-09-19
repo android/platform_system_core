@@ -33,6 +33,24 @@
       "revId": "1cb144d2c1b15fea1ae4df03715889e3f372d012",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1887ef59_dc25647d",
+        "filename": "adb/daemon/file_sync_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-09-19T14:45:04Z",
+      "side": 1,
+      "message": "Excellent point, we should really check it before trying to create the symlink though as it is creating that link in overlayfs upperdir, and _later_ attempts are balking with EEXIST. Will adjust and retest to make sure it solves the problem with overlayfs wrapped around a read-only system partition.\n\nPerhaps the problem can be characterized even further upstream as the host side pushing a symbolic link, when the existing one is ok?\n\nNeed to dive deeper into this one ...",
+      "parentUuid": "d2001bdf_69a0f799",
+      "revId": "1cb144d2c1b15fea1ae4df03715889e3f372d012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
