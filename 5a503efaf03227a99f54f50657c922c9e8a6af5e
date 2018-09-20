@@ -69,6 +69,30 @@
       "revId": "5a503efaf03227a99f54f50657c922c9e8a6af5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b3f923e_1ae8e31a",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-09-20T17:58:13Z",
+      "side": 1,
+      "message": "Argh, I had hoped that you could use initializer list syntax, but I guess you cannot. One could use a vector, though (removing the explicit size, trading it for indirection); that would have only trivial overhead, I think (though what do I know, my attempts at removing the power-of-2 showed nontrivial overhead).\n\nSTL ones all have nontrivial overhead compared to this minimalistic implementation with chaining (see ART\u0027s one, which is still space-wise better than STL ones, while spending more memory on storing hash in the keys).",
+      "parentUuid": "bde2f1ca_5c462459",
+      "range": {
+        "startLine": 380,
+        "startChar": 6,
+        "endLine": 380,
+        "endChar": 100
+      },
+      "revId": "5a503efaf03227a99f54f50657c922c9e8a6af5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
