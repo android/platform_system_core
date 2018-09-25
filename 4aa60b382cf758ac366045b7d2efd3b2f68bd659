@@ -22,6 +22,30 @@
       "revId": "4aa60b382cf758ac366045b7d2efd3b2f68bd659",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03a75798_1a3b2a39",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-09-25T00:28:47Z",
+      "side": 1,
+      "message": "It\u0027s a fallout from almost always auto.  Once you get used to this syntax it\u0027s significantly nicer to read.  It makes the identifier more prominent and puts the constructor args right next to the type, both of which are improvements.\n\nAs an extreme example: \nstd::unique_ptr\u003cFILE, decltype(\u0026fclose)\u003e fp(fdopen(status_fd, \"r\"), fclose);\n\nvs\n\nauto fp \u003d std::unique_ptr\u003cFILE, decltype(\u0026fclose)\u003e{fdopen(status_fd, \"r\"), fclose};\n\nThe latter is a lot more readable in my opinion.",
+      "parentUuid": "2ca4ff65_a4d95f56",
+      "range": {
+        "startLine": 654,
+        "startChar": 4,
+        "endLine": 654,
+        "endChar": 42
+      },
+      "revId": "4aa60b382cf758ac366045b7d2efd3b2f68bd659",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
