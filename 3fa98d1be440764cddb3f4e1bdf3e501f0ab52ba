@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f433f16e_3fde1e14",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-02T23:08:36Z",
+      "side": 1,
+      "message": "I still question why we need any logic here beyond:\n\nif we have logical partitions -\u003e use /mnt/scratch\nelse -\u003e use /cache.\n\nThere\u0027s no legitimate use case where we have logical partitions but we would rather use /cache, nor any where /mnt/scratch is created despite not having logical partitions, right?  I wouldn\u0027t support those code paths at all; in either set up, teardown, or mount.  It should simplify this lots.",
+      "revId": "3fa98d1be440764cddb3f4e1bdf3e501f0ab52ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
