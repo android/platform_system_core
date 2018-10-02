@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "814b9869_3afd43f0",
+        "filename": "libutils/include/utils/StrongPointer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-10-02T18:26:59Z",
+      "side": 1,
+      "message": "This one is not move constructor and does not get warning.\nThe NOLINT(implicit) is required because this is an implicit converter.\nMy current arguments for adding noexcept are (1) suppress warnings, (2) allow this class to be used as members of other classes that want to have noexcept default move constructors, (3) somewhat higher performance if compiled with -fexceptions.\nAlthough sp could be used in many other classes, I would rather add noexcept to its other functions in a separate CL, when we have other arguments to do so.",
+      "parentUuid": "c7016485_abbb23ec",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 43
+      },
+      "revId": "99ac86eca52075e5dce2b73da30603652f07678a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29b34621_78a081f8",
         "filename": "libutils/include/utils/StrongPointer.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "99ac86eca52075e5dce2b73da30603652f07678a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fb2c5bf_64895e7b",
+        "filename": "libutils/include/utils/StrongPointer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-10-02T18:26:59Z",
+      "side": 1,
+      "message": "Same reason as the non-move constructor.",
+      "parentUuid": "29b34621_78a081f8",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 56
+      },
+      "revId": "99ac86eca52075e5dce2b73da30603652f07678a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
