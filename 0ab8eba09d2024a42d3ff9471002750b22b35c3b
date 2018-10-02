@@ -22,6 +22,30 @@
       "revId": "0ab8eba09d2024a42d3ff9471002750b22b35c3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c84c7e01_af7008cd",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-02T17:12:02Z",
+      "side": 1,
+      "message": "Specific case where nothing is specified in the device tree table.\n\nI know we are migrating to system as root as the requirement for our devices, sepolicy provided by /system root, along with reinstatement of the ramdisk. However we already know that this was considered an (unknown) impact on boot time because of the ramdisk. Removal of ramdisk was a ChromOS initiative that we absorbed a few years back.\n\nAs such I want to harden the code for a possible reversal of course on some Android systems; or if we find out a means of ramdisk removal (again). Primarily this is to deal with the gotcha where some partner decides they prefer mounting /system at mount_all --early. Or if there is a boot time consideration (considering Android Auto). Until we have a CTS requirement that system is root, or that the kernel must supply a device tree table, we must have some flexibility for our partners.\n\nI expect you may have just signaled (pse confirm) I need to split this CL and wait until we get a scientific impact of the boot time impact of our current move back to ramdisk. If it has zero impact, the story for mount_all --early gets very weak and the burden for this check moves into partners will.",
+      "parentUuid": "e148ed48_2b37d89f",
+      "range": {
+        "startLine": 416,
+        "startChar": 8,
+        "endLine": 416,
+        "endChar": 41
+      },
+      "revId": "0ab8eba09d2024a42d3ff9471002750b22b35c3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
