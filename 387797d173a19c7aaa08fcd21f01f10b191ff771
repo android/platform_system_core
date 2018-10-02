@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "f9b4fcd7_af9a55d3",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-02T23:06:03Z",
+      "side": 1,
+      "message": "The word failure might be a bit too strong and/or misplaced in meaning.\n\nI was referring to an immediate unmount because some content may still be referenced. But that is what lazy means, so why restate it. Also, lazy umounting is filesystem specific, but at least have a commonality that you can mount over immediately despite the lingering and lazy umount progressing in the background. Once the last reference disappears, the umount will progress (lazily) to completion. By umounting lazy, this also means all _unreferenced_ content will fail to open anew, and thus not override (desireable). All new content pushed will _fail_ to upload (adb enable-verity followed by another adb push for example). This is a gating maneuver that is much stronger than the removal of the underlying trees. For example, removing /mnt/scratch/overlay/system/upper directory will not happen until the last reference to that directory is gone. That means agents that hold open the directory that continue on their quest(S) could allow new file content to be referenced under that directory (not a current MO, but the point is necessary). On the other hand, umount lazy will block all attempts to access the superblock and inodes to retrieve new references. A stronger gate then rm and rmdir.\n\nAlso, by lazy unmounting, we can progress to creating a new mount to refreshed locations with _fresh_ content (eg: adb enable-verity followed by adb disable-verity) and not get blocked by the fact the mount is still there.\n\nI need to make this clear in as few comments as possible so that others understand why I am so passively/aggressively unmounting. My rebuttal is _too_ long and I need to boil down the points I am making.",
+      "parentUuid": "79255e6c_5bcdd26d",
+      "revId": "387797d173a19c7aaa08fcd21f01f10b191ff771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b66ef91_acf3c509",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 9
@@ -53,6 +71,24 @@
       "writtenOn": "2018-10-02T22:12:50Z",
       "side": 1,
       "message": "We abandoned that change though, right?  We should just use path directly.\n\nProbably should return \"\" or false and make this return bool in the case of an error in GetDmDevicePathByName() too.  If that query fails, something has gone wrong.",
+      "revId": "387797d173a19c7aaa08fcd21f01f10b191ff771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4e3a08c_3b6047db",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-02T23:06:03Z",
+      "side": 1,
+      "message": "First: I agree, will strike/modify, but with explanation for future proofing should someone look at this CL\u0027s history.\n\nSecond: explanation for future edification\n\nThe change was _temporarily_ abandoned because I removed the _required_ user (this code here used to always reference the mapper reference). If a future API needed to be added to provide mapper references eg: vendor apps can not, or do not have the priv\u0027s to dm layer, but it has some to the resulting device nodes when they show up. There are actually paths in this code where the mapper reference returns and would actually be helpful if the other mapper reference remained. Imagine where GetDmDevicePathByName failed now because dm was still setting itself up, and instead the wait for device loops for ten seconds watching for mapper reference on our default return, and the device showed up in that period of time with c/749697.\n\nHowever, that case is weak because I have discovered/learned since that ueventd is _not_ running in first stage init, instead it is single threaded in custom code in the first stage init without the logic of c/749697 so the mapper node would never show up. In second stage most of the issued with GetDmDevicePathByName and device races/discoveries are gone.\n\nc/749697 is really only for later arrival for vendor daemons to keep their privileges low to reference the device by dynamic partition name rather than having to explicitly interrogate the dm layer with troublesome ioctls. Under that MO, serves no use to overlayfs because of how early it needs to perform.",
+      "parentUuid": "4b66ef91_acf3c509",
       "revId": "387797d173a19c7aaa08fcd21f01f10b191ff771",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
