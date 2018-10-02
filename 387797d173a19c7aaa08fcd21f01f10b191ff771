@@ -25,6 +25,63 @@
     },
     {
       "key": {
+        "uuid": "79255e6c_5bcdd26d",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-02T22:12:50Z",
+      "side": 1,
+      "message": "What is the benefit of trying to do this, if we expect it to fail most of the time anyway?  As per usual, I think the cons outweigh the benefits of trying to do opportunistic things like this.",
+      "revId": "387797d173a19c7aaa08fcd21f01f10b191ff771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b66ef91_acf3c509",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-02T22:12:50Z",
+      "side": 1,
+      "message": "We abandoned that change though, right?  We should just use path directly.\n\nProbably should return \"\" or false and make this return bool in the case of an error in GetDmDevicePathByName() too.  If that query fails, something has gone wrong.",
+      "revId": "387797d173a19c7aaa08fcd21f01f10b191ff771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e529f6c4_6369d691",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-02T22:12:50Z",
+      "side": 1,
+      "message": "std::string\u0026",
+      "range": {
+        "startLine": 701,
+        "startChar": 51,
+        "endLine": 701,
+        "endChar": 62
+      },
+      "revId": "387797d173a19c7aaa08fcd21f01f10b191ff771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62d8380b_4c1e8d3d",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 9
@@ -36,6 +93,30 @@
       "writtenOn": "2018-10-02T22:11:04Z",
       "side": 1,
       "message": "nit:\n\nbuilder-\u003eFindPartition(android::base::Basename(kScratchMountPoint)) !\u003d nullptr\n\nto match comparison style above on 649+650\n\n(or vice versa)",
+      "range": {
+        "startLine": 708,
+        "startChar": 11,
+        "endLine": 708,
+        "endChar": 81
+      },
+      "revId": "387797d173a19c7aaa08fcd21f01f10b191ff771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23c9e10a_bf6c4c0d",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-02T22:12:50Z",
+      "side": 1,
+      "message": "+1 I had a comment on that too.  You can even just drop the !!; but the explicit !\u003d nullptr check is likely the best.",
+      "parentUuid": "62d8380b_4c1e8d3d",
       "range": {
         "startLine": 708,
         "startChar": 11,
