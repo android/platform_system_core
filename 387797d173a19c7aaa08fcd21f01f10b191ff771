@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "914472d6_ce8e7697",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-10-02T23:21:32Z",
+      "side": 1,
+      "message": "Is there a reason not to test the logical partitions property here instead?",
+      "revId": "387797d173a19c7aaa08fcd21f01f10b191ff771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79255e6c_5bcdd26d",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 9
@@ -89,6 +106,23 @@
       "side": 1,
       "message": "First: I agree, will strike/modify, but with explanation for future proofing should someone look at this CL\u0027s history.\n\nSecond: explanation for future edification\n\nThe change was _temporarily_ abandoned because I removed the _required_ user (this code here used to always reference the mapper reference). If a future API needed to be added to provide mapper references eg: vendor apps can not, or do not have the priv\u0027s to dm layer, but it has some to the resulting device nodes when they show up. There are actually paths in this code where the mapper reference returns and would actually be helpful if the other mapper reference remained. Imagine where GetDmDevicePathByName failed now because dm was still setting itself up, and instead the wait for device loops for ten seconds watching for mapper reference on our default return, and the device showed up in that period of time with c/749697.\n\nHowever, that case is weak because I have discovered/learned since that ueventd is _not_ running in first stage init, instead it is single threaded in custom code in the first stage init without the logic of c/749697 so the mapper node would never show up. In second stage most of the issued with GetDmDevicePathByName and device races/discoveries are gone.\n\nc/749697 is really only for later arrival for vendor daemons to keep their privileges low to reference the device by dynamic partition name rather than having to explicitly interrogate the dm layer with troublesome ioctls. Under that MO, serves no use to overlayfs because of how early it needs to perform.",
       "parentUuid": "4b66ef91_acf3c509",
+      "revId": "387797d173a19c7aaa08fcd21f01f10b191ff771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc46f524_866388dd",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-10-02T23:21:32Z",
+      "side": 1,
+      "message": "Unrelated to this patch, but I\u0027d like to remove UUIDs from the metadata. They aren\u0027t serving any purpose.",
       "revId": "387797d173a19c7aaa08fcd21f01f10b191ff771",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
