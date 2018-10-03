@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1ae39fa3_5e6051e3",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-03T17:31:20Z",
+      "side": 1,
+      "message": "because source can be \"overlay\", \"proc\", \"tmpfs\", \"sysfs\", \"selinuxfs\" ... so we must place checking for target first, and only check source if target is found since then logically for ENOENT it must have been a source _device_.",
+      "parentUuid": "c51951f7_cfa35770",
+      "range": {
+        "startLine": 537,
+        "startChar": 10,
+        "endLine": 537,
+        "endChar": 14
+      },
+      "revId": "8243f66580d998bfee80d08c53dd01f182dedcf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "90b34bb3_aac3b22a",
         "filename": "fs_mgr/fs_mgr.cpp",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2018-10-03T17:13:14Z",
       "side": 1,
       "message": "This already happens below, so isn\u0027t needed here.",
+      "revId": "8243f66580d998bfee80d08c53dd01f182dedcf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "186b2532_7b5c5b83",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-03T17:31:20Z",
+      "side": 1,
+      "message": "But then pedantically the PINFO below will show the errno for the access() calls, and not for the mount() call. I did not want a, for example EPERM or EINVAL, from access to cloud the mount() return code report.\n\n(but then, pedantically, we may wish to use \u0027if (access(target, F_OK) \u0026\u0026 errno \u003d\u003d ENOENT) {\u0027 above, but I viewed that as going too far and simplified)",
+      "parentUuid": "90b34bb3_aac3b22a",
       "revId": "8243f66580d998bfee80d08c53dd01f182dedcf5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
