@@ -16,6 +16,24 @@
       "revId": "3fa98d1be440764cddb3f4e1bdf3e501f0ab52ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1764eea1_9158a4b7",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-03T15:06:47Z",
+      "side": 1,
+      "message": "NB: there is a considered use case for /data to permit large scale development for frameworks. This use case has not been eliminated from the plan, but has been relegated to nice-to-have rather than required. As such it is continuing to be developed in the context of my privaste branch, but is not visible in the set of CLs.\n\nNB: some thoughts were to bind-mount /data/overlay to /mnt/scratch/overlay, or land a symbolic link in /mnt/scratch(not mounted)/overlay to /data/overlay as an alternative to direct /data support.\n\nThis patch was conceived as _not_ about logical, it is about /mnt/scratch, so it deals generically with the possibility that _both_ exist. What you are really asking for is to merge portions of this into the Dynamic /mnt/scratch CL that depends on this which has the orthogonal contract you speak of; and defer the \u0027tabular + loop + logic\u0027 handling to the /data CL. Can do, logic deferred.\n\nDo not be surprised if this CL turns into \u0027create fs_mgr_overlayfs_teardown_one\u0027 ...",
+      "parentUuid": "f433f16e_3fde1e14",
+      "revId": "3fa98d1be440764cddb3f4e1bdf3e501f0ab52ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
