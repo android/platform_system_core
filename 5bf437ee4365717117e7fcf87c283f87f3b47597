@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53158c1a_3333070f",
+        "filename": "liblog/include/log/log_main.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1069991
+      },
+      "writtenOn": "2018-10-03T00:34:28Z",
+      "side": 1,
+      "message": "And someone used VLAs with that...\n\nYou could only use\n\ntemplate \u003ctypename... Ts\u003e\nconstexpr int __fake_use_va_args(Ts ...) {\n  return 0;\n}\n\nThat would accept VLAs since in that case VLAs would be turned into pointers and passed. Any attempt to turn VLA into reference would fail because it\u0027s unclear how they should work with templates (VLAs come from C99, they don\u0027t exist in C++ at all - thus C++ standard does not explain how they should work with templaes).",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 48
+      },
+      "revId": "5bf437ee4365717117e7fcf87c283f87f3b47597",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
