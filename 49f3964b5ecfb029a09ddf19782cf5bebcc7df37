@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2f942466_6dd660e5",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-08T20:30:19Z",
+      "side": 1,
+      "message": "Dropping c.str() in this CL, moved into an exception case rather than an else.",
+      "parentUuid": "b1e48bf7_74d43206",
+      "range": {
+        "startLine": 1529,
+        "startChar": 16,
+        "endLine": 1529,
+        "endChar": 88
+      },
+      "revId": "49f3964b5ecfb029a09ddf19782cf5bebcc7df37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f38ce826_50458cf1",
         "filename": "fs_mgr/fs_mgr.cpp",
         "patchSetId": 1
@@ -117,6 +141,30 @@
       "revId": "49f3964b5ecfb029a09ddf19782cf5bebcc7df37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ae12d1c_8e9688ee",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-08T20:30:19Z",
+      "side": 1,
+      "message": "Seeing them in dmesg (IMHO, more costly there).\n\nMy complaints about logging spam actually are complaints about the cost of the loop though and we have spent more time discussing it than the spam is worth. It did point to areas that need improvement for the overlayfs handling.\n\nI will defer fixing up the logging spam and focus on one of the problems we are experiencing with init first stage overlayfs mount for system on system-as-root; which accounts for one of the three passes over this call.",
+      "parentUuid": "79add7e2_f20a9819",
+      "range": {
+        "startLine": 1545,
+        "startChar": 8,
+        "endLine": 1545,
+        "endChar": 9
+      },
+      "revId": "49f3964b5ecfb029a09ddf19782cf5bebcc7df37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
