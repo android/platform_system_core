@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1db063d8_ff112678",
+        "filename": "logd/FlushCommand.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1377660
+      },
+      "writtenOn": "2018-10-10T09:22:22Z",
+      "side": 1,
+      "message": "Tom : please DO check this line code : \"entry-\u003eincRef_Locked();\".  This seems to be a memory leak.  Because, the \"mRefCount\" is initialized with 1 in the entry constructor, and I find totally only 2 places are calling the \"decRef_Locked\", one is when the thread launch fails, the other is when the thread stopped, this means that the \"mRefCount\" should be 1, it should NOT be more than 1, in other words, the \"incRef_Locked()\" should NOT be called.  Please DO check this issue.",
+      "revId": "57daa582177408327e1e62336e2e8b157891cdd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cf7b358_b7f9e846",
+        "filename": "logd/LogTimes.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1377660
+      },
+      "writtenOn": "2018-10-10T09:22:22Z",
+      "side": 1,
+      "message": "maybe we need change mRelease to true here, because of the reason in next comment.",
+      "revId": "57daa582177408327e1e62336e2e8b157891cdd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1494642_261d263a",
+        "filename": "logd/LogTimes.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1377660
+      },
+      "writtenOn": "2018-10-10T09:22:22Z",
+      "side": 1,
+      "message": "inside the method decRef_Locked(), it will check the flag mRelease.  but, because the default value of mRelease is false, therefore, RemoveFromLastLogTimes() will not be called.  Therefore, that is not only a memory leak of the entry, but also the entry will stay in the list for ever, which is a even more severe issue.",
+      "revId": "57daa582177408327e1e62336e2e8b157891cdd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
