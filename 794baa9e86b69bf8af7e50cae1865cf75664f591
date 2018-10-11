@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "049a509f_17135c80",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1377660
+      },
+      "writtenOn": "2018-10-11T09:22:39Z",
+      "side": 1,
+      "message": "here, the current element is indeed already checked(though not selected as output), therefore, the \"mStart\" should be updated accordingly, otherwise, in next cycle, it will have to be checked again and again, and the worse thing is stale \"mStart\" value will impact the prune.  But, since the \"mStart\" can only be possibly updated at line 1164,  this line \"continue\" jump prohibits it happening.",
+      "revId": "794baa9e86b69bf8af7e50cae1865cf75664f591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd4965d0_0f4af3ba",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1159,
+      "author": {
+        "id": 1377660
+      },
+      "writtenOn": "2018-10-11T09:22:39Z",
+      "side": 1,
+      "message": "the same mistake as the above at Line 1155.",
+      "revId": "794baa9e86b69bf8af7e50cae1865cf75664f591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "072e47b8_f4b066a7",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1164,
+      "author": {
+        "id": 1377660
+      },
+      "writtenOn": "2018-10-11T09:22:39Z",
+      "side": 1,
+      "message": "it is here where the \"filter\" may possibly update \"mStart\".",
+      "revId": "794baa9e86b69bf8af7e50cae1865cf75664f591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
