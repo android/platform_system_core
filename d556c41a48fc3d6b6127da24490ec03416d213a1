@@ -22,6 +22,30 @@
       "revId": "d556c41a48fc3d6b6127da24490ec03416d213a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "638daded_01c4e0cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-11T14:55:04Z",
+      "side": 1,
+      "message": "When overlayfs is used, because it calls fs_mgr_update_verity_state() after /vendor mounts, but before the property service is up. This is a *symptom* of a problem that would occur at any time when fs_mgr_update_verity_state() is called before the property service is up and initialized with the ro.build.* properties, so is not just a problem with overlayfs, but a problem with stability/reliability/security.\n\nFor that reason alone I do not want to _blame_ overlayfs as the cause of this, it merely became one caller that slipped into a \"gotcha\" timing issue.\n\nNB: A KISS additional change after this CL may be to check \"system\" and \"vroot\" if \"/\" or \"/system\" is missing in the fstab and fake up the \"system\" state callback so it is accurate before /vendor fstab is added; but alas the callback would not be able to provide an fsrec because it does not exist yet. That is a corner case we should be aware of, but may not be worth the machinations to fill in to ensure verity listing is accurate and complete.",
+      "parentUuid": "1e3da6b0_124de781",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 89
+      },
+      "revId": "d556c41a48fc3d6b6127da24490ec03416d213a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
