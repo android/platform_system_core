@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b95d4376_23fe0a74",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-11T14:40:09Z",
+      "side": 1,
+      "message": "This fragment is called with the callers dt fstab (it is not refreshed), fstab (as it should be) is supplied by the callers (but specifically in our case, an instance in init first stage before mounting) so that we have an accurate enumeration of the partitions that were mounted (minus /system and/or /), but the good news is with no partitions we did not mount, or were not mounted, yet.\n\nWe will soon have a fixed fs_mgr_update_verity_state() that uses a private copy of fs_mgr_fstab_default() (as it should be, independent of the fstab supplied to us here) that correctly enumerates \"system\" as verity protected, because it has the combined dt \u0026 vendor fstab collected _after_ mounting system partitions (+/vendor) and thus gives a full verity enumeration.\n\nBecause we have the full verity enumeration, we no longer need this _paranoid_ fragment, but all the above remains required to fake up a /system candidate. SChedule this to be removed _after_ the CL that fixes fs_mgr_update_verity_stae().",
+      "range": {
+        "startLine": 493,
+        "startChar": 1,
+        "endLine": 503,
+        "endChar": 16
+      },
+      "revId": "54e47908c3d54fb00e83f57f3b7699d44f2a4ef0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
