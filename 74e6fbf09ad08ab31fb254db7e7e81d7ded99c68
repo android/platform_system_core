@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dac11e2e_0ff6b3e7",
+        "filename": "logd/LogReader.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1377660
+      },
+      "writtenOn": "2018-10-12T05:41:03Z",
+      "side": 1,
+      "message": "here, don\u0027t forget to call \"unlock()\" before return.",
+      "revId": "74e6fbf09ad08ab31fb254db7e7e81d7ded99c68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b870c260_58e4fe77",
+        "filename": "logd/LogReader.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1377660
+      },
+      "writtenOn": "2018-10-12T05:41:03Z",
+      "side": 1,
+      "message": "I suggest: either add a comment like \"\"returning false\" will make the base class SocketListener invoking release(cli) afterwards automatically\", or explicitly call release(cli)(calling release(cli) from inside onDataAvailable is safe, SocketListener can handle it)",
+      "revId": "74e6fbf09ad08ab31fb254db7e7e81d7ded99c68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
