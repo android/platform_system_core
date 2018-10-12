@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59428fb5_c04631e4",
+        "filename": "adb/client/adb_install.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-10-12T15:38:37Z",
+      "side": 1,
+      "message": "why not just do this now? note also that bionic\u0027s \u003candroid/api-level.h\u003e already has constants like __ANDROID_API_Q__ that you can use. (and if Q _isn\u0027t_ 29, it\u0027ll be fixed there, for everyone.)",
+      "revId": "dbcef7e00bce01082f83cc92caf978b78ec86d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5699c1e6_cf8a35a5",
+        "filename": "adb/client/adb_install.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-10-12T15:38:37Z",
+      "side": 1,
+      "message": "yeah, prefer fatal() for these rather than making people think about whether the caller does the right thing.",
+      "revId": "dbcef7e00bce01082f83cc92caf978b78ec86d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3aee65c5_f5dc9e4c",
+        "filename": "adb/client/adb_install.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-10-12T15:38:37Z",
+      "side": 1,
+      "message": "prefer to say both what you got and what you expected in errors. \".apex requires API level %d (device is %d)\" is both shorter and more useful.",
+      "range": {
+        "startLine": 156,
+        "startChar": 17,
+        "endLine": 157,
+        "endChar": 41
+      },
+      "revId": "dbcef7e00bce01082f83cc92caf978b78ec86d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95a25496_d559e3c2",
+        "filename": "adb/client/adb_install.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-10-12T15:38:37Z",
+      "side": 1,
+      "message": "prefer terminology that you _know_ the user knows. \".apex\" (since that\u0027s what they gave you) and \"--fastdeploy\". (also, the bit after the comma is misleading: it implies you\u0027re doing _something_. just \"--fastdeploy doesn\u0027t support .apex files\" is fine.)",
+      "range": {
+        "startLine": 164,
+        "startChar": 17,
+        "endLine": 164,
+        "endChar": 90
+      },
+      "revId": "dbcef7e00bce01082f83cc92caf978b78ec86d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a329df32_ede3ac2e",
+        "filename": "adb/client/adb_install.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-10-12T15:38:37Z",
+      "side": 1,
+      "message": "should the API level that\u0027s currently in one of the other methods check be moved up into the code that chooses a method instead, and then this can be removed?",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 0
+      },
+      "revId": "dbcef7e00bce01082f83cc92caf978b78ec86d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b40f7edb_7ff2556a",
+        "filename": "adb/client/adb_install.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-10-12T15:38:37Z",
+      "side": 1,
+      "message": "what\u0027s the error message without this? (when `pm` gets the .apex...)",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 0
+      },
+      "revId": "dbcef7e00bce01082f83cc92caf978b78ec86d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
