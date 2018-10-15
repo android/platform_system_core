@@ -37,6 +37,47 @@
     },
     {
       "key": {
+        "uuid": "bd57e565_326a21fd",
+        "filename": "adb/client/adb_install.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-10-15T16:03:16Z",
+      "side": 1,
+      "message": "ah, sorry, forgot that this was host-side code.\n\nfor stuff like this, what we usually do is...",
+      "parentUuid": "8c58d033_b1777915",
+      "revId": "dbcef7e00bce01082f83cc92caf978b78ec86d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da502c4e_78c02fe8",
+        "filename": "adb/client/adb_install.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-10-15T16:03:16Z",
+      "side": 1,
+      "message": "...something like this. so the adbd can report whether or not it supports something.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 1
+      },
+      "revId": "dbcef7e00bce01082f83cc92caf978b78ec86d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5699c1e6_cf8a35a5",
         "filename": "adb/client/adb_install.cpp",
         "patchSetId": 3
@@ -163,6 +204,29 @@
       "revId": "dbcef7e00bce01082f83cc92caf978b78ec86d15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca894b8f_f7630167",
+        "filename": "adb/client/adb_install.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-10-15T16:03:16Z",
+      "side": 1,
+      "message": "to be honest, i haven\u0027t really understood this change at all. since you\u0027re only checking the name anyway, why not just let the other side do it? you\u0027re going to have to deal with reporting other kinds of errors back from the other side.\n\nseems like the only change we _need_ on this side is the one that allows .apex files through [in the one case for which they\u0027re actually supported]?",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 9
+      },
+      "revId": "dbcef7e00bce01082f83cc92caf978b78ec86d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
