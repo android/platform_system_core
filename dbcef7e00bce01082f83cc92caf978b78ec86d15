@@ -78,6 +78,30 @@
     },
     {
       "key": {
+        "uuid": "df408694_4069effc",
+        "filename": "adb/client/adb_install.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1305591
+      },
+      "writtenOn": "2018-10-16T09:53:42Z",
+      "side": 1,
+      "message": "I believe the API level check would be more accurate. The feature really needs to be supported by PM and not by adb. The way the adb install flow is designed, it seems to me, is to just be a proxy of cmd, intercepted on packagemanager side by PackageManagerShellCommand. Therefore, whether apex is supported or not does not depend on adbd on the phone side.\n\nNote also that, assuming that I do the change you request and I add a new adb feature, we would be exactly in the same situation on an AOSP build as we are with API-level check, i.e. we\u0027d assume that the phone supports the feature because adbd says so, but in reality the AOSP version of API doesn\u0027t still have support for the feature and will fail, outputin.\n\nI cc\u0027d you to the WIP internal change on the PM side, id I3ac7971ce6923511a7d574291fe9002c5d55fa1b .",
+      "parentUuid": "da502c4e_78c02fe8",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 1
+      },
+      "revId": "dbcef7e00bce01082f83cc92caf978b78ec86d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5699c1e6_cf8a35a5",
         "filename": "adb/client/adb_install.cpp",
         "patchSetId": 3
@@ -227,6 +251,30 @@
       "revId": "dbcef7e00bce01082f83cc92caf978b78ec86d15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9279db00_f4d49756",
+        "filename": "adb/client/adb_install.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1305591
+      },
+      "writtenOn": "2018-10-16T09:53:42Z",
+      "side": 1,
+      "message": "The streamed install just transfers the bytes without the filename. On PM side, presently, is therefore assumed that the content is an APK. Flags seems to be the common way to characterise the content of the APK: for example I see that they are used for indicating whether an apk being streamed is an instant app or not. In a previous version of this CL I was thinking of having the user specify --apex on the command line, but then I thought that the auto-detection based on file suffix would have resulted in a better user experience.\n\nI could move the APK vs APEX detection on the PM side but that would require some inspection of the package. Note that an APEX has certain characteristics of an APK like the APK signature and a basic XML manifest, but nothing more. I think passing the flag would simplify the logic on the PM side and be consistent with other similar use cases.\n\nSee I3ac7971ce6923511a7d574291fe9002c5d55fa1b internally for the proposed changes to PM.",
+      "parentUuid": "ca894b8f_f7630167",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 9
+      },
+      "revId": "dbcef7e00bce01082f83cc92caf978b78ec86d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
