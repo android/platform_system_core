@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "986afab0_794c5829",
+        "filename": "libmetricslogger/metrics_logger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1061217
+      },
+      "writtenOn": "2018-10-17T18:55:13Z",
+      "side": 1,
+      "message": "The elapsedRealtimeNano() in libutils/SystemClock ends up with using CLOCK_MONOTONIC for Android, CLOCK_BOOTTIME for linux, and gettimeofday() for other platforms.\n\nmaybe we should do the same too?\n\nThe reason that this library has host version is because bootstats depends on this lib and bootstats has host library. The timestamp is not useful on host.",
+      "parentUuid": "09f9a08d_5cfbf56c",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 1
+      },
+      "revId": "d68ff219c9e21a4dcfe55290a29d5f7621fd60e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1d1ed0c_2f1f2d4c",
         "filename": "libstats/Android.bp",
         "patchSetId": 2
