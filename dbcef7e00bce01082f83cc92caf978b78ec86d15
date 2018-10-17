@@ -326,6 +326,30 @@
     },
     {
       "key": {
+        "uuid": "b404a057_3be45509",
+        "filename": "adb/client/adb_install.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-10-17T00:53:06Z",
+      "side": 1,
+      "message": "you\u0027d think so, but the opposite is true. there\u0027s only one adb for all OS releases, so if you think the device side might need to change, it\u0027s _really_ helpful for adb to know exactly who it\u0027s talking to, and what they support.\n\nright now, there\u0027s only one OS version that supports apex, so you have exactly the same freedom no matter what we do. it\u0027s _next_ release where you\u0027ll trip up though: at that point the One True adb won\u0027t know what level of apex support the device it\u0027s talking to has. so you may as well add an \"apex\" feature to distinguish apex/non-apex, and then you can add a \"fastapex\" feature or whatever later when there are apex variants you need to worry about.\n\n(and the device\u0027s API level would be a bad proxy for this, because part of the point of apex is to make \"API level\" less meaningful :-) )",
+      "parentUuid": "648950f8_aac800b1",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 9
+      },
+      "revId": "dbcef7e00bce01082f83cc92caf978b78ec86d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a329df32_ede3ac2e",
         "filename": "adb/client/adb_install.cpp",
         "patchSetId": 3
