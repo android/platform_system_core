@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ee87e0f9_651a0ef9",
+        "filename": "libmetricslogger/metrics_logger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-17T19:48:18Z",
+      "side": 1,
+      "message": "I think you\u0027re reading the #ifdef\u0027s wrong for that other file.  __linux__ is defined for Android, so elapsedRealtimeNano() is saying use CLOCK_BOOTTIME for Android and linux host, but use CLOCK_MONOTONIC for OS X host and windows host.\n\nIn either case, as what enh@ mentioned in the other comment, we\u0027ve been preferring the chrono clocks to these in new code.\n\nBut even if you don\u0027t use those, why are you reimplementing elapsedRealtimeNano() ?",
+      "parentUuid": "986afab0_794c5829",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 1
+      },
+      "revId": "d68ff219c9e21a4dcfe55290a29d5f7621fd60e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1d1ed0c_2f1f2d4c",
         "filename": "libstats/Android.bp",
         "patchSetId": 2
