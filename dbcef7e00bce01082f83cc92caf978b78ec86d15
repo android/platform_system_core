@@ -126,6 +126,30 @@
     },
     {
       "key": {
+        "uuid": "4abe02c5_5ae0f33d",
+        "filename": "adb/client/adb_install.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1305591
+      },
+      "writtenOn": "2018-10-18T15:25:44Z",
+      "side": 1,
+      "message": "PackageManager change in aosp would be quite burdensome to maintain, since the install flow is going to change and evolve (also b/c of apex) and we\u0027ll have t keep just a basic version in aosp ensuring that it works. Things might also change in the PackageManager flow as work on APEX+APK updates evolve.\n\nHow do you mark adbd as having the feature only in internal? Trying to guess what you mean, I thought you meant to add an available feature kFeatureApex to transport.h/cpp, but only add it to supported_features() (still transport.cpp) in the internal version of adb.\n\nMaybe that\u0027s not what you meant, because my tests were unsuccessful. Calling the two versions of adb binary as described above Y (with kFeatureApex \\in supported_features) and N (otherwise):\n\n- I compiled version Y of adb and flashed it on the phone\n- I ran adb (version Y) kill-server + start-server from host command line\n- I ran adb (version N) install file.apex from host command line\n\nAnd it failed the install saying that the feature is not supported on the server.\n\nI guess I don\u0027t fully understand the adb architecture here.",
+      "parentUuid": "f64d02d6_fa2f3e88",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 1
+      },
+      "revId": "dbcef7e00bce01082f83cc92caf978b78ec86d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5699c1e6_cf8a35a5",
         "filename": "adb/client/adb_install.cpp",
         "patchSetId": 3
