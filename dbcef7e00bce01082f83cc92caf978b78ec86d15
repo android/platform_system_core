@@ -174,6 +174,30 @@
     },
     {
       "key": {
+        "uuid": "00507d48_d3700bf6",
+        "filename": "adb/client/adb_install.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1305591
+      },
+      "writtenOn": "2018-10-19T13:23:01Z",
+      "side": 1,
+      "message": "\u003e i thought the rest of the work was happening in AOSP? won\u0027t the ART folks need this in AOSP? i thought someone in LON already cherrypicked out changes to get AOSP and internal in sync for this?\n\nI can discuss with toddke@ whether I should do the PackageManager changes in AOSP first. My only concern is doubling the maintainance burden but I agree it would make sense.\n\n\u003e `adb devices -l` will show you the claimed features for debugging.\n\nThanks, I had to use `adb features` and it was helpful.\n\nIf you agree, I\u0027d submit the support on ADB AOSP for now, assuming that a AOSP build will support APEX. This means that attempting the install would fail early on devices that already shipped with P because the feature is missing from adbd, and on development build it will fail with a PackageManager error (which is readable).\n\nI\u0027ll discuss with the frameworks team about integrating PM changes to AOSP early. I\u0027m happy to do that unless they disagree for any reason.",
+      "parentUuid": "1dc56d75_82d9e6dc",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 1
+      },
+      "revId": "dbcef7e00bce01082f83cc92caf978b78ec86d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5699c1e6_cf8a35a5",
         "filename": "adb/client/adb_install.cpp",
         "patchSetId": 3
