@@ -93,6 +93,30 @@
       "revId": "e0042419f8785ccb6fc02ee26d15e9b9b7805d57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0614f78c_4e2b1752",
+        "filename": "init/init.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-19T19:51:52Z",
+      "side": 1,
+      "message": "Scratch that, I have a better answer while trying to make this work.  The ASAN libraries go to /data/asan and the linker pulls them in, but that\u0027s not possible for init since it loads well before /data is mounted.  Therefore it will always need detect_container_overflow\u003d0, since there will always be a mismatch of init and the libraries it uses.\n\nref: https://github.com/google/sanitizers/wiki/AddressSanitizerContainerOverflow#false-positives",
+      "parentUuid": "ebeabee3_dc1b0fa2",
+      "range": {
+        "startLine": 86,
+        "startChar": 51,
+        "endLine": 86,
+        "endChar": 78
+      },
+      "revId": "e0042419f8785ccb6fc02ee26d15e9b9b7805d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
