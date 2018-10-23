@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5471796b_ddab9be5",
+        "filename": "fs_mgr/fs_mgr_dm_linear.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-10-23T18:54:17Z",
+      "side": 1,
+      "message": "They\u0027re separate things. The super partition name will be \"super\", or \"system\" + slot suffix on a retrofit device. The retrofit CL will allow multiple entries in the block device table, and then each extent will index into that table. Right now there is only one entry, so that\u0027s what gets passed to GetPhysicalPartitionDevicePath().",
+      "parentUuid": "f6ea8445_4688c246",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 16
+      },
+      "revId": "2da47c23680e5f324d52ba8123271a26acaccad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc3a8ccb_982fc73a",
         "filename": "fs_mgr/liblp/builder.cpp",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-23T17:06:16Z",
       "side": 1,
       "message": "fs_mgr_get_super_partition_name() ? Or is this placing the cart before the horse?",
+      "range": {
+        "startLine": 295,
+        "startChar": 12,
+        "endLine": 295,
+        "endChar": 19
+      },
+      "revId": "2da47c23680e5f324d52ba8123271a26acaccad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3362601_fc86035d",
+        "filename": "fs_mgr/liblp/builder.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-10-23T18:54:17Z",
+      "side": 1,
+      "message": "Yeah, that change will come in the next patch. The caller will have to specify what the name is and whether it\u0027s slot suffixed.",
+      "parentUuid": "bc3a8ccb_982fc73a",
       "range": {
         "startLine": 295,
         "startChar": 12,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "86f9981e_78c2d803",
+        "filename": "fs_mgr/liblp/builder.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-10-23T18:54:17Z",
+      "side": 1,
+      "message": "There\u0027s no functional change here. In the patch that allows adding multiple block devices, free ranges will be grouped by block device so we don\u0027t needlessly span across them.",
+      "parentUuid": "0f4bdd43_19216b7d",
+      "range": {
+        "startLine": 418,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 53
+      },
+      "revId": "2da47c23680e5f324d52ba8123271a26acaccad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "edbdc841_776c2f02",
         "filename": "fs_mgr/liblp/builder.cpp",
         "patchSetId": 7
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "e9361826_a0e1d2de",
+        "filename": "fs_mgr/liblp/builder.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-10-23T18:54:17Z",
+      "side": 1,
+      "message": "Yeah we do need to support that. Indeed this isn\u0027t the final form, it\u0027s just a refactoring to get the metadata fields moved (since that in and of itself is a large-ish change).",
+      "parentUuid": "edbdc841_776c2f02",
+      "revId": "2da47c23680e5f324d52ba8123271a26acaccad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "160a82fb_71cecf62",
         "filename": "fs_mgr/liblp/builder.cpp",
         "patchSetId": 7
@@ -99,6 +189,24 @@
       "writtenOn": "2018-10-23T18:31:14Z",
       "side": 1,
       "message": "This and the below function are going to change quite a bit once we support multiple partitions, right?  They\u0027ll need to take an index or name of the specific block device that we care about?",
+      "revId": "2da47c23680e5f324d52ba8123271a26acaccad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aeaff42_32a1fd4a",
+        "filename": "fs_mgr/liblp/builder.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-10-23T18:54:17Z",
+      "side": 1,
+      "message": "Yeah, indeed.",
+      "parentUuid": "160a82fb_71cecf62",
       "revId": "2da47c23680e5f324d52ba8123271a26acaccad9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -139,6 +247,30 @@
       "writtenOn": "2018-10-23T18:31:14Z",
       "side": 1,
       "message": "This is just temporary, right?  In the future this will allow multiple devices?\n\nSeems that the code is already supporting reading/write multiple entries in this table too?",
+      "range": {
+        "startLine": 258,
+        "startChar": 60,
+        "endLine": 259,
+        "endChar": 21
+      },
+      "revId": "2da47c23680e5f324d52ba8123271a26acaccad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef932d3c_88119f1a",
+        "filename": "fs_mgr/liblp/include/liblp/metadata_format.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-10-23T18:54:17Z",
+      "side": 1,
+      "message": "Yeah, the next CL will remove this comment since MetadataBuilder and CreateLogicalPartition() will fully support multiple block devices.",
+      "parentUuid": "d1c21764_3bdcf584",
       "range": {
         "startLine": 258,
         "startChar": 60,
