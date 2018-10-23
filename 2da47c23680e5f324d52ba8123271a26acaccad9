@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6ea8445_4688c246",
+        "filename": "fs_mgr/fs_mgr_dm_linear.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-23T17:06:16Z",
+      "side": 1,
+      "message": "Q: How does this (for index 0 as used below) reconcile with:\n\n    \"/dev/block/by-name/\" + fs_mgr_get_super_partition_name(SlotNumberForSlotSuffix(fs_mgr_get_slot_suffix()))\n\nwhich one comes first?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 16
+      },
+      "revId": "2da47c23680e5f324d52ba8123271a26acaccad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc3a8ccb_982fc73a",
+        "filename": "fs_mgr/liblp/builder.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-23T17:06:16Z",
+      "side": 1,
+      "message": "fs_mgr_get_super_partition_name() ? Or is this placing the cart before the horse?",
+      "range": {
+        "startLine": 295,
+        "startChar": 12,
+        "endLine": 295,
+        "endChar": 19
+      },
+      "revId": "2da47c23680e5f324d52ba8123271a26acaccad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f4bdd43_19216b7d",
+        "filename": "fs_mgr/liblp/builder.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-23T17:06:16Z",
+      "side": 1,
+      "message": "This will result in fragmenting a dynamic partition across partitions.\n\nShould really try to find a contiguous segment on a partition?",
+      "range": {
+        "startLine": 418,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 53
+      },
+      "revId": "2da47c23680e5f324d52ba8123271a26acaccad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16bc6cc7_0d426f1b",
+        "filename": "fs_mgr/liblp/images.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-23T17:06:16Z",
+      "side": 1,
+      "message": "nit: KISS\n\nreturn builder.IsValid() \u0026\u0026 builder.Build() \u0026\u0026 builder.Export(file);",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 32
+      },
+      "revId": "2da47c23680e5f324d52ba8123271a26acaccad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
