@@ -71,6 +71,40 @@
     },
     {
       "key": {
+        "uuid": "edbdc841_776c2f02",
+        "filename": "fs_mgr/liblp/builder.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-23T18:31:14Z",
+      "side": 1,
+      "message": "Again, asking for the future, but super_device() won\u0027t be the final form here, right?  This is going to need to check the alignment of the block device the sector belongs to?\n\nOr alternatively, do we have a need to support multiple physical partitions with different alignment requirements?",
+      "revId": "2da47c23680e5f324d52ba8123271a26acaccad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "160a82fb_71cecf62",
+        "filename": "fs_mgr/liblp/builder.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-23T18:31:14Z",
+      "side": 1,
+      "message": "This and the below function are going to change quite a bit once we support multiple partitions, right?  They\u0027ll need to take an index or name of the specific block device that we care about?",
+      "revId": "2da47c23680e5f324d52ba8123271a26acaccad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "16bc6cc7_0d426f1b",
         "filename": "fs_mgr/liblp/images.cpp",
         "patchSetId": 7
@@ -87,6 +121,29 @@
         "startChar": 0,
         "endLine": 346,
         "endChar": 32
+      },
+      "revId": "2da47c23680e5f324d52ba8123271a26acaccad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1c21764_3bdcf584",
+        "filename": "fs_mgr/liblp/include/liblp/metadata_format.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-23T18:31:14Z",
+      "side": 1,
+      "message": "This is just temporary, right?  In the future this will allow multiple devices?\n\nSeems that the code is already supporting reading/write multiple entries in this table too?",
+      "range": {
+        "startLine": 258,
+        "startChar": 60,
+        "endLine": 259,
+        "endChar": 21
       },
       "revId": "2da47c23680e5f324d52ba8123271a26acaccad9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
