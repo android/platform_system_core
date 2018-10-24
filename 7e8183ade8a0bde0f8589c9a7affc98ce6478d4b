@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "0a9c2bcc_085729b2",
+        "filename": "libmeminfo/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-10-24T20:13:17Z",
+      "side": 1,
+      "message": "It is in fact needed, I ran into following for example and that\u0027s why it was added - \n\n-----\nIn file included from system/core/libmeminfo/tools/procmem.cpp:27:\nsystem/core/libmeminfo/include/meminfo/meminfo.h:27:10: fatal error: \u0027android-base/unique_fd.h\u0027 file not found\n#include \u003candroid-base/unique_fd.h\u003e\n         ^~~~~~~~~~~~~~~~~~~~~~~~~~\n1 error generated.\n11:44:23 ninja failed with: exit status 1\n-----\n\nI followed some other example to solve this problem though and it made sense to me. Is there any other way to work around this?",
+      "parentUuid": "a5aff440_346ef203",
+      "revId": "7e8183ade8a0bde0f8589c9a7affc98ce6478d4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cad0359_6b0dd561",
         "filename": "libmeminfo/include/meminfo/meminfo.h",
         "patchSetId": 2
