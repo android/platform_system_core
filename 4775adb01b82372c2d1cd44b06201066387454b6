@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "358a5675_2ac88590",
+        "filename": "adb/daemon/remount_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-10-25T20:33:41Z",
+      "side": 1,
+      "message": "So if |is_root| is true, it calls find_mount(\"/system\", false) which will search /proc/mounts for an entry mounting at \"/system\". After SwitchRoot(), the mount point is \"/\" (I think because we moved the mount point?)\n\n    # cat /proc/mounts | grep dm-0\n    /dev/block/dm-0 / ext4 ro,seclabel,nodev,relatime,block_validity,delalloc,barrier,user_xattr 0 0\n\nSo that fails, and it falls back to find_mount(\"/\", true). This then fails since there\u0027s no fstab entry for \"/\". Even if the first find_mount() were to succeed, mount() would fail because /system isn\u0027t a valid target for MS_REMOUNT.\n\nI agree it should work on Hikey, but now reading the old code, I don\u0027t understand how it could :) I\u0027ll double check on my hikey960.",
+      "parentUuid": "443ad5a1_bfc58e08",
+      "revId": "4775adb01b82372c2d1cd44b06201066387454b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91e076cd_8099ad00",
         "filename": "adb/daemon/remount_service.cpp",
         "patchSetId": 1
