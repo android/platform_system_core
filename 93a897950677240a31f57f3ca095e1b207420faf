@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6fff13a7_d7da5249",
+        "filename": "fastboot/device/flashing.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-25T15:35:16Z",
+      "side": 1,
+      "message": "Confirmed well within the sampling noise (four samples each), my WAG is flashing is ~2% slower as a result (more if multiple chunks, but resolved by above check).\n\nw/o change:\n\n$ fastboot $B1 flash vendor\nSending \u0027vendor_a\u0027 (468640 KB)                     OKAY [ 14.418s]\nWriting \u0027vendor_a\u0027                                 OKAY [  2.632s]\nFinished. Total time: 17.078s\n$ fastboot $B1 flash vendor\nSending \u0027vendor_a\u0027 (468640 KB)                     OKAY [ 14.409s]\nWriting \u0027vendor_a\u0027                                 OKAY [  2.541s]\nFinished. Total time: 16.972s\n$ fastboot $B1 flash vendor\nSending \u0027vendor_a\u0027 (468640 KB)                     OKAY [ 14.478s]\nWriting \u0027vendor_a\u0027                                 OKAY [  2.516s]\nFinished. Total time: 17.017s\n$ fastboot $B1 flashall\n. . .\nResizing \u0027vendor_a\u0027                                OKAY [  0.072s]\nSending \u0027vendor_a\u0027 (468640 KB)                     OKAY [ 14.202s]\nWriting \u0027vendor_a\u0027                                 OKAY [  2.521s]\n. . .\n\nwith change:\n$ fastboot $B1 flash vendor\nSending \u0027vendor_a\u0027 (468640 KB)                     OKAY [ 14.136s]\nWriting \u0027vendor_a\u0027                                 OKAY [  2.693s]\nFinished. Total time: 16.949s\n$ fastboot $B1 flash vendor\nSending \u0027vendor_a\u0027 (468640 KB)                     OKAY [ 13.952s]\nWriting \u0027vendor_a\u0027                                 OKAY [  2.602s]\nFinished. Total time: 16.575s\n$ fastboot $B1 flash vendor\nSending \u0027vendor_a\u0027 (468640 KB)                     OKAY [ 14.196s]\nWriting \u0027vendor_a\u0027                                 OKAY [  2.561s]\nFinished. Total time: 16.779s\n$ fastboot $B1 flashall\n. . .\nSending \u0027vendor_a\u0027 (468640 KB)                     OKAY [ 14.748s]\nWriting \u0027vendor_a\u0027                                 OKAY [  2.626s]\n. . .",
+      "parentUuid": "9f77056c_27a0adb2",
+      "revId": "93a897950677240a31f57f3ca095e1b207420faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06ab2fc9_618253fa",
         "filename": "fastboot/device/flashing.cpp",
         "patchSetId": 1
@@ -69,6 +87,24 @@
       "revId": "93a897950677240a31f57f3ca095e1b207420faf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8d9e04f_04d5bd74",
+        "filename": "fastboot/device/flashing.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-25T15:35:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63224da3_43b58d45",
+      "revId": "93a897950677240a31f57f3ca095e1b207420faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
