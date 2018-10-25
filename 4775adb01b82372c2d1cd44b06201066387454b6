@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "97d1026f_c361a7c3",
+        "filename": "adb/daemon/remount_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-25T17:32:54Z",
+      "side": 1,
+      "message": "This is true for anything that uses a first stage ramdisk, not just dynamic partitions.\n\nThe old code should have handled this correctly already, as hikey has the same situation (/system in fstab mounted eventually as /) and remount works on that.\n\nUnless overlayfs is adding more requirements, only the fs_mgr_update_logical_partition() change should be needed.",
+      "revId": "4775adb01b82372c2d1cd44b06201066387454b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91e076cd_8099ad00",
         "filename": "adb/daemon/remount_service.cpp",
         "patchSetId": 1
@@ -13,6 +30,30 @@
       "writtenOn": "2018-10-25T15:00:57Z",
       "side": 1,
       "message": "I believe you are solving a (corner case non issue) with being able to adb remount /.\n\nWe do want to solve being able to adb-remount system-as-root-pivot, but your adjustment above could create a problem on overlayfs.\n\nOn a system with right-sized, kernel patched and overlayfs available, you do not have a problem and your adjustment is not required.\n\nWould be a devil of a problem if overlayfs happened _before_ /system was pivoted (image all r/w mounts afterwards going to overlayfs, eg: /dev, /data etc), so keep that part straight. I believe it is doing so. overlayfs must _never_ mount over /, so even if we are Dynamic and system as root, overlayfs is on /system, and remount must be on /system.\n\nOn a suitably patched kernel on blueline_mainlina without your change you will see that all works as expected (not sure what happened to /vendor below, but _that_ is my problem).\n\nblueline:/ # df -k\nFilesystem       1K-blocks    Used Available Use% Mounted on\ntmpfs              1804628     640   1803988   1% /dev\ntmpfs              1804628       0   1804628   0% /mnt\n/dev/block/dm-0    1278032 1277660       372 100% /\n/dev/block/dm-5    4538924  322188   4216736   8% /mnt/scratch\noverlay            4538924  322188   4216736   8% /product\noverlay            4538924  322188   4216736   8% /product_services\noverlay            4538924  322188   4216736   8% /system\n/dev/block/sdf2      35568   21244     14324  60% /mnt/vendor/persist\ntmpfs              1804628       0   1804628   0% /apex\n/dev/block/sda14     11760      80     11680   1% /metadata\n/dev/block/dm-6   49453036 6258104  43194932  13% /data\noverlay            4538924  322188   4216736   8% /vendor\n/data/media       49453036 6258104  43194932  13% /mnt/runtime/default/emulated\nblueline:/ # cat /proc/mounts                                                  \ntmpfs /dev tmpfs rw,seclabel,nosuid,relatime,size\u003d1804628k,nr_inodes\u003d451157,mode\u003d755 0 0\ndevpts /dev/pts devpts rw,seclabel,relatime,mode\u003d600,ptmxmode\u003d000 0 0\nproc /proc proc rw,relatime,gid\u003d3009,hidepid\u003d2 0 0\nsysfs /sys sysfs rw,seclabel,relatime 0 0\nselinuxfs /sys/fs/selinux selinuxfs rw,relatime 0 0\ntmpfs /mnt tmpfs rw,seclabel,nosuid,nodev,noexec,relatime,size\u003d1804628k,nr_inodes\u003d451157,mode\u003d755,gid\u003d1000 0 0\n/dev/block/dm-0 / ext4 ro,seclabel,nodev,relatime,block_validity,delalloc,barrier,user_xattr 0 0\n/dev/block/dm-3 /product ext4 ro,seclabel,relatime,block_validity,delalloc,barrier,user_xattr 0 0\n/dev/block/dm-4 /product_services ext4 ro,seclabel,relatime,block_validity,delalloc,barrier,user_xattr 0 0\n/dev/block/dm-2 /vendor ext4 ro,seclabel,relatime,block_validity,delalloc,barrier,user_xattr 0 0\n/dev/block/dm-5 /mnt/scratch f2fs rw,lazytime,seclabel,relatime,background_gc\u003don,discard,no_heap,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,extent_cache,mode\u003dadaptive,active_logs\u003d6,alloc_mode\u003dreuse,fsync_mode\u003dposix 0 0\noverlay /product overlay rw,seclabel,relatime,lowerdir\u003d/product,upperdir\u003d/mnt/scratch/overlay/product/upper,workdir\u003d/mnt/scratch/overlay/product/work,override_creds\u003doff 0 0\noverlay /product_services overlay rw,seclabel,relatime,lowerdir\u003d/product_services,upperdir\u003d/mnt/scratch/overlay/product_services/upper,workdir\u003d/mnt/scratch/overlay/product_services/work,override_creds\u003doff 0 0\noverlay /system overlay rw,seclabel,relatime,lowerdir\u003d/system,upperdir\u003d/mnt/scratch/overlay/system/upper,workdir\u003d/mnt/scratch/overlay/system/work,override_creds\u003doff 0 0\nnone /acct cgroup rw,nosuid,nodev,noexec,relatime,cpuacct 0 0\nnone /dev/memcg cgroup rw,nosuid,nodev,noexec,relatime,memory 0 0\ndebugfs /sys/kernel/debug debugfs rw,seclabel,relatime 0 0\n/dev/block/platform/soc/1d84000.ufshc/by-name/persist /mnt/vendor/persist ext4 rw,seclabel,nosuid,nodev,noatime,data\u003dordered 0 0\nnone /dev/stune cgroup rw,nosuid,nodev,noexec,relatime,schedtune 0 0\nnone /config configfs rw,nosuid,nodev,noexec,relatime 0 0\nnone /dev/cpuctl cgroup rw,nosuid,nodev,noexec,relatime,cpu 0 0\nnone /dev/cpuset cgroup rw,nosuid,nodev,noexec,relatime,cpuset,noprefix,release_agent\u003d/sbin/cpuset_release_agent 0 0\ncg2_bpf /dev/cg2_bpf cgroup2 rw,nosuid,nodev,noexec,relatime 0 0\nbpf /sys/fs/bpf bpf rw,nosuid,nodev,noexec,relatime 0 0\ntmpfs /apex tmpfs rw,seclabel,nosuid,nodev,noexec,relatime,size\u003d1804628k,nr_inodes\u003d451157 0 0\ntracefs /sys/kernel/debug/tracing tracefs rw,seclabel,relatime 0 0\n/dev/block/bootdevice/by-name/metadata /metadata ext4 rw,seclabel,nosuid,nodev,noatime,discard,data\u003dordered 0 0\n/dev/block/bootdevice/by-name/modem_a /vendor/firmware_mnt vfat ro,context\u003du:object_r:firmware_file:s0,relatime,uid\u003d1000,gid\u003d1000,fmask\u003d0337,dmask\u003d0227,codepage\u003d437,iocharset\u003diso8859-1,shortname\u003dlower,errors\u003dremount-ro 0 0\ntmpfs /storage tmpfs rw,seclabel,nosuid,nodev,noexec,relatime,size\u003d1804628k,nr_inodes\u003d451157,mode\u003d755,gid\u003d1000 0 0\n/dev/block/dm-6 /data f2fs rw,lazytime,seclabel,nosuid,nodev,noatime,background_gc\u003don,discard,no_heap,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,extent_cache,mode\u003dadaptive,active_logs\u003d6,reserve_root\u003d24109,resuid\u003d0,resgid\u003d1065,alloc_mode\u003ddefault,fsync_mode\u003dnobarrier 0 0\nadb /dev/usb-ffs/adb functionfs rw,relatime 0 0\nmtp /dev/usb-ffs/mtp functionfs rw,relatime 0 0\nptp /dev/usb-ffs/ptp functionfs rw,relatime 0 0\noverlay /vendor overlay rw,seclabel,relatime,lowerdir\u003d/vendor,upperdir\u003d/mnt/scratch/overlay/vendor/upper,workdir\u003d/mnt/scratch/overlay/vendor/work,override_creds\u003doff 0 0\n/data/media /mnt/runtime/default/emulated sdcardfs rw,nosuid,nodev,noexec,noatime,fsuid\u003d1023,fsgid\u003d1023,gid\u003d1015,multiuser,mask\u003d6,derive_gid,default_normal 0 0\n/data/media /storage/emulated sdcardfs rw,nosuid,nodev,noexec,noatime,fsuid\u003d1023,fsgid\u003d1023,gid\u003d1015,multiuser,mask\u003d6,derive_gid,default_normal 0 0\n/data/media /mnt/runtime/read/emulated sdcardfs rw,nosuid,nodev,noexec,noatime,fsuid\u003d1023,fsgid\u003d1023,gid\u003d9997,multiuser,mask\u003d23,derive_gid,default_normal 0 0\n/data/media /mnt/runtime/write/emulated sdcardfs rw,nosuid,nodev,noexec,noatime,fsuid\u003d1023,fsgid\u003d1023,gid\u003d9997,multiuser,mask\u003d7,derive_gid,default_normal 0 0\npstore /sys/fs/pstore pstore rw,seclabel,relatime 0 0",
+      "range": {
+        "startLine": 164,
+        "startChar": 4,
+        "endLine": 171,
+        "endChar": 5
+      },
+      "revId": "4775adb01b82372c2d1cd44b06201066387454b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5143e3b7_be73bccb",
+        "filename": "adb/daemon/remount_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-25T17:32:54Z",
+      "side": 1,
+      "message": "\u003e Would be a devil of a problem if overlayfs happened _before_ /system was pivoted\n\nThis isn\u0027t the case now and seems like something that we shouldn\u0027t worry about trying to handle.",
+      "parentUuid": "91e076cd_8099ad00",
       "range": {
         "startLine": 164,
         "startChar": 4,
