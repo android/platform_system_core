@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9ee8db7f_e8b9052f",
+        "filename": "fs_mgr/liblp/builder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-25T00:40:40Z",
+      "side": 1,
+      "message": "Should this be an assert?  We shouldn\u0027t ever have a situation where we have an extent with an out of range device index, even during building of the table, right?  Continuing doesn\u0027t seem to be the right option in that case.",
+      "range": {
+        "startLine": 447,
+        "startChar": 27,
+        "endLine": 447,
+        "endChar": 74
+      },
+      "revId": "2fe5f62c96fe48687dacb0e9ff3831d0ed27df78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35f2a051_5754422d",
         "filename": "fs_mgr/liblp/include/liblp/builder.h",
         "patchSetId": 2
@@ -36,6 +59,30 @@
       "writtenOn": "2018-10-24T21:58:15Z",
       "side": 1,
       "message": "nit: physical partition? I fear maintenance issues.\n\nWe should use either \"physical partition\" or \"logical partition\" in our comments at least. The word partition by itself will get confusing.\n\nI would prefer to see it also reflected in the variable naming",
+      "range": {
+        "startLine": 48,
+        "startChar": 11,
+        "endLine": 48,
+        "endChar": 20
+      },
+      "revId": "2fe5f62c96fe48687dacb0e9ff3831d0ed27df78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59318dfa_6c895393",
+        "filename": "fs_mgr/liblp/include/liblp/partition_opener.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-25T00:40:40Z",
+      "side": 1,
+      "message": "This is in a struct that describes physical partitions though, so the variable name seems fine to me.  I think dvander@ is using \u0027block device\u0027 to mean physical partition too, so the comment should be clear.",
+      "parentUuid": "a871dae9_90b7d1a8",
       "range": {
         "startLine": 48,
         "startChar": 11,
