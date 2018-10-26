@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d247c56f_f3420afd",
+        "filename": "fs_mgr/fs_mgr_priv.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-26T22:39:23Z",
+      "side": 1,
+      "message": "Unfortunately, I don\u0027t see another flag that would mean the same thing.\n\nThese flags are all pretty bad anyway, we could easily enough have these all be bools.  Or even bool flag_name :1; to have the same foot-print but not need to worry about running out of bits.",
+      "parentUuid": "7a46ca85_26675dec",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 38
+      },
+      "revId": "6a4daea508042e8deb022b077096dd87f05b8657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2e3279f8_58532e2a",
         "filename": "init/first_stage_mount.cpp",
         "patchSetId": 1
@@ -72,6 +96,24 @@
       "side": 1,
       "message": "KISS solution?\n\nbool fs_mgr_in_first_stage_mount() {\n    return getenv(\"INIT_STARTED_AT\") \u003d\u003d nullptr;\n}\n\nbool fs_mgr_wants_overlayfs(fstab_rec* fsrec) {\n    . . .\n    if (!fs_mgr_is_first_stage_mount(fsrec) \u0026\u0026 fs_mgr_in_first_stage_mount()) return false;\n    . . .\n}",
       "parentUuid": "073adf43_497bb0d3",
+      "revId": "6a4daea508042e8deb022b077096dd87f05b8657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d59f8ac5_aee0aca3",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-26T22:39:23Z",
+      "side": 1,
+      "message": "Understood.  I\u0027d think the more KISS solution is to pass an enum with the mount type (first stage vs not).  Checking environment variables ties the overlayfs code to the init internals too much.",
+      "parentUuid": "9b885bb6_43488666",
       "revId": "6a4daea508042e8deb022b077096dd87f05b8657",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
