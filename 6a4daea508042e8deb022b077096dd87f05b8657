@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7a46ca85_26675dec",
+        "filename": "fs_mgr/fs_mgr_priv.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-26T14:51:00Z",
+      "side": 1,
+      "message": "\u003d\u003d MF_SYSFS ? 0x80000000 ?\n\neditorial: I have fought the urge to add MF_* flags because now have none left (for 32 bits), and we have had an explosion lately ... we should probably consider a cleanup audit if the flags are no longer being used?\n\n(i.e.: I have used MS_UNBINDABLE, instead of a new MF_* flag, as a do-not-mount-overlayfs, in part because it is a security issue binding would be allowed under overlayfs which may be bad, and in part because it could be used in some future to prevent overlayfs as a sleight of hand trick).",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 38
+      },
+      "revId": "6a4daea508042e8deb022b077096dd87f05b8657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2e3279f8_58532e2a",
         "filename": "init/first_stage_mount.cpp",
         "patchSetId": 1
@@ -13,6 +36,24 @@
       "writtenOn": "2018-10-25T23:15:55Z",
       "side": 1,
       "message": "@salyzyn - would this be a problem if the full fstab is provided at this point?  Or would overlayfs handle this gracefully?  \n\nThe hope with this CL, given the first_stage_mount flag, is that vendors would only need to write one fstab and just put it at these two locations, instead of having to have a separate first stage fstab.",
+      "revId": "6a4daea508042e8deb022b077096dd87f05b8657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "073adf43_497bb0d3",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-26T14:51:00Z",
+      "side": 1,
+      "message": "Yes, subtlety is it can result in some issues, suggest we modify these two calls to take an enum stage parameter to help filter? Or do you recommend a setenv clue be handed out by init, that a getenv can pick up? Given that the flag has been added to fstab, overlayfs handling needs to be correct, so my vote is with an enum for stage even if there are no problems today.\n\nThe difference between correctness and grace?\n\ncommit f35db9b11b32f8aa3fc11518858fa5f70e8e3dde got added because we mounted /product_services in --early because it was missing from the dt, but fs_mgr_overlayfs_mount_all got eagre and mounted the overlayfs in first_stage_init first breaking the override layering. Passing the fstab just seemed \u0027correct\u0027 solution. That problem with /product_services went away as dt got updated, so by extension it will be handled \u0027correctly\u0027 if no overlayfs candidates exist in fstab (typically readonly, and other gating factors, usually eliminate them from consideration).\n\nSo yes, it is handled gracefully ;-/",
+      "parentUuid": "2e3279f8_58532e2a",
       "revId": "6a4daea508042e8deb022b077096dd87f05b8657",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
