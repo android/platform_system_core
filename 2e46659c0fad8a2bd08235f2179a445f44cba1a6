@@ -22,6 +22,30 @@
       "revId": "2e46659c0fad8a2bd08235f2179a445f44cba1a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa25d103_08d682c5",
+        "filename": "base/include/android-base/macros.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-26T15:55:45Z",
+      "side": 1,
+      "message": "I\u0027m iffy.  They\u0027re implicitly deleted already when you delete the copy constructor / copy assignment.  Half the reason we were suggesting to include the move ones in DISALLOW_IMPLICIT_CONSTRUCTORS() is clarity.\n\nBut there\u0027s totally a valid use case to use DISALLOW_COPY_AND_ASSIGN() then define your own move constructors (to create a move only type).\n\nThat said, does anyone do that?  It\u0027d be worth checking, since if no one does it, then we can delete the move constructors here too and assume people do mean that this object should not be copyable or moveable.  Otherwise leave it as is?",
+      "parentUuid": "5996837b_50e36b51",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 32
+      },
+      "revId": "2e46659c0fad8a2bd08235f2179a445f44cba1a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
