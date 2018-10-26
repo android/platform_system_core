@@ -57,6 +57,24 @@
       "revId": "6a4daea508042e8deb022b077096dd87f05b8657",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b885bb6_43488666",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-26T15:50:20Z",
+      "side": 1,
+      "message": "KISS solution?\n\nbool fs_mgr_in_first_stage_mount() {\n    return getenv(\"INIT_STARTED_AT\") \u003d\u003d nullptr;\n}\n\nbool fs_mgr_wants_overlayfs(fstab_rec* fsrec) {\n    . . .\n    if (!fs_mgr_is_first_stage_mount(fsrec) \u0026\u0026 fs_mgr_in_first_stage_mount()) return false;\n    . . .\n}",
+      "parentUuid": "073adf43_497bb0d3",
+      "revId": "6a4daea508042e8deb022b077096dd87f05b8657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
