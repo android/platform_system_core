@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "14d7bbf9_1fdbfc28",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-30T22:48:44Z",
+      "side": 1,
+      "message": "I don\u0027t think we need two instances, especially since then we\u0027ll get DumpInfo() and CheckRequirements() called twice.  The code should handle almost all of this, except that UpdateSuperPartition() needs to be done for both the primary and secondary slot in some cases, right?  I think refactoring UpdateSuperPartition() such that it can be called for both of those cases is going to be the best way forward here.  Using get_other_slot(), etc can make this work.",
+      "parentUuid": "1db0b5cd_ab0d221e",
+      "revId": "a57aea27254d229f5ec72a05436c943e2cdfcba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a07fd9e_f1ff021e",
         "filename": "fs_mgr/liblp/utility.cpp",
         "patchSetId": 1
@@ -119,6 +137,30 @@
       "side": 1,
       "message": "No, I agree it\u0027s better to just disallow this, and make sure the boot control HAL is prefixing with an underscore.",
       "parentUuid": "4a07fd9e_f1ff021e",
+      "range": {
+        "startLine": 102,
+        "startChar": 43,
+        "endLine": 102,
+        "endChar": 46
+      },
+      "revId": "a57aea27254d229f5ec72a05436c943e2cdfcba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31697228_549b1478",
+        "filename": "fs_mgr/liblp/utility.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-30T22:48:44Z",
+      "side": 1,
+      "message": "We\u0027ll need to be backwards compatible with other bootloaders too though.  We\u0027ll probably need to allow the _ as well.",
+      "parentUuid": "52ff3a3c_0c33e503",
       "range": {
         "startLine": 102,
         "startChar": 43,
