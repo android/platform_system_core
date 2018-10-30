@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9204cb75_6e8e273b",
+        "filename": "fs_mgr/fs_mgr_priv.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-30T20:55:31Z",
+      "side": 1,
+      "message": "Good catch, thanks.",
+      "parentUuid": "4b99fddd_47228093",
+      "range": {
+        "startLine": 118,
+        "startChar": 29,
+        "endLine": 118,
+        "endChar": 38
+      },
+      "revId": "673eceb4e5348ae98b5f65d672666a0b6ff775f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71f55518_f57ca48b",
         "filename": "init/first_stage_mount.cpp",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b33c4c06_3fa84c4b",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-30T20:55:31Z",
+      "side": 1,
+      "message": "Indeed, thanks for that catch too.",
+      "parentUuid": "71f55518_f57ca48b",
+      "range": {
+        "startLine": 148,
+        "startChar": 12,
+        "endLine": 148,
+        "endChar": 64
+      },
+      "revId": "673eceb4e5348ae98b5f65d672666a0b6ff775f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f22381b6_bfc21178",
         "filename": "init/first_stage_mount.cpp",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "673eceb4e5348ae98b5f65d672666a0b6ff775f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "417b25ca_166988b4",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-30T20:55:31Z",
+      "side": 1,
+      "message": "Queue the nth time I\u0027ve claimed that someday I\u0027ll rewrite the fstab code, without doing it.  Yes we need to get rid of that, but until then...",
+      "parentUuid": "f22381b6_bfc21178",
+      "range": {
+        "startLine": 158,
+        "startChar": 16,
+        "endLine": 158,
+        "endChar": 62
+      },
+      "revId": "673eceb4e5348ae98b5f65d672666a0b6ff775f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -106,6 +178,30 @@
       "side": 1,
       "message": "Simply filter mount_fstab_recs_ above as suggested in earlier comments and something like:\n\nfstab fstab \u003d {mount_fstab_recs_.count(), \u0026mount_fstab[0]};\nconst auto devices \u003d fs_mgr_overlayfs_required_devices(\u0026fstab);\n. . .\nfs_mgr_overlayfs_mount_all(\u0026fstab);\n\n(fstab should disappear w/o any cleanup)",
       "parentUuid": "e4de0dde_2ef53c41",
+      "range": {
+        "startLine": 407,
+        "startChar": 25,
+        "endLine": 407,
+        "endChar": 73
+      },
+      "revId": "673eceb4e5348ae98b5f65d672666a0b6ff775f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f318416_8eaff862",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-30T20:55:31Z",
+      "side": 1,
+      "message": "With your other CL, we can just pass mount_fstab_recs here directly, can\u0027t we?\n\n+/- that we\u0027d need to add back the system_partition mount that we\u0027re erasing now.",
+      "parentUuid": "b30ba22b_b08f32ef",
       "range": {
         "startLine": 407,
         "startChar": 25,
