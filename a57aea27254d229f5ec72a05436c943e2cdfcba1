@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "1db0b5cd_ab0d221e",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-10-30T20:45:27Z",
+      "side": 1,
+      "message": "Indeed it won\u0027t do that. I just realized an additional problem which is that this code should run before DetermineSecondarySlot(), which in turn needs to handle \"all\" as a special case (it currently works accidentally because \"all\" starts with an \u0027a\u0027).\n\nThe easiest fix would be to create two instances of FlashAllTool, one for the A slot and one for the B slot. Flashing would take exactly twice as long. Another option would be to explicitly update both super partitions, then to set_active before each flash operation (so that it picked the right set of super partitions). Then we wouldn\u0027t have to resparse everything twice.\n\nPreference?",
+      "parentUuid": "065c1ffd_3555ad35",
+      "revId": "a57aea27254d229f5ec72a05436c943e2cdfcba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a07fd9e_f1ff021e",
         "filename": "fs_mgr/liblp/utility.cpp",
         "patchSetId": 1
@@ -77,6 +95,30 @@
       "writtenOn": "2018-10-30T18:23:49Z",
       "side": 1,
       "message": "Is this single character check legitimate?\n\nvbmeta, is it vbmet slot a ...",
+      "range": {
+        "startLine": 102,
+        "startChar": 43,
+        "endLine": 102,
+        "endChar": 46
+      },
+      "revId": "a57aea27254d229f5ec72a05436c943e2cdfcba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52ff3a3c_0c33e503",
+        "filename": "fs_mgr/liblp/utility.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-10-30T20:45:27Z",
+      "side": 1,
+      "message": "No, I agree it\u0027s better to just disallow this, and make sure the boot control HAL is prefixing with an underscore.",
+      "parentUuid": "4a07fd9e_f1ff021e",
       "range": {
         "startLine": 102,
         "startChar": 43,
