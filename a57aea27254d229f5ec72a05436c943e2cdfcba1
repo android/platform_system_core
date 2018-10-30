@@ -138,6 +138,24 @@
     },
     {
       "key": {
+        "uuid": "b08ec264_503fd355",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-10-30T23:03:15Z",
+      "side": 1,
+      "message": "Because when opening a partition, we create it based on the currently active slot\u0027s metadata. On an A/B device, partition_[a|b] will exist in both copies of the metadata, so it just works. On a retrofit device, partition_a will be in super_a and partition_b will be in super_b. If the active slot is A, we can\u0027t flash partition_b.\n\nI guess we could handle this within fastbootd (by inferring a retrofit and reading out the partition\u0027s suffix), if we don\u0027t want to set_active from the host tool.",
+      "parentUuid": "44f8e1ef_03f2eadd",
+      "revId": "a57aea27254d229f5ec72a05436c943e2cdfcba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a07fd9e_f1ff021e",
         "filename": "fs_mgr/liblp/utility.cpp",
         "patchSetId": 1
