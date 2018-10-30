@@ -91,6 +91,30 @@
       "revId": "673eceb4e5348ae98b5f65d672666a0b6ff775f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b30ba22b_b08f32ef",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-30T19:09:28Z",
+      "side": 1,
+      "message": "Simply filter mount_fstab_recs_ above as suggested in earlier comments and something like:\n\nfstab fstab \u003d {mount_fstab_recs_.count(), \u0026mount_fstab[0]};\nconst auto devices \u003d fs_mgr_overlayfs_required_devices(\u0026fstab);\n. . .\nfs_mgr_overlayfs_mount_all(\u0026fstab);\n\n(fstab should disappear w/o any cleanup)",
+      "parentUuid": "e4de0dde_2ef53c41",
+      "range": {
+        "startLine": 407,
+        "startChar": 25,
+        "endLine": 407,
+        "endChar": 73
+      },
+      "revId": "673eceb4e5348ae98b5f65d672666a0b6ff775f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
