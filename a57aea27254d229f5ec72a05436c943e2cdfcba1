@@ -120,6 +120,24 @@
     },
     {
       "key": {
+        "uuid": "44f8e1ef_03f2eadd",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-10-30T22:58:44Z",
+      "side": 1,
+      "message": "What do you mean toggle between them?  We should be able to just add a 2nd UpdateSuperPartition() call that takes a parameter indicating that it is meant to update the secondary super partition.  Both resizing to 0 and the subsequent flashes should work correctly after that since os_images_ is going to contain all of the images from both slots. \n\nOr otherwise, have UpdateSuperPartition() handle both slots itself if slot_override_ \u003d\u003d all.  do_for_partitions() should be able to handle this for us.",
+      "parentUuid": "d7e6bcbd_e9b21699",
+      "revId": "a57aea27254d229f5ec72a05436c943e2cdfcba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a07fd9e_f1ff021e",
         "filename": "fs_mgr/liblp/utility.cpp",
         "patchSetId": 1
