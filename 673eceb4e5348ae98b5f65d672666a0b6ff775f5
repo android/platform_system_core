@@ -25,6 +25,52 @@
     },
     {
       "key": {
+        "uuid": "71f55518_f57ca48b",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-30T18:54:39Z",
+      "side": 1,
+      "message": "But a dt fstab does not _have_ a first_stage_mount flag ?",
+      "range": {
+        "startLine": 148,
+        "startChar": 12,
+        "endLine": 148,
+        "endChar": 64
+      },
+      "revId": "673eceb4e5348ae98b5f65d672666a0b6ff775f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f22381b6_bfc21178",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-30T18:54:39Z",
+      "side": 1,
+      "message": "if (fs_mgr_is_first_stage_mount(\u0026fstab_-\u003erecs[i])) ?\n\n(num_entries alteration is a pedantic problem, yes fs_mgr_free_fstab will not work properly, so the fstab itself needs non-KISS fixup if it is to be passed trimmed below to overlayfs calls).\n\nWe should seriously consider making overlayfs calls take std::vector\u003cfstab_rec*\u003e instead?",
+      "range": {
+        "startLine": 158,
+        "startChar": 16,
+        "endLine": 158,
+        "endChar": 62
+      },
+      "revId": "673eceb4e5348ae98b5f65d672666a0b6ff775f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e4de0dde_2ef53c41",
         "filename": "init/first_stage_mount.cpp",
         "patchSetId": 2
