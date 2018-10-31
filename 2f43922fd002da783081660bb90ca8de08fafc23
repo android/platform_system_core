@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "6b6a4d20_96277542",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-10-31T20:37:15Z",
+      "side": 1,
+      "message": "We will have the _feature_ override_creds in the kernel driver regardless of debuggable or not. This is a kernel feature test, I do not believe we need a comment. The debuggable check only contributed to confusion.\n\nThe issue here is that the debuggable check was added to _prevent_ overlayfs for adb remount. Line 58 protects us against that too, so useless and confusing paranoia. Removing the test is KISS. Any comments added could only increase confusion IMHO (and looks to be doing so ;-/ )",
+      "parentUuid": "c3acf1cc_1fbf5c7c",
+      "range": {
+        "startLine": 876,
+        "startChar": 5,
+        "endLine": 876,
+        "endChar": 47
+      },
+      "revId": "2f43922fd002da783081660bb90ca8de08fafc23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e5144cd_f8e571b1",
         "filename": "fs_mgr/include/fs_mgr_vendor_overlay.h",
         "patchSetId": 4
