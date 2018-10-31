@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a23b0a7f_0937b79c",
+        "filename": "libprocessgroup/processgroup.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2018-10-31T22:30:21Z",
+      "side": 1,
+      "message": "Killing process is usually a time critical operation (we kill because we are low on memory and want to free it as soon as possible) and if so adding a new syscall() in that path is a non-negligible performance hit. The way I outlined in my previous comment would avoid that additional cost in most of the cases (assuming you use ro.config.per_app_memcg to figure out what constitutes \"most of the cases\").",
+      "range": {
+        "startLine": 204,
+        "startChar": 13,
+        "endLine": 204,
+        "endChar": 88
+      },
+      "revId": "2685bd5bcdad01ea73007e66bdd954fad71843ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
