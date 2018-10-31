@@ -22,6 +22,30 @@
       "revId": "2685bd5bcdad01ea73007e66bdd954fad71843ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55055967_ebd703f5",
+        "filename": "libprocessgroup/processgroup.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2018-10-31T23:00:57Z",
+      "side": 1,
+      "message": "The tradeoff doesn\u0027t seem in favour of trying to save a syscall here versus the increased code complexity (i.e. higher chance of bugs) that it would introduce. Keep in mind that the function RemoveProcessGroup called below also needs to know which kind of cgroup is being used, so there would either need to be similar logic in that function or there would need to be a way of passing the kind of cgroup from DoKillProcessGroup to RemoveProcessGroup.",
+      "parentUuid": "a23b0a7f_0937b79c",
+      "range": {
+        "startLine": 204,
+        "startChar": 13,
+        "endLine": 204,
+        "endChar": 88
+      },
+      "revId": "2685bd5bcdad01ea73007e66bdd954fad71843ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
