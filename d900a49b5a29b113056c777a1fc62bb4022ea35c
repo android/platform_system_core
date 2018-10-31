@@ -240,6 +240,30 @@
     },
     {
       "key": {
+        "uuid": "c20141f1_eaf48a75",
+        "filename": "libprocessgroup/include/processgroup/processgroup.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2018-10-31T19:58:52Z",
+      "side": 1,
+      "message": "Yes, one nit is I would have that third parameter as bool and called smth like:\n\nint createProcessGroup(uid_t uid, int initialPid, bool mem_controlled \u003d false);\n\nto reflect the desire to have a memory-controlled process group.\n\nkillProcessGroup() and killProcessGroupOnce() APIs should stay unchanged. That additional parameter makes it impossible to use them from anywhere else other than service.cpp which has cgroup_ data recorded. Please see my comment inside DoKillProcessGroupOnce() for how we can remove that parameter.\n\nAdditional clarification: the condition inside createProcessGroup() should be ((mem_controlled || ro.config.per_app_memcg) \u0026\u0026 memcg_mounted) but I think you already know that.\n\n\nDoes this make sense?",
+      "parentUuid": "24a2a3e1_99ceed52",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "d900a49b5a29b113056c777a1fc62bb4022ea35c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad22c9b6_d14275b4",
         "filename": "libprocessgroup/processgroup.cpp",
         "patchSetId": 2
@@ -304,6 +328,29 @@
         "startChar": 11,
         "endLine": 66,
         "endChar": 26
+      },
+      "revId": "d900a49b5a29b113056c777a1fc62bb4022ea35c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f9ece17_ce397085",
+        "filename": "libprocessgroup/processgroup.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2018-10-31T19:58:52Z",
+      "side": 1,
+      "message": "We can get rid of cgroup parameter if we do smth like this instead:\n\n    auto path \u003d ConvertUidPidToPath(kCpuacctCgroup, uid, initialPid) + PROCESSGROUP_CGROUP_PROCS_FILE;\n    std::unique_ptr\u003cFILE, decltype(\u0026fclose)\u003e fd(fopen(path.c_str(), \"re\"), fclose);\n    if (!fd) {\n        path \u003d ConvertUidPidToPath(kMemoryCgroup, uid, initialPid) + PROCESSGROUP_CGROUP_PROCS_FILE;\n        std::unique_ptr\u003cFILE, decltype(\u0026fclose)\u003e fd(fopen(path.c_str(), \"re\"), fclose);\n        if (!fd) {\n            PLOG(WARNING) \u003c\u003c \"Failed to open process cgroup uid \" \u003c\u003c uid \u003c\u003c \" pid \" \u003c\u003c         initialPid;\n            return -1;\n        }\n    }\n\n\nPerformance can be further improved by trying kMemoryCgroup first when per_app_memcg is true.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 0
       },
       "revId": "d900a49b5a29b113056c777a1fc62bb4022ea35c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
