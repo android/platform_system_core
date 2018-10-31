@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a113f653_600049cb",
+        "filename": "libprocessgroup/processgroup.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-10-31T21:36:28Z",
+      "side": 1,
+      "message": "minor nit: why not use the C++11 static local variable singleton model?\n\nstatic bool memcg_supported \u003d !access(\"/dev/memcg/memory.limit_in_bytes\", F_OK);\nreturn memcg_supported;\n\nhttps://en.cppreference.com/w/cpp/language/storage_duration#Static_local_variables\n\nit is thread-safe and potentially faster.\n\nhttp://www.modernescpp.com/index.php/thread-safe-initialization-of-a-singleton",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 27
+      },
+      "revId": "8985ad948a45408ca672b09cb43f2e4be3894b54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
