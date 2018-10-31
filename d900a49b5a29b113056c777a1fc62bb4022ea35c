@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "24a2a3e1_99ceed52",
+        "filename": "libprocessgroup/include/processgroup/processgroup.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2018-10-31T19:20:29Z",
+      "side": 1,
+      "message": "Note that control over the RSS limit is going to be a requirement going forward in order to enforce the security mitigation for the av services. It looks like that\u0027s also available in cgroups v2 so that shouldn\u0027t be a problem.\n\nI don\u0027t have any particular attachment to the other properties; if they aren\u0027t actually being used in Android Go (I don\u0027t have access to that repository) I\u0027d be fine dropping them.\n\nWith that the API that I have in mind is basically:\n\nint createProcessGroup(const char* cgroup, uid_t uid, int initialPid, int64_t limitInBytes \u003d -1);\n\nwhere we use memory cgroups if limitInBytes !\u003d -1 || ro.config.per_app_memcg.\n\nDoes that sound good?",
+      "parentUuid": "d0eed039_fcda0225",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "d900a49b5a29b113056c777a1fc62bb4022ea35c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad22c9b6_d14275b4",
         "filename": "libprocessgroup/processgroup.cpp",
         "patchSetId": 2
