@@ -264,6 +264,30 @@
     },
     {
       "key": {
+        "uuid": "7b2608b5_90903be8",
+        "filename": "libprocessgroup/include/processgroup/processgroup.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2018-10-31T20:07:53Z",
+      "side": 1,
+      "message": "Yes and keep the setProcessGroup* functions? That works for me too.",
+      "parentUuid": "c20141f1_eaf48a75",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "d900a49b5a29b113056c777a1fc62bb4022ea35c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad22c9b6_d14275b4",
         "filename": "libprocessgroup/processgroup.cpp",
         "patchSetId": 2
@@ -346,6 +370,30 @@
       "writtenOn": "2018-10-31T19:58:52Z",
       "side": 1,
       "message": "We can get rid of cgroup parameter if we do smth like this instead:\n\n    auto path \u003d ConvertUidPidToPath(kCpuacctCgroup, uid, initialPid) + PROCESSGROUP_CGROUP_PROCS_FILE;\n    std::unique_ptr\u003cFILE, decltype(\u0026fclose)\u003e fd(fopen(path.c_str(), \"re\"), fclose);\n    if (!fd) {\n        path \u003d ConvertUidPidToPath(kMemoryCgroup, uid, initialPid) + PROCESSGROUP_CGROUP_PROCS_FILE;\n        std::unique_ptr\u003cFILE, decltype(\u0026fclose)\u003e fd(fopen(path.c_str(), \"re\"), fclose);\n        if (!fd) {\n            PLOG(WARNING) \u003c\u003c \"Failed to open process cgroup uid \" \u003c\u003c uid \u003c\u003c \" pid \" \u003c\u003c         initialPid;\n            return -1;\n        }\n    }\n\n\nPerformance can be further improved by trying kMemoryCgroup first when per_app_memcg is true.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 0
+      },
+      "revId": "d900a49b5a29b113056c777a1fc62bb4022ea35c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc5be7af_001a8bed",
+        "filename": "libprocessgroup/processgroup.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2018-10-31T20:07:53Z",
+      "side": 1,
+      "message": "Yes, something like that is what I had in mind.",
+      "parentUuid": "9f9ece17_ce397085",
       "range": {
         "startLine": 140,
         "startChar": 0,
