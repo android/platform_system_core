@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1fbc1667_b5f3bd32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2018-11-01T00:10:53Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "31b99b62_ce8ee8bb",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 59
+      },
+      "revId": "2685bd5bcdad01ea73007e66bdd954fad71843ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d7ca6573_de72a06b",
         "filename": "init/README.md",
         "patchSetId": 5
@@ -94,6 +118,30 @@
       "writtenOn": "2018-11-01T00:05:48Z",
       "side": 1,
       "message": "Hmm, I see now what you are doing. That\u0027s quite confusing.. So limit_in_bytes can be overwritten by limit_percent_ and then overwritten if limit_property_ and such property is defined... Maybe add a comment to help understanding this logic?",
+      "parentUuid": "c5f7fa23_f56e2c1a",
+      "range": {
+        "startLine": 1037,
+        "startChar": 8,
+        "endLine": 1048,
+        "endChar": 9
+      },
+      "revId": "2685bd5bcdad01ea73007e66bdd954fad71843ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be74dd11_45b12adc",
+        "filename": "init/service.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2018-11-01T00:10:53Z",
+      "side": 1,
+      "message": "I tried the suggestion of checking the property first, but it doesn\u0027t seem like it makes the code any cleaner. Since we need to check both whether !limit_property_.empty() and whether the property exists in the first if statement in order to use else for the rest of the code it ends up looking like:\n\n        size_t computed_limit_in_bytes \u003d limit_in_bytes_;\n        size_t limit_prop_value;\n        if (!limit_property_.empty() \u0026\u0026 (limit_prop_value \u003d android::base::GetUintProperty(\n                                                limit_property_, SIZE_MAX, SIZE_MAX)) !\u003d SIZE_MAX) {\n            computed_limit_in_bytes \u003d limit_prop_value;\n        } else if (limit_percent_ !\u003d -1) {\n            long page_size \u003d sysconf(_SC_PAGESIZE);\n            long num_pages \u003d sysconf(_SC_PHYS_PAGES);\n            if (page_size \u003e 0 \u0026\u0026 num_pages \u003e 0) {\n                size_t max_mem \u003d SIZE_MAX;\n                if (size_t(num_pages) \u003c SIZE_MAX / size_t(page_size)) {\n                    max_mem \u003d size_t(num_pages) * size_t(page_size);\n                }\n                computed_limit_in_bytes \u003d\n                        std::min(computed_limit_in_bytes, max_mem / 100 * limit_percent_);\n            }\n        }\n\nI can change the code to look like that if you disagree though. I also added a comment at the end.",
       "parentUuid": "c5f7fa23_f56e2c1a",
       "range": {
         "startLine": 1037,
@@ -198,6 +246,30 @@
       "revId": "2685bd5bcdad01ea73007e66bdd954fad71843ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f148ab70_dbb100b7",
+        "filename": "libprocessgroup/processgroup.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2018-11-01T00:10:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d06c252_1a86ca80",
+      "range": {
+        "startLine": 281,
+        "startChar": 9,
+        "endLine": 281,
+        "endChar": 96
+      },
+      "revId": "2685bd5bcdad01ea73007e66bdd954fad71843ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
