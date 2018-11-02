@@ -70,6 +70,30 @@
       "revId": "df4628a5e5eba58bd6391aaf226881381780b40a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da6b9cc1_cd1689e1",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-11-02T21:11:30Z",
+      "side": 1,
+      "message": "Right, but this is to determine if the bootloader informs the system that it has booted if it has booted into recovery or not, and it doesn\u0027t.  That\u0027s why, upon a bit more recollection, that we check the presence of /system/bin/recovery in the first place, since we don\u0027t have any other way to tell what we were booted into.\n\nSo given that, and the fact that we\u0027re now going to use recovery as a trampoline into normal boot, we need some other flag to tell us \"yes, we\u0027ve loaded the recovery ramdisk, but we really do want to boot normally\"",
+      "parentUuid": "35332dad_17b2daab",
+      "range": {
+        "startLine": 810,
+        "startChar": 36,
+        "endLine": 810,
+        "endChar": 53
+      },
+      "revId": "df4628a5e5eba58bd6391aaf226881381780b40a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
