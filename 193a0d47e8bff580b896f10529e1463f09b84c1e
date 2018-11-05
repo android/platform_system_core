@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d0cecf6_56fffc69",
+        "filename": "libmeminfo/include/meminfo/process.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-11-05T18:44:02Z",
+      "side": 1,
+      "message": "done, renamed the .cpp files to match the same.",
+      "parentUuid": "50944984_cd16d50b",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 17
+      },
+      "revId": "193a0d47e8bff580b896f10529e1463f09b84c1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "efc55db1_aa8bb125",
         "filename": "libmeminfo/meminfo_private.h",
         "patchSetId": 4
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "b0afccea_9b7f7527",
+        "filename": "libmeminfo/meminfo_private.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-11-05T18:44:02Z",
+      "side": 1,
+      "message": "doh, done",
+      "parentUuid": "efc55db1_aa8bb125",
+      "revId": "193a0d47e8bff580b896f10529e1463f09b84c1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "520bed34_cd1ac896",
         "filename": "libmeminfo/system.cpp",
         "patchSetId": 4
@@ -53,6 +95,24 @@
       "writtenOn": "2018-11-03T05:22:52Z",
       "side": 1,
       "message": "does string_view vs string make that go away?\n\n(or is it the reading part rather than the parsing part?)",
+      "revId": "193a0d47e8bff580b896f10529e1463f09b84c1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43b8fa0e_3186a47e",
+        "filename": "libmeminfo/system.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-11-05T18:44:02Z",
+      "side": 1,
+      "message": "Didn\u0027t try string_view.\n\nThe reading part adds a bit but the majority was definitely the parsing. I used base::Split() which was the biggest (that I got rid of after).\nRight now I think its the ParseUint (because it also trims at the end may be).\n\nI will keep this for now and do the string_view change and see if I can use the one below.",
+      "parentUuid": "520bed34_cd1ac896",
       "revId": "193a0d47e8bff580b896f10529e1463f09b84c1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "b3283852_e07f416e",
+        "filename": "libmeminfo/tools/procmem.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-11-05T18:44:02Z",
+      "side": 1,
+      "message": "did the /1024 part. Letf the stringprintf conversion for later with a TODO added for it.",
+      "parentUuid": "8e7a88ac_e64c6f64",
+      "range": {
+        "startLine": 73,
+        "startChar": 30,
+        "endLine": 73,
+        "endChar": 41
+      },
+      "revId": "193a0d47e8bff580b896f10529e1463f09b84c1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "13575370_adcc6530",
         "filename": "libmeminfo/tools/procmem.cpp",
         "patchSetId": 4
@@ -93,6 +177,30 @@
       "writtenOn": "2018-11-03T05:22:52Z",
       "side": 1,
       "message": "especially because this is always \"K  \"?",
+      "range": {
+        "startLine": 75,
+        "startChar": 89,
+        "endLine": 75,
+        "endChar": 96
+      },
+      "revId": "193a0d47e8bff580b896f10529e1463f09b84c1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec5c7e19_2bf7fbaf",
+        "filename": "libmeminfo/tools/procmem.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-11-05T18:44:02Z",
+      "side": 1,
+      "message": "yes, we can always change the output format I guess, but trying to keep it consistent and the same as other procmem.",
+      "parentUuid": "13575370_adcc6530",
       "range": {
         "startLine": 75,
         "startChar": 89,
