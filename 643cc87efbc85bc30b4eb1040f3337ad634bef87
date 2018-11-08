@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "267f48a4_ff23bafa",
+        "filename": "fs_mgr/liblp/images.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-11-08T16:44:42Z",
+      "side": 1,
+      "message": "It was about KISS and less complicated code, but it can also be about atomicity. I know this is on host were the security concerns might be less, processes tend to be ordered and single threaded, but it this path _ever_ was executed on Android we would be worried about an attack vector.\n\nIn our libraries we tend towards adding O_NOFOLLOW in the open above, and dropping the above d.reset(-1) to utilize the file descriptor below:\n\n    std::string path \u003d \"super_\" + name + \".img\";\n    android::base::unique_fd fd(openat(d, path.c_str(), O_CREATE | O_RDWR | O_TRUNC | O_CLOEXEC, 0644));\n\nWhich will make sure we target the original directory found at the top, not a replacement that happens to show up afterwards (eg: /dev symbolically linked to the above directory). I understand that there is a _lot_ of paranoia in this adjustment, but it is not as if it has become more complicated or harder to maintain in the future. In fact, if someone found an attack vector using this code, I could argue that is harder to maintain ;-\u003e",
+      "parentUuid": "4a620113_386d6b74",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 5
+      },
+      "revId": "643cc87efbc85bc30b4eb1040f3337ad634bef87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c090341b_20cfc734",
         "filename": "fs_mgr/liblp/images.cpp",
         "patchSetId": 2
