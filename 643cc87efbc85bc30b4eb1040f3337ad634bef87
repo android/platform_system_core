@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "8900ca7c_49df6686",
+        "filename": "fs_mgr/liblp/images.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-11-08T16:24:52Z",
+      "side": 1,
+      "message": "I think it\u0027s okay to just fail here if the open fails below. This code is only ever run by the build system on the host, so it was more about providing an obvious error message if the build flags are not specified correctly.",
+      "parentUuid": "83cad7a0_f2923d36",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 5
+      },
+      "revId": "643cc87efbc85bc30b4eb1040f3337ad634bef87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c090341b_20cfc734",
         "filename": "fs_mgr/liblp/images.cpp",
         "patchSetId": 2
@@ -82,6 +106,30 @@
       "writtenOn": "2018-11-08T16:10:33Z",
       "side": 1,
       "message": "This math is performed all in uint32_t and can overflow.",
+      "range": {
+        "startLine": 223,
+        "startChar": 12,
+        "endLine": 223,
+        "endChar": 31
+      },
+      "revId": "643cc87efbc85bc30b4eb1040f3337ad634bef87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4133f84_20e5a97e",
+        "filename": "fs_mgr/liblp/images.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-11-08T16:24:52Z",
+      "side": 1,
+      "message": "Thanks, good catch - sparse files can\u0027t have more than 2^32 blocks but they can have more than 2^32 bytes.",
+      "parentUuid": "38e18c6c_88c97250",
       "range": {
         "startLine": 223,
         "startChar": 12,
