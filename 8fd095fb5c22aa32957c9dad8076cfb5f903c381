@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4382c529_93c1b122",
+        "filename": "fastboot/device/utility.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-11-12T16:28:34Z",
+      "side": 1,
+      "message": "If a property is needed, I view the system as fragile and complex/nit-picky for bring up, although I recognize property is generally wanted for (solid) determinism.\n\nDiscussed with David any automation/logic to negate the need for a property to be read to determine if the device is in this state, this one is particularly difficult to replace with (simple) logic. So can not happen, but as you see I am not entirely letting sleeping dogs lay :-)\n\nQ: If the property is wrong, does the device turn into a mess?\nA: reflash with a good build ... you get what you pay for\nQ: Can this be turned into an attack vector?\nA: Line 198 below looks after that.\nQ: Once we fix this up, are we no longer a retrofit device, do we need to strike the property?\nA: Line 236 below looks after that.",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 5
+      },
+      "revId": "8fd095fb5c22aa32957c9dad8076cfb5f903c381",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b11d45e3_fbc09c0a",
+        "filename": "fastboot/device/utility.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-11-12T16:28:34Z",
+      "side": 1,
+      "message": "nit: to",
+      "range": {
+        "startLine": 235,
+        "startChar": 31,
+        "endLine": 235,
+        "endChar": 32
+      },
+      "revId": "8fd095fb5c22aa32957c9dad8076cfb5f903c381",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9137f252_c9406be0",
+        "filename": "fastboot/device/utility.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-11-12T16:28:34Z",
+      "side": 1,
+      "message": "NB: nit: logger is more efficient if messages are joined.\n\n    LOG(WARNING) \u003c\u003c \"This device has been upgraded to dynamic partitions, and will now be updated\"\n248\t\n                 \u003c\u003c \" to use both slots for allocating partition data.\\n\"\n249\t\n                 \u003c\u003c \"This will overwrite the contents of slot \" \u003c\u003c other_slot_suffix \u003c\u003c \".\";",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 92
+      },
+      "revId": "8fd095fb5c22aa32957c9dad8076cfb5f903c381",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
