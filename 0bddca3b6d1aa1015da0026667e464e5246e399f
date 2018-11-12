@@ -142,6 +142,30 @@
       "revId": "0bddca3b6d1aa1015da0026667e464e5246e399f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95172fd7_f9d2ab87",
+        "filename": "fs_mgr/liblp/images.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-11-12T21:17:10Z",
+      "side": 1,
+      "message": "android-base/file.h it is.\n\nI quickly looked at switching to file.h or temporary.h and the only piece I could spot in temporary.h\u0027s advantage was android-base/test_utils.h does not currently have the side-effect of including android-base/file.h (although test_utils.cpp internally does use it).\n\nandroid-base/test_utils.h _does_ depend on TemporaryFile for the CapturedStdFd class, so it would necessarily need to include one or the other. Because it is needed in test_utils.h, there are no side effects throughout the system regarding the #includes, but one may wish to \u0027cleanup\u0027 all references to android-base/test_utils.h that could be fulfilled by just android-base/file.h at least for the sources that are not (purely) test facilities (eg: adb, fastboot, simpleperf and verity)",
+      "parentUuid": "a56976c3_f1a9453d",
+      "range": {
+        "startLine": 430,
+        "startChar": 37,
+        "endLine": 430,
+        "endChar": 44
+      },
+      "revId": "0bddca3b6d1aa1015da0026667e464e5246e399f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
