@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "6a56ed2c_11e660f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-11-12T17:40:14Z",
+      "side": 1,
+      "message": "Is this something we can avoid if we have a single super partition for retrofit devices?  That was at least my hope when we went down that path.  The \u0027super partition\u0027 name would end up being system_a or system_b, depending on which slot was used during the retrofit upgrade, but can\u0027t NewForUpdate() just absorb the additional partitions without creating a metadata header?\n\nWe don\u0027t actually need to treat the underlying physical A/B partitions as A/B anymore, right?",
+      "revId": "8fd095fb5c22aa32957c9dad8076cfb5f903c381",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4382c529_93c1b122",
         "filename": "fastboot/device/utility.cpp",
         "patchSetId": 1
@@ -22,6 +39,23 @@
       "revId": "8fd095fb5c22aa32957c9dad8076cfb5f903c381",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cfd75ccc_38d31b08",
+        "filename": "fastboot/device/utility.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-11-12T17:40:14Z",
+      "side": 1,
+      "message": "Continuing my comment from the commit message: this would in theory always be a single super partition regardless of slot if we had a single large super partition on the retrofit devices.  That does seem to be doable, right?  The bootloader or DT could provide this information?  Or worst case we could probe both slots to see if we can find valid metadata?\n\nSeems more maintainable to me in the long term than supporting two separate metadata headers.  Just my thoughts though, let me know what you think.",
+      "revId": "8fd095fb5c22aa32957c9dad8076cfb5f903c381",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
