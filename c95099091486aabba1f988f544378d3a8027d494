@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "3d534cba_d5d7e4b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-11-12T22:35:20Z",
+      "side": 1,
+      "message": "I don\u0027t either.  I\u0027m just highlighting the boot time impact and potential issues we may run into here, but if we\u0027re convinced to this approach, then I don\u0027t see alternatives.\n\nI\u0027m wondering what wvw@ has to say here.\n\nWhat \u0027updateable\u0027 command?  Is there a separate CL that contains this?",
+      "parentUuid": "ad4aa6e6_6a2149da",
+      "revId": "c95099091486aabba1f988f544378d3a8027d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5381583_146e3d2f",
         "filename": "init/service.cpp",
         "patchSetId": 1
@@ -152,6 +170,30 @@
       "revId": "c95099091486aabba1f988f544378d3a8027d494",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ccddf2b_f04bd0fd",
+        "filename": "init/service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-11-12T22:35:20Z",
+      "side": 1,
+      "message": "FWIW, I actually disagree with this suggestion.  I find 0 clarity added when factoring out constants that are used once.  Most of system/core follows this policy; don\u0027t factory out constants until they\u0027re used in multiple locations.  Given that init explicitly does not factor out these constants, I\u0027d rather this goes back.",
+      "parentUuid": "23b752e9_95d1121c",
+      "range": {
+        "startLine": 1377,
+        "startChar": 39,
+        "endLine": 1377,
+        "endChar": 45
+      },
+      "revId": "c95099091486aabba1f988f544378d3a8027d494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
