@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "77d69843_03740e0b",
+        "filename": "fastboot/device/utility.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-11-13T21:05:40Z",
+      "side": 1,
+      "message": "Fair enough, the property is not really necessary. I added it since it makes it very clear this code has no effect on non-retrofit devices, but that can also just be spelled out in a comment.",
+      "parentUuid": "4382c529_93c1b122",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 5
+      },
+      "revId": "8fd095fb5c22aa32957c9dad8076cfb5f903c381",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfd75ccc_38d31b08",
         "filename": "fastboot/device/utility.cpp",
         "patchSetId": 1
@@ -53,6 +77,24 @@
       "writtenOn": "2018-11-12T17:40:14Z",
       "side": 1,
       "message": "Continuing my comment from the commit message: this would in theory always be a single super partition regardless of slot if we had a single large super partition on the retrofit devices.  That does seem to be doable, right?  The bootloader or DT could provide this information?  Or worst case we could probe both slots to see if we can find valid metadata?\n\nSeems more maintainable to me in the long term than supporting two separate metadata headers.  Just my thoughts though, let me know what you think.",
+      "revId": "8fd095fb5c22aa32957c9dad8076cfb5f903c381",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60d756f5_eb59540c",
+        "filename": "fastboot/device/utility.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-11-13T21:05:40Z",
+      "side": 1,
+      "message": "The maintenance burden amounts to: (1) the parameter passed to fs_mgr_get_super_partition, (2) the extra code in fastbootd to ensure both partitions are flashed, and (3) the mental overhead of having to remember this weirdness exists.\n\nI agree that probing seems better. DT/bootloader might be hard since the slot isn\u0027t known ahead of time, but peeking for the magic header should be easy.",
+      "parentUuid": "cfd75ccc_38d31b08",
       "revId": "8fd095fb5c22aa32957c9dad8076cfb5f903c381",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
