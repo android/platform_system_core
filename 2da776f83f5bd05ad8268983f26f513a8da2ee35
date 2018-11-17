@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "b052690b_64fea03f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-11-17T00:34:31Z",
+      "side": 1,
+      "message": "Good point - I just realized that \"getvar all\" will not report the inactive super partition. I\u0027ll fix that in the next version of this patch.\n\nPro for allowing unsuffixed partitions: it\u0027s almost no work to support them with this method. Con: I have no idea what to do about the getvar all case :) the simplest thing would be to ignore the inactive one (doing nothing, it would double-report it).\n\nPro for banning unsuffixed partitions: none of this weirdness. Cons: None for fastbootd. I\u0027m not sure for overlayfs. Need Mark\u0027s input on scratch_a/b.\n\n(Note: banning unsuffixed partitions would only need to be done on retrofit devices, but maybe it\u0027s a reasonable policy on any A/B device).",
+      "parentUuid": "bfc3e3ba_c7ede004",
+      "revId": "2da776f83f5bd05ad8268983f26f513a8da2ee35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc139e8a_2510bbba",
         "filename": "fastboot/device/utility.cpp",
         "patchSetId": 4
