@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "46757228_934e1de1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-11-19T18:14:36Z",
+      "side": 1,
+      "message": "scratch: on purpose fragile and aimed for simplicity (after much pushback with respect to the wishlists). For instance we delete override content on partition flash. eg: flash either vendor_a or vendor_b, remove /mnt/scratch/overlay/vendor tree. flashall, destroy scratch. etc.\n\nIf there is a problem, delete scratch and/or its contents.\n\nWe do not support a use case where developers are bouncing back and forth between A or B each individually overridden.\n\nWhen prototyped to support such, looked simpler with one scratch (or one /cache/overlay, or one /data/overlay ...) to switch to using suffixed directories as an implementation detail, eg: /mnt/scratch/overlay/vendor_a. Better space utilization (even despite scatch being created with half the free space as buffer) I think than playing games with two scratch_*. In the end I abandoned the effort as not useful and a corner case; since overlayfs is primarily used to update and investigate minor development changes and quickly deploy them on the device and not instead for maintaining two full builds representing each an a side and a b side with individual updates did not appear useful. If one wanted it, then a quick adb sync was in order in any case. Trying to make sure an override matched the underlying content was one of the issues too, we had to pull avb and verity metadata, leave that in the override directory, and check against what we were backing to match.\n\nSo special case scratch if you must, and if conflicted, destroy the partition if it is simpler, and add it to the list of caveats. All caveats can be solved, not all of them are worth solving. I can not entirely predict exactly how adb sync or adb push could be used/abused ;-|",
+      "parentUuid": "fa9d6210_a4563765",
+      "revId": "2da776f83f5bd05ad8268983f26f513a8da2ee35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc139e8a_2510bbba",
         "filename": "fastboot/device/utility.cpp",
         "patchSetId": 4
