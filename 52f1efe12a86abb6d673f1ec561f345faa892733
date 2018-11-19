@@ -16,6 +16,24 @@
       "revId": "52f1efe12a86abb6d673f1ec561f345faa892733",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "840c41e1_2dae2b78",
+        "filename": "fs_mgr/liblp/images.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-11-19T21:09:34Z",
+      "side": 1,
+      "message": "I agree with Tom, but deleted my initial comment about all these ifdef\u0027s because the advantage of openat:\n\nA) take advantage of the directory presence, non-symbolic-link and permissions checks in 172.\nB) atomically open the files underneath the directory associated with the referenced directory and not against a replacement (symbolic link).\n\nSecure programming practices being compromised by the least common denominator, I opted to keep my mouth shut about making this KISS and accepted the ugliness with but a tiny whince.\n\nThat said, this is only done under a controlled build context, and on the host, so I can live with this turning KISS.",
+      "parentUuid": "2b0fed95_d2c89e78",
+      "revId": "52f1efe12a86abb6d673f1ec561f345faa892733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
