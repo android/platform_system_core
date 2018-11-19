@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "888c88b7_651c3ee3",
+        "filename": "fs_mgr/liblp/images.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-11-19T16:00:51Z",
+      "side": 1,
+      "message": "ick maybe define a OS_PATH_SEPARATOR at line 32 (Ala libutils, libbase or adb), _maybe_ pull it in from utils/Compat.h but I am not sure of libutils\u0027 deprecation status.",
+      "range": {
+        "startLine": 182,
+        "startChar": 45,
+        "endLine": 182,
+        "endChar": 49
+      },
+      "revId": "7c6dc3d0b0428473cd5523f1d51fa22648a97610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d0677cb_163cb016",
+        "filename": "fs_mgr/liblp/partition_opener.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-11-19T16:00:51Z",
+      "side": 1,
+      "message": "nit: I do not see anything (directly) using this file here? required for open() when specifying a non-numerical DAC permissions, or when using stat().",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "7c6dc3d0b0428473cd5523f1d51fa22648a97610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af0aae1e_f787c734",
+        "filename": "fs_mgr/liblp/utility.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-11-19T16:00:51Z",
+      "side": 1,
+      "message": "There was talk of using liblp on filesystem images (and not through loopback) as a convenience, not just directly on devices, do we want to remove this fragment (and associated related headered) altogether?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 6
+      },
+      "revId": "7c6dc3d0b0428473cd5523f1d51fa22648a97610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4546fbe0_cca77e8e",
+        "filename": "fs_mgr/liblp/writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-11-19T16:00:51Z",
+      "side": 1,
+      "message": "O_CLOEXEC security requirement missing.\n\nmaybe make this part of PartitionOpener::Open by oring in the flag there?",
+      "range": {
+        "startLine": 244,
+        "startChar": 63,
+        "endLine": 244,
+        "endChar": 78
+      },
+      "revId": "7c6dc3d0b0428473cd5523f1d51fa22648a97610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
