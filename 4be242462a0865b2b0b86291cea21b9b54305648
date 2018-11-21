@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b34918f_48f3c7f7",
+        "filename": "fs_mgr/fs_mgr_vendor_overlay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-11-21T15:41:13Z",
+      "side": 1,
+      "message": "The \"\"s literal form is fine.\n\nBut it\u0027s former use was b/c it helps with simplification around auto. You have specified std::string for the members, so no issue with (type checking), or without (less clutter), them.",
+      "range": {
+        "startLine": 41,
+        "startChar": 32,
+        "endLine": 41,
+        "endChar": 34
+      },
+      "revId": "4be242462a0865b2b0b86291cea21b9b54305648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2272f97_f51efe9e",
+        "filename": "fs_mgr/fs_mgr_vendor_overlay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-11-21T15:41:13Z",
+      "side": 1,
+      "message": "nit: what about std::pair?\n\nconst auto [top, dir] \u003d mount_point;\n\ncan be used below if you do not like .first and .second for references.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "4be242462a0865b2b0b86291cea21b9b54305648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc233e31_5ed3e2a9",
+        "filename": "fs_mgr/fs_mgr_vendor_overlay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-11-21T15:41:13Z",
+      "side": 1,
+      "message": "eg: if using std:pair and forgoing a definition of struct MountPoint this becomes:\n\nconst auto source_director \u003d mount_point.first + \"/\" + mount_point.second;\n\nor if you do not like .first and .second\n\nconst auto [top, dir] \u003d mount_point;\nconst auto vendor_mount_point \u003d kVendorTopDir + dir;\n. . .\nconst auto source_directory \u003d top + \"/\" + dir;",
+      "range": {
+        "startLine": 87,
+        "startChar": 34,
+        "endLine": 87,
+        "endChar": 88
+      },
+      "revId": "4be242462a0865b2b0b86291cea21b9b54305648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
