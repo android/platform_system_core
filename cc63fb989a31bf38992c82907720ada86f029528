@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aee13551_d4c242e5",
+        "filename": "libunwindstack/Elf.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-11-26T22:15:09Z",
+      "side": 1,
+      "message": "Is it worth caching this value? I don\u0027t know how many times you expect to call this function. If it\u0027s only once, then definitely shouldn\u0027t be cached.",
+      "range": {
+        "startLine": 144,
+        "startChar": 19,
+        "endLine": 144,
+        "endChar": 52
+      },
+      "revId": "cc63fb989a31bf38992c82907720ada86f029528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "babe3883_4bf57528",
+        "filename": "libunwindstack/ElfInterface.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-11-26T22:15:09Z",
+      "side": 1,
+      "message": "I think you should use (size + alignment - 1) \u0026 -(alignment - 1).\n\nAlso, this one liner should be good enough, no need for the if.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 1
+      },
+      "revId": "cc63fb989a31bf38992c82907720ada86f029528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "830cb213_c1116539",
+        "filename": "libunwindstack/ElfInterface.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-11-26T22:15:09Z",
+      "side": 1,
+      "message": "I don\u0027t know if it\u0027s worth doing this read, it\u0027s probably easier simple to check the type and just skip the name.",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 5
+      },
+      "revId": "cc63fb989a31bf38992c82907720ada86f029528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3d56814_e226c3e2",
+        "filename": "libunwindstack/ElfInterface.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-11-26T22:15:09Z",
+      "side": 1,
+      "message": "Is there any measurable performance issue with this? I would think it\u0027s relatively small difference, but I\u0027m always worried about adding extras here.",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 43
+      },
+      "revId": "cc63fb989a31bf38992c82907720ada86f029528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
