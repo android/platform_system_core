@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "040940ff_34e76842",
+        "filename": "libunwindstack/Elf.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2018-11-27T11:41:25Z",
+      "side": 1,
+      "message": "I left this open as I was meaning to talk to you about how to use this best from our side.\n\nDo you think we should attach this to every FrameData, with a boolean that can be set to enable or disable it (much like symbolization)? Or do you think we should more directly use the ELF object from heapprofd? If we do the former then we have to do caching, if we do the later we could also do it at another layer.\n\nLet me know what you think is best here.",
+      "parentUuid": "aee13551_d4c242e5",
+      "range": {
+        "startLine": 144,
+        "startChar": 19,
+        "endLine": 144,
+        "endChar": 52
+      },
+      "revId": "cc63fb989a31bf38992c82907720ada86f029528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "babe3883_4bf57528",
         "filename": "libunwindstack/ElfInterface.cpp",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "cc63fb989a31bf38992c82907720ada86f029528",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3225c858_3e8bf4ce",
+        "filename": "libunwindstack/ElfInterface.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2018-11-27T11:41:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "babe3883_4bf57528",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 1
+      },
+      "revId": "cc63fb989a31bf38992c82907720ada86f029528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "158152ee_b54a4d12",
+        "filename": "libunwindstack/ElfInterface.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2018-11-27T11:41:25Z",
+      "side": 1,
+      "message": "man 5 elf says\n\n       n_type    Depending on the value of the name field, this member may\n                 have any of the following values:\n\nwhich is why I first read the field name to follow the spec. What do you think?",
+      "parentUuid": "830cb213_c1116539",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 5
+      },
+      "revId": "cc63fb989a31bf38992c82907720ada86f029528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3d56814_e226c3e2",
         "filename": "libunwindstack/ElfInterface.cpp",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2018-11-26T22:15:09Z",
       "side": 1,
       "message": "Is there any measurable performance issue with this? I would think it\u0027s relatively small difference, but I\u0027m always worried about adding extras here.",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 43
+      },
+      "revId": "cc63fb989a31bf38992c82907720ada86f029528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36c019a0_afa4879d",
+        "filename": "libunwindstack/ElfInterface.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2018-11-27T11:41:25Z",
+      "side": 1,
+      "message": "How do you recommend I test this? Is there some benchmark included I could run?",
+      "parentUuid": "d3d56814_e226c3e2",
       "range": {
         "startLine": 357,
         "startChar": 0,
