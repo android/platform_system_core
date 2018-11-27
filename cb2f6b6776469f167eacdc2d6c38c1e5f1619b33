@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b5b83c54_678a397d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-11-27T22:23:06Z",
+      "side": 1,
+      "message": "Does not matter how we get here, the code in its previous form would never self-heal and required complex unintuitive operations (monkeying with the partition tables, verity state, flashall etc) to restore the device and overlayfs to functional. Otherwise it remained borken. I view that as a serious problem, the mere permanence until manually fixed, with education and documentation of the Caveat being more trouble than the code is worth.\n\nfastboot does not prevent someone from flashing scratch and causing a resize, that is merely the way I could simulate the problem happening quickly to test this code.\n\nThe real problem being fixed is to correctly size the scratch partition in the face of limitations in free space, we hit this on a retrofit device. The former code got it wrong under some scenarios and failed to create scratch as a result making a mess(tm) of things.",
+      "parentUuid": "420fa743_90f8f0ce",
+      "revId": "cb2f6b6776469f167eacdc2d6c38c1e5f1619b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a55850fd_7b860caa",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 6
@@ -51,6 +69,24 @@
       "revId": "cb2f6b6776469f167eacdc2d6c38c1e5f1619b33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c10fbfab_3a5521a6",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-11-27T22:23:06Z",
+      "side": 1,
+      "message": "Discussed this with dvander@, decided that we wanted to leave some space for at least two more erase blocks to be added to any individual partition that needs to be flashed while overlayfs is in force. Of course, any more than that and we will get a flash failure for an individual partition. Discussed adding a mechanism in fastboot command, or fastbootd, to recognized this condition, notify and/or delete the scratch partition to facilitate re-flashing. Math can be used to determine if the flash will fail, so we can plan a soluttion. We also have the option to resized scratch, but that is likely to be more complicated.\n\nThis is here to give us time to evaluate an appropriate solution to this problem, a margin was viewed as KISS to keep the noise down until we have designed an appropriate mitigation.",
+      "parentUuid": "a55850fd_7b860caa",
+      "revId": "cb2f6b6776469f167eacdc2d6c38c1e5f1619b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
