@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfe3acf2_88e55e87",
+        "filename": "adb/fastdeploy/deployagent/src/com/android/fastdeploy/DeployAgent.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-11-28T16:43:46Z",
+      "side": 1,
+      "message": "I think this would be more obvious written something like the following, since it\u0027s not like the performance gained here is actually worth anything:\n\n    assert line.startsWith(packagePrefix);\n    String[] fragments \u003d line.split(\"\u003d\");\n    assert fragments.length \u003d\u003d 2;\n    if (packageName.equals(fragments[1]) { return ... };\n\n(especially since now that I look at it more carefully, there\u0027s a bug in the current implementation if the line doesn\u0027t actually start with the prefix. indexOf returns -1, so we do line.substring(packagePrefix.length() - 1, ...))",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 13
+      },
+      "revId": "42cda270027acf2e65a7b7aa14e3eaa7aa0b49ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
