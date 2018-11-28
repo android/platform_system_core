@@ -22,6 +22,98 @@
       "revId": "6a8bf4a206d6e335fa3e547c37a9f907426fd6bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1dd6d51d_0126d68a",
+        "filename": "libunwindstack/DexFile.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-11-28T23:46:23Z",
+      "side": 1,
+      "message": "Is this caching method data? The current code assumes that a backed method is cached in some way.",
+      "range": {
+        "startLine": 48,
+        "startChar": 41,
+        "endLine": 48,
+        "endChar": 63
+      },
+      "revId": "6a8bf4a206d6e335fa3e547c37a9f907426fd6bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a36504c0_25901fb5",
+        "filename": "libunwindstack/DexFile.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-11-28T23:46:23Z",
+      "side": 1,
+      "message": "Is the fd only used for the initial open call? It will get closed no matter what at the end of this function.",
+      "range": {
+        "startLine": 66,
+        "startChar": 6,
+        "endLine": 66,
+        "endChar": 16
+      },
+      "revId": "6a8bf4a206d6e335fa3e547c37a9f907426fd6bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77448cc7_bac1da1f",
+        "filename": "libunwindstack/DexFile.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-11-28T23:46:23Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be necessary, it inherits from DexFile, same as below.",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 17
+      },
+      "revId": "6a8bf4a206d6e335fa3e547c37a9f907426fd6bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15a5873a_e6742070",
+        "filename": "libunwindstack/tests/DexFileTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-11-28T23:46:23Z",
+      "side": 1,
+      "message": "I prefer that this be something like:\n\nASSERT_TRUE(DexFileFromFile...() \u003d\u003d nullptr);\n\nSo it\u0027s more explicit about what this is returning and what is expected.\n\nSame for all of the Create checks below.",
+      "range": {
+        "startLine": 36,
+        "startChar": 15,
+        "endLine": 36,
+        "endChar": 65
+      },
+      "revId": "6a8bf4a206d6e335fa3e547c37a9f907426fd6bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
