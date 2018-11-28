@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9b2f484_e4a64b07",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2018-11-28T22:58:12Z",
+      "side": 1,
+      "message": "Will comment in the bug, but this is working as designed: if \"a\" is DAP and \"b\" is non-DAP, then flashing system_b should work and should flash the physical system_b.\n\nI was initially going to say, we should take this patch anyway because there\u0027s no reason to flash secondary images on a retrofit device. But if we flash retrofit devices in factory then we do want system_other to be flashed for first-boot. And that means we probably also want it to be testable under \"fastboot flashall\".\n\nHowever things get weird if both slots have dynamic partitions. In that case, one of two things will happen. Let\u0027s assume the current slot is \"a\":\n (1) If super_b does not have a \"system_b\", then flashing will fail, because super_empty.img has no record for system_b, and we\u0027ll get the error in the bug report.\n (2) If super_b does have a \"system_b\", then it\u0027ll flash, but it will never mount. super_b\u0027s logical partitions are totally ignored, and the mount will fail.\n\nThis is worth fixing, but I\u0027m not sure what the answer is. Maybe fastboot should delete any logical \"other\" partition on retrofit devices, and flash system_other first, to ensure that the other DAP slot is totally removed.",
+      "revId": "d896df4d195e0a46ee4cfad121131555149aa379",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
