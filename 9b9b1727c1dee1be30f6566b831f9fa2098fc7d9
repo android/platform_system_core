@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f7ff022_1a2d6fc3",
+        "filename": "libunwindstack/ElfInterface.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-11-28T21:51:20Z",
+      "side": 1,
+      "message": "This should be uint64_t, I convert all offsets into this value so that it\u0027s the same everywhere.",
+      "range": {
+        "startLine": 247,
+        "startChar": 2,
+        "endLine": 247,
+        "endChar": 8
+      },
+      "revId": "9b9b1727c1dee1be30f6566b831f9fa2098fc7d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "688b3632_7bad34f6",
+        "filename": "libunwindstack/ElfInterface.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-11-28T21:51:20Z",
+      "side": 1,
+      "message": "This could overflow, so I\u0027d recommend something like a check at the beginning of the function:\nuint64_t tmp;\nif (__builtin_add_overflow(gnu_build_id_offset_, _gnu_build_id_size_, \u0026tmp)) {\n  return false;\n}",
+      "range": {
+        "startLine": 253,
+        "startChar": 28,
+        "endLine": 253,
+        "endChar": 57
+      },
+      "revId": "9b9b1727c1dee1be30f6566b831f9fa2098fc7d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a2953d4_21f0593e",
+        "filename": "libunwindstack/ElfInterface.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-11-28T21:51:20Z",
+      "side": 1,
+      "message": "Since you are only using this twice, it\u0027s probably not even worth making this a function. Simply doing the alignment here and below with a quick comment should be good.",
+      "range": {
+        "startLine": 265,
+        "startChar": 14,
+        "endLine": 265,
+        "endChar": 39
+      },
+      "revId": "9b9b1727c1dee1be30f6566b831f9fa2098fc7d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22368636_5e76f5ce",
+        "filename": "libunwindstack/ElfInterface.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-11-28T21:51:20Z",
+      "side": 1,
+      "message": "name \u003d\u003d \"GNU\"",
+      "range": {
+        "startLine": 267,
+        "startChar": 8,
+        "endLine": 267,
+        "endChar": 41
+      },
+      "revId": "9b9b1727c1dee1be30f6566b831f9fa2098fc7d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f3092e6_ac417438",
+        "filename": "libunwindstack/tests/ElfInterfaceTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-11-28T21:51:20Z",
+      "side": 1,
+      "message": "Should also add some negative tests when the size is not large enough to contain the buildid variables.",
+      "range": {
+        "startLine": 1171,
+        "startChar": 5,
+        "endLine": 1171,
+        "endChar": 30
+      },
+      "revId": "9b9b1727c1dee1be30f6566b831f9fa2098fc7d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
