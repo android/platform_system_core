@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2e896f9_1d34f414",
+        "filename": "fs_mgr/README.overlayfs.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-11-29T01:55:59Z",
+      "side": 1,
+      "message": "It should be noted that\n\n    adb remount -R\n\ncan replace these two lines",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 16
+      },
+      "revId": "f66e00d0db0694b7b626fc6fa2b6521341cad9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2c50221_b8dbd7b5",
+        "filename": "fs_mgr/README.overlayfs.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-11-29T01:55:59Z",
+      "side": 1,
+      "message": "$ adb stop\n$ adb sync\n$ adb start\n\nis preferred since it limits the amount of space used by the open file descriptors holding on to the inodes. Without this step one was usually confronted with an out-of-space warning.",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 14
+      },
+      "revId": "f66e00d0db0694b7b626fc6fa2b6521341cad9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7e44150_73083001",
+        "filename": "fs_mgr/README.overlayfs.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-11-29T01:55:59Z",
+      "side": 1,
+      "message": "This is hiding a long series of tiny caveats I have opted not to list here. eg:\n\n- There are other subtle caveats requiring complex logic to solve.\n  Have evaluated them as too complex or not worth the trouble, please\n  File a bug if a use case needs to be covered.\n  - The backing storage is treated fragile, if anything else has\n    issue with the space taken, the backing storage will be cleared\n    out and we reserve the right to not inform if the layering\n    does not prevent any messaging.\n  - Space remaining threshold is hard coded.  If 1% or more space\n    still remains, overlayfs will not be used, yet that amount of\n    space remaining is problematic.\n  - Flashing a partition via bootloader fastboot, as opposed to user\n    space fastbootd, is not detected, thus a partition may have\n    override content remaining.\n  - Space is limited, there is near unlimited space on userdata,\n    we have made an architectural decision to not utilize\n    /data/overlay/ at this time.  Acquiring space to use for\n    backing remains an ongoing battle.\n  - If multiple overrides backing directories exists for one reason\n    or another, the overrides are ignored.\n  - First stage init, or ramdisk, can not be overriden.\n  - Backing storage will be discarded or ignored on errors, leading\n    to confusion.  When debugging using **adb remount** it is\n    currently advised to confirm update is present after a reboot\n    to develop confidence.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 39
+      },
+      "revId": "f66e00d0db0694b7b626fc6fa2b6521341cad9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
