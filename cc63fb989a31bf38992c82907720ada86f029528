@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "92d2168d_15c7abb9",
+        "filename": "libunwindstack/Elf.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2018-11-29T13:25:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "008391bd_c2a6a78e",
+      "range": {
+        "startLine": 144,
+        "startChar": 19,
+        "endLine": 144,
+        "endChar": 52
+      },
+      "revId": "cc63fb989a31bf38992c82907720ada86f029528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "babe3883_4bf57528",
         "filename": "libunwindstack/ElfInterface.cpp",
         "patchSetId": 3
@@ -191,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "67c3f95c_fc78dac2",
+        "filename": "libunwindstack/ElfInterface.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2018-11-29T13:25:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "adc85553_5edd8139",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 5
+      },
+      "revId": "cc63fb989a31bf38992c82907720ada86f029528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3d56814_e226c3e2",
         "filename": "libunwindstack/ElfInterface.cpp",
         "patchSetId": 3
@@ -250,6 +298,30 @@
       "side": 1,
       "message": "I don\u0027t think there are any real good benchmarks for this. Probably one way is to run the libbacktrace tests individually, specifically, the check_for_leak_XXX, and keep track of the time it takes with and without this change. If you notice no real difference in runtime, then that\u0027s a good indication of the time it takes.\n\nThere are some backtrace benchmarks, but none of them do anything that would exercise this code.\n\nI\u0027m starting to add some benchmarks directly here (see https://android-review.googlesource.com/c/platform/system/core/+/836880).",
       "parentUuid": "36c019a0_afa4879d",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 43
+      },
+      "revId": "cc63fb989a31bf38992c82907720ada86f029528",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ce8bd84_ec914c6d",
+        "filename": "libunwindstack/ElfInterface.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2018-11-29T13:25:19Z",
+      "side": 1,
+      "message": "These tests are not passing for me in AOSP on the host or on the device, even without this CL.\n\n$ out/host/linux-x86/testcases/backtrace_test/x86_64/backtrace_test\n...\n47 FAILED TESTS\n  YOU HAVE 1 DISABLED TEST\n\n\n$ atest backtrace_test\n...\nSummary\n-------\nbacktrace_test: Passed: 0, Failed: 47",
+      "parentUuid": "64dfd577_7457da1d",
       "range": {
         "startLine": 357,
         "startChar": 0,
