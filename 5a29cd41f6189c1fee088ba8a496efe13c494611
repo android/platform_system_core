@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a99a90c_1649f3da",
+        "filename": "libunwindstack/ElfInterface.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-11-30T20:20:54Z",
+      "side": 1,
+      "message": "Can you add a comment explaining why you are doing this?",
+      "range": {
+        "startLine": 242,
+        "startChar": 2,
+        "endLine": 242,
+        "endChar": 15
+      },
+      "revId": "5a29cd41f6189c1fee088ba8a496efe13c494611",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "186de160_f6cb3685",
+        "filename": "libunwindstack/ElfInterface.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-11-30T20:20:54Z",
+      "side": 1,
+      "message": "Should probably also add an hdr.n_namesz \u003d\u003d 0, since this will cause problems down below.",
+      "range": {
+        "startLine": 258,
+        "startChar": 38,
+        "endLine": 258,
+        "endChar": 51
+      },
+      "revId": "5a29cd41f6189c1fee088ba8a496efe13c494611",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "321a81d9_f052a74a",
+        "filename": "libunwindstack/ElfInterface.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-11-30T20:20:54Z",
+      "side": 1,
+      "message": "Would be better as something like:\n\nif (name[hdr.n_namesz] \u003d\u003d \u0027\\0\u0027) {\n  name.resize(hdr.namesz - 1);\n}",
+      "range": {
+        "startLine": 267,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 23
+      },
+      "revId": "5a29cd41f6189c1fee088ba8a496efe13c494611",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
