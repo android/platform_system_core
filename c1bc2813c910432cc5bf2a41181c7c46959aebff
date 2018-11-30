@@ -16,6 +16,24 @@
       "revId": "c1bc2813c910432cc5bf2a41181c7c46959aebff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a886c787_851db4c1",
+        "filename": "fs_mgr/libfs_avb/avb_ops.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-11-30T06:59:25Z",
+      "side": 1,
+      "message": "It\u0027s still needed and agree it\u0027s a strange dependency.\nAnyway, this file will be removed later, where fs_mgr doesn\u0027t reply on libavb-\u003eavb_slot_verify(avb_ops, ...) to read/parse vbmeta structs.\n\n\nsystem/core/fs_mgr/libfs_avb/avb_ops.cpp:128:10: error: use of undeclared identifier \u0027fs_mgr_wait_for_file\u0027\n    if (!fs_mgr_wait_for_file(path, 1s)) {\n         ^\nsystem/core/fs_mgr/libfs_avb/avb_ops.cpp:134:9: error: use of undeclared identifier \u0027PERROR\u0027\n        PERROR \u003c\u003c \"Failed to open \" \u003c\u003c path;\n        ^\nsystem/core/fs_mgr/libfs_avb/avb_ops.cpp:143:13: error: use of undeclared identifier \u0027PERROR\u0027\n            PERROR \u003c\u003c \"Failed to lseek64 to end of the partition\";\n            ^\nsystem/core/fs_mgr/libfs_avb/avb_ops.cpp:149:13: error: use of undeclared identifier \u0027PERROR\u0027\n            PERROR \u003c\u003c \"Failed to lseek64 to the beginning of the partition\";\n            ^\nsystem/core/fs_mgr/libfs_avb/avb_ops.cpp:158:9: error: use of undeclared identifier \u0027PERROR\u0027\n        PERROR \u003c\u003c \"Failed to read \" \u003c\u003c num_bytes \u003c\u003c \" bytes from \" \u003c\u003c path \u003c\u003c \" offset \" \u003c\u003c offset;\n        ^",
+      "parentUuid": "d61085c9_85ed70c3",
+      "revId": "c1bc2813c910432cc5bf2a41181c7c46959aebff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
