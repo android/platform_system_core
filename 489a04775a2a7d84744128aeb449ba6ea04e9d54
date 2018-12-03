@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8a749d9d_beb60f33",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-12-03T17:42:12Z",
+      "side": 1,
+      "message": "I\u0027ll keep it in mind.  This whole struct may go away if the parsing is re-written, though that\u0027s not as important to rewrite as the fstab structs in the first place, so I\u0027m not sure when that\u0027ll happen.",
+      "parentUuid": "246f09ce_fc3d0c10",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 28
+      },
+      "revId": "489a04775a2a7d84744128aeb449ba6ea04e9d54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8b4fcbb_ca3c38f4",
         "filename": "fs_mgr/include_fstab/fstab/fstab.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-12-03T17:17:51Z",
       "side": 1,
       "message": "I\u0027d be tempted to land equivalent (inline) methods for these into FstabEntry in this CL ...",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 57
+      },
+      "revId": "489a04775a2a7d84744128aeb449ba6ea04e9d54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "930c307c_53534c6c",
+        "filename": "fs_mgr/include_fstab/fstab/fstab.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-12-03T17:42:12Z",
+      "side": 1,
+      "message": "I was originally thinking of doing that, but the bit values for each of these functions aren\u0027t public.  I think the below is better now anyway, that people can check entry.fs_mgr_flags.\u003cflag_name\u003e directly, especially since this is more of a \u0027struct\u0027 than a \u0027class\u0027 anyway.",
+      "parentUuid": "d8b4fcbb_ca3c38f4",
       "range": {
         "startLine": 72,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "26cf3b6b_264eb741",
+        "filename": "fs_mgr/include_fstab/fstab/fstab.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-12-03T17:42:12Z",
+      "side": 1,
+      "message": "Right, this is just for backwards compatibility with the original fs_mgr_flags int above.  The union will be dropped entirely once that is deprecated.  I\u0027ll add that todo inline.",
+      "parentUuid": "a67b22be_debfd605",
+      "range": {
+        "startLine": 123,
+        "startChar": 7,
+        "endLine": 156,
+        "endChar": 10
+      },
+      "revId": "489a04775a2a7d84744128aeb449ba6ea04e9d54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9290507_76521547",
         "filename": "fs_mgr/include_fstab/fstab/fstab.h",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "489a04775a2a7d84744128aeb449ba6ea04e9d54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "098116c9_32d2ffb7",
+        "filename": "fs_mgr/include_fstab/fstab/fstab.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-12-03T17:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9290507_76521547",
+      "range": {
+        "startLine": 159,
+        "startChar": 25,
+        "endLine": 159,
+        "endChar": 27
+      },
+      "revId": "489a04775a2a7d84744128aeb449ba6ea04e9d54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
