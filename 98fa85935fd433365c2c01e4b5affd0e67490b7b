@@ -162,6 +162,24 @@
     },
     {
       "key": {
+        "uuid": "04dabf56_3803e38a",
+        "filename": "rootdir/etc/ld.config.recovery.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2018-12-03T21:33:24Z",
+      "side": 1,
+      "message": "If it works like that I should see the linker load libart.so from the APEX when I execute /system/bin/dex2oat, but it still loads it from /system/${LIB}. So the linker only follows namespace.*.links when it cannot find the library in the namespace it\u0027s already in.\n\nThus if we were to remove e.g. /system/${LIB}/libart.so, it would start switching to the \"runtime\" namespace, and then libart.so would load libc.so from the APEX while the other libs in the default namespace would still load /system/${LIB}/libc.so, and that would be a problem.\n\nStill, if the namespace config isn\u0027t in place then we can\u0027t remove any library from either location, so I was wrong - this needs to go in first. After it is in we will however need to take care to remove libraries in strict reverse dependency order - lib{c,m,dl}.so need to be addressed first. I\u0027ll make a note of this on http://b/120266448.",
+      "parentUuid": "3395a650_48be354c",
+      "revId": "98fa85935fd433365c2c01e4b5affd0e67490b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2ff91db_3a0cbc2d",
         "filename": "rootdir/etc/ld.config.txt",
         "patchSetId": 3
@@ -324,6 +342,30 @@
       "revId": "98fa85935fd433365c2c01e4b5affd0e67490b7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d69eb2c9_2f3c0ec5",
+        "filename": "rootdir/etc/ld.config.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2018-12-03T21:33:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a159e49d_a273fa09",
+      "range": {
+        "startLine": 269,
+        "startChar": 25,
+        "endLine": 269,
+        "endChar": 30
+      },
+      "revId": "98fa85935fd433365c2c01e4b5affd0e67490b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -825,6 +867,30 @@
     },
     {
       "key": {
+        "uuid": "5e047d6f_76e9c7c0",
+        "filename": "rootdir/etc/ld.config.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2018-12-03T21:33:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94048028_c2af5418",
+      "range": {
+        "startLine": 396,
+        "startChar": 25,
+        "endLine": 396,
+        "endChar": 29
+      },
+      "revId": "98fa85935fd433365c2c01e4b5affd0e67490b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e16317d_531ae7c5",
         "filename": "rootdir/etc/ld.config.txt",
         "patchSetId": 3
@@ -964,6 +1030,30 @@
       "revId": "98fa85935fd433365c2c01e4b5affd0e67490b7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "153cb52c_a1cd8fbe",
+        "filename": "rootdir/etc/ld.config.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2018-12-03T21:33:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e14196c8_5219c48e",
+      "range": {
+        "startLine": 435,
+        "startChar": 25,
+        "endLine": 435,
+        "endChar": 30
+      },
+      "revId": "98fa85935fd433365c2c01e4b5affd0e67490b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
