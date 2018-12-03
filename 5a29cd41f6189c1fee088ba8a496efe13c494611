@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab60af0c_a4692b76",
+        "filename": "libunwindstack/ElfInterface.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2018-12-03T13:27:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a99a90c_1649f3da",
+      "range": {
+        "startLine": 242,
+        "startChar": 2,
+        "endLine": 242,
+        "endChar": 15
+      },
+      "revId": "5a29cd41f6189c1fee088ba8a496efe13c494611",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "186de160_f6cb3685",
         "filename": "libunwindstack/ElfInterface.cpp",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3668db00_4f05c11a",
+        "filename": "libunwindstack/ElfInterface.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2018-12-03T13:27:05Z",
+      "side": 1,
+      "message": "I think the current implementation works when n_namesz is zero, but it wastes some effort. Added.",
+      "parentUuid": "186de160_f6cb3685",
+      "range": {
+        "startLine": 258,
+        "startChar": 38,
+        "endLine": 258,
+        "endChar": 51
+      },
+      "revId": "5a29cd41f6189c1fee088ba8a496efe13c494611",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "321a81d9_f052a74a",
         "filename": "libunwindstack/ElfInterface.cpp",
         "patchSetId": 9
@@ -59,6 +107,30 @@
       "writtenOn": "2018-11-30T20:20:54Z",
       "side": 1,
       "message": "Would be better as something like:\n\nif (name[hdr.n_namesz] \u003d\u003d \u0027\\0\u0027) {\n  name.resize(hdr.namesz - 1);\n}",
+      "range": {
+        "startLine": 267,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 23
+      },
+      "revId": "5a29cd41f6189c1fee088ba8a496efe13c494611",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a6d7ea8_3601f68a",
+        "filename": "libunwindstack/ElfInterface.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2018-12-03T13:27:05Z",
+      "side": 1,
+      "message": "Isn\u0027t what\u0027s currently there more consistent with C strings? I can imagine someone putting two trailing nullbytes in the name, which the suggested code will handle incorrectly.",
+      "parentUuid": "321a81d9_f052a74a",
       "range": {
         "startLine": 267,
         "startChar": 0,
