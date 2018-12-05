@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c380f1db_b393a8c1",
+        "filename": "fs_mgr/README.overlayfs.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-12-05T17:00:16Z",
+      "side": 1,
+      "message": "Do I have to place the engineering reasoning in the document (trying to keep things boiled down)\n\nI could add \"For implementation simplicity, on retrofit dynamic ...\"\n\nIt is using it as a physical partition, not a logical for simplicity. 2.5GB is plenty.\n\nThe code was _much_ simpler doing so rather than having to get init tuned up to read and instantiate _both_ super partitions and then related logical assemblage, arrange to lay down empty retrofit metadata on system_b (that itself may, or may not, have dynamic partitions on it already) enumerating all possible physical targets at runtime, etc etc. It may have been a little bit simpler if we made our own linear target directly as compared to liblp, but the gain still would have been small since system is the elephant for the space.\n\nThis CL does not preclude doing so, but it gets us ready for the first bug against a retrofit device that says adb sync runs out of space way to easily (before this CL, we had roughly 510MB taken from side \"a\" slot free space, with this one it is 5 times larger).",
+      "parentUuid": "f521b85d_1262fb42",
+      "range": {
+        "startLine": 99,
+        "startChar": 48,
+        "endLine": 99,
+        "endChar": 56
+      },
+      "revId": "84a7b59ff5eb6018b549f24b10da41fdc86d903e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "faa9f30c_e1d2496e",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 10
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "273ec1c1_693f1e14",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-12-05T17:00:16Z",
+      "side": 1,
+      "message": "agreed will look into it, but var scope has made past splitting up attempts look ugly (so far, that just means I have to try again or am finding the wrong places to split :-) on).",
+      "parentUuid": "faa9f30c_e1d2496e",
+      "revId": "84a7b59ff5eb6018b549f24b10da41fdc86d903e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dcf1e417_f73879a0",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 10
@@ -53,6 +95,24 @@
       "writtenOn": "2018-12-05T00:15:38Z",
       "side": 1,
       "message": "Is this declaration intended?  It hides the partition_exists from line 668.",
+      "revId": "84a7b59ff5eb6018b549f24b10da41fdc86d903e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "835f155f_ff53efd4",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-12-05T17:00:16Z",
+      "side": 1,
+      "message": "Good catch, through rebases in my private branch with other ideas\u0026prototypes this keeps on coming back. Not intended. It breaks line 744 logic :-( and my test did not discover this because it would require a different device or manual change on line 654 to alter paths (which has been done on previous rebases). I need to make sure I run this alternate test _always_ moving forward.",
+      "parentUuid": "dcf1e417_f73879a0",
       "revId": "84a7b59ff5eb6018b549f24b10da41fdc86d903e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
