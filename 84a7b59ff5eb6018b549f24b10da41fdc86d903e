@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b4ae2d2e_f6a26379",
+        "filename": "fs_mgr/README.overlayfs.md",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-12-05T22:05:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11c236b4_55112580",
+      "range": {
+        "startLine": 99,
+        "startChar": 48,
+        "endLine": 99,
+        "endChar": 56
+      },
+      "revId": "84a7b59ff5eb6018b549f24b10da41fdc86d903e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "faa9f30c_e1d2496e",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 10
@@ -126,6 +150,24 @@
     },
     {
       "key": {
+        "uuid": "10bc8454_bc458b87",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-12-05T22:05:58Z",
+      "side": 1,
+      "message": "The future is now, I will spin out two dependent patched since there is no rush for _this_ CL to get in (this is a pre-emptive strike because 510MB might not universally be enough space for a viable overlayfs adb sync, but currently no one is really complaining yet). Besides, the simpler _this_ CL is the better, as retrofit-specific changes needs to be kept as simple pieces.\n\nPartition creation is by its liblp API nature a series of interlocking steps with slot_number, super_device, builder, partition, metadata, return status and error logs that has no logical reuse in the context of fs_mgr_overlayfs.cpp. So the cookbook does not appear to be able to be broken up without causing more maintenance headaches :-( but the overall fragment can be factored out.\n\nI have already factored out mount_scratch.\n\nI will factor out mkfs fragment.",
+      "parentUuid": "273ec1c1_693f1e14",
+      "revId": "84a7b59ff5eb6018b549f24b10da41fdc86d903e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcf1e417_f73879a0",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 10
@@ -158,6 +200,24 @@
       "revId": "84a7b59ff5eb6018b549f24b10da41fdc86d903e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6685ef12_eec0689c",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-12-05T22:05:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "835f155f_ff53efd4",
+      "revId": "84a7b59ff5eb6018b549f24b10da41fdc86d903e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
