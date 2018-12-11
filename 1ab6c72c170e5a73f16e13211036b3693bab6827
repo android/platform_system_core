@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "55da9973_d34184ad",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-12-11T22:36:35Z",
+      "side": 1,
+      "message": "I was thinking of doing this with iterators like I mentioned on the previous patchset, cause I was thinking that the tricks being played here were too much for just these references.\n\nBut actually turns out to be the opposite.  top_idx is actually just a stored version of \u0027i\u0027 that gets changed for the subsequent loop, which means that we only ever need current_entry and attempted_entry.  It\u0027s probably simpler now that it was before even!",
+      "parentUuid": "8cdb726c_8f89f6fa",
+      "range": {
+        "startLine": 988,
+        "startChar": 12,
+        "endLine": 988,
+        "endChar": 24
+      },
+      "revId": "1ab6c72c170e5a73f16e13211036b3693bab6827",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b91222b_1ce251e1",
         "filename": "init/first_stage_mount.cpp",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2018-12-11T14:48:32Z",
       "side": 1,
       "message": "nit: might consider adding a comment /* uevent_socket_rcvbuf_size */ or add a const kUeventSocketBufSize for it.\n\nAs this is not introduced in this CL, we can probably do this later.",
+      "range": {
+        "startLine": 133,
+        "startChar": 78,
+        "endLine": 133,
+        "endChar": 94
+      },
+      "revId": "1ab6c72c170e5a73f16e13211036b3693bab6827",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9825b17_460a9c9d",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-12-11T22:36:35Z",
+      "side": 1,
+      "message": "Maybe in a follow up CL; I agree this isn\u0027t quite the right one for that.",
+      "parentUuid": "6b91222b_1ce251e1",
       "range": {
         "startLine": 133,
         "startChar": 78,
