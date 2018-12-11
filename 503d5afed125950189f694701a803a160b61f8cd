@@ -22,6 +22,76 @@
       "revId": "503d5afed125950189f694701a803a160b61f8cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d5056d1_bbc1ac0a",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-12-11T15:52:30Z",
+      "side": 1,
+      "message": "L437 checks if the file exists first.\n\nSo if we reach L441, it means the file exist but we failed to read the content.\nWe might need to return false for such a case?\n\nOr we can just invoke ReadFileToString() directly at L437, and allow ReadFileToString() to return false.",
+      "parentUuid": "f7df8cc5_8015ae0e",
+      "range": {
+        "startLine": 441,
+        "startChar": 0,
+        "endLine": 441,
+        "endChar": 25
+      },
+      "revId": "503d5afed125950189f694701a803a160b61f8cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14c56d55_36017980",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-12-11T15:52:30Z",
+      "side": 1,
+      "message": "Should also check !skip_partition.empty(), because skip_partition might be an empty string.\n\ne.g., the following has skip_partitions[0] \u003d \"product\", skip_partitions[1] \u003d \"product_service\" and skip_partitions[2] \u003d \"\":\n------------\nproduct\nproduct_services \n------------\n\nhttps://android.googlesource.com/platform/system/core/+/pie-dev/base/strings_test.cpp#59",
+      "range": {
+        "startLine": 447,
+        "startChar": 16,
+        "endLine": 447,
+        "endChar": 89
+      },
+      "revId": "503d5afed125950189f694701a803a160b61f8cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40f6f287_7a1f7ab9",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-12-11T15:52:30Z",
+      "side": 1,
+      "message": "remove \u0027s\u0027",
+      "range": {
+        "startLine": 454,
+        "startChar": 67,
+        "endLine": 454,
+        "endChar": 68
+      },
+      "revId": "503d5afed125950189f694701a803a160b61f8cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
