@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7be900fc_32cb3e6e",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-12-12T18:21:05Z",
+      "side": 1,
+      "message": "I mean why have this restriction in init at all?  It reminds me of when we originally planned for first stage init to only do system, vendor, odm, then we had to expand that list and realized we would get vendor specific mounts too, etc and abandoned having the restriction.\n\nWe should be able to trust the skip_mount.cfg on GSI, and trust system.img even for non-GSI cases, right?  I don\u0027t think we need an added check here.",
+      "revId": "238487f3b30bc952e36be89ad1a390a16363f29c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e145dad8_7e2a72ea",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-12-12T18:21:05Z",
+      "side": 1,
+      "message": "Maybe just have the partitions fully specified in the config file?  In some future world if we\u0027d ever want to not mount a partition that\u0027s a subdirectory, \u0027mnt/partition\u0027 looks weird compared to if we always just specified \u0027/product\u0027 and \u0027/mnt/partition\u0027.",
+      "range": {
+        "startLine": 457,
+        "startChar": 60,
+        "endLine": 457,
+        "endChar": 80
+      },
+      "revId": "238487f3b30bc952e36be89ad1a390a16363f29c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
