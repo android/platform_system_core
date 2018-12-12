@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec70ffb1_8fb49d23",
+        "filename": "fs_mgr/fs_mgr_verity.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-12-12T17:39:32Z",
+      "side": 1,
+      "message": "this change is already big enough and this isn\u0027t a regression, but for future reference there\u0027s `android::base::Basename` that deals in `std::string` (though its real purpose is papering over the differences between the OSes, which you don\u0027t care about here).",
+      "range": {
+        "startLine": 721,
+        "startChar": 34,
+        "endLine": 721,
+        "endChar": 42
+      },
+      "revId": "23319ebebf6bda3b7aa085656ac5784534a4a574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5bd63e9_688631a0",
+        "filename": "libcutils/partition_utils.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-12-12T17:39:32Z",
+      "side": 1,
+      "message": "(seems like a good candidate for android::base::ReadFully. and shouldn\u0027t there be an O_CLOEXEC on the open? not a regression, so not in this already-large CL though...)",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "23319ebebf6bda3b7aa085656ac5784534a4a574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
