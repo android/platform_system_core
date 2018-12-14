@@ -46,6 +46,30 @@
       "revId": "162ad622b4e55259b69fc99337f24d48057321a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ea6298e_302401c1",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2018-12-14T09:45:43Z",
+      "side": 1,
+      "message": "Yup, I was considering \"void\" before, but it looks \"inconsistent\".\nSo finally I still decided to keep returning bool.\n\nAnyway, let me know how you think about it. I can change to void, too.\n\ne.g., in L455 below:\n\nbool FirstStageMount::MountPartitions() {\n    if (!TrySwitchSystemAsRoot()) return false;\n\n    TrySkipMountingPartitions();\n\n    ...",
+      "parentUuid": "0081333a_16e231c5",
+      "range": {
+        "startLine": 430,
+        "startChar": 0,
+        "endLine": 430,
+        "endChar": 4
+      },
+      "revId": "162ad622b4e55259b69fc99337f24d48057321a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
