@@ -16,6 +16,24 @@
       "revId": "b254a35d00632e69fe26f74b758fe3169a868258",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "156903e3_2214f0c0",
+        "filename": "libcutils/include/private/fs_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2018-12-17T09:35:07Z",
+      "side": 1,
+      "message": "I\u0027d like that but that wouldn\u0027t work as it is now, because we do use this struct in a C context in some places. Those are not unsafe by itself because those are not defining fs_path_config objects. That said, I just noticed that we generate OEM fs config files that use fs_path_config, so a fixed size here is a bit too fragile. I\u0027ll see if that can be fixed or I\u0027ll probably have to scrape this.",
+      "parentUuid": "2f95ef89_76eb5805",
+      "revId": "b254a35d00632e69fe26f74b758fe3169a868258",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
