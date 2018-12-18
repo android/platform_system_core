@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c64d5618_c6fa42c3",
+        "filename": "base/file.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2018-12-18T22:34:53Z",
+      "side": 1,
+      "message": "It\u0027d probably be good to add a DISALLOW_COPY_AND_ASSIGN(ScopedEvent) at the end of the class.\n\nAside: This class has a destructor, so definition of its implicit copy assign/ctor functions is deprecated as of C++11. Maybe someday C++ will actually remove the definitions, making many DISALLOW_COPY_AND_ASSIGN() declarations unnecessary. Probably not C++20, though:\n\nhttp://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0619r3.html#3.2\n\nClang does have the desired warning with -Wdeprecated, but that warning also rejects \"throw()\" in libc++ headers. I don\u0027t see a warning for G++.",
+      "revId": "6d00ee8a52f1754da823e03d2a0960064dfe4d31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
