@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bc6c2074_b548acd4",
+        "filename": "adb/daemon/services.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-12-18T22:07:11Z",
+      "side": 1,
+      "message": "Good catch, hoisting this to daemon_service_to_fd.",
+      "parentUuid": "4ff142f8_a5c08e19",
+      "range": {
+        "startLine": 188,
+        "startChar": 24,
+        "endLine": 188,
+        "endChar": 39
+      },
+      "revId": "b01559bd6ce70906e9c30b979bd9bc1b917c2333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78d556c3_a4fa1059",
         "filename": "adb/daemon/shell_service.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-12-14T21:51:50Z",
       "side": 1,
       "message": "can we use string_view here as well?",
+      "range": {
+        "startLine": 748,
+        "startChar": 26,
+        "endLine": 748,
+        "endChar": 42
+      },
+      "revId": "b01559bd6ce70906e9c30b979bd9bc1b917c2333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a76b5fe5_73e7d227",
+        "filename": "adb/daemon/shell_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-12-18T22:07:11Z",
+      "side": 1,
+      "message": "This is an optimization - we need to copy the string at some point to store in Subprocess.\nFor string literals, it\u0027s the effectively the same (construct into the std::string, and move into the Subprocess). If the caller has a string already, using string_view will copy it an extra time.\n\n(Except we take the string as a `const std::string\u0026` in Subprocess\u0027s constructor, so we end up copying again, oops, fixed.)",
+      "parentUuid": "78d556c3_a4fa1059",
       "range": {
         "startLine": 748,
         "startChar": 26,
