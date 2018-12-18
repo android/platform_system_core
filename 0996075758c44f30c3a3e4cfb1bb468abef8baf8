@@ -16,6 +16,24 @@
       "revId": "0996075758c44f30c3a3e4cfb1bb468abef8baf8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92bbbd0f_30bea26d",
+        "filename": "adb/sysdeps.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-12-18T21:56:30Z",
+      "side": 1,
+      "message": "This would work for string_views pointing into a std::string because they\u0027re specified to contain an extra byte you can dereference, but you can construct string_views into arbitrary memory, so I think this is generally unsafe. (e.g `std::string_view foo((char*)mmap(..., 4096, ..), 4096)`)",
+      "parentUuid": "4f10a114_36344070",
+      "revId": "0996075758c44f30c3a3e4cfb1bb468abef8baf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
