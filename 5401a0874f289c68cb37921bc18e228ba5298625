@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "d0770964_6126b26d",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-12-20T22:04:10Z",
+      "side": 1,
+      "message": "Formatting should be InstallZramDevice() for system/core: https://google.github.io/styleguide/cppguide.html#Function_Names",
+      "range": {
+        "startLine": 1349,
+        "startChar": 12,
+        "endLine": 1349,
+        "endChar": 29
+      },
+      "revId": "5401a0874f289c68cb37921bc18e228ba5298625",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a0f3bff2_e49bbfb6",
         "filename": "fs_mgr/fs_mgr.cpp",
         "patchSetId": 1
@@ -88,6 +111,23 @@
     },
     {
       "key": {
+        "uuid": "f839265d_ba00c70c",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1372,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-12-20T22:04:10Z",
+      "side": 1,
+      "message": "// for comments.",
+      "revId": "5401a0874f289c68cb37921bc18e228ba5298625",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8bc34a4a_bfe5385b",
         "filename": "fs_mgr/fs_mgr.cpp",
         "patchSetId": 1
@@ -99,6 +139,64 @@
       "writtenOn": "2018-12-20T05:49:49Z",
       "side": 1,
       "message": "why no unique_fd?",
+      "revId": "5401a0874f289c68cb37921bc18e228ba5298625",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50d7fa3b_6580c37c",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1386,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-12-20T22:04:10Z",
+      "side": 1,
+      "message": "or TEMP_FAILURE_RETRY() ?",
+      "parentUuid": "8bc34a4a_bfe5385b",
+      "revId": "5401a0874f289c68cb37921bc18e228ba5298625",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d78a0b2_b45aa5e8",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1432,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-12-20T22:04:10Z",
+      "side": 1,
+      "message": "You don\u0027t need the .c_str()\u0027s on this line.",
+      "revId": "5401a0874f289c68cb37921bc18e228ba5298625",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29f81930_bdef9e81",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-12-20T22:04:10Z",
+      "side": 1,
+      "message": "It\u0027s better have more explicit names here and in fstab.h.  Something like zram_loopback_path, zram_loopback_size_mb and zram_block_device_path.\n\nMight even be better to have zram_loopback_size be in bytes and not mb.  The rest of the sizes in this struct are all in bytes and ftruncate() takes size in bytes.\n\nNote that we have ParseByteCount() in android-base that parses strings with sizes such as \"12M\" or \"1024K\", etc.  It\u0027s probably best to use that and allow people to provide sizes in that format.",
+      "range": {
+        "startLine": 46,
+        "startChar": 16,
+        "endLine": 46,
+        "endChar": 25
+      },
       "revId": "5401a0874f289c68cb37921bc18e228ba5298625",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
