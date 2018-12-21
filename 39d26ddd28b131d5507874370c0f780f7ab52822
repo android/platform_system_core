@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0faa5e1_91235ea3",
+        "filename": "adb/adb_io.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-12-21T02:02:28Z",
+      "side": 1,
+      "message": "There was a bug here: CMSG_LEN and CMSG_SPACE are different macros for some idiotic reason; the result was that this was sending two file descriptors instead of one, which usually failed for me with EBADF because the second file descriptor didn\u0027t exist.\n\n(I\u0027m going to upload an updated version of this patch on top of all of the fixes I have for embedded nulls some time tonight, so don\u0027t worry about fixing this)",
+      "range": {
+        "startLine": 208,
+        "startChar": 4,
+        "endLine": 208,
+        "endChar": 46
+      },
+      "revId": "39d26ddd28b131d5507874370c0f780f7ab52822",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
