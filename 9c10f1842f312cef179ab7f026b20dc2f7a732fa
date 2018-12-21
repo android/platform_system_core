@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "21073283_fe117c06",
+        "filename": "init/devices.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-12-21T17:29:38Z",
+      "side": 1,
+      "message": "Right, I guess I meant device_name like I uploaded now, but in retrospect that would be a pretty useless symlink, since that\u0027s the name we use for the actual block device as /dev/block/\u003cdevice_name\u003e.\n\nWe could drop the /by-name from the hardcoded paths to allow people to specify by-name/super or just \u0027vda\u0027, though even I think that\u0027s a bit ugly.\n\nOr just continue with this and create these extra symlinks to make it easier for devices without partition names?\n\nAlistair - any opinions?  This is primary to help cuttlefish.",
+      "parentUuid": "c81cd3c3_f7e5090a",
+      "range": {
+        "startLine": 340,
+        "startChar": 31,
+        "endLine": 340,
+        "endChar": 52
+      },
+      "revId": "9c10f1842f312cef179ab7f026b20dc2f7a732fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d2fb4b9_8f162306",
         "filename": "init/devices.cpp",
         "patchSetId": 2
