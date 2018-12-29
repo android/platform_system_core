@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "151eccbd_1a00a907",
+        "filename": "fs_mgr/libfiemap_writer/fiemap_writer.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-12-29T05:48:36Z",
+      "side": 1,
+      "message": "I checked out https://cs.corp.google.com/aosp-master/system/core/fs_mgr/libfs_avb/fs_avb.cpp?l\u003d308 for example, which uses this nomenclature for local statics.\n\nI thought we used that for class vs non-class methods. I can change it in the last patchset if that was wrong. For now, I\u0027ll address other comments and add a bunch more tests.",
+      "parentUuid": "ce95c7c1_20b4a8e4",
+      "range": {
+        "startLine": 49,
+        "startChar": 12,
+        "endLine": 49,
+        "endChar": 32
+      },
+      "revId": "451d1844469ac06db85c2bb76b5d824d03fccd4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60bb6003_878ac48b",
         "filename": "fs_mgr/libfiemap_writer/fiemap_writer.cpp",
         "patchSetId": 11
@@ -76,6 +100,24 @@
       "writtenOn": "2018-12-29T02:58:28Z",
       "side": 1,
       "message": "Are these going to be used for anything else, particularly clients of FiemapWriter?  I\u0027m guessing not, since they\u0027re just used during initialization, right?  Probably better to make them constants within fiemap_writer.cpp itself.\n\n(Or just hardcode the paths directly where they\u0027re used since they\u0027re only used one time each?  They\u0027re pretty self explanatory string constants, so I don\u0027t really think factoring them out adds to readability.)",
+      "revId": "451d1844469ac06db85c2bb76b5d824d03fccd4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6af115e3_13389afd",
+        "filename": "fs_mgr/libfiemap_writer/include/libfiemap_writer/fiemap_writer.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-12-29T05:48:36Z",
+      "side": 1,
+      "message": "ack, they are used more than once in fiemap_writer.cpp. Making them local static constants works..",
+      "parentUuid": "2dd9c261_ae641771",
       "revId": "451d1844469ac06db85c2bb76b5d824d03fccd4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
