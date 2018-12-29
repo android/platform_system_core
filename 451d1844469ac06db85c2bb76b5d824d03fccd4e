@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce95c7c1_20b4a8e4",
+        "filename": "fs_mgr/libfiemap_writer/fiemap_writer.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-12-29T02:58:28Z",
+      "side": 1,
+      "message": "Probably still should be BlockDeviceToName().  I know we do a horrible job of that in fs_mgr, but new code should be formatted like that at least.",
+      "range": {
+        "startLine": 49,
+        "startChar": 12,
+        "endLine": 49,
+        "endChar": 32
+      },
+      "revId": "451d1844469ac06db85c2bb76b5d824d03fccd4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60bb6003_878ac48b",
+        "filename": "fs_mgr/libfiemap_writer/fiemap_writer.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-12-29T02:58:28Z",
+      "side": 1,
+      "message": "new doesn\u0027t return nullptr ever.  It\u0027ll throw (aka crash for us) if we\u0027re out of memory.",
+      "revId": "451d1844469ac06db85c2bb76b5d824d03fccd4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96201cac_18046058",
+        "filename": "fs_mgr/libfiemap_writer/fiemap_writer.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-12-29T02:58:28Z",
+      "side": 1,
+      "message": "0 ?",
+      "range": {
+        "startLine": 616,
+        "startChar": 15,
+        "endLine": 616,
+        "endChar": 20
+      },
+      "revId": "451d1844469ac06db85c2bb76b5d824d03fccd4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dd9c261_ae641771",
+        "filename": "fs_mgr/libfiemap_writer/include/libfiemap_writer/fiemap_writer.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-12-29T02:58:28Z",
+      "side": 1,
+      "message": "Are these going to be used for anything else, particularly clients of FiemapWriter?  I\u0027m guessing not, since they\u0027re just used during initialization, right?  Probably better to make them constants within fiemap_writer.cpp itself.\n\n(Or just hardcode the paths directly where they\u0027re used since they\u0027re only used one time each?  They\u0027re pretty self explanatory string constants, so I don\u0027t really think factoring them out adds to readability.)",
+      "revId": "451d1844469ac06db85c2bb76b5d824d03fccd4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
