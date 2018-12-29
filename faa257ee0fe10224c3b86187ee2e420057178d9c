@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "978ba238_c9c358be",
+        "filename": "fs_mgr/libfiemap_writer/fiemap_writer.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2018-12-29T19:18:20Z",
+      "side": 1,
+      "message": "I left this as is. I also don\u0027t like to have to write this \"cleanup\" function, but I do want to make sure we delete the file if we fail along the way. A lot of the initialization in Open() need the file created first, I couldn\u0027t defer it either.\n\nHonestly, all the cleanup() call sites are perfect candidates for something like \"goto error\" and I could have just put his 2 line code at the end of Open() as ..\n\n error:\n    if (create) unlink(file_path);\n\n.. ofcourse, it wasn\u0027t to be. Adding gotos for errors, makes \"goto skip over variable definitions\". :(",
+      "range": {
+        "startLine": 53,
+        "startChar": 19,
+        "endLine": 53,
+        "endChar": 26
+      },
+      "revId": "faa257ee0fe10224c3b86187ee2e420057178d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
