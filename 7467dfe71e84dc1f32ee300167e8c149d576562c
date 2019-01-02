@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63b29875_7016c481",
+        "filename": "fs_mgr/tests/adb-remount-test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-02T18:00:11Z",
+      "side": 1,
+      "message": "Easier and less cluttered to understand maybe if this was \u0027 /vendor/..*\u0027. Those with less familiarity with regex will see the {1,} as \u0027black box\u0027.\n\n(recognizing that toybox grep does not support \u0027 /vendor/.+\u0027, as is the case for non-gnu host-side tools as well, staying away from the \u0027+\u0027 extension is more portable)",
+      "range": {
+        "startLine": 359,
+        "startChar": 37,
+        "endLine": 359,
+        "endChar": 44
+      },
+      "revId": "7467dfe71e84dc1f32ee300167e8c149d576562c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "363e54aa_68e0a6d8",
+        "filename": "fs_mgr/tests/adb-remount-test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-02T18:00:11Z",
+      "side": 1,
+      "message": "Why clutter with escape embedded spaces (b/c passing through adb_sh)? I see that the current adb_sh grep (and others in this class with embedded spaces) are borken, we can fix this all in adb_sh function (with another problem I also noticed if ro.debuggable is _missing_):\n\ndiff --git a/fs_mgr/tests/adb-remount-test.sh b/fs_mgr/tests/adb-remount-test.sh\nindex 9e211e3bf..388164179 100755\n--- a/fs_mgr/tests/adb-remount-test.sh\n+++ b/fs_mgr/tests/adb-remount-test.sh\n@@ -61,7 +61,17 @@ inAdb() {\n \n Returns: true if the command succeeded\" ]\n adb_sh() {\n-  adb shell \"${@}\"\n+  args\u003d\n+  for i in ${@}; do\n+    if [ X\"${i}\" !\u003d X\"${i#\\\u0027}\" ]; then\n+      args\u003d\"${args} ${i}\"\n+    elif [ X\"${i}\" !\u003d X\"${i#* }\" ]; then\n+      args\u003d\"${args} \u0027${i}\u0027\"\n+    else\n+      args\u003d\"${args} ${i}\"\n+    fi\n+  done\n+  adb shell ${args}\n }\n \n [ \"USAGE: adb_date \u003e/dev/stdout\n@@ -92,7 +102,7 @@ get_property() {\n \n Returns: true if device is (likely) a debug build\" ]\n isDebuggable() {\n-  if inAdb \u0026\u0026 [ 1 -ne \"`get_property ro.debuggable`\" ]; then\n+  if inAdb \u0026\u0026 [ 1 !\u003d \"`get_property ro.debuggable`\" ]; then\n     false\n   fi\n }\n\n\nOr if you swap (actually preserve adb_sh grep \"^overlay \" /proc/mounts \u003c/dev/null) and add your grep -v in the \u0027host\u0027 side of the pipeline, you will not feel the need/FUD for them and thus reduce the clutter.",
+      "range": {
+        "startLine": 495,
+        "startChar": 28,
+        "endLine": 495,
+        "endChar": 30
+      },
+      "revId": "7467dfe71e84dc1f32ee300167e8c149d576562c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e184c45_f9c8cff4",
+        "filename": "fs_mgr/tests/adb-remount-test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-02T18:00:11Z",
+      "side": 1,
+      "message": ".* matches zero objects, could this lead to a problem?\n\nConsistency (with the other patterns) maybe \"^overlay /vendor/..* overlay ro,\" ?",
+      "range": {
+        "startLine": 495,
+        "startChar": 38,
+        "endLine": 495,
+        "endChar": 42
+      },
+      "revId": "7467dfe71e84dc1f32ee300167e8c149d576562c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
