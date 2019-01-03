@@ -22,6 +22,30 @@
       "revId": "fbc3a75ef49fa6577e7914b3dcf2b81cba78112a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9ff10ab_2a4dc157",
+        "filename": "llkd/libllkd.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-03T21:10:18Z",
+      "side": 1,
+      "message": "It is a symptom of the same problem _unrelated_ to llkd that caused me to add this in the first place.\n\nIt is possible via a long reach, before we would panic the kernel even though the process had been killed by other means, this circumvents the panic and continues looking at remaining processes. If they are all being killed rapidly (which kindof makes sense given they killed a process we were looking at), then all the others can appear as a storm of missed opportunities to monitor.\n\nMy recommendation is to change this _debug_ message to VERBOSE logging, I will fix as a side effect in \u0027llkd: report stack signature matched\u0027 CL, since that one is to adjust the debugging messaging anyways.",
+      "parentUuid": "3ed7bcd7_e8647c57",
+      "range": {
+        "startLine": 740,
+        "startChar": 8,
+        "endLine": 741,
+        "endChar": 56
+      },
+      "revId": "fbc3a75ef49fa6577e7914b3dcf2b81cba78112a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
