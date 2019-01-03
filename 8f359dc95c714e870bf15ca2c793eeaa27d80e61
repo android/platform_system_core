@@ -22,6 +22,30 @@
       "revId": "8f359dc95c714e870bf15ca2c793eeaa27d80e61",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ad6d0b0_e66598d4",
+        "filename": "llkd/libllkd.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-03T16:39:15Z",
+      "side": 1,
+      "message": "Yes, will add, I see now that I was being (Android System) selfish, and we need an ability for the vendor/partners to adjust the value.  It is easier said than done and will split this into multiple CLs.\n\n[TL;DR] Design\n\nThe explicit check only references getComm(), this was an efficiency objective. Will let go of that.\n\nMy original thought was to add it to ro.llk.blacklist.process as \u003cparent\u003e\u0026\u003cprocess\u003e (see below why we should not), better to place it into ro.llk.blacklist.parent as it is small.\n\nThere is a problem with using properties generically, they are limited to 92 characters. There is a higher limit on ro.* properties though, but that is not the point. There is also no limit on the internal value as assembled, also not the point ... ro.llk.blacklist.process is already at 175 characters. Today I made the judgement that this is the _only_ custom parent-\u003echild combination I could imagine for Android System, however I agree, it should be tunable in order to deal with vendor issues that come up ...\n\nTo address the problem with the properties length and add some life to them, I should expand the parser. Means to preserve the internal default as they can be viewed as Android System values, and allow vendors/partners/products to add/subtract entries. eg: use leading - characters for each entry to remove an internal default, a string leading , to preserve the internal default list, making following entries all additions (with an optional +) or subtractions. It does get interesting if name/symbols have a leading - or +, but still doable.  One place - may be useful is on the stack symbols. Also, if we wanted to monitor drivers we can head to the parent blacklist with \",-[kthreadd],-2\" seems rational.",
+      "parentUuid": "cb81cdcb_51223ff6",
+      "range": {
+        "startLine": 1035,
+        "startChar": 16,
+        "endLine": 1036,
+        "endChar": 85
+      },
+      "revId": "8f359dc95c714e870bf15ca2c793eeaa27d80e61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
