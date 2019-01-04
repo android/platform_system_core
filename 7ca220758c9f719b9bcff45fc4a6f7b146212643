@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "54f9984a_f37e7ae7",
+        "filename": "fs_mgr/libfiemap_writer/fiemap_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1176763
+      },
+      "writtenOn": "2019-01-04T04:30:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c305d11a_fa96532f",
+      "range": {
+        "startLine": 342,
+        "startChar": 1,
+        "endLine": 344,
+        "endChar": 72
+      },
+      "revId": "7ca220758c9f719b9bcff45fc4a6f7b146212643",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "062e77c2_08fe9345",
         "filename": "fs_mgr/libfiemap_writer/fiemap_writer.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-04T00:55:27Z",
       "side": 1,
       "message": "I still hit this failure with $ fiemap_writer_test /dev/block/sda21 --gtest_filter\u003dFiemapWriterTest.CheckWriteError.\nThe # blocks moved returned by the ioctl() on my device is 1. It doesn\u0027t make sense (to me).\n\nWhen I have commented out the IsFilePinned, my tests work (all of them), which indicates that the blocks are not _really_ moving.\n\nThe kernel I am running w/ aosp is  4.9.96-g641303d-ab5108637",
+      "range": {
+        "startLine": 354,
+        "startChar": 2,
+        "endLine": 356,
+        "endChar": 5
+      },
+      "revId": "7ca220758c9f719b9bcff45fc4a6f7b146212643",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0be5dcbb_a098b4e3",
+        "filename": "fs_mgr/libfiemap_writer/fiemap_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1176763
+      },
+      "writtenOn": "2019-01-04T04:30:53Z",
+      "side": 1,
+      "message": "I think it\u0027s caused by old pin_file implementation where sets 1 by default. Let me try this in latest b1c1.",
+      "parentUuid": "062e77c2_08fe9345",
       "range": {
         "startLine": 354,
         "startChar": 2,
