@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b9eb09c_824d5dea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-04T18:52:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f262956_4f404a5a",
+      "range": {
+        "startLine": 23,
+        "startChar": 6,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "bf1ad1b157090ee24096340afff5ec177b0b83f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c50bf19_e6875291",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "bf1ad1b157090ee24096340afff5ec177b0b83f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83bed58b_c84b5792",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-04T18:52:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c50bf19_e6875291",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 67
+      },
+      "revId": "bf1ad1b157090ee24096340afff5ec177b0b83f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "cb048052_42467551",
+        "filename": "llkd/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-04T18:52:44Z",
+      "side": 1,
+      "message": "I will discuss why \u0026 was selected to put developers at ease with it. Will also place that in the commit message. I will not discuss it in llkd.h.",
+      "parentUuid": "80d47f95_f680d62e",
+      "range": {
+        "startLine": 168,
+        "startChar": 45,
+        "endLine": 168,
+        "endChar": 46
+      },
+      "revId": "bf1ad1b157090ee24096340afff5ec177b0b83f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd86a519_fdc238ff",
         "filename": "llkd/include/llkd.h",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "bf1ad1b157090ee24096340afff5ec177b0b83f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6555bfd_10454ca7",
+        "filename": "llkd/include/llkd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-04T18:52:44Z",
+      "side": 1,
+      "message": "dots (.) exist in process names (which includes comm _and_ cmdline), makes this a parse nightmare, even the last dot would cause two checks (one for the full parent, and one for the partial(?) parent and child). I was thinking of \u0027/\u0027 until I remembered cmdline matches. I had to choose a character that could never(!) be part of the process name, or is orthogonal for process naming, without escaping at every turn in normal or enhanced use (\u0027\u0026\u0027, \u0027\u0026\u0027, \u0027!\u0027, \u0027#\u0027, \u0027(\u0027, \u0027)\u0027, \u0027*\u0027, \u0027`\u0027 etc) and \u0027\u0026\u0027 just screams _and_. Sadly all viable candidates would require quoting/escaping for a shell setprop, but not in init setprop.\n\nThe parent must always be specified, so \u0027*\u0027 on the left side no. A child (or rather the target) is blacklisted separately so no need. If we supported it, they would enhance the ro.llk.blacklist.process property when specified in ro.llk.blacklist.parent property.\n\n\u0026* is syntactically an idea, but I do not want anyone to use it as it gains nothing.\n\nNB: in the future we may consider adding syntactic candy \u003cparent\u003e\u0026{\u003cchild1\u003e,\u003cchild2\u003e,...}, but for now \u003cparent\u003e\u0026\u003cchild1\u003e,\u003cparent\u003e\u0026\u003cchild2\u003e,... as we do not foresee a scaling problem there yet. We do not support a negation like adbd,-adbd\u0026sh for example, but maybe one day.",
+      "parentUuid": "fd86a519_fdc238ff",
+      "range": {
+        "startLine": 59,
+        "startChar": 55,
+        "endLine": 59,
+        "endChar": 68
+      },
+      "revId": "bf1ad1b157090ee24096340afff5ec177b0b83f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b85063e6_1d172b23",
+        "filename": "llkd/libllkd.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-04T18:52:44Z",
+      "side": 1,
+      "message": "Decided to add an additional leading_comma parameter default false to subvert the usage antipattern. Optimizer will inline I expect and remove this check.",
+      "parentUuid": "4cb47845_50f2dd94",
+      "range": {
+        "startLine": 637,
+        "startChar": 16,
+        "endLine": 637,
+        "endChar": 26
+      },
+      "revId": "bf1ad1b157090ee24096340afff5ec177b0b83f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6021fddb_ecb616e9",
         "filename": "llkd/libllkd.cpp",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "bf1ad1b157090ee24096340afff5ec177b0b83f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1f2b330_fa814db3",
+        "filename": "llkd/libllkd.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-04T18:52:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6021fddb_ecb616e9",
+      "range": {
+        "startLine": 916,
+        "startChar": 87,
+        "endLine": 916,
+        "endChar": 90
+      },
+      "revId": "bf1ad1b157090ee24096340afff5ec177b0b83f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
