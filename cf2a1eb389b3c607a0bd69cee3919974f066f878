@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe9d393c_71cfc7e0",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1099,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2019-01-04T07:55:26Z",
+      "side": 1,
+      "message": "Should be moved out of `if (access(...) \u003d\u003d 0) {`?",
+      "range": {
+        "startLine": 1096,
+        "startChar": 0,
+        "endLine": 1099,
+        "endChar": 9
+      },
+      "revId": "cf2a1eb389b3c607a0bd69cee3919974f066f878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13cf1d20_30e813ce",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1165,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2019-01-04T07:55:26Z",
+      "side": 1,
+      "message": "It seems to be a good candidate to be extracted into functions:\n\n    static Result\u003cSuccess\u003e bind_mount_file(const char *source, const char *mount_point, bool remount_private) {\n        if (remount_private \u0026\u0026 mount(nullptr, mount_point, nullptr, MS_PRIVATE, nullptr) \u003d\u003d -1) {\n            return ErrnoError() \u003c\u003c \"Could not change \" \u003c\u003c mount_point \u003c\u003c \" to a private mount point\";\n        }\n        if (mount(source, mount_point, nullptr, MS_BIND, nullptr) \u003d\u003d -1) {\n            return ErrnoError() \u003c\u003c \"Could not bind-mount \" \u003c\u003c source \u003c\u003c \" to \" \u003c\u003c mount_point;\n        }\n        return Success();\n    }\n\n    static Result\u003cSuccess\u003e bind_mount_bionic(const char *linker_source, const char *lib_dir_source,\n                                             bool remount_private) {\n        if (access(lib_dir_mount_point, F_OK) !\u003d 0) {\n            return Success();\n        }\n        if (auto result \u003d bind_mount_file(linker_source, kLinkerMountPoint, remount_private); !result) {\n            return result;\n        }\n        for (auto libname : kBionicLibFileNames) {\n            std::string mount_point \u003d kBionicLibsMountPoint + libname;\n            std::string source \u003d lib_dir_source + libname;\n            if (auto result \u003d bind_mount_file(source.c_str(), mount_point.c_str(), remount_private); !result) {\n                return result;\n            }\n        }\n        return Success();\n    }\n\nAnd change Line 1095-1124 into:\n\n    if (auto result \u003d bind_mount_bionic(kBootstrapLinkerPath, kBootstrapBionicLibsDir, false); !result) {\n        return result;\n    }\n    if (auto result \u003d bind_mount_bionic(kBootstrapLinkerPath64, kBootstrapBionicLibsDir64, false); !result) {\n        return result;\n    }\n\nAnd change Line 1141-1191 into:\n\n    if (auto result \u003d bind_mount_bionic(kRuntimeLinkerPath, kRuntimeBionicLibsDir, false); !result) {\n        return result;\n    }\n    if (auto result \u003d bind_mount_bionic(kRuntimeLinkerPath64, kRuntimeBionicLibsDir64, false); !result) {\n        return result;\n    }",
+      "range": {
+        "startLine": 1141,
+        "startChar": 0,
+        "endLine": 1165,
+        "endChar": 5
+      },
+      "revId": "cf2a1eb389b3c607a0bd69cee3919974f066f878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
