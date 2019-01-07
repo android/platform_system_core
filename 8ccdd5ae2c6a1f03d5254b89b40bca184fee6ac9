@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "6c82460c_6062c45e",
+        "filename": "init/service.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-07T13:08:48Z",
+      "side": 1,
+      "message": "\u003e BTW just to confirm ...\n\nYes right. You can double-confirm this in your host machine.\n\n----------\n$ echo bootstrap \u003e bootstrap\n$ echo updated \u003e updated\n$ sudo mount --bind bootstrap bootstrap\n$ echo bootstrap\nbootstrap\n$ cat /proc/self/mountinfo \n547 112 254:2 /home/jiyong/temp/bootstrap /usr/local/google/home/jiyong/temp/bootstrap rw,relatime shared:61 - ext4 \n\n// fork a new shell with separate mount namespace\n$ PS1\u003d\u0027pre_apexd# \u0027 sudo unshare -m --propagation unchanged sh\npre_apexd# cat bootstrap\nbootstrap\npre_apexd# cat /proc/self/mountinfo\n658 654 254:2 /home/jiyong/temp/bootstrap /usr/local/google/home/jiyong/temp/bootstrap rw,relatime shared:61 - ext4 \n// note that mountpoint ID has changed. This is a copy of the mountpoint 547.\n\n// open a new terminal (sharing the same mount namespace with the initial shell)\n$ cat /proc/self/mountinfo\n547 112 254:2 /home/jiyong/temp/bootstrap /usr/local/google/home/jiyong/temp/bootstrap rw,relatime shared:61 - ext4 \n// make the existing mount point private and bind-mount the new file\n$ sudo mount --make-private bootstrap\n$ sudo mount --bind updated bootstrap\n$ cat bootstrap\nupdated\n$ cat /proc/self/mountinfo\n547 112 254:2 /home/jiyong/temp/bootstrap /usr/local/google/home/jiyong/temp/bootstrap rw,relatime - ext4 \n667 547 254:2 /home/jiyong/temp/updated /usr/local/google/home/jiyong/temp/bootstrap rw,relatime shared:61 - ext4 \n// note that shared:xxx is not shown for the mountpoint 547\n// the new mount point 667 has 547 whose propagation type is private as its parent. So mounting of 667 is not propagated to any other mount namespace.\n\n// switch to the shell launched with unshare\npre_apexd# cat bootstrap\nbootstrap\npre_apexd# cat /proc/self/mountinfo\n658 654 254:2 /home/jiyong/temp/bootstrap /usr/local/google/home/jiyong/temp/bootstrap rw,relatime shared:61 - ext4",
+      "parentUuid": "f0383fe6_4fb21b16",
+      "range": {
+        "startLine": 996,
+        "startChar": 21,
+        "endLine": 996,
+        "endChar": 55
+      },
+      "revId": "8ccdd5ae2c6a1f03d5254b89b40bca184fee6ac9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c14ad8d8_3f473305",
         "filename": "init/service.cpp",
         "patchSetId": 6
