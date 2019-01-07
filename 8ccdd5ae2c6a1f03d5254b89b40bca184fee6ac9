@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ad75310_b50d3549",
+        "filename": "init/service.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-07T10:47:40Z",
+      "side": 1,
+      "message": "this seems a bit weird - if the propagation type is set to private, why would they propagate?\n\nI guess it is because bind-mounting /system/lib/libc.so is a mount event on \u0027/\u0027, so even if the mount /system/lib/libc.so itself is private, it will still be propagated because / is \u0027shared\u0027?",
+      "range": {
+        "startLine": 996,
+        "startChar": 21,
+        "endLine": 996,
+        "endChar": 55
+      },
+      "revId": "8ccdd5ae2c6a1f03d5254b89b40bca184fee6ac9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c14ad8d8_3f473305",
+        "filename": "init/service.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-07T10:47:40Z",
+      "side": 1,
+      "message": "mount",
+      "range": {
+        "startLine": 998,
+        "startChar": 35,
+        "endLine": 998,
+        "endChar": 40
+      },
+      "revId": "8ccdd5ae2c6a1f03d5254b89b40bca184fee6ac9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bc643bb_605e2498",
+        "filename": "init/service.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-07T10:47:40Z",
+      "side": 1,
+      "message": "does this still work correctly if \u0027pre_apex_\u0027 is true? Should we prevent this code from running in that case?",
+      "range": {
+        "startLine": 1006,
+        "startChar": 9,
+        "endLine": 1006,
+        "endChar": 45
+      },
+      "revId": "8ccdd5ae2c6a1f03d5254b89b40bca184fee6ac9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e4cc9f5_70141677",
+        "filename": "init/service.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1394,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-01-07T10:47:40Z",
+      "side": 1,
+      "message": "I guess init is single-threaded so this is not racy?",
+      "range": {
+        "startLine": 1392,
+        "startChar": 0,
+        "endLine": 1394,
+        "endChar": 1
+      },
+      "revId": "8ccdd5ae2c6a1f03d5254b89b40bca184fee6ac9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
