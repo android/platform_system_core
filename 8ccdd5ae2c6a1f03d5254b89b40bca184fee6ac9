@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "10bb45a0_25818a05",
+        "filename": "init/service.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-08T02:12:32Z",
+      "side": 1,
+      "message": "That\u0027s an interesting idea, and I think it\u0027s better in terms of memory usage. But I wonder if it can be implemented. (maybe I am missing something, if so please enlighten me). \n\nIt looks like you are suggesting to use setns to join the \u0027pre-apexd\u0027 mount namespace. But how can we save the mount namespace? The first pre-apexd process might have been finished (or killed), in which case we need to use the second pre-apexd process and so on. If there is a pre-apexd process that is gauranteed to be alive forever (i.e. ueventd?), then we can use /proc/`pidof ueventd`/ns/mnt, but to me this seems to be more brittle than what I am doing here.\n\n\u003e brittle\n\nI don\u0027t understand this part. Could you explain how this could break?",
+      "parentUuid": "34d97ed7_df9c8314",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 78
+      },
+      "revId": "8ccdd5ae2c6a1f03d5254b89b40bca184fee6ac9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ad75310_b50d3549",
         "filename": "init/service.cpp",
         "patchSetId": 6
