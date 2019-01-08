@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "3848b01e_0c2f38c9",
+        "filename": "fs_mgr/include_fstab/fstab/fstab.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-01-08T18:18:58Z",
+      "side": 1,
+      "message": "Do we really want this in a public header, especially the one for fstab?  This shouldn\u0027t be used anywhere other than within fs_mgr (and I don\u0027t see any other users in cs/ either).",
+      "revId": "4655c4ead73fcfb36e08b3e6de25c55e865952f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c65e3b6_fa8f266f",
         "filename": "fs_mgr/libfs_avb/avb_util.cpp",
         "patchSetId": 5
@@ -214,6 +231,30 @@
       "writtenOn": "2019-01-08T10:28:49Z",
       "side": 1,
       "message": "libchrome logging.h and android-base logging.h have many duplicated macro definitions.\n\ne.g., CHECK(), ERROR, WARNING, etc.\n\nSo we can only include one of them.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "4655c4ead73fcfb36e08b3e6de25c55e865952f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9be4d63_73f1a0cc",
+        "filename": "fs_mgr/libfs_avb/util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-01-08T18:18:58Z",
+      "side": 1,
+      "message": "Why are we using libchrome anyway?  I noticed that in past CLs and probably should have commented.  Seems to be mainly for FilePath?  Does android-base not have equivalent functions, esp with the TempDir / TempFile classes?",
+      "parentUuid": "6f3f3b58_41406edb",
       "range": {
         "startLine": 22,
         "startChar": 0,
