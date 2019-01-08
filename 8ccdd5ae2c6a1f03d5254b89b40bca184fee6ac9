@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ef465926_f016918e",
+        "filename": "init/service.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-01-08T16:37:22Z",
+      "side": 1,
+      "message": "See the docs. If you keep either a bind mount or fd open to the corresponding /proc entry, it is kept alive, and you need an fd for setns anyways :-) (the only problem with keeping fd alive is that you need to close it in the child to not run into issues in the zygote etc).\n\nBrittle: easy to break, harder to maintain than necessary. Re-doing the setup means any of the calls below can fail. E.g., you assume you can unmount the linker etc below. Is there a race here? What does the kernel say when someone else is just in the same moment opening those? (Personally no clue, but any number of calls that can fail is worse than a single setup call...) Then comes the question of updating the list. What if you forget to update this code? And similarly, you have to re-run the pre-apexd-mount stage afterwards. That\u0027s a lot of redone work that could go wrong.\n\nIn general, it was just an observation. setns might turn out looking complicated, too. So I\u0027m fine merging this as-is, and we can decide to iterate on it if necessary.",
+      "parentUuid": "10bb45a0_25818a05",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 78
+      },
+      "revId": "8ccdd5ae2c6a1f03d5254b89b40bca184fee6ac9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ad75310_b50d3549",
         "filename": "init/service.cpp",
         "patchSetId": 6
