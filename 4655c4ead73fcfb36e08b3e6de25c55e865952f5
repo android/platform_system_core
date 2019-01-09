@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9532e10d_84c9a820",
+        "filename": "fs_mgr/include_fstab/fstab/fstab.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-01-09T04:57:42Z",
+      "side": 1,
+      "message": "This is because I used fs_mgr/libfs_avb/Android.bp to build libfs_avb.\nAnd can\u0027t want to have relative path include:  #include \"../fs_mgr_priv_boot_config.h\"\n\nSo move it to fstab.h such that I can include \u003cfstab/fstab.h\u003e with static_lib: libfstab.\n\nAnyway, I\u0027ll switch to use #include \"../fs_mgr_priv_boot_config.h\".\nOr let me know if you prefer to keep libfs_avb\u0027s bp stay in fs_mgr/Android.bp.",
+      "parentUuid": "3848b01e_0c2f38c9",
+      "revId": "4655c4ead73fcfb36e08b3e6de25c55e865952f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c65e3b6_fa8f266f",
         "filename": "fs_mgr/libfs_avb/avb_util.cpp",
         "patchSetId": 5
@@ -264,6 +282,30 @@
       "revId": "4655c4ead73fcfb36e08b3e6de25c55e865952f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "125e0bbc_b9dc2baf",
+        "filename": "fs_mgr/libfs_avb/util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-01-09T04:57:42Z",
+      "side": 1,
+      "message": "android-base doesn\u0027t have Append(), similar to os.path.join() in python (then I don\u0027t have to deal with separators or drive letter, C:\\ ).\n\nAlso, android-base doesn\u0027t have GetTempDir() to get system\u0027s default tmp dir (in Linux, it\u0027s /tmp).\n\nAnyway, I can remove using libchrome, and just use string + for Append() then hardcoded /tmp/ for tests.\n\nI thought using libchrome will be more portable but it can\u0027t be used in Mac.\nSo hardcoded /tmp + \"/\" separators should probably be fine here.",
+      "parentUuid": "d9be4d63_73f1a0cc",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "4655c4ead73fcfb36e08b3e6de25c55e865952f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
