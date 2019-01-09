@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "cb1d9687_cc5a343d",
+        "filename": "fs_mgr/include_fstab/fstab/fstab.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-01-09T18:10:07Z",
+      "side": 1,
+      "message": "The relative path isn\u0027t pretty, but I think it\u0027s better than exposing this entirely.  \n\nAlternatively and a bit more cleanly, this could be exposed in one of the fs_mgr headers, since it makes more sense there than with the fstab code.",
+      "parentUuid": "9532e10d_84c9a820",
+      "revId": "4655c4ead73fcfb36e08b3e6de25c55e865952f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c65e3b6_fa8f266f",
         "filename": "fs_mgr/libfs_avb/avb_util.cpp",
         "patchSetId": 5
@@ -344,6 +362,30 @@
       "side": 1,
       "message": "After some survey, will try to use \u003cexperimental/filesystem\u003e from C++-17.",
       "parentUuid": "125e0bbc_b9dc2baf",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "4655c4ead73fcfb36e08b3e6de25c55e865952f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1084528f_72ad56a0",
+        "filename": "fs_mgr/libfs_avb/util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-01-09T18:10:07Z",
+      "side": 1,
+      "message": "I\u0027m not sure that experimental/filesystem is ready yet, danalbert@ would know.\n\nDo we need to build any of this for windows?  I guess I\u0027m not totally sure if we plan to have windows host utils using this.  Presumably we wouldn\u0027t build the tests for windows host in any case?\n\nandroid-base does have GetSystemTempDir(); it also has TemporaryDir.  Are those not enough?",
+      "parentUuid": "ed4e9c7a_44fe8303",
       "range": {
         "startLine": 22,
         "startChar": 0,
