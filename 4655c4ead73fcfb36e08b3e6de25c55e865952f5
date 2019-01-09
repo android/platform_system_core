@@ -146,6 +146,29 @@
     },
     {
       "key": {
+        "uuid": "3ddcd7ec_248945e6",
+        "filename": "fs_mgr/libfs_avb/tests/fs_avb_test_util.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-01-09T08:56:09Z",
+      "side": 1,
+      "message": "This is from libchrome, too.\n\nI\u0027ll also drop this and use android::base::GetExecutableDirectory() + \"tests/data\" instead.",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 29
+      },
+      "revId": "4655c4ead73fcfb36e08b3e6de25c55e865952f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b15224c1_a09b0cb3",
         "filename": "fs_mgr/libfs_avb/tests/fs_avb_test_util.cpp",
         "patchSetId": 5
@@ -297,6 +320,30 @@
       "side": 1,
       "message": "android-base doesn\u0027t have Append(), similar to os.path.join() in python (then I don\u0027t have to deal with separators or drive letter, C:\\ ).\n\nAlso, android-base doesn\u0027t have GetTempDir() to get system\u0027s default tmp dir (in Linux, it\u0027s /tmp).\n\nAnyway, I can remove using libchrome, and just use string + for Append() then hardcoded /tmp/ for tests.\n\nI thought using libchrome will be more portable but it can\u0027t be used in Mac.\nSo hardcoded /tmp + \"/\" separators should probably be fine here.",
       "parentUuid": "d9be4d63_73f1a0cc",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "4655c4ead73fcfb36e08b3e6de25c55e865952f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed4e9c7a_44fe8303",
+        "filename": "fs_mgr/libfs_avb/util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-01-09T08:56:09Z",
+      "side": 1,
+      "message": "After some survey, will try to use \u003cexperimental/filesystem\u003e from C++-17.",
+      "parentUuid": "125e0bbc_b9dc2baf",
       "range": {
         "startLine": 22,
         "startChar": 0,
