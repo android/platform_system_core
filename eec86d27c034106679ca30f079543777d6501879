@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e60c7aab_cd5af614",
+        "filename": "fs_mgr/liblp/builder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-10T16:15:16Z",
+      "side": 1,
+      "message": "nit: it appears this is used primarily in it\u0027s std::string form below, so maybe\n\nstatic const std::string kDefaultGroup \u003d \"default\";",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 50
+      },
+      "revId": "eec86d27c034106679ca30f079543777d6501879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a275cc8a_35498c2a",
+        "filename": "fs_mgr/liblp/builder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1024,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-10T16:15:16Z",
+      "side": 1,
+      "message": "Validation of the group maximum size?\n\n  auto group \u003d FindGroup(group_name);\n  if (!group) {\n    LERROR \u003c\u003c \"Partition cannot change to unknown group: \" \u003c\u003c group_name;\n    return false;\n  }\n  auto maximum_size \u003d group-\u003emaximum_size();\n  if (maximum_size) {\n    auto used \u003d TotalSizeOfGroup(group_name) + partition-\u003esize();\n    if (used \u003e maximum_size) {\n      LERROR \u003c\u003c \"Partition_group \" \u003c\u003c group_name \u003c\u003c \" exceeds maximum size \" \u003c\u003c maximum_size \u003c\u003c \" when adding partition \" \u003c\u003c partition-\u003ename() \u003c\u003c \" to total \" \u003c\u003c used \u003c\u003c \" bytes\";\n      return false;\n    }\n  }\n  partition-\u003eset_group_name(group_name);",
+      "range": {
+        "startLine": 1024,
+        "startChar": 4,
+        "endLine": 1024,
+        "endChar": 42
+      },
+      "revId": "eec86d27c034106679ca30f079543777d6501879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7beac249_3fa8e259",
+        "filename": "fs_mgr/liblp/builder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-10T16:15:16Z",
+      "side": 1,
+      "message": "You also need a check if the new maximum_size is now violated by the current group members\n\n  auto used \u003d TotalSizeOfGroup(group);\n  if (used \u003e maximum_size) {\n    LERROR \u003c\u003c \"Partition group \" \u003c\u003c group-\u003ename() \u003c\u003c \" new maximum size \" \u003c\u003c maximum_size \u003c\u003c \" is smaller than bytes used \" \u003c\u003c used;\n    return false;\n  }\n  group-\u003eset_maximum_size(maximum_size);",
+      "range": {
+        "startLine": 1053,
+        "startChar": 4,
+        "endLine": 1053,
+        "endChar": 42
+      },
+      "revId": "eec86d27c034106679ca30f079543777d6501879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adf75421_ac406ca4",
+        "filename": "fs_mgr/liblp/include/liblp/builder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-10T16:15:16Z",
+      "side": 1,
+      "message": "Q: const? Nah, b/c returned is not std::vector\u003cconst Partition*\u003e ... or can we use such protection?",
+      "range": {
+        "startLine": 244,
+        "startChar": 80,
+        "endLine": 244,
+        "endChar": 81
+      },
+      "revId": "eec86d27c034106679ca30f079543777d6501879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48a549c7_9339c247",
+        "filename": "fs_mgr/liblp/include/liblp/builder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-10T16:15:16Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 306,
+        "startChar": 34,
+        "endLine": 306,
+        "endChar": 35
+      },
+      "revId": "eec86d27c034106679ca30f079543777d6501879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
