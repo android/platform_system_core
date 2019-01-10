@@ -395,6 +395,30 @@
       "revId": "4655c4ead73fcfb36e08b3e6de25c55e865952f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06506c74_06e9a600",
+        "filename": "fs_mgr/libfs_avb/util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-01-10T09:50:24Z",
+      "side": 1,
+      "message": "experimental/filesystem is probably not ready (or at least no one is using it :)).\nThe source of external/libcxx seems not in sync between aosp and internal.\nhttps://android-review.googlesource.com/c/platform/external/libcxx/+/867534\n\nYup, we probably don\u0027t have to worry about windows.\nandroid-base\u0027s TemporaryDir() seems doesn\u0027t support create a tmp dir with a pattern.\n\ne.g., /tmp/libfs_avb-tests.XXXXXX ⇒ /tmp/libfs_avb-tests.WOY4PO\nThat way I can temporarily skip removing those test_dirs upon TearDown() and go into some directory to debug (e.g., using avbtool info_image --image /tmp/libfs_avb-tests.WOY4PO/boot.img). And I can easily `rm -rf /tmp/libfs_avb-tests*` finally.\n\nNot only the temp dir, many file related functions from libchrome is really handy.\nAnd it\u0027s built around the \u0027base::FilePath\u0027.\n\ne.g.,\nhttps://android.googlesource.com/platform/external/libchrome/+/pie-dev/base/files/file_util.h \n\n1. bool SetCurrentDirectory(const FilePath\u0026 path)\n2. bool GetFileSize(const FilePath\u0026 file_path, int64_t* file_size);\n3. bool ReadFileToString(const FilePath\u0026 path, std::string* contents);\n4. int ReadFile(const FilePath\u0026 filename, char* data, int max_size);\n5. int WriteFile(const FilePath\u0026 filename, const char* data, int size);\n\n\nI tried to remove using libchrome in ag/5997083, by:\n1. Avoid using SetCurrentDirectoy\n2. Use std::experimental::filesystem::file_size instead\n3. Use android::base::ReadFileToString()\n4. Open a fd by path, then call android::base::ReadFully(int fd, void* data, size_t byte_count);\n5  Open a fd by path, then call android::base::WriteFully(int fd, const void* data, size_t byte_count);\n\nBut 2 isn\u0027t available in AOSP currently, as stated in the beginning.\n\nCan we do this transition after IC?\nCurrently it\u0027s more urgent to get \"device code\" merged.\nlibchrome only affects host testing and we\u0027ll have more flexibility to change that later.\n\nAlso, libchrome is widely used in libavb\u0027s host test, too.\nhttps://android.googlesource.com/platform/external/avb/+/pie-dev/Android.bp#190",
+      "parentUuid": "1084528f_72ad56a0",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "4655c4ead73fcfb36e08b3e6de25c55e865952f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
