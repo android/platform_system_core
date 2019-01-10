@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b7a9f70a_2c1a4bcb",
+        "filename": "fs_mgr/liblp/builder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-01-10T19:49:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e60c7aab_cd5af614",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 50
+      },
+      "revId": "eec86d27c034106679ca30f079543777d6501879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a275cc8a_35498c2a",
         "filename": "fs_mgr/liblp/builder.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-10T16:15:16Z",
       "side": 1,
       "message": "Validation of the group maximum size?\n\n  auto group \u003d FindGroup(group_name);\n  if (!group) {\n    LERROR \u003c\u003c \"Partition cannot change to unknown group: \" \u003c\u003c group_name;\n    return false;\n  }\n  auto maximum_size \u003d group-\u003emaximum_size();\n  if (maximum_size) {\n    auto used \u003d TotalSizeOfGroup(group_name) + partition-\u003esize();\n    if (used \u003e maximum_size) {\n      LERROR \u003c\u003c \"Partition_group \" \u003c\u003c group_name \u003c\u003c \" exceeds maximum size \" \u003c\u003c maximum_size \u003c\u003c \" when adding partition \" \u003c\u003c partition-\u003ename() \u003c\u003c \" to total \" \u003c\u003c used \u003c\u003c \" bytes\";\n      return false;\n    }\n  }\n  partition-\u003eset_group_name(group_name);",
+      "range": {
+        "startLine": 1024,
+        "startChar": 4,
+        "endLine": 1024,
+        "endChar": 42
+      },
+      "revId": "eec86d27c034106679ca30f079543777d6501879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eae040e_2cb5f26d",
+        "filename": "fs_mgr/liblp/builder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1024,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-01-10T19:49:51Z",
+      "side": 1,
+      "message": "The comments in builder.h explain why we don\u0027t this here (or in ChangeGroupSize below). Validation happens in Export() instead, so the updater has more flexibility in how it orders operations.",
+      "parentUuid": "a275cc8a_35498c2a",
       "range": {
         "startLine": 1024,
         "startChar": 4,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "f4225d17_73abb329",
+        "filename": "fs_mgr/liblp/include/liblp/builder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-01-10T19:49:51Z",
+      "side": 1,
+      "message": "We don\u0027t need to return \"std::vector\u003cconst Partition*\u003e\" to make this function const, but if we did, it\u0027d make it harder to interact with the rest of MetadataBuilder since all its methods consume non-const Partitions.",
+      "parentUuid": "adf75421_ac406ca4",
+      "range": {
+        "startLine": 244,
+        "startChar": 80,
+        "endLine": 244,
+        "endChar": 81
+      },
+      "revId": "eec86d27c034106679ca30f079543777d6501879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48a549c7_9339c247",
         "filename": "fs_mgr/liblp/include/liblp/builder.h",
         "patchSetId": 1
@@ -114,6 +186,30 @@
       "revId": "eec86d27c034106679ca30f079543777d6501879",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5a8f686_59ffeca1",
+        "filename": "fs_mgr/liblp/include/liblp/builder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-01-10T19:49:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48a549c7_9339c247",
+      "range": {
+        "startLine": 306,
+        "startChar": 34,
+        "endLine": 306,
+        "endChar": 35
+      },
+      "revId": "eec86d27c034106679ca30f079543777d6501879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
