@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a011fb8_0472bfa9",
+        "filename": "base/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-01-10T01:36:08Z",
+      "side": 1,
+      "message": "You only handle SCM_RIGHTS here, so call it scm_rights.cpp?",
+      "range": {
+        "startLine": 49,
+        "startChar": 9,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f3ca664c_6e7abb54",
         "filename": "base/cmsg.cpp",
         "patchSetId": 1
@@ -46,6 +69,121 @@
       "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64edc959_fbc6cb4e",
+        "filename": "base/cmsg.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-01-10T01:36:08Z",
+      "side": 1,
+      "message": "E2BIG?",
+      "range": {
+        "startLine": 103,
+        "startChar": 14,
+        "endLine": 103,
+        "endChar": 21
+      },
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdff693c_5cc36283",
+        "filename": "base/cmsg.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-01-10T01:36:08Z",
+      "side": 1,
+      "message": "Why shouldn\u0027t the interface allow callers to accept *up to* N fds? If a caller expects exactly N fds, it can check on its own easily enough.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 3
+      },
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9720a7a8_25e873ac",
+        "filename": "base/cmsg.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-01-10T01:36:08Z",
+      "side": 1,
+      "message": "Why shouldn\u0027t the interface allow callers to accept *up to* N fds? If a caller expects exactly N fds, it can check on its own easily enough.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 3
+      },
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d39cc058_cfdc12c4",
+        "filename": "base/cmsg.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-01-10T01:36:08Z",
+      "side": 1,
+      "message": "If you adopt my proposed interface, you don\u0027t need this step. :-)",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 3
+      },
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae6f0fa6_8bd00a98",
+        "filename": "base/include/android-base/cmsg.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-01-10T01:36:08Z",
+      "side": 1,
+      "message": "You could emulate it for win32 with DuplicateHandleEx",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 20
+      },
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -101,6 +239,30 @@
       "side": 1,
       "message": "Moved to a new collections.h, since none of the existing files seem like a good place to put it.\n\nAlso, changed it from emplace_back to push_back, since SendFileDescriptors(..., 1) probably shouldn\u0027t be allowed.",
       "parentUuid": "ec536b56_1eef3a59",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 1
+      },
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fca397cb_1692ef72",
+        "filename": "base/include/android-base/cmsg.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-01-10T01:36:08Z",
+      "side": 1,
+      "message": "But that\u0027s wrong, since emplace_back constructs in place, and Append suggests appending only an element of the sequence type, not building one in place.",
+      "parentUuid": "544fc552_305ce2c1",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -184,6 +346,53 @@
     },
     {
       "key": {
+        "uuid": "9f621fe2_fd60c7c7",
+        "filename": "base/include/android-base/cmsg.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-01-10T01:36:08Z",
+      "side": 1,
+      "message": "I don\u0027t like either of these options for fds. Just like foo* is a \"borrow\" of a reference to a foo even if foo is \"owned\" by a shared_ptr or a unique_ptr, an int is a \"borrow\" of a file descriptor. I don\u0027t think the interface of this function should involve unique_fd at all. Ideally, we\u0027d use std::span\u003cint\u003e or something, but if we can\u0027t have that, an int vector is probably good enough. (Or a pointer-length pair.)",
+      "parentUuid": "35431e6a_c9b38898",
+      "range": {
+        "startLine": 45,
+        "startChar": 28,
+        "endLine": 45,
+        "endChar": 65
+      },
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4625a847_64cab7d9",
+        "filename": "base/include/android-base/cmsg.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-01-10T01:36:08Z",
+      "side": 1,
+      "message": "Instead of an out parameter, I\u0027d just return a struct (or a tuple or a pair or something like that) containing both the size and the FDs. The big-return approach works well with C++17 destructuring bind and models better what the function is actually doing (return value is for what\u0027s returned and the parameters are for what goes in). The input parameter should be a maximum number of FDs to accept.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 7
+      },
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ef22b89_11ed4f39",
         "filename": "base/include/android-base/cmsg.h",
         "patchSetId": 1
@@ -219,6 +428,30 @@
       "side": 1,
       "message": "It\u0027s a tiny bit useful if you want the MSG_TRUNC checking behavior, but that\u0027s pretty esoteric.\n\nDo you meant that I should require at least one unique_fd argument, instead of allowing SendFileDescriptors(sock, \"foo\", 3)?",
       "parentUuid": "0ef22b89_11ed4f39",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "679830cd_3640041e",
+        "filename": "base/include/android-base/cmsg.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-01-10T01:36:08Z",
+      "side": 1,
+      "message": "For consistency\u0027s sake, we should support a zero-FD version.\n\nIs the template really necessary though? IMHO, most callers should be able to just make a vector at the call site. IMHO, we should keep the interface small, and the template could be justified only if there were a *lot* of callers. Making an int vector is one line of code.",
+      "parentUuid": "ac7cd301_259a8e7a",
       "range": {
         "startLine": 50,
         "startChar": 8,
