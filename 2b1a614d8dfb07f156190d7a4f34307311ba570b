@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7b303a49_d1c7d344",
+        "filename": "base/cmsg.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-01-10T00:42:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3ca664c_6e7abb54",
+      "range": {
+        "startLine": 62,
+        "startChar": 9,
+        "endLine": 62,
+        "endChar": 16
+      },
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2c443e4_3477f4c1",
         "filename": "base/include/android-base/cmsg.h",
         "patchSetId": 1
@@ -62,6 +86,30 @@
       "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "544fc552_305ce2c1",
+        "filename": "base/include/android-base/cmsg.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-01-10T00:42:51Z",
+      "side": 1,
+      "message": "Moved to a new collections.h, since none of the existing files seem like a good place to put it.\n\nAlso, changed it from emplace_back to push_back, since SendFileDescriptors(..., 1) probably shouldn\u0027t be allowed.",
+      "parentUuid": "ec536b56_1eef3a59",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 1
+      },
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -112,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "35431e6a_c9b38898",
+        "filename": "base/include/android-base/cmsg.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-01-10T00:42:51Z",
+      "side": 1,
+      "message": "std::vector\u003c\u003e\u0026\u0026 is a bit cheaper and more explicit, at the cost of having to explicitly clear, so I switched to that",
+      "parentUuid": "5a68fd54_32355c6b",
+      "range": {
+        "startLine": 45,
+        "startChar": 28,
+        "endLine": 45,
+        "endChar": 65
+      },
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ef22b89_11ed4f39",
         "filename": "base/include/android-base/cmsg.h",
         "patchSetId": 1
@@ -123,6 +195,30 @@
       "writtenOn": "2019-01-08T18:59:45Z",
       "side": 1,
       "message": "is this still useful even if you\u0027re sending/receiving no fds?",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac7cd301_259a8e7a",
+        "filename": "base/include/android-base/cmsg.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-01-10T00:42:51Z",
+      "side": 1,
+      "message": "It\u0027s a tiny bit useful if you want the MSG_TRUNC checking behavior, but that\u0027s pretty esoteric.\n\nDo you meant that I should require at least one unique_fd argument, instead of allowing SendFileDescriptors(sock, \"foo\", 3)?",
+      "parentUuid": "0ef22b89_11ed4f39",
       "range": {
         "startLine": 50,
         "startChar": 8,
