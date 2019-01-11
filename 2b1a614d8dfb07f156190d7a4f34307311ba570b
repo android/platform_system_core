@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "5335aa22_1cf94c08",
+        "filename": "base/cmsg.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-01-11T00:22:26Z",
+      "side": 1,
+      "message": "Seems wrong here, it\u0027s not that we ran out of room, it\u0027s that we got some unrelated message.",
+      "parentUuid": "64edc959_fbc6cb4e",
+      "range": {
+        "startLine": 103,
+        "startChar": 14,
+        "endLine": 103,
+        "endChar": 21
+      },
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bdff693c_5cc36283",
         "filename": "base/cmsg.cpp",
         "patchSetId": 1
@@ -138,6 +162,54 @@
       "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc6a7db9_8d55067e",
+        "filename": "base/cmsg.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-01-11T00:22:26Z",
+      "side": 1,
+      "message": ".",
+      "parentUuid": "bdff693c_5cc36283",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 3
+      },
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ae998a9_57c9dbfa",
+        "filename": "base/cmsg.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-01-11T00:22:26Z",
+      "side": 1,
+      "message": "(it does in PS2)",
+      "parentUuid": "9720a7a8_25e873ac",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 3
+      },
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -204,6 +276,24 @@
     },
     {
       "key": {
+        "uuid": "36986082_5b9ac4a7",
+        "filename": "base/include/android-base/cmsg.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-01-11T00:22:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2c443e4_3477f4c1",
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec536b56_1eef3a59",
         "filename": "base/include/android-base/cmsg.h",
         "patchSetId": 1
@@ -263,6 +353,30 @@
       "side": 1,
       "message": "But that\u0027s wrong, since emplace_back constructs in place, and Append suggests appending only an element of the sequence type, not building one in place.",
       "parentUuid": "544fc552_305ce2c1",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 1
+      },
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da734268_b53a8c42",
+        "filename": "base/include/android-base/cmsg.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-01-11T00:22:26Z",
+      "side": 1,
+      "message": "Yes, which is why the change is from emplace_back to push_back, not the other way around.",
+      "parentUuid": "fca397cb_1692ef72",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -370,6 +484,30 @@
     },
     {
       "key": {
+        "uuid": "2e174d03_df73fb1e",
+        "filename": "base/include/android-base/cmsg.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-01-11T00:22:26Z",
+      "side": 1,
+      "message": "Yeah, I was under the impression that most of the callers were closing their fds immediately anyway, but that doesn\u0027t seemto be true. Swapped to const vector\u003cint\u003e\u0026 (TIL span was voted into C++20, but using new libc++ stuff libbase is a pain in the ass because of vndk dependencies, I think)",
+      "parentUuid": "9f621fe2_fd60c7c7",
+      "range": {
+        "startLine": 45,
+        "startChar": 28,
+        "endLine": 45,
+        "endChar": 65
+      },
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4625a847_64cab7d9",
         "filename": "base/include/android-base/cmsg.h",
         "patchSetId": 1
@@ -390,6 +528,30 @@
       "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e77ad251_ffeb473b",
+        "filename": "base/include/android-base/cmsg.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-01-11T00:22:26Z",
+      "side": 1,
+      "message": "It\u0027s asymmetrical with SendFileDescriptors, though, which is annoying.",
+      "parentUuid": "4625a847_64cab7d9",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 7
+      },
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -452,6 +614,30 @@
       "side": 1,
       "message": "For consistency\u0027s sake, we should support a zero-FD version.\n\nIs the template really necessary though? IMHO, most callers should be able to just make a vector at the call site. IMHO, we should keep the interface small, and the template could be justified only if there were a *lot* of callers. Making an int vector is one line of code.",
       "parentUuid": "ac7cd301_259a8e7a",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "2b1a614d8dfb07f156190d7a4f34307311ba570b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bc5f497_8a44a00e",
+        "filename": "base/include/android-base/cmsg.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-01-11T00:22:26Z",
+      "side": 1,
+      "message": "It\u0027s a line of code to create it, and then n lines to pull the fds back out, which is annoying when there\u0027s dozens of places to fix up. (And creation of the vector is actually not exactly super-trivial as well, since `std::vector\u003cint\u003e foo{3, -1}` is different from `std::vector\u003cint\u003e foo(3, -1)`)\n\nI\u0027m considering changing the semantics of ReceiveFileDescriptors, which is another justification for this being its own thing. If you call ReceiveFileDescriptors(..., \u0026fd1, \u0026fd2), you\u0027re probably expecting both of them to be received, so the call should probably fail if you don\u0027t get both?",
+      "parentUuid": "679830cd_3640041e",
       "range": {
         "startLine": 50,
         "startChar": 8,
