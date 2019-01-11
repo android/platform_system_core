@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e225cbbc_6ed08d4c",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1275554
+      },
+      "writtenOn": "2019-01-11T10:06:47Z",
+      "side": 1,
+      "message": "Personally, I have a concern about the latency of swapoff.\nFortunately, before the swapoff, we try to kill most of processes, which makes the slow swapoff faster. I checked how long it takes.\nFor the logging, I moved the KillZramBackingDevice here(because we couldn\u0027t see the log after logcat die).\n\n    // 5. drop caches and disable zram backing device, if exist\n    LOG(INFO) \u003c\u003c \"zram swapoff start\";\n    KillZramBackingDevice();\n    LOG(INFO) \u003c\u003c \"zram swapoff end\";\n\n    // logcat stopped here\n    for (const auto\u0026 s : ServiceList::GetInstance().services_in_shutdown_order()) {\n        if (kill_after_apps.count(s-\u003ename())) s-\u003eStop();\n    }   \n\nSince it\u0027s the before the kill services, it would be slower than expected.\nWhen I did experiment, zram-swap has 520M memory(400M was backing_dev in there) and swapoff takes 2sec. I guess most of owner processes in zram swap pages are killed earlier.\n\nIf I move back KillZramBackingDevice to original places, I guess it would take less because most of service also would be killed.\n\nIf some guys have an ideal to record log even though we killed logcat, please tell me. I want to check it in real place, again.",
+      "range": {
+        "startLine": 302,
+        "startChar": 8,
+        "endLine": 302,
+        "endChar": 28
+      },
+      "revId": "8b627e5eb70658cf13ebd24a238b9d1ffdd023cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85a136b7_67bd2208",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1275554
+      },
+      "writtenOn": "2019-01-11T10:06:47Z",
+      "side": 1,
+      "message": "Based on the idea if we can get the log:\nLet\u0027s add some log like sync above to be able to measure elapsed time for swapoff.",
+      "range": {
+        "startLine": 469,
+        "startChar": 4,
+        "endLine": 469,
+        "endChar": 26
+      },
+      "revId": "8b627e5eb70658cf13ebd24a238b9d1ffdd023cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
