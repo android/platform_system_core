@@ -16,6 +16,24 @@
       "revId": "6a56a2a94ff381479754436be9291c99d2b2bd27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46a2d4f9_44784bfa",
+        "filename": "fs_mgr/libfs_avb/avb_ops.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-11T18:57:54Z",
+      "side": 1,
+      "message": "I think it is too complex to worry about verify_result values.\n\ntypedef enum {\n  AVB_SLOT_VERIFY_RESULT_OK,\n  AVB_SLOT_VERIFY_RESULT_ERROR_OOM,\n  AVB_SLOT_VERIFY_RESULT_ERROR_IO,\n  AVB_SLOT_VERIFY_RESULT_ERROR_VERIFICATION,\n  AVB_SLOT_VERIFY_RESULT_ERROR_ROLLBACK_INDEX,\n  AVB_SLOT_VERIFY_RESULT_ERROR_PUBLIC_KEY_REJECTED,\n  AVB_SLOT_VERIFY_RESULT_ERROR_INVALID_METADATA,\n  AVB_SLOT_VERIFY_RESULT_ERROR_UNSUPPORTED_VERSION,\n  AVB_SLOT_VERIFY_RESULT_ERROR_INVALID_ARGUMENT\n} AvbSlotVerifyResult;\n\nSome of these can return with, or without, data if flags has AVB_SLOT_VERIFY_FLAGS_ALLOW_VERIFICATION_ERROR set and coding something here would result in too much knowledge regarding libavb\u0027s implementation details?",
+      "parentUuid": "0d897d5a_2a7dc68a",
+      "revId": "6a56a2a94ff381479754436be9291c99d2b2bd27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
