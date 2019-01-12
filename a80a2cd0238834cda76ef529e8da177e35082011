@@ -46,6 +46,30 @@
       "revId": "a80a2cd0238834cda76ef529e8da177e35082011",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17fae139_8ba8a578",
+        "filename": "rootdir/etc/ld.config.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-01-12T00:49:07Z",
+      "side": 1,
+      "message": "I just noticed that this is still not a viable solution. Adding VNDK paths to vndk_in_system search path causes some VNDK libraries to be double loaded when they shouldn\u0027t, and in some cases this leads to crashes.\n\nI think the proper way to do this here would be whitelisting what libraries may be loaded into vndk_in_system namespaces. I\u0027ll put up a new patchset along with the corresponding change in bionic/linker later.",
+      "parentUuid": "728a0d3b_348a6f5c",
+      "range": {
+        "startLine": 418,
+        "startChar": 41,
+        "endLine": 418,
+        "endChar": 55
+      },
+      "revId": "a80a2cd0238834cda76ef529e8da177e35082011",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
