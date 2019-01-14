@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f03c01c5_31c842a9",
+        "filename": "init/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-01-14T16:56:06Z",
+      "side": 1,
+      "message": "We use early mount in charger mode too.  As of a few months ago, devices won\u0027t even boot without early mount; you can make this function a total no-op and just call the keyword reserved.",
+      "revId": "a3953076dcbf308c19fa959261854a26f0f182cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47f3625e_27233470",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-01-14T16:56:06Z",
+      "side": 1,
+      "message": "Might as well just remove this now in this CL?",
+      "revId": "a3953076dcbf308c19fa959261854a26f0f182cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa06a6af_ae898816",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-01-14T16:56:06Z",
+      "side": 1,
+      "message": "FWIW, we always questioned the ordering of this, since the last property file to load can override non ro. properties, but the first property file to load gets to set ro. properties for forever.\n\nUnless we did something like \"ro. properties can be overriden while we\u0027re still reading property files\" in which case we\u0027d probably want to do system, then vendor, then odm.",
+      "revId": "a3953076dcbf308c19fa959261854a26f0f182cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "535bb7b1_250a63d5",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-01-14T16:56:06Z",
+      "side": 1,
+      "message": "I\u0027d move this to property_load_boot_defaults() and load them all in that one function.  Ordering TBD between the two of them.",
+      "revId": "a3953076dcbf308c19fa959261854a26f0f182cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
