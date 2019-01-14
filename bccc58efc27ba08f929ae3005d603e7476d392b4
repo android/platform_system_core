@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6443d867_fae8c141",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-01-14T23:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "106e2717_6f654cac",
+      "range": {
+        "startLine": 660,
+        "startChar": 0,
+        "endLine": 667,
+        "endChar": 1
+      },
+      "revId": "bccc58efc27ba08f929ae3005d603e7476d392b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31314df7_b668d22a",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "988d0f92_0d42a3a1",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-01-14T23:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31314df7_b668d22a",
+      "range": {
+        "startLine": 986,
+        "startChar": 0,
+        "endLine": 988,
+        "endChar": 5
+      },
+      "revId": "bccc58efc27ba08f929ae3005d603e7476d392b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7dceda09_96b6910f",
         "filename": "init/builtins.cpp",
         "patchSetId": 6
@@ -59,6 +107,24 @@
       "writtenOn": "2019-01-08T21:54:56Z",
       "side": 1,
       "message": "What happens after this returns error?  The system likely just halts here since we\u0027re not indicating to vold or anything else how to proceed further, I think?  Is there a better user experience that we can have here?",
+      "revId": "bccc58efc27ba08f929ae3005d603e7476d392b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "615b87d8_3b37804e",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-01-14T23:09:03Z",
+      "side": 1,
+      "message": "Right, we\u0027ll halt - if it\u0027s the first boot we\u0027ll eventually fail N boot attempts and wind back up in the original system image. If we\u0027ve already successfully booted, then we are kinda stuck. Ideally we would pass a different parameter here, like \"--reformat_gsi\". Then recovery would mount /metadata, and format userdata_gsi.\n\nI\u0027d like to hammer that out in a follow-up CL though (I can file a bug and TODO it here), because as-is this prevents the disaster of recovery wiping your actual userdata.",
+      "parentUuid": "7dceda09_96b6910f",
       "revId": "bccc58efc27ba08f929ae3005d603e7476d392b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
