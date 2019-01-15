@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "808cdd9c_3ba92222",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2019-01-15T19:18:27Z",
+      "side": 1,
+      "message": "ext4 verity won\u0027t actually be used on any devices until the upstream and AOSP kernels support it.  This is just getting the Android userspace ready.",
+      "parentUuid": "f2f4af3d_1f34179c",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 50
+      },
+      "revId": "3b5a9da929a9dad734c8886b215e6311577b486a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6355715_1cd637bf",
         "filename": "fs_mgr/fs_mgr.cpp",
         "patchSetId": 1
@@ -71,6 +95,23 @@
     },
     {
       "key": {
+        "uuid": "53a2a961_13ce04e2",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2019-01-15T19:18:27Z",
+      "side": 1,
+      "message": "If fewer than 9 bytes were read this can access uninitialized memory.",
+      "revId": "3b5a9da929a9dad734c8886b215e6311577b486a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3bc5fc35_b85f3af9",
         "filename": "fs_mgr/fs_mgr.cpp",
         "patchSetId": 1
@@ -105,6 +146,30 @@
       "writtenOn": "2019-01-15T17:28:27Z",
       "side": 1,
       "message": "It would be nice to avoid re-reading the superblock a few times in this function.  Could you please address this in a follow up CL?",
+      "range": {
+        "startLine": 567,
+        "startChar": 12,
+        "endLine": 567,
+        "endChar": 32
+      },
+      "revId": "3b5a9da929a9dad734c8886b215e6311577b486a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bdd6439_2e75207d",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2019-01-15T19:18:27Z",
+      "side": 1,
+      "message": "Why not just combine it with the previous block of code now?  So only read the superblock if reserved_size || file_encryption || fs_verity.",
+      "parentUuid": "6c45fe81_843c4b74",
       "range": {
         "startLine": 567,
         "startChar": 12,
