@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7b90ae1e_e0752512",
+        "filename": "libpsi/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-01-15T03:06:41Z",
+      "side": 1,
+      "message": "Because Tim Murray wants to use it in the Android Framework ASAP (he asked me today when everything will be in place for him to start).",
+      "parentUuid": "0e81d43d_ca2fd3d9",
+      "revId": "66483db13d8e2c01e1e1fa2a52f72727f62f8fe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "178348d6_4dfef128",
         "filename": "libpsi/include/psi/psi.h",
         "patchSetId": 4
@@ -30,6 +48,30 @@
       "writtenOn": "2019-01-15T02:52:39Z",
       "side": 1,
       "message": "I think all you want as an API here is the init_psi_monitor() which returns an fd that can be epoll\u0027ed and closed. Don\u0027t think we need anything else?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 0
+      },
+      "revId": "66483db13d8e2c01e1e1fa2a52f72727f62f8fe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e93225c_2d52e78c",
+        "filename": "libpsi/include/psi/psi.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-01-15T03:06:41Z",
+      "side": 1,
+      "message": "register_psi_monitor/unregister_psi_monitor is really to make sure users don\u0027t epoll a wrong event like EPOLLIN or smth. Makes sure users are consistent.\ndestroy_psi_monitor is needed to deregister the monitor in the kernel. All it does is closing the file descriptor, but having an interface lets us deal with possible changes in the future to this mechanism.",
+      "parentUuid": "178348d6_4dfef128",
       "range": {
         "startLine": 42,
         "startChar": 0,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "3ed5aadf_26c5d491",
+        "filename": "libpsi/psi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-01-15T03:06:41Z",
+      "side": 1,
+      "message": "The user will be calling epoll_wait() on epollfd that he provided.",
+      "parentUuid": "795a54ce_f6c0ae49",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 24
+      },
+      "revId": "66483db13d8e2c01e1e1fa2a52f72727f62f8fe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7e4e127_e5d8f09c",
         "filename": "libpsi/psi.c",
         "patchSetId": 4
@@ -76,6 +142,30 @@
       "writtenOn": "2019-01-15T02:52:39Z",
       "side": 1,
       "message": "is this really needed as an API? We are not checking if its the same fd returned by the library anyway, then why have this?",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 1
+      },
+      "revId": "66483db13d8e2c01e1e1fa2a52f72727f62f8fe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae64f243_c3044849",
+        "filename": "libpsi/psi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-01-15T03:06:41Z",
+      "side": 1,
+      "message": "This is needed to cleanly remove the trigger from the kernel (each trigger has a small in-kernel overhead). If process exits without closing the fd it will be closed automatically, so trigger will be destroyed. But in case a process does not need the trigger anymore but does not want to exit yet this function is needed to relieve kernel from additional monitoring duties.",
+      "parentUuid": "b7e4e127_e5d8f09c",
       "range": {
         "startLine": 95,
         "startChar": 0,
