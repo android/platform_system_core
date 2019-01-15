@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ba300a9e_9e8cc296",
+        "filename": "adb/daemon/file_sync_service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-15T17:15:14Z",
+      "side": 1,
+      "message": "I think we shouldn\u0027t delete these files even when overlayfs is used. In my understanding, \n\n1) / (ext4): is at the bottom\n2) at /system, an overlayfs is mounted where lowerfs is set to /system, while upperfs is set to somewhere writable.\n3) at /system/bin/libc.so, /system/bin/libc.so is bind-mounted. (for pre-apexd processes)\n4) at /system/bin/libc.so, /apex/com.android.runtine/lib/libc.so is bind-mounted. (for post-apexd processes)\n\nSo if we bind-mount /system non-recursively to /system as in #604, then we are seeing 2), effectively hiding 3) and 4). However, for other mount namespaces, 3) and 4) are still alive. If we delete the inode for /system/lib/libc.so on the overlayfs, then the bind-mount 3) will be destroyed as its source path has gone.",
+      "parentUuid": "7b9779ad_42f93816",
+      "range": {
+        "startLine": 58,
+        "startChar": 12,
+        "endLine": 58,
+        "endChar": 25
+      },
+      "revId": "4eab1f1669e6dee29fe10daaadcbc36b285c7148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "689f42fb_9eed42a8",
         "filename": "adb/daemon/file_sync_service.cpp",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0d7253ea_3833ea78",
+        "filename": "adb/daemon/file_sync_service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-15T17:15:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "689f42fb_9eed42a8",
+      "range": {
+        "startLine": 68,
+        "startChar": 41,
+        "endLine": 68,
+        "endChar": 51
+      },
+      "revId": "4eab1f1669e6dee29fe10daaadcbc36b285c7148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ea1d97e_480fcfda",
         "filename": "adb/daemon/file_sync_service.cpp",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2019-01-15T15:53:38Z",
       "side": 1,
       "message": "nit: why not use std::find_if?\n\nreturn std::find_if(lines.begin(), lines.end(), [\u0026path] (const auto\u0026 line) {\n    auto tokens \u003d android::base::Split(line, \" \");\n    if (tokens.size() \u003c 4) return false;\n    return tokens[4] \u003d\u003d path;\n});",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 17
+      },
+      "revId": "4eab1f1669e6dee29fe10daaadcbc36b285c7148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb8c2e5e_afe976ba",
+        "filename": "adb/daemon/file_sync_service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-15T17:15:14Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Much nicer. Done with the addition of !\u003d lines.end() because we are not interested in the line\u0027s content, but the existence of the line satisfying the condition.",
+      "parentUuid": "1ea1d97e_480fcfda",
       "range": {
         "startLine": 65,
         "startChar": 0,
