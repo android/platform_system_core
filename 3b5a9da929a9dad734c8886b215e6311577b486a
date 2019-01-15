@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "f1c70cef_60e2f817",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2019-01-15T19:32:47Z",
+      "side": 1,
+      "message": "This CL will be merged before upstream (since this part doesn\u0027t seem to change).\n\nFor f2fs, it looks like there is no such problem?  Since feature bit is already reserved long time ago and we always mkfs.f2fs with -O verity.  But if there is a use case, we can support that in another CL.\n\nFor P18, I\u0027d avoid adding more code to handle the legacy case if possible.  Using ro.apk_verity.mode seems to be enough?  Or do we need it?",
+      "parentUuid": "d57e4ace_3c15864d",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 50
+      },
+      "revId": "3b5a9da929a9dad734c8886b215e6311577b486a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6355715_1cd637bf",
         "filename": "fs_mgr/fs_mgr.cpp",
         "patchSetId": 1
@@ -194,6 +218,30 @@
       "side": 1,
       "message": "Why not just combine it with the previous block of code now?  So only read the superblock if reserved_size || file_encryption || fs_verity.",
       "parentUuid": "6c45fe81_843c4b74",
+      "range": {
+        "startLine": 567,
+        "startChar": 12,
+        "endLine": 567,
+        "endChar": 32
+      },
+      "revId": "3b5a9da929a9dad734c8886b215e6311577b486a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6494536_80f51458",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2019-01-15T19:32:47Z",
+      "side": 1,
+      "message": "Right, combining into L556 is fine and we should do it.  But I think we can avoid the second read (first is at L530) and is a nice improvement later.",
+      "parentUuid": "2bdd6439_2e75207d",
       "range": {
         "startLine": 567,
         "startChar": 12,
