@@ -34,6 +34,29 @@
       "revId": "a89cd35450f11996cedc0d949e26f339af6ceaf9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "792cfaac_98b652f1",
+        "filename": "adb/daemon/file_sync_service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-01-15T00:41:36Z",
+      "side": 1,
+      "message": "I believe this leads to a bug in handle_send_file: we don\u0027t open with O_TRUNC and we don\u0027t ftruncate, so if we sync a file that\u0027s shorter than one that\u0027s already there, we leave the stuff at the end of the file that we didn\u0027t overwrite there. I don\u0027t actually recall what the fallback for not being able to unlink was far, maybe pushing to /dev/null as nonroot?\n\n(also, won\u0027t this lead to everything running on the device exploding?)",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 427,
+        "endChar": 5
+      },
+      "revId": "a89cd35450f11996cedc0d949e26f339af6ceaf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
