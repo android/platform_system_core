@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e81d43d_ca2fd3d9",
+        "filename": "libpsi/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2019-01-15T02:52:39Z",
+      "side": 1,
+      "message": "until there is use for this elsewhere, why not just be a static library inside lmkd?",
+      "revId": "66483db13d8e2c01e1e1fa2a52f72727f62f8fe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "178348d6_4dfef128",
+        "filename": "libpsi/include/psi/psi.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2019-01-15T02:52:39Z",
+      "side": 1,
+      "message": "I think all you want as an API here is the init_psi_monitor() which returns an fd that can be epoll\u0027ed and closed. Don\u0027t think we need anything else?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 0
+      },
+      "revId": "66483db13d8e2c01e1e1fa2a52f72727f62f8fe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "795a54ce_f6c0ae49",
+        "filename": "libpsi/psi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2019-01-15T02:52:39Z",
+      "side": 1,
+      "message": "how does this work? Where does the callback go in this case?",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 24
+      },
+      "revId": "66483db13d8e2c01e1e1fa2a52f72727f62f8fe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7e4e127_e5d8f09c",
+        "filename": "libpsi/psi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2019-01-15T02:52:39Z",
+      "side": 1,
+      "message": "is this really needed as an API? We are not checking if its the same fd returned by the library anyway, then why have this?",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 1
+      },
+      "revId": "66483db13d8e2c01e1e1fa2a52f72727f62f8fe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
