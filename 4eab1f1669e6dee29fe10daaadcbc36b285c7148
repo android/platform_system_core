@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b9779ad_42f93816",
+        "filename": "adb/daemon/file_sync_service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-15T15:53:38Z",
+      "side": 1,
+      "message": "If /system (or /vendor or ...) is an overlayfs mount, return false as overlayfs will look after it for you?",
+      "range": {
+        "startLine": 58,
+        "startChar": 12,
+        "endLine": 58,
+        "endChar": 25
+      },
+      "revId": "4eab1f1669e6dee29fe10daaadcbc36b285c7148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "689f42fb_9eed42a8",
+        "filename": "adb/daemon/file_sync_service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-15T15:53:38Z",
+      "side": 1,
+      "message": "check to make sure tokens size is 4 or greater, otherwise this is an illegal access.",
+      "range": {
+        "startLine": 68,
+        "startChar": 41,
+        "endLine": 68,
+        "endChar": 51
+      },
+      "revId": "4eab1f1669e6dee29fe10daaadcbc36b285c7148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ea1d97e_480fcfda",
+        "filename": "adb/daemon/file_sync_service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-15T15:53:38Z",
+      "side": 1,
+      "message": "nit: why not use std::find_if?\n\nreturn std::find_if(lines.begin(), lines.end(), [\u0026path] (const auto\u0026 line) {\n    auto tokens \u003d android::base::Split(line, \" \");\n    if (tokens.size() \u003c 4) return false;\n    return tokens[4] \u003d\u003d path;\n});",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 17
+      },
+      "revId": "4eab1f1669e6dee29fe10daaadcbc36b285c7148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
