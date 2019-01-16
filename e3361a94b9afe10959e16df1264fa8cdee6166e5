@@ -46,6 +46,30 @@
       "revId": "e3361a94b9afe10959e16df1264fa8cdee6166e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "975cdeda_ebc370da",
+        "filename": "rootdir/etc/ld.config.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1334152
+      },
+      "writtenOn": "2019-01-16T15:57:59Z",
+      "side": 1,
+      "message": "I assumed this was a temporary thing workaround until libnativeloader moves, as it\u0027s effectively due to app_process linking libnativeloader from /system which makes dlopen infer its namespace as \"default\".\n\ni.e. setprop debug.ld.all dlopen \u0026\u0026 stop \u0026\u0026 start \u0026\u0026 logcat -d -e dlopen.*libopen\n01-16 15:53:02.860  8716  8716 D linker  : dlopen(name\u003d\"libopenjdk.so\", flags\u003d0x2, extinfo\u003d(null), caller\u003d\"/system/lib64/libnativeloader.so\", caller_ns\u003d(default)@0x73e9841570) ...\n01-16 15:53:02.861  8716  8716 D linker  : ... dlopen calling constructors: realpath\u003d\"/apex/com.android.runtime/lib64/libopenjdk.so\", soname\u003d\"libopenjdk.so\", handle\u003d0xb0488b2880b19fe5\n01-16 15:53:02.861  8716  8716 D linker  : ... dlopen successful: realpath\u003d\"/apex/com.android.runtime/lib64/libopenjdk.so\", soname\u003d\"libopenjdk.so\", handle\u003d0xb0488b2880b19fe5",
+      "parentUuid": "d6954ff7_5962fd03",
+      "range": {
+        "startLine": 116,
+        "startChar": 46,
+        "endLine": 116,
+        "endChar": 59
+      },
+      "revId": "e3361a94b9afe10959e16df1264fa8cdee6166e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
