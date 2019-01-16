@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2a9fb9a5_daad39a0",
+        "filename": "fs_mgr/libfiemap_writer/fiemap_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-16T16:36:18Z",
+      "side": 1,
+      "message": "Q: I generally prefer permille than percent so maybe every 1000th instead of 100th? Who is the current caller, could they benefit?",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 55
+      },
+      "revId": "8a79af17ee398cefd3f3e23318cf8d3d05591b24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61f2f9a8_7a7a62f4",
         "filename": "fs_mgr/libfiemap_writer/fiemap_writer.cpp",
         "patchSetId": 1
@@ -46,6 +69,53 @@
       "revId": "8a79af17ee398cefd3f3e23318cf8d3d05591b24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6be44b1d_b9981f36",
+        "filename": "fs_mgr/libfiemap_writer/fiemap_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-16T16:36:18Z",
+      "side": 1,
+      "message": "If one writes a generic callback function, the file_size might not be handy, so users of this may be consternated. The good news is std::function from a lambda could encapsulate a file_size capture. However, how can it do so if passed to Open below where there is no such thing as file_size?\n\nI disagree with dropping the file_size, I agree with using the return value to terminate transfer.\n\nPerhaps Open should wrap the supplied function to capture the file_size there. Here we return offset only, but the lambda instantiated in Open returns both arguments?\n\n(I understand differentiating the callback progress function in each adds complication)\n\nI do not know the user of the callback, so currently file_size may be meaningless? If so, then file_size can be re-added later when it becomes necessary?",
+      "parentUuid": "a5347f9e_9fff8eec",
+      "range": {
+        "startLine": 255,
+        "startChar": 9,
+        "endLine": 259,
+        "endChar": 9
+      },
+      "revId": "8a79af17ee398cefd3f3e23318cf8d3d05591b24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c862e57_2c188dd5",
+        "filename": "fs_mgr/libfiemap_writer/fiemap_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-16T16:36:18Z",
+      "side": 1,
+      "message": "This may be a heavy cost and burden for progress callback to encapsulate in order to discover the file_size ...",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 42
+      },
+      "revId": "8a79af17ee398cefd3f3e23318cf8d3d05591b24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
