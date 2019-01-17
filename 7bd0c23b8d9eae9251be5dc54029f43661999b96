@@ -52,6 +52,24 @@
       "revId": "7bd0c23b8d9eae9251be5dc54029f43661999b96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c3eab2c_b888ed16",
+        "filename": "property_service/libpropertyinfoparser/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2019-01-17T05:57:56Z",
+      "side": 1,
+      "message": "For the core variant, system_shared_libs is respected, and there is no circular dependency.  libasync_safe gets the include path from global cflags (tc.IncludeFlags()):\n\nhttps://android.googlesource.com/platform/build/soong/+/63d91fad6a565c4be99ca0af6f9b8581a12354c7/cc/config/arm64_device.go#110\n\nFor the vendor variant, system_shared_libs is ignored, but for vendor variants, libc resolves to `llndk_library { name: \"libc\", ...}`, which exports a stub library and preprocessed headers.  Note that vendor variants are not getting the global cflags from:\n\nhttps://android.googlesource.com/platform/build/soong/+/63d91fad6a565c4be99ca0af6f9b8581a12354c7/cc/compiler.go#301\n\nThat\u0027s why after fixing system_shared_libs, the vendor variant won\u0027t be able to find libc headers.",
+      "parentUuid": "1607f30c_a4bc579f",
+      "revId": "7bd0c23b8d9eae9251be5dc54029f43661999b96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
