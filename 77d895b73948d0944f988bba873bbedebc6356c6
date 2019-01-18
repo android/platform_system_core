@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09ba0d15_d336c3e2",
+        "filename": "fs_mgr/libfiemap_writer/fiemap_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1428004
+      },
+      "writtenOn": "2019-01-18T19:43:49Z",
+      "side": 0,
+      "message": "Maybe a nicer way to disable this would be to produce a warning and continue running until it is fixed, instead of a fatal error. That would also have the advantage that the IsFilePinned() function doesn\u0027t need to alse be #if 0\u0027d out, presumably because it is static but not being called from this file.\n\nThe error message ought to be that the file was not pinned properly, it is not clear that a write failed, at least not from within this function.\n\nAnyhow because this is work in progress, #if 0-ing it out is good too.",
+      "revId": "77d895b73948d0944f988bba873bbedebc6356c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
