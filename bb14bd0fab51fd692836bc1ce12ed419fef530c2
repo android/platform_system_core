@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84259fc9_d88ad84d",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-01-18T17:53:52Z",
+      "side": 1,
+      "message": "This isn\u0027t C; this should be defined inline, right before it\u0027s first used, so \"std::string verity_support\" should be right before \n\nif (!android::base::ReadFileToString(SYSFS_EXT4_VERITY, \u0026verity_support)) {",
+      "revId": "bb14bd0fab51fd692836bc1ce12ed419fef530c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c862ef4_273b24c3",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-01-18T17:53:52Z",
+      "side": 1,
+      "message": "Do you actually mean to compare just up to the length of \u0027supported\u0027 or is this better to compare the two strings directly?\n\nIf the former, then this should be `if (StartsWith(verity_support, \"supported\"))`\nIf the latter, then this should be `if (verity_support \u003d\u003d \"supported\")`\n\nI hope the latter is all that is needed too, is there any reason why the string might have something beyond \"supported\" ?\n\nYou don\u0027t need to factor out the constant string here, since it\u0027s only used once.",
+      "revId": "bb14bd0fab51fd692836bc1ce12ed419fef530c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d97ca44_46551099",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-01-18T17:53:52Z",
+      "side": 1,
+      "message": "Unless you have a user of this, drop it.  This old style fstab is going away, so better to not keep adding to it.",
+      "revId": "bb14bd0fab51fd692836bc1ce12ed419fef530c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
