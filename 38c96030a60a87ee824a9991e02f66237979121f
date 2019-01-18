@@ -46,6 +46,30 @@
       "revId": "38c96030a60a87ee824a9991e02f66237979121f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3467334f_cb7c1798",
+        "filename": "libunwindstack/MapInfo.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2019-01-18T11:00:26Z",
+      "side": 1,
+      "message": "AFAICT on this branch all uses of cur_build_id are\n\n* \u003d new std::string\n* release\n\nthen the function returns.\n\nThe exchange does not happen on this branch, but below (which this branch does not reach, because it returns).\n\nAm I missing something? This looks like a leak to me.",
+      "parentUuid": "8fa17034_94234883",
+      "range": {
+        "startLine": 284,
+        "startChar": 4,
+        "endLine": 284,
+        "endChar": 27
+      },
+      "revId": "38c96030a60a87ee824a9991e02f66237979121f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
