@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a0678fff_1ee8a5c1",
+        "filename": "rootdir/etc/ld.config.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1026966
+      },
+      "writtenOn": "2019-01-21T22:48:38Z",
+      "side": 1,
+      "message": "I don\u0027t think we support NDK_LIBRARIES in ld.config.txt:\nhttps://cs.corp.google.com/android/system/core/rootdir/update_and_install_ld_config.mk\n\nIf Jiyong agrees on introducing NDK_LIBRARIES in ld.config.txt, I\u0027d like do the clean up with a separate follow-up change.",
+      "parentUuid": "72a2fa3c_6830a416",
+      "range": {
+        "startLine": 142,
+        "startChar": 45,
+        "endLine": 142,
+        "endChar": 60
+      },
+      "revId": "c19263bcd06addc02634debb5225e8a0a6815f85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e831635_1ddb6ecb",
         "filename": "rootdir/etc/ld.config.txt",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-21T20:49:40Z",
       "side": 1,
       "message": "Why do you need this? Is it temporary?",
+      "range": {
+        "startLine": 143,
+        "startChar": 44,
+        "endLine": 143,
+        "endChar": 54
+      },
+      "revId": "c19263bcd06addc02634debb5225e8a0a6815f85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23270d29_f9efb788",
+        "filename": "rootdir/etc/ld.config.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1026966
+      },
+      "writtenOn": "2019-01-21T22:48:38Z",
+      "side": 1,
+      "message": "I was not able to use NDK_LIBRARIES here, so manually added the libraries which is not included in NDK_LIBRARIES.\n\nIf the question is why libmedia2_jni needs libandroid.so, libandroid is ndk and libmedia2_jni needs it to use NDK APIs like AChoreographer and ALooper.",
+      "parentUuid": "6e831635_1ddb6ecb",
       "range": {
         "startLine": 143,
         "startChar": 44,
