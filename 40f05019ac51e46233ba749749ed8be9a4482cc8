@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "0f242552_dabf1933",
+        "filename": "libmeminfo/procmeminfo.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2019-01-22T18:42:00Z",
+      "side": 1,
+      "message": "No, we clear maps_ at L243 in case of any failure. So the expectation is that maps_ will be empty on \u0027false\u0027 return.\nThere is no point in returning partial vector, it is useless and will take up memory for as long as the object is alive.\n\nI think all these whole map_.empty() checks can be easily cleaned up if I just add a factory method for this class\nand so its very *clear*. Given the time remaining right now, I will likely do that once the branch is cut as I will have to change\na bunch of code elsewhere too.\n\n(Probably should have though of the factory method before).\n\nI\u0027ll leave this as is and fix other comments you added.",
+      "parentUuid": "cdf760fa_57877ee9",
+      "range": {
+        "startLine": 125,
+        "startChar": 26,
+        "endLine": 125,
+        "endChar": 34
+      },
+      "revId": "40f05019ac51e46233ba749749ed8be9a4482cc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73fe0aa8_97a5132f",
         "filename": "libmeminfo/tools/wsstop.cpp",
         "patchSetId": 1
