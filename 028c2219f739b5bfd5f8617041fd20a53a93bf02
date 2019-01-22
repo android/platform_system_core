@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ece28efd_e688477a",
+        "filename": "adb/daemon/file_sync_service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-22T16:45:37Z",
+      "side": 1,
+      "message": "Maybe explain here why you are not re-bind mounting. What about the loopback mounts?\n\nBut I do have a concern, adb sync may update /system/apex/com.android.runtime.debug.apex and do we not want that bindings and namespace to be updated? Changing a filesystem image underneath could lead to a kernel panic?",
+      "range": {
+        "startLine": 576,
+        "startChar": 27,
+        "endLine": 576,
+        "endChar": 38
+      },
+      "revId": "028c2219f739b5bfd5f8617041fd20a53a93bf02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
