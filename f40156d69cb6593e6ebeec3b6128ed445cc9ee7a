@@ -34,6 +34,24 @@
       "revId": "f40156d69cb6593e6ebeec3b6128ed445cc9ee7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06148d69_42bef353",
+        "filename": "rootdir/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-23T23:19:41Z",
+      "side": 1,
+      "message": "Actually, I forgot that we\u0027re always building the rootdir into the system image now, so this is safer than I thought. The danger here is:\n\n* whether there\u0027s a dependency from the system image to this rule. Since the system image (now) always includes the rootdir, that\u0027s fine.\n\n* Someone removing $(PRODUCT_OUT)/system without removing $(PRODUCT_OUT)/root (or otherwise triggering this rule). This has happened several times in CleanSpec.mk files: https://cs.corp.google.com/search/?q\u003dCleanSpec.mk+rm.*rf.*PRODUCT_OUT.*system%5C)\u0026m\u003d100\u0026det\u003dmatsel\u0026sq\u003dpackage:%5Eandroid$\u0026type\u003dcs\n\nI don\u0027t know of any existing LOCAL_POST_INSTALL_CMD that you can tack onto, any make module that installs onto system whenever you want would work.\n\nI\u0027m hoping to eventually get symlinks supported in the build graph, but that\u0027s probably not going to happen for Q.",
+      "parentUuid": "5a152728_d742f65e",
+      "revId": "f40156d69cb6593e6ebeec3b6128ed445cc9ee7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
