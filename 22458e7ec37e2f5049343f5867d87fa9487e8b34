@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16677fa3_5e769fb7",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-01-23T21:01:03Z",
+      "side": 1,
+      "message": "Just went to submit and checked this over and realized this isn\u0027t right.  vector::erase() \"\nInvalidates iterators and references at or after the point of the erase, including the end() iterator.\"  It does return an iterator that points to the iterator after the last removed element though, so we\u0027d want something like\n\n    if (erase_used_fstab_entry) {\t\n        current \u003d fstab_.erase(begin, current);\t\n    }\n\nto be safe.\n\n(This may just be passing because we\u0027re lucky and there\u0027s no resizing operations happening, but if it resizes, we\u0027ll break).",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 5
+      },
+      "revId": "22458e7ec37e2f5049343f5867d87fa9487e8b34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
