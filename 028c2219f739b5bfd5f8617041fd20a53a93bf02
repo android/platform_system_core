@@ -22,6 +22,30 @@
       "revId": "028c2219f739b5bfd5f8617041fd20a53a93bf02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1e2e949_730a1cde",
+        "filename": "adb/daemon/file_sync_service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-23T01:37:48Z",
+      "side": 1,
+      "message": "Re-bind mounting doesn\u0027t change anything. Goal here is to unmount things mounted at /bionic/lib/libc.so,/bionic/lib/libdl.so, etc.\n\nFor the loopback mounts, the mount points are at /apex which does not exist and thus is not remounted as RW. So it is impossible to touch the mount points via adb. However, it is possible to adb sync the file underneath the loopback device, which is /system/apex/*.apex. In that case, the kernel still operates with the old (unlinked) file. As an experiment, I\u0027ve pushed an empty file to /system/apex/com.android.runtime.debug.apex and the device was fine (even after `sync; echo 2 \u003e /proc/sys/vm/drop_caches`)",
+      "parentUuid": "ece28efd_e688477a",
+      "range": {
+        "startLine": 576,
+        "startChar": 27,
+        "endLine": 576,
+        "endChar": 38
+      },
+      "revId": "028c2219f739b5bfd5f8617041fd20a53a93bf02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
