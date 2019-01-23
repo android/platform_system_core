@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "f3318245_829baffb",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-01-23T08:05:13Z",
+      "side": 1,
+      "message": "How about:\n\n    bool mounted \u003d (fs_mgr_do_mount_one(*begin) \u003d\u003d 0);\n\n    // Try other mounts with the same mount point.\n    Fstab::iterator cur \u003d begin + 1;\n    for (; cur !\u003d fstab_.end() \u0026\u0026 cur-\u003emount_point \u003d\u003d begin-\u003emount_point; cur++) {\n        if (!mounted) {\n            cur-\u003eblk_device \u003d begin-\u003eblk_device;\n            mounted \u003d (fs_mgr_do_mount_one(*cur) \u003d\u003d 0);\n        }\n    }\n\n    if (erase_same_mounts) {\n        fstab_.erase(begin, cur);\n    }\n\n    if (out_end) {\n       *out_end \u003d cur;\n    }\n    ...",
+      "range": {
+        "startLine": 402,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 5
+      },
+      "revId": "a852c5384b1686dabdbabed0baec666d2f7b5df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5bbaceb8_0b444fe3",
         "filename": "init/first_stage_mount.cpp",
         "patchSetId": 7
