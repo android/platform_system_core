@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6af61a5b_93feb2e6",
+        "filename": "fs_mgr/libfiemap_writer/fiemap_writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2019-01-25T20:54:42Z",
+      "side": 1,
+      "message": "It only really makes sense to flush if you write in this class. The gsi_service can do its own block device flush on the device mapper block device.\n\nSo the open(O_RDONLY) is ok. The reason why Flush() was a class method was to make FiemapWriter::Write() faster-ish. So, the caller can write everything and take advantage of the caches and then call\nFiemapWriter::Flush() only once. Hence my suggestion to call the helper only in Flush() and Write().\n\n\u003e if we extract this to a helper, bdev_fd_ will get opened with RDWR which we don\u0027t want.\nI didn\u0027t really get this.\n\nWhy can\u0027t we do something like - \n\n// Private\nInitBdevWrite() {\n        bdev_fd_.reset(TEMP_FAILURE_RETRY(open(bdev_path_.c_str(), O_RDWR | O_CLOEXEC)));\n        if (bdev_fd_ \u003c 0) {\n            PLOG(ERROR) \u003c\u003c \"Failed to open block device: \" \u003c\u003c bdev_path_;\n            return false;\n        }\n}\n\n// Public\nOpen() {\n  ...\n  ::android::base::unique_fd bdev_fd(\n            TEMP_FAILURE_RETRY(open(bdev_path.c_str(), O_RDONLY | O_CLOEXEC)));\n    if (bdev_fd \u003c 0) {\n        PLOG(ERROR) \u003c\u003c \"Failed to open block device: \" \u003c\u003c bdev_path;\n        cleanup(file_path, create);\n        return nullptr;\n    }\n  ...\n\n  bdev_fd_ \u003d std::move(bdev_fd);\n}\n\nFlush() {\n   InitBdevWrite();\n}\n\nWrite() {\n InitBdevWrite();\n}\n\n\n{ may be even pick a better name than \"InitBdevWrite\")",
+      "parentUuid": "ff02ff69_1ac9caa8",
+      "range": {
+        "startLine": 544,
+        "startChar": 6,
+        "endLine": 544,
+        "endChar": 40
+      },
+      "revId": "4af130fef222cb0baebbe69343d5be53a4bacd1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "74139e5c_e23b9188",
         "filename": "fs_mgr/libfiemap_writer/fiemap_writer.cpp",
         "patchSetId": 2
