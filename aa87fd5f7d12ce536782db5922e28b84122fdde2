@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4744a749_1b2dbb0b",
+        "filename": "rootdir/etc/ld.config.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1343198
+      },
+      "writtenOn": "2019-01-28T12:00:02Z",
+      "side": 1,
+      "message": "If a shared library or an executable requests a shared library that cannot be loaded into the default namespace, the dynamic linker tries to load the shared library from the runtime namespace.And then, if the shared library cannot be loaded from the runtime namespace either, the dynamic linker tries to load the shared library from the resolv namespace.Finally, if all attempts fail, the dynamic linker returns an error.",
+      "parentUuid": "8f30af7b_9f7908d5",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 40
+      },
+      "revId": "aa87fd5f7d12ce536782db5922e28b84122fdde2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b4d310d_d1f46a2c",
         "filename": "rootdir/etc/ld.config.txt",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-28T10:10:29Z",
       "side": 1,
       "message": "Out of curiosity, what is this for? Does it mean \"things in the default namespace, like netd, can dynamically link libnetd_resolv.so\"?",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 61
+      },
+      "revId": "aa87fd5f7d12ce536782db5922e28b84122fdde2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b53065a9_96504bf2",
+        "filename": "rootdir/etc/ld.config.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1343198
+      },
+      "writtenOn": "2019-01-28T12:00:02Z",
+      "side": 1,
+      "message": "This indicates that the fallback link only accepts libnetd_resolv.so as the requested library name. The dynamic linker ignores the fallback link from default to resolv namespace if the requested library name is not libnetd_resolv.so.",
+      "parentUuid": "6b4d310d_d1f46a2c",
       "range": {
         "startLine": 119,
         "startChar": 0,
