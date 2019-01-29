@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27e35a90_43d00c22",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1761,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-29T21:48:09Z",
+      "side": 1,
+      "message": "nit:\n\nif (...) {\n    return false;\n}",
+      "range": {
+        "startLine": 1760,
+        "startChar": 65,
+        "endLine": 1761,
+        "endChar": 21
+      },
+      "revId": "e252ab5e88f37141f2799637ef0413c8b4c629e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed0a5ec6_3413c985",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1778,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-29T21:48:09Z",
+      "side": 1,
+      "message": "level_idx for consistency?",
+      "range": {
+        "startLine": 1778,
+        "startChar": 11,
+        "endLine": 1778,
+        "endChar": 16
+      },
+      "revId": "e252ab5e88f37141f2799637ef0413c8b4c629e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "211e6e44_519ce00e",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1784,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-29T21:48:09Z",
+      "side": 1,
+      "message": "Do you need to check VMPRESS_LEVEL_LOW and VMPRESS_LEVEL_COUNT range here too? Or do you 100% trust that this will only be called inside init_psi_monitors forever?",
+      "range": {
+        "startLine": 1784,
+        "startChar": 20,
+        "endLine": 1784,
+        "endChar": 25
+      },
+      "revId": "e252ab5e88f37141f2799637ef0413c8b4c629e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cacee77d_85739bc0",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1961,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-01-29T21:48:09Z",
+      "side": 1,
+      "message": "nit: Was this added because compiler complained about uninitialized last_report_tm variable? We know that polling starts as 0 and only gets initialized on line 2033 so this is unnecessary.\n\nIf it is a compiler issue, then maybe initialize last_report_tm \u003d { 0, 0 }?",
+      "range": {
+        "startLine": 1961,
+        "startChar": 0,
+        "endLine": 1961,
+        "endChar": 59
+      },
+      "revId": "e252ab5e88f37141f2799637ef0413c8b4c629e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
