@@ -105,6 +105,30 @@
       "revId": "302a259fa9755537f3bbcb2e848fade9e711ff5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b93e6bc8_9d64d87d",
+        "filename": "libmeminfo/libdmabufinfo/include/dmabufinfo/dmabufinfo.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1283094
+      },
+      "writtenOn": "2019-01-30T19:56:54Z",
+      "side": 1,
+      "message": "It is appending (mostly): When a new buffer (inode) is found, it will be added at the end of the vector, if the vector already contains the buffer then its reference counts by PID will be updated.\n\nSince there are updates involved I\u0027m not sure a set makes sense. I considered using a Map with inode as the key. When I discussed it with Sandeep he said either was ok.\n\nThe next CL I have planned adds a tool that builds a table for all PIDs using this.",
+      "parentUuid": "a2d06967_beadc66f",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "302a259fa9755537f3bbcb2e848fade9e711ff5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
