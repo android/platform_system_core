@@ -184,6 +184,24 @@
     },
     {
       "key": {
+        "uuid": "fa76b4a4_86665391",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2019-01-31T23:16:11Z",
+      "side": 1,
+      "message": "Oh ok, I\u0027ll try to refactor it this way. thanks",
+      "parentUuid": "8b986ffc_9a2254ab",
+      "revId": "de4a3ff9f8c60b10b9c5c5e02574d8faca9db182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "331b8523_b9c3aa96",
         "filename": "libcutils/ashmem-dev.cpp",
         "patchSetId": 11
@@ -243,6 +261,30 @@
       "side": 1,
       "message": "it\u0027s just weird to have `vndk_version !\u003d \"current\"` twice. clearer to have\n\n  if (vndk_version \u003d\u003d \"current\") {\n    // Nothing.\n  } ...\n\n?",
       "parentUuid": "8acbcf11_c6b5157d",
+      "range": {
+        "startLine": 138,
+        "startChar": 15,
+        "endLine": 138,
+        "endChar": 41
+      },
+      "revId": "de4a3ff9f8c60b10b9c5c5e02574d8faca9db182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1e52300_88d1c0fd",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2019-01-31T23:16:11Z",
+      "side": 1,
+      "message": "your suggestion may a) involve a goto to skill ahead of the if/else block here because we have to later check for kernel support in the function.\n\nI\u0027ll just abstract this bit into its own function then, so that I don\u0027t need any gotos. I\u0027ll update the CL, thanks.",
+      "parentUuid": "e6d22ff4_f2447b5e",
       "range": {
         "startLine": 138,
         "startChar": 15,
@@ -349,6 +391,24 @@
       "side": 1,
       "message": "maybe, i\u0027ve just never regretted putting the exact failure into a log message :-)",
       "parentUuid": "5152f6c7_ffa1b7eb",
+      "revId": "de4a3ff9f8c60b10b9c5c5e02574d8faca9db182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5006cf12_16e0fa3a",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2019-01-31T23:16:11Z",
+      "side": 1,
+      "message": "Oh, if you meant log message, sure. I can log the errno here, I\u0027ll do that.",
+      "parentUuid": "ae311b21_e807a47f",
       "revId": "de4a3ff9f8c60b10b9c5c5e02574d8faca9db182",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
