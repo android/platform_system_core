@@ -144,6 +144,24 @@
     },
     {
       "key": {
+        "uuid": "5e439c42_e763953d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-01-31T16:27:24Z",
+      "side": 1,
+      "message": "Right; I think I\u0027m not phrasing my question well.  \n\nI\u0027m talking about the case that a device has been used in the field and downloads a new APEX, so that there is an updated APEX running from /data.  And my question is when a developer `adb sync`s and that overwrites the apex in the system partition, is there a way to tell APEX, \"I know you have this update in /data, but I also updated the one in /system and that\u0027s the one that you should use\"?\n\nThat\u0027s what I mean by 99% of developers won\u0027t have this situation; since we\u0027ll likely not have updated APEX modules in /data.\n\nBut more specifically, I\u0027m also wondering what happens with the bootstrap vs default bionic.  I figure if I do the following:\n\n1) Flash a device\n2) Rebuild, including changes to bionic\n3) `adb sync`\n4) Both bionics on the device have the new changes that I made\n\nIs that the case?  If not, how do I make sure to update both bionics?",
+      "parentUuid": "4c7761fb_eb296fec",
+      "revId": "7c7189c46948761cc668c9362d0b5aefb4004c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d3eea3c_09deb604",
         "filename": "adb/daemon/remount_service.cpp",
         "patchSetId": 18
