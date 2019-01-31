@@ -214,6 +214,30 @@
       "revId": "eaa621536e3b494653ce79ac0159b7ede40e5b51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9041b1bc_be9d9537",
+        "filename": "libprocessgroup/cgroup_map.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-01-31T17:30:47Z",
+      "side": 1,
+      "message": "CgroupMap::SetupCgroups() is not meant to be used by vendor, only by init process. In case we need to provide similar functionality for vendor_init then we will also have a separate cgroups_vendor.json file which should reside on vendor partition. That way if vendor is older than system image system init will read new cgroups.json from system partition and vendor_init will read cgroups_vendor.json from vendor partition. They will feed the information into /dev/etc/cgroup.rc and /dev/etc/cgroup_vendor.rc files which are accessed via ll-ndk. I think that allows for cgroups.json and cgroups_vendor.json to be even incompatible and still keep everything working.",
+      "parentUuid": "504ec8fc_1cbedb05",
+      "range": {
+        "startLine": 46,
+        "startChar": 50,
+        "endLine": 46,
+        "endChar": 67
+      },
+      "revId": "eaa621536e3b494653ce79ac0159b7ede40e5b51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
