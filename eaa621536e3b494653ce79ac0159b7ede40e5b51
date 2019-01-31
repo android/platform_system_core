@@ -118,6 +118,30 @@
       "revId": "eaa621536e3b494653ce79ac0159b7ede40e5b51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "813b857f_6dc40cb0",
+        "filename": "libprocessgroup/cgroup_map.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-31T11:21:33Z",
+      "side": 1,
+      "message": "In that case, libprocessgroup should still be part of VNDK (to be exact it would be VNDK-private). \n\nIf CgroupMap::SetupCgroups() is not meant to be used by vendor (i.e. only the APIs moved from libcutils are for vendors) then you could hide source and header that is not for vendor under #ifndef __ANDROID_VNDK__ ~ #endif.",
+      "parentUuid": "3c7c10c0_883ff2b5",
+      "range": {
+        "startLine": 46,
+        "startChar": 50,
+        "endLine": 46,
+        "endChar": 67
+      },
+      "revId": "eaa621536e3b494653ce79ac0159b7ede40e5b51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
