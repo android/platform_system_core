@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "2bb486b1_2d4e1a31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-01-31T04:12:37Z",
+      "side": 1,
+      "message": "Hmmm; that\u0027s right, we didn\u0027t want to have layered overlayfs mounts, so / wasn\u0027t overlayed.\n\nWhat about a device like hikey before LRAP?  Does that mount \u0027/\u0027 RW?  I think it should be able to, since it\u0027ll mount that entire mount point RW instead of using overlayfs.\n\nBut point taken that it won\u0027t be possible with LRAP; at least not how we\u0027re handling overlayfs for it.",
+      "parentUuid": "8bbb2181_e89755c0",
+      "revId": "7c7189c46948761cc668c9362d0b5aefb4004c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f342f77_90be5dc5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 18
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "What we update via adb sync is on the system partition. So, it\u0027s bootstrap bionic which is updated and thus affects only the pre-apexd processes.\n\nI am not sure I understood your second question correctly. If you push an *.apex file, it will be used only after apexd re-activates the apex file (usually via rebooting). Until then, the old inode is associated with the loopback device that is mounted at /apex/\u003cname\u003e.",
       "parentUuid": "6f342f77_90be5dc5",
+      "revId": "7c7189c46948761cc668c9362d0b5aefb4004c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4718be4_8df9289b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-01-31T04:12:37Z",
+      "side": 1,
+      "message": "Might be worth calling that out explicitly; that only the bootstrap bionic gets updated.\n\nIn general, I\u0027m wondering why that\u0027s the intended behavior, and my second question was asking if that is the intended behavior for apex files.  Essentially, I find it strange that if I `adb push` or `adb sync` after making changes to the tree, that apex would override my \u0027new\u0027 files.  If I\u0027m explicitly pushing or syncing them, I figure I\u0027d be intending for them to be used.\n\nBut I guess for 99% of developers, we\u0027ll be running on a device that doesn\u0027t have any apex modules, so I\u0027m not actually concerned either way; just wanted to know.",
+      "parentUuid": "6f8309c2_0be9574c",
       "revId": "7c7189c46948761cc668c9362d0b5aefb4004c70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
