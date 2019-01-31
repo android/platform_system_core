@@ -94,6 +94,30 @@
       "revId": "eaa621536e3b494653ce79ac0159b7ede40e5b51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c7c10c0_883ff2b5",
+        "filename": "libprocessgroup/cgroup_map.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1119068
+      },
+      "writtenOn": "2019-01-31T10:56:01Z",
+      "side": 1,
+      "message": "Had a better look and it turns out this lib is in vendor since:\n\n   commit dad4749731b6 (\"Add libprocessgroup into VNDK\")\n\nbecause it provides the implementation of some APIs:\n\n  - set_cpuset_policy\n  - {set,get}_sched_policy\n\nwhich was originally provided by libcutils.so, a VNDK-SP library\nthat is accessible by SP-HALs.\n\nSince the APIs above are kind of legacy bits of an API which we need to maintain just for backward compatibility,\nI was wondering if it could not be a better solution to:\n\n  1. move back the above APIs in their original library libcutil.so,\n     and expose only libcutil.so to the VNDK\n\n  3. keep the new libprocessgroup not in VNDK,\n     so that we don\u0027t commit too early to a new API which can still evolve.\n\nThe new libcutil.so is now indeed a tiny wrapper around the new libprocessgroup which is less likely to break if we change libprocessgroup or its JSON files in the next cycle.\n\nLet\u0027s wait for @surenb to comment on this.",
+      "parentUuid": "d81a93f6_3431f31b",
+      "range": {
+        "startLine": 46,
+        "startChar": 50,
+        "endLine": 46,
+        "endChar": 67
+      },
+      "revId": "eaa621536e3b494653ce79ac0159b7ede40e5b51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
