@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "c0742fbc_6e0bae14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-31T04:42:22Z",
+      "side": 1,
+      "message": "I don\u0027t have a hikey device, but yes, I think your reasoning is correct.",
+      "parentUuid": "2bb486b1_2d4e1a31",
+      "revId": "7c7189c46948761cc668c9362d0b5aefb4004c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f342f77_90be5dc5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 18
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Might be worth calling that out explicitly; that only the bootstrap bionic gets updated.\n\nIn general, I\u0027m wondering why that\u0027s the intended behavior, and my second question was asking if that is the intended behavior for apex files.  Essentially, I find it strange that if I `adb push` or `adb sync` after making changes to the tree, that apex would override my \u0027new\u0027 files.  If I\u0027m explicitly pushing or syncing them, I figure I\u0027d be intending for them to be used.\n\nBut I guess for 99% of developers, we\u0027ll be running on a device that doesn\u0027t have any apex modules, so I\u0027m not actually concerned either way; just wanted to know.",
       "parentUuid": "6f8309c2_0be9574c",
+      "revId": "7c7189c46948761cc668c9362d0b5aefb4004c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c7761fb_eb296fec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-31T04:42:22Z",
+      "side": 1,
+      "message": "Even before this change, adb push/sync can\u0027t override files that are in-use. The updated file is only for new open() or new processes. Sams as APEX.\n\n\u003e But I guess for 99% of developers, we\u0027ll be running on a device that doesn\u0027t have any apex modules,\n\nNo, all Q devices have APEXes in the system partition though some of them won\u0027t support \"updating\" of APEXes due to lack of required patches in kernel.",
+      "parentUuid": "b4718be4_8df9289b",
       "revId": "7c7189c46948761cc668c9362d0b5aefb4004c70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
