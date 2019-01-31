@@ -142,6 +142,30 @@
       "revId": "eaa621536e3b494653ce79ac0159b7ede40e5b51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70fed997_8fd96838",
+        "filename": "libprocessgroup/cgroup_map.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1119068
+      },
+      "writtenOn": "2019-01-31T12:04:42Z",
+      "side": 1,
+      "message": "\u003e In that case, libprocessgroup should still be part of VNDK (to be exact it would be VNDK-private). \n\u003e \n\u003e If CgroupMap::SetupCgroups() is not meant to be used by vendor (i.e. only the APIs moved from libcutils are for vendors) then you could hide source and header that is not for vendor under #ifndef __ANDROID_VNDK__ ~ #endif.\n\nAnd since /etc/cgroup.json is not directly used by the original APIs (which will be the only ones not guarded by !__ANDROID_VNDK__) then is it acceptable to consider that JSON a non stable API ?\nIs there any way to formally flag as not stable an asset like that JSON file ?",
+      "parentUuid": "813b857f_6dc40cb0",
+      "range": {
+        "startLine": 46,
+        "startChar": 50,
+        "endLine": 46,
+        "endChar": 67
+      },
+      "revId": "eaa621536e3b494653ce79ac0159b7ede40e5b51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
