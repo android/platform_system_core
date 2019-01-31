@@ -166,6 +166,24 @@
     },
     {
       "key": {
+        "uuid": "8b986ffc_9a2254ab",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-01-31T22:23:38Z",
+      "side": 1,
+      "message": "typically this kind of thing looks like:\n\n\n  T get_whatever() {\n    static T t \u003d init_whatever();\n    return t;\n  }\n\n  T init_whatever() {\n    ...\n  }\n\nbut here the two are all mixed up together, with the odd no_memfd_support helper. it\u0027s just harder to reason about than the usual idiom.",
+      "parentUuid": "d6898862_380375a5",
+      "revId": "de4a3ff9f8c60b10b9c5c5e02574d8faca9db182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "331b8523_b9c3aa96",
         "filename": "libcutils/ashmem-dev.cpp",
         "patchSetId": 11
@@ -201,6 +219,30 @@
       "side": 1,
       "message": "L117 is for a different purpose.\n\nvndk_version !\u003d \"current\" is for the purpose of skipping the if and else-if blocks completely, since we don\u0027t need to do any VNDK checks any more.",
       "parentUuid": "331b8523_b9c3aa96",
+      "range": {
+        "startLine": 138,
+        "startChar": 15,
+        "endLine": 138,
+        "endChar": 41
+      },
+      "revId": "de4a3ff9f8c60b10b9c5c5e02574d8faca9db182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6d22ff4_f2447b5e",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-01-31T22:23:38Z",
+      "side": 1,
+      "message": "it\u0027s just weird to have `vndk_version !\u003d \"current\"` twice. clearer to have\n\n  if (vndk_version \u003d\u003d \"current\") {\n    // Nothing.\n  } ...\n\n?",
+      "parentUuid": "8acbcf11_c6b5157d",
       "range": {
         "startLine": 138,
         "startChar": 15,
@@ -289,6 +331,24 @@
       "side": 1,
       "message": "Whichever the reason, if this fails then we have major issues anyway and we want to fallback to ashmem. So I did not see the reason to use a specific error code. The library works with both ashmem and memfd. This function will be removed in the future once we completely migrate ashmem usages, at which point this function will not exist.",
       "parentUuid": "61aa5f11_583e0e46",
+      "revId": "de4a3ff9f8c60b10b9c5c5e02574d8faca9db182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae311b21_e807a47f",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-01-31T22:23:38Z",
+      "side": 1,
+      "message": "maybe, i\u0027ve just never regretted putting the exact failure into a log message :-)",
+      "parentUuid": "5152f6c7_ffa1b7eb",
       "revId": "de4a3ff9f8c60b10b9c5c5e02574d8faca9db182",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
