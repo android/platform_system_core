@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8bbb2181_e89755c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-31T02:20:48Z",
+      "side": 1,
+      "message": "Yes. When the dynamic partition is used, / is still ro even after \u0027adb remount\u0027.\n\n$ adb root; adb remount; adb shell\ncrosshatch:/ # cat /proc/self/mountinfo \n...\n22 21 253:0 / / ro,nodev,relatime shared:1 - ext4 /dev/block/dm-0 ro,seclabel,block_validity,delalloc,barrier,user_xattr\n23 22 253:1 / /vendor ro,relatime shared:18 - ext4 /dev/block/dm-1 ro,seclabel,block_validity,delalloc,barrier,user_xattr\n24 22 253:2 / /product ro,relatime shared:20 - ext4 /dev/block/dm-2 ro,seclabel,block_validity,delalloc,barrier,user_xattr\n...\n1902 22 0:33 / /system rw,relatime shared:36 - overlay overlay rw,seclabel,lowerdir\u003d/system,upperdir\u003d/mnt/scratch/overlay/system/upper,workdir\u003d/mnt/scratch/overlay/system/work,override_creds\u003doff\n2097 23 0:34 / /vendor rw,relatime shared:37 - overlay overlay rw,seclabel,lowerdir\u003d/vendor,upperdir\u003d/mnt/scratch/overlay/vendor/upper,workdir\u003d/mnt/scratch/overlay/vendor/work,override_creds\u003doff\n2154 24 0:35 / /product rw,relatime shared:38 - overlay overlay rw,seclabel,lowerdir\u003d/product,upperdir\u003d/mnt/scratch/overlay/product/upper,workdir\u003d/mnt/scratch/overlay/product/work,override_creds\u003doff\n\n/system, /vendor, /product are rw, but / isn\u0027t.\n\ncrosshatch:/ # touch /system/foo\ncrosshatch:/ # touch /foo\ntouch: \u0027/foo\u0027: Read-only file system",
+      "parentUuid": "af770c87_ac180059",
+      "revId": "7c7189c46948761cc668c9362d0b5aefb4004c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f342f77_90be5dc5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 18
@@ -33,6 +51,24 @@
       "revId": "7c7189c46948761cc668c9362d0b5aefb4004c70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f8309c2_0be9574c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-31T02:20:48Z",
+      "side": 1,
+      "message": "What we update via adb sync is on the system partition. So, it\u0027s bootstrap bionic which is updated and thus affects only the pre-apexd processes.\n\nI am not sure I understood your second question correctly. If you push an *.apex file, it will be used only after apexd re-activates the apex file (usually via rebooting). Until then, the old inode is associated with the loopback device that is mounted at /apex/\u003cname\u003e.",
+      "parentUuid": "6f342f77_90be5dc5",
+      "revId": "7c7189c46948761cc668c9362d0b5aefb4004c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
