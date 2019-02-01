@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "c5afa30f_ad6072e2",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2019-02-01T20:35:55Z",
+      "side": 1,
+      "message": "Going back to your idiom:\nstatic T t \u003d init_whatever(); return t;\n\nThe \"whatever\" still has to be init\u0027ed. The \"whatever\" in this case is the knowledge that the device supports memfd. Checking whether the device does support memfd is rather expensive so we\u0027d rather just do this once per process.\n\nInitially I wasn\u0027t using atomics, but the concern came up about store-tearing due to concurrent read/writes.\n\nHow can C++ prevent store-tearing on the static variable in your idiom? static variables are not thread-lock AFAIK so concurrent threads trying to read/write to it should happen safely.\n\nAre you saying C++ protects static variable writes within a function using an implicit lock?\n\nTri - could you share more about the atomic use since this came about after your suggestion?",
+      "parentUuid": "bd5a71a4_053391a6",
+      "revId": "7eb1ae2f9358dcfacef6ab7f0ab343c6435952e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e8d0afc_4df0bfdf",
         "filename": "libcutils/ashmem-dev.cpp",
         "patchSetId": 13
