@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14c569c6_095054cc",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-02-01T17:39:55Z",
+      "side": 1,
+      "message": "Generally speaking, knowledge of specific SELinux labels should be contained to the policy in system/sepolicy or other config-like files, and not hardcoded into programs. It\u0027s an architectural layering violation to hard-code SELinux labels into programs. This maintains the separation between code and security policy, and makes it easier to evolve security policy.\n\nSimilarly, hardcoding in knowledge of the specific property label \"service.adb.root\" is a layering violation. The security subsystem (in this case, SELinux) should be the exclusive, centralized entity which can make a security decision.\n\nA layering violation isn\u0027t a hard blocker, IMHO. If there\u0027s a strong gain to breaking architectural layering, then I\u0027m ok with it.",
+      "range": {
+        "startLine": 451,
+        "startChar": 59,
+        "endLine": 451,
+        "endChar": 72
+      },
+      "revId": "9788b23ee732e3f63993d78abb47657f861520a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
