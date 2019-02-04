@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02084f95_b9b04556",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-02-04T23:39:12Z",
+      "side": 1,
+      "message": "Do we need -a if it\u0027s the default if no partitions are specified?  What happens if -a is specified plus a list of partitions?",
+      "revId": "14c7064f4121c2c90762b110dfba998ccb2ddbad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db73e487_a57145ed",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-02-04T23:39:12Z",
+      "side": 1,
+      "message": "slot_select_other isn\u0027t remountable?",
+      "revId": "14c7064f4121c2c90762b110dfba998ccb2ddbad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c97d893_e8d77b11",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-02-04T23:39:12Z",
+      "side": 1,
+      "message": "\u0026partition and \u0026mount_point below.",
+      "range": {
+        "startLine": 136,
+        "startChar": 66,
+        "endLine": 136,
+        "endChar": 75
+      },
+      "revId": "14c7064f4121c2c90762b110dfba998ccb2ddbad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c04b8646_6bc1b011",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-02-04T23:39:12Z",
+      "side": 1,
+      "message": "I think this all gets easier if we drop the \u0027all\u0027 and assume that no partitions provided means all.  You could check optind vs argc and either do the above loop, or do this below loop, but skipping the find_if() lines.\n\nBoth of those loops are likely better if they\u0027re broken out into separate functions too, then we just have\n\nstd::vector\u003candroid::fs_mgr::FstabEntry\u003e partitions;\nif (argc \u003d\u003d optind) {\n  GetAllPartitions(\u0026partitions);\n} else {\n  GetSpecificPartitions(argc, argv, optind, \u0026partitions);\n}",
+      "range": {
+        "startLine": 157,
+        "startChar": 16,
+        "endLine": 157,
+        "endChar": 34
+      },
+      "revId": "14c7064f4121c2c90762b110dfba998ccb2ddbad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36447f64_b65cf063",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-02-04T23:39:12Z",
+      "side": 1,
+      "message": "Maybe better to just have the contents of fs_mgr_overlayfs_verity_enabled_list() leaked outside of the for loop too?  \n\nBetter, this whole loop can be moved into a different function too, in which case there is no penalty for having the auto verity \u003d fs_mgr_overlayfs_verity_enabled_list() at top.",
+      "range": {
+        "startLine": 169,
+        "startChar": 9,
+        "endLine": 169,
+        "endChar": 13
+      },
+      "revId": "14c7064f4121c2c90762b110dfba998ccb2ddbad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ab5d6df_d4a8c416",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-02-04T23:39:12Z",
+      "side": 1,
+      "message": "Probably better to use rbegin() and rend() and iterate through this from rbegin() to rend() instead of decrementing the end() iterator.\n\nMaybe break this into a different function too?  Or do something like find_mount() in remount_service.cpp ?",
+      "revId": "14c7064f4121c2c90762b110dfba998ccb2ddbad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
