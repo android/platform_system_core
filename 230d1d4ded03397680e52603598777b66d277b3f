@@ -216,6 +216,24 @@
     },
     {
       "key": {
+        "uuid": "c53b52fe_452876b3",
+        "filename": "libcutils/ashmem-dev.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-02-04T18:43:09Z",
+      "side": 1,
+      "message": "I imagine that to clean up system we will do something similar to what we\u0027re doing to apps. Audit direct opening of /dev/ashmem, then change all system components that do that to use libcutils instead. \n\nWe will also need address vendor code. That would probably require a HIDL interface. But the gist of the work should be the same. Audit violations, fix up the code.\n\nThe reason why we are focusing on apps first is because propagating changes to app ecosystem takes much longer. We can deal with native code in later releases.\n\nOnce we know that *everything* on the device uses libcutils to open fds to /dev/ashmem, we change libcutils implementation to rely on memfd instead of ashmem. At that point, we should remove all the hacks too.",
+      "parentUuid": "525479dc_810cf99e",
+      "revId": "230d1d4ded03397680e52603598777b66d277b3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68b328b7_557b60d4",
         "filename": "libcutils/ashmem-dev.cpp",
         "patchSetId": 6
