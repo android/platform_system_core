@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e21e7418_08502bb4",
+        "filename": "fs_mgr/tests/src/com/android/tests/vendoroverlay/VendorOverlayHostTest.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-04T21:10:54Z",
+      "side": 1,
+      "message": "Paranoia: We can not execute this command if overlayfs was not used in getDevice().remountSystemWritable() on line 55 as the device may just reboot into recovery because of damaged filesystems.\n\nadb shell df | grep -v \" /vendor/..*$\" | grep \"^overlay \"\n\nwill tell you if overlays are in-use.\n\nOf course this will mean all tests that follow this may be affected.",
+      "range": {
+        "startLine": 88,
+        "startChar": 8,
+        "endLine": 88,
+        "endChar": 55
+      },
+      "revId": "b8e10aee58daddf63bf61344d5d9928aa52ea1c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e0e67aa_1ec35e47",
+        "filename": "fs_mgr/tests/src/com/android/tests/vendoroverlay/VendorOverlayHostTest.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-04T21:10:54Z",
+      "side": 1,
+      "message": "Needs also to check if any of the filesystems you are adjusting are functionally readonly (ext4 dedupe, squashfs, erofs, right-sized) and can not be remounted r/w.\n\n_all_ of this might be easier if written in C++ (i.e. as a gTest) that can utilize the fs_mgr library rather than duplicating code fragments (read: this code is fragile).",
+      "range": {
+        "startLine": 113,
+        "startChar": 23,
+        "endLine": 113,
+        "endChar": 25
+      },
+      "revId": "b8e10aee58daddf63bf61344d5d9928aa52ea1c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10f299a9_af1d64ab",
+        "filename": "fs_mgr/tests/vendor-overlay-test.xml",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-04T21:10:54Z",
+      "side": 1,
+      "message": "Does this comply with go/instant-cts-how (I do not know, just asking)",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 3
+      },
+      "revId": "b8e10aee58daddf63bf61344d5d9928aa52ea1c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
