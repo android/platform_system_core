@@ -16,6 +16,24 @@
       "revId": "03da05c076ae4b63f19451edb6c4be11f954ee19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd75bb70_4ee0e478",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-04T23:25:15Z",
+      "side": 1,
+      "message": "/sys/module/ will depend on the filesystem implementation details, if it imports/exports any params. So this works for 4.9 and higher. Breaks for 3.18 and some 4.4 implementations. tiamen and marlin gave me problems for the overlayfs and for f2fs.\n\n/sys/fs/ similar issue with implementations details. Can give a false negative (device uses ext4 for userdata, then f2fs will not succeed). taimen and marlin gives us the scenario of a false negative for f2fs that needed fortification. When I added f2fs taimen picked up, marlin did not. taimen and marlin failed for overlay too.\n\n/proc/filesystems works on _all_ releases, but it is more costly to read, needs a parse which is greatly simplified here, and if it is \u003e1024 bytes (which is not the current state of affairs, so may be a red herring), ReadFileToString _could_ suffer from atomicity/races with updates (eg partners loading modules) to /proc/filesystems. I do not want to use it if the other two provide their immediate positive results. taimen and marlin picked up here for overlay and here we proved marlin (and taimen) did not have f2fs.",
+      "parentUuid": "dd44f361_19e7a18d",
+      "revId": "03da05c076ae4b63f19451edb6c4be11f954ee19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
