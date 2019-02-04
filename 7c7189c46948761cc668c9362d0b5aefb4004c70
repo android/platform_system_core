@@ -234,6 +234,24 @@
     },
     {
       "key": {
+        "uuid": "e17d0dea_078008f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-04T16:19:24Z",
+      "side": 1,
+      "message": "Not sure if I would call this a regression in behavior worth resolving. expectations are adb sync, when common shared resources like libraries are affected, has never guaranteed all are immediately affected, and the general rule of thumb is to reboot after sync to get them all in-line. I certainly do so when I update libc as there are so many users, I\u0027d expect a similar effect for runtime libc (restarting services notwithstanding). In fact, all my scripts that perform an adb sync are followed by a reboot \"just because\" regardless of what got updated (b/c, for example, what if I changed init, which is an executable that can never be killed or stopped).\n\nYes, it _would_ be nice is everything was using the new libraries immediately after, but bending over backwards to make it so without a 100% guarantee is not worth the trouble.",
+      "parentUuid": "fdaab73b_f0611f16",
+      "revId": "7c7189c46948761cc668c9362d0b5aefb4004c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d3eea3c_09deb604",
         "filename": "adb/daemon/remount_service.cpp",
         "patchSetId": 18
