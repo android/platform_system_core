@@ -70,6 +70,24 @@
       "revId": "03da05c076ae4b63f19451edb6c4be11f954ee19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa2d6217_154c5e7a",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-05T18:04:46Z",
+      "side": 1,
+      "message": "I can accept dropping the other tests and focus on /proc/filesystems. It will take some time to confirm.\n\n[TL;DR]\n\nWill need to retest with custom builds for every product all over again which took (lazy, advantageous and background) days because I do not have enough space on my machine to maintain all the builds at the same time and wiped betwixt. I used a fresh ToT and switched devices as I worked other issues and rotated through the tests. This code is run during first_stage_init, needs a custom kernel for taimen and marlin, in the adb remount handing code, and adb sync / adb push does not guarantee (FUD) an incremental ability to test this, and certainly does not in the negative case. I can probably do this _smart_ and speed up the testing if I focus on replacing all the affected components.\n\nReadFileToString pulls 1K at a time when it does not know the size of the node, /proc/filesystems does not report its size and thus activates this scenario. This has resulted in data corruption when reading dynamic content throughout the /proc filesystem in multiple locations and we have tried to move code away from using it. If I could find another way I\u0027d stay clear of /proc.\n\n(the maintainers have threatened to deprecate /proc for two decades now ;-/ so it is a losing battle).\n\nYes, not likely w.r.t. /proc/filesystems on Pixel \u003cperiod\u003e IMHO. All we need is for vendor to do something funny, or suffer from the asynchronous instantiation of filesystem modules. Still not likely because the numbers of filesystem modules on most sane installations is \u003c\u003c\u003c\u003c1024 bytes in /proc/filesystems.\n\nIdeally I\u0027d fix ReadFileToStrings to re-read the content from the beginning for nodes in /proc (or any memory filesystems) if it decided to resize and pull more; and to re-read it twice and compare if \u003e4096 bytes to prevent a corrupted read from any reshaping that occurs from page to page.",
+      "parentUuid": "e122e010_9e9c9d47",
+      "revId": "03da05c076ae4b63f19451edb6c4be11f954ee19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
