@@ -1,0 +1,331 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f142baf7_c7bf5814",
+        "filename": "libnativebridge/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-02-05T02:52:34Z",
+      "side": 1,
+      "message": "This doesn\u0027t convey the kind of shim. I suggest libnativebridge_lazy_load\" instead, or maybe just \"libnativebridge_lazy\". Same in other places.",
+      "range": {
+        "startLine": 52,
+        "startChar": 27,
+        "endLine": 52,
+        "endChar": 31
+      },
+      "revId": "0f0a51ef016f30fa1e18b21ad51ec79f807bd0db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a94ddd95_764d8627",
+        "filename": "libnativebridge/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-02-05T02:52:34Z",
+      "side": 1,
+      "message": "Add\n    required: [\"libnativebridge\"]\n\nto ensure the dlopen\u0027ed library gets built?",
+      "revId": "0f0a51ef016f30fa1e18b21ad51ec79f807bd0db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd4c52bc_f43cd18c",
+        "filename": "libnativebridge/native_bridge_shim.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-02-05T02:52:34Z",
+      "side": 1,
+      "message": "Style: Put standard includes before local ones (but after the header being defined).",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 19
+      },
+      "revId": "0f0a51ef016f30fa1e18b21ad51ec79f807bd0db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf00d7ee_1d926708",
+        "filename": "libnativebridge/native_bridge_shim.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-02-05T02:52:34Z",
+      "side": 1,
+      "message": "Style: Functions begin with capitals. Also for getFuncPtr.",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 7
+      },
+      "revId": "0f0a51ef016f30fa1e18b21ad51ec79f807bd0db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34324bfd_e40f14f9",
+        "filename": "libnativebridge/native_bridge_shim.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-02-05T02:52:34Z",
+      "side": 1,
+      "message": "Add RTLD_GLOBAL here?",
+      "range": {
+        "startLine": 31,
+        "startChar": 53,
+        "endLine": 31,
+        "endChar": 61
+      },
+      "revId": "0f0a51ef016f30fa1e18b21ad51ec79f807bd0db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "270ba8a5_20dd1fcb",
+        "filename": "libnativebridge/native_bridge_shim.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-02-05T02:52:34Z",
+      "side": 1,
+      "message": "Please use std::call_once to avoid concurrency issues.",
+      "range": {
+        "startLine": 31,
+        "startChar": 15,
+        "endLine": 31,
+        "endChar": 30
+      },
+      "revId": "0f0a51ef016f30fa1e18b21ad51ec79f807bd0db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b243db9_ac258c71",
+        "filename": "libnativebridge/native_bridge_shim.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-02-05T02:52:34Z",
+      "side": 1,
+      "message": "Cut\u0026paste mistake? Can you please add another cc_test that runs the unit tests through the shim?",
+      "range": {
+        "startLine": 31,
+        "startChar": 32,
+        "endLine": 31,
+        "endChar": 50
+      },
+      "revId": "0f0a51ef016f30fa1e18b21ad51ec79f807bd0db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43f36ad3_0d95db3c",
+        "filename": "libnativebridge/native_bridge_shim.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-02-05T02:52:34Z",
+      "side": 1,
+      "message": "Nit: Please add space after \":\".",
+      "range": {
+        "startLine": 32,
+        "startChar": 68,
+        "endLine": 32,
+        "endChar": 70
+      },
+      "revId": "0f0a51ef016f30fa1e18b21ad51ec79f807bd0db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb2c935f_8b541e76",
+        "filename": "libnativebridge/native_bridge_shim.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-02-05T02:52:34Z",
+      "side": 1,
+      "message": "Please use dlerror.",
+      "range": {
+        "startLine": 32,
+        "startChar": 74,
+        "endLine": 32,
+        "endChar": 89
+      },
+      "revId": "0f0a51ef016f30fa1e18b21ad51ec79f807bd0db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62b05a74_0b10ac01",
+        "filename": "libnativebridge/native_bridge_shim.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-02-05T02:52:34Z",
+      "side": 1,
+      "message": "Style: function_name",
+      "range": {
+        "startLine": 37,
+        "startChar": 31,
+        "endLine": 37,
+        "endChar": 43
+      },
+      "revId": "0f0a51ef016f30fa1e18b21ad51ec79f807bd0db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2df95951_804879eb",
+        "filename": "libnativebridge/native_bridge_shim.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-02-05T02:52:34Z",
+      "side": 1,
+      "message": "dlerror here too.",
+      "range": {
+        "startLine": 39,
+        "startChar": 78,
+        "endLine": 39,
+        "endChar": 93
+      },
+      "revId": "0f0a51ef016f30fa1e18b21ad51ec79f807bd0db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b0e9ac5_f0b8b93b",
+        "filename": "libnativebridge/native_bridge_shim.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-02-05T02:52:34Z",
+      "side": 1,
+      "message": "Just to raise the question, we\u0027re not worried about the extra overhead of these wrappers, right? It doesn\u0027t look to me like any of these functions would be in really hot paths.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 83
+      },
+      "revId": "0f0a51ef016f30fa1e18b21ad51ec79f807bd0db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68f0c39e_c84b8432",
+        "filename": "libnativebridge/native_bridge_shim.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-02-05T02:52:34Z",
+      "side": 1,
+      "message": "I suspect std::call_once stuff is required here too to ensure thread safety. Even if getFuncPtr is guaranteed to return the same pointer I\u0027m not sure concurrently overwriting f with it is guaranteed to produce a valid value. (The scope of the macro may be extended to contain the complete declarations to cut down more of the duplication.)",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 49
+      },
+      "revId": "0f0a51ef016f30fa1e18b21ad51ec79f807bd0db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa2f2937_b3062dea",
+        "filename": "libnativebridge/native_bridge_shim.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-02-05T02:52:34Z",
+      "side": 1,
+      "message": "Style: #undef GET_FUNC_PTR after use.",
+      "revId": "0f0a51ef016f30fa1e18b21ad51ec79f807bd0db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1e321f1_14de5410",
+        "filename": "libnativeloader/native_loader_shim.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-02-05T02:52:34Z",
+      "side": 1,
+      "message": "Essentially the same comments as in native_bridge_shim.cpp apply here too in the appropriate places.",
+      "revId": "0f0a51ef016f30fa1e18b21ad51ec79f807bd0db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
