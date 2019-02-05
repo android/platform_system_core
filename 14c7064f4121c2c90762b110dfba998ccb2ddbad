@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "915056e9_4d3a4e88",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-05T19:42:17Z",
+      "side": 1,
+      "message": "Simple answers: no and \u0027both, but an error will likely be reported if they do not overlap or make sense\u0027. It would take three lines added to make them functionally orthogonal with no changes in the code as it stands, I opted to let the code as it stands report back if it was an error when it was nonsensical.\n\n[-a|[partition]...] _confuses_ people more, but does signal orthogonal use. Does not matter what the implementation detail is, it is simpler to report \"[-a] [partition]...\" and trust that people are smart enough to realize it and not try to \u0027game\u0027 remount.\n\nBeing actually functionally orthogonal or not, is a separate discussion as part of other comments below.",
+      "parentUuid": "02084f95_b9b04556",
+      "revId": "14c7064f4121c2c90762b110dfba998ccb2ddbad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db73e487_a57145ed",
         "filename": "fs_mgr/fs_mgr_remount.cpp",
         "patchSetId": 8
@@ -33,6 +51,24 @@
       "revId": "14c7064f4121c2c90762b110dfba998ccb2ddbad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b10e8134_268ed2fa",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-05T19:42:17Z",
+      "side": 1,
+      "message": "b/c of how overlayfs works, alternate slot partitions are _stolen_ _wiped_ and _repurposed_ as overlay backing storage. We just can not allow them to be candidates for remount r/w even if they are in the fstab.\n\nadb remount does not do it either.",
+      "parentUuid": "db73e487_a57145ed",
+      "revId": "14c7064f4121c2c90762b110dfba998ccb2ddbad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "a2e515da_74557871",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-05T19:42:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3c97d893_e8d77b11",
+      "range": {
+        "startLine": 136,
+        "startChar": 66,
+        "endLine": 136,
+        "endChar": 75
+      },
+      "revId": "14c7064f4121c2c90762b110dfba998ccb2ddbad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c04b8646_6bc1b011",
         "filename": "fs_mgr/fs_mgr_remount.cpp",
         "patchSetId": 8
@@ -70,6 +130,30 @@
       "writtenOn": "2019-02-04T23:39:12Z",
       "side": 1,
       "message": "I think this all gets easier if we drop the \u0027all\u0027 and assume that no partitions provided means all.  You could check optind vs argc and either do the above loop, or do this below loop, but skipping the find_if() lines.\n\nBoth of those loops are likely better if they\u0027re broken out into separate functions too, then we just have\n\nstd::vector\u003candroid::fs_mgr::FstabEntry\u003e partitions;\nif (argc \u003d\u003d optind) {\n  GetAllPartitions(\u0026partitions);\n} else {\n  GetSpecificPartitions(argc, argv, optind, \u0026partitions);\n}",
+      "range": {
+        "startLine": 157,
+        "startChar": 16,
+        "endLine": 157,
+        "endChar": 34
+      },
+      "revId": "14c7064f4121c2c90762b110dfba998ccb2ddbad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fefa273_69518043",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-05T19:42:17Z",
+      "side": 1,
+      "message": "Oooops, the find_if is still required in both cases, because the (overlayfs) rule is that the automatic partitions must be the highest path (StartsWith). However, we are not doing so in this simpler implementation, which concerns me. Your suggestion does not fix that, it makes it worse.\n\neg: this is borken if one lists the partitions \"/ /system /vendor /vendor/firmware\". For overlayfs that should translate to /system and /vendor only, skipping the other two as not errors. For non-overlayfs it could translate to / /vendor /vendor/firmware, succeeding for the first two, and failing for the third one. Depending on configuration.\n\nI wrote it to deal \"quickly\" with the common DAP / overlayfs scenario moving forward associated with the bug\u0027s requirements and not initially for Q as a _replacement_ or fully hardened component (because that would delay this to R and not solve the immediate problem) for \u0027adb remount\u0027 being inaccessible to the remote framework. Hardening it in \u0027R\u0027 as needed later to deal with such subtleties was the hope.\n\nBut it does not deal well with the non-DAP or mixed scenarios. Do we _want_ or _need_ to support odd non DAP or legacy scenarios? Yes, (eventually) we need to do a better job of determining all list with an eye on overlayfs _before_ parsing the explicit list. Doing so may help, we could add such to the --help report so they know what --all (or empty, no matter) will do.\n\nNeed to collect the entire \u0027all\u0027 list, then dedupe them and apply the overlayfs rules as necessary. Also will want to look into how we deal with normally non-candidate partitions (like /vendor/firmware) and if we want to support them?\n\neg:\n\nw/ overlayfs\n\n/vendor\n/vendor/firmware (dropped)\n\nw/o overlayfs\n\n/vendor\n/vendor/firmware (kept, but can we remount it? should we report an error?)\n\nIf we collect the \u0027all\u0027 list first, we may be able to improve --help, that will be worth it!",
+      "parentUuid": "c04b8646_6bc1b011",
       "range": {
         "startLine": 157,
         "startChar": 16,
@@ -119,6 +203,24 @@
       "revId": "14c7064f4121c2c90762b110dfba998ccb2ddbad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fd35054_e9cffe35",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-05T19:42:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0ab5d6df_d4a8c416",
+      "revId": "14c7064f4121c2c90762b110dfba998ccb2ddbad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
