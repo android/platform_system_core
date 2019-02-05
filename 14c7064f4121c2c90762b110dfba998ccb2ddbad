@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "f46b7ef5_467e47b9",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-02-05T21:04:02Z",
+      "side": 1,
+      "message": "But why not just drop -a all together?  The second line can just be \"remounts all partitions if none specified\" and it\u0027ll be easy enough to understand with no possibility to provide contradictory inputs.  \n\nIt\u0027s not uncommon to have something similar as a default for shell utilities; think about `getprop` or even `ls`, `mount`, etc.",
+      "parentUuid": "915056e9_4d3a4e88",
+      "revId": "14c7064f4121c2c90762b110dfba998ccb2ddbad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db73e487_a57145ed",
         "filename": "fs_mgr/fs_mgr_remount.cpp",
         "patchSetId": 8
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "b/c of how overlayfs works, alternate slot partitions are _stolen_ _wiped_ and _repurposed_ as overlay backing storage. We just can not allow them to be candidates for remount r/w even if they are in the fstab.\n\nadb remount does not do it either.",
       "parentUuid": "db73e487_a57145ed",
+      "revId": "14c7064f4121c2c90762b110dfba998ccb2ddbad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a561bcf_c6c8d065",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-02-05T21:04:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b10e8134_268ed2fa",
       "revId": "14c7064f4121c2c90762b110dfba998ccb2ddbad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -154,6 +190,30 @@
       "side": 1,
       "message": "Oooops, the find_if is still required in both cases, because the (overlayfs) rule is that the automatic partitions must be the highest path (StartsWith). However, we are not doing so in this simpler implementation, which concerns me. Your suggestion does not fix that, it makes it worse.\n\neg: this is borken if one lists the partitions \"/ /system /vendor /vendor/firmware\". For overlayfs that should translate to /system and /vendor only, skipping the other two as not errors. For non-overlayfs it could translate to / /vendor /vendor/firmware, succeeding for the first two, and failing for the third one. Depending on configuration.\n\nI wrote it to deal \"quickly\" with the common DAP / overlayfs scenario moving forward associated with the bug\u0027s requirements and not initially for Q as a _replacement_ or fully hardened component (because that would delay this to R and not solve the immediate problem) for \u0027adb remount\u0027 being inaccessible to the remote framework. Hardening it in \u0027R\u0027 as needed later to deal with such subtleties was the hope.\n\nBut it does not deal well with the non-DAP or mixed scenarios. Do we _want_ or _need_ to support odd non DAP or legacy scenarios? Yes, (eventually) we need to do a better job of determining all list with an eye on overlayfs _before_ parsing the explicit list. Doing so may help, we could add such to the --help report so they know what --all (or empty, no matter) will do.\n\nNeed to collect the entire \u0027all\u0027 list, then dedupe them and apply the overlayfs rules as necessary. Also will want to look into how we deal with normally non-candidate partitions (like /vendor/firmware) and if we want to support them?\n\neg:\n\nw/ overlayfs\n\n/vendor\n/vendor/firmware (dropped)\n\nw/o overlayfs\n\n/vendor\n/vendor/firmware (kept, but can we remount it? should we report an error?)\n\nIf we collect the \u0027all\u0027 list first, we may be able to improve --help, that will be worth it!",
       "parentUuid": "c04b8646_6bc1b011",
+      "range": {
+        "startLine": 157,
+        "startChar": 16,
+        "endLine": 157,
+        "endChar": 34
+      },
+      "revId": "14c7064f4121c2c90762b110dfba998ccb2ddbad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5630c72_7c2f26f6",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-02-05T21:04:02Z",
+      "side": 1,
+      "message": "Good point about the overlayfs rule.  I still think it\u0027d be better if we broke this into different functions just for readability.\n\nThat does bring up a different issue with overlayfs though.  What if someone does:\n\n`remount /vendor/firmware/`\nthen\n`remount /vendor`\n?\n\nDoes the second remount then fail since it would nest the previous one?  Or does it shadow the first one?  A bit of an edge case, but if we\u0027re going to give people a utility that allows it, we should have a plan for handling it.\n\nIn any case, this is probably fine if we need something for test infrastructure now though.  We\u0027ll want to think through it better for the future and I think it\u0027s a good goal to have this as the backing functionality for `adb remount` to merge the two remount paths.",
+      "parentUuid": "8fefa273_69518043",
       "range": {
         "startLine": 157,
         "startChar": 16,
