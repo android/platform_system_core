@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66bcdde6_2bf01f3a",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-05T17:33:07Z",
+      "side": 1,
+      "message": "and in not_windows srcs set?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 20
+      },
+      "revId": "7368816e3302671a2239b29fbac614f0b21f7c01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a767abfa_dfe9d0de",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-05T17:33:07Z",
+      "side": 1,
+      "message": "Get rid of the #ifdef\u0027s below\n\n#include \u003cshlwapi.h\u003e\n#define FNM_NOESCAPE (1 \u003c\u003c 1) /* to match definition for no other reason */\nstatic int fnmatch(const char* patterm, const char* string, int flags __attribute__(__unused__))) {\n    return !PathMatchSpecA(input, pattern);\n}",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "7368816e3302671a2239b29fbac614f0b21f7c01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c581f2a_be7ce6eb",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-05T17:33:07Z",
+      "side": 1,
+      "message": "reuse prefix, len, path and plen to simplify or drop strlenii in code below:\n\n    memset(pattern, 0, sizeof(pattern));\n    memset(input, 0, sizeof(input));\n    prefix \u003d memcpy(pattern, prefix, len);\n    path \u003d memcpy(input, path, plen);",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 30
+      },
+      "revId": "7368816e3302671a2239b29fbac614f0b21f7c01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f028877_83a92ab5",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-05T17:33:07Z",
+      "side": 1,
+      "message": "If input is \"\" access out of bounds.",
+      "range": {
+        "startLine": 286,
+        "startChar": 18,
+        "endLine": 286,
+        "endChar": 33
+      },
+      "revId": "7368816e3302671a2239b29fbac614f0b21f7c01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a650045a_857c6a48",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-05T17:33:07Z",
+      "side": 1,
+      "message": "If pattern is \"x\", access out of bounds.",
+      "range": {
+        "startLine": 291,
+        "startChar": 29,
+        "endLine": 291,
+        "endChar": 46
+      },
+      "revId": "7368816e3302671a2239b29fbac614f0b21f7c01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17a43052_818a4203",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-05T17:33:07Z",
+      "side": 1,
+      "message": "Does not deal with pattern ending in / cleanly, array bounds, should really resize plen and len when adding content.\n\nif (dir) {\n    if ((plen \u003d\u003d 0) || (path[plen - 1] !\u003d \u0027/\u0027)) {\n        path[plen] \u003d \u0027/\u0027;\n        ++plen;\n    }\n    if (len \u0026\u0026 (prefix[len - 1] \u003d\u003d \u0027/\u0027) {\n        prefix[len] \u003d \u0027*\u0027;\n        ++len;\n    } else if ((len \u003c strlen(\"/*\")) || memcmp(\u0026prefix[len - 2], \"/*\". strlen(\"/*\"))) {\n        memcpy(\u0026prefix[len], \"/*\", strlen(\"/*\"));\n        len +\u003d 2;\n    }\n}\n\nNB: if we have no problem with \"...//*\" then KISS:\n\n    . . .\n        ++plen;\n    }\n    if ((len \u003c strlen(\"/*\")) || memcmp(\u0026prefix[len - 2], \"/*\". strlen(\"/*\"))) {\n        memcpy(\u0026prefix[len], \"/*\", strlen(\"/*\"));\n        len +\u003d 2;\n    }\n\nsgtm too ...",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 9
+      },
+      "revId": "7368816e3302671a2239b29fbac614f0b21f7c01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "188a008a_14bed67e",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-05T17:33:07Z",
+      "side": 1,
+      "message": "Hmmm, just pondering. We do not use an escape characters or globs in our filenames currently AFAIK, this would require ? and * to be [?] and [*] respectively in order to escape them, the urge by those that are comfortable with globs and escapes of escapes in strings might be to \"\\\\?\" or \"\\\\*\" respectively; but alas escapes in C text strings always results in maintenance and expectation issues that confuse. sgtm, but should be _documented_.\n\n// no FNM_PATHNAME is set in order to match a/b/c/d with a/*\n// FNM_ESCAPE is set in order to prevent using \\\\? and \\\\* and maintenance issues.",
+      "range": {
+        "startLine": 298,
+        "startChar": 26,
+        "endLine": 298,
+        "endChar": 38
+      },
+      "revId": "7368816e3302671a2239b29fbac614f0b21f7c01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45ca4478_0dd49565",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-05T17:33:07Z",
+      "side": 1,
+      "message": "was prefix, but you are now pushing path?\n\nIt is _ok_ to change this (!) b/c the matching will fail and look after it for us? But maybe it should be _both_ (?) so that future selves do not have to worry about the subtleties of the efficiencies. Maintenance trumps efficiency when in doubt.",
+      "range": {
+        "startLine": 317,
+        "startChar": 49,
+        "endLine": 317,
+        "endChar": 54
+      },
+      "revId": "7368816e3302671a2239b29fbac614f0b21f7c01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b6b4f60_85f22612",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-05T17:33:07Z",
+      "side": 1,
+      "message": "KISS the following ifdef (but keep in mind I propose a solution that drops this #ifdef)\n\nif (!is_partition(prefix, len)) return false;\n#ifdef\nreturn !fnmatch(...)\n. . .\n\nw/o ifdef still easier to maintain (I think the intent could be much clearer if we check both prefix and path for partition references and the _bleep_ with efficiency checking one or the other).\n\n    if (!is_partition(prefix, len)) return false;\n    if (!is_partition(path, plen)) return false;\n    return !fnmatch(prefix, path, fnm_flags);\n}",
+      "range": {
+        "startLine": 317,
+        "startChar": 4,
+        "endLine": 317,
+        "endChar": 71
+      },
+      "revId": "7368816e3302671a2239b29fbac614f0b21f7c01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c61b1540_b51b238c",
+        "filename": "libcutils/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-05T17:33:07Z",
+      "side": 1,
+      "message": "stutter in srcs: with line 31?",
+      "range": {
+        "startLine": 38,
+        "startChar": 16,
+        "endLine": 38,
+        "endChar": 32
+      },
+      "revId": "7368816e3302671a2239b29fbac614f0b21f7c01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
