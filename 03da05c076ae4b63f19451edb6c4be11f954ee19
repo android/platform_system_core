@@ -52,6 +52,24 @@
       "revId": "03da05c076ae4b63f19451edb6c4be11f954ee19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e122e010_9e9c9d47",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-02-05T02:56:43Z",
+      "side": 1,
+      "message": "How costly is it to read and how often are we reading it?  It looks like one of the places where we\u0027re reading it is when setting up scratch for the first time, which seems like a slow enough operation that we won\u0027t be impacted by a marginally slower read.  We pay the cost of maintenance for parsing already by having it as a fallback and it doesn\u0027t look like the parsing itself will be an intense operation.\n\nI don\u0027t understand the atomicity / race / file size limitation.  Are you saying that /proc/filesystems will be corrupted if multiple read calls happen to it?  Or just that we may miss some file systems if a kernel module is being loaded at the same time that we call it?  Neither of those seem likely to me; and if there is a fundamental race, we need to handle it by making sure that file systems kernel modules (if any... do we really expect anyone is going to do this?) are loaded before any of this code runs.\n\nAll to say, that it sounds like a good idea to drop the first two that rely on implementation details and go straight to the node that is specifically meant to tell us which filesystems are available on the device.",
+      "parentUuid": "6befa39c_1592dad4",
+      "revId": "03da05c076ae4b63f19451edb6c4be11f954ee19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
