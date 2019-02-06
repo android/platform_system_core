@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d90a094_70bfbed3",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-02-06T22:08:15Z",
+      "side": 1,
+      "message": "Do we need this or the PathMatchA() given that this source is moved to not_windows ?",
+      "revId": "cf64d2738851a111c0902b8fb73c6bfcf66d06de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "670e950a_2d184934",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-02-06T22:08:15Z",
+      "side": 1,
+      "message": "Maybe time to just use std::string here?  Seems a lot safer than using the str* and mem* functions.\n\nCan also use StartsWith() in the places it makes sense if we bring in android-base for additional clarity.",
+      "revId": "cf64d2738851a111c0902b8fb73c6bfcf66d06de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
