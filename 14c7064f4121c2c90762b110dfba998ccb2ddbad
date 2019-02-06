@@ -226,6 +226,30 @@
     },
     {
       "key": {
+        "uuid": "5b85c10b_27163e10",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-06T15:12:31Z",
+      "side": 1,
+      "message": "Please check on the bug. I am not even 100% sure we _need_ this command, _want_ it yes, since the real solution is to fix the remote access framework that is limited in its ability to issue adb \u0027commands\u0027 and is focussed on the shell connection. No one appears to own the remote framework ...\n\nIt is a _helpful_ command nonetheless and given the daunting task to script out a remount on-device (rather than via \u0027adb remount\u0027), I can see some uses to facilitate testing and that it could eventually become the executable called by \u0027adb remount\u0027.\n\nRemount has too many edge cases, we need to cap the effort, we need to limit what it can do. The goal was to replace \u0027mount -o rw,remount\u0027 for the overlayfs cookbook which is far too complicated to script. Only with a possibility afterwards to be considered the \u0027worker executable\u0027 for the similarly limited functionality in adb remount which also does not respect the edge cases.\n\nFor your specific example, if it was managed by overlayfs, I would expect/want remount to perform the operation on /vendor, and not touch /vendor/firmware. If not overlayfs, remount /vendor/firmware.\n\nHowever, for \u0027Q\u0027 I would accept it to fail for /vendor/firmware if it was too complicated to support, because in \u0027P\u0027 you were not allowed to remount it anyways via adb remount ... I would only handle this edge case if it was part of a generalized loop (or series of loops) but certainly not if it had a complicated decision tree.",
+      "parentUuid": "a5630c72_7c2f26f6",
+      "range": {
+        "startLine": 157,
+        "startChar": 16,
+        "endLine": 157,
+        "endChar": 34
+      },
+      "revId": "14c7064f4121c2c90762b110dfba998ccb2ddbad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36447f64_b65cf063",
         "filename": "fs_mgr/fs_mgr_remount.cpp",
         "patchSetId": 8
