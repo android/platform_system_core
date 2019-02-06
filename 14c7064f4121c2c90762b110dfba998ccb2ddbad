@@ -250,6 +250,30 @@
     },
     {
       "key": {
+        "uuid": "22a6b798_d5f64807",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-02-06T17:42:56Z",
+      "side": 1,
+      "message": "\u003e Remount has too many edge cases, we need to cap the effort, we need to limit what it can do. T\n\nI agree 100%, which is why we need to make sure the inputs to this tool don\u0027t allow us to get into these situations.  Since you said, we don\u0027t need this tool, then we certainly don\u0027t need to make it take inputs that we know would cause issues.\n\nWhy don\u0027t we go back a step and make this even more basic: just remount the hard coded list of partitions that `adb remount` does for P.  That shouldn\u0027t add any more edge cases than we currently have and would be trivial to make `adb remount` use, which I do think is an important goal, since we really do not want two divergent code paths for remounting.  Would that be enough for the automation team?",
+      "parentUuid": "5b85c10b_27163e10",
+      "range": {
+        "startLine": 157,
+        "startChar": 16,
+        "endLine": 157,
+        "endChar": 34
+      },
+      "revId": "14c7064f4121c2c90762b110dfba998ccb2ddbad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36447f64_b65cf063",
         "filename": "fs_mgr/fs_mgr_remount.cpp",
         "patchSetId": 8
