@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "5ce47ac5_1ec6b670",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-02-06T03:35:16Z",
+      "side": 1,
+      "message": "Done. But switched to strncpy in order to avoid reinterpret_cast when assigning to prefix and path.",
+      "parentUuid": "4c581f2a_be7ce6eb",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 30
+      },
+      "revId": "7368816e3302671a2239b29fbac614f0b21f7c01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f028877_83a92ab5",
         "filename": "libcutils/fs_config.cpp",
         "patchSetId": 2
@@ -91,6 +115,30 @@
       "revId": "7368816e3302671a2239b29fbac614f0b21f7c01",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0161922c_4ed62a62",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-02-06T03:35:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f028877_83a92ab5",
+      "range": {
+        "startLine": 286,
+        "startChar": 18,
+        "endLine": 286,
+        "endChar": 33
+      },
+      "revId": "7368816e3302671a2239b29fbac614f0b21f7c01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "45849b09_b7ad4477",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-02-06T03:35:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a650045a_857c6a48",
+      "range": {
+        "startLine": 291,
+        "startChar": 29,
+        "endLine": 291,
+        "endChar": 46
+      },
+      "revId": "7368816e3302671a2239b29fbac614f0b21f7c01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17a43052_818a4203",
         "filename": "libcutils/fs_config.cpp",
         "patchSetId": 2
@@ -137,6 +209,30 @@
       "revId": "7368816e3302671a2239b29fbac614f0b21f7c01",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d4cc9b5_28908ac7",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-02-06T03:35:16Z",
+      "side": 1,
+      "message": "Done, but the assignment (e.g. path[plen] \u003d \u0027/\u0027) required me to drop const from the function definition, which in turn required me to add const_cast to the call sites. Since this is against to the idea of keeping this simple, I\u0027ve just used input and pattern for the assignments.",
+      "parentUuid": "17a43052_818a4203",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 9
+      },
+      "revId": "7368816e3302671a2239b29fbac614f0b21f7c01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -197,6 +293,54 @@
       "writtenOn": "2019-02-05T17:33:07Z",
       "side": 1,
       "message": "KISS the following ifdef (but keep in mind I propose a solution that drops this #ifdef)\n\nif (!is_partition(prefix, len)) return false;\n#ifdef\nreturn !fnmatch(...)\n. . .\n\nw/o ifdef still easier to maintain (I think the intent could be much clearer if we check both prefix and path for partition references and the _bleep_ with efficiency checking one or the other).\n\n    if (!is_partition(prefix, len)) return false;\n    if (!is_partition(path, plen)) return false;\n    return !fnmatch(prefix, path, fnm_flags);\n}",
+      "range": {
+        "startLine": 317,
+        "startChar": 4,
+        "endLine": 317,
+        "endChar": 71
+      },
+      "revId": "7368816e3302671a2239b29fbac614f0b21f7c01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99de6ae5_7ff76d88",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-02-06T03:35:16Z",
+      "side": 1,
+      "message": "That was my oversight. Good catch. Done.",
+      "parentUuid": "45ca4478_0dd49565",
+      "range": {
+        "startLine": 317,
+        "startChar": 49,
+        "endLine": 317,
+        "endChar": 54
+      },
+      "revId": "7368816e3302671a2239b29fbac614f0b21f7c01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9a13c1e_2278d070",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-02-06T03:35:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b6b4f60_85f22612",
       "range": {
         "startLine": 317,
         "startChar": 4,
