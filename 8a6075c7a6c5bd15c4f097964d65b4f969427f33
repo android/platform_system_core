@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3b2b8e12_be676acd",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-07T21:41:50Z",
+      "side": 1,
+      "message": "This interacts with later CL modifications in the stack, arguments that would need to be supplied:\n\nfstab\noverlayfs_candidates\nverity\ncan_reboot\noverlayfs_valid\n\narguments returned:\n\nall\nall_overlayfs\n\nI will have to think about how I can split out all the mining into \"though chunks\" so that this request makes sense.",
+      "parentUuid": "ed9ab306_fdc9a5ae",
+      "revId": "8a6075c7a6c5bd15c4f097964d65b4f969427f33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f59a3159_1dda9d67",
         "filename": "fs_mgr/fs_mgr_remount.cpp",
         "patchSetId": 11
@@ -30,6 +48,24 @@
       "writtenOn": "2019-02-07T19:11:27Z",
       "side": 1,
       "message": "This too looks like it can be factored out along with auto verity \u003d fs_mgr_overlayfs_verity_enabled_list(); into a separate function.",
+      "revId": "8a6075c7a6c5bd15c4f097964d65b4f969427f33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "594196c9_3bcb8db4",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-07T21:41:50Z",
+      "side": 1,
+      "message": "Above and here may be simplified if I had the ability to set some user-defined flags in FstabEntry like \u0027is_verity_protected\u0027 and \u0027is_wrapped_by_overlayfs\u0027.\n\nResisting making my own fstab class ...",
+      "parentUuid": "f59a3159_1dda9d67",
       "revId": "8a6075c7a6c5bd15c4f097964d65b4f969427f33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
