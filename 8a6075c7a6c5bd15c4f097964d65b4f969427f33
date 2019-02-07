@@ -69,6 +69,24 @@
       "revId": "8a6075c7a6c5bd15c4f097964d65b4f969427f33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceb3a436_9d8bfc27",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-02-07T23:14:55Z",
+      "side": 1,
+      "message": "Honestly, maybe not the worst idea.  Or better yet, adding the parts you\u0027re missing to the current fstab.\n\nFor is_verity_protected, you\u0027re relying on fs_mgr_update_verity_state() which I already want to refactor.  Would it help if I did take https://android-review.googlesource.com/c/platform/system/core/+/863409 to completion?  In this case you wouldn\u0027t need the verity vector at all; you could just call this function on each of the items in the fstab.\n\nSame thing for is_wrapped_by_overlayfs; you mean using that to replace fs_mgr_overlayfs_candidate_list(), right?  Instead of a separate flag, could we make a IsOverlayFsWrapped() function that takes a single FstabEntry as a parameter?\n\nI think if both of those functions took just an FstabEntry as their parameter, then this code would simplify greatly.",
+      "parentUuid": "594196c9_3bcb8db4",
+      "revId": "8a6075c7a6c5bd15c4f097964d65b4f969427f33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
