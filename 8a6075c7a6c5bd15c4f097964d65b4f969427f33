@@ -87,6 +87,24 @@
       "revId": "8a6075c7a6c5bd15c4f097964d65b4f969427f33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "464debe0_4a67a6c2",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-07T23:33:34Z",
+      "side": 1,
+      "message": "I\u0027d say \u0027do it\u0027 for the refactor of verity state checking, this CL can wait as it is a \u0027second choice\u0027 fix to a P1 issue, and a \u0027first choice\u0027 fix for a P3 developer wish list (a remount command, and a refactor of the \u0027adb remount\u0027 operations).\n\nI was going to do something like this FYI:\n\n     // Generate the list of supported overlayfs mount points.\n     auto overlayfs_candidates \u003d fs_mgr_overlayfs_candidate_list(\u0026fstab);\n+    auto is_wrapped_by_overlayfs \u003d [\u0026overlayfs_candidates](const android::fs_mgr::FstabEntry\u0026 entry) {\n+        auto mount_point \u003d entry.mount_point;\n+        if (mount_point \u003d\u003d \"/\") mount_point \u003d \"/system\";\n+        return std::find(overlayfs_candidates.begin(), overlayfs_candidates.end(), mount_point) !\u003d overlayfs_candidates.end();\n+    };",
+      "parentUuid": "ceb3a436_9d8bfc27",
+      "revId": "8a6075c7a6c5bd15c4f097964d65b4f969427f33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
