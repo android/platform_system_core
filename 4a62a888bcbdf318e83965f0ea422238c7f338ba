@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e10ed61b_ea368b75",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1589,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-02-08T21:20:24Z",
+      "side": 0,
+      "message": "This function returning false doesn\u0027t actually give us a good signal like \"verity is disabled\".  The only reason that this function would return false is if the default fstab wasn\u0027t read.  And given that this function is now going to take an individual FstabEntry to check, that\u0027s not even something we care about.\n\nBeyond that \u0027mode\u0027 isn\u0027t used anywhere in this function, nor was it being used before in overlayfs; only in init.\n\nSo I think we\u0027re good to just drop it entirely.",
+      "parentUuid": "8b8c504a_09be0312",
+      "range": {
+        "startLine": 1585,
+        "startChar": 5,
+        "endLine": 1589,
+        "endChar": 0
+      },
+      "revId": "4a62a888bcbdf318e83965f0ea422238c7f338ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8035ab7_d4c5c48c",
         "filename": "fs_mgr/fs_mgr.cpp",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "daab509d_5155f3c9",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1599,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-02-08T21:20:24Z",
+      "side": 0,
+      "message": "Will add back.",
+      "parentUuid": "d8035ab7_d4c5c48c",
+      "range": {
+        "startLine": 1599,
+        "startChar": 8,
+        "endLine": 1599,
+        "endChar": 68
+      },
+      "revId": "4a62a888bcbdf318e83965f0ea422238c7f338ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "06b79b97_1df90976",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2019-02-08T16:37:49Z",
       "side": 0,
       "message": "The API of exported interfaces preserves the errors, however, these two errors occur as a result of verity checking and mean that verity is disabled (which is OK from our perspective), this needs to be reflected below so that we get an accurate errno.\n\nWithout this, adb will report an error instantiating overlayfs, when there isn\u0027t one.\n\nWill need to wrap fs_mgr_get_verity_mount_point call to preserve errno like this.",
+      "range": {
+        "startLine": 280,
+        "startChar": 4,
+        "endLine": 280,
+        "endChar": 66
+      },
+      "revId": "4a62a888bcbdf318e83965f0ea422238c7f338ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f338b5ef_46c05794",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-02-08T21:20:24Z",
+      "side": 0,
+      "message": "I don\u0027t fully understand.  Does fs_mgr_candidate_list() return an errno value that this function may be clobbering?  \n\n(In general, I think it\u0027d be better if we got rid of errno and reporting actual error strings from overlayfs, especially since those errors are explicitly set instead of implicitly like errno is).",
+      "parentUuid": "06b79b97_1df90976",
       "range": {
         "startLine": 280,
         "startChar": 4,
