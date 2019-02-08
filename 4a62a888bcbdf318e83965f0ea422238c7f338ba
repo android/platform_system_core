@@ -140,6 +140,30 @@
       "revId": "4a62a888bcbdf318e83965f0ea422238c7f338ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83f5edb5_8010b6cb",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-08T22:13:11Z",
+      "side": 0,
+      "message": "The verity check leaves errno set if verity is not enabled, ENXIO and ENOENT are the two values depending on type of verity protection. These are not errors, this is expected behavior since we do stuff when verity is disabled. We do, however, want to know about _other_ errno values as we see them (in malconfigured systems).\n\nThe higher level API is currently 100% _accurate_ for errno results, if these two are not reverted to save_errno, then it will no longer be 100% accurate, and the callers (adb disable verity and adb remount in this case) will _log_ an error when in fact there is no error.\n\nYes, converting to returning an error string from overlayfs is an alternative, but that is cleanup and unnecessary at this point; I see no reason _that_ work should block these adjustments. One step at a time.",
+      "parentUuid": "f338b5ef_46c05794",
+      "range": {
+        "startLine": 280,
+        "startChar": 4,
+        "endLine": 280,
+        "endChar": 66
+      },
+      "revId": "4a62a888bcbdf318e83965f0ea422238c7f338ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
