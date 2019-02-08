@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b8c504a_09be0312",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1589,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-08T16:37:49Z",
+      "side": 0,
+      "message": "\u003cflipping coin\u003e The caller could be responsible for this for _efficiency_, but given this, the documentation (comments in fs_mgr.h) should indicate that the caller is responsible for checking this.",
+      "range": {
+        "startLine": 1585,
+        "startChar": 5,
+        "endLine": 1589,
+        "endChar": 0
+      },
+      "revId": "4a62a888bcbdf318e83965f0ea422238c7f338ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8035ab7_d4c5c48c",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1599,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-08T16:37:49Z",
+      "side": 0,
+      "message": "This check should remain here, as this is a burden on all callers.",
+      "range": {
+        "startLine": 1599,
+        "startChar": 8,
+        "endLine": 1599,
+        "endChar": 68
+      },
+      "revId": "4a62a888bcbdf318e83965f0ea422238c7f338ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06b79b97_1df90976",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-08T16:37:49Z",
+      "side": 0,
+      "message": "The API of exported interfaces preserves the errors, however, these two errors occur as a result of verity checking and mean that verity is disabled (which is OK from our perspective), this needs to be reflected below so that we get an accurate errno.\n\nWithout this, adb will report an error instantiating overlayfs, when there isn\u0027t one.\n\nWill need to wrap fs_mgr_get_verity_mount_point call to preserve errno like this.",
+      "range": {
+        "startLine": 280,
+        "startChar": 4,
+        "endLine": 280,
+        "endChar": 66
+      },
+      "revId": "4a62a888bcbdf318e83965f0ea422238c7f338ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
