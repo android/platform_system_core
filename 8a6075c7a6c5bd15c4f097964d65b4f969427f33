@@ -141,6 +141,24 @@
       "revId": "8a6075c7a6c5bd15c4f097964d65b4f969427f33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0549e415_ebfc69e4",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-02-11T22:56:03Z",
+      "side": 1,
+      "message": "I don\u0027t fully understand.  /vendor covers /vendor/firmware_mnt since if we use overlayfs on /vendor, then we won\u0027t on /vendor/firmware_mnt, right?  But that doesn\u0027t interact with the \u0027verity\u0027 vector here, right?  We\u0027re searching for Basename of the mount_point, so we\u0027re not going to find firmware_mnt anywhere in \u0027verity\u0027.\n\nWhat happens when you run this program with verity enabled?  If I\u0027m reading this logic, we actually do remount /vendor/firmware_mnt as rw, since it never has verity enabled and it won\u0027t be a submount of any overlayfs mount (since we don\u0027t have any due to verity being enabled).  Then with verity disabled, we overlay /vendor entirely and do not remount /vendor/firmware_mnt as rw.  That seems like a bit strange behavior with the current code in any case.\n\nIt still seems like a good idea to land my changes then do the duplicate/more specific logic change explicitly?",
+      "parentUuid": "e21c8578_f7dfc523",
+      "revId": "8a6075c7a6c5bd15c4f097964d65b4f969427f33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
