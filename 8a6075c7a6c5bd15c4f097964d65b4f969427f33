@@ -159,6 +159,24 @@
       "revId": "8a6075c7a6c5bd15c4f097964d65b4f969427f33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "146e65b5_2812478f",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-11T23:41:17Z",
+      "side": 1,
+      "message": "We allow overlayfs on _anything_ read-only that is not protected by verity. We do not check or care if it has a verity sector, except if it is active, then we stay away from it!\n\nWe do not remount /vendor/firmware_mnt since /vendor exists and _covers_ it (candidate, but not enabled if verity is enabled). If the fstab was _missing_ /vendor, then we have a problem ...",
+      "parentUuid": "0549e415_ebfc69e4",
+      "revId": "8a6075c7a6c5bd15c4f097964d65b4f969427f33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
