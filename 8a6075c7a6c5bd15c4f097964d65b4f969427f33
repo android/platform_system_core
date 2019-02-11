@@ -177,6 +177,24 @@
       "revId": "8a6075c7a6c5bd15c4f097964d65b4f969427f33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09108325_a414b3bf",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-11T23:51:03Z",
+      "side": 1,
+      "message": "BTW, we are digressing! rabit hole. Just saying \"not as easy\" ...\n\nand yes, the current code is borken in some respects (mount point argument does not work like expected and /vendor/firmware_mnt works today because it is never 100% full), and is a hypothetical example.\n\nThe point is, I want to unroll the candidate list function; but it will start with a duplicate/more specific filter of a passed in fstab, then caller can remove any entries where verity is active, then a GetEntryForMountPoint probably in the code paths in the callers too. The exportable candidate list function should return an fstab that is a filtered version of the incoming fstab and nothing more I think.",
+      "parentUuid": "146e65b5_2812478f",
+      "revId": "8a6075c7a6c5bd15c4f097964d65b4f969427f33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
