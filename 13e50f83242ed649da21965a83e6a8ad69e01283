@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b766c7a2_01acb95d",
+        "filename": "base/cmsg.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-02-13T21:22:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c7b3967_bc2d9d84",
+      "revId": "13e50f83242ed649da21965a83e6a8ad69e01283",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "793e8279_0a2041b2",
         "filename": "base/cmsg.cpp",
         "patchSetId": 10
@@ -30,6 +48,30 @@
       "writtenOn": "2019-02-13T21:05:48Z",
       "side": 1,
       "message": "do we _need_ this to be alloca? i\u0027d rather avoid alloca if possible (given its unwillingness to report failure).\n\nthis isn\u0027t on anyone\u0027s performance path, right?",
+      "range": {
+        "startLine": 33,
+        "startChar": 37,
+        "endLine": 33,
+        "endChar": 43
+      },
+      "revId": "13e50f83242ed649da21965a83e6a8ad69e01283",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a495db58_9b46fed3",
+        "filename": "base/cmsg.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-02-13T21:22:10Z",
+      "side": 1,
+      "message": "It\u0027s used in the linker, and the linker\u0027s allocator doesn\u0027t have an implementation of memalign.\n\nAre you happier if this is hidden behind a VLA with a CHECK that the size is something sensible?",
+      "parentUuid": "793e8279_0a2041b2",
       "range": {
         "startLine": 33,
         "startChar": 37,
