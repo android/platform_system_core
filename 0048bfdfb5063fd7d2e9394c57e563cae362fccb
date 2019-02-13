@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0503bafa_b3d9cc74",
+        "filename": "fs_mgr/tests/src/com/android/tests/vendoroverlay/VendorOverlayHostTest.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-02-13T15:22:24Z",
+      "side": 1,
+      "message": "This _will_ work. I have no _real_ problem with this, just want to add some notes.\n\nFYI APEX makes a mess of the df output because some of \u0027em are bind mounted inheriting the overlayfs filesystem references. adb-remount-test.sh has been at \u0027war\u0027 lately dealing with all the new APEX mount namespace activities and trying to filter them out for a clean presentation. But their \u0027overlay\u0027 references only exists _if_ adb remount uses it, so not an issue for this check of yours.\n\nKISS (or not?) maybe just check if system is clearly overridden? grep \"^overlayfs .* /system$\", maybe better to just grab the df output and use Java\u0027s own string management to check for existence?",
+      "range": {
+        "startLine": 52,
+        "startChar": 14,
+        "endLine": 52,
+        "endChar": 61
+      },
+      "revId": "0048bfdfb5063fd7d2e9394c57e563cae362fccb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
