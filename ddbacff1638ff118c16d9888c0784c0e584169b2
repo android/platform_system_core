@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de0b7ef0_66f672d4",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-02-14T21:43:19Z",
+      "side": 1,
+      "message": "This is unused?",
+      "revId": "ddbacff1638ff118c16d9888c0784c0e584169b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "626e9003_0316b675",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-02-14T21:43:19Z",
+      "side": 1,
+      "message": "This unconditionally calls fs_mgr_overlayfs_setup() even for file systems that can be remounted RW and have space left.  Is that intentional?  Will it fail gracefully in that case?",
+      "revId": "ddbacff1638ff118c16d9888c0784c0e584169b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4b8d37c_181f4f9b",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-02-14T21:43:19Z",
+      "side": 1,
+      "message": "Should we remove the partitions we used overlayfs to mount?\n\nOr maybe keep two separate groups of \"needs overlayfs\" and \"normal remount\" partitions?  I think a previous patch did that.",
+      "revId": "ddbacff1638ff118c16d9888c0784c0e584169b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
