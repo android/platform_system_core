@@ -45,6 +45,30 @@
       "revId": "f70a2fe4c1149ba94105b1ed64903f0d6758b2cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66573cb7_7f0136fe",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-02-18T11:08:39Z",
+      "side": 1,
+      "message": "stat() and the C++17 wrapper are moderately expensive.\n\nFor small N, this check can probably be safely dropped.\n\nIf the outer loop were over sonames here, we could use StartsWith(kRuntimeApexLibPath) from android-base/strings.h, to quickly filter out uninteresting paths.\n\nSave this for a clean-up CL though as this isn\u0027t very important.",
+      "parentUuid": "894809e3_75c71ca2",
+      "range": {
+        "startLine": 518,
+        "startChar": 0,
+        "endLine": 523,
+        "endChar": 7
+      },
+      "revId": "f70a2fe4c1149ba94105b1ed64903f0d6758b2cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
