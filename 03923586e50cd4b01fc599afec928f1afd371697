@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "e5edb496_5a6b2eea",
+        "filename": "libprocessgroup/profiles/task_profiles.json",
+        "patchSetId": 4
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1324603
+      },
+      "writtenOn": "2019-02-23T03:00:44Z",
+      "side": 1,
+      "message": "Yes, the idea is for future extension, and as Suren said, there is no need to hack framework code to use them. There shouldn\u0027t be any penalty, since the task will go to some group anyway :)\n\nAbout NormalIoPriority, actually I\u0027m following the rule of stune as below. It seems it is defined for root group, although it is not used in sched_policy, either. I\u0027m not sure if it will be used for default group in the future, so I defined NormalIoPriority just in case.\n\n\n\n    {\n      \"Name\": \"NormalPerformance\",\n      \"Actions\" : [\n        {\n          \"Name\" : \"JoinCgroup\",\n          \"Params\" :\n          {\n            \"Controller\": \"schedtune\",\n            \"Path\": \"\"\n          }\n        }\n      ]\n    },",
+      "parentUuid": "508e4316_816f648f",
+      "range": {
+        "startLine": 363,
+        "startChar": 4,
+        "endLine": 378,
+        "endChar": 9
+      },
+      "revId": "03923586e50cd4b01fc599afec928f1afd371697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bfe47930_d6da5dc4",
         "filename": "rootdir/init.rc",
         "patchSetId": 4
