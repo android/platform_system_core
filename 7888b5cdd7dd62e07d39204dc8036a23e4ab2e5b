@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5354bb6a_4057826a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-02-24T20:29:31Z",
+      "side": 1,
+      "message": "Do we really want classloader-namespace to inherit any links at all from its parent namespace in this case? Perhaps it\u0027d be better to have some kind of flag to android_create_namespace to tell it to skip that bit[1], but that would of course require an extension to the API. I\u0027ll go with this for now, in any case.\n\n[1] http://cs/aosp-master/bionic/linker/linker.cpp?l\u003d2462-2486\u0026rcl\u003de65558a0a4ad1f4aee5d63d0661b02f910e0cbd8",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 49
+      },
+      "revId": "7888b5cdd7dd62e07d39204dc8036a23e4ab2e5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9638b22a_a452b04d",
         "filename": "libnativeloader/native_loader.cpp",
         "patchSetId": 2
@@ -13,6 +36,30 @@
       "writtenOn": "2019-02-23T03:58:45Z",
       "side": 1,
       "message": "It\u0027s unfortunate that we have different names for the namespaces having the same purpose.\nBut that\u0027s a different issue.",
+      "range": {
+        "startLine": 281,
+        "startChar": 70,
+        "endLine": 283,
+        "endChar": 28
+      },
+      "revId": "7888b5cdd7dd62e07d39204dc8036a23e4ab2e5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07effdaa_cfaf364c",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-02-24T20:29:31Z",
+      "side": 1,
+      "message": "Yes. One of the ways it shows that namespaces weren\u0027t designed for this use case. Maybe possible to improve in go/manageable-linker-config?",
+      "parentUuid": "9638b22a_a452b04d",
       "range": {
         "startLine": 281,
         "startChar": 70,
