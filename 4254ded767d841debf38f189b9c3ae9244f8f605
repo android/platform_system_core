@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71002432_a57beb94",
+        "filename": "fs_mgr/libfiemap_writer/fiemap_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-03-01T16:14:23Z",
+      "side": 1,
+      "message": "Do we require f_bsize to be a power-of-two?\nIs there a ridiculously large value of f_bsize we do not want to support?\nI know zero would be _wrong_, so at least check that.\n\nif (!sfs.f_bsize) {\n    LOG(ERROR) \u003c\u003c \"Unsupported block size: \" \u003c\u003c sfs.f_bsize;\n    return false;\n}",
+      "range": {
+        "startLine": 208,
+        "startChar": 4,
+        "endLine": 208,
+        "endChar": 5
+      },
+      "revId": "4254ded767d841debf38f189b9c3ae9244f8f605",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7462d0a_d83ef4fe",
+        "filename": "fs_mgr/libfiemap_writer/fiemap_writer_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-03-01T16:14:23Z",
+      "side": 1,
+      "message": "nit: maybe put a default of sysconf(SC_PAGESIZE). Zero could break things ...",
+      "range": {
+        "startLine": 47,
+        "startChar": 20,
+        "endLine": 47,
+        "endChar": 21
+      },
+      "revId": "4254ded767d841debf38f189b9c3ae9244f8f605",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c77fff48_ce946765",
+        "filename": "fs_mgr/libfiemap_writer/fiemap_writer_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-03-01T16:14:23Z",
+      "side": 1,
+      "message": "if (!s.f_bsize) {\n    std::cerr \u003c\u003c \"Invalid block size: \" \u003c\u003c s.f_bsize;\n    return false;\n}",
+      "range": {
+        "startLine": 251,
+        "startChar": 4,
+        "endLine": 251,
+        "endChar": 5
+      },
+      "revId": "4254ded767d841debf38f189b9c3ae9244f8f605",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
