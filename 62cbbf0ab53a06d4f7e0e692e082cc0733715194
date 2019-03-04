@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8da512b4_3f0630e6",
+        "filename": "fs_mgr/libfiemap_writer/split_fiemap_writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-03-04T17:40:13Z",
+      "side": 1,
+      "message": "Do not rely on side-effects of include files.\n\n#include \u003cfcntl.h\u003e for ::open(2)\n#include \u003cstdint.h\u003e for uint64_t\n#include \u003csys/stat.h\u003e for ::open(2)\n#include \u003csys/types.h\u003e for ::open(2)\n#include \u003cunistd.h\u003e for ::unlink(2) and ::access(2)\n\n#include \u003cmemory\u003e for std::unique_ptr\n#include \u003cstring\u003e for std::string\n#include \u003cvector\u003e for std::vector",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 49
+      },
+      "revId": "62cbbf0ab53a06d4f7e0e692e082cc0733715194",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "223b2e35_c14f744b",
+        "filename": "fs_mgr/libfiemap_writer/split_fiemap_writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-03-04T17:40:13Z",
+      "side": 1,
+      "message": "worry: if the corresponding file_path.%04d entries exist, it would be nice to know as they signal wasted space and may be necessary to triage any bugs that come up.",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 69
+      },
+      "revId": "62cbbf0ab53a06d4f7e0e692e082cc0733715194",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bee2c152_475c48be",
+        "filename": "fs_mgr/libfiemap_writer/utility.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-03-04T17:40:13Z",
+      "side": 1,
+      "message": "#include \u003cstdint.h\u003e for uint64_t\n#include \u003cunistd.h\u003e required for ::unlink(2) call.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "62cbbf0ab53a06d4f7e0e692e082cc0733715194",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
