@@ -49,6 +49,46 @@
     },
     {
       "key": {
+        "uuid": "1ca5a3bd_4a2f7920",
+        "filename": "fs_mgr/libfiemap_writer/split_fiemap_writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-03-04T18:27:25Z",
+      "side": 1,
+      "message": "If the file already exists (certainly a surprise), maybe terminate?",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 84
+      },
+      "revId": "62cbbf0ab53a06d4f7e0e692e082cc0733715194",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d34f9459_f93b45ee",
+        "filename": "fs_mgr/libfiemap_writer/split_fiemap_writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-03-04T18:27:25Z",
+      "side": 1,
+      "message": "| O_EXCL\n\nIf the file exists, is that a problem?",
+      "revId": "62cbbf0ab53a06d4f7e0e692e082cc0733715194",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "223b2e35_c14f744b",
         "filename": "fs_mgr/libfiemap_writer/split_fiemap_writer.cpp",
         "patchSetId": 2
@@ -84,6 +124,30 @@
       "side": 1,
       "message": "Are you thinking it should try to detect any lingering split files and delete them, or just warn about them?\n\nAlternately, I was thinking SplitFiemap could detect when no splits are needed (as will be the case 99% of the time), and then act like a normal FiemapWriter (i.e., no list file). Then the presence of a .0001 file would tell you if it was actually split.",
       "parentUuid": "223b2e35_c14f744b",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 69
+      },
+      "revId": "62cbbf0ab53a06d4f7e0e692e082cc0733715194",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5330f511_1a0e0e42",
+        "filename": "fs_mgr/libfiemap_writer/split_fiemap_writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-03-04T18:27:25Z",
+      "side": 1,
+      "message": "For today, I would merely warn about them. (if file_path does not exist, skip the iteration below, add a common read dir to mine for the orphaned files). You never know, the file may be an accident from a third party that _may_ be trying an attack?\n\nfile_path.* (as in files that do not even share your track from .0001 to .0500) maybe, no one should be there, maybe that is going too far ...",
+      "parentUuid": "82bcb8dc_29151071",
       "range": {
         "startLine": 153,
         "startChar": 0,
