@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "85632b76_f8b6d1a7",
+        "filename": "rootdir/Android.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-05T01:33:08Z",
+      "side": 1,
+      "message": "Yeah, let\u0027s add this when it becomes needed.",
+      "parentUuid": "4093ce8b_693d7afb",
+      "revId": "6215879eaa1c898ca23ec09f3835b81f60da3b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25bd402e_cf1421cf",
         "filename": "rootdir/etc/ld.config.txt",
         "patchSetId": 8
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "\"default\" is separate from %VNDK_IN_SYSTEM_NS%, which expands to \",vndk_in_system\". We can\u0027t leave a dangling comma if vndk_in_system is not present, and hence the slightly weird looking syntax here.",
       "parentUuid": "25bd402e_cf1421cf",
+      "range": {
+        "startLine": 464,
+        "startChar": 30,
+        "endLine": 464,
+        "endChar": 56
+      },
+      "revId": "6215879eaa1c898ca23ec09f3835b81f60da3b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b901f290_408bd3b2",
+        "filename": "rootdir/etc/ld.config.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-05T01:33:08Z",
+      "side": 1,
+      "message": "Ah! Got it. Thanks.",
+      "parentUuid": "7b9dd36f_d4fd4b77",
       "range": {
         "startLine": 464,
         "startChar": 30,
@@ -128,6 +170,30 @@
       "revId": "6215879eaa1c898ca23ec09f3835b81f60da3b04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75a29866_b63732a0",
+        "filename": "rootdir/etc/ld.config.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-05T01:33:08Z",
+      "side": 1,
+      "message": "I was wrong. I thought that every fulfilled load requests will go to \u0027default\u0027 due to allow_all_shared_libs. But I just learned that if the load fails in the \u0027default\u0027 namespace, then the attempt is made in vndk_in_system. So this should be fine.\n\nSorry for the false alarm.",
+      "parentUuid": "2829efbe_4ef6cfe4",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 56
+      },
+      "revId": "6215879eaa1c898ca23ec09f3835b81f60da3b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
