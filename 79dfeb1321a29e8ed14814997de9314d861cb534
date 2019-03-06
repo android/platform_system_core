@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "71ebd064_43a72c4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2019-03-06T06:22:14Z",
+      "side": 1,
+      "message": "It seems pretty clearly slower, since it involves RMW operations, and the nullptr cases seem at least as messy. It would be good to have someone double-check my logic here, but so far I like the current solution.",
+      "parentUuid": "c78fa82d_52b742d7",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 63
+      },
+      "revId": "79dfeb1321a29e8ed14814997de9314d861cb534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07989062_f85ddfc6",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "20a99660_3cae6b52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2019-03-06T06:22:14Z",
+      "side": 1,
+      "message": "Agreed. It should also sanity-check some of this.",
+      "parentUuid": "07989062_f85ddfc6",
+      "range": {
+        "startLine": 26,
+        "startChar": 6,
+        "endLine": 26,
+        "endChar": 16
+      },
+      "revId": "79dfeb1321a29e8ed14814997de9314d861cb534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab1e4cfd_023d8436",
         "filename": "libutils/include/utils/RefBase.h",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-03-05T21:48:28Z",
       "side": 1,
       "message": "nit: any reason not to use \"std::equal\" \"std::not_equal_to\" to avoid needing two versions of this macro (assuming there is one, I must just be missing it)",
+      "range": {
+        "startLine": 405,
+        "startChar": 4,
+        "endLine": 406,
+        "endChar": 20
+      },
+      "revId": "79dfeb1321a29e8ed14814997de9314d861cb534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ed706c3_3045f1db",
+        "filename": "libutils/include/utils/RefBase.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2019-03-06T06:22:14Z",
+      "side": 1,
+      "message": "I just wanted to minimize changes, and I only trust the compiler about 80% to fully eliminate the function object remnants. And they currently generate a slightly different overload set. COMPARE_WEAK generates the non-templatized version as before, because it\u0027s need for nullptr. x \u003e\u003d nullptr now fails to compile, I believe, where x \u003d\u003d nullptr is fine. I consider that a small feature.",
+      "parentUuid": "ab1e4cfd_023d8436",
       "range": {
         "startLine": 405,
         "startChar": 4,
