@@ -22,6 +22,47 @@
       "revId": "28b138ff35baddcf23f26dec5a0b135b0ac6823b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6280f4b_9ffce6f4",
+        "filename": "libprocessgroup/cgroup_map.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-03-08T17:41:36Z",
+      "side": 1,
+      "message": "alternatively, android::base::MappedFile::FromFd would have solved your ownership issues in a less error-prone way.",
+      "parentUuid": "c4c882c5_0082535f",
+      "range": {
+        "startLine": 377,
+        "startChar": 8,
+        "endLine": 377,
+        "endChar": 37
+      },
+      "revId": "28b138ff35baddcf23f26dec5a0b135b0ac6823b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3173979b_bad634ca",
+        "filename": "libprocessgroup/cgroup_map.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-03-08T17:41:36Z",
+      "side": 1,
+      "message": "PLOG doesn\u0027t make sense here; whatever happens to be in errno isn\u0027t relevant. (same for L376 and L365.)\n\n(showing the actual and expected sizes is probably a good idea, though, maybe including the controller_count_, since that\u0027s a likely source of the problem and not otherwise easy to discern.)",
+      "revId": "28b138ff35baddcf23f26dec5a0b135b0ac6823b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
