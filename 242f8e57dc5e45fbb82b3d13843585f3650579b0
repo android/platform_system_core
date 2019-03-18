@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9841dbb6_6211e8be",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1615,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-03-18T13:46:55Z",
+      "side": 1,
+      "message": "Should we check entry.fs_mgr_flags.verify as well? (as it also uses dm-verity underneath).",
+      "range": {
+        "startLine": 1615,
+        "startChar": 8,
+        "endLine": 1615,
+        "endChar": 31
+      },
+      "revId": "242f8e57dc5e45fbb82b3d13843585f3650579b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c52346d_071d1524",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1628,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-03-18T13:46:55Z",
+      "side": 1,
+      "message": "when will we use this?\n\nDoes it require putting the string \u0027check_at_most_once\" when constructing the dm-verity table?\n\nhttps://android.googlesource.com/platform/system/core/+/4d6f4cc4fe51a06c2cf6bcb12f9e130c02824a7c/fs_mgr/libfs_avb/avb_util.cpp#76",
+      "range": {
+        "startLine": 1628,
+        "startChar": 30,
+        "endLine": 1628,
+        "endChar": 48
+      },
+      "revId": "242f8e57dc5e45fbb82b3d13843585f3650579b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c5bf483_3f446823",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-03-18T13:46:55Z",
+      "side": 1,
+      "message": "From L509, seems we don\u0027t know why it\u0027s \"external media\" as shown in the LOG at L510.\n\nMaybe just rename forbid_check_most_at_once_ \u003d\u003e !gsi_on_userdata, to make it clear?",
+      "range": {
+        "startLine": 509,
+        "startChar": 12,
+        "endLine": 509,
+        "endChar": 38
+      },
+      "revId": "242f8e57dc5e45fbb82b3d13843585f3650579b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "622a611e_22532716",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-03-18T13:46:55Z",
+      "side": 1,
+      "message": "Btw, can you elaborate more for why \"check_most_at_once\" is forbidden on sdcard.\nIs there any concern to allow that on userdata?",
+      "range": {
+        "startLine": 510,
+        "startChar": 27,
+        "endLine": 510,
+        "endChar": 45
+      },
+      "revId": "242f8e57dc5e45fbb82b3d13843585f3650579b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
