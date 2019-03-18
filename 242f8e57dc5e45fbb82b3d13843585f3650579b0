@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5cca494e_5aa23be5",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1615,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-03-18T19:40:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9841dbb6_6211e8be",
+      "range": {
+        "startLine": 1615,
+        "startChar": 8,
+        "endLine": 1615,
+        "endChar": 31
+      },
+      "revId": "242f8e57dc5e45fbb82b3d13843585f3650579b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c52346d_071d1524",
         "filename": "fs_mgr/fs_mgr.cpp",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "a0be5cfb_b15ff09c",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1628,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-03-18T19:40:24Z",
+      "side": 1,
+      "message": "Yeah, this is apparently used on some low-end devices. We don\u0027t have the class here, unfortunately, we don\u0027t reconstruct DmTargets from the raw strings DM_TABLE_INFO returns. (yet)",
+      "parentUuid": "afadc42c_6f6f270e",
+      "range": {
+        "startLine": 1628,
+        "startChar": 30,
+        "endLine": 1628,
+        "endChar": 48
+      },
+      "revId": "242f8e57dc5e45fbb82b3d13843585f3650579b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c5bf483_3f446823",
         "filename": "init/first_stage_mount.cpp",
         "patchSetId": 2
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "f75c9ed2_37eb25b6",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-03-18T19:40:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c5bf483_3f446823",
+      "range": {
+        "startLine": 509,
+        "startChar": 12,
+        "endLine": 509,
+        "endChar": 38
+      },
+      "revId": "242f8e57dc5e45fbb82b3d13843585f3650579b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "622a611e_22532716",
         "filename": "init/first_stage_mount.cpp",
         "patchSetId": 2
@@ -106,6 +178,30 @@
       "writtenOn": "2019-03-18T13:46:55Z",
       "side": 1,
       "message": "Btw, can you elaborate more for why \"check_most_at_once\" is forbidden on sdcard.\nIs there any concern to allow that on userdata?",
+      "range": {
+        "startLine": 510,
+        "startChar": 27,
+        "endLine": 510,
+        "endChar": 45
+      },
+      "revId": "242f8e57dc5e45fbb82b3d13843585f3650579b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aab8e70d_ed644f86",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-03-18T19:40:24Z",
+      "side": 1,
+      "message": "This was requested by the security team. Given how easy it is to alter sdcards, the concern is you could write back new blocks after verification has occurred. And since there is no AOSP mechanism for applying check_at_most_once, it\u0027s not clear how we could just disable it for GSIs. (Other than grabbing the table, removing the parameter, and loading the table again).",
+      "parentUuid": "622a611e_22532716",
       "range": {
         "startLine": 510,
         "startChar": 27,
