@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc87d7c8_a038a4bf",
+        "filename": "libcutils/android_get_control_file.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-03-20T21:13:09Z",
+      "side": 1,
+      "message": "Given the impact of your change, I have no problem with all the NULLs being replaced with nullptr, but that is your call since what you touch you own ...",
+      "range": {
+        "startLine": 70,
+        "startChar": 16,
+        "endLine": 70,
+        "endChar": 20
+      },
+      "revId": "8cad2caaaee3da16dbcaeab97301d43a30031feb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a21d7f4_4fe78d07",
+        "filename": "libcutils/android_get_control_file.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-03-20T21:13:09Z",
+      "side": 1,
+      "message": "We may wish to add all combinations of pathz of symlinks here, maybe start with path and realpath(path) to find the control from env.\n\n    auto fd \u003d __android_get_control_from_env(ANDROID_FILE_ENV_PREFIX, path);\n    if (fd \u003c 0) {\n        auto given_path \u003d std::unique_ptr(TEMP_FAILURE_RETRY_NULL(realpath(path, nullptr)));\n        if (!given_path) return fd;\n        fd \u003d __android_get_control_from_env(ANDROID_FILE_ENV_PREFIX, given_path);\n        if (fd \u003c 0) return fd;\n    }\n\nThis should resolve any heuristics in the caller.",
+      "range": {
+        "startLine": 107,
+        "startChar": 69,
+        "endLine": 107,
+        "endChar": 73
+      },
+      "revId": "8cad2caaaee3da16dbcaeab97301d43a30031feb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75d058c6_64f3bbd6",
+        "filename": "libcutils/android_get_control_file.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-03-20T21:13:09Z",
+      "side": 1,
+      "message": "Hmmm, there should it an:\n\nif (fd \u003c 0) return fd;\n\nhere before we go to all this trouble. But that should be handled above in my comment.",
+      "range": {
+        "startLine": 110,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 60
+      },
+      "revId": "8cad2caaaee3da16dbcaeab97301d43a30031feb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa066f0d_852b8362",
+        "filename": "libcutils/android_get_control_file.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-03-20T21:13:09Z",
+      "side": 1,
+      "message": "I would not be annoyed if you used std::unique_ptr for this ...\n\n    auto fd_path \u003d std::unique_ptr(TEMP_FAILURE_RETRY_NULL(realpath(proc, nullptr)));",
+      "range": {
+        "startLine": 115,
+        "startChar": 4,
+        "endLine": 115,
+        "endChar": 20
+      },
+      "revId": "8cad2caaaee3da16dbcaeab97301d43a30031feb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09aaec78_e66f1869",
+        "filename": "libcutils/android_get_control_file.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-03-20T21:13:09Z",
+      "side": 1,
+      "message": "and std::unique_ptr here too ..",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 20
+      },
+      "revId": "8cad2caaaee3da16dbcaeab97301d43a30031feb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fc465e7_7adc822f",
+        "filename": "libcutils/android_get_control_file.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-03-20T21:13:09Z",
+      "side": 1,
+      "message": "nit: auto",
+      "range": {
+        "startLine": 125,
+        "startChar": 4,
+        "endLine": 125,
+        "endChar": 7
+      },
+      "revId": "8cad2caaaee3da16dbcaeab97301d43a30031feb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
