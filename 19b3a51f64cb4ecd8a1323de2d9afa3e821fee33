@@ -46,6 +46,23 @@
       "revId": "19b3a51f64cb4ecd8a1323de2d9afa3e821fee33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd7cef0d_3b0cd762",
+        "filename": "rootdir/update_and_install_ld_config.mk",
+        "patchSetId": 11
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-21T14:41:40Z",
+      "side": 1,
+      "message": "This broke the mac build:\nsed: 1: \"s?^.*\\+\u003d %VNDK_USING_CO ...\": RE error: repetition-operator operand invalid\n\nI think the \\+ is being replaced with + by bash.  I think single quotes would be better, since there are no substitutions in here:\n\n   sed -i.bak -e \u0027s?^.*\\+\u003d %VNDK_USING_CORE_VARIANT_LIBRARIES%$??\u0027 $@",
+      "revId": "19b3a51f64cb4ecd8a1323de2d9afa3e821fee33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
