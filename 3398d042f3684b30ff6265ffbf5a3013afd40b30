@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f555233_7e649aad",
+        "filename": "libprocessgroup/cgroup_map.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-03-22T20:08:29Z",
+      "side": 1,
+      "message": "do not need to house a pointer, this can be static unique_fd fd, no need to \u0027new\u0027 better to do fd.reset(TEMP_FAILURE_RETRY ...) below. The destructor gets called on static context exit.",
+      "range": {
+        "startLine": 234,
+        "startChar": 11,
+        "endLine": 234,
+        "endChar": 35
+      },
+      "revId": "3398d042f3684b30ff6265ffbf5a3013afd40b30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d4b68b8_ddc73113",
+        "filename": "libprocessgroup/cgroup_map.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-03-22T20:08:29Z",
+      "side": 1,
+      "message": "Q: what about vendor init? Is it to be somehow involved in cgroups? (I am guessing not)",
+      "revId": "3398d042f3684b30ff6265ffbf5a3013afd40b30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
