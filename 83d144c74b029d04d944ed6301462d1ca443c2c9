@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b30e678_bd40b89c",
+        "filename": "libunwindstack/DexFile.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2019-03-22T04:44:44Z",
+      "side": 1,
+      "message": "Doesn\u0027t this need to be dex_file_from_file.release()?",
+      "range": {
+        "startLine": 42,
+        "startChar": 13,
+        "endLine": 42,
+        "endChar": 31
+      },
+      "revId": "83d144c74b029d04d944ed6301462d1ca443c2c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98707b2c_77363770",
+        "filename": "libunwindstack/DexFile.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2019-03-22T04:44:44Z",
+      "side": 1,
+      "message": "Need call to release().",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "83d144c74b029d04d944ed6301462d1ca443c2c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "156c3ba7_5a8f0e9e",
+        "filename": "libunwindstack/DexFile.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2019-03-22T04:44:44Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be private?",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 0
+      },
+      "revId": "83d144c74b029d04d944ed6301462d1ca443c2c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aca4bad_06d3be35",
+        "filename": "libunwindstack/ElfInterface.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2019-03-22T04:44:44Z",
+      "side": 1,
+      "message": "I think this should be reworked slightly into two separate cases. One case is SHT_PROGBITS, which only checks for the previous names, and then that is SHT_NOBITS.\n\nSo it would look something like:\n\n} else if (shdr.sh_type \u003d\u003d SHT_PROGBITS \u0026\u0026 GetString(shdr, other_args, \u0026name)) {\n  if (name \u003d\u003d )\n  .\n  .\n  .\n} else if (shdr.sh_type \u003d\u003d SHT_NOBITS \u0026\u0026 GetString(shdr, other_args, \u0026name) \u0026\u0026 name \u003d\u003d \".text\") {\n  .\n  .\n  .\n}\n\nUnless there are .text segments listed as SHT_PROGBITS.",
+      "range": {
+        "startLine": 342,
+        "startChar": 6,
+        "endLine": 342,
+        "endChar": 76
+      },
+      "revId": "83d144c74b029d04d944ed6301462d1ca443c2c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03da63de_7dc63198",
+        "filename": "libunwindstack/JitDebug.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2019-03-22T04:44:44Z",
+      "side": 1,
+      "message": "You need to add some reason for this. Also, I don\u0027t think this works because you could be in one of two places. In one, you are doing a local unwind, but if you are doing a remote unwind, or an offline unwind then this call is not necessary.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 54
+      },
+      "revId": "83d144c74b029d04d944ed6301462d1ca443c2c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a991201_aa6826ad",
+        "filename": "libunwindstack/Symbols.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2019-03-22T04:44:44Z",
+      "side": 1,
+      "message": "I think you should create two different functions that share code. I don\u0027t think calling a GetName function with name \u003d\u003d nullptr makes a lot of sense.",
+      "range": {
+        "startLine": 64,
+        "startChar": 6,
+        "endLine": 64,
+        "endChar": 28
+      },
+      "revId": "83d144c74b029d04d944ed6301462d1ca443c2c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fd8a5e9_e51aac7d",
+        "filename": "libunwindstack/Unwinder.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2019-03-22T04:44:44Z",
+      "side": 1,
+      "message": "If this argument isn\u0027t needed any more, then it should be removed.",
+      "range": {
+        "startLine": 334,
+        "startChar": 27,
+        "endLine": 334,
+        "endChar": 35
+      },
+      "revId": "83d144c74b029d04d944ed6301462d1ca443c2c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59168f5a_62d1a1f0",
+        "filename": "libunwindstack/include/unwindstack/Elf.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2019-03-22T04:44:44Z",
+      "side": 1,
+      "message": "This doesn\u0027t belong here, it doesn\u0027t have anything to do with the Elf object, probably in the JitDebug object.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 82
+      },
+      "revId": "83d144c74b029d04d944ed6301462d1ca443c2c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbc95ab6_c78fe331",
+        "filename": "libunwindstack/tests/JitDebugTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2019-03-22T04:44:44Z",
+      "side": 1,
+      "message": "Can you add a comment about why this is necessary?",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 5
+      },
+      "revId": "83d144c74b029d04d944ed6301462d1ca443c2c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
