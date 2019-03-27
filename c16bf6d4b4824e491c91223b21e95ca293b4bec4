@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3c06d91a_19f97f22",
+        "filename": "init/mount_handler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-03-27T20:24:27Z",
+      "side": 1,
+      "message": "\u0027setprop prop \"\"\u0027 of something that is already cleared, or for that matter is not yet created, results in a wasted on property trigger and storage (one can not erase a property).\n\nIf we did not do this we would have a bunch of empty APEX junk (I know, we could return above, but bind mounts would not clear as they could).\n\nI have already expended three lines of comment, I do not want to write a treatise about why we skip setprop on empty, but I had others ask me why we are doing it ... cleanliness was the original answer.\n\nMaybe I need to state this in another manner? will think about it ...",
+      "parentUuid": "d520cff7_477b1a49",
+      "range": {
+        "startLine": 97,
+        "startChar": 36,
+        "endLine": 97,
+        "endChar": 51
+      },
+      "revId": "c16bf6d4b4824e491c91223b21e95ca293b4bec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bcdc8215_1681de3c",
         "filename": "init/mount_handler.cpp",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "c16bf6d4b4824e491c91223b21e95ca293b4bec4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63db4493_3f2fd37a",
+        "filename": "init/mount_handler.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-03-27T20:24:27Z",
+      "side": 1,
+      "message": "and yet I have been told to localize variables.\n\nI will unravel len.",
+      "parentUuid": "bcdc8215_1681de3c",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 24
+      },
+      "revId": "c16bf6d4b4824e491c91223b21e95ca293b4bec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
