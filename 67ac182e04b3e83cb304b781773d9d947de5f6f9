@@ -46,6 +46,30 @@
       "revId": "67ac182e04b3e83cb304b781773d9d947de5f6f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdb13b3e_59fe71b0",
+        "filename": "libprocessgroup/cgroup_map.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-03-27T19:41:58Z",
+      "side": 1,
+      "message": "I could do kCgroupRcPath[] \u003d CGROUPS_RC_DIR \"/\" CgroupMap::CGROUPS_RC_FILE if CGROUPS_RC_DIR and CGROUPS_RC_FILE were #defines but with them being constexpr const char* that\u0027s not an option.\n\nenh@, maybe I\u0027m doing something wrong but if I try constexpr constructor for kCgroupRcPath compiler fails with the error:\n\nconstexpr variable cannot have non-literal type \u0027const std::string\u0027\n\nIf you know a better way to do this please advise.",
+      "parentUuid": "b8c59330_d59d8599",
+      "range": {
+        "startLine": 54,
+        "startChar": 13,
+        "endLine": 54,
+        "endChar": 24
+      },
+      "revId": "67ac182e04b3e83cb304b781773d9d947de5f6f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
