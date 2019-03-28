@@ -16,6 +16,24 @@
       "revId": "037f71b716a5ea0b0fb713a9868b4a6668231047",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a911846e_c434de6e",
+        "filename": "libprocessgroup/cgroup_map.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-03-28T01:17:55Z",
+      "side": 1,
+      "message": "The line 422 prevents such scenario unless someone starts misusing this function by calling it from somewhere else inside this file. I can add additional protections for possible future misuse but I feel it\u0027s kinda overkill. Will put a big fat warning at the top of this function that it should not be called more than once because each invocation will leak an FD.",
+      "parentUuid": "441aea93_60ac8680",
+      "revId": "037f71b716a5ea0b0fb713a9868b4a6668231047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
