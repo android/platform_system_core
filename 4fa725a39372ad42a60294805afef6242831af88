@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a9a6615_e3ee1240",
+        "filename": "init/devices.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-04-01T23:26:06Z",
+      "side": 1,
+      "message": "isn\u0027t this clearer as\n\n    android::base::Timer t;\n    while (t.duration() \u003c timeout) {\n        if (ReadFileToString(path, content) \u0026\u0026 !content-\u003eempty()) return true;\n        std::this_thread::sleep_for(10ms);\n    }\n    return false;\n\nand should this just be inlined into the single caller? this seems like a weird kind of function.",
+      "revId": "4fa725a39372ad42a60294805afef6242831af88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5747291f_be064abb",
+        "filename": "init/devices.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-04-01T23:26:06Z",
+      "side": 1,
+      "message": "||\n\nadd comment?",
+      "range": {
+        "startLine": 138,
+        "startChar": 29,
+        "endLine": 139,
+        "endChar": 12
+      },
+      "revId": "4fa725a39372ad42a60294805afef6242831af88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
