@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f9fae3ae_aa39fccd",
+        "filename": "init/devices.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-04-02T16:19:05Z",
+      "side": 1,
+      "message": "Yes, primarily to eliminate the trailing \\n in the response from the \u0027name\u0027 node.",
+      "parentUuid": "48702e0c_b2bde147",
+      "revId": "f558ecfcf0a6077e693cdc279c4fa2034d7e88b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db7c20a6_f4d749b8",
         "filename": "init/devices.cpp",
         "patchSetId": 12
@@ -30,6 +48,30 @@
       "writtenOn": "2019-04-02T15:53:29Z",
       "side": 1,
       "message": "when is this called?\n\n(more specifically: can this have a negative impact on boot time? 10ms [let alone 200ms] is quite a long time. how long is this _supposed_ to take to arrive?)",
+      "range": {
+        "startLine": 124,
+        "startChar": 83,
+        "endLine": 124,
+        "endChar": 87
+      },
+      "revId": "f558ecfcf0a6077e693cdc279c4fa2034d7e88b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6f734d5_add2c155",
+        "filename": "init/devices.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-04-02T16:19:05Z",
+      "side": 1,
+      "message": "Q: do you want me to add a:\n\n    if (getpid() \u003d\u003d 1) return false;\n\nto bypass these operations in first_stage_init?\n\n[TL;DR]\n\nTypically 5ms, have seen it as bad as 15ms, wanted a large margin, but not so large that it was considered significant(tm).\n\nYes, logically/theoretically should impact boot time but I could not see any impact in or out when I measured on a device with preponderance of dm-* nodes. It does take 200ms if a dm node goes away (which can only really happen with fastbootd). We could eliminate the theoretical impact if this code is disabled if running inside init for first_stage_init?\n\nYou should see the work I did for init to switch to inotify for wait_for_file etc, and to allow ueventd to set properties without deadlock. Those changes could be extended and used to help reduce the impact here too I expect?",
+      "parentUuid": "db7c20a6_f4d749b8",
       "range": {
         "startLine": 124,
         "startChar": 83,
