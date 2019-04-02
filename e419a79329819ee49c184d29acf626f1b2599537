@@ -22,6 +22,30 @@
       "revId": "e419a79329819ee49c184d29acf626f1b2599537",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6eafa67_739db2fc",
+        "filename": "init/devices.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-04-02T21:04:07Z",
+      "side": 1,
+      "message": "cache is _only_ for delete. I had a few reasons why I made cache a secondary citizen.\n\n[TL;DR]\n\ndm instances are not strictly re-used, but the only time we would gain checking cache first is when the dev is going away. Regardless, I do not want an attack vector should someone figure out how to reuse (wrap?) a dm instance or name. Delete never happens on Android; only in corner cases around fastbootd, update_engine and gsid. The operation type is not provided to this function (we make no assumption of adding/deleting). The operation is checked later on during the call, no interest in checking operation multiple times. We are called multiple times anyways (for things other than add or delete) so reading name attribute is still advised over trusting cache.",
+      "parentUuid": "5002cab9_84c81a29",
+      "range": {
+        "startLine": 125,
+        "startChar": 4,
+        "endLine": 125,
+        "endChar": 5
+      },
+      "revId": "e419a79329819ee49c184d29acf626f1b2599537",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
