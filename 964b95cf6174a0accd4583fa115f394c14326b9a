@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f92ca25_bf06ec04",
+        "filename": "libziparchive/zip_archive_stream_entry.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-04-06T15:13:23Z",
+      "side": 1,
+      "message": "By casting this down, this loses information if the size is greater than 4G. This is one of my fears with enabling -Wconversion, as inappropriately applied casts may make bugs *less* obvious.\n\nInstead, the crc32_z() function is available which takes a size_t.",
+      "range": {
+        "startLine": 108,
+        "startChar": 43,
+        "endLine": 108,
+        "endChar": 66
+      },
+      "revId": "964b95cf6174a0accd4583fa115f394c14326b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
