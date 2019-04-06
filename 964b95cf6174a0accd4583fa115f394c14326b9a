@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "65a2c172_a2ce8840",
+        "filename": "libziparchive/unzip.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-04-06T20:17:52Z",
+      "side": 1,
+      "message": "While some of the code is 64-bit safe (off64_t), we don\u0027t support 64-bit zips. We only support the 32-bit versions of the zip directory etc, we assume that everything can be simply mmapped (so what to do in 32-bit?). So, no, we can\u0027t really compress 4G of data.\n\nIn general, the output of this function is at most 100, but can be negative. The maximum is for compressed \u003d 0 (assuming that compressed \u003c 0 is impossible). Negative values are possible if compressed \u003e uncompressed. Let\u0027s assume here that compressed can only be c * uncompressed with small c, so the negative value should still fit in an int.",
+      "parentUuid": "8eb67fd1_6f7cbae8",
+      "range": {
+        "startLine": 75,
+        "startChar": 9,
+        "endLine": 75,
+        "endChar": 26
+      },
+      "revId": "964b95cf6174a0accd4583fa115f394c14326b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d7e4e00_98861592",
         "filename": "libziparchive/zip_archive.cc",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2019-04-06T15:50:58Z",
       "side": 1,
       "message": "Is crashing the program on this bad input the right solution? Perhaps returning kIoEerror would be safer?",
+      "revId": "964b95cf6174a0accd4583fa115f394c14326b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c608907_b162338b",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-04-06T20:17:52Z",
+      "side": 1,
+      "message": "This is basically \"just\" an invariant check for an internal function. read_amount is a constant (see the caller). Sadly it doesn\u0027t fit uint16_t (because one component is uint16_t::max). This invariant just checks that it still fits an int32_t, so that I don\u0027t have to change the loop structure.\n\n(Could have made it a DCHECK, but this function is called once per zip loaded, which doesn\u0027t happen super often...)",
+      "parentUuid": "2d7e4e00_98861592",
       "revId": "964b95cf6174a0accd4583fa115f394c14326b9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "5c3fdd58_34cb9301",
+        "filename": "libziparchive/zip_archive_stream_entry.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-04-06T20:17:52Z",
+      "side": 1,
+      "message": "Data size is less than 4G. See the CHECK I added on entry. Unless the user const-casts the vector and increases it (which is undefined behavior), the size of data should be kBufSize \u003d 64K.\n\nThis is the reason this CL is a bit larger. I added checks for a couple of assumptions in the code (the compressed case definitely assumes nobody screws with the vector so the backing array doesn\u0027t change).",
+      "parentUuid": "3f92ca25_bf06ec04",
+      "range": {
+        "startLine": 108,
+        "startChar": 43,
+        "endLine": 108,
+        "endChar": 66
+      },
+      "revId": "964b95cf6174a0accd4583fa115f394c14326b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3971c1ce_1f508204",
         "filename": "libziparchive/zip_writer.cc",
         "patchSetId": 1
@@ -76,6 +142,24 @@
       "writtenOn": "2019-04-06T15:50:58Z",
       "side": 1,
       "message": "Can you elaborate on this comment why there\u0027s a lack of support for files larger than 4G? Is this is technical limitation of the ZIP format, or a policy decision to not support this? IIRC, we *need* to support files larger than 4G, for partner OTA images.",
+      "revId": "964b95cf6174a0accd4583fa115f394c14326b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c65537ba_36e62ae5",
+        "filename": "libziparchive/zip_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-04-06T20:17:52Z",
+      "side": 1,
+      "message": "We do not support the \u003e4GB extension. I knew this from before, but it actually shows up here as truncation warnings when writing the 32-bit zip directory fields...\n\nIf I\u0027m misreading something, please correct me.",
+      "parentUuid": "3971c1ce_1f508204",
       "revId": "964b95cf6174a0accd4583fa115f394c14326b9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "ada42e73_bebe228a",
+        "filename": "libziparchive/zip_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-04-06T20:17:52Z",
+      "side": 1,
+      "message": "Internal integrity check to argue why the static_cast is valid (basically documentation). buffer_ is initialized to kBufSize, and should never change (it doesn\u0027t). buffer_ is also not exposed to the client.\n\nCan\u0027t change z_stream, that\u0027s libz API...",
+      "parentUuid": "0dfdc317_f01bc2a8",
+      "revId": "964b95cf6174a0accd4583fa115f394c14326b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5da7560a_6feb3332",
         "filename": "libziparchive/zip_writer.cc",
         "patchSetId": 1
@@ -110,6 +212,24 @@
       "writtenOn": "2019-04-06T15:50:58Z",
       "side": 1,
       "message": "Can you update the comment and clarify what \"mark down data\" means here? I\u0027m not familiar with the term.",
+      "revId": "964b95cf6174a0accd4583fa115f394c14326b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "911fc4be_0a6a3635",
+        "filename": "libziparchive/zip_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-04-06T20:17:52Z",
+      "side": 1,
+      "message": "\"Mark down\" means write into the zip entry.",
+      "parentUuid": "5da7560a_6feb3332",
       "revId": "964b95cf6174a0accd4583fa115f394c14326b9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -139,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "25483008_ccd45ef5",
+        "filename": "libziparchive/zip_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-04-06T20:17:52Z",
+      "side": 1,
+      "message": "Same as before: we only support the zip directory structures that have 32 bits to write this down. We do not support zip entries with more than 4GB of data.",
+      "parentUuid": "bccb10f8_2b776d04",
+      "range": {
+        "startLine": 340,
+        "startChar": 6,
+        "endLine": 340,
+        "endChar": 72
+      },
+      "revId": "964b95cf6174a0accd4583fa115f394c14326b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e3a952aa_2112bf73",
         "filename": "libziparchive/zip_writer.cc",
         "patchSetId": 1
@@ -150,6 +294,30 @@
       "writtenOn": "2019-04-06T15:50:58Z",
       "side": 1,
       "message": "See crc32_z comment elsewhere in this change.",
+      "range": {
+        "startLine": 358,
+        "startChar": 6,
+        "endLine": 358,
+        "endChar": 11
+      },
+      "revId": "964b95cf6174a0accd4583fa115f394c14326b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5233c4f5_e178a188",
+        "filename": "libziparchive/zip_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-04-06T20:17:52Z",
+      "side": 1,
+      "message": "See before. It seemed better to make it explicit that we\u0027re restricted to 32-bit inputs. But I\u0027m open to change it.",
+      "parentUuid": "e3a952aa_2112bf73",
       "range": {
         "startLine": 358,
         "startChar": 6,
