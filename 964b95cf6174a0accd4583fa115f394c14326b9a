@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "8eb67fd1_6f7cbae8",
+        "filename": "libziparchive/unzip.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-04-06T15:50:58Z",
+      "side": 1,
+      "message": "This doesn\u0027t feel right.\n\n1) A ratio would be a positive number, never a negative number, so \"int\" seems inappropriate here.\n2) It seems like the compression ratio could be outside of the range expressable by an integer, especially if you are compressing large quantities of repetitive data. Presumably we\u0027d want to compress \u003e 4G of data, and 4G of data could be all zeros or something else highly compressible.",
+      "range": {
+        "startLine": 75,
+        "startChar": 9,
+        "endLine": 75,
+        "endChar": 26
+      },
+      "revId": "964b95cf6174a0accd4583fa115f394c14326b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d7e4e00_98861592",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-04-06T15:50:58Z",
+      "side": 1,
+      "message": "Is crashing the program on this bad input the right solution? Perhaps returning kIoEerror would be safer?",
+      "revId": "964b95cf6174a0accd4583fa115f394c14326b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f92ca25_bf06ec04",
         "filename": "libziparchive/zip_archive_stream_entry.cc",
         "patchSetId": 1
@@ -18,6 +58,103 @@
         "startChar": 43,
         "endLine": 108,
         "endChar": 66
+      },
+      "revId": "964b95cf6174a0accd4583fa115f394c14326b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3971c1ce_1f508204",
+        "filename": "libziparchive/zip_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-04-06T15:50:58Z",
+      "side": 1,
+      "message": "Can you elaborate on this comment why there\u0027s a lack of support for files larger than 4G? Is this is technical limitation of the ZIP format, or a policy decision to not support this? IIRC, we *need* to support files larger than 4G, for partner OTA images.",
+      "revId": "964b95cf6174a0accd4583fa115f394c14326b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dfdc317_f01bc2a8",
+        "filename": "libziparchive/zip_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-04-06T15:50:58Z",
+      "side": 1,
+      "message": "Return error instead of crashing?\n\nWould it be better to change the type of z_stream_-\u003eavail_out instead? I don\u0027t entirely understand this code, but it feels like an arbitrary limit to bound this to 4G.",
+      "revId": "964b95cf6174a0accd4583fa115f394c14326b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5da7560a_6feb3332",
+        "filename": "libziparchive/zip_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-04-06T15:50:58Z",
+      "side": 1,
+      "message": "Can you update the comment and clarify what \"mark down data\" means here? I\u0027m not familiar with the term.",
+      "revId": "964b95cf6174a0accd4583fa115f394c14326b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bccb10f8_2b776d04",
+        "filename": "libziparchive/zip_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-04-06T15:50:58Z",
+      "side": 1,
+      "message": "Are you concerned about arithmetic overflow here? It would take an absurdly large value of len and/or uncompressed_size for this to happen, but still...",
+      "range": {
+        "startLine": 340,
+        "startChar": 6,
+        "endLine": 340,
+        "endChar": 72
+      },
+      "revId": "964b95cf6174a0accd4583fa115f394c14326b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3a952aa_2112bf73",
+        "filename": "libziparchive/zip_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-04-06T15:50:58Z",
+      "side": 1,
+      "message": "See crc32_z comment elsewhere in this change.",
+      "range": {
+        "startLine": 358,
+        "startChar": 6,
+        "endLine": 358,
+        "endChar": 11
       },
       "revId": "964b95cf6174a0accd4583fa115f394c14326b9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
