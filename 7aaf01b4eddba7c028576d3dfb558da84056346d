@@ -70,6 +70,30 @@
       "revId": "7aaf01b4eddba7c028576d3dfb558da84056346d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2401ac94_daffb6d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1324603
+      },
+      "writtenOn": "2019-04-10T06:39:12Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure if I follow you correctly, so please forgive me if I didn\u0027t describe it clearly. The case is that an app which has many threads is top-app. It\u0027s main threads (including UI/render thread) are set to \"top-app\" for both cpuset and stune group by calling set_cpuset_policy(), but some thread will set stune group to \"background\" for itself by calling set_sched_policy() again (I won\u0027t say this is to boost it :)). In current design, it will also set blkio group to \"background\" of that thread. However, I found the thread will do IO related to UX, so if there is busy IO in blkio \"root\" group, then the response will be slow of that app. That\u0027s the reason I think we should change blkio group in set_cpuset_policy() only, which reflects the current status of the app.",
+      "parentUuid": "8cc5f44f_72c1c02e",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "7aaf01b4eddba7c028576d3dfb558da84056346d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
