@@ -33,6 +33,24 @@
       "revId": "642891fb8d92ffc634a55f84ef9be42a3caa86cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5656a3db_d62d0a67",
+        "filename": "fs_mgr/libfs_avb/avb_ops.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-04-11T02:54:56Z",
+      "side": 1,
+      "message": "It will be the reverse :-).\n\nNote that the avb_ops.cpp here is for init/fs_mgr to invoke libavb.\nAnd the same libavb is used in *bootloader*, where logical path is unknown to bootloader.\n\nIf bootloader failed to read a physical path, then it won\u0027t boot Android (i.e., we won\u0027t reach the code here). I added comment to clearly describe it.",
+      "parentUuid": "797e25ed_bdeeb3de",
+      "revId": "642891fb8d92ffc634a55f84ef9be42a3caa86cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
