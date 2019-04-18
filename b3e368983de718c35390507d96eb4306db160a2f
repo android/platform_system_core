@@ -106,6 +106,29 @@
       "revId": "b3e368983de718c35390507d96eb4306db160a2f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a1265fb_4e6b48cb",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-04-18T16:13:08Z",
+      "side": 1,
+      "message": "Can removed the restoreconn.\n\nThere are two files:\n\"/debug_ramdisk/userdebug_plat_sepolicy.cil\";  \u003c-- this doesn\u0027t need restoreconn, as this file is used *before* sepolicy is loaded.\n\n\"/debug_ramdisk/adb_debug.prop\";  \u003c-- default file_context is tmpfs:file, and there is already tmpfs_domain(init) in sepolicy/private/init.te",
+      "range": {
+        "startLine": 471,
+        "startChar": 33,
+        "endLine": 471,
+        "endChar": 46
+      },
+      "revId": "b3e368983de718c35390507d96eb4306db160a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
