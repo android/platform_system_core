@@ -22,6 +22,30 @@
       "revId": "4560714d101342007f09992314d66c8b48552c22",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4307d439_7e30c81a",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-04-18T22:06:14Z",
+      "side": 1,
+      "message": "I thought the same thing and swiftly learned not to trust -q. May re-consider it if this was not a triaged change with side effects into the tools.\n\nOriginally during debugging I wanted the noise. But debugging is done.\n\n-q has exactly the same effect as \u003e/dev/null 2\u003e/dev/null with make_f2fs; however mke2fs -q lets some warnings (I will add, warnings we do not care about, like the device already contains an ext2 file system) through and drops its rather significant administrivia noise (which is good). mke2fs -q noise left over I am not interested in (-F should have suppressed the warning about a pre-existing filesystem IMHO).\n\nBonus of suppressing all std fds is I also suppressed stdin which I should have done all along.\n\nI chose to drop all noise \u003cperiod\u003e, let the LERROR on 643 tell us about general success/failure. If making a filesystem misbehaved, the clues will be in what happened before in arranging a backing device before this function was called and failed IMHO.",
+      "parentUuid": "f81904fa_b6d74169",
+      "range": {
+        "startLine": 639,
+        "startChar": 51,
+        "endLine": 639,
+        "endChar": 62
+      },
+      "revId": "4560714d101342007f09992314d66c8b48552c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
