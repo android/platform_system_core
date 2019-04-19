@@ -147,6 +147,30 @@
       "revId": "b3e368983de718c35390507d96eb4306db160a2f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f25d6dc8_c4e02e25",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-04-19T02:48:10Z",
+      "side": 1,
+      "message": "To be clear, it\u0027s not related to tmpfs_domain(init), which labels a file created by init to \"init_tmpfs\".\n\nBecause both files are created prior to sepolicy is loaded, both file_context will be \"tmpfs\" (not init_tmpfs).\n\nIs it a concern for 2nd-stage init to load the tmpfs file: /debug_ramdisk/adb_debug.prop?",
+      "parentUuid": "1a1265fb_4e6b48cb",
+      "range": {
+        "startLine": 471,
+        "startChar": 33,
+        "endLine": 471,
+        "endChar": 46
+      },
+      "revId": "b3e368983de718c35390507d96eb4306db160a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
