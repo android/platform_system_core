@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9677423f_6df17f05",
+        "filename": "bootstat/boot_reason_test.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-04-19T18:40:19Z",
+      "side": 1,
+      "message": "negative tests can go here, but this is not a good location ... elsewhere we have to know the id of __BOOTSTAT_UNKNONW__ which is 1.",
+      "range": {
+        "startLine": 1248,
+        "startChar": 8,
+        "endLine": 1248,
+        "endChar": 35
+      },
+      "revId": "d8090a752cf2e15c2e8d0438e1692e774849f77a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95673d4d_fa85e85d",
+        "filename": "bootstat/boot_reason_test.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 1252,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-04-19T18:40:19Z",
+      "side": 1,
+      "message": "A unique positive regex test.\n\nNotice the trouble we get into with respect to escapes though in the shell. For example if we want to handle a \"reboot[.]pmic[.]pm[0-9]\" is entry in bootstat.cpp:\n\n    reboot\\[\\.\\]pmic\\[\\.\\]pm\\[0-9\\])\n        # positive tests\n        echo ${id} reboot.pmic.pm0\n        echo ${id} reboot.pmic.pm5\n        echo ${id} reboot.pmic.pm9\n        # negative tests\n        echo 1 reboot.pmic.pm10",
+      "range": {
+        "startLine": 1250,
+        "startChar": 1,
+        "endLine": 1252,
+        "endChar": 31
+      },
+      "revId": "d8090a752cf2e15c2e8d0438e1692e774849f77a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
