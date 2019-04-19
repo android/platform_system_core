@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "77b9916b_76ce2e21",
+        "filename": "libprocessgroup/include/processgroup/processgroup.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-04-19T23:29:20Z",
+      "side": 1,
+      "message": "Before abstraction layer introduction the FDs used to be cached only inside sched_policy. Currently they are not cached at all and that creates performance issues. With this change we won\u0027t be caching by default and will start caching only after explicitly requested to do so (and with this change functions in sched_policy will request caching). So this I think restores the previous functionality which providing possibilities to cache more in the future.",
+      "parentUuid": "3cce7142_263527a1",
+      "range": {
+        "startLine": 37,
+        "startChar": 44,
+        "endLine": 37,
+        "endChar": 49
+      },
+      "revId": "f685410efc654c475a6469dd8532c7c70604bb2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd9f2a36_70ce61e6",
         "filename": "libprocessgroup/task_profiles.cpp",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2019-04-19T23:20:03Z",
       "side": 1,
       "message": "Especially now that we have a few different options, may be good to have an enum for these values.\n\nOr better, have a separate field that stores this information and leave the unique_fd uninitialized.",
+      "range": {
+        "startLine": 149,
+        "startChar": 14,
+        "endLine": 149,
+        "endChar": 16
+      },
+      "revId": "f685410efc654c475a6469dd8532c7c70604bb2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "511a6bfc_15538100",
+        "filename": "libprocessgroup/task_profiles.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-04-19T23:29:20Z",
+      "side": 1,
+      "message": "I was thinking about enum myself but was in a hurry to provide the fix and make sure it addresses the problem. I would prefer to reuse fd rather than introducing a new field. Will make the change to enum.",
+      "parentUuid": "fd9f2a36_70ce61e6",
       "range": {
         "startLine": 149,
         "startChar": 14,
