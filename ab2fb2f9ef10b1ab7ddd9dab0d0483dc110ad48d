@@ -63,6 +63,30 @@
       "revId": "ab2fb2f9ef10b1ab7ddd9dab0d0483dc110ad48d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f39bb7b9_dad592e0",
+        "filename": "adb/daemon/file_sync_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-04-19T15:27:21Z",
+      "side": 1,
+      "message": "oh, yeah, you\u0027re right --- if we did rewrite this the lazy way with `errno \u003d` we\u0027d break the code L243 which is checking for errors on L236 very late.\n\nwhy is the posix_fadvise so early anyway? shouldn\u0027t it come after all the possible open()s rather than only in this one case?",
+      "parentUuid": "0b0f2f12_42d4d913",
+      "range": {
+        "startLine": 239,
+        "startChar": 87,
+        "endLine": 239,
+        "endChar": 91
+      },
+      "revId": "ab2fb2f9ef10b1ab7ddd9dab0d0483dc110ad48d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
