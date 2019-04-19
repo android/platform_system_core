@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cce7142_263527a1",
+        "filename": "libprocessgroup/include/processgroup/processgroup.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-04-19T23:20:03Z",
+      "side": 1,
+      "message": "It\u0027s been a while, so let me double check: is the problem that we have *any* FDs cached or the problem that we\u0027re trying to reuse the specific FDs and do not want to cache them?  \n\nIf it\u0027s only the specific FDs, then we should default these to \u0027true\u0027 though, right?  Not using the cache should be the exception?",
+      "range": {
+        "startLine": 37,
+        "startChar": 44,
+        "endLine": 37,
+        "endChar": 49
+      },
+      "revId": "f685410efc654c475a6469dd8532c7c70604bb2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd9f2a36_70ce61e6",
+        "filename": "libprocessgroup/task_profiles.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-04-19T23:20:03Z",
+      "side": 1,
+      "message": "Especially now that we have a few different options, may be good to have an enum for these values.\n\nOr better, have a separate field that stores this information and leave the unique_fd uninitialized.",
+      "range": {
+        "startLine": 149,
+        "startChar": 14,
+        "endLine": 149,
+        "endChar": 16
+      },
+      "revId": "f685410efc654c475a6469dd8532c7c70604bb2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
