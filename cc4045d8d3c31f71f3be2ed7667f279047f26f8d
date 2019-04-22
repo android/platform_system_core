@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4f0d46a0_182ead46",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1483435
+      },
+      "writtenOn": "2019-04-22T16:59:13Z",
+      "side": 1,
+      "message": "Okay ~ let me enable unount monitor thread after fsck().\n\nThank you,\nJoseph.",
+      "parentUuid": "4d4bb0c0_a0a65df6",
+      "range": {
+        "startLine": 284,
+        "startChar": 16,
+        "endLine": 284,
+        "endChar": 30
+      },
+      "revId": "cc4045d8d3c31f71f3be2ed7667f279047f26f8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ace7442f_8b2f9339",
         "filename": "init/reboot.cpp",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "cc4045d8d3c31f71f3be2ed7667f279047f26f8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30923c95_d4f27e27",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1483435
+      },
+      "writtenOn": "2019-04-22T16:59:13Z",
+      "side": 1,
+      "message": "I am okay to use GetBoolProperty().\n\nThank you,\nJoseph.",
+      "parentUuid": "ace7442f_8b2f9339",
+      "range": {
+        "startLine": 365,
+        "startChar": 27,
+        "endLine": 365,
+        "endChar": 38
+      },
+      "revId": "cc4045d8d3c31f71f3be2ed7667f279047f26f8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "597bbd73_76715ebc",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1483435
+      },
+      "writtenOn": "2019-04-22T16:59:13Z",
+      "side": 1,
+      "message": "I agree to use c define here for sysrq for consistent coding style.\n\n#define PROC_SYSRQ    \"/proc/sysrq-trigger\"\n\nThank you,\nJoseph.",
+      "parentUuid": "198068af_91a2fb29",
+      "range": {
+        "startLine": 374,
+        "startChar": 51,
+        "endLine": 374,
+        "endChar": 70
+      },
+      "revId": "cc4045d8d3c31f71f3be2ed7667f279047f26f8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6cf23381_d84bd1db",
         "filename": "init/reboot.cpp",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2019-04-22T16:04:36Z",
       "side": 1,
       "message": "hmm, in case of shutdown, will this became a restart right?\nthis is extremely dangerous for thermal shutdown...\n\nRebootSystem(cmd, rebootTarget); in shutdown sounds more reasonable.\n\n(not to mention we need display the warning message to user and crash will very likly override the reason per bootstat reset BL reason.)",
+      "range": {
+        "startLine": 381,
+        "startChar": 5,
+        "endLine": 383,
+        "endChar": 69
+      },
+      "revId": "cc4045d8d3c31f71f3be2ed7667f279047f26f8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14b61b6c_cf416429",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1483435
+      },
+      "writtenOn": "2019-04-22T16:59:13Z",
+      "side": 1,
+      "message": "Thank you Wei Wang to provide good input here ...\n\nIt is good to reviewing detail flow again for device shutdown case.\n\nI have some initial idea for shutdown case. Is it possible to review initial proposal before I try to change the code?\n\n\nIn shutdown stuck case, I am thinking if we can have two separated case for userdebug and release build.\n\na. For userdebug build, trigger kernel panic even in shutdown stuck case. With this change, I wish to get more debug log which may give more clues why device stuck at shutdown flow. With this change we can make sure that we didn\u0027t hide the issue by calling RebootSystem() to force device shutdown.\n\nb. For release build, I agree to call RebootSystem() to force device shutdown directly because we don\u0027t expect user to gather any debug logs at production phase. \n\nPlease feel free to update here for further discussion.\n\nThank you,\nJoseph.",
+      "parentUuid": "6cf23381_d84bd1db",
       "range": {
         "startLine": 381,
         "startChar": 5,
