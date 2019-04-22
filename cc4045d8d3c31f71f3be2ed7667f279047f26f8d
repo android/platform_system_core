@@ -68,6 +68,29 @@
       "revId": "cc4045d8d3c31f71f3be2ed7667f279047f26f8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cf23381_d84bd1db",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2019-04-22T16:04:36Z",
+      "side": 1,
+      "message": "hmm, in case of shutdown, will this became a restart right?\nthis is extremely dangerous for thermal shutdown...\n\nRebootSystem(cmd, rebootTarget); in shutdown sounds more reasonable.\n\n(not to mention we need display the warning message to user and crash will very likly override the reason per bootstat reset BL reason.)",
+      "range": {
+        "startLine": 381,
+        "startChar": 5,
+        "endLine": 383,
+        "endChar": 69
+      },
+      "revId": "cc4045d8d3c31f71f3be2ed7667f279047f26f8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
