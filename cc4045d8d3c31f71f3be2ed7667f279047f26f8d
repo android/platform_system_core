@@ -235,6 +235,30 @@
       "revId": "cc4045d8d3c31f71f3be2ed7667f279047f26f8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7ee5f2b_a77a0029",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1483435
+      },
+      "writtenOn": "2019-04-22T19:11:20Z",
+      "side": 1,
+      "message": "Hi Wei Wang,\n\nI am thinking one corner case here that may need your help.\nIf init shutdown thread umount /data partition and stuck, how can we set persist partition to notify there is shutdown stuck issue here?\n\nIf that is the case, it is hard to address shutdown stuck issue by writing property here.\n\nWhen issue happen, user just can see device spend more time (\u003e 30 seconds) for shutdown flow.\nBut they may not try to report the issue because we force shutdown device directly.\n\nIf you agree to do it, I can try to call RebootSystem() in Reboot timeout handler.\n\nThank you,\nJoseph.",
+      "parentUuid": "37dd97e9_5f4967e6",
+      "range": {
+        "startLine": 381,
+        "startChar": 5,
+        "endLine": 383,
+        "endChar": 69
+      },
+      "revId": "cc4045d8d3c31f71f3be2ed7667f279047f26f8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
