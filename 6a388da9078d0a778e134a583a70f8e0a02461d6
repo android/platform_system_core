@@ -46,6 +46,30 @@
       "revId": "6a388da9078d0a778e134a583a70f8e0a02461d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa76ed82_b69d4a61",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-04-23T02:41:03Z",
+      "side": 1,
+      "message": "Oh, just found that the restorecon in sepolicy needs:\n  allow init tmpfs:file { getattr relabelfrom };\n\nBut just the following sepolicy can fix the issue as well, and no need restorecon here.\n  allow init tmpfs:file getattr;\n\nSeems we can just go for the latter, as the former is the superset of it.\nI\u0027ll discuss with nnk@ at sepolicy then re-visit here if still need restorecon.",
+      "parentUuid": "18b5e534_bdc7e259",
+      "range": {
+        "startLine": 471,
+        "startChar": 33,
+        "endLine": 471,
+        "endChar": 46
+      },
+      "revId": "6a388da9078d0a778e134a583a70f8e0a02461d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
