@@ -141,6 +141,30 @@
       "revId": "b63e12c2ebf361a95ef53e31471ab9b00009ee48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41b9bf43_ab9f389e",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2019-04-24T16:48:26Z",
+      "side": 1,
+      "message": "It is about 0ms here, should we add the remaining time left for the shutdown timeout.\n\noriginal thread started with additional time for shutdown_timeout\n   std::thread reboot_monitor_thread(\u0026RebootMonitorThread, cmd, rebootTarget, \u0026reboot_semaphore,                                      shutdown_timeout);\n\nso when we resume we should still take we left in the shutdown_timeout part",
+      "parentUuid": "57620b11_432ca355",
+      "range": {
+        "startLine": 356,
+        "startChar": 32,
+        "endLine": 356,
+        "endChar": 35
+      },
+      "revId": "b63e12c2ebf361a95ef53e31471ab9b00009ee48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
