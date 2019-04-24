@@ -118,6 +118,30 @@
       "revId": "6f2609a9cc86f098f1e1543ad7c0a556544d8f2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38af6f68_02ed485c",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1483435
+      },
+      "writtenOn": "2019-04-24T22:14:47Z",
+      "side": 1,
+      "message": "It should be okay to pause the thread and resume it.\n\nBut since sem_timedwait_monotonic_np() use system time, I believe system time will keep moving forward even we pause the thread. right?\n\nsem_timedwait_monotonic_np(reboot_semaphore,\u0026shutdown_timeout_timespec)\n\nSo we still need a local variable to store remaining time when the thread has been stop.\nAnd re-calculate new system timeout value when someone resume the thread right?\n\nI think my problem is how can RebootMonitorThread() to receive thread stop notification ?\n\nBase on that, that is why I am trying to let RebootMonitorThread() exit when someone stop it and re-enable thread again with last remaining_time.\n\nThis will be easy to implement it here.\n\nAs I know, sem_timedwait_monotonic_np() will let thread go to sleep when no one change the reboot_semaphore right?\nSo I think the current timer design here is very similar to pause/start thread right?\nI just try to implement it by an easy way.\n\nThank you,\nJoseph.",
+      "parentUuid": "c3bc243f_332602e4",
+      "range": {
+        "startLine": 261,
+        "startChar": 51,
+        "endLine": 261,
+        "endChar": 67
+      },
+      "revId": "6f2609a9cc86f098f1e1543ad7c0a556544d8f2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
