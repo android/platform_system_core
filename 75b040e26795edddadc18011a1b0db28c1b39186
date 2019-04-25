@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a4b4a6a6_2be7268a",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1483435
+      },
+      "writtenOn": "2019-04-25T20:55:05Z",
+      "side": 1,
+      "message": "Since I have plan to move following shutdown_timeout_timespec initialization out of while loop, I will keep shutdown_timeout_timespec at the beginning of the thread.\n\n262     timespec shutdown_timeout_timespec;\n263     unsigned int remaining_shutdown_time \u003d 0;\n264 \n265     // 30 seconds more than the timeout passed to the thread as there is a final Umount pass\n266     // after the timeout is reached.\n267     constexpr unsigned int shutdown_watchdog_timeout_default \u003d 30;\n268     auto shutdown_watchdog_timeout \u003d android::base::GetUintProperty(\n269                     \"ro.build.shutdown.watchdog.timeout\", shutdown_watchdog_timeout_default);\n270     shutdown_timeout_timespec.tv_sec +\u003d\n271                     shutdown_watchdog_timeout + shutdown_timeout.count() / 1000;\n272 \n\n\nThank you,\nJoseph.",
+      "parentUuid": "c1d68be4_6c2bef24",
+      "revId": "75b040e26795edddadc18011a1b0db28c1b39186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6db28a3c_b82307a7",
         "filename": "init/reboot.cpp",
         "patchSetId": 12
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "64ab2ef6_d661d7e2",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1483435
+      },
+      "writtenOn": "2019-04-25T20:55:05Z",
+      "side": 1,
+      "message": "Good idea ~\n\nI will add TEMP_FAILURE_RETRY() here ...\n\n266         if (TEMP_FAILURE_RETRY (sem_wait (reboot_semaphore)) \u003d\u003d -1)\n267         {\n268           LOG(ERROR) \u003c\u003c \"sem_wait failed and exit RebootMonitorThread()\";\n269           return;\n270         }\n\n\nThank you,\nJoseph.",
+      "parentUuid": "6db28a3c_b82307a7",
+      "range": {
+        "startLine": 266,
+        "startChar": 8,
+        "endLine": 266,
+        "endChar": 16
+      },
+      "revId": "75b040e26795edddadc18011a1b0db28c1b39186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff25cebe_d83fb455",
         "filename": "init/reboot.cpp",
         "patchSetId": 12
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "6ca12e73_361b522d",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1483435
+      },
+      "writtenOn": "2019-04-25T20:55:05Z",
+      "side": 1,
+      "message": "Thanks your good idea, I will move shutdown_timeout_timespec initialization out of while loop.\n\nThank you,\nJoseph.",
+      "parentUuid": "ff25cebe_d83fb455",
+      "revId": "75b040e26795edddadc18011a1b0db28c1b39186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fa16a29_101d468b",
         "filename": "init/reboot.cpp",
         "patchSetId": 12
@@ -73,6 +133,24 @@
       "revId": "75b040e26795edddadc18011a1b0db28c1b39186",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54efcdce_dd1bbce0",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1483435
+      },
+      "writtenOn": "2019-04-25T20:55:05Z",
+      "side": 1,
+      "message": "Okay ~ I will try to move local variable allocation as close as possible to where we want to use it.\n\nThank you,\nJoseph.",
+      "parentUuid": "1fa16a29_101d468b",
+      "revId": "75b040e26795edddadc18011a1b0db28c1b39186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -96,6 +174,30 @@
       "revId": "75b040e26795edddadc18011a1b0db28c1b39186",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06cf849f_9e3e43b7",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1483435
+      },
+      "writtenOn": "2019-04-25T20:55:05Z",
+      "side": 1,
+      "message": "Sure ~ I agree to use consistent naming style like xxx_xxx_xxx (ex: reboot_monitor_run).\n\nThank you,\nJoseph.",
+      "parentUuid": "fff310eb_bfc194f8",
+      "range": {
+        "startLine": 626,
+        "startChar": 4,
+        "endLine": 626,
+        "endChar": 16
+      },
+      "revId": "75b040e26795edddadc18011a1b0db28c1b39186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
