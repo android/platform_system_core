@@ -2,6 +2,103 @@
   "comments": [
     {
       "key": {
+        "uuid": "c1d68be4_6c2bef24",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-04-25T16:01:24Z",
+      "side": 1,
+      "message": "Unless you expect shutdown_timeout_timespec to carry its value between loops (and I don\u0027t think you do), you should move this next to line 268, where it\u0027s initialized.",
+      "revId": "75b040e26795edddadc18011a1b0db28c1b39186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6db28a3c_b82307a7",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-04-25T16:01:24Z",
+      "side": 1,
+      "message": "TEMP_FAILURE_RETRY() around this?  It\u0027s possible to fail from EINTR.",
+      "range": {
+        "startLine": 266,
+        "startChar": 8,
+        "endLine": 266,
+        "endChar": 16
+      },
+      "revId": "75b040e26795edddadc18011a1b0db28c1b39186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff25cebe_d83fb455",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-04-25T16:01:24Z",
+      "side": 1,
+      "message": "I don\u0027t think this if statement is needed.  You effectively want the first pass of this loop to set up the timeout, then the second pass (which should be the only other pass) to use the remaining timeout, right?  \n\nIt\u0027s probably better to initialize remaining_shutdown_time at line 263, outside of the loop, with \"shutdown_watchdog_timeout + shutdown_timeout.count() / 1000;\".  Then once you\u0027re inside the loop, there\u0027s no if statement, just simply \"shutdown_timeout_timespec.tv_sec +\u003d remaining_shutdown_time;\" in both cases.",
+      "revId": "75b040e26795edddadc18011a1b0db28c1b39186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fa16a29_101d468b",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-04-25T16:01:24Z",
+      "side": 1,
+      "message": "This isn\u0027t C, you should move these next to where they\u0027re first used (~line 470 and ~line 477).",
+      "revId": "75b040e26795edddadc18011a1b0db28c1b39186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fff310eb_bfc194f8",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-04-25T16:01:24Z",
+      "side": 1,
+      "message": "Should be formatted like: reboot_monitor_run",
+      "range": {
+        "startLine": 626,
+        "startChar": 4,
+        "endLine": 626,
+        "endChar": 16
+      },
+      "revId": "75b040e26795edddadc18011a1b0db28c1b39186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "539eee07_0830b3ad",
         "filename": "init/reboot.cpp",
         "patchSetId": 12
