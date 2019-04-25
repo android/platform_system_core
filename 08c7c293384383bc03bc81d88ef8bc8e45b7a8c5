@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "519714a9_19f3ad48",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-04-25T21:15:11Z",
+      "side": 1,
+      "message": "I don\u0027t think this is quite right.  It\u0027s going to be overwritten by the \n\nif (clock_gettime(CLOCK_MONOTONIC, \u0026shutdown_timeout_timespec) \u003d\u003d -1) {\n\nonce you get inside of the loop.\n\nI was thinking that you would set `remaining_shutdown_time \u003d shutdown_watchdog_timeout + shutdown_timeout.count() / 1000;` outside of the loop, then you would have\n\ntimespec shutdown_timeout_timespec;\nif (clock_gettime(CLOCK_MONOTONIC, \u0026shutdown_timeout_timespec) \u003d\u003d -1) {\n    LOG(ERROR) \u003c\u003c \"clock_gettime() fail! exit RebootMonitorThread()\";\n    return;\n}\nshutdown_timeout_timespec.tv_sec +\u003d remaining_shutdown_time;\n\ninside of the loop.",
+      "revId": "08c7c293384383bc03bc81d88ef8bc8e45b7a8c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "241b7f56_31781c6b",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-04-25T21:15:11Z",
+      "side": 1,
+      "message": "You can move the reboot_semaphore lower too.  Best to put it right before the sem_init() call.",
+      "revId": "08c7c293384383bc03bc81d88ef8bc8e45b7a8c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
