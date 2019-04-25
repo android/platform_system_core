@@ -46,6 +46,30 @@
       "revId": "75b040e26795edddadc18011a1b0db28c1b39186",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc405a96_48059859",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1483435
+      },
+      "writtenOn": "2019-04-25T05:17:59Z",
+      "side": 1,
+      "message": "Yes~ We don\u0027t expect to return after RebootSystem() which will call svc and jump into kernel space.\n\nSince we already call detect the reboot monitor thread at the beginning of DoReboot().\nSo we maybe not able to join the thread again because it has became not joinable thread.\n\nWe call abort() here is to exit init due to abnormal return from kernel side.\n\nThank you,\nJoseph.",
+      "parentUuid": "2907c318_0b20b517",
+      "range": {
+        "startLine": 631,
+        "startChar": 4,
+        "endLine": 631,
+        "endChar": 5
+      },
+      "revId": "75b040e26795edddadc18011a1b0db28c1b39186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
