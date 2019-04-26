@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d249af66_d2980284",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1291337
+      },
+      "writtenOn": "2019-04-26T19:46:17Z",
+      "side": 1,
+      "message": "The pie ASAN build is starting to get this error:\n\nout/soong/.intermediates/system/core/debuggerd/crasher/crasher/android_x86_core_asan/obj/system/core/debuggerd/crasher/crasher.o system/core/debuggerd/crasher/crasher.cpp\nsystem/core/debuggerd/crasher/crasher.cpp:260:9: error: use of undeclared identifier \u0027__read_chk\u0027\n__read_chk(-1, buf, 32, 10);\n\nSee http://shortn/_rOTZEAkCcl and http://shortn/_fLR5TBtQTD",
+      "parentUuid": "b1e5040d_54f95542",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 6
+      },
+      "revId": "5e8f8059a74339c6973eb3a75ae638f57f43f0de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6954f4b_6d738718",
         "filename": "debuggerd/crasher/crasher.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-04-26T19:11:40Z",
       "side": 1,
       "message": "well, the whole point of this file is to crash in a variety of interesting ways :-)\n\ncan we just turn off clang-tidy for crasher?",
+      "range": {
+        "startLine": 260,
+        "startChar": 6,
+        "endLine": 261,
+        "endChar": 67
+      },
+      "revId": "5e8f8059a74339c6973eb3a75ae638f57f43f0de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3def28f0_04d12267",
+        "filename": "debuggerd/crasher/crasher.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1291337
+      },
+      "writtenOn": "2019-04-26T19:46:17Z",
+      "side": 1,
+      "message": "This top part is the same change applied in aosp/765743, just cherry-picked to the cuttlefish pie branch.\n\nMy assumption is that the ASAN build has more warning options turned on than the regular build.",
+      "parentUuid": "c6954f4b_6d738718",
       "range": {
         "startLine": 260,
         "startChar": 6,
