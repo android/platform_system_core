@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1be144f0_33bbe563",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1346941
+      },
+      "writtenOn": "2019-04-29T13:49:23Z",
+      "side": 1,
+      "message": "updatable process here \u003d\u003d post apexd processes.\n\nIn practice there\u0027s a handful of critical processes (probably ~5 e.g apexd itself, ueventd, servicemanager, lmkd...)  In Q at least, I believe a process cannot be critical and updatable. Not entirely sure thuogh, if it\u0027s possible to have a critical and updatable process, should we have a preference for updatable processes and have the condition in this cl be:\n\nif (!pre_apexd_){} if (critical) {}\n\ninstead of\n\nif (critical){}else if (!pre_apexd_) {}",
+      "parentUuid": "0ff6c269_0632fa42",
+      "range": {
+        "startLine": 16,
+        "startChar": 19,
+        "endLine": 16,
+        "endChar": 38
+      },
+      "revId": "ff2aab6f2ab2c3caf09946c818bc119fe9579e7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "558f401d_14ab5fb4",
         "filename": "init/service.cpp",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2019-04-29T13:33:01Z",
       "side": 1,
       "message": "The same crash_count_ is used for both critical and post apexd processes? What happens if there are three post apexd crashes followed by a critical crash followed by a fourth post apexd crash, spread over a long time period, but before boot completes?\n\nI think other combinations of critical vs. post apexd crashes could also lead to unintuitive behavior.\n\nShould we be tracking critical failures entirely separate from post apexd failures?",
+      "range": {
+        "startLine": 386,
+        "startChar": 16,
+        "endLine": 386,
+        "endChar": 33
+      },
+      "revId": "ff2aab6f2ab2c3caf09946c818bc119fe9579e7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e5e01b8_2b715046",
+        "filename": "init/service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1346941
+      },
+      "writtenOn": "2019-04-29T13:49:23Z",
+      "side": 1,
+      "message": "The crash_count_ is per process \u0027class Service\u0027 can be thought of as process. Does that address your concerns?",
+      "parentUuid": "558f401d_14ab5fb4",
       "range": {
         "startLine": 386,
         "startChar": 16,
