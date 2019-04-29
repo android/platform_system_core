@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b9c50038_faefa4e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1346941
+      },
+      "writtenOn": "2019-04-29T21:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1be144f0_33bbe563",
+      "range": {
+        "startLine": 16,
+        "startChar": 19,
+        "endLine": 16,
+        "endChar": 38
+      },
+      "revId": "ff2aab6f2ab2c3caf09946c818bc119fe9579e7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "558f401d_14ab5fb4",
         "filename": "init/service.cpp",
         "patchSetId": 4
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "Seems reasonable enough to me to have the same behavior for critical processes as you\u0027re trying to add for pre_apexd_ processes.  It\u0027s going to be a big problem is any of these critical processes crash 4 times before boot complete, regardless of how long it takes.  This change is much more simple if you do that (though please update the README.md too)\n\n(As a side note, it\u0027s pretty unreasonable for boot complete to take 4 minutes regardless)",
       "parentUuid": "2e5e01b8_2b715046",
+      "range": {
+        "startLine": 386,
+        "startChar": 16,
+        "endLine": 386,
+        "endChar": 33
+      },
+      "revId": "ff2aab6f2ab2c3caf09946c818bc119fe9579e7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "505a8918_f359d69f",
+        "filename": "init/service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1346941
+      },
+      "writtenOn": "2019-04-29T21:46:01Z",
+      "side": 1,
+      "message": "I agree it\u0027s typically unreasonable for boot_complete to take that long, but if there\u0027s a deadlock in system_server during early boot, then the system_server will crash every \u003e1min and boot_complete will effectively never happen.\n\nWhat part of the README do you want me to update, couldn\u0027t find any section that talks about this behavior or should I add a new section?",
+      "parentUuid": "e55e4914_8017a74a",
       "range": {
         "startLine": 386,
         "startChar": 16,
