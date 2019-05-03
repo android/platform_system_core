@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "133c8ae2_9a655927",
+        "filename": "init/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-03T21:43:00Z",
+      "side": 1,
+      "message": "The first / selinux / second stage boundaries are a little bit unclear, since 2nd stage is kind of actually a 3rd stage, because we needed to add an in between stage between first and second stage that loads the sepolicy, which is captured in the below ro.boottime.init.selinux.\n\nI think we need to change this slightly, such that we\u0027re actually only capturing the first stage init time.  We could have a Timer class in first stage init and just report the elapsed time, especially good to have consistency with how we\u0027re recording ro.boottime.init.selinux.\n\nOr we could change how we record both of these and record first_stage_start_time, selinux_start_time, second_stage_start_time, and later set ro.boottime.init.first_stage \u003d selinux_start_time - first_stage_start_time and ro.boottime.init.first_stage \u003d second_stage_start_time - selinux_start_time, that way we capture the exec overhead as you\u0027re doing here too.  This is likely the best option.\n\n(Otherwise we would want to document that ro.boottime.init.first_stage includes the time from ro.boottime.init.selinux, but that sounds like the worst of all options)",
+      "revId": "3835e4ab4e2575dce0363b021ff78cf4227543c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dfcdbc2_3f76907f",
+        "filename": "init/init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-03T21:43:00Z",
+      "side": 1,
+      "message": "Probably better to use std::chrono::duration_cast instead of creating this constant.",
+      "revId": "3835e4ab4e2575dce0363b021ff78cf4227543c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
