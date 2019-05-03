@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79040ea8_7c6f6c95",
+        "filename": "base/include/android-base/strings.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-05-03T20:02:38Z",
+      "side": 1,
+      "message": "Can we use string_view::starts_with/ends_with (guarded with #if __cplusplus \u003e 201703, maybe?) here for better optimization? The compiler won\u0027t be able to do stuff like this if it can\u0027t see the definition of StartsWith (even with LTO, if we\u0027re dynamically linking against libbase?): https://gcc.godbolt.org/z/IgwjHh",
+      "revId": "b4dc7be6c57a911c8f496af188a15efdeb8ec2bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
