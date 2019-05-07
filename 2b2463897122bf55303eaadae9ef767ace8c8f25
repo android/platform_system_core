@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ea20bc67_aeaf47ef",
+        "filename": "init/first_stage_init.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-07T22:09:20Z",
+      "side": 1,
+      "message": "The reboot handlers are just so that devices that fail early on don\u0027t get caught in a bootloop (particularly to help test farms).  Given that they\u0027re just calling sigaction() a few times, it probably doesn\u0027t matter in the grand scheme of things.  For the sake of our test farms, we may want to leave the reboot handlers first; it\u0027s compiled out in user builds anyway, so it\u0027s not too important to track.",
+      "parentUuid": "cdf0ad81_f5f15d07",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 44
+      },
+      "revId": "2b2463897122bf55303eaadae9ef767ace8c8f25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "00441b71_bb2aa38e",
         "filename": "init/init.cpp",
         "patchSetId": 4
@@ -45,6 +69,23 @@
       "revId": "2b2463897122bf55303eaadae9ef767ace8c8f25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa9941e6_8b0d0ffe",
+        "filename": "init/init.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-07T22:09:20Z",
+      "side": 1,
+      "message": "This all seems a bit strange, especially using second_stage_start_time as the indicator that the value isn\u0027t right.  duration::count() should actually be returning a signed value, so we can do int64_t through this and use -1 as the bad value.\n\nWe don\u0027t need the checks that \"selinux_start_time \u003e first_stage_start_time\" either; if the timers are actually reporting bad values, we probably want to know that and report it as is.\n\nMaybe easier too if this is put into its own function and some of it is shortcutted if the values are bad, e.g. if SELINUX_STARTED_AT isn\u0027t set or doesn\u0027t parse, then there\u0027s not much that can be done.",
+      "revId": "2b2463897122bf55303eaadae9ef767ace8c8f25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
