@@ -91,6 +91,30 @@
       "revId": "40a6077244e22b5f3ab96358210b636618d4121a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20b05d08_f6c1b1d8",
+        "filename": "libnativeloader/public_libraries.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-05-08T19:00:16Z",
+      "side": 1,
+      "message": "oh, sorry, i wasn\u0027t paying enough attention here.\n\nthe easiest C++ way to fix this is\n\n  const std::string\u0026 system_public_libraries() {\n    static std::string list \u003d init_system_public_libraries();\n    return list;\n  }\n\nand move all the current \"!cached\" code into init_system_public_libraries(). the compiler will add the necessary boilerplate to call init_system_public_libraries() exactly once.",
+      "parentUuid": "28b38288_db9d5845",
+      "range": {
+        "startLine": 229,
+        "startChar": 4,
+        "endLine": 229,
+        "endChar": 45
+      },
+      "revId": "40a6077244e22b5f3ab96358210b636618d4121a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
