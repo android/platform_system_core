@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1325d419_bbfd6952",
+        "filename": "libnativeloader/public_libraries.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-05-09T15:00:48Z",
+      "side": 1,
+      "message": "you don\u0027t actually need this, since you default to the empty string anyway.\n\nmaybe just\n\n  if (debuggable()) {\n    const char* val \u003d getenv(\"ANDROID_ADDITIONAL_PUBLIC_LIBRARIES\");\n    return val ? val : \"\";\n  }\n  return \"\";\n\n?",
+      "range": {
+        "startLine": 76,
+        "startChar": 22,
+        "endLine": 76,
+        "endChar": 40
+      },
+      "revId": "1dff694766276ce08655ef3089fbec0b9cda826a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "956d8ea7_01365fa9",
+        "filename": "libnativeloader/public_libraries.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-05-09T15:00:48Z",
+      "side": 1,
+      "message": "(personally i tend to use Init and make these functions static to make it more obvious \"you don\u0027t want this implementation detail, keep looking\".)",
+      "range": {
+        "startLine": 186,
+        "startChar": 12,
+        "endLine": 186,
+        "endChar": 15
+      },
+      "revId": "1dff694766276ce08655ef3089fbec0b9cda826a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
