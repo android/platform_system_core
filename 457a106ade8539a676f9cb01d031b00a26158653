@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b5b3704_0e56cfb7",
+        "filename": "libnativeloader/library_namespaces.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-13T21:27:01Z",
+      "side": 1,
+      "message": "This drops a lot of conditions wrt the if clause where the assertion was before. Isn\u0027t it better to introduce a bool up there so that the same result is reused?",
+      "range": {
+        "startLine": 222,
+        "startChar": 6,
+        "endLine": 222,
+        "endChar": 73
+      },
+      "revId": "457a106ade8539a676f9cb01d031b00a26158653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12ef1870_d228dc76",
+        "filename": "libnativeloader/library_namespaces.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-13T21:27:01Z",
+      "side": 1,
+      "message": "Provided that is as it should be, this can be in an if statement before retrieving vndk_ns.",
+      "range": {
+        "startLine": 245,
+        "startChar": 26,
+        "endLine": 245,
+        "endChar": 53
+      },
+      "revId": "457a106ade8539a676f9cb01d031b00a26158653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67aae72b_0f6ae72e",
+        "filename": "libnativeloader/library_namespaces.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-13T21:27:01Z",
+      "side": 1,
+      "message": "The logic has changed here - before these links were only added when apk_origin stuff above was true, now all it takes is that a \"vndk\" namespace exists and vndksp_libraries() isn\u0027t empty.",
+      "range": {
+        "startLine": 245,
+        "startChar": 7,
+        "endLine": 245,
+        "endChar": 14
+      },
+      "revId": "457a106ade8539a676f9cb01d031b00a26158653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf6d25f1_2fd5ae60",
+        "filename": "libnativeloader/library_namespaces.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-13T21:27:01Z",
+      "side": 1,
+      "message": "Nit: It no longer returns a nullptr.",
+      "range": {
+        "startLine": 252,
+        "startChar": 48,
+        "endLine": 252,
+        "endChar": 81
+      },
+      "revId": "457a106ade8539a676f9cb01d031b00a26158653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf8a9d44_913974a9",
+        "filename": "libnativeloader/library_namespaces.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-13T21:27:01Z",
+      "side": 1,
+      "message": "Can go before the vendor_ns initialisation.",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 43
+      },
+      "revId": "457a106ade8539a676f9cb01d031b00a26158653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4210338f_fb885c0e",
+        "filename": "libnativeloader/native_loader_namespace.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-13T21:27:01Z",
+      "side": 1,
+      "message": "This should probably be const char* since that\u0027s what\u0027s being passed to it in LibraryNamespaces::Create.",
+      "range": {
+        "startLine": 66,
+        "startChar": 45,
+        "endLine": 66,
+        "endChar": 68
+      },
+      "revId": "457a106ade8539a676f9cb01d031b00a26158653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4d52305_85bf1fdd",
+        "filename": "libnativeloader/native_loader_namespace.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-13T21:27:01Z",
+      "side": 1,
+      "message": "This is becoming a bit too much logic to fit in a constructor. Suggest making it a factory function instead so it can grow to contain more error handling etc. That would also allow the traditional error message passing through an std::string* argument.\n\nIt\u0027d also be reassuring if all constructors initialise raw_ in the initialiser lists, to make it more clear that it can\u0027t become an android_namespace_t* nullptr just by virtue of the type order in std::variant.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 3
+      },
+      "revId": "457a106ade8539a676f9cb01d031b00a26158653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4415040d_3d4df533",
+        "filename": "libnativeloader/native_loader_namespace.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-13T21:27:01Z",
+      "side": 1,
+      "message": "Consider keeping these as ordinary methods. They\u0027re much easier to search for.",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 37
+      },
+      "revId": "457a106ade8539a676f9cb01d031b00a26158653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f153e7f_b8de78c4",
+        "filename": "libnativeloader/native_loader_namespace.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-13T21:27:01Z",
+      "side": 1,
+      "message": "\"Android namespace\" isn\u0027t that clear since any linker namespace is arguably an Android thing. When I saw the is_android_ns flags I had to look at the implementation to understand what they really meant. Can we invert the bool and call it IsNativeBridgeNamespace/is_native_brigde_ns instead? (Another even tidier alternative is to introduce an enum for it, but I\u0027m ok with a renamed bool too.)",
+      "range": {
+        "startLine": 47,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 25
+      },
+      "revId": "457a106ade8539a676f9cb01d031b00a26158653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "773e818f_370aeec4",
+        "filename": "libnativeloader/native_loader_namespace.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-13T21:27:01Z",
+      "side": 1,
+      "message": "Suggest replacing this with std::string* arguments to Link, Load etc so that it follows the common pattern for error message propagation. C.f. other comment about changing the constructor to a factory function.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 25
+      },
+      "revId": "457a106ade8539a676f9cb01d031b00a26158653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
