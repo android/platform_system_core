@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "027bea32_0b28c3b3",
+        "filename": "libnativeloader/native_loader_namespace.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-14T16:51:45Z",
+      "side": 1,
+      "message": "Sure, otoh should be a simple change to do at that point. This leads to an extra string copy, but I suppose that doesn\u0027t really matter in these code paths.\n\nAnother cleaner option is to start use std::string_view that came with C++ 17 - it works with both strings and char*. That switch ought to happen all over the place though.\n\nAnyway, this is fine.",
+      "parentUuid": "25ab6cbe_25e48442",
+      "range": {
+        "startLine": 66,
+        "startChar": 45,
+        "endLine": 66,
+        "endChar": 68
+      },
+      "revId": "457a106ade8539a676f9cb01d031b00a26158653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4d52305_85bf1fdd",
         "filename": "libnativeloader/native_loader_namespace.cpp",
         "patchSetId": 9
@@ -469,6 +493,30 @@
       "revId": "457a106ade8539a676f9cb01d031b00a26158653",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58398f4c_dbd38af7",
+        "filename": "libnativeloader/native_loader_namespace.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-14T16:51:45Z",
+      "side": 1,
+      "message": "Interesting, I\u0027m all for adopting the StatusOr pattern from google3. But that seems like a somewhat distant goal, so I think it\u0027s worthwhile to change to the usual Android approach in the meantime, i.e. return false/nullptr/etc on error and set a passed std::string* argument to an error message. None of the three functions (Link, Load, and the factory function to replace the large constructor) would have any problem with that.\n\nTo be clear, I don\u0027t think a separate error retrieval function like this is good practice - it almost encourages sloppy error propagation.",
+      "parentUuid": "14c5ba61_a1733ee4",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 25
+      },
+      "revId": "457a106ade8539a676f9cb01d031b00a26158653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
