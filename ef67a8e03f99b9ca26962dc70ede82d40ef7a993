@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76e77265_dda8b45a",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-05-16T15:21:19Z",
+      "side": 1,
+      "message": "I see there\u0027re lots of unnecessary operations for T type object.\n\nexpected(rhs) : copy-ctor \u0026 dtor\nswap() : copy-ctor \u0026 dtor, two move-assigns\n\nOnly one \"copy-assign\" is expected here. (Even no copy-assign is called!)\n\nWhy don\u0027t you just \"var_ \u003d rhs.var_\"?",
+      "range": {
+        "startLine": 245,
+        "startChar": 4,
+        "endLine": 245,
+        "endChar": 30
+      },
+      "revId": "ef67a8e03f99b9ca26962dc70ede82d40ef7a993",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8a4ef80_2cb2fb7e",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-05-16T15:21:19Z",
+      "side": 1,
+      "message": "Do we need std::move here?",
+      "range": {
+        "startLine": 255,
+        "startChar": 13,
+        "endLine": 255,
+        "endChar": 23
+      },
+      "revId": "ef67a8e03f99b9ca26962dc70ede82d40ef7a993",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08970804_50c20944",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-05-16T15:21:19Z",
+      "side": 1,
+      "message": "If we use swap() here, move-assignment is called twice.\nWhy don\u0027t you just \"var_ \u003d std::move(rhs.var_)\"?",
+      "range": {
+        "startLine": 255,
+        "startChar": 29,
+        "endLine": 255,
+        "endChar": 33
+      },
+      "revId": "ef67a8e03f99b9ca26962dc70ede82d40ef7a993",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
