@@ -2,6 +2,114 @@
   "comments": [
     {
       "key": {
+        "uuid": "3388b4e5_09b79fee",
+        "filename": "base/expected_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-16T16:40:25Z",
+      "side": 1,
+      "message": "We should add the string version of the move constructor test too, to ensure that the moved-from  string is cleared.",
+      "revId": "ef67a8e03f99b9ca26962dc70ede82d40ef7a993",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acbc21ee_d766d7e7",
+        "filename": "base/expected_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-16T16:40:25Z",
+      "side": 1,
+      "message": "Does exp_string e2 \u003d \"hello\"; work?  If it doesn\u0027t we should figure out why; since that should be either convertible or be allowed as an argument to the std::string parameter.\n\nIf it does, then we should add the test anyway to ensure it keeps working.",
+      "revId": "ef67a8e03f99b9ca26962dc70ede82d40ef7a993",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb9effc2_132dc876",
+        "filename": "base/expected_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-16T16:40:25Z",
+      "side": 1,
+      "message": "Add move assignable from value / unexpected?",
+      "revId": "ef67a8e03f99b9ca26962dc70ede82d40ef7a993",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21859cf7_378a67f5",
+        "filename": "base/expected_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-16T16:40:25Z",
+      "side": 1,
+      "message": "This is probably not what you want.  You\u0027re creating a copy of the value of exp with this.  Better T\u0026 t \u003d.",
+      "range": {
+        "startLine": 224,
+        "startChar": 1,
+        "endLine": 224,
+        "endChar": 8
+      },
+      "revId": "ef67a8e03f99b9ca26962dc70ede82d40ef7a993",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c83650ec_c9e37ec9",
+        "filename": "base/expected_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-16T16:40:25Z",
+      "side": 1,
+      "message": "Add the check for exp.value().a and exp.value().b too?",
+      "revId": "ef67a8e03f99b9ca26962dc70ede82d40ef7a993",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "693f1065_3566afcc",
+        "filename": "base/expected_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-16T16:40:25Z",
+      "side": 1,
+      "message": "There\u0027re a handful more tests from https://cs.corp.google.com/android/system/core/init/result_test.cpp that may be worth adding, including one similar to the comment that Jooyung wrote, ensuring that only a minimal number of constructors are called.\n\nThere are tests to check that rvalues work, though that\u0027s probably pedantic.\n\nThere are tests to check that expected\u003cexpected\u003cstd::string, Error\u003e\u003e works, which was non-trivial for me to get right.\n\nThere is also a test that something like this is possible:\n\nexpected\u003cstd::pair\u003cstd::string, int\u003e, int\u003e ReturnPair(bool yes) {\n  if (yes) {\n    return {\"yes\", 42};\n  } else {\n    return unexpected(42);\n  }\n}\n\nWhich should do the constructor forwarding for the std::pair\u003c\u003e.  I hope that this works as well.",
+      "revId": "ef67a8e03f99b9ca26962dc70ede82d40ef7a993",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "76e77265_dda8b45a",
         "filename": "base/include/android-base/expected.h",
         "patchSetId": 1
@@ -13,6 +121,30 @@
       "writtenOn": "2019-05-16T15:21:19Z",
       "side": 1,
       "message": "I see there\u0027re lots of unnecessary operations for T type object.\n\nexpected(rhs) : copy-ctor \u0026 dtor\nswap() : copy-ctor \u0026 dtor, two move-assigns\n\nOnly one \"copy-assign\" is expected here. (Even no copy-assign is called!)\n\nWhy don\u0027t you just \"var_ \u003d rhs.var_\"?",
+      "range": {
+        "startLine": 245,
+        "startChar": 4,
+        "endLine": 245,
+        "endChar": 30
+      },
+      "revId": "ef67a8e03f99b9ca26962dc70ede82d40ef7a993",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c98133b4_af642406",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-16T16:40:25Z",
+      "side": 1,
+      "message": "+1 I understand the copy/swap idiom trying to be used here, but I think this can be better done straight forward, especially given that it\u0027s just a single std::variant as the data member that needs to be copied here.",
+      "parentUuid": "76e77265_dda8b45a",
       "range": {
         "startLine": 245,
         "startChar": 4,
