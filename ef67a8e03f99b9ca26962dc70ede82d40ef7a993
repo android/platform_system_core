@@ -200,6 +200,23 @@
       "revId": "ef67a8e03f99b9ca26962dc70ede82d40ef7a993",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10b3dfd3_4ed02ac6",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-17T00:03:05Z",
+      "side": 1,
+      "message": "I don\u0027t think the enable_if_t here is correct:  \n\nWhen using this, I got the below error:\n\nexternal/libcxx/include/type_traits:444:78: error: no type named \u0027type\u0027 in \u0027std::__1::enable_if\u003cfalse, void\u003e\u0027; \u0027enable_if\u0027 cannot be used to disable this declaration                                                                                                                                                         \ntemplate \u003cbool _Bp, class _Tp \u003d void\u003e using enable_if_t \u003d typename enable_if\u003c_Bp, _Tp\u003e::type;\n                                                                             ^~~\nsystem/core/base/include/android-base/expected.h:304:8: note: in instantiation of template type alias \u0027enable_if_t\u0027 requested here\n  std::enable_if_t\u003c(\n       ^\nsystem/core/init/subcontext.cpp:281:37: note: in instantiation of template class \u0027android::base::expected\u003cSubcontextReply, android::init::ResultError\u003e\u0027 requested here\nResult\u003cSubcontextReply\u003e Subcontext::TransmitMessage(const SubcontextCommand\u0026 subcontext_command) {\n                                    ^\n1 error generated.\n16:58:31 ninja failed with: exit status 1\n\nBut more importantly, from the proposal doc:\n\n  Remarks: The expression inside noexcept is equivalent to: is_nothrow_move_constructible_v\u003cT\u003e \n  is true and is_nothrow_swappable_v\u003cT\u003e is true and is_nothrow_move_constructible_v\u003cE\u003e is true \n  and is_nothrow_swappable_v\u003cE\u003e is true.\n\nI think this should be:\n\n  void swap(expected\u0026 rhs) noexcept(\n      std::is_nothrow_move_constructible_v\u003cT\u003e \u0026\u0026 std::is_nothrow_swappable_v\u003cT\u003e \u0026\u0026\n      std::is_nothrow_move_constructible_v\u003cE\u003e \u0026\u0026 std::is_nothrow_swappable_v\u003cE\u003e) {\n    var_.swap(rhs.var_);\n  }",
+      "revId": "ef67a8e03f99b9ca26962dc70ede82d40ef7a993",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
