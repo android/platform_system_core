@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4e8b18f0_c1833497",
+        "filename": "base/expected_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-05-18T01:23:36Z",
+      "side": 1,
+      "message": "Done. See testConstexpr",
+      "parentUuid": "a577778e_7a99e3ec",
+      "revId": "f5e0a0564c9ae92153f22873b2c5257b88c238d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e883ecff_53707573",
         "filename": "base/include/android-base/expected.h",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2019-05-17T21:57:02Z",
       "side": 1,
       "message": "What is the behavior supposed to be if value/error is called incorrectly? the underlying std::variant implementation will throw which doesn\u0027t translate super well to -fno-except",
+      "revId": "f5e0a0564c9ae92153f22873b2c5257b88c238d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f9de0d4_016f1598",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-05-18T01:23:36Z",
+      "side": 1,
+      "message": "according to the proposal, bad_expected_access(error()) has to be thrown. I haven\u0027t implement that part (see the comment in the bottom of this file), but std::variant will anyway throw std::bad_variant_access.\n\nWith -fno-except incorrect call of value()/error() causes abort, which I think is fine??",
+      "parentUuid": "e883ecff_53707573",
       "revId": "f5e0a0564c9ae92153f22873b2c5257b88c238d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
