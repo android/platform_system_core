@@ -144,6 +144,24 @@
     },
     {
       "key": {
+        "uuid": "42cefdfd_a02b1d6e",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-05-21T22:57:57Z",
+      "side": 1,
+      "message": "When I do as the github link does, it fails with following error:\n\nsystem/core/base/include/android-base/expected.h:252:5: error: failed requirement \u0027std::is_copy_assignable_v\u003cstd::__1::unique_ptr\u003cint, std::__1::default_delete\u003cint\u003e \u003e \u003e\u0027; \u0027enable_if\u0027 cannot be used to disable this declaration\n    std::is_copy_assignable_v\u003cT\u003e \u0026\u0026\n    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nsource code:\n  typename std::enable_if\u003c(\n      std::is_copy_assignable_v\u003cT\u003e \u0026\u0026\n      std::is_copy_constructible_v\u003cT\u003e \u0026\u0026\n      std::is_copy_assignable_v\u003cE\u003e \u0026\u0026\n      std::is_copy_constructible_v\u003cE\u003e \u0026\u0026\n      (std::is_nothrow_move_constructible_v\u003cE\u003e ||\n       std::is_nothrow_move_constructible_v\u003cT\u003e)\n    ), expected\u0026\u003e::type\n    operator\u003d(const expected\u0026 rhs) {\n      var_ \u003d rhs.var_;\n      return *this;\n    }",
+      "parentUuid": "d858651b_04811dcb",
+      "revId": "91db85ef72e601b4ebd53ac0be414a8277047a83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33a0a4a4_3cda8f97",
         "filename": "base/include/android-base/expected.h",
         "patchSetId": 7
