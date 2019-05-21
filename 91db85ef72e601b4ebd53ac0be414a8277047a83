@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "0207e465_aed7b285",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-05-21T22:38:32Z",
+      "side": 1,
+      "message": "According to 23.7.3.3 [variant.assign] from the C++17 standard\n\n \u003e variant\u0026 operator\u003d(const variant\u0026 rhs);\n \u003e\n \u003e Remarks: This operator shall be defined as deleted unless is_copy_constructible_v\u003cTi\u003e \u0026\u0026 is_ copy_assignable_v\u003cTi\u003e is true for all i.\n\nThe move operator has a similar remark.\n------\n\nSo I would expect that this should be valid:\n\n  class DefaultConstructibleOnly{\n     DefaultConstructibleOnly() \u003d default;\n     DefaultConstructibleOnly(const\u0026 DefaultConstructibleOnly) \u003d delete;\n     DefaultConstructibleOnly(DefaultConstructibleOnly\u0026\u0026) \u003d delete;\n  };\n\n  expected\u003cDefaultConstructibleOnly, int\u003e ok{};\n\nHowever right now it looks like that it would try to instantiate std::variant\u003cDefaultConstructibleOnly,int\u003e::operator\u003d which cannot exist since it violates the requirements ?",
+      "parentUuid": "60eac1cc_7438377d",
+      "revId": "91db85ef72e601b4ebd53ac0be414a8277047a83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33a0a4a4_3cda8f97",
         "filename": "base/include/android-base/expected.h",
         "patchSetId": 7

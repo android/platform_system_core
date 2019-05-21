@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37163ed6_d5d744d1",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-05-21T22:38:32Z",
+      "side": 1,
+      "message": "\u003e Remarks: If value-initialization of T is a constant subexpression or T is cv void this constructor shall be constexpr. This constructor shall not participate in overload resolution unless is_default_constructible_v\u003cT\u003e is true or T is cv void.",
+      "revId": "7d89fb164becb44d014023bc03688cef00e179ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd127784_cf19cf99",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-05-21T22:38:32Z",
+      "side": 1,
+      "message": "\u003e This constructor shall not participate in overload resolution unless:\n\u003e \n\u003e is_move_constructible_v\u003cT\u003e is true; and\n\u003e \n\u003e is_move_constructible_v\u003cE\u003e is true.",
+      "revId": "7d89fb164becb44d014023bc03688cef00e179ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59dbdb20_3900a609",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-05-21T22:38:32Z",
+      "side": 1,
+      "message": "\u003e This operator shall be defined as deleted unless:\n\u003e \n\u003e T is cv void and is_copy_assignable_v\u003cE\u003e is true and is_copy_constructible_v\u003cE\u003e is true; or\n\u003e \n\u003e T is not cv void and is_copy_assignable_v\u003cT\u003e is true and is_copy_constructible_v\u003cT\u003e is true and is_copy_assignable_v\u003cE\u003e is true and is_copy_constructible_v\u003cE\u003e is true and (is_nothrow_move_constructible_v\u003cE\u003e is true or is_nothrow_move_constructible_v\u003cT\u003e is true).\n\u003e\n\u003e expected\u0026 operator\u003d(expected\u0026\u0026 rhs) noexcept(see below);",
+      "revId": "7d89fb164becb44d014023bc03688cef00e179ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f13d6421_d2771098",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-05-21T22:38:32Z",
+      "side": 1,
+      "message": "nit: TODO for constexpr . it should already be constexpr now but the variant implementation is blocking it since it\u0027s only constexpr in C++20",
+      "revId": "7d89fb164becb44d014023bc03688cef00e179ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4507d8a_3f4f0942",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-05-21T22:38:32Z",
+      "side": 1,
+      "message": "nit: inconsistent whitespace (not aligned to member functions above)",
+      "revId": "7d89fb164becb44d014023bc03688cef00e179ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86ccbf86_6e5046db",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-05-21T22:38:32Z",
+      "side": 1,
+      "message": "\u003e Remarks: This constructor shall not participate in overload resolution unless:\n\u003e \n\u003e is_constructible_v\u003cE, Err\u003e is true; and\n\u003e \n\u003e is_same_v\u003cremove_cvref_t\u003cU\u003e, in_place_t\u003e is false; and\n\u003e \n\u003e is_same_v\u003cremove_cvref_t\u003cU\u003e, unexpected\u003e is false.",
+      "revId": "7d89fb164becb44d014023bc03688cef00e179ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64938714_03cee27e",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-05-21T22:38:32Z",
+      "side": 1,
+      "message": "\u003e Remarks: This function shall not participate in overload resolution unless is_swappable_v\u003cE1\u003e is true.",
+      "revId": "7d89fb164becb44d014023bc03688cef00e179ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
