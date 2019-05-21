@@ -94,6 +94,30 @@
       "revId": "e3f0079593e2aac368102e7619c1d0fe9bbc8c47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f80a243_ae0f3a48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-21T16:02:47Z",
+      "side": 1,
+      "message": "I mentioned FindParentNamespaceByClassloader because I figured it needs to return nullptr for the anonymous namespace to come into use in the call to android_create_namespace. But I realised now that\u0027s not where the problem lies, it\u0027s in do_dlopen[1].\n\nSo yes, we\u0027d either need to generate a machine code call on the heap to thwart the caller address check in the linker[2][3], or introduce a restricted test-only API that lets us override it. The generated call is probably overall easier.\n\nI\u0027m aware it\u0027s work, but doing this kind of surgery without decent tests is risky, and I think barring that we better avoid changing it too much. Is this blocking other work for you?\n\n[1] http://cs/aosp-master/bionic/linker/linker.cpp?l\u003d2192\u0026rcl\u003df8813d14aa5eb70fa0cf95b36b5f68a4f631c123\n[2] http://cs/aosp-master/bionic/libdl/libdl.cpp?l\u003d83\u0026rcl\u003df8813d14aa5eb70fa0cf95b36b5f68a4f631c123\n[3] http://cs/aosp-master/bionic/linker/linker.cpp?l\u003d936\u0026rcl\u003df8813d14aa5eb70fa0cf95b36b5f68a4f631c123",
+      "parentUuid": "df93fbdb_c410e6d9",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "e3f0079593e2aac368102e7619c1d0fe9bbc8c47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
