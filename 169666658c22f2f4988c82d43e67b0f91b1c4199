@@ -2,6 +2,109 @@
   "comments": [
     {
       "key": {
+        "uuid": "ef63238e_d8463626",
+        "filename": "base/expected_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2019-05-21T07:19:40Z",
+      "side": 1,
+      "message": "Not used.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "169666658c22f2f4988c82d43e67b0f91b1c4199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c43b0fe0_bbc9b4d9",
+        "filename": "base/expected_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2019-05-21T07:19:40Z",
+      "side": 1,
+      "message": "We should also have tests with move-only types such as std::unique_ptr. Both T and E can be move-only.",
+      "revId": "169666658c22f2f4988c82d43e67b0f91b1c4199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17ffd5b0_b1d497d2",
+        "filename": "base/expected_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2019-05-21T07:19:40Z",
+      "side": 1,
+      "message": "Does the standard require (or allows) the optimization in which only T or E is constructed, but not both?\n\nIf so, there should be a test more or less like this:\n\n   struct AssertNotConstructed {\n     AssertNotConstructed() { ASSERT_TRUE(false); }\n   };\n\n   expected\u003cint, AssertNotConstructed\u003e v(42);\n   EXPECT_TRUE(v.has_value());\n   EXPECT_FALSE(v.has_error());\n\n   expected\u003cAssertNotConstructed, int\u003e e(42);\n   EXPECT_FALSE(e.has_value());\n   EXPECT_TRUE(e.has_error());",
+      "revId": "169666658c22f2f4988c82d43e67b0f91b1c4199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e17f76de_350f0665",
+        "filename": "base/expected_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2019-05-21T07:19:40Z",
+      "side": 1,
+      "message": "Gunit provides a main() implementation.",
+      "range": {
+        "startLine": 716,
+        "startChar": 0,
+        "endLine": 720,
+        "endChar": 4
+      },
+      "revId": "169666658c22f2f4988c82d43e67b0f91b1c4199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aad114ae_0519b3ad",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2019-05-21T07:19:40Z",
+      "side": 1,
+      "message": "Typo, move the closing parenthesis after the second parameter",
+      "range": {
+        "startLine": 39,
+        "startChar": 25,
+        "endLine": 39,
+        "endChar": 26
+      },
+      "revId": "169666658c22f2f4988c82d43e67b0f91b1c4199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a04296e2_e5c4a559",
         "filename": "base/include/android-base/expected.h",
         "patchSetId": 4
@@ -46,6 +149,29 @@
       "revId": "169666658c22f2f4988c82d43e67b0f91b1c4199",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85aa171f_8f60a6fb",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2019-05-21T07:19:40Z",
+      "side": 1,
+      "message": "typo: assignment",
+      "range": {
+        "startLine": 528,
+        "startChar": 5,
+        "endLine": 528,
+        "endChar": 14
+      },
+      "revId": "169666658c22f2f4988c82d43e67b0f91b1c4199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
