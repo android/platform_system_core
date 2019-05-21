@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9ff356e_9b5e3b07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-05-21T05:24:42Z",
+      "side": 1,
+      "message": "Can we be more specific about this?\n\nHow about:\n\nCurrently first-stage mount assumes partition name is unique\nin the device. This will introduce verified boot failure if the device has two copies of images on two disks with the same\npartition names, e.g., both /dev/block/sda and /dev/block/sdb has \u0027system_a\u0027 and \u0027system_b\u0027, uevent probing in first stage might enable system_a from one disk while enabling vendor_a from another disk. \n\n...",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "6ad89af76cd850dac9e0fe6b4e2ae26f45ac4dea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b59b26f2_dd6ca7c7",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-05-21T05:24:42Z",
+      "side": 1,
+      "message": "nit: !is_boot_device",
+      "range": {
+        "startLine": 419,
+        "startChar": 8,
+        "endLine": 419,
+        "endChar": 30
+      },
+      "revId": "6ad89af76cd850dac9e0fe6b4e2ae26f45ac4dea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
