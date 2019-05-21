@@ -70,6 +70,30 @@
       "revId": "e3f0079593e2aac368102e7619c1d0fe9bbc8c47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df93fbdb_c410e6d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-05-21T11:58:38Z",
+      "side": 1,
+      "message": "Although I agree it is the right approach, I don\u0027t have time and I even don\u0027t know how we can pool the linker so that caller address isn\u0027t identifiable. We could use some hacky assembler magic (I don\u0027t have a concrete idea though), but that seems to be too far away.\n\nMocking in libnativeloader.so doesn\u0027t make sense since we no longer create the anonymous namespace directly here. It\u0027s done inside the linker.\n\nI have no idea why you mentioned FindParentNamespaceByClassloader. Anonymous namespace is used when the return address of dlopen() can\u0027t be identified. This isn\u0027t related to FindParentNamespaceByClassloader, IMO.",
+      "parentUuid": "8273b128_ab495cc9",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "e3f0079593e2aac368102e7619c1d0fe9bbc8c47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
