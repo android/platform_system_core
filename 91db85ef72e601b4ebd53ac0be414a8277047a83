@@ -69,6 +69,58 @@
       "revId": "91db85ef72e601b4ebd53ac0be414a8277047a83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60eac1cc_7438377d",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-05-21T22:20:30Z",
+      "side": 1,
+      "message": "I think doing it this way may subtly cause the entire expected instantiation to fail when it tries to instantiate the variant::operator\u003d template and the appropriate conditions aren\u0027t met ?\n\n---------\n\nIf we look at a reference implementation of this proposal here:\n\nhttps://github.com/martinmoene/expected-lite/blob/master/include/nonstd/expected.hpp#L1384\n\nThey fix this issue by making the return type an std::enable_if\u003c...\u003e::type\n\nhttps://raw.githubusercontent.com/martinmoene/expected-lite/master/include/nonstd/expected.hpp",
+      "parentUuid": "046494cb_a4dc58f8",
+      "revId": "91db85ef72e601b4ebd53ac0be414a8277047a83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33a0a4a4_3cda8f97",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-05-21T22:20:30Z",
+      "side": 1,
+      "message": "Ditto here.",
+      "revId": "91db85ef72e601b4ebd53ac0be414a8277047a83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d16fc562_76f167c7",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-05-21T22:20:30Z",
+      "side": 1,
+      "message": "Why is this a TODO?",
+      "revId": "91db85ef72e601b4ebd53ac0be414a8277047a83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
