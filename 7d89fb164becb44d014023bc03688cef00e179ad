@@ -107,6 +107,40 @@
     },
     {
       "key": {
+        "uuid": "3a2dcd67_81160335",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-05-22T21:20:58Z",
+      "side": 1,
+      "message": "Missing the cvref_t constraints:\n\n\u003e is_same_v\u003cremove_cvref_t\u003cU\u003e, in_place_t\u003e is false; and\n\u003e \n\u003e is_same_v\u003cexpected\u003cT, E\u003e, remove_cvref_t\u003cU\u003e\u003e is false; and\n\u003e \n\u003e is_same_v\u003cunexpected\u003cE\u003e, remove_cvref_t\u003cU\u003e\u003e is false.",
+      "revId": "7d89fb164becb44d014023bc03688cef00e179ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "506d9738_a4470f35",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-05-22T21:20:58Z",
+      "side": 1,
+      "message": "Same",
+      "revId": "7d89fb164becb44d014023bc03688cef00e179ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f13d6421_d2771098",
         "filename": "base/include/android-base/expected.h",
         "patchSetId": 8
@@ -118,6 +152,58 @@
       "writtenOn": "2019-05-21T22:38:32Z",
       "side": 1,
       "message": "nit: TODO for constexpr . it should already be constexpr now but the variant implementation is blocking it since it\u0027s only constexpr in C++20",
+      "revId": "7d89fb164becb44d014023bc03688cef00e179ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c2dc592_583e6a96",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-05-22T21:20:58Z",
+      "side": 1,
+      "message": "Actually I think you can do \u003d default here?\n\nIt will call variant::operator\u003d if that is properly defined, thus avoiding the whole SFINAE problem.",
+      "parentUuid": "f13d6421_d2771098",
+      "revId": "7d89fb164becb44d014023bc03688cef00e179ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dae3d18b_d502538b",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-05-22T21:20:58Z",
+      "side": 1,
+      "message": "\u003d default?",
+      "revId": "7d89fb164becb44d014023bc03688cef00e179ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42635553_453c33be",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-05-22T21:20:58Z",
+      "side": 1,
+      "message": "\u003e is_void_v\u003cT\u003e is false; and\n\u003e is_same_v\u003cexpected\u003cT,E\u003e, remove_cvref_t\u003cU\u003e\u003e is false; and\n\u003e conjunction_v\u003cis_scalar\u003cT\u003e, is_same\u003cT, decay_t\u003cU\u003e\u003e\u003e is false; and\n\u003e is_constructible_v\u003cT, U\u003e is true; and\n\u003e is_assignable_v\u003cT\u0026, U\u003e is true; and\n\u003e is_nothrow_move_constructible_v\u003cE\u003e is true.\n\n(Not sure why some of these are dropped, conjunction and is_scalar are both in C++17)",
       "revId": "7d89fb164becb44d014023bc03688cef00e179ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -173,6 +259,24 @@
       "revId": "7d89fb164becb44d014023bc03688cef00e179ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43966675_0329c8e1",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-05-22T21:20:58Z",
+      "side": 1,
+      "message": "template\u003c class T \u003e\n  struct remove_cvref {\n      typedef std::remove_cv_t\u003cstd::remove_reference_t\u003cT\u003e\u003e type;\n  };\n\nThe rest is already in C++17 or earlier.",
+      "parentUuid": "3b056822_6f4227c6",
+      "revId": "7d89fb164becb44d014023bc03688cef00e179ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
