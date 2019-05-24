@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1845320e_4c57ead6",
+        "filename": "init/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-05-24T20:58:48Z",
+      "side": 1,
+      "message": "The symbols exported by these aren\u0027t linked into the eventually-run-executable\u0027s linker namespace, right?",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 15
+      },
+      "revId": "26a9b73757d0589b053de54904fb676b26f06bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66318f1a_115dae00",
         "filename": "init/nativezygote.h",
         "patchSetId": 2
@@ -49,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d0d7dd1d_d137052f",
+        "filename": "init/nativezygote.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-05-24T20:58:48Z",
+      "side": 1,
+      "message": "You could MSG_PEEK. But I\u0027d just make the receive buffer larger than any possible datagram, which you can determine by looking at SO_SNDBUF. Or just make the limit larger than any reasonable datagram, say, 64k. 8k is pretty small and I can imagine hitting it.",
+      "parentUuid": "5f46ce89_8b9d515a",
+      "range": {
+        "startLine": 25,
+        "startChar": 47,
+        "endLine": 25,
+        "endChar": 51
+      },
+      "revId": "26a9b73757d0589b053de54904fb676b26f06bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a89ba9f0_ea0896b0",
         "filename": "init/nativezygote_client.cpp",
         "patchSetId": 2
@@ -84,6 +131,30 @@
       "side": 1,
       "message": "How do I do that with socket_local_client?",
       "parentUuid": "a89ba9f0_ea0896b0",
+      "range": {
+        "startLine": 65,
+        "startChar": 33,
+        "endLine": 65,
+        "endChar": 43
+      },
+      "revId": "26a9b73757d0589b053de54904fb676b26f06bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "044b41e4_a7482ded",
+        "filename": "init/nativezygote_client.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-05-24T20:58:48Z",
+      "side": 1,
+      "message": "Bitwise-or SOCK_CLOEXEC into SOCK_SEQPACKET.",
+      "parentUuid": "ae8428fd_e331834b",
       "range": {
         "startLine": 65,
         "startChar": 33,
@@ -460,6 +531,30 @@
       "side": 1,
       "message": "I discussed this with Tom and decided to duplicate the code, based on the assumption that dsolinkd will make native zygote obsolete not too far down the road. Merging with init comes with its own risk in that we can accidentally leak things from init if we are not careful. Also, keep in mind that nativezygote can only use LL-NDK shared libraries, so that\u0027d be another trouble we\u0027d have to deal with. Factoring out the duplicated code is another possible approach, but we\u0027d be reverting that once native zygote goes away.\n\nI\u0027ll let Tom comment on this since he\u0027s the init owner.",
       "parentUuid": "fbff8e6b_83c6408f",
+      "range": {
+        "startLine": 315,
+        "startChar": 12,
+        "endLine": 315,
+        "endChar": 17
+      },
+      "revId": "26a9b73757d0589b053de54904fb676b26f06bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "040a1b58_d5e32d6c",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-05-24T20:58:48Z",
+      "side": 1,
+      "message": "Sure. Up to you. There\u0027s nothing so permanent as a temporary solution though. :) Let\u0027s at least add a TODO pointing back at init and asking for a merge if this thing has an unexpectedly long life.",
+      "parentUuid": "4a6283bb_e5cd78af",
       "range": {
         "startLine": 315,
         "startChar": 12,
