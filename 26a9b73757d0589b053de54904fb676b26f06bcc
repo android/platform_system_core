@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66318f1a_115dae00",
+        "filename": "init/nativezygote.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-05-24T14:02:59Z",
+      "side": 1,
+      "message": "Why? Just let the SOCK_SEQPACKET socket fail with EMSGSIZE.",
+      "range": {
+        "startLine": 25,
+        "startChar": 47,
+        "endLine": 25,
+        "endChar": 51
+      },
+      "revId": "26a9b73757d0589b053de54904fb676b26f06bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a89ba9f0_ea0896b0",
+        "filename": "init/nativezygote_client.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-05-24T14:02:59Z",
+      "side": 1,
+      "message": "Can\u0027t you just have it born O_CLOEXEC?",
+      "range": {
+        "startLine": 65,
+        "startChar": 33,
+        "endLine": 65,
+        "endChar": 43
+      },
+      "revId": "26a9b73757d0589b053de54904fb676b26f06bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "527f5e0c_df568cea",
+        "filename": "init/nativezygote_client.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-05-24T14:02:59Z",
+      "side": 1,
+      "message": "std::string is probably safer from a lifetime POV",
+      "range": {
+        "startLine": 41,
+        "startChar": 10,
+        "endLine": 41,
+        "endChar": 14
+      },
+      "revId": "26a9b73757d0589b053de54904fb676b26f06bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2432c8a7_084c5516",
+        "filename": "init/nativezygote_client.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-05-24T14:02:59Z",
+      "side": 1,
+      "message": "Let\u0027s use unique_fd for file descriptors.",
+      "range": {
+        "startLine": 42,
+        "startChar": 18,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "26a9b73757d0589b053de54904fb676b26f06bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7811dcdb_77b01f17",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-05-24T14:02:59Z",
+      "side": 1,
+      "message": "Why not just use std::string directly? The standard requires that its storage be contiguous. This class should at most be a free function.",
+      "range": {
+        "startLine": 65,
+        "startChar": 6,
+        "endLine": 65,
+        "endChar": 27
+      },
+      "revId": "26a9b73757d0589b053de54904fb676b26f06bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d03bf950_4451fd79",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-05-24T14:02:59Z",
+      "side": 1,
+      "message": "You don\u0027t need double fork. Use CLONE_PARENT.",
+      "range": {
+        "startLine": 101,
+        "startChar": 6,
+        "endLine": 101,
+        "endChar": 16
+      },
+      "revId": "26a9b73757d0589b053de54904fb676b26f06bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "001b7555_a54a36d6",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-05-24T14:02:59Z",
+      "side": 1,
+      "message": "Don\u0027t use select(2) in new code. The FD_SET mechanism is inefficient and error-prone. You want poll(2), or epoll if you\u0027re going for overkill.",
+      "range": {
+        "startLine": 193,
+        "startChar": 12,
+        "endLine": 193,
+        "endChar": 18
+      },
+      "revId": "26a9b73757d0589b053de54904fb676b26f06bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91d92cdc_421c6f48",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-05-24T14:02:59Z",
+      "side": 1,
+      "message": "TEMP_RETRY_FAIL here and throughout.",
+      "range": {
+        "startLine": 281,
+        "startChar": 17,
+        "endLine": 281,
+        "endChar": 23
+      },
+      "revId": "26a9b73757d0589b053de54904fb676b26f06bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfbbee04_dd11597f",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-05-24T14:02:59Z",
+      "side": 1,
+      "message": "\u003c 0 here and elsewhere",
+      "range": {
+        "startLine": 312,
+        "startChar": 28,
+        "endLine": 312,
+        "endChar": 34
+      },
+      "revId": "26a9b73757d0589b053de54904fb676b26f06bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbff8e6b_83c6408f",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-05-24T14:02:59Z",
+      "side": 1,
+      "message": "This code is very similar to init\u0027s. Can we just share it? Maybe it makes sense to run the native zygote as a tweaked copy of init instead of an independent program with its own implementations of NS-setting goop.",
+      "range": {
+        "startLine": 315,
+        "startChar": 12,
+        "endLine": 315,
+        "endChar": 17
+      },
+      "revId": "26a9b73757d0589b053de54904fb676b26f06bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd91e069_07a08e3e",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-05-24T14:02:59Z",
+      "side": 1,
+      "message": "explain that we need indefinite lifetime because the kernel reads it directly.",
+      "range": {
+        "startLine": 423,
+        "startChar": 61,
+        "endLine": 423,
+        "endChar": 68
+      },
+      "revId": "26a9b73757d0589b053de54904fb676b26f06bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7331d1d3_71b23d2f",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-05-24T14:02:59Z",
+      "side": 1,
+      "message": "Instead of checking the count, why not just build a list of actual FDs and compare that?",
+      "range": {
+        "startLine": 595,
+        "startChar": 8,
+        "endLine": 595,
+        "endChar": 30
+      },
+      "revId": "26a9b73757d0589b053de54904fb676b26f06bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3cad62b_5d362bf5",
+        "filename": "init/service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-05-24T14:02:59Z",
+      "side": 1,
+      "message": "const char*. No need to force callers to make strings.",
+      "range": {
+        "startLine": 115,
+        "startChar": 28,
+        "endLine": 115,
+        "endChar": 44
+      },
+      "revId": "26a9b73757d0589b053de54904fb676b26f06bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51f32484_a911615b",
+        "filename": "init/ueventd.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-05-24T14:02:59Z",
+      "side": 1,
+      "message": "Why?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "26a9b73757d0589b053de54904fb676b26f06bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
