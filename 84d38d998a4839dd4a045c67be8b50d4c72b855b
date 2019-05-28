@@ -1,0 +1,305 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad4c7c87_4804f7cc",
+        "filename": "init/nativezygote.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-28T21:51:23Z",
+      "side": 1,
+      "message": "Copyright header?",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3149a3bf_c4efea85",
+        "filename": "init/nativezygote.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-28T21:51:23Z",
+      "side": 1,
+      "message": "The non-libc headers go in their own block between the C++ and related project headers.  Here and below.",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c4b90a7_bfaabd3b",
+        "filename": "init/nativezygote.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-28T21:51:23Z",
+      "side": 1,
+      "message": "Just for consistency, we put const first in all the rest of init and even system/core, so `const std::string\u0026`.  Here and below.",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 27
+      },
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0c6e419_9fca01b8",
+        "filename": "init/nativezygote.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-28T21:51:23Z",
+      "side": 1,
+      "message": "#pragma once  Here and below.\n\nWe haven\u0027t updated the older headers, but moving forward we\u0027re using this.",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc7e9822_940a8d73",
+        "filename": "init/nativezygote.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-28T21:51:23Z",
+      "side": 1,
+      "message": "Is this comment out of date?  I thought the recent plan was that nativezygote creates the FDs itself.",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c44c69c_c28ef683",
+        "filename": "init/nativezygote.rc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-28T21:51:23Z",
+      "side": 1,
+      "message": "0600 root root?  We shouldn\u0027t need anyone but the owner to have permissions and we shouldn\u0027t need anyone but root to be able to access this socket.\n\nI\u0027m marginally leery about making this a service and using a named socket in the first place.  We fork subcontext init directly from init and a non-O_CLOEXEC socket from socketpair() such that there\u0027s never a named socket that anyone can connect to in the first place.",
+      "range": {
+        "startLine": 4,
+        "startChar": 24,
+        "endLine": 4,
+        "endChar": 52
+      },
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c95bc065_add8b298",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-28T21:51:23Z",
+      "side": 1,
+      "message": "Now that I actually see this file and understand the layout, I have a better idea for how to refactor this to get rid of the code duplication without complicating this too much.  Honestly, it\u0027ll probably make things a bit better, since the parsing functions should have been removed from Service anyway.\n\nBasically, I\u0027m thinking of creating a new proto message \u0027ServiceAttributes\u0027 that consists of the read-only attributes that get parsed out of a service definition (I guess sig_stop would also go there despite being r/w).  The Parse*() functions could be moved to the ServiceParser class and then be responsible for filling out a ServiceAttributes class.\n\nThe functions in Service that only set up certain attributes, and are shared between the Service class and NativeZygoteServer, could then be shared as non-member functions that operate on a ServiceAttributes class input.\n\nI think the biggest two problems I see with that, is potentially memory overhead since if ServiceAttributes is built from a proto, it won\u0027t be stored as it is now, and that some of the attributes like class name or interface name aren\u0027t actually important to NativeZygoteServer, so sending them would be a waste, but that shouldn\u0027t actually be prohibitively costly.\n\nWe clean this up after submitting this CL too.\n\nOr, if this really is going to be only used for one release and then we can remove it, let\u0027s just continue as is with the duplication.",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21868f01_40bcb710",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-28T21:51:23Z",
+      "side": 1,
+      "message": "Include \"capabilities.h\" instead ?",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceb52b2a_8eec4fd8",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-28T21:51:23Z",
+      "side": 1,
+      "message": "android::base::Basename() ?",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a53d1208_fdfd1648",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-28T21:51:23Z",
+      "side": 1,
+      "message": "How different is this than SetProcCaps() and SetCapsForExec() in capabilities.cpp?  Can we refactor that a bit to be similar?",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1f2a2b8_28d303b9",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-28T21:51:23Z",
+      "side": 1,
+      "message": "This leaks in a few of the return paths.  You should use ScopedCaps from capabilities.h if you can\u0027t refactor this function like above.",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d974e3b1_ef5de360",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-28T21:51:23Z",
+      "side": 1,
+      "message": "Is this ever set to data_sock_; I\u0027m not seeing it.",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fa67389_5e6abf96",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-28T21:51:23Z",
+      "side": 1,
+      "message": "Better to use a unique_ptr here too, like https://cs.corp.google.com/android/system/core/init/first_stage_init.cpp?l\u003d188",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e848017_5d444d21",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-28T21:51:23Z",
+      "side": 1,
+      "message": "Is that actually the behavior that we want?  If we\u0027re already connected to init, no one else should be connecting, and if they are, we definitely shouldn\u0027t allow them.\n\nSELinux can help protect us here, right?  We can make it such that nativezygote only can talk to init via a socket?",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6802fb4_8fc71a34",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-28T21:51:23Z",
+      "side": 1,
+      "message": "You want selinux_android_setcon() or to separately call __system_properties_init() for the same reason given in the comment on that code.",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64f4e729_7fbd3a79",
+        "filename": "init/selabel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-28T21:51:23Z",
+      "side": 1,
+      "message": "Maybe a good idea to submit the selabel refactor as its own CL.  We can get that submitted quickly and reduce the amount to review in this individual change.",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec7c0257_99b92d78",
+        "filename": "init/service.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-28T21:51:23Z",
+      "side": 1,
+      "message": "If we go with my above refactoring comment, this conveniently becomes a trivial passing of a ServiceAttributes proto with not much more needed.",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
