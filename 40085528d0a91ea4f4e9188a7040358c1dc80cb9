@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c63b7809_3a5df2dc",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-05-28T23:03:58Z",
+      "side": 1,
+      "message": "According to the spec, the following functions in expected should also have this:\n\n  template\u003cclass U \u003d T\u003e\n    EXPLICIT constexpr expected(U\u0026\u0026 v);\n\n  template\u003cclass G \u003d E\u003e\n    EXPLICIT constexpr expected(const unexpected\u003cG\u003e\u0026 e);\n\n  template\u003cclass G \u003d E\u003e\n    expected\u003cT, E\u003e\u0026 operator\u003d(const unexpected\u003cG\u003e\u0026 e);\n\n(just search for \u0027remove_cvref_t\u0027 on http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0323r7.html )\n\nDid you want to add those too?",
+      "revId": "40085528d0a91ea4f4e9188a7040358c1dc80cb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
