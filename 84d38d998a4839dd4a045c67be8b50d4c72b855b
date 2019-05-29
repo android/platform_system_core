@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2bca7bc7_ed2059e1",
+        "filename": "init/nativezygote.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-05-29T03:32:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad4c7c87_4804f7cc",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3149a3bf_c4efea85",
         "filename": "init/nativezygote.cpp",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ecb09da_50b33636",
+        "filename": "init/nativezygote.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-05-29T03:32:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3149a3bf_c4efea85",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "05c34747_d985fd7b",
+        "filename": "init/nativezygote.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-05-29T03:32:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c4b90a7_bfaabd3b",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 27
+      },
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0c6e419_9fca01b8",
         "filename": "init/nativezygote.h",
         "patchSetId": 6
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "22a99e0c_25479ac4",
+        "filename": "init/nativezygote.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-05-29T03:32:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0c6e419_9fca01b8",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc7e9822_940a8d73",
         "filename": "init/nativezygote.proto",
         "patchSetId": 6
@@ -90,6 +168,24 @@
       "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa490dc7_ad6186c3",
+        "filename": "init/nativezygote.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-05-29T03:32:19Z",
+      "side": 1,
+      "message": "Oops you\u0027re right.",
+      "parentUuid": "bc7e9822_940a8d73",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "c3978046_72ab0237",
+        "filename": "init/nativezygote.rc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-05-29T03:32:19Z",
+      "side": 1,
+      "message": "\u003e 0600 root root?  We shouldn\u0027t need anyone but the owner to have permissions and we shouldn\u0027t need anyone but root to be able to access this socket.\n\nDone.\n\n\u003e \n\u003e I\u0027m marginally leery about making this a service and using a named socket in the first place.  We fork subcontext init directly from init and a non-O_CLOEXEC socket from socketpair() such that there\u0027s never a named socket that anyone can connect to in the first place.\n\nThe only prerequisite for native zygote is that it starts after apexd starts, so that it loads libraries from APEX modules. One reason why I chose to have native zygote started this way is because apexd is started as a service as well, and having native zygote as a service allows us to easily control when it starts in init.rc. If you have suggestion on how to control the timing if we fork native zygote from init directly, I\u0027d be more than happy to change this.",
+      "parentUuid": "6c44c69c_c28ef683",
+      "range": {
+        "startLine": 4,
+        "startChar": 24,
+        "endLine": 4,
+        "endChar": 52
+      },
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c95bc065_add8b298",
         "filename": "init/nativezygote_server.cpp",
         "patchSetId": 6
@@ -127,6 +247,24 @@
       "writtenOn": "2019-05-28T21:51:23Z",
       "side": 1,
       "message": "Now that I actually see this file and understand the layout, I have a better idea for how to refactor this to get rid of the code duplication without complicating this too much.  Honestly, it\u0027ll probably make things a bit better, since the parsing functions should have been removed from Service anyway.\n\nBasically, I\u0027m thinking of creating a new proto message \u0027ServiceAttributes\u0027 that consists of the read-only attributes that get parsed out of a service definition (I guess sig_stop would also go there despite being r/w).  The Parse*() functions could be moved to the ServiceParser class and then be responsible for filling out a ServiceAttributes class.\n\nThe functions in Service that only set up certain attributes, and are shared between the Service class and NativeZygoteServer, could then be shared as non-member functions that operate on a ServiceAttributes class input.\n\nI think the biggest two problems I see with that, is potentially memory overhead since if ServiceAttributes is built from a proto, it won\u0027t be stored as it is now, and that some of the attributes like class name or interface name aren\u0027t actually important to NativeZygoteServer, so sending them would be a waste, but that shouldn\u0027t actually be prohibitively costly.\n\nWe clean this up after submitting this CL too.\n\nOr, if this really is going to be only used for one release and then we can remove it, let\u0027s just continue as is with the duplication.",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4139e816_655c9b10",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-05-29T03:32:19Z",
+      "side": 1,
+      "message": "I like the idea of separating parsing from the actual service itself. This would also make testing easier and cleaner. Regardless of whether native zygote goes away as planned, I\u0027d like to see that happen. Given this CL is already quite large, I think refactoring this in a follow-up CL is probably the easier way to go. Sounds good?",
+      "parentUuid": "c95bc065_add8b298",
       "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -150,6 +288,24 @@
     },
     {
       "key": {
+        "uuid": "89c313cb_f4c591d3",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-05-29T03:32:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21868f01_40bcb710",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ceb52b2a_8eec4fd8",
         "filename": "init/nativezygote_server.cpp",
         "patchSetId": 6
@@ -164,6 +320,24 @@
       "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f73f062_7b8757c5",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-05-29T03:32:19Z",
+      "side": 1,
+      "message": "I need this function to return the basename *in-place*. The one from android-base returns a std::string.",
+      "parentUuid": "ceb52b2a_8eec4fd8",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -184,6 +358,24 @@
     },
     {
       "key": {
+        "uuid": "f9f5c299_3ec11021",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-05-29T03:32:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a53d1208_fdfd1648",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1f2a2b8_28d303b9",
         "filename": "init/nativezygote_server.cpp",
         "patchSetId": 6
@@ -198,6 +390,24 @@
       "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49562211_dcaa7c8f",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-05-29T03:32:19Z",
+      "side": 1,
+      "message": "Removed this function.",
+      "parentUuid": "b1f2a2b8_28d303b9",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -218,6 +428,24 @@
     },
     {
       "key": {
+        "uuid": "06bf8320_e8db498f",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-05-29T03:32:19Z",
+      "side": 1,
+      "message": "This is set below in HandleConnection().",
+      "parentUuid": "d974e3b1_ef5de360",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fa67389_5e6abf96",
         "filename": "init/nativezygote_server.cpp",
         "patchSetId": 6
@@ -232,6 +460,24 @@
       "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "166a6d3f_d132079a",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-05-29T03:32:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fa67389_5e6abf96",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -252,6 +498,24 @@
     },
     {
       "key": {
+        "uuid": "6685f381_011f4d17",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-05-29T03:32:19Z",
+      "side": 1,
+      "message": "Added neverallow rules to make sure init is the sole user of this socket.",
+      "parentUuid": "1e848017_5d444d21",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6802fb4_8fc71a34",
         "filename": "init/nativezygote_server.cpp",
         "patchSetId": 6
@@ -266,6 +530,24 @@
       "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cf6fe49_6974dec7",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-05-29T03:32:19Z",
+      "side": 1,
+      "message": "Thanks a lot for catching this! I saw that code and intended to use that, but somehow that got lost when I was cleaning up the code.",
+      "parentUuid": "d6802fb4_8fc71a34",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -286,6 +568,24 @@
     },
     {
       "key": {
+        "uuid": "d3ac66eb_7508c0f6",
+        "filename": "init/selabel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-05-29T03:32:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64f4e729_7fbd3a79",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec7c0257_99b92d78",
         "filename": "init/service.cpp",
         "patchSetId": 6
@@ -300,6 +600,24 @@
       "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8122657_e2729ee5",
+        "filename": "init/service.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-05-29T03:32:19Z",
+      "side": 1,
+      "message": "Ack. See my comment in the other file.",
+      "parentUuid": "ec7c0257_99b92d78",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
