@@ -236,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "3e3a3678_56d59bb6",
+        "filename": "init/nativezygote.rc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-29T17:56:11Z",
+      "side": 1,
+      "message": "It\u0027s probably fine as is; we\u0027ll just need to make sure no one else can access that socket.",
+      "parentUuid": "c3978046_72ab0237",
+      "range": {
+        "startLine": 4,
+        "startChar": 24,
+        "endLine": 4,
+        "endChar": 52
+      },
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c95bc065_add8b298",
         "filename": "init/nativezygote_server.cpp",
         "patchSetId": 6
@@ -265,6 +289,24 @@
       "side": 1,
       "message": "I like the idea of separating parsing from the actual service itself. This would also make testing easier and cleaner. Regardless of whether native zygote goes away as planned, I\u0027d like to see that happen. Given this CL is already quite large, I think refactoring this in a follow-up CL is probably the easier way to go. Sounds good?",
       "parentUuid": "c95bc065_add8b298",
+      "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aab067bd_2305da86",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-29T17:56:11Z",
+      "side": 1,
+      "message": "\u003e Given this CL is already quite large, I think refactoring this in a follow-up CL is probably the easier way to go.\n\nI was thinking the opposite: to make the size of this CL smaller, we could do more refactoring before it, similar to how I asked for the selabel.cpp to go first in its own CL.\n\nI agree that moving the parsing out would be too much at this time, and I\u0027m still iffy about using proto classes as the storage class itself.\n\nBut after seeing the code, I think it would be good if we separated EnterNamespaces(), SetUpMountNamespace(), SetUpPidNamespace(), WritePidToFiles(), and SetProcessAttributes() into a service_utils.cpp file first.  The code in those functions seems to be nearly identical to the code in service.cpp, so it\u0027ll be easier to review this together if they were refactored out.",
+      "parentUuid": "4139e816_655c9b10",
       "revId": "84d38d998a4839dd4a045c67be8b50d4c72b855b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true

@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a03ebbb0_a6e8e632",
+        "filename": "init/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-29T17:56:11Z",
+      "side": 1,
+      "message": "Should be alphabetized.",
+      "revId": "c163ef3cdd1d0800646f17446b81825b44ac24d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "625949d0_2e7403f6",
+        "filename": "init/nativezygote.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-29T17:56:11Z",
+      "side": 1,
+      "message": "Move to Android.bp with -DLOG_TAG ?  But do you actually need this?  I think this defaults to the process name, which will be nativezygote anyway, and better; it\u0027ll be nativezygote_vendor for that process too.",
+      "revId": "c163ef3cdd1d0800646f17446b81825b44ac24d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a14371ef_19076151",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-29T17:56:11Z",
+      "side": 1,
+      "message": "This leaks, right?  Can we just allocate this on the stack?  I think once we have the FD, we don\u0027t need it to persist longer, at least not in nativezygote.",
+      "revId": "c163ef3cdd1d0800646f17446b81825b44ac24d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
