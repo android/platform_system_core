@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "184c3426_84a1e871",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-30T17:45:44Z",
+      "side": 1,
+      "message": "MS_MOVE works on full subtrees, so you probably need to prune grand-child mounts and only move the direct descendants of the parent mount.  Though, likely not a case we\u0027ll see often (or at all hopefully).\n\nAlso means that the direction of handling the submounts doesn\u0027t matter, since they\u0027ll by definition be disjoint.",
+      "revId": "8649b734e306cbc3d55d3feda74ac1c86e183586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a53a116_b4482400",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-30T17:45:44Z",
+      "side": 1,
+      "message": "No reason to clear this here; might as well let it deallocate when it goes out of scope?",
+      "revId": "8649b734e306cbc3d55d3feda74ac1c86e183586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bfd94c5_631b43a9",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-30T17:45:44Z",
+      "side": 1,
+      "message": "Is it only the parent that we need to be concerned about, or all parents?  Or can we assume that we\u0027re not going to worry this case?",
+      "revId": "8649b734e306cbc3d55d3feda74ac1c86e183586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
