@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "022a3442_be08c278",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-30T18:25:31Z",
+      "side": 1,
+      "message": "You can probably drop this check.  It\u0027s important to ueventd, since for historical reasons, ueventd is built into the same executable as init and therefore can literally access init\u0027s globals, which would have no meaning for it.\n\nHere, since you\u0027re not linking to init.cpp, you\u0027d get an error at linking if you tried to use these symbols, so this check isn\u0027t needed.",
+      "revId": "16c4a647ec42cbaba05feab587dc0e9286734ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfbf5d64_1e678116",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-30T18:25:31Z",
+      "side": 1,
+      "message": "Why is this code different than service.cpp that only does this when changing uids?\n\n(Thanks for refactoring some of the rest, it\u0027s making it easier to see deltas like this)",
+      "revId": "16c4a647ec42cbaba05feab587dc0e9286734ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40762bc9_f5084c5f",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-30T18:25:31Z",
+      "side": 1,
+      "message": "Does securebits \u003c 0 work here?  Since it\u0027s unsigned long, I think it won\u0027t work by definition, which is why we check against -1UL.\n\nIn general, I actually prefer checking \u003d\u003d -1 for errors from library functions, unlike the previous comment, since that\u0027s how they\u0027re defined to return.  Though there\u0027s no consistency in init, so I don\u0027t care strongly how you do it.",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 5
+      },
+      "revId": "16c4a647ec42cbaba05feab587dc0e9286734ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eb8aba8_4e3126e6",
+        "filename": "init/service.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-30T18:25:31Z",
+      "side": 1,
+      "message": "Fwiw, using std::for_each() was probably a mistake.  If this code is going to be moved,\n\nfor (const auto\u0026 descriptor : descriptors_) {\n    descriptor-\u003eCreateAndPublish(scon);\n}\n\nWould be much better.",
+      "revId": "16c4a647ec42cbaba05feab587dc0e9286734ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
