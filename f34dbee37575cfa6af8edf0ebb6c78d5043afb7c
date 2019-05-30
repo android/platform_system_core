@@ -1,0 +1,187 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98293920_4c886506",
+        "filename": "init/descriptors.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-30T21:45:18Z",
+      "side": 1,
+      "message": "Maybe make this `enum class DescriptorClass : int32_t`, since we\u0027re converting it to an int32 in the proto and that\u0027ll make sure the source type is also an int32.",
+      "revId": "f34dbee37575cfa6af8edf0ebb6c78d5043afb7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c908c614_227bdb35",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-30T21:45:18Z",
+      "side": 1,
+      "message": "I\u0027m not sure myself, but is proto okay with parsing from a string that is longer than needed?  I assume so, in which case we can drop this resize.",
+      "revId": "f34dbee37575cfa6af8edf0ebb6c78d5043afb7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dfcf062_86b68419",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-30T21:45:18Z",
+      "side": 1,
+      "message": "You can simply .emplace_back(rlimit_param.type(), rlim);",
+      "range": {
+        "startLine": 309,
+        "startChar": 21,
+        "endLine": 309,
+        "endChar": 74
+      },
+      "revId": "f34dbee37575cfa6af8edf0ebb6c78d5043afb7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d179ca59_821f88b1",
+        "filename": "init/nativezygote_server.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-30T21:45:18Z",
+      "side": 1,
+      "message": "Same here with .emplace_back().",
+      "revId": "f34dbee37575cfa6af8edf0ebb6c78d5043afb7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a42a4af6_ffd26098",
+        "filename": "init/service.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-30T21:45:18Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this anymore.  SpawnWithFork() doesn\u0027t use it, and we can unconditionally set req.set_console(proc_attr_.console);, since that\u0027s valid when proc_attr_.console is \"\".",
+      "range": {
+        "startLine": 809,
+        "startChar": 44,
+        "endLine": 809,
+        "endChar": 63
+      },
+      "revId": "f34dbee37575cfa6af8edf0ebb6c78d5043afb7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6004f2cd_e1b2fa29",
+        "filename": "init/service.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-30T21:45:18Z",
+      "side": 1,
+      "message": "This fits on 1 line, no?",
+      "range": {
+        "startLine": 904,
+        "startChar": 0,
+        "endLine": 905,
+        "endChar": 35
+      },
+      "revId": "f34dbee37575cfa6af8edf0ebb6c78d5043afb7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e500e369_74a94605",
+        "filename": "init/service.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-30T21:45:18Z",
+      "side": 1,
+      "message": "This looks much nicer now that you refactored the rest, thanks!",
+      "range": {
+        "startLine": 888,
+        "startChar": 0,
+        "endLine": 910,
+        "endChar": 5
+      },
+      "revId": "f34dbee37575cfa6af8edf0ebb6c78d5043afb7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbd723db_2cc94e63",
+        "filename": "init/util.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-30T21:45:18Z",
+      "side": 1,
+      "message": "Drop these changes now.",
+      "revId": "f34dbee37575cfa6af8edf0ebb6c78d5043afb7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5254e7be_ecc81962",
+        "filename": "init/util.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-30T21:45:18Z",
+      "side": 1,
+      "message": "Drop these now.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 16
+      },
+      "revId": "f34dbee37575cfa6af8edf0ebb6c78d5043afb7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
