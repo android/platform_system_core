@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9a9ee037_debc5593",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-05-30T21:09:37Z",
+      "side": 1,
+      "message": "Good to know.\n\nChanging this code to prune was uglier IMHO and the only difference it made was we did not have to carefully craft our order below: from move.rbegin()) for unroll, and from move.cbegin() for roll. It did mean we track more mounts to move (unroll) and back (roll). I feel we could opt for less complexity and not prune.\n\nBut, if you feel that the pruning of the grand-children is a welcome efficiency, and makes it less fragile (eg: some future self reverses unroll) then I will add something like:\n\n    for (const auto\u0026 entry : fstab) {\n-        if (android::base::StartsWith(entry.mount_point, mount_point + \"/\")) {\n-            move.emplace_back(entry.mount_point);\n-        }\n+        auto less_specific \u003d [\u0026entry](const std::string\u0026 mount_point) {\n+            return android::base::StartsWith(entry.mount_point, mount_point + \"/\");\n+        };\n+        if (!less_specific(mount_point)) continue;\n+        auto more_specific \u003d [\u0026entry](const std::string\u0026 mount_point) {\n+            return android::base::StartsWith(mount_point, entry.mount_point + \"/\");\n+        };\n+        move.erase(remove_if(move.begin(), move.end(), more_specific), move.end());\n+        if (std::find_if(move.begin(), move.end(), less_specific) !\u003d move.end()) continue;\n+        move.emplace_back(entry.mount_point);\n     }\n\nLooking for your feedback (especially if you have a better idea for pruning), as this is a grey area for maintenance.",
+      "parentUuid": "184c3426_84a1e871",
+      "revId": "8649b734e306cbc3d55d3feda74ac1c86e183586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a53a116_b4482400",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "750000a6_a116f1bd",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-05-30T21:09:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5a53a116_b4482400",
+      "revId": "8649b734e306cbc3d55d3feda74ac1c86e183586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9bfd94c5_631b43a9",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "8649b734e306cbc3d55d3feda74ac1c86e183586",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20ab59ea_b16b02b6",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-05-30T21:09:37Z",
+      "side": 1,
+      "message": "The direct parent is all that is checked in the kernel it appears. I confirmed experimentally in that / (SHARED) has /vendor (marked PRIVATE) which has /vendor/firmware_mnt (this one being moved)",
+      "parentUuid": "9bfd94c5_631b43a9",
+      "revId": "8649b734e306cbc3d55d3feda74ac1c86e183586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
