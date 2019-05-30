@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d67268ba_d0fae6c4",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-30T22:51:24Z",
+      "side": 1,
+      "message": "Hm, do we need to check for more specific mount points and erase them?  If the current code assumes that /proc/mounts goes from least specific to more specific, then we can make that assumption here too, right?  Otherwise, if we don\u0027t want to rely on that, then we definitely don\u0027t want to rely on going through the mounts backwards doing the right thing in the current code.\n\nAlso, we can swap the checks for less specific and the erasing of more specific entries if that makes the code slightly cleaner; figure if there\u0027s a less specific entry in the vector, then it would already have cleared out the more specific entries.\n\nI think it\u0027s better if we do the prune first still.  It\u0027ll segment this into two overall simpler pieces, and the pruning is separately unit testable if we\u0027re worried about the complexity of that operation.",
+      "parentUuid": "9a9ee037_debc5593",
+      "revId": "8649b734e306cbc3d55d3feda74ac1c86e183586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a53a116_b4482400",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 1
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "The direct parent is all that is checked in the kernel it appears. I confirmed experimentally in that / (SHARED) has /vendor (marked PRIVATE) which has /vendor/firmware_mnt (this one being moved)",
       "parentUuid": "9bfd94c5_631b43a9",
+      "revId": "8649b734e306cbc3d55d3feda74ac1c86e183586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64a4068a_b664de3f",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-30T22:51:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "20ab59ea_b16b02b6",
       "revId": "8649b734e306cbc3d55d3feda74ac1c86e183586",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
