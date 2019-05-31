@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "254133ad_c9701b1e",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-31T16:52:56Z",
+      "side": 1,
+      "message": "Maybe just do this outside of the loop, since we know that it\u0027ll need to be done anyway?  If it fails, then we can handle that situation directly too (\"can\u0027t move any mounts, parent unable to be made private\", etc)",
+      "revId": "49f9e8869c341f8201e994ecdddbfabd822ea7df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc300fdc_44e4feff",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-31T16:52:56Z",
+      "side": 1,
+      "message": "Does this fail if it\u0027s already private, hence \u0027made_private\u0027 can be used to make it shared again, but only if it was originally shared?\n\nOr are we assuming all mounts are shared?",
+      "revId": "49f9e8869c341f8201e994ecdddbfabd822ea7df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "148ce2da_22e55338",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-31T16:52:56Z",
+      "side": 1,
+      "message": "What does this do?  If the mount is already private in line 586, then why wouldn\u0027t it stay private after being moved?",
+      "revId": "49f9e8869c341f8201e994ecdddbfabd822ea7df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2a6c533_31b17dcd",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-31T16:52:56Z",
+      "side": 1,
+      "message": "Can we put the unlink in the body of the loop itself?\n\nI think this would be much more readable with my above comment of iterating through one vector with a struct of two elements.  This seems a bit crazy that we\u0027re moving forward through the \u0027move\u0027 vector yet backwards through \u0027dir\u0027.",
+      "range": {
+        "startLine": 621,
+        "startChar": 9,
+        "endLine": 621,
+        "endChar": 56
+      },
+      "revId": "49f9e8869c341f8201e994ecdddbfabd822ea7df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db94006b_42392283",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-31T16:52:56Z",
+      "side": 1,
+      "message": "Follow on from my above question: this assumes that \u0027mount_point\u0027 is always originally mounted as shared; is that the right assumption?",
+      "revId": "49f9e8869c341f8201e994ecdddbfabd822ea7df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
