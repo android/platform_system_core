@@ -154,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "eb80269a_061a8528",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-05-31T17:42:24Z",
+      "side": 1,
+      "message": "I just think having parallel data structures in general is a bad idea.  If you want to keep dir as a stack, then maybe add both the original and temporary locations to it, then iterate through it alone?\n\nWe don\u0027t need the stack anymore either though, since all of the mount points are disjoint, we can iterate through the same list twice sequentially, which may be easier, especially if you:\n\nfor (auto\u0026 [original_mount_point, temporary_mount_point] : mounts_to_move) {\n\n}\n\nin both locations.",
+      "parentUuid": "1fb1a945_0beae59c",
+      "range": {
+        "startLine": 621,
+        "startChar": 9,
+        "endLine": 621,
+        "endChar": 56
+      },
+      "revId": "49f9e8869c341f8201e994ecdddbfabd822ea7df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db94006b_42392283",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 2
