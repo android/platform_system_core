@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9779ae39_50e11b77",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-05-31T17:28:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "254133ad_c9701b1e",
+      "revId": "49f9e8869c341f8201e994ecdddbfabd822ea7df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc300fdc_44e4feff",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "49f9e8869c341f8201e994ecdddbfabd822ea7df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2a87039_fb96e97f",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-05-31T17:28:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dc300fdc_44e4feff",
+      "revId": "49f9e8869c341f8201e994ecdddbfabd822ea7df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "4cdd1e4b_ca8c7034",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-05-31T17:28:17Z",
+      "side": 1,
+      "message": "It wasn\u0027t, because it is attached to a shared mount point :-(\n\nAck",
+      "parentUuid": "148ce2da_22e55338",
+      "revId": "49f9e8869c341f8201e994ecdddbfabd822ea7df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2a6c533_31b17dcd",
         "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
         "patchSetId": 2
@@ -64,6 +118,30 @@
       "writtenOn": "2019-05-31T16:52:56Z",
       "side": 1,
       "message": "Can we put the unlink in the body of the loop itself?\n\nI think this would be much more readable with my above comment of iterating through one vector with a struct of two elements.  This seems a bit crazy that we\u0027re moving forward through the \u0027move\u0027 vector yet backwards through \u0027dir\u0027.",
+      "range": {
+        "startLine": 621,
+        "startChar": 9,
+        "endLine": 621,
+        "endChar": 56
+      },
+      "revId": "49f9e8869c341f8201e994ecdddbfabd822ea7df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fb1a945_0beae59c",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-05-31T17:28:17Z",
+      "side": 1,
+      "message": "In a rework, I removed \u0027move\u0027 and used fstab which simplified things. Joining fstab to dir looked ugly before and after, will try again.\n\nI am treating dir as a \u0027stack\u0027, direction is meaningless. Would calling it dir_stack help instead?",
+      "parentUuid": "e2a6c533_31b17dcd",
       "range": {
         "startLine": 621,
         "startChar": 9,
