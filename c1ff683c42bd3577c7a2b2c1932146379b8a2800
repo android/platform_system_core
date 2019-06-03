@@ -388,6 +388,24 @@
     },
     {
       "key": {
+        "uuid": "bb252513_9bc665aa",
+        "filename": "base/include/android-base/result.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-06-03T23:54:40Z",
+      "side": 1,
+      "message": "But, wait. If we want to keep the behavior of ErrnoError(), strerror() needs to be appended.\n\ntemplate \u003ctypename... T\u003e\nResultError ErrnoError(T\u0026\u0026... ts) {\n  int saved_errno \u003d errno;\n  std::stringstream ss;\n  ErrorConcat(ss, ts...);\n  ss \u003c\u003c \": \" \u003c\u003c std::strerror(saved_errno);\n  return ResultError{saved_errno, ss.str()};\n}",
+      "parentUuid": "540f3974_98090600",
+      "revId": "c1ff683c42bd3577c7a2b2c1932146379b8a2800",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27168d4d_3aa3d6b7",
         "filename": "base/include/android-base/result.h",
         "patchSetId": 1
