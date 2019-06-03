@@ -72,6 +72,54 @@
     },
     {
       "key": {
+        "uuid": "bee09cdb_716b028e",
+        "filename": "base/include/android-base/result.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-06-03T21:16:59Z",
+      "side": 1,
+      "message": "+1 to removing as_ prefix\n\nDoesn\u0027t just using \u0027errno\u0027 as a name work, or it is some weird macro thing? \u0027error_number\u0027 also.",
+      "parentUuid": "62bc3a5d_2041e8c6",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 15
+      },
+      "revId": "c1ff683c42bd3577c7a2b2c1932146379b8a2800",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a9a367_6ecf0464",
+        "filename": "base/include/android-base/result.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-06-03T21:16:59Z",
+      "side": 1,
+      "message": "With respect to the heap allocation, isn\u0027t that already the case due to the \"Error()\" nature? It glues the strerror to the stringstream string in the best case alone.\n---------\n\nIf it\u0027s just a few registers, iirc a parameter can be destacked and scalarized, which causes it to be enregistered for doing function calls across internal boundaries [they don\u0027t need to obey calling conventions, but they are limited by the # of registers].\n\nIf it\u0027s as big as several data types, it becomes increasingly less likely for that optimization to be applied.",
+      "parentUuid": "504428fe_ad05ba88",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 15
+      },
+      "revId": "c1ff683c42bd3577c7a2b2c1932146379b8a2800",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e76705a_ca3abe83",
         "filename": "base/include/android-base/result.h",
         "patchSetId": 1
@@ -107,6 +155,30 @@
       "side": 1,
       "message": "Ack; you\u0027re right this doesn\u0027t do anything useful.  It\u0027s going to copy the contents of the string into the stringstream, so it\u0027s not like there\u0027s a meaningful rvalue reference there.",
       "parentUuid": "3e76705a_ca3abe83",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 1
+      },
+      "revId": "c1ff683c42bd3577c7a2b2c1932146379b8a2800",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d2a1211_9cfa831c",
+        "filename": "base/include/android-base/result.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-06-03T21:16:59Z",
+      "side": 1,
+      "message": "Maybe we can just remove it then?",
+      "parentUuid": "a633fcdd_76620a73",
       "range": {
         "startLine": 101,
         "startChar": 0,
@@ -166,6 +238,24 @@
       "side": 1,
       "message": "I think Error() \u003c\u003c \"blah\" is most natural.",
       "parentUuid": "c406de87_2f6eb006",
+      "revId": "c1ff683c42bd3577c7a2b2c1932146379b8a2800",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fab15ac_be6a8acf",
+        "filename": "base/include/android-base/result.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-06-03T21:16:59Z",
+      "side": 1,
+      "message": "Why does it even need to be \u003c\u003c? \n\nI suppose it\u0027s to be similar to LOG(x), but:\n\n   1) LOG() macros avoid evaluation when the log condition turns out to be false. These errors don\u0027t need that, that is already handled by the caller of Error() constructor.\n   2) Furthermore \"LOG(x) \u003c\u003c ...\" macros are for the old-school pre-C++11 style of programming before we had variadic templates.\n\nWhy not simply?\n\n   return \u0027Error(\"SomeOtherCppFunction(\", input, \") failed\")\u0027\n\nand it could just glob everything up with variadic arguments, and use the current stream implementation under the hood. \n\nAlso using the \"all parameters are available at the same time\" API, it can theoretically open up to optimizations later like calling str.reserve for sum of argument lengths.",
+      "parentUuid": "2f5c753c_1a08e341",
       "revId": "c1ff683c42bd3577c7a2b2c1932146379b8a2800",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -582,6 +672,24 @@
       "revId": "c1ff683c42bd3577c7a2b2c1932146379b8a2800",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab57a61e_11a91677",
+        "filename": "base/include/android-base/result.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-06-03T21:16:59Z",
+      "side": 1,
+      "message": "Ahhhh, yes. That makes way more sense. Agreed \"Nothing\" would be better.\n\nPlus maybe a comment, \u0027Usage: Result\u003cNothing\u003e\u0027 ?",
+      "parentUuid": "05e4ea7b_b3a6e003",
+      "revId": "c1ff683c42bd3577c7a2b2c1932146379b8a2800",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
