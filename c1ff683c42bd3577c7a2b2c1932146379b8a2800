@@ -120,6 +120,54 @@
     },
     {
       "key": {
+        "uuid": "8029e309_509bef8f",
+        "filename": "base/include/android-base/result.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-06-03T23:18:57Z",
+      "side": 1,
+      "message": "I\u0027m okay with this if you think it\u0027s better.  \n\nI don\u0027t think it\u0027s often that we\u0027d pass this as a parameter though; that\u0027s a bit of an anti-pattern.  I\u0027m only ever using this as a return value, in which case RVO puts everything onto the stack of the parent, which is my end goal.\n\nBut you\u0027re right that the error case is already doing a ton of allocations with the stream, or string concatenations, so an extra one isn\u0027t going to hurt.",
+      "parentUuid": "b6a9a367_6ecf0464",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 15
+      },
+      "revId": "c1ff683c42bd3577c7a2b2c1932146379b8a2800",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbb3405b_a9db02c9",
+        "filename": "base/include/android-base/result.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-06-03T23:18:57Z",
+      "side": 1,
+      "message": "It still suffers from the weird macro thing.  \n\nas_* is bad but it\u0027s pretty much the least bad of what I could think of when I submitted the change to make this use expected\u003c\u003e.  result.error().error_errno was just too much for me to deal with.\n\nIf we want to make this generic, we could use \u0027code\u0027 if we want to decouple this from errno.",
+      "parentUuid": "bee09cdb_716b028e",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 15
+      },
+      "revId": "c1ff683c42bd3577c7a2b2c1932146379b8a2800",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e76705a_ca3abe83",
         "filename": "base/include/android-base/result.h",
         "patchSetId": 1
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "Maybe we can just remove it then?",
       "parentUuid": "a633fcdd_76620a73",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 1
+      },
+      "revId": "c1ff683c42bd3577c7a2b2c1932146379b8a2800",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d4b76e5_77026e71",
+        "filename": "base/include/android-base/result.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-06-03T23:18:57Z",
+      "side": 1,
+      "message": "Agreed, that\u0027s what I meant with \u0027ack\u0027.",
+      "parentUuid": "8d2a1211_9cfa831c",
       "range": {
         "startLine": 101,
         "startChar": 0,
@@ -273,6 +345,24 @@
       "writtenOn": "2019-06-03T23:10:01Z",
       "side": 1,
       "message": "\"Error(\"SomeOtherCppFunction(\", input, \") failed\")\" looks nice. I actually experimented this and found that it lacks formatting feature. But I doubt that formatting is used a lot. :-)\n\nI\u0027d love to have \"Errorf(\"SomeOtherFunction(%s) failed\", input)\". But I failed to implement this.(Note there is no .c_str())\n\nNonetheless, I\u0027m not against stream version. It is simple and easy to use/read.",
+      "parentUuid": "2fab15ac_be6a8acf",
+      "revId": "c1ff683c42bd3577c7a2b2c1932146379b8a2800",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae4dd738_1ecb20ae",
+        "filename": "base/include/android-base/result.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-06-03T23:18:57Z",
+      "side": 1,
+      "message": "This sounds like an excellent suggest.  If we do this, then this becomes significantly easier.  We wouldn\u0027t even need a class or the rather horrid implicit operator expected\u003cT, ResultError\u003e().  \n\nWe should be able to do it with two functions and two helpers:\n\nvoid ErrorConcat(std::stringstream\u0026 ss) {\n    return;\n}\n\ntemplate \u003ctypename T, typename... Ts\u003e\nvoid ErrorConcat(std::stringstream\u0026 ss, T\u0026\u0026 t, Ts\u0026\u0026... ts) {\n    ss \u003c\u003c t;\n    ErrorConcat(ss, ts...);\n}\n\ntemplate \u003ctypename... T\u003e\nResultError ErrnoError(T\u0026\u0026... ts) {\n  std::stringstream ss;\n  ErrorConcat(ss, ts...);\n  return ResultError{errno, ss.str()};\n}\n\ntemplate \u003ctypename... T\u003e\nResultError Error(T\u0026\u0026... ts) {\n  std::stringstream ss;\n  ErrorConcat(ss, ts...);\n  return ResultError{0, ss.str()};\n}\n\n\u003e \"Error(\"SomeOtherCppFunction(\", input, \") failed\")\" looks nice. I actually experimented this and found that it lacks formatting feature. But I doubt that formatting is used a lot. :-)\n\nWhat formatting features?  Things like std::oct?  It works for me with the above code.\n\n\u003e\u003e std::cout \u003c\u003c Error(\"hi \", std::oct, 16, \" bye\").str \u003c\u003c std::endl;\nhi 20 bye",
       "parentUuid": "2fab15ac_be6a8acf",
       "revId": "c1ff683c42bd3577c7a2b2c1932146379b8a2800",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -587,6 +677,30 @@
     },
     {
       "key": {
+        "uuid": "29c04a27_de853fe8",
+        "filename": "base/include/android-base/result.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-06-03T23:18:57Z",
+      "side": 1,
+      "message": "I used to use it before expected\u003c\u003e but not anymore, so agreed that it\u0027s best to just drop it.",
+      "parentUuid": "b683d4ab_8fb09337",
+      "range": {
+        "startLine": 146,
+        "startChar": 6,
+        "endLine": 146,
+        "endChar": 15
+      },
+      "revId": "c1ff683c42bd3577c7a2b2c1932146379b8a2800",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2e31a637_19877235",
         "filename": "base/include/android-base/result.h",
         "patchSetId": 1
@@ -705,6 +819,24 @@
       "side": 1,
       "message": "Ahhhh, yes. That makes way more sense. Agreed \"Nothing\" would be better.\n\nPlus maybe a comment, \u0027Usage: Result\u003cNothing\u003e\u0027 ?",
       "parentUuid": "05e4ea7b_b3a6e003",
+      "revId": "c1ff683c42bd3577c7a2b2c1932146379b8a2800",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33c3d568_105951a8",
+        "filename": "base/include/android-base/result.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-06-03T23:18:57Z",
+      "side": 1,
+      "message": "Sgtm; \u0027nothing\u0027 is fine.  Long term, this\u0027ll be Result\u003cvoid\u003e, right?  I took it from the paper, that the existence of expected\u003cvoid, T\u003e was meant for specifically this case.  I wonder if we can come up with a way to do expected\u003cvoid, T\u003e easily?",
+      "parentUuid": "ab57a61e_11a91677",
       "revId": "c1ff683c42bd3577c7a2b2c1932146379b8a2800",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
