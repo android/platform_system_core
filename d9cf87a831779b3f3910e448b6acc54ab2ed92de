@@ -196,6 +196,24 @@
       "revId": "d9cf87a831779b3f3910e448b6acc54ab2ed92de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "038e0938_c155b85e",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-06-04T20:12:09Z",
+      "side": 1,
+      "message": "so the one existing instance i found that\u0027s using the flag is https://cs.corp.google.com/android/system/libvintf/test/vintf_object_tests.cpp?type\u003dcs\u0026sq\u003dpackage:%5Eandroid$\u0026g\u003d0 and they annoyingly #include gmock _after_ \u003candroid-base/logging.h\u003e even though their other libbase #includes are in the place i\u0027d expect, after \u003cgmock.h\u003e.\n\nwould your code have \"just worked\" if we\u0027d used the gmock.h include guard directly? if so, that seems like the most helpful thing we can do. (and i\u0027m happy to send the patch to clean up the existing polluter to take advantage of that.) if not, i think that\u0027s an argument for just calling this something like DISABLE_OSTREAM_STRING_POINTER_WARNING_FOR_GMOCK instead --- at least then it\u0027s clear what this voodoo is for, and when you\u0027d want to use it.\n\n(and hopefully some day gbiv@ will improve our tools for us :-) )",
+      "parentUuid": "3cf5001c_a63d9e19",
+      "revId": "d9cf87a831779b3f3910e448b6acc54ab2ed92de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
