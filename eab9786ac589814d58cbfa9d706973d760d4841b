@@ -22,6 +22,30 @@
       "revId": "eab9786ac589814d58cbfa9d706973d760d4841b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebdf740c_c2c4247f",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-06-04T18:05:51Z",
+      "side": 1,
+      "message": "I don\u0027t want to do this at all (!) this is a workaround for the overlayfs kernel bug.\n\nI had needs, and I wanted a simple check that covered all those needs without touching init code.\n\nI did not want to be doomed to investigate the kernel with a full sandbox build rather than on an untouched release build.\n\nHope you understand \"why\" I did this.\n\n[TL;DR]\n\nThis path is called three times:\n- first stage init\n- mount_all --early\n- mount_all --late.\n\nWe do not want to do this in first stage init before the policy has been loaded. We wanted to minimize calling this due to the boot impact and worries about calling selinux_android_restorecon when there is no sepolicy, could it crash or nullptr? This has to work on Q with reduced risk.\n\nThe act of remounting back and forth is undesirable, another reason I do not like doing this hack. We had a need to defer the operation until second stage. The net result is this is run twice for all overlayfs mounts which I would have dearly liked to suppress even that.\n\nWe have no strong \u0027signal\u0027 that we are in first stage init unless we invent one. I could have done so definitively with an environment variable, but there would be no way to control this on a public build. I decided that it would be better to use a sepolicy related signal that is known to be in a certain state during first stage init, and typically in a different state in the later two calls yet controllable to allow a means to suppress it should we need to investigate this further (and we will, when we try find out what the bug is in the overlayfs filesystem driver). Of course I could suppress this with a sandbox build, but that is more \u0027work\u0027.\n\nWe could just focus on spinning kernels and not a full sandbox build.\n\nOne alternative is to replace first stage init \u0026 kernel (both in boot.img) with a different environment variable value that controls the later behaviors to investigate. However, to do so makes this CL more impactful as I will need to alter init directly in this CL.",
+      "parentUuid": "fa2fdfcf_c9d90f03",
+      "range": {
+        "startLine": 948,
+        "startChar": 12,
+        "endLine": 948,
+        "endChar": 28
+      },
+      "revId": "eab9786ac589814d58cbfa9d706973d760d4841b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
