@@ -22,6 +22,29 @@
       "revId": "0db7bfa137bf72f80114fe2d803636eba2d0bfdb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "060eb36a_83e6dd3a",
+        "filename": "init/nativezygote.rc",
+        "patchSetId": 14
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-06-04T19:30:50Z",
+      "side": 1,
+      "message": "Still okay for +2, but just remembering a few other thoughts:\n\nWhy is this passed via the environment?  Wouldn\u0027t it be better as a command line argument?\nOr why not check argv[0] to see if the executable is nativezygote or nativezygote_vendor?\n\nWhy do we have two executables in the first place?  Is it just for the linker configuration (exe.vendor \u003d /system/bin/nativezygote_vendor)?  I just wonder if there\u0027s a way to handle this at run time in the same executable?  But admittedly, I don\u0027t have any suggestions for how to do this.",
+      "range": {
+        "startLine": 6,
+        "startChar": 4,
+        "endLine": 6,
+        "endChar": 43
+      },
+      "revId": "0db7bfa137bf72f80114fe2d803636eba2d0bfdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
