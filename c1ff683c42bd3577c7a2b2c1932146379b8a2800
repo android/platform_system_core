@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "02a9f9dc_dfb31684",
+        "filename": "base/include/android-base/result.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-06-04T22:16:56Z",
+      "side": 1,
+      "message": "TL;DR its probably ok as it is for this CL\n\n-------------\n\nPersonally I also have needed to put the \u0027expected\u0027 into a struct sometimes, so size is not unimportant.\n \n  struct NamedResult {\n     std::string filename;\n     std::expected\u003cFileMetadata, errno\u003e;\n  };\n\n  std::vector\u003cNamedResult\u003e lookup_all_filenames(std::vector\u003cstd::string\u003e filenames) {\n    std::vector\u003cNamedResult\u003e res;\n    for (auto name : filenames) {\n      res.push_back( {name, lookup_file_metadata(name)} );\n    }\n    return res;\n  }\n\n  std::expected\u003cFileMetadata, errno\u003e lookup_file_metadata(std::string filename);\n\n  (actual code)\n\n  https://cs.corp.google.com/android/system/iorap/src/inode2filename/inode_result.h?q\u003dinode_result.h\u0026dr\u003dCSs\u0026l\u003d32\n\nThat being I\u0027m not really sure if this argument applies to your \u0027Result\u0027, I defined my own ostream operators to avoid bloating the error case with a heap allocation ever.\n\n-----\n\nMore generally though, I\u0027ve seen people write monadic style code in other languages:\n\n\n  ([1,2,3,4,5], [0,0,3,0,0]) . zip . map(divide) . map(divide) /* -\u003e List\u003cResult\u003cResult\u003cint\u003e\u003e */\n\n  auto divide(int x, int y) {\n    return (y !\u003d 0) ? (success{y}) : failure{};\n  }",
+      "parentUuid": "8029e309_509bef8f",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 15
+      },
+      "revId": "c1ff683c42bd3577c7a2b2c1932146379b8a2800",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e76705a_ca3abe83",
         "filename": "base/include/android-base/result.h",
         "patchSetId": 1
