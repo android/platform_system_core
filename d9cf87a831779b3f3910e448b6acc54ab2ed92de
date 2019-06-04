@@ -178,6 +178,24 @@
       "revId": "d9cf87a831779b3f3910e448b6acc54ab2ed92de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cf5001c_a63d9e19",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2019-06-04T19:50:42Z",
+      "side": 1,
+      "message": "Yeah, the all-or-nothing nature of -Wno-user-defined-warnings is really icky, and something I\u0027ve been meaning to get fixed for a while.\n\nThe hope is that we\u0027d end up with a way to tag diagnose_if ops, so the below would become\ndiagnose_if(true, \"Unexpected logging of string pointer\", \"warning\", \"ostream-string-ptr\"))\n\nSo if users wanted to opt out of specifically that, they can add a cflag like\n\n-Wno-user-defined-warnings\u003dostream-string-ptr\n\nI don\u0027t have a strong opinion on how to work around the lack of that today. -Wno-user-defined-warnings would disable like 3 of our FORTIFY checks (openat/open having useless flags, and memset with probably-flipped args), but all of the ones that catch trivial UB should turn into errors regardless, so *shrug*.",
+      "parentUuid": "75fbeb6b_1a74fb12",
+      "revId": "d9cf87a831779b3f3910e448b6acc54ab2ed92de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
