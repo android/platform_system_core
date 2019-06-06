@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47177767_49ca0c17",
+        "filename": "base/include/android-base/result.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-06-06T19:08:26Z",
+      "side": 1,
+      "message": "(Follow up CL idea)\n\nI think Tom mentioned something about deleting the non-\u0026\u0026 operator?\n\nI think something like this could work right?\n\n--------------------\n\ntemplate \u003ctypename R \u003d ResultError\u003e\ninline std::enable_if_t\u003cstd::is_same_v\u003cR, ResultError\u003e, std::ostream\u0026\u003e operator\u003c\u003c(std::ostream\u0026 os, const R\u0026 t) {\n  static_assert(!std::is_same_v\u003cR, ResultError\u003e, \"Do not use \u003c\u003c with lvalues\");\n  os \u003c\u003c t.message();\n  return os;\n}\n\ninline std::ostream\u0026 operator\u003c\u003c(std::ostream\u0026 os, ResultError\u0026\u0026 t) {\n  os \u003c\u003c t.message();\n  return os;\n}",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 1
+      },
+      "revId": "8fd64c8af11e29a270bff6688f52589afb2b0466",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
