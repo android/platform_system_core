@@ -16,6 +16,24 @@
       "revId": "269f0e34dbf1855ade850b2e2f540d9bce556503",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d90153ee_7cda742e",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-06-06T23:12:00Z",
+      "side": 1,
+      "message": "Good idea, but didn\u0027t work. Lots of compilation errors:\n\nsystem/core/base/include/android-base/expected.h:302:4: error: cannot form a reference to \u0027void\u0027\n  T\u0026 emplace(Args\u0026\u0026... args) {\n\nsystem/core/base/include/android-base/expected.h:275:27: error: cannot form a reference to \u0027void\u0027\n    std::is_assignable_v\u003cT\u0026,U\u003e \u0026\u0026\n\nsystem/core/base/include/android-base/expected.h:410:12: error: indirection requires pointer operand (\u0027const expected\u003cvoid, android::base::ResultError\u003e\u0027 invalid)\n    return *x \u003d\u003d *y;\n\n\u003cand many more\u003e\n\nPerhaps we could fix the errors by adding more conditions to enable_if\u003c..\u003e in the original class and adding a few more specialization for some of the functions, but that sounds equally complicated to the current implementation.",
+      "parentUuid": "e0ddc698_3cdca055",
+      "revId": "269f0e34dbf1855ade850b2e2f540d9bce556503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
