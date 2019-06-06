@@ -250,6 +250,24 @@
       "revId": "d9cf87a831779b3f3910e448b6acc54ab2ed92de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4626dc6f_8a034a58",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-06-06T09:37:02Z",
+      "side": 1,
+      "message": "I think enh\u0027s preferred naming for this is better, as many folks would see FOR_GMOCK and think that this is probably not the way they should solve their problem. FWIW, the actual suggestion is in the comment on line 482 right above this code. If you want to print a string pointer, you should cast it to a void pointer first instead. That shows the intent to actual print the pointer value, rather than this being a mistake that prevents people from logging what they actually intended (thus lengthening their debug cycle and/or preventing them from getting meaningful bug data for sporadic issues).",
+      "parentUuid": "b1c2140f_8659a885",
+      "revId": "d9cf87a831779b3f3910e448b6acc54ab2ed92de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
