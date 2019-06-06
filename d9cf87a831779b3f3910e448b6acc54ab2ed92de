@@ -232,6 +232,24 @@
       "revId": "d9cf87a831779b3f3910e448b6acc54ab2ed92de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1c2140f_8659a885",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1418133
+      },
+      "writtenOn": "2019-06-06T09:17:53Z",
+      "side": 1,
+      "message": "I\u0027m still failing to understand the rationale here...\n\nWhat downside does the propose solution carry compared to gbiv@\u0027s intended/desired behavior of -Wno-user-defined-warnings\u003dostream-string-ptr? This provides the same result today. Furthermore, OSTREAM_STRING_POINTER_USAGE_ALLOW is significantly more searchable than -Wno-user-defined-warnings for the purpose applying future improvements if desired, if made.\n\nDISABLE_OSTREAM_STRING_POINTER_WARNING_FOR_GMOCK carries not less risk with regards to the copy-paste concern raised as the rationale for preferring GMOCK detection. It also dismisses the fact that -Wno-user-defined-warnings is still left as the de facto catch-all, which everyone has acknowledged as unsuitable.",
+      "parentUuid": "cd107c1b_aaa6a7b6",
+      "revId": "d9cf87a831779b3f3910e448b6acc54ab2ed92de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
