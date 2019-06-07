@@ -304,6 +304,24 @@
       "revId": "d9cf87a831779b3f3910e448b6acc54ab2ed92de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efe9910a_7579bbfb",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-06-07T04:28:24Z",
+      "side": 1,
+      "message": "1) The suggestions have nothing to do with -Wno-user-defined-warnings. We\u0027re not advocating for people using that flag. In fact, maybe the Android platform build rules should forbid users from doing exactly that. I filed http://b/134716967 to clamp down on this usage, and forbid any new usage. Perhaps this comment should also be removed, since there is a preferred way of fixing this with either a proper cast to void* or a new compile-time define.\n\n2) A more targeted diagnostic option here has a turn-around time of approximately 6 weeks (assuming that the upstream review goes smoothly, and nobody argues strongly against it)? I still think gbiv\u0027s proposal is also worth doing, but we might want to do the ifdef for expediency. What do you think?",
+      "parentUuid": "2ae9e058_8a13df62",
+      "revId": "d9cf87a831779b3f3910e448b6acc54ab2ed92de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
