@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9a69431_a25acb70",
+        "filename": "base/include/android-base/result.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-06-10T14:55:36Z",
+      "side": 1,
+      "message": "I think that we have changed the behavior with this typical use case. See below.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 50
+      },
+      "revId": "157f52092b3420842fcf78077d533ad0db2a165c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9833b78b_00010f31",
+        "filename": "base/include/android-base/result.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-06-10T14:55:36Z",
+      "side": 1,
+      "message": "If we use \"\u003c\u003c output.error()\", ResultError is passed to the operator\u003c\u003c(ResultError) which handles code. However, in Error(\"...\", output.error()), ResultError is just concat\u0027ed to stringstream, which fails to carry ResultError#code() information.\n\nMaybe we need to implement a variadic constructor using operator\u003c\u003c().",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 73
+      },
+      "revId": "157f52092b3420842fcf78077d533ad0db2a165c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
