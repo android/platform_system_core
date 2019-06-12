@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4641d3f4_9302ac3c",
+        "filename": "base/file_wait_generic.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2019-06-12T19:30:53Z",
+      "side": 1,
+      "message": "are we sure this is enough? What about invalid path.c_str() or ENOTDIR",
+      "range": {
+        "startLine": 38,
+        "startChar": 39,
+        "endLine": 38,
+        "endChar": 54
+      },
+      "revId": "5841fbe7b8b78fa4488d195dd01a3fb648ee638d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "250261b0_eff41631",
         "filename": "base/file_wait_linux.cpp",
         "patchSetId": 4
@@ -71,6 +94,24 @@
       "writtenOn": "2019-06-12T19:05:41Z",
       "side": 1,
       "message": "do we actually want anyone to be using these for anything other than mount points?",
+      "revId": "5841fbe7b8b78fa4488d195dd01a3fb648ee638d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39e4771f_b9ac84aa",
+        "filename": "base/include/android-base/file.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2019-06-12T19:30:53Z",
+      "side": 1,
+      "message": "Some of these devices may not be mount points, but just intermediate device mapper devices when we are building the stack.\n\nOn a side note, I feel the \"assumed\" knowledege about the name of the block device is fragile (these device nodes can just as easily be called /dev/foo-1 depending on the uevent.rc of the device.\nI am in two minds about having an API like this for device node use cases specifically.\n\nIMO, we should solve the device node creation problem by registering with ueventd directly to notify clients whenever it creates a devices based on uevents.\nsimilar to udev_monitor - http://presbrey.scripts.mit.edu/doc/libudev/libudev-udev-monitor.html",
+      "parentUuid": "85d0e96f_328d7ce1",
       "revId": "5841fbe7b8b78fa4488d195dd01a3fb648ee638d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
