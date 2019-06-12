@@ -217,6 +217,24 @@
       "revId": "5841fbe7b8b78fa4488d195dd01a3fb648ee638d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39ff5005_d6c0af48",
+        "filename": "base/include/android-base/file.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2019-06-12T22:59:00Z",
+      "side": 1,
+      "message": "The problem is implicit assumption of what the name of the device node is. For example, device mapper nodes do not have to be /dev/dm-X. They can be anything we want them to be depending on ueventd.rc.\nAs of now, the code that calls into WaitForFile() has no way of knowing that.\n\nSo, if someone does add a rule in their ueventd.rc to call loopback/dm devices something else or even change the location, then our code will break. The udev advantage is that it will notify you of all devices\ndetected of a given subsystem/subtype and their dev node names based on the udev rules. The caller then decides if they are interested in that particular node. IMO this is more accurate than the inotify() approach where we implictly assume what the dev nodes are named.\n\nUnless, We are signing up forever that all device mapper nodes will always be /dev/dm-X and ueventd.rc can\u0027t override it. We have to do the same for every user of this API too. (systemd does that I think).",
+      "parentUuid": "3bba0b90_2ee0804f",
+      "revId": "5841fbe7b8b78fa4488d195dd01a3fb648ee638d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
