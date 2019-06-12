@@ -235,6 +235,24 @@
       "revId": "5841fbe7b8b78fa4488d195dd01a3fb648ee638d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c345fab9_022ee12a",
+        "filename": "base/include/android-base/file.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-06-12T23:40:03Z",
+      "side": 1,
+      "message": "If we used udev, we\u0027d have to filter for the correct device (probably by dev_t), so it\u0027d be less generic than this code. Also, our baked-in assumptions about dm- aren\u0027t that egregious. It\u0027s basically just libdm. Callers don\u0027t see it:\n\n  std::string path;\n  if (!dm.GetDmDevicePathByName(blah, \u0026path)) ...\n  if (!WaitForFile(path, 5s)) ...\n\nIt\u0027s true libfiemap_writer does hardcode StartsWith(\"dm-\"), but we can fix that.",
+      "parentUuid": "39ff5005_d6c0af48",
+      "revId": "5841fbe7b8b78fa4488d195dd01a3fb648ee638d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
