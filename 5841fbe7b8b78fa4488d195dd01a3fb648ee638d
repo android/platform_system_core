@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d99f6a06_478ea861",
+        "filename": "base/file_wait_generic.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-06-12T22:05:42Z",
+      "side": 1,
+      "message": "If we get ENOTDIR here, the inotify will fail early with the same errno. This is clarified in the comment - Dirname(path) must exist.",
+      "parentUuid": "4641d3f4_9302ac3c",
+      "range": {
+        "startLine": 38,
+        "startChar": 39,
+        "endLine": 38,
+        "endChar": 54
+      },
+      "revId": "5841fbe7b8b78fa4488d195dd01a3fb648ee638d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "250261b0_eff41631",
         "filename": "base/file_wait_linux.cpp",
         "patchSetId": 4
@@ -60,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "a9a86a5e_94dedd7f",
+        "filename": "base/file_wait_linux.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-06-12T22:05:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e6b972c_a014c1e2",
+      "revId": "5841fbe7b8b78fa4488d195dd01a3fb648ee638d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a39f728_0a79a840",
         "filename": "base/file_wait_linux.cpp",
         "patchSetId": 4
@@ -80,6 +122,30 @@
       "revId": "5841fbe7b8b78fa4488d195dd01a3fb648ee638d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe842145_a524dffc",
+        "filename": "base/file_wait_linux.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-06-12T22:05:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a39f728_0a79a840",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 4
+      },
+      "revId": "5841fbe7b8b78fa4488d195dd01a3fb648ee638d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -130,6 +196,24 @@
       "side": 1,
       "message": "Would we have other users except for these devices?  Seems like a bit overkill if not.  It looks like udev works via a socket, so we\u0027d need to poll on a socket in any case.  If we already have inotify, which accomplishes the same thing, with roughly the same client side implementation, and a standardized libc API, why isn\u0027t this already the best case?",
       "parentUuid": "39e4771f_b9ac84aa",
+      "revId": "5841fbe7b8b78fa4488d195dd01a3fb648ee638d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bba0b90_2ee0804f",
+        "filename": "base/include/android-base/file.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-06-12T22:05:42Z",
+      "side": 1,
+      "message": "Also, /dev/block/loopN nodes also fall into this category. gsid will be creating loop devices but not mounting them. In addition other callers (apexd, vold) set flags on the device before mounting.",
+      "parentUuid": "fa2d900f_f42c515a",
       "revId": "5841fbe7b8b78fa4488d195dd01a3fb648ee638d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
