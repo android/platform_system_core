@@ -106,6 +106,24 @@
       "revId": "f6200750db574ddf255dfc73b6cd73c14e3c1dca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e85180a_70737695",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-06-13T03:44:54Z",
+      "side": 1,
+      "message": "We\u0027re objecting to having 2 defines. We want to clean up and remove the one define when we get finished here. Right now, the only user is gmock, hence our insistence that gmock be mentioned in the naming, because we strongly believe that printing out string pointers like this is not what the user intended in 99+% of cases.\n\nI\u0027m pretty close to believing that gmock should fix their code instead at this point, since other developers might reuse that pattern erroneously. After spending a whole day talking about C/C++ deficiencies, I\u0027m not convinced that keeping mistakes easy to make (especially of the copy/paste variety) is something that I want to promote.",
+      "parentUuid": "61b36132_74f77110",
+      "revId": "f6200750db574ddf255dfc73b6cd73c14e3c1dca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
