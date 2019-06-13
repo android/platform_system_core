@@ -70,6 +70,24 @@
       "revId": "f6200750db574ddf255dfc73b6cd73c14e3c1dca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95ba0270_852f035a",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-06-13T03:08:19Z",
+      "side": 1,
+      "message": "We only want the *_FOR_GMOCK ifndef here. We do not want an easier opt-out here that has to be removed later, since there is nobody using -Wno-user-defined-warnings for this. We\u0027re hoping to fix the compiler to support disabling just this user-defined warning in the near term. As is, I also don\u0027t approve of this extra ifndef. We can audit any present/future uses of -Wno-user-defined-warnings without much trouble once the compiler can select which warnings to ignore.",
+      "parentUuid": "fb78bcc7_6e77a6fb",
+      "revId": "f6200750db574ddf255dfc73b6cd73c14e3c1dca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
