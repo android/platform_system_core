@@ -46,6 +46,30 @@
       "revId": "b1788fbdbd8f38c195679c37c7117e0b7aff762b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57988b0a_7996fcec",
+        "filename": "base/include/android-base/result.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-06-13T16:39:30Z",
+      "side": 1,
+      "message": "Did that code actually work as its written here?  I wouldn\u0027t think that output.error() is a ResultError instance, right?  I wouldn\u0027t think fmtlib could handle that.\n\nIf it doesn\u0027t compile, good.  If it does compile, we may want to figure out a way to make it do what we\u0027d expect with the error code.\n\nWe\u0027ll probably want to add a test for passing the error code even when beginning with an Errorf() anyway.",
+      "parentUuid": "70d9955b_fe4dabb2",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 75
+      },
+      "revId": "b1788fbdbd8f38c195679c37c7117e0b7aff762b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
