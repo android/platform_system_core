@@ -253,6 +253,24 @@
       "revId": "5841fbe7b8b78fa4488d195dd01a3fb648ee638d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "150adf40_f3a19ec0",
+        "filename": "base/include/android-base/file.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-06-13T23:13:48Z",
+      "side": 1,
+      "message": "Sandeep and I talked offline; the concern is that we\u0027re asking callers to rely on paths that may not be reliable. Tom and I verified that we do, in fact, hardcode /dev/block/dm-N and /dev/block/loopN names:\n\nhttps://cs.corp.google.com/android/system/core/init/devices.cpp?q\u003df:devices.cpp\u0026sq\u003dpackage:%5Eandroid$\u0026dr\u0026l\u003d430\n\nThat said, we also now have /dev/block/mapper/\u003cname\u003e links that do not rely on numbering. We can start to simplify the above pattern:\n\n  if (!WaitForFile(\"/dev/block/mapper/system_gsi\", 5ms)) ...",
+      "parentUuid": "c345fab9_022ee12a",
+      "revId": "5841fbe7b8b78fa4488d195dd01a3fb648ee638d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
