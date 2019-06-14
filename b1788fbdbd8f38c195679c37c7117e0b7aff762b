@@ -70,6 +70,30 @@
       "revId": "b1788fbdbd8f38c195679c37c7117e0b7aff762b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cfc3b731_36a15649",
+        "filename": "base/include/android-base/result.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-06-14T05:30:59Z",
+      "side": 1,
+      "message": "Errorf(\"error occurred with {}\", result.error()) works. See result_test.cpp#371. It works because fmt uses operator\u003c\u003c when necessary. https://fmt.dev/dev/api.html#ostream-api\n\nAnd thanks for challenging me :)\n\nPassing error code with Errorf is done using the helper function ErrorCode(). For the client of the APIs, this might look a little bit magical, but I think it\u0027s still better than not passing errno.\n\nTest cases are also added.",
+      "parentUuid": "57988b0a_7996fcec",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 75
+      },
+      "revId": "b1788fbdbd8f38c195679c37c7117e0b7aff762b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
