@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "936c726b_12037ba3",
+        "filename": "fs_mgr/libfiemap_writer/fiemap_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-06-20T19:25:32Z",
+      "side": 1,
+      "message": "That would be okay too, though IMO it\u0027s not worth supporting. This change is just to expedite testing gsid, since we want to test the situation where there\u0027s an intermediate target sitting in between the real device and the mounted filesystem. With this change we don\u0027t have to setup crypt/default-key/bow to get that.",
+      "parentUuid": "327b8103_028ff7ae",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 92
+      },
+      "revId": "97bda2f4d20c0e793009faa8129f55ba7ab88c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb72303c_4de5478d",
         "filename": "fs_mgr/libfiemap_writer/fiemap_writer.cpp",
         "patchSetId": 1
@@ -76,6 +100,30 @@
       "writtenOn": "2019-06-20T19:13:49Z",
       "side": 1,
       "message": "nit: fwiw, I still find it weird that we return \"success\" but don\u0027t necessarily pop all the way to a real block device (not the device mapper one).\nWhy can\u0027t we change the semantics and NOT leave that decision to the caller (I forgot how this error propagates outside of fiemap_writer). So, if its\nall handled within the library, I guess its still ok.",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 20
+      },
+      "revId": "97bda2f4d20c0e793009faa8129f55ba7ab88c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9b36516_80a136fd",
+        "filename": "fs_mgr/libfiemap_writer/fiemap_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-06-20T19:25:32Z",
+      "side": 1,
+      "message": "The reason to leave it to the caller is for testing. Normally having the backing block device be \"dm-6\" would be nonsense, since there\u0027s no way we can persist that to /metadata and have it reliably read back on reboot. But for testing, it\u0027s fine. So gsid wants to make sure the block device is permanent, but testing doesn\u0027t care if it\u0027s virtual.\n\nWe could add a parameter so libfiemap_writer still makes the decision, but it felt like overkill... there\u0027s only two callers, gsid and gsid tests.",
+      "parentUuid": "fb72303c_4de5478d",
       "range": {
         "startLine": 157,
         "startChar": 0,
