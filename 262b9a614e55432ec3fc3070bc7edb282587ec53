@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9402d871_16f896d4",
+        "filename": "init/host_init_verifier.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-06-21T00:08:33Z",
+      "side": 1,
+      "message": "We should start using getopt instead of having more positional arguments.  I was already planning on this for supporting multiple passwd files, so I have the code at https://android-review.googlesource.com/c/platform/system/core/+/986839.",
+      "revId": "262b9a614e55432ec3fc3070bc7edb282587ec53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c65ef7b_149dec0c",
+        "filename": "init/service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-06-21T00:08:33Z",
+      "side": 1,
+      "message": "I don\u0027t like having this as a part of ServiceList.  It\u0027s weird to have a backwards dependency, and it\u0027s weirder since it\u0027s only used on the host side, but in a file that\u0027s used regardless.\n\nProbably, the right decision here is to split Service into \u0027Service\u0027 and ServiceParser, but that\u0027s out of the scope for you (unless you really want to tackle that problem).",
+      "revId": "262b9a614e55432ec3fc3070bc7edb282587ec53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
