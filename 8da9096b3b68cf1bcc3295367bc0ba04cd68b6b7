@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c750f4b9_d65cfe0a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-06-24T23:10:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4c09d60_5f382b52",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "8da9096b3b68cf1bcc3295367bc0ba04cd68b6b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91c6e1e4_9221c6dd",
         "filename": "fs_mgr/libdm/include/libdm/dm.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-06-24T21:08:51Z",
       "side": 1,
       "message": "It\u0027s preferred over specifically the combination of CreateDevice() + GetDmDevicePathByName(), right?  Do each of those APIs have their own uses or could we remove them to only give people the preferred option?",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 19
+      },
+      "revId": "8da9096b3b68cf1bcc3295367bc0ba04cd68b6b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c13de76e_43520d31",
+        "filename": "fs_mgr/libdm/include/libdm/dm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-06-24T23:10:23Z",
+      "side": 1,
+      "message": "I\u0027ve clarify this and reordered the functions. I haven\u0027t transitioned all the callers of the old API yet, I didn\u0027t want to do it all in one topic. The major stragglers are:\n\n(1) apexd, which would require reordering some stuff and plumbing the timeout through.\n(2) fs_mgr, which has its own wait mechanism, but needs this API post-1st-stage to not be racy.\n(3) vold, which can switch pretty trivially.\n\nThat said, for stacking devices (like snapshot on top of linear), we don\u0027t need or want the path, we just need the device string. So maybe having the call available is still useful. I\u0027m aiming to remove it though.",
+      "parentUuid": "91c6e1e4_9221c6dd",
       "range": {
         "startLine": 91,
         "startChar": 4,
