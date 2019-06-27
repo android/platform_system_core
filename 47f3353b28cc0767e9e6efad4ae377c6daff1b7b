@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0512514_72ca1efd",
+        "filename": "init/host_init_verifier.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-06-27T23:58:28Z",
+      "side": 1,
+      "message": "I see that the build system change will always provide this, but to make it more generically useful, I don\u0027t think this should be mandatory.  I think it\u0027s fine to allow running this without providing a known_interfaces_file.  I think it should just return an error if it encounters any interfaces.",
+      "range": {
+        "startLine": 199,
+        "startChar": 21,
+        "endLine": 199,
+        "endChar": 50
+      },
+      "revId": "47f3353b28cc0767e9e6efad4ae377c6daff1b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c2bbd6a_128f5560",
+        "filename": "init/init_test.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-06-27T23:58:28Z",
+      "side": 1,
+      "message": "FWIW, just {} works here as well.  If you take the std::optional suggestion below it\u0027ll help even more.",
+      "range": {
+        "startLine": 48,
+        "startChar": 71,
+        "endLine": 48,
+        "endChar": 94
+      },
+      "revId": "47f3353b28cc0767e9e6efad4ae377c6daff1b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8221f0c0_5cf7444c",
+        "filename": "init/service_parser.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-06-27T23:58:28Z",
+      "side": 1,
+      "message": "Is it possible that there are no known interfaces provided ever?  If so this code would allow everything to succeed.  In general, I don\u0027t think it\u0027s a good idea to use \u0027empty\u0027 to mean \u0027none provided\u0027.  This is compounded even worse since if the known interface file fails to be read an empty set is returned.\n\nI\u0027d make this a std::optional\u003cstd::set\u003cstd::string\u003e\u003e and have the cases other than the init verifier provide an empty optional.",
+      "revId": "47f3353b28cc0767e9e6efad4ae377c6daff1b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
