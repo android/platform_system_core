@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e49e994_bfb16e23",
+        "filename": "fs_mgr/libdm/dm.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-06-27T20:51:24Z",
+      "side": 1,
+      "message": "This calls the CreateDevice() from line 50 without a uuid.  Why not use the other CreateDevice() that creates a uuid for you?  Do we want these to not have a uuid?\n\nI see the comment below that this is for people who won\u0027t later want a \u0027path\u0027, but why restrict us here?  We could always create the path but have a 0ms timeout to always return quickly if speed is the reason.",
+      "revId": "bc6dd0db211f4106a58e22bdc5fa9a7b0eaa04cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1abdaf7d_1a891b2a",
+        "filename": "init/devices.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-06-27T20:51:24Z",
+      "side": 1,
+      "message": "Question that I only realized a little while ago: do we have the minor number during remove uevents?  If so, we can pretty easily find which symlinks to remove; we\u0027d just need to loop over the symlinks in the two directories and find which ones point to the node with the minor number that we\u0027re about to delete.\n\nIt\u0027d be slightly slower, yes, but it\u0027s an operation that very rarely happens.  Probably a better trade off than maintaining a cache for the lifetime of the device.\n\nIt\u0027ll require a bit of refactoring since GetBlockDeviceSymlinks would depend on the uevent being a remove or not, but it may be worth it?",
+      "revId": "bc6dd0db211f4106a58e22bdc5fa9a7b0eaa04cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
