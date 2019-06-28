@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91cf3691_74411685",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-06-28T16:22:23Z",
+      "side": 1,
+      "message": "Could you drop the late_import_paths line.  I already disabled this feature for devices launching after Q, so this is functionally not used right now.  It\u0027ll help to remove it to prevent the same copy/paste in the future.",
+      "range": {
+        "startLine": 141,
+        "startChar": 12,
+        "endLine": 142,
+        "endChar": 9
+      },
+      "revId": "0d4fcbe19195069140fcd82f5899fa156b32fd19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7bd782f_23f1d94b",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-06-28T16:22:23Z",
+      "side": 1,
+      "message": "I\u0027d be a bit leery of calling it /system/ext and not /system/system_ext.  I\u0027m reasonably sure we have a few places that expect the symlinks within /system/ to be literally the name of the partition.\n\nWe save a few characters, but we diverge from what we\u0027ve done in the past with these symlinks.  I don\u0027t think it\u0027s worth it.",
+      "revId": "0d4fcbe19195069140fcd82f5899fa156b32fd19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
