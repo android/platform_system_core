@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c599aeb1_2b351148",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1440,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2019-07-01T18:20:42Z",
+      "side": 1,
+      "message": "This is still racy. Consider the following events:\n1. lmkd decides based on heuristics to kill process P with pid X\n2. kill_one_process is called \n3. Before start_wait_for_proc_kill can be called, the process P dies for some other reason\n4. Due to pid wrap around, the next pid X is the PID of the process that just died\n5. fork() happens and the pid X is reused for the new process\n6. kill_one_process() now kills the wrong PID X. \n\nI think the possible fixes are:\n1. in kill_one_process, we must verify that the process is still the same after opening with pidfd_open. This can be done by comparing its name with what we expected. If a fork() reused the pid, then very likely its a different name. The race where there the name and the pid both got reused sounds extremely unlikely. However additional /proc/pid metadata can be borrowed to drive this probability down to zero.\n\n2. Open the pidfd for the process when creating the procp struct initially. This way the pid can never be reused.\n\n2. is simpler than 1. but needs to keep fds open.",
+      "revId": "718e3c6bbc0b6c52d9ef599cd75c8b7290208dac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "975ce9fa_4961c5d9",
         "filename": "lmkd/lmkd.c",
         "patchSetId": 2
