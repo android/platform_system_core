@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "91a731a0_ef59d133",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-07-01T06:56:02Z",
+      "side": 1,
+      "message": "It will require to remove import_late in builtins.cpp as well. I think we may have a separate CL to do this.",
+      "parentUuid": "91cf3691_74411685",
+      "range": {
+        "startLine": 141,
+        "startChar": 12,
+        "endLine": 142,
+        "endChar": 9
+      },
+      "revId": "0d4fcbe19195069140fcd82f5899fa156b32fd19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c7bd782f_23f1d94b",
         "filename": "libcutils/fs_config.cpp",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2019-06-28T16:22:23Z",
       "side": 1,
       "message": "I\u0027d be a bit leery of calling it /system/ext and not /system/system_ext.  I\u0027m reasonably sure we have a few places that expect the symlinks within /system/ to be literally the name of the partition.\n\nWe save a few characters, but we diverge from what we\u0027ve done in the past with these symlinks.  I don\u0027t think it\u0027s worth it.",
+      "revId": "0d4fcbe19195069140fcd82f5899fa156b32fd19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e41f9f76_3b0504f4",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-07-01T06:56:02Z",
+      "side": 1,
+      "message": "Agreed. I didn\u0027t notice that we have the cases like this, that is assuming /system/\u003cpartition_name\u003e. I updated a comment to discuss (b/134359158#comment27).",
+      "parentUuid": "c7bd782f_23f1d94b",
       "revId": "0d4fcbe19195069140fcd82f5899fa156b32fd19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
