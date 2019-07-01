@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9190d900_3dc34751",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-07-01T16:09:37Z",
+      "side": 1,
+      "message": "Sorry I wasn\u0027t clear, I meant removing `late_import_paths.emplace_back(\"/system_ext/etc/init\");` for system_ext only.  We\u0027ll need the other late_import lines for backwards compatibility, but since system_ext is new, no devices launching with it will be able to use the late_import functionality anyway.\n\n(It\u0027s really something I should have said during the product_services review, but since I missed it here and we\u0027re saying nothing has launched with product_services, then we might as well fix it now).",
+      "parentUuid": "91a731a0_ef59d133",
+      "range": {
+        "startLine": 141,
+        "startChar": 12,
+        "endLine": 142,
+        "endChar": 9
+      },
+      "revId": "0d4fcbe19195069140fcd82f5899fa156b32fd19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c7bd782f_23f1d94b",
         "filename": "libcutils/fs_config.cpp",
         "patchSetId": 1
@@ -78,6 +102,24 @@
       "side": 1,
       "message": "Agreed. I didn\u0027t notice that we have the cases like this, that is assuming /system/\u003cpartition_name\u003e. I updated a comment to discuss (b/134359158#comment27).",
       "parentUuid": "c7bd782f_23f1d94b",
+      "revId": "0d4fcbe19195069140fcd82f5899fa156b32fd19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "806d9248_fa8cd6d4",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-07-01T16:09:37Z",
+      "side": 1,
+      "message": "Sounds good, thanks!",
+      "parentUuid": "e41f9f76_3b0504f4",
       "revId": "0d4fcbe19195069140fcd82f5899fa156b32fd19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
