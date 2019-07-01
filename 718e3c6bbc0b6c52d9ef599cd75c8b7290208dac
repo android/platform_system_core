@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "1725a5a0_b7845280",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1440,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-07-01T22:30:51Z",
+      "side": 1,
+      "message": "I\u0027m not downplaying the issue but as I said this is a separate issue with a different priority than this. Instead of TODO item I filed b/136502698 to address this.\n\nThe reason I want to handle that in a separate CL is because there will be a non-zero impact on resource usage to store additional metadata and to compare it before the kills. For option #1 we will have to store names of the processes registered with lmkd, currently we only store pids. For option #2 we will have to do pidfd_open() for each registered process. The overhead for both is unknown at the moment, so I don\u0027t want to mix two changed in one CL as that would complicate impact evaluation. Both options can be implemented independently from this CL.",
+      "parentUuid": "33c10009_8adb86d6",
+      "revId": "718e3c6bbc0b6c52d9ef599cd75c8b7290208dac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "975ce9fa_4961c5d9",
         "filename": "lmkd/lmkd.c",
         "patchSetId": 2
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Ah, ok. It wasn\u0027t really an \u0027assumption\u0027 :) It thought we already had email discussion about the kernel version and agreed only \u003e 4.9 kernels need backports. So does that mean you are backporting to \u003c\u003d v4.9 kernel now as well? I think Sandeep should be looped in since he was hesitant on needing backports to older kernels for this.",
       "parentUuid": "eb9eb24f_553ef4a6",
+      "revId": "718e3c6bbc0b6c52d9ef599cd75c8b7290208dac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee437f7a_685cec35",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2115,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-07-01T22:30:51Z",
+      "side": 1,
+      "message": "4.9 is the earliest version with the backport. All the older ones or the ones that do not have the backports will detect that the feature is missing in the kernel and will not use it. Without this detection I\u0027ll break all devices which are currently using lmkd and do not have pidfd backports. I would rather avoid that :)",
+      "parentUuid": "d70a4ef6_2553831a",
       "revId": "718e3c6bbc0b6c52d9ef599cd75c8b7290208dac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
