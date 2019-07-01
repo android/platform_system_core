@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8521a2ba_48ee2801",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1440,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-07-01T19:37:54Z",
+      "side": 1,
+      "message": "This is a separate issue which I\u0027m not addressing in this CL. Here I only add support for pidfd polling to detect process death as specified in the description.\nThe race you mentioned exists in the current code as well and should be dealt with separately. It\u0027s quite an unlikely situation and has much lower priority IMO.",
+      "parentUuid": "c599aeb1_2b351148",
+      "revId": "718e3c6bbc0b6c52d9ef599cd75c8b7290208dac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "975ce9fa_4961c5d9",
         "filename": "lmkd/lmkd.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-07-01T18:06:10Z",
       "side": 1,
       "message": "IMO we should avoid this dynamic check. AIUI, lmkd will be used only on devices that are 4.14 or newer. Old devices just use the in-kernel LMK. Can we enforce pidfd_open availability as a part of VTS testing for new devices? I feel this check complicates things, it is much better to just write the code so it works only with pidfd_open and enforce that devices are compatible.\n\nLet us talk about this more on this thread.",
+      "revId": "718e3c6bbc0b6c52d9ef599cd75c8b7290208dac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb9eb24f_553ef4a6",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2115,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-07-01T19:37:54Z",
+      "side": 1,
+      "message": "Your assumption is incorrect. All AndroidGo devices use userspace LMKD and can\u0027t be ignored. Most of them (if not all of them) are based on 4.9 or earlier kernels. In fact current AndroidGo reference device uses 4.9 kernel and userspace LMKD. So I do have to support this for backward compatibility.",
+      "parentUuid": "975ce9fa_4961c5d9",
       "revId": "718e3c6bbc0b6c52d9ef599cd75c8b7290208dac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
