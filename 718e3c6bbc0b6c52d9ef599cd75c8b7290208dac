@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "975ce9fa_4961c5d9",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2115,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2019-07-01T18:06:10Z",
+      "side": 1,
+      "message": "IMO we should avoid this dynamic check. AIUI, lmkd will be used only on devices that are 4.14 or newer. Old devices just use the in-kernel LMK. Can we enforce pidfd_open availability as a part of VTS testing for new devices? I feel this check complicates things, it is much better to just write the code so it works only with pidfd_open and enforce that devices are compatible.\n\nLet us talk about this more on this thread.",
+      "revId": "718e3c6bbc0b6c52d9ef599cd75c8b7290208dac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
