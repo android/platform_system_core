@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "33c10009_8adb86d6",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1440,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2019-07-01T21:17:42Z",
+      "side": 1,
+      "message": "I don\u0027t think it is an \u0027unlikely\u0027 situation, Suren. We had discussions that with a large number of Android devices, even an unlikely situation can become likely.\n\nI am Ok with it if you want to handle this in a separate CL, but I will like you to at least put a TODO note there that the race exists. That is one of the reasons we want pidfd in lmkd and want to do pidfd-based ops is so that we can reserve the PID and prevent the reuse. I agree the race always existed, but pidfd work aims to fix that and IMO we should not downplay / ignore the race exists.\n\nI also don\u0027t see why it is not possible to address it in this CL itself, since the fix is simple. But I leave that to you if you want it in another CL. Thanks.",
+      "parentUuid": "8521a2ba_48ee2801",
+      "revId": "718e3c6bbc0b6c52d9ef599cd75c8b7290208dac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "975ce9fa_4961c5d9",
         "filename": "lmkd/lmkd.c",
         "patchSetId": 2
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Your assumption is incorrect. All AndroidGo devices use userspace LMKD and can\u0027t be ignored. Most of them (if not all of them) are based on 4.9 or earlier kernels. In fact current AndroidGo reference device uses 4.9 kernel and userspace LMKD. So I do have to support this for backward compatibility.",
       "parentUuid": "975ce9fa_4961c5d9",
+      "revId": "718e3c6bbc0b6c52d9ef599cd75c8b7290208dac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d70a4ef6_2553831a",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2115,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2019-07-01T21:17:42Z",
+      "side": 1,
+      "message": "Ah, ok. It wasn\u0027t really an \u0027assumption\u0027 :) It thought we already had email discussion about the kernel version and agreed only \u003e 4.9 kernels need backports. So does that mean you are backporting to \u003c\u003d v4.9 kernel now as well? I think Sandeep should be looped in since he was hesitant on needing backports to older kernels for this.",
+      "parentUuid": "eb9eb24f_553ef4a6",
       "revId": "718e3c6bbc0b6c52d9ef599cd75c8b7290208dac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
