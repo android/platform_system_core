@@ -22,6 +22,30 @@
       "revId": "0b09ae6e4a34da83c87750bdf3e17db405c2b318",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddedb9c2_e1ac9c9c",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-07-03T15:42:12Z",
+      "side": 1,
+      "message": "Yes I did. Unfortunately on Android pgid is often different from pid even for the main thread of the application because many/most processes are forked from zygote, so their pgid belongs to zygote. The only reliable way I found was to check if tgid\u003d\u003dpid.\nI\u0027ll see how often pgid\u003d\u003dpid for a main thread and if it\u0027s often enough I will implement an optimization to check for that first and only when they do not agree to check for tgid\u003d\u003dpid.",
+      "parentUuid": "58ce15ab_dfb19a99",
+      "range": {
+        "startLine": 555,
+        "startChar": 0,
+        "endLine": 588,
+        "endChar": 0
+      },
+      "revId": "0b09ae6e4a34da83c87750bdf3e17db405c2b318",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
