@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4f6a900a_6d2d754b",
+        "filename": "init/first_stage_init.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1131915
+      },
+      "writtenOn": "2019-07-03T20:45:33Z",
+      "side": 1,
+      "message": "That was intentional on my part - it was useful in my experience to be able to verify or change things in the system, then attempt to start Android.",
+      "parentUuid": "d1518d0f_c5f94e16",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 68
+      },
+      "revId": "ec2d26ee7a85d47b9e865eb4930dca64c5abb3fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fec304f4_2279418e",
         "filename": "init/first_stage_init.cpp",
         "patchSetId": 11
@@ -36,6 +60,24 @@
       "writtenOn": "2019-07-03T20:23:41Z",
       "side": 1,
       "message": "Have you actually seen this not open successfully on a first attempt but complete in a second?  There shouldn\u0027t be any races here; we don\u0027t have ueventd or anything else running that would touch /dev and the mknod() above should be synchronous.",
+      "revId": "ec2d26ee7a85d47b9e865eb4930dca64c5abb3fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "303a69b4_0c9d8ef0",
+        "filename": "init/first_stage_init.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1131915
+      },
+      "writtenOn": "2019-07-03T20:45:33Z",
+      "side": 1,
+      "message": "Yep I hit this (my original code did not have this retry). The serial console was not ready, probably because I had a related kernel module loading immediately before this.\n\nFrom what I read and have observed it looks like mknod doesn\u0027t attempt to do anything with the underlying device driver - it just creates the file with associated device major/minor, and any issues with the device wouldn\u0027t be observed until an operation on the file occurs.",
+      "parentUuid": "fec304f4_2279418e",
       "revId": "ec2d26ee7a85d47b9e865eb4930dca64c5abb3fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "97b6d971_dea468ca",
+        "filename": "init/first_stage_init.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1131915
+      },
+      "writtenOn": "2019-07-03T20:45:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26bd46eb_3a8b43dd",
+      "range": {
+        "startLine": 135,
+        "startChar": 23,
+        "endLine": 135,
+        "endChar": 35
+      },
+      "revId": "ec2d26ee7a85d47b9e865eb4930dca64c5abb3fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec9b031b_1c25eef2",
         "filename": "init/first_stage_init.cpp",
         "patchSetId": 11
@@ -79,6 +145,24 @@
       "revId": "ec2d26ee7a85d47b9e865eb4930dca64c5abb3fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2fe8379_436d7b9c",
+        "filename": "init/first_stage_init.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1131915
+      },
+      "writtenOn": "2019-07-03T20:45:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec9b031b_1c25eef2",
+      "revId": "ec2d26ee7a85d47b9e865eb4930dca64c5abb3fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
