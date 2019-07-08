@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "94e3fea6_0abedee5",
+        "filename": "init/first_stage_init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-07-08T16:04:33Z",
+      "side": 1,
+      "message": "I wonder what the overhead of having extra tmpfs mounts is.  It wouldn\u0027t be totally unprecedented to have this in /dev.  We already have __properties__ there.\n\nOr if this is related to apex, maybe put it in /apex?\n\nOtherwise this is fine; I\u0027m just wondering if there\u0027s too much overhead to have a tmpfs mount for what\u0027ll likely only ever be 1 (or maybe a few?) files.",
+      "revId": "4e872aa5bd88938a80cf62a617fedfa23e09c744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6fcf5b64_caf028a0",
         "filename": "rootdir/init.rc",
         "patchSetId": 1
@@ -13,6 +30,24 @@
       "writtenOn": "2019-07-08T10:20:52Z",
       "side": 1,
       "message": "why not doing this earlier? (i.e. on early-init)",
+      "revId": "4e872aa5bd88938a80cf62a617fedfa23e09c744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67dbaf4d_d5a6cfff",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-07-08T16:04:33Z",
+      "side": 1,
+      "message": "+1 seems too late.  apexd, ueventd, and subcontext init are all launched already at this point.  2nd stage init itself has shared library dependencies, and actually even 1st stage init on most devices too.\n\nI didn\u0027t quite catch from the bug what this is used for.  Maybe it\u0027s okay that these are already launched?",
+      "parentUuid": "6fcf5b64_caf028a0",
       "revId": "4e872aa5bd88938a80cf62a617fedfa23e09c744",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
