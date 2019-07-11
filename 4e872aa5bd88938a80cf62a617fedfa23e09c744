@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ecfcf32f_fd8fdb82",
+        "filename": "init/first_stage_init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2019-07-11T08:17:10Z",
+      "side": 1,
+      "message": "I could not find any related early-mounted partition, and expected mounting new tmpfs would not be a big burden. Anyway, as long as /dev can be multi-purpose, I moved target directory to /dev/linkerconfig from init and removed this mount. Probably we can get back to new tmpfs at anytime needed.",
+      "parentUuid": "94e3fea6_0abedee5",
+      "revId": "4e872aa5bd88938a80cf62a617fedfa23e09c744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fcf5b64_caf028a0",
         "filename": "rootdir/init.rc",
         "patchSetId": 1
@@ -69,6 +87,24 @@
       "revId": "4e872aa5bd88938a80cf62a617fedfa23e09c744",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e47f657a_52dbe126",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2019-07-11T08:17:10Z",
+      "side": 1,
+      "message": "I moved this to early-init stage.\n\ntl;dr for this work - This is to generate ld.config.txt during runtime(probably just during init) so we can handle more dynamic stuffs (such as APEX) from linker config file. You can find more details from go/manageable-linker-config",
+      "parentUuid": "c04fb7a3_2920c5f6",
+      "revId": "4e872aa5bd88938a80cf62a617fedfa23e09c744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
