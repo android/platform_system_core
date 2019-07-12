@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a20a4c2_f8ba583e",
+        "filename": "logd/LogBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-07-12T23:06:59Z",
+      "side": 1,
+      "message": "We\u0027d need to get rid of this code if we did the above mechanism, since times won\u0027t be monotonically increasing if we insert the element into the log based on its realtime time stamp.\n\nI\u0027m not sure that changing it to monotonic helps either, since we don\u0027t sort within the \u0027region lock\u0027 and that may create out of order entries, which is also going to cause big problems.\n\nTruthfully, I think we need to get rid of this code in general and make the users responsible for the sorting.",
+      "range": {
+        "startLine": 389,
+        "startChar": 4,
+        "endLine": 438,
+        "endChar": 5
+      },
+      "revId": "2893d09c05cd4b9d5532189ed53b864312e7c307",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba92f558_ddb093a6",
+        "filename": "logd/LogListener.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-07-12T23:06:59Z",
+      "side": 1,
+      "message": "Could we move this line higher, right at the start of this function.  We want to get as close to when the message originated as possible.",
+      "revId": "2893d09c05cd4b9d5532189ed53b864312e7c307",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aeb14b06_d1d7d0eb",
+        "filename": "logd/LogReader.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-07-12T23:06:59Z",
+      "side": 1,
+      "message": "This isn\u0027t right.  If we found a log element in the above LogFindStart code, then we should use that element\u0027s record time.  Otherwise we should use 0, which\u0027ll be an indicator to prune that it cannot prune anything yet as this reader hasn\u0027t started reading.  It\u0027ll then be set more accurately in line 163 of LogTimes.cpp.",
+      "revId": "2893d09c05cd4b9d5532189ed53b864312e7c307",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
