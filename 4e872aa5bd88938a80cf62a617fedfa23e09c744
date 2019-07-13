@@ -177,6 +177,24 @@
       "revId": "4e872aa5bd88938a80cf62a617fedfa23e09c744",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a5cb1e6_d1629ccf",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2019-07-13T00:43:33Z",
+      "side": 1,
+      "message": "This linkerconfig will not only dependent to system image because\n\n1. Will load VNDK related properties based on ro.vendor.version\n - No need to include multiple ld.config.\u003cversion\u003e.txt\n2. Will load APEXes information after APEX is mounted (for processes launched after apexd)\n - No need to update system image for ld.config.txt even if new APEX is introduced.\n\nSome more requirements can be found from https://docs.google.com/document/d/1zXDQVn7cuAu55xSqF1q0AZsQDqpHw7s5ZQ_RRKBZZKE/edit#heading\u003dh.mh43estr0gxg",
+      "parentUuid": "540f9904_d6e78bf7",
+      "revId": "4e872aa5bd88938a80cf62a617fedfa23e09c744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
