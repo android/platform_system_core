@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2cb68ccf_98c940b7",
+        "filename": "libnativeloader/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-15T08:06:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8bec922_0be0bab7",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 72
+      },
+      "revId": "37658b2b76a3a38f1e1c487b038dc7d7d9bd228a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c518985f_fd5a3c64",
         "filename": "libnativeloader/native_loader_test.cpp",
         "patchSetId": 1
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "f89c0be1_aa8ab97f",
+        "filename": "libnativeloader/native_loader_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-15T08:06:09Z",
+      "side": 1,
+      "message": "no. some existing libdl APIs (like android_create_namespace does not return const).\n\nchanging this to const causes an error like this:\n\nexternal/googletest/googlemock/include/gmock/gmock-actions.h:559:18: error: no matching function for call to \u0027ImplicitCast_\u0027\n          value_(ImplicitCast_\u003cResult\u003e(value_before_cast_)) {}\n                 ^~~~~~~~~~~~~~~~~~~~~\nexternal/googletest/googlemock/include/gmock/gmock-actions.h:539:26: note: in instantiation of member function \u0027testing::internal::ReturnAction\u003cconst android_namespace_t *\u003e::Impl\u003cconst android_namespace_t *, android_namespace_t *(const char *, const char *, const char *, unsigned long long, const char *, android_namespace_t *)\u003e::Impl\u0027 requested here\n    return Action\u003cF\u003e(new Impl\u003cR, F\u003e(value_));\n                         ^\nsystem/core/libnativeloader/native_loader_test.cpp:514:17: note: in instantiation of function template specialization \u0027testing::internal::ReturnAction\u003cconst android_namespace_t *\u003e::operator Action\u003candroid_namespace_t *(const char *, const char *, const char *, unsigned long long, const char *, android_namespace_t *)\u003e\u0027 requested here\n      .WillOnce(Return(TO_ANDROID_NAMESPACE(second_app_dex_path.c_str())));\n                ^\nexternal/googletest/googletest/include/gtest/internal/gtest-port.h:1086:11: note: candidate function template not viable: 1st argument (\u0027const android_namespace_t *\u0027) would lose const qualifier\ninline To ImplicitCast_(To x) { return x; }",
+      "parentUuid": "1c8208a6_dcfcaa81",
+      "range": {
+        "startLine": 74,
+        "startChar": 59,
+        "endLine": 74,
+        "endChar": 63
+      },
+      "revId": "37658b2b76a3a38f1e1c487b038dc7d7d9bd228a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5544a5d1_59a246fa",
+        "filename": "libnativeloader/native_loader_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-15T08:06:09Z",
+      "side": 1,
+      "message": "since we can\u0027t make android_namespace_t a const, we can\u0027t put const here as well.",
+      "parentUuid": "c518985f_fd5a3c64",
+      "range": {
+        "startLine": 74,
+        "startChar": 19,
+        "endLine": 74,
+        "endChar": 25
+      },
+      "revId": "37658b2b76a3a38f1e1c487b038dc7d7d9bd228a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27ece987_e20051d1",
         "filename": "libnativeloader/native_loader_test.cpp",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "5404de11_3d04b252",
+        "filename": "libnativeloader/native_loader_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-15T08:06:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27ece987_e20051d1",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 3
+      },
+      "revId": "37658b2b76a3a38f1e1c487b038dc7d7d9bd228a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "947d5787_da0e9c84",
         "filename": "libnativeloader/native_loader_test.cpp",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "37658b2b76a3a38f1e1c487b038dc7d7d9bd228a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba2b038c_48a235f9",
+        "filename": "libnativeloader/native_loader_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-15T08:06:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "947d5787_da0e9c84",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 1
+      },
+      "revId": "37658b2b76a3a38f1e1c487b038dc7d7d9bd228a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
