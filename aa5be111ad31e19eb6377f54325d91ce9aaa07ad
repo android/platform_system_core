@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fea25be7_3f451549",
+        "filename": "debuggerd/libdebuggerd/tombstone.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2019-07-16T22:33:37Z",
+      "side": 1,
+      "message": "Maybe a large-enough stack frame could jump over the guard page? If we had -fstack-check (b/13662332, https://godbolt.org/z/-mtDt7), then a function prologue could probe pages to prevent this jumping.",
+      "parentUuid": "c86b828c_62924dff",
+      "revId": "aa5be111ad31e19eb6377f54325d91ce9aaa07ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1789eb6b_e886c3cd",
         "filename": "debuggerd/libdebuggerd/tombstone.cpp",
         "patchSetId": 3
@@ -83,6 +101,24 @@
       "writtenOn": "2019-07-16T15:56:56Z",
       "side": 1,
       "message": "not sure i understand this one. did you mean _underflow_? does this put you in the pthread_internal_t or TLS space?",
+      "revId": "aa5be111ad31e19eb6377f54325d91ce9aaa07ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "258c1eca_411ec6ab",
+        "filename": "debuggerd/libdebuggerd/tombstone.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2019-07-16T22:33:37Z",
+      "side": 1,
+      "message": "I\u0027d guess \"top of stack\" here refers to the most recent thing placed on the stack, i.e. the lowest address. TLS memory uses the highest addresses. Bionic uses \"stack_top\" in a few places to refer to the highest address instead.",
+      "parentUuid": "3173268b_3fcad92f",
       "revId": "aa5be111ad31e19eb6377f54325d91ce9aaa07ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
