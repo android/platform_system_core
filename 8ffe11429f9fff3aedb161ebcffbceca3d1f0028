@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7956b50_6e40d143",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-07-16T16:35:40Z",
+      "side": 1,
+      "message": "if (!buf) return NULL;",
+      "range": {
+        "startLine": 433,
+        "startChar": 12,
+        "endLine": 433,
+        "endChar": 35
+      },
+      "revId": "8ffe11429f9fff3aedb161ebcffbceca3d1f0028",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2e80ee3_c9831759",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-07-16T16:35:40Z",
+      "side": 1,
+      "message": "4K-\u003e6K-\u003e9K-\u003e13.5K kind of odd\n\nMaybe just consider buf_size *\u003d 2?",
+      "range": {
+        "startLine": 459,
+        "startChar": 8,
+        "endLine": 459,
+        "endChar": 33
+      },
+      "revId": "8ffe11429f9fff3aedb161ebcffbceca3d1f0028",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f24aa67_8829438f",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-07-16T16:35:40Z",
+      "side": 1,
+      "message": "Dangerous memory leak if realloc fails.\n\nchar *newbuf \u003d realloc(buf, buf_size);\nif (!newbuf) {\n    break; /* release to caller what we managed to get */\n}\nbuf \u003d newbuf;\n\n(realloc returns NULL and does not free incoming buf on error).",
+      "range": {
+        "startLine": 460,
+        "startChar": 8,
+        "endLine": 460,
+        "endChar": 37
+      },
+      "revId": "8ffe11429f9fff3aedb161ebcffbceca3d1f0028",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
