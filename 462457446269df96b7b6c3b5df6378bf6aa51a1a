@@ -414,6 +414,30 @@
     },
     {
       "key": {
+        "uuid": "67fa3818_adbcf0fe",
+        "filename": "libnativeloader/native_loader_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-07-16T13:13:56Z",
+      "side": 1,
+      "message": "No, my suggestion doesn\u0027t mock out NativeLoaderNamespace. To give an example of one method:\n\n  class MockPlatform : public Platform {\n    MOCK_METHOD2(get_exported_namespace, const char*(bool bridged, const char* name));\n  ...\n\n  struct android_namespace_t* android_get_exported_namespace(const char* name) {\n    return TO_ANDROID_NAMESPACE(mock-\u003eget_exported_namespace(false, name));\n  }\n\n  struct native_bridge_namespace_t* NativeBridgeGetExportedNamespace(const char* name) {\n    return TO_BRIDGE_NAMESPACE(mock-\u003eget_exported_namespace(true, name));\n  }\n\nTo mock a call through both bridged and non-bridged code paths:\n\n  EXPECT_CALL(*mock, get_exported_namespace(Eq(bridged), StrEq(\"foo\")))\n      .WillOnce(Return(\"foo\"))\n\n\u003e I don\u0027t understand why a test needs to hide the differences.\n\nBecause we would be less tempted to add TODOs just like the one in the else branch below. There\u0027s little or nothing in the if branch that doesn\u0027t have exact corresponding native bridge calls.",
+      "parentUuid": "9e8066c9_5f730e7d",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 19
+      },
+      "revId": "462457446269df96b7b6c3b5df6378bf6aa51a1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72fe478e_04a75426",
         "filename": "libnativeloader/native_loader_test.cpp",
         "patchSetId": 2
