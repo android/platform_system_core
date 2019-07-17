@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d90f9db8_a4a4b0c3",
+        "filename": "debuggerd/libdebuggerd/tombstone.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2019-07-17T20:36:02Z",
+      "side": 1,
+      "message": "This happens every time when running crasher64 stack-overflow. It looks like the main thread doesn\u0027t have a guard page. Is that expected?\n\nHere are the last two maps:\n\n    0000007c\u0027a615c000-0000007c\u0027a615dfff rw-         0      2000\n    0000007f\u0027ed1c7000-0000007f\u0027ed9c6fff rw-         0    800000  [stack]",
+      "parentUuid": "fea25be7_3f451549",
+      "revId": "aa5be111ad31e19eb6377f54325d91ce9aaa07ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1789eb6b_e886c3cd",
         "filename": "debuggerd/libdebuggerd/tombstone.cpp",
         "patchSetId": 3
@@ -90,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "224d25e0_291a8489",
+        "filename": "debuggerd/libdebuggerd/tombstone.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2019-07-17T20:36:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3ac04e90_4ad30a0a",
+      "revId": "aa5be111ad31e19eb6377f54325d91ce9aaa07ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3173268b_3fcad92f",
         "filename": "debuggerd/libdebuggerd/tombstone.cpp",
         "patchSetId": 3
@@ -119,6 +155,24 @@
       "side": 1,
       "message": "I\u0027d guess \"top of stack\" here refers to the most recent thing placed on the stack, i.e. the lowest address. TLS memory uses the highest addresses. Bionic uses \"stack_top\" in a few places to refer to the highest address instead.",
       "parentUuid": "3173268b_3fcad92f",
+      "revId": "aa5be111ad31e19eb6377f54325d91ce9aaa07ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3895d0ed_2d458eb8",
+        "filename": "debuggerd/libdebuggerd/tombstone.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2019-07-17T20:36:02Z",
+      "side": 1,
+      "message": "On arm32 (on taimen at least), the sp doesn\u0027t appear to be updated until after the instruction completes. So you get a fault address in a different map, while the current sp will be at the top of the current stack.\n\nOn aarch64 the sp is updated before the instruction completes (on taimen at least), so you see different behavior (and why I do an absolute value check for difference between fault address and sp).\n\nThe crasher stack-overflow hits this case every time.",
+      "parentUuid": "258c1eca_411ec6ab",
       "revId": "aa5be111ad31e19eb6377f54325d91ce9aaa07ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
