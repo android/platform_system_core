@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34cda940_030f39f3",
+        "filename": "fs_mgr/libsnapshot/include/libsnapshot/snapshot.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-07-17T02:29:39Z",
+      "side": 1,
+      "message": "nit: Can this return a percentage number? e.g. checking how close is the blocks allocated to the metadata blocks?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 33
+      },
+      "revId": "d2abff8b3324ddb6bb71ae8c505e90fc5f76ae9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50e2fa72_288ce282",
+        "filename": "fs_mgr/libsnapshot/include/libsnapshot/snapshot.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-07-17T02:29:39Z",
+      "side": 1,
+      "message": "nit: change this to \"bool TryCompleteMerge(timeout)\" and drop the precondition. That way you can even drop the GetMergeStatus function (unless GetMergeStatus also returns a percentage number).\n\n- If timeout \u003d\u003d 0 and merge status !\u003d COMPLETED, return false immediately\n- If timeout \u003e 0, wait for merge status to turn into COMPLETED (with the given timeout) and complete the merge after that\n- If timeout is very big, essentially block until merge status is COMPLETED and complete the merge.",
+      "range": {
+        "startLine": 72,
+        "startChar": 59,
+        "endLine": 75,
+        "endChar": 30
+      },
+      "revId": "d2abff8b3324ddb6bb71ae8c505e90fc5f76ae9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
