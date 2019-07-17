@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "a5377fa5_324afa92",
+        "filename": "debuggerd/libdebuggerd/tombstone.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-07-17T20:59:42Z",
+      "side": 1,
+      "message": "ah, yes, that is expected. (there\u0027s magic in the kernel to extend the main thread stack if you touch the next page.)",
+      "parentUuid": "d90f9db8_a4a4b0c3",
+      "revId": "aa5be111ad31e19eb6377f54325d91ce9aaa07ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1789eb6b_e886c3cd",
         "filename": "debuggerd/libdebuggerd/tombstone.cpp",
         "patchSetId": 3
@@ -173,6 +191,24 @@
       "side": 1,
       "message": "On arm32 (on taimen at least), the sp doesn\u0027t appear to be updated until after the instruction completes. So you get a fault address in a different map, while the current sp will be at the top of the current stack.\n\nOn aarch64 the sp is updated before the instruction completes (on taimen at least), so you see different behavior (and why I do an absolute value check for difference between fault address and sp).\n\nThe crasher stack-overflow hits this case every time.",
       "parentUuid": "258c1eca_411ec6ab",
+      "revId": "aa5be111ad31e19eb6377f54325d91ce9aaa07ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb4436e2_c01024d1",
+        "filename": "debuggerd/libdebuggerd/tombstone.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-07-17T20:59:42Z",
+      "side": 1,
+      "message": "worth a code comment? and maybe for the main stack one too, since these were all non-obvious?",
+      "parentUuid": "3895d0ed_2d458eb8",
       "revId": "aa5be111ad31e19eb6377f54325d91ce9aaa07ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
