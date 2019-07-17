@@ -141,6 +141,30 @@
       "revId": "d2abff8b3324ddb6bb71ae8c505e90fc5f76ae9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1ac14f0_115c4887",
+        "filename": "fs_mgr/libsnapshot/include/libsnapshot/snapshot.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-07-17T22:42:18Z",
+      "side": 1,
+      "message": "Okay, I\u0027ve renamed this to \"WaitForMerge\", which I think encapsulates the desired flow better: normally, callers of InitiateMerge() should call WaitForMerge() if it succeeds. If a reboot occurs during a merge, and we wind up in recovery/fastbootd or first-stage init, then WaitForMerge() will be called on its own.",
+      "parentUuid": "37d7bfad_2fd1c945",
+      "range": {
+        "startLine": 72,
+        "startChar": 59,
+        "endLine": 75,
+        "endChar": 30
+      },
+      "revId": "d2abff8b3324ddb6bb71ae8c505e90fc5f76ae9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
