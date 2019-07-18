@@ -189,6 +189,30 @@
       "revId": "d2abff8b3324ddb6bb71ae8c505e90fc5f76ae9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68e4d60e_5d65ebeb",
+        "filename": "fs_mgr/libsnapshot/include/libsnapshot/snapshot.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-07-18T19:47:12Z",
+      "side": 1,
+      "message": "A merge could be interrupted at two points: during the actual merge, and during the state cleanup. In either case, first-stage init could still create a snapshot-merge target, but GetMergeStatus() would immediately return finished.\n\nWe\u0027ll have a startup task that checks for incomplete merges, to ensure WaitForMerge() gets called again.",
+      "parentUuid": "9b7bb349_9b8cc014",
+      "range": {
+        "startLine": 72,
+        "startChar": 59,
+        "endLine": 75,
+        "endChar": 30
+      },
+      "revId": "d2abff8b3324ddb6bb71ae8c505e90fc5f76ae9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
