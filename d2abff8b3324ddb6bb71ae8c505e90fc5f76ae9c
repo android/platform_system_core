@@ -165,6 +165,30 @@
       "revId": "d2abff8b3324ddb6bb71ae8c505e90fc5f76ae9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b7bb349_9b8cc014",
+        "filename": "fs_mgr/libsnapshot/include/libsnapshot/snapshot.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-07-18T17:56:09Z",
+      "side": 1,
+      "message": "Okay; so IIUC, \"MergeCompleted (100%)\" indicates that I no longer need to call \"WaitForMerge\" again, right? From the client point of view, if the following happens:\n\n1. InitiateMerge()\n2. WaitForMerge(); // it is blocking, and the client is waiting\n    - (internally, merge has been finished, but the snapshot-merge target hasn\u0027t been replaced with dm-linear yet; client doesn\u0027t know this)\n    - At this point, any call to GetMergeStatus will return 99%(?) Since it is not actually \"completed\" because the new table is not activated?\n3. power loss / reboots right before the new table is activated\n4. When reboot, it boots from base device directly (?)\n5, GetMergeStatus() returns MergeCompleted or 100% (because #4)\n\nI shouldn\u0027t need to call WaitForMerge again (like what we would do for ProcessCompletedMerge), correct?",
+      "parentUuid": "a1ac14f0_115c4887",
+      "range": {
+        "startLine": 72,
+        "startChar": 59,
+        "endLine": 75,
+        "endChar": 30
+      },
+      "revId": "d2abff8b3324ddb6bb71ae8c505e90fc5f76ae9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
