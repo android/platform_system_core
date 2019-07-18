@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6faac364_c5e7bafa",
+        "filename": "debuggerd/client/debuggerd_client.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-07-18T20:44:24Z",
+      "side": 1,
+      "message": "just emit proc_name directly here, instead of copying it into a std::string?",
+      "range": {
+        "startLine": 96,
+        "startChar": 28,
+        "endLine": 96,
+        "endChar": 35
+      },
+      "revId": "864d3c53f51adc32897475b298623301612ebf2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82980f07_62d1333a",
+        "filename": "debuggerd/client/debuggerd_client.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-07-18T20:44:24Z",
+      "side": 1,
+      "message": "PLOG(WARNING) \u003c\u003c \"libdebuggerd_client: Failed to read \\\"\" \u003c\u003c path \u003c\u003c \"\\\";",
+      "range": {
+        "startLine": 119,
+        "startChar": 52,
+        "endLine": 120,
+        "endChar": 97
+      },
+      "revId": "864d3c53f51adc32897475b298623301612ebf2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9475c03_edc55351",
+        "filename": "debuggerd/client/debuggerd_client.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-07-18T20:44:24Z",
+      "side": 1,
+      "message": "There\u0027s an extra copy here because std::stringstream::str() returns a string by value. You can avoid this by calling str() once on the outside, or using the shiny new C++17 syntax: `if (std::string str \u003d data.str(); !str.empty())`\n\n(You can remove another copy by poking at std::stringstream::rdbuf directly, but that\u0027s a lot more unfamiliar than the obvious optimization here, so I\u0027d probably recommend against it)",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 28
+      },
+      "revId": "864d3c53f51adc32897475b298623301612ebf2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "135a6571_7bbd7642",
+        "filename": "debuggerd/client/debuggerd_client.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-07-18T20:44:24Z",
+      "side": 1,
+      "message": "triggered\n\nAlso, maybe rephrase this as \"debuggerd_trigger_dump results in every thread in the process being interrupted by a signal, so we need to fetch the wchan data before calling that.\"",
+      "range": {
+        "startLine": 337,
+        "startChar": 35,
+        "endLine": 337,
+        "endChar": 44
+      },
+      "revId": "864d3c53f51adc32897475b298623301612ebf2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
