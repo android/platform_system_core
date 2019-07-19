@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9168041a_3bda9553",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1131154
+      },
+      "writtenOn": "2019-07-19T13:58:01Z",
+      "side": 1,
+      "message": "This err variable can be declared for the whole \"else if\" block context, and it can be used twice (in read_bootloader_message and in write_bootloader_message), instead of declaring it twice, which makes code hard to read (especially because it\u0027s declared inside of \"if\" block).",
+      "revId": "65ab0c5109318fcac23af4e361fa0f83e0c83fdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfef4a18_772428ac",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1131154
+      },
+      "writtenOn": "2019-07-19T13:58:01Z",
+      "side": 1,
+      "message": "Why the whole buffer should be checked? Isn\u0027t it enough to just check the first character in boot.command? Like this:\n\n    if (boot.command[0] \u003d\u003d \u0027\\0\u0027)\n\nIn that case we can get rid of zero_buffer and avoid traversing through the whole buffer. Also it\u0027s easier to read (as it\u0027s more idiomatic in C).",
+      "revId": "65ab0c5109318fcac23af4e361fa0f83e0c83fdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
