@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "78cfc984_c45e5cef",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-07-19T20:05:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0709bde9_ec882b3c",
+      "revId": "65ab0c5109318fcac23af4e361fa0f83e0c83fdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfef4a18_772428ac",
         "filename": "init/reboot.cpp",
         "patchSetId": 2
@@ -100,6 +118,24 @@
       "writtenOn": "2019-07-19T13:58:01Z",
       "side": 1,
       "message": "Why the whole buffer should be checked? Isn\u0027t it enough to just check the first character in boot.command? Like this:\n\n    if (boot.command[0] \u003d\u003d \u0027\\0\u0027)\n\nIn that case we can get rid of zero_buffer and avoid traversing through the whole buffer. Also it\u0027s easier to read (as it\u0027s more idiomatic in C).",
+      "revId": "65ab0c5109318fcac23af4e361fa0f83e0c83fdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca08af61_91fe9783",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2019-07-19T20:05:59Z",
+      "side": 1,
+      "message": "I am okay with the change. It\u0027s less safer but we should have control of the bootloader message writer, who is writing c strings.",
+      "parentUuid": "dfef4a18_772428ac",
       "revId": "65ab0c5109318fcac23af4e361fa0f83e0c83fdc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
