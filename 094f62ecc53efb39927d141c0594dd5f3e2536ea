@@ -46,6 +46,30 @@
       "revId": "094f62ecc53efb39927d141c0594dd5f3e2536ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "898abfbb_0c01c6b5",
+        "filename": "common_apex/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2019-07-23T22:19:25Z",
+      "side": 1,
+      "message": "\u003e this APEX will be updated along with other APEXes that use this. So ABI instability is not a problem.\n\nHow does that actually work? The whole system image is updated at the same time, but since there are prebuilts involved it\u0027s extremely difficult (nearly impossible) to make ABI changes that affect the prebuilts.\n\nAre all of the dependent APEXs building against a snapshot of the common APEX? Is the common APEX a snapshot of the platform libraries? Or are these all built simultaneously. If they\u0027re not snapshots, that means we can\u0027t submit any change until all the downstream fixes are available. This takes the burden off the APEX owners and gives them basically no incentive to actually adapt to ABI changes, which effectively means there will be no changes.\n\nIf they do build a snapshot, how do we ensure that changes to the common APEX won\u0027t end up breaking the downstream projects in unintended ways? And when they break in an expected way (have to adapt to some ABI change), what happens if they don\u0027t? Do we have to roll back the change to the common APEX?\n\nIs this the same libc++ as the platform\u0027s, or is this another build variant? i.e. if I want to make ABI changes to /system/lib64/libc++.so, what are the constraints? If the APEX owners don\u0027t adapt to the ABI changes and the common APEX change has to be rolled back, does the platform also have to roll back the change?\n\nI\u0027m sure these things have been thought about, but they haven\u0027t been communicated to us so it\u0027s very unclear how any of this works, and we can\u0027t sign off on it if we don\u0027t understand it.",
+      "parentUuid": "6e31f175_f304f8cf",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 13
+      },
+      "revId": "094f62ecc53efb39927d141c0594dd5f3e2536ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
