@@ -70,6 +70,30 @@
       "revId": "094f62ecc53efb39927d141c0594dd5f3e2536ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79a316ff_90b8aa60",
+        "filename": "common_apex/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-24T02:36:46Z",
+      "side": 1,
+      "message": "Yeah, the APEX prebuilts are all built from the same source tree (at least for now). If you make an ABI change to a lib in the common APEX, then it will be reflected to all APEX prebuilts at the same time when they are built for the next train.\n\nWe have a plan to make it \"versioned\" snapshots in order to unbundle the modules dev from the platform dev. Changing the ABI will bump the snapshot version. However, APEXes are protected from the ABI change because they can build against the old snapshot. The only requirement is that all APEXes in the same train should be built with the version of the snapshot that the common APEX in the train is providing.\n\n\u003e Is this the same libc++ as the platform\u0027s, or is this another build variant? \n\nInternally, a lib built for an APEX is mutated. So /system/lib/libc++.so and libc++.so inside the common APEX are built separately. But since no std objects are shared across the platform and APEXes, ABI mismatch across them is okay.\n\n\u003e If the APEX owners don\u0027t adapt to the ABI changes and the common APEX change has to be rolled back, does the platform also have to roll back the change?\n\nNo. Also note that rollback is a train-level event. So if the common APEX is rolled back, so do the other APEXes in the same train.",
+      "parentUuid": "898abfbb_0c01c6b5",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 13
+      },
+      "revId": "094f62ecc53efb39927d141c0594dd5f3e2536ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
