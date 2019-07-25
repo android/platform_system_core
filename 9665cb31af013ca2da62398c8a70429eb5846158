@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e692221_df4485b8",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-07-25T16:07:44Z",
+      "side": 1,
+      "message": "Unused now.",
+      "revId": "9665cb31af013ca2da62398c8a70429eb5846158",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5540ce7_5a7b5490",
+        "filename": "libnativeloader/native_loader_namespace.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-07-25T16:07:44Z",
+      "side": 1,
+      "message": "This is slightly different behavior than before.  Is it possible (or valid?) for parent to be non-null and GetPlatformNamespace() to fail?  If so, the new code would return an error but the previous code wouldn\u0027t.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 3
+      },
+      "revId": "9665cb31af013ca2da62398c8a70429eb5846158",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d240c6a8_45b9613b",
+        "filename": "libnativeloader/native_loader_namespace.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-07-25T16:07:44Z",
+      "side": 1,
+      "message": "Does android_create_namespace() always report errors through dlerror() ?  I wonder if GetLinkerError() wouldn\u0027t be better to be done inline in these functions.  Just a thought, I\u0027m happy with either direction that you take.",
+      "revId": "9665cb31af013ca2da62398c8a70429eb5846158",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb43bea2_470a1e81",
+        "filename": "libnativeloader/public_libraries.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-07-25T16:07:44Z",
+      "side": 1,
+      "message": "I know enh@ isn\u0027t a fan of this, but I do this like:\n \n    if (auto ret \u003d check_soname(trimmed_line); !ret) {\n      return ret.error();\n    }\n\nIt saves a line + it scopes \u0027ret\u0027 to just the if statement.\n\nMaybe we need a RETURN_IF_ERROR() macro like g3?  Especially if we could still do \u003c\u003c after, e.g.\n\nRETURN_IF_ERROR(check_soname(trimmed_line)) \u003c\u003c \"Added error context\";  \n\nAlthough, most of my examples in init put the logs in the opposite order, e.g.\n\n    if (auto result \u003d service-\u003eStart(); !result) {\n        return Error() \u003c\u003c \"Could not start exec background service: \" \u003c\u003c result.error();\n    }",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 5
+      },
+      "revId": "9665cb31af013ca2da62398c8a70429eb5846158",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
