@@ -118,6 +118,30 @@
       "revId": "094f62ecc53efb39927d141c0594dd5f3e2536ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bf180ea_ef6e19c5",
+        "filename": "common_apex/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-26T03:18:26Z",
+      "side": 1,
+      "message": "\u003e we can\u0027t update one module for some reason but still want to update the others\n\nAlthough that\u0027s not a desirable situation, if that happens, we could include (or statically link) these libs in the apex for the exceptional case. It doesn\u0027t need to be a norm.\n\n\u003e why do we even have multiple modules?\n\nWell, some modules might not depend on this common apex. Even for the apexes that depend on the common APEX, we can always have internal enhancements that don\u0027t involve ABI change. Then it would be better for us to update only that APEX to reduce the network usage.",
+      "parentUuid": "64ee1b46_f5f78bde",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 13
+      },
+      "revId": "094f62ecc53efb39927d141c0594dd5f3e2536ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
