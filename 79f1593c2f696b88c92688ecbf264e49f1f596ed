@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a134ecda_df33df23",
+        "filename": "fs_mgr/libsnapshot/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-07-31T19:58:57Z",
+      "side": 1,
+      "message": "cc_library_static {\n    name: \"libsnapshot\",\n    recovery_available: true,\n    whole_static_libs: [\"libfiemap_binder\"]\n    target: {\n        recovery: {\n            exclude_static_libs: [\"libfiemap_binder\"]\n        }\n    }\n}\n\nNot sure if exclude_static_libs works with whole_static_libs though. If not, we will probably require clients to link to libfiemap_binder as well (or fix the build system to add target.recovery.whole_static_libs, or target.recovery.exclude_whole_static_libs)",
+      "revId": "79f1593c2f696b88c92688ecbf264e49f1f596ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
