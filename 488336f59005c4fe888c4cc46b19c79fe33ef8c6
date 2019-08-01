@@ -46,6 +46,30 @@
       "revId": "488336f59005c4fe888c4cc46b19c79fe33ef8c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b345161_827315e3",
+        "filename": "fs_mgr/libsnapshot/include/libsnapshot/snapshot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-08-01T22:17:42Z",
+      "side": 1,
+      "message": "I\u0027ll clarify the units/rules in the comment. I think it\u0027s less confusing to have everything in the same units (or, rename parameters to something like \"num_cow_sectors\"). But since update_engine will be computing the size in bytes, seems fine for libsnapshot to do the conversion internally and error if the caller passed in something bad. (Also, we can always round up if we want... the error is more a sanity check.)",
+      "parentUuid": "d04d94e3_a163ebd7",
+      "range": {
+        "startLine": 133,
+        "startChar": 7,
+        "endLine": 133,
+        "endChar": 13
+      },
+      "revId": "488336f59005c4fe888c4cc46b19c79fe33ef8c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
