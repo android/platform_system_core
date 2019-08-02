@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fca2cc18_3d1bb783",
+        "filename": "fs_mgr/libsnapshot/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-08-02T01:34:58Z",
+      "side": 1,
+      "message": "snapshot.h uses headers from libfiemap. If you put libfiemap in whole_static_libs, update_engine should link to libfiemap to get the headers again?\n\nOr I add libfiemap_headers library and export_header_lib_headers here. There\u0027s no export_whole_static_lib_headers.\n\nOr, is it possible to not include libfiemap/image_manager.h in snapshot.h? By forward declaring android::fiemap::IImageManager?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 20
+      },
+      "revId": "aed4f83dbaca315807aac56252a7e191289538d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
