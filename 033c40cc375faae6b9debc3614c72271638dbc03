@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5172625_a268e85e",
+        "filename": "fs_mgr/libdm/dm_target.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-08-02T00:01:02Z",
+      "side": 1,
+      "message": "nit: \u003c\u003c params",
+      "revId": "033c40cc375faae6b9debc3614c72271638dbc03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6befbbb4_4318e563",
+        "filename": "fs_mgr/libsnapshot/include/libsnapshot/snapshot.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-08-02T00:01:02Z",
+      "side": 1,
+      "message": "In a later CL that I have, this doesn\u0027t work well if I include \u003cgtest/gtest.h\u003e before including this header.\n\nHowever, if I have #ifndef FRIEND_TEST around this, I can\u0027t unconditionally #undef it at the end of snapshot.h, because this will fail:\n\n    #include \u003cgtest/gtest.h\u003e\n    #include \"snapshot.h\"\n    class Foo { \n       FRIEND_TEST(Foo, Bar); // error: FRIEND_TEST not defined\n    };\n\nNot sure what\u0027s the best way to handle this. A workaround is to have something like:\n\n    #ifdef FRIEND_TEST\n    #define FRIEND_TEST_INTERNAL FRIEND_TEST\n    #else\n    #define FRIEND_TEST_INTERNAL ...\n    #endif\n    ...\n    #undef FRIEND_TEST_INTERNAL",
+      "revId": "033c40cc375faae6b9debc3614c72271638dbc03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62123a31_0994f409",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-08-02T00:01:02Z",
+      "side": 1,
+      "message": "nit: Why not LP_SECTOR_SIZE? To avoid circular dependencies? It is only in the headers though.",
+      "range": {
+        "startLine": 154,
+        "startChar": 26,
+        "endLine": 154,
+        "endChar": 37
+      },
+      "revId": "033c40cc375faae6b9debc3614c72271638dbc03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd5f12f3_71bed698",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-08-02T00:01:02Z",
+      "side": 1,
+      "message": "Is there a reason why this is in ext4_utils? Is this ext4 specific? (Looking at its implementation, it doesn\u0027t look like it) So maybe we should refactor and move this out of libext4_utils at some point...\n\n(libsnapshot is a static library, and both update_engine and init will need to include all its dependencies, which is a pain. Maybe it should just whole_static_libs: [libfiemap, libext4_utils].",
+      "range": {
+        "startLine": 161,
+        "startChar": 24,
+        "endLine": 161,
+        "endChar": 45
+      },
+      "revId": "033c40cc375faae6b9debc3614c72271638dbc03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e528b6af_f2653f35",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-08-02T00:01:02Z",
+      "side": 1,
+      "message": "nit",
+      "range": {
+        "startLine": 541,
+        "startChar": 38,
+        "endLine": 541,
+        "endChar": 56
+      },
+      "revId": "033c40cc375faae6b9debc3614c72271638dbc03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
