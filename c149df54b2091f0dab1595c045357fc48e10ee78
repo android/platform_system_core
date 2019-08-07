@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "69d0fd0d_ca6b2580",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-08-07T18:27:26Z",
+      "side": 1,
+      "message": "I\u0027m still wary about this semantic (got two more point-in-case comments about it below).\n\nI think we\u0027d be better off pushing it upwards, i.e. add the also_use_as_anonymous flag to LibraryNamespaces::Create and do this in the Java code if there\u0027s no better way. Shouldn\u0027t block on that though, but WDYT about opening a ticket to track it?",
+      "range": {
+        "startLine": 9,
+        "startChar": 45,
+        "endLine": 9,
+        "endChar": 68
+      },
+      "revId": "c149df54b2091f0dab1595c045357fc48e10ee78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "250673cb_499e3565",
         "filename": "/COMMIT_MSG",
         "patchSetId": 12
@@ -46,6 +69,121 @@
       "revId": "c149df54b2091f0dab1595c045357fc48e10ee78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "674a8e92_f4703c00",
+        "filename": "libnativeloader/include/nativeloader/dlext_namespaces.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-08-07T18:27:26Z",
+      "side": 1,
+      "message": "Can this be removed? If so, please move down the explanation of what an anonymous namespace is to the enum constant below.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 78
+      },
+      "revId": "c149df54b2091f0dab1595c045357fc48e10ee78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8ebc18a_1c8b1b58",
+        "filename": "libnativeloader/library_namespaces.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-08-07T18:27:26Z",
+      "side": 1,
+      "message": "Please avoid implicit type conversion from pointer to bool.",
+      "range": {
+        "startLine": 162,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 6
+      },
+      "revId": "c149df54b2091f0dab1595c045357fc48e10ee78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e295847_ddad8b0b",
+        "filename": "libnativeloader/library_namespaces.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-08-07T18:27:26Z",
+      "side": 1,
+      "message": "Not sure about reintroducing this variable, but if you prefer it I suggest putting this bit in a brace block to limit its scope.",
+      "range": {
+        "startLine": 164,
+        "startChar": 22,
+        "endLine": 164,
+        "endChar": 27
+      },
+      "revId": "c149df54b2091f0dab1595c045357fc48e10ee78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "607326fa_5523c437",
+        "filename": "libnativeloader/library_namespaces.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-08-07T18:27:26Z",
+      "side": 1,
+      "message": "Even the theoretical risk of a race is an indication that the notion of a \"first\" namespace is flawed, but I suppose that would be a problem in the classloader or the app. (No change required, just saying as another point-in-case.)",
+      "range": {
+        "startLine": 212,
+        "startChar": 72,
+        "endLine": 213,
+        "endChar": 16
+      },
+      "revId": "c149df54b2091f0dab1595c045357fc48e10ee78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0df9bd9_18ef126b",
+        "filename": "libnativeloader/native_loader_namespace.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-08-07T18:27:26Z",
+      "side": 1,
+      "message": "Nit: \"First\" is thankfully not relevant on this level since it\u0027s explicit through the also_used_as_anonymous flag. Suggest dropping it.",
+      "range": {
+        "startLine": 99,
+        "startChar": 9,
+        "endLine": 99,
+        "endChar": 14
+      },
+      "revId": "c149df54b2091f0dab1595c045357fc48e10ee78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
