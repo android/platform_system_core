@@ -16,6 +16,24 @@
       "revId": "04d91871df8df89c4f31438e524c65036f979546",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaa52603_cd3f6bb6",
+        "filename": "fs_mgr/liblp/property_fetcher.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-08-07T01:42:46Z",
+      "side": 1,
+      "message": "Do you mean to have an IPropertyFetcher per MetadataBuilder object?\n\nThe problem is that MetadataBuilder::NewForUpdate() (and some other static functions) also needs to read sysprops, making it hard to remove the global instance of it.\n\nThis is the best I can do to avoid a global std::unique_ptr\u003cIPropertyFetcher\u003e (outside of the function) and be thread-safe.",
+      "parentUuid": "47eb7c1f_bbc88de6",
+      "revId": "04d91871df8df89c4f31438e524c65036f979546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
