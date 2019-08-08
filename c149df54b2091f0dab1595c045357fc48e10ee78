@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d3b6896e_d4ea13d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-08T10:30:00Z",
+      "side": 1,
+      "message": "I am rather against to pushing this upwards. I think anonymous namespace is a concept that is private to linker and libnativeloader. Higher-level software should better be ignorant of this. \n\nIf you really want to offload some of the decision to the higher-level components, all they can do is to give some hint (i.e. this is the main classloader), not the explicit command (i.e. make this an anonymous ns)",
+      "parentUuid": "69d0fd0d_ca6b2580",
+      "range": {
+        "startLine": 9,
+        "startChar": 45,
+        "endLine": 9,
+        "endChar": 68
+      },
+      "revId": "c149df54b2091f0dab1595c045357fc48e10ee78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "250673cb_499e3565",
         "filename": "/COMMIT_MSG",
         "patchSetId": 12
@@ -95,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ded3ad98_797e9685",
+        "filename": "libnativeloader/include/nativeloader/dlext_namespaces.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-08T10:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "674a8e92_f4703c00",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 78
+      },
+      "revId": "c149df54b2091f0dab1595c045357fc48e10ee78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8ebc18a_1c8b1b58",
         "filename": "libnativeloader/library_namespaces.cpp",
         "patchSetId": 12
@@ -115,6 +163,30 @@
       "revId": "c149df54b2091f0dab1595c045357fc48e10ee78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "416a7628_491d3e04",
+        "filename": "libnativeloader/library_namespaces.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-08T10:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8ebc18a_1c8b1b58",
+      "range": {
+        "startLine": 162,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 6
+      },
+      "revId": "c149df54b2091f0dab1595c045357fc48e10ee78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a0d6aa15_d1acf80e",
+        "filename": "libnativeloader/library_namespaces.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-08T10:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e295847_ddad8b0b",
+      "range": {
+        "startLine": 164,
+        "startChar": 22,
+        "endLine": 164,
+        "endChar": 27
+      },
+      "revId": "c149df54b2091f0dab1595c045357fc48e10ee78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "607326fa_5523c437",
         "filename": "libnativeloader/library_namespaces.cpp",
         "patchSetId": 12
@@ -152,6 +248,30 @@
       "writtenOn": "2019-08-07T18:27:26Z",
       "side": 1,
       "message": "Even the theoretical risk of a race is an indication that the notion of a \"first\" namespace is flawed, but I suppose that would be a problem in the classloader or the app. (No change required, just saying as another point-in-case.)",
+      "range": {
+        "startLine": 212,
+        "startChar": 72,
+        "endLine": 213,
+        "endChar": 16
+      },
+      "revId": "c149df54b2091f0dab1595c045357fc48e10ee78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aafb8b65_e169c0c5",
+        "filename": "libnativeloader/library_namespaces.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-08T10:30:00Z",
+      "side": 1,
+      "message": "Right. But even if this is controlled by !library_path.empty(), there is a theoretical risk of a race. The risk comes from the fact that there can be only one anon namespace in a process, NOT from the way it is chosen.",
+      "parentUuid": "607326fa_5523c437",
       "range": {
         "startLine": 212,
         "startChar": 72,
@@ -184,6 +304,30 @@
       "revId": "c149df54b2091f0dab1595c045357fc48e10ee78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b30929b4_dd410bfe",
+        "filename": "libnativeloader/native_loader_namespace.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-08T10:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0df9bd9_18ef126b",
+      "range": {
+        "startLine": 99,
+        "startChar": 9,
+        "endLine": 99,
+        "endChar": 14
+      },
+      "revId": "c149df54b2091f0dab1595c045357fc48e10ee78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
