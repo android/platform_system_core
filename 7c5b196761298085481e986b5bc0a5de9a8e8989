@@ -22,6 +22,30 @@
       "revId": "7c5b196761298085481e986b5bc0a5de9a8e8989",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b1720f2_5933639d",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-08-08T15:01:47Z",
+      "side": 1,
+      "message": "It needs to change because this code now spawns a different thread to handle properties.  We would either need to add locks to property_set or treat it the same as other processes and have it communicate via a socket.\n\nYes, it will slow down future property sets.  There should not be too many in the shutdown path, so it should not be a problem.",
+      "parentUuid": "02376c19_c0e02277",
+      "range": {
+        "startLine": 1046,
+        "startChar": 8,
+        "endLine": 1046,
+        "endChar": 22
+      },
+      "revId": "7c5b196761298085481e986b5bc0a5de9a8e8989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
