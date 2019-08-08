@@ -16,6 +16,24 @@
       "revId": "31c14e15b913d4542fecd4d973c18ef95b3e1f18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f5ef3bd_3784e0bd",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-08-08T22:36:38Z",
+      "side": 1,
+      "message": "We are using the check if (!fs_mgr_access(kPhysicalDevice + \"system\")) to see if it is a non-A/B device. This prevents calling fs_mgr_get_slot_suffix() as it leaks errno\u003dENOENT on non-A/B (the surprise from PS2).\n\nWe are using the check if (!fs_mgr_access(kPhysicalDevice + \"system\" + fs_mgr_get_slot_suffix())) to confirm we know if we got the right block device, because if we can not (legacy cuttlefish, marlin?), we are likely in init w/o any of the devices made yet and _assume_ it is r/o and use the existence of a scratch filesystem as proof we need to override (slippery, I know, returning false here is really _special_).\n\nI am not going to fix fs_mgr_get_slot_suffix() (and friends) leaking errno b/c a post-Q cleanup is to remove errno sensitivity throughout this file and the callers and that is out-of-scope for this change.",
+      "parentUuid": "a1c5ef44_25745867",
+      "revId": "31c14e15b913d4542fecd4d973c18ef95b3e1f18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
