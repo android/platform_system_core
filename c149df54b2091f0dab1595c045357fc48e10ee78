@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "99648e18_e47d54f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-09T12:40:53Z",
+      "side": 1,
+      "message": "Yeah, I\u0027ve added a TODO in library_namespace.cpp to remove the heuristic, but I don\u0027t think that should be part of this change.",
+      "parentUuid": "c071cd5a_2a32ecc2",
+      "range": {
+        "startLine": 9,
+        "startChar": 45,
+        "endLine": 9,
+        "endChar": 68
+      },
+      "revId": "c149df54b2091f0dab1595c045357fc48e10ee78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "250673cb_499e3565",
         "filename": "/COMMIT_MSG",
         "patchSetId": 12
@@ -320,6 +344,30 @@
       "side": 1,
       "message": "If there\u0027s a flag the problem is pushed upwards. That\u0027s not useful in itself, but if the flag can be set in a place where we semantically _know_ that we\u0027re creating the main classloader, regardless of order, it goes away entirely.\n\nThat\u0027s why I think pushing upwards is the right way to go here, but tbh I don\u0027t understand the java layer well enough to say if/where that place is. Somewhere in android.app.ApplicationLoaders or LoadedApk perhaps?",
       "parentUuid": "aafb8b65_e169c0c5",
+      "range": {
+        "startLine": 212,
+        "startChar": 72,
+        "endLine": 213,
+        "endChar": 16
+      },
+      "revId": "c149df54b2091f0dab1595c045357fc48e10ee78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b939223_aa4d2cc7",
+        "filename": "libnativeloader/library_namespaces.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-09T12:40:53Z",
+      "side": 1,
+      "message": "I think we will end up relying on the order. We might be able to distinguish java libs from apps, but we can\u0027t distinguish multiple apks loaded in the same process unless we have some state (i.e. int numApksLoaded)",
+      "parentUuid": "bf156e4d_b4175155",
       "range": {
         "startLine": 212,
         "startChar": 72,
