@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c071cd5a_2a32ecc2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-08-09T12:25:09Z",
+      "side": 1,
+      "message": "I suppose the anonymous namespace can be viewed as a \"kludge\" because we fail to find the caller, and thus ideally is nothing that apps should need to know about. Still, it\u0027s hard to deny that it\u0027s app visible, which means apps should have some amount of control over it. But maybe there are other implications that I\u0027m not aware of, e.g. security concerns?\n\nHow much control apps need is another matter, and I agree the less the better, essentially. So just a flag for the \"main\" classloader SGTM. If we were to do that I think it\u0027s still worth mentioning in the docs that it will be used when the caller cannot be determined.",
+      "parentUuid": "d3b6896e_d4ea13d9",
+      "range": {
+        "startLine": 9,
+        "startChar": 45,
+        "endLine": 9,
+        "endChar": 68
+      },
+      "revId": "c149df54b2091f0dab1595c045357fc48e10ee78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "250673cb_499e3565",
         "filename": "/COMMIT_MSG",
         "patchSetId": 12
@@ -272,6 +296,30 @@
       "side": 1,
       "message": "Right. But even if this is controlled by !library_path.empty(), there is a theoretical risk of a race. The risk comes from the fact that there can be only one anon namespace in a process, NOT from the way it is chosen.",
       "parentUuid": "607326fa_5523c437",
+      "range": {
+        "startLine": 212,
+        "startChar": 72,
+        "endLine": 213,
+        "endChar": 16
+      },
+      "revId": "c149df54b2091f0dab1595c045357fc48e10ee78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf156e4d_b4175155",
+        "filename": "libnativeloader/library_namespaces.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-08-09T12:25:09Z",
+      "side": 1,
+      "message": "If there\u0027s a flag the problem is pushed upwards. That\u0027s not useful in itself, but if the flag can be set in a place where we semantically _know_ that we\u0027re creating the main classloader, regardless of order, it goes away entirely.\n\nThat\u0027s why I think pushing upwards is the right way to go here, but tbh I don\u0027t understand the java layer well enough to say if/where that place is. Somewhere in android.app.ApplicationLoaders or LoadedApk perhaps?",
+      "parentUuid": "aafb8b65_e169c0c5",
       "range": {
         "startLine": 212,
         "startChar": 72,
