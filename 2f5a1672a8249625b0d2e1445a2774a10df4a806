@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fbf20cd3_939c54e5",
+        "filename": "base/include/android-base/mapped_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2019-08-14T16:42:35Z",
+      "side": 1,
+      "message": "Yes, you\u0027ve guessed it absolutely correctly",
+      "parentUuid": "a9d6de8a_b7b831e2",
+      "revId": "2f5a1672a8249625b0d2e1445a2774a10df4a806",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62c20d10_dcf2ab9e",
         "filename": "base/include/android-base/mapped_file.h",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-08-14T15:21:28Z",
       "side": 1,
       "message": "this seems odd? is this ever going to feel natural at the call site? IsValid() instead?",
+      "revId": "2f5a1672a8249625b0d2e1445a2774a10df4a806",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5fca6dd_54fddd75",
+        "filename": "base/include/android-base/mapped_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2019-08-14T16:42:35Z",
+      "side": 1,
+      "message": "it does to me, and I\u0027m already using it in some places:\n\nauto mapping \u003d MappedFile::FromFd(...);\nif (!mapping) { LOG() ... }\nI can add the \u0027isValid()\u0027 alias as well, but personally strongly prefer the explicit bool operator",
+      "parentUuid": "62c20d10_dcf2ab9e",
       "revId": "2f5a1672a8249625b0d2e1445a2774a10df4a806",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -56,6 +92,30 @@
       "revId": "2f5a1672a8249625b0d2e1445a2774a10df4a806",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85cfc39b_92619a41",
+        "filename": "base/include/android-base/mapped_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2019-08-14T16:42:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0563c572_452cdfd3",
+      "range": {
+        "startLine": 77,
+        "startChar": 7,
+        "endLine": 77,
+        "endChar": 12
+      },
+      "revId": "2f5a1672a8249625b0d2e1445a2774a10df4a806",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
