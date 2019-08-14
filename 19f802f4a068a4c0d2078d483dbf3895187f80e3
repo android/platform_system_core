@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "5ad2d0e9_7e795afc",
+        "filename": "adb/fdevent/fdevent_epoll.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2019-08-14T20:02:01Z",
+      "side": 1,
+      "message": "TEMP_FAILURE_RETRY with a timeout is very unsafe - it the call ever returns with EINTR the macro would restart it with the same timeout; in the worst case timeout will never expire because of constant EINTRs. There are two ways to make it safe: manually handle EINTR and recalculate timeout on each one or add a separate timerfd descriptor instead of epoll_wait() timeout and managed time using the fd",
+      "range": {
+        "startLine": 127,
+        "startChar": 17,
+        "endLine": 127,
+        "endChar": 35
+      },
+      "revId": "19f802f4a068a4c0d2078d483dbf3895187f80e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ca1576b_64fe3a29",
         "filename": "adb/fdevent/fdevent_epoll.cpp",
         "patchSetId": 1
