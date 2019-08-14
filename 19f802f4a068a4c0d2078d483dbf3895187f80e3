@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4481e0f4_341c3f48",
+        "filename": "adb/fdevent/fdevent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-08-14T20:55:05Z",
+      "side": 1,
+      "message": "There\u0027s still benefits from this: assignment will destruct the old object.\n\n(What we really need is a unique_ptr that doesn\u0027t destroy on program exit..)",
+      "parentUuid": "24f9c72b_654b24e9",
+      "range": {
+        "startLine": 199,
+        "startChar": 7,
+        "endLine": 200,
+        "endChar": 72
+      },
+      "revId": "19f802f4a068a4c0d2078d483dbf3895187f80e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa0a2a51_0c484f4c",
         "filename": "adb/fdevent/fdevent_epoll.cpp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "19f802f4a068a4c0d2078d483dbf3895187f80e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c321ef69_eb45b29d",
+        "filename": "adb/fdevent/fdevent_epoll.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-08-14T20:55:05Z",
+      "side": 1,
+      "message": "This seems difficult to do: the easiest way I can think of is to make the base class templated on the derived type, and have a separate interface type that the base type implements with it, but that seems overly complex. Sprinkled some comments warning about this, unless you have a better idea?",
+      "parentUuid": "fa0a2a51_0c484f4c",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 40
+      },
+      "revId": "19f802f4a068a4c0d2078d483dbf3895187f80e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "87f58f26_ddf1742c",
+        "filename": "adb/fdevent/fdevent_epoll.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-08-14T20:55:05Z",
+      "side": 1,
+      "message": "Good catch. Did the former, to avoid an extra syscall on every iteration of the loop.",
+      "parentUuid": "5ad2d0e9_7e795afc",
+      "range": {
+        "startLine": 127,
+        "startChar": 17,
+        "endLine": 127,
+        "endChar": 35
+      },
+      "revId": "19f802f4a068a4c0d2078d483dbf3895187f80e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ca1576b_64fe3a29",
         "filename": "adb/fdevent/fdevent_epoll.cpp",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2019-08-14T02:35:32Z",
       "side": 1,
       "message": "I\u0027m trying to understand why two loops are needed here, instead of going over the triggered events array and looking them up in the installed_fdevents_ map by fde-\u003efd inside the first loop. Is there some special condition for the events ordering? If not, |event_map| becomes unneeded",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 71
+      },
+      "revId": "19f802f4a068a4c0d2078d483dbf3895187f80e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d9dfce5_15e91d61",
+        "filename": "adb/fdevent/fdevent_epoll.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-08-14T20:55:05Z",
+      "side": 1,
+      "message": "We need to loop across every fde, because of timeouts: by definition, an fdevent that timed out isn\u0027t in epoll_events.",
+      "parentUuid": "4ca1576b_64fe3a29",
       "range": {
         "startLine": 151,
         "startChar": 0,
