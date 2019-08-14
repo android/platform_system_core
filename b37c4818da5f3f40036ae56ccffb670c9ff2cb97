@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "906e412b_2b82ae8c",
+        "filename": "libnativeloader/library_namespaces.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2019-08-14T16:38:05Z",
+      "side": 1,
+      "message": "Naive drive-by: Do we need to initialize this field to nullptr in the constructor?  Or are we always assured that Reset() is called before Create()?\n\nLooking at the code in Create(), it looks like we read from this variable:\n\n  bool is_main_classloader \u003d app_main_namespace_ \u003d\u003d nullptr \u0026\u0026 !library_path.empty();\n\nbefore we (only in certain conditions) set it:\n\n  if (is_main_classloader) {\n    app_main_namespace_ \u003d \u0026(*app_ns);\n  }",
+      "revId": "b37c4818da5f3f40036ae56ccffb670c9ff2cb97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
