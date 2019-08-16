@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f79eb3ed_267d11a6",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-08-16T17:49:05Z",
+      "side": 1,
+      "message": "It is about attack surface.\n\nI only need to imagine a bug, any bug. Before it was integral, so it would _always_ result in a kernel panic (init process exit) and the phone reboots back to functional. As a detached thread it has its own (unmonitored) lifecycle.\n\nA detached thread can exit from a direct tid kill from a process privileged just enough to take it down and not init. This includes the well known problem of many vendor services and executables _still_ running as root when they have no right to. This turns into a deadlock DOS state where all processes eventually stall/break and the H/W watchdog never triggers; the phone just sits there doing nothing or in a boot loop burning the battery. The hackers win.",
+      "parentUuid": "ad614f51_b9595061",
+      "range": {
+        "startLine": 1133,
+        "startChar": 0,
+        "endLine": 1133,
+        "endChar": 48
+      },
+      "revId": "d4a933704887826c54f3329f21d73f0c6df84dc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e472f56_c1e0a79c",
         "filename": "init/property_service.cpp",
         "patchSetId": 1
