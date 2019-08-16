@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65007474_b009a9ec",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-08-16T15:11:38Z",
+      "side": 1,
+      "message": "Can they be queued?",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 54
+      },
+      "revId": "d4a933704887826c54f3329f21d73f0c6df84dc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de2afc26_79099633",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-08-16T15:11:38Z",
+      "side": 1,
+      "message": "What can be done if property service dies?\n\nBefore it killed init and we rebooted. Now it silently disappears! I know that if it was separately managed, this problem goes away (init would restart the property service).\n\nChoice: fix this with throw away code, or take the leap to a separate property service (like ueventd, can share in the init executable?)",
+      "range": {
+        "startLine": 1133,
+        "startChar": 0,
+        "endLine": 1133,
+        "endChar": 48
+      },
+      "revId": "d4a933704887826c54f3329f21d73f0c6df84dc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e472f56_c1e0a79c",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-08-16T15:11:38Z",
+      "side": 1,
+      "message": "This drops the InitPropertySet checks (eg: init can not send ctl.* and selinux.restorecon_recursive properties). IDK, are there any selinux rules for these?",
+      "range": {
+        "startLine": 1135,
+        "startChar": 0,
+        "endLine": 1139,
+        "endChar": 0
+      },
+      "revId": "d4a933704887826c54f3329f21d73f0c6df84dc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
