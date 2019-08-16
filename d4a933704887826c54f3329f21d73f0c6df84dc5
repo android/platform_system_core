@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "41aa6ec6_4c286382",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-08-16T19:05:32Z",
+      "side": 1,
+      "message": "I don\u0027t think there are security implications here. In general, adding a thread to a process should not change the threat model. The process, not the thread, is the security boundary. The signal behavior you mention should not be relied upon as a security mechanism.\n\nProcesses have overhead (e.g., page tables, inflated switching costs, duplicate DSO loads, various kernel data structures like struct signal), and I don\u0027t want to pay this overhead without necessity, especially in Go devices. Besides, init creates non-main threads already. An attacker who can snipe random threads can already cause havoc by killing these threads while they hold various locks. What about the AsyncRestorecon thread, which we already detach?",
+      "parentUuid": "f79eb3ed_267d11a6",
+      "range": {
+        "startLine": 1133,
+        "startChar": 0,
+        "endLine": 1133,
+        "endChar": 48
+      },
+      "revId": "d4a933704887826c54f3329f21d73f0c6df84dc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e472f56_c1e0a79c",
         "filename": "init/property_service.cpp",
         "patchSetId": 1
