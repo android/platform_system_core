@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8d297cf5_4eef40b8",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-08-19T16:12:35Z",
+      "side": 1,
+      "message": "Init was designed to ignore changed properties before we get to the \u0027queue_property_triggers\u0027 action, which queues an action for every currently set property anyway.  I haven\u0027t found any reason to change that behavior, so this just keeps things simple.",
+      "parentUuid": "65007474_b009a9ec",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 54
+      },
+      "revId": "d4a933704887826c54f3329f21d73f0c6df84dc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de2afc26_79099633",
         "filename": "init/property_service.cpp",
         "patchSetId": 1
@@ -120,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "f4ced783_677ad242",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-08-19T16:12:35Z",
+      "side": 1,
+      "message": "Pretty much +1 to what dancol@ said.  There shouldn\u0027t be any security impact of just this change.\n\nThat said, long term, I actually do foresee moving property service into its own process for the security benefits there.  If we do that, then unprivileged processes don\u0027t be able to connect and send data to init.",
+      "parentUuid": "41aa6ec6_4c286382",
+      "range": {
+        "startLine": 1133,
+        "startChar": 0,
+        "endLine": 1133,
+        "endChar": 48
+      },
+      "revId": "d4a933704887826c54f3329f21d73f0c6df84dc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e472f56_c1e0a79c",
         "filename": "init/property_service.cpp",
         "patchSetId": 1
@@ -140,6 +188,30 @@
       "revId": "d4a933704887826c54f3329f21d73f0c6df84dc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09180a92_cdd5298f",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-08-19T16:12:35Z",
+      "side": 1,
+      "message": "No selinux rules yet, but you\u0027re right that this would drop that check.  I\u0027ll add it back.",
+      "parentUuid": "9e472f56_c1e0a79c",
+      "range": {
+        "startLine": 1135,
+        "startChar": 0,
+        "endLine": 1139,
+        "endChar": 0
+      },
+      "revId": "d4a933704887826c54f3329f21d73f0c6df84dc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
