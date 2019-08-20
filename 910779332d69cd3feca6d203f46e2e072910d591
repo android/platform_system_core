@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8afb5081_fe78cbc4",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-08-20T08:07:04Z",
+      "side": 1,
+      "message": "nit: maybe add a comment above?\n\n// Unmounts debug ramdisk to prevent the following PropertyInit() from loading .prop files there.",
+      "range": {
+        "startLine": 630,
+        "startChar": 0,
+        "endLine": 632,
+        "endChar": 5
+      },
+      "revId": "910779332d69cd3feca6d203f46e2e072910d591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "227ce08a_621958c1",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-08-20T08:07:04Z",
+      "side": 1,
+      "message": "Oh, this is too early.\n\nSelinuxInitialize() at L649 below still need to access the *userdebug* sepolicy from the debug ramdisk. I should have added a comment for the call to UmountDebugRamdisk() before.\n\nhttps://android-review.googlesource.com/c/platform/system/core/+/1105628/1/init/selinux.cpp#289",
+      "range": {
+        "startLine": 637,
+        "startChar": 8,
+        "endLine": 637,
+        "endChar": 26
+      },
+      "revId": "910779332d69cd3feca6d203f46e2e072910d591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9cbcc23_ca7513e1",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-08-20T08:07:04Z",
+      "side": 1,
+      "message": "Ack, it now replies on whether this file exist or not.",
+      "range": {
+        "startLine": 914,
+        "startChar": 15,
+        "endLine": 914,
+        "endChar": 32
+      },
+      "revId": "910779332d69cd3feca6d203f46e2e072910d591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
