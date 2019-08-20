@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da805487_fa0006c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-08-20T00:47:30Z",
+      "side": 1,
+      "message": "Next up after this is to ensure this is documented in a suitable place. I suppose that is https://android.googlesource.com/platform/ndk/+/master/docs/PlatformApis.md#linker-namespaces_public-libraries-list, right?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "6463b6d5bb3f1235ba36fe0fb5c2b7866db32f27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a457e82c_2e0f2e88",
+        "filename": "libnativeloader/public_libraries.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-08-20T00:47:30Z",
+      "side": 1,
+      "message": "Style: \"ConfigEntry\"",
+      "range": {
+        "startLine": 100,
+        "startChar": 7,
+        "endLine": 100,
+        "endChar": 19
+      },
+      "revId": "6463b6d5bb3f1235ba36fe0fb5c2b7866db32f27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b1546c0_57add945",
+        "filename": "libnativeloader/public_libraries.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-08-20T00:47:30Z",
+      "side": 1,
+      "message": "I don\u0027t see any tests for this config parser anywhere. With this change it\u0027s getting nontrivial enough to warrant some. Testing it through (preloadable|default)_public_libraries() would be best, but requires a bit of mocking. Just unit testing this function should be straightforward though.",
+      "range": {
+        "startLine": 109,
+        "startChar": 33,
+        "endLine": 109,
+        "endChar": 43
+      },
+      "revId": "6463b6d5bb3f1235ba36fe0fb5c2b7866db32f27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "389afdfa_ba0000b7",
+        "filename": "libnativeloader/public_libraries.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-08-20T00:47:30Z",
+      "side": 1,
+      "message": "Please write out the type. http://go/cstyle#auto",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 8
+      },
+      "revId": "6463b6d5bb3f1235ba36fe0fb5c2b7866db32f27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94b18b42_3f61917b",
+        "filename": "libnativeloader/public_libraries.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-08-20T00:47:30Z",
+      "side": 1,
+      "message": "A benefit with the old #else is that there\u0027s no doubt it\u0027s an either-or thing. Suggest:\n\n...\n  #elif defined(__LP32__)\n...\n  #else\n  #error Unknown bitness\n  #endif",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 6
+      },
+      "revId": "6463b6d5bb3f1235ba36fe0fb5c2b7866db32f27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5112b1c7_7f8a3dab",
+        "filename": "libnativeloader/public_libraries.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-08-20T00:47:30Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 8
+      },
+      "revId": "6463b6d5bb3f1235ba36fe0fb5c2b7866db32f27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca698f0b_1347dcfc",
+        "filename": "libnativeloader/public_libraries.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-08-20T00:47:30Z",
+      "side": 1,
+      "message": "This condition is unnecessarily hard to figure out. Suggest:\n\n  if (for_preload) {\n    return !entry.nopreload;\n  } else {\n    return true;\n  }",
+      "range": {
+        "startLine": 215,
+        "startChar": 8,
+        "endLine": 215,
+        "endChar": 49
+      },
+      "revId": "6463b6d5bb3f1235ba36fe0fb5c2b7866db32f27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
