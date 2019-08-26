@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b05fc282_228d14d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-08-26T09:47:16Z",
+      "side": 1,
+      "message": "How about:\n\nAllow --disable-verification when top-level vbmeta is in \u0027boot\u0027",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "ec1847214683f70ba6c1be5b35d166ba99e562b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6113b7e_4b29c284",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-08-26T09:47:16Z",
+      "side": 1,
+      "message": "This seems not a varaible in AOSP.\n\nHow about:\nIf top-level vbmeta struct is in \u0027boot\u0027 partition, ...",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "ec1847214683f70ba6c1be5b35d166ba99e562b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa939b24_bf010d4a",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-08-26T09:47:16Z",
+      "side": 1,
+      "message": "combine this with L937 below.\n\nhttps://google.github.io/styleguide/cppguide.html#Local_Variables\nC++ allows you to declare variables anywhere in a function. We encourage you to declare them in as local a scope as possible, and as close to the first use as possible. This makes it easier for the reader to find the declaration and see what type the variable is and what it was initialized to. In particular, initialization should be used instead of declaration and assignment",
+      "range": {
+        "startLine": 919,
+        "startChar": 4,
+        "endLine": 919,
+        "endChar": 31
+      },
+      "revId": "ec1847214683f70ba6c1be5b35d166ba99e562b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c398e41c_0132028b",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-08-26T09:47:16Z",
+      "side": 1,
+      "message": "combine this line with L952 below.",
+      "range": {
+        "startLine": 921,
+        "startChar": 4,
+        "endLine": 921,
+        "endChar": 25
+      },
+      "revId": "ec1847214683f70ba6c1be5b35d166ba99e562b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e021a24_229c7f5c",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-08-26T09:47:16Z",
+      "side": 1,
+      "message": "can move this line to L937",
+      "range": {
+        "startLine": 922,
+        "startChar": 4,
+        "endLine": 922,
+        "endChar": 37
+      },
+      "revId": "ec1847214683f70ba6c1be5b35d166ba99e562b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfc3bf68_775eeca1",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-08-26T09:47:16Z",
+      "side": 1,
+      "message": "how about using 0 \u003d\u003d data.compare(...  \nAs ! usually implies *false* semantic.\n\nAnd adding a comment above L938:\n// \"AVBf\" is AVB_FOOTER_MAGIC from external/avb/libavb/avb_footer.h\n\nOr even #include \u003clibavb/libavb.h\u003e, then we can have:\nif (0 \u003d\u003d data.compare(footer_offset, AVB_FOOTER_MAGIC_LEN, AVB_FOOTER_MAGIC)) {\n  ...\n}",
+      "range": {
+        "startLine": 938,
+        "startChar": 8,
+        "endLine": 938,
+        "endChar": 9
+      },
+      "revId": "ec1847214683f70ba6c1be5b35d166ba99e562b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68ed6d9d_90e2959e",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-08-26T09:47:16Z",
+      "side": 1,
+      "message": "Wow, this is probably too magic.\n\nHow about #include \u003clibavb/libavb.h\u003e, then\n\ncosnt AvbFooter* footer \u003d reinterpret_cast\u003cconst AvbFooter*\u003e(\n        x.data() + buf-\u003esz - AVB_FOOTER_SIZE);\nvbmeta_offset \u003d avb_be64toh(footer-\u003evbmeta_offset);",
+      "range": {
+        "startLine": 940,
+        "startChar": 67,
+        "endLine": 940,
+        "endChar": 69
+      },
+      "revId": "ec1847214683f70ba6c1be5b35d166ba99e562b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b50cac3_41595719",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-08-26T09:47:16Z",
+      "side": 1,
+      "message": "Same as L938.\n\nHow about:\nif (0 \u003d\u003d data.compare(vbmeta_offset, AVB_MAGIC_LEN, AVB_MAGIC) {\n  ...\n}",
+      "range": {
+        "startLine": 942,
+        "startChar": 12,
+        "endLine": 942,
+        "endChar": 51
+      },
+      "revId": "ec1847214683f70ba6c1be5b35d166ba99e562b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
