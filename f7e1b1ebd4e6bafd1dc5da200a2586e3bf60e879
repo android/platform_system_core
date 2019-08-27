@@ -16,6 +16,24 @@
       "revId": "f7e1b1ebd4e6bafd1dc5da200a2586e3bf60e879",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba755d51_c379d81f",
+        "filename": "liblog/tests/liblog_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-08-27T22:00:43Z",
+      "side": 1,
+      "message": "The other one\u0027s aren\u0027t either.  I think the idea is that since this entire file is #include\u0027d into liblog_default_test.cpp and liblog_stderr_test.cpp, that this #ifdef is used to include this test for logd vs stderr backends.\n\nHonestly though, I need to rework a lot of this anyway.  There is no way to read stderr with the liblog read functions (nor should there be) yet a lot of these tests test those same functions when using liblog to write to stderr.  I want to hijack STDERR_FILENO and have the tests actually test what was output to stderr.\n\nAlso, no one is using the stderr writer right now and it\u0027s going to be redone with libbase anyway.",
+      "parentUuid": "abf827bf_7dee154d",
+      "revId": "f7e1b1ebd4e6bafd1dc5da200a2586e3bf60e879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
