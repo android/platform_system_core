@@ -46,6 +46,30 @@
       "revId": "3bd09415a3f859467fae2b1516ffa3e95431bfa0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c285acf7_d9eba73c",
+        "filename": "init/boringssl_self_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1398097
+      },
+      "writtenOn": "2019-08-28T22:06:17Z",
+      "side": 0,
+      "message": "The NIAP requirement this test relates to, FPT_TST_EXT.1, says the following:\n\n\"The TSF [Target of Evaluation Security Functionality] shall run a suite of self-tests during initial start-up (on power on) to demonstrate the correct operation of all cryptographic functionality.\"\n\nFurther, the verification of this requirement mentions the following:\n\n\"The evaluator shall examine the TSS [Target of Evaluation Summary Specifications] to ensure that it specifies the self-tests that are performed at start-up. ... The TSS must include any error states that they TSF may enter when self-tests fail, and the conditions and actions necessary to exit the error states and resume normal operation. The evaluator shall verify that the TSS indicates these self-tests are run at start-up automatically, and do not involve any inputs from or actions by the user or operator.\"\n\nMy reading of it is removing this self-test at power on time will not pass the NIAP requirement. Perhaps it could be argued that the tests are performed at power on if something early in boot invokes them. There will be the question of what error state the devices enters into and how to get out of it. Booting into the bootloader was sufficient for NIAP certification for P.\n\nDo you know if eliderman@ has weighted in on this?\n\nSource: https://www.niap-ccevs.org/MMO/PP/-417-/#FPT_TST_EXT.1",
+      "parentUuid": "887b2d37_9856b808",
+      "range": {
+        "startLine": 39,
+        "startChar": 12,
+        "endLine": 40,
+        "endChar": 82
+      },
+      "revId": "3bd09415a3f859467fae2b1516ffa3e95431bfa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
