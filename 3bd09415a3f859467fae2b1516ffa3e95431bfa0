@@ -22,6 +22,30 @@
       "revId": "3bd09415a3f859467fae2b1516ffa3e95431bfa0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "887b2d37_9856b808",
+        "filename": "init/boringssl_self_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-08-28T21:50:30Z",
+      "side": 0,
+      "message": "Not currently a reboot, no. We could change the boringssl_self_test binaries so they do this, WDYT?\n\nCurrently, if the boringssl self check fails, then it calls abort():\n\nhttps://android-review.googlesource.com/c/platform/external/boringssl/+/1107413/5/src/crypto/fipsmodule/bcm.c#173\n\nbut I\u0027m guessing that that wouldn\u0027t be sufficient since it\u0027ll probably just kill that particular process?",
+      "parentUuid": "95ad0de0_136db49d",
+      "range": {
+        "startLine": 39,
+        "startChar": 12,
+        "endLine": 40,
+        "endChar": 82
+      },
+      "revId": "3bd09415a3f859467fae2b1516ffa3e95431bfa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
