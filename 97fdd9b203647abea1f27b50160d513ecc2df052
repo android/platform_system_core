@@ -141,6 +141,30 @@
       "revId": "97fdd9b203647abea1f27b50160d513ecc2df052",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc6eb292_8557a2af",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-08-29T23:04:11Z",
+      "side": 1,
+      "message": "Turn out that neither of these two invocations succeeds in creating the file (the file creation timestamp is \u003e 1 minute after the \"starting service\" logs from init).\n\nSo it must just be that the 64bit one is later created by some other part of the boot process loading 64bit libcrypto.\n\nYes I was seeing some selinux denials that didn\u0027t make much sense to me: https://paste.googleplex.com/4506585776783360\n\nI think the avc_* denials are probably for unrelated files (e.g. perhaps the netd dependency accesses some devices when it\u0027s loaded?) since they don\u0027t refer to the boringssl_self_test_marker label which I\u0027ve set up for the marker files that the binary should be looking for \u0026 creating.\n\nI don\u0027t understand the lines:\n\n08-29 23:49:36.057   918   918 W boringssl_self_: type\u003d1400 audit(0.0:127): avc: denied { search } for name\u003d\"selftest\" dev\u003d\"tmpfs\" ino\u003d15321 scontext\u003du:r:boringssl_self_test:s0 tcontext\u003du:object_r:boringssl_self_test_marker:s0 tclass\u003ddir permissive\u003d0\n08-29 23:49:36.071   918   918 W boringssl_self_: type\u003d1400 audit(0.0:128): avc: denied { search } for name\u003d\"selftest\" dev\u003d\"tmpfs\" ino\u003d15321 scontext\u003du:r:boringssl_self_test:s0 tcontext\u003du:object_r:boringssl_self_test_marker:s0 tclass\u003ddir permissive\u003d0\n\n\nthough because why would boringssl_self_test \"search\" the boringssl_self_test_marker directory? As you can see in\n\nhttps://android-review.googlesource.com/c/platform/external/boringssl/+/1107413/7/src/crypto/fipsmodule/self_check/self_check.c#257\n\nthe code calls\n   access(flag_path, F_OK)\nwhere flag_path is the full path to the marker file. Why would that result in a \"search\" access to the tclass\u003ddir?\n\nboringssl_self_test contains the line:\n\n   allow boringssl_self_test boringssl_self_test_marker:file rw_file_perms;\n\nIs that line not correct or not enough? Note that in the latest patchset, the label boringssl_self_test_marker refers to both the\n\n/dev/boringssl/selftest\n\ndirectory and also the marker files that are created inside it. Any idea what I\u0027m doing wrong?",
+      "parentUuid": "1ce24e24_a9fc0084",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 62
+      },
+      "revId": "97fdd9b203647abea1f27b50160d513ecc2df052",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
