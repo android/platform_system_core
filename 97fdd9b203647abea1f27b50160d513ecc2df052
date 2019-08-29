@@ -46,6 +46,30 @@
       "revId": "97fdd9b203647abea1f27b50160d513ecc2df052",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b455884b_0fbb3d81",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-08-29T15:55:26Z",
+      "side": 1,
+      "message": "\u003e init\u0027s \"exec\" command care about the return value ?\n\nSeems like it doesn\u0027t, because it happily carries on if the exec\u0027d command returns 1.\n\nIs it possible to do anything here that reboots into bootloader if the exec\u0027d command abort()s or returns anything other than 0? That\u0027s the behavior that I\u0027d like to have. I can make boringssl_self_test.cpp call\n\nandroid_reboot(ANDROID_RB_RESTART2, 0, \"bootloader,boringssl-self-check-failed\");\n\nor similar, but then boringssl_self_test.cpp would gain a bunch of depdendencies again that I think might be cleaner to keep out of there because that binary is in a separate SELinux security domain.\n\nRight now, \n - the binary returns 1 in case of success, 0 in case of a bug where libcrypto isn\u0027t the FIPS version, and abort()s in case of failure.\n - init.rc\u0027s exec ignores the return value.\n\nWhat I\u0027d like:\n - in case of abort() or a non-zero return value, the device should reboot into bootloader\n   - this happens if the self test fails or libcrypto is not in FIPS mode\n - in case of zero return value (self test ran and succeeded), we should carry on.",
+      "parentUuid": "9403e896_223bd5a0",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 62
+      },
+      "revId": "97fdd9b203647abea1f27b50160d513ecc2df052",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
