@@ -94,6 +94,29 @@
       "revId": "97fdd9b203647abea1f27b50160d513ecc2df052",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "006e13e8_d1211bf1",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-08-29T17:03:47Z",
+      "side": 1,
+      "message": "Narayan/Tom: Can you think of any reason why the following might be happening:\n\n* It turns out that the *64 binary here successfully writes the marker file but the *32 one does not.\n* This is the case regardless of the order in which they are started here (initially I thought that maybe it was a race condition if apexd.status\u003dready was signalled slightly too early).\n* If I run the 32bit binary manually (as root), then it writes the missing marker file\n* running \"file boringssl_self_test*\" confirms that they are 32bit vs. 64bit binaries, respectively\n* based on logcat, both processes are run successfully:\n\nstarting service \u0027exec 15 (/apex/com.android.conscrypt/bin/boringssl_self_test64)\u0027...\nSVC_EXEC service \u0027exec 15 (/apex/com.android.conscrypt/bin/boringssl_self_test64)\u0027 pid 916 (uid 0 gid 0+0 context default) started; waiting...\nService \u0027exec 15 (/apex/com.android.conscrypt/bin/boringssl_self_test64)\u0027 (pid 916) exited with status 0 waiting took 0.019000 seconds\nstarting service \u0027exec 16 (/apex/com.android.conscrypt/bin/boringssl_self_test32)\u0027...\nSVC_EXEC service \u0027exec 16 (/apex/com.android.conscrypt/bin/boringssl_self_test32)\u0027 pid 917 (uid 0 gid 0+0 context default) started; waiting...\nService \u0027exec 16 (/apex/com.android.conscrypt/bin/boringssl_self_test32)\u0027 (pid 917) exited with status 0 waiting took 0.017000 seconds",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 62
+      },
+      "revId": "97fdd9b203647abea1f27b50160d513ecc2df052",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
