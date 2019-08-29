@@ -70,6 +70,30 @@
       "revId": "3bd09415a3f859467fae2b1516ffa3e95431bfa0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbe24773_6871ad1c",
+        "filename": "init/boringssl_self_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-08-29T00:40:03Z",
+      "side": 0,
+      "message": "\u003e My reading of it is removing this self-test at power on time will not pass the NIAP \n\u003e requirement. Perhaps it could be argued that the tests are performed at power on if something \n\u003e early in boot invokes them. \n\nI\u0027m not sure how to read \"initial\" start-up, but after this CL topic it\u0027s impossible to load the boringssl library without that self test having successfully run at least once (at the latest when the library is loaded) because unless the library can prove to itself that it has already passed the self test since the last boot, it will run the self test then and will abort() if the self test fails.\n\nSo if some binary at some point loads libcrypto, and doesn\u0027t abort(), then the self test will have run.\n\nDoes that count as \"start-up\" (namely of any binary that uses libcrypto), do you think?\n\nAfter this CL topic there is further an attempt to run the self test once apexd is ready (a bit later than previously). Right now if that attempt fails then it will be silent - part of my work in finishing this CL topic is to figure out whether or what we need to do in that case. (This is what this comment thread is about).\n\n\u003e There will be the question of what error state the devices enters into and how to get out of \n\u003e it. Booting into the bootloader was sufficient for NIAP certification for P.\n\nDoes this mean that you are in favor of a failed self test rebooting the device?\n\nAny opinion on where that reboot logic should live? I could move it in here but it does have some disadvantages (it\u0027d reintroduce a dependency of init onto libcrypto, and would slow down boot because the early self test doesn\u0027t allow us to skip the later one because we\u0027d have no record of it).\n\n\u003e Do you know if eliderman@ has weighted in on this?\n\nI\u0027ve been meeting with him regularly but have been focusing on the FIPS work. I\u0027ve emailed him and you just now to clarify what we need to do in order to not regress on NIAP.",
+      "parentUuid": "c285acf7_d9eba73c",
+      "range": {
+        "startLine": 39,
+        "startChar": 12,
+        "endLine": 40,
+        "endChar": 82
+      },
+      "revId": "3bd09415a3f859467fae2b1516ffa3e95431bfa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
