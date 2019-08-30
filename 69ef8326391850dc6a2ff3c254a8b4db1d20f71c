@@ -16,6 +16,24 @@
       "revId": "69ef8326391850dc6a2ff3c254a8b4db1d20f71c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6b56f2b_5b022e54",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1095,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-08-30T00:00:58Z",
+      "side": 1,
+      "message": "I need to get the reboot_reason to pass to ExecWithRebootOnFailure from somewhere though, and init commands accumulatet their arguments into a BuiltinArguments so I don\u0027t see where I could get the reboot_reason from if not as one of the BuiltinArguments passed to do_exec_reboot_on_failure (but then not passed on to ExecWithRebootOnFailure).\n\nNote that I\u0027m extracting the first argument in line 1094, and how I\u0027m calling the binaries from init.rc, giving the reboot_reason as the first argument:\n\n    exec_reboot_on_failure boringssl-self-check-failed /apex/com.android.conscrypt/bin/boringssl_self_test32\n    exec_reboot_on_failure boringssl-self-check-failed /apex/com.android.conscrypt/bin/boringssl_self_test64\n\nAfter this explanation, are you satisfied that this is correct?",
+      "parentUuid": "2cfeaad0_f6fb7730",
+      "revId": "69ef8326391850dc6a2ff3c254a8b4db1d20f71c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
