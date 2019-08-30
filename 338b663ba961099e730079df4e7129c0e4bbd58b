@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c4a5d15e_a5d1b8fa",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1912,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-08-30T16:38:49Z",
+      "side": 1,
+      "message": "Agree, will change to zone_watermark_levels",
+      "parentUuid": "0bbc7394_0a8de863",
+      "range": {
+        "startLine": 1912,
+        "startChar": 12,
+        "endLine": 1912,
+        "endChar": 22
+      },
+      "revId": "338b663ba961099e730079df4e7129c0e4bbd58b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3c63a62a_a0de2804",
         "filename": "lmkd/lmkd.c",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b72eeb7d_f51d48c6",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1924,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-08-30T16:38:49Z",
+      "side": 1,
+      "message": "Yes, I have no way of knowing what kind of allocation will come next and want to be on more conservative side. If you think another approach makes more sense please chime in, I\u0027m open to suggestions.",
+      "parentUuid": "3c63a62a_a0de2804",
+      "range": {
+        "startLine": 1924,
+        "startChar": 52,
+        "endLine": 1924,
+        "endChar": 73
+      },
+      "revId": "338b663ba961099e730079df4e7129c0e4bbd58b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a0d665bc_94935769",
         "filename": "lmkd/lmkd.c",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2019-08-30T14:47:06Z",
       "side": 1,
       "message": "I understand you want to catch up the min_free_kbytes and friends change under us.\nHowever, it\u0027s not nice to monitor the change periodically.\ndumb questions: Can\u0027t we poll some proc files related to watermark?",
+      "range": {
+        "startLine": 2063,
+        "startChar": 38,
+        "endLine": 2063,
+        "endChar": 94
+      },
+      "revId": "338b663ba961099e730079df4e7129c0e4bbd58b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2210563_4210ed29",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2063,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-08-30T16:38:49Z",
+      "side": 1,
+      "message": "Unfortunately no, I tried. Polling on most of the proc files including zoneinfo and friends is not supported.\n\nWe can isolate this update logic and change it so that lmkd gets notified by the system software when these vm paramaters are modified, but for now I wanted this to be as simple as possible and new strategy to be localized in one function.",
+      "parentUuid": "a0d665bc_94935769",
       "range": {
         "startLine": 2063,
         "startChar": 38,
