@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bbc7394_0a8de863",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1912,
+      "author": {
+        "id": 1275554
+      },
+      "writtenOn": "2019-08-30T14:47:06Z",
+      "side": 1,
+      "message": "You used threshold term instead of watermark but still field names are wmark.\nI\u0027m okay either watermark and threshold. But let\u0027s use consistent term with structure name and field name.",
+      "range": {
+        "startLine": 1912,
+        "startChar": 12,
+        "endLine": 1912,
+        "endChar": 22
+      },
+      "revId": "338b663ba961099e730079df4e7129c0e4bbd58b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c63a62a_a0de2804",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1924,
+      "author": {
+        "id": 1275554
+      },
+      "writtenOn": "2019-08-30T14:47:06Z",
+      "side": 1,
+      "message": "CMA pages are allocatable resource for MOVABLE allocation which is major consumption for the system. IOW, if system ask MOVABLE allocation, CMA free pages are definitely free pages.\nWhy do you always subtract the amount of CMA pages from free page?\nWhat you want is to be conservative?",
+      "range": {
+        "startLine": 1924,
+        "startChar": 52,
+        "endLine": 1924,
+        "endChar": 73
+      },
+      "revId": "338b663ba961099e730079df4e7129c0e4bbd58b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0d665bc_94935769",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2063,
+      "author": {
+        "id": 1275554
+      },
+      "writtenOn": "2019-08-30T14:47:06Z",
+      "side": 1,
+      "message": "I understand you want to catch up the min_free_kbytes and friends change under us.\nHowever, it\u0027s not nice to monitor the change periodically.\ndumb questions: Can\u0027t we poll some proc files related to watermark?",
+      "range": {
+        "startLine": 2063,
+        "startChar": 38,
+        "endLine": 2063,
+        "endChar": 94
+      },
+      "revId": "338b663ba961099e730079df4e7129c0e4bbd58b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
