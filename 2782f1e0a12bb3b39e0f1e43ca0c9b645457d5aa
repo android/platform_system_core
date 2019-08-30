@@ -70,6 +70,29 @@
       "revId": "2782f1e0a12bb3b39e0f1e43ca0c9b645457d5aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "595dfb89_814867fa",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-08-30T21:26:43Z",
+      "side": 1,
+      "message": "`on init` is likely better for both this and the directory creation.  early-init is before ueventd has run so nodes in /dev are not available yet.  We prefer not running anything until after it has finished.  The apexd-bootstrap and linkerconfig are recent exceptions.\n\nPlus if your test logs, logd won\u0027t be up until `on init` either.",
+      "range": {
+        "startLine": 62,
+        "startChar": 3,
+        "endLine": 62,
+        "endChar": 13
+      },
+      "revId": "2782f1e0a12bb3b39e0f1e43ca0c9b645457d5aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
