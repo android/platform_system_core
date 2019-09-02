@@ -117,6 +117,30 @@
       "revId": "2782f1e0a12bb3b39e0f1e43ca0c9b645457d5aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08bd706f_20cc8aa4",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-09-02T17:27:09Z",
+      "side": 1,
+      "message": "Done.\n\nThe reason I had previously moved it up here was because line 53 starts apexd-bootstrap and I wanted to run before then; but it turns out that apexd itself is only started from post-fs-data which in turn triggered from late-init, so having this logic tied to init rather than early-init should be fine.",
+      "parentUuid": "595dfb89_814867fa",
+      "range": {
+        "startLine": 62,
+        "startChar": 3,
+        "endLine": 62,
+        "endChar": 13
+      },
+      "revId": "2782f1e0a12bb3b39e0f1e43ca0c9b645457d5aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
