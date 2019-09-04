@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "f348230f_7292f31e",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1924,
+      "author": {
+        "id": 1275554
+      },
+      "writtenOn": "2019-09-04T17:26:58Z",
+      "side": 1,
+      "message": "It\u0027s a fundamental issue with userspace memory manager so I don\u0027t have any idea, either. :)\n\nI think primary allocation workload in the system will be movable allocation so generally, we are okay without cma_free consideration. With that approach, the concern is LMKD will not kill apps when there are enough CMA free pages but the allocation is non-movable allocation(e.g., ION) so it could make slow start up like CAMERA. Otherwise, if we always substract CMA free from freeable memory, it will kill more apps unnecessary. It wouldn\u0027t be a problem with vendor who uses QC kernel because QC modified allocation path in the MM of the kernel so CMA allocation will happen first than any other movable zones so CMA free is very low usually. However, vanilla kernel will not use CMA area until the other area in zone is full so they will see more kill.\n\nI don\u0027t like to introduce a new knob but I imagine it\u0027s candidate of new knob.\nWhat do you think?",
+      "parentUuid": "b72eeb7d_f51d48c6",
+      "range": {
+        "startLine": 1924,
+        "startChar": 52,
+        "endLine": 1924,
+        "endChar": 73
+      },
+      "revId": "338b663ba961099e730079df4e7129c0e4bbd58b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a0d665bc_94935769",
         "filename": "lmkd/lmkd.c",
         "patchSetId": 5
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "Unfortunately no, I tried. Polling on most of the proc files including zoneinfo and friends is not supported.\n\nWe can isolate this update logic and change it so that lmkd gets notified by the system software when these vm paramaters are modified, but for now I wanted this to be as simple as possible and new strategy to be localized in one function.",
       "parentUuid": "a0d665bc_94935769",
+      "range": {
+        "startLine": 2063,
+        "startChar": 38,
+        "endLine": 2063,
+        "endChar": 94
+      },
+      "revId": "338b663ba961099e730079df4e7129c0e4bbd58b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "143e8ff0_b809fb50",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2063,
+      "author": {
+        "id": 1275554
+      },
+      "writtenOn": "2019-09-04T17:26:58Z",
+      "side": 1,
+      "message": "Thanks for the trial, Suren.\nSince we don\u0027t have nice idea yet, okay, let\u0027s leave some comment about our TODO and proceed.",
+      "parentUuid": "d2210563_4210ed29",
       "range": {
         "startLine": 2063,
         "startChar": 38,
