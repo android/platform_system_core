@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "45ddfaf3_cc1707a4",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-09-05T00:10:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2de01ff9_c1b43dbb",
+      "revId": "fd02f4bfeeb05db2b3184720cb5697aa74809198",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba2cd4f1_aa1938c1",
         "filename": "fs_mgr/libsnapshot/snapshot.cpp",
         "patchSetId": 4
@@ -124,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "be942681_a875a37c",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-09-05T00:10:53Z",
+      "side": 1,
+      "message": "I\u0027d argue it\u0027s kind of a self-defeating symmetry. It\u0027s useful to ad-hoc tie dependencies together, but also clean them up as one unit. I\u0027d be in favor of that here, especially since we don\u0027t want to step-by-step cleanup in each place that does cleanup.",
+      "parentUuid": "a41a602e_a8b1448e",
+      "revId": "fd02f4bfeeb05db2b3184720cb5697aa74809198",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca4caef3_bab806cb",
         "filename": "fs_mgr/libsnapshot/snapshot_test.cpp",
         "patchSetId": 4
@@ -153,6 +189,24 @@
       "side": 1,
       "message": "DeleteSnapshotDevice deletes the device on device mapper, but not unset the property. GSID still thinks the image is mapped, and L445 will fail because it thinks it is already mapped.\n\nAlso, the test fails for me even without this CL.",
       "parentUuid": "ca4caef3_bab806cb",
+      "revId": "fd02f4bfeeb05db2b3184720cb5697aa74809198",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba9b2b91_922e5efc",
+        "filename": "fs_mgr/libsnapshot/snapshot_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-09-05T00:10:53Z",
+      "side": 1,
+      "message": "Interesting, I haven\u0027t hit that failure yet. Is there some kind of race? Is DeleteSnapshotDevice not unmapping the cow? (It must be unmapped since we try to map it again below.)",
+      "parentUuid": "ecd7affe_24577539",
       "revId": "fd02f4bfeeb05db2b3184720cb5697aa74809198",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
