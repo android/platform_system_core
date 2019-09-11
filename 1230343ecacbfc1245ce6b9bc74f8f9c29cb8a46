@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "0642cc36_af7c7d0b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-09-11T22:05:17Z",
+      "side": 1,
+      "message": "Yeah; I want to accentuate that MapCowImage doesn\u0027t fill out both fields (especially it doesn\u0027t give us the major/minor if we call MapDeviceImage)",
+      "parentUuid": "5761c0b7_8c65bba9",
+      "revId": "1230343ecacbfc1245ce6b9bc74f8f9c29cb8a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "defc9dff_b8056bc5",
         "filename": "fs_mgr/libsnapshot/include/libsnapshot/snapshot.h",
         "patchSetId": 9
@@ -47,6 +65,24 @@
       "writtenOn": "2019-09-11T21:20:59Z",
       "side": 1,
       "message": "I think we might not need this struct. There are two cases we need a descriptor: (1) as an input to DmTable, and (2) for zeroing the first bytes. In the former case, we can always use DeviceMapper::GetDeviceString. In the latter case, we can always use GetDmDevicePathByName, because the timeout will be non-zero (which guarantees a usable path).\n\nIf this is true, MapCowImage doesn\u0027t even need to return anything, it\u0027d be up to the caller to derive it. (Though I guess it could return the device name for convenience.)",
+      "revId": "1230343ecacbfc1245ce6b9bc74f8f9c29cb8a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f75e8e1b_92a69147",
+        "filename": "fs_mgr/libsnapshot/include/libsnapshot/snapshot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-09-11T22:05:17Z",
+      "side": 1,
+      "message": "Good idea. Will do.",
+      "parentUuid": "defc9dff_b8056bc5",
       "revId": "1230343ecacbfc1245ce6b9bc74f8f9c29cb8a46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "30ae4758_6fa9b46e",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-09-11T22:05:17Z",
+      "side": 1,
+      "message": "I can\u0027t do no suffix because it may conflict with the upper level COW device\n\n[       cow       ]\n[cow-lin] [cow-img]\n\nYeah I can\u0027t think of a good name (I took the name from dm-linear). Maybe I\u0027ll use -pt.",
+      "parentUuid": "61ef7686_ef845aed",
+      "revId": "1230343ecacbfc1245ce6b9bc74f8f9c29cb8a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0774ff3e_a0850a96",
         "filename": "fs_mgr/libsnapshot/snapshot.cpp",
         "patchSetId": 9
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "bf77a5b2_3908e1a8",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-09-11T22:05:17Z",
+      "side": 1,
+      "message": "I agree that this is a bit confusing. Let me create a new UnmapCowDevices function.",
+      "parentUuid": "0774ff3e_a0850a96",
+      "revId": "1230343ecacbfc1245ce6b9bc74f8f9c29cb8a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68bf2717_92fc90ff",
         "filename": "fs_mgr/libsnapshot/snapshot.cpp",
         "patchSetId": 9
@@ -98,6 +170,24 @@
       "writtenOn": "2019-09-11T21:20:59Z",
       "side": 1,
       "message": "Might as well store the instance in a local variable since it gets used twice. Maybe same for GetCowPartitionDeviceName.\n\nIIUC, the cow partition is never actually removed from the metadata - we have to wait for update_engine to take another OTA? Do we want the \"cow\" group to be volatile when unused? I.e., should adb remount/fastboot flash be able to throw it away when no snapshot or merge is in progress?",
+      "revId": "1230343ecacbfc1245ce6b9bc74f8f9c29cb8a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba9ee5af_443af20f",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-09-11T22:05:17Z",
+      "side": 1,
+      "message": "\u003e Might as well store the instance in a local variable since it gets used twice. Maybe same for GetCowPartitionDeviceName.\n\nWill do.\n\n\u003e IIUC, the cow partition is never actually removed from the metadata - we have to wait for update_engine to take another OTA? Do we want the \"cow\" group to be volatile when unused? I.e., should adb remount/fastboot flash be able to throw it away when no snapshot or merge is in progress?\n\nFor adb remount, I am planning to use userdata completely.\nfastboot flash should be able to throw it away in any case (since it flashes the original content).",
+      "parentUuid": "68bf2717_92fc90ff",
       "revId": "1230343ecacbfc1245ce6b9bc74f8f9c29cb8a46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
