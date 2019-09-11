@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed9fe58f_8e212136",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-09-11T21:20:59Z",
+      "side": 1,
+      "message": "nit: s/those/that",
+      "revId": "1230343ecacbfc1245ce6b9bc74f8f9c29cb8a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5761c0b7_8c65bba9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-09-11T21:20:59Z",
+      "side": 1,
+      "message": "Assuming we never actually need the path for anything (aside from maybe initializing the COW to zero?), device strings should work everywhere.",
+      "revId": "1230343ecacbfc1245ce6b9bc74f8f9c29cb8a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "defc9dff_b8056bc5",
+        "filename": "fs_mgr/libsnapshot/include/libsnapshot/snapshot.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-09-11T21:20:59Z",
+      "side": 1,
+      "message": "I think we might not need this struct. There are two cases we need a descriptor: (1) as an input to DmTable, and (2) for zeroing the first bytes. In the former case, we can always use DeviceMapper::GetDeviceString. In the latter case, we can always use GetDmDevicePathByName, because the timeout will be non-zero (which guarantees a usable path).\n\nIf this is true, MapCowImage doesn\u0027t even need to return anything, it\u0027d be up to the caller to derive it. (Though I guess it could return the device name for convenience.)",
+      "revId": "1230343ecacbfc1245ce6b9bc74f8f9c29cb8a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61ef7686_ef845aed",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-09-11T21:20:59Z",
+      "side": 1,
+      "message": "bikeshed nit: is there a suffix clearer than \"-lin\"? -pt? -part? no suffix?",
+      "revId": "1230343ecacbfc1245ce6b9bc74f8f9c29cb8a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0774ff3e_a0850a96",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-09-11T21:20:59Z",
+      "side": 1,
+      "message": "It\u0027s a little confusing to have to delete outer references to the inner device here. Shouldn\u0027t callers of UnmapCowImage have done this already? Do we need to unmap COW components separately, or can there be one UnmapCowDevice method that undoes everything?",
+      "revId": "1230343ecacbfc1245ce6b9bc74f8f9c29cb8a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68bf2717_92fc90ff",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-09-11T21:20:59Z",
+      "side": 1,
+      "message": "Might as well store the instance in a local variable since it gets used twice. Maybe same for GetCowPartitionDeviceName.\n\nIIUC, the cow partition is never actually removed from the metadata - we have to wait for update_engine to take another OTA? Do we want the \"cow\" group to be volatile when unused? I.e., should adb remount/fastboot flash be able to throw it away when no snapshot or merge is in progress?",
+      "revId": "1230343ecacbfc1245ce6b9bc74f8f9c29cb8a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "955a7c5d_ee028390",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1458,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2019-09-11T21:20:59Z",
+      "side": 1,
+      "message": "With a little refactoring to fs_mgr_dm_linear (to expose the DmTable for a partition), we have another option: have cow-partition include one big extent covering the cow file device. I don\u0027t know if it\u0027s worth it though.",
+      "revId": "1230343ecacbfc1245ce6b9bc74f8f9c29cb8a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
