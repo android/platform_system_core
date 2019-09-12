@@ -16,6 +16,24 @@
       "revId": "2072e34ac3984f26779aeac0844d8a510cf1960b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9506964_3c75909e",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1374,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-09-12T00:59:33Z",
+      "side": 1,
+      "message": "Right now, update_engine maps regular logical partitions with 1s timeout.\n\n- COW image creation doesn\u0027t seem to take a timeout variable (see CreateCowImage)\n- Mapping the COW partition during creation (for zero-filling) uses infinite timeout.\n- CreateUpdateSnapshots doesn\u0027t take a timeout either, so it will wait until the end\n\nThe only thing that concerns me is the timeout for mapping images after the creation (before applying the delta). Maybe that needs to be raised?",
+      "parentUuid": "6a02c378_0ca37983",
+      "revId": "2072e34ac3984f26779aeac0844d8a510cf1960b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
