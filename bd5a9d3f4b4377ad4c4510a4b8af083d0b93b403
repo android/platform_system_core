@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "297beb3d_60fce99d",
+        "filename": "libprocessgroup/profiles/task_profiles.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-09-13T18:54:34Z",
+      "side": 1,
+      "message": "I would also prefer aggregate profiles to be described in a separate section, however this approach provides more flexibility in terms of ordering and mixing SetProfile action with other actions, so functionally this approach seems to be better.",
+      "parentUuid": "0fb56e41_3e219701",
+      "range": {
+        "startLine": 496,
+        "startChar": 5,
+        "endLine": 500,
+        "endChar": 5
+      },
+      "revId": "bd5a9d3f4b4377ad4c4510a4b8af083d0b93b403",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd76822e_d1817d48",
         "filename": "libprocessgroup/sched_policy.cpp",
         "patchSetId": 1
@@ -64,6 +88,52 @@
         "startChar": 4,
         "endLine": 160,
         "endChar": 5
+      },
+      "revId": "bd5a9d3f4b4377ad4c4510a4b8af083d0b93b403",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6073506e_6e010dc0",
+        "filename": "libprocessgroup/task_profiles.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-09-13T18:54:34Z",
+      "side": 1,
+      "message": "Could you refactor the code so that these functions (https://android.googlesource.com/platform/system/core/+/master/libprocessgroup/processgroup.cpp#118) are implemented here inside task_profiles.cpp and processgroup.cpp simply calls them? Then you would not need forward declarations here.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "bd5a9d3f4b4377ad4c4510a4b8af083d0b93b403",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ca5ae2a_ce1cf2e1",
+        "filename": "libprocessgroup/task_profiles.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-09-13T18:54:34Z",
+      "side": 1,
+      "message": "In here we need to check for recursive usage of the profile to prevent cases like this:\n\nProfile \"A\" { Actions { \"SetProfile\", [\"A\"] } }\n\nor an indirect recursion like this:\n\nProfile \"A\" { Actions { \"SetProfile\", [\"B\"] } }\nProfile \"B\" { Actions { \"SetProfile\", [\"A\"] } }\n\nFirst recursion can be trivially checked to make sure \"profiles\" does not contain \"profile_name\" and the second one can be implemented by simply checking that all values in \"profiles\" are valid profiles using TaskProfiles::GetProfile(profiles[i]) for all \"i\". IOW profiles can be used only after they are defined. If we implement such a check then\n\nProfile \"A\" { Actions { \"SetProfile\", [\"B\"] } }\nProfile \"B\" { Actions { \"SetProfile\", [\"A\"] } }\n\nwould yield an error because profile \"B\" is used in the first line before it is defined in the second line.",
+      "range": {
+        "startLine": 456,
+        "startChar": 20,
+        "endLine": 456,
+        "endChar": 70
       },
       "revId": "bd5a9d3f4b4377ad4c4510a4b8af083d0b93b403",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
