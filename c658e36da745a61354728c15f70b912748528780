@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73885255_2840f1dc",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-09-17T16:08:29Z",
+      "side": 1,
+      "message": "I\u0027m a little iffy about overwriting this.  It made sense for this to be a member variable originally, since we\u0027d add a bunch of partitions to it, then use UeventCallback() once in InitRequiredDevices(), but now we\u0027re using it in multiple places.  \n\nI wonder if it\u0027d be better to have UeventCallback() take its own std::set\u003cstd::string\u003e directly in all cases so we don\u0027t accidentally mess up required_devices_partition_names_ as a member variable.\n\nWe could rework FirstStageMount::InitDevices() to have it get the names of partitions as return values from the functions it calls and pass it to this function, which we would then merge with the original InitRequiredDevices().",
+      "revId": "c658e36da745a61354728c15f70b912748528780",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "facff572_0b71f384",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-09-17T16:08:29Z",
+      "side": 1,
+      "message": "Total nit, but you can avoid the move and everything if you just\n\nif (!InitExtraRequiredDevices({\"userdata\"})) {\n\nUp to you if you think it looks better.",
+      "revId": "c658e36da745a61354728c15f70b912748528780",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
