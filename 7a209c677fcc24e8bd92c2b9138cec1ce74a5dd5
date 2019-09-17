@@ -34,6 +34,24 @@
       "revId": "7a209c677fcc24e8bd92c2b9138cec1ce74a5dd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bef87e0e_6cc85b49",
+        "filename": "base/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2019-09-17T19:29:17Z",
+      "side": 1,
+      "message": "It looks like this change replaces an instruction (rol/bswap) with an function call into a DLL, which would be slower. It seems unlikely to matter in practice? If it mattered, code could call __builtin_bswap* directly, or maybe we could keep defining the macros after the #include \u003cwinsock2.h\u003e.\n\nI think we would need this ws2_32.dll dependency in any Windows exe/dll that uses these functions? It looks like adb.exe/fastboot.exe already list -lws2_32, and ab/P9838219 built a set of Windows binaries.",
+      "parentUuid": "111d4174_fe0dbd66",
+      "revId": "7a209c677fcc24e8bd92c2b9138cec1ce74a5dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
