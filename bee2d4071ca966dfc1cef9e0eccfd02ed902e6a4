@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "614dde11_56a9353c",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1447810
+      },
+      "writtenOn": "2019-09-17T02:16:05Z",
+      "side": 1,
+      "message": "It will cause build fail\nn file included from system/core/fastboot/fastboot.cpp:74:\nIn file included from system/core/fastboot/tcp.h:36:\nIn file included from system/core/fastboot/socket.h:42:\nIn file included from system/core/libcutils/include/cutils/sockets.h:28:\nprebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8/x86_64-w64-mingw32/include/winsock2.h:982:37: error: function declared \u0027stdcall\u0027 here was previously declared without calling convention\n  WINSOCK_API_LINKAGE u_long WSAAPI htonl(u_long hostlong);\n                                    ^\nsystem/core/base/include/android-base/endian.h:56:18: note: expanded from macro \u0027htonl\u0027\n#define htonl(x) __builtin_bswap32(x)\n                 ^\nprebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8/x86_64-w64-mingw32/include/winsock2.h:982:37: note: previous declaration is here\nsystem/core/base/include/android-base/endian.h:56:18: note: expanded from macro \u0027htonl\u0027\n#define htonl(x) __builtin_bswap32(x)\n                 ^\nIn file included from system/core/fastboot/fastboot.cpp:74:\nIn file included from system/core/fastboot/tcp.h:36:\nIn file included from system/core/fastboot/socket.h:42:\nIn file included from system/core/libcutils/include/cutils/sockets.h:28:\nprebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8/x86_64-w64-mingw32/include/winsock2.h:983:38: error: function declared \u0027stdcall\u0027 here was previously declared without calling convention\n  WINSOCK_API_LINKAGE u_short WSAAPI htons(u_short hostshort);\n                                     ^\nsystem/core/base/include/android-base/endian.h:55:18: note: expanded from macro \u0027htons\u0027\n#define htons(x) __builtin_bswap16(x)\n                 ^\nprebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8/x86_64-w64-mingw32/include/winsock2.h:983:38: note: previous declaration is here\nsystem/core/base/include/android-base/endian.h:55:18: note: expanded from macro \u0027htons\u0027\n#define htons(x) __builtin_bswap16(x)\n                 ^\nIn file included from system/core/fastboot/fastboot.cpp:74:\nIn file included from system/core/fastboot/tcp.h:36:\nIn file included from system/core/fastboot/socket.h:42:\nIn file included from system/core/libcutils/include/cutils/sockets.h:28:\nprebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8/x86_64-w64-mingw32/include/winsock2.h:989:37: error: function declared \u0027stdcall\u0027 here was previously declared without calling convention\n  WINSOCK_API_LINKAGE u_long WSAAPI ntohl(u_long netlong);\n                                    ^\nsystem/core/base/include/android-base/endian.h:60:18: note: expanded from macro \u0027ntohl\u0027\n#define ntohl(x) __builtin_bswap32(x)\n                 ^\nprebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8/x86_64-w64-mingw32/include/winsock2.h:982:37: note: previous declaration is here\n  WINSOCK_API_LINKAGE u_long WSAAPI htonl(u_long hostlong);\n                                    ^\nsystem/core/base/include/android-base/endian.h:56:18: note: expanded from macro \u0027htonl\u0027\n#define htonl(x) __builtin_bswap32(x)\n                 ^\nIn file included from system/core/fastboot/fastboot.cpp:74:\nIn file included from system/core/fastboot/tcp.h:36:\nIn file included from system/core/fastboot/socket.h:42:\nIn file included from system/core/libcutils/include/cutils/sockets.h:28:\nprebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8/x86_64-w64-mingw32/include/winsock2.h:990:38: error: function declared \u0027stdcall\u0027 here was previously declared without calling convention\n  WINSOCK_API_LINKAGE u_short WSAAPI ntohs(u_short netshort);\n                                     ^\nsystem/core/base/include/android-base/endian.h:59:18: note: expanded from macro \u0027ntohs\u0027\n#define ntohs(x) __builtin_bswap16(x)\n                 ^\nprebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8/x86_64-w64-mingw32/include/winsock2.h:983:38: note: previous declaration is here\n  WINSOCK_API_LINKAGE u_short WSAAPI htons(u_short hostshort);\n                                     ^\nsystem/core/base/include/android-base/endian.h:55:18: note: expanded from macro \u0027htons\u0027\n#define htons(x) __builtin_bswap16(x)\n                 ^\n4 errors generated.",
+      "parentUuid": "e0b503dc_8ce21b31",
+      "range": {
+        "startLine": 923,
+        "startChar": 16,
+        "endLine": 923,
+        "endChar": 32
+      },
+      "revId": "bee2d4071ca966dfc1cef9e0eccfd02ed902e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8419db4c_c2846ac7",
         "filename": "fastboot/fastboot.cpp",
         "patchSetId": 2
