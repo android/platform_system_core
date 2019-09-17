@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "38abcac1_ceecc1f0",
+        "filename": "adb/client/usb_linux.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-09-17T06:48:34Z",
+      "side": 1,
+      "message": "I thought about it, but it\u0027s probably going to be super noisy: if you fail to allocate 1MB once, you\u0027re probably going to fail on every single 1MB write for a while?\n\nShort writes should not be possible (and we return failure in usb_write_split if that does happen).",
+      "parentUuid": "c48a6497_3730592d",
+      "revId": "d388df1d9eafed768c82ad729845b6794b05d697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cecf5930_001445f8",
         "filename": "adb/client/usb_linux.cpp",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-13T15:16:43Z",
       "side": 1,
       "message": "is it okay to send the 0 marker even if the data write was short/failed (since you fal through now)?",
+      "revId": "d388df1d9eafed768c82ad729845b6794b05d697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce6c67a0_dd5b760b",
+        "filename": "adb/client/usb_linux.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-09-17T06:48:34Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "cecf5930_001445f8",
       "revId": "d388df1d9eafed768c82ad729845b6794b05d697",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
