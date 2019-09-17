@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0f618186_94c8ed2d",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 1961,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-09-17T18:19:31Z",
+      "side": 1,
+      "message": "nit: NO_RECLAIM \u003d 0, for clarity?",
+      "range": {
+        "startLine": 1961,
+        "startChar": 8,
+        "endLine": 1961,
+        "endChar": 19
+      },
+      "revId": "f2b6d7100b3e3e778fec6cb854c4428c5cf28ad1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e677d37e_a1705b04",
         "filename": "lmkd/lmkd.c",
         "patchSetId": 23
@@ -42,6 +65,122 @@
         "startChar": 27,
         "endLine": 1972,
         "endChar": 34
+      },
+      "revId": "f2b6d7100b3e3e778fec6cb854c4428c5cf28ad1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fcf28d5_37c75241",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 1972,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-09-17T18:19:31Z",
+      "side": 1,
+      "message": "You can not make this case for all of these static initializations here, so do remove the other ones at least. I do not feel this is a self-documentation or maintenance advantage in this case. If you want to make it clear, you add a comment.\n\nWe prefer to only initialize statics if it is _not_ zero. This makes it clear what lands in .data (takes up exec space, and depending is memcpy) and what lands in .bss (memset at crt.o) segments. For an executable that is mlock\u0027d it is good to keep track of such things.",
+      "parentUuid": "efae6054_f0f8716b",
+      "range": {
+        "startLine": 1972,
+        "startChar": 27,
+        "endLine": 1972,
+        "endChar": 34
+      },
+      "revId": "f2b6d7100b3e3e778fec6cb854c4428c5cf28ad1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac212c15_5bcb0b75",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 2023,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-09-17T18:19:31Z",
+      "side": 1,
+      "message": "nit, it might be more positive and less likely to get hijacked if you do\n\n    swap_is_low \u003d mi.field.free_swap \u003c swap_log_threshold;",
+      "range": {
+        "startLine": 2021,
+        "startChar": 0,
+        "endLine": 2023,
+        "endChar": 9
+      },
+      "revId": "f2b6d7100b3e3e778fec6cb854c4428c5cf28ad1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1a9e533_d2a19e64",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 2037,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-09-17T18:19:31Z",
+      "side": 1,
+      "message": "This is the default value for fallthrough the above fragment and leads one to question what reclaim could have been, extra unnecessary logic if we are counting assembler. Only necessary if you think you will set reclaim to any other value.\n\nenum reclaim_state reclaim; /* logically we can remove the initialization, I would not complain if it remained for code stability/hardening reasons though for future adjustments */\n\nif (vs....) {\n . . .\n reclaim \u003d DIRECT_RECLAIM;\n} else if (vs...) {\n . . .\n reclaim \u003d KSWAPD_RECLAIM;\n} else {\n in_reclaim \u003d false;\n goto no_kill;\n}",
+      "range": {
+        "startLine": 2037,
+        "startChar": 8,
+        "endLine": 2037,
+        "endChar": 32
+      },
+      "revId": "f2b6d7100b3e3e778fec6cb854c4428c5cf28ad1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f55b3e40_93842090",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 2056,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-09-17T18:19:31Z",
+      "side": 1,
+      "message": "Q: Do you not want to update the polling interval? this problem of parsing the zoneinfo, is it permanent, or temporary?",
+      "range": {
+        "startLine": 2056,
+        "startChar": 8,
+        "endLine": 2056,
+        "endChar": 15
+      },
+      "revId": "f2b6d7100b3e3e778fec6cb854c4428c5cf28ad1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9eecf78_4a0f983a",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 2767,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-09-17T18:19:31Z",
+      "side": 1,
+      "message": "These (and other low_ram_device alternates) defaults should be in a header as enums or #defines.",
+      "range": {
+        "startLine": 2767,
+        "startChar": 79,
+        "endLine": 2767,
+        "endChar": 87
       },
       "revId": "f2b6d7100b3e3e778fec6cb854c4428c5cf28ad1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
