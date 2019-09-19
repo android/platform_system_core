@@ -16,6 +16,24 @@
       "revId": "d865fe078c9b451fc7ffe1efcc6e9bd356405d1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3195cb3_c554769c",
+        "filename": "logwrapper/logwrap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-09-19T14:52:14Z",
+      "side": 1,
+      "message": "I tried O_NOCTTY as one of the first things I tried :-( I even tried it on _both_ sides even for good measure.\n\n_this_ is why it does not make sense.\n\nI also tried seeing if unique_fd was affecting things (as a source of holding a file descriptor that could have been closed out-of-band, leading to a double close) by instrumenting the fd set at every phase and found _nothing_ surprising with respect to the list of open fd\u0027s. I was at one point so sure that the socket pair was getting the close (adb then turns that into an unexpected hup), but its fd was up in the 60s.\n\nAFAIK the only things I did _not_ check was setting the line discipline to raw (b/c it would be complicated, only do it for ignore_int_quit) and for a kernel bug (this problem has been tested _only_ on blueline).\n\nI will respin with O_NOCTTY set _if_ ignore_int_quit on parent ptty only as a self-documentation.",
+      "parentUuid": "c15d7378_1edf5a48",
+      "revId": "d865fe078c9b451fc7ffe1efcc6e9bd356405d1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
