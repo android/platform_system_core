@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d56a3dc4_926143fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-09-20T14:54:08Z",
+      "side": 1,
+      "message": "please prepend with \"libprocessgroup: \" because system/core is a huge component and has many sub-components in it.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "ec70c1d7f634b696e1e41c162b93a0666c202352",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c5de20f_63f1bd26",
+        "filename": "libprocessgroup/task_profiles.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-09-20T14:54:08Z",
+      "side": 1,
+      "message": "If profile definition is invalid I don\u0027t think we should add it into profiles_. IIUC this should be:\n\nif (ret) {\n    auto profile \u003d std::make_unique\u003cTaskProfile\u003e();\n    profile-\u003eAdd(std::make_unique\u003cApplyProfileAction\u003e(profiles));\n    profiles_[aggregateprofile_name] \u003d std::move(profile);\n}",
+      "range": {
+        "startLine": 477,
+        "startChar": 0,
+        "endLine": 481,
+        "endChar": 0
+      },
+      "revId": "ec70c1d7f634b696e1e41c162b93a0666c202352",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76c9d397_7e317db7",
+        "filename": "libprocessgroup/task_profiles.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-09-20T14:54:08Z",
+      "side": 1,
+      "message": "nit: duplicate?",
+      "range": {
+        "startLine": 141,
+        "startChar": 7,
+        "endLine": 141,
+        "endChar": 22
+      },
+      "revId": "ec70c1d7f634b696e1e41c162b93a0666c202352",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
