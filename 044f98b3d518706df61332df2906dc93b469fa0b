@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "139fdc86_2da5455c",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-09-20T03:49:34Z",
+      "side": 1,
+      "message": "Btw, the vbmeta_partition syntax doesn\u0027t mean to use a key from there.\nIt means load a Hash or Hashtree descriptor from there.\n\nWith this, it will use the \u0027system\u0027 (from logical_partition_name) Hashtree descriptor from either vbmeta or vbmeta_system.\nSo if this hashtree descriptor doesn\u0027t match \u0027system_gsi\u0027, it will trigger dm-verity error.\n\nSince you\u0027ve already created a bug, how about add a TODO here?\ne.g., TODO (b/141284191): fix verified boot solution for DSU partitions.",
+      "range": {
+        "startLine": 685,
+        "startChar": 12,
+        "endLine": 685,
+        "endChar": 77
+      },
+      "revId": "044f98b3d518706df61332df2906dc93b469fa0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4df7601b_887e31c8",
         "filename": "fs_mgr/fs_mgr_fstab.cpp",
         "patchSetId": 9
