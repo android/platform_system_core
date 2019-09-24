@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9b7c730_f6e3ab9f",
+        "filename": "init/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-09-24T19:05:13Z",
+      "side": 1,
+      "message": "What is the behavior of setting both console and stdio_to_kmsg ? Both of them change how stdout/stderr is handled. Should the interaction between these two options be documented? \n\nAdditionally, when would one want to use console vs using stdio_to_kmsg?",
+      "revId": "ea737325b1fe181425e6db7ec14cc253b4765f02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4082d30_e154f933",
+        "filename": "init/service_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-09-24T19:05:13Z",
+      "side": 1,
+      "message": "would it be better to use /dev/kmsg_debug instead of /dev/kmsg? In that way, this file descriptor will only be available on debuggable builds. On user builds (ro.debuggable\u003dfalse), there\u0027s less of an expectation about introspection capabilities.",
+      "range": {
+        "startLine": 130,
+        "startChar": 22,
+        "endLine": 130,
+        "endChar": 33
+      },
+      "revId": "ea737325b1fe181425e6db7ec14cc253b4765f02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57b662c9_bb35120f",
+        "filename": "init/service_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2019-09-24T19:05:13Z",
+      "side": 1,
+      "message": "O_WRONLY | O_APPEND | O_CLOEXEC\n\n(although I\u0027m not sure it\u0027s relevant for /dev/kmsg)",
+      "range": {
+        "startLine": 130,
+        "startChar": 35,
+        "endLine": 130,
+        "endChar": 43
+      },
+      "revId": "ea737325b1fe181425e6db7ec14cc253b4765f02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
