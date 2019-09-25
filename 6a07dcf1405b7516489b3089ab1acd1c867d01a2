@@ -391,6 +391,30 @@
     },
     {
       "key": {
+        "uuid": "acfe0c76_0fafd86c",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 2079,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-09-25T17:31:37Z",
+      "side": 1,
+      "message": "70% *complete* stall does not mean kswapd runs for 700ms in 1sec. It means no task (except for kswapd or a task directly reclaiming memory) can run for 700ms in the last 1sec because of memory congestion. IOW no task did any useful progress because all of them were doing some kind of memory cleanup or were blocked waiting for a page to be paged in. In your example because another task is running on CPU 2 this would not be recorded as a complete (full) stall, just partial (some) stall.",
+      "parentUuid": "c143ba27_7fa327ef",
+      "range": {
+        "startLine": 2079,
+        "startChar": 15,
+        "endLine": 2079,
+        "endChar": 61
+      },
+      "revId": "6a07dcf1405b7516489b3089ab1acd1c867d01a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "413a856f_186913a4",
         "filename": "lmkd/lmkd.c",
         "patchSetId": 26
@@ -462,6 +486,30 @@
     },
     {
       "key": {
+        "uuid": "5fbb0fdb_781a44c5",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 2088,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-09-25T17:31:37Z",
+      "side": 1,
+      "message": "Again, this is a decision of how much thrashing we are willing to tolerate on a particular device and for how long. Decaying the threshold allows us to limit the time that we will be tolerating thrashing (each next kill will happen sooner than the previous one). That\u0027s why the decay amount differs for low-ram devices vs high-performance devices but ultimately this is something that should be tunable for individual device.",
+      "parentUuid": "31117850_565c92f4",
+      "range": {
+        "startLine": 2088,
+        "startChar": 37,
+        "endLine": 2088,
+        "endChar": 64
+      },
+      "revId": "6a07dcf1405b7516489b3089ab1acd1c867d01a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d9a072a_551a48c5",
         "filename": "lmkd/lmkd.c",
         "patchSetId": 26
@@ -509,6 +557,24 @@
       "side": 1,
       "message": "#1: you check only watermark but doesn\u0027t check how many available pages we have.\nIOW, even though watermark is min at that time but we have many file-backed pages, system never goes OOM.\n\n#2: As I wrote above, 700ms PSI from kswapd seems to be not ANR state.\n\nLet\u0027s review other state in updated CL.",
       "parentUuid": "15626b92_f1efbaab",
+      "revId": "6a07dcf1405b7516489b3089ab1acd1c867d01a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b5dc868_bb98fd4c",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 2101,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-09-25T17:31:37Z",
+      "side": 1,
+      "message": "#1 means we are still in reclaim and the memory is under min threshold even after we killed the process and reclaimed its memory. If there were many filebacked pages freed as a result of the previous kill we should not be low on memory because we gave the system time to reclaim them (note that we wait for the process to die).\n\n#2 700ms of *complete* stall \u003d\u003d no task except for kswapd/direct reclaim was running because of memory congestion.",
+      "parentUuid": "2d135b14_c550029f",
       "revId": "6a07dcf1405b7516489b3089ab1acd1c867d01a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
