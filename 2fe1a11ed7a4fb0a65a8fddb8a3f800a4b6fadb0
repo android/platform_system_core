@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b77dbd2c_b5ce92d5",
+        "filename": "adb/client/adb_install.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1269249
+      },
+      "writtenOn": "2019-09-25T10:15:51Z",
+      "side": 1,
+      "message": "you can probably take this conditional out now?",
+      "revId": "2fe1a11ed7a4fb0a65a8fddb8a3f800a4b6fadb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b11f089_428802f9",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1269249
+      },
+      "writtenOn": "2019-09-25T10:15:51Z",
+      "side": 1,
+      "message": "In the name of portability I suggest you create a #define called \u0027FUNCTION_TIME_REPORTER\u0027 which does this. __FUNCTION__ is not C standard so sprinkling it all over the code makes it less portable (if we ever wanted to build on a different compiler then we could just change the define). Alternatively switch to __func__ which is in the C99 standard. Or do both for maximum points :)",
+      "revId": "2fe1a11ed7a4fb0a65a8fddb8a3f800a4b6fadb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14dd7444_149f6bb1",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1269249
+      },
+      "writtenOn": "2019-09-25T10:15:51Z",
+      "side": 1,
+      "message": "At first glance this code looks a bit messy, but I realize that doing it this way avoids an extra round trip to the device which is awesome. It would be good to include a comment here calling that out so that someone isn\u0027t tempted to accidentally \"improve it\" later my moving the agent logic out into a separate step again.",
+      "revId": "2fe1a11ed7a4fb0a65a8fddb8a3f800a4b6fadb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39c38278_82532b61",
+        "filename": "adb/fastdeploy/deployagent/src/com/android/fastdeploy/ApkArchive.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1269249
+      },
+      "writtenOn": "2019-09-25T10:15:51Z",
+      "side": 1,
+      "message": "I assume that this has been branched from somewhere else? On the off chance that you just wrote all this code for this situation: the copyright needs to be 2019.",
+      "revId": "2fe1a11ed7a4fb0a65a8fddb8a3f800a4b6fadb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
