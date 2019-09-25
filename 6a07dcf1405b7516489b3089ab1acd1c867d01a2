@@ -225,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "32ba22c6_3931c241",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 2021,
+      "author": {
+        "id": 1275554
+      },
+      "writtenOn": "2019-09-25T13:53:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f9a046c9_c5f84921",
+      "range": {
+        "startLine": 2021,
+        "startChar": 8,
+        "endLine": 2021,
+        "endChar": 21
+      },
+      "revId": "6a07dcf1405b7516489b3089ab1acd1c867d01a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46b3cb50_d49e8aeb",
         "filename": "lmkd/lmkd.c",
         "patchSetId": 26
@@ -272,6 +296,30 @@
     },
     {
       "key": {
+        "uuid": "bef1180e_ae505fcb",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 2076,
+      "author": {
+        "id": 1275554
+      },
+      "writtenOn": "2019-09-25T13:53:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c3ab68de_02f0a798",
+      "range": {
+        "startLine": 2076,
+        "startChar": 28,
+        "endLine": 2076,
+        "endChar": 45
+      },
+      "revId": "6a07dcf1405b7516489b3089ab1acd1c867d01a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa49adbe_60c51457",
         "filename": "lmkd/lmkd.c",
         "patchSetId": 26
@@ -307,6 +355,30 @@
       "side": 1,
       "message": "70% of time in complete stall is pretty much a non-responding system. In the few cases when this event got triggered during testing I\u0027ve seen ANRs (Application not responding) recorded in the logcat.",
       "parentUuid": "aa49adbe_60c51457",
+      "range": {
+        "startLine": 2079,
+        "startChar": 15,
+        "endLine": 2079,
+        "endChar": 61
+      },
+      "revId": "6a07dcf1405b7516489b3089ab1acd1c867d01a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c143ba27_7fa327ef",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 2079,
+      "author": {
+        "id": 1275554
+      },
+      "writtenOn": "2019-09-25T13:53:57Z",
+      "side": 1,
+      "message": "If I understand PSI correctly, that means we will kill app if *kswapd* runs 700ms in 1sec?\nIt looks too aggressive because it\u0027s natural that kswapd runs in *background* for a long time if reclaim speed and allocation speed is similar. IOW, kswapd runs on CPU 1 and reclaim 10M/sec while app runs on CPU 2 and consumes memory 10M/sec. It\u0027s well balanced situation, not critical status.",
+      "parentUuid": "12093853_d963984d",
       "range": {
         "startLine": 2079,
         "startChar": 15,
@@ -366,6 +438,30 @@
     },
     {
       "key": {
+        "uuid": "31117850_565c92f4",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 2088,
+      "author": {
+        "id": 1275554
+      },
+      "writtenOn": "2019-09-25T13:53:57Z",
+      "side": 1,
+      "message": "Then, can\u0027t we make thrashing_limit_decay_pct automatically without exposing user knob?\nFor example, first time is 10% and 2nd iteration 20%, 3rd: 40, 4th 80, finally 100%\nIt seems we start to expose too many knobs to user.",
+      "parentUuid": "90f1e6d7_51018be4",
+      "range": {
+        "startLine": 2088,
+        "startChar": 37,
+        "endLine": 2088,
+        "endChar": 64
+      },
+      "revId": "6a07dcf1405b7516489b3089ab1acd1c867d01a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d9a072a_551a48c5",
         "filename": "lmkd/lmkd.c",
         "patchSetId": 26
@@ -395,6 +491,24 @@
       "side": 1,
       "message": "I did order them in the order of the strongest opinion first.\n#1 - we killed and the system is still very low on memory - close to OOM condition\n#2 - system is in complete stall and not responding\n#3, #4 - swap area is low and thrashing or low on memory\n#5, #6 - system is thrashing and memory is low or in direct reclaim\n\nThe first 4 can cause OOM kills while the last 2 are affecting performance of the device.",
       "parentUuid": "3d9a072a_551a48c5",
+      "revId": "6a07dcf1405b7516489b3089ab1acd1c867d01a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d135b14_c550029f",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 2101,
+      "author": {
+        "id": 1275554
+      },
+      "writtenOn": "2019-09-25T13:53:57Z",
+      "side": 1,
+      "message": "#1: you check only watermark but doesn\u0027t check how many available pages we have.\nIOW, even though watermark is min at that time but we have many file-backed pages, system never goes OOM.\n\n#2: As I wrote above, 700ms PSI from kswapd seems to be not ANR state.\n\nLet\u0027s review other state in updated CL.",
+      "parentUuid": "15626b92_f1efbaab",
       "revId": "6a07dcf1405b7516489b3089ab1acd1c867d01a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
