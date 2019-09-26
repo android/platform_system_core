@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88dabd74_9a1af6ef",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-09-26T17:50:29Z",
+      "side": 1,
+      "message": "Do we know why we need this line or the original one in the first place?  Do we need this to not be a member of the shell group for a specific reason?\n\nIn general, we don\u0027t want to make assumptions about /vendor here.  What if there is a vendor.img that already has a /vendor/bin/install-recovery.sh; we don\u0027t want to set specific permissions on it in common code.  These permissions should likely be in a config.fs file and included if the vendor is enabling install-recovery.\n\nhttps://source.android.com/devices/tech/config/filesystem for reference on config.fs.",
+      "revId": "51b85b5579bdc3ad7833431c3b76e1fb8c82b8fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02d27c7b_3d62d2d9",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-09-26T17:50:29Z",
+      "side": 1,
+      "message": "Same comment as above.",
+      "revId": "51b85b5579bdc3ad7833431c3b76e1fb8c82b8fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
