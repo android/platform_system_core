@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbc571e0_c14294aa",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2019-09-27T21:14:12Z",
+      "side": 1,
+      "message": "nit: why not define a macro, e.g. REPORT_FUNC_TIME(), and use it everywhere?",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 36
+      },
+      "revId": "2fe6e2f5fdce689ffff656408f9b65700d2f9ed0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a539413_36980c42",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2019-09-27T21:14:12Z",
+      "side": 1,
+      "message": "nit: this looks like a good candidate for a helper function",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 55
+      },
+      "revId": "2fe6e2f5fdce689ffff656408f9b65700d2f9ed0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93e9b8a9_174d4e3e",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2019-09-27T21:14:12Z",
+      "side": 1,
+      "message": "instead of undefing you could use braces, AFAIK:\n(android::ZipFileRO::open)",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 11
+      },
+      "revId": "2fe6e2f5fdce689ffff656408f9b65700d2f9ed0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7373a07_2c6b0699",
+        "filename": "adb/fastdeploy/deploypatchgenerator/apk_archive.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2019-09-27T21:14:12Z",
+      "side": 1,
+      "message": "check for stat() return code?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 23
+      },
+      "revId": "2fe6e2f5fdce689ffff656408f9b65700d2f9ed0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b14f150_9cdf4592",
+        "filename": "adb/fastdeploy/deploypatchgenerator/apk_archive.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2019-09-27T21:14:12Z",
+      "side": 1,
+      "message": "1. check if mapping succeeded?\n2. fall back to raw read() calls if it failed?\n3. Cache the file mapping in a member because map/unmap is a slow call?",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 0
+      },
+      "revId": "2fe6e2f5fdce689ffff656408f9b65700d2f9ed0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee91999e_b7bc8d4b",
+        "filename": "adb/fastdeploy/deploypatchgenerator/deploy_patch_generator.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2019-09-27T21:14:12Z",
+      "side": 1,
+      "message": "1. auto\n2. this is a strict aliasing violation, and that can bite us. The only \u0027legal\u0027 way of doing it is to memcpy and hope the compiler will eliminate that",
+      "range": {
+        "startLine": 229,
+        "startChar": 8,
+        "endLine": 229,
+        "endChar": 24
+      },
+      "revId": "2fe6e2f5fdce689ffff656408f9b65700d2f9ed0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
