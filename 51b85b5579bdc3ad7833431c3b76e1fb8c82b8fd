@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d078d8fe_a333b9a7",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1056365
+      },
+      "writtenOn": "2019-09-27T22:47:30Z",
+      "side": 1,
+      "message": "Found ag/414351 as the initial change to add this line, but it didn\u0027t tell much about the reason.\n\nI think the goal was \"not be a member of the shell group\", as well as 0755 -\u003e 0750. For the script itself, invoking by shell user shouldn\u0027t lead something bad in practice, but I think it was to avoid being potentially exploited due to any vulnerability in applypatch (called by install-recovery.sh).\n\nWe\u0027re trying to include this \"install-recovery.sh\" module via AOSP code, and to install it automatically if it\u0027s non-A/B device with a standalone recovery image. So partners don\u0027t need to explicitly include any package in device-specific config (as they\u0027re doing today). The config.fs approach seems to serving the case of device-specific modules?",
+      "parentUuid": "88dabd74_9a1af6ef",
+      "revId": "51b85b5579bdc3ad7833431c3b76e1fb8c82b8fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02d27c7b_3d62d2d9",
         "filename": "libcutils/fs_config.cpp",
         "patchSetId": 13
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-26T17:50:29Z",
       "side": 1,
       "message": "Same comment as above.",
+      "revId": "51b85b5579bdc3ad7833431c3b76e1fb8c82b8fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df0a5c3c_b91f7a1b",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1056365
+      },
+      "writtenOn": "2019-09-27T22:47:30Z",
+      "side": 1,
+      "message": "This was added via ag/731461. Although it\u0027s my CL, I don\u0027t recall a specific reason. Likely I was suggested to tighten the access to a minimally needed level (but I wonder why I didn\u0027t use 0400).",
+      "parentUuid": "02d27c7b_3d62d2d9",
       "revId": "51b85b5579bdc3ad7833431c3b76e1fb8c82b8fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
