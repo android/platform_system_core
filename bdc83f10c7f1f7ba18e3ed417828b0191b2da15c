@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d69a05c0_8f32edb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-01T13:36:57Z",
+      "side": 1,
+      "message": "Note that I\u0027m not fixing this for the other APEX ld.config.txt\u0027s, because they don\u0027t support the %SANITIZER_RUNTIME_LIBRARIES% expansion. Hence this fix isn\u0027t strictly speaking complete, and we might run into linker errors for APEX binaries on sanitizer builds.\n\nI think applying this as a rule of thumb makes sense though, and I hope with linkerconfig we\u0027ll solve it easily and consistently. I think it ideally should make it more effort to configure a namespace _without_ the full set of Bionic and sanitizer library links.\n\n+kiyoungkim for thoughts on that. I\u0027ve not tried to update linkerconfig correspondingly, since I don\u0027t know what approach you\u0027d prefer.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 47
+      },
+      "revId": "bdc83f10c7f1f7ba18e3ed417828b0191b2da15c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f052dbe_913da3b9",
+        "filename": "rootdir/etc/ld.config.vndk_lite.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-01T13:36:57Z",
+      "side": 1,
+      "message": "Just happened to notice this line was gone. I think it was removed by mistake in https://r.android.com/1014637.\n\n(The fact that we\u0027ve never noticed just goes to show how all the duplication in these files leads to testing gaps, and I\u0027d be surprised if these lesser used sections are actually correct. :\\ Can\u0027t wait to switch to linkerconfig.)",
+      "revId": "bdc83f10c7f1f7ba18e3ed417828b0191b2da15c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
