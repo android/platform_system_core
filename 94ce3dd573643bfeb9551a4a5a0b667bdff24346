@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66508c50_1a81a099",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 1375,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2019-10-02T14:12:37Z",
+      "side": 1,
+      "message": "The code:\n\n  sscanf(line, \"foo %128s\", zone_name);\n\ncan potentially write 129 characters into the \u0027zone_name\u0027 buffer; the 128 characters parsed from the line, plus the terminating \u0027\\0\u0027.  So we have the (presumably quite small) possibility of a buffer overflow here.  I\u0027ve put up a fix:  https://android-review.googlesource.com/c/platform/system/core/+/1131905",
+      "revId": "94ce3dd573643bfeb9551a4a5a0b667bdff24346",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
