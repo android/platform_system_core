@@ -52,6 +52,24 @@
       "revId": "1a191bf54d4a77edd0fc5203141ab67a84936e62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a797faca_d623348b",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-10-02T15:18:23Z",
+      "side": 1,
+      "message": "\u003e since we shouldn\u0027t be using any system_ext properties if that partition isn\u0027t even mounted.\n\nYup, I was thinking the same thing.\n\nHowever, just checked that $(TARGET_RECOVERY_ROOT_OUT)/prop.default cats all property files from \u0027system\u0027, \u0027product\u0027, \u0027system_ext\u0027, etc. Probably some process in recovery might still reference those properties?\nhttps://android.googlesource.com/platform/build/+/9c683dc968111364e887497435f2e689197b4888/core/Makefile#1961\n\n\n\u003e  Part of me wishes we had a better way of doing this, like a recovery_property_contexts\n\nTo align with $(TARGET_RECOVERY_ROOT_OUT)/prop.default, maybe we can consider merging all property_contexts into a single \u0027recovery_property_contexts\u0027 as well.\n\nBut I would probably have to hand over this part to inseob@ separately if we want to do so, as those files are now built by soong (haven\u0027t had a time to ramp this part yet)\nhttps://android-review.googlesource.com/c/platform/system/sepolicy/+/943920/11/build/soong/selinux_contexts.go",
+      "parentUuid": "9da66783_447aec70",
+      "revId": "1a191bf54d4a77edd0fc5203141ab67a84936e62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
