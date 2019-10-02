@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e73a772_aca068c9",
+        "filename": "base/file.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2019-10-02T21:52:37Z",
+      "side": 1,
+      "message": "The narrow CRT functions use the ANSI encoding, so this needs to be a call to _wmktemp_s instead.\n\nI think _mktemp_s appears to accept a UTF-8 string, but that\u0027s because it\u0027s happy to return a path to a file in an non-existent directory. e.g. If I pass it a UTF-8 string:\n\n    C:\\Users\\RPRICH~1\\AppData\\Local\\Temp\\директория с длинным именем\\tmp-XXXXXX\n\nIt will look for paths matching this template (on my Windows-1252 machine):\n\n    C:\\Users\\RPRICH~1\\AppData\\Local\\Temp\\Ð´Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð¸Ñ Ñ Ð´Ð»Ð¸Ð½Ð½Ñ‹Ð¼ Ð¸Ð¼ÐµÐ½ÐµÐ¼\\tmp-XXXXXX\n\nThat path doesn\u0027t exist, so _mktemp_s succeeds, using the letter \u0027a\u0027.\n\nWe\u0027ll create the temp file successfully, but every temp file will start with \u0027a\u0027, even after \u0027a\u0027 already exists.\n\nFWIW: I confirmed that these CRT functions use Windows-1252 on my machine. A console-mode executable uses Windows-1252, even if I use Soong to build, and with either Wine or Windows. It looks like CP-437 is only used for console I/O (the screen buffer, maybe input). (I think ANSI \u003d\u003d Windows-1252 and OEM \u003d\u003d CP-437.)",
+      "revId": "43f0b0c4bacaf44ff730b0ebb5eee4d7f299e428",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4508902_bae74f97",
+        "filename": "base/file.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2019-10-02T21:52:37Z",
+      "side": 1,
+      "message": "_wmktemp_s",
+      "revId": "43f0b0c4bacaf44ff730b0ebb5eee4d7f299e428",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "386afce3_fb079ffb",
+        "filename": "base/file_test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2019-10-02T21:52:37Z",
+      "side": 1,
+      "message": "If the TMP variable was previously unset, this will set the variable to \"\", an empty string. When I test GetTempPath with TMP\u003d\"\" (rather than an unset TMP), I see GetTempPathA return \"O\" and GetTempPathW return \"\\0\".\n\nIf we want this case to work, we can pass nullptr to SetEnvironmentVariableW instead, which unsets the variable.",
+      "revId": "43f0b0c4bacaf44ff730b0ebb5eee4d7f299e428",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
