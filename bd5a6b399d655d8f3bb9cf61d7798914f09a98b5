@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6993f652_94526264",
+        "filename": "init/mount_handler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-10-07T18:32:21Z",
+      "side": 1,
+      "message": "Good to know!\n\nThe max_dgram_qlen setting is used _when_ the socket is instantiated by a listen, not retroactively. listen(sockfd, backlog) ... backlog has the advantage(?) of setting the number of outstanding requests _and_ dgram packets allowed in the queue once connected.\n\nIf the queue is large, then properties can be used as an IPC. It _shouldn\u0027t_ be used as an IPC IMHO, so I am of a mixed mind when it comes to allowing a large queue. Large queue, and coincidentally a dedicated thread, both mitigate the lost message problem. Users should not be stuffing the properties with any high volume IMHO. This, and ueventd if it ever gets involved, both have the ability to produce a large volume of messages in quick succession though like no other. Filtration is not enough to mitigate the pressure, however, if we keep this worker and filter, and _also_ set the properties right after a mount or umount (in fs_mgr and vold) before this races into action, we get the \u0027population\u0027 of the properties when second stage init starts, and the synchronous behavior expectation for mountall. I do not think we will have a \u0027mostly synchronous\u0027 behavior, only an asynchronous backup for any mounts _not_ performed by fs_mgr or vold (which should be no one), with this engine handling when we mess up (if ever).",
+      "parentUuid": "148295b1_7d7ffe65",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 58
+      },
+      "revId": "bd5a6b399d655d8f3bb9cf61d7798914f09a98b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "834c8780_3059d57c",
         "filename": "init/mount_handler.cpp",
         "patchSetId": 2
