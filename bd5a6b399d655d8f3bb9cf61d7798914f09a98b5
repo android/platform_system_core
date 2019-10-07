@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "148295b1_7d7ffe65",
+        "filename": "init/mount_handler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-07T17:06:09Z",
+      "side": 1,
+      "message": "\u003e But in the future will be when the property service is spawned to a separate thread\n\nProperty service is now in its own thread.  That change relanded Sept 10th.\n\n\u003e Maybe when tomcherry@ sets up the new property service he could explicitly and internally increase the /proc/sys/net/unix/max_dgram_qlen to 600\n\nDoes that work retroactively when the proc node is set or only on new sockets?  I\u0027ve been wondering if we need to tune any of these settings, but in the absence of failures, I haven\u0027t made any changes.  We only set ~430 properties on cuttlefish through boot complete, so I don\u0027t think there\u0027s much pressure on this socket in any case.\n\nAssuming we\u0027re not running into any limits, I don\u0027t think we need to put a filter in SetProperty() in the generic case; we\u0027d need to traverse the property trie twice to set a property that is not already set to a given value (once to check that the property isn\u0027t different and once to actually set it).\n\n\u003e Another change for the future is to add explicit calls in __mount and __umount in fs_mgr/vold, keep this here to catch all others that do not call, so that this is mostly synchronous.\n\nFWIW, I think we should either only make the explicit calls in __mount and __umount or leave it how it is.  I think it would be more confusing if these properties are \"mostly synchronous\"; either we should make that guarantee or we shouldn\u0027t.",
+      "parentUuid": "e4b01d50_807a3d27",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 58
+      },
+      "revId": "bd5a6b399d655d8f3bb9cf61d7798914f09a98b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "834c8780_3059d57c",
         "filename": "init/mount_handler.cpp",
         "patchSetId": 2
