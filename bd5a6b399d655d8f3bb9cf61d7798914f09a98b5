@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "3cf95cf1_1cc790e4",
+        "filename": "init/mount_handler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2019-10-07T19:42:59Z",
+      "side": 1,
+      "message": "Backup is the bonus, if you want it, I am not saying its a primary.\n\nWhat is solved by the service is the initial population of the properties at the beginning of first stage init to match up with /proc/mounts. All that logic remains and is ready to go. Whether we trigger it with the epoll handler spotting a change in /proc/mounts, or call it directly _once_, it should still be roughly the same here. Leave this along, call the Handler right after the property service is started, done.\n\nIf we also leave the /proc/mounts changes to trigger epoll call the handler, then we get the bonus to cover out-of-band mounts (I tried to call __mount in all new code) and umounts (there are a lot of these out in the wild :-( ).",
+      "parentUuid": "17208cc3_02f22f88",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 58
+      },
+      "revId": "bd5a6b399d655d8f3bb9cf61d7798914f09a98b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "834c8780_3059d57c",
         "filename": "init/mount_handler.cpp",
         "patchSetId": 2
