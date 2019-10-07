@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "17208cc3_02f22f88",
+        "filename": "init/mount_handler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-07T19:30:46Z",
+      "side": 1,
+      "message": "Sounds reasonable.  I don\u0027t think we should use properties for IPC either and I double checked: we\u0027ve had the same 8 length backlog for quite a while in property service, so unless we\u0027re seeing live failures, I don\u0027t think we need to change anything there.  Note too that __system_property_set() is synchronous, so a single thread setting multiple properties back to back will not blow up the backlog.  It\u0027ll only happen if we have \u003e8 threads all trying to set a property at once.\n\nI\u0027m okay with a filter here if you think it\u0027s necessary, but since setting properties is synchronous, it\u0027ll only help to reduce cycles; it shouldn\u0027t cause issues with property_service\u0027s backlog.\n\n\u003e I do not think we will have a \u0027mostly synchronous\u0027 behavior, only an asynchronous backup for any mounts _not_ performed by fs_mgr or vold (which should be no one), with this engine handling when we mess up (if ever).\n\nIf we don\u0027t expect to have any mounts not performed by fs_mgr or vold, then why would we even have a back up?  We don\u0027t want to encourage behavior that we\u0027re not expecting.  I think it\u0027s totally reasonable to say that we\u0027re setting these dev.mnt.* properties only in response to mounts done by fs_mgr/vold.  It\u0027ll allow us to make them synchronous and cut down on the complexity.",
+      "parentUuid": "6993f652_94526264",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 58
+      },
+      "revId": "bd5a6b399d655d8f3bb9cf61d7798914f09a98b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "834c8780_3059d57c",
         "filename": "init/mount_handler.cpp",
         "patchSetId": 2
