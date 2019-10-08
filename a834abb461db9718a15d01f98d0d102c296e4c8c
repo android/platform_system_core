@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b36e2808_e4b1ad79",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2019-10-08T18:33:48Z",
+      "side": 1,
+      "message": "lose the braces. And fd can never be 0. So \u003e 0 ?",
+      "revId": "a834abb461db9718a15d01f98d0d102c296e4c8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f45cbc7c_bdd36b8c",
         "filename": "lmkd/lmkd.c",
         "patchSetId": 28
@@ -22,6 +39,23 @@
       "revId": "a834abb461db9718a15d01f98d0d102c296e4c8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "605fb078_7df25a76",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2019-10-08T18:33:48Z",
+      "side": 1,
+      "message": "So there\u0027s still a race I think.\n\nWhat if pid crashes before registration and now we are pidfd_open\u0027ing a different PID than what was intended to be registered?\n\nIf some more metadata is passed during the registration, then that can be checked in /proc fs *after* doing the pidfd_open(2). This is to make sure the metadata has not changed before pidfd_open(2) could be called.",
+      "revId": "a834abb461db9718a15d01f98d0d102c296e4c8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
