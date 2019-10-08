@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d7344af_1203bf84",
+        "filename": "init/reboot_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-08T14:32:42Z",
+      "side": 1,
+      "message": "This is what confused me when you told me about this.  Are you really not getting stack traces here?  I figure one of two things should happen:\n\n1) If init is aborting due to libc initialization issues, then we\u0027ll never have gotten to InstallRebootSignalHandlers() or other code in init that calls InitFatalReboot(), so this print won\u0027t help you.\n\n2) If init does get far enough that you get this print, then you should get the backtrace right below.  I\u0027m pretty sure I tested this even in first stage init.  I guess if libc has really big problems the backtrace may fail (and that\u0027s why I have the watchdog above), but if this is happening often, then we should figure out why.",
+      "revId": "636ebc9b3b2ecbfd4bb56714d04f2526dc0251fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
