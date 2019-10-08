@@ -16,6 +16,24 @@
       "revId": "636ebc9b3b2ecbfd4bb56714d04f2526dc0251fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39ef35da_48be183f",
+        "filename": "init/reboot_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-10-08T14:46:54Z",
+      "side": 1,
+      "message": "i didn\u0027t get a backtrace, no. (but have no idea why.) libc was healthy enough that (as far as i know) _init_ wasn\u0027t affected, but secilc was broken. and apparently init reboots if secilc fails.\n\n(a more specific fix would have been to explicitly log \"secilc failed --- rebooting...\", but this patch, though less helpful in my specific case, better covers random stuff like an early SEGV. could do both, i suppose...)",
+      "parentUuid": "5d7344af_1203bf84",
+      "revId": "636ebc9b3b2ecbfd4bb56714d04f2526dc0251fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
