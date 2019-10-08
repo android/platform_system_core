@@ -22,6 +22,30 @@
       "revId": "adfa173dbd18c3f9f6bea4544e9a472ddd0677b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8188bfd3_2e50c5f6",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1409599
+      },
+      "writtenOn": "2019-10-08T10:52:20Z",
+      "side": 1,
+      "message": "tl;dl: It\u0027s usually a bad idea to write on a snapshotted base device.\n\nHm... I thought we were not intended to write to our base devices.\n\nThe bad thing that can happen when writing to base devices that were snapshotted is that these write operations are not tracked by the COW. Since the read operations on chunks not listed in the COW are directly forwarded to the base device, these modifications would be visible by the snapshot, that cannot be considered a snapshot anymore... And the snapshot\u0027s (virtual) content may also become inconsistent, with a mix of the modifications made on the base device and the snapshot itself. So, writing to the base device is basically wrong.\n\nIf we envelop the base device under a snapshot-origin, instead, all the writes to the snapshot-origin are applied to the base device and previous base contents are copied to all the COWs of snapshot devices, resulting in a (virtual) fork of the device at snapshot creation time: since then, snapshot-origin and snapshot can diverge without interfering with each other.\nNote: snapshot-origin modifications require extra COW device space.",
+      "parentUuid": "3d55f7f5_b4b8ec9a",
+      "range": {
+        "startLine": 313,
+        "startChar": 59,
+        "endLine": 313,
+        "endChar": 70
+      },
+      "revId": "adfa173dbd18c3f9f6bea4544e9a472ddd0677b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
