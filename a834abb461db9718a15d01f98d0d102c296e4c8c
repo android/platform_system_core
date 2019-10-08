@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "24db848a_4e037759",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2019-10-08T20:04:08Z",
+      "side": 1,
+      "message": "Then put braces on the above statements as well? There are several if blocks preceding this one where there are no braces. I don\u0027t mind which ever style you want, just keep it consistent.\n\nAbout the 0, that\u0027s fine with me.",
+      "parentUuid": "d90936f3_4f70dc7a",
+      "revId": "a834abb461db9718a15d01f98d0d102c296e4c8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f45cbc7c_bdd36b8c",
         "filename": "lmkd/lmkd.c",
         "patchSetId": 28
@@ -107,6 +125,24 @@
       "side": 1,
       "message": "PIDs don\u0027t get reused that quickly (they have to wrap-around for that). In practice the few instances I\u0027ve seen of PID reuse were on systems that ran for days. If the process crashes after AMS sends registration request and before LMKD calls sys_pidfd_open() (which is a pretty short time window) its PID has really minuscule chance to be reused. I think passing more metadata would be an overkill for a theoretical problem.",
       "parentUuid": "605fb078_7df25a76",
+      "revId": "a834abb461db9718a15d01f98d0d102c296e4c8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db795cb0_ef0e0d84",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2019-10-08T20:04:08Z",
+      "side": 1,
+      "message": "But in your commit description, you are talking about fixing the PID reuse problem. But here you are saying it is a theoretical problem. IMO it should be fixed completely and properly if we are really talking about fixing it.\n\nAlso, the fact that the PID has to wrap around has nothing to do with the size of the race window. Jann Horn had provided me an example sometime back about that. Quoting him:\n\n - process A starts with PID 1000\n - some time passes in which some process repeatedly forks, with PIDs wrapping around to 999\n - process B starts an attempt to access process A (using PID 1000)\n - process A dies\n - process C spawns with PID 1000\n - process B accidentally accesses process C\n\nThe last 4 steps can happen pretty quickly.",
+      "parentUuid": "662df11c_fd8ee1d7",
       "revId": "a834abb461db9718a15d01f98d0d102c296e4c8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
