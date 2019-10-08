@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d90936f3_4f70dc7a",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-10-08T19:52:45Z",
+      "side": 1,
+      "message": "This file uses braces for all ifs including one-liners, so I prefer to keep it consistent. Out standard allows for both styles.\nFor 0 I agree with Mark.",
+      "parentUuid": "4f83de9a_782e310f",
+      "revId": "a834abb461db9718a15d01f98d0d102c296e4c8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f45cbc7c_bdd36b8c",
         "filename": "lmkd/lmkd.c",
         "patchSetId": 28
@@ -71,6 +89,24 @@
       "writtenOn": "2019-10-08T18:33:48Z",
       "side": 1,
       "message": "So there\u0027s still a race I think.\n\nWhat if pid crashes before registration and now we are pidfd_open\u0027ing a different PID than what was intended to be registered?\n\nIf some more metadata is passed during the registration, then that can be checked in /proc fs *after* doing the pidfd_open(2). This is to make sure the metadata has not changed before pidfd_open(2) could be called.",
+      "revId": "a834abb461db9718a15d01f98d0d102c296e4c8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "662df11c_fd8ee1d7",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-10-08T19:52:45Z",
+      "side": 1,
+      "message": "PIDs don\u0027t get reused that quickly (they have to wrap-around for that). In practice the few instances I\u0027ve seen of PID reuse were on systems that ran for days. If the process crashes after AMS sends registration request and before LMKD calls sys_pidfd_open() (which is a pretty short time window) its PID has really minuscule chance to be reused. I think passing more metadata would be an overkill for a theoretical problem.",
+      "parentUuid": "605fb078_7df25a76",
       "revId": "a834abb461db9718a15d01f98d0d102c296e4c8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
