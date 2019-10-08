@@ -22,6 +22,30 @@
       "revId": "e9ab125f38bc6382f0528bd45a87bdef91cc5628",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee2e728e_19a790db",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 1715,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-10-08T22:11:04Z",
+      "side": 1,
+      "message": "Hmm. That is a very good idea. Unfortunately not easily implementable. We generate killinfo_log at the time of killing and stop_wait_for_proc_kill() is called only after the process got killed. Most of the data in killinfo_log is very dynamic (like meminfo) and we have to collect it at the moment we kill. The easiest way would be to have a separate log for the kill time but that might make the log too chatty. Will consider the options in the follow-up patches.",
+      "parentUuid": "20c2c945_54828068",
+      "range": {
+        "startLine": 1715,
+        "startChar": 2,
+        "endLine": 1715,
+        "endChar": 5
+      },
+      "revId": "e9ab125f38bc6382f0528bd45a87bdef91cc5628",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
