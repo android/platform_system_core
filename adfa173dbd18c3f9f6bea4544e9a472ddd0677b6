@@ -46,6 +46,40 @@
       "revId": "adfa173dbd18c3f9f6bea4544e9a472ddd0677b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91cc6878_a3b06366",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1409599
+      },
+      "writtenOn": "2019-10-08T11:11:35Z",
+      "side": 1,
+      "message": "Maybe this is a bit more readable:\nbool need_direct_write \u003d (status.device_size() !\u003d status.snapshot_size());",
+      "revId": "adfa173dbd18c3f9f6bea4544e9a472ddd0677b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ca4cc43_bf31d4e7",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1409599
+      },
+      "writtenOn": "2019-10-08T11:11:35Z",
+      "side": 1,
+      "message": "- auto snap_name \u003d (need_direct_write \u003e 0) ? GetSnapshotExtraDeviceName(name) : name;\n+ auto snap_name \u003d need_direct_write ? GetSnapshotExtraDeviceName(name) : name;",
+      "revId": "adfa173dbd18c3f9f6bea4544e9a472ddd0677b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
