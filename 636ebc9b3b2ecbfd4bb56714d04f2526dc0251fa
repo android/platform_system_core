@@ -34,6 +34,24 @@
       "revId": "636ebc9b3b2ecbfd4bb56714d04f2526dc0251fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d638a06a_62c19923",
+        "filename": "init/reboot_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-08T15:03:51Z",
+      "side": 1,
+      "message": "There should definitely be some prints.\n\nhttps://cs.corp.google.com/android/system/core/init/selinux.cpp?q\u003df:init+secilc\u0026sq\u003dpackage:%5Eandroid$\u0026g\u003d0\u0026l\u003d469 is where it should reboot from the LOG(FATAL) and the \"Unable to load SELinux policy\" print should be visible.  The false paths in LoadSplitPolicy() should all have prints to regarding why they failed.\n\nI put a `return false in LoadPolicy()` and I see this on CF:\n\n[    3.019720] init: Loading SELinux policy\n[    3.020791] init: Unable to load SELinux policy\n[    3.033977] init: #00 pc 0009e1dd  /system/bin/init (android::init::InitFatalReboot()+77)\n[    3.035135] init: #01 pc 000d9ae5  /system/bin/init (android::init::InitAborter(char const*)+53)\n[    3.036362] init: #02 pc 0002f493  /system/bin/init (std::__1::__function::__func\u003cvoid (*)(char const*), std::__1::allocator\u003cvoid (*)(char const*)\u003e, void (c\nhar const*)\u003e::operator()(char const*\u0026\u0026)+35)\n[    3.038793] init: #03 pc 00015d26  /system/lib/libbase.so (android::base::LogMessage::~LogMessage()+726)\n[    3.040112] init: #04 pc 000a2ad2  /system/bin/init (android::init::SetupSelinux(char**)+834)\n[    3.041288] init: #05 pc 0002f1c7  /system/bin/init (main+295)\n[    3.042102] init: #06 pc 000862a8  /system/lib/bootstrap/libc.so (__libc_init+120)\n[    3.043146] init: Reboot ending, jumping to kernel\n\nPoint being, this change is fine still, but there\u0027s something else wrong happening with your build, because you should have all of this information.",
+      "parentUuid": "39ef35da_48be183f",
+      "revId": "636ebc9b3b2ecbfd4bb56714d04f2526dc0251fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
