@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "fa035b29_dd2a6437",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-10-08T20:26:08Z",
+      "side": 1,
+      "message": "Agrh. lmkd was written by multiple people and looks like a ransom note now. I\u0027ll have to clean it up quite soon. Will do that in a separate patch to keep the noise levels low.",
+      "parentUuid": "24db848a_4e037759",
+      "revId": "a834abb461db9718a15d01f98d0d102c296e4c8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f45cbc7c_bdd36b8c",
         "filename": "lmkd/lmkd.c",
         "patchSetId": 28
@@ -143,6 +161,24 @@
       "side": 1,
       "message": "But in your commit description, you are talking about fixing the PID reuse problem. But here you are saying it is a theoretical problem. IMO it should be fixed completely and properly if we are really talking about fixing it.\n\nAlso, the fact that the PID has to wrap around has nothing to do with the size of the race window. Jann Horn had provided me an example sometime back about that. Quoting him:\n\n - process A starts with PID 1000\n - some time passes in which some process repeatedly forks, with PIDs wrapping around to 999\n - process B starts an attempt to access process A (using PID 1000)\n - process A dies\n - process C spawns with PID 1000\n - process B accidentally accesses process C\n\nThe last 4 steps can happen pretty quickly.",
       "parentUuid": "662df11c_fd8ee1d7",
+      "revId": "a834abb461db9718a15d01f98d0d102c296e4c8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eba1e803_36aebae2",
+        "filename": "lmkd/lmkd.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-10-08T20:26:08Z",
+      "side": 1,
+      "message": "Ok, I\u0027ll think about what kind of metadata we can use for additional checks. However I still think that it\u0027s a theoretical problem and here is why:\n\nAMS registers a new process with LMKD immediately after it is spawned (in your scenario right after step #1). So between steps #1 and the last step #6 we have milliseconds to a second time window. The steps #2-#5 which include repeated forking should all happen withing that time window. That is theoretically possible but in practice is so unlikely that IMO is not worth additional complexity.",
+      "parentUuid": "db795cb0_ef0e0d84",
       "revId": "a834abb461db9718a15d01f98d0d102c296e4c8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
