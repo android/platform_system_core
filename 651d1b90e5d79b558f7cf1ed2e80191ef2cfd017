@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "26ec0b13_8e2a5329",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-10-10T07:51:15Z",
+      "side": 1,
+      "message": "unrelated to this CL, but should \"console\" be in this list?",
+      "revId": "651d1b90e5d79b558f7cf1ed2e80191ef2cfd017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b3174c4b_7ef18d0a",
         "filename": "init/reboot.cpp",
         "patchSetId": 2
@@ -33,6 +50,29 @@
       "revId": "651d1b90e5d79b558f7cf1ed2e80191ef2cfd017",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5821c38_929d3263",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-10-10T07:51:15Z",
+      "side": 1,
+      "message": "I noticed that Service::Reap() sets pid_ to 0; does that means this can be racy, where you receive the signal right after this check, and the child is already reaped, and you wait forever for it to be reaped again?",
+      "range": {
+        "startLine": 474,
+        "startChar": 7,
+        "endLine": 474,
+        "endChar": 27
+      },
+      "revId": "651d1b90e5d79b558f7cf1ed2e80191ef2cfd017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
