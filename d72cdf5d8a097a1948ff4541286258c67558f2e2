@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a151184_a3d2bf5f",
+        "filename": "init/service.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-10T17:08:20Z",
+      "side": 1,
+      "message": "You can remove this now that you\u0027re not using it.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 5
+      },
+      "revId": "d72cdf5d8a097a1948ff4541286258c67558f2e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41a01529_5211a485",
+        "filename": "init/sigchld_handler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-10T17:08:20Z",
+      "side": 1,
+      "message": "It\u0027s not super important, but without the below from my other comment,\n\n  if (alive_pids.empty()) {\n    break;\n  }\n\nwe wait for an extra 50ms in the final iteration where we finish reaping all of the processes.  We probably would want to duplicate the timeout check too, since we wouldn\u0027t want to sleep the extra 50ms if we\u0027re going to exit the loop due to the timeout right after either.\n\nI admit it\u0027s a bit unfortunate to duplicate the loop condition to avoid the wait, but I don\u0027t really know of any better ways to do it.  Maybe a lambda auto continue_loop \u003d [\u0026] { return !alive_pids.empty() \u0026\u0026 t.duration() \u003c timeout }; ?  Goto works too, but... let\u0027s not do that.\n\n(We ran into this issue a lot in reboot.cpp too)",
+      "revId": "d72cdf5d8a097a1948ff4541286258c67558f2e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
