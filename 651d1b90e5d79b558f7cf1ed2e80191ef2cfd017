@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "48d727e7_ea2375f8",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-10T13:56:18Z",
+      "side": 1,
+      "message": "+1; the original comment on the left side says that the console ignores SIGTERM.  We should keep that logic in the code somewhere.",
+      "parentUuid": "26ec0b13_8e2a5329",
+      "revId": "651d1b90e5d79b558f7cf1ed2e80191ef2cfd017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b3174c4b_7ef18d0a",
         "filename": "init/reboot.cpp",
         "patchSetId": 2
@@ -64,6 +82,30 @@
       "writtenOn": "2019-10-10T07:51:15Z",
       "side": 1,
       "message": "I noticed that Service::Reap() sets pid_ to 0; does that means this can be racy, where you receive the signal right after this check, and the child is already reaped, and you wait forever for it to be reaped again?",
+      "range": {
+        "startLine": 474,
+        "startChar": 7,
+        "endLine": 474,
+        "endChar": 27
+      },
+      "revId": "651d1b90e5d79b558f7cf1ed2e80191ef2cfd017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f4182d7_aabb3c8d",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-10T13:56:18Z",
+      "side": 1,
+      "message": "Good catch.  We don\u0027t call Service::Reap() in the signal handler; we only indicate to the main loop that it should call ReapAnyOutstandingChildren().  So there\u0027s no race with the signal handler itself.\n\nBut the call to ReapAnyOutstandingChildren() before WaitToBeReaped() would race.  We should remove the ReapAnyOutstandingChildren() call and only allow WaitToBeReaped() to reap any children after we collect the list of pids.",
+      "parentUuid": "d5821c38_929d3263",
       "range": {
         "startLine": 474,
         "startChar": 7,
