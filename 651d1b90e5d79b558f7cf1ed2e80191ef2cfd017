@@ -1,0 +1,237 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b903951_cda9934e",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-10T01:03:04Z",
+      "side": 1,
+      "message": "stdlib.h",
+      "revId": "651d1b90e5d79b558f7cf1ed2e80191ef2cfd017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3174c4b_7ef18d0a",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-10T01:03:04Z",
+      "side": 1,
+      "message": "This is a subtle behavior change from before.  The loop would send SIGTERM multiple times, so if services for some reason respond differently when getting a subsequent SIGTERM, they won\u0027t get it now.  Also, if services are fork()\u0027ing children, we won\u0027t kill their process groups again.\n\nI don\u0027t think you need to change anything; just noting it for posterity.",
+      "revId": "651d1b90e5d79b558f7cf1ed2e80191ef2cfd017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b298c903_d8012d2d",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-10T01:03:04Z",
+      "side": 1,
+      "message": "We might as well log the violators here and line 631 too.",
+      "revId": "651d1b90e5d79b558f7cf1ed2e80191ef2cfd017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4dd646e_a556e502",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-10T01:03:04Z",
+      "side": 1,
+      "message": "You don\u0027t want to set this again.  The \u0027exec\u0027 flag comes from the `exec` or `exec_start` init command, which runs a given service and blocks init from executing further commands until it has finished.\n\nWe unset it in shutdown when we clear the queue and stop waiting on properties, since we don\u0027t want anything blocking init; we want to go directly to shutdown.  You\u0027re probably safe doing the same thing for soft reboot, since you\u0027ll just end up killing that service during soft reboot.  But in no case would you want to set this flag again for any services.",
+      "revId": "651d1b90e5d79b558f7cf1ed2e80191ef2cfd017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f68dfe5c_94327cef",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-10T01:03:04Z",
+      "side": 1,
+      "message": "I think you can call property_set() directly now.  property_service runs as a separate thread, so there shouldn\u0027t be the previous dead lock.",
+      "revId": "651d1b90e5d79b558f7cf1ed2e80191ef2cfd017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17681424_29609e81",
+        "filename": "init/service.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-10T01:03:04Z",
+      "side": 1,
+      "message": "I think it\u0027s better if you just have a \n\nif (terminate) {\n  service-\u003eTerminate();\n} else {\n  service-\u003eStop();\n}\n\nconditional in StopServices().  Especially given this \u0027else\u0027 case that may be misused by future callers.",
+      "revId": "651d1b90e5d79b558f7cf1ed2e80191ef2cfd017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "993a65e9_510a9ba3",
+        "filename": "init/sigchld_handler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-10T01:03:04Z",
+      "side": 1,
+      "message": "You don\u0027t need this here if you have it in the related header.",
+      "revId": "651d1b90e5d79b558f7cf1ed2e80191ef2cfd017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83235df4_ff1f08e1",
+        "filename": "init/sigchld_handler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-10T01:03:04Z",
+      "side": 1,
+      "message": "This should be in a group by itself between the libc includes and the other project includes.",
+      "revId": "651d1b90e5d79b558f7cf1ed2e80191ef2cfd017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba2b405a_b47b33b9",
+        "filename": "init/sigchld_handler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-10T01:03:04Z",
+      "side": 1,
+      "message": "As confusing as it is, remove_if() doesn\u0027t actually delete items from a container.\n\nSee https://en.wikipedia.org/wiki/Erase–remove_idiom",
+      "revId": "651d1b90e5d79b558f7cf1ed2e80191ef2cfd017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49d1b673_eee73fba",
+        "filename": "init/sigchld_handler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-10T01:03:04Z",
+      "side": 1,
+      "message": "There\u0027s a race here since waitpid() will reap zombies.  You only want waitid() / waitpid() to be called in ReapOneProcess().  \n\nYou should make ReapOneProcess() return the pid that it has reaped and then you can delete it from alive_pids.\n\nSleeping between each reaped process is going to take a long time too.  You probably want to do something like this:\n\nwhile (!alive_pids.empty() \u0026\u0026 t.duration() \u003c timeout) {\n  pid_t pid \u003d ReapOneProcess();\n  while (pid !\u003d 0) {\n    auto it \u003d std::find(alive_pids.begin(), alive_pids.end(), pid);\n    if (it !\u003d alive_pids.end()) {\n      alive_pids.erase(it);\n    }\n    pid \u003d ReapOneProcess();\n  }\n  if (alive_pids.empty()) {\n    break;\n  }\n  std::this_thread::sleep_for(50ms);\n}",
+      "revId": "651d1b90e5d79b558f7cf1ed2e80191ef2cfd017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e401a1e0_cc1ee4f8",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-10T01:03:04Z",
+      "side": 1,
+      "message": "I should have seen this before, no \u0027:\u0027 at the end.",
+      "range": {
+        "startLine": 921,
+        "startChar": 19,
+        "endLine": 921,
+        "endChar": 20
+      },
+      "revId": "651d1b90e5d79b558f7cf1ed2e80191ef2cfd017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77a8c718_019a161b",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-10T01:03:04Z",
+      "side": 1,
+      "message": "Thanks; I do think this is the right way to do this.",
+      "revId": "651d1b90e5d79b558f7cf1ed2e80191ef2cfd017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b187b6dd_d4dcff0e",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-10T01:03:04Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 928,
+        "startChar": 26,
+        "endLine": 928,
+        "endChar": 27
+      },
+      "revId": "651d1b90e5d79b558f7cf1ed2e80191ef2cfd017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
