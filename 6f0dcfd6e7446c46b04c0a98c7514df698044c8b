@@ -247,6 +247,30 @@
       "revId": "6f0dcfd6e7446c46b04c0a98c7514df698044c8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50fc1b86_1ab6db27",
+        "filename": "fs_mgr/libsnapshot/partition_cow_creator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-10-11T23:06:10Z",
+      "side": 1,
+      "message": "(From your comment from another CL) BTW, can you make all of cow_* variables 4K aligned?\n\ncow_partition_size needs to be 4K aligned because super partition metadata requires so\ncow_size is also 4K aligned because we operate on 8 sectors per chunk\n\nIn particular, cow_size needs to be rounded *up* and cow_partition_size needs to be rounded *down* (e.g. we can\u0027t use free space in super if there are 3KiB left there).",
+      "parentUuid": "224c301e_420a63f0",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 61
+      },
+      "revId": "6f0dcfd6e7446c46b04c0a98c7514df698044c8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
