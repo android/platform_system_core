@@ -34,6 +34,24 @@
       "revId": "0d731b3f3905ad7bb0a54d80c72c55654b1ea939",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c1d42d7_47ee9d75",
+        "filename": "fs_mgr/libsnapshot/partition_cow_creator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-10-15T22:37:56Z",
+      "side": 1,
+      "message": "I think some tests in SnapshotUpdateTest (namely, FullUpdateFlow) relies on this. That test assumes that the whole target partition is modified, so it will create a \u003e3.7MiB COW device for all of sys_b, vnd_b and prd_b.\n\nDoes it fail after your patch? If so, maybe fix the test by adding operations to the manifest to indicate this?\n\nAlso, operations \u003d\u003d nullptr shouldn\u0027t really happen in real life. (It could happen if we only update some of the partitions, but leave some untouched). Could you please put a info or warning log here if operations \u003d\u003d nullptr?",
+      "parentUuid": "8718cc36_788be8f6",
+      "revId": "0d731b3f3905ad7bb0a54d80c72c55654b1ea939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
