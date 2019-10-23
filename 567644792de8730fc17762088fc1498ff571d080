@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3c543498_559ad6df",
+        "filename": "init/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-10-23T18:23:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "49272917_da807a75",
+      "revId": "567644792de8730fc17762088fc1498ff571d080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86155528_95d9e785",
         "filename": "init/lmkd_service.cpp",
         "patchSetId": 7
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "5a9e42c9_a32998df",
+        "filename": "init/lmkd_service.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-10-23T18:23:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "86155528_95d9e785",
+      "range": {
+        "startLine": 36,
+        "startChar": 30,
+        "endLine": 36,
+        "endChar": 46
+      },
+      "revId": "567644792de8730fc17762088fc1498ff571d080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42867780_b2d93d44",
         "filename": "init/lmkd_service.h",
         "patchSetId": 7
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "b03d4282_feced1a0",
+        "filename": "init/lmkd_service.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-10-23T18:23:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "42867780_b2d93d44",
+      "revId": "567644792de8730fc17762088fc1498ff571d080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "326d39a7_90b129d1",
         "filename": "init/service.cpp",
         "patchSetId": 7
@@ -70,6 +130,24 @@
       "writtenOn": "2019-10-23T16:58:00Z",
       "side": 1,
       "message": "Just wondering: don\u0027t we have pidfd in lmkd to automatically unregister services when they\u0027re terminated?  I know that isn\u0027t available for all kernels, but when it is available, is this call superfluous?\n\nIf so, maybe add a comment stating that?",
+      "revId": "567644792de8730fc17762088fc1498ff571d080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "210f32a5_558dddd5",
+        "filename": "init/service.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2019-10-23T18:23:46Z",
+      "side": 1,
+      "message": "We could automatically detect process death if we poll pidfds of all registered processes but that would be too costly. Instead we poll pidfd only when we kill a process. We can detect process death later on if we access the pidfd but that will not happen automatically. So if we don\u0027t send unregister event to lmkd it will end up with stale records.",
+      "parentUuid": "326d39a7_90b129d1",
       "revId": "567644792de8730fc17762088fc1498ff571d080",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
