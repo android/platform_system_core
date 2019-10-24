@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32ce1111_8960c612",
+        "filename": "lmkd/liblmkd_utils.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-24T01:23:41Z",
+      "side": 1,
+      "message": "Is this true?  I think it does respect SOCK_CLOEXEC.  It looks like it calls socket() with `type` directly: https://cs.corp.google.com/android/system/core/libcutils/socket_local_client_unix.cpp?q\u003dsocket_local_client\u0026sq\u003dpackage:%5Eandroid$\u0026g\u003d0\u0026l\u003d153\n\nI\u0027d try removing this and if you don\u0027t get the denial, then we can be sure that socket_local_client() does work right.",
+      "revId": "4a5330ba4a4d9dfd0f0be5fb9754a6397259bb73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
