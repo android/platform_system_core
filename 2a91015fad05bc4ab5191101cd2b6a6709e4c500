@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a26f261b_95366c2a",
+        "filename": "adb/apex/ld.config.txt",
+        "patchSetId": 17
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-26T13:42:13Z",
+      "side": 1,
+      "message": "Just curious, is it necessary to add /apex/com.android.runtime/${LIB}/bionic?\n\nIf yes, then why is it that the \u0027system\u0027 namespace in [vendor] section doesn\u0027t have this line?  https://cs.corp.google.com/aosp-master/system/core/rootdir/etc/ld.config.txt?rcl\u003d5cdf2ef3103d9f320a833070f23ab69d330f9da6\u0026l\u003d556 (from ld.config.txt, or linkerconfig\u0027s system namespace https://cs.corp.google.com/aosp-master/system/linkerconfig/contents/namespace/system.cc?rcl\u003d4125e37c3b761d21d461cb91fa1410685a654113\u0026l\u003d25)\n\nThe \u0027platform\u0027 namespace here is similar to the \u0027system\u0027 namespace in [vendor] section in that it provides NDK libraries under /system/lib to other namespaces.\n\nIf this line is really needed, then I have to fix linkerconfig of mediaswcodec for VNDK access.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 76
+      },
+      "revId": "2a91015fad05bc4ab5191101cd2b6a6709e4c500",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
