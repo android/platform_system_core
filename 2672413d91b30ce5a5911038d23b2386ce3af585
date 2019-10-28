@@ -22,6 +22,47 @@
       "revId": "2672413d91b30ce5a5911038d23b2386ce3af585",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64d4f894_e84960c2",
+        "filename": "libziparchive/unzip.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-10-28T15:54:39Z",
+      "side": 1,
+      "message": "interesting. from appnote.txt, 0 is supposed to be FAT!\n\n        4.4.2.2 The current mappings are:\n\n         0 - MS-DOS and OS/2 (FAT / VFAT / FAT32 file systems)\n         1 - Amiga                     2 - OpenVMS\n         3 - UNIX                      4 - VM/CMS\n\nand indeed, `zipinfo ./soong/.intermediates/external/libchrome/libchrome-include/gen/gensrcs.zip` says both fat _and_ an older zip spec version:\n\n  -rw----     2.0 fat     3653 bl defN 08-Jan-01 00:00 external/libchrome/ui/gfx/range/range_f.h\n\nnot sure that\u0027s intentional on golang\u0027s part, but i\u0027ll add support for fat and the dos attributes. (but i\u0027ll do it in a separate CL if no-one minds.)",
+      "parentUuid": "2560c37a_5af3a635",
+      "range": {
+        "startLine": 263,
+        "startChar": 6,
+        "endLine": 263,
+        "endChar": 13
+      },
+      "revId": "2672413d91b30ce5a5911038d23b2386ce3af585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d058f86_db97fea0",
+        "filename": "libziparchive/unzip.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-10-28T15:54:39Z",
+      "side": 1,
+      "message": "i also realized over the weekend that i should make it possible to actually call this as `ziptool` on the host for testing convenience. maybe `ziptool unzip ...` or `ziptool zipinfo ...`, plus i should actually just error out if i don\u0027t recognize the name rather than default to zipinfo.",
+      "revId": "2672413d91b30ce5a5911038d23b2386ce3af585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
