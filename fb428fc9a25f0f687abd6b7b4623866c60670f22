@@ -45,6 +45,23 @@
       "revId": "fb428fc9a25f0f687abd6b7b4623866c60670f22",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76701176_1bd3a853",
+        "filename": "libmodprobe/libmodprobe_ext.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-10-29T13:53:32Z",
+      "side": 1,
+      "message": "Maybe better to store the canonical name in loaded?  We seem to be using the canonical name, not the path, for the rest of the data structures here.\n\nWe could also then do simply loaded.erase(canonical_name).\n\nOtherwise, do we expect there to be multiple matches and multiple modules erased?  I wouldn\u0027t think so, so we could just break; after the erase here.",
+      "revId": "fb428fc9a25f0f687abd6b7b4623866c60670f22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
