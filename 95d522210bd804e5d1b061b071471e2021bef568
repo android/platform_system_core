@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5c926d0_dfb62869",
+        "filename": "fastboot/device/commands.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-11-01T15:17:12Z",
+      "side": 1,
+      "message": "I wonder if we should make this sound more like failure and less of a status update.  \"Cannot Erase partition \u0027%s\u0027 because a snapshot update is in progress\".\n\nOtherwise it may seem strange to simply get \"A snapshot update is currently in progress\" as the result of `fastboot -w`\n\nI guess it may be more clear with the prolog context, but still this seems better if there\u0027s a word at the beginning that clearly indicates that it\u0027s a failure.",
+      "revId": "95d522210bd804e5d1b061b071471e2021bef568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6e69b13_2ec34765",
+        "filename": "fastboot/device/commands.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-11-01T15:17:12Z",
+      "side": 1,
+      "message": "Presumably this case is rare as well?  Maybe worth writing part of this note to the user as an info message, so they\u0027re not surprised by the behavior?",
+      "revId": "95d522210bd804e5d1b061b071471e2021bef568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33d3e6a3_7beba757",
+        "filename": "fastboot/device/commands.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-11-01T15:17:12Z",
+      "side": 1,
+      "message": "else {\n    return device-\u003eWriteFail(\"Invalid parameter to snapshot-update\"); \n}\n\n?",
+      "revId": "95d522210bd804e5d1b061b071471e2021bef568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
