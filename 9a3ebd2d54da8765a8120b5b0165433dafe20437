@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ceb1d6b_564ed2b4",
+        "filename": "healthd/BatteryMonitor.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2019-11-06T00:14:16Z",
+      "side": 0,
+      "message": "It seems dropping the initialization done here is what is causing my problems.\nPreviously this function assigned:\n    props-\u003ebatteryStatus \u003d BATTERY_STATUS_UNKNOWN;\n    props-\u003ebatteryHealth \u003d BATTERY_HEALTH_UNKNOWN;\n\nThe subtle detail there is BATTERY_STATUS_UNKNOWN/BATTERY_HEALTH_UNKNOWN are integer value 1, not 0.\n\nThe mHealthInfo-\u003elegacy.legacy structure seems to initialize those values to 0.\n\nAdding \n    props.batteryStatus \u003d BatteryStatus::UNKNOWN;\n    props.batteryHealth \u003d BatteryHealth::UNKNOWN; \nhere seems to solve the problem.",
+      "range": {
+        "startLine": 204,
+        "startChar": 4,
+        "endLine": 204,
+        "endChar": 25
+      },
+      "revId": "9a3ebd2d54da8765a8120b5b0165433dafe20437",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
