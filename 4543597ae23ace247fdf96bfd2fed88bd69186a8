@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36e775a8_a4c46ca4",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-11-08T00:01:33Z",
+      "side": 1,
+      "message": "We have android::base::WaitForProperty() that efficiently waits for a property to change its value to an expected value with a timeout.",
+      "revId": "4543597ae23ace247fdf96bfd2fed88bd69186a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02c4aedc_76f16b24",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-11-08T00:01:33Z",
+      "side": 1,
+      "message": "I don\u0027t think TriggerShutdown() is a good option here.  It instructs init that the next time it\u0027s going to process actions, that it should start the shutdown process.  If userspace reboot is stuck, then it\u0027s likely we won\u0027t get back to that main thread.\n\nWe\u0027ll need to take the pain of a dirty shutdown and just invoke the shutdown directly with RebootSystem().",
+      "revId": "4543597ae23ace247fdf96bfd2fed88bd69186a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
