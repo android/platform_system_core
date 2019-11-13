@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3fed8d4_3a560ebc",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-11-13T18:24:19Z",
+      "side": 1,
+      "message": "This is to make sure that we don\u0027t start waiting for sys.boot_complete\u003d\u003d1 before we actually set it to 0 in userspace-reboot-requested?  This is still racy since we set sys.boot_completed to 0 after we set sys.init.userspace_reboot_in_progress to 1.  It\u0027s possible for this process to see the old sys.boot_completed\u003d\u003d1 value before userspace-reboot-requested resets it to 0.",
+      "revId": "7cf5adc13289956f2f5e8acad79bc74efae8462d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32f78416_e7b9e30b",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-11-13T18:24:19Z",
+      "side": 1,
+      "message": "_exit()",
+      "range": {
+        "startLine": 831,
+        "startChar": 8,
+        "endLine": 831,
+        "endChar": 12
+      },
+      "revId": "7cf5adc13289956f2f5e8acad79bc74efae8462d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
