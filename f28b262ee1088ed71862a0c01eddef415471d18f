@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a44a5da2_089b85ec",
+        "filename": "libnetutils/checksum.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2019-11-13T09:44:48Z",
+      "side": 1,
+      "message": "The behaviour of the code hasn\u0027t changed.\n\nIf you pass in zero, and a buffer full of zeroes, then the output is also zero,\nwhich can then result in the wrong sign on the checksum (ie. 0xFFFF instead of 0x0000) when you then call finish.\n\nie. this is a documentation only change.\nYou\u0027ll note I\u0027m updating the local callers to not pass in 0 in this CL.\n\nBut yes I should probably update the external/android-clat/... \u0026 system/netd/... (mostly tests) as well.\nh\nttps://cs.corp.google.com/search/?q\u003dip_checksum_(add%7Cfold%7Cfinish)\u0026m\u003d100\u0026det\u003dmat\u0026sq\u003dp:%5Eaosp-master$\u0026type\u003dcs",
+      "parentUuid": "0e0e6997_df82d112",
+      "range": {
+        "startLine": 30,
+        "startChar": 34,
+        "endLine": 30,
+        "endChar": 77
+      },
+      "revId": "f28b262ee1088ed71862a0c01eddef415471d18f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c62094e_61a58dc5",
         "filename": "libnetutils/checksum.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5395e05e_84f32a51",
+        "filename": "libnetutils/checksum.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2019-11-13T09:44:48Z",
+      "side": 1,
+      "message": "see above, the only callers of ip_checksum_fold are in this file.",
+      "parentUuid": "6c62094e_61a58dc5",
+      "range": {
+        "startLine": 46,
+        "startChar": 38,
+        "endLine": 46,
+        "endChar": 45
+      },
+      "revId": "f28b262ee1088ed71862a0c01eddef415471d18f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94ff37e9_06c008cf",
         "filename": "libnetutils/checksum.c",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "f28b262ee1088ed71862a0c01eddef415471d18f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bba3bd00_21564209",
+        "filename": "libnetutils/checksum.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2019-11-13T09:44:48Z",
+      "side": 1,
+      "message": "Theoretically ipv6 jumbo frames are up to 4GB...",
+      "parentUuid": "94ff37e9_06c008cf",
+      "range": {
+        "startLine": 77,
+        "startChar": 59,
+        "endLine": 77,
+        "endChar": 65
+      },
+      "revId": "f28b262ee1088ed71862a0c01eddef415471d18f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
