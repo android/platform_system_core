@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "47aaa047_f4fa9f7d",
+        "filename": "base/include/android-base/no_destruct.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-11-15T16:46:24Z",
+      "side": 1,
+      "message": "#pragma once",
+      "revId": "00c93c80b258a325a113e2c8c443e1b6a1f2e46f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61b196bb_1ca10331",
         "filename": "base/include/android-base/no_destruct.h",
         "patchSetId": 2
@@ -13,6 +30,47 @@
       "writtenOn": "2019-11-15T03:42:55Z",
       "side": 1,
       "message": "the doc comment in the google3 equivalent is pretty good: https://cs.corp.google.com/piper///depot/google3/util/gtl/no_destructor.h?type\u003dcs\u0026q\u003dNoDestruct\u0026sq\u003d-file:%5E//depot/google3/experimental+package:%5Epiper$+file:%5E//depot/google3/\u0026g\u003d0\u0026l\u003d61",
+      "revId": "00c93c80b258a325a113e2c8c443e1b6a1f2e46f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80af8933_719504fa",
+        "filename": "base/include/android-base/no_destruct.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-11-15T16:46:24Z",
+      "side": 1,
+      "message": "That looks good to me.  Maybe we should name this NoDestructor to match them as well?  Looks like that\u0027s what the chromium version is too: https://chromium.googlesource.com/chromium/src/base/+/master/no_destructor.h and that one is public.\n\nWe might want to copy their extra constructors too?  Or at least delete copy/move constructors here.",
+      "parentUuid": "61b196bb_1ca10331",
+      "revId": "00c93c80b258a325a113e2c8c443e1b6a1f2e46f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c724198_c266f28f",
+        "filename": "base/no_destruct_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-11-15T16:46:24Z",
+      "side": 1,
+      "message": "Why packed?  If anything, shouldn\u0027t we test with something is pretty large alignment requirements to try to test the alignof() ?",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 30
+      },
       "revId": "00c93c80b258a325a113e2c8c443e1b6a1f2e46f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
