@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "f32a8462_5f7b0e38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-11-15T17:00:11Z",
+      "side": 1,
+      "message": "It is less code if the work in all cases.  The extra lines:\n\n  if (logger_list-\u003emode \u0026 ANDROID_LOG_PSTORE) {\n    return -EINVAL;\n  }\n\nare to keep the old behavior where they don\u0027t work if the \u0027logger_list\u0027 that they\u0027re attached to was opened with ANDROID_LOG_PSTORE.\n\nI think it\u0027s best to keep the old behavior though even with the extra few lines.  It\u0027s just super unfortunate that we can\u0027t deprecate these functions and have a more simple API.  It\u0027s the difference between now doing:\n\nauto* list \u003d android_logger_list_alloc(0, 0, 0);\nauto* logger \u003d android_logger_open(LOG_ID_MAIN, list);\nandroid_logger_clear(logger);\nandroid_logger_list_free(list);\n\nvs\n\nlogd_logger_clear(LOG_ID_MAIN);\n\nBut given that we only have one caller and we\u0027re already stuck with the above symbols, we don\u0027t gain practically anything cleaning this up.\n\nNote in the current example, if one wants to configure android_logger_clear() to clear pstore, they need to use ANDROID_LOG_PSTORE in the first function call, 2 function calls away from the place where it makes sense to provide it!",
+      "parentUuid": "380cde66_81e27483",
+      "revId": "5228b5696e17084d75ff839bf81578137d8481fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8568acf7_a1c55ab5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
