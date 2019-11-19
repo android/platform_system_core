@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8f5ff596_c9566529",
+        "filename": "cli-test/cli-test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-11-19T16:56:20Z",
+      "side": 1,
+      "message": "yeah, but that\u0027s harder and in practice \u0027.\u0027 is the only likely character and that works fine by accident.\n\n\n...but since i\u0027ve wanted a literal string replace a number of times, i\u0027ve added it to libbase and switched this over.",
+      "parentUuid": "4245869e_a4901969",
+      "range": {
+        "startLine": 197,
+        "startChar": 16,
+        "endLine": 197,
+        "endChar": 21
+      },
+      "revId": "37def8ee7c81fbd29c99c59cc650d255a9159387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a1d8af3_98f42d5a",
         "filename": "cli-test/cli-test.cpp",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "37def8ee7c81fbd29c99c59cc650d255a9159387",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c22ab359_aae4468a",
+        "filename": "cli-test/cli-test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-11-19T16:56:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a1d8af3_98f42d5a",
+      "range": {
+        "startLine": 282,
+        "startChar": 42,
+        "endLine": 282,
+        "endChar": 59
+      },
+      "revId": "37def8ee7c81fbd29c99c59cc650d255a9159387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b68e4860_42cb9d1f",
+        "filename": "libziparchive/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-11-19T16:56:20Z",
+      "side": 1,
+      "message": "done.\n\nyeah, device *and* host is something i\u0027m interested in too, but \"something is better than nothing\". i\u0027m assuming that cli-test and the tests both have relatively long and fruitful lives ahead of them, but i\u0027d like to see most of this not-right-anyway boilerplate disappear. not sure what should actually take its place though, and this is a simplified version of what we have for the toybox tests. it\u0027s part of the reason i\u0027m not sure sh_test is ready for prime-time, but luckily it\u0027s not widely used atm anyway (https://cs.corp.google.com/search/?q\u003dfile:android.bp+%5Cbsh_test%5Cb\u0026m\u003d100\u0026sq\u003dpackage:%5Eandroid$\u0026type\u003dcs).",
+      "parentUuid": "a7986d58_529d3231",
+      "range": {
+        "startLine": 211,
+        "startChar": 14,
+        "endLine": 211,
+        "endChar": 38
+      },
+      "revId": "37def8ee7c81fbd29c99c59cc650d255a9159387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "167015ed_d9995c3a",
         "filename": "libziparchive/run-tests-on-android.sh",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2019-11-18T22:43:24Z",
       "side": 1,
       "message": "This isn\u0027t something atest should be doing. Why aren\u0027t we using tradefed\u0027s device test model rather than declaring that we\u0027re a host test then running adb ourselves? (Which I can imagine could be a problem if there are multiple devices connected, but I\u0027d hope that tradefed would set ADB_SERIAL...)",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 8
+      },
+      "revId": "37def8ee7c81fbd29c99c59cc650d255a9159387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c53cf4fd_4f5f0cb2",
+        "filename": "libziparchive/run-tests-on-android.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-11-19T16:56:20Z",
+      "side": 1,
+      "message": "i don\u0027t know what the tradefed approved way to do this kind of thing is. this is what toybox does because atest\u0027s too damn slow for a human to use. i always just run the tests directly with this (and without a 10x-100x speedup in atest, don\u0027t see that changing any time soon).",
+      "parentUuid": "167015ed_d9995c3a",
       "range": {
         "startLine": 4,
         "startChar": 0,
