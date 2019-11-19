@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5192927_23093c46",
+        "filename": "liblog/logger.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2019-11-19T15:01:07Z",
+      "side": 1,
+      "message": "The value 1 takes on a signed int value here.  On platforms where int is 32-bits, this is a 32-bit signed int.  Technically, shifting a signed 32-bit value by 31 bits is implementation-defined behavior.\n\nWhile I\u0027m guessing we\u0027re always getting the result we expect with our toolchains, I\u0027ve gone ahead and put up a minor follow-up CL to use an unsigned: https://android-review.googlesource.com/c/platform/system/core/+/1170004",
+      "revId": "9156c534e003e2bd5d90d40730ef8a7ff39b4144",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
