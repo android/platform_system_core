@@ -16,6 +16,24 @@
       "revId": "35976019fedc2e1281a64710dc3a82b6616b8ea2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57904187_e979349e",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2019-11-22T12:14:50Z",
+      "side": 1,
+      "message": "Is it ok, if I try to consolidate them in a follow-up CL? Here is my rationale:\n1. This code might change significantly if we try to generalize this code for any mount point (e.g. /system, /vendor, /product).\n2. Linking libfiemap from fstab might be a time sink, and this CL is kind of urgent, since it\u0027s a prerequisite for support of remounting ext4 userdata into checkpoint.\n3. There are some other places like fs_mgr_find_bow_device (https://android.googlesource.com/platform/system/core/+/refs/heads/master/fs_mgr/fs_mgr.cpp#1021) which is also doing something similar, so the proper fix might be to pull the code you mentioned into a small library that all the places can link.",
+      "parentUuid": "f7ad198f_520178b9",
+      "revId": "35976019fedc2e1281a64710dc3a82b6616b8ea2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
