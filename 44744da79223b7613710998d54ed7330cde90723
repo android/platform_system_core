@@ -34,6 +34,24 @@
       "revId": "44744da79223b7613710998d54ed7330cde90723",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76c5c9e2_cb983c8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-11-22T00:31:20Z",
+      "side": 1,
+      "message": "That\u0027s a good point about system as root devices that mount / as a dm device.  We\u0027ll need to handle those devices too.\n\nThat\u0027s not true anymore for blueline though.  It goes through the same dm-linear flow as the rest of our devices.  It has a ramdisk, mounts system.img in the ramdisk, then does change_root to /.\n\n[    0.963836] init: init first stage started!\n[    0.963960] init: Switching root to \u0027/first_stage_ramdisk\u0027\n[    1.046080] init: [libfs_mgr]Created logical partition system_b on device /dev/block/dm-0\n[    1.046669] init: [libfs_mgr]Created logical partition vendor_b on device /dev/block/dm-1\n[    1.047239] init: [libfs_mgr]Created logical partition product_b on device /dev/block/dm-2\n...\n[    1.060134] init: Switching root to \u0027/system\u0027\n\nThat said, you\u0027re right in that there\u0027s a special case from \u0027/\u0027 to \u0027system\u0027.  It\u0027s worth handling if we\u0027re going to make this function accept a generic path as its argument.\n\nWe\u0027ll likely want to increase the tests that we have then too, to cover\n\n\"/\"\n\"/system\"\n\"/vendor\"\n\"/data\"\n\nAlternatively, we can make this only work for /data and drop the path argument, since I believe that\u0027s all that you need.",
+      "parentUuid": "4b20feb4_4bdea3c9",
+      "revId": "44744da79223b7613710998d54ed7330cde90723",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
