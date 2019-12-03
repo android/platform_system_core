@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63222c49_8677cb7c",
+        "filename": "libcutils/include/cutils/atrace_shmem.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-03T18:52:57Z",
+      "side": 1,
+      "message": "It\u0027s probably worth dropping this #if.  If init and atrace are the only intended users, they\u0027re already C++.  Even though this is called lib \u0027c\u0027 utils, we really don\u0027t want to encourage this to be used by any C code (since we don\u0027t want to encourage any new C code at all).\n\nIf you do that, you might as well replace \u003cstdatomic.h\u003e with \u003catomic\u003e and use std::atomic_uint32_t and std::atomic_uint64_t.  \u003cstdatomic.h\u003e in bionic is already doing that behind the scenes anyway.",
+      "revId": "ef4c883b9033f4d6e38bec5a1b8b11240eb8e0f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
