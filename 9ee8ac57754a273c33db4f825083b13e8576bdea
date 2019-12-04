@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "7cdd7f79_796991b6",
+        "filename": "fs_mgr/libdm/dm.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-04T19:24:15Z",
+      "side": 1,
+      "message": "blueline:/sys/block/dm-0 # ls slaves\nsda10 sda6 \n\nI wonder why that\u0027s happening here already.\n\nDoes this work for multiple levels of block devices right now, e.g. /vendor is mounted on  vendor_verity (dm-verity) -\u003e vendor_b (dm-linear) -\u003e sdaXX ?  We would need to loop here and I don\u0027t see that.\n\nIf we do add the loop, it shouldn\u0027t be that difficult to have it done for the multiple slave case as well; we\u0027d just need to add each entry into a vector.",
+      "parentUuid": "8752bdc2_cdb568ed",
+      "range": {
+        "startLine": 538,
+        "startChar": 8,
+        "endLine": 541,
+        "endChar": 9
+      },
+      "revId": "9ee8ac57754a273c33db4f825083b13e8576bdea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "627dee7a_cd548a33",
         "filename": "fs_mgr/libdm/include/libdm/dm.h",
         "patchSetId": 1
