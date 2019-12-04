@@ -88,6 +88,24 @@
       "revId": "ef4c883b9033f4d6e38bec5a1b8b11240eb8e0f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8d2d942_e6b3eb19",
+        "filename": "libcutils/include/cutils/atrace_shmem.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-04T18:40:54Z",
+      "side": 1,
+      "message": "\u003e Oh, adb.c this was recently changed to adb.cpp.\n\nThat was done years ago though.\n\n\u003e e.g. lmkd.c includes this.\n\nThat was always a mistake.  I filed b/145669697 for this, since I don\u0027t want that mistake to force our hand to create future ones.\n\n\u003e This is also included via trace.h into arbitrary programs though\n\nAck, that makes this reasonable then.  Although it does re-raise the question of why not including this in trace.h directly?",
+      "parentUuid": "34b2091a_d19f47b1",
+      "revId": "ef4c883b9033f4d6e38bec5a1b8b11240eb8e0f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
