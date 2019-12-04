@@ -22,6 +22,30 @@
       "revId": "f8c9e77b108d21c96d9196b59e40667f55ba8dc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abe042e2_606c00bb",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-04T21:51:35Z",
+      "side": 1,
+      "message": "Time to do the actually right thing here.  ImportKernelCmdline() is already pretty inefficient, since the cmdline is so small anyway, so no harm in collecting the values and handling them all here.  It\u0027s better than reparsing the whole command line.\n\nMore importantly, time to get rid of that weird \u0027qemu\u0027 parameter to import_kernel_cmdline().  That became useless years ago when we took a std::function as the other parameter...",
+      "parentUuid": "a0b20575_deaf62b8",
+      "range": {
+        "startLine": 1063,
+        "startChar": 8,
+        "endLine": 1063,
+        "endChar": 15
+      },
+      "revId": "f8c9e77b108d21c96d9196b59e40667f55ba8dc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
