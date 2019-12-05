@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9d96649_7ea0d60a",
+        "filename": "init/mount_namespace.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-05T16:42:31Z",
+      "side": 1,
+      "message": "Since this happens before we run init scripts, this is why the mount call is moved into first stage init, right?  I wonder if there is a better way to do this...  I should have mentioned more when /apex was put in first stage init, but that isn\u0027t quite right.  We don\u0027t need to create those directories until we get into second stage init.  Since vendors will technically own first stage init moving forward, the less that we put in there, the better.\n\nPerhaps, it would be better to move the mount command into this function directly, before the MakePrivate() call?  Maybe even we should consider doing that for /apex now that I noticed it.  It\u0027ll require less overall changes (no changes to Android.mk, no more restorecon, no changes to first stage init), which is a benefit as well.",
+      "revId": "dd84b906209ebd6b219383a36359f477d897a7bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
