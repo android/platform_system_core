@@ -193,6 +193,30 @@
     },
     {
       "key": {
+        "uuid": "673efa0e_e284513b",
+        "filename": "fs_mgr/libdm/dm.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2019-12-05T13:51:29Z",
+      "side": 1,
+      "message": "My idea was that it\u0027s a matter of caller to write a for loop in case it wants to get to the bottom of the dm-stack.\n\nBTW, one of the reasons for introducing this API in libdm was to remove same logic from the libfstab (see comment from David in aosp/1172114), but I\u0027ve realized that libfstab is vendor_available while libdm is not.\n\nShould this API be moved to a separate vendor_available library with stable interface? Or is it fine to make libdm vendor_available static lib? (AFAIU it can\u0027t be shared lib because it doesn\u0027t have a stable interface)",
+      "parentUuid": "864f45e0_5543c433",
+      "range": {
+        "startLine": 538,
+        "startChar": 8,
+        "endLine": 541,
+        "endChar": 9
+      },
+      "revId": "9ee8ac57754a273c33db4f825083b13e8576bdea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "627dee7a_cd548a33",
         "filename": "fs_mgr/libdm/include/libdm/dm.h",
         "patchSetId": 1
