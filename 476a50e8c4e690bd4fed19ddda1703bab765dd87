@@ -34,6 +34,24 @@
       "revId": "476a50e8c4e690bd4fed19ddda1703bab765dd87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17d6b89c_6607c29c",
+        "filename": "init/init.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-05T16:24:11Z",
+      "side": 1,
+      "message": "Right.  PS4 was essentially:\n\nconst char* avb_version \u003d getenv(\"INIT_AVB_VERSION\");\n...\nunsetenv(\"INIT_AVB_VERSION\");\n...\nif (avb_version !\u003d nullptr) {\n  SetProperty(\"ro.boot.avb_version\", avb_version);\n}\n\nThe unsetenv() call would have invalidated that pointer before it was used.\n\nThis moves everything closer together so it\u0027s clearer that we call use the getenv() result before calling unsetenv().",
+      "parentUuid": "cd580039_1864d646",
+      "revId": "476a50e8c4e690bd4fed19ddda1703bab765dd87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
