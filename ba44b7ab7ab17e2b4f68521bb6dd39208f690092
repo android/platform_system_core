@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "121a175f_7c90364f",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-06T17:09:52Z",
+      "side": 1,
+      "message": "I wonder if this should be a separate commit or if the title could reflect this.  It is a behavior change unrelated to the rest of the change to make avb_keys a directory, right?",
+      "revId": "ba44b7ab7ab17e2b4f68521bb6dd39208f690092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af755789_f91ad84c",
         "filename": "fs_mgr/libfs_avb/fs_avb.cpp",
         "patchSetId": 2
@@ -13,6 +30,29 @@
       "writtenOn": "2019-12-06T07:42:16Z",
       "side": 1,
       "message": "I kind of tend to keep the logic of ListFiles local here since there\u0027s only one that uses it. I don\u0027t have strong opinion though.",
+      "revId": "ba44b7ab7ab17e2b4f68521bb6dd39208f690092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75316d2a_f06b86ac",
+        "filename": "fs_mgr/libfs_avb/util.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-06T17:09:52Z",
+      "side": 1,
+      "message": "Probably better to just have the caller do the sort() and have this function strictly return the list of files.  Smaller functions with 1 specific purpose tend to be cleaner.",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 5
+      },
       "revId": "ba44b7ab7ab17e2b4f68521bb6dd39208f690092",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
