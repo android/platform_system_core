@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a17d8463_da335dc3",
+        "filename": "init/Android.mk",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2019-12-08T12:35:40Z",
+      "side": 1,
+      "message": "jiyong@ can you please confirm this?",
+      "parentUuid": "09b6ee5d_df54fc3c",
+      "revId": "1f2a398bb7e52974449561e7ba6f6d6773e9a5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "24fe3a7d_b0ea3a35",
         "filename": "init/Android.mk",
         "patchSetId": 11
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "e908a392_afe2b294",
+        "filename": "init/Android.mk",
+        "patchSetId": 11
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2019-12-08T12:35:40Z",
+      "side": 1,
+      "message": "I just realized that linkerconfig will be used from recovery as linker configuration should be generated for recovery environment also (current ld.config.recovery.txt). Should I move linkerconfig mount to first stage then?",
+      "parentUuid": "24fe3a7d_b0ea3a35",
+      "revId": "1f2a398bb7e52974449561e7ba6f6d6773e9a5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "daef47de_3a7e5519",
         "filename": "init/selinux.cpp",
         "patchSetId": 11
@@ -47,6 +83,24 @@
       "writtenOn": "2019-12-06T17:22:30Z",
       "side": 1,
       "message": "I also question if this is strictly needed anymore.  The directory /linkerconfig should be in system.img, so it will have its SEPolicy built into the image.  \n\nI guess there is still the ramdisk used for recovery, but we don\u0027t use /linkerconfig for recovery, right?  Perhaps we should have some logic that only mounts this and /apex for normal boot?  That might be needed for my above comment regarding removing /linkerconfig as a directory in first stage init.\n\nAn alternative, and much cleaner option if possible: could we call SetupMountNamespaces() later?  What would happen if we called it after the \u0027early-init\u0027 trigger?  To do this, we could add am.QueueBuiltinAction(SetupMountNamespaces, \"SetupMountNamespaces\"); after am.QueueEventTrigger(\"early-init\"); here: https://cs.corp.google.com/android/system/core/init/init.cpp?l\u003d718\n\nIf we can do that option, then the mounting of /apex and /linkerconfig can happen in init.rc in early-init.  Or maybe we need a stage early than early-init, since that\u0027s when linkerconfig and apexd-bootstrap themselves run, but still the same idea.\n\nIt would fix the recovery problem too, since the recovery init.rc would simply not try to mount these directories and not worry that they\u0027re not present.",
+      "revId": "1f2a398bb7e52974449561e7ba6f6d6773e9a5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fd24b91_c2358667",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2019-12-08T12:35:40Z",
+      "side": 1,
+      "message": "1. I\u0027m not sure if we do not need restorecon set up in case of mounting tmpfs in later phase. Wouldn\u0027t it be changed as tmpfs instead of original from sepolicy?\n\n2. Some of the processes from early-init would also require linker configuration (that is why linkerconfig call is within early-init), so I think linekrconfig directory should be ready before early-init.\n\n3. I just realized that linkerconfig directory is needed from recovery for generating ld.config.recovery.txt. Should I set up linkerconfig directory from first stage init in this case?",
+      "parentUuid": "daef47de_3a7e5519",
       "revId": "1f2a398bb7e52974449561e7ba6f6d6773e9a5be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
