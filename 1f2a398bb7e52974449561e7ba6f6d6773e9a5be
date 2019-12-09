@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "77d8fe8b_7d9d4588",
+        "filename": "init/Android.mk",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-09T15:08:22Z",
+      "side": 1,
+      "message": "Right, this is only the ramdisk for first stage mount.  Either recovery or normal boot end up taking the directories TARGET_ROOT_OUT.  \n\nWe should probably reword the comment above (I\u0027ll push something to do this) to state that you only need to set up the directories mounted by first stage init.",
+      "parentUuid": "bffc02a3_c84afb69",
+      "revId": "1f2a398bb7e52974449561e7ba6f6d6773e9a5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24fe3a7d_b0ea3a35",
         "filename": "init/Android.mk",
         "patchSetId": 11
@@ -120,6 +138,24 @@
       "side": 1,
       "message": "I just realized that linkerconfig will be used from recovery as linker configuration should be generated for recovery environment also (current ld.config.recovery.txt). Should I move linkerconfig mount to first stage then?",
       "parentUuid": "24fe3a7d_b0ea3a35",
+      "revId": "1f2a398bb7e52974449561e7ba6f6d6773e9a5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a789d89f_a85f4c25",
+        "filename": "init/Android.mk",
+        "patchSetId": 11
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-09T15:08:22Z",
+      "side": 1,
+      "message": "You probably still don\u0027t need it in first stage; how it\u0027s being called now will be fine for recovery and normal boot.\n\nI don\u0027t see it actually being called in recovery yet though.  It would need to be in this file: https://cs.corp.google.com/android/bootable/recovery/etc/init.rc?q\u003df:recovery+init.rc\u0026sq\u003dpackage:%5Eandroid$\u0026dr.\n\nI\u0027m surprised that we need it there though.  Since recovery isn\u0027t the combination of any partitions, I figure that the recovery configuration could be done during the build.",
+      "parentUuid": "e908a392_afe2b294",
       "revId": "1f2a398bb7e52974449561e7ba6f6d6773e9a5be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -173,6 +209,24 @@
       "side": 1,
       "message": "\u003e 3. I just realized that linkerconfig directory is needed from recovery for generating ld.config.recovery.txt. Should I set up linkerconfig directory from first stage init in this case?\n\nJust checked this is not true. Checked with crosshatch that recovery would mount linkerconfig from second stage properly. Also checked that it worked well with ramdisk boot (sdk_gphone_x86_64).\n\nAnyway, still not sure about your comments on recovery. From my experience recovery would have same dirs of root, so mount would succeed. Can you please give me some details on this situation?",
       "parentUuid": "0fd24b91_c2358667",
+      "revId": "1f2a398bb7e52974449561e7ba6f6d6773e9a5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75028a11_9b6141b9",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-09T15:08:22Z",
+      "side": 1,
+      "message": "I was assuming that we don\u0027t need to mount linkerconfig in recovery (see my other comment).  \n\nRestorecon on these top level directories should only be needed in recovery, since the recovery ramdisk doesn\u0027t have the needed SELinux labeling (or at least I didn\u0027t the last time that I checked).  But if this is needed in recovery, then it\u0027s fine to leave.  I\u0027d just double check that this is actually needed or not `ls -Zd /linkerconfig` in normal / recovery.\n\n\u003e  Some of the processes from early-init would also require linker configuration (that is why linkerconfig call is within early-init), so I think linekrconfig directory should be ready before early-init.\n\nRight, the only way we\u0027d be able to do this is if we had an additional \u0027pre-init\u0027 phase or something that was even earlier than early-init.  I guess we can wait before we do something that drastic until we have even more commands than these two mounts that happen before early-init.",
+      "parentUuid": "68b1b2de_19ac927d",
       "revId": "1f2a398bb7e52974449561e7ba6f6d6773e9a5be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
