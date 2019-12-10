@@ -70,6 +70,122 @@
       "revId": "4d1760830339ba8cefa9efb46f3498fffed1cf0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db19dac1_aa3207d2",
+        "filename": "libcutils/include/cutils/trace.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-12-10T19:19:49Z",
+      "side": 1,
+      "message": "Arguably, __has_include is wrong, because a system could (in principle!) provide a sys/_system_properties.h having nothing to do with Android\u0027s property system. I think a __BIONIC__ (which really means is-Android) check here is fine.\n\nBut I don\u0027t really care either way.",
+      "parentUuid": "fa915dbb_0b38f456",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 23
+      },
+      "revId": "4d1760830339ba8cefa9efb46f3498fffed1cf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32aee683_23eeb4f2",
+        "filename": "libcutils/include/cutils/trace.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-12-10T19:19:49Z",
+      "side": 1,
+      "message": "Nit: I\u0027d rather define the function once and use a normal branch in the body. If we *can* do something without the preprocessor, we, IMHO, should.",
+      "range": {
+        "startLine": 176,
+        "startChar": 4,
+        "endLine": 176,
+        "endChar": 16
+      },
+      "revId": "4d1760830339ba8cefa9efb46f3498fffed1cf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc7bff89_edfcdb1c",
+        "filename": "libcutils/include/cutils/trace.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-12-10T19:19:49Z",
+      "side": 1,
+      "message": "__system_property_serial contractually has acquire semantics. Please add a comment to this effect here for the sake of readers.",
+      "range": {
+        "startLine": 179,
+        "startChar": 22,
+        "endLine": 179,
+        "endChar": 46
+      },
+      "revId": "4d1760830339ba8cefa9efb46f3498fffed1cf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8304c91c_41c01355",
+        "filename": "libcutils/include/cutils/trace.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-12-10T19:19:49Z",
+      "side": 1,
+      "message": "\"Optimize for the fast-path\" is circular. :-) I\u0027d say \"Optimize for the case that trace config didn\u0027t change\"",
+      "range": {
+        "startLine": 184,
+        "startChar": 15,
+        "endLine": 184,
+        "endChar": 34
+      },
+      "revId": "4d1760830339ba8cefa9efb46f3498fffed1cf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "367aae2c_9fb49f15",
+        "filename": "libcutils/trace-dev.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-12-10T19:19:49Z",
+      "side": 1,
+      "message": "Nit: clearer to, IMHO, static_cast -1",
+      "range": {
+        "startLine": 44,
+        "startChar": 35,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "4d1760830339ba8cefa9efb46f3498fffed1cf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
