@@ -162,6 +162,24 @@
     },
     {
       "key": {
+        "uuid": "dd4657f6_ec7024eb",
+        "filename": "init/Android.mk",
+        "patchSetId": 11
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2019-12-10T01:19:36Z",
+      "side": 1,
+      "message": "You can find the change from https://android-review.googlesource.com/q/topic:%22run_from_recovery%22+(status:open%20OR%20status:merged)\n\nI\u0027d like to put all linker configuration related information to linkerconfig so we can reduce file variation. One of the reason I started linkerconfig work was that there were too many ld.config.txt files. \n\nAs you mentioned linker configuration for recovery is extremely simple. I\u0027d like to take the approach to put the generator execution in recovery init first, and if there are any concerns for the performance then we can move it to build time only for recovery.",
+      "parentUuid": "a789d89f_a85f4c25",
+      "revId": "1f2a398bb7e52974449561e7ba6f6d6773e9a5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "daef47de_3a7e5519",
         "filename": "init/selinux.cpp",
         "patchSetId": 11
@@ -227,6 +245,24 @@
       "side": 1,
       "message": "I was assuming that we don\u0027t need to mount linkerconfig in recovery (see my other comment).  \n\nRestorecon on these top level directories should only be needed in recovery, since the recovery ramdisk doesn\u0027t have the needed SELinux labeling (or at least I didn\u0027t the last time that I checked).  But if this is needed in recovery, then it\u0027s fine to leave.  I\u0027d just double check that this is actually needed or not `ls -Zd /linkerconfig` in normal / recovery.\n\n\u003e  Some of the processes from early-init would also require linker configuration (that is why linkerconfig call is within early-init), so I think linekrconfig directory should be ready before early-init.\n\nRight, the only way we\u0027d be able to do this is if we had an additional \u0027pre-init\u0027 phase or something that was even earlier than early-init.  I guess we can wait before we do something that drastic until we have even more commands than these two mounts that happen before early-init.",
       "parentUuid": "68b1b2de_19ac927d",
+      "revId": "1f2a398bb7e52974449561e7ba6f6d6773e9a5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdad8bcf_2272d62a",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2019-12-10T01:19:36Z",
+      "side": 1,
+      "message": "\u003e I was assuming that we don\u0027t need to mount linkerconfig in recovery (see my other comment).  \n\nI added a comment on the thread.\n\n\n\u003e Restorecon on these top level directories should only be needed in recovery, since the recovery ramdisk doesn\u0027t have the needed SELinux labeling (or at least I didn\u0027t the last time that I checked).  But if this is needed in recovery, then it\u0027s fine to leave.  I\u0027d just double check that this is actually needed or not `ls -Zd /linkerconfig` in normal / recovery.\n\nIn the recovery as I understand all sepolicy goes with rootfs, so we need extra care for sepolicy like in https://source.corp.google.com/android/system/sepolicy/private/init.te;cl\u003dmaster;l\u003d12 (Please correct me if I\u0027m wrong). What I understood from the experience was that if we mount any partition with tmpfs then the sepolicy goes into tmpfs so we need to restore sepolicy for the mounted directories. Let me test this again to check out. \n\n\u003e Right, the only way we\u0027d be able to do this is if we had an additional \u0027pre-init\u0027 phase or something that was even earlier than early-init.  I guess we can wait before we do something that drastic until we have even more commands than these two mounts that happen before early-init.\n\nSure. All commands for /apex and /linkerconfig can be done from init.rc (except mount namespace phase). So we can move it later if refactor is needed.",
+      "parentUuid": "75028a11_9b6141b9",
       "revId": "1f2a398bb7e52974449561e7ba6f6d6773e9a5be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
