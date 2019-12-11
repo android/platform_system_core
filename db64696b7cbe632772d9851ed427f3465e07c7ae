@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3104945_5c9864e4",
+        "filename": "adb/daemon/usb_ffs.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1030767
+      },
+      "writtenOn": "2019-12-11T23:54:37Z",
+      "side": 1,
+      "message": "Hi Josh,\n\nWhy wasn\u0027t this GUID set to be the same as the one already defined here:\n\nhttps://android.googlesource.com/platform/development/+/refs/heads/master/host/windows/usb/api/adb_api.h#89\n?\n\nMy understanding is that the reference android_usb.inf that comes with the Android SDK installs the driver for an ADB interface and registers it with DeviceInterfaceGUID {F72FE0D4-CBCB-407d-8814-9ED673D0DD6B} (defined in adb_api.h and also in android_usb.inf). Correspondingly, the Windows ADB client looks for an ADB USB device by enumerating all devices under this GUID. cf. https://android.googlesource.com/platform/system/core/+/master/adb/client/usb_windows.cpp#547\n\nBut as a result of this change, with a device enumerating with custom VID/PID and no existing INF file to install a driver, a Windows 10 host does automatically install a WinUSB driver which I believe is the intention of this change. But since you are introducing this new GUID 64379D6C... I am still not able to get adb client to connect \"out of the box\" because it is not finding any devices under the known F72FE0D4... GUID.\n\nShould this OS descriptor be re-using F72FE0D4... instead?",
+      "range": {
+        "startLine": 87,
+        "startChar": 27,
+        "endLine": 87,
+        "endChar": 28
+      },
+      "revId": "db64696b7cbe632772d9851ed427f3465e07c7ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
