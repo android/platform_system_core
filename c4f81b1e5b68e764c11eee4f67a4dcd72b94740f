@@ -52,6 +52,24 @@
       "revId": "c4f81b1e5b68e764c11eee4f67a4dcd72b94740f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6343537e_244f9dc0",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2019-12-12T01:32:39Z",
+      "side": 1,
+      "message": "right now we keep those alive.\n\n        } else if (s-\u003eIsShutdownCritical()) {\n            // Start shutdown critical service if not started.\n            if (auto result \u003d s-\u003eStart(); !result) {\n                LOG(ERROR) \u003c\u003c \"Could not start shutdown critical service \u0027\" \u003c\u003c s-\u003ename()\n                           \u003c\u003c \"\u0027: \" \u003c\u003c result.error();\n            }\n        } else {\n            stop_first.push_back(s.get());\n        }\n\n\nhttps://cs.android.com/android/platform/superproject/+/master:system/core/init/reboot.cpp;bpv\u003d1;bpt\u003d1;l\u003d599\n\n#define SVC_SHUTDOWN_CRITICAL 0x800  // This service is critical for shutdown and\n                                     // should not be killed during shutdown\n\nbut, maybe at sometime we should kill all userspace services.",
+      "parentUuid": "cfba4f6b_04df3477",
+      "revId": "c4f81b1e5b68e764c11eee4f67a4dcd72b94740f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
