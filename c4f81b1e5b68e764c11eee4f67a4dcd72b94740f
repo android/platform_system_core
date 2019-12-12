@@ -70,6 +70,24 @@
       "revId": "c4f81b1e5b68e764c11eee4f67a4dcd72b94740f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85f15856_c1e7ed56",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-12T16:37:21Z",
+      "side": 1,
+      "message": "ActivityManager moves some processes out of the cgroup that init creates for zygote.  If they also move out of the linux process group, then it\u0027s possible that init won\u0027t see them and won\u0027t kill them in the above loop.  This final step will work to kill them, but I\u0027m not sure if we should rely on it.  \n\nOne solution would be that zygote would do a better job at cleaning up its child processes when it gets SIGTERM.  Or alternatively, perhaps we have two sets of cgroups: one that init manages such that it will always kill all of zygote\u0027s children and one that ActivityManager uses for its housekeeping.\n\nAlternatively: I was talking to enh@ about this and we were both questioning why we shutdown services and their process groups in general.  Why don\u0027t we iterate backwards through the pids we find in /proc?  We can check ahead of time which pids correspond to services like ueventd which we don\u0027t want to kill, but everything else should be fair game.  It would simplify this code a lot too.",
+      "parentUuid": "6343537e_244f9dc0",
+      "revId": "c4f81b1e5b68e764c11eee4f67a4dcd72b94740f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
