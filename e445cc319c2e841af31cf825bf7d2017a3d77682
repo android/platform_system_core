@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a11edc5_98a0a307",
+        "filename": "fs_mgr/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-13T16:43:42Z",
+      "side": 1,
+      "message": "How much of libfs_mgr does libfs_mgr_remount depend on?  This\u0027ll create ODR issues if someone links both libfs_mgr and libfs_mgr_remount I think.  I thought we might be able to fully separate the two of these.\n\nWe need to separate this because eventually libfs_mgr_remount.cpp will require binder, right?  Can we fully separate it from libfs_mgr?  Otherwise, maybe we do just go down the route of having a libfs_mgr_binder and a libfs_mgr_nobinder.\n\nI think libfs_mgr\u0027s size is fine if that\u0027s a separate concern.  I know that it\u0027s been swallowing up libdm, liblp, etc and I think that\u0027s okay.  The only thing we need to be concerned with is keeping static globals to a minimum.",
+      "revId": "e445cc319c2e841af31cf825bf7d2017a3d77682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2f2a8c1_52f1abf9",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-13T16:43:42Z",
+      "side": 1,
+      "message": "This dependency goes backwards though?  remount.h is supplied by libfs_mgr_remount, which isn\u0027t necessarily in libfs_mgr where this file is compiled?",
+      "revId": "e445cc319c2e841af31cf825bf7d2017a3d77682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "887885af_1df066ec",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-13T16:43:42Z",
+      "side": 1,
+      "message": "You don\u0027t need the \u0027s\u0027 here.",
+      "range": {
+        "startLine": 557,
+        "startChar": 11,
+        "endLine": 557,
+        "endChar": 12
+      },
+      "revId": "e445cc319c2e841af31cf825bf7d2017a3d77682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bb55b39_e328e1ab",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-13T16:43:42Z",
+      "side": 1,
+      "message": "Extra () in this function",
+      "range": {
+        "startLine": 658,
+        "startChar": 8,
+        "endLine": 658,
+        "endChar": 9
+      },
+      "revId": "e445cc319c2e841af31cf825bf7d2017a3d77682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79e33741_ad90cdbb",
+        "filename": "fs_mgr/fs_mgr_overlayfs_priv.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-13T16:43:42Z",
+      "side": 1,
+      "message": "We don\u0027t need the _priv.h.  I think fs_mgr_priv.h has \u0027priv\u0027 as a relic from when we didn\u0027t have a proper include/ directory.\n\nI guess we\u0027d have two fs_mgr_overlayfs.h if we don\u0027t add the \u0027priv\u0027, but I think that\u0027s fine.  It\u0027ll be clear which one is which based on the include path.",
+      "revId": "e445cc319c2e841af31cf825bf7d2017a3d77682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cddd6481_b1e1376c",
+        "filename": "fs_mgr/libremount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-13T16:43:42Z",
+      "side": 1,
+      "message": "Extra ()",
+      "range": {
+        "startLine": 181,
+        "startChar": 12,
+        "endLine": 181,
+        "endChar": 13
+      },
+      "revId": "e445cc319c2e841af31cf825bf7d2017a3d77682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
