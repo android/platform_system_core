@@ -94,6 +94,40 @@
       "revId": "daf44793e19d60800df2b351f373bac60395da45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "161ce5c1_2b219e34",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-16T15:00:47Z",
+      "side": 1,
+      "message": "I wouldn\u0027t normally suggestion this, since I\u0027d usually rather init script changes than code changes, but Apex is a bit special here:\n\nPerhaps this should be a part of what `enter_default_mount_ns` does?  It seems that they should be permanently linked together, so having them as two separate steps risks that in the future someone will move one but not the other.  Also, init will potentially restart services between each init command.  If it would be a bug for a service to be restarted after `enter_default_mount_ns` but before this bind mount (and I think it would be), then these must be done together in `enter_default_mount_ns`.",
+      "revId": "daf44793e19d60800df2b351f373bac60395da45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a744dc01_1d3ad6aa",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-16T15:00:47Z",
+      "side": 1,
+      "message": "Same comment as above: it seems that this may be best done as a part of perform_apex_config.",
+      "revId": "daf44793e19d60800df2b351f373bac60395da45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
