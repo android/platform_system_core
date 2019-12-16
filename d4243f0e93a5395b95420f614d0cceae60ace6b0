@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35c0e803_2937cc19",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2342,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-12-16T20:10:10Z",
+      "side": 1,
+      "message": "nit: Check device_-\u003eIsRecovery() here (since the doc comment says so)",
+      "revId": "d4243f0e93a5395b95420f614d0cceae60ace6b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df9f209d_bb1fcd1d",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2342,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-12-16T20:10:10Z",
+      "side": 1,
+      "message": "I think this name is misleading since it is not related to first stage mount. Maybe \"CreateSnapshotDevicesInRecovery\" \"CreateRecoverySnapsotDevices\" etc.?",
+      "range": {
+        "startLine": 2342,
+        "startChar": 30,
+        "endLine": 2342,
+        "endChar": 61
+      },
+      "revId": "d4243f0e93a5395b95420f614d0cceae60ace6b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7781414_6d34d626",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2362,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-12-16T20:10:10Z",
+      "side": 1,
+      "message": "After this call is successful, any \"return ERROR\" below will leave the device in a dirty state. If you call this function again in the dirty state, does CreateLogicalAndSnapshotPartitions still work?\n\nAlso, this maps other partitions as well, which may not be necessary.",
+      "range": {
+        "startLine": 2362,
+        "startChar": 9,
+        "endLine": 2362,
+        "endChar": 43
+      },
+      "revId": "d4243f0e93a5395b95420f614d0cceae60ace6b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae12c8d1_70f9b5e4",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2382,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2019-12-16T20:10:10Z",
+      "side": 1,
+      "message": "Same here; if other partitions are \"merging\" but system is done, then it is not necessary an error.\n\nWhy can\u0027t \"MERGING\" snapshots be mapped?",
+      "revId": "d4243f0e93a5395b95420f614d0cceae60ace6b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
