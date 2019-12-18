@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c367ca3e_514687b6",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-18T16:56:59Z",
+      "side": 1,
+      "message": "Better to skip ALOG and just have KLOG.",
+      "range": {
+        "startLine": 1185,
+        "startChar": 88,
+        "endLine": 1185,
+        "endChar": 96
+      },
+      "revId": "19ac110342520355d5e900dd89795e4e620bdf52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab697688_3410a5c8",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-12-18T16:56:59Z",
+      "side": 1,
+      "message": "I tend to not write \u0027args\u0027 instead of adding [[maybe_unused]].  The latter is great for situations where it truly is maybe unused, such as code that compiles for host and device and it is used in code that is #ifdef ANDROID, but not for the host, but it\u0027s not a good way to around the unused parameter warning.\n\nThat said, we don\u0027t even have the unused parameter warning enabled for this project, so you can just drop this and it\u0027ll be okay.",
+      "range": {
+        "startLine": 1206,
+        "startChar": 44,
+        "endLine": 1206,
+        "endChar": 61
+      },
+      "revId": "19ac110342520355d5e900dd89795e4e620bdf52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
