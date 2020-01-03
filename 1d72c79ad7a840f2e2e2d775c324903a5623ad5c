@@ -142,6 +142,24 @@
       "revId": "1d72c79ad7a840f2e2e2d775c324903a5623ad5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "061df034_8ff83a42",
+        "filename": "libstats/socket/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2020-01-03T16:46:37Z",
+      "side": 1,
+      "message": "That all makes sense in non-mainline, where we are primarily doing dessert releases. However, libstatssocket will be exported in the statsd apex. My concern is that Module A can build against version 11 (or the latest version) of libstatssocket (because it\u0027s in the source tree), but on the device, only version 10 exists. \n\nThis builds a dependency of Module A on the statsd module exporting version 11 or greater before Module A can update in mainline. Is this dependency enforced in any way, since statsd would need to be updated in the same train or an earlier train?",
+      "parentUuid": "5ea6e2c5_4996a6ee",
+      "revId": "1d72c79ad7a840f2e2e2d775c324903a5623ad5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
