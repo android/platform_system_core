@@ -124,6 +124,24 @@
       "revId": "1d72c79ad7a840f2e2e2d775c324903a5623ad5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ea6e2c5_4996a6ee",
+        "filename": "libstats/socket/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-03T12:19:46Z",
+      "side": 1,
+      "message": "I am not sure if I understood your question correctly.\n\nEvery successive version of the APIs should be compatible with the previous version and that can be enforced by not allowing (via code review) removal of APIs in the map file. \n\nFor example, let\u0027s imagine that we have version 10 for R and version 11 for S. Clients of libstatssocket that are shipped in R devices are all built with version 10 of the stub. We build the stats APEX in S source tree. libstatssocket library in the APEX implements version 11 (as well as version 10!!!). So, when this APEX is installed to R devices, the clients can still use the same set of APIs.",
+      "parentUuid": "51f49348_a2625a8f",
+      "revId": "1d72c79ad7a840f2e2e2d775c324903a5623ad5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
