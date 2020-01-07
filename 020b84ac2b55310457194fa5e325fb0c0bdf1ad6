@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e402ed58_85d507eb",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 1409599
+      },
+      "writtenOn": "2020-01-07T14:44:24Z",
+      "side": 1,
+      "message": "To answer both this and the following comment, I never considered to bail out because maybe some partial information could be better than nothing.\n\nI also saw that ReadSnapshotStatus() and QuerySnapshotStatus() already have proper logging, so skipped logging here.\nMy first code was something like:\n\nif (!ReadSnapshotStatus(lock.get(), snapshot, \u0026initial_status) ||\n    !QuerySnapshotStatus(snapshot, nullptr, \u0026current_status)) {\n    LOG(WARNING) \u003c\u003c \"Bla bla...\";\n    continue;\n}\n\nbut ReadSnapshotStatus() and QuerySnapshotStatus() were split into different conditions because I wanted to keeping incrementing |initial_sectors_allocated| regardless of the failure of QuerySnapshotStatus(). QuerySnapshotStatus() shouldn\u0027t fail, but if it does, I thought that considering that no sectors have been successfully merged would be OK, what do you think?\n\nI think you were proposing something like:\n\nif (!ReadSnapshotStatus(lock.get(), snapshot, \u0026initial_status) ||\n    !QuerySnapshotStatus(snapshot, nullptr, \u0026current_status)) {\n    LOG(WARNING) \u003c\u003c \"Failed to query snapshot status.\";\n    return status; // *progress is 0\n}\n\nCorrect?",
+      "parentUuid": "40fcda64_d8bda9e5",
+      "range": {
+        "startLine": 1264,
+        "startChar": 72,
+        "endLine": 1264,
+        "endChar": 80
+      },
+      "revId": "020b84ac2b55310457194fa5e325fb0c0bdf1ad6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f9f3cdc_18472b5b",
         "filename": "fs_mgr/libsnapshot/snapshot.cpp",
         "patchSetId": 1
@@ -42,6 +66,47 @@
         "endLine": 1267,
         "endChar": 78
       },
+      "revId": "020b84ac2b55310457194fa5e325fb0c0bdf1ad6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e395dea_fc49c548",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1267,
+      "author": {
+        "id": 1409599
+      },
+      "writtenOn": "2020-01-07T14:44:24Z",
+      "side": 1,
+      "message": "Answered above",
+      "parentUuid": "9f9f3cdc_18472b5b",
+      "range": {
+        "startLine": 1267,
+        "startChar": 70,
+        "endLine": 1267,
+        "endChar": 78
+      },
+      "revId": "020b84ac2b55310457194fa5e325fb0c0bdf1ad6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6114abe8_7e985dde",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 1409599
+      },
+      "writtenOn": "2020-01-07T14:44:24Z",
+      "side": 1,
+      "message": "There\u0027s another problem.\nAs soon as a snapshot device and its metadata are removed after the merge completes, we lose track of the progress achieved for merge snapshots. IOW, there may be jumps and speed changes in the growth of |progress|.\n\nI think I\u0027ll change {Read,Write}SnapshotState() to write a protobuf containing both the encoded status and the sum of the sectors of the snapshot devices.",
       "revId": "020b84ac2b55310457194fa5e325fb0c0bdf1ad6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -91,6 +156,54 @@
       "revId": "020b84ac2b55310457194fa5e325fb0c0bdf1ad6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4464bec1_d8e0adc6",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2272,
+      "author": {
+        "id": 1409599
+      },
+      "writtenOn": "2020-01-07T14:44:24Z",
+      "side": 1,
+      "message": "I\u0027ll truncate via integer conversion.",
+      "parentUuid": "3afc4ffa_31a57350",
+      "range": {
+        "startLine": 2272,
+        "startChar": 62,
+        "endLine": 2272,
+        "endChar": 70
+      },
+      "revId": "020b84ac2b55310457194fa5e325fb0c0bdf1ad6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fd1bb36_2e6a8b3d",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2272,
+      "author": {
+        "id": 1409599
+      },
+      "writtenOn": "2020-01-07T14:44:24Z",
+      "side": 1,
+      "message": "I will monitor every 2s, and log only if progress increases by at least 1%.",
+      "parentUuid": "51d88aff_5704120c",
+      "range": {
+        "startLine": 2272,
+        "startChar": 12,
+        "endLine": 2272,
+        "endChar": 79
+      },
+      "revId": "020b84ac2b55310457194fa5e325fb0c0bdf1ad6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
