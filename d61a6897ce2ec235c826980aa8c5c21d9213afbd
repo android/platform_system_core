@@ -34,6 +34,24 @@
       "revId": "d61a6897ce2ec235c826980aa8c5c21d9213afbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4bc81d6_f6e70131",
+        "filename": "libnetutils/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2020-01-08T06:42:40Z",
+      "side": 1,
+      "message": "\u003e Could drop our dependency on libnetutils instead of fixing it?\n\nAfter discussing offline with yumike: No, because ifc_utils is delicate low-level code and we don\u0027t want to duplicate it in tests or elsewhere.\n\nTo prevent vendors from statically linking this library, we might split the rule in two:\n\n - a cc_library_static that\u0027s \"vendor_available: false\"\n - a cc_library_shared that\u0027s \"vendor_available: true\"\n\nI don\u0027t feel terribly strong for this, because sufficiently motivated vendors can simply copy-paste the code instead of linking it statically.\n\nSo I\u0027m also +2 on merging the current patch.",
+      "parentUuid": "dbbdb4b0_fa581d3d",
+      "revId": "d61a6897ce2ec235c826980aa8c5c21d9213afbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
