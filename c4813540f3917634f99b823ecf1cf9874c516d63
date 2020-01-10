@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6784d97_f8dd312a",
+        "filename": "libutils/include/utils/StrongPointer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-10T19:34:42Z",
+      "side": 1,
+      "message": "alright, so the issue that was failing on a single internal target was like this:\n\nnamespace ns {\nclass Foo {}\n}\n\nstatic bool operator\u003d\u003d(const Foo\u0026, const Foo\u0026) { return true; }\n\nnamespace android {\nvoid foo() {\n    Foo a; Foo b;\n    if (a \u003d\u003d b) { ... } // \u003c- problem here\n}\n}\n\n\nPrevious patchsets error b/c only the operator\u003d\u003d entries in the \u0027android\u0027 namespace are getting checked (where these were added before).\n\nIf I have all the operators externally defined and in the global namespace, this caused other lookup problems which I didn\u0027t investigate fully. However, leaving these new ones in the global namespace allows them to be used, and it doesn\u0027t cause any other dependency problems. I think this is an improvement, and there might be a cleaner way to do it, but I\u0027m not so sure. WDYT?",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 19
+      },
+      "revId": "c4813540f3917634f99b823ecf1cf9874c516d63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
