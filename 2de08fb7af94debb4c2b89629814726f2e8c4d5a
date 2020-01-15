@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b8a3d3cb_ae4b3987",
+        "filename": "init/security.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1128769
+      },
+      "writtenOn": "2020-01-15T20:55:29Z",
+      "side": 1,
+      "message": "Done. Didn\u0027t realize that platform code can use designated initializers, using them now.",
+      "parentUuid": "f343a8c4_26a4dd18",
+      "revId": "2de08fb7af94debb4c2b89629814726f2e8c4d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75018d87_3de564e5",
         "filename": "init/security.cpp",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "2de08fb7af94debb4c2b89629814726f2e8c4d5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbdad056_a61a655b",
+        "filename": "init/security.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1128769
+      },
+      "writtenOn": "2020-01-15T20:55:29Z",
+      "side": 1,
+      "message": "Done as PLOG. As you mention, it didn\u0027t seem like there\u0027s much to gain from marking the outcome of the builtin action as unsuccessful.",
+      "parentUuid": "75018d87_3de564e5",
+      "revId": "2de08fb7af94debb4c2b89629814726f2e8c4d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "2de08fb7af94debb4c2b89629814726f2e8c4d5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33fceeea_2d0d6c83",
+        "filename": "init/security.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1128769
+      },
+      "writtenOn": "2020-01-15T20:55:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f8f0533_f59e0213",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 5
+      },
+      "revId": "2de08fb7af94debb4c2b89629814726f2e8c4d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +201,30 @@
       "side": 1,
       "message": "Those debug properties are used by simpleperf to adjust memory/cpu-time used for recording. Since the proc files belong to root and can\u0027t be written by other users, simpleperf change them when disabling perf_harden.\n\nI\u0027d like those configs files still in control of simpleperf and security.perf_harden. So maybe add:\n\non property:security.perf_harden\u003d0 \u0026\u0026 property:sys.init.perf_lsm_hooks\u003d\"1\"\n      write /proc/sys/kernel/perf_event_max_sample_rate ${debug.perf_event_max_sample_rate:-100000}\n      write /proc/sys/kernel/perf_cpu_time_max_percent ${debug.perf_cpu_time_max_percent:-25}\n      write /proc/sys/kernel/perf_event_mlock_kb ${debug.perf_event_mlock_kb:-516}\n\nAlso you can remove lines writing to config files in sys.init.perf_lsm_hooks\u003d1.",
       "parentUuid": "61912610_e291371b",
+      "range": {
+        "startLine": 949,
+        "startChar": 0,
+        "endLine": 951,
+        "endChar": 80
+      },
+      "revId": "2de08fb7af94debb4c2b89629814726f2e8c4d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21f6d405_1d763c30",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1128769
+      },
+      "writtenOn": "2020-01-15T20:55:29Z",
+      "side": 1,
+      "message": "I\u0027ve refactored this into one block that\u0027s related to perf_event_paranoid, and one that is related to sysctls. Does this look sensible?\n\n(This also now restores the defaults once the system is returning to security.perf_harden\u003d1 state.)",
+      "parentUuid": "2f741e6a_44a83e07",
       "range": {
         "startLine": 949,
         "startChar": 0,
