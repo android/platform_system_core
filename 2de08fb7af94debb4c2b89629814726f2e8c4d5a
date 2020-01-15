@@ -59,6 +59,29 @@
     },
     {
       "key": {
+        "uuid": "c6bfb41f_47e2b388",
+        "filename": "init/security.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2020-01-15T19:29:30Z",
+      "side": 1,
+      "message": "I don\u0027t understand. init runs as root, can it still be denied by selinux for PERF_EVENT__WRITE?",
+      "range": {
+        "startLine": 263,
+        "startChar": 4,
+        "endLine": 263,
+        "endChar": 5
+      },
+      "revId": "2de08fb7af94debb4c2b89629814726f2e8c4d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61912610_e291371b",
         "filename": "rootdir/init.rc",
         "patchSetId": 1
@@ -70,6 +93,30 @@
       "writtenOn": "2020-01-15T16:59:14Z",
       "side": 1,
       "message": "note to reviewers: not entirely convinced this block is right, currently checking what exactly the debug.* sysprops are used for (might be important to keep setting them on each security.perf_harden \u003c- 0 assignment, even if LSM hooks are up).",
+      "range": {
+        "startLine": 949,
+        "startChar": 0,
+        "endLine": 951,
+        "endChar": 80
+      },
+      "revId": "2de08fb7af94debb4c2b89629814726f2e8c4d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f741e6a_44a83e07",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2020-01-15T19:29:30Z",
+      "side": 1,
+      "message": "Those debug properties are used by simpleperf to adjust memory/cpu-time used for recording. Since the proc files belong to root and can\u0027t be written by other users, simpleperf change them when disabling perf_harden.\n\nI\u0027d like those configs files still in control of simpleperf and security.perf_harden. So maybe add:\n\non property:security.perf_harden\u003d0 \u0026\u0026 property:sys.init.perf_lsm_hooks\u003d\"1\"\n      write /proc/sys/kernel/perf_event_max_sample_rate ${debug.perf_event_max_sample_rate:-100000}\n      write /proc/sys/kernel/perf_cpu_time_max_percent ${debug.perf_cpu_time_max_percent:-25}\n      write /proc/sys/kernel/perf_event_mlock_kb ${debug.perf_event_mlock_kb:-516}\n\nAlso you can remove lines writing to config files in sys.init.perf_lsm_hooks\u003d1.",
+      "parentUuid": "61912610_e291371b",
       "range": {
         "startLine": 949,
         "startChar": 0,
