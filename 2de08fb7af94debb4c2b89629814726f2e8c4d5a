@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "f343a8c4_26a4dd18",
+        "filename": "init/security.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-01-15T19:09:42Z",
+      "side": 1,
+      "message": "You don\u0027t need memset; with C++, you can do perf_event_attr pe \u003d {} to zero initialize the struct.\n\nYou can also use designated initializers with clang, so:\n\nperf_event_attr pe \u003d {\n  .type \u003d PERF_TYPE_SOFTWARE;\n  .size \u003d ...\n};\n\nIt will zero initialize the other parameters.",
+      "revId": "2de08fb7af94debb4c2b89629814726f2e8c4d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75018d87_3de564e5",
+        "filename": "init/security.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-01-15T19:09:42Z",
+      "side": 1,
+      "message": "We have PLOG that appends strerror(errno) already, so this can be simply:\n\nPLOG(ERROR) \u003c\u003c \"Unexpected perf_event_open error\";\n\nThe same for the below parts.\n\nYou could also return an error, \n\nreturn ErrnoError() \u003c\u003c \"Unexpected perf_event_open error\"; that will have init print more context about this function, though the context here isn\u0027t as useful as it is in other places.",
+      "revId": "2de08fb7af94debb4c2b89629814726f2e8c4d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f8f0533_f59e0213",
         "filename": "init/security.cpp",
         "patchSetId": 1
