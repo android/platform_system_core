@@ -82,6 +82,30 @@
     },
     {
       "key": {
+        "uuid": "581677d5_db673081",
+        "filename": "init/security.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1128769
+      },
+      "writtenOn": "2020-01-15T19:34:53Z",
+      "side": 1,
+      "message": "root implicitly passes all the DAC checks (think capabilities and uid ownership), however MAC (i.e. SELinux) still applies.\n\nIf you\u0027re comparing this with the \"su\" domain on debug builds - it\u0027s special-cased to be permissive:\nhttps://cs.android.com/android/_/android/platform/system/sepolicy/+/41a1b4af9c7425d5d17bc967f33a079d0b28a609:private/su.te;l\u003d20",
+      "parentUuid": "c6bfb41f_47e2b388",
+      "range": {
+        "startLine": 263,
+        "startChar": 4,
+        "endLine": 263,
+        "endChar": 5
+      },
+      "revId": "2de08fb7af94debb4c2b89629814726f2e8c4d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61912610_e291371b",
         "filename": "rootdir/init.rc",
         "patchSetId": 1
