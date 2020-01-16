@@ -68,6 +68,30 @@
       "revId": "6f9beee8854b020df63e8aa90df086c3aab63677",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7b702e2_70788f7b",
+        "filename": "bootstat/bootstat.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2020-01-16T23:22:51Z",
+      "side": 1,
+      "message": "AFAIU with exec_background init will start bootstat, but then carry on processing next action. This means, if we trigger userspace reboot before bootstat finishes we will never have boot statistics collected. What do you think about setting sys.logbootcomplete to 0 inside bootstat.cpp?",
+      "parentUuid": "86fb5ca9_c9ed25f0",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 137
+      },
+      "revId": "6f9beee8854b020df63e8aa90df086c3aab63677",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
