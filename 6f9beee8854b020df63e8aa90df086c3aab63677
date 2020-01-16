@@ -22,6 +22,52 @@
       "revId": "6f9beee8854b020df63e8aa90df086c3aab63677",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60cacc9b_cb7223fe",
+        "filename": "bootstat/bootstat.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2020-01-16T22:17:51Z",
+      "side": 1,
+      "message": "Will this ever trigger before sys.boot_completed\u003d1 happens? If that is the case, then this fragment may prevent bootstat from running. AFAIK zygote starting / stopping may also have a similar issue. By putting the filter on line 65, I am wondering if we now have a case where bootstat does not run at all if either crashes? AFAIK this is not the case, but if it is, then our state machine needs another filter. Given that userspace_reboot_requested clears sys.boot_completed\u003d\"\" we may be in an untenable situation to detect this without coincident adjustments in rootdir/init.rc or burning another variable?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 31
+      },
+      "revId": "6f9beee8854b020df63e8aa90df086c3aab63677",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86fb5ca9_c9ed25f0",
+        "filename": "bootstat/bootstat.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2020-01-16T22:17:51Z",
+      "side": 1,
+      "message": "Hmmmm, a KISS idea: add after this exec_background \u0027setprop sys.logbootcomplete 0\u0027, maybe that will solve the problem of even adding the on userspace-reboot-requested above on line 73 or even the existing rule for zygote on line 70.",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 137
+      },
+      "revId": "6f9beee8854b020df63e8aa90df086c3aab63677",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
