@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "642549f4_c6423ff6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2020-01-16T15:19:28Z",
+      "side": 1,
+      "message": "Always run boot_reason_test.sh. It can take 30 minutes (you can tell it to run a subset of the tests), so beware. It is not 100% reliable (because it can be impacted by bootloaders that do not support warm/cold, kernel crashes and has to play some flakey games to find corner cases, and has had no love in the past year), but if two out of the series of tests fail, I would register happiness. Some of the tests require manual effort, the test will ask you to hit the power button, no way around that to check those activities. If you fail in that task, it will timeout, report failure, but you can run just that test again.\n\nAlso, you may _wish_ to add a test to perform a userspace reboot and confirm that bootstat did not run again so that no one breaks it. It is in shell script with plenty helpers to inspect logcat results, so I do not wish it upon thee.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 5
+      },
+      "revId": "de8a32e249f9ac00b75df709a55034e24c97bd6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca5157f1_a597c85d",
+        "filename": "bootstat/bootstat.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2020-01-16T15:19:28Z",
+      "side": 1,
+      "message": "bootstat is not allowed to start until (immediately) after /data is mounted (after post-fs-data) and on boot is guaranteed to have /data mounted. on late-init, it isn\u0027t.\n\nAlthough I consider the timing sound because sys.boot_completed\u003d1 trigger after /data has mounted, I fear that we may have maintenance issue should future adjustments result in this race condition.\n\nPerhaps more than one state?\n\n    on boot \u0026\u0026 sys.logbootcomplete\u003d\"\"\n\nSummary:\n    sys.logbootcomplete\u003d\"\"  - first boot\n    sys.logbootcomplete\u003d1   - in window of opportunity\n    sys.logbootcomplete\u003d0   - window closed permanently\n\n(wonders out loud if on post-fs-data \u0026\u0026 sys.logbootcomplete\u003d\"\" might be more refined, or more trouble)",
+      "range": {
+        "startLine": 63,
+        "startChar": 3,
+        "endLine": 63,
+        "endChar": 12
+      },
+      "revId": "de8a32e249f9ac00b75df709a55034e24c97bd6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
