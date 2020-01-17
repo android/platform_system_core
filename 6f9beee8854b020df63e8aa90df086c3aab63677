@@ -92,6 +92,30 @@
       "revId": "6f9beee8854b020df63e8aa90df086c3aab63677",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d42fc246_c38385f2",
+        "filename": "bootstat/bootstat.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2020-01-17T00:00:32Z",
+      "side": 1,
+      "message": "I do not have a problem with sys.logbootcomplete being set to 0 inside bootstat.cpp, but it has to be commanded in an option since we also run bootstat on line 81 (which BTW is our implicit guarantee that zygote must start before sys.boot_completed\u003d1, and thus could stop before sys.boot_completed\u003d1 too answering my worry above).\n\nYou will discover that on zygote-start happens to cause bootstat to run multiple times as well for a different reason through userspace-reboot-requests ... \u003cooops\u003e\n\nbootstat takes ~50ms to complete if memory serves, so the race might not be a worry, not even sure a subsystem restart will even kill a exec_background in the first place.\n\nYes, this is still a bit of a \u0027thinker\u0027 isn\u0027t it. Thinking we need a pair sys.bootstat.boot_complete (renamed) and sys.bootstat.zygote_start, one for each exec_background and flip a coin as to whether it is worth it to set to \u00270\u0027 the associated property in --record_time_since_factory_reset and --set_system_boot_reason respectively or in this initrc directly so that maintenance is clearer (~50ms window of failure may be worth the price so that everyone can see it happening here).",
+      "parentUuid": "e7b702e2_70788f7b",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 137
+      },
+      "revId": "6f9beee8854b020df63e8aa90df086c3aab63677",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
