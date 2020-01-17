@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "116ce9bb_3ffc1800",
+        "filename": "liblog/include/android/log.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-01-17T01:23:57Z",
+      "side": 1,
+      "message": "I was figuring that the compiler would be smart enough to not assemble this into a local then also copy it fully if I had\n\n__android_log_write_logger_data({.size \u003d sizeof(__android_logger_data, ...}, \"message\");\n\nand if I we wanted to call this from a macro, we would essentially need to do this.  Unless we were okay creating a new scope:\n\n#define ALOGE(...)\n {\n   __android_logger_data data \u003d {.size \u003d sizeof(__android_logger_data), ...};\n   __android_log_write_logger_data(\u0026data, ...);\n }\n\nOr worst case we can abuse statement expressions to have something like:\n\n#define ALOGE(...)\n ({\n   __android_logger_data data \u003d {.size \u003d sizeof(__android_logger_data), ...};\n   __android_log_write_logger_data(\u0026data, ...);\n   int{0};\n })\n\nI\u0027ll go with the pointer, but any thoughts on the above?",
+      "parentUuid": "5d7788fb_a7a0e4f8",
+      "range": {
+        "startLine": 198,
+        "startChar": 44,
+        "endLine": 198,
+        "endChar": 65
+      },
+      "revId": "bee3eca07ae193d33690a050d5e7e25c5d8cb438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1408d1e4_e49b10ed",
         "filename": "liblog/include/android/log.h",
         "patchSetId": 4
@@ -36,6 +60,24 @@
       "writtenOn": "2020-01-16T22:19:46Z",
       "side": 1,
       "message": "explicitly say that this is an __android_logger_function that you can pass to __android_log_set_logger.\n\n(should we just call the  type __android_logger? does _function add anything?)",
+      "revId": "bee3eca07ae193d33690a050d5e7e25c5d8cb438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ff6a39f_ef3d5a8e",
+        "filename": "liblog/include/android/log.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-01-17T01:23:57Z",
+      "side": 1,
+      "message": "Done.\n\nI copied how libbase has LogFunction and AbortFunction.  I took a look at this without _function and it seems a bit strange to me, especially since we use android_logger to mean other things: android_logger_open() for reading logs and \u003cprivate/android_logger.h\u003e.  I think it\u0027s better to name this clearly different than those.",
+      "parentUuid": "1408d1e4_e49b10ed",
       "revId": "bee3eca07ae193d33690a050d5e7e25c5d8cb438",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -62,6 +104,30 @@
       "revId": "bee3eca07ae193d33690a050d5e7e25c5d8cb438",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4669da15_f0e1a559",
+        "filename": "liblog/logger_write.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-01-17T01:23:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4652e0f8_c03f1bce",
+      "range": {
+        "startLine": 255,
+        "startChar": 20,
+        "endLine": 255,
+        "endChar": 36
+      },
+      "revId": "bee3eca07ae193d33690a050d5e7e25c5d8cb438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
