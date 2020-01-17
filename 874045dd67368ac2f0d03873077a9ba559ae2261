@@ -70,6 +70,24 @@
       "revId": "874045dd67368ac2f0d03873077a9ba559ae2261",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e8674f7_cdceae08",
+        "filename": "base/logging.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-01-17T19:13:23Z",
+      "side": 1,
+      "message": "Right.  I figure that\u0027s mostly splitting hairs since this function call overhead shouldn\u0027t be much compared to the function itself and we\u0027d waste 8 bytes for the reference and likely another byte for the guard bits themselves for each static.  \n\nBut we might as well add it, I checked objdump and at least on x86 where atomics reads are trivial. When I added static at the call sites, it compiles into simply a mov + test to see if we\u0027ve initialized the static, so that\u0027s probably worth doing.\n\n(Also note that const doesn\u0027t actually make this any more efficient; the code is identical with or without const)",
+      "parentUuid": "fdc48db0_b931b8b4",
+      "revId": "874045dd67368ac2f0d03873077a9ba559ae2261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
