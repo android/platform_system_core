@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2995248_c3087f39",
+        "filename": "bootstat/bootstat.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2020-01-17T19:25:41Z",
+      "side": 1,
+      "message": "Too early IMHO, we want them enabled _after_ /data is mounted and after persistent properties have been read in. What about firmware_mounts_complete? other? (below)\n\n[TL;DR]\n\nWe (royal we, before I even got involved in bootstat) used \u0027boot\u0027 originally as you know.\n\nWe could use any of zygote-start, firmware_mount_complete, early-boot or boot to be valid as far as our /data and persistent properties are concerned, but only firmware_mounts_complete is not redone in userspace-reboot-resume or vold decrypt so it seems to be the best gate for this:\n\non late-init:\n    . . .\n    # Now we can mount /data. File encryption requires keymaster to decrypt\n    # /data, which in turn can only be loaded when system properties are present.\n    trigger post-fs-data\n\n    # Load persist properties and override properties (if enabled) from /data.\n    trigger load_persist_props_action\n\n    # Now we can start zygote for devices with file based encryption\n    trigger zygote-start\n\n    # Remove a file to wake up anything waiting for firmware.\n    trigger firmware_mounts_complete\n\n    trigger early-boot\n    trigger boot\n\nProblem with that is what-if firmware_mounts_complete get (over-)used too in the future, we will be back here again.\n\nAnother possibility is invent a one-time \u0027trigger load_persist_props_action_ready\u0027 in rootdir/init.rc that bootstat.rc can just use, and add a comment ahead of the trigger to make sure it is a known one-time event, and no one else calls it? Someone else may use it in the future, so not just for bootstat is the point.",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 7
+      },
+      "revId": "21b6a24b8e66c8683ba87c77c736af6ed6e046b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
