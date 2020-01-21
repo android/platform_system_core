@@ -94,6 +94,30 @@
       "revId": "21b6a24b8e66c8683ba87c77c736af6ed6e046b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57ac7d29_bced61a4",
+        "filename": "bootstat/bootstat.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2020-01-21T18:48:12Z",
+      "side": 1,
+      "message": "bootstat can not run until after /data is mounted, but \u0027enabling\u0027 it early, one removes one of the gates that prevents it from running by false triggering of zygote-start (which I believe happens on FDE, which admittedly we no longer support, but partners continue to use on low end devices) or sys.boot_completed (should not be a problem ... or is it?).",
+      "parentUuid": "d498e8e0_2b47d74c",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 7
+      },
+      "revId": "21b6a24b8e66c8683ba87c77c736af6ed6e046b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
