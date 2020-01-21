@@ -68,6 +68,29 @@
       "revId": "d3a89eacced3cd4ed1d6e3ad4e4367c2a336ef51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf30c7c1_7f194459",
+        "filename": "init/reboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2020-01-21T17:17:28Z",
+      "side": 1,
+      "message": "This can not work, if userspace can not be mounted, and the bootloader does not retain the reboot reason into its boot reason, then the system boot reason can not be retained.\n\nb/129007837 is meant to solve this problem, as it will store the reboot reason into /metadata for consumption on the next boot up. This bug will kill multiple birds with one stone, solve the problem of retaining boot reason through an OTA revert, userdata wipe, and when the controlled reboot happens before /data is mounted.",
+      "range": {
+        "startLine": 740,
+        "startChar": 8,
+        "endLine": 740,
+        "endChar": 69
+      },
+      "revId": "d3a89eacced3cd4ed1d6e3ad4e4367c2a336ef51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
