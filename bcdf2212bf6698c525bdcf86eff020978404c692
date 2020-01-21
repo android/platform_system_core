@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "11a1f2f2_0d728fa3",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-01-21T15:48:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c4b73e7_7b93792b",
+      "range": {
+        "startLine": 447,
+        "startChar": 39,
+        "endLine": 447,
+        "endChar": 41
+      },
+      "revId": "bcdf2212bf6698c525bdcf86eff020978404c692",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca17c9d7_85e94757",
         "filename": "base/logging.cpp",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2020-01-20T16:43:54Z",
       "side": 1,
       "message": "You can\u0027t provide Q fallbacks for liblog_functions-\u003e__android_get_minimum_priority etc to unify the code paths here and below and get rid of these if conditions? Are the conversions between priority and severity lossy?",
+      "range": {
+        "startLine": 592,
+        "startChar": 2,
+        "endLine": 593,
+        "endChar": 23
+      },
+      "revId": "bcdf2212bf6698c525bdcf86eff020978404c692",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02f95c98_a96e29af",
+        "filename": "base/logging.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-01-21T15:48:49Z",
+      "side": 1,
+      "message": "They are lossy, which is unfortunate.  LOG_FATAL_WITHOUT_ABORT and LOG_FATAL merge together into simply ANDROID_LOG_FATAL.\n\nI can provide fallbacks, but I thought it was overall better to use all of the functions or none of them.  Particularly with ShouldLog() below, since the behavior is different on Q vs R, but overall, it seems cleaner to me to have the code like this than creating fallback symbols.",
+      "parentUuid": "ca17c9d7_85e94757",
       "range": {
         "startLine": 592,
         "startChar": 2,
@@ -68,6 +116,30 @@
       "revId": "bcdf2212bf6698c525bdcf86eff020978404c692",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c818b1b_2c090392",
+        "filename": "base/logging.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-01-21T15:48:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f85d84a_9e6d55dd",
+      "range": {
+        "startLine": 606,
+        "startChar": 74,
+        "endLine": 606,
+        "endChar": 76
+      },
+      "revId": "bcdf2212bf6698c525bdcf86eff020978404c692",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
