@@ -161,6 +161,30 @@
     },
     {
       "key": {
+        "uuid": "c3b2e99b_2f341236",
+        "filename": "adb/adbconnection/include/adbconnection/client.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-01-23T17:43:36Z",
+      "side": 1,
+      "message": "\u003e All of the code that actually handles the jdwp commands is no longer part of ART\n\nThe stuff in runtime/jdwp is unused?\n\n\u003e and is instead in external/oj-libjdwp.\n\nI gather libjdwp.so is loaded through the agent interface? That\u0027s already an API that we need to support, so then this would be addressed by moving libjdwp.so into the adbd APEX?\n\n\u003e The extensions discussed in that doc are unrelated to the data being sent over this.\n\nOk, thanks for clarifying that.\n\nSpeaking of other sockets, the polling fd above is only used for polling on the ART side, there\u0027s no reading or writing on it there, right?",
+      "parentUuid": "1a79f26c_c7addee1",
+      "range": {
+        "startLine": 52,
+        "startChar": 13,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "76e4e4d83ee128d253c311eb983d0d3fd5dd6666",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "22435d0b_69796d5a",
         "filename": "adb/adbconnection/libadbconnection_client.map.txt",
         "patchSetId": 2
