@@ -22,6 +22,30 @@
       "revId": "cfd517d2a0897441e165e670bf8e76639ab66af0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "defc59a2_a18cfbf2",
+        "filename": "base/logging.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-01-23T23:43:27Z",
+      "side": 0,
+      "message": "Is that useful behavior?  I don\u0027t see any of the callers doing that; even the zygote call first checked nice_name.has_value() before calling SetThreadName().  Does it expect an empty string even though it has a value there?\n\nIt\u0027s strange that there wasn\u0027t a test for this previously if it is indeed useful.  I had wondered why there was this strange dance with pointers, but it seemed like a mistake more than an explicit feature to replicate.",
+      "parentUuid": "f6241b9e_34b1ab6e",
+      "range": {
+        "startLine": 579,
+        "startChar": 0,
+        "endLine": 580,
+        "endChar": 51
+      },
+      "revId": "cfd517d2a0897441e165e670bf8e76639ab66af0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
