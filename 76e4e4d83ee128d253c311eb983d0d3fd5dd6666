@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "69b393c9_e318cc17",
+        "filename": "adb/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-01-23T15:20:47Z",
+      "side": 1,
+      "message": "The stub file defines the stub interface with ART, doesn\u0027t it? Since it\u0027s on the client side, the lib belongs in adb.\n\nHowever, apex_available looks wrong - it means the ART APEXes can include this library itself, and they shouldn\u0027t. They should only access the stubs, and for that you shouldn\u0027t need apex_available (visibility is enough).",
+      "parentUuid": "6cac94ff_12f6240d",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 6
+      },
+      "revId": "76e4e4d83ee128d253c311eb983d0d3fd5dd6666",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71021ec8_4c8d6767",
         "filename": "adb/adbconnection/adbconnection_client.cpp",
         "patchSetId": 2
@@ -84,6 +108,29 @@
       "writtenOn": "2020-01-23T04:57:48Z",
       "side": 1,
       "message": "copyright header?",
+      "revId": "76e4e4d83ee128d253c311eb983d0d3fd5dd6666",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65aabf6e_d97026fc",
+        "filename": "adb/adbconnection/include/adbconnection/client.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-01-23T15:20:47Z",
+      "side": 1,
+      "message": "This fd means there\u0027s code elsewhere (in ART) that implements the protocol over it, doesn\u0027t it? That means the protocol becomes the ABI, and we need to consider forward and backward compatibility(*). We also need to consider proper Mainline testing of it, including coverage.\n\nIf we can make the whole interface a C ABI, i.e. without \"leaking\" an fd across the border, then those things become more explicit here, and we\u0027ll be able to use regular tooling to test and verify the interface (even though that tooling to a large extent still is to come).\n\nHence I wonder if it\u0027s feasible to move the ABI border to avoid passing fd\u0027s across. I presume it\u0027d imply an interface to add command handlers etc, but maybe that\u0027s mostly a matter of moving more code from ART runtime into the client lib? (I haven\u0027t really dived into the JDWP/DDMS implementation in ART.)\n\nOtherwise we need to better understand how we\u0027ll test a socket protocol boundary. +rpl\n\n*) A point in case is also that the protocol here doesn\u0027t appear to be strict JDWP, considering the profiling extension discussed in http://doc/12tMLgKVYJx0_uZLbxqAUWBBRkar6tmLttFfSd0k0Fik.",
+      "range": {
+        "startLine": 52,
+        "startChar": 13,
+        "endLine": 52,
+        "endChar": 27
+      },
       "revId": "76e4e4d83ee128d253c311eb983d0d3fd5dd6666",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
