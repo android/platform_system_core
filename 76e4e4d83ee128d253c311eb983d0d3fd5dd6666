@@ -137,6 +137,30 @@
     },
     {
       "key": {
+        "uuid": "1a79f26c_c7addee1",
+        "filename": "adb/adbconnection/include/adbconnection/client.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2020-01-23T17:16:56Z",
+      "side": 1,
+      "message": "\u003e This fd means there\u0027s code elsewhere (in ART) that implements the protocol over it, doesn\u0027t it? That means the protocol becomes the ABI, and we need to consider forward and backward compatibility(*). We also need to consider proper Mainline testing of it, including coverage.\n\u003e \n\u003e If we can make the whole interface a C ABI, i.e. without \"leaking\" an fd across the border, then those things become more explicit here, and we\u0027ll be able to use regular tooling to test and verify the interface (even though that tooling to a large extent still is to come).\n\nThis FD is the open JDWP connection between the runtime and whatever debugger is currently controlling it. The protocol definition can be found at go/jdwp-spec. The entire JDWP spec is built around having a TCP socket connection of some type and passing structs over it. All of the code that actually handles the jdwp commands is no longer part of ART and is instead in external/oj-libjdwp.\n\n\u003e Hence I wonder if it\u0027s feasible to move the ABI border to avoid passing fd\u0027s across. I presume it\u0027d imply an interface to add command handlers etc, but maybe that\u0027s mostly a matter of moving more code from ART runtime into the client lib? (I haven\u0027t really dived into the JDWP/DDMS implementation in ART.)\n\u003e \n\u003e Otherwise we need to better understand how we\u0027ll test a socket protocol boundary. +rpl\n\n\n\u003e *) A point in case is also that the protocol here doesn\u0027t appear to be strict JDWP, considering the profiling extension discussed in http://doc/12tMLgKVYJx0_uZLbxqAUWBBRkar6tmLttFfSd0k0Fik.\n\nThe data being sent over the fd are standard JDWP protocol commands coming from host tools like \u0027jdb\u0027. The extensions discussed in that doc are unrelated to the data being sent over this. That data is sent by the adbconnection_client_new function. This FD is purely a socket for JDWP protocol traffic to come over.",
+      "parentUuid": "65aabf6e_d97026fc",
+      "range": {
+        "startLine": 52,
+        "startChar": 13,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "76e4e4d83ee128d253c311eb983d0d3fd5dd6666",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "22435d0b_69796d5a",
         "filename": "adb/adbconnection/libadbconnection_client.map.txt",
         "patchSetId": 2
