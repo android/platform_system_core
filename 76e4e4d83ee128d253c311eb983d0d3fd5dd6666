@@ -233,6 +233,30 @@
     },
     {
       "key": {
+        "uuid": "cae4b5df_500575a6",
+        "filename": "adb/adbconnection/include/adbconnection/client.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2020-01-23T21:45:34Z",
+      "side": 1,
+      "message": "\u003e The stuff in runtime/jdwp is unused?\n\nCorrect. I\u0027ve had a bug to fully remove it for a while. The code is rather tangled up with other parts of the system (like parts are in Thread and ThreadList) but all of it is unused in normal cases.\n\n\u003e I gather libjdwp.so is loaded through the agent interface? That\u0027s already an API that we need to support, so then this would be addressed by moving libjdwp.so into the adbd APEX?\n\nI don\u0027t think that\u0027s a good idea. The JDWP protocol is already well defined and we cannot really change it in backwards incompatible ways without breaking developer host tooling. All of the android parts basically treat this as just a pipe to an outside (host-computer) which gives bytes that libjdwp.so has to interpret. I\u0027d be happy to discuss this more in-depth over GVC if you want.",
+      "parentUuid": "8b9ddfe3_8d9742ac",
+      "range": {
+        "startLine": 52,
+        "startChar": 13,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "76e4e4d83ee128d253c311eb983d0d3fd5dd6666",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "22435d0b_69796d5a",
         "filename": "adb/adbconnection/libadbconnection_client.map.txt",
         "patchSetId": 2
