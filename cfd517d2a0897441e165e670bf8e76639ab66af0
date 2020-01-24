@@ -70,6 +70,30 @@
       "revId": "cfd517d2a0897441e165e670bf8e76639ab66af0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aadc7783_3255d4f0",
+        "filename": "base/logging.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-01-24T00:14:13Z",
+      "side": 0,
+      "message": "I\u0027ve been generally assuming that.  Apps won\u0027t use the platform version of libbase so they won\u0027t be directly impacted by this change unless they recompile.\n\nI think it\u0027s esoteric enough behavior that we should drop it, especially since there wasn\u0027t an existing test.  I expect nearly every process other than zygote to set a default log tag at the beginning and use it throughout.  If they really need to reset it to getprogname() again in the future, then that can do that explicitly.",
+      "parentUuid": "c57409e4_db563032",
+      "range": {
+        "startLine": 579,
+        "startChar": 0,
+        "endLine": 580,
+        "endChar": 51
+      },
+      "revId": "cfd517d2a0897441e165e670bf8e76639ab66af0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
