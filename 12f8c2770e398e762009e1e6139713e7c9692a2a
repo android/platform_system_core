@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6879db9f_2f78e213",
+        "filename": "init/README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-01-27T18:59:44Z",
+      "side": 1,
+      "message": "We don\u0027t need the \u0027-\u0027 and it would be better to spell out the \u0027w\u0027 and \u0027t\u0027, so \n\n[window\u003d\u003cfatal crash window mins\u003e] [target\u003d\u003cfatal reboot target\u003e]\n\nIt may be good to explicitly write that these parameters can provided in any order, since that\u0027s rare for init parameters.\n\nOtherwise, we may want to think about reusing the `reboot_on_failure` option for this instead of having a target\u003d\u003c\u003e parameter.  I can\u0027t think of any cases where someone would want a separate reboot target if a critical process dies vs if a process dies and returns a failure error code.",
+      "revId": "12f8c2770e398e762009e1e6139713e7c9692a2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba0d95f6_cabfa30f",
+        "filename": "init/service_parser.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-01-27T18:59:44Z",
+      "side": 1,
+      "message": "I\u0027d just use android::base::Split() here.\n\nOr at least make this:\n\nif (it-\u003elength \u003c 3) {\n  return Error() ...\n}\n\nauto key \u003d ...\n\nSo you can reduce a level of indentation and remove the two `continue`s.",
+      "revId": "12f8c2770e398e762009e1e6139713e7c9692a2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
