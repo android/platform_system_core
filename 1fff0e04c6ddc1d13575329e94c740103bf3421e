@@ -34,6 +34,24 @@
       "revId": "1fff0e04c6ddc1d13575329e94c740103bf3421e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f306e73_194d2c85",
+        "filename": "libprocessgroup/task_profiles.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-01-27T19:07:57Z",
+      "side": 1,
+      "message": "Nit here, but we want a pointer not a reference due to https://google.github.io/styleguide/cppguide.html#Reference_Arguments\n\nIt\u0027s one part where that other style and this disagree.\n\nThe google style guide says the same thing as that above link, https://google.github.io/styleguide/cppguide.html#Ownership_and_Smart_Pointers - \"If other code needs access to the object, consider passing it a copy, or passing a pointer or reference without transferring ownership.\".  The other link gives a better explanation of why this is the right thing to do though which is why I used it.",
+      "parentUuid": "a8dc56a9_5be41fb2",
+      "revId": "1fff0e04c6ddc1d13575329e94c740103bf3421e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
