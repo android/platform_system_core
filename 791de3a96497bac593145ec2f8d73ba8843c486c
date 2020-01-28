@@ -52,6 +52,24 @@
       "revId": "791de3a96497bac593145ec2f8d73ba8843c486c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b67d3d0d_ee7cb510",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2020-01-28T05:50:05Z",
+      "side": 1,
+      "message": "I think it\u0027s perfectly possible for a C/C++ native NDK based app to be opening it via raw syscalls.\n\nSee:\n  cts/tests/tests/net/src/android/net/cts/VpnServiceTest.java\n    File file \u003d new File(\"/dev/tun\");\n\nBut we also have references to /dev/tun in \n  system/netd/tests/binder_test.cpp [unused?? - will remove]\n  system/netd/tests/tun_interface.cpp\n  system/netd/server/ClatdController.cpp\n  kernel/tests/net/test/multinetwork_base.py [has fallback]\n  frameworks/base/services/core/jni/com_android_server_TestNetworkService.cpp\n\nI kind of doubt the migration effort is worth it.\n\nThis approach (of just adding a directory and symlink) doesn\u0027t require updating any selinux stuff either - since using /dev/net/tun just uses /dev/tun and it\u0027s permissions model.\n\nAnd, no I don\u0027t know what the history behind the wrong location is.",
+      "parentUuid": "aa7a0332_dae655c8",
+      "revId": "791de3a96497bac593145ec2f8d73ba8843c486c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
