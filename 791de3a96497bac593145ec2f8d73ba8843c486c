@@ -34,6 +34,24 @@
       "revId": "791de3a96497bac593145ec2f8d73ba8843c486c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa7a0332_dae655c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-28T04:19:25Z",
+      "side": 1,
+      "message": "Do apps actually open /dev/tun themselves as part of regular Android API calls? If not, maybe we can just move the file without impacting apps?\n\nIf not, there\u0027s another option: switch all Android code to use /dev/net/tun with fallback to /dev/tun, keep /dev/tun around only for compatibility reasons, delete it on new devices, and then after a few years delete it from the code.\n\nIn any case, looks like we\u0027ll need sepolicy changes as well since there is explicit sepolicy for this file.\n\nDoes anyone know how we ended up using an invalid name, anyway? Is this the name that very old kernels used to use, and we never switched away from it?",
+      "parentUuid": "a0c5c032_a7629081",
+      "revId": "791de3a96497bac593145ec2f8d73ba8843c486c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
