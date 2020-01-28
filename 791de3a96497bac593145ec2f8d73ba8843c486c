@@ -16,6 +16,24 @@
       "revId": "791de3a96497bac593145ec2f8d73ba8843c486c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0c5c032_a7629081",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2020-01-28T03:59:34Z",
+      "side": 1,
+      "message": "Right, the Android location is /dev/tun - and since this file is AFAICT visible to vpn apps it can\u0027t be removed for backwards compatibility reasons.\n\nThe standard Linux location is /dev/net/tun.\n\nWe have a few choices:\n\n(a) do nothing - ip tuntap continues to not work\n\n(b) patch iproute2 to use /dev/tun - we diverge from upstream\n\n(c1) [this patch] symlink /dev/net/tun --\u003e ../tun\n\n(c2) c1 with absolute path for symlink target\n\n(d) make both /dev/tun \u0026 /dev/net/tun devices\nThis creates two device nodes, with potentially different uid/gid/mode/selinux policy...\n\n(e1) move /dev/tun to /dev/net/tun and then make /dev/tun a symlink to \u0027net/tun\u0027\n\n(e2) e1 with absolute path for symlink target\n\n---\n\nIMHO (a) is broken and diverting from upstream in (b) is undesirable, and in general absolute paths for symlink targets are bad which rules out (c2) and (e2).\n\nHaving two device nodes leads to potentially different permissions on them, which again is undesirable and error-prone.\n\nThat leaves us with just (c1) or (e1).\n\nI\u0027ve chosen (c1) because:\n- I know how to implement it (it\u0027s not at all clear how to make the uevent system create /dev/net \u0026 /dev/net/tun instead of /dev/tun)\n- it\u0027s less likely to break things (/dev/tun doesn\u0027t change) since it just adds an empty dir and extra symlink\n- it still achieves the goal of making both paths work.",
+      "parentUuid": "e37b1ba0_90d56180",
+      "revId": "791de3a96497bac593145ec2f8d73ba8843c486c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
