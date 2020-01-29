@@ -163,6 +163,24 @@
     },
     {
       "key": {
+        "uuid": "a49ad845_91df0a80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-01-29T16:01:14Z",
+      "side": 1,
+      "message": "That line is just used to apply those permissions when the node is made.  All devices are created as /dev/\u003cbasename of the uevent DEVPATH\u003e unless there is a `subsystem` section that applies to the device, in which case that logic takes over.\n\nIt\u0027s all historical but since older apps and vendor processes (due to Treble) can depend on these paths, it won\u0027t be easily changeable.  I try to capture how it names devices it in the README.md for ueventd.\n\nhttps://cs.android.com/android/platform/superproject/+/master:system/core/init/README.ueventd.md\n\nWe could change this to try to create both the \u0027typical linux\u0027 paths and the \u0027Android\u0027 paths generically, but this tends not to be a big problem.  We\u0027d likely be stuck with both forever if we tried, since it would be difficult to limit apps to only open the new \u0027typical linux\u0027 paths, and even if we could limit them, we\u0027d have to support them backwards compatibly for years.  All-in-all, it never seemed worth it.",
+      "parentUuid": "c20db927_693bbcab",
+      "revId": "791de3a96497bac593145ec2f8d73ba8843c486c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "688a2856_326729a2",
         "filename": "rootdir/init.rc",
         "patchSetId": 1
