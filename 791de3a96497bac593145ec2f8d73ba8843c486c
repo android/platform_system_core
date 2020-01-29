@@ -124,6 +124,24 @@
       "revId": "791de3a96497bac593145ec2f8d73ba8843c486c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1e90125_b04c4c68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2020-01-29T02:39:27Z",
+      "side": 1,
+      "message": "\u003e But all it includes is the uid/gid/mode of /dev/tun.\n\nIt doesn\u0027t also *create* the device node?\nIf not, then where are the device nodes configured?\n\n\u003e Adding a /dev/net/tun line doesn\u0027t work.\n\nBecause the directory is missing? I\u0027m not familiar with the syntax of ueventd.rc, but a few lines above I see:\n\nsubsystem sound\n    devname uevent_devpath\n    dirname /dev/snd\n\nPerhaps the same could be done for /dev/net?",
+      "parentUuid": "b2e0b3e9_e0ae6b24",
+      "revId": "791de3a96497bac593145ec2f8d73ba8843c486c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
