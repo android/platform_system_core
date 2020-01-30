@@ -22,6 +22,30 @@
       "revId": "6a3fc646f901166b352bcd1fd64869169c6b8a3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d55febde_58887874",
+        "filename": "adb/apex/ld.config.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-30T00:47:51Z",
+      "side": 1,
+      "message": "The symlink exists only when the APEX is built **with** the platform (i.e. bundled). That is to save storage space. If an APEX is built as unbundled (to be uploaded for Play), it doesn\u0027t have the symlink.\n\n\u0027namespace.default.permitted.paths +\u003d /system/${LIB}\u0027 is enough to allow the linker to load libcrypto.so via the symlink.\n\n\nFor libadbd_auth.so, you just need to add it to \u0027namespace.default.link.platform.shared_libs\u0027.",
+      "parentUuid": "5a983c34_12e4896c",
+      "range": {
+        "startLine": 13,
+        "startChar": 43,
+        "endLine": 14,
+        "endChar": 54
+      },
+      "revId": "6a3fc646f901166b352bcd1fd64869169c6b8a3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
