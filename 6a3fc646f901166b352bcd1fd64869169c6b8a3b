@@ -70,6 +70,30 @@
       "revId": "6a3fc646f901166b352bcd1fd64869169c6b8a3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77964081_399cd243",
+        "filename": "adb/apex/ld.config.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-01-31T00:18:18Z",
+      "side": 1,
+      "message": "\u003e The symlink exists only when the APEX is built **with** the platform (i.e. bundled). That is to save storage space. If an APEX is built as unbundled (to be uploaded for Play), it doesn\u0027t have the symlink.\n\nAh, okay, that makes sense.\n\n\u003e \u0027namespace.default.permitted.paths +\u003d /system/${LIB}\u0027 is enough to allow the linker to load libcrypto.so via the symlink.\n\nWon\u0027t that make it easier to accidentally load libraries from the system image, though? It seems like we should be explicit about where every library in the APEX is coming from.\n\n\u003e  Please ensure that adbd APEX manifest marks libadbd_auth.so as required library\n\nDo you mean to mark it as required in Android.bp? I don\u0027t see any mention of required libraries in the apex_manifest.json documentation, or in any existing apex_manifest.json files.",
+      "parentUuid": "0c359e32_ffecf24a",
+      "range": {
+        "startLine": 13,
+        "startChar": 43,
+        "endLine": 14,
+        "endChar": 54
+      },
+      "revId": "6a3fc646f901166b352bcd1fd64869169c6b8a3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
