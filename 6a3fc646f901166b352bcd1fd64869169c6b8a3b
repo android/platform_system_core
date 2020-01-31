@@ -118,6 +118,30 @@
       "revId": "6a3fc646f901166b352bcd1fd64869169c6b8a3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58f53fed_eedc1026",
+        "filename": "adb/apex/ld.config.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-01-31T06:16:20Z",
+      "side": 1,
+      "message": "I think current configuration cannot block such case neither. I still failed to understand the benefit of the new configuration.\n\n\u003e Do you mean to mark it as required in Android.bp? I don\u0027t see any mention of required libraries in the apex_manifest.json documentation, or in any existing apex_manifest.json files.\n\nI checked with Jooyung and as long as you have specified libadbd_auth as shared library and also it has stub then it should be fine. You can just verify it from apex_manifest.pb if it specifies libadbd_auth.so",
+      "parentUuid": "3a371817_5f32626f",
+      "range": {
+        "startLine": 13,
+        "startChar": 43,
+        "endLine": 14,
+        "endChar": 54
+      },
+      "revId": "6a3fc646f901166b352bcd1fd64869169c6b8a3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
