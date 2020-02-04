@@ -1,0 +1,411 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcf22e4e_ee2f9833",
+        "filename": "adb/ssl/adb_ca_list.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2020-02-04T00:21:08Z",
+      "side": 1,
+      "message": "The X509_NAME API is... kind of horrid. :-( We really need to make a replacement available.",
+      "revId": "3ecf8859e33ae6ebf400712275293bb278916467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12c0a69b_33ac0a6c",
+        "filename": "adb/ssl/adb_ca_list.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2020-02-04T00:21:08Z",
+      "side": 1,
+      "message": "Pretending the country is a version is a little odd. It might be possible to use your own OIDs with custom value types (which could avoid hex-encoding), but the OpenSSL X509_NAME API is horrid, so that might be annoying.\n\nWDYT about just using AdbKey-00 and such?",
+      "range": {
+        "startLine": 47,
+        "startChar": 51,
+        "endLine": 47,
+        "endChar": 53
+      },
+      "revId": "3ecf8859e33ae6ebf400712275293bb278916467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5b61a88_a0384831",
+        "filename": "adb/ssl/adb_ca_list.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2020-02-04T00:21:08Z",
+      "side": 1,
+      "message": "Any reason not to use X509_NAME_add_entry_by_NID here and below? That way you don\u0027t need both the SN_* and NID_* constants.",
+      "range": {
+        "startLine": 93,
+        "startChar": 14,
+        "endLine": 93,
+        "endChar": 40
+      },
+      "revId": "3ecf8859e33ae6ebf400712275293bb278916467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df114c96_9591d0b0",
+        "filename": "adb/ssl/adb_ca_list.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2020-02-04T00:21:08Z",
+      "side": 1,
+      "message": "This should use key.size() rather than relying on the implicit strlen() behavior. If your key is passed in as a std::string_view, there is no guarantee that it is NUL-terminated.",
+      "range": {
+        "startLine": 98,
+        "startChar": 83,
+        "endLine": 98,
+        "endChar": 85
+      },
+      "revId": "3ecf8859e33ae6ebf400712275293bb278916467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9991819_01f63737",
+        "filename": "adb/ssl/adb_ca_list.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2020-02-04T00:21:08Z",
+      "side": 1,
+      "message": "This and the below call will silently truncate things. Instead you can pass in a null buffer to get the size first. That will also let you avoid the GetAdbKeyMaxSize business.\n\nhttps://www.openssl.org/docs/man1.1.0/man3/X509_NAME_get_text_by_NID.html",
+      "revId": "3ecf8859e33ae6ebf400712275293bb278916467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "208acca2_a5fbe9a6",
+        "filename": "adb/ssl/adb_ca_list.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2020-02-04T00:21:08Z",
+      "side": 1,
+      "message": "Is this function local-sensitive? I usually write my hex-decodes by hand since \u003cctypes.h\u003e functions can be a bit finicky.",
+      "range": {
+        "startLine": 147,
+        "startChar": 13,
+        "endLine": 147,
+        "endChar": 21
+      },
+      "revId": "3ecf8859e33ae6ebf400712275293bb278916467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4536b30f_62d87f1e",
+        "filename": "adb/ssl/include/adb/ssl/adb_ca_list.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2020-02-04T00:21:08Z",
+      "side": 1,
+      "message": "What does it do on error?",
+      "range": {
+        "startLine": 38,
+        "startChar": 57,
+        "endLine": 38,
+        "endChar": 58
+      },
+      "revId": "3ecf8859e33ae6ebf400712275293bb278916467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c68c77e1_0b22d3a3",
+        "filename": "adb/ssl/include/adb/ssl/adb_ca_list.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2020-02-04T00:21:08Z",
+      "side": 1,
+      "message": "What does it do on error?",
+      "range": {
+        "startLine": 44,
+        "startChar": 49,
+        "endLine": 44,
+        "endChar": 50
+      },
+      "revId": "3ecf8859e33ae6ebf400712275293bb278916467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b62bc57_9fbb2512",
+        "filename": "adb/ssl/include/adb/ssl/tls_connection.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2020-02-04T00:21:08Z",
+      "side": 1,
+      "message": "Is this you disliking the peer\u0027s certificate, or the peer disliking your certificate?",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "3ecf8859e33ae6ebf400712275293bb278916467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6626f520_665c5ced",
+        "filename": "adb/ssl/include/adb/ssl/tls_connection.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2020-02-04T00:21:08Z",
+      "side": 1,
+      "message": "Any reason to have this when you have the more powerful SetCertVerifyCallback anyway?",
+      "range": {
+        "startLine": 56,
+        "startChar": 17,
+        "endLine": 56,
+        "endChar": 46
+      },
+      "revId": "3ecf8859e33ae6ebf400712275293bb278916467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a329ecbc_2aad1fc6",
+        "filename": "adb/ssl/include/adb/ssl/tls_connection.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2020-02-04T00:21:08Z",
+      "side": 1,
+      "message": "The server always sends a CertificateRequest message if it wants client certificates. This is only configuring the CA list in it.",
+      "range": {
+        "startLine": 72,
+        "startChar": 7,
+        "endLine": 72,
+        "endChar": 59
+      },
+      "revId": "3ecf8859e33ae6ebf400712275293bb278916467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b56b4e0_ef4ff0d9",
+        "filename": "adb/ssl/include/adb/ssl/tls_connection.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2020-02-04T00:21:08Z",
+      "side": 1,
+      "message": "It is a little odd that the callbacks aren\u0027t very C++-y while everything else tries to wrap things. Whatever works, but you can also pass in std::function\u003c...\u003e and then handle the void*s and C stuff within the class.",
+      "revId": "3ecf8859e33ae6ebf400712275293bb278916467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0830ae05_27f0f875",
+        "filename": "adb/ssl/tls_connection.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2020-02-04T00:21:08Z",
+      "side": 1,
+      "message": "Unused?",
+      "range": {
+        "startLine": 56,
+        "startChar": 48,
+        "endLine": 56,
+        "endChar": 59
+      },
+      "revId": "3ecf8859e33ae6ebf400712275293bb278916467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3bb1538_16bf60bb",
+        "filename": "adb/ssl/tls_connection.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2020-02-04T00:21:08Z",
+      "side": 1,
+      "message": "This is different from all the other ones. The above are alerts from the peer telling you it did not like *your* certificate. This is an error from yourself that you did not like the *peer\u0027s* certificate. They mean different things.",
+      "range": {
+        "startLine": 192,
+        "startChar": 13,
+        "endLine": 192,
+        "endChar": 44
+      },
+      "revId": "3ecf8859e33ae6ebf400712275293bb278916467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "796a9e31_3f02d186",
+        "filename": "adb/ssl/tls_connection.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2020-02-04T00:21:08Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to actually use err.",
+      "range": {
+        "startLine": 281,
+        "startChar": 10,
+        "endLine": 281,
+        "endChar": 15
+      },
+      "revId": "3ecf8859e33ae6ebf400712275293bb278916467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7655560c_3de8600f",
+        "filename": "adb/ssl/tls_connection.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2020-02-04T00:21:08Z",
+      "side": 1,
+      "message": "The other ReadFully method can be implemented in terms of this one.",
+      "revId": "3ecf8859e33ae6ebf400712275293bb278916467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6a3c6be_df742752",
+        "filename": "adb/ssl/tls_connection.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2020-02-04T00:21:08Z",
+      "side": 1,
+      "message": "std::min(static_cast\u003csize_t\u003e(INT_MAX), size)",
+      "range": {
+        "startLine": 365,
+        "startChar": 59,
+        "endLine": 365,
+        "endChar": 63
+      },
+      "revId": "3ecf8859e33ae6ebf400712275293bb278916467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1213210e_1e7957b9",
+        "filename": "adb/ssl/tls_connection.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2020-02-04T00:21:08Z",
+      "side": 1,
+      "message": "Can this not just be:\n\n  std::min(static_cast\u003csize_t\u003e(INT_MAX), data.size())",
+      "revId": "3ecf8859e33ae6ebf400712275293bb278916467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07bbaffd_3806e388",
+        "filename": "adb/ssl/tls_connection.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2020-02-04T00:21:08Z",
+      "side": 1,
+      "message": "Assuming you all have C++14,\n\n  return std::make_unique\u003cTlsConnectionImpl\u003e(role, cert, priv_key);",
+      "range": {
+        "startLine": 404,
+        "startChar": 11,
+        "endLine": 404,
+        "endChar": 63
+      },
+      "revId": "3ecf8859e33ae6ebf400712275293bb278916467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
