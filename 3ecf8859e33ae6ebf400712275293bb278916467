@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "f53a55df_50777d1a",
+        "filename": "adb/ssl/adb_ca_list.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-04T01:18:45Z",
+      "side": 1,
+      "message": "Ack. I think I\u0027ll just stick with using the commonName for the key, since I don\u0027t know how much work it will take to add a my own OID, nor do I see any huge benefit in doing so.\n\nFor the \"AdbKey-00\" comment, I\u0027m guessing you mean just concat the version into organizationName. I\u0027m fine with that.",
+      "parentUuid": "12c0a69b_33ac0a6c",
+      "range": {
+        "startLine": 47,
+        "startChar": 51,
+        "endLine": 47,
+        "endChar": 53
+      },
+      "revId": "3ecf8859e33ae6ebf400712275293bb278916467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5b61a88_a0384831",
         "filename": "adb/ssl/adb_ca_list.cpp",
         "patchSetId": 13
@@ -53,6 +77,30 @@
       "writtenOn": "2020-02-04T00:21:08Z",
       "side": 1,
       "message": "Any reason not to use X509_NAME_add_entry_by_NID here and below? That way you don\u0027t need both the SN_* and NID_* constants.",
+      "range": {
+        "startLine": 93,
+        "startChar": 14,
+        "endLine": 93,
+        "endChar": 40
+      },
+      "revId": "3ecf8859e33ae6ebf400712275293bb278916467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bf43baf_cb3fcf75",
+        "filename": "adb/ssl/adb_ca_list.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-04T01:18:45Z",
+      "side": 1,
+      "message": "Yeah, I initially had this as *_by_NID, but I didn\u0027t want to do a const_cast because, for some reason, the API has the value parameter as non-const. I\u0027ll change it back to X509_NAME_add_entry_by_NID.",
+      "parentUuid": "a5b61a88_a0384831",
       "range": {
         "startLine": 93,
         "startChar": 14,
