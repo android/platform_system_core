@@ -195,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "156697ff_a25efe48",
+        "filename": "fs_mgr/libfs_avb/fs_avb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2020-02-04T15:46:58Z",
+      "side": 1,
+      "message": "OK, I see. \nYou meant should we try allowed_key_blobs first then fallback to fstab_entry.avb_key paths.\n\nYup, my original intend is for caller to choose either allowed_key_blobs or fstab_entry.avb_keys (but not both). Otherwise, I would probably rename \"allowed_key_blobs\" to \"additional_allowed_key_blobs\".\n\n\u003e Something like: after the switch_root and after mounting vendor.img; we use a key listed in vendor.img for odm.img?\n\nI see, this looks a good idea (thanks for providing this).\nLet me think more about it.",
+      "parentUuid": "764fcb15_22195078",
+      "revId": "d561c090039f69d7633e28a7563be925e71ba589",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09b73976_e05265dc",
         "filename": "fs_mgr/libfs_avb/fs_avb.cpp",
         "patchSetId": 1
