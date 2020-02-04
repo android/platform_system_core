@@ -22,6 +22,30 @@
       "revId": "294c16024b581f6916bc199047f24369d3adbe56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec538cb0_9b085288",
+        "filename": "base/include/android-base/expected.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2020-02-04T12:54:49Z",
+      "side": 0,
+      "message": "This one is actually safe, because it must be used with this wrapper type called unexpected\u003cE2\u003e, which is a peer of expected and not used in other contexts.\n\nIt\u0027s also a natural syntax to check for a specific error:\n\n  #define ENOMSG 42\n\n  std::expected\u003cint, int\u003e e \u003d 42;\n  if (e \u003d\u003d unexpected(ENOMSG)) {...}  // false\n\n  std::expected\u003cint, int\u003e e \u003d unexpected(ENOMSG);\n  if (e \u003d\u003d unexpected(ENOMSG)) {...}  // true",
+      "parentUuid": "46f5c690_b62f6b63",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 34
+      },
+      "revId": "294c16024b581f6916bc199047f24369d3adbe56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
