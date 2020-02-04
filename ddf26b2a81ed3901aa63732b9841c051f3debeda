@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bde596ec_ef8ff9b7",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-02-04T17:09:15Z",
+      "side": 1,
+      "message": "Will reply in the other comment.",
+      "parentUuid": "e99e7521_9bf699f9",
+      "revId": "ddf26b2a81ed3901aa63732b9841c051f3debeda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7afeae4d_23d6b855",
         "filename": "fs_mgr/libsnapshot/snapshot.cpp",
         "patchSetId": 4
@@ -30,6 +48,30 @@
       "writtenOn": "2020-02-03T23:45:54Z",
       "side": 1,
       "message": "Consider the following case:\n\n1. Flash build A (metadata has UPDATED \u003d false)\n2. Update applied in slot B, pending reboot\n3. For some reason ProcessUpdateState is called while we are still at slot A\n4. |metadata| is metadata from slot A here, so UPDATED flag is not set.\n\nThen, all_snapshots_cancelled will still be true.",
+      "range": {
+        "startLine": 1194,
+        "startChar": 20,
+        "endLine": 1194,
+        "endChar": 39
+      },
+      "revId": "ddf26b2a81ed3901aa63732b9841c051f3debeda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "249d0c01_27da2805",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1194,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-02-04T17:09:15Z",
+      "side": 1,
+      "message": "Thanks for bringing this up. There is a similar edge case if you flash A, OTA in B, then flash A again. Thinking through this...\n\nIf the *target slot* does not have the UPDATED flag, then the update can be cancelled. This is true no matter what slot we\u0027re on. So the question is what to do about flashing the source slot. There are three ways to do this:\n\n (1) \"fastboot flash super\"\n (2) \"fastboot flashall\"\n (3) fastboot flash system, vendor, product, etc piecemeal\n\nIn (1), the target slot will be zapped by nature of flashing the entire super partition. In (2) and (3), fastboot actually propagates new metadata to *all* slots, which should zap the target slot.\n\nSo, this code should be okay if we change \"ReadCurrentMetadata\" to read the *target* slot instead.\n\nDoes that seem correct?",
+      "parentUuid": "7afeae4d_23d6b855",
       "range": {
         "startLine": 1194,
         "startChar": 20,
