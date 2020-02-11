@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8e3f577b_3dd02337",
+        "filename": "adb/apex/ld.config.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-11T23:09:21Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "a764d91d_3180570b",
+      "revId": "0ac051ac07b3b3b8c63f165561b66efce592fee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e59f5f9_3a9a15c8",
         "filename": "adb/apex/ld.config.txt",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2020-02-11T22:29:16Z",
       "side": 1,
       "message": "These two files are linked from both apex namespace and platform namespace. Where these libraries should come from?",
+      "range": {
+        "startLine": 19,
+        "startChar": 148,
+        "endLine": 19,
+        "endChar": 181
+      },
+      "revId": "0ac051ac07b3b3b8c63f165561b66efce592fee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10bedc3e_5a1cd570",
+        "filename": "adb/apex/ld.config.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-11T23:09:21Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s any ADB stability guarantees with these two, so I am trying to follow to same logic as libcrypto.so. So future versions of the adbd module may ship these two libraries, which would make it use the apex version instead of the platform\u0027s.",
+      "parentUuid": "9e59f5f9_3a9a15c8",
       "range": {
         "startLine": 19,
         "startChar": 148,
