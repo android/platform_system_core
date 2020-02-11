@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8563fcf4_80926b9c",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2020-02-11T16:38:45Z",
+      "side": 1,
+      "message": "Why not use std::filesystem?\n\n```\n    std::error_code ec;\n\n    // Removing existing keys in gsi::kDsuAvbKeyDir as they might be stale.\n    std::filesystem::remove_all(gsi::kDsuAvbKeyDir, ec);\n    if (ec) {\n        PLOG(ERROR) \u003c\u003c \"Failed to remove directory \" \u003c\u003c gsi::kDsuAvbKeyDir;\n    }\n\n    // Copy keys from the ramdisk /avb/* to gsi::kDsuAvbKeyDir.\n    static constexpr char kRamdiskAvbKeyDir[] \u003d \"/avb\";\n    std::filesystem::copy(kRamdiskAvbKeyDir, gsi::kDsuAvbKeyDir, ec);\n    if (ec) {\n        PLOG(ERROR) \u003c\u003c \"Failed to copy \" \u003c\u003c kRamdiskAvbKeyDir \u003c\u003c \" into \" \u003c\u003c gsi::kDsuAvbKeyDir;\n    }\n```\nIt\u0027s much simpler imo and libc++fs is already included",
+      "range": {
+        "startLine": 683,
+        "startChar": 0,
+        "endLine": 720,
+        "endChar": 5
+      },
+      "revId": "e70f11b21ae3fe3d0e15afa9b10d6eef689fbb85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
