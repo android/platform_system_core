@@ -94,6 +94,30 @@
       "revId": "8f9cc674896068be5571a67213575596c5bcf204",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7a72f27_20edc7fa",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-02-13T23:20:11Z",
+      "side": 1,
+      "message": "Something must be set up wrong if you\u0027re getting that.  I have a much smaller diff after applying your patch then running `git clang-format HEAD` \n\n/work/aosp/system/core/init\n $ git diff --stat\n fs_mgr/fs_mgr.cpp        | 12 ++++++------\n fs_mgr/fs_mgr_format.cpp |  4 ++--\n 2 files changed, 8 insertions(+), 8 deletions(-)\n\nI have the following in my .gitconfig:\n\n[clangformat]                                                                                                                                                  \n        style \u003d file          \n\nCan you try adding that and seeing if it helps?  Or otherwise running the command from the presubmit hook exactly?",
+      "parentUuid": "bf399d04_35e0e1c9",
+      "range": {
+        "startLine": 552,
+        "startChar": 0,
+        "endLine": 554,
+        "endChar": 0
+      },
+      "revId": "8f9cc674896068be5571a67213575596c5bcf204",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
