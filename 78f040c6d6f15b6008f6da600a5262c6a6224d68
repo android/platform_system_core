@@ -16,6 +16,24 @@
       "revId": "78f040c6d6f15b6008f6da600a5262c6a6224d68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31bf2d00_09117bf6",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1176763
+      },
+      "writtenOn": "2020-02-14T18:11:43Z",
+      "side": 1,
+      "message": "I guess no. Actually, tune2fs has more chance to be corrupted, since it\u0027ll overwrite some blocks with checksum. But, it seems /metadata is small enough which takes 70ms for both of runs. I think the risk hitting power cut during 70ms only from single transition should be pretty low.\n\n221024 [   10.284476] c7      1 tune2fs: tune2fs 1.45.4 (23-Sep-2019)\n221025 [   10.284476] c7      1\n221026 [   10.292600] c7      1 tune2fs: Setting time filesystem last checked to Mon Apr  1 00:00:00 8278\n221027 [   10.292600] c7      1\n221028 [   10.303940] c7      1 tune2fs:\n221029 [   10.303940] c7      1\n221030 [   10.309570] c7      1 tune2fs: Please run `resize2fs -b /dev/block/by-name/metadata\u0027 to enable 64-bit mode.\n221031 [   10.309570] c7      1\n221032 [   10.328038] c7      1 resize2fs: resize2fs 1.45.4 (23-Sep-2019)\n221033 [   10.328038] c7      1\n221034 [   10.336535] c7      1 resize2fs: Converting the filesystem to 64-bit.\n221035 [   10.336535] c7      1\n221036 [   10.345568] c7      1 resize2fs: The filesystem on /dev/block/by-name/metadata is now 4096 (4k) blocks long.\n221037 [   10.345568] c7      1\n221038 [   10.358070] c7      1 resize2fs:\n221039 [   10.358070] c7      1",
+      "parentUuid": "11aed700_b54528ea",
+      "revId": "78f040c6d6f15b6008f6da600a5262c6a6224d68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
