@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "03a53878_41e6eecd",
+        "filename": "libutils/include/utils/RefBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-02-19T17:49:10Z",
+      "side": 1,
+      "message": "I would weaken to \"should almost always\", since I don\u0027t think we have a good way to do this for Java ownership.",
+      "range": {
+        "startLine": 303,
+        "startChar": 27,
+        "endLine": 303,
+        "endChar": 31
+      },
+      "revId": "14256d0cdd12aba2a7e39fdc28ccf03daeb8251c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e9b860a_272e3622",
         "filename": "libutils/include/utils/StrongPointer.h",
         "patchSetId": 1
@@ -85,6 +108,30 @@
       "side": 1,
       "message": "\u003e Do you understand how much third-party vendor code relies on our current conventions here?\n\nYes. :) And turning this on globally would be super annoying. However, we could:\n- start using sp\u003cT\u003e::make in new code\n- turn it on in AOSP code first (w/ per-directory #define)\n- mark it as [[deprecated]] etc\n\nIf you prefer, I can file a bug to follow some of these things up. Even turning it on in all AOSP code would probably be a super big change. Honestly, we may need support to automatically refactor code first. However, I still consider this patch a step in the right direciton. WDYT?",
       "parentUuid": "45cb32a6_7830110a",
+      "range": {
+        "startLine": 183,
+        "startChar": 4,
+        "endLine": 183,
+        "endChar": 46
+      },
+      "revId": "14256d0cdd12aba2a7e39fdc28ccf03daeb8251c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0c4fbb6_957b1347",
+        "filename": "libutils/include/utils/StrongPointer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-02-19T17:49:10Z",
+      "side": 1,
+      "message": "Yes, definitely. Maybe add something like the following comment for now:\n\nTODO: Ideally we should find a way to increment the reference count before running the constructor, so that generating an sp\u003c\u003e to this in the constructor is no longer dangerous.",
+      "parentUuid": "e9cbfd45_e0e445fd",
       "range": {
         "startLine": 183,
         "startChar": 4,
