@@ -141,6 +141,29 @@
       "revId": "14256d0cdd12aba2a7e39fdc28ccf03daeb8251c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "535c3656_df9c4b48",
+        "filename": "libutils/include/utils/StrongPointer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-02-19T18:03:23Z",
+      "side": 1,
+      "message": "On second thought, can we just do (untested):\n\nsp\u003cT\u003e result();\nresult.m_ptr \u003d other;\nother-\u003eincStrong(result);\nreturn result;\n\nI think that should have the desired effect of avoiding the useless stack pointer check, and would thus immediately give make() users a performance benefit.",
+      "range": {
+        "startLine": 184,
+        "startChar": 4,
+        "endLine": 184,
+        "endChar": 20
+      },
+      "revId": "14256d0cdd12aba2a7e39fdc28ccf03daeb8251c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
