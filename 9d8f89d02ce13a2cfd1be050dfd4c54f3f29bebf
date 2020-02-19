@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca71ce4f_4fb0ce27",
+        "filename": "adb/client/commandline.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1968,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-02-19T02:53:11Z",
+      "side": 1,
+      "message": "This should probably be \u003c\u003d 2, since you\u0027re probably not going to be happy if other code happens to write to stdout or stderr.",
+      "range": {
+        "startLine": 1967,
+        "startChar": 31,
+        "endLine": 1968,
+        "endChar": 21
+      },
+      "revId": "9d8f89d02ce13a2cfd1be050dfd4c54f3f29bebf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e04b360_edc8e3e4",
+        "filename": "adb/client/fastdeploy.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-02-19T02:53:11Z",
+      "side": 1,
+      "message": "Instead of naming this as with a synonym, write it like this, instead?\n\n    int get_device_api_level() {\n        static int api_level \u003d []() {\n            int x \u003d ...;\n            return x;\n        }();\n        return api_level;\n    }",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 1
+      },
+      "revId": "9d8f89d02ce13a2cfd1be050dfd4c54f3f29bebf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c436036_29eea5c7",
+        "filename": "adb/client/incremental.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-02-19T02:53:11Z",
+      "side": 1,
+      "message": "style nit: these should be named WithLeadingCapitals like google3 style promotes, or in_lowercase_with_underscores like the rest of adb)",
+      "range": {
+        "startLine": 47,
+        "startChar": 22,
+        "endLine": 47,
+        "endChar": 31
+      },
+      "revId": "9d8f89d02ce13a2cfd1be050dfd4c54f3f29bebf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ae102af_f17680f7",
+        "filename": "adb/client/incremental_server.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-02-19T02:53:11Z",
+      "side": 1,
+      "message": "fclosing stdin/stdout is probably a bad idea: other code will generally try to use stdin/stdout, possibly via STDIN/OUT_FILENO. It\u0027s probably a better idea to dup /dev/null to their fd numbers instead (except on Windows, where I\u0027m not sure what the right thing to do is)",
+      "range": {
+        "startLine": 539,
+        "startChar": 27,
+        "endLine": 541,
+        "endChar": 19
+      },
+      "revId": "9d8f89d02ce13a2cfd1be050dfd4c54f3f29bebf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d079638_15afc97b",
+        "filename": "adb/sysdeps.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-02-19T02:53:11Z",
+      "side": 1,
+      "message": "nit: pid_t",
+      "range": {
+        "startLine": 651,
+        "startChar": 31,
+        "endLine": 651,
+        "endChar": 35
+      },
+      "revId": "9d8f89d02ce13a2cfd1be050dfd4c54f3f29bebf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c311587_b0cf5235",
+        "filename": "adb/sysdeps_unix.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-02-19T02:53:11Z",
+      "side": 1,
+      "message": "This needs to happen post-fork, since we might fork on a different thread after doing this, but before we set them back to cloexec post-fork.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "9d8f89d02ce13a2cfd1be050dfd4c54f3f29bebf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
