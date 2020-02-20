@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b001477a_faa7fe4d",
+        "filename": "init/README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1345812
+      },
+      "writtenOn": "2020-02-20T11:20:30Z",
+      "side": 1,
+      "message": "Done for the \"[window\u003d\u003cfatal crash window mins\u003e] [target\u003d\u003cfatal reboot target\u003e]\" part.\n\nFor \"reboot_on_failure\" part, if I understand it correctly (kindly correct me if I don\u0027t), it defines an even more critical service than the regular critical service. The reboot_on_failure defined service reboots the system without retry, once it fails:\n\n    if ((siginfo.si_code !\u003d CLD_EXITED || siginfo.si_status !\u003d 0) \u0026\u0026 on_failure_reboot_target_) {\n        LOG(ERROR) \u003c\u003c \"Service with \u0027reboot_on_failure\u0027 option failed, shutting down system.\";\n        trigger_shutdown(*on_failure_reboot_target_);\n    }\n\nI would still like to leave an opportunity for system_server to retry couple times when system is abnormal.",
+      "parentUuid": "6879db9f_2f78e213",
+      "revId": "12f8c2770e398e762009e1e6139713e7c9692a2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba0d95f6_cabfa30f",
         "filename": "init/service_parser.cpp",
         "patchSetId": 8
@@ -33,6 +51,24 @@
       "revId": "12f8c2770e398e762009e1e6139713e7c9692a2a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0031641f_a88d90d4",
+        "filename": "init/service_parser.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1345812
+      },
+      "writtenOn": "2020-02-20T11:20:30Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ba0d95f6_cabfa30f",
+      "revId": "12f8c2770e398e762009e1e6139713e7c9692a2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
