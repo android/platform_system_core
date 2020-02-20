@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "252fe991_9c409fb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1247389
+      },
+      "writtenOn": "2020-02-20T03:30:05Z",
+      "side": 1,
+      "message": "Firstly, summary the native crash dump flow.\nNative crash occur \u003d\u003e call debuggerd_signal_handler \u003d\u003e clone debuggerd_dispatch_pseudothread \u003d\u003e fork crash_dump \u003d\u003e crash_dump collect crash info and notify tombstone by socket \u003d\u003e tombstone write tombstone.\n\nFor example:\n1.A native process occur a crash and lowmemorykiller find this native process use more memory, lowmemorykiller will send SIGKILL to this native process, because SIGKILL can’t block, the native crash dump flow will be interrupted.\n2.  A native process is a multi-thread, one thread occur a crash and other thread call exit at the same time, the native crash dump flow will be interrupted.\n\nThere are many scenarios to send sigkill to a process, so MTK wants to get the core dump of this process directly as soon as possible by configuring /proc/sys/ kernel/core_pattern in the debuggable load . And MTK write \"|/system/bin/aee_core_forwarder /data/core/ %p %s TID\u003d%I UID\u003d%u GID\u003d%g\" to /proc/sys/kernel/core_pattern, if the native signal is set to SIG_DFL, kernel will run /system/bin/aee_core_forwarder to get the coredump directly.",
+      "parentUuid": "36419e71_fd750693",
+      "revId": "71017eb82e272a44a4539deb6f351d941a8b5553",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "22266870_56d4e69a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "side": 1,
       "message": "jmgao suggested that a system property might be a better idea than a heuristic based on reading text files (plus fewer system calls!).\n\ni think we both worry about environment variables, such as the inability to ensure that a variable is always set (when a process execs and passes a custom environment, for example).",
       "parentUuid": "22266870_56d4e69a",
+      "revId": "71017eb82e272a44a4539deb6f351d941a8b5553",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba30fc26_bbbb2189",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1247389
+      },
+      "writtenOn": "2020-02-20T03:30:05Z",
+      "side": 1,
+      "message": "1. \nOnly in debuggable load , Mtk write \"|/system/bin/aee_core_forwarder /data/core/ %p %s TID\u003d%I UID\u003d%u GID\u003d%g\" to /proc/sys/kernel/core_pattern in rc file, and also set the native signal to SIG_DFL in rc file. The two operations are synchronized.\n\n2. \nlibdebuggerd_handler_core.a is statically linked to libdebuggerd_handler_fallback.a and libdebuggerd_handler_fallback.a is statically linked to linker. The below is the details.\nproperty_get is compiled in libcutils.so, because linker is a static ELF binary and can’t link any other so, so can’t use property_get t in the debuggerd_signal_handler function.\n\nxref: /system/core/debuggerd/Android.bp\n67 // Core implementation, linked into libdebuggerd_handler and the dynamic linker.\n68 cc_library_static {\n69     name: \"libdebuggerd_handler_core\",\n70     defaults: [\"debuggerd_defaults\"],\n71     recovery_available: true,\n72     srcs: [\"handler/debuggerd_handler.cpp\"],\n73\n74     header_libs: [\n75         \"libbase_headers\",\n76         \"libdebuggerd_common_headers\",\n77         \"bionic_libc_platform_headers\",\n78     ],\n79\n80     whole_static_libs: [\n81         \"libasync_safe\",\n82         \"libcutils\",\n83         \"libdebuggerd\",\n84     ],\n85\n86     export_header_lib_headers: [\"libdebuggerd_common_headers\"],\n87     export_include_dirs: [\"include\"],\n88 }\n\n106 // Fallback implementation.\n107 cc_library_static {\n108     name: \"libdebuggerd_handler_fallback\",\n109     defaults: [\"debuggerd_defaults\"],\n110     recovery_available: true,\n111     srcs: [\n112         \"handler/debuggerd_fallback.cpp\",\n113     ],\n114\n115     whole_static_libs: [\n116         \"libdebuggerd_handler_core\",\n117         \"libtombstoned_client_static\",\n118         \"libasync_safe\",\n119         \"libbase\",\n120         \"libdebuggerd\",\n121         \"libunwindstack\",\n122         \"libdexfile_support_static\",  // libunwindstack dependency\n123         \"liblzma\",\n124         \"libcutils\",\n125     ],\n\n/bionic/linker/Android.bp\n311 cc_binary {\n312     name: \"linker\",\n\n334     target: {\n335         android: {\n336             srcs: [\n337                 \"linker_debuggerd_android.cpp\",\n338             ],\n339             static_libs: [\n340                 \"libc++demangle\",\n341                 \"libdebuggerd_handler_fallback\",\n342             ],",
+      "parentUuid": "aaeb7be5_b6a6d05f",
       "revId": "71017eb82e272a44a4539deb6f351d941a8b5553",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
