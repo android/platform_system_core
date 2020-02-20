@@ -196,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "f6a261fa_6a0d1e8b",
+        "filename": "adb/pairing_connection/include/adb/pairing/pairing_header.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-20T22:27:01Z",
+      "side": 1,
+      "message": "Ok, after contemplating for a while, this is what I want to do:\n1) put kMaxPeerInfoSize\u003d8192 into pairing_connection.h.\n\nYes, I know that I\u0027ll never be able to change it and that\u0027s okay. It seems like a bigger pain if the client and server has to communicate to figure out mutually agreed upon payload size. \n\nThis PeerInfo struct was initially meant to hold the peer\u0027s public key, and perhaps some small amount of metadata. Later on, we\u0027ll probably migrate to exchanging x.509 certificates. When we come to that point, I\u0027ll expose another set of APIs to grab the certificate, since this pairing connection is already wrapped in the tls connection, we can read it directly from the connection instead of sending it in PeerInfo (X.509 certificate size is unbounded anyways).\n\n\n2) Redefine PeerInfo as the following:\n\nstruct PeerInfo {\n  uint8_t type;\n  uint8_t data[kMaxPeerInfo - 1];\n} __attribute__((packed));\nstatic_assert(sizeof(PeerInfo) \u003d\u003d kMaxPeerInfoSize);\n\n\n3) Add enum for type field in PeerInfo\nenum PeerInfoType : uint8_t {\n  ADB_INFO_RSA_PUB_KEY \u003d 0,\n};",
+      "parentUuid": "5aa80928_e39a17e4",
+      "revId": "1347611b513386eb8f987668acf26be2c5d2c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "20ea8b8f_b2e7cbf0",
         "filename": "adb/pairing_connection/include/adb/pairing/pairing_header.h",
         "patchSetId": 11
