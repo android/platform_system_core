@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68374f59_c6cac617",
+        "filename": "adb/client/incremental_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2020-02-20T14:45:49Z",
+      "side": 1,
+      "message": "Should this code be:\n\n  sentBlocksCount \u003d numBytesToNumBlocks(size);\n  sentBlocks.resize(sentBlocksCount);\n\nor should we be initializing \u0027sentBlocksCount\u0027 to 0?\n\nIt seems like we should do one of these.  As it is, this constructor (as well as the public constructor on line 144) leave \u0027sentBlocksCount\u0027 uninitialized...",
+      "revId": "96ff54bf347378025d1e55bf0e6364835005d585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a26ae6c_b9ceae31",
+        "filename": "adb/client/incremental_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2020-02-20T14:45:49Z",
+      "side": 1,
+      "message": "...so this increment of sentBlocksCount looks like it\u0027s happening to an uninitialized value...",
+      "revId": "96ff54bf347378025d1e55bf0e6364835005d585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d50a6612_2958d29a",
+        "filename": "adb/client/incremental_server.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2020-02-20T14:45:49Z",
+      "side": 1,
+      "message": "...and this comparison seems to be using an uninitialized value.",
+      "revId": "96ff54bf347378025d1e55bf0e6364835005d585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
