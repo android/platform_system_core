@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fb7dcb94_8e002338",
+        "filename": "adb/pairing_connection/include/adb/pairing/pairing_connection.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-20T18:51:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "486081c3_575e837c",
+      "range": {
+        "startLine": 61,
+        "startChar": 10,
+        "endLine": 61,
+        "endChar": 55
+      },
+      "revId": "1347611b513386eb8f987668acf26be2c5d2c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b35a641_3f836e74",
         "filename": "adb/pairing_connection/include/adb/pairing/pairing_connection.h",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "1347611b513386eb8f987668acf26be2c5d2c923",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d7262eb_45c7808c",
+        "filename": "adb/pairing_connection/include/adb/pairing/pairing_connection.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-20T18:51:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2b35a641_3f836e74",
+      "range": {
+        "startLine": 64,
+        "startChar": 56,
+        "endLine": 64,
+        "endChar": 61
+      },
+      "revId": "1347611b513386eb8f987668acf26be2c5d2c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "401a77d4_fce26e52",
+        "filename": "adb/pairing_connection/include/adb/pairing/pairing_connection.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-20T18:51:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "33e6dce4_06504e47",
+      "range": {
+        "startLine": 86,
+        "startChar": 58,
+        "endLine": 86,
+        "endChar": 67
+      },
+      "revId": "1347611b513386eb8f987668acf26be2c5d2c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92c8a894_86fa8ba0",
         "filename": "adb/pairing_connection/include/adb/pairing/pairing_header.h",
         "patchSetId": 11
@@ -82,6 +154,47 @@
       "writtenOn": "2020-02-20T06:47:42Z",
       "side": 1,
       "message": "these can never change; is that OK?\n\nThat is, at runtime, the client\u0027s values will come from the header it compiled against, not whatever the library\u0027s values are. So there\u0027s no way to implement backward-compatible changes here.  \n\nFor example, any change to kMaxPeerInfoSize would mean the methods that take a PeerInfo may assume a bigger array than the client did (if the size increased in later releases), or conversely the client receiving the callback may assume the a bigger array than the library allocated (if the size decreased in later releases).",
+      "revId": "1347611b513386eb8f987668acf26be2c5d2c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f031b778_2f98f049",
+        "filename": "adb/pairing_connection/include/adb/pairing/pairing_header.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-20T18:51:27Z",
+      "side": 1,
+      "message": "Hmm, I think changing PeerInfo fields to just raw data seems like a better choice here. So everything here can be moved into the implementation file. The only issue I am still debating is how to communicate the max payload size with different versions, or whether to allow updating the payload size at all.",
+      "parentUuid": "92c8a894_86fa8ba0",
+      "revId": "1347611b513386eb8f987668acf26be2c5d2c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20ea8b8f_b2e7cbf0",
+        "filename": "adb/pairing_connection/include/adb/pairing/pairing_header.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-20T18:51:27Z",
+      "side": 1,
+      "message": "PairingPacketHeader stuff belongs in the cpp file.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
       "revId": "1347611b513386eb8f987668acf26be2c5d2c923",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
