@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "486081c3_575e837c",
+        "filename": "adb/pairing_connection/include/adb/pairing/pairing_connection.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2020-02-20T06:47:42Z",
+      "side": 1,
+      "message": "do you want to say something about which thread this will be called on, since that may affect client thread safety requirements?",
+      "range": {
+        "startLine": 61,
+        "startChar": 10,
+        "endLine": 61,
+        "endChar": 55
+      },
+      "revId": "1347611b513386eb8f987668acf26be2c5d2c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b35a641_3f836e74",
+        "filename": "adb/pairing_connection/include/adb/pairing/pairing_connection.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2020-02-20T06:47:42Z",
+      "side": 1,
+      "message": "I assume if false is returned, cb is never invoked? Probably good to be explicit about it.",
+      "range": {
+        "startLine": 64,
+        "startChar": 56,
+        "endLine": 64,
+        "endChar": 61
+      },
+      "revId": "1347611b513386eb8f987668acf26be2c5d2c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33e6dce4_06504e47",
+        "filename": "adb/pairing_connection/include/adb/pairing/pairing_connection.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2020-02-20T06:47:42Z",
+      "side": 1,
+      "message": "not valid C, I believe?",
+      "range": {
+        "startLine": 86,
+        "startChar": 58,
+        "endLine": 86,
+        "endChar": 67
+      },
+      "revId": "1347611b513386eb8f987668acf26be2c5d2c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92c8a894_86fa8ba0",
+        "filename": "adb/pairing_connection/include/adb/pairing/pairing_header.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2020-02-20T06:47:42Z",
+      "side": 1,
+      "message": "these can never change; is that OK?\n\nThat is, at runtime, the client\u0027s values will come from the header it compiled against, not whatever the library\u0027s values are. So there\u0027s no way to implement backward-compatible changes here.  \n\nFor example, any change to kMaxPeerInfoSize would mean the methods that take a PeerInfo may assume a bigger array than the client did (if the size increased in later releases), or conversely the client receiving the callback may assume the a bigger array than the library allocated (if the size decreased in later releases).",
+      "revId": "1347611b513386eb8f987668acf26be2c5d2c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
