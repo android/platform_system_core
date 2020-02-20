@@ -178,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "5aa80928_e39a17e4",
+        "filename": "adb/pairing_connection/include/adb/pairing/pairing_header.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2020-02-20T18:56:38Z",
+      "side": 1,
+      "message": "Usual choices - allocate the PeerInfo for the user and have a _destroy method, or have a getPeerInfoSize() method.  \n\nSince it\u0027s an opaque bag of bytes in this part of the API, I don\u0027t really have any idea what\u0027s in it or how you set the values in it (none of the methods I recall seeing filled it in or described it, though I may have just missed it), I can\u0027t give much guidance on what makes sense.  But if a user is expected to be able to copy them or fill them in, you need to give a size out somehow.",
+      "parentUuid": "f031b778_2f98f049",
+      "revId": "1347611b513386eb8f987668acf26be2c5d2c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "20ea8b8f_b2e7cbf0",
         "filename": "adb/pairing_connection/include/adb/pairing/pairing_header.h",
         "patchSetId": 11
@@ -189,6 +207,30 @@
       "writtenOn": "2020-02-20T18:51:27Z",
       "side": 1,
       "message": "PairingPacketHeader stuff belongs in the cpp file.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "1347611b513386eb8f987668acf26be2c5d2c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6a6f816_7372a720",
+        "filename": "adb/pairing_connection/include/adb/pairing/pairing_header.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2020-02-20T18:56:38Z",
+      "side": 1,
+      "message": "Thanks for catching - I meant to ask about that, but forgot to cross-check to see if it\u0027s used anywhere in the public methods.",
+      "parentUuid": "20ea8b8f_b2e7cbf0",
       "range": {
         "startLine": 28,
         "startChar": 0,
