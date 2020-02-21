@@ -379,6 +379,30 @@
       "revId": "14256d0cdd12aba2a7e39fdc28ccf03daeb8251c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eee5ca9b_ceb092fe",
+        "filename": "libutils/include/utils/StrongPointer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2020-02-21T19:10:00Z",
+      "side": 1,
+      "message": "This approach has the same outcome, hence why I +2\u0027d this. The difference is just in where the bypass is being done. With the approach I posted above the check is being bypassed in sp\u0027s constructor, keeping construction \"atomic\" and keeps the raw pointer \u0026 ref internal to the instance. This approach puts the job of constructing sp into this static method instead.\n\nIt\u0027s the same resulting assembly, it\u0027s just a difference in where you want the code itself to live. In the constructor or in this static helper method.",
+      "parentUuid": "50d2d001_62432508",
+      "range": {
+        "startLine": 184,
+        "startChar": 4,
+        "endLine": 184,
+        "endChar": 20
+      },
+      "revId": "14256d0cdd12aba2a7e39fdc28ccf03daeb8251c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
