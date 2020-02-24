@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc7d538f_cff64411",
+        "filename": "adb/client/transport_mdns.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2020-02-24T17:45:07Z",
+      "side": 1,
+      "message": "It seems unlikely that this is what we intended here.  Should this be:\n\n  services.erase(std::remove_if(services-\u003ebegin(), services-\u003eend(), [\u0026sName](ResolvedService* service) {\n        return (sName \u003d\u003d service-\u003eserviceName());\n    }));\n\ninstead?  See https://en.cppreference.com/w/cpp/algorithm/remove\n\nCalling remove_if() and ignoring the result is going to end up leaving move()d objects in \u0027services\u0027 which could be in bad states, and lead to worse behavior.",
+      "range": {
+        "startLine": 412,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 7
+      },
+      "revId": "d85f5c013089d569a6274ae5ab01cfaa613fc872",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
