@@ -70,6 +70,30 @@
       "revId": "b9c95f8e6a8875b866f61afd97836e2482da3fca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "863e6648_ee223e51",
+        "filename": "libunwindstack/LocalUnwinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-02-25T20:16:31Z",
+      "side": 0,
+      "message": "Unfortunately, the real problem is that the comment above this is not completely correct. And the variable name skip_libraries_ is not really correct either. This was meant to only skip frames like this:\n\n#00 ...   libunwindstack.so\n#01 ...   libc.so\n#02 ...   libutils.so\n#03 ...   libunwinstack.so\n\nIt would prune the first one, but not the second. It\u0027s so that when you do the unwind it skips the first few frames that are coming from calls in this library. It was not meant to be a general purpose skip of frames with those libraries in it.\n\nI\u0027ll fix this up so it\u0027s clear what this is supposed to do.",
+      "parentUuid": "ea3cf044_a6a1a78f",
+      "range": {
+        "startLine": 123,
+        "startChar": 24,
+        "endLine": 123,
+        "endChar": 26
+      },
+      "revId": "b9c95f8e6a8875b866f61afd97836e2482da3fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
