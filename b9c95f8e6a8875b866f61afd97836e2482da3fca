@@ -94,6 +94,30 @@
       "revId": "b9c95f8e6a8875b866f61afd97836e2482da3fca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32c5f235_dbacf45c",
+        "filename": "libunwindstack/LocalUnwinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1102879
+      },
+      "writtenOn": "2020-02-26T01:29:00Z",
+      "side": 0,
+      "message": "```\n#00 ...   libunwindstack.so\n#01 ...   libc.so\n#02 ...   libutils.so\n#03 ...   libunwinstack.so\n```\nI get you point now, but I just wonder how the above stack would happen at all since LocalUnwinder::Unwind() is the direct function that the caller invokes.\n\nBeside, I think it would be better to give the caller the ability to skip resolving symbols in certain libs, e.g. you can see there are several frames that\u0027s really art internal functions which are totaly not interested to me:\n```\n...\n    #4  pc 000000000007d58c  (offset 0x3e000) /apex/com.android.runtime/lib64/bionic/libc.so (if_nametoindex+60)\n    #5  pc 000000000002ff80  (offset 0x16000) /apex/com.android.runtime/lib64/libjavacore.so (Linux_if_nametoindex(_JNIEnv*, _jobject*, _jstring*)+64)\n    #6  pc 0000000000500108  (offset 0x12c000) /system/framework/arm64/boot-core-libart.oat (art_jni_trampoline+156)\n    #7  pc 00000000004fbc58  (offset 0x12c000) /system/framework/arm64/boot-core-libart.oat (libcore.io.ForwardingOs.if_nametoindex+76)\n    #8  pc 0000000000287e48  (offset 0x243000) /system/framework/arm64/boot.oat (java.net.NetworkInterface.getAll+1324)\n    #9  pc 00000000002897a0  (offset 0x243000) /system/framework/arm64/boot.oat (java.net.NetworkInterface.getByName+52)\n    #10  pc 00000000001365b8  (offset 0x12d000) /apex/com.android.runtime/lib64/libart.so (art_quick_invoke_static_stub+572)\n    #11  pc 000000000014500c  (offset 0x12d000) /apex/com.android.runtime/lib64/libart.so (art::ArtMethod::Invoke(art::Thread*, unsigned int*, unsigned int, art::JValue*, char const*)+280)\n    #12  pc 00000000002e27cc  (offset 0x12d000) /apex/com.android.runtime/lib64/libart.so (art::interpreter::ArtInterpreterToCompiledCodeBridge(art::Thread*, art::ArtMethod*, art::ShadowFrame*, unsigned short, art::JValue*)+388)\n    #13  pc 00000000002dda2c  (offset 0x12d000) /apex/com.android.runtime/lib64/libart.so (bool art::interpreter::DoCall\u003cfalse, false\u003e(art::ArtMethod*, art::Thread*, art::ShadowFrame\u0026, art::Instruction const*, unsigned short, art::JValue*)+896)\n    #14  pc 00000000005a27c0  (offset 0x12d000) /apex/com.android.runtime/lib64/libart.so (MterpInvokeStatic+376)\n    #15  pc 0000000000130994  (offset 0x12d000) /apex/com.android.runtime/lib64/libart.so (mterp_op_invoke_static+24)\n    #16  pc 00000000005a2a5c  (offset 0x12d000) /apex/com.android.runtime/lib64/libart.so (MterpInvokeStatic+1044)\n    #17  pc 0000000000130994  (offset 0x12d000) /apex/com.android.runtime/lib64/libart.so (mterp_op_invoke_static+24)\n    #18  pc 00000000002b3ae0  (offset 0x12d000) /apex/com.android.runtime/lib64/libart.so (_ZN3art11interpreterL7ExecuteEPNS_6ThreadERKNS_20CodeItemDataAccessorERNS_11ShadowFrameENS_6JValueEbb.llvm.15102659631621532397+244)\n    #19  pc 0000000000591254  (offset 0x12d000) /apex/com.android.runtime/lib64/libart.so (artQuickToInterpreterBridge+1036)\n    #20  pc 000000000013f468  (offset 0x12d000) /apex/com.android.runtime/lib64/libart.so (art_quick_to_interpreter_bridge+92)\n    #21  pc 00000000001365b8  (offset 0x12d000) /apex/com.android.runtime/lib64/libart.so (art_quick_invoke_static_stub+572)\n    #22  pc 000000000014500c  (offset 0x12d000) /apex/com.android.runtime/lib64/libart.so (art::ArtMethod::Invoke(art::Thread*, unsigned int*, unsigned int, art::JValue*, char const*)+280)\n    #23  pc 00000000002e27cc  (offset 0x12d000) /apex/com.android.runtime/lib64/libart.so (art::interpreter::ArtInterpreterToCompiledCodeBridge(art::Thread*, art::ArtMethod*, art::ShadowFrame*, unsigned short, art::JValue*)+388)\n    #24  pc 00000000002dda2c  (offset 0x12d000) /apex/com.android.runtime/lib64/libart.so (bool art::interpreter::DoCall\u003cfalse, false\u003e(art::ArtMethod*, art::Thread*, art::ShadowFrame\u0026, art::Instruction const*, unsigned short, art::JValue*)+896)\n```",
+      "parentUuid": "863e6648_ee223e51",
+      "range": {
+        "startLine": 123,
+        "startChar": 24,
+        "endLine": 123,
+        "endChar": 26
+      },
+      "revId": "b9c95f8e6a8875b866f61afd97836e2482da3fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
