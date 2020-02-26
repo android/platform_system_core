@@ -22,6 +22,30 @@
       "revId": "122f34a26500f249d27eee80540bfe1eab5c538e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e3f3b21_ac068625",
+        "filename": "adb/client/commandline.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1391,
+      "author": {
+        "id": 1079424
+      },
+      "writtenOn": "2020-02-26T00:40:42Z",
+      "side": 1,
+      "message": "The end of the reply is the output of \"adb track-app\". Initially there were no debuggable/profileable app running. I started a debuggable app and a profileable one, and then killed them one by one. As you can see, if those summary lines are removed, the processes earlier and later will be blended together, making it hard for a human to read on the screen.\n\nWho are the primary expected users of \"adb track-app\" command line tool? I thought a program will talk to adbd directly, parsing the binary format of the proto. If we want to optimize for programs, I can see these options:\n\n(1) simply remove the summary line\n(2) move the summary line to stderr. stderr may be mixed with stdout which may still confuse a huamn.\n(3) Make the text easier to parse, such as \"Number of running debuggable/profileable apps: %d\"\n\nPlease let me know your thoughts.\n\n$ adb track-app\n0 debuggable/profileable app process is running.\n1 debuggable/profileable app process is running.\nprocess {\n  pid: 24743\n  debuggable: true\n  profileable: true\n  architecture: \"arm64\"\n}\n2 debuggable/profileable app processes are running.\nprocess {\n  pid: 24743\n  debuggable: true\n  profileable: true\n  architecture: \"arm64\"\n}\nprocess {\n  pid: 24770\n  profileable: true\n  architecture: \"arm64\"\n}\n1 debuggable/profileable app process is running.\nprocess {\n  pid: 24743\n  debuggable: true\n  profileable: true\n  architecture: \"arm64\"\n}\n0 debuggable/profileable app process is running.",
+      "parentUuid": "4e5bdbb6_44cc6690",
+      "range": {
+        "startLine": 1389,
+        "startChar": 31,
+        "endLine": 1391,
+        "endChar": 96
+      },
+      "revId": "122f34a26500f249d27eee80540bfe1eab5c538e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
