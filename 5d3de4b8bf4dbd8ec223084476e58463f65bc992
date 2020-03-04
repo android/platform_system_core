@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b81d380_1339e09c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-03-04T23:56:34Z",
+      "side": 1,
+      "message": "What service do you think we should control to test this?  I tested with bootanim.  Perhaps we won\u0027t destabilize the device too much if we start that a few times after boot?\n\nThere\u0027s a corner case if we try to enable oneshot and the service is currently starting (as in SVC_RESTART or SVC_RESTARTING, waiting for the next set of process actions to restart it).  It\u0027ll currently continue to restart; I think that\u0027s WAI though, since we don\u0027t know why the process was restarting.  It will be oneshot (aka not restart) if it again exits.\n\nWe have locks around reaping a process and disabling oneshot, so there\u0027s no race within init if a oneshot process is exiting and someone attempts to turn oneshot off.  However, there is a fundamental race here, since if a service is just about to exit and another process wants to disable oneshot for it; that other process has no way of guarantee\u0027ing that the ctl.oneshot_off message will be handled init before the service is reaped.  There\u0027s not much that we can do there within init.  The process can always ctl.start the service again to ensure that it is running after disabling oneshot.\n\nI think those are the only two corner cases; if the process is either running or stopped, then oneshot will be handled correctly the next time it\u0027s needed.",
+      "parentUuid": "9e7810c1_28ba9883",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 27
+      },
+      "revId": "5d3de4b8bf4dbd8ec223084476e58463f65bc992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "016cbeab_9bc6fb60",
         "filename": "init/init.cpp",
         "patchSetId": 1
@@ -95,6 +119,30 @@
       "side": 1,
       "message": "oof - yes, we need this as well.\n\nActually, it seems that we should separate the implementation to talk about set/action\n\nsets: individual service name, service class, interface, (and some psuedo classes like \u0027critical\u0027)\naction: start, stop, restart, oneshot on, oneshot off\n\nIdeally, we avoid implementing the product of these.",
       "parentUuid": "2e06e9ee_228f5f3b",
+      "range": {
+        "startLine": 382,
+        "startChar": 31,
+        "endLine": 382,
+        "endChar": 55
+      },
+      "revId": "5d3de4b8bf4dbd8ec223084476e58463f65bc992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90f414d7_ffcb03a4",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-03-04T23:56:34Z",
+      "side": 1,
+      "message": "I really hope that we won\u0027t need more of these in general, though I can understand why we\u0027d want to plan for it.  \n\nMore concretely, what do you think we should do here?  Should we come up with a strategy now to generalize these property names now?  Something like:\n\n\u003cset\u003e_\u003caction\u003e\n\u003cset\u003e_\u003coption\u003e_\u003cvalue\u003e \n\n?\n\nAt least if we generalize it now, then we won\u0027t need to actually implement the product of those; it\u0027ll be handled for us.",
+      "parentUuid": "72956fb5_edfc4ead",
       "range": {
         "startLine": 382,
         "startChar": 31,
