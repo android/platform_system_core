@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9e7810c1_28ba9883",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-04T22:44:30Z",
+      "side": 1,
+      "message": "I really feel we need a test which exercises this, perhaps to guard against races.\n\nAre there any corner cases we need to consider?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 27
+      },
+      "revId": "5d3de4b8bf4dbd8ec223084476e58463f65bc992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "016cbeab_9bc6fb60",
         "filename": "init/init.cpp",
         "patchSetId": 1
@@ -19,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "ee9b062a_0570d302",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-04T22:44:30Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "016cbeab_9bc6fb60",
+      "revId": "5d3de4b8bf4dbd8ec223084476e58463f65bc992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e06e9ee_228f5f3b",
         "filename": "init/init.cpp",
         "patchSetId": 1
@@ -30,6 +71,30 @@
       "writtenOn": "2020-03-04T19:12:15Z",
       "side": 1,
       "message": "Do we actually need interface_oneshot_on ?  hwservicemanager works through interfaces, not services, right?  \n\nIs it possible that a service will host multiple interfaces and only a subset of those interfaces are started lazily?",
+      "range": {
+        "startLine": 382,
+        "startChar": 31,
+        "endLine": 382,
+        "endChar": 55
+      },
+      "revId": "5d3de4b8bf4dbd8ec223084476e58463f65bc992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72956fb5_edfc4ead",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-04T22:44:30Z",
+      "side": 1,
+      "message": "oof - yes, we need this as well.\n\nActually, it seems that we should separate the implementation to talk about set/action\n\nsets: individual service name, service class, interface, (and some psuedo classes like \u0027critical\u0027)\naction: start, stop, restart, oneshot on, oneshot off\n\nIdeally, we avoid implementing the product of these.",
+      "parentUuid": "2e06e9ee_228f5f3b",
       "range": {
         "startLine": 382,
         "startChar": 31,
