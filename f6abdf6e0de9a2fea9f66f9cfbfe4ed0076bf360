@@ -22,6 +22,30 @@
       "revId": "f6abdf6e0de9a2fea9f66f9cfbfe4ed0076bf360",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b000d53_5258ec38",
+        "filename": "fs_mgr/libfiemap/binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-03-05T17:21:42Z",
+      "side": 1,
+      "message": "On the other hand, using the analogy in HIDL, this does makes sense. The side effect is that it could block update_engine forever, causing updates to be unresponsive instead of directly failing. (update_engine is single-threaded, and adding a new thread here is also problematic.)\n\nTo solve this problem completely with update_engine, maybe the following:\n\n- Add a new Open() with this signature:\n\n```\ntuple\u003cint fd, function\u003cunique_ptr\u003cIImageManager\u003e()\u003e gen\u003e IImageManager::Open(string dir) {\n  int fd;\n  register fd as a callback that is triggered when the service is registered;\n  return fd, []() { return IImageManager::getService(); };\n}\n```\n\n- update_engine does this:\n\n```\nfd, gen \u003d Open();\nMessageLoop::Add(fd, []() {\n  auto image \u003d gen();\n  auto snapshot \u003d SnapshotManager::New(image);\n  // Initialize dynamic partition control android, etc.\n});\n```\n\nAlthough, this needs some refactoring of update_engine and requires non-trivial amount of work.",
+      "parentUuid": "22181fa6_b8129622",
+      "range": {
+        "startLine": 238,
+        "startChar": 67,
+        "endLine": 238,
+        "endChar": 77
+      },
+      "revId": "f6abdf6e0de9a2fea9f66f9cfbfe4ed0076bf360",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
