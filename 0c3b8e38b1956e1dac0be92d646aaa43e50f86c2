@@ -109,6 +109,29 @@
     },
     {
       "key": {
+        "uuid": "14281319_383b9670",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2020-03-10T09:15:35Z",
+      "side": 1,
+      "message": "Are callers really going to recover in this case ? Maybe we should just CHECK() instead.",
+      "range": {
+        "startLine": 178,
+        "startChar": 2,
+        "endLine": 182,
+        "endChar": 3
+      },
+      "revId": "0c3b8e38b1956e1dac0be92d646aaa43e50f86c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11653261_132591b7",
         "filename": "libziparchive/zip_archive.cc",
         "patchSetId": 5
@@ -138,6 +161,24 @@
       "side": 1,
       "message": "I will leave it as a regular pointer for now due to the array like access \"hash_table_[ent] ..\"\nIt\u0027s more like a std::vector, but our manual allocation may save some memory.",
       "parentUuid": "11653261_132591b7",
+      "revId": "0c3b8e38b1956e1dac0be92d646aaa43e50f86c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e13a622_78198e7b",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2020-03-10T09:15:35Z",
+      "side": 1,
+      "message": "unique_ptr does define operator[], no ? i think you may need to do unique_ptr\u003c..[]\u003e though.",
+      "parentUuid": "b5ce57ab_cf3f1d33",
       "revId": "0c3b8e38b1956e1dac0be92d646aaa43e50f86c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
