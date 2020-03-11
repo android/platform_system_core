@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "638e49db_61b6e6d3",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2020-03-11T02:00:22Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with the path /metadata/ota/rollback-indicator.\nI\u0027ll defer this to Yifan or David 😎",
+      "parentUuid": "21eb50de_0019b6f0",
+      "range": {
+        "startLine": 544,
+        "startChar": 0,
+        "endLine": 544,
+        "endChar": 93
+      },
+      "revId": "8a6c8eb01ed9d1c97fedfcb44a2832482eb0214e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "903c15ff_39304551",
         "filename": "init/selinux.cpp",
         "patchSetId": 1
@@ -69,6 +93,30 @@
       "revId": "8a6c8eb01ed9d1c97fedfcb44a2832482eb0214e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0404fc51_35811b65",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2020-03-11T02:00:22Z",
+      "side": 1,
+      "message": "For fix, did you mean aosp/1252868? (but it got -2 😂).\n\nCurrent L542 cannot cover kDsuAvbKeyDir (/metadata/gsi/dsu/avb/*)\n\nFirst boot after wipe (fastboot -w):\n - /metadata cannot be mounted at init\u0027s first stage.\n - Thus, /metadata is just a dir (mount point) on the read-only filesystem and restoreconn will fail\n   [   13.174007] c7      1 selinux: SELinux:  setxattr failed: /metadata:  Read-only file system\n - /metadata will be formatted then mounted at init\u0027s second stage.\n - restorecon_recursive /metadata runs successfully at second stage (specifically on post-fs)\n \nhttps://android.googlesource.com/platform/system/core/+/2263bcb4d009c079432102377e27b75ccdbb174a/rootdir/init.rc#499\n\nSecond boot:\n - /metadata can be mounted at init\u0027s first stage.\n - init preserve AVB keys from the ramdisk to /metadata/gsi/dsu/avb/*.\n - However, the restoreconn on /metadata is skipped (because previous restorecon_recursive succeeds in the last boot).\n    [   13.242209] c7      1 selinux: SELinux: Skipping restorecon on directory(/metadata)",
+      "parentUuid": "3cc9f3a9_6a379112",
+      "range": {
+        "startLine": 548,
+        "startChar": 36,
+        "endLine": 548,
+        "endChar": 49
+      },
+      "revId": "8a6c8eb01ed9d1c97fedfcb44a2832482eb0214e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
