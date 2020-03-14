@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df523a50_13bc7a88",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-14T01:08:38Z",
+      "side": 1,
+      "message": "can you just `return new CdEntryMapZip64;` and have the compiler write the rest?",
+      "revId": "d7043aa9a559d3f56b737c394a9039556215a671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "229e4563_5c792514",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-14T01:08:38Z",
+      "side": 1,
+      "message": "i think this is actually the `if (!success)` case for the insert below, isn\u0027t it? i think like most STL stuff, on allocation failure you\u0027ll just be std::terminated (via throwing an exception in code with exceptions turned off).",
+      "revId": "d7043aa9a559d3f56b737c394a9039556215a671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a149da4_1d1936fb",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-14T01:08:38Z",
+      "side": 1,
+      "message": "it feels like a bad sign that i\u0027ve already forgotten what these are. should we have a struct with named fields or add some typedefs?",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 28
+      },
+      "revId": "d7043aa9a559d3f56b737c394a9039556215a671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3b33fa1_8158532f",
+        "filename": "libziparchive/zip_archive_private.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-14T01:08:38Z",
+      "side": 1,
+      "message": "this seems like a weird API...\n\nshould we just change the tests to test CdEntryMapInterface (and its two implementations) directly, rather than _through_ ZipArchive? doing testing through ZipArchive was the only option when the central directory wasn\u0027t represented in its own right, but it\u0027s probably just a historical accident now you\u0027ve cleaned up the implementation and broken it into pieces?",
+      "range": {
+        "startLine": 254,
+        "startChar": 15,
+        "endLine": 254,
+        "endChar": 33
+      },
+      "revId": "d7043aa9a559d3f56b737c394a9039556215a671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
