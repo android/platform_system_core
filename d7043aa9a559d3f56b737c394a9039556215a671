@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "096a4364_bd116371",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-16T21:32:46Z",
+      "side": 1,
+      "message": "ah, i guess that\u0027s what std::make_unique is for...\n\n`return std::make_unique\u003cCdEntryMapZip64\u003e();`",
+      "parentUuid": "7267589b_3e887c75",
+      "revId": "d7043aa9a559d3f56b737c394a9039556215a671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "229e4563_5c792514",
         "filename": "libziparchive/zip_archive.cc",
         "patchSetId": 9
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Right. I simply added it in pair with the hashtable implementation. Maybe we can keep this specific case?",
       "parentUuid": "229e4563_5c792514",
+      "revId": "d7043aa9a559d3f56b737c394a9039556215a671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cdd1e0a_95aa583e",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-16T21:32:46Z",
+      "side": 1,
+      "message": "i don\u0027t understand. CdEntryMapZip32::AddToMap just does one lookup and either inserts or returns an error. why do we want two lookups here? i think this function should just be\n\n```\n{\n  const auto [it, added] \u003d\n      entry_table_.insert({name, name.data() - reinterpret_cast\u003cconst char*\u003e(start)});\n  if (!added) {\n    ALOGW(\"Zip: Found duplicate entry %.*s\", static_cast\u003cint\u003e(name.size()), name.data());\n    return kDuplicateEntry;\n  }\n  return 0;\n}\n```\n\nif you did return kAllocationFailed from the second lookup here, that would be incorrect --- it would actually mean that the map had been modified between the first and second lookups :-)\n\nan actual allocation failure will cause an abort.",
+      "parentUuid": "397de6ba_aa08e11b",
       "revId": "d7043aa9a559d3f56b737c394a9039556215a671",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -107,6 +143,30 @@
       "side": 1,
       "message": "I changed the int32_t in CdEntryMap to the ZipErrorCode. Though I haven\u0027t cleaned up the return value of existing functions.",
       "parentUuid": "4a149da4_1d1936fb",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 28
+      },
+      "revId": "d7043aa9a559d3f56b737c394a9039556215a671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "346772d7_27ba628b",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-16T21:32:46Z",
+      "side": 1,
+      "message": "yeah, it\u0027ll be hard to find them all. we can fix the rest as we spot them.",
+      "parentUuid": "c01d0602_bab69159",
       "range": {
         "startLine": 206,
         "startChar": 0,
