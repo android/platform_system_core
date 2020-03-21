@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "911c70ad_fa93f646",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-21T00:15:49Z",
+      "side": 1,
+      "message": "comment explaining what this is for? i thought the point of this set of changes was to remove this limit?",
+      "revId": "f548a77e9a8a41a00069b737bdabdf1d6ee96a06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82679d62_63565e4b",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-21T00:15:49Z",
+      "side": 1,
+      "message": "(if you wanted to use a macro like you used UINT16_MAX below, this is SIZE_MAX.)",
+      "range": {
+        "startLine": 270,
+        "startChar": 24,
+        "endLine": 270,
+        "endChar": 58
+      },
+      "revId": "f548a77e9a8a41a00069b737bdabdf1d6ee96a06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76ffc60d_e5bde5ba",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-21T00:15:49Z",
+      "side": 1,
+      "message": "(might be a bit clearer to have `\u003c\u003d UINT16_MAX` and then have zip64 be the \"else\" clause? just to keep the check that makes this cast safe and this cast next to each other.)",
+      "revId": "f548a77e9a8a41a00069b737bdabdf1d6ee96a06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25cc23ea_560c4fe2",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-21T00:15:49Z",
+      "side": 1,
+      "message": "is this safe from overflow? (was the existing file_name addition on the previous line safe? is the L340 `file_name + file_name_length \u003e cd_end` safe? seems like we missed these when we rewrote this stuff? or is there some other guarantee that ensures these are all okay?)",
+      "revId": "f548a77e9a8a41a00069b737bdabdf1d6ee96a06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89a60550_19599498",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-21T00:15:49Z",
+      "side": 1,
+      "message": "don\u0027t you need the `extra_field \u003e cd_end - extra_length` style to avoid overflow?",
+      "revId": "f548a77e9a8a41a00069b737bdabdf1d6ee96a06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3b45867_84009be1",
+        "filename": "libziparchive/zip_archive_common.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-21T00:15:49Z",
+      "side": 1,
+      "message": "the two packed structs can legitimately call themselves \"the layout\", but this one specifically _isn\u0027t_. or did you mean this to also be packed and the exact same size?",
+      "range": {
+        "startLine": 234,
+        "startChar": 7,
+        "endLine": 234,
+        "endChar": 13
+      },
+      "revId": "f548a77e9a8a41a00069b737bdabdf1d6ee96a06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b49f648a_9f614efd",
+        "filename": "libziparchive/zip_archive_private.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-21T00:15:49Z",
+      "side": 1,
+      "message": "you fundamentally can\u0027t map in more than your available address space though. if handling zip files \u003e 4GiB on 32-bit devices is a real problem, we\u0027re either going to have to switch to just mapping in a small window, or to not mapping at all and using pread() in that case.\n\n_do_ we need to support this? or can we just say \"32-bit is on life support, large files are only supported on LP64 [but you can have the _other_ zip64 features on LP32]\"?",
+      "revId": "f548a77e9a8a41a00069b737bdabdf1d6ee96a06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
