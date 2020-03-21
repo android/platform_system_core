@@ -116,6 +116,30 @@
     },
     {
       "key": {
+        "uuid": "8a7103be_91c3a77a",
+        "filename": "libziparchive/zip_archive_common.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2020-03-21T00:28:05Z",
+      "side": 1,
+      "message": "This one is tricky. It\u0027s indeed the layout of the Zip64ExtendedInfo. But not all fields are guaranteed to be present, only the one needed are included. So it shouldn\u0027t be packed, maybe I can make the comment more explicit.",
+      "parentUuid": "a3b45867_84009be1",
+      "range": {
+        "startLine": 234,
+        "startChar": 7,
+        "endLine": 234,
+        "endChar": 13
+      },
+      "revId": "f548a77e9a8a41a00069b737bdabdf1d6ee96a06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b49f648a_9f614efd",
         "filename": "libziparchive/zip_archive_private.h",
         "patchSetId": 12
@@ -127,6 +151,24 @@
       "writtenOn": "2020-03-21T00:15:49Z",
       "side": 1,
       "message": "you fundamentally can\u0027t map in more than your available address space though. if handling zip files \u003e 4GiB on 32-bit devices is a real problem, we\u0027re either going to have to switch to just mapping in a small window, or to not mapping at all and using pread() in that case.\n\n_do_ we need to support this? or can we just say \"32-bit is on life support, large files are only supported on LP64 [but you can have the _other_ zip64 features on LP32]\"?",
+      "revId": "f548a77e9a8a41a00069b737bdabdf1d6ee96a06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0acd7813_86a4f071",
+        "filename": "libziparchive/zip_archive_private.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2020-03-21T00:28:05Z",
+      "side": 1,
+      "message": "Correct, I guess we won\u0027t need the support zip64 on 32 bit devices. We also mmap the central directory similarly.",
+      "parentUuid": "b49f648a_9f614efd",
       "revId": "f548a77e9a8a41a00069b737bdabdf1d6ee96a06",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
