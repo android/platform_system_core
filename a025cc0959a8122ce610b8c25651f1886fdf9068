@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7a537ba5_ed5475d6",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1061057
+      },
+      "writtenOn": "2020-03-23T07:16:01Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be in the for loop, I think.",
+      "range": {
+        "startLine": 619,
+        "startChar": 8,
+        "endLine": 627,
+        "endChar": 9
+      },
+      "revId": "a025cc0959a8122ce610b8c25651f1886fdf9068",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65ab1ebb_38a709f3",
         "filename": "init/selinux.cpp",
         "patchSetId": 3
@@ -13,6 +36,30 @@
       "writtenOn": "2020-03-23T05:37:17Z",
       "side": 1,
       "message": "How about adding some comments above?\n\ne.g.,\n// This is for R system.img/system_ext.img to work on old vendor.img as system_ext.img\n// is introduced in R. We mount system_ext in second stage init because the first-stage\n// init in boot.img won\u0027t be updated in the system-only OTA scenario. \n\nAlso, can we honor \"/system/system_ext/etc/init/config/skip_mount.cfg\" and skip the force_mount of system_ext if it\u0027s present in that file?  GSI images include a \"skip_mount.cfg\" to tell init skip mounting /product and /system_ext. Otherwise, an OEM device might fail to boot a GSI image because OEM\u0027s /system_ext content is not compatible with GSI\u0027s /system.\n\nhttps://cs.android.com/android/_/android/platform/system/core/+/fffdd1ab1a3248c48ea66bfeed7945c94efd1b87:fs_mgr/fs_mgr_fstab.cpp;l\u003d732;drc\u003d30b0c01dd815255e3f0074df6f7fc783c8c3947c\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/make/target/product/gsi/gsi_skip_mount.cfg?q\u003dskip_mount.cfg",
+      "range": {
+        "startLine": 660,
+        "startChar": 4,
+        "endLine": 660,
+        "endChar": 35
+      },
+      "revId": "a025cc0959a8122ce610b8c25651f1886fdf9068",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf4251de_3d1401d8",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1061057
+      },
+      "writtenOn": "2020-03-23T07:16:01Z",
+      "side": 1,
+      "message": "Can we move this out of selinux.cpp? Maybe before SetupSelinux()?",
+      "parentUuid": "65ab1ebb_38a709f3",
       "range": {
         "startLine": 660,
         "startChar": 4,
