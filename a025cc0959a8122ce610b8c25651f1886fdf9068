@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "8df0b51c_6aa85f23",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-03-23T15:35:55Z",
+      "side": 1,
+      "message": "One unfortunate fact is that we don\u0027t have access to the fstab in the first stage ramdisk/recovery ramdisk at this point.  We\u0027re relying on vendors to use the same fstab in that partition and their vendor partition, otherwise we may try to mount partitions that have already been taken care of.\n\nI don\u0027t see fs_mgr_do_mount_one() failing gracefully in that case.  Could we try to identify this / protect against it?  Or can we otherwise check that the vendor and ramdisk fstabs are equivalent?  We could check that in first stage init maybe?",
+      "revId": "a025cc0959a8122ce610b8c25651f1886fdf9068",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45139a39_175fe6a7",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-03-23T15:35:55Z",
+      "side": 1,
+      "message": "I wonder if we could put this list of partitions into a file on /system, similar to skip_mount.cfg.  I could imagine that, similar to the reason behind skip_mount.cfg in the first place, that there\u0027ll be cases where we don\u0027t want to mount this and having to change init for that is not desirable.",
+      "revId": "a025cc0959a8122ce610b8c25651f1886fdf9068",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a537ba5_ed5475d6",
         "filename": "init/selinux.cpp",
         "patchSetId": 3
@@ -13,6 +47,30 @@
       "writtenOn": "2020-03-23T07:16:01Z",
       "side": 1,
       "message": "This doesn\u0027t need to be in the for loop, I think.",
+      "range": {
+        "startLine": 619,
+        "startChar": 8,
+        "endLine": 627,
+        "endChar": 9
+      },
+      "revId": "a025cc0959a8122ce610b8c25651f1886fdf9068",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e0e74af_82e3e258",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-03-23T15:35:55Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "7a537ba5_ed5475d6",
       "range": {
         "startLine": 619,
         "startChar": 8,
@@ -60,6 +118,30 @@
       "side": 1,
       "message": "Can we move this out of selinux.cpp? Maybe before SetupSelinux()?",
       "parentUuid": "65ab1ebb_38a709f3",
+      "range": {
+        "startLine": 660,
+        "startChar": 4,
+        "endLine": 660,
+        "endChar": 35
+      },
+      "revId": "a025cc0959a8122ce610b8c25651f1886fdf9068",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e32156b_50750d6b",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-03-23T15:35:55Z",
+      "side": 1,
+      "message": "+1 to comments and to trying to honor skip_mount.\n\nI\u0027m happy to leave this code in selinux.cpp.  I think maybe we should rename this file to be clearer that it will contain the entirety of the \u0027selinux setup phase\u0027 of init, which is really the 1.5th stage of init.\n\nIt should go later in this file though, after `boot_clock::time_point start_time \u003d boot_clock::now();` so that we both get the protection of the reboot signal handlers and can track the boot time impact of this.",
+      "parentUuid": "bf4251de_3d1401d8",
       "range": {
         "startLine": 660,
         "startChar": 4,
