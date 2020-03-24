@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a085232d_cce952d3",
+        "filename": "debuggerd/libdebuggerd/tombstone.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1581772
+      },
+      "writtenOn": "2020-03-24T15:43:52Z",
+      "side": 1,
+      "message": "It seems that passing a tagged address to unwindstack::Memory::Read() may be problematic. IIUC, the concrete implementation could be MemoryRemote::Read(), which in turn uses either process_vm_readv() or ptrace(PTRACE_PEEKTEXT). Either way, these are not covered by the tagged address ABI, because the address belongs to a different address space from the calling thread. In fact if my reading is correct, both syscalls will actual fail if passed a tagged pointer.",
+      "range": {
+        "startLine": 163,
+        "startChar": 27,
+        "endLine": 163,
+        "endChar": 31
+      },
+      "revId": "b0d375c17ed3c9dd5e286191b1ec4a1f6a445684",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
