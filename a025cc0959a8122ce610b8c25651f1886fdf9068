@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fee96023_36ce6edc",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-03-24T01:49:17Z",
+      "side": 1,
+      "message": "If we do the check in first-stage, what would that error look like? (Would it be fatal?)\n\nAlternately, could we fallback to checking in /proc/mounts?",
+      "parentUuid": "8df0b51c_6aa85f23",
+      "revId": "a025cc0959a8122ce610b8c25651f1886fdf9068",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45139a39_175fe6a7",
         "filename": "init/selinux.cpp",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2020-03-23T15:35:55Z",
       "side": 1,
       "message": "I wonder if we could put this list of partitions into a file on /system, similar to skip_mount.cfg.  I could imagine that, similar to the reason behind skip_mount.cfg in the first place, that there\u0027ll be cases where we don\u0027t want to mount this and having to change init for that is not desirable.",
+      "revId": "a025cc0959a8122ce610b8c25651f1886fdf9068",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebbc7e11_280a72ce",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-03-24T01:49:17Z",
+      "side": 1,
+      "message": "Would we want to package this in all cases, or only package it with GSIs like skip_mount.cfg?",
+      "parentUuid": "45139a39_175fe6a7",
       "revId": "a025cc0959a8122ce610b8c25651f1886fdf9068",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -71,6 +107,30 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "7a537ba5_ed5475d6",
+      "range": {
+        "startLine": 619,
+        "startChar": 8,
+        "endLine": 627,
+        "endChar": 9
+      },
+      "revId": "a025cc0959a8122ce610b8c25651f1886fdf9068",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37127e9a_cf75522c",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-03-24T01:49:17Z",
+      "side": 1,
+      "message": "I have it in the loop because this code will only hit on mixed-build tests. Having the logging here makes it more accurate and less spammy. However if we move the partition list to a GSI-only .cfg file, moving it out should be fine.",
+      "parentUuid": "5e0e74af_82e3e258",
       "range": {
         "startLine": 619,
         "startChar": 8,
@@ -151,6 +211,30 @@
       "revId": "a025cc0959a8122ce610b8c25651f1886fdf9068",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64cf2bde_4c7f2928",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-03-24T01:49:17Z",
+      "side": 1,
+      "message": "Ack, will move the call after boot_clock. FWIW it\u0027s difficult to move out of selinux.cpp without adding another .cpp/.h file to house it. And if it\u0027s before SetupSelinux you lose logging.\n\nBowgo, thanks, I\u0027ll add your suggested comment, as well as a call to SkipMountingPartitions.",
+      "parentUuid": "1e32156b_50750d6b",
+      "range": {
+        "startLine": 660,
+        "startChar": 4,
+        "endLine": 660,
+        "endChar": 35
+      },
+      "revId": "a025cc0959a8122ce610b8c25651f1886fdf9068",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
