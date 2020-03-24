@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "71d7c4f1_a78e17aa",
+        "filename": "libziparchive/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2020-03-24T18:42:19Z",
+      "side": 1,
+      "message": "I hesitated here, these tests need a few minutes to run each and also need 10s GiB of free disk space. So it might put a large burden on the test infra.",
+      "parentUuid": "580bb03b_448c44b8",
+      "range": {
+        "startLine": 217,
+        "startChar": 11,
+        "endLine": 217,
+        "endChar": 21
+      },
+      "revId": "7d1283456474f8f808b1579e198fcaee207ec843",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59f53838_5fc8feab",
         "filename": "libziparchive/test_zip64.py",
         "patchSetId": 7
@@ -224,6 +248,24 @@
       "writtenOn": "2020-03-24T16:17:52Z",
       "side": 1,
       "message": "hmmm... maybe we should have fixed ZipWriter first :-)\n\n(note that you can use the cli-test stuff if you\u0027d rather just check in some zip64 files... but this seems like it will be useful for ZipWriter anyway?)",
+      "revId": "7d1283456474f8f808b1579e198fcaee207ec843",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9db3dfb8_f68bad7a",
+        "filename": "libziparchive/zip_archive_test.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2020-03-24T18:42:19Z",
+      "side": 1,
+      "message": "Yeah I thought about that, the main take is it would be weird to add arbitrary zip64 fields for small files. Most zip writers only do that if the fields doesn\u0027t fit. And we don\u0027t seem to need a zip64 writer in platform code anyway..  Probably I should extend the ZipWriter here and write zip64 stuffs?",
+      "parentUuid": "6bf7944e_abfe82cc",
       "revId": "7d1283456474f8f808b1579e198fcaee207ec843",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
