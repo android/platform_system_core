@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c9f34801_e1f8f399",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1061057
+      },
+      "writtenOn": "2020-03-24T08:27:19Z",
+      "side": 1,
+      "message": "Does it make sense to create the fstab entries based on the the partition info in the super image header? This can be done in the first stage, together with the skip_mount logic, I think.",
+      "parentUuid": "fee96023_36ce6edc",
+      "revId": "a025cc0959a8122ce610b8c25651f1886fdf9068",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45139a39_175fe6a7",
         "filename": "init/selinux.cpp",
         "patchSetId": 3
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Would we want to package this in all cases, or only package it with GSIs like skip_mount.cfg?",
       "parentUuid": "45139a39_175fe6a7",
+      "revId": "a025cc0959a8122ce610b8c25651f1886fdf9068",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80035658_2813de2f",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1061057
+      },
+      "writtenOn": "2020-03-24T08:27:19Z",
+      "side": 1,
+      "message": "GSI doesn\u0027t need this as it already has skip_mount.cfg. This cfg file will be needed by any other target (like CF) that builds multiple system images (namely system, system_ext and product) and needs to run on old vendor implementations.\n\nBTW, we should also include \"product\" for the general problem this CL is trying to solve. Although product is not new, it has not been mandatory.",
+      "parentUuid": "ebbc7e11_280a72ce",
       "revId": "a025cc0959a8122ce610b8c25651f1886fdf9068",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
