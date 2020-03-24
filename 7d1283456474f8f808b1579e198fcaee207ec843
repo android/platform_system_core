@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6527a2aa_9c365216",
+        "filename": "libziparchive/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-24T19:55:00Z",
+      "side": 1,
+      "message": "makes sense. probably worth commenting. (and maybe rename this to something like ziparchive_tests_large or ziparchive_tests_slow?)\n\nshould probably be in _post_ submit though? (otherwise i fear we\u0027ll just never run them until it\u0027s too late.)",
+      "parentUuid": "71d7c4f1_a78e17aa",
+      "range": {
+        "startLine": 217,
+        "startChar": 11,
+        "endLine": 217,
+        "endChar": 21
+      },
+      "revId": "7d1283456474f8f808b1579e198fcaee207ec843",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59f53838_5fc8feab",
         "filename": "libziparchive/test_zip64.py",
         "patchSetId": 7
@@ -266,6 +290,24 @@
       "side": 1,
       "message": "Yeah I thought about that, the main take is it would be weird to add arbitrary zip64 fields for small files. Most zip writers only do that if the fields doesn\u0027t fit. And we don\u0027t seem to need a zip64 writer in platform code anyway..  Probably I should extend the ZipWriter here and write zip64 stuffs?",
       "parentUuid": "6bf7944e_abfe82cc",
+      "revId": "7d1283456474f8f808b1579e198fcaee207ec843",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2db28933_635c6cf9",
+        "filename": "libziparchive/zip_archive_test.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-24T19:55:00Z",
+      "side": 1,
+      "message": "you could have a flag on it to choose between \"zip64 only when needed\" and \"always zip64\"?",
+      "parentUuid": "9db3dfb8_f68bad7a",
       "revId": "7d1283456474f8f808b1579e198fcaee207ec843",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
