@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "0a6becfb_8d41a285",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-03-24T15:40:14Z",
+      "side": 1,
+      "message": "\u003e If we do the check in first-stage, what would that error look like? (Would it be fatal?)\n\nI think it would need to be fatal, so you\u0027re right; this is probably not a good idea.\n\n\u003e Alternately, could we fallback to checking in /proc/mounts?\n\nThat seems sensible to me.  No one should be mounting /system_ext in second stage init, so if we don\u0027t see it in /proc/mounts by this point, then that is a good trigger for us to mount it ourselves.\n\n\u003e This can be done in the first stage...\n\nThe big deal breaker in that approach is that first stage init is vendor owned, whereas we want this logic in a google owned/updated component.",
+      "parentUuid": "c9f34801_e1f8f399",
+      "revId": "a025cc0959a8122ce610b8c25651f1886fdf9068",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45139a39_175fe6a7",
         "filename": "init/selinux.cpp",
         "patchSetId": 3
@@ -120,6 +138,24 @@
       "side": 1,
       "message": "For skip_mount.cfg, we added it as a Android.mk module.\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/make/target/product/gsi/Android.mk;l\u003d180\n\nAnd only GSI includes it.\nhttps://cs.android.com/android/platform/superproject/+/master:build/make/target/product/gsi_release.mk;l\u003d48\n\nMaybe we can have \u0027force_mount.cfg\u0027 as well?  And any OEMs who need \u0027system-only\u0027 OTA can include this file in device/\u003ccompany\u003e/device.mk?\n\nhttps://cs.android.com/search?q\u003dPRODUCT_PACKAGES%20f:device%2F*\u0026sq\u003d\n\nJust to be clear, GSI needs skip_mount.cfg but cannot have force_mount.cfg.\n\nps: GSI \u003d CSI + GSI-specific /system_ext, where GSI is used for VTS/CTS-on-GSI compliance.\nOTOH, CSI is common system image and can be used by other devices. e.g., Pixel devices have CSI + Pixel-specific system_ext.img.\n\nhttps://docs.google.com/document/d/1bsuBe3nM1rcWVQXu7qXgYtyeBSOLCq8KfLocyI81b24/edit#heading\u003dh.xhea9g49b8qs",
       "parentUuid": "ebbc7e11_280a72ce",
+      "revId": "a025cc0959a8122ce610b8c25651f1886fdf9068",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a740ba17_ce31fbe5",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-03-24T15:40:14Z",
+      "side": 1,
+      "message": "force_mount.cfg sounds good to me.  I\u0027l defer to you if it\u0027s actually required; it was just a thought on my side.",
+      "parentUuid": "b40b0f1f_7c405f3a",
       "revId": "a025cc0959a8122ce610b8c25651f1886fdf9068",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
