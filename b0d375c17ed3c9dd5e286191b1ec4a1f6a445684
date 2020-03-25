@@ -46,6 +46,30 @@
       "revId": "b0d375c17ed3c9dd5e286191b1ec4a1f6a445684",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd9ec491_05fa6843",
+        "filename": "debuggerd/libdebuggerd/tombstone.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1581772
+      },
+      "writtenOn": "2020-03-25T17:07:37Z",
+      "side": 1,
+      "message": "Oh yes indeed, I missed that this reads the instruction from the PC value, which is architecturally always untagged, so in any case this code is fine.\n\nI\u0027ve looked at process_vm_readv() more carefully, in fact by chance it looks like it does cope with tagged pointers (it eventually calls get_user_pages_remote(), which is fine). However ptrace(PTRACE_PEEKTEXT) definitely doesn\u0027t cope with tagged pointers, and since it is used as a fallback, it would make sense to mask the address in MemoryRemote.",
+      "parentUuid": "cce923dc_8a3861f0",
+      "range": {
+        "startLine": 163,
+        "startChar": 27,
+        "endLine": 163,
+        "endChar": 31
+      },
+      "revId": "b0d375c17ed3c9dd5e286191b1ec4a1f6a445684",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
