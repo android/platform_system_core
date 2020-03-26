@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b465d65d_b1ba54ae",
+        "filename": "libunwindstack/Unwinder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-03-26T22:31:53Z",
+      "side": 1,
+      "message": "I don\u0027t want to hard-code special libraries into this code",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 66
+      },
+      "revId": "0b6539da758cde7c435d3dd6c547a7a15bf8d3f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c806ce5_d3996c44",
+        "filename": "libunwindstack/include/unwindstack/Unwinder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-03-26T22:31:53Z",
+      "side": 1,
+      "message": "I think it would be better if you created a derived class that worked the way you wanted rather than changing this class so radically.",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 10
+      },
+      "revId": "0b6539da758cde7c435d3dd6c547a7a15bf8d3f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b1f7e46_5ee43d22",
+        "filename": "libunwindstack/include/unwindstack/Unwinder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-03-26T22:31:53Z",
+      "side": 1,
+      "message": "I think this would be better to do the Reset call here directly, rather than the way SetRegs has changed and makes the call.",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "0b6539da758cde7c435d3dd6c547a7a15bf8d3f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dab96a69_a16028aa",
+        "filename": "libunwindstack/include/unwindstack/Unwinder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-03-26T22:31:53Z",
+      "side": 1,
+      "message": "I think the way this function works is a little odd now. It will create the jit debug and dex files if regs is null. But that only happens if you pass a nullptr to the constuctor. I think it would be better to have a constructor that didn\u0027t take a Regs object.",
+      "range": {
+        "startLine": 97,
+        "startChar": 7,
+        "endLine": 97,
+        "endChar": 14
+      },
+      "revId": "0b6539da758cde7c435d3dd6c547a7a15bf8d3f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eb36db7_a72848ed",
+        "filename": "libunwindstack/include/unwindstack/Unwinder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-03-26T22:31:53Z",
+      "side": 1,
+      "message": "You can\u0027t do this, otherwise everyone has to compile this with the exact correct flags, or they won\u0027t have the correct sized object. We had a bug where this wasn\u0027t the case and caused strange crashes.",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 35
+      },
+      "revId": "0b6539da758cde7c435d3dd6c547a7a15bf8d3f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
