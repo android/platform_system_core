@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "aca35970_9b75e373",
+        "filename": "adb/brotli_utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2020-03-26T20:23:30Z",
+      "side": 1,
+      "message": "Ooh, I\u0027m actually wrong about brotli design here (confused it with zopfli), apologies.\nApparently zstd on the lowest/fastest compression level could be an option - that\u0027s where it is faster and better than brotli, but still fast enough compared to LZ4.\n\u003eMy understanding is that brotli does this by default: https://tools.ietf.org/html/rfc7932#section-12\nnot sure if it\u0027s worth sending that data \u0027compressed\u0027 over the wire vs the original data, where the device won\u0027t need to run the decompression at all",
+      "parentUuid": "47a2347e_5f2fade2",
+      "revId": "9f24e179a1a57607f4fbb9bbcaa0c53f0e239342",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ff2206c_8db4ee28",
         "filename": "adb/transport.cpp",
         "patchSetId": 5
