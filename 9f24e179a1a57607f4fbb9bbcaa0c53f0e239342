@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbe270f6_b7c87955",
+        "filename": "adb/brotli_utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2020-03-26T19:41:31Z",
+      "side": 1,
+      "message": "a few general notes on compression:\n- brotli is very efficient for APKs, but it never been design for high compression throughput. lz4 is much faster and requires less resources to compress,\n- already compressed entries (e.g. with LZMA) might become bigger as a result of re-compression. makes sense to detect and send the original data instead,\n- there is a way to detect uncompressible chunks without running through compression - e.g. read each sixteenth byte and try to evaluate randomness. if you are interested I can try to dig  up a code snippet doing that",
+      "revId": "9f24e179a1a57607f4fbb9bbcaa0c53f0e239342",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
