@@ -16,6 +16,24 @@
       "revId": "9f24e179a1a57607f4fbb9bbcaa0c53f0e239342",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05c2c94a_bb833f6d",
+        "filename": "adb/brotli_utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-03-26T19:48:18Z",
+      "side": 1,
+      "message": "\u003e brotli is very efficient for APKs, but it never been design for high compression throughput. lz4 is much faster and requires less resources to compress,\n\nYeah, my hope was that since we\u0027re almost always going from host to device, the host would be sufficiently fast enough that we would be able to saturate the pipe. This doesn\u0027t seem to be the case when naively compressing and sending from one thread, so I\u0027ll take a look at implementing LZ4.\n\n\u003e there is a way to detect uncompressible chunks without running through compression - e.g. read each sixteenth byte and try to evaluate randomness. if you are interested I can try to dig  up a code snippet doing that\n\nMy understanding is that brotli does this by default: https://tools.ietf.org/html/rfc7932#section-12",
+      "parentUuid": "dbe270f6_b7c87955",
+      "revId": "9f24e179a1a57607f4fbb9bbcaa0c53f0e239342",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
