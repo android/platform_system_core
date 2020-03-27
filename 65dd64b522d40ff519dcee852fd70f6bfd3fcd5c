@@ -2,6 +2,69 @@
   "comments": [
     {
       "key": {
+        "uuid": "cf2bfba0_8e9a5db3",
+        "filename": "libziparchive/test_ziparchive_large.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-27T15:56:34Z",
+      "side": 1,
+      "message": "is this a large test? seems like this one should be cheap? split this into a separate python test that we _can_ run in presubmit? (or am i missing the subtle reason why this one is expensive too?)",
+      "revId": "65dd64b522d40ff519dcee852fd70f6bfd3fcd5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34454e40_2a388c4c",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-27T15:56:34Z",
+      "side": 1,
+      "message": "combine this block and the expectedDataSize block, since it\u0027s the same pair of tests?",
+      "range": {
+        "startLine": 406,
+        "startChar": 4,
+        "endLine": 413,
+        "endChar": 5
+      },
+      "revId": "65dd64b522d40ff519dcee852fd70f6bfd3fcd5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de46e3d2_407443e0",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-27T15:56:34Z",
+      "side": 1,
+      "message": "maybe add a\n\n  ddOffset +\u003d sizeof(uint32_t);\n\nafter the descriptor.crc32 \u003d get_unaligned line? and then a\n\n  ddOffset +\u003d sizeof(uint64_t);\n\nhere, and so on, rather than the magic numbers?\n\nmaybe get_unaligned should take an offset* and update it itself? (or add a read_unaligned or whatever if most callers of get_unaligned don\u0027t want to auto-advance?)",
+      "range": {
+        "startLine": 645,
+        "startChar": 65,
+        "endLine": 645,
+        "endChar": 77
+      },
+      "revId": "65dd64b522d40ff519dcee852fd70f6bfd3fcd5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9cec824c_b184b958",
         "filename": "libziparchive/zip_archive_common.h",
         "patchSetId": 3
@@ -19,6 +82,64 @@
         "endLine": 162,
         "endChar": 23
       },
+      "revId": "65dd64b522d40ff519dcee852fd70f6bfd3fcd5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fc8c075_a5aa42d2",
+        "filename": "libziparchive/zip_archive_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-27T15:56:34Z",
+      "side": 1,
+      "message": "would it be useful as a template?",
+      "parentUuid": "9cec824c_b184b958",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 23
+      },
+      "revId": "65dd64b522d40ff519dcee852fd70f6bfd3fcd5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c637486d_4bd9361c",
+        "filename": "libziparchive/zip_archive_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1095,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-27T15:56:34Z",
+      "side": 1,
+      "message": "(similar comments here to the get_aligned ones.)",
+      "revId": "65dd64b522d40ff519dcee852fd70f6bfd3fcd5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8692c320_4cfe0cba",
+        "filename": "libziparchive/zip_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-27T15:56:34Z",
+      "side": 1,
+      "message": "why not just write the whole thing in one write?",
       "revId": "65dd64b522d40ff519dcee852fd70f6bfd3fcd5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
