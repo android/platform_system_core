@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "446cc65a_bfcc4a9d",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-30T22:22:02Z",
+      "side": 1,
+      "message": "use ReadUnalignedAndIncrementOffset here too?\n\n(jmgao uses the word \"Consume\" for something that advances a pointer like this. \"ConsumeUnaligned\" is a bit snappier than \"ReadUnalignedAndIncrementOffset\". i\u0027d meant the \"Read\" to imply moving forward, but since you didn\u0027t realize that\u0027s what i meant, that\u0027s a vote against it \"read\" being obvious enough!)",
+      "revId": "ecb449b349b071a9457fbdac6e4cafcb8ad6a061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b37226f2_fa110c9c",
+        "filename": "libziparchive/zip_archive_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1097,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-03-30T22:22:02Z",
+      "side": 1,
+      "message": "(here i was thinking we\u0027d have a Write to match Read, but i guess that should be \"Emit\" to go with \"Consume\"? put them in zip_archive_private.h so everyone can share?)",
+      "revId": "ecb449b349b071a9457fbdac6e4cafcb8ad6a061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
