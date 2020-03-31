@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "6021e167_31aae17e",
+        "filename": "base/file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2020-03-31T04:32:40Z",
+      "side": 1,
+      "message": "Are we interested in reusing the output buffer? If not, maybe the return type could be std::optional\u003cstd::string\u003e or Result\u003cstd::string\u003e.\n\nOtherwise:\n\nIf *content originally has capacity 0, then resize and reserve result in the same capacity for all of libc++, libstdc++, and msvc.\n\nIf the new value is less than the previous capacity, then http://wg21.link/P0966R1 (C++20) indicates that reserve shouldn\u0027t change the capacity. libc++ (as of NDK r21) seemingly shrinks it anyway, as does glinux\u0027s current libstdc++. rextester\u0027s msvc 2015 is conforming. (I see https://reviews.llvm.org/D54992, so I\u0027ll look at libc++ a bit more...)\n\nIf the new value is greater, but the capacity was non-zero, then libc++\u0027s reserve increases the capacity just enough, whereas its resize grows it by at least by the 2x growth multiplier. libstdc++ and msvc have no difference between resize and reserve and always grow by at least the growth multiplier.",
+      "revId": "f74edbdb4616f0ea65d7e315bd7ecc98d962b228",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3fde5991_49deae86",
         "filename": "base/file.cpp",
         "patchSetId": 1
@@ -46,6 +63,40 @@
       "revId": "f74edbdb4616f0ea65d7e315bd7ecc98d962b228",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a8752ae_41478a6b",
+        "filename": "base/file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2020-03-31T04:32:40Z",
+      "side": 1,
+      "message": "Just: `return n \u003e\u003d 0;`?",
+      "revId": "f74edbdb4616f0ea65d7e315bd7ecc98d962b228",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b744e42_a7b9300f",
+        "filename": "base/file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2020-03-31T04:32:40Z",
+      "side": 1,
+      "message": "`return n \u003d\u003d 0`?",
+      "revId": "f74edbdb4616f0ea65d7e315bd7ecc98d962b228",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
