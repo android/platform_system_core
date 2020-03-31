@@ -16,6 +16,24 @@
       "revId": "e4a6ed853416232b25bd51da61864b5e3096fd12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff083e94_2ca49f23",
+        "filename": "fastboot/device/flashing.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-03-31T20:38:10Z",
+      "side": 1,
+      "message": "I don\u0027t think so.  I\u0027ve been googling this for a bit and it seems like fsync() is more for files on a file system.\n\nI don\u0027t think there should be substantially more overhead doing a full sync() after each partition, since we really shouldn\u0027t be modifying too many files on other block devices, right?",
+      "parentUuid": "776ce18a_75c9d3ae",
+      "revId": "e4a6ed853416232b25bd51da61864b5e3096fd12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
