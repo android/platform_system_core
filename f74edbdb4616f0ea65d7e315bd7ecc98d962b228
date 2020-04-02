@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c0fa624c_ed8ff2c7",
+        "filename": "base/file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-04-02T05:12:14Z",
+      "side": 1,
+      "message": "i think we\u0027re about 5 years too late to use std::optional in the API :-)\n\ni think the normal case is that the incoming std::string is empty, something like:\n\n  std::string s;\n  if (!ReadFileToString(path, \u0026s)) ...\n\nbut it seems like it\u0027s probably a feature to not shrink anyway, since that gives you getline(3)-like behavior but with a much nicer API for something like:\n\n  std::string s;\n  for (const auto\u0026 file : files) {\n    if (!ReadFileToString(file, \u0026s)) ...\n\n(but you can also move the std::string inside the loop if that was the behavior you wanted.)\n\nwe have a unit test that ensures that the returned string isn\u0027t \"much\" bigger than the file, so if libc++ decides to outwit us at some point we can always try to be clever with std::swap() or something...",
+      "parentUuid": "3facf1f4_93c1746e",
+      "revId": "f74edbdb4616f0ea65d7e315bd7ecc98d962b228",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3fde5991_49deae86",
         "filename": "base/file.cpp",
         "patchSetId": 1
@@ -101,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "f8f41bd2_3236635b",
+        "filename": "base/file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-04-02T05:12:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a8752ae_41478a6b",
+      "revId": "f74edbdb4616f0ea65d7e315bd7ecc98d962b228",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b744e42_a7b9300f",
         "filename": "base/file.cpp",
         "patchSetId": 1
@@ -115,6 +151,24 @@
       "revId": "f74edbdb4616f0ea65d7e315bd7ecc98d962b228",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7185caf2_0a992083",
+        "filename": "base/file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-04-02T05:12:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b744e42_a7b9300f",
+      "revId": "f74edbdb4616f0ea65d7e315bd7ecc98d962b228",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
