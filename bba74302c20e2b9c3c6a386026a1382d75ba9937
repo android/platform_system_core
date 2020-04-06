@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4814b094_fad8e80c",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-04-06T15:45:32Z",
+      "side": 1,
+      "message": "I\u0027d rather we found a more generic way to handle this than having a \u0027recovery\u0027 parameter to this constructor, since this libmodprobe.cpp is a generic modprobe class.  We wouldn\u0027t have other users of this \u0027recovery\u0027 parameter than first stage init, right?\n\nIf I understand this correctly, we have both /lib/modules.load and /lib/modules.load.recovery in the recovery ramdisk?  Maybe it\u0027d be better to take a configurable modules.load filename?",
+      "revId": "bba74302c20e2b9c3c6a386026a1382d75ba9937",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
