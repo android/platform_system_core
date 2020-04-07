@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f2d2ef3_479a72d2",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1382,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-04-07T15:39:16Z",
+      "side": 1,
+      "message": "ExtractToWriter is private, so you could just make it take a unique_ptr?",
+      "range": {
+        "startLine": 1382,
+        "startChar": 41,
+        "endLine": 1382,
+        "endChar": 53
+      },
+      "revId": "9f1f3c5c1e1ed14fdd5ebf37d7f2887a12f152b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f15a0d2_764d11d6",
+        "filename": "libziparchive/zip_archive_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-04-07T15:39:16Z",
+      "side": 1,
+      "message": "should this be allowed, or should we actually fail in cases where the provided buffer is too small? looking at a selection of callers in cs/, it seems like we\u0027d hide their bug --- a bug which isn\u0027t likely right now, but is potentially more likely when we\u0027re supporting zip64 (though admittedly only for files that are unrealistically large to want to extract to memory).",
+      "revId": "9f1f3c5c1e1ed14fdd5ebf37d7f2887a12f152b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
