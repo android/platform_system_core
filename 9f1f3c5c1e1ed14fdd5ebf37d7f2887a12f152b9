@@ -57,6 +57,24 @@
       "revId": "9f1f3c5c1e1ed14fdd5ebf37d7f2887a12f152b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0313bd2a_303099b8",
+        "filename": "libziparchive/zip_archive_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-04-07T18:14:36Z",
+      "side": 1,
+      "message": "ah, okay, in that case just add comments before these ExtractToMemory calls to make it clearer what exactly they\u0027re testing. (i didn\u0027t guess that, despite the assert on line 508.)\n\nshould we allow the uint8_t* to be nullptr if size \u003d\u003d 0, like the libc mem* functions do? (and add an explicit test for that?)\n\nalso, why is the static_cast on L508 to unit32_t for a ZipEntry64? shouldn\u0027t it be a 64-bit type?",
+      "parentUuid": "c652f253_aa771025",
+      "revId": "9f1f3c5c1e1ed14fdd5ebf37d7f2887a12f152b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
