@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c3867fe_ad059a71",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1382,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2020-04-07T19:27:29Z",
+      "side": 1,
+      "message": "I realize we have the following usage when making the change:\n  VectorWriter writer;\n  ASSERT_EQ(0, ExtractToWriter(handle, \u0026entry, \u0026writer));\n  ASSERT_EQ(content, writer.GetOutput());\n\nSo ExtractToWriter isn\u0027t necessary a sink function. So there is little point to take a unique_ptr if it\u0027s not a sink?",
+      "parentUuid": "9f2d2ef3_479a72d2",
+      "range": {
+        "startLine": 1382,
+        "startChar": 41,
+        "endLine": 1382,
+        "endChar": 53
+      },
+      "revId": "9f1f3c5c1e1ed14fdd5ebf37d7f2887a12f152b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f15a0d2_764d11d6",
         "filename": "libziparchive/zip_archive_test.cc",
         "patchSetId": 1
@@ -93,6 +117,24 @@
       "revId": "9f1f3c5c1e1ed14fdd5ebf37d7f2887a12f152b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d436ee0_a40d8df7",
+        "filename": "libziparchive/zip_archive_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2020-04-07T19:27:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6548999a_01e9b120",
+      "revId": "9f1f3c5c1e1ed14fdd5ebf37d7f2887a12f152b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
