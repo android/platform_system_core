@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d13c47b3_90f292d0",
+        "filename": "libunwindstack/Memory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-04-09T19:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "471ecf47_61b62361",
+      "revId": "5c13f5d74434b0b872dac464a5c30478ecf533a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab19e484_960e1704",
         "filename": "libunwindstack/tests/MemoryRemoteTest.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-04-09T18:56:21Z",
       "side": 1,
       "message": "Use __arm_mte_set_tag, or is the toolchain not up to date yet?",
+      "revId": "5c13f5d74434b0b872dac464a5c30478ecf533a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47eeef27_2aaf5830",
+        "filename": "libunwindstack/tests/MemoryRemoteTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-04-09T19:30:57Z",
+      "side": 1,
+      "message": "Unfortunately the __arm_mte_* functions aren\u0027t very useful here because they require MTE to be enabled across the whole translation unit. See e.g.\nhttp://llvm-cs.pcc.me.uk/tools/clang/lib/Headers/arm_acle.h#646\n\nAnd if I try using the builtin directly I get\nfatal error: error in backend: Cannot select: intrinsic %llvm.aarch64.stg\npresumably because MTE wasn\u0027t enabled.",
+      "parentUuid": "ab19e484_960e1704",
       "revId": "5c13f5d74434b0b872dac464a5c30478ecf533a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
