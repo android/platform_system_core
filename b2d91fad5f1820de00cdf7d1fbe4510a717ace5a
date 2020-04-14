@@ -93,6 +93,30 @@
       "revId": "b2d91fad5f1820de00cdf7d1fbe4510a717ace5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45929688_62de7a74",
+        "filename": "libziparchive/zip_archive.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-04-14T17:04:22Z",
+      "side": 1,
+      "message": "fwiw, \"me too\". but it\u0027s always hard to tell with these things whether we\u0027ll get used to them or not (and the only way to find out is to actually use them more in practice).\n\npersonally i find it makes the most sense when the variable is only used in the condition and the body of the if --- it lets you keep it out of the surrounding scope in that case. for cases like this, especially where it wraps anyway, i\u0027m less sure. if not using it let you _avoid_ wrapping, which isn\u0027t the case here because the identifiers are so long, i\u0027d say it was a bad idea. but when it makes no difference either way [like here], i don\u0027t really have an opinion.\n\npersonally i\u0027d probably go with:\n\n  if (zip32CompressedSize \u003d\u003d UINT32_MAX) {\n    compressedFileSize \u003d\n        TryConsumeUnaligned\u003cuint64_t\u003e(\u0026readPtr, extraFieldStart, extraFieldLength);\n    if (!compressedFileSize.has_value()) return kInvalidOffset;\n  }\n\nbut the local style seems to be avoiding return on the same line. like i said, it would be a lot more convincing if the names were shorter so it fit:\n\n  if (zip32CompressedSize \u003d\u003d UINT32_MAX) {\n    compressedSize \u003d TryConsumeUnaligned\u003cuint64_t\u003e(\u0026p, extraStart, extraSize);\n    if (!compressedSize.has_value()) return kInvalidOffset;\n  }\n\nbut even if we wanted to try for shorter names, that seems like that should be in a separate change that only renames anyway.",
+      "parentUuid": "07115667_a8edeb33",
+      "range": {
+        "startLine": 394,
+        "startChar": 6,
+        "endLine": 396,
+        "endChar": 46
+      },
+      "revId": "b2d91fad5f1820de00cdf7d1fbe4510a717ace5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
