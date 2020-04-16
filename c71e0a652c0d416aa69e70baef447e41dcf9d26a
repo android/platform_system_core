@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab4f5721_7ba0ce49",
+        "filename": "libunwindstack/MemoryMte.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1581772
+      },
+      "writtenOn": "2020-04-16T17:12:21Z",
+      "side": 1,
+      "message": "Would it be possible at all to use ptrace() here as well to avoid the race? For MemoryLocal::Read(), process_vm_readv() is used (like MemoryRemote), but I guess it\u0027s more tricky to do use ptrace in the same process.\n\nAlternatively, if we only use ReadTag() when handling crashes, wouldn\u0027t it be possible to stop the other threads?",
+      "revId": "c71e0a652c0d416aa69e70baef447e41dcf9d26a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
