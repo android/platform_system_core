@@ -16,6 +16,24 @@
       "revId": "c71e0a652c0d416aa69e70baef447e41dcf9d26a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c34d98d3_c66d581c",
+        "filename": "libunwindstack/MemoryMte.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-04-16T18:57:58Z",
+      "side": 1,
+      "message": "We can\u0027t use ptrace here because the kernel requires the target process to be traced:\nhttps://github.com/torvalds/linux/blob/9786cab674574239b04df638f825ee0e7d76a48c/kernel/ptrace.c#L229\n\nAnd a process can\u0027t trace itself:\nhttps://unix.stackexchange.com/questions/266431/how-can-strace-monitor-itself\n\nI guess we could fork ourselves and ptrace the child, or something like that. But that seems like a workaround for a lack of kernel APIs.\n\nWe may consider allowing the proposed ptrace API to work when the process is not being traced, although this would be inconsistent with most of the other ptrace APIs. Another idea is to add a flag to process_vm_{read,write}v that would cause them to copy the tags as well.\n\nIn practice, this code isn\u0027t really used much if at all. Normally, crash_dump will use MemoryRemote to access the crashing process.",
+      "parentUuid": "ab4f5721_7ba0ce49",
+      "revId": "c71e0a652c0d416aa69e70baef447e41dcf9d26a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
