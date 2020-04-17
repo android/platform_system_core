@@ -22,6 +22,30 @@
       "revId": "af41960acb56efd5fb7d1fb1b18dae21b4d6b122",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21a8d3ec_605481bc",
+        "filename": "libunwindstack/Symbols.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-04-17T14:24:52Z",
+      "side": 1,
+      "message": "It is not worth it, since the compiler completely eliminates the copy if it knows the CPU can handle unaligned loads (which is true for any modern CPU).\n\nvmarko points out that there are some specific ARM instructions which must be aligned (e.g. ldp - load register pair). In which case, this code restricts the compiler from doing some load optimizations (e.g. using ldp instead of two ldr).",
+      "parentUuid": "f5a9361e_17cfcb6d",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 83
+      },
+      "revId": "af41960acb56efd5fb7d1fb1b18dae21b4d6b122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
