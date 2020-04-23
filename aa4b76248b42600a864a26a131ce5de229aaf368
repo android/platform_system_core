@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a267e97a_584ee039",
+        "filename": "base/logging.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-04-23T23:26:16Z",
+      "side": 1,
+      "message": "i don\u0027t think TEMP_FAILURE_RETRY and fputs() are really compatible. the good news (if you chase all the way through stdio) is that if you call fputs() you end up here anyway:\n\n  int __swrite(void* cookie, const char* buf, int n) {\n    FILE* fp \u003d reinterpret_cast\u003cFILE*\u003e(cookie);\n    return TEMP_FAILURE_RETRY(write(fp-\u003e_file, buf, n));\n  }",
+      "revId": "aa4b76248b42600a864a26a131ce5de229aaf368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
