@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ba8f7080_2a16d77f",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-04-23T20:48:31Z",
+      "side": 1,
+      "message": "Done.\n\nI removed LogdLoggerNoInterleave too, like you said we shouldn\u0027t encourage this.",
+      "parentUuid": "68fe8143_28a7029c",
+      "range": {
+        "startLine": 134,
+        "startChar": 3,
+        "endLine": 134,
+        "endChar": 32
+      },
+      "revId": "719cf2ce84e25a18bf852fab5f57731d29b29e0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5e698a9_0352e6c8",
         "filename": "base/logging.cpp",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "719cf2ce84e25a18bf852fab5f57731d29b29e0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a9eff8d_43fd84d2",
+        "filename": "base/logging.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-04-23T20:48:31Z",
+      "side": 1,
+      "message": "StderrOutputGenerator() terminates the message in a newline always.\n\nfputs() sounds good to me.  I realized sometime after I pushed this I need TEMP_FAILURE_RETRY() here too.",
+      "parentUuid": "a5e698a9_0352e6c8",
+      "revId": "719cf2ce84e25a18bf852fab5f57731d29b29e0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "588c2a92_3a6ad15e",
+        "filename": "base/logging.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-04-23T20:48:31Z",
+      "side": 1,
+      "message": "Back before my CL to drop the thread safety, this lock was used both for preventing line interleaving and to keep accesses to Logger() thread safe.  I moved it here since LogLine() was no longer being called with this lock held.\n\nNow that I pushed that CL, I\u0027ll drop this.",
+      "parentUuid": "c04d19de_bbb435b3",
+      "revId": "719cf2ce84e25a18bf852fab5f57731d29b29e0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b0939be_3c596553",
         "filename": "base/logging_splitters.h",
         "patchSetId": 3
@@ -70,6 +130,24 @@
       "writtenOn": "2020-04-23T19:46:19Z",
       "side": 1,
       "message": "should it be? seems like there\u0027s no other way to deal with this? (at least we only truncate, rather than drop, long messages.)",
+      "revId": "719cf2ce84e25a18bf852fab5f57731d29b29e0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67aec0db_07514d3c",
+        "filename": "base/logging_splitters.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-04-23T20:48:31Z",
+      "side": 1,
+      "message": "Makes sense.  Too late to add it now though, right?\n\nIf I do move SplitByLogdChunks() into liblog, then that\u0027s a no-op.",
+      "parentUuid": "2b0939be_3c596553",
       "revId": "719cf2ce84e25a18bf852fab5f57731d29b29e0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "bae2a778_bc600fb4",
+        "filename": "base/logging_splitters.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-04-23T20:48:31Z",
+      "side": 1,
+      "message": "As in should I move this into liblog altogether?  That seems reasonable to me.  It\u0027s a bit of a behavior change, but I can\u0027t imagine anyone complaining that their previously truncated log messages are now being printed full.\n\nThe one other bit of strange behavior is that if someone tries to log a line with \u003e4000 characters, that it will truncate even with this function that splits by chunks, since the chunks are delimited by new lines.  That was the previous libbase behavior and seems reasonable to me.",
+      "parentUuid": "0087bc79_fc7c9dad",
+      "revId": "719cf2ce84e25a18bf852fab5f57731d29b29e0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eaec3673_4633c0cb",
         "filename": "base/logging_splitters.h",
         "patchSetId": 3
@@ -104,6 +200,30 @@
       "writtenOn": "2020-04-23T19:46:19Z",
       "side": 1,
       "message": "move this before we take the lock, then CHECK?",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 3
+      },
+      "revId": "719cf2ce84e25a18bf852fab5f57731d29b29e0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14d44430_edcc8d92",
+        "filename": "base/logging_splitters.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-04-23T20:48:31Z",
+      "side": 1,
+      "message": "I was thinking about doing that, but that may end up recursing forever, if CHECK() logs with the same tag as this message, which is the likely case.\n\nI figure that this situation should be rare enough that abort() is sufficient.  It should be clear when the stack trace is seen where it came from.\n\nWe don\u0027t have CHECK() in liblog either, assuming that I move it there.",
+      "parentUuid": "eaec3673_4633c0cb",
       "range": {
         "startLine": 66,
         "startChar": 2,
