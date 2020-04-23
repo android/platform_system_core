@@ -189,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "b17665ac_fb648d67",
+        "filename": "base/logging_splitters.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-04-23T21:01:24Z",
+      "side": 1,
+      "message": "I checked the history of the Java implementation of this, ag/833698 and the argument there against doing this in liblog is that there may be some apps that log significant text and we\u0027re dependent on the 4k truncation behavior to prevent the log buffers from being filled with one app\u0027s content (modulo chatty...).\n\nThat does concern me a bit, especially given that it would be a behavior change.  Maybe let\u0027s keep this in libbase?",
+      "parentUuid": "bae2a778_bc600fb4",
+      "revId": "719cf2ce84e25a18bf852fab5f57731d29b29e0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eaec3673_4633c0cb",
         "filename": "base/logging_splitters.h",
         "patchSetId": 3
