@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68fe8143_28a7029c",
+        "filename": "base/include/android-base/logging.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-04-23T19:46:19Z",
+      "side": 1,
+      "message": "seems like this should be in the LogdLogger comment?\n\nshould this be here, or should this be in any caller that actually wants to do this (since we\u0027re unconvinced it\u0027s a good idea)?",
+      "range": {
+        "startLine": 134,
+        "startChar": 3,
+        "endLine": 134,
+        "endChar": 32
+      },
+      "revId": "719cf2ce84e25a18bf852fab5f57731d29b29e0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5e698a9_0352e6c8",
+        "filename": "base/logging.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-04-23T19:46:19Z",
+      "side": 1,
+      "message": "where\u0027s the newline coming from?\n\n(should this be fputs?)",
+      "revId": "719cf2ce84e25a18bf852fab5f57731d29b29e0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c04d19de_bbb435b3",
+        "filename": "base/logging.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-04-23T19:46:19Z",
+      "side": 1,
+      "message": "why?",
+      "revId": "719cf2ce84e25a18bf852fab5f57731d29b29e0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b0939be_3c596553",
+        "filename": "base/logging_splitters.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-04-23T19:46:19Z",
+      "side": 1,
+      "message": "should it be? seems like there\u0027s no other way to deal with this? (at least we only truncate, rather than drop, long messages.)",
+      "revId": "719cf2ce84e25a18bf852fab5f57731d29b29e0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0087bc79_fc7c9dad",
+        "filename": "base/logging_splitters.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-04-23T19:46:19Z",
+      "side": 1,
+      "message": "should this be in libbase, or should this be in liblog as an apology for having the fixed length limit?",
+      "revId": "719cf2ce84e25a18bf852fab5f57731d29b29e0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaec3673_4633c0cb",
+        "filename": "base/logging_splitters.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-04-23T19:46:19Z",
+      "side": 1,
+      "message": "move this before we take the lock, then CHECK?",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 3
+      },
+      "revId": "719cf2ce84e25a18bf852fab5f57731d29b29e0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
