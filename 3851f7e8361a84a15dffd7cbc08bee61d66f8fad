@@ -16,6 +16,24 @@
       "revId": "3851f7e8361a84a15dffd7cbc08bee61d66f8fad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16a73337_5bfe3c2f",
+        "filename": "liblog/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-27T22:28:57Z",
+      "side": 1,
+      "message": "min_sdk_version for header libs doesn\u0027t mean any restrictions on depending libraries, but it only indicates that some libraries depending on this header lib are packaged in to APEXes targeting that sdk level. You can think of it as additional information for module owners complementary to apex_available property.\n\nliblog is stil okay to build against the current platform.\n\nIn general, even header libs can contribute code to APEXes and might cause the apexes to run on older releases. That\u0027s why we\u0027d like to mark them with apex_available/min_sdk_version so that owners maintain them with awareness.",
+      "parentUuid": "3df62ba9_59a90eb3",
+      "revId": "3851f7e8361a84a15dffd7cbc08bee61d66f8fad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
