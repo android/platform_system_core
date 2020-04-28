@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47d76ecf_9b8b37ad",
+        "filename": "debuggerd/libdebuggerd/scudo.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-04-28T02:56:37Z",
+      "side": 1,
+      "message": "Ugh, I think this triggers a bug in bionic on 64-bit. bionic defines PAGE_SIZE to 4096, which is an expression is of type int, so this\u0027ll give you 0xfffff000 instead of the 0xfffffffffffff000 you\u0027re expecting. glibc does 1UL \u003c\u003c PAGE_SHIFT.\n\nI have no idea how we\u0027re not hitting this all over the place: code search finds dozens of uses of this: https://cs.android.com/search?q\u003d%5CbPAGE_MASK%7C~.%2B%5CbPAGE_SIZE%5Cs*-%5Cs*1%5Cb%20case:yes\n\nFiled b/155136053 to fix this in bionic",
+      "range": {
+        "startLine": 48,
+        "startChar": 48,
+        "endLine": 48,
+        "endChar": 64
+      },
+      "revId": "f86225206df162b43b5a0518a9eaf747d60303c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
