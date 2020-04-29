@@ -16,6 +16,24 @@
       "revId": "5ad2e786a9af5502228e8a34849a32d1ad2c2029",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a48ba60_5754d747",
+        "filename": "init/util.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-04-29T15:16:04Z",
+      "side": 1,
+      "message": "It\u0027s certainly ironic :(  I was thinking of std::deque, but we\u0027re pretty much always going to have 30 strings, so I thought we might as well skip the additional allocations from it.\n\nMore ironically though, I need to add a lock here, since we log from different threads, and reassigning these std::strings isn\u0027t going to be thread safe, and of course I just dropped the existing log in libbase.",
+      "parentUuid": "d4f3240b_e07ac9ab",
+      "revId": "5ad2e786a9af5502228e8a34849a32d1ad2c2029",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
