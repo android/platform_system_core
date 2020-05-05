@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5136320_1761650a",
+        "filename": "fs_mgr/liblp/utility.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-05-05T01:35:19Z",
+      "side": 1,
+      "message": "I think you mean std::min here?\n\nconsider:\n\nbase \u003d UINT64_MAX - 1\nto_add \u003d 2\n\nthen\n\nLHS \u003d base - to_add \u003d UINT64_MAX - 1 - 2 \u003d UINT64_MAX - 3\nRHS \u003d UINT64_MAX - base \u003d UINT64_MAX - (UINT64_MAX - 1) \u003d 1\n\nLHS \u003e\u003d RHS, but it overflows.\n\nAlso, maybe this predicate is simpler?\n\n   toadd \u003e\u003d std::numeric_limits\u003cT\u003e::max() - base\n\nRHS never over/under-flows.",
+      "range": {
+        "startLine": 86,
+        "startChar": 45,
+        "endLine": 86,
+        "endChar": 48
+      },
+      "revId": "43535edf328c95f6e6c2c7187b7b3b043c752e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
