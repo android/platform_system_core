@@ -46,6 +46,30 @@
       "revId": "43535edf328c95f6e6c2c7187b7b3b043c752e9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "386faac2_c7ff8d7a",
+        "filename": "fs_mgr/liblp/utility.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1409599
+      },
+      "writtenOn": "2020-05-05T13:53:14Z",
+      "side": 1,
+      "message": "I like the `toadd \u003e\u003d std::numeric_limits\u003cT\u003e::max() - base` approach, but why \u003e\u003d?\nThe overflow condition happens when \n\n`base + to_add \u003e std::numeric_limits\u003cT\u003e::max()`\n\nSo, that can be verified as\n\n`if (to_add \u003e std::numeric_limits\u003cT\u003e::max() - base) return false`\n\nAm I missing something?",
+      "parentUuid": "3b5f1d96_caf5170b",
+      "range": {
+        "startLine": 86,
+        "startChar": 45,
+        "endLine": 86,
+        "endChar": 48
+      },
+      "revId": "43535edf328c95f6e6c2c7187b7b3b043c752e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
