@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f2e62473_822251e3",
+        "filename": "fastboot/device/tcp_client.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2020-05-06T21:41:53Z",
+      "side": 1,
+      "message": "Ah sorry I should have been more clear, I meant a well-formed command that just happens to be broken into multiple TCP packets.\n\ni.e. the length being sent is valid, but since TCP is stream-oriented it\u0027s allowed to break up your data however it wants, so for whatever reason the device ends up only getting the first 4 bytes of length in the first read, and then needs to read again to get the next 4.",
+      "parentUuid": "544fd334_82f6537f",
+      "range": {
+        "startLine": 69,
+        "startChar": 25,
+        "endLine": 69,
+        "endChar": 32
+      },
+      "revId": "d470679757045569ceff17e666c35b66a551b8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74ecef2c_5b1834b3",
         "filename": "fastboot/device/tcp_client.cpp",
         "patchSetId": 14
