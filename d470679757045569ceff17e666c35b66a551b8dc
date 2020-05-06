@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "c1c59ea5_ca8fea6d",
+        "filename": "fastboot/device/tcp_client.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2020-05-06T18:17:31Z",
+      "side": 1,
+      "message": "nit: should this be ReceiveAll()? I doubt a TCP packet would actually come through with less than 8 bytes, but I think it might be technically possible to get a short read here.",
+      "range": {
+        "startLine": 69,
+        "startChar": 25,
+        "endLine": 69,
+        "endChar": 32
+      },
+      "revId": "d470679757045569ceff17e666c35b66a551b8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74ecef2c_5b1834b3",
+        "filename": "fastboot/device/tcp_client.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2020-05-06T18:17:31Z",
+      "side": 1,
+      "message": "optional: it\u0027s not immediately clear to me why partial read behavior changes in download mode - ClientUsbTransport doesn\u0027t seem to have this corresponding logic that I can tell. Maybe add a quick comment somewhere explaining why this is necessary?",
+      "range": {
+        "startLine": 94,
+        "startChar": 13,
+        "endLine": 94,
+        "endChar": 25
+      },
+      "revId": "d470679757045569ceff17e666c35b66a551b8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4229d55_5452962d",
+        "filename": "fastboot/device/tcp_client.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1078119
+      },
+      "writtenOn": "2020-05-06T18:17:31Z",
+      "side": 1,
+      "message": "optional: doesn\u0027t the \u003c\u003c operator allow chaining so you don\u0027t have to convert yourself? e.g.:\n\n  LOG(ERROR) \u003c\u003c \"Unknown TCP protocol version \" \u003c\u003c buffer + 2 \u003c\u003c \", our version: \" \u003c\u003c kProtocolVersion;",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 87
+      },
+      "revId": "d470679757045569ceff17e666c35b66a551b8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2dd6edf9_fad7b99a",
         "filename": "fastboot/socket.h",
         "patchSetId": 14
