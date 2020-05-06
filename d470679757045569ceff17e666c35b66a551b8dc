@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "544fd334_82f6537f",
+        "filename": "fastboot/device/tcp_client.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1608690
+      },
+      "writtenOn": "2020-05-06T21:35:46Z",
+      "side": 1,
+      "message": "This follows the protocol, 8 bytes for the data_size header. https://source.corp.google.com/master-arc-dev/system/core/fastboot/README.md. \n\nI did meet it\u0027s shorter than 8 bytes case. That happened when I ran a wrong unsupported command on host. In that case, the host side will reset it connection after handshake. The \"else\" logic at line 71 is actually to handle that case. If the read is shorter than 8 bytes, it will go back to wait a new connection.",
+      "parentUuid": "c1c59ea5_ca8fea6d",
+      "range": {
+        "startLine": 69,
+        "startChar": 25,
+        "endLine": 69,
+        "endChar": 32
+      },
+      "revId": "d470679757045569ceff17e666c35b66a551b8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74ecef2c_5b1834b3",
         "filename": "fastboot/device/tcp_client.cpp",
         "patchSetId": 14
@@ -45,6 +69,30 @@
       "revId": "d470679757045569ceff17e666c35b66a551b8dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "488d1466_7cea6aef",
+        "filename": "fastboot/device/tcp_client.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1608690
+      },
+      "writtenOn": "2020-05-06T21:35:46Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "74ecef2c_5b1834b3",
+      "range": {
+        "startLine": 94,
+        "startChar": 13,
+        "endLine": 94,
+        "endChar": 25
+      },
+      "revId": "d470679757045569ceff17e666c35b66a551b8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9df519b7_82902fdf",
+        "filename": "fastboot/device/tcp_client.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1608690
+      },
+      "writtenOn": "2020-05-06T21:35:46Z",
+      "side": 1,
+      "message": "thanks, done",
+      "parentUuid": "f4229d55_5452962d",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 87
+      },
+      "revId": "d470679757045569ceff17e666c35b66a551b8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dd6edf9_fad7b99a",
         "filename": "fastboot/socket.h",
         "patchSetId": 14
@@ -85,6 +157,24 @@
       "revId": "d470679757045569ceff17e666c35b66a551b8dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f14ea641_f952918e",
+        "filename": "fastboot/socket.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1608690
+      },
+      "writtenOn": "2020-05-06T21:35:46Z",
+      "side": 1,
+      "message": "thanks, it\u0027s done",
+      "parentUuid": "2dd6edf9_fad7b99a",
+      "revId": "d470679757045569ceff17e666c35b66a551b8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
