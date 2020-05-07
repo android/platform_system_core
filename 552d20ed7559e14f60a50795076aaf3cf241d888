@@ -22,6 +22,30 @@
       "revId": "552d20ed7559e14f60a50795076aaf3cf241d888",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5a6071a_9fa0e050",
+        "filename": "libnetutils/packet.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2020-05-07T15:03:19Z",
+      "side": 1,
+      "message": "http://man7.org/linux/man-pages/man7/packet.7.html\n\nThe socket_type is either SOCK_RAW for raw packets including the\nlink-level header or SOCK_DGRAM for cooked packets with the link-\nlevel header removed.\n\nIt\u0027s still a raw socket, just slight less raw (slightly cooked...).\n\nIFIRC:\n\nPF_PACKET, SOCK_RAW -\u003e truely raw L2\nPF_PACKET, SOCK_DGRAM -\u003e just L3 with L2 autogeneration\nAF_INET, SOCK_RAW, IPPROTO_RAW (implies IP_HDRINCL) -\u003e L3 with ip routing, no options\nAF_INET, SOCK_RAW, IPPROTO_XXX (no IP_HDRINCL) -\u003e L4 with ip routing and options\n\nSee also http://man7.org/linux/man-pages/man7/raw.7.html",
+      "parentUuid": "a74fe9bf_1a445b68",
+      "range": {
+        "startLine": 43,
+        "startChar": 30,
+        "endLine": 43,
+        "endChar": 40
+      },
+      "revId": "552d20ed7559e14f60a50795076aaf3cf241d888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
