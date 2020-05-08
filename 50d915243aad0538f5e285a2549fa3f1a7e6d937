@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e5d1ed1_263d43eb",
+        "filename": "libcutils/include/cutils/properties.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-08T20:28:59Z",
+      "side": 1,
+      "message": "I think I want to get rid of these in favor of the construct i talk about below.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 6
+      },
+      "revId": "50d915243aad0538f5e285a2549fa3f1a7e6d937",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7aab32a_551118e5",
+        "filename": "libcutils/include/cutils/properties.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-08T20:28:59Z",
+      "side": 1,
+      "message": "how about\n\n#ifndef PROP_NAME_MAX\n#define PROPERTY_KEY_MAX 32\n#else\n#define PROPERTY_KEY_MAX PROP_NAME_MAX\n#endif\n\nhere instead of the stuff at line 26...  with the same construct for PROPERTY_VALUE_MAX.\nThe comments on line 39/40 suggest that the desired name that we are publishing as part\nof this api are the PROPERTY_{KEY,VALUE}_MAX values.\n\nso let\u0027s define just those.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "50d915243aad0538f5e285a2549fa3f1a7e6d937",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf47f3ae_7f515d33",
+        "filename": "libcutils/properties.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-08T20:28:59Z",
+      "side": 1,
+      "message": "I generally like doing it as:\n\nint property_get( ....   [add the unused attribute in here] )\n{\n   int len \u003d -1;\n#ifdef __ANDROID__\n   len \u003d __system_property_get()\n   if (len\u003e0)\n      return len;\n#endif\n   if (default_value) {\n     len \u003d strnlen(...)\n   }\n   return len;\n}\n\nWhat I like about it is that we have 1 instance of the routine.\nand it\u0027s fairly easy to how the semantics differ between the host vs android versions.\n\n\nthe UNUSED_PARAM stuff can be handled by adding to the parameters all the time\nand we either define it as __attribute(...)) or empty based on the state of __ANDROID__\n\n\nThis sort of structure is not always possible.  but there are some that map nicely to this construct.",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 1
+      },
+      "revId": "50d915243aad0538f5e285a2549fa3f1a7e6d937",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcbf136c_f0d5f568",
+        "filename": "libcutils/properties.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-08T20:28:59Z",
+      "side": 1,
+      "message": "these are the complications in my scheme above.\nwhen we\u0027re on the host and the #if code disables the calls, these become unused and\nthe compiler will complain about them.\n\nWe could wrap them in an approporiate clause too.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 15
+      },
+      "revId": "50d915243aad0538f5e285a2549fa3f1a7e6d937",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
