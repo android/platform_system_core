@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e58ae01_b4319310",
+        "filename": "fastboot/device/flashing.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2020-05-12T04:20:22Z",
+      "side": 1,
+      "message": "By convention we usually keep reference args as RO.\n\nhttps://google.github.io/styleguide/cppguide.html#Reference_Arguments",
+      "range": {
+        "startLine": 126,
+        "startChar": 43,
+        "endLine": 126,
+        "endChar": 44
+      },
+      "revId": "d2d2a3054399159a8c6de082814e78612aa6094a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "477d5b5a_8ba1b7f7",
+        "filename": "fastboot/device/flashing.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2020-05-12T04:20:22Z",
+      "side": 1,
+      "message": "nit: CopyAVBFooter, as this seems more like copy than move.",
+      "range": {
+        "startLine": 126,
+        "startChar": 12,
+        "endLine": 126,
+        "endChar": 25
+      },
+      "revId": "d2d2a3054399159a8c6de082814e78612aa6094a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c9b1e10_74398830",
+        "filename": "fastboot/device/flashing.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2020-05-12T04:20:22Z",
+      "side": 1,
+      "message": "How about adding:\n\nuint64_t original_data_size \u003d data.size() at L139?\n\nThen in the loop:\n\n        data-\u003eat(block_device_size - 1 - idx) \u003d data-\u003eat(original_data_size - 1 - idx);",
+      "range": {
+        "startLine": 142,
+        "startChar": 49,
+        "endLine": 142,
+        "endChar": 81
+      },
+      "revId": "d2d2a3054399159a8c6de082814e78612aa6094a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
