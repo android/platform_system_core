@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ffa1cf1_0b0d724c",
+        "filename": "init/init.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-05-13T18:27:18Z",
+      "side": 1,
+      "message": "I\u0027d just move this all into set_usb_controller to minimize the code in this main loop:\n\nstatic void SetUsbController() {\n+    static auto controller_set \u003d false;\n+    if (controller_set) return;\n    std::unique_ptr\u003cDIR, decltype(\u0026closedir)\u003edir(opendir(\"/sys/class/udc\"), closedir);\n    if (!dir) return;\n\n    dirent* dp;\n    while ((dp \u003d readdir(dir.get())) !\u003d nullptr) {\n        if (dp-\u003ed_name[0] \u003d\u003d \u0027.\u0027) continue;\n\n        SetProperty(\"sys.usb.controller\", dp-\u003ed_name);\n+        controller_set \u003d true;\n        break;\n    }\n}\n\nThen just call it unconditionally here.  I\u0027m not worried about the function call overheard (and given it\u0027s a static function, I bet it\u0027ll be inlined anyway).  \n\nWe might as well rename it to SetUsbController() too.",
+      "revId": "7a7fc4a90ca76fb06e9564d24ed57e2db81664c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
