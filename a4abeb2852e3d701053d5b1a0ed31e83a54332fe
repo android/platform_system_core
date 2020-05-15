@@ -34,6 +34,24 @@
       "revId": "a4abeb2852e3d701053d5b1a0ed31e83a54332fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "106a7213_951e65a1",
+        "filename": "fs_mgr/libdm/dm.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-05-15T16:02:21Z",
+      "side": 1,
+      "message": "I forget when we made the change, but recovery.img now uses /system/bin/... as its filesystem, mirroring the layout of system.img, so trying to access that file doesn\u0027t imply mounting /system.\n\nBut you\u0027re right in that since we changed that path, older recoveries may not have recovery in that location, so we\u0027ll need a better check for them.",
+      "parentUuid": "f3cbd357_2d8e6216",
+      "revId": "a4abeb2852e3d701053d5b1a0ed31e83a54332fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
