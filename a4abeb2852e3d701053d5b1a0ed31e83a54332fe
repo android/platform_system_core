@@ -199,6 +199,24 @@
     },
     {
       "key": {
+        "uuid": "17d36b6b_d2b19bba",
+        "filename": "fs_mgr/libdm/dm.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-05-18T20:47:47Z",
+      "side": 1,
+      "message": "DAP \u003d\u003d Dynamic (Android) Partitions\n\nlibdm is indeed included by libfs_mgr, but libdm is only used by DAP devices.\n\nThis table:\n\n         |  DAP   |  non-DAP\n  A/B    |        |    \n  Non-A/B|  here  |   \n\nA/B DAP and non-DAP: uses update_engine, so this does not apply\nnon-A/B non-DAP: does not use libdm at all\nnon-A/B DAP: affected by this CL",
+      "parentUuid": "66a73897_d73acec8",
+      "revId": "a4abeb2852e3d701053d5b1a0ed31e83a54332fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45382337_def58613",
         "filename": "fs_mgr/libdm/dm.cpp",
         "patchSetId": 3
