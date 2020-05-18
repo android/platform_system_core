@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "a41c900a_0d361c6c",
+        "filename": "fs_mgr/libdm/dm.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-05-18T21:04:44Z",
+      "side": 1,
+      "message": "I don\u0027t think ro.boot.mode (androidboot.mode) is stated anywhere on source.android.com.\n\nWe should be able to use /system/bin/recovery. CMIIW:\n\n- Devices launching DAP: must be devices launching Q and above, so /system/bin/recovery should be there.\n- Devices retrofitting DAP (pre Q launch devices):\n  - old recovery that doesn\u0027t support DAP at all: must use retrofit update package (writes to static partitions), so libdm isn\u0027t involved\n  - recovery that supports DAP: must be built from Q+ source tree, so it should be using /system/bin/recovery\n\n(Felix, FYI)",
+      "parentUuid": "b43595eb_a584f091",
+      "revId": "a4abeb2852e3d701053d5b1a0ed31e83a54332fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f3cbd357_2d8e6216",
         "filename": "fs_mgr/libdm/dm.cpp",
         "patchSetId": 3
