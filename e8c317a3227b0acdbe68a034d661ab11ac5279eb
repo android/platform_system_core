@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44fd228a_4982dbcb",
+        "filename": "libcutils/include/cutils/properties.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-05-19T21:05:04Z",
+      "side": 1,
+      "message": "Ideally we don\u0027t provide this constant on host at all.  It\u0027s been deprecated for a few years now.  Any code that\u0027s new enough to compile after this CL should remove this constant instead.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "e8c317a3227b0acdbe68a034d661ab11ac5279eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "483a8c12_6640a498",
+        "filename": "libcutils/properties.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-05-19T21:05:04Z",
+      "side": 1,
+      "message": "We already link a shared libbase to libcutils.  I think we should use the std::map in libbase here instead of have a second copy of it.  Or otherwise, we should have a shared host library that implements __system_property_set(), __system_property_get(), etc.\n\nAs nice as it is to have system properties on host, I think it would be exceptionally confusing to people that libcutils\u0027s and libbase\u0027s view of them is not the same.",
+      "revId": "e8c317a3227b0acdbe68a034d661ab11ac5279eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
