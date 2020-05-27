@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "890733d5_892f5646",
+        "filename": "libutils/Timers.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-05-27T22:07:19Z",
+      "side": 1,
+      "message": "If we want to prevent the hardcoding or at least provide a way to keep it updated, maybe a static assert?\n\nLine 27:\nconstexpr size_t clock_id_max \u003d 5;\n\nLine 33:\nstatic_assert(arraysize(clocks) \u003d\u003d clock_id_max, \"You must update clocks[] array and the non-Linux check together\");\n\nLine 41:\nif (clock \u003c 0 || clock \u003e\u003d clock_id_max)",
+      "range": {
+        "startLine": 41,
+        "startChar": 29,
+        "endLine": 41,
+        "endChar": 30
+      },
+      "revId": "731755c58df48dbb27ff2521a66f2751bc410721",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
