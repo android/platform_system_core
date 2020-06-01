@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "470a6f49_6aad84b1",
+        "filename": "init/first_stage_init.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-06-01T18:07:16Z",
+      "side": 1,
+      "message": "You should declare these where they\u0027re first used.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 23
+      },
+      "revId": "0a2532d319d650721143394985ee651f3b6f107a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9588783_e2526f8c",
+        "filename": "init/first_stage_init.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-06-01T18:07:16Z",
+      "side": 1,
+      "message": "Same here, also, use nullptr instead of NULL:\n\nstruct dirent** entries;\nint num_entries \u003d scandir(MODULE_BASE_DIR, \u0026entries, nullptr, alphasort);",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 70
+      },
+      "revId": "0a2532d319d650721143394985ee651f3b6f107a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b5e88d8_84e4b66f",
+        "filename": "init/first_stage_init.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-06-01T18:07:16Z",
+      "side": 1,
+      "message": "Especially since this is duplicated below, I think it\u0027s better to be in some sort of RAII type or use android::base::make_scope_guard().\n\nIf you used an RAII type, which would likely end up being a std::vector\u003cdirent\u003e, then you\u0027d probably be better off using readdir(), then sorting the elements manually, but that goes against enh@\u0027s suggestion to use scandir().\n\nOtherwise you\u0027d want\n    auto guard \u003d android::base::make_scope_guard([\u0026] {\n        for (int i \u003d 0; i \u003c num_entries; i++) {\n            free(entries[i]);\n        }\n        free(entries);\n    }\n\nright after a successful completion of scandir().",
+      "range": {
+        "startLine": 156,
+        "startChar": 12,
+        "endLine": 159,
+        "endChar": 26
+      },
+      "revId": "0a2532d319d650721143394985ee651f3b6f107a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
