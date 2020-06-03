@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c059ab06_4b82fe8c",
+        "filename": "init/first_stage_init.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-06-03T15:41:31Z",
+      "side": 1,
+      "message": "Why call reset here?  It you have `\u003d 0` in the initializer and you\u0027re constructing a new Modprobe instance in each loop.  I don\u0027t think you\u0027re increasing the module count in the constructor either, right?\n\nNot super important, but just seems like a bit of an anti-pattern if you always need to reset the module count right after constructing the object.",
+      "revId": "a7707f75031d47437a2825a9191d5d3afa44f50b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
