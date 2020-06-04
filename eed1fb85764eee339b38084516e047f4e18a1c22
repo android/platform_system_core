@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "d2808d8d_0ce4a715",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1110,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2020-06-04T22:10:07Z",
+      "side": 1,
+      "message": "I just remembered -- technically we need to check ro.crypto.dm_default_key.options_format.version as well, like system/vold/MetadataCrypt.cpp does.\n\nI.e., we should use block_size:4096 if \"dm-default-key v2\" is being used, even if the partner hasn\u0027t yet set their final ro.product.first_api_level.\n\nWhere does this code run from -- does it have permission to access that system property?",
+      "range": {
+        "startLine": 1109,
+        "startChar": 20,
+        "endLine": 1110,
+        "endChar": 37
+      },
+      "revId": "eed1fb85764eee339b38084516e047f4e18a1c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8cb1f291_08e27162",
         "filename": "fs_mgr/libdm/include/libdm/dm_target.h",
         "patchSetId": 7
@@ -33,6 +56,24 @@
       "revId": "eed1fb85764eee339b38084516e047f4e18a1c22",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "000f66f1_77e3d449",
+        "filename": "fs_mgr/libdm/include/libdm/dm_target.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2020-06-04T22:10:07Z",
+      "side": 1,
+      "message": "Is that true?  The other targets in this file use camel case naming.",
+      "parentUuid": "8cb1f291_08e27162",
+      "revId": "eed1fb85764eee339b38084516e047f4e18a1c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
