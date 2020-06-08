@@ -70,6 +70,30 @@
       "revId": "23b72351e47eadde65b1d8a0f40495e605a74829",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ced42f1c_4faf0f50",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1292830
+      },
+      "writtenOn": "2020-06-08T07:08:04Z",
+      "side": 1,
+      "message": "interesting, in get_backup_sb()\n\ne2fsck tries 1024/2048/4096 blksize to find possible backup sb.\n\n\tfor (blocksize \u003d EXT2_MIN_BLOCK_SIZE;\n\t     blocksize \u003c\u003d EXT2_MAX_BLOCK_SIZE ; blocksize *\u003d 2) {\n\t\tsuperblock \u003d blocksize*8;\n\t\tif (blocksize \u003d\u003d 1024)\n\t\t\tsuperblock++;\n\t\tio_channel_set_blksize(io, blocksize);\n\t\tif (io_channel_read_blk64(io, superblock,\n\t\t\t\t\t-SUPERBLOCK_SIZE, buf))\n\t\t\tcontinue;\n#ifdef WORDS_BIGENDIAN\n\t\tif (sb-\u003es_magic \u003d\u003d ext2fs_swab16(EXT2_SUPER_MAGIC))\n\t\t\text2fs_swap_super(sb);\n#endif\n\t\tif ((sb-\u003es_magic \u003d\u003d EXT2_SUPER_MAGIC) \u0026\u0026\n\t\t    (EXT2_BLOCK_SIZE(sb) \u003d\u003d blocksize)) {\n\t\t\tret_sb \u003d superblock;\n\t\t\tif (ctx) {\n\t\t\t\tctx-\u003esuperblock \u003d superblock;\n\t\t\t\tctx-\u003eblocksize \u003d blocksize;\n\t\t\t}\n\t\t\tbreak;\n\t\t}\n\t}",
+      "parentUuid": "4794e7af_010106bd",
+      "range": {
+        "startLine": 325,
+        "startChar": 8,
+        "endLine": 326,
+        "endChar": 70
+      },
+      "revId": "23b72351e47eadde65b1d8a0f40495e605a74829",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
