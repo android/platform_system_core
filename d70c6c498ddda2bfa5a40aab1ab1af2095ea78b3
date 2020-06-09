@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26783347_f4837651",
+        "filename": "fs_mgr/libsnapshot/snapshot_metadata_updater.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-06-09T18:17:45Z",
+      "side": 1,
+      "message": "nit: I think you can just do partial_update_ \u003d manifest.partial_update() here.\n\nhttps://developers.google.com/protocol-buffers/docs/reference/cpp-generated#singular-numeric-fields-proto2\n\n\"Returns the current value of the field. If the field is not set, returns the default value.\"",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 5
+      },
+      "revId": "d70c6c498ddda2bfa5a40aab1ab1af2095ea78b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03f11afe_4fea04c1",
+        "filename": "fs_mgr/libsnapshot/snapshot_metadata_updater.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-06-09T18:17:45Z",
+      "side": 1,
+      "message": "nit:\n\n  if (!ShrinkPartitions()) return false;\n  if (!partial_update_ \u0026\u0026 !DeletePartitions()) return false;\n\nor\n\n  return ShrinkPartitions() \u0026\u0026\n         (partial_update_ || DeletePartitions()) \u0026\u0026\n         MovePartitionsToDefault() \u0026\u0026...",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 5
+      },
+      "revId": "d70c6c498ddda2bfa5a40aab1ab1af2095ea78b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e49cb6_366d29d3",
+        "filename": "fs_mgr/libsnapshot/snapshot_metadata_updater.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-06-09T18:17:45Z",
+      "side": 1,
+      "message": "What do we do with \"groups\"? For partial updates, it is most likely that one or more \"update groups\" are updated, and the rest are untouched.\n\nFor GSI updates it means the OEM group metadata may not exist in the payload. So we might want to skip this as well? (I am not sure about this yet; let\u0027s discuss offline)",
+      "range": {
+        "startLine": 273,
+        "startChar": 11,
+        "endLine": 273,
+        "endChar": 28
+      },
+      "revId": "d70c6c498ddda2bfa5a40aab1ab1af2095ea78b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
