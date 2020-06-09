@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a71894b_d1602a1a",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-06-09T01:30:24Z",
+      "side": 1,
+      "message": "Move this into the for loop, eg \"for (unsigned int blocksize \u003d ...\"",
+      "revId": "9329d1fc78188520db1cb8da6ea5a410284259c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a61976c_46a47f29",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-06-09T01:30:24Z",
+      "side": 1,
+      "message": "Scope \"superblock\" inside the loop, since it\u0027s not used anywhere else.",
+      "revId": "9329d1fc78188520db1cb8da6ea5a410284259c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a4c5f5d_bf45dd26",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-06-09T01:30:24Z",
+      "side": 1,
+      "message": "Repeating the loop condition like this could be brittle if someone introduces a \"continue\" before it. Instead, can you re-test the fs_stat flag after the loop completes? like:\n\n    if (*fs_stat \u0026 FS_STAT_INVALID_MAGIC) {\n        return false;\n    }",
+      "revId": "9329d1fc78188520db1cb8da6ea5a410284259c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
