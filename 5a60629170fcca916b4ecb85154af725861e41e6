@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46fbc925_646a38d5",
+        "filename": "logd/CompressionEngine.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-06-10T20:44:01Z",
+      "side": 1,
+      "message": "CHECK_LE(in_size, UINT32_MAX)?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 53
+      },
+      "revId": "5a60629170fcca916b4ecb85154af725861e41e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01f6d6ca_88cf02d6",
+        "filename": "logd/CompressionEngine.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-06-10T20:44:01Z",
+      "side": 1,
+      "message": "I think this should be `!\u003d Z_STREAM_END` (or CHECK_EQ(ret, Z_STREAM_END), since zlib gives the guarantee that it returns Z_STREAM_END here.\n\nIf the impossible happens, you leak the z_stream here, which is an argument for CHECK.",
+      "range": {
+        "startLine": 48,
+        "startChar": 12,
+        "endLine": 48,
+        "endChar": 29
+      },
+      "revId": "5a60629170fcca916b4ecb85154af725861e41e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fda9d789_20241f64",
+        "filename": "logd/CompressionEngine.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-06-10T20:44:01Z",
+      "side": 1,
+      "message": "deflate",
+      "range": {
+        "startLine": 49,
+        "startChar": 23,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "5a60629170fcca916b4ecb85154af725861e41e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17eb2f9b_7f6af84f",
+        "filename": "logd/CompressionEngine.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-06-10T20:44:01Z",
+      "side": 1,
+      "message": "Just use strm.total_out instead?",
+      "range": {
+        "startLine": 52,
+        "startChar": 36,
+        "endLine": 52,
+        "endChar": 62
+      },
+      "revId": "5a60629170fcca916b4ecb85154af725861e41e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "464f1836_30acde6e",
+        "filename": "logd/CompressionEngine.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-06-10T20:44:01Z",
+      "side": 1,
+      "message": "Either this is wrong, or the in_size parameter is pointless.",
+      "range": {
+        "startLine": 56,
+        "startChar": 49,
+        "endLine": 56,
+        "endChar": 58
+      },
+      "revId": "5a60629170fcca916b4ecb85154af725861e41e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3df6c063_fda2b8d7",
+        "filename": "logd/CompressionEngine.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-06-10T20:44:01Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem right, unless you\u0027re storing the uncompressed size alongside the chunk. I think this at least deserves a comment that out must be exactly the size of the uncompressed data.\n\n(also, same comment re: leaking in here)",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 75
+      },
+      "revId": "5a60629170fcca916b4ecb85154af725861e41e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35e3b7db_b8748ccd",
+        "filename": "logd/CompressionEngine.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-06-10T20:44:01Z",
+      "side": 1,
+      "message": "same as the zlib impl, this is either wrong or in_size is useless.",
+      "range": {
+        "startLine": 95,
+        "startChar": 49,
+        "endLine": 95,
+        "endChar": 58
+      },
+      "revId": "5a60629170fcca916b4ecb85154af725861e41e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd239fd3_c10009c8",
+        "filename": "logd/CompressionEngine.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-06-10T20:44:01Z",
+      "side": 1,
+      "message": "This has subtly different behavior from the zlib implementation: you\u0027re permitting results that don\u0027t exactly fill out.",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 105,
+        "endChar": 16
+      },
+      "revId": "5a60629170fcca916b4ecb85154af725861e41e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a83a628_dce53bdf",
+        "filename": "logd/CompressionEngine.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-06-10T20:44:01Z",
+      "side": 1,
+      "message": "Instead of passing both a vector reference and a size, use std::span\u003cconst uint8_t\u003e or std::string_view instead?",
+      "range": {
+        "startLine": 27,
+        "startChar": 26,
+        "endLine": 27,
+        "endChar": 72
+      },
+      "revId": "5a60629170fcca916b4ecb85154af725861e41e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de4922a4_e9f9d3e8",
+        "filename": "logd/SerializedFlushToState.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-06-10T20:44:01Z",
+      "side": 1,
+      "message": "nit: preincrement/decrement",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 13
+      },
+      "revId": "5a60629170fcca916b4ecb85154af725861e41e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b266c8a6_20981288",
+        "filename": "logd/SerializedFlushToState.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-06-10T20:44:01Z",
+      "side": 1,
+      "message": "nit: preincrement",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 24
+      },
+      "revId": "5a60629170fcca916b4ecb85154af725861e41e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fb7e8c8_ab5d42ef",
+        "filename": "logd/SerializedLogBuffer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-06-10T20:44:01Z",
+      "side": 1,
+      "message": "Is there any point in doing a relaxed increment when you immediately take the lock that guards everything afterwards?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 44
+      },
+      "revId": "5a60629170fcca916b4ecb85154af725861e41e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8bac4ad_7b3eb60b",
+        "filename": "logd/SerializedLogBuffer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-06-10T20:44:01Z",
+      "side": 1,
+      "message": "Use thread safety annotations to mark what this guards?",
+      "range": {
+        "startLine": 63,
+        "startChar": 52,
+        "endLine": 64,
+        "endChar": 26
+      },
+      "revId": "5a60629170fcca916b4ecb85154af725861e41e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfc4d941_912e0f46",
+        "filename": "logd/SerializedLogChunk.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2020-06-10T20:44:01Z",
+      "side": 1,
+      "message": "It seems like this might be prone to storms of unneeded decompress/compress cycles. e.g. if you have N readers, and a writer writes two whole chunks before the readers get to read, could that potentially lead to each of the readers decompressing and then immediately recompressing the chunk?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "5a60629170fcca916b4ecb85154af725861e41e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
