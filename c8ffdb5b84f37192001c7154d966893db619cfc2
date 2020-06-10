@@ -16,6 +16,24 @@
       "revId": "c8ffdb5b84f37192001c7154d966893db619cfc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5adee492_c99ae2d0",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1292830
+      },
+      "writtenOn": "2020-06-10T23:06:52Z",
+      "side": 1,
+      "message": "Hi David, the idea is to avoid unnecessary scan on raw /data block.\nfor example, the raw /data block device is /dev/block/sda45 -\u003e encrypted by metadata encryption.\nAnd the wrapped /data block device is /dev/block/dm-2. -\u003e ext4 plain text\nSo, if fs_mgr tries to mount /dev/block/sda45 in the beginning, without the checks, 7 unnecessary scans (blksize\u003d1024, 2048, 4096, ..., 65536) will be conducted on /dev/block/sda45.\nI want to avoid these 7 scans.",
+      "parentUuid": "97d3953d_7264463c",
+      "revId": "c8ffdb5b84f37192001c7154d966893db619cfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
