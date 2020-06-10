@@ -1,0 +1,510 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6388a68e_0a12baec",
+        "filename": "libunwindstack/tests/fuzz/DexFilesFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "Unless you run this for long enough, then 99% of the time this is probably going to do nothing.\n\nIt would be better to add a fuzzer for DexFile and create some kind of valid dex file then make this call. You might still want to levea this here, but it\u0027s not going to do much unless you run for a really long time and get lucky to create something that resembles a dex file randomly.\n\nEither that or do something to create a bunch of valid dex files to make this do something.",
+      "range": {
+        "startLine": 62,
+        "startChar": 13,
+        "endLine": 62,
+        "endChar": 33
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35ef1160_0d8d63ee",
+        "filename": "libunwindstack/tests/fuzz/DexFilesFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "Because of the way you are doing this, the fuzzer is never going to exercise a part of the GetDexFile functionality.\n\nIt might be worth adding some switch to determine whether you create the object this way, or you create a MemoryLocal object. That object would actually be kind of interesting and doesn\u0027t require any extra setup (nor does it require the vector of data to back it up).",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 91
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da1aa02c_118cc288",
+        "filename": "libunwindstack/tests/fuzz/DexFilesFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "Would probably be better as:\n\nfor (size_t i \u003d 0; i \u003c kMaxOperations \u0026\u0026 data_provider.remaining_bytes() \u003e 0; ++i)",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 77
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "119e8bdc_ea158c0a",
+        "filename": "libunwindstack/tests/fuzz/DexFilesFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "Is it possible for this to fail? For example, if there is only one byte remaining, but this requires consuming more than one byte.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 89
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42ed76a3_b3a5746e",
+        "filename": "libunwindstack/tests/fuzz/MemoryFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "This crashes almost immediately when run because the size becomes too big and the vector is empty.",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 50
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aa9e1de_88e686f8",
+        "filename": "libunwindstack/tests/fuzz/MemoryFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "I\u0027ve been thinking about this, and I\u0027m not sure this fuzzer makes much sense. The ReadFully function is different based on the Memory object, but this fuzzer only tests one kind of Memory object. ReadFully also isn\u0027t that complex and already has all of the corners tested.\n\nReadString makes a little more sense because it is not different per type of object, but it is also not that complex and it\u0027s already covered completely (or if not, just add a few more directed tests).\n\nSo I think this fuzzer should probably be deleted since it also tends to crash due to size mismatches in the passed in buffers.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 91
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9b7cec7_c64b3027",
+        "filename": "libunwindstack/tests/fuzz/RegsFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "This is not worth fuzzing, every version of this function does not do anything based on the value passed in.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 65
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fda8b02_3a2f85f1",
+        "filename": "libunwindstack/tests/fuzz/RegsFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "Same as above.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 65
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b14b5f3_ec732fc6",
+        "filename": "libunwindstack/tests/fuzz/RegsFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "Same as above.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 69
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf1ef192_d27fea7c",
+        "filename": "libunwindstack/tests/fuzz/RegsFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "This will never do anything other than fuzz the ptrace system call.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 78
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4294d21_637240a2",
+        "filename": "libunwindstack/tests/fuzz/RegsFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "There is nothing to fuzz here. All this does is create an object, but there are already tests for this. You could run this until the heat death of the universe and never get any more coverage or path coverage than is in the unit tests.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 45
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24337223_d41791cc",
+        "filename": "libunwindstack/tests/fuzz/RegsFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "Same as above, there is nothing that is going to change based on fuzzing.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 62
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c8282f1_63470f10",
+        "filename": "libunwindstack/tests/fuzz/RegsFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "There is some small amount of change based on different memory object, but it only matters to 2 of the four different types of Reg objects, and even then it\u0027s either or and so fuzzing is not very useful.",
+      "range": {
+        "startLine": 71,
+        "startChar": 14,
+        "endLine": 71,
+        "endChar": 36
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b795fe7a_3eb49b21",
+        "filename": "libunwindstack/tests/fuzz/RegsFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "There is some variation based on data, but again, this function is really straight forward, and fuzzing will not increase code coverage or path coverage over what is in the unit tests.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 93
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0e2fc20_7c358d2a",
+        "filename": "libunwindstack/tests/fuzz/RegsFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "As shown above, this fuzzer isn\u0027t really doing anything so should be removed.",
+      "range": {
+        "startLine": 79,
+        "startChar": 15,
+        "endLine": 79,
+        "endChar": 37
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7f74de5_68090642",
+        "filename": "libunwindstack/tests/fuzz/UnwinderFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "Is this used to change the unwinder state before doing an unwind? I\u0027m not completely familiar with the fuzzer so I don\u0027t know if some of this is being used to randomly set state in the object which will be used later on.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 64
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8903fb27_ca85d7d8",
+        "filename": "libunwindstack/tests/fuzz/UnwinderFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "Same as above, this changes some behavior, but unless you make a call later on this does nothing.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 66
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97e63624_23740429",
+        "filename": "libunwindstack/tests/fuzz/UnwinderFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "This only changes the way FormatFrame works, and it\u0027s not really worth fuzzing.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 66
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f852c6af_a49763df",
+        "filename": "libunwindstack/tests/fuzz/UnwinderFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "This is another function that really doesn\u0027t warrant fuzzing. The function is self contained, doesn\u0027t have any side effects and the unit tests cover it completely.",
+      "range": {
+        "startLine": 69,
+        "startChar": 18,
+        "endLine": 69,
+        "endChar": 29
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d44655a6_713f6f37",
+        "filename": "libunwindstack/tests/fuzz/UnwinderFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "This appears to be the same as above. Did you mean to have this take a FrameData structure?\n\nAs above, this function is not really useful to fuzz since it\u0027s already covered completely and if not, the unit tests should be enhanced to cover all cases.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 8
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "749866e9_a41b5a7f",
+        "filename": "libunwindstack/tests/fuzz/UnwinderFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "As from the above comments, is this related to setting state in the object? If so this function does not change any Unwinder object state. Also, varying the pc is not likely to do anything without a more targeted test. Again, you could fuzz for hours and probably never get much in the way of coverage. Also, because of the nature of this function, it\u0027s not very likely this fuzzer would ever cause any kind of crash because it\u0027s mostly just getting data that either exists or don\u0027t. In other words, it will either crash the first time you call it or never.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 43
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3ac3f9d_5773477c",
+        "filename": "libunwindstack/tests/fuzz/UnwinderFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-06-10T21:24:14Z",
+      "side": 1,
+      "message": "This fuzzer never calls Unwind, so it\u0027s unlikely it\u0027s doing much of anything. All of the fuzzing operation it performs are mostly setting class variables.\n\nYou could run this forever, and you would not increase the coverage over the unit tests (except for one function which is not tested right now, that I need to add tests for).",
+      "range": {
+        "startLine": 109,
+        "startChar": 15,
+        "endLine": 109,
+        "endChar": 37
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
