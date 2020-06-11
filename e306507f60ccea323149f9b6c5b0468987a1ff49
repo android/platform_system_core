@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d8f06a4e_da03be88",
+        "filename": "libunwindstack/tests/fuzz/DexFilesFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-11T16:49:13Z",
+      "side": 1,
+      "message": "So to make sure I understand what you\u0027re suggesting:\nBasically, it\u0027s very unlikely the fuzzer will hit a valid dex structure if it\u0027s randomly permuting. Your suggestion is to solve it by essentially faking/mocking or constructing a dex file from fuzzer data in that memory space? Also, would it be preferable to use a corpus of dex structures as an alternative to manual construction, that way we could incorporate handling of invalid dex files?",
+      "parentUuid": "6388a68e_0a12baec",
+      "range": {
+        "startLine": 62,
+        "startChar": 13,
+        "endLine": 62,
+        "endChar": 33
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35ef1160_0d8d63ee",
         "filename": "libunwindstack/tests/fuzz/DexFilesFuzz.cpp",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-10T21:24:14Z",
       "side": 1,
       "message": "Because of the way you are doing this, the fuzzer is never going to exercise a part of the GetDexFile functionality.\n\nIt might be worth adding some switch to determine whether you create the object this way, or you create a MemoryLocal object. That object would actually be kind of interesting and doesn\u0027t require any extra setup (nor does it require the vector of data to back it up).",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 91
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b21c9aab_884472da",
+        "filename": "libunwindstack/tests/fuzz/DexFilesFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-11T16:49:13Z",
+      "side": 1,
+      "message": "To be honest it was not immediately apparent to me the relationship between the memory objects. Particularly, the local vs the offline memory object, but also the memory cache object. Is there documentation on how these pieces fit together somewhere? Either way I will take a look at trying to also use the MemoryLocal object. The MemoryRemote object might also be a good piece of future work that could be incorporated into some of these fuzzers.",
+      "parentUuid": "35ef1160_0d8d63ee",
       "range": {
         "startLine": 74,
         "startChar": 0,
@@ -129,6 +177,30 @@
       "writtenOn": "2020-06-10T21:24:14Z",
       "side": 1,
       "message": "This crashes almost immediately when run because the size becomes too big and the vector is empty.",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 50
+      },
+      "revId": "e306507f60ccea323149f9b6c5b0468987a1ff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c23c77b_f64ffc6d",
+        "filename": "libunwindstack/tests/fuzz/MemoryFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-11T16:49:13Z",
+      "side": 1,
+      "message": "Do you think it\u0027s unlikely for consumers of this library to call this in a way that would lead to those values being set incorrectly? It seems like an empty vector and a large max_size are both fairly reasonable things to expect this method to handle. If you that\u0027s not the case though, I can add in some extra logic here. I just prefer to avoid assumptions about use unless it\u0027s clear the library is not meant to be used that way, or there\u0027s an explicit check in the library.",
+      "parentUuid": "42ed76a3_b3a5746e",
       "range": {
         "startLine": 46,
         "startChar": 7,
