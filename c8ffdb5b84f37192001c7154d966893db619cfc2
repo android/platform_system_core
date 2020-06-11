@@ -34,6 +34,24 @@
       "revId": "c8ffdb5b84f37192001c7154d966893db619cfc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f87b1e4_9670ddda",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-06-11T03:45:55Z",
+      "side": 1,
+      "message": "Oh, I see now - it\u0027s due to the unfortunate way things are ordered in mount_all. Can you add a comment above, explaining that you don\u0027t want to scan blocks on the encrypted device? And simplify the logic a bit so it\u0027s clearer:\n\n    bool encrypted \u003d should_use_metadata_encryption(entry) || needs_block_encryption(entry);\n    if (entry.mount_point \u003d\u003d \"/data\" \u0026\u0026 (!encrypted || android::base::StartsWith ...\n\nSomeday we\u0027ll have to refactor this so mount_all calls encryptFstab before attempting to read anything.",
+      "parentUuid": "5adee492_c99ae2d0",
+      "revId": "c8ffdb5b84f37192001c7154d966893db619cfc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
