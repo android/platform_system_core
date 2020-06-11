@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0137352_7c8f1c70",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2020-06-11T10:29:17Z",
+      "side": 1,
+      "message": "NB: special log handler",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 1
+      },
+      "revId": "395ae4bfb52bb4f733af38baa881f3928e823698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63ad333c_28faa79c",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2020-06-11T10:29:17Z",
+      "side": 1,
+      "message": "remount can be operated by adb (scripting) before vold is active, even before /data is remounted.\n\nI expect this will not help, but maybe to educate, I fully expect something like:\n\n    auto bootreason \u003d android::base::GetProperty(\"sys.boot.reason\", \"\");\n    if (bootreason !\u003d \"reboot,ota\") return false;\n\nwould drop the binder overhead, but this property will not be set until after /data mounts which is too late to resolve the race.\n\nOn the other hand, LAST_REBOOT_REASON_FILE (/metadata/bootstat/persist.sys.boot.reason) may offer clues prior to /data mounting if there was a controlled reboot that would lead to checkpointing. I use the word clues because knowing the OTA or other mechanisms will lay out the possible reboot reasons that are implicated with checkpointing and we can get an early clue. Once data mounts, this file is erased as bootstat slurps it up to generate the canonical sys.boot.reason. All we need to do is hold off remount success until we know for sure.",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 80
+      },
+      "revId": "395ae4bfb52bb4f733af38baa881f3928e823698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bc2669c_9429ba94",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2020-06-11T10:29:17Z",
+      "side": 1,
+      "message": "Q: overlayfs is activated at boot with said backing. Checkpointing is triggered by OTA et.al.. Such triggers would in other configurations wipe out /scratch on dynamic partitions to prevent that, but maybe we are not doing so for the fiemap? Maybe we should make sure OTA/flashall wipes out the fiemap to /data too, or is that already happening?\n\nAt least this would prevent re-creating the fiemap.",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 75
+      },
+      "revId": "395ae4bfb52bb4f733af38baa881f3928e823698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70bcab94_fb5209c0",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2020-06-11T10:29:17Z",
+      "side": 1,
+      "message": "Use LOG(ERROR)\n\nWe have a special LOG handler here that sends the logs to the logger, and the message to stderr at the same time.",
+      "range": {
+        "startLine": 224,
+        "startChar": 12,
+        "endLine": 224,
+        "endChar": 77
+      },
+      "revId": "395ae4bfb52bb4f733af38baa881f3928e823698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
