@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "4a598eef_e9219d85",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2020-06-11T20:17:47Z",
+      "side": 1,
+      "message": "vold at least acts like a HAL, which would deal with future changes. dm-bow or checkpointing flag on f2fs also occur later, as in when /data is mounted, so does not solve the race condition where remount can be requested before /data is mounted, or vold is started ... but when we _expect_ vold to manage a checkpoint immediately when it starts up. I think the _only_ case where vold does this immediately is right after an OTA, so that, and whatever can do that, is the only case(s) that is of concern.\n\nAnother way to \u0027solve\u0027 this is to block remount command until vold is present, that will have the pleasant side effect of making sure scripts do not need to retry if vold does not intend to checkpoint. In this case, we have to block until we are sure vold is not going to checkpoint (also an implementation detail I am not sure about)?\n\nTest scripts, KISS:\n\n#! /bin/sh\n. . .\n# something something that causes the device to perform checkpointing upon reboot\n. . .\nadb reboot ota\nadb wait-for-device\nadb shell su root remount    # This occurs ~ten seconds before /data is mounted?\n. . .",
+      "parentUuid": "82676e02_48fc3bc8",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 80
+      },
+      "revId": "395ae4bfb52bb4f733af38baa881f3928e823698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0bc2669c_9429ba94",
         "filename": "fs_mgr/fs_mgr_remount.cpp",
         "patchSetId": 1
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "Yeah, flashall already wipes the fiemap (by creating a tombstone on /metadata that causes us to ignore and then delete it when /data is mounted).\n\nI can also have vold refuse to start a checkpoint when adb remount has been activated.",
       "parentUuid": "0bc2669c_9429ba94",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 75
+      },
+      "revId": "395ae4bfb52bb4f733af38baa881f3928e823698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43de6de7_19d829bd",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2020-06-11T20:17:47Z",
+      "side": 1,
+      "message": "sgtm, but there would need to be clear communications back to the caller about why.",
+      "parentUuid": "159dede8_95478f83",
       "range": {
         "startLine": 219,
         "startChar": 0,
