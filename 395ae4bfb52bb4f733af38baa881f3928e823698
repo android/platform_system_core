@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a99b80d3_91a7aa88",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-06-11T19:50:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a0137352_7c8f1c70",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 1
+      },
+      "revId": "395ae4bfb52bb4f733af38baa881f3928e823698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63ad333c_28faa79c",
         "filename": "fs_mgr/fs_mgr_remount.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-11T10:29:17Z",
       "side": 1,
       "message": "remount can be operated by adb (scripting) before vold is active, even before /data is remounted.\n\nI expect this will not help, but maybe to educate, I fully expect something like:\n\n    auto bootreason \u003d android::base::GetProperty(\"sys.boot.reason\", \"\");\n    if (bootreason !\u003d \"reboot,ota\") return false;\n\nwould drop the binder overhead, but this property will not be set until after /data mounts which is too late to resolve the race.\n\nOn the other hand, LAST_REBOOT_REASON_FILE (/metadata/bootstat/persist.sys.boot.reason) may offer clues prior to /data mounting if there was a controlled reboot that would lead to checkpointing. I use the word clues because knowing the OTA or other mechanisms will lay out the possible reboot reasons that are implicated with checkpointing and we can get an early clue. Once data mounts, this file is erased as bootstat slurps it up to generate the canonical sys.boot.reason. All we need to do is hold off remount success until we know for sure.",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 80
+      },
+      "revId": "395ae4bfb52bb4f733af38baa881f3928e823698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82676e02_48fc3bc8",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-06-11T19:50:59Z",
+      "side": 1,
+      "message": "It\u0027s possible to enter checkpoints without an OTA, I believe. Definitely just by typing the vdc command, but I thought out-of-band updates that don\u0027t go through update_engine would do it as well.\n\nWhat if I make the check work without binder, by looking for dm-bow or the checkpointing flag on f2fs?\n\nWhat is the scripting case? Would that be like a .rc file that remounts before vold starts?",
+      "parentUuid": "63ad333c_28faa79c",
       "range": {
         "startLine": 109,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "159dede8_95478f83",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-06-11T19:50:59Z",
+      "side": 1,
+      "message": "Yeah, flashall already wipes the fiemap (by creating a tombstone on /metadata that causes us to ignore and then delete it when /data is mounted).\n\nI can also have vold refuse to start a checkpoint when adb remount has been activated.",
+      "parentUuid": "0bc2669c_9429ba94",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 75
+      },
+      "revId": "395ae4bfb52bb4f733af38baa881f3928e823698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70bcab94_fb5209c0",
         "filename": "fs_mgr/fs_mgr_remount.cpp",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "395ae4bfb52bb4f733af38baa881f3928e823698",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9266573c_f5b3b1fa",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-06-11T19:50:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "70bcab94_fb5209c0",
+      "range": {
+        "startLine": 224,
+        "startChar": 12,
+        "endLine": 224,
+        "endChar": 77
+      },
+      "revId": "395ae4bfb52bb4f733af38baa881f3928e823698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
