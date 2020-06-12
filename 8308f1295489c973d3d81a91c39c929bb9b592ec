@@ -22,6 +22,30 @@
       "revId": "8308f1295489c973d3d81a91c39c929bb9b592ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdfc7431_9b1cd647",
+        "filename": "logd/SerializedLogBuffer.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-06-12T17:47:31Z",
+      "side": 1,
+      "message": "No, it is a bug.  I noticed this too and it impacts Prune() as well.  I have a bitrotted test somewhere that attempts to repro the case, but I haven\u0027t seen this happening on a real device, so I haven\u0027t prioritized looking into it.\n\nI filed b/158850522 to track.\n\nThis is identical to the logic in SimpleLogBuffer::Clear() as well.  I could deduplicate them into LogBuffer, but then that\u0027s no longer an interface...",
+      "parentUuid": "6417e074_eca03343",
+      "range": {
+        "startLine": 309,
+        "startChar": 9,
+        "endLine": 311,
+        "endChar": 39
+      },
+      "revId": "8308f1295489c973d3d81a91c39c929bb9b592ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
