@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "0d0d1f81_2b6f9b1f",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-06-12T23:00:07Z",
+      "side": 1,
+      "message": "Hrm, I don\u0027t think adbd can start before vold. It looks like vold starts in early-fs which is the first thing triggered by late-init. It\u0027s true that adb can be used if /data is not mounted (since /data can fail to mount), but I don\u0027t think adb can be used before the mount is attempted, or before early-fs is triggered. When I run: \"adb reboot \u0026\u0026 adb wait-for-device \u0026\u0026 adb shell su root ls -l /data\", I always get stuff back.\n\nIf so, the binder check should be fine. Alternately I can do the dm-bow/f2fs flag checks in a static library inside vold, so at least the code is living in the same place.",
+      "parentUuid": "4a598eef_e9219d85",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 80
+      },
+      "revId": "395ae4bfb52bb4f733af38baa881f3928e823698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0bc2669c_9429ba94",
         "filename": "fs_mgr/fs_mgr_remount.cpp",
         "patchSetId": 1
@@ -188,6 +212,30 @@
       "revId": "395ae4bfb52bb4f733af38baa881f3928e823698",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81f9b6f2_bf5f8465",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-06-12T23:00:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "43de6de7_19d829bd",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 75
+      },
+      "revId": "395ae4bfb52bb4f733af38baa881f3928e823698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
