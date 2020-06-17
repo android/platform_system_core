@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8181add2_b507942b",
+        "filename": "logd/CompressionEngine.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2020-06-17T14:22:56Z",
+      "side": 1,
+      "message": "Did we intend this line to be:\n\n  static CompressionEngine* engine \u003d new ZstdCompressionEngine();\n\nI\u0027m likely missing something, but as is, it seems like we leak this instance in every call, and always make a new object.",
+      "revId": "1a796bca57ef45d559e70dc05ad2df5cb77b8f64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
