@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "682153a8_4c219909",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2020-06-26T17:29:52Z",
+      "side": 1,
+      "message": "I made the decision no.\n- It has a different owner ;-/, so moved that to a dependent CL\n- It is not a priority for landing in Android 11, we can CP the CL that moves it once everything has settled.",
+      "parentUuid": "944b5db4_46b9787d",
+      "revId": "603525e93bb058f2bbfa4cc46c63e4fe736e77da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f43272a_3b86b496",
         "filename": "toolbox/modprobe.cpp",
         "patchSetId": 5
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "edfe0ac1_e1698558",
+        "filename": "toolbox/modprobe.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2020-06-26T17:29:52Z",
+      "side": 1,
+      "message": "Yes, nothing is more annoying as logspam to me, the limited in-kernel dmesg log cluttered with empty lines. Those empty lines are coming from --help though in this specific case, should it be triggered by syntax errors scrolling the trigger, and thus critical, message away.",
+      "parentUuid": "2f43272a_3b86b496",
+      "range": {
+        "startLine": 81,
+        "startChar": 14,
+        "endLine": 81,
+        "endChar": 28
+      },
+      "revId": "603525e93bb058f2bbfa4cc46c63e4fe736e77da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f3be70b_461bff6a",
         "filename": "toolbox/modprobe.cpp",
         "patchSetId": 5
@@ -53,6 +95,30 @@
       "writtenOn": "2020-06-26T16:26:55Z",
       "side": 1,
       "message": "When would GetMinimumLogSeverity() already be \u003c\u003d DEBUG?  I only see this possible with `modprobe -v -v`, since the first `-v` would set to DEBUG and the second `-v` would set to VERBOSE, but that\u0027s not described in the help above.\n\nThis can be simply:\n1) default \u003d\u003e INFO\n2) `-q` \u003d\u003e WARNING\n3) `-v` \u003d\u003e VERBOSE since libmodprobe uses VERBOSE for its verbose logs\n\nThe last of -q or -v can be what sets this.",
+      "range": {
+        "startLine": 165,
+        "startChar": 16,
+        "endLine": 165,
+        "endChar": 83
+      },
+      "revId": "603525e93bb058f2bbfa4cc46c63e4fe736e77da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7440e3ac_50d4db08",
+        "filename": "toolbox/modprobe.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2020-06-26T17:29:52Z",
+      "side": 1,
+      "message": "Logging _could_ come from libmodprobe, libpropertyinfoparser(?), libbase(?), auditing them, especially since they can independently change, I chose to add refinement to -v to report DEBUG messages here, then dig deeper for VERBOSE later with the second -v for the libmodprobe library.\n\nSo what I am hearing is that we did not document more than one -v in the help.",
+      "parentUuid": "2f3be70b_461bff6a",
       "range": {
         "startLine": 165,
         "startChar": 16,
