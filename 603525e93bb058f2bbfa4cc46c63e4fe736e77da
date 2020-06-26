@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "944b5db4_46b9787d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-06-26T16:26:55Z",
+      "side": 1,
+      "message": "Can we remove that function in this CL too?",
+      "revId": "603525e93bb058f2bbfa4cc46c63e4fe736e77da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f43272a_3b86b496",
+        "filename": "toolbox/modprobe.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-06-26T16:26:55Z",
+      "side": 1,
+      "message": "Does KernelLogger not work if message[0] is \u0027\\0\u0027 ?  \n\nFrom the code it looks like it will and it will emit a \"\u003ctag\u003e: \" line with no contents.  Is that what you\u0027re trying to avoid with this check?",
+      "range": {
+        "startLine": 81,
+        "startChar": 14,
+        "endLine": 81,
+        "endChar": 28
+      },
+      "revId": "603525e93bb058f2bbfa4cc46c63e4fe736e77da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f3be70b_461bff6a",
+        "filename": "toolbox/modprobe.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-06-26T16:26:55Z",
+      "side": 1,
+      "message": "When would GetMinimumLogSeverity() already be \u003c\u003d DEBUG?  I only see this possible with `modprobe -v -v`, since the first `-v` would set to DEBUG and the second `-v` would set to VERBOSE, but that\u0027s not described in the help above.\n\nThis can be simply:\n1) default \u003d\u003e INFO\n2) `-q` \u003d\u003e WARNING\n3) `-v` \u003d\u003e VERBOSE since libmodprobe uses VERBOSE for its verbose logs\n\nThe last of -q or -v can be what sets this.",
+      "range": {
+        "startLine": 165,
+        "startChar": 16,
+        "endLine": 165,
+        "endChar": 83
+      },
+      "revId": "603525e93bb058f2bbfa4cc46c63e4fe736e77da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
