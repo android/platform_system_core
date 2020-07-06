@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67587578_cbcfd11a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-07-06T16:44:31Z",
+      "side": 1,
+      "message": "Looks good to me but one comment inline that will help us remove this fallback logic years from now.",
+      "revId": "6403d361fb897fe38bad493491b2b38d852d4d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce7f2a7f_3b95688f",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-07-06T16:44:31Z",
+      "side": 1,
+      "message": "Can we guard this with any check to be able to remove this in the future?  We could check `ro.product.build.version.sdk` and if it\u0027s newer than R then we reject loading the legacy paths?  \n\nIn retrospect, we should have used `ro.odm.build.version.sdk` for the ODM partition instead of coupling it with the vendor partition, though I think that\u0027s new enough to not make a difference.",
+      "range": {
+        "startLine": 914,
+        "startChar": 47,
+        "endLine": 914,
+        "endChar": 72
+      },
+      "revId": "6403d361fb897fe38bad493491b2b38d852d4d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
