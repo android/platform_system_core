@@ -39,6 +39,30 @@
       "revId": "6403d361fb897fe38bad493491b2b38d852d4d9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97a6c735_c7f663c8",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-06T23:46:06Z",
+      "side": 1,
+      "message": "odm is an extension to vendor, so I think it\u0027s okay to use info from vendor as a means to identify if odm is old or new. We don\u0027t expect the case where vendor and odm target different versions.\n\nFor the product partition, `ro.product.build.version.sdk` itself is a property in the prop file. So, it can\u0027t be used to decide which prop file to use. Perhaps we might want to examine the properties just after loading etc/build.prop and then if it has ro.product.build.version.sdk \u003e R we don\u0027t fallback to the legacy path. Is that what you want?",
+      "parentUuid": "ce7f2a7f_3b95688f",
+      "range": {
+        "startLine": 914,
+        "startChar": 47,
+        "endLine": 914,
+        "endChar": 72
+      },
+      "revId": "6403d361fb897fe38bad493491b2b38d852d4d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
