@@ -63,6 +63,30 @@
       "revId": "6403d361fb897fe38bad493491b2b38d852d4d9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e51ea832_fddcacf4",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-07-07T00:33:03Z",
+      "side": 1,
+      "message": "\u003e Perhaps we might want to examine the properties just after loading etc/build.prop and then if it has ro.product.build.version.sdk \u003e R we don\u0027t fallback to the legacy path. Is that what you want?\n\nExactly.  We can even LOG(FATAL) there since it should be an impossible scenario and only seen in development.  It will give us the ability to remove this code in a few years once we no longer support product partitions before S.",
+      "parentUuid": "97a6c735_c7f663c8",
+      "range": {
+        "startLine": 914,
+        "startChar": 47,
+        "endLine": 914,
+        "endChar": 72
+      },
+      "revId": "6403d361fb897fe38bad493491b2b38d852d4d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
