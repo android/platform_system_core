@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa6b7fe0_9607c67a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-07-10T17:58:24Z",
+      "side": 1,
+      "message": "What is your overall use case?  Do you need this behavior anywhere outside of testing?  That\u0027s the only place where I see logging is restored now.\n\nThe worry here is that this function is explicitly not thread safe, which is a conscious decision, since (number of processes that will change from the default logger) \u003e\u003e (number of processes that will change the logger only once at start up) \u003e\u003e (number of processes that will change the logger multiple times).  I wouldn\u0027t want to encourage people to use this API multiple times in their program, especially if it is multi-threaded.  ",
+      "revId": "b4e49346cf8825f0ae99c0670cc3b91ce784ca8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
