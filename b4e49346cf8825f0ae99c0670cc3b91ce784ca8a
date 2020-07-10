@@ -34,6 +34,24 @@
       "revId": "b4e49346cf8825f0ae99c0670cc3b91ce784ca8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6eb56ed9_8c213722",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-07-10T20:30:00Z",
+      "side": 1,
+      "message": "Would you be okay if we did this in libbase instead of liblog?  We have a lot more freedom with that API since it isn\u0027t in the NDK.  We could even think about having android::base::SetLogger() return the previous logger so that ScopedMockLog would switch back to the previous logger and not the default one.  android::base::SetLogger() is implemented on top of __android_log_set_logger(), so it\u0027d impact all logs, just avoid the ABI issues.\n\nAre you okay with this not being thread safe?  That\u0027s my one other concern.  I don\u0027t think the overhead of thread safety is worth adding this in a thread safe manner.",
+      "parentUuid": "e2545088_365eda78",
+      "revId": "b4e49346cf8825f0ae99c0670cc3b91ce784ca8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
