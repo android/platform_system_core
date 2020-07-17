@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "84321a21_c181e55b",
+        "filename": "logd/README.replay.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-07-17T22:18:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef7398e3_0f9a65b0",
+      "range": {
+        "startLine": 8,
+        "startChar": 24,
+        "endLine": 9,
+        "endChar": 28
+      },
+      "revId": "7a7bc7ba2d5f525042085eee1d8e3589fa5bb8b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4aa9d4a_ec112e11",
         "filename": "logd/README.replay.md",
         "patchSetId": 4
@@ -95,6 +119,54 @@
     },
     {
       "key": {
+        "uuid": "f333b880_956eeb0f",
+        "filename": "logd/README.replay.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-07-17T22:18:08Z",
+      "side": 1,
+      "message": "Maybe but not in this CL; we\u0027ll certainly need to understand the potential regressions when doing that.\n\nMy coral is much snappier with my new build, though it\u0027s also using master and SerializedLogBuffer so there\u0027re too many variables to know if it\u0027s strictly due to making the socket non-blocking again.",
+      "parentUuid": "b4aa9d4a_ec112e11",
+      "range": {
+        "startLine": 10,
+        "startChar": 56,
+        "endLine": 10,
+        "endChar": 80
+      },
+      "revId": "7a7bc7ba2d5f525042085eee1d8e3589fa5bb8b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72a38581_c1a65868",
+        "filename": "logd/README.replay.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-07-17T22:18:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab2eab2f_5f50e3be",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "7a7bc7ba2d5f525042085eee1d8e3589fa5bb8b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2aca3b64_caffbb14",
         "filename": "logd/ReplayMessages.cpp",
         "patchSetId": 4
@@ -112,6 +184,24 @@
     },
     {
       "key": {
+        "uuid": "941afc23_074ffc6f",
+        "filename": "logd/ReplayMessages.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-07-17T22:18:08Z",
+      "side": 1,
+      "message": "I\u0027ve been secretly hoping to remove them from liblog entirely, since no one should be calling them other than logd, but just haven\u0027t gotten to it yet.  I figured it\u0027s less bad to continue this hack for host than to make these even more officially supported in liblog.",
+      "parentUuid": "2aca3b64_caffbb14",
+      "revId": "7a7bc7ba2d5f525042085eee1d8e3589fa5bb8b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f787e667_81a0c4a5",
         "filename": "logd/ReplayMessages.cpp",
         "patchSetId": 4
@@ -126,6 +216,24 @@
       "revId": "7a7bc7ba2d5f525042085eee1d8e3589fa5bb8b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4185ba0_99ff9cee",
+        "filename": "logd/ReplayMessages.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-07-17T22:18:08Z",
+      "side": 1,
+      "message": "I think I was worried about fopen() allocating, since I was thought that the other log buffers were fragmenting the heap heavily and wanted to remove other variables, but 1) I\u0027m wrote an fopen() apparently stashes the FILE* pointers, so I\u0027d have been fine, and 2) heap corruption didn\u0027t turn out to be a problem anyway.\n\nI\u0027m a little embarrassed about the code as it is, but not enough to rewrite it.",
+      "parentUuid": "f787e667_81a0c4a5",
+      "revId": "7a7bc7ba2d5f525042085eee1d8e3589fa5bb8b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
