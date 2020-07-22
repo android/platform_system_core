@@ -106,6 +106,24 @@
       "revId": "1c99f7bc7a276de2978957ea71a8775a4ef81779",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "efde8491_26aaf1ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176763
+      },
+      "writtenOn": "2020-07-22T20:57:16Z",
+      "side": 1,
+      "message": "Hmm, I found that actually /dev has many sysfs entries as well. (e.g., cpuset, blkio, memcg) So, it seems Android has relaxed this a bit?\n\nI\u0027m preparing back to use in /dev like:\n/dev/sys/block/by-name/userdata -\u003e /sys/block/dm-X\n/dev/sys/fs/by-name/userdata -\u003e /sys/fs/f2fs/dm-X\n/dev/sys/block/bootdevice -\u003e /sys/devices/platform/${ro.boot_devices}/ (in vendor.rc)\n\nIf we have this, we can simplify lots of redundant code to find dm-X such as dumpstate, powerhints, checkpoint_gc.sh, sysfs of fsmgr option and idleMaint, and many QA test cases. The main reason for this symlink is actually for powerhints which requires hardcoding that we can\u0027t use any library or script.\n\nWDYT?",
+      "parentUuid": "a91df0f1_86ec78f6",
+      "revId": "1c99f7bc7a276de2978957ea71a8775a4ef81779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
