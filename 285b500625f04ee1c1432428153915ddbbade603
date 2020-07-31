@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e62c10ca_77dc0f9c",
+        "filename": "adb/crypto/rsa_2048_key.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-07-31T14:00:09Z",
+      "side": 1,
+      "message": "note that isspace !\u003d isblank.\n\nnote also that this doesn\u0027t work for non-ASCII spaces/blanks.\n\nwhy do we have this anyway? should the test just be !s.empty()? definitely worth a comment if there\u0027s a reason to do this for Windows but not the Unixes.",
+      "range": {
+        "startLine": 38,
+        "startChar": 77,
+        "endLine": 38,
+        "endChar": 84
+      },
+      "revId": "285b500625f04ee1c1432428153915ddbbade603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eef2b525_2d91799c",
+        "filename": "adb/crypto/rsa_2048_key.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-07-31T14:00:09Z",
+      "side": 1,
+      "message": "the functions above still seem like they should be in sysdeps to me, definitely not in rsa_2048_key.cpp (with the exception of GetUserInfo, but there i like what you did with L157-158 --- why not just inline the single call to GetUserInfo too?).",
+      "revId": "285b500625f04ee1c1432428153915ddbbade603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
