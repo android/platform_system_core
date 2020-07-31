@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "47d9357d_af6ad165",
+        "filename": "adb/crypto/rsa_2048_key.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-07-31T17:26:04Z",
+      "side": 1,
+      "message": "I think the initial motivation behind this was for the user info to be human-readable in the settings UI. But I guess a name with all spaces/blanks would be intentionally set by the user and it doesn\u0027t hurt us to allow it.",
+      "parentUuid": "e62c10ca_77dc0f9c",
+      "range": {
+        "startLine": 38,
+        "startChar": 77,
+        "endLine": 38,
+        "endChar": 84
+      },
+      "revId": "285b500625f04ee1c1432428153915ddbbade603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eef2b525_2d91799c",
         "filename": "adb/crypto/rsa_2048_key.cpp",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2020-07-31T14:00:09Z",
       "side": 1,
       "message": "the functions above still seem like they should be in sysdeps to me, definitely not in rsa_2048_key.cpp (with the exception of GetUserInfo, but there i like what you did with L157-158 --- why not just inline the single call to GetUserInfo too?).",
+      "revId": "285b500625f04ee1c1432428153915ddbbade603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cef8821_95550e64",
+        "filename": "adb/crypto/rsa_2048_key.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-07-31T17:26:04Z",
+      "side": 1,
+      "message": "I agree. I just didn\u0027t want to pull in all the dependencies by including sysdeps.h (fdevent, adb trace, etc). Hmm, I can probably just put `GetHostName` and `GetLoginName` into another header (sysdeps/env.h).",
+      "parentUuid": "eef2b525_2d91799c",
       "revId": "285b500625f04ee1c1432428153915ddbbade603",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
