@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "925a268a_9e4834d5",
+        "filename": "liblog/include/log/log_read.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-08-05T20:51:17Z",
+      "side": 1,
+      "message": "Ack, will keep it as is for consistency.",
+      "parentUuid": "36619336_75a5bc71",
+      "revId": "5de3671d8b9193ca0223537acf41e26e65471d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df41069d_d9463235",
         "filename": "liblog/liblog.map.txt",
         "patchSetId": 1
@@ -84,6 +102,30 @@
     },
     {
       "key": {
+        "uuid": "025df188_2e50cd9d",
+        "filename": "liblog/liblog.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-08-05T20:51:17Z",
+      "side": 1,
+      "message": "Done.  I\u0027m going to just drop it from the map entirely for now, since logcat, its only used, statically links liblog.  I\u0027ll deal with the map and updating the ABI prebuilts when I make that link shared.",
+      "parentUuid": "8ade8e83_f62a5b69",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "5de3671d8b9193ca0223537acf41e26e65471d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8feb70ae_c496dbca",
         "filename": "liblog/logd_reader.cpp",
         "patchSetId": 1
@@ -98,6 +140,24 @@
       "revId": "5de3671d8b9193ca0223537acf41e26e65471d36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72cae644_b38fa06e",
+        "filename": "liblog/logd_reader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-08-05T20:51:17Z",
+      "side": 1,
+      "message": "I was hoping to let this slip by in the copy/paste.\n\nI believe the reason is that logd returns text error messages, so it\u0027s a quick hack to figure out if the call was successful or not.",
+      "parentUuid": "8feb70ae_c496dbca",
+      "revId": "5de3671d8b9193ca0223537acf41e26e65471d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "d35e3db2_a425199c",
+        "filename": "liblog/logd_reader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-08-05T20:51:17Z",
+      "side": 1,
+      "message": "Right, I forgot that ParseUint() is header only.  I was just copying/pasting from below, but I\u0027ll clean it up.\n\n0 is a valid size, since this is returning the \u0027readable\u0027 amount, aka what has been logged.",
+      "parentUuid": "0e13df6b_b84496c9",
+      "revId": "5de3671d8b9193ca0223537acf41e26e65471d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "439080ba_97fb313d",
         "filename": "liblog/logd_reader.cpp",
         "patchSetId": 1
@@ -135,6 +213,24 @@
     },
     {
       "key": {
+        "uuid": "f00c16f7_d29a8765",
+        "filename": "liblog/logd_reader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-08-05T20:51:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "439080ba_97fb313d",
+      "revId": "5de3671d8b9193ca0223537acf41e26e65471d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31f67fd5_d8bb71fc",
         "filename": "logcat/logcat.cpp",
         "patchSetId": 1
@@ -146,6 +242,30 @@
       "writtenOn": "2020-08-05T19:13:55Z",
       "side": 1,
       "message": "should this be using WriteFully? (since you can be interrupted after writing _some_ bytes, and TEMP_FAILURE_RETRY only protects you against the case where you haven\u0027t written any bytes yet.)",
+      "range": {
+        "startLine": 1081,
+        "startChar": 16,
+        "endLine": 1081,
+        "endChar": 34
+      },
+      "revId": "5de3671d8b9193ca0223537acf41e26e65471d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fca9b3fa_902d4385",
+        "filename": "logcat/logcat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-08-05T20:51:17Z",
+      "side": 1,
+      "message": "Ack, let me clean that up in a separate CL, since this isn\u0027t the only place where this same issue occurs.",
+      "parentUuid": "31f67fd5_d8bb71fc",
       "range": {
         "startLine": 1081,
         "startChar": 16,
@@ -181,6 +301,30 @@
     },
     {
       "key": {
+        "uuid": "d2ee230b_c84fed7a",
+        "filename": "logd/CommandListener.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-08-05T20:51:17Z",
+      "side": 1,
+      "message": "Pretty much.  libsysutils creates the thread and the functions that call setname() are the first time that we see it.",
+      "parentUuid": "41292999_0f2757d0",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 43
+      },
+      "revId": "5de3671d8b9193ca0223537acf41e26e65471d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "147b9fbd_42406f17",
         "filename": "logd/CommandListener.cpp",
         "patchSetId": 1
@@ -195,6 +339,24 @@
       "revId": "5de3671d8b9193ca0223537acf41e26e65471d36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77d14754_c4d25c68",
+        "filename": "logd/CommandListener.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-08-05T20:51:17Z",
+      "side": 1,
+      "message": "Would you believe it used to be worse before aosp/1300453?\n\nThis is what codewiz@ was talking about in his thread about deprecating libsysutils: creating a better interface instead of hauling around individual classes for each command.  I guess we could de-duplicate some of this code without that, but it\u0027s touched so rarely, that it\u0027s probably not worth spending too much time.",
+      "parentUuid": "147b9fbd_42406f17",
+      "revId": "5de3671d8b9193ca0223537acf41e26e65471d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
