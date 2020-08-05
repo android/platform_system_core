@@ -50,6 +50,24 @@
       "revId": "dc3e897a881291c7803dd1fc517915952396dd98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a02d83c3_423f6563",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2020-08-05T07:21:43Z",
+      "side": 1,
+      "message": "The way it *should* work is that if the partition is already encrypted, we shouldn\u0027t try mounting it (or preparing to mount it) directly.  But that\u0027s not how the code works now, regardless of this change.  prepare_fs_for_mount() is expected to fail early when called on a raw encrypted partition.  I\u0027d like to change that, but it seems it would be a larger change.  Since this is a critical bug, I think we should just go with the revert for now.",
+      "parentUuid": "f3159a81_d1c3cf2e",
+      "revId": "dc3e897a881291c7803dd1fc517915952396dd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
