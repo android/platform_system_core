@@ -22,6 +22,30 @@
       "revId": "3193b3dae42d14638387001a4662fe894972e4e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86c1e8da_8cf3485d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-11T23:59:46Z",
+      "side": 1,
+      "message": "No, at least for now. Right now, for most of the modules, sdk_version is not set which means they are compiled with the latest (current) SDK. Since there is no API beyond the latest SDK, there is no need to be conditional about compileSdkVersion. If a symbol cannot be found at build-time, that\u0027s it. The module author probably has made a typo.\n\nFor the few (30+) modules that have sdk_version set, they seem to be happy with __ANDROID_API__ which now tracks minSdkVersion.\n\nThis will be needed only when a header from a library whose sdk_version is X is used by another library whose sdk_version is Y \u003c X. In this case, the exporter header is compiled with the less number of APIs than it was designed for. However, this is prohibited by the build system; it ensures that Y \u003e\u003d X.",
+      "parentUuid": "ea599146_f3e4f358",
+      "range": {
+        "startLine": 24,
+        "startChar": 62,
+        "endLine": 25,
+        "endChar": 42
+      },
+      "revId": "3193b3dae42d14638387001a4662fe894972e4e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
