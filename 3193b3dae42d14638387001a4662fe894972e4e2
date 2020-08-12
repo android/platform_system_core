@@ -46,6 +46,30 @@
       "revId": "3193b3dae42d14638387001a4662fe894972e4e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d86c9d5_5f317d9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-12T21:22:54Z",
+      "side": 1,
+      "message": "I think I\u0027m missing something, so apologies if it seems like I\u0027m explaining the obvious below. If I\u0027m not, great! If I am it should make it more clear what bad assumption I\u0027ve made 😊\n\nHow are those modules targeting \"current\" ensuring that Clang and bionic don\u0027t enable features that aren\u0027t supported in their minSdkVersion?\n\nTo illustrate the point, Bionic started supporting ELF TLS in API 29, and Clang should be enabling that for any build 29+. iirc APEX only goes back to 29, but if it _did_ go back to 28 , how would `sdk_version: \"current\"` APEX modules prevent ELF TLS from being used?\n\nThat particular case is a hypothetical since both APEX and ELF TLS landed in the same version and there haven\u0027t been any new features that would cause this sort of problem added between 29 and now, but there will be more in the future, so this is a real problem that needs to be solved.\n\nThe fix is that APEX builds need to tell Clang their actual min_sdk_version. But those builds _also_ need to tell clang their sdk_version, because that\u0027s what `__attribute__((availability))` needs to operate on. Right now Clang thinks Android builds only have one API level, min_sdk_version, and that one version is used for both concepts.",
+      "parentUuid": "86c1e8da_8cf3485d",
+      "range": {
+        "startLine": 24,
+        "startChar": 62,
+        "endLine": 25,
+        "endChar": 42
+      },
+      "revId": "3193b3dae42d14638387001a4662fe894972e4e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
