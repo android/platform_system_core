@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "8059eaf2_f11749cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-13T05:46:57Z",
+      "side": 1,
+      "message": "I forgot to respond here.\n\nItem #1 and #4 need more discussion. As I replied in the other comment, I don\u0027t understand why we have to teach compiler sdk_version AND min_sdk_version. I thought we just need to give min_sdk_version.\n\nDoing item #2 up front is fine to me. I just wanted to emphasize that it will be no op until we emit \"-Wunguarded-availability\". Uploaded ag/12354822\n\nItem #3 IMO will take most of the time, because we are not sure which guards are still essential and which can be dropped in favor of the availability attribute.\n\nAlso, we need to manually add __builtin_available call wherever it is required. This will also take some time. I already had to do this in my local WIP impl.\n\nFinally, we have to modify the build system to inject __isOSVersionAtLeast which is behind the __buildin_available macro.",
+      "parentUuid": "b92879c4_4f3b9c18",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 68
+      },
+      "revId": "a850ebd89b103f1aee947f4925e3ecb5eff3801f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a385e9e_e4b3db41",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
