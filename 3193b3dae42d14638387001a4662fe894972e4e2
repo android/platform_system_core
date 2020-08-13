@@ -70,6 +70,30 @@
       "revId": "3193b3dae42d14638387001a4662fe894972e4e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be94e05e_fca00c86",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-13T04:40:28Z",
+      "side": 1,
+      "message": "No. I always hear you and appreciate all of your inputs. 😊\n\nIn your hypothetical scenario, if the APEX had to support 28+, it should have set min_sdk_version to 28, which in turn have forced execs/libs in the APEX to have min_sdk_version that is \u003c\u003d 28. This min_sdk_version shall be used as the version suffix of the clang triple, and `__ANDROID_API__` as well. That should have controlled the enabling of ELF TLS as well. The execs/libs might have different sdk_version values (most of them would just use \u0027current\u0027), but that shouldn\u0027t affect the enabling of ELF TLS. If I am understanding go/android-elf-tls correctly, pre-29 platforms can\u0027t support binaries built with ELF TLS. So this should really be based off of min_sdk_version, not compileSdkVersion.\n\n\u003e But those builds _also_ need to tell clang their sdk_version, because that\u0027s what `__attribute__((availability))` needs to operate on.\n\nThis is the part that I don\u0027t understand. I have thought that the availability attribute should operate on min_sdk_version. With -target aarch64-linux-android30 (and of course with -Wunguarded-availability) the compiler doesn\u0027t require __builtin_available guard for the use of pre-30 APIs, but does mandate the guard for 30+ APIs. So, 30 should be from min_sdk_version. If it was from sdk_version (which in most cases is set to \u0027current\u0027) as is the case of now, no guard would have been required because 10000 \u003e\u003d any API. \n\nI am not aware of any case that the compiler need to understand compileSdkVersion and behave differently. In my understanding, compileSdkVersion just determines the headers and stub libraries that will be used for compilation/linkinig.",
+      "parentUuid": "2d86c9d5_5f317d9a",
+      "range": {
+        "startLine": 24,
+        "startChar": 62,
+        "endLine": 25,
+        "endChar": 42
+      },
+      "revId": "3193b3dae42d14638387001a4662fe894972e4e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
