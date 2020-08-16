@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fa287bb_472de04a",
+        "filename": "fs_mgr/libsnapshot/cow_api_test.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2020-08-16T03:33:08Z",
+      "side": 1,
+      "message": "Create multiple blocks here instead of a single 4k block which will test the bug mentioned below.",
+      "revId": "13d0b9d0e02172a7810a8e1ed9c74b0e807abe1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b50eff78_3c8129e0",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2020-08-16T03:33:08Z",
+      "side": 1,
+      "message": "This should be done only for blocks which are not compressed; else this may end up creating holes in the file and op.source will not be in sync with the actual offset written to the file. pos is already added for compressed block.",
+      "revId": "13d0b9d0e02172a7810a8e1ed9c74b0e807abe1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
