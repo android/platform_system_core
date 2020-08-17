@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbc1ab53_e2d6831a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2020-08-17T02:47:38Z",
+      "side": 1,
+      "message": "Yes, I know this was from a while ago.  It looks to me like this change did not end up in R, so assuming my follow-up CL is correct, it doesn\u0027t look like it needs to be backported to an rvc branch.\n",
+      "revId": "57affbf91d016eda1395106c4d5f0350471dca85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a0c08f0_f23c0a8e",
+        "filename": "libutils/include/utils/AndroidThreads.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2020-08-17T02:47:38Z",
+      "side": 1,
+      "message": "It looks like this use of a default argument in a header that\u0027s trying to be C compatible breaks the C compatibility.\n\nI just ran into this with some partner code.  I\u0027ve put up a follow up CL (https://android-review.googlesource.com/c/platform/system/core/+/1402255 ) to address this.  I don\u0027t think it\u0027s perfect, but it seems better than what we have now from a C perspective.",
+      "revId": "57affbf91d016eda1395106c4d5f0350471dca85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
