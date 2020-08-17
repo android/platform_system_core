@@ -16,6 +16,29 @@
       "revId": "23285228096db47007ce493d7e6ee7d60e68ee8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1838feb_a3eee4be",
+        "filename": "libutils/include/utils/AndroidThreads.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-08-17T16:06:11Z",
+      "side": 1,
+      "message": "most libutils headers don\u0027t support C, so -- depending on how much code is affected -- i\u0027d be happier just removing the __cplusplus cruft.\n\nin particular, this seems strictly worse. i think if we do want to keep C compatibility we should just add another function. (i feel like i suggested this on the original code review, because default parameters on non-inline functions have caused us nothing but trouble historically, even for C++.)",
+      "range": {
+        "startLine": 86,
+        "startChar": 47,
+        "endLine": 87,
+        "endChar": 36
+      },
+      "revId": "23285228096db47007ce493d7e6ee7d60e68ee8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
