@@ -93,6 +93,30 @@
       "revId": "7a997f2f46388df59b11f065b10d75706a0ddadb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a639cf2_aeec99c1",
+        "filename": "libunwindstack/DwarfSection.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-08-19T16:58:26Z",
+      "side": 1,
+      "message": "I thought there was a way to get into the function another way, which is not correct. However, I think it\u0027s a recipe for disaster that the function could be called with a nullptr. A change in the future could easily introduce a crashing bug. Someone coming along later might then add more special code in that function to check for it being nullptr and making things more complicated when it\u0027s not necessary. Since this is such a specific case, it seems better to handle it in place since it avoids a function call and avoids checking the same variable twice.",
+      "parentUuid": "380c2ebe_0a2a18e7",
+      "range": {
+        "startLine": 546,
+        "startChar": 6,
+        "endLine": 546,
+        "endChar": 24
+      },
+      "revId": "7a997f2f46388df59b11f065b10d75706a0ddadb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
