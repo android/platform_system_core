@@ -69,6 +69,30 @@
       "revId": "7a997f2f46388df59b11f065b10d75706a0ddadb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "380c2ebe_0a2a18e7",
+        "filename": "libunwindstack/DwarfSection.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1626440
+      },
+      "writtenOn": "2020-08-19T08:36:36Z",
+      "side": 1,
+      "message": "In what cases can this cause a crash? As far as I can tell it will only be set to nullptr when handling a pseudo-register, in which case EvalRegister won\u0027t touch reg_ptr. If the nullptr is the issue, alternatively it could just point to some dummy variable on the stack. Am I missing something?\n\nYour change works, and the tests do exercise the bug, but I am a bit uneasy about moving the handling of pseudo-registers out of EvalRegister.",
+      "parentUuid": "1ae80474_cb15d894",
+      "range": {
+        "startLine": 546,
+        "startChar": 6,
+        "endLine": 546,
+        "endChar": 24
+      },
+      "revId": "7a997f2f46388df59b11f065b10d75706a0ddadb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
