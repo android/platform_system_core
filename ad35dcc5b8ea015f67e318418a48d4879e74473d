@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "018fbd1d_32ad2154",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2020-08-27T15:11:22Z",
+      "side": 1,
+      "message": "I\u0027ve put up a follow-up to fix both of these in https://android-review.googlesource.com/c/platform/system/core/+/1413807",
+      "revId": "ad35dcc5b8ea015f67e318418a48d4879e74473d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "128cd20b_b4fcbc3c",
+        "filename": "fs_mgr/libsnapshot/make_cow_from_ab_ota.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2020-08-27T15:11:22Z",
+      "side": 1,
+      "message": "We don\u0027t initialize \u0027pos_\u0027 here.  If the user calls Read() before calling Seek(), we\u0027ll end up using uninitialized memory for that.",
+      "revId": "ad35dcc5b8ea015f67e318418a48d4879e74473d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac7381b9_66645a57",
+        "filename": "fs_mgr/libsnapshot/make_cow_from_ab_ota.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2020-08-27T15:11:22Z",
+      "side": 1,
+      "message": "We don\u0027t initialize \"dst_index_\" here.  GetNext() will always read from this value prior to ever writing it, so we use it uninitialized.",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 476,
+        "endChar": 0
+      },
+      "revId": "ad35dcc5b8ea015f67e318418a48d4879e74473d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
