@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f587527b_59b331c4",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-09-03T03:08:48Z",
+      "side": 1,
+      "message": "\"Finalize\" implies callers shouldn\u0027t invoke it multiple times. Also, the return value of lseek isn\u0027t checked here, and I think it\u0027s missing the size of the raw data (stuff in between header and ops) in the return value.\n\nMaybe we should make this an internal function called Flush(), then have public \"Finalize\" and \"GetSize\" methods that wrap it?",
+      "revId": "acf0354120250b93c5253776960ec1f242ebe07d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9dc1675_782a7a0b",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-09-03T03:08:48Z",
+      "side": 1,
+      "message": "If we hardcode the size calculation like this, we should add a test to cow_api_test checking that |computed size \u003d\u003d file size| to catch any divergence.",
+      "revId": "acf0354120250b93c5253776960ec1f242ebe07d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
