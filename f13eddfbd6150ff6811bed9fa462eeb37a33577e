@@ -34,6 +34,40 @@
       "revId": "f13eddfbd6150ff6811bed9fa462eeb37a33577e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2905c84b_9fa7ddb6",
+        "filename": "fs_mgr/libsnapshot/estimate_cow_from_nonab_ota.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2020-09-04T01:51:02Z",
+      "side": 1,
+      "message": "GetBlockMap() can theoretically return empty map on error. It looks like if we don\u0027t handle this error, we may inadvertently consider an operation to be a replace operation.",
+      "revId": "f13eddfbd6150ff6811bed9fa462eeb37a33577e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ab0c157_6384ba6b",
+        "filename": "fs_mgr/libsnapshot/estimate_cow_from_nonab_ota.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2020-09-04T01:51:02Z",
+      "side": 1,
+      "message": "Since we are calculating offsets for every read, both these syscalls can be combined into a single pread syscall by passing offset - I see wrapper ReadFullyAtOffset(...)",
+      "revId": "f13eddfbd6150ff6811bed9fa462eeb37a33577e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
