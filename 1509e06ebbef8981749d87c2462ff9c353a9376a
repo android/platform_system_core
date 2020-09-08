@@ -16,6 +16,40 @@
       "revId": "1509e06ebbef8981749d87c2462ff9c353a9376a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a136f3b3_0e14b1da",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-09-08T17:43:00Z",
+      "side": 1,
+      "message": "I assume that this works fine now since we don\u0027t have multiple encrypted mounts, but if we ever did, then this would break.  We would need this to be |\u003d or maybe more intuitively `if (current_entry.mount_point \u003d\u003d \"/data\") userdata_mounted \u003d true`.",
+      "revId": "1509e06ebbef8981749d87c2462ff9c353a9376a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a62fa63_7e398720",
+        "filename": "init/builtins.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-09-08T17:43:00Z",
+      "side": 1,
+      "message": "Likely better to have a structured binding here:\n\nauto [mount_fstab_result, userdata_mounted] \u003d fs_mgr_mount_all(...)\n\nor even better to have fs_mgr_mount_all return a struct.",
+      "revId": "1509e06ebbef8981749d87c2462ff9c353a9376a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
