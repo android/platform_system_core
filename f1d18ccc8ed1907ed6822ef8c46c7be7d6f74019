@@ -22,6 +22,30 @@
       "revId": "f1d18ccc8ed1907ed6822ef8c46c7be7d6f74019",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "febe7b17_ae8f9b98",
+        "filename": "rootdir/etc/public.libraries.android.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2020-09-10T09:43:54Z",
+      "side": 1,
+      "message": "The other 2 libraries have to keep there for app compat reason, because app still calls dlopen(\"libicuuc.so\", ...) today.\n\nThe very long term plan is to get app moving to use libicu.so only. Once the eco-system starts moving, we can gradually remove the symbols from libicuuc.so and libicui18n.so and at some point and guard dlopen-ing those libraries by targetSdkVersion. \n\nBefore that, we still need to expose more symbols in libicu.so. Optionally, we can publish the standard ICU4C wrapper to maven to help the ecosystem move to use libicu.so and some metrics to track the usage of these 2 libraries.\n\nIMO, we need 5+ years before removing these libraries from the public list if we need to reduce the app compat impact.",
+      "parentUuid": "dd13fdd5_66efd573",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "f1d18ccc8ed1907ed6822ef8c46c7be7d6f74019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
