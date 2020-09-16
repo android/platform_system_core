@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97301d55_44299743",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-16T18:33:15Z",
+      "side": 1,
+      "message": "by setting the weak count here, we may enter into a situation where a decWeak decrements the weak count, and so we can no longer decrement the strong count. You should probably avoid changing the weak count here for that reason",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 35
+      },
+      "revId": "b947ea058f7d50faa684f630160a9015f11e1534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cb013c1_5d1ec063",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-16T18:33:15Z",
+      "side": 1,
+      "message": "this would be racey, but ref is never set to nullptr elsewhere in the fuzzer",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 9
+      },
+      "revId": "b947ea058f7d50faa684f630160a9015f11e1534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2970200f_cd72d55a",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-16T18:33:15Z",
+      "side": 1,
+      "message": "We know there is a bug if this is ever false, but canDecrementStrong is true (because we would leak)",
+      "range": {
+        "startLine": 124,
+        "startChar": 59,
+        "endLine": 124,
+        "endChar": 75
+      },
+      "revId": "b947ea058f7d50faa684f630160a9015f11e1534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e136794b_761e36a1",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-16T18:33:15Z",
+      "side": 1,
+      "message": "if one thread calls incStrong, then another calls decStrong, this object would be deleted, and other dereferences of ref would be invalid",
+      "revId": "b947ea058f7d50faa684f630160a9015f11e1534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
