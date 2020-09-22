@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "377e96fc_851a3c7c",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-22T17:13:30Z",
+      "side": 1,
+      "message": "The goal of strong_count/weak_count, I don\u0027t think should be to keep track of the internal state of the refbase, but the external state.\n\nThat is, every forceIncStrong/incStrong should be coupled with a decStrong. Every incWeak should be coupled with a decWeak. This is the API contract, and the fact that internally incStrong calls incWeak is an implementation detail.\n\nBy tracking the internal state, we may incStrong (strong++ weak++) then decWeak (weak--). Then, it seems that the RefBase object is left in an inconsistent state (strong\u003d1, weak\u003d0), which shouldn\u0027t be possible.",
+      "parentUuid": "ddc8fb3b_b9e56829",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 35
+      },
+      "revId": "b947ea058f7d50faa684f630160a9015f11e1534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9cb013c1_5d1ec063",
         "filename": "libutils/RefBase_fuzz.cpp",
         "patchSetId": 2
@@ -189,6 +213,24 @@
       "side": 1,
       "message": "That was originally the intent with the ref \u003d\u003d nullptr check breaking the loop in fuzzOps, so the threads let themselves die if the object does dereference itself. You\u0027re right that it is racey though. I would expect that issue to manifest itself fairly quickly, especially given this can have up to ten threads, but I didn\u0027t hit it after several million iterations... The logic in canDecrementStrong/weak which subtracts 1 from the count before checking is probably what\u0027s preventing this from dereferencing itself.",
       "parentUuid": "e136794b_761e36a1",
+      "revId": "b947ea058f7d50faa684f630160a9015f11e1534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dd0f7f6_b5683b6c",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-09-22T17:13:30Z",
+      "side": 1,
+      "message": "The pointer to this object won\u0027t be changed by any calls to it.\n\nit\u0027s much like this:\n\n    T* t \u003d new ..; // say pointer has value 0x4848\n    // arbitrary incStrong/decStrong operations\n    // eventually result in:\n        delete t;\n    // t still has value 0x4848\n\nUsing \u0027sp\u0027 is different, since the existence of this object w/ non-null mPtr means that incStrong has been called. Only when that object is deleted is decStrong called.",
+      "parentUuid": "24888b23_2ee009f6",
       "revId": "b947ea058f7d50faa684f630160a9015f11e1534",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
