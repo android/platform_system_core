@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ccaec9c6_37a884e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-09-22T16:58:14Z",
+      "side": 1,
+      "message": "Apologies for the delayed response!",
+      "revId": "b947ea058f7d50faa684f630160a9015f11e1534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97301d55_44299743",
         "filename": "libutils/RefBase_fuzz.cpp",
         "patchSetId": 2
@@ -13,6 +30,30 @@
       "writtenOn": "2020-09-16T18:33:15Z",
       "side": 1,
       "message": "by setting the weak count here, we may enter into a situation where a decWeak decrements the weak count, and so we can no longer decrement the strong count. You should probably avoid changing the weak count here for that reason",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 35
+      },
+      "revId": "b947ea058f7d50faa684f630160a9015f11e1534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddc8fb3b_b9e56829",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-09-22T16:58:14Z",
+      "side": 1,
+      "message": "The reason I am incrementing the weak count here is because internally incStrong also calls incWeak. Is this similar to forceIncStrong, where the weak ref is promoted to a strong ref, so effectively only the number of strong refs have increased?",
+      "parentUuid": "97301d55_44299743",
       "range": {
         "startLine": 82,
         "startChar": 0,
@@ -48,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "50a843b1_e99ad39e",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-09-22T16:58:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9cb013c1_5d1ec063",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 9
+      },
+      "revId": "b947ea058f7d50faa684f630160a9015f11e1534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2970200f_cd72d55a",
         "filename": "libutils/RefBase_fuzz.cpp",
         "patchSetId": 2
@@ -71,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "99ce4d12_bcb05e49",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-09-22T16:58:14Z",
+      "side": 1,
+      "message": "Gotcha, will remove canDecrementWeak here so we have visibility into that bug as a leak.",
+      "parentUuid": "2970200f_cd72d55a",
+      "range": {
+        "startLine": 124,
+        "startChar": 59,
+        "endLine": 124,
+        "endChar": 75
+      },
+      "revId": "b947ea058f7d50faa684f630160a9015f11e1534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e136794b_761e36a1",
         "filename": "libutils/RefBase_fuzz.cpp",
         "patchSetId": 2
@@ -82,6 +171,24 @@
       "writtenOn": "2020-09-16T18:33:15Z",
       "side": 1,
       "message": "if one thread calls incStrong, then another calls decStrong, this object would be deleted, and other dereferences of ref would be invalid",
+      "revId": "b947ea058f7d50faa684f630160a9015f11e1534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24888b23_2ee009f6",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-09-22T16:58:14Z",
+      "side": 1,
+      "message": "That was originally the intent with the ref \u003d\u003d nullptr check breaking the loop in fuzzOps, so the threads let themselves die if the object does dereference itself. You\u0027re right that it is racey though. I would expect that issue to manifest itself fairly quickly, especially given this can have up to ten threads, but I didn\u0027t hit it after several million iterations... The logic in canDecrementStrong/weak which subtracts 1 from the count before checking is probably what\u0027s preventing this from dereferencing itself.",
+      "parentUuid": "e136794b_761e36a1",
       "revId": "b947ea058f7d50faa684f630160a9015f11e1534",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
