@@ -94,6 +94,30 @@
       "revId": "9169e1105117eb8bd9de76bd563c737cdfe9898e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3f775e9_208ea5c8",
+        "filename": "libsync/include/ndk/sync.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-09-24T21:22:11Z",
+      "side": 1,
+      "message": "Remove the guard. This guard actually makes the user\u0027s life really difficult, because unlike the guards on out-of-line decls, this function can\u0027t be dlsym\u0027d. If the user has a minsdkversion \u003c 26 they have to copy paste this into their project to use it.\n\nLike enh says, in general we don\u0027t guard anything that isn\u0027t an out of line decl. If it\u0027s not going to make the app crash there\u0027s no need to hide it.",
+      "parentUuid": "faee855b_aa0e1a51",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 27
+      },
+      "revId": "9169e1105117eb8bd9de76bd563c737cdfe9898e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
