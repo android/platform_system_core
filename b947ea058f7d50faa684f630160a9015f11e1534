@@ -282,6 +282,24 @@
       "revId": "b947ea058f7d50faa684f630160a9015f11e1534",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8646438_94bdb561",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-09-25T21:06:02Z",
+      "side": 1,
+      "message": "So I\u0027ve been trying to wrap my head around this, and I have two thoughts here:\n1. There\u0027s the thread specific state object that controls the strong/weak for each thread, but it\u0027s offset by one so threads can\u0027t completely remove every strong ref they have. However, this may not be realistic behavior, not completely sure, but it looks like that\u0027s what\u0027s preventing this case from happening in the current version.\n2. Isn\u0027t that possible with normal usage as well? To create a new strong reference as another thread is removing its reference to it?",
+      "parentUuid": "0dd0f7f6_b5683b6c",
+      "revId": "b947ea058f7d50faa684f630160a9015f11e1534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
