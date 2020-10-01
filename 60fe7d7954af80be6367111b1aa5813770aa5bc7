@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0a4af82_69aa79da",
+        "filename": "fs_mgr/libsnapshot/snapshot_reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2020-10-01T18:01:41Z",
+      "side": 1,
+      "message": "I think we can set the size of the vector in one shot before while loop as we know number of ops through header.num_ops.",
+      "revId": "60fe7d7954af80be6367111b1aa5813770aa5bc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acc8b9c6_34b7f087",
+        "filename": "fs_mgr/libsnapshot/snapshot_reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2020-10-01T18:01:41Z",
+      "side": 1,
+      "message": "Position should always be block-aligned isn\u0027t it ? we should never have offset_ pointing to \nun-aligned region. If so, this should be a CHECK().",
+      "revId": "60fe7d7954af80be6367111b1aa5813770aa5bc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c65b36a_ac3a12db",
+        "filename": "fs_mgr/libsnapshot/snapshot_reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2020-10-01T18:01:41Z",
+      "side": 1,
+      "message": "I am trying to understand when will op \u003d\u003d nullptr. We should never get a chunk which is beyond ops_.size() ? \n\nIf I read this correctly, we can get an IO with a chunk ID which doesn\u0027t belong in our cowoperation metadata. In that case, we silently fall back to copy op and read it from source device. If this is true, then I should fix this in snapuserd daemon as well. I think we return -1 and do not fall back in that case.",
+      "revId": "60fe7d7954af80be6367111b1aa5813770aa5bc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73f67635_7fe2a729",
+        "filename": "fs_mgr/libsnapshot/snapshot_reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2020-10-01T18:01:41Z",
+      "side": 1,
+      "message": "nit: all this if-else can be moved to switch ?",
+      "revId": "60fe7d7954af80be6367111b1aa5813770aa5bc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
