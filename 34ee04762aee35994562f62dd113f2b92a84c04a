@@ -39,6 +39,30 @@
       "revId": "34ee04762aee35994562f62dd113f2b92a84c04a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57f0376f_a36d5cb4",
+        "filename": "init/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-10-02T15:25:47Z",
+      "side": 1,
+      "message": "No, this is accurate as is.  First we parse /system/etc/init/hw/init.rc, then we recursively parse its imports (point 1 in the ordering on line 701).  /vendor/etc/init/hw/init.${ro.hardware}.rc is one of those imports but I don\u0027t call it out explicitly.\n\nWould this be clearer if I remove this line and say \"then the `post-fs-data` actions of the rest of the init.rc files parsed in the order stated above?",
+      "parentUuid": "fd003cd3_4f481923",
+      "range": {
+        "startLine": 725,
+        "startChar": 2,
+        "endLine": 725,
+        "endChar": 8
+      },
+      "revId": "34ee04762aee35994562f62dd113f2b92a84c04a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
