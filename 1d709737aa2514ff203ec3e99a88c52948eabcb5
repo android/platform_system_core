@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc642aff_9ceb1f8f",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-02T23:44:56Z",
+      "side": 1,
+      "message": "it could be deleted after L137 and before L138",
+      "revId": "1d709737aa2514ff203ec3e99a88c52948eabcb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f28dd36_1301469d",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-02T23:44:56Z",
+      "side": 1,
+      "message": "if there is a strong count, it should be guaranteed not be deleted (we can rely on ASAN catching it)",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 30
+      },
+      "revId": "1d709737aa2514ff203ec3e99a88c52948eabcb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "674b8a2d_1098609a",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-02T23:44:56Z",
+      "side": 1,
+      "message": "I wonder if we should be holding onto the getWeakRefs() reference separately, so that it doesn\u0027t leak, even if the object itself is deleted (it\u0027s not OBJECT_LIFETIME_WEAK)",
+      "range": {
+        "startLine": 158,
+        "startChar": 13,
+        "endLine": 158,
+        "endChar": 26
+      },
+      "revId": "1d709737aa2514ff203ec3e99a88c52948eabcb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b6f8236_c110d107",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-02T23:44:56Z",
+      "side": 1,
+      "message": "this may be still around if refDeleted, right?",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 24
+      },
+      "revId": "1d709737aa2514ff203ec3e99a88c52948eabcb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
