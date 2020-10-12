@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d02753b_ffac3019",
+        "filename": "fs_mgr/libsnapshot/include/libsnapshot/snapshot_writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-10-12T18:44:30Z",
+      "side": 1,
+      "message": "I added it to a new interface since OpenReader() didn\u0027t really fit on ICowWriter. I initially wanted it to be on SnapshotManager, but SnapshotManager doesn\u0027t track whether a snapshot is opened or not. So to have both \"open read\" and \"open write\" methods got confusing. PS1 had text like, \"to open a reader, the writer must already be opened\"). Making this flow explicit seemed natural, and the \"open writer\" call computes all the needed state for reading anyway.\n\nAnother (small?) advantage of a second interface is that we can change the low-level file format API without affecting update_engine.",
+      "parentUuid": "b3585b0e_c07cabff",
+      "range": {
+        "startLine": 34,
+        "startChar": 46,
+        "endLine": 34,
+        "endChar": 56
+      },
+      "revId": "a890ad18dd10843170c6ba1b04c5c6c0528753e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e86c9f8_be45dab7",
         "filename": "fs_mgr/libsnapshot/snapshot.cpp",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-12T06:41:00Z",
       "side": 1,
       "message": "nit: not used? Though do we still want MapPartitionWithSnapshot to clear the input SnapshotPaths",
+      "range": {
+        "startLine": 1573,
+        "startChar": 0,
+        "endLine": 1573,
+        "endChar": 32
+      },
+      "revId": "a890ad18dd10843170c6ba1b04c5c6c0528753e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfc51f24_17abe5f7",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1573,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-10-12T18:44:30Z",
+      "side": 1,
+      "message": "Done. re: clearing the outparam, I usually don\u0027t do that unless the outparam has meaning on failure. Here it doesn\u0027t, and the one caller passing an outparam is scoped properly \u0026 checking for failure.",
+      "parentUuid": "0e86c9f8_be45dab7",
       "range": {
         "startLine": 1573,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d1339ce_ca8ed377",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2467,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-10-12T18:44:30Z",
+      "side": 1,
+      "message": "Done - I put a DCHECK, since logging a bad open() call later on probably preferable to crashing update_engine here.",
+      "parentUuid": "a3b9434f_c785b227",
+      "revId": "a890ad18dd10843170c6ba1b04c5c6c0528753e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d10e157_dfaad0d2",
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ab43d80_b856dac5",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2504,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-10-12T18:44:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8d10e157_dfaad0d2",
+      "range": {
+        "startLine": 2504,
+        "startChar": 6,
+        "endLine": 2504,
+        "endChar": 12
+      },
+      "revId": "a890ad18dd10843170c6ba1b04c5c6c0528753e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2d5fe8b_19c3ef5e",
@@ -100,6 +190,30 @@
       "writtenOn": "2020-10-12T06:41:00Z",
       "side": 1,
       "message": "does this guarantee to work.. path.data() is not null terminated.",
+      "range": {
+        "startLine": 2527,
+        "startChar": 22,
+        "endLine": 2527,
+        "endChar": 33
+      },
+      "revId": "a890ad18dd10843170c6ba1b04c5c6c0528753e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7767a9ae_597987f5",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2527,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-10-12T18:44:30Z",
+      "side": 1,
+      "message": "Thanks, indeed not guaranteed to work.",
+      "parentUuid": "b2d5fe8b_19c3ef5e",
       "range": {
         "startLine": 2527,
         "startChar": 22,
