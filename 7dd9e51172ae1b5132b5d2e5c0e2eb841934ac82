@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t this always be block aligned ? We should never get un-aligned request",
       "revId": "7dd9e51172ae1b5132b5d2e5c0e2eb841934ac82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "765ca487_5e623d9e",
+        "filename": "fs_mgr/libsnapshot/snapshot_reader.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-10-14T21:40:13Z",
+      "side": 1,
+      "message": "It\u0027s implementing FileDescriptor which doesn\u0027t say the requests have to be block aligned. You can seek() to any position. I\u0027m not sure if update_engine does this in practice, but it\u0027ll work and I added tests for it.\n\nIf update_engine guarantees only block-aligned reads, we could simplify it a fair bit.",
+      "parentUuid": "a1c0b5c9_835f7192",
+      "revId": "7dd9e51172ae1b5132b5d2e5c0e2eb841934ac82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
