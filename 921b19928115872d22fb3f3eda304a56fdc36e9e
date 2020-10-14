@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c1aa382_699fbce3",
+        "filename": "rootdir/init.zygote32.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-14T17:50:19Z",
+      "side": 1,
+      "message": "in order to avoid a Treble violation, we should technically prefer:\n\n    onrestart interface_stop android.hardware.wifi.hostapd@1.0::IHostapd/default\n    onrestart interface_stop\nandroid.hardware.wifi.supplicant@1.0::ISupplicant/default\n\nSince we don\u0027t guarantee what the name of the vendor process is, at least, from an architecture perspective. b/79148987 is the init bug associated with detecting this automatically.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "921b19928115872d22fb3f3eda304a56fdc36e9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
