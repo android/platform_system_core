@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8910681e_297645fa",
+        "filename": "fs_mgr/libsnapshot/snapuserd_daemon.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2020-10-21T22:50:03Z",
+      "side": 1,
+      "message": "This is not required as we are masking Signals again at Line 64",
+      "revId": "c758c3733d1e62af604dfbd08fe14368d33adcc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44a40caf_49aae53d",
+        "filename": "fs_mgr/libsnapshot/snapuserd_server.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2020-10-21T22:50:03Z",
+      "side": 1,
+      "message": "not sure if it should be msg.data() or msg.c_str() ?",
+      "revId": "c758c3733d1e62af604dfbd08fe14368d33adcc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "376e16da_a1122057",
+        "filename": "fs_mgr/libsnapshot/snapuserd_server.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2020-10-21T22:50:03Z",
+      "side": 1,
+      "message": "I did notice this when I was looking into the code but I skipped it because android_get_control_socket assumes that there is a environmental variable set (__android_get_control_from_env()) with ANDROID_SOCKET_\u003csocketname\u003e which will never to true in our case.",
+      "revId": "c758c3733d1e62af604dfbd08fe14368d33adcc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41f262c1_25091f73",
+        "filename": "fs_mgr/libsnapshot/snapuserd_server.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2020-10-21T22:50:03Z",
+      "side": 1,
+      "message": "We should specifically look at POLLIN flag from revents; from the man page https://man7.org/linux/man-pages/man2/poll.2.html , revents can also be POLLERR, POLLHUP, POLLNVAL.",
+      "revId": "c758c3733d1e62af604dfbd08fe14368d33adcc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
