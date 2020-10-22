@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "449d23cb_0accfb41",
+        "filename": "fs_mgr/libsnapshot/snapuserd_daemon.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-10-22T03:06:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8910681e_297645fa",
+      "revId": "c758c3733d1e62af604dfbd08fe14368d33adcc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "44a40caf_49aae53d",
         "filename": "fs_mgr/libsnapshot/snapuserd_server.cpp",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-21T22:50:03Z",
       "side": 1,
       "message": "not sure if it should be msg.data() or msg.c_str() ?",
+      "revId": "c758c3733d1e62af604dfbd08fe14368d33adcc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77367817_27f7544f",
+        "filename": "fs_mgr/libsnapshot/snapuserd_server.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-10-22T03:06:29Z",
+      "side": 1,
+      "message": "As of C++11 they\u0027re the same thing, data() will null-terminate.",
+      "parentUuid": "44a40caf_49aae53d",
       "revId": "c758c3733d1e62af604dfbd08fe14368d33adcc8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2020-10-21T22:50:03Z",
       "side": 1,
       "message": "I did notice this when I was looking into the code but I skipped it because android_get_control_socket assumes that there is a environmental variable set (__android_get_control_from_env()) with ANDROID_SOCKET_\u003csocketname\u003e which will never to true in our case.",
+      "revId": "c758c3733d1e62af604dfbd08fe14368d33adcc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28254772_3d704761",
+        "filename": "fs_mgr/libsnapshot/snapuserd_server.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-10-22T03:06:29Z",
+      "side": 1,
+      "message": "Ack - this is set up by init.",
+      "parentUuid": "376e16da_a1122057",
       "revId": "c758c3733d1e62af604dfbd08fe14368d33adcc8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -83,6 +137,24 @@
       "side": 1,
       "message": "My thinking here was, we can attempt the read/accept() no matter what, and let the cards fall where they may. That\u0027s what SocketListener does I think.",
       "parentUuid": "41f262c1_25091f73",
+      "revId": "c758c3733d1e62af604dfbd08fe14368d33adcc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd852173_9930733b",
+        "filename": "fs_mgr/libsnapshot/snapuserd_server.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-10-22T03:06:29Z",
+      "side": 1,
+      "message": "I added a POLLHUP check here, the error messages were too confusing.",
+      "parentUuid": "ef4887d0_bc131337",
       "revId": "c758c3733d1e62af604dfbd08fe14368d33adcc8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
