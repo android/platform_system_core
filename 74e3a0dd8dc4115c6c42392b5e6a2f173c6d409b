@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cedc14e_208ea0c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-10-23T18:33:48Z",
+      "side": 1,
+      "message": "Thanks for pointing that out!\n\nAfter running adb_remount_test.sh I found a problematic case:\nIf \"remount\" is enabled on a DSU system, and `fastboot flash \u003cpartition\u003e` is ran, then fastbootd would not clear the scratch content, because \"IsGsiRunning()\" doesn\u0027t really make sense within recovery...\n\nDSU is initialized during the first-stage-mount, so without running first-stage-init, there\u0027s no concept of \"running a DSU(GSI) system or not\" within recovery.\n\nI think instead of modifying the test case and special case for DSU, I should make fs_mgr_overlayfs_teardown() teardown the content of \"ImageManager(remount)/scratch\" as well as \"ImageManager(dsu)/scratch_gsi\" in recovery.",
+      "parentUuid": "9373f0b0_cf87e000",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 30
+      },
+      "revId": "74e3a0dd8dc4115c6c42392b5e6a2f173c6d409b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2f3819d8_8ce5616a",
