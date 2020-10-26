@@ -67,6 +67,24 @@
       "message": "Note: I\u0027m +1\u0027ing this just to remove the ORV requirement, while others can review.  I\u0027ve wanted this, along with the rest of the USB special cases, removed from init for years.",
       "revId": "91d9cb713b7e8bfba7bb55bfe3053e07955691e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f031d26c_3d025e18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1030767
+      },
+      "writtenOn": "2020-10-26T20:50:09Z",
+      "side": 1,
+      "message": "\u003e Ick, no, just set the proper init config variable setting for your host controller device and all should be fine.\n\n\u003e See https://android-review.googlesource.com/c/device/linaro/dragonboard/+/1349264 for how to do this correctly for your device.\n\nOk that\u0027s fair. We usually do have the proper init on our QCOM boards\u0027 init.*.rc. But caught a case that didn\u0027t have it set in time before the ConfigFS rules are executed resulting in dummy_udc getting selected. On these boards the previous behavior relied on init having chosen the correct one, so that\u0027s what sparked this change--its purpose was to allow init to choose a \"reasonable\" default.\n\n\n\u003e Also, some testing systems want to set the dummy_udc device, so I think this will break them.  There\u0027s a reason we added it to the kernel configuration :)\n\nWhy can\u0027t the argument extend to these systems as well, couldn\u0027t their init.*.rc set sys.usb.controller\u003ddummy_udc.0 explicitly for testing purposes?",
+      "parentUuid": "f1ef9b4c_fd4f3d5c",
+      "revId": "91d9cb713b7e8bfba7bb55bfe3053e07955691e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
