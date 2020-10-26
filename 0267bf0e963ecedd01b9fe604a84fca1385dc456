@@ -22,6 +22,30 @@
       },
       "revId": "0267bf0e963ecedd01b9fe604a84fca1385dc456",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46f1f734_7a239715",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-10-26T11:59:02Z",
+      "side": 1,
+      "message": "flashing.cpp has three callsites of `fs_mgr_overlayfs_teardown()`. I think instead of updating all three callsites from `fs_mgr_overlayfs_teardown()` to `fs_mgr_overlayfs_teardown() + fs_mgr_overlayfs_teardown_dsu()`, it\u0027s better to update `fs_mgr_overlayfs_teardown()` itself so the caller don\u0027t need to know the implementation details?",
+      "parentUuid": "abf39275_abf1953c",
+      "range": {
+        "startLine": 84,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 40
+      },
+      "revId": "0267bf0e963ecedd01b9fe604a84fca1385dc456",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
