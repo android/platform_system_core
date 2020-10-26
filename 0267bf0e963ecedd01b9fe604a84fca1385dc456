@@ -70,6 +70,30 @@
       },
       "revId": "0267bf0e963ecedd01b9fe604a84fca1385dc456",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8a766ef_fd08f8c9",
+        "filename": "fs_mgr/fs_mgr_overlayfs.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-10-26T12:34:39Z",
+      "side": 1,
+      "message": "\u003e I was also thinking it might be simpler to have fastbootd call fs_mgr_overlayfs_teardown_all\n\nI like this. TBH the code of fs_mgr_overlayfs_teardown is only less confusing after reading through it for like 30 times or so...\n\nsplitting the entry point for recovery and non-recovery sounds good to me. And it\u0027s a KISS approach to just teardown all overlay if any partition is flashed/updated.",
+      "parentUuid": "6b6b8a65_b8e06af2",
+      "range": {
+        "startLine": 84,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 40
+      },
+      "revId": "0267bf0e963ecedd01b9fe604a84fca1385dc456",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
