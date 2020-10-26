@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3437247c_2df0a99b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-26T20:49:26Z",
+      "side": 1,
+      "message": "The biggest thing that comes to mind is that if we are willing to trade threads for it, this could replace all users of report_sysprop_change... this is such a better API.\n\nCould WaitForProperty be replaced to be implemented with this API? (not sure if it makes sense)",
+      "parentUuid": "6ad97562_54222cd5",
+      "revId": "383cd014ea22201378f2be3bf22679755c04c861",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eeb8b39b_b9501233",
         "filename": "adb/daemon/property_monitor.cpp",
         "patchSetId": 1
@@ -67,6 +85,52 @@
       "side": 1,
       "message": "yeah, that\u0027s surprising to me too. would it make more sense for the API to take the string-\u003efunction mapping as a constructor argument?\n\nor just add the missing lock?",
       "parentUuid": "eeb8b39b_b9501233",
+      "revId": "383cd014ea22201378f2be3bf22679755c04c861",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2a13256_dff15384",
+        "filename": "adb/daemon/property_monitor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-26T20:49:26Z",
+      "side": 1,
+      "message": "nit: prefer \u0027Start\u0027 to never end, and for caller to donate thread, so that it can give an existing thread to this as necessary?",
+      "range": {
+        "startLine": 106,
+        "startChar": 4,
+        "endLine": 106,
+        "endChar": 24
+      },
+      "revId": "383cd014ea22201378f2be3bf22679755c04c861",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d87b4127_1b836823",
+        "filename": "adb/daemon/property_monitor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-26T20:49:26Z",
+      "side": 1,
+      "message": "not std::optional\u003cstd::string\u003e?",
+      "range": {
+        "startLine": 49,
+        "startChar": 7,
+        "endLine": 49,
+        "endChar": 24
+      },
       "revId": "383cd014ea22201378f2be3bf22679755c04c861",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
