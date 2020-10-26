@@ -85,6 +85,24 @@
       "parentUuid": "f1ef9b4c_fd4f3d5c",
       "revId": "91d9cb713b7e8bfba7bb55bfe3053e07955691e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5173daac_cfdeea07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1030767
+      },
+      "writtenOn": "2020-10-26T20:58:30Z",
+      "side": 1,
+      "message": "\u003e I\u0027ve wanted this, along with the rest of the USB special cases, removed from init for years.\n\nQCOM would be ok with that. At least for our boards we can make sure to always have the property set from init.${ro.hardware}.rc or /vendor/{build,default}.prop\n\nIs there an easy way to cushion the blow for boards that aren\u0027t prepared for it? Maybe keep SetUsbController() for now but have it issue a warning if the property value wasn\u0027t already set and it had to pick a default?",
+      "parentUuid": "dc5aa3cc_c7989cd4",
+      "revId": "91d9cb713b7e8bfba7bb55bfe3053e07955691e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
