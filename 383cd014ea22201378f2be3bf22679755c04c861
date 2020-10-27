@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed40c1e0_cf03d9ba",
+        "filename": "adb/daemon/property_monitor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-10-27T16:20:07Z",
+      "side": 1,
+      "message": "You\u0027d need more than that too, since __system_property_wait() loops to ensure that the serial has actually changed.\n\nYou\u0027d need to actually set a property, to wake this.  Otherwise, afaik, linux doesn\u0027t have any good options for waiting on multiple futex\u0027s.  FUTEX_WAIT_MULTIPLE isn\u0027t available yet and FUTEX_FD is long gone.",
+      "parentUuid": "1c41d7e8_4382e11a",
+      "revId": "383cd014ea22201378f2be3bf22679755c04c861",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e2a13256_dff15384",
         "filename": "adb/daemon/property_monitor.cpp",
         "patchSetId": 1
