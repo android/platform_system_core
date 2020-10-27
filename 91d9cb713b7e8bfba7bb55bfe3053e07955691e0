@@ -121,6 +121,24 @@
       "parentUuid": "f031d26c_3d025e18",
       "revId": "91d9cb713b7e8bfba7bb55bfe3053e07955691e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c65f1ec_0862accd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1030767
+      },
+      "writtenOn": "2020-10-27T21:13:18Z",
+      "side": 1,
+      "message": "It really does sound to me that init.cpp has no business in even setting sys.usb.controller in the first place, acceding to Tom\u0027s point?\n\nI can imagine another case when doing it from init.cpp could backfire--if the property had been set already during bootup from an init RC or even .prop file, but happens before SetUsbController() is called by init, then it would get overridden by whatever \"first\" device it finds under /sys/class/udc.\n\nI\u0027m fine to abandon this change but should we forge ahead toward removing SetUsbController() completely then?",
+      "parentUuid": "1d4ffa33_4d7b5f49",
+      "revId": "91d9cb713b7e8bfba7bb55bfe3053e07955691e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
