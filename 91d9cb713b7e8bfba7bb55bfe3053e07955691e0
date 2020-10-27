@@ -139,6 +139,24 @@
       "parentUuid": "1d4ffa33_4d7b5f49",
       "revId": "91d9cb713b7e8bfba7bb55bfe3053e07955691e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee524a61_4eb02f56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-10-27T21:22:27Z",
+      "side": 1,
+      "message": "Agreed.  SetUsbController() is called after prop files are loaded, which is unfortunate, but kept there for legacy reasons.\n\nThere is a new call added in the main loop for GKI.  +salyzyn@ for comments.\n\nOverall, the USB team needs to take provide an alternative.  We\u0027ve kept this logic for backwards compatibility for a long time, and it appears that GKI is exposing enough issues with it, that it\u0027s time to replace it.  Perhaps a requirement for devices launching with GKI could be to specify `sys.usb.controller` explicitly?",
+      "parentUuid": "9c65f1ec_0862accd",
+      "revId": "91d9cb713b7e8bfba7bb55bfe3053e07955691e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
