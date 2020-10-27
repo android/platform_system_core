@@ -16,6 +16,24 @@
       "message": "Wasn\u0027t this always just mblen() on Android anyway?  We always used UTF8 for multi-byte strings in bionic, regardless of locale?",
       "revId": "939e43e66ec86af7ee7a49900be084c4acd232a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "839a3bf3_35613ada",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-10-27T15:30:56Z",
+      "side": 1,
+      "message": "yes, though it\u0027s possible this predates any utf-8 support in bionic. (that\u0027s actually why i was looking at this code --- wonder what parts of it we could replace with modern C/C++ instead without too much trouble. sadly, since libutils isn\u0027t hurting us -- we don\u0027t use it -- and there are far too many things that are hurting us, i doubt i\u0027ll make any dent in it.)",
+      "parentUuid": "d48119f8_318948a2",
+      "revId": "939e43e66ec86af7ee7a49900be084c4acd232a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
