@@ -16,6 +16,46 @@
       "message": "Verified on my local device.",
       "revId": "3a4275388f7fc59be0dd6347b9a4f780b0c9b108",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c5719ed_272ef624",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2020-10-28T20:38:50Z",
+      "side": 1,
+      "message": "feel free to leave as is though",
+      "revId": "3a4275388f7fc59be0dd6347b9a4f780b0c9b108",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46137988_5a88755d",
+        "filename": "init/security.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2020-10-28T20:38:50Z",
+      "side": 1,
+      "message": "this could be a single if\n\nalso an argument could be made for taking the same exit out of this function as the normal code path.\n\nso something like:\n\nf() {\n  if (ALLOW_PERMISSIVE_SELINUX \u0026\u0026 !security_getenforce()) {\n    LOG(INFO) \u003c\u003c \"Permissive...\";\n  } else {\n    existing tests, with various error returns\n  }\n  SetProp(..., \"1\")\n  return {}\n}",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 37
+      },
+      "revId": "3a4275388f7fc59be0dd6347b9a4f780b0c9b108",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
