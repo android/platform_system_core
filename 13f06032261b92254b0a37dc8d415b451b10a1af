@@ -88,6 +88,24 @@
       "parentUuid": "6a0cd8be_0cef05a5",
       "revId": "13f06032261b92254b0a37dc8d415b451b10a1af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d246818e_d009c13a",
+        "filename": "init/first_stage_init.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-10-29T20:14:16Z",
+      "side": 1,
+      "message": "I added that check because I got ENOENT for rename, but after some time of debugging I realize that I didn\u0027t create directories at dst_dir. So I think ENOENT in rename() didn\u0027t give enough information.\n\nIf I am to delete the check, I\u0027ll change L123 to:\n\n  if (rename(...) !\u003d 0) {\n    if(errno \u003d\u003d ENOENT) LOG(INFO)...;\n    else LOG(FATAL)...\n  }\n\nI don\u0027t think it cleans up the code too much, but it is indeed one less syscall. WDYT?",
+      "parentUuid": "b02b0129_ab55c10e",
+      "revId": "13f06032261b92254b0a37dc8d415b451b10a1af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
