@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb3e9e13_3bf8c167",
+        "filename": "init/first_stage_init.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-10-29T17:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1d6513d_47a4a045",
+      "range": {
+        "startLine": 114,
+        "startChar": 67,
+        "endLine": 114,
+        "endChar": 68
+      },
+      "revId": "4d43f3db9bb1f08c8f2dea29e5f9f200adfe37f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "836de434_40807e58",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-29T15:55:52Z",
       "side": 1,
       "message": "why this check given L124? one or other of these seems redundant.",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 121,
+        "endChar": 0
+      },
+      "revId": "4d43f3db9bb1f08c8f2dea29e5f9f200adfe37f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdcac474_54293403",
+        "filename": "init/first_stage_init.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-10-29T17:33:32Z",
+      "side": 1,
+      "message": "For example, if e2fsck exists in /first_stage_ramdisk/system/bin but init cannot access it for some mysterious reason, L124 could still pass",
+      "parentUuid": "836de434_40807e58",
       "range": {
         "startLine": 118,
         "startChar": 4,
@@ -107,6 +155,24 @@
       "writtenOn": "2020-10-29T15:49:38Z",
       "side": 1,
       "message": "Are there any previously launched configurations where /system/bin/e2fsck exists, but not /first_stage_ramdisk/system/bin/e2fsck, and the ramdisk is RO?  We wouldn\u0027t want to break them.\n\nIf the ramdisk is RO, wouldn\u0027t we fail in create_directories() above?  Should we add \u0027make the ramdisk writable\u0027 to that error message as well?",
+      "revId": "4d43f3db9bb1f08c8f2dea29e5f9f200adfe37f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05f84bd5_299d2d66",
+        "filename": "init/first_stage_init.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-10-29T17:33:32Z",
+      "side": 1,
+      "message": "Yes -- on devices with a dedicated recovery partition (to be precise, recovery_as_boot is false), installing e2fsck_ramdisk will install to /system/bin/e2fsck instead. However, on these devices, force_normal_boot is never true.\n\nThis only breaks if recovery_as_boot is false at build time, but the bootloader incorrectly sets force_normal_boot. If this is the case, I think we do want to fail early on a misconfigured device.",
+      "parentUuid": "d1815be9_04c65bb4",
       "revId": "4d43f3db9bb1f08c8f2dea29e5f9f200adfe37f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
