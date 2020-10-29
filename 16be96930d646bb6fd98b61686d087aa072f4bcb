@@ -106,6 +106,24 @@
       "parentUuid": "2b48fdfe_dad8a627",
       "revId": "16be96930d646bb6fd98b61686d087aa072f4bcb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "464185e1_f0526bef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2020-10-29T00:52:15Z",
+      "side": 1,
+      "message": "The problem is, as you correctly noted, that such mechanism opens doors for more hacks... We are trying to use cgroup abstraction layer with something that is not even part of a cgroup, instead it\u0027s a sysfs node.\n\nIf we want to be that generic, I suggest we have a WriteFile operation with attributes \"File\" and \"Value\" and we can support \"\u003cpid\u003e\" and \"\u003cuid\u003e\" replacement in both attributes like we do in CgroupController::GetProcsFilePath().",
+      "parentUuid": "c6c36b77_84cda361",
+      "revId": "16be96930d646bb6fd98b61686d087aa072f4bcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
