@@ -104,6 +104,30 @@
       },
       "revId": "3a4275388f7fc59be0dd6347b9a4f780b0c9b108",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "459ca632_03faacc4",
+        "filename": "init/security.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2020-10-29T19:19:23Z",
+      "side": 1,
+      "message": "FWIW clang (and I assume other compilers too) figures out \"if constexpr\" patterns  without nesting ifs even with -O0.. as long as you put the constexpr at the beginning (otherwise the compiler might have to run the other if statements to guarantee side-effects).\n\nhttps://godbolt.org/z/fPK69j\n\nActually you don\u0027t even need constexpr:\nhttps://godbolt.org/z/dqhqbP \n\nCompilers, clever creatures.",
+      "parentUuid": "d4d5cfff_de76fc88",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 37
+      },
+      "revId": "3a4275388f7fc59be0dd6347b9a4f780b0c9b108",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
