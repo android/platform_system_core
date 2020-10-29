@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04e68917_4977ce15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1598726
+      },
+      "writtenOn": "2020-10-29T02:24:03Z",
+      "side": 1,
+      "message": "Jaeguk wanted a simple loopback-style userspace daemon so we could add a smoke test for dm-user.  I have the following additional diff to force this to build, but I\u0027m not sure that\u0027s the right place to put this sort of thing -- it does build, though.\n\nMy cuttlefish is broken so I haven\u0027t tested it yet, but it\u0027s almost exactly what I have in selftests.\n\n````\n$ repo diff\n\nproject build/make/\ndiff --git a/target/product/base_system.mk b/target/product/base_system.mk\nindex 1a28cf016..131aed6f8 100644\n--- a/target/product/base_system.mk\n+++ b/target/product/base_system.mk\n@@ -372,6 +372,7 @@ PRODUCT_PROPERTY_OVERRIDES +\u003d ro.gfx.angle.supported\u003dtrue\n PRODUCT_PACKAGES_DEBUG :\u003d \\\n     adb_keys \\\n     arping \\\n+    dmuserd \\\n     gdbserver \\\n     idlcli \\\n     init-debug.rc \\\n````",
+      "revId": "18861a8feda7be1cc4f72a1a48692ad50d778e03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
