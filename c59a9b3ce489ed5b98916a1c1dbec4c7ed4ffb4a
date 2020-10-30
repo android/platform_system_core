@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8927b0e_551535b3",
+        "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1045980
+      },
+      "writtenOn": "2020-10-30T21:47:33Z",
+      "side": 1,
+      "message": "Currently the only utility we get out of reading the footer early is taking resizing costs for vector resizing up front in o(1) instead of the occasional resize while collecting the operations. I believe vector is good about amortizing those costs, so we shouldn\u0027t be eating the costs of that too often.",
+      "parentUuid": "076a2431_00a9f129",
+      "revId": "c59a9b3ce489ed5b98916a1c1dbec4c7ed4ffb4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "449b6b4d_52754017",
         "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
         "patchSetId": 1
@@ -49,6 +67,30 @@
       "writtenOn": "2020-10-30T14:46:24Z",
       "side": 1,
       "message": "Instead of keeping this add_next flag, how about just add all operations in `toAdd` buffer every time a LabelOp or Footer is seen? This way we can also remove `incomplete` flag. Resulting code would look like:\n```\nwhile (!iter-\u003eDone()) {\n    if(op.type \u003d\u003d kCowLabelOp or op.type \u003d\u003d kCowFooterOp) { // add all ops in toAdd}\n    else { toAdd.push(op); }\n}\n```\nI think this is simpler, WDYT?",
+      "range": {
+        "startLine": 206,
+        "startChar": 40,
+        "endLine": 206,
+        "endChar": 48
+      },
+      "revId": "c59a9b3ce489ed5b98916a1c1dbec4c7ed4ffb4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad5960f6_877675ab",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1045980
+      },
+      "writtenOn": "2020-10-30T21:47:33Z",
+      "side": 1,
+      "message": "If we\u0027ve just seen a label op, but the footer isn\u0027t present, we technically don\u0027t know that the label op was fully written out. Because of that, we wait until we see an operation after the label, allowing us to infer that the sync with that label completed. Honestly we probably shouldn\u0027t ever be using this function anyways. OpenForAppend handles this much nicer since the caller knows what the last safe label is.",
+      "parentUuid": "449b6b4d_52754017",
       "range": {
         "startLine": 206,
         "startChar": 40,
