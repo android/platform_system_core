@@ -16,6 +16,24 @@
       "message": "How did you generate these? And what do \"send\" and \"recv\" in the name correspond too?",
       "revId": "bf15f83113ee95a5f269b0cc5c8d808d42874d12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4da3113_fd8ad646",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-10-30T23:01:04Z",
+      "side": 1,
+      "message": "I generated these by instrumenting the libcuttlefish_security library to dump messages sent and received by the secure_env gatekeeper shim used in cuttliefish, then enrolling a dummy password in the emulator. Therefore, this was from the perspective of the gatekeeper trusty service: recv messages are messages sent from AOSP-\u003eTrusty, and send messages are the reverse. This corpus therefore overestimates the protocol, as it includes messages from both directions, but I think that\u0027s fine as it\u0027s just a starting point.\n\nLooking at this again, I believe some of the messages are mislabeled (some of the `send` messages should be `recv`) due to a bug in the filename generation for one of the runs. I\u0027ll rebuild the corpus so that the send/recv counts match, as they should.",
+      "parentUuid": "055f1b51_7d0af401",
+      "revId": "bf15f83113ee95a5f269b0cc5c8d808d42874d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
