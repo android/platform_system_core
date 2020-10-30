@@ -16,6 +16,24 @@
       "message": "When will this \"else if\" case execute ? Sorry, I just noticed it. The last_pos is set such that footer is not read; so, this should never happen. We have already read the footer in Parse() function and have determined if the footer exists. What is the need of explicit memcpy again ?\n\nI see this was added recently; am I missing something here ?",
       "revId": "c59a9b3ce489ed5b98916a1c1dbec4c7ed4ffb4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "076a2431_00a9f129",
+        "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-10-30T07:44:32Z",
+      "side": 1,
+      "message": "In unit tests the cow is written to a file, but in the normal update_engine flow, the cow is a block device. Since the size is fixed, ftruncate will do nothing, and the footer might not actually be at the end. So we have to scan for it.\n\nMaybe to make it clearer we should drop the early footer read code...",
+      "parentUuid": "c1e9b75c_7e4e689a",
+      "revId": "c59a9b3ce489ed5b98916a1c1dbec4c7ed4ffb4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
