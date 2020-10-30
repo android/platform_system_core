@@ -34,6 +34,46 @@
       "parentUuid": "c1e9b75c_7e4e689a",
       "revId": "c59a9b3ce489ed5b98916a1c1dbec4c7ed4ffb4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "449b6b4d_52754017",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1710792
+      },
+      "writtenOn": "2020-10-30T14:46:24Z",
+      "side": 1,
+      "message": "Instead of keeping this add_next flag, how about just add all operations in `toAdd` buffer every time a LabelOp or Footer is seen? This way we can also remove `incomplete` flag. Resulting code would look like:\n```\nwhile (!iter-\u003eDone()) {\n    if(op.type \u003d\u003d kCowLabelOp or op.type \u003d\u003d kCowFooterOp) { // add all ops in toAdd}\n    else { toAdd.push(op); }\n}\n```\nI think this is simpler, WDYT?",
+      "range": {
+        "startLine": 206,
+        "startChar": 40,
+        "endLine": 206,
+        "endChar": 48
+      },
+      "revId": "c59a9b3ce489ed5b98916a1c1dbec4c7ed4ffb4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1bde30f_59a28b1d",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1710792
+      },
+      "writtenOn": "2020-10-30T14:46:24Z",
+      "side": 1,
+      "message": "`return WriteOperation(op) \u0026\u0026 !fsync`",
+      "revId": "c59a9b3ce489ed5b98916a1c1dbec4c7ed4ffb4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
