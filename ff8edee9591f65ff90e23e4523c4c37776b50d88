@@ -16,6 +16,24 @@
       "message": "Elliott - just fyi - the downside of this is that if this policy reflects something in libc, for instance, libc changes requiring new seccomp rules will break old vendor.imgs without these rules. So, this may be a case of \u0027cure worse than disease\u0027. Can you ack?\n\nThe more complicated solution would be to make minijail llndk w/ C ABI, so that we could continue to add features to the compiler without it breaking us.",
       "revId": "ff8edee9591f65ff90e23e4523c4c37776b50d88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0c4bacc_20029a29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-11-02T23:39:06Z",
+      "side": 1,
+      "message": "oh, i forgot they use the same libc. i was assuming this was fine because they were properly isolated. yeah, that sharing could be a problem.",
+      "parentUuid": "7877e2eb_65e794ea",
+      "revId": "ff8edee9591f65ff90e23e4523c4c37776b50d88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
