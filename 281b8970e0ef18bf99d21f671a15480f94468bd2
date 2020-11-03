@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b37ff121_1b6aa545",
+        "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-03T19:58:21Z",
+      "side": 1,
+      "message": "As much as possible I don\u0027t think we want to duplicate the parsing code. Can we find a way to modify the existing ParseOps() so it can handle merges? (A new open mode, maybe?)\n\nIt might also be worth splitting this part out into a separate CL. drosen@ has a few WIP CLs touching this code and it might save you some rebases of the snapuserd parts.",
+      "revId": "281b8970e0ef18bf99d21f671a15480f94468bd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7836e9fa_4849c182",
+        "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-03T19:58:21Z",
+      "side": 1,
+      "message": "It\u0027s a little confusing to have two separate iterators contained in one iterator. Having separate \"CowOpIter\" and \"CowOpReverseIter\" classes would be more in line with STL.",
+      "revId": "281b8970e0ef18bf99d21f671a15480f94468bd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5277ab6c_d8cc42ff",
+        "filename": "fs_mgr/libsnapshot/include/libsnapshot/cow_format.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-03T19:58:21Z",
+      "side": 1,
+      "message": "accidental newline?",
+      "revId": "281b8970e0ef18bf99d21f671a15480f94468bd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
