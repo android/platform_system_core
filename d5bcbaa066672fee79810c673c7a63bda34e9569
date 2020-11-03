@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "deab0928_aae76519",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1045980
+      },
+      "writtenOn": "2020-11-03T21:00:11Z",
+      "side": 1,
+      "message": "They\u0027re thrown away. This is when something external is acting as the source of truth. For instance, update_engine reports that everything up to label N is done. If it had started on the ops for data+1, it doesn\u0027t know how to resume midway through, so at can open it to begin writing after label N.",
+      "parentUuid": "baaf5edc_2d59a840",
+      "revId": "d5bcbaa066672fee79810c673c7a63bda34e9569",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a58f9549_a29888f8",
         "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
         "patchSetId": 5
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-03T19:17:13Z",
       "side": 1,
       "message": "I\u0027m wondering if we can remove this code path, or remove the GetFooter call that happens beforehand.\n\nCan the writer do something like this?\n\n    cur_pos \u003d lseek(fd, 0, SEEK_SET);\n    footer_pos \u003d lseek(fd, -sizeof(footer), SEEK_END)\n    if (footer_pos \u003e\u003d cur_pos)\n        ... write footer @ footer_pos\n    else\n        ... write footer @ cur_pos\n\nThen we can always read the footer via SEEK_END. Thoughts?",
+      "revId": "d5bcbaa066672fee79810c673c7a63bda34e9569",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93925957_930c1cb5",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1045980
+      },
+      "writtenOn": "2020-11-03T21:00:11Z",
+      "side": 1,
+      "message": "If we\u0027re in this code path, the footer could not be found. Removing it would basically be the same as removing the OpenMode::APPEND path for Initialize, which I\u0027m not terribly opposed to. InitializeAppend covers resume cases, and if there is no label to resume from, the only thing append saves is writing out the header.",
+      "parentUuid": "a58f9549_a29888f8",
       "revId": "d5bcbaa066672fee79810c673c7a63bda34e9569",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
