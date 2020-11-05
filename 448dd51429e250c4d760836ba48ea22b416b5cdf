@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f615dbb8_66e30181",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-05T02:01:21Z",
+      "side": 1,
+      "message": "Ack - thanks for the explanation. Cluster op seems good then. In theory we could have batched by label maybe? But I don\u0027t have a strong opinion what\u0027s better. With this route we can tweak the batch size easily.",
+      "parentUuid": "84458723_2b1425ea",
+      "revId": "448dd51429e250c4d760836ba48ea22b416b5cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72b73e7c_417c0a5e",
@@ -106,6 +124,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf930ee2_405601f1",
+        "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-05T02:01:21Z",
+      "side": 1,
+      "message": "Discussed offline, but if we can drop this it will reduce the complexity here quite a bit.",
+      "revId": "448dd51429e250c4d760836ba48ea22b416b5cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "069f7e6d_f2b62f9a",
+        "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-05T02:01:21Z",
+      "side": 1,
+      "message": "Let\u0027s bite the bullet and use std::optional\u003c\u003e here.",
+      "revId": "448dd51429e250c4d760836ba48ea22b416b5cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7908fc7e_b49a756b",
+        "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-05T02:01:21Z",
+      "side": 1,
+      "message": "Same with footer_ and has_footer_.",
+      "revId": "448dd51429e250c4d760836ba48ea22b416b5cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5327b7fe_8b0cbcc1",
         "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
         "patchSetId": 3
@@ -135,6 +204,24 @@
       "side": 1,
       "message": "I\u0027d prefer # of ops, and sizeof(CowOperation) in the header.",
       "parentUuid": "5327b7fe_8b0cbcc1",
+      "revId": "448dd51429e250c4d760836ba48ea22b416b5cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da8cb8b8_45132add",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-05T02:01:21Z",
+      "side": 1,
+      "message": "Yeah, that seems reasonable.",
+      "parentUuid": "c93aeaab_909673aa",
       "revId": "448dd51429e250c4d760836ba48ea22b416b5cdf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -187,6 +274,24 @@
       "side": 1,
       "message": "I\u0027d probably prefer just having this be the number of CowOperations, and include sizeof(CowOperation) in the header than implicitly manipulate this value anywhere.",
       "parentUuid": "c9ee9a30_85882dac",
+      "revId": "448dd51429e250c4d760836ba48ea22b416b5cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f09a823f_735cdf71",
+        "filename": "fs_mgr/libsnapshot/include/libsnapshot/cow_format.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-05T02:01:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1c9ff3b3_a464c56a",
       "revId": "448dd51429e250c4d760836ba48ea22b416b5cdf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
