@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2765344b_4059732a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-05T00:46:31Z",
+      "side": 1,
+      "message": "I\u0027m a little worried about the approach of having a specific ClusterOp. The read code is starting to look very complex, and the fact that it has to gauge whether ops are valid or not seems like it could be brittle.\n\nIs it possible to put the Cluster op at the start of the cluster? If we do this, and reserve space up-front, we potentially waste some space for the last cluster. But it\u0027s going to be small, and my reading is that the parsing code would benefit a lot.\n\nAlternately, do we need the cluster op at all? If the file size the cluster size is X, shouldn\u0027t we always be able to read X ops? (Barring the last cluster of course, but in that case, we could reserve the size and then have a \"cluster footer\" op.)\n\nThoughts?",
+      "revId": "448dd51429e250c4d760836ba48ea22b416b5cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72b73e7c_417c0a5e",
+        "filename": "fs_mgr/libsnapshot/cow_format.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-05T00:46:31Z",
+      "side": 1,
+      "message": "nit: brace these",
+      "revId": "448dd51429e250c4d760836ba48ea22b416b5cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d5fbd86_6f880d0b",
+        "filename": "fs_mgr/libsnapshot/cow_format.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-05T00:46:31Z",
+      "side": 1,
+      "message": "nit: brace these",
+      "revId": "448dd51429e250c4d760836ba48ea22b416b5cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a165476a_3775c66d",
+        "filename": "fs_mgr/libsnapshot/cow_format.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-05T00:46:31Z",
+      "side": 1,
+      "message": "nit: ValidateOp",
+      "revId": "448dd51429e250c4d760836ba48ea22b416b5cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fd8e1c2_4d547b9a",
+        "filename": "fs_mgr/libsnapshot/cow_format.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-05T00:46:31Z",
+      "side": 1,
+      "message": "Replace this with a switch?",
+      "revId": "448dd51429e250c4d760836ba48ea22b416b5cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5327b7fe_8b0cbcc1",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-05T00:46:31Z",
+      "side": 1,
+      "message": "Instead of forcing the caller to understand sizeof(CowOperation), can we round the requested size? Or treat the CowOptions value as a # of ops (and translate it here?)",
+      "revId": "448dd51429e250c4d760836ba48ea22b416b5cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6530111_0f8b6dbd",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-05T00:46:31Z",
+      "side": 1,
+      "message": "nit: braces here (surprised clang-format didn\u0027t complain?)",
+      "revId": "448dd51429e250c4d760836ba48ea22b416b5cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ee9a30_85882dac",
+        "filename": "fs_mgr/libsnapshot/include/libsnapshot/cow_format.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-05T00:46:31Z",
+      "side": 1,
+      "message": "Can we enforce this (eg round it up) in CowWriter?",
+      "revId": "448dd51429e250c4d760836ba48ea22b416b5cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
