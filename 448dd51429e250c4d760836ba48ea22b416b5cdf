@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84458723_2b1425ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1045980
+      },
+      "writtenOn": "2020-11-05T01:17:52Z",
+      "side": 1,
+      "message": "Data follows the cluster, so we always require something to point us to the next cluster, since data size is unknown. The Cluster op points us to the start of the next cluster. It has nothing to do with the size of the cluster.\n\nWe\u0027re checking validity of ops mostly so that we can see if we\u0027ve hit the footer or the premature end of a cluster (likely missing footer). Otherwise the iterator would return garbage operations, or the checksum would fail. Not that the checksum currently works... It\u0027s also necessary if we want to confirm the op count.\n\nCluster op first would mean we need to adjust that operation after every replace op, which adds a lot of complication to the writer, and in the end of a failure causes the reader to potentially read the data section as operations.\n\nWe do always read X size looking for X ops. If we end up not getting X ops out of it, it adjusts so that we compute the hash correctly. Not that we currently actually do that, since I think that\u0027s all ifdef\u0027d out.",
+      "parentUuid": "2765344b_4059732a",
+      "revId": "448dd51429e250c4d760836ba48ea22b416b5cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72b73e7c_417c0a5e",
@@ -105,6 +123,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c93aeaab_909673aa",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1045980
+      },
+      "writtenOn": "2020-11-05T01:17:52Z",
+      "side": 1,
+      "message": "I\u0027d prefer # of ops, and sizeof(CowOperation) in the header.",
+      "parentUuid": "5327b7fe_8b0cbcc1",
+      "revId": "448dd51429e250c4d760836ba48ea22b416b5cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6530111_0f8b6dbd",
         "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
         "patchSetId": 3
@@ -133,6 +169,24 @@
       "writtenOn": "2020-11-05T00:46:31Z",
       "side": 1,
       "message": "Can we enforce this (eg round it up) in CowWriter?",
+      "revId": "448dd51429e250c4d760836ba48ea22b416b5cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c9ff3b3_a464c56a",
+        "filename": "fs_mgr/libsnapshot/include/libsnapshot/cow_format.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1045980
+      },
+      "writtenOn": "2020-11-05T01:17:52Z",
+      "side": 1,
+      "message": "I\u0027d probably prefer just having this be the number of CowOperations, and include sizeof(CowOperation) in the header than implicitly manipulate this value anywhere.",
+      "parentUuid": "c9ee9a30_85882dac",
       "revId": "448dd51429e250c4d760836ba48ea22b416b5cdf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
