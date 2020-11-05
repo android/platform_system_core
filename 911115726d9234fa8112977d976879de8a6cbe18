@@ -22,6 +22,29 @@
       },
       "revId": "911115726d9234fa8112977d976879de8a6cbe18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdd295b0_041eaaf8",
+        "filename": "fs_mgr/tools/dmuserd.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1176763
+      },
+      "writtenOn": "2020-11-05T23:29:43Z",
+      "side": 1,
+      "message": "I\u0027ve checked that filesystem uses blkdev_issue_flush() which sets REQ_OP_WRITE | REQ_PREFLUSH. So, we need to call fsync(), if (msg.type \u003d\u003d DM_USER_REQ_MAP_FLUSH || msg.flags \u003d\u003d REQ_PREFLUSH || msg.flags \u003d\u003d DM_USER_REQ_MAP_FLAG_FUA).",
+      "range": {
+        "startLine": 209,
+        "startChar": 16,
+        "endLine": 209,
+        "endChar": 44
+      },
+      "revId": "911115726d9234fa8112977d976879de8a6cbe18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
