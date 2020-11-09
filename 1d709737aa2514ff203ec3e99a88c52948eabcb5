@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80c3dc3d_aa62ba0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-09T21:20:14Z",
+      "side": 1,
+      "message": "It needs to be fixed. Maybe we could take a step back here and get it working in a singlethreaded context for now, but it\u0027s losing quite a bit of coverage if we do that.",
+      "parentUuid": "f454c855_006db25e",
+      "revId": "1d709737aa2514ff203ec3e99a88c52948eabcb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc642aff_9ceb1f8f",
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "That is a very good point... Hmm, if I extend the lock to wrap around operations, I have the problem of effectively single threading this fuzzer. However if I DON\u0027T do that, another thread could have already deleted it (although it\u0027s interesting ASAN hasn\u0027t triggered on this after running for a while). I feel like this has been a constant balancing act between memory/concurrency issues and multithreading, and perhaps it\u0027s that I\u0027m fairly new to cpp, but I am struggling to think of a good way to both allow the fuzzer to work with multiple threads in a meaningful way and prevent race conditions, leaks, and derefencing.",
       "parentUuid": "fc642aff_9ceb1f8f",
+      "revId": "1d709737aa2514ff203ec3e99a88c52948eabcb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e0b237e_7a6258bc",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-09T21:20:14Z",
+      "side": 1,
+      "message": "I can answer specific questions, but if I look too deeply, I feel I might as well write the fuzzer.",
+      "parentUuid": "2f3c2f84_b2eb1584",
       "revId": "1d709737aa2514ff203ec3e99a88c52948eabcb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -107,6 +143,30 @@
       "side": 1,
       "message": "Isn\u0027t it possible another thread will decrement the strong count and delete the object while this loop is running?",
       "parentUuid": "3f28dd36_1301469d",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 30
+      },
+      "revId": "1d709737aa2514ff203ec3e99a88c52948eabcb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4e0fe24_4cc29a23",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-09T21:20:14Z",
+      "side": 1,
+      "message": "Yeah, but you split the strong counts to be per-thread. They shouldn\u0027t steal refcounts from other threads, right?",
+      "parentUuid": "b3081f89_4f2e5d7d",
       "range": {
         "startLine": 149,
         "startChar": 0,
@@ -166,6 +226,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "abd46f02_086528f7",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-09T21:20:14Z",
+      "side": 1,
+      "message": "I\u0027m talking about the fuzzer, yeah. We should make sure the weak refs are deleted, even if that means holding a pointer to them",
+      "parentUuid": "ce655e42_f44ed2e8",
+      "range": {
+        "startLine": 158,
+        "startChar": 13,
+        "endLine": 158,
+        "endChar": 26
+      },
+      "revId": "1d709737aa2514ff203ec3e99a88c52948eabcb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b6f8236_c110d107",
         "filename": "libutils/RefBase_fuzz.cpp",
         "patchSetId": 5
@@ -201,6 +285,30 @@
       "side": 1,
       "message": "I think the destructor should only be called once all weak and strong references are removed, and if that\u0027s the case then refDeleted should never be true if there\u0027s still weak refs.",
       "parentUuid": "7b6f8236_c110d107",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 24
+      },
+      "revId": "1d709737aa2514ff203ec3e99a88c52948eabcb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6797b2ca_c42a0e79",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-09T21:20:14Z",
+      "side": 1,
+      "message": "refDeleted refers to the RefBase lifetime, which may be shorter than the weakRefs lifetime",
+      "parentUuid": "44b212c6_925d983c",
       "range": {
         "startLine": 195,
         "startChar": 0,
