@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3508864_0647a6e7",
+        "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-09T21:42:20Z",
+      "side": 1,
+      "message": "Add explicit keyword, and drop reference:\n\n    explicit CowOpReverseIter(std::shared_ptr\u003cstd::vector\u003cCowOperation\u003e\u003e ops)",
+      "revId": "b901b57a7a2b61718adf4ca72e685d870960a73c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6287ce26_4bd5fb0f",
+        "filename": "fs_mgr/libsnapshot/include/libsnapshot/cow_reader.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-09T21:42:20Z",
+      "side": 1,
+      "message": "Would be nice to add to this comment, that the return value will never be null.",
+      "revId": "b901b57a7a2b61718adf4ca72e685d870960a73c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99765c33_a2f989f9",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-09T21:42:20Z",
+      "side": 1,
+      "message": "nit:\n\n    return divresult.rem \u003d\u003d NUM_SNAPSHOT_HDR_CHUNKS;",
+      "revId": "b901b57a7a2b61718adf4ca72e685d870960a73c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2af38553_9a1eaf89",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-09T21:42:20Z",
+      "side": 1,
+      "message": "Let\u0027s just call this infallible, it\u0027s not clear how it could fail.",
+      "revId": "b901b57a7a2b61718adf4ca72e685d870960a73c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbe98477_ba55a725",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-09T21:42:20Z",
+      "side": 1,
+      "message": "Except in very idiomatic/repeated cases (like returning false), I\u0027d like to avoid this single-line style in libsnapshot. It\u0027s pretty dense and libsnapshot code tends to be very complicated. It makes it a bit trickier to inject debugging code too. So, this is preferred:\n\n    if (IsChunkIdMetadata(next_free)) {\n        next_free +\u003d 1;\n    }\n\nI\u0027ll start noting this for libsnapshot_cow as well.",
+      "revId": "b901b57a7a2b61718adf4ca72e685d870960a73c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab92bd14_79d4b5d2",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-09T21:42:20Z",
+      "side": 1,
+      "message": "Is the \"? true : false\" needed here?",
+      "revId": "b901b57a7a2b61718adf4ca72e685d870960a73c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99e97a76_6384db7f",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-09T21:42:20Z",
+      "side": 1,
+      "message": "Since this was repeated above, maybe consider a GetNextAllocatableChunkId helper or something?",
+      "revId": "b901b57a7a2b61718adf4ca72e685d870960a73c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
