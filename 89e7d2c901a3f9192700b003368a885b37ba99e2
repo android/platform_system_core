@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a599088_507e567f",
+        "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-09T22:46:29Z",
+      "side": 1,
+      "message": "Since this looks O(n^2) (CMIIW), how big is |n| here? Is it big enough that it makes sense to track the count, then std::erase the whole range?",
+      "revId": "89e7d2c901a3f9192700b003368a885b37ba99e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d6e4aa7_97c46452",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-09T22:46:29Z",
+      "side": 1,
+      "message": "It would be nice to have a flag that we\u0027re in merge mode, with a CHECK() in the Emit* functions that a merge is not taking place. It\u0027d make it very clear that we have two states: building a COW, or merging one, and though they both \"write\" they have very little overlap in functionality.",
+      "revId": "89e7d2c901a3f9192700b003368a885b37ba99e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1510d70_8323c529",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-09T22:46:29Z",
+      "side": 1,
+      "message": "Can we simplify this to take only the changed header fields? Then it\u0027s much clearer what can and cannot be changed when opened for merging.",
+      "revId": "89e7d2c901a3f9192700b003368a885b37ba99e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbe9ea96_2b52f1d9",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-09T22:46:29Z",
+      "side": 1,
+      "message": "pwrite() returns ssize_t. But I think we should either use lseek (and restore the offset) / WriteFully, or add a WriteFullyAtOffset helper somewhere in libsnapshot.",
+      "revId": "89e7d2c901a3f9192700b003368a885b37ba99e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c524486_c7f9031d",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-09T22:46:29Z",
+      "side": 1,
+      "message": "nit: Move \"unmerged_exceptions\" declaration here.",
+      "revId": "89e7d2c901a3f9192700b003368a885b37ba99e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9afcd8db_9571023e",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-09T22:46:29Z",
+      "side": 1,
+      "message": "nit: Make this the declaration, rather than forward declare above.",
+      "revId": "89e7d2c901a3f9192700b003368a885b37ba99e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
