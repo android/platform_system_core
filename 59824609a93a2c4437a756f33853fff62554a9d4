@@ -16,6 +16,24 @@
       "message": "When a label is specified, it may or may not be the very last label in COW file. This can happen if update_engine emits a label, but update is interrupted before next_op is incremented.",
       "revId": "59824609a93a2c4437a756f33853fff62554a9d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62fabfa5_8f2227ba",
+        "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-10T17:27:47Z",
+      "side": 1,
+      "message": "Here, \"last_label_\" doesn\u0027t mean last label in the file, but the last label we parsed. Parsing stops when we find the requested label. So, I think this is okay, as long as update_engine doesn\u0027t request a label that it never emitted?",
+      "parentUuid": "26080539_c242f3bf",
+      "revId": "59824609a93a2c4437a756f33853fff62554a9d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
