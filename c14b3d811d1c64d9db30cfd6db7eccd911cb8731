@@ -3,6 +3,40 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7ba98945_654c41f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-11-12T18:12:40Z",
+      "side": 1,
+      "message": "Looks mainly good to me, some comments inline.",
+      "revId": "c14b3d811d1c64d9db30cfd6db7eccd911cb8731",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5c87a68_327f0426",
+        "filename": "init/host_init_verifier.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-11-12T18:12:40Z",
+      "side": 1,
+      "message": "This would be more readable with raw string literals.  See https://cs.android.com/android/platform/superproject/+/master:system/logging/logcat/logcat.cpp;l\u003d292?q\u003df:logcat.cpp as an example.\n\nYou won\u0027t be able to use \\t anymore, but you\u0027ll also be able to visually line up the spaces, which may be better anyway.",
+      "revId": "c14b3d811d1c64d9db30cfd6db7eccd911cb8731",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c028a3ce_4e72220d",
         "filename": "init/host_init_verifier.cpp",
         "patchSetId": 11
@@ -20,6 +54,116 @@
         "endLine": 206,
         "endChar": 34
       },
+      "revId": "c14b3d811d1c64d9db30cfd6db7eccd911cb8731",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d28829bb_de7bf2a8",
+        "filename": "init/host_init_verifier.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-11-12T18:12:40Z",
+      "side": 1,
+      "message": "\u003e And it\u0027ll catch other types of issues in the ones it *does* scan. (e.g. bad group ID)\n\nAre you providing all of the `-p` flags that host_init_verifier expects?  See https://cs.android.com/android/platform/superproject/+/master:build/make/core/definitions.mk;l\u003d2415?q\u003dhost_init_verifier.  I think that\u0027s the issue here, since the rest of this code shouldn\u0027t impact the group verification.",
+      "parentUuid": "c028a3ce_4e72220d",
+      "range": {
+        "startLine": 206,
+        "startChar": 7,
+        "endLine": 206,
+        "endChar": 34
+      },
+      "revId": "c14b3d811d1c64d9db30cfd6db7eccd911cb8731",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72c138c3_84572594",
+        "filename": "init/host_init_verifier.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-11-12T18:12:40Z",
+      "side": 1,
+      "message": "You\u0027ll still want to call these when handling the full partitions.  \n\nI\u0027d inline the loop from ParseServicesFromPartitions() directly above, then have this line common to the two cases.",
+      "range": {
+        "startLine": 351,
+        "startChar": 43,
+        "endLine": 351,
+        "endChar": 91
+      },
+      "revId": "c14b3d811d1c64d9db30cfd6db7eccd911cb8731",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c39e8f2d_af9f422a",
+        "filename": "init/service_parser.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-11-12T18:12:40Z",
+      "side": 1,
+      "message": "I think this check can be just `subcontext_ !\u003d old_service-\u003esubcontext()` given that you add the subcontext() getter.\n\nI\u0027m slightly torn here: on one hand I like the detailed error messages with the paths, but I don\u0027t like keeping these paths in memory just for a check during boot/build.  I guess there\u0027re sufficiently few services that this won\u0027t be a big memory increase, compared to the benefit.",
+      "range": {
+        "startLine": 663,
+        "startChar": 16,
+        "endLine": 664,
+        "endChar": 75
+      },
+      "revId": "c14b3d811d1c64d9db30cfd6db7eccd911cb8731",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fca6e8f_a0574c9b",
+        "filename": "init/service_parser.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-11-12T18:12:40Z",
+      "side": 1,
+      "message": "\u0027treble\u0027 is better here.  \u0027subcontext\u0027 is a rather specific term in init, that I wouldn\u0027t expect anyone outside of init developers to need to know.",
+      "range": {
+        "startLine": 666,
+        "startChar": 78,
+        "endLine": 666,
+        "endChar": 88
+      },
+      "revId": "c14b3d811d1c64d9db30cfd6db7eccd911cb8731",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75c35a44_73bbb3d8",
+        "filename": "init/subcontext.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-11-12T18:12:40Z",
+      "side": 1,
+      "message": "Why not continue to use kVendorContext ?",
       "revId": "c14b3d811d1c64d9db30cfd6db7eccd911cb8731",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
