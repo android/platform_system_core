@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94f1e081_05ccbded",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-17T23:12:50Z",
+      "side": 1,
+      "message": "nit: mixing snake case in camel case repository (everywhere)",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 35,
+        "endChar": 39
+      },
+      "revId": "771418df6b80944926be4c7bfb39aa4b1b97e490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "840f1947_85711f3b",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-17T23:12:50Z",
+      "side": 1,
+      "message": "gRefDeletedLock, but do consider \u0027std::atomic\u003cbool\u003e\u0027 for this kind of thing",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 13
+      },
+      "revId": "771418df6b80944926be4c7bfb39aa4b1b97e490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "811b2949_c8008294",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-17T23:12:50Z",
+      "side": 1,
+      "message": "gRefDeleted",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 15
+      },
+      "revId": "771418df6b80944926be4c7bfb39aa4b1b97e490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aede6130_b5dc1a82",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-17T23:12:50Z",
+      "side": 1,
+      "message": "this should no longer be needed right, since these reflect the underlying stores, but strong_weak/weak_count you have reflect API usages, right? (especially since strong_count/weak_count can be zero, I\u0027m not sure what these would do)",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 1
+      },
+      "revId": "771418df6b80944926be4c7bfb39aa4b1b97e490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a36e1ecc_aa7aa711",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-17T23:12:50Z",
+      "side": 1,
+      "message": "nit: this is not a recursive mutex, but L137 could take it if it erroneously calls ~RefBaseSubclass. prefer to only hold lock when it is needed, for L134",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 39
+      },
+      "revId": "771418df6b80944926be4c7bfb39aa4b1b97e490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3062e259_84adcf59",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-17T23:12:50Z",
+      "side": 1,
+      "message": "unnecessary check, and L147, this is never set to nullptr",
+      "range": {
+        "startLine": 142,
+        "startChar": 11,
+        "endLine": 142,
+        "endChar": 26
+      },
+      "revId": "771418df6b80944926be4c7bfb39aa4b1b97e490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf4ed78c_a76596e6",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-17T23:12:50Z",
+      "side": 1,
+      "message": "this still leaks weak refs, should decrement all of the weak refs first (or hold onto getWeakRefs), and then decrement the strong refs, which could cause the object to get deleted.\n\nYou can check, but I would expect that L149 always gets hit?",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 9
+      },
+      "revId": "771418df6b80944926be4c7bfb39aa4b1b97e490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9797fea_351ad343",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-17T23:12:50Z",
+      "side": 1,
+      "message": "this should be a fuzzer error, right?",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 5
+      },
+      "revId": "771418df6b80944926be4c7bfb39aa4b1b97e490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
