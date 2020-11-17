@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cc8b1e4_4a2a54b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2020-11-17T16:50:34Z",
+      "side": 1,
+      "message": "Post-submit driveby.\n\nI think we have an issue with both read_all() and write_all() in terms of catching errors.  Should we change both of them to return ssize_t, instead of size_t?\n\nI\u0027ve commented the issue with read_all(), but the same holds for write_all() as well.",
+      "revId": "c16e503faa79f75a5587ca98538fc20b0cad53d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5116714d_6cfc8b60",
+        "filename": "fs_mgr/tools/dmuserd.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2020-11-17T16:50:34Z",
+      "side": 1,
+      "message": "This method is returning a size_t, which is unsigned...",
+      "revId": "c16e503faa79f75a5587ca98538fc20b0cad53d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d67e4270_c51fff1a",
+        "filename": "fs_mgr/tools/dmuserd.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2020-11-17T16:50:34Z",
+      "side": 1,
+      "message": "...so if we catch an error here with a negative value, it actually gets returned as a positive value...",
+      "revId": "c16e503faa79f75a5587ca98538fc20b0cad53d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d7e2bb0_87b4eb1c",
+        "filename": "fs_mgr/tools/dmuserd.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2020-11-17T16:50:34Z",
+      "side": 1,
+      "message": "...and a check like this will not catch that we had an error.",
+      "revId": "c16e503faa79f75a5587ca98538fc20b0cad53d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
