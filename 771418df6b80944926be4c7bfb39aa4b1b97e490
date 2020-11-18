@@ -167,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "678f0f14_6d2b9874",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-18T01:06:17Z",
+      "side": 1,
+      "message": "\u003e #define BAD_STRONG(c) \\\n\u003e         ((c) \u003d\u003d 0 || ((c) \u0026 (~(MAX_COUNT | INITIAL_STRONG_VALUE))) !\u003d 0)\n\u003e ...\n\u003e void RefBase::decStrong(const void* id) const\n\u003e {\n\u003e ...\n\u003e     const int32_t c \u003d refs-\u003emStrong.fetch_sub(1, std::memory_order_release);\n\u003e ...\n\u003e     LOG_ALWAYS_FATAL_IF(BAD_STRONG(c), \"decStrong() called on %p too many times\",\n\u003e             refs);\n\nHere is the code from RefBase.cpp. If mStrong was 1, then c will be 1, and BAD_STRONG(1) is false, so those won\u0027t be a fatal error (it\u0027ll go on to call onLastStrongRef).",
+      "parentUuid": "1399b73c_65a05a4e",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 1
+      },
+      "revId": "771418df6b80944926be4c7bfb39aa4b1b97e490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a36e1ecc_aa7aa711",
         "filename": "libutils/RefBase_fuzz.cpp",
         "patchSetId": 6
@@ -250,6 +274,30 @@
       "side": 1,
       "message": "I guess you\u0027re right actually. As long as this thread\u0027s strong/weak count are greater than zero the object should exist. Same goes for decrementing strong/weak at the end.",
       "parentUuid": "8f3bccdd_59afaa1d",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 39
+      },
+      "revId": "771418df6b80944926be4c7bfb39aa4b1b97e490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a1565a2_fb69d5a6",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-18T01:06:17Z",
+      "side": 1,
+      "message": "Yeah - then also make sure to store global weakref_type* getWeakRefs so that you can dec weak on this, if the RefBase object is already destroyed (instead of having to dereference ref-\u003egetWeakRefs..)",
+      "parentUuid": "5b1774ac_658cfda8",
       "range": {
         "startLine": 133,
         "startChar": 0,
