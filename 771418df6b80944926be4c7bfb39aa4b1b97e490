@@ -143,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1399b73c_65a05a4e",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-11-18T00:13:47Z",
+      "side": 1,
+      "message": "So I guess I\u0027m a little confused about how that works. I see the call to removeStrongRef, then the count is set to mStrong.fetch_sub (so I\u0027m guessing this is the strong count minus 1?), then that value is run through BAD_STRONG. If anything it seems like that logic should trigger when the strong count is 1 or less, which seems to be the behavior I was encountering (thus the strong_count - 1 check)",
+      "parentUuid": "c2791c49_5053e569",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 1
+      },
+      "revId": "771418df6b80944926be4c7bfb39aa4b1b97e490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a36e1ecc_aa7aa711",
         "filename": "libutils/RefBase_fuzz.cpp",
         "patchSetId": 6
@@ -202,6 +226,30 @@
       "side": 1,
       "message": "I feel refDeleted isn\u0027t needed here at all actually, since the thread should know whether it can dec/inc this class based on the local strong_count/weak_count only, regardless of what the other threads do, right?",
       "parentUuid": "9f01dfbf_a7bebed3",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 39
+      },
+      "revId": "771418df6b80944926be4c7bfb39aa4b1b97e490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b1774ac_658cfda8",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-11-18T00:13:47Z",
+      "side": 1,
+      "message": "I guess you\u0027re right actually. As long as this thread\u0027s strong/weak count are greater than zero the object should exist. Same goes for decrementing strong/weak at the end.",
+      "parentUuid": "8f3bccdd_59afaa1d",
       "range": {
         "startLine": 133,
         "startChar": 0,
