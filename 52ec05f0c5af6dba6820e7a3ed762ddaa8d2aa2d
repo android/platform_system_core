@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b626a861_1f609a43",
+        "filename": "init/host_init_verifier.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-11-18T19:47:19Z",
+      "side": 1,
+      "message": "Might as well use GetSubcontext() here too?  I can\u0027t think of anything that would/wouldn\u0027t break if it isn\u0027t specified but ServiceParser has a subcontext, but I think it\u0027d be good for consistency with a real system.",
+      "range": {
+        "startLine": 319,
+        "startChar": 70,
+        "endLine": 319,
+        "endChar": 77
+      },
+      "revId": "52ec05f0c5af6dba6820e7a3ed762ddaa8d2aa2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1402cc5_acc32341",
+        "filename": "init/host_init_verifier.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-11-18T19:47:19Z",
+      "side": 1,
+      "message": "I should have thought of this earlier, but maybe we just drop printing *argv and have the same error message in both cases, since we already print the file name when we emit errors?\n\nhost_init_verifier: out/soong/.intermediates/system/core/rootdir/init.rc/android_x86/init.rc: 1: Invalid section keyword found\nhost_init_verifier: out/soong/.intermediates/system/core/rootdir/init.rc/android_x86/init.rc: 2: Invalid section keyword found\nhost_init_verifier: Failed to parse init script \u0027out/soong/.intermediates/system/core/rootdir/init.rc/android_x86/init.rc\u0027 with 2 errors\n\n/ \n\nhost_init_verifier: Command \u0027load_system_props\u0027 (out/soong/.intermediates/system/core/rootdir/init.rc/android_x86/init.rc:89) failed: \u0027load_system_props\u0027 is deprecated\nhost_init_verifier: Failed to parse init script \u0027out/soong/.intermediates/system/core/rootdir/init.rc/android_x86/init.rc\u0027 with 1 errors",
+      "range": {
+        "startLine": 336,
+        "startChar": 8,
+        "endLine": 342,
+        "endChar": 68
+      },
+      "revId": "52ec05f0c5af6dba6820e7a3ed762ddaa8d2aa2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceef515b_2ab71aac",
+        "filename": "init/service.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-11-18T19:47:19Z",
+      "side": 1,
+      "message": "Can we have a subcontext() accessor instead?  I\u0027d be worried that \u0027context\u0027 here could be confused with the context that the service runs as (the seclabel() accessor).\n\nIt\u0027d be a simpler accessor too, since we could return subcontext_ directly and not worry if it\u0027s nullptr.",
+      "revId": "52ec05f0c5af6dba6820e7a3ed762ddaa8d2aa2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
