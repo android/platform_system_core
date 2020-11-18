@@ -69,6 +69,24 @@
       "parentUuid": "fba5ff8d_990e9d41",
       "revId": "9fa773746ce4ebcbf44859a452682beee8158406",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3a2578e_c9da10d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-11-18T17:53:44Z",
+      "side": 1,
+      "message": "For recovery-as-boot, we\u0027d need to create the directory around here: https://cs.android.com/android/platform/superproject/+/master:system/core/init/first_stage_init.cpp;l\u003d329?q\u003d%22first_stage_ramdisk%22\n\nThough, I wonder if we should just move the mkdir() in fs_mgr from __mount() to prepare_fs_for_mount() ?  As long as the ramdisks are writable, we wouldn\u0027t even need this change in that case.\n\nThoughts?",
+      "parentUuid": "96e53f07_a66752be",
+      "revId": "9fa773746ce4ebcbf44859a452682beee8158406",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
