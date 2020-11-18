@@ -119,6 +119,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2791c49_5053e569",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-18T00:04:01Z",
+      "side": 1,
+      "message": "this should be if the strong count was 0 or very very big (it\u0027s trying to detect underflow). Note fetch_sub is returning the value of the ref count before the subtraction is applied",
+      "parentUuid": "0dbeefba_4dcc473b",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 1
+      },
+      "revId": "771418df6b80944926be4c7bfb39aa4b1b97e490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a36e1ecc_aa7aa711",
         "filename": "libutils/RefBase_fuzz.cpp",
         "patchSetId": 6
@@ -154,6 +178,30 @@
       "side": 1,
       "message": "We want to avoid referencing it when L137 is called in another thread. The intent behind using a RWLock was so that L137 could take the lock if RefBaseSubclass is destroyed.",
       "parentUuid": "a36e1ecc_aa7aa711",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 39
+      },
+      "revId": "771418df6b80944926be4c7bfb39aa4b1b97e490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f3bccdd_59afaa1d",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-18T00:04:01Z",
+      "side": 1,
+      "message": "I feel refDeleted isn\u0027t needed here at all actually, since the thread should know whether it can dec/inc this class based on the local strong_count/weak_count only, regardless of what the other threads do, right?",
+      "parentUuid": "9f01dfbf_a7bebed3",
       "range": {
         "startLine": 133,
         "startChar": 0,
