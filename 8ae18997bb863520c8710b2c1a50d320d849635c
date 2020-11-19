@@ -3,6 +3,91 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2b88642_66634195",
+        "filename": "fs_mgr/libsnapshot/cow_format.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-19T07:42:39Z",
+      "side": 1,
+      "message": "Is this unused now?",
+      "revId": "8ae18997bb863520c8710b2c1a50d320d849635c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b7c43c0_152bc56a",
+        "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-19T07:42:39Z",
+      "side": 1,
+      "message": "If |to_add| \u003d\u003d |cluster_ops|, is this assignment and further use of to_add necessary?",
+      "revId": "8ae18997bb863520c8710b2c1a50d320d849635c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ec40ff8_ed4e4f8b",
+        "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-19T07:42:39Z",
+      "side": 1,
+      "message": "Is this check needed? Are there ops after the footer?",
+      "revId": "8ae18997bb863520c8710b2c1a50d320d849635c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "553d6fef_c0012379",
+        "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-19T07:42:39Z",
+      "side": 1,
+      "message": "Something like C++-idiomatic would be nice here. I\u0027m guessing pop_back() didn\u0027t make sense because it\u0027s not obvious that current_op_num \u003d\u003d ops_buffer.back()? We could either assert that, or switch to erase() or something. In fact erase() might work nicely if this loop was converted to use iterators, like:\n\n    auto iter \u003d ops_buffer.begin() + current_op_num;\n    while (iter !\u003d ops_buffer.end()) {\n        ....\n\nThen the second resize below could be dropped.",
+      "revId": "8ae18997bb863520c8710b2c1a50d320d849635c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d95614d_56530576",
+        "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-19T07:42:39Z",
+      "side": 1,
+      "message": "Check |done| here and break again?",
+      "revId": "8ae18997bb863520c8710b2c1a50d320d849635c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ff049fe_41f6e4b2",
         "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
         "patchSetId": 7
@@ -14,6 +99,23 @@
       "writtenOn": "2020-11-18T22:49:01Z",
       "side": 1,
       "message": "We should check for clusterOp here as well.",
+      "revId": "8ae18997bb863520c8710b2c1a50d320d849635c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4244a3a_21eff2a5",
+        "filename": "fs_mgr/libsnapshot/snapshot_reader.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-19T07:42:39Z",
+      "side": 1,
+      "message": "We have this sequence in a few places now - time for an IsMetadataOp helper or something?",
       "revId": "8ae18997bb863520c8710b2c1a50d320d849635c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
