@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6afa6f1_f5a26ff3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2020-11-19T00:52:00Z",
+      "side": 1,
+      "message": "I think this is causing issues with adbd",
+      "revId": "396bfeac52e5d1d846a0d6d771f0a2dd210eef8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e048330_860f001a",
+        "filename": "init/service_parser.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2020-11-19T00:52:00Z",
+      "side": 1,
+      "message": "This is now failing for me locally on cuttlefish for adbd apex:\n\n[    7.000044] init: /apex/com.android.adbd/etc/init.rc: 1: service \u0027adbd\u0027 overrides another service across the treble boundary.\n\nI need to debug this before running presubmit.",
+      "range": {
+        "startLine": 664,
+        "startChar": 19,
+        "endLine": 664,
+        "endChar": 24
+      },
+      "revId": "396bfeac52e5d1d846a0d6d771f0a2dd210eef8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
