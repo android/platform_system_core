@@ -51,6 +51,24 @@
       "parentUuid": "8132c201_b030fb0a",
       "revId": "a1122bb64cf9430200ed95ba8018a2edbe1a0bb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2569387_9103d553",
+        "filename": "init/devices.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-11-20T19:02:30Z",
+      "side": 1,
+      "message": "\u003e Do you not want to use FNM_PATHNAME at all?  I thought that usage was intentional.\n\ni don\u0027t know whether it was intentional, but aiui the change you\u0027re trying to make, you *want* the FNM_PATHNAME behavior most of the time, but not when there\u0027s a \u0027*\u0027 at the end of the pattern?\n\nso /*/f would match /a/f but not /a/b/f, whereas /a/* would match /a/f and /a/b/f?\n\ni _think_ the difference between 0 and FNM_LEADING_DIR is that the latter turns a pattern ending in `/*` into something more like zsh \"/**\". (but even if that\u0027s actually what you mean -- and i\u0027m not sure it is -- don\u0027t you want to only enable this for ends_with(\"/*\") rather than ends_with(\"*\")? with FNM_LEADING_DIR i think a* would also match a/b/f which i think would surprise almost everyone?)\n\n -*-\n\ni\u0027ll be honest --- i don\u0027t fully understand FNM_LEADING_DIR, and i\u0027ve never seen it used before. whereas i have seen the `\u003csomething\u003e ? 0 : FNM_PATHNAME` idiom before [and it\u0027s how find(1) -name and friends behave, for example]. so my gut\u0027s assuming we want the latter unless proven otherwise :-)\n\nthat said, the one use i can find of FNM_LEADING_DIR if i actually go and look for one is in libselinux. which is generally awful code that i wouldn\u0027t normally want to use as an example of anything other than \"how not to do it\", but if your goal here is \"compatibility with libselinux\", stick that in a code comment and call me convinced. (though they _unconditionally_ pass `FNM_LEADING_DIR|FNM_PATHNAME`.)",
+      "parentUuid": "c2307d16_4f4f940e",
+      "revId": "a1122bb64cf9430200ed95ba8018a2edbe1a0bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
