@@ -16,6 +16,24 @@
       "message": "How is this going to work in general for the regular ramdisk + a shared e2fsck?  We won\u0027t have the linker or any of the shared libraries included in that ramdisk, at least not just with this change.\n\nIn general, is your goal to have the ramdisk (either the regular one or the recovery-as-boot one) to use shared executables and include the needed shared libraries?  Are you sure this will work well after init switches root into /first_stage_ramdisk?  I would expect that access to /lib[64] is lost at that point.\n\nAre you doing this for space savings or what other reason?  I\u0027d be interested to know the resulting size of the ramdisk with/without shared linking.  Init, even 1st stage init, links a ton of libraries; having the full copies of each of them will take quite a bit of space.",
       "revId": "c7ed02f445618c16324dd1fe2bde1dd82141718d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c0a731f_7067b879",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-11-20T19:27:38Z",
+      "side": 1,
+      "message": "To answer your question: This CL is for tune2fs/resize2fs only, which are installed to vendor-ramdisk/first_stage_ramdisk/system/bin on Pixel/CF/other devices w/o recovery partition. Hence, lib64 is installed under vendor-ramdisk/first_stage_ramdisk/.\n\nOTOH, e2fsck is installed under ramdisk/system/bin, and it is a static library. Hence init needs to move it.\n\nThis whole topic has nothing to do with the regular ramdisk.\n\nAs of size, using static linking for all *2fs binaries in the vendor_ramdisk does save a little bit of space. See\nhttps://b.corp.google.com/issues/173425293#comment11\nhttps://paste.googleplex.com/5955935253037056\nfor comparisons. But from the discussion in the first_stage_console topic, I think `system_shared_libs: []` is discouraged, right?",
+      "parentUuid": "101b0845_9d6924d2",
+      "revId": "c7ed02f445618c16324dd1fe2bde1dd82141718d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
