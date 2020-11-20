@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a2903af_ef380896",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2020-11-20T18:31:28Z",
+      "side": 1,
+      "message": "will add",
+      "parentUuid": "f5e7abab_445ca03e",
+      "revId": "b6ec240cbc196c85f62ac6f8c55387477ec569e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d0ed367_06cd9987",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-11-20T18:21:29Z",
       "side": 1,
       "message": "foreground runtime higher than top-app runtime sounds weird.\nDo these values really affect device performance? If not, maybe just use the same values for all with a comment that these values do not really affect task performance?",
+      "range": {
+        "startLine": 190,
+        "startChar": 51,
+        "endLine": 190,
+        "endChar": 57
+      },
+      "revId": "b6ec240cbc196c85f62ac6f8c55387477ec569e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5aa6c54_b0f1cfd3",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2020-11-20T18:31:28Z",
+      "side": 1,
+      "message": "we should not have anything running in TA as RT, forground is due to SurfaceFlinger use.\n\n```\nservice surfaceflinger /system/bin/surfaceflinger\n    class core animation\n    user system\n    group graphics drmrpc readproc\n    capabilities SYS_NICE\n    onrestart restart zygote\n    task_profiles HighPerformance  \u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c FG per taskprifile.json\n...\n```",
+      "parentUuid": "4d0ed367_06cd9987",
       "range": {
         "startLine": 190,
         "startChar": 51,
