@@ -33,6 +33,24 @@
       "message": "is this right? or should this be `int flags \u003d (name_.back() \u003d\u003d \u0027*\u0027) ? 0 : FNM_PATHNAME;`?",
       "revId": "a1122bb64cf9430200ed95ba8018a2edbe1a0bb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2307d16_4f4f940e",
+        "filename": "init/devices.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-11-20T14:30:36Z",
+      "side": 1,
+      "message": "Do you not want to use FNM_PATHNAME at all?  I thought that usage was intentional.\n\nI just want to change the behavior to additionally prefix match when the string ends in a `*` (but keep the FNM_PATHNAME logic for `*`s in the center).  See the tests for examples.",
+      "parentUuid": "8132c201_b030fb0a",
+      "revId": "a1122bb64cf9430200ed95ba8018a2edbe1a0bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
