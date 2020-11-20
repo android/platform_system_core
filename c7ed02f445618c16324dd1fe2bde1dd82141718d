@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "101b0845_9d6924d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-11-20T14:27:50Z",
+      "side": 1,
+      "message": "How is this going to work in general for the regular ramdisk + a shared e2fsck?  We won\u0027t have the linker or any of the shared libraries included in that ramdisk, at least not just with this change.\n\nIn general, is your goal to have the ramdisk (either the regular one or the recovery-as-boot one) to use shared executables and include the needed shared libraries?  Are you sure this will work well after init switches root into /first_stage_ramdisk?  I would expect that access to /lib[64] is lost at that point.\n\nAre you doing this for space savings or what other reason?  I\u0027d be interested to know the resulting size of the ramdisk with/without shared linking.  Init, even 1st stage init, links a ton of libraries; having the full copies of each of them will take quite a bit of space.",
+      "revId": "c7ed02f445618c16324dd1fe2bde1dd82141718d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
