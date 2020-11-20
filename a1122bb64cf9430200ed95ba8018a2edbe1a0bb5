@@ -69,6 +69,24 @@
       "parentUuid": "c2307d16_4f4f940e",
       "revId": "a1122bb64cf9430200ed95ba8018a2edbe1a0bb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7494bb1c_5d425df8",
+        "filename": "init/devices.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-11-20T20:12:35Z",
+      "side": 1,
+      "message": "\u003e so /*/f would match /a/f but not /a/b/f, whereas /a/* would match /a/f and /a/b/f?\n\nYes, but the open question is /a/*/b/*.  Right now it only matches /a/\u003cone dir\u003e/b/\u003cone dir\u003e.  I\u0027m proposing to have it match /a/\u003cone dir\u003e/b/any/number/of/dirs, but not /a/any/number/of/dirs/b/any/number/of/dirs.\n\nUnless you think that I should just allow the second match as well, in which case this would be simple.  I was alternatively thinking of coming up with some new syntax that says \"I don\u0027t want FNM_PATHNAME\", since that wouldn\u0027t break existing use cases, but I couldn\u0027t think of a good option there.\n\n\u003e don\u0027t you want to only enable this for ends_with(\"/*\") rather than ends_with(\"*\")? with FNM_LEADING_DIR i think a* would also match a/b/f which i think would surprise almost everyone?)\n\nFair point, I did go back and forth with this.  See patchset 2 that does exactly that.  The reason why I chose to do just ends_with(\"*\") is because with only one `*` in the string, that is how the \u0027prefix\u0027 match works.  /dev/video* matches /dev/video0 and /dev/video/0.  I didn\u0027t want to \u0027unify\u0027 the \u0027prefix\u0027 aspect of the trailing `*`, but still have it end up slightly different semantics than the existing \u0027prefix\u0027 match.\n\n\u003e i\u0027ll be honest --- i don\u0027t fully understand FNM_LEADING_DIR, and i\u0027ve never seen it used before. \n\nI haven\u0027t seen it before either, but it looks like it\u0027s meant for specifically what I\u0027m looking for.  The BSD man pages (which is where our fnmatch() comes from) are clearer than man7, though still not quite as clear as the tests I wrote.",
+      "parentUuid": "f2569387_9103d553",
+      "revId": "a1122bb64cf9430200ed95ba8018a2edbe1a0bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
