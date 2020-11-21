@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "653ed1f2_255efd2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-11-21T01:01:40Z",
+      "side": 1,
+      "message": "(i feel like in addition to more bionic unit tests, a patch to the man7 repo is likely to be another positive result of trying to understand this once it\u0027s all over...)",
+      "revId": "a1122bb64cf9430200ed95ba8018a2edbe1a0bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8132c201_b030fb0a",
@@ -85,6 +102,24 @@
       "side": 1,
       "message": "\u003e so /*/f would match /a/f but not /a/b/f, whereas /a/* would match /a/f and /a/b/f?\n\nYes, but the open question is /a/*/b/*.  Right now it only matches /a/\u003cone dir\u003e/b/\u003cone dir\u003e.  I\u0027m proposing to have it match /a/\u003cone dir\u003e/b/any/number/of/dirs, but not /a/any/number/of/dirs/b/any/number/of/dirs.\n\nUnless you think that I should just allow the second match as well, in which case this would be simple.  I was alternatively thinking of coming up with some new syntax that says \"I don\u0027t want FNM_PATHNAME\", since that wouldn\u0027t break existing use cases, but I couldn\u0027t think of a good option there.\n\n\u003e don\u0027t you want to only enable this for ends_with(\"/*\") rather than ends_with(\"*\")? with FNM_LEADING_DIR i think a* would also match a/b/f which i think would surprise almost everyone?)\n\nFair point, I did go back and forth with this.  See patchset 2 that does exactly that.  The reason why I chose to do just ends_with(\"*\") is because with only one `*` in the string, that is how the \u0027prefix\u0027 match works.  /dev/video* matches /dev/video0 and /dev/video/0.  I didn\u0027t want to \u0027unify\u0027 the \u0027prefix\u0027 aspect of the trailing `*`, but still have it end up slightly different semantics than the existing \u0027prefix\u0027 match.\n\n\u003e i\u0027ll be honest --- i don\u0027t fully understand FNM_LEADING_DIR, and i\u0027ve never seen it used before. \n\nI haven\u0027t seen it before either, but it looks like it\u0027s meant for specifically what I\u0027m looking for.  The BSD man pages (which is where our fnmatch() comes from) are clearer than man7, though still not quite as clear as the tests I wrote.",
       "parentUuid": "f2569387_9103d553",
+      "revId": "a1122bb64cf9430200ed95ba8018a2edbe1a0bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e4f16ec_f7c59ff1",
+        "filename": "init/devices.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-11-21T01:01:40Z",
+      "side": 1,
+      "message": "\u003e Unless you think that I should just allow the second match as well, in which case this would be simple.  \n\ndo we have a motivating example for why we have FNM_PATHNAME at the moment?\n\n(because, yes, i feel like this \"special case at the end\" is weird, and inherently dislike anything i can\u0027t easily explain in the docs. and i\u0027m still unconvinced i\u0027ve seen a correct explanation of this feature.)\n\n(ideally we\u0027d have support for ** and users could explicitly say which they mean, but that\u0027s why shells write their own code for this and don\u0027t use fnmatch(3) :-( )\n\n\u003e The BSD man pages (which is where our fnmatch() comes from) are clearer than man7, though still not quite as clear as the tests I wrote.\n\ndid you look at the implementation? i didn\u0027t yet, but one of my worries is that the FreeBSD man page and the glibc info page aren\u0027t obviously describing the same feature! i think the info page\u0027s \"Ignore a trailing sequence of characters starting with a ‘/’ in string\" is wrong --- it doesn\u0027t have to _start_ with a \u0027/\u0027. and the FreeBSD man page isn\u0027t right either, because `fnmatch(\"a*\", \"ab/cd\", FNM_PATHNAME|FNM_LEADING_DIR)` matches (as the info page\u0027s example implies).\n\ni\u0027m still struggling to come up with the right wording though...\n```\n#include \u003cfnmatch.h\u003e\n#include \u003cstdio.h\u003e\nint main() {\n  fprintf(stderr, \"%d\\n\", fnmatch(\"a*\", \"ab/cd\", 0));\n  fprintf(stderr, \"%d\\n\", fnmatch(\"a*\", \"ab/cd\", FNM_PATHNAME));\n  fprintf(stderr, \"%d\\n\", fnmatch(\"a*\", \"ab/cd\", FNM_LEADING_DIR));\n  fprintf(stderr, \"%d\\n\", fnmatch(\"a*\", \"ab/cd\", FNM_PATHNAME|FNM_LEADING_DIR));\n\n  fprintf(stderr, \"--\\n\");\n\n  fprintf(stderr, \"%d\\n\", fnmatch(\"a*z\", \"ab/cdz\", 0));\n  fprintf(stderr, \"%d\\n\", fnmatch(\"a*z\", \"ab/cdz\", FNM_PATHNAME));\n  fprintf(stderr, \"%d\\n\", fnmatch(\"a*z\", \"ab/cdz\", FNM_LEADING_DIR));\n  fprintf(stderr, \"%d\\n\", fnmatch(\"a*z\", \"ab/cdz\", FNM_PATHNAME|FNM_LEADING_DIR));\n\n  return 0;\n}\n```\n\n(https://android-review.googlesource.com/c/platform/bionic/+/1507619 at least adds bionic tests for the bits i _do_ understand, but i don\u0027t think i\u0027m going to \"get\" FNM_LEADING_DIR before i disappear for a week!)\n\n\n\n -*-\n\ni\u0027d have no qualms about either of `0` or `FNM_PATHNAME`, and would be less worried by always having `FNM_PATHNAME|FNM_LEADING_DIR` (even though i\u0027m still not 100% sure what that actually means) --- it\u0027s the _conditional_ that really makes me think \"this is too complicated for humans\" (even though, as i\u0027ve just admitted, i still don\u0027t get FNM_LEADING_DIR :-) ).\n\nalternatively, if you think the conditional is the right way to go, feel free to get a second opinion --- maybe jmgao or rprichard will think it\u0027s obvious what this does, and come up with good wording to clearly and completely explain the behavior. (or maybe i\u0027ll be less dense when i come back after the break!)",
+      "parentUuid": "7494bb1c_5d425df8",
       "revId": "a1122bb64cf9430200ed95ba8018a2edbe1a0bb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
