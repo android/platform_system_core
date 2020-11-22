@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91a6d775_6146bc53",
+        "filename": "libprocessgroup/setup/cgroup_map_write.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2020-11-22T06:55:46Z",
+      "side": 1,
+      "message": "nit: considering initialize sys_cgroups_path with CGROUPS_DESC_FILE?\n\n    std::string sys_cgroups_path \u003d CGROUPS_DESC_FILE;\n\n    // load API-level specific system cgroups descriptors if available\n    if (api_level \u003e 0) {\n        std::string api_cgroups_path \u003d android::base::StringPrintf(TEMPLATE_CGROUPS_DESC_API_FILE, api_level);\n        if (access(api_cgroups_path.c_str(), F_OK)) {\n            sys_cgroups_path \u003d api_cgroups_path;\n        }\n    }",
+      "range": {
+        "startLine": 218,
+        "startChar": 4,
+        "endLine": 228,
+        "endChar": 5
+      },
+      "revId": "43136811f276d3ff9d8667d41cfcc2be01abaaf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
