@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30c988c3_c4aec8a3",
+        "filename": "libprocessgroup/setup/cgroup_map_write.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-23T23:38:17Z",
+      "side": 1,
+      "message": "this still falls back to CGROUPS_DESC_FILE in the failure case.\n\nI was imagining:\n\n    if (!access(api_cgroups_path, F_OK)) {\n        if (errno !\u003d ENOENT) return false;\n        sys_cgroups_path \u003d api_cgroups_path;\n    }\n\nRight?",
+      "range": {
+        "startLine": 224,
+        "startChar": 52,
+        "endLine": 224,
+        "endChar": 70
+      },
+      "revId": "35221b53381c8823e237c04a71d9c2549114c52f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
