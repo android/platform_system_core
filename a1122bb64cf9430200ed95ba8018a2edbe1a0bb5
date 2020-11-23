@@ -122,6 +122,24 @@
       "parentUuid": "7494bb1c_5d425df8",
       "revId": "a1122bb64cf9430200ed95ba8018a2edbe1a0bb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf12987_aa41608c",
+        "filename": "init/devices.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-11-23T21:23:49Z",
+      "side": 1,
+      "message": "\u003e do we have a motivating example for why we have FNM_PATHNAME at the moment?\n\nI checked through gerrit history and don\u0027t see any reason that it was used.  Admittedly, a majority of ueventd.rc scripts in our repo use the simple trailing `*`, so FNM_PATHNAME doesn\u0027t come into play there.  \n\nThe one case that I do see using it, is \"/dev/mhi_*_pipe_14\", where it\u0027s pretty clear that the `*` is not meant to match `/`, though also highly unlikely that it would encounter a path with a `/` either.\n\nThe attached bug has another example.  It\u0027s clear in the bug that the `*`s in the middle of the path are not meant to match `/` but the final one is.  Though also unlikely that there would be a path where the `*` would match a `/`.\n\nMy majority reason to keep FNM_PATHNAME is that I did not want to change the behavior unexpectedly, which could result in /dev and /sys nodes having unexpected permissions.\n\n\u003e ideally we\u0027d have support for ** and users could explicitly say which they mean, but that\u0027s why shells write their own code for this and don\u0027t use fnmatch(3) :-(\n\nThat was one of my other thoughts: use FNM_LEADING_DIR if the string ends in ** but I decided on this, to unify the `*` in middle of string and `*` only at the end of the string cases.\n\n\u003e and would be less worried by always having `FNM_PATHNAME|FNM_LEADING_DIR` (even though i\u0027m still not 100% sure what that actually means) --- it\u0027s the _conditional_ that really makes me think \"this is too complicated for humans\" (even though, as i\u0027ve just admitted, i still don\u0027t get FNM_LEADING_DIR :-) ).\n\nI think the big delta (as I point out on aosp/1508937) is that  always having `FNM_PATHNAME|FNM_LEADING_DIR` would make /sys/*/node match /sys/adc/node/123, whereas the conditional in this CL prevents that from matching.\n\n\u003e alternatively, if you think the conditional is the right way to go, feel free to get a second opinion\n\nHonestly, I\u0027m not super convinced that this is a good idea, but I don\u0027t see a better option either.  I\u0027ll add jmgao@ for his thoughts.",
+      "parentUuid": "7e4f16ec_f7c59ff1",
+      "revId": "a1122bb64cf9430200ed95ba8018a2edbe1a0bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
