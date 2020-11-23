@@ -63,6 +63,30 @@
       },
       "revId": "857bc3e811152ce4765b3a1348a1617d7a057f79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "618fd91d_9dddd198",
+        "filename": "libprocessgroup/setup/cgroup_map_write.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-23T19:44:19Z",
+      "side": 1,
+      "message": "I mean, if \u0027access\u0027 here returns -1 (failure), then L224 gets hit and we use the default file. However, access may be failing because of ENAMETOOLONG (which would indicate a bug in our format string?) or EIO (other serious failure)/etc.. EACCESS (if linux/selinux permissions are messed up). In these cases, the current code will fall back to CGROUPS_DESC_FILE and they should be able to read it successfully, but we\u0027d be using the wrong task profile. Right?",
+      "parentUuid": "0ed54582_e0d93d48",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 49
+      },
+      "revId": "857bc3e811152ce4765b3a1348a1617d7a057f79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
