@@ -39,6 +39,30 @@
       },
       "revId": "857bc3e811152ce4765b3a1348a1617d7a057f79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ed54582_e0d93d48",
+        "filename": "libprocessgroup/setup/cgroup_map_write.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2020-11-23T19:29:35Z",
+      "side": 1,
+      "message": "No, we don\u0027t want to fallback to default task_profiles.json if API-specific file exists. That should be reported as error, which is what we do now:\n\naccess(sys_cgroups_path.c_str(), F_OK) will return 0 and ReadDescriptorsFromFile() will use API-specific file path built using TEMPLATE_CGROUPS_DESC_API_FILE. If ReadDescriptorsFromFile() fails to read this file then ReadDescriptors() will return false, we will log an error at https://android-review.googlesource.com/c/platform/system/core/+/1507918/3/libprocessgroup/setup/cgroup_map_write.cpp#395 and will not load task profiles.",
+      "parentUuid": "c86d61db_545419aa",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 49
+      },
+      "revId": "857bc3e811152ce4765b3a1348a1617d7a057f79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
