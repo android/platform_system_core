@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9615ec9_5424cdd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-24T21:04:46Z",
+      "side": 1,
+      "message": "Thanks for doing this! If we gate this on VABC (eg GTEST_SKIP if ro.virtual_ab.compression.enabled \u003d\u003d false), I think we can add this to presubmit.",
+      "revId": "343769231d77d004de2313997dfaabe71a7d86ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daaa3970_5a6ceaae",
+        "filename": "fs_mgr/libsnapshot/cow_snapuserd_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-24T21:04:46Z",
+      "side": 1,
+      "message": "const std::string\u0026",
+      "revId": "343769231d77d004de2313997dfaabe71a7d86ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82217e61_9aca697b",
+        "filename": "fs_mgr/libsnapshot/cow_snapuserd_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-24T21:04:46Z",
+      "side": 1,
+      "message": "Strings might be a little easier to work with here, because you can do:\n\n    std::string zeroes(size_, 0);\n\nAnd avoid the memset.",
+      "revId": "343769231d77d004de2313997dfaabe71a7d86ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6208b4e7_d24bc889",
+        "filename": "fs_mgr/libsnapshot/cow_snapuserd_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-11-24T21:04:46Z",
+      "side": 1,
+      "message": "I think you want something like this: as well:\n\n    auto misc_device \u003d \"/dev/dm-user/\" + system_device_ctrl_name_;\n    ASSERT_TRUE(android::fs_mgr::WaitForFile(misc_device, 10s));\n\nOtherwise, by the time you call AttachDmUser, ueventd might not have processed the event yet, and mknod() will not have been called.",
+      "revId": "343769231d77d004de2313997dfaabe71a7d86ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
