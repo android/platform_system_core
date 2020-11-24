@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34d8feb0_58040a55",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-11-24T21:59:49Z",
+      "side": 1,
+      "message": "Gotcha, I will lock around these operations that could be impacted by another thread. For the decWeak/strong operations we already check the per-thread count object.",
+      "parentUuid": "978b650e_51d63b24",
+      "range": {
+        "startLine": 69,
+        "startChar": 11,
+        "endLine": 69,
+        "endChar": 26
+      },
+      "revId": "298343704e7f228ca20c02f834e54ac7e289a45b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c86dcfc_07bd9625",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-11-24T19:04:32Z",
       "side": 1,
       "message": "locally, curious you confirmed all this inner code is reachable, right?",
+      "revId": "298343704e7f228ca20c02f834e54ac7e289a45b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c709e70_7590c4e0",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-11-24T21:59:49Z",
+      "side": 1,
+      "message": "Yep, this line gets hit. It takes a little bit because incWeak needs to be called first, but gets hit fairly quickly.",
+      "parentUuid": "0c86dcfc_07bd9625",
       "revId": "298343704e7f228ca20c02f834e54ac7e289a45b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
