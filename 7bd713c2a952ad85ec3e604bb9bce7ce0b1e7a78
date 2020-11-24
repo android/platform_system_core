@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df3582ff_3803c3ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-11-24T14:36:27Z",
+      "side": 1,
+      "message": "Looks good to me, pending comments from others.",
+      "revId": "7bd713c2a952ad85ec3e604bb9bce7ce0b1e7a78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "134c143d_58a795a9",
+        "filename": "init/snapuserd_transition.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-11-24T14:36:27Z",
+      "side": 1,
+      "message": "Publish() should be called after fork().  Publish() removes FD_CLOEXEC, which we don\u0027t want to do in the init process, in case we have another thread that exec()\u0027s before we close the socket.  I don\u0027t think it\u0027s possible now and especially not in 1st stage init, but it\u0027s better to be safe.\n\nI\u0027ll add a comment in the service_util.h header.",
+      "revId": "7bd713c2a952ad85ec3e604bb9bce7ce0b1e7a78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac9ce919_3908a6d2",
+        "filename": "init/snapuserd_transition.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-11-24T14:36:27Z",
+      "side": 1,
+      "message": "Print pid_str for debugging?",
+      "revId": "7bd713c2a952ad85ec3e604bb9bce7ce0b1e7a78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d8ad848_55bd7198",
+        "filename": "init/snapuserd_transition.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-11-24T14:36:27Z",
+      "side": 1,
+      "message": "Why not FATAL here too?  Can we boot successfully if we get to this point but fail to get the context?",
+      "revId": "7bd713c2a952ad85ec3e604bb9bce7ce0b1e7a78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28056559_7628d57a",
+        "filename": "init/snapuserd_transition.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-11-24T14:36:27Z",
+      "side": 1,
+      "message": "#pragma once",
+      "revId": "7bd713c2a952ad85ec3e604bb9bce7ce0b1e7a78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
