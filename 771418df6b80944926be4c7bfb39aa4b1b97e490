@@ -615,6 +615,30 @@
       },
       "revId": "771418df6b80944926be4c7bfb39aa4b1b97e490",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2df2f5d3_5fed5045",
+        "filename": "libutils/RefBase_fuzz.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-11-25T22:14:09Z",
+      "side": 1,
+      "message": "I actually added this and found there\u0027s a case that isn\u0027t fuzzer error where this is legitimately not cleaned up, which is when no thread adds or removes references (such as with an empty input), meaning no logic is ever run to decrement weak or strong references, so the object is never deleted. To better resolve this, I think I\u0027ll store a global value for \"hasModifiedRefs\" that\u0027s set to false at the start of each run, but is then set to true if any operations modify refs. Then, after the threads are done I\u0027ll have a LOG_ALWAYS_FATAL_IF asserting the object either deleted or hasModifiedRefs is false, but not both, and manually delete refbase if hasModifiedRefs is false",
+      "parentUuid": "51ec85c0_08b5947a",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 5
+      },
+      "revId": "771418df6b80944926be4c7bfb39aa4b1b97e490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
