@@ -16,6 +16,24 @@
       "message": "The last bit here - we are locking, which brings us back to no longer testing concurrent accesses to this data. We should be able to avoid using the lock when local strong count \u003e 0?",
       "revId": "f74e47707d9cd48050e0090352dd3dbccbcc8573",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dcd8189_06137c8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-11-25T18:22:21Z",
+      "side": 1,
+      "message": "So yeah I think we can tweak the logic a bit here, so if there\u0027s 0 local strong count we lock, otherwise we don\u0027t lock. What I want to avoid is never incrementing strong count because local strong count is zero, so we assume the object is deleted.",
+      "parentUuid": "971794f8_12ad6d65",
+      "revId": "f74e47707d9cd48050e0090352dd3dbccbcc8573",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
