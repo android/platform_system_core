@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8311d177_5641e85d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1740115
+      },
+      "writtenOn": "2020-12-01T02:22:11Z",
+      "side": 1,
+      "message": "Hi Nikita\n\nIt will happen use after free, when send sigkill. Because stop_first has invaild member, it cannot be loop.\n\nfor (const auto\u0026 s:services) {\n    to_stop.insert(s-\u003ename()); \n}\n\n\n// optional shutdown step\n// 1. terminate all services except shutdown critical ones. wait for delay to finish\nif (shutdown_timeout \u003e 0ms) {\n   StopServicesAndLogViolations(stop_first, shutdown_timeout / 2, true /* SIGTERM */);\n}\n// Send SIGKILL to ones that didn\u0027t terminate cleanly.\nStopServicesAndLogViolations(stop_first, 0ms, false /* SIGKILL */);  // enter from here",
+      "revId": "57de9f3c06e1a9e907be873c961813f128977ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
