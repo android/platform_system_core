@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27f30f56_235b013b",
+        "filename": "fs_mgr/libsnapshot/cow_snapuserd_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2020-12-01T20:23:49Z",
+      "side": 1,
+      "message": "I still observe selinux denials when EnsureSnapuserdStarted() is used; it fails with permission denied on reading loopback devices. One of the ways to address this is to use something similar to how vts_libsnapshot_test creates devices. I did take a look at it but its a bit more re-factoring. I understand that we are by-passing one of the API\u0027s; I will work on it as a separate CL as I wanted to get this in so that we can individually test the IO path and the daemon. \n\nWill use different socket name and update the review.\n\nAs I was looking at the vts_libsnapshot_test, does it makes more sense to fold this entire test suite into vts_libsnapshot_test thereby we have one test suite. In that way, I think we can get away with creating loopback devices; but I think for now, its good to have a separate unit test.\n\nI plan to add more tests specific to merge related cases. Since each of those tests will run sequentially, we shouldn\u0027t have more than one server at any point in time. Each test should terminate the daemon completely before starting next test.",
+      "parentUuid": "850b83bd_6c689c7c",
+      "revId": "903811898277170dcafe99abe52c92456ae187c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8318fbb1_5a082822",
         "filename": "fs_mgr/libsnapshot/snapuserd_client.cpp",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2020-12-01T19:57:33Z",
       "side": 1,
       "message": "intended?",
+      "revId": "903811898277170dcafe99abe52c92456ae187c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "244afb52_aad7f82d",
+        "filename": "fs_mgr/libsnapshot/snapuserd_client.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2020-12-01T20:23:49Z",
+      "side": 1,
+      "message": "Yes. I added it to track the commands going from snapuserd_client",
+      "parentUuid": "8318fbb1_5a082822",
       "revId": "903811898277170dcafe99abe52c92456ae187c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
