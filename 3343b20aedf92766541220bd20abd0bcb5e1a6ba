@@ -22,6 +22,30 @@
       },
       "revId": "3343b20aedf92766541220bd20abd0bcb5e1a6ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90651317_91bf905f",
+        "filename": "libprocessgroup/processgroup.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1562829
+      },
+      "writtenOn": "2020-12-02T17:39:37Z",
+      "side": 1,
+      "message": "Many (most?) uids, like 0 or 1000, own multiple process. In this case enclosing uid_Y folders are always populated and this rmdir operation spins \"retries\" times, needlessly delaying most pid_X removals and hanging the shutdown procedure.\nOn the other hand, once empty a uid_Y cgroup won\u0027t have processes hanging on it (we\u0027ve already spun for all its pid_Xs), so there\u0027s no need to spin as an EBUSY error is now highly unlikely.",
+      "parentUuid": "1795dd5d_77ad961c",
+      "range": {
+        "startLine": 143,
+        "startChar": 4,
+        "endLine": 147,
+        "endChar": 5
+      },
+      "revId": "3343b20aedf92766541220bd20abd0bcb5e1a6ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
