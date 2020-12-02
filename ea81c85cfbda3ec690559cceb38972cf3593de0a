@@ -43,6 +43,74 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cdc6c23a_9dbbad91",
+        "filename": "debuggerd/proto/tombstone.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2020-12-02T18:30:19Z",
+      "side": 1,
+      "message": "can we add dev notes here? `repeated string developer_notes`",
+      "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79996659_af6c97c7",
+        "filename": "debuggerd/proto/tombstone.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2020-12-02T18:30:19Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be `uint64`?\n\n@pcc - would you encode the fault address tag in these bits, or would you provide another field?",
+      "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f08c589_976876a4",
+        "filename": "debuggerd/proto/tombstone.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2020-12-02T18:30:19Z",
+      "side": 1,
+      "message": "we should shove some more info in here.\n\nmessage Thread {\n  repeated Register registers \u003d 1;\n  repeated BacktraceFrame current_backtrace \u003d 2;\n  repeated BacktraceFrame thread_creation_backtrace \u003d 3;\n  optional uint64 tls_start \u003d 4;\n  optional uint64 tls_end \u003d 5;\n  optional uint64 stack_top \u003d 6;\n  optional uint64 stack_bottom \u003d 7;\n  optional uint64 thread_id \u003d 8;\n}",
+      "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae4b3d8a_c321fe2d",
+        "filename": "debuggerd/proto/tombstone.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2020-12-02T18:30:19Z",
+      "side": 1,
+      "message": "I\u0027m inclined to say that we shouldn\u0027t have a separate message for each tool (otherwise we also need to add hwasan, malloc_debug, FORTIFY, etc.). Using a common structure should allow us to also extend and create new tools without having to update the proto (and ask everyone else to parse it differently as well).\n\nmaybe:\n\nmessage Cause {\n  optional string human_readable \u003d 1; // \"tag-mismatch\", \"Heap Buffer Overflow\", etc.\n  repeated AddressDetails address_descriptors \u003d 2;\n  optional string tool_name \u003d 3; // \"HWAddressSanitizer\", \"GWP-ASan\", etc.\n}\n\nenum AddressLocation {\n  STACK,\n  HEAP,\n  GLOBAL,\n  TLS\n}\n\nmessage AddressDescriptor {\n  optional uint64 address \u003d 1;\n  optional uint64 size \u003d 2;\n  optional AddressLocation location \u003d 3;\n  optional HeapAddressDescriptor heap_descriptor \u003d 4;\n  optional uint64 tag \u003d 5;\n  repeated string developer_notes \u003d 6;\n}\n\nmessage HeapAddressDescriptor {\n  optional uint64 allocation_addr \u003d 1;\n  repeated BacktraceFrame allocation_backtrace \u003d 2;\n  optional uint64 allocation_tid \u003d 3;\n  repeated BacktraceFrame deallocation_backtrace \u003d 4;\n  optional uint64 deallocation_tid \u003d 5;\n  // Is this allocation currently alive, or has it been deallocated?\n  optional bool allocation_is_live \u003d 6;\n}",
+      "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28391c7d_de1a14d8",
         "filename": "debuggerd/proto/tombstone.proto",
         "patchSetId": 2
