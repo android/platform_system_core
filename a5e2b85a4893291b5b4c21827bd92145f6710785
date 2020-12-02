@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6a2a892_449edc9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-12-02T04:40:46Z",
+      "side": 1,
+      "message": "The reason this is failing in presubmit appears to be an emulator-specific issue.\n\nUsually, /data is mounted in late-fs, which occurs after post-fs, which is when we restorecon  /metadata and create /metadata/vold.\n\nThe emulator however mounts /data in fs, which is too early. /metadata/vold is not created yet, and /metadata has the wrong label - cache_file. To paper over this, the emulator has device-specific sepolicy that allow vold to write to cache_file.\n\nI do think a restorecon is needed in this CL, but unfortunately that runs afoul of the emulator, since vold doesn\u0027t normally have permission to mkdir() in /metadata. Adding the correct label breaks it. I\u0027ll try to address these problems first.",
+      "revId": "a5e2b85a4893291b5b4c21827bd92145f6710785",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
