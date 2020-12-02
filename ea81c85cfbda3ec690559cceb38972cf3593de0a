@@ -94,6 +94,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "231be5ff_44b2400b",
+        "filename": "debuggerd/proto/tombstone.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2020-12-02T20:51:49Z",
+      "side": 1,
+      "message": "This does not fit the MTE memory dump, see aosp/1367537.\nAlso, this message is unused.\nNot sure what is the best way to represent the tags in MemoryDump, perhaps they can be simply a separate instance of MemoryDump (i.e. Tombstone could include\n  repeated MemoryDump memory_dump;\n  repeated MemoryDump tag_dump;\n)? Or simply add \"bytes tags \u003d 5\".\n\nRegister should be repeated, as it is pretty common to have multiple registers with the same value. Even better, both register and mapping_name can be omitted as this info can be inferred from other tombstone fields. This format would require more processing before presentation though.",
+      "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad4a0036_3f6a70b0",
+        "filename": "debuggerd/proto/tombstone.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2020-12-02T20:51:49Z",
+      "side": 1,
+      "message": "bool mte // for PROT_MTE",
+      "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae4b3d8a_c321fe2d",
         "filename": "debuggerd/proto/tombstone.proto",
         "patchSetId": 2
@@ -122,6 +156,24 @@
       "writtenOn": "2020-12-02T18:12:40Z",
       "side": 1,
       "message": "@pcc for more thoughts - do we also want a repeated list of {address, tag} pairs, or {start_addr, step, [tag, tag...]} to power the tag dump? It should be synthesizeable using the current descriptors but unsure whether we want more flexibility.\n\n@eugenis - We also need to have stack/global layouts here as well. With globals, we should be able to accomplish everything in the HeapAddressDescriptor (maybe it just needs to be renamed to AddressDescriptor and the fields like `allocation_is_live` don\u0027t mean anything for non-heap allocations). Unsure about whether we need more information to be descriptive about stack frame layout.",
+      "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f566e839_78a8a63e",
+        "filename": "debuggerd/proto/tombstone.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2020-12-02T20:51:49Z",
+      "side": 1,
+      "message": "See my comment under MemoryDump. I think the report should include one of those for the area around the fault address.\n\nI don\u0027t think we can design good format for stack information in the S time frame. We can start by encoding the same thing that HWASan is doing now, with the stack history. I expect MTE in full debug mode to do something similar eventually (but not in S).\n\nWe could add an optional field to BacktraceFrame for the stack pointer value. It would only apply to the fault stack trace, not to alloc/dealloc ones, but it can be pretty useful for human understanding of stack bugs that are not use-after-return (i.e. OOB in a live stack frame and use-after-scope).",
+      "parentUuid": "28391c7d_de1a14d8",
       "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
