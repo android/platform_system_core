@@ -77,6 +77,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1767389b_ed11dce4",
+        "filename": "debuggerd/proto/tombstone.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-12-03T02:59:58Z",
+      "side": 1,
+      "message": "It\u0027s fine to provide the tag here. The reason why we considered having it be separate in the kernel was related to backwards compatibility reasons that don\u0027t apply here (i.e. the concern was that old consumers might not understand the tag, but since this proto is new we can just ensure that all consumers understand the tag).",
+      "parentUuid": "79996659_af6c97c7",
+      "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f08c589_976876a4",
         "filename": "debuggerd/proto/tombstone.proto",
         "patchSetId": 2
@@ -105,6 +123,24 @@
       "writtenOn": "2020-12-02T20:51:49Z",
       "side": 1,
       "message": "This does not fit the MTE memory dump, see aosp/1367537.\nAlso, this message is unused.\nNot sure what is the best way to represent the tags in MemoryDump, perhaps they can be simply a separate instance of MemoryDump (i.e. Tombstone could include\n  repeated MemoryDump memory_dump;\n  repeated MemoryDump tag_dump;\n)? Or simply add \"bytes tags \u003d 5\".\n\nRegister should be repeated, as it is pretty common to have multiple registers with the same value. Even better, both register and mapping_name can be omitted as this info can be inferred from other tombstone fields. This format would require more processing before presentation though.",
+      "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f357ce7e_1f3ee420",
+        "filename": "debuggerd/proto/tombstone.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-12-03T02:59:58Z",
+      "side": 1,
+      "message": "I would prefer to add a \"bytes tags\" field to avoid redundant information in the dump format and needing to match them together.",
+      "parentUuid": "231be5ff_44b2400b",
       "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -173,6 +209,24 @@
       "writtenOn": "2020-12-02T20:51:49Z",
       "side": 1,
       "message": "See my comment under MemoryDump. I think the report should include one of those for the area around the fault address.\n\nI don\u0027t think we can design good format for stack information in the S time frame. We can start by encoding the same thing that HWASan is doing now, with the stack history. I expect MTE in full debug mode to do something similar eventually (but not in S).\n\nWe could add an optional field to BacktraceFrame for the stack pointer value. It would only apply to the fault stack trace, not to alloc/dealloc ones, but it can be pretty useful for human understanding of stack bugs that are not use-after-return (i.e. OOB in a live stack frame and use-after-scope).",
+      "parentUuid": "28391c7d_de1a14d8",
+      "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c72e9e80_cc375626",
+        "filename": "debuggerd/proto/tombstone.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-12-03T02:59:58Z",
+      "side": 1,
+      "message": "Dump around the fault address sounds good and I suppose it wouldn\u0027t even need to be an MTE-specific thing.",
       "parentUuid": "28391c7d_de1a14d8",
       "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
