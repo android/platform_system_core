@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "924eb8eb_65a412f6",
+        "filename": "adb/transport_local.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2020-12-04T21:27:59Z",
+      "side": 1,
+      "message": "this is actually a pretty bad practice: a detached thread is still running, but you have no control over its lifetime. It would be much better to store the threads somewhere and join() them when shutting down. Otherwise there are pretty real chances of them hitting some already destroyed C++ runtime objects when the main thread stops, but these are still running.",
+      "range": {
+        "startLine": 281,
+        "startChar": 44,
+        "endLine": 281,
+        "endChar": 50
+      },
+      "revId": "a05b64d43234854889924261f229160ae999c75b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
