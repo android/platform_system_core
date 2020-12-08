@@ -16,6 +16,23 @@
       "message": "I significantly reworked this patch because the number of dontaudits I had to chase down was ridiculously high, and I wanted to minimize that. The new version has a few changes:\n\n(1) We no longer explicitly compute the context for snapuserd. We just restorecon the binary as we do for /system/bin/init, and thus, don\u0027t need a dontaudit for compute_create.\n\n(2) We do not probe /metadata until we\u0027re sure we\u0027re going to launch snapuserd. This is done by checking if the initial snapuserd environment variable was set.\n\n(3) We don\u0027t restorecon /dev/block recursively anymore. This requires many unnecessary dontaudits, some of which are device specific.",
       "revId": "eb6ab9b98c9c832459cbd950c7b90285aad9a7dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a06ef20f_1066f1de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-12-08T08:37:23Z",
+      "side": 1,
+      "message": "... And, I forgot to mention: the restorecons are much more specific now. We only restorecon nodes that get used.",
+      "revId": "eb6ab9b98c9c832459cbd950c7b90285aad9a7dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
