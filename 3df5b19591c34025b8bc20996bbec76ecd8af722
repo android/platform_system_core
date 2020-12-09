@@ -16,6 +16,24 @@
       "message": "How confident are we that we\u0027ll fix the emulator in the short term?  Could we instead make changes to their sepolicy, to localize this work around to the platform that needs it?",
       "revId": "3df5b19591c34025b8bc20996bbec76ecd8af722",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4f3b4dc_967bb048",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2020-12-09T08:32:06Z",
+      "side": 1,
+      "message": "I personally think the cleanest fix is to move the restorecon (L894 in PS3) up a few lines. My main worry is that things that run earlier depend on that restorecon to apply the correct label; in particular, if we moved restorecon up, this would then run *after* the restorecon, so we have to make sure apexd-snapshotde doesn\u0027t depend on the restorecon:\n\n    # Allow apexd to snapshot and restore device encrypted apex data in the case\n    # of a rollback. This should be done immediately after DE_user data keys\n    # are loaded. APEXes should not access this data until this has been\n    # completed and apexd.status becomes \"ready\".\n    exec_start apexd-snapshotde\n\nadded Nikita and Oli for that.",
+      "parentUuid": "a4ae77f1_6fda75e0",
+      "revId": "3df5b19591c34025b8bc20996bbec76ecd8af722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
