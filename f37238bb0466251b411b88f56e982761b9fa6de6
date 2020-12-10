@@ -33,6 +33,24 @@
       "message": "Let\u0027s drop this line.  The reason for my last CL that adds these the ability to import lines is to import `/vendor/etc/ueventd.{ro.boot.product.vendor.sku}.rc`.  I didn\u0027t add that specifically here, to give vendors the flexibility to import that or not depending on their use case.",
       "revId": "f37238bb0466251b411b88f56e982761b9fa6de6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec010194_396bfcb7",
+        "filename": "rootdir/ueventd.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1562144
+      },
+      "writtenOn": "2020-12-10T22:06:07Z",
+      "side": 1,
+      "message": "I was thinking that could be used for QCOM\u0027s since theirs is ueventd.qcom.rc which would match /vendor/etc/ueventd.{ro.hardware}.rc exactly. Left ueventd.rc as something OEMs could use since SKU based is a bit too specific, e.g. the OnePlus 8 Series consists of 8, Pro \u0026 8 Pro and the custom additions they make to QCOM\u0027s are all the same. They could make something like this:\n\nprebuilt_etc {\n    name: \"ueventd.oem\",\n    filename: \"ueventd.rc\",\n    src: \"ueventd.oem.rc\",\n    vendor: true,\n}\n\nInstead of importing based on SKU for each device.",
+      "parentUuid": "66538234_6e74b6ef",
+      "revId": "f37238bb0466251b411b88f56e982761b9fa6de6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
