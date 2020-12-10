@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eae38de_ff7a6765",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-12-10T19:32:32Z",
+      "side": 1,
+      "message": "I\u0027d like to make the TODO more actionable.  Maybe we move the legacy import lines back into ueventd.cpp and have logic along the lines of:\n\nif (ro.product.first_api_level \u003c\u003d S) {\n  Load the legacy files if present\n}\n\nThat way, we can delete those lines once \u0027S\u0027 falls out of the support window range.\n\nWe can keep the new paths in this file.",
+      "revId": "f37238bb0466251b411b88f56e982761b9fa6de6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66538234_6e74b6ef",
+        "filename": "rootdir/ueventd.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-12-10T19:32:32Z",
+      "side": 1,
+      "message": "Let\u0027s drop this line.  The reason for my last CL that adds these the ability to import lines is to import `/vendor/etc/ueventd.{ro.boot.product.vendor.sku}.rc`.  I didn\u0027t add that specifically here, to give vendors the flexibility to import that or not depending on their use case.",
+      "revId": "f37238bb0466251b411b88f56e982761b9fa6de6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
