@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "126e4a2b_b0f10a1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1811663
+      },
+      "writtenOn": "2020-12-10T01:51:37Z",
+      "side": 1,
+      "message": "Took an initial look - can plan to look again\nWhen you\u0027re ready, I\u0027d suggest adding @jophba - he and I are probably best to review platform code",
+      "revId": "cba3d193e716492ebed10426ba85548200a7847b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dfaf1e9_7cd0574a",
+        "filename": "adb/client/osp/task_runner.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1811663
+      },
+      "writtenOn": "2020-12-10T01:51:37Z",
+      "side": 1,
+      "message": "condition_variable::Wait can return on its own sometimes, even when the condition isn\u0027t met. using the predicate version of wait() is safer\n\nhttps://en.cppreference.com/w/cpp/thread/condition_variable/wait",
+      "range": {
+        "startLine": 67,
+        "startChar": 16,
+        "endLine": 67,
+        "endChar": 20
+      },
+      "revId": "cba3d193e716492ebed10426ba85548200a7847b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73ce7695_c8789f9e",
+        "filename": "adb/client/osp/udp_socket.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1811663
+      },
+      "writtenOn": "2020-12-10T01:51:37Z",
+      "side": 1,
+      "message": "I\u0027ve never seen that - it\u0027s really clever",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 43
+      },
+      "revId": "cba3d193e716492ebed10426ba85548200a7847b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f4f2009_13f9f523",
+        "filename": "adb/client/transport_mdns.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1811663
+      },
+      "writtenOn": "2020-12-10T01:51:37Z",
+      "side": 1,
+      "message": "I\u0027d suggest either making this atomic or protecting it with a mutex. The callbacks here are called on the TaskRunner thread",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 32
+      },
+      "revId": "cba3d193e716492ebed10426ba85548200a7847b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "140b5244_19eb505c",
+        "filename": "adb/client/transport_mdns.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1811663
+      },
+      "writtenOn": "2020-12-10T01:51:37Z",
+      "side": 1,
+      "message": "I believe this bug was fixed in https://chromium-review.googlesource.com/c/openscreen/+/2422716\n\nIf not, it\u0027s something new to fix on our side :)",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 40
+      },
+      "revId": "cba3d193e716492ebed10426ba85548200a7847b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
