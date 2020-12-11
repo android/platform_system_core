@@ -123,6 +123,24 @@
       "parentUuid": "4692a2d1_523880da",
       "revId": "f37238bb0466251b411b88f56e982761b9fa6de6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e581e491_7ed14914",
+        "filename": "rootdir/ueventd.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1562144
+      },
+      "writtenOn": "2020-12-11T01:01:34Z",
+      "side": 1,
+      "message": "How would doing this a SKU by SKU basis work though, e.g. between OP8, 8 Pro, and 8T you have easily over 11 SKUs, and all of them have the exact same ueventd changes. Making a ueventd.{ro.boot.product.hardware.sku}.rc for their changes 11+ times wouldn\u0027t be ideal.\n\nAOSP has init.rc, and for vendor extensions (at least on Pixels) Google writes init.$(PRODUCT_PLATFORM).rc. Why wouldn\u0027t it be the same for ueventd.rc? Google has ueventd.rc, so shouldn\u0027t a device extension also exist instead of one for each SKU for that device?\n\nSome examples of changes that would apply widely to all SKUs of OP8/Pro/T:\n/dev/block/by-name/config    0600    system    system\n/dev/block/by-name/param     0660    root      system\n\nWe wouldn\u0027t want to add the OEM\u0027s changes to QCOM\u0027s either since that\u0027s deviating from upstream.",
+      "parentUuid": "8415c4e7_f72bb9c2",
+      "revId": "f37238bb0466251b411b88f56e982761b9fa6de6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
