@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fe9d0dc_2073693d",
+        "filename": "trusty/coverage/coverage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2020-12-11T23:05:49Z",
+      "side": 1,
+      "message": "I think we also need separate reset function for counters and pcs. For fuzzing, I was thinking we reset counters on every input, but accumulate pcs for visualization.",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 1
+      },
+      "revId": "a997f6c05c07e796d8d85eb6001eb04000fad7e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94561453_315757a8",
+        "filename": "trusty/coverage/coverage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2020-12-11T23:05:49Z",
+      "side": 1,
+      "message": "I think it\u0027s simpler to just assume a format of the header. Then you can remove the loop + switch and just check/get values from the header.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 64
+      },
+      "revId": "a997f6c05c07e796d8d85eb6001eb04000fad7e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a41328e0_8731e14c",
+        "filename": "trusty/coverage/coverage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2020-12-11T23:05:49Z",
+      "side": 1,
+      "message": "Set this at the end since you rely on to tell if header has been parsed successfully already.",
+      "range": {
+        "startLine": 174,
+        "startChar": 16,
+        "endLine": 174,
+        "endChar": 29
+      },
+      "revId": "a997f6c05c07e796d8d85eb6001eb04000fad7e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc4b98d2_a380fbc3",
+        "filename": "trusty/coverage/coverage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2020-12-11T23:05:49Z",
+      "side": 1,
+      "message": "It bothers me that ParseHeader() needs to be called to update the *offset_ member variables. From the caller\u0027s perspective it can be unclear how that works. \n\nWhat do you think about adding a GetByteCounerOffset() that reads the value from the header (and maybe checks the corresponding header-\u003etype) instead of caching it in a member variable?",
+      "revId": "a997f6c05c07e796d8d85eb6001eb04000fad7e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35b897ac_05bc3d6b",
+        "filename": "trusty/coverage/coverage.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2020-12-11T23:05:49Z",
+      "side": 1,
+      "message": "Name it SavePCsToFile or SaveSancovFile or something that identifies what\u0027s being saved.",
+      "range": {
+        "startLine": 232,
+        "startChar": 29,
+        "endLine": 232,
+        "endChar": 39
+      },
+      "revId": "a997f6c05c07e796d8d85eb6001eb04000fad7e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e53fbd4_6007dff0",
+        "filename": "trusty/coverage/coverage_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2020-12-11T23:05:49Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "a997f6c05c07e796d8d85eb6001eb04000fad7e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eae4ee07_ff54b469",
+        "filename": "trusty/coverage/include/trusty/coverage/coverage.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2020-12-11T23:05:49Z",
+      "side": 1,
+      "message": "These two are redundant.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 32
+      },
+      "revId": "a997f6c05c07e796d8d85eb6001eb04000fad7e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
