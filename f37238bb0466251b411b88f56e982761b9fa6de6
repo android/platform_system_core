@@ -141,6 +141,24 @@
       "parentUuid": "8415c4e7_f72bb9c2",
       "revId": "f37238bb0466251b411b88f56e982761b9fa6de6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cedebe27_daace54c",
+        "filename": "rootdir/ueventd.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2020-12-11T04:52:49Z",
+      "side": 1,
+      "message": "Looks like a ueventd.rc can be easily shared comparing to ro.boot.product.hardware.sku (for ODM) and ro.boot.product.vendor.sku (for vendor) that are used for VINTF.\n\nIf so, maybe just `import /vendor/etc/ueventd.rc` would be good enough here.\nAn OEM can easily add more \u0027import\u0027 in the /(odm|vendor)/etc/ueventd.rc if needed.\n\nThought?",
+      "parentUuid": "e581e491_7ed14914",
+      "revId": "f37238bb0466251b411b88f56e982761b9fa6de6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
