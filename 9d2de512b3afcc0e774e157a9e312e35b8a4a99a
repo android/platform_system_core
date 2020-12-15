@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5204a11f_74486288",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-12-15T21:59:08Z",
+      "side": 1,
+      "message": "I\u0027m a little worried that creating two separate FirstStageMount instances will lose any state shared between the device creation and mounting steps. Doing a quick audit, it looks fine right now, but aosp/1508583 would be broken by this.\n\nAs a quick workaround, can we pass \"created_devices\" to DoFirstStageMount() and let it choose whether to call DoCreateDevices? Then we can refactor this later and figure out something cleaner (like moving FirstStageMount to its own header).",
+      "revId": "9d2de512b3afcc0e774e157a9e312e35b8a4a99a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
