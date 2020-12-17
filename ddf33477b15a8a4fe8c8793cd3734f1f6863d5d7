@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c43a29b_8e159b9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-12-17T21:35:15Z",
+      "side": 1,
+      "message": "\u003e Could make it so that main() function is chosen dynamically?\n\nNot easily, we would have to specially link against libfuzzer (https://llvm.org/docs/LibFuzzer.html#using-libfuzzer-as-a-library) and provide our own main function. We could do that I guess, but I think this way is cleaner. Maybe we could do that as part of a fuzzing framework to abstract away all this boilerplate, if we ever do that.",
+      "parentUuid": "24fd51bc_bff27c71",
+      "revId": "ddf33477b15a8a4fe8c8793cd3734f1f6863d5d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "571d66e8_6ef1e3b1",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-12-17T02:07:25Z",
       "side": 1,
       "message": "You could derive this from argv[0]?",
+      "range": {
+        "startLine": 23,
+        "startChar": 85,
+        "endLine": 23,
+        "endChar": 96
+      },
+      "revId": "ddf33477b15a8a4fe8c8793cd3734f1f6863d5d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2ffa590_76552a76",
+        "filename": "trusty/coverage/coverage_tool.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-12-17T21:35:15Z",
+      "side": 1,
+      "message": "It needs to match the exact name of the trusted app binary, not the coverage tool. If the tools had a standard naming scheme, that might work, or we could just make users rename the file.",
+      "parentUuid": "571d66e8_6ef1e3b1",
       "range": {
         "startLine": 23,
         "startChar": 85,
