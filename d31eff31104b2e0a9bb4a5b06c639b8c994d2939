@@ -16,6 +16,24 @@
       "message": "Why is this needed? You set encryptable \u003d FS_MGR_MNTALL_DEV_IS_METADATA_ENCRYPTED below - won\u0027t the call to set_type_property at the end of the function handle this?",
       "revId": "d31eff31104b2e0a9bb4a5b06c639b8c994d2939",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "745baacf_5b7ab5db",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1176763
+      },
+      "writtenOn": "2020-12-22T18:46:58Z",
+      "side": 1,
+      "message": "fscrypt_is_native() in vold-\u003eFormat() checks \"ro.crypto.type\" to attach \"-O encrypt\". But, we call vdc before calling set_type_property().",
+      "parentUuid": "cd84615b_6bfbee13",
+      "revId": "d31eff31104b2e0a9bb4a5b06c639b8c994d2939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
