@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c66e1cbf_9d992928",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1176763
+      },
+      "writtenOn": "2020-12-22T02:05:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f21e53e2_a643f0a7",
+      "range": {
+        "startLine": 1510,
+        "startChar": 20,
+        "endLine": 1510,
+        "endChar": 50
+      },
+      "revId": "be5e10d65bcd8f8b18f45368693c7f71509984fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47d17a05_8d750e2e",
@@ -73,6 +97,24 @@
       "side": 1,
       "message": "There are two important if tests here:\n\nshould_use_metadata_encryption(current_entry)\ncurrent_entry.mount_point \u003d\u003d \"/data\"\n\nIf the first is true, but the second is false, this behaves oddly - it calls vdc to do the formatting, then formats itself anyway. I don\u0027t anticipate fstab having such entries, but we should do something sensible if it does :) Perhaps the if right at the start should read\n\nif (should_use_metadata_encryption(current_entry) \u0026\u0026 current_entry.mount_point \u003d\u003d \"/data\") { ...",
       "parentUuid": "7de71f0d_ed9c850e",
+      "revId": "be5e10d65bcd8f8b18f45368693c7f71509984fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13b538be_be92126d",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1518,
+      "author": {
+        "id": 1176763
+      },
+      "writtenOn": "2020-12-22T02:05:46Z",
+      "side": 1,
+      "message": "Ahha.. Yeah, that makes sense.",
+      "parentUuid": "149f478a_cce2efe4",
       "revId": "be5e10d65bcd8f8b18f45368693c7f71509984fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
