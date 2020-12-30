@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d80d895_1ff2af86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1075502
+      },
+      "writtenOn": "2020-12-30T22:01:46Z",
+      "side": 1,
+      "message": "Adding as reviewers as it affects the same handling as I74a4d0ee363761564225097c5949e5ce335ac6dc.\n\nTo give a bit of context for reference, the original issue is that the Settings app\nwould freeze blank upon access, timeout for 60s and crash as follows.\n\n\u003e AndroidRuntime: Caused by: java.lang.IllegalStateException: Callback timeout\n\u003e AndroidRuntime: \tat android.net.TetheringManager$RequestDispatcher.waitForResult(TetheringManager.java:407)\n\u003e AndroidRuntime: \tat android.net.TetheringManager.isTetheringSupported(TetheringManager.java:1321)\n\nThe issue appeared randomly on various LineageOS 18.1 (android-11.0.0_r19) devices,\nand on a permanent basis on my two devices built with Go configurations included.\n\nThe following product packages introduce a normal and an override package of the same APEX,\nwhich is another issue that I will attempt to cover later in a separate change.\n\nbuild/make/target/product/go_defaults_common.mk:\n\u003e PRODUCT_PACKAGES +\u003d InProcessNetworkStack\n\u003e PRODUCT_PACKAGES +\u003d com.android.tethering.inprocess\n\nOn master, with the \"apex-info-list.xml\" feature available,\nyou should be able to see the order vary between various devices and build machines.\n\nThe issue is deeper than just ordering, but at least the behaviour becomes consistent across builds and devices.",
+      "revId": "9449583bc36c9148fde4f7249bdb74a8e6d4d637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
