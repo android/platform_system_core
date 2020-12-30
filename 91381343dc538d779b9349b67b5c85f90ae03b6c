@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a7a17f4_352620bc",
+        "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-12-30T23:27:19Z",
+      "side": 1,
+      "message": "nit: break into multiple lines, add braces, for readability",
+      "revId": "91381343dc538d779b9349b67b5c85f90ae03b6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8ad8412_9020d1c3",
@@ -50,6 +67,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d99d2c9f_66d4d4c2",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-12-30T23:27:19Z",
+      "side": 1,
+      "message": "instead of the bool, pass the op type in directly?",
+      "revId": "91381343dc538d779b9349b67b5c85f90ae03b6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fee50586_1498ec0a",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-12-30T23:27:19Z",
+      "side": 1,
+      "message": "If I understand correctly, we\u0027re using \"source\" to mean the source offset, and then implicitly deriving the data position? That makes sense, but then it\u0027s not clear why we wouldn\u0027t do the same thing for replace ops.\n\nWould it be simpler to add an explicit field to CowOperation? Throwing another uint64_t in there should be no big deal, and then we don\u0027t need to allocate the location array.",
+      "revId": "91381343dc538d779b9349b67b5c85f90ae03b6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e4dbba9_3ed69021",
         "filename": "fs_mgr/libsnapshot/snapshot_writer.cpp",
         "patchSetId": 1
@@ -61,6 +112,30 @@
       "writtenOn": "2020-12-30T15:45:15Z",
       "side": 1,
       "message": "Don\u0027t we still need to write raw bytes?",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 16
+      },
+      "revId": "91381343dc538d779b9349b67b5c85f90ae03b6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "576423df_8283d075",
+        "filename": "fs_mgr/libsnapshot/snapshot_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2020-12-30T23:27:19Z",
+      "side": 1,
+      "message": "This API is so update_engine can eventually remove calls to MapUpdateSnapshot(), and use a single writer interface (ISnapshotWriter). Since update_engine hasn\u0027t made this change yet, we don\u0027t need the implementation for now. update_engine could also skip the xor optimization when doing non-VABC OTAs, and then we\u0027d never need to implement this.\n\nBut we should LOG(ERROR) and return false rather than silently succeed.",
+      "parentUuid": "0e4dbba9_3ed69021",
       "range": {
         "startLine": 161,
         "startChar": 0,
