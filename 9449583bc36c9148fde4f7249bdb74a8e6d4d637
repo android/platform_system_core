@@ -80,6 +80,24 @@
       "message": "Thanks for the review and logic approval.\n\nAs you said, this change makes things consistent and cleaner,\nbut our original issue is much deeper than this for Tethering.\n\nAs state above, Go devices include \u0027build/make/target/product/go_defaults_common.mk\u0027, or some devices may add:\n\u003e PRODUCT_PACKAGES +\u003d InProcessNetworkStack com.android.tethering.inprocess\n\nIn this situation, from all the tests I did locally, I always end up with both being built.\n\n\u003e system/apex/com.android.tethering/javalib/framework-tethering.jar\n\u003e system/apex/com.android.tethering/priv-app/Tethering/Tethering.apk\n\u003e system/apex/com.android.tethering.inprocess/javalib/framework-tethering.jar\n\u003e system/apex/com.android.tethering.inprocess/priv-app/InProcessTethering/InProcessTethering.apk\n\nThe issue is resolved if I remove the global and default product addition\nof \u0027com.android.tethering\u0027 in \u0027build/make/target/product/base_system.mk\u0027.\n\nThis proves that the override itself is not effective.\n\nThe Tethering architecture of both modules is as such:\n\u003e com.android.tethering\n\u003e -\u003e apps: Tethering\n\u003e          -\u003e manifest: AndroidManifest.xml\n\n\u003e com.android.tethering.inprocess\n\u003e -\u003e base: com.android.tethering\n\u003e -\u003e apps: InProcessTethering\n\u003e          -\u003e overrides: [\"Tethering\"] # Most likely ignored\n\u003e          -\u003e manifest: AndroidManifest_InProcess.xml\n\nI added the missing \u0027overrides: [\"com.android.tethering\"]\u0027 to the \u0027override_apex\u0027,\nseen in the unit tests of apex.go, but the behaviour is the same.\nThe code documentation states it should clean the PRODUCT_PACKAGES, but apparently not.\n\nI tried using the \u0027override_android_app\u0027 for \u0027InProcessTethering\u0027,\nbut the result is exactly the same and it does not support the \u0027manifest:\u0027 key.\n\nMy guess is that some part of the \u0027override_apex\u0027 \u003e \u0027apps\u0027 \u003e \u0027overrides\u0027 chain is passing through the safeguards.\n\nIf possible, it would be helpful if you could have a look at it, given 1-2 days\nspent on digging this issue is not enough to know the full depth of soong/apex.",
       "revId": "9449583bc36c9148fde4f7249bdb74a8e6d4d637",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61b417c1_74cbda58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-31T02:06:41Z",
+      "side": 1,
+      "message": "Ack. Thanks for the detailed description. overriding doesn\u0027t seem to work for flattened APEXes. Hmm.. I will look into it.... well.. in next year :)",
+      "parentUuid": "e2a58275_7764a4e2",
+      "revId": "9449583bc36c9148fde4f7249bdb74a8e6d4d637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
