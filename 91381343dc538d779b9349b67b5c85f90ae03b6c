@@ -101,6 +101,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bab6791f_0e4ef511",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1045980
+      },
+      "writtenOn": "2020-12-31T02:07:22Z",
+      "side": 1,
+      "message": "We don\u0027t do the same for replace ops because we didn\u0027t need to. We already weren\u0027t using source for anything else. It would be easy to swap those over too and leave source unused for replace ops.\n\nGiven that a lot of the focus around the COW format is saving space, I figured we would prefer not adding another uint64_t if we didn\u0027t need it. Plus several other parts start to get a fair bit more complicated if we have variable sized ops.",
+      "parentUuid": "fee50586_1498ec0a",
+      "revId": "91381343dc538d779b9349b67b5c85f90ae03b6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e4dbba9_3ed69021",
         "filename": "fs_mgr/libsnapshot/snapshot_writer.cpp",
         "patchSetId": 1
