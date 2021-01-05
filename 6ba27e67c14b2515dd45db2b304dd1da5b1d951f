@@ -52,6 +52,24 @@
       "parentUuid": "67701997_2a715c64",
       "revId": "6ba27e67c14b2515dd45db2b304dd1da5b1d951f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4149314c_db3bf120",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1790051
+      },
+      "writtenOn": "2021-01-05T07:22:10Z",
+      "side": 1,
+      "message": "It seems like I need to import the namespace of the real secure input in the Android.bp. But this causes that the build break on emulator projects on AOSP codebase since the imported path only exists in the internal repo.\n\nWhat do you think if I clone the service.cpp (the file included main() function) and the relevant .rc and .xml files to the vendor folder while other source files relevant to Trusty still can be shared? The service name needs to be different so I would like to change the service name, as the module name needs to be unique, of the emulator used as \"android.hardware.confirmationui@1.0-service.trusty_qemu\" if going this way.\n\nThen, the device specific makefile, for emulator or real target, will be chooing the right service to build.",
+      "parentUuid": "334b9825_49e0a5a4",
+      "revId": "6ba27e67c14b2515dd45db2b304dd1da5b1d951f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
