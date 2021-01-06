@@ -16,6 +16,24 @@
       "message": "The way Haiku collects coverage doesn\u0027t require changes to source code.\nKris, could you give us some insights on how that works?",
       "revId": "3a5d7f1cdde579c5c343668af3f883a97192482e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b86d25c0_547bc708",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2021-01-06T17:52:36Z",
+      "side": 1,
+      "message": "The reason I did things this way is that we have a global static CoverageRecord that the standalone main function needs access to in order to avoid duplicating the coverage record fetch. In the case of source-based coverage, the coverage instrumentation and standalone main function from compiler-rt (StandaloneFuzzTargetMain.c) are orthogonal.\n\nWe really need to abstract the CoverageRecord and similar duplicated boilerplate into the fuzzing support library. This would allow us to write a main function using that common infrastructure and simply link it into the final tool without source code changes.",
+      "parentUuid": "379187df_97073b03",
+      "revId": "3a5d7f1cdde579c5c343668af3f883a97192482e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
