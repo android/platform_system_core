@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaced8bc_832a1067",
+        "filename": "init/init.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-01-06T22:48:49Z",
+      "side": 1,
+      "message": "nit: maybe combine these two into one KillFirstStageSnapuserd() function? KillFirstStageSnapuserd(pid_t) appears to be a generic function that kills any process, so the name isn\u0027t very accurate.\n\nAlso, I suspect there be TOCTOU attacks between the calls? Using PIDs to identify processes are usually a bad idea, since it is possible that between the two calls there\u0027s a context switch. The remote process could technically crash, and some other process may pose as this process.\n\nFrom this code I can\u0027t say how that may cause any harm (since you are killing the remote process anyway), but this could lead to security bugs in the future.",
+      "range": {
+        "startLine": 750,
+        "startChar": 0,
+        "endLine": 752,
+        "endChar": 5
+      },
+      "revId": "a21a82c60e90acad0920d149ce04daf8f02821b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52a58622_c8d2cae0",
+        "filename": "init/snapuserd_transition.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-01-06T22:48:49Z",
+      "side": 1,
+      "message": "nit: not very descriptive. Maybe \"Cannot launch snapuserd because fork failed\"?",
+      "range": {
+        "startLine": 67,
+        "startChar": 23,
+        "endLine": 67,
+        "endChar": 36
+      },
+      "revId": "a21a82c60e90acad0920d149ce04daf8f02821b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d72cd932_ccf0423a",
+        "filename": "init/snapuserd_transition.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-01-06T22:48:49Z",
+      "side": 1,
+      "message": "nit: not very descriptive",
+      "range": {
+        "startLine": 75,
+        "startChar": 27,
+        "endLine": 75,
+        "endChar": 41
+      },
+      "revId": "a21a82c60e90acad0920d149ce04daf8f02821b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7205e3fe_d2357a5c",
+        "filename": "init/snapuserd_transition.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-01-06T22:48:49Z",
+      "side": 1,
+      "message": "Is this reachable? If not, maybe LOG(FATAL)?",
+      "revId": "a21a82c60e90acad0920d149ce04daf8f02821b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdc53288_e5ac46ad",
+        "filename": "init/snapuserd_transition.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-01-06T22:48:49Z",
+      "side": 1,
+      "message": "nit: launched? (from function name)\n\nEDIT: Oh I just see L135. Feel free to discard this comment.",
+      "range": {
+        "startLine": 82,
+        "startChar": 18,
+        "endLine": 82,
+        "endChar": 28
+      },
+      "revId": "a21a82c60e90acad0920d149ce04daf8f02821b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85218827_2edaf04b",
+        "filename": "init/snapuserd_transition.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-01-06T22:48:49Z",
+      "side": 1,
+      "message": "It is okay if this fails?",
+      "revId": "a21a82c60e90acad0920d149ce04daf8f02821b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
