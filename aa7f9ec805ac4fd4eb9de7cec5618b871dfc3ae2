@@ -91,6 +91,30 @@
       },
       "revId": "aa7f9ec805ac4fd4eb9de7cec5618b871dfc3ae2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "556b5ef8_d4facb03",
+        "filename": "libutils/Unicode.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1249117
+      },
+      "writtenOn": "2021-01-07T11:51:45Z",
+      "side": 1,
+      "message": "So I kind of mis-characterized this in the commit message, there are actually two undefined shifts in this function. The first one is (utf32 \u003c\u003c 6), which can be made defined by explicitly treating it as unsigned and masking the top bits off, and the second one is this line:\n\n   utf32 \u0026\u003d ~(to_ignore_mask \u003c\u003c (6 * (num_to_read - 1)));\n\nThis function (if I understand it right) is trying to extract a UTF32 canonical representation from a UTF8 start character. Every UTF32 code-point can be represented in up to 4 UTF-8 bytes, so to have this defined, to_ignore_mask needs be shift-able by 23 bits. That said, mask does _not_ need to be 64-bit, so I\u0027ll fix that in the next patchset.",
+      "parentUuid": "f99f6002_0fc0cac0",
+      "range": {
+        "startLine": 144,
+        "startChar": 4,
+        "endLine": 144,
+        "endChar": 12
+      },
+      "revId": "aa7f9ec805ac4fd4eb9de7cec5618b871dfc3ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
