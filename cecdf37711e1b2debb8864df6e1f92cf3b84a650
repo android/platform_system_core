@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ac2ef5_ac6e61e2",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-08T05:36:35Z",
+      "side": 1,
+      "message": "According to the C++ style guideline, constants should be named as kFoo.\n\ngo/cstyle#Constant_Names",
+      "range": {
+        "startLine": 897,
+        "startChar": 16,
+        "endLine": 897,
+        "endChar": 44
+      },
+      "revId": "cecdf37711e1b2debb8864df6e1f92cf3b84a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddc2f327_ccbc0000",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-08T05:36:35Z",
+      "side": 1,
+      "message": "I don\u0027t think this part is necessary because the context (this function) implies this.",
+      "range": {
+        "startLine": 904,
+        "startChar": 16,
+        "endLine": 904,
+        "endChar": 34
+      },
+      "revId": "cecdf37711e1b2debb8864df6e1f92cf3b84a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21c2c8f7_ae779d92",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-08T05:36:35Z",
+      "side": 1,
+      "message": "Why isn\u0027t ro.product.cpu.abilist checked?",
+      "range": {
+        "startLine": 909,
+        "startChar": 0,
+        "endLine": 910,
+        "endChar": 64
+      },
+      "revId": "cecdf37711e1b2debb8864df6e1f92cf3b84a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ad6571a_878001d2",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-08T05:36:35Z",
+      "side": 1,
+      "message": "no need, as std::string is initialized empty.",
+      "range": {
+        "startLine": 915,
+        "startChar": 34,
+        "endLine": 915,
+        "endChar": 42
+      },
+      "revId": "cecdf37711e1b2debb8864df6e1f92cf3b84a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62bacc5d_68a7c5ec",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-08T05:36:35Z",
+      "side": 1,
+      "message": "This sounds risky. What if ro.product.product.cpu.abilist32 has a value, but ro.product.product.cpu.abilist64 has a value? Then we don\u0027t look into odm, vendor, etc.",
+      "range": {
+        "startLine": 922,
+        "startChar": 40,
+        "endLine": 922,
+        "endChar": 42
+      },
+      "revId": "cecdf37711e1b2debb8864df6e1f92cf3b84a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b494371c_c0bc6254",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-08T05:36:35Z",
+      "side": 1,
+      "message": "std::pair might be a better choice.",
+      "range": {
+        "startLine": 937,
+        "startChar": 10,
+        "endLine": 937,
+        "endChar": 20
+      },
+      "revId": "cecdf37711e1b2debb8864df6e1f92cf3b84a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa8e0eb3_847e6000",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-08T05:36:35Z",
+      "side": 1,
+      "message": "This can be simpler:\n\nfor (const auto\u0026 [name, val] : set_prop_list) {",
+      "range": {
+        "startLine": 942,
+        "startChar": 3,
+        "endLine": 944,
+        "endChar": 52
+      },
+      "revId": "cecdf37711e1b2debb8864df6e1f92cf3b84a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ba9bfd0_8e1e2e7c",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-08T05:36:35Z",
+      "side": 1,
+      "message": "we usually don\u0027t print out the return value because \"error\" is enough.\n\nif (PropertySet(...) !\u003d PROP_SUCCESS) {\n\nshould be enough",
+      "range": {
+        "startLine": 949,
+        "startChar": 12,
+        "endLine": 949,
+        "endChar": 18
+      },
+      "revId": "cecdf37711e1b2debb8864df6e1f92cf3b84a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
