@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7883d5b3_62fa025e",
+        "filename": "fs_mgr/libsnapshot/include/libsnapshot/snapshot.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-01-08T22:17:02Z",
+      "side": 1,
+      "message": "nit: With the addition of the snapuserd_argv, I suggest to hide these two members, and add these two public APIs instead (change names as you wish):\n\n  bool SelinuxDetach();\n  bool Transistion2ndStageInit(std::vector\u003cstd::string\u003e* snapuserd_argv);",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 83
+      },
+      "revId": "0853c47816078d33483242159eee9d80a5979f90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c05d3355_6ac101f1",
+        "filename": "init/first_stage_init.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-01-08T22:17:02Z",
+      "side": 1,
+      "message": "strncmp, or even \n\n    \"snapuserd\"s \u003d\u003d de-\u003ed_name\n\n(see L65)",
+      "range": {
+        "startLine": 97,
+        "startChar": 17,
+        "endLine": 97,
+        "endChar": 23
+      },
+      "revId": "0853c47816078d33483242159eee9d80a5979f90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "502a6147_5052cb9d",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-01-08T22:17:02Z",
+      "side": 1,
+      "message": "Isn\u0027t this an implementation detail of selinux_android_load_policy(), or libselinux in other words?",
+      "range": {
+        "startLine": 459,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 56
+      },
+      "revId": "0853c47816078d33483242159eee9d80a5979f90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9f001e9_df9e0ffa",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-01-08T22:17:02Z",
+      "side": 1,
+      "message": "Same here. Maybe ReadPolicy returns a PolicyFile object, and LoadSelinuxPolicy calls selinux_android_load_policy_from_fd?",
+      "range": {
+        "startLine": 685,
+        "startChar": 0,
+        "endLine": 688,
+        "endChar": 5
+      },
+      "revId": "0853c47816078d33483242159eee9d80a5979f90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
