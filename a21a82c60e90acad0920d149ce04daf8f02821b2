@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "619fc64f_8a57caa5",
+        "filename": "init/init.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-01-08T01:47:35Z",
+      "side": 1,
+      "message": "I think the name fits because of the intent. \"KillAnyPid\" or something would be too operational. It also leaves the door open for other ways of killing the process if needed.\n\nRe: TOCTOU, it\u0027s true, we could be killing the wrong pid here. We could get around that by keeping the socket alive and sending a message through that, but that is a separate can of security worms. With the pid route, as you said, at worst we\u0027re killing the wrong process. And if snapuserd is crashing we have worse problems.\n\nOpen to suggestions though, maybe using a custom signal would be safer.",
+      "parentUuid": "aaced8bc_832a1067",
+      "range": {
+        "startLine": 750,
+        "startChar": 0,
+        "endLine": 752,
+        "endChar": 5
+      },
+      "revId": "a21a82c60e90acad0920d149ce04daf8f02821b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "52a58622_c8d2cae0",
         "filename": "init/snapuserd_transition.cpp",
         "patchSetId": 15
@@ -49,6 +73,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c8cdbbb1_e8f2ba75",
+        "filename": "init/snapuserd_transition.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-01-08T01:47:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52a58622_c8d2cae0",
+      "range": {
+        "startLine": 67,
+        "startChar": 23,
+        "endLine": 67,
+        "endChar": 36
+      },
+      "revId": "a21a82c60e90acad0920d149ce04daf8f02821b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d72cd932_ccf0423a",
         "filename": "init/snapuserd_transition.cpp",
         "patchSetId": 15
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-06T22:48:49Z",
       "side": 1,
       "message": "nit: not very descriptive",
+      "range": {
+        "startLine": 75,
+        "startChar": 27,
+        "endLine": 75,
+        "endChar": 41
+      },
+      "revId": "a21a82c60e90acad0920d149ce04daf8f02821b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f433a52d_4958f7c4",
+        "filename": "init/snapuserd_transition.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-01-08T01:47:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d72cd932_ccf0423a",
       "range": {
         "startLine": 75,
         "startChar": 27,
@@ -123,6 +195,24 @@
       "writtenOn": "2021-01-06T22:48:49Z",
       "side": 1,
       "message": "It is okay if this fails?",
+      "revId": "a21a82c60e90acad0920d149ce04daf8f02821b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7162f395_a401dd97",
+        "filename": "init/snapuserd_transition.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-01-08T01:47:35Z",
+      "side": 1,
+      "message": "I can\u0027t convince myself it\u0027s okay, so I\u0027ll change it to FATAL.",
+      "parentUuid": "85218827_2edaf04b",
       "revId": "a21a82c60e90acad0920d149ce04daf8f02821b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
