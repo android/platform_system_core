@@ -52,6 +52,41 @@
       "parentUuid": "c9ff4535_1494ef99",
       "revId": "f2003ea07e4a29f668bbc283718a94ef772cfdb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2fe35ef_9f1a7367",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1249117
+      },
+      "writtenOn": "2021-01-08T21:41:27Z",
+      "side": 1,
+      "message": "Maybe I should revise to never _knowingly_ handling an unsigned char type. I think what this patch proves is that my mental model for how character types work is totally broken. So: (just in case I ever need a reminder...)\n\n* char: signed or unsigned (depends)\n* char16_t: unsigned\n* char32_t: unsigned",
+      "parentUuid": "b0190250_5420a88b",
+      "revId": "f2003ea07e4a29f668bbc283718a94ef772cfdb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2766a3ac_c396dd40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1249117
+      },
+      "writtenOn": "2021-01-08T21:41:27Z",
+      "side": 1,
+      "message": "Unfortunately, there\u0027s something not quite right with ~((to_ignore_mask \u0026 0x1ff) \u003c\u003c 23) and keeping everything 32-bit ATM, seems that all libutils_test cases pass, but AAPT2 seems to get stuck in an infinite loop with the new code - it\u0027s not undefined anymore, but it\u0027s clearly not right. I\u0027m running out of time to fix this one, but will try to get back to it next week. ",
+      "revId": "f2003ea07e4a29f668bbc283718a94ef772cfdb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
