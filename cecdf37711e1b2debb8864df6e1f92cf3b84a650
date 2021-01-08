@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d282c11_acc3baa5",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1128729
+      },
+      "writtenOn": "2021-01-08T06:31:36Z",
+      "side": 1,
+      "message": "Understand. But here, I just referenced the style in other functions, like property_initialize_ro_product_props(). I have no preference. Do you think we should change back to guideline from this patch?",
+      "parentUuid": "30ac2ef5_ac6e61e2",
+      "range": {
+        "startLine": 897,
+        "startChar": 16,
+        "endLine": 897,
+        "endChar": 44
+      },
+      "revId": "cecdf37711e1b2debb8864df6e1f92cf3b84a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddc2f327_ccbc0000",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-08T05:36:35Z",
       "side": 1,
       "message": "I don\u0027t think this part is necessary because the context (this function) implies this.",
+      "range": {
+        "startLine": 904,
+        "startChar": 16,
+        "endLine": 904,
+        "endChar": 34
+      },
+      "revId": "cecdf37711e1b2debb8864df6e1f92cf3b84a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d6787d5_e3b3aa2f",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1128729
+      },
+      "writtenOn": "2021-01-08T06:31:36Z",
+      "side": 1,
+      "message": "Agree.",
+      "parentUuid": "ddc2f327_ccbc0000",
       "range": {
         "startLine": 904,
         "startChar": 16,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23d3e264_074ff827",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1128729
+      },
+      "writtenOn": "2021-01-08T06:31:36Z",
+      "side": 1,
+      "message": "There is a CTS test case checking that \"ro.product.cpu.abilist\" must be \"ro.product.cpu.abilist32\" + \"ro.product.cpu.abilist64\". My original idea is making consistence with the following checking. Basically, anyone should be fine.\n\nFor example:\n\n[ro.system.product.cpu.abilist]: [arm64-v8a,armeabi-v7a,armeabi]\n[ro.system.product.cpu.abilist32]: [armeabi-v7a,armeabi]\n[ro.system.product.cpu.abilist64]: [arm64-v8a]\n[ro.vendor.product.cpu.abilist]: [arm64-v8a]\n[ro.vendor.product.cpu.abilist32]: []\n[ro.vendor.product.cpu.abilist64]: [arm64-v8a]\n\n\u003d\u003e\n\n[ro.product.cpu.abilist]: [arm64-v8a]\n[ro.product.cpu.abilist32]: []\n[ro.product.cpu.abilist64]: [arm64-v8a]",
+      "parentUuid": "21c2c8f7_ae779d92",
+      "range": {
+        "startLine": 909,
+        "startChar": 0,
+        "endLine": 910,
+        "endChar": 64
+      },
+      "revId": "cecdf37711e1b2debb8864df6e1f92cf3b84a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ad6571a_878001d2",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-01-08T05:36:35Z",
       "side": 1,
       "message": "no need, as std::string is initialized empty.",
+      "range": {
+        "startLine": 915,
+        "startChar": 34,
+        "endLine": 915,
+        "endChar": 42
+      },
+      "revId": "cecdf37711e1b2debb8864df6e1f92cf3b84a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f58ad5e_431969a8",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1128729
+      },
+      "writtenOn": "2021-01-08T06:31:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ad6571a_878001d2",
       "range": {
         "startLine": 915,
         "startChar": 34,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c6cde57_dd489a68",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1128729
+      },
+      "writtenOn": "2021-01-08T06:31:36Z",
+      "side": 1,
+      "message": "That\u0027s exact case I want to handle. For 64 bits only device, the ro.product.product.cpu.abilist32 is empty. We need the empty value.\n\nIf you are interested, you could reference the old PatchSet. I use the solution, because GetProperty() cannot identify empty or not define. Thus, I changed to this solution.",
+      "parentUuid": "62bacc5d_68a7c5ec",
+      "range": {
+        "startLine": 922,
+        "startChar": 40,
+        "endLine": 922,
+        "endChar": 42
+      },
+      "revId": "cecdf37711e1b2debb8864df6e1f92cf3b84a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b494371c_c0bc6254",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-01-08T05:36:35Z",
       "side": 1,
       "message": "std::pair might be a better choice.",
+      "range": {
+        "startLine": 937,
+        "startChar": 10,
+        "endLine": 937,
+        "endChar": 20
+      },
+      "revId": "cecdf37711e1b2debb8864df6e1f92cf3b84a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12675b01_fda5db90",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1128729
+      },
+      "writtenOn": "2021-01-08T06:31:36Z",
+      "side": 1,
+      "message": "Agree.",
+      "parentUuid": "b494371c_c0bc6254",
       "range": {
         "startLine": 937,
         "startChar": 10,
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e66bcf7_0c66744a",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1128729
+      },
+      "writtenOn": "2021-01-08T06:31:36Z",
+      "side": 1,
+      "message": "Wow! Good to know. I hoped the feature for a long time but I missed it. Happy!",
+      "parentUuid": "aa8e0eb3_847e6000",
+      "range": {
+        "startLine": 942,
+        "startChar": 3,
+        "endLine": 944,
+        "endChar": 52
+      },
+      "revId": "cecdf37711e1b2debb8864df6e1f92cf3b84a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ba9bfd0_8e1e2e7c",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-01-08T05:36:35Z",
       "side": 1,
       "message": "we usually don\u0027t print out the return value because \"error\" is enough.\n\nif (PropertySet(...) !\u003d PROP_SUCCESS) {\n\nshould be enough",
+      "range": {
+        "startLine": 949,
+        "startChar": 12,
+        "endLine": 949,
+        "endChar": 18
+      },
+      "revId": "cecdf37711e1b2debb8864df6e1f92cf3b84a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c60659f_34fca1ee",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1128729
+      },
+      "writtenOn": "2021-01-08T06:31:36Z",
+      "side": 1,
+      "message": "Here is the same reason. Here I keep the same output as other property setting up functions.",
+      "parentUuid": "3ba9bfd0_8e1e2e7c",
       "range": {
         "startLine": 949,
         "startChar": 12,
