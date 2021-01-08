@@ -187,6 +187,30 @@
       },
       "revId": "aa7f9ec805ac4fd4eb9de7cec5618b871dfc3ae2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fcc504a_88fe18f6",
+        "filename": "libutils/Unicode.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1249117
+      },
+      "writtenOn": "2021-01-08T18:14:06Z",
+      "side": 1,
+      "message": "I think in general it\u0027s a net benefit: you probably won\u0027t want to accidentally shift off some stuff (e.g. in a security mask that controls something - that would be bad), so worth keeping it on I think.\n\nBut as an additional note, we don\u0027t build the whole tree with every unit test and lunch target internally at Arm, so there could be other cases where this new behaviour comes up that we don\u0027t know about. The most common targets we use (fvp-eng, fvp_mini-eng, aosp_arm64) seem to be OK.",
+      "parentUuid": "7da0895c_8e69821a",
+      "range": {
+        "startLine": 144,
+        "startChar": 4,
+        "endLine": 144,
+        "endChar": 12
+      },
+      "revId": "aa7f9ec805ac4fd4eb9de7cec5618b871dfc3ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
