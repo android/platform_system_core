@@ -137,6 +137,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7890780f_a620f166",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-01-11T22:42:46Z",
+      "side": 1,
+      "message": "Is there anything clever we can do with CowOperation? It strikes me that \"new_block\" could really be uint32_t. w/ 4KB block sizes, that\u0027s 16TB of addressable space? Surely enough for OTAs. Then adding a uint64_t isn\u0027t as bad.\n\nIt\u0027s worth thinking about IMO, even if we keep the data_loc_ mechanism.\n\nAlso if uint32_t is good enough for a block offset, then if we really wanted we could shave off another 2 bytes per op. It seems like nothing needs two uint64s:\n  COPY needs a block offset (uint32_t)\n  REPLACE needs a byte offset (uint64_t)\n  LABEL needs an identifier (uint64_t)\n  CLUSTER needs a length (no reason we couldn\u0027t cap this @ uint32_t)\n  XOR needs a block offset (uint32_t) and a byte offset (uint64_t)",
+      "parentUuid": "bab6791f_0e4ef511",
+      "revId": "91381343dc538d779b9349b67b5c85f90ae03b6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e4dbba9_3ed69021",
         "filename": "fs_mgr/libsnapshot/snapshot_writer.cpp",
         "patchSetId": 1
