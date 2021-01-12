@@ -33,6 +33,24 @@
       "message": "This seems a bit odd to me. We have a lights HAL that is intended to manage LEDs. It seems like a Treble layering violation if system server is bypassing that and directly accessing hardware features.\n\n+smoreland to comment on this. ",
       "revId": "7d28b665364bdb6f0828718d22000ef372d9a71e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5bed521_f04f812d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2021-01-12T20:00:51Z",
+      "side": 1,
+      "message": "Inputmanager in system_server doesn\u0027t have a HAL layer, it needs to access kernel interface directly, (like power manager access sys/class/power).  Input device kernel driver creates the nodes for input device under sysfs, lights HAL will access the same location.  If we change the node\u0027s owner to system , can light HAL still access it?\n+Michael to comment on it.",
+      "parentUuid": "0edb0b9d_af3e796a",
+      "revId": "7d28b665364bdb6f0828718d22000ef372d9a71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
