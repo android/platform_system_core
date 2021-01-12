@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a9e317f_6ce3b740",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2021-01-12T18:28:20Z",
+      "side": 1,
+      "message": "You will have to memset this buffer with zero before before handing it off to cow_reader Readdata(); the problem I see is that after decompressing the xor op, you will not get entire 4k buffer filled; The buffer may contain stale data and may lead to corruption once XOR is done at L145.\n\nEither you will have to pad the buffer with zeroes in the cow_reader after reading the data or memset upfront with zero.",
+      "revId": "a513dca2713b4c8bd38ff0784f40b42cbc03cf9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
