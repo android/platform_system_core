@@ -16,6 +16,24 @@
       "message": "What was the problem with existing partition sizes ?",
       "revId": "6f66b71d142badc40e05859ce631a98bb8e52c1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91fac075_1866681e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-01-13T17:20:21Z",
+      "side": 1,
+      "message": "because of the +2MB in the cow calculator (for VABC), the COW sizes all end up being larger. So I adjusted the fake super partition size. Then, this created other test failures that depend on the super size, for example, to check that super is prioritized bug userdata fallback works.\n\nThere is probably something cleaner we can do long term, but this was mostly to unblock dogfood.",
+      "parentUuid": "d36e1277_2dd9cdc3",
+      "revId": "6f66b71d142badc40e05859ce631a98bb8e52c1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
