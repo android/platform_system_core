@@ -41,6 +41,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d16ffa24_74a53e23",
+        "filename": "debuggerd/proto/tombstone.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2021-01-13T23:46:15Z",
+      "side": 1,
+      "message": "proto3 is optional by default (and required doesn\u0027t exist).",
+      "parentUuid": "ad9f691d_f558c00d",
+      "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdc6c23a_9dbbad91",
@@ -93,6 +111,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bb4e880_121ea90d",
+        "filename": "debuggerd/proto/tombstone.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2021-01-13T23:46:15Z",
+      "side": 1,
+      "message": "Whoops, yeah.",
+      "parentUuid": "79996659_af6c97c7",
+      "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f08c589_976876a4",
@@ -106,6 +142,24 @@
       "writtenOn": "2020-12-02T18:30:19Z",
       "side": 1,
       "message": "we should shove some more info in here.\n\nmessage Thread {\n  repeated Register registers \u003d 1;\n  repeated BacktraceFrame current_backtrace \u003d 2;\n  repeated BacktraceFrame thread_creation_backtrace \u003d 3;\n  optional uint64 tls_start \u003d 4;\n  optional uint64 tls_end \u003d 5;\n  optional uint64 stack_top \u003d 6;\n  optional uint64 stack_bottom \u003d 7;\n  optional uint64 thread_id \u003d 8;\n}",
+      "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f77cd7ed_96ec6ff1",
+        "filename": "debuggerd/proto/tombstone.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2021-01-13T23:46:15Z",
+      "side": 1,
+      "message": "(will be done in a followup commit)",
+      "parentUuid": "8f08c589_976876a4",
       "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -147,6 +201,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9530e314_71263bd7",
+        "filename": "debuggerd/proto/tombstone.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2021-01-13T23:46:15Z",
+      "side": 1,
+      "message": "Adding tags to the MemoryDump seems better to me as well.\n\n(Do we have access to hardware that supports MTE? I\u0027m not sure I have a way to actually run the tests...)\n\n\u003e Register should be repeated, as it is pretty common to have multiple registers with the same value. Even better, both register and mapping_name can be omitted as this info can be inferred from other tombstone fields. \n\nI think there\u0027s a slippery slope there that I don\u0027t really want to start going down... (e.g. should we merge memory dumps for registers that are close but not equal?) It seems easier to just rely on the fact that these dumps are small, and if we really care about size, compression will make the duplication not very expensive.",
+      "parentUuid": "f357ce7e_1f3ee420",
+      "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad4a0036_3f6a70b0",
         "filename": "debuggerd/proto/tombstone.proto",
         "patchSetId": 2
@@ -158,6 +230,24 @@
       "writtenOn": "2020-12-02T20:51:49Z",
       "side": 1,
       "message": "bool mte // for PROT_MTE",
+      "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1dadc72_af94205b",
+        "filename": "debuggerd/proto/tombstone.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2021-01-13T23:46:15Z",
+      "side": 1,
+      "message": "(will be done in a followup)",
+      "parentUuid": "ad4a0036_3f6a70b0",
       "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -228,6 +318,24 @@
       "side": 1,
       "message": "Dump around the fault address sounds good and I suppose it wouldn\u0027t even need to be an MTE-specific thing.",
       "parentUuid": "28391c7d_de1a14d8",
+      "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16d05601_453e2cad",
+        "filename": "debuggerd/proto/tombstone.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2021-01-13T23:46:15Z",
+      "side": 1,
+      "message": "\u003e I think the report should include one of those for the area around the fault address.\n\nAgreed. Maybe \"register\" in MemoryDump should be a MemoryDumpReason instead with an explanation of what the dump refers to?\n\n\u003e We could add an optional field to BacktraceFrame for the stack pointer value.\n\nDone.",
+      "parentUuid": "c72e9e80_cc375626",
       "revId": "ea81c85cfbda3ec690559cceb38972cf3593de0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
