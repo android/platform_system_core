@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5571e75_27a41f40",
+        "filename": "debuggerd/proto/tombstone.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2021-01-14T00:13:54Z",
+      "side": 1,
+      "message": "Side question: should \"Cause\" even be in the proto?\n\nAll of the causes we diagnose should be diagnosable from the other data in the tombstone (and if not, that\u0027s a bug IMO). If we add new diagnoses, it\u0027d be nice to be able to bring that to tombstones from older versions.\n\nMaybe the best of both worlds option is to keep this here as a best-guess from what the current system thinks (but move the code to generate it to rely only on data in the tombstone to make sure all of the information needed is available), and when we actually end up adding new diagnoses, add a host-side binary in the NDK or something that goes back and augments the causes with better diagnostics?",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "d23c7089e8c9e92d42b2b4a2007a48618d5c162e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
