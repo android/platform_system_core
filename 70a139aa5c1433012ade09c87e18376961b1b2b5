@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95c672de_a2a0eb2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2021-01-17T05:20:09Z",
+      "side": 1,
+      "message": "Hi Inseob, we want to add a cts test to check that sha1 isn\u0027t used to build the hashtree for verified boot. Since cts runs on non-root devices (/data/local/tmp), we don\u0027t have a way to read the block-device or device mapper directly in test. That\u0027s why we set a sysprop here and check the prop value instead. (in addition to vts tests that truly read the disk).\n\nHowever, I found the visibility of \"partition.{mount_name}.verified\" are limited in   http://aosp/1490096. Do you have any suggestions on how to handle this case?\n",
+      "revId": "70a139aa5c1433012ade09c87e18376961b1b2b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
