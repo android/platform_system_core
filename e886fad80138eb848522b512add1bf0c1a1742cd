@@ -33,6 +33,24 @@
       "message": "I think the bug is that the \"dm\" entry is not getting written to the status file. When the partition size is \u003e2G, and resides on an sdcard (likely FAT), it\u0027ll get split up into multiple loop devices. We\u0027ll then take this code path to write the status file:\n\nhttps://cs.android.com/android/platform/superproject/+/master:system/core/fs_mgr/libfiemap/image_manager.cpp;l\u003d414?q\u003dimage_manager.cpp\n\nAfter MapWithLoopDeviceList(), we then accidentally overwrite the status file here with an incorrect one:\n\nhttps://cs.android.com/android/platform/superproject/+/master:system/core/fs_mgr/libfiemap/image_manager.cpp;l\u003d491?q\u003dimage_manager.cpp\n\nI think moving the status file code at L491 into an else-branch would fix the bug.",
       "revId": "e886fad80138eb848522b512add1bf0c1a1742cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7a75082_fe7eb420",
+        "filename": "fs_mgr/libfiemap/image_manager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1135739
+      },
+      "writtenOn": "2021-01-18T07:46:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "258243f9_8abf24a7",
+      "revId": "e886fad80138eb848522b512add1bf0c1a1742cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
