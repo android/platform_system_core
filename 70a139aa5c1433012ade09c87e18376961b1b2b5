@@ -70,6 +70,24 @@
       "parentUuid": "943fd024_218d0b08",
       "revId": "70a139aa5c1433012ade09c87e18376961b1b2b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e349d994_76fd4557",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-01-19T07:24:20Z",
+      "side": 1,
+      "message": "Ack. Let\u0027s add these properties to system/sepolicy/private/property_contexts, and then grant read access to CTS. Some thoughts:\n\n1) To give access to CTS, you\u0027ll need to use \"system_restricted_prop\" instead of \"system_internal_prop\". It\u0027s up to you whether you add a new property context, or reuse verity_status_prop. Just make sure only init can write the properties.\n\n2) Can we create a .sysprop file to ensure the stability of properties?",
+      "parentUuid": "b2b8f149_4bd5f5e4",
+      "revId": "70a139aa5c1433012ade09c87e18376961b1b2b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
