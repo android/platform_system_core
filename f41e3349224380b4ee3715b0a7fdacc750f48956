@@ -303,6 +303,29 @@
       "message": "+Bowgo and Jiyong from Treble team as well.\nGrouped this CL together with the other one providing file permission to system server, for uhid sysfs node to system server.",
       "revId": "f41e3349224380b4ee3715b0a7fdacc750f48956",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd8f9e8d_cd29a4ee",
+        "filename": "rootdir/ueventd.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1108565
+      },
+      "writtenOn": "2021-01-20T21:15:25Z",
+      "side": 1,
+      "message": "Are these generic paths or something that is device / hardware specific?\nIf they are indeed device specific, then system_server probably shouldn\u0027t be reading /writing from them directly.\nIf they appear on all devices, can you point me to what kernel option / configuration enables that?\n\nWe need to make sure those are part of GKI and are a defined stable interface.\n\ncc: adelva, tkjos",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 39
+      },
+      "revId": "f41e3349224380b4ee3715b0a7fdacc750f48956",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
