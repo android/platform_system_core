@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "049bfcf3_a2ce5031",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-01-20T20:54:54Z",
+      "side": 1,
+      "message": "The base device is the merge target for dm-snapshot, so we still need it. Otherwise when a partition grows, we can\u0027t write new blocks.\n\n(In theory we could use the source device for shrink cases, and base device for grow cases, but it seems simpler to just create both every time.)",
+      "parentUuid": "a4047be5_0ceacb36",
+      "range": {
+        "startLine": 131,
+        "startChar": 19,
+        "endLine": 131,
+        "endChar": 36
+      },
+      "revId": "4cc27b91811caaf279a2b19a7ddf8f892265b6a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f61937df_440f2a07",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-20T19:33:44Z",
       "side": 1,
       "message": "Should this be GetSourceDeviceName as well?",
+      "range": {
+        "startLine": 1317,
+        "startChar": 38,
+        "endLine": 1317,
+        "endChar": 55
+      },
+      "revId": "4cc27b91811caaf279a2b19a7ddf8f892265b6a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee579360_bda78b89",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1317,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-01-20T20:54:54Z",
+      "side": 1,
+      "message": "Yes, great catch, thanks!",
+      "parentUuid": "f61937df_440f2a07",
       "range": {
         "startLine": 1317,
         "startChar": 38,
