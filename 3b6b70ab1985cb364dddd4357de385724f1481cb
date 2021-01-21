@@ -22,6 +22,30 @@
       },
       "revId": "3b6b70ab1985cb364dddd4357de385724f1481cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "868aad87_dd7ff7d6",
+        "filename": "fs_mgr/fs_mgr_remount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-01-21T17:18:22Z",
+      "side": 1,
+      "message": "It\u0027s doable. I could just call `gsid-\u003eenableGsi(true)` here and DSU would be enabled for the next reboot.\n\nI did consider doing this when I\u0027m writing this, but I\u0027m a little worried that this may feel like \"trapping\" the user within the DSU system. Normally rebooting within DSU guest takes you back to the host system, and one has to deliberately call \"gsi_tool enable -s\" to make subsequent reboots stay within the guest system. This is like an insurance to keep the user from being \"trapped\" in DSU.\n\nBut I think one can also argue that since the user is already running a userdebug host system + userdebug guest system and playing with \"adb remount -R\", the user must really know what they\u0027re dealing with, and is well-informed of the danger of playing with fire 🔥 😎",
+      "parentUuid": "b754b869_e3205d87",
+      "range": {
+        "startLine": 214,
+        "startChar": 39,
+        "endLine": 214,
+        "endChar": 67
+      },
+      "revId": "3b6b70ab1985cb364dddd4357de385724f1481cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
