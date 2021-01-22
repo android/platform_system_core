@@ -446,6 +446,30 @@
       },
       "revId": "f41e3349224380b4ee3715b0a7fdacc750f48956",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5552671_163551fa",
+        "filename": "rootdir/ueventd.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-22T18:11:44Z",
+      "side": 1,
+      "message": "\u003e the light HAL should never touch the HID device sysfs light, as the light HAL only defines a number of lights supported \n\nThe lights HAL defines logical lights, but are we sure that a HID device should never be in the KEYBOARD category? Of course, with the neverallow rule in place, this seems great, since it should encourage people to use the linux kernel interfaces. If there ever is a request to extend that neverallow rule, then it should also be an opportunity to remove the need for a HAL.",
+      "parentUuid": "a91111cd_efad2a9c",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 39
+      },
+      "revId": "f41e3349224380b4ee3715b0a7fdacc750f48956",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
