@@ -422,6 +422,30 @@
       },
       "revId": "f41e3349224380b4ee3715b0a7fdacc750f48956",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a91111cd_efad2a9c",
+        "filename": "rootdir/ueventd.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2021-01-22T02:42:46Z",
+      "side": 1,
+      "message": "Hi Steven, \n1) The feature will be provided for devices with kernel sysfs class led support and vendor kernel driver for input controllers that do have lights. The kernel sysfs class led support is a kernel config option(LEDS_CLASS), and an input device driver will create the sysfs class node interface.\nBy giving system_server the access to these sysfs nodes, the feature will work on devices with the kernel option and kernel input/hid driver support.  We do use CTS tests to enforce the kernel options and the input device drivers. \n2) Currently these lights node will be created with owner of root, with this CL the file owner will be system but root will be still able to access it. But above all, the light HAL should never touch the HID device sysfs light, as the light HAL only defines a number of lights supported (https://android.googlesource.com/platform/hardware/interfaces/+/master/light/2.0/types.hal) but not include input device lights, so we shouldn\u0027t have conflict for managing these lights.",
+      "parentUuid": "1bbc367f_34807a17",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 39
+      },
+      "revId": "f41e3349224380b4ee3715b0a7fdacc750f48956",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
