@@ -398,6 +398,30 @@
       },
       "revId": "f41e3349224380b4ee3715b0a7fdacc750f48956",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bbc367f_34807a17",
+        "filename": "rootdir/ueventd.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-22T01:35:26Z",
+      "side": 1,
+      "message": "I\u0027m not really convinced by this:\n- devices might use any mechanism for lights, and so, this will break if a device wants this functionality but doesn\u0027t implement this interface (it\u0027s not ideal, but devices do this kind of thing for other lights types)\n- if a device already uses these lights as part of their lights HAL, then we will have conflicting writers, between the lights HAL and the system server\n\nDo we have a way to guarantee these things?",
+      "parentUuid": "0c9e3ec3_cdd56a00",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 39
+      },
+      "revId": "f41e3349224380b4ee3715b0a7fdacc750f48956",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
