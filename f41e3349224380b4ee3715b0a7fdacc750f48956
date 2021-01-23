@@ -470,6 +470,30 @@
       },
       "revId": "f41e3349224380b4ee3715b0a7fdacc750f48956",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4251e63_92f3f600",
+        "filename": "rootdir/ueventd.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1133258
+      },
+      "writtenOn": "2021-01-23T03:46:26Z",
+      "side": 1,
+      "message": "I just check a few vendor light HAL implementations, it seems none of them are accessing sysfs path /sys/devices/virtual/misc/uhid.  \nThey had static mappings of LED type and the /sys/class/led/ file name. Like this one:\nhttps://source.corp.google.com/aosp-android10/device/google/wahoo/liblight/lights.c?q\u003dlight_device_t\u0026start\u003d21\nThe uhid input device will also create a symbol link under /sys/class/led/, but as the file is dynamically created, and the name is {connection type}:{vendor id}:{product id}:{version id}:{color}, the light HAL will not able to create a static mapping and always assume the file is present.\nI can\u0027t find any vendor HAL implements HAL light type of KEYBOARD. The system lights of a keyboard, like CAPS_LOCK, NUMS_LOCK, PRT_SCRN, these LEDs are controlled by input interface node from evdev, and these lights are already controlled by inputflinger.",
+      "parentUuid": "c5552671_163551fa",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 39
+      },
+      "revId": "f41e3349224380b4ee3715b0a7fdacc750f48956",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
