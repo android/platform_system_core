@@ -518,6 +518,30 @@
       },
       "revId": "f41e3349224380b4ee3715b0a7fdacc750f48956",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3a37682_ab0d0e69",
+        "filename": "rootdir/ueventd.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2021-01-25T11:09:43Z",
+      "side": 1,
+      "message": "\u003e I just check a few vendor light HAL implementations, it seems none of them are accessing sysfs path /sys/devices/virtual/misc/uhid.  \n\nYour neverallow rule in selinux policy will guarantee that only system_server can access these files. That will prevent future conflicts from being created, and force any existing users to get in touch with you. If that happens, you\u0027ll have to rethink your approach.",
+      "parentUuid": "c3ff18db_5fe59749",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 39
+      },
+      "revId": "f41e3349224380b4ee3715b0a7fdacc750f48956",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
