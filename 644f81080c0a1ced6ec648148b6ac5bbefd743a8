@@ -68,6 +68,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b50ad403_e2c0ac7d",
+        "filename": "trusty/apploader/apploader.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2021-01-26T07:12:34Z",
+      "side": 1,
+      "message": "I think it is better to not use words that trip the linter when doing so is unnecessary.",
+      "parentUuid": "ef407f46_4aadbae5",
+      "range": {
+        "startLine": 40,
+        "startChar": 16,
+        "endLine": 40,
+        "endChar": 19
+      },
+      "revId": "644f81080c0a1ced6ec648148b6ac5bbefd743a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a45616f_99af5844",
         "filename": "trusty/apploader/apploader.cpp",
         "patchSetId": 24
@@ -103,6 +127,30 @@
       "side": 1,
       "message": "I use it to clamp the transfer size for sendfile(). The actual issue is that the file size is an off64_t and I need to cast that to a size_t, which would truncate it on 32-bit systems. I could probably do that cast manually and get rid of the constant.",
       "parentUuid": "0a45616f_99af5844",
+      "range": {
+        "startLine": 43,
+        "startChar": 8,
+        "endLine": 43,
+        "endChar": 20
+      },
+      "revId": "644f81080c0a1ced6ec648148b6ac5bbefd743a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2664a49_1903e937",
+        "filename": "trusty/apploader/apploader.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2021-01-26T07:12:34Z",
+      "side": 1,
+      "message": "You can use SIZE_MAX for that. If you actually try to load a 4GB trusty app on a 32 bit system it will fail though.",
+      "parentUuid": "76d2f706_e9d84cc7",
       "range": {
         "startLine": 43,
         "startChar": 8,
