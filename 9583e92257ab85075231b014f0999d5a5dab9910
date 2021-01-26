@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "461089e1_3683f927",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-01-26T23:20:44Z",
+      "side": 1,
+      "message": "Hi Elliot, unfortunately we had to revert this as it appears to break both flashing and normal booting if \"want_console \u003d\u003d FirstStageConsoleParam::CONSOLE_ON_FAILURE\" is true.\n\nI think two adjustments would make it work:\n (1) Add an \"!IsRecoveryMode()\" to the \"want_console \u003d\u003d FirstStageConsoleParam::CONSOLE_ON_FAILURE\" check.\n (2) When calling DoFirstStageMount(), pass false only if we successfully called DoCreateDevices().",
+      "revId": "9583e92257ab85075231b014f0999d5a5dab9910",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
