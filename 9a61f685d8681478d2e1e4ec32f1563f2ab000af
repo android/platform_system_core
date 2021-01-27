@@ -33,6 +33,24 @@
       "message": "...and then here we potentially reference \u0027crash\u0027 post-move(), without resetting its contents in between.",
       "revId": "9a61f685d8681478d2e1e4ec32f1563f2ab000af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0fa1336_47305124",
+        "filename": "debuggerd/tombstoned/tombstoned.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2021-01-27T01:59:13Z",
+      "side": 1,
+      "message": "This is a false positive: we only move out of crash if maybe_enqueue_crash returns true. I\u0027m not sure if there\u0027s a better way to express this. We could std::move inside of maybe_enqueue_crash, but that hides the fact that the function might move out of its argument, which seems worse to me.",
+      "parentUuid": "7c29dd21_2b00063b",
+      "revId": "9a61f685d8681478d2e1e4ec32f1563f2ab000af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
