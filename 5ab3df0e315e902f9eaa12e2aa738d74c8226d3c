@@ -3,6 +3,29 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7d57e4f9_e1ee6604",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2021-01-28T13:33:26Z",
+      "side": 1,
+      "message": "nit: we should have a prefix here for the sub tree this change is focussed on I think.\n\nfs_mgr: harden adb-remount-test.sh against RO filesystem",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 2
+      },
+      "revId": "5ab3df0e315e902f9eaa12e2aa738d74c8226d3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f7502551_fb596cab",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -14,6 +37,30 @@
       "writtenOn": "2021-01-28T12:26:05Z",
       "side": 1,
       "message": "This might be a toybox bug as this only happens in Android, not in my linux workstation. 😞",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 69
+      },
+      "revId": "5ab3df0e315e902f9eaa12e2aa738d74c8226d3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16f8353f_457d7700",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2021-01-28T13:33:26Z",
+      "side": 1,
+      "message": "Actually, fixing toybox is preferred since toybox prebuilts are also used as part of the hermetic kernel build environment and they will exhibit the same problems if not 100% compatible with the POSIX expectations. I like hardening of the script, especially since it must run in partner\u0027s hands on a wife variety and vintage of products. But that is a secondary solution. Not sure which binary it uses in the prebuilts:\n\n$ find [a-np-z]* | grep \u0027/rm$\u0027\nbuild/build-tools/path/linux-x86/rm\nprebuilts/build-tools/path/linux-x86/rm\nprebuilts/build-tools/path/darwin-x86/rm\n\nbut this means you can find the toybox executable for linux-x86 in a repo and run it to test if it has the same problem. Could you file a bug (cc: enh@) against the toybox rm command.",
+      "parentUuid": "f7502551_fb596cab",
       "range": {
         "startLine": 15,
         "startChar": 6,
@@ -61,6 +108,30 @@
       "side": 1,
       "message": "I copied this piece of code from L1047, so I think using `ls -d` should be safe here, since this is what other parts of this script had been doing. Can I do this `ls -d` \u003d\u003e `[ -d ]` bulk substitution in another change?",
       "parentUuid": "f5f415c0_de6d657c",
+      "range": {
+        "startLine": 1659,
+        "startChar": 12,
+        "endLine": 1659,
+        "endChar": 17
+      },
+      "revId": "5ab3df0e315e902f9eaa12e2aa738d74c8226d3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12bd84ed_bd811b99",
+        "filename": "fs_mgr/tests/adb-remount-test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1659,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2021-01-28T13:33:26Z",
+      "side": 1,
+      "message": "Originally wrote the script for portability for all partners and all environments (Mac \u0026 Linux host, as well as multiple vintages of targets), I admit I did not have to be self consistent ;-)\n\nYou can do a bulk substitution _this_ change as far as I am concerned, it is hardening, changes can also be beauty ;-\u003e, but keep in mind that \u0027ls -d\u0027 has the advantage that the argument can expand to several, or none, whereas test can only have _one_ argument and it can not be empty, changing what the result(s) could be, the latter is very explicit and might be preferred in a test because if an argument expands to several or none, it may be bad in any case.",
+      "parentUuid": "f7fd5e8d_1569e0c2",
       "range": {
         "startLine": 1659,
         "startChar": 12,
