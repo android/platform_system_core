@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b849c83d_3bd7b45d",
+        "filename": "fs_mgr/tests/adb-remount-test.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2021-01-29T15:47:04Z",
+      "side": 0,
+      "message": "Why was this removed, I think it is necessary for the rm -rf below.",
+      "range": {
+        "startLine": 1035,
+        "startChar": 0,
+        "endLine": 1036,
+        "endChar": 21
+      },
+      "revId": "a28b67e9b67f585fe9dfeb3ddab3c752f8002f90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a62c2636_d7b28d01",
+        "filename": "fs_mgr/tests/adb-remount-test.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2021-01-29T15:47:04Z",
+      "side": 0,
+      "message": "NB: In a recent email you asked about why verity was disabled along with overlayfs. Here is one place where we hint at the situation where the device could do a direct remount -o rw of the partition rather than using overlayfs.\n\nThe net result is it is always simpler to assume verity is disabled, and that the content that is in the signed partition once we start overriding it, could be suspect. verity is by its very meaning an indication that the device can no longer be trusted, can no longer be considered signed.\n\nOf course, we know better, so a side effect of all partitions under overlayfs, rather than remount -o rw, is that we can reverse back to the original signed device by just enabled verity (where in fastbootd we also unravel all of overlays content automagically).",
+      "range": {
+        "startLine": 1040,
+        "startChar": 0,
+        "endLine": 1042,
+        "endChar": 66
+      },
+      "revId": "a28b67e9b67f585fe9dfeb3ddab3c752f8002f90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
