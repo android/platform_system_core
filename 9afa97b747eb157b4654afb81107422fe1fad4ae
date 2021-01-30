@@ -16,6 +16,23 @@
       "message": "Removed topic as it does not need to run presubmit at the same time as the trusty side changes",
       "revId": "9afa97b747eb157b4654afb81107422fe1fad4ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cda07fc_a5a94228",
+        "filename": "trusty/apploader/apploader.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2021-01-30T00:02:30Z",
+      "side": 1,
+      "message": "Should probably be %zd instead os %ld. From the post-submit build failure log:\n```\nsystem/core/trusty/apploader/apploader.cpp\nsystem/core/trusty/apploader/apploader.cpp:110:73: error: format specifies type \u0027long\u0027 but the argument has type \u0027long long\u0027 [-Werror,-Wformat]\n        fprintf(stderr, \"Invalid size for file \u0027%s\u0027: %ld\\n\", file_name, st.st_size);\n                                                     ~~~                ^~~~~~~~~~\n                                                     %lld\n```",
+      "revId": "9afa97b747eb157b4654afb81107422fe1fad4ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
