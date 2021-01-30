@@ -16,6 +16,24 @@
       "message": "from original patch comment:\nI looked at struct stat64 on my linux machine and st.st_size is not always off64_t, so I suspend PRId64 may not always work unless android is different. Since the presubmit builds don\u0027t catch this it might be safer to cast st.st_size to e.g. long long and print with %lld",
       "revId": "889a382d7665ebf59524b3dd0d6c6f223de378dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b5729fa_1385df68",
+        "filename": "trusty/apploader/apploader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2021-01-30T00:40:39Z",
+      "side": 1,
+      "message": "android seems to use off_t or long long depending on the platform:\nbionic/libc/include/sys/stat.h",
+      "parentUuid": "1d445828_2cfc3d7d",
+      "revId": "889a382d7665ebf59524b3dd0d6c6f223de378dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
