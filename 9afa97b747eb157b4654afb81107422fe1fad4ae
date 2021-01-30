@@ -87,6 +87,24 @@
       "parentUuid": "e66d3fc1_b2d1b159",
       "revId": "9afa97b747eb157b4654afb81107422fe1fad4ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "428de396_bc088bb3",
+        "filename": "trusty/apploader/apploader.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2021-01-30T00:37:09Z",
+      "side": 1,
+      "message": "I looked at struct stat64 on my linux machine and st.st_size is not always off64_t, so I suspend PRId64 may not always work unless android is different. Since the presubmit builds don\u0027t catch this it might be safer to cast st.st_size to e.g. long long and print with %lld",
+      "parentUuid": "5da723b9_f8bf53ef",
+      "revId": "9afa97b747eb157b4654afb81107422fe1fad4ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
