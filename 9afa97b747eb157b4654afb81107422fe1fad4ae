@@ -33,6 +33,24 @@
       "message": "Should probably be %zd instead os %ld. From the post-submit build failure log:\n```\nsystem/core/trusty/apploader/apploader.cpp\nsystem/core/trusty/apploader/apploader.cpp:110:73: error: format specifies type \u0027long\u0027 but the argument has type \u0027long long\u0027 [-Werror,-Wformat]\n        fprintf(stderr, \"Invalid size for file \u0027%s\u0027: %ld\\n\", file_name, st.st_size);\n                                                     ~~~                ^~~~~~~~~~\n                                                     %lld\n```",
       "revId": "9afa97b747eb157b4654afb81107422fe1fad4ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c68b4ba0_13fd6414",
+        "filename": "trusty/apploader/apploader.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2021-01-30T00:17:07Z",
+      "side": 1,
+      "message": "st.st_size is an off64_t (from struct stat64), so maybe PRId64?",
+      "parentUuid": "6cda07fc_a5a94228",
+      "revId": "9afa97b747eb157b4654afb81107422fe1fad4ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
