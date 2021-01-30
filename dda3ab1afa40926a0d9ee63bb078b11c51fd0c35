@@ -39,6 +39,23 @@
       "message": "Exception\n| EntropyMixer:  at libcore.io.IoBridge.open(IoBridge.java:496)\n\nshould be code line \nhttps://android.googlesource.com/platform/libcore/+/master/luni/src/main/java/libcore/io/IoBridge.java\n\n| Libcore.os.open(path, flags, 0666);\n\nAccording to open(2) man\nmy best guess is that flags include O_CREAT and/or O_TMPFILE which trigger kernel to use/apply mode/umask \u00270666\u0027 which fail against existing /dev/hw_random 0440 mode",
       "revId": "dda3ab1afa40926a0d9ee63bb078b11c51fd0c35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58821d02_a8c74bd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319385
+      },
+      "writtenOn": "2021-01-30T05:19:50Z",
+      "side": 1,
+      "message": "This warning is actually caused by mis-configured ueventd on device, as I described 3 years ago. This is not fixed on newest Pixels as well, maybe you all can see that warning on boot:\n\nhttps://android-review.googlesource.com/c/device/google/wahoo/+/741043",
+      "revId": "dda3ab1afa40926a0d9ee63bb078b11c51fd0c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
