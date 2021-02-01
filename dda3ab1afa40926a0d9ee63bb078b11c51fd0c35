@@ -161,6 +161,24 @@
       "parentUuid": "301068c4_87b4e4a5",
       "revId": "dda3ab1afa40926a0d9ee63bb078b11c51fd0c35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "789c98b3_8a27aca4",
+        "filename": "rootdir/ueventd.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-02-01T23:28:18Z",
+      "side": 1,
+      "message": "but that test is just this:\n```\n    @Test\n    public void testDevHwRandomLockedDown() throws Exception {\n        File f \u003d new File(\"/dev/hw_random\");\n        if (!f.exists()) {\n            // HW RNG is not required to be exposed on all devices.\n            return;\n        }\n\n        assertFalse(f + \" can be opened for reading\", canOpenForReading(f));\n        assertFalse(f + \" can be opened for writing\", canOpenForWriting(f));\n\n        FileUtils.FileStatus status \u003d new FileUtils.FileStatus();\n        assertFalse(\"stat permitted on \" + f,\n                FileUtils.getFileStatus(f.getPath(), status, false));\n    }\n```\nfor which 0660 system:system should be fine?",
+      "parentUuid": "24fd426f_115970ef",
+      "revId": "dda3ab1afa40926a0d9ee63bb078b11c51fd0c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
