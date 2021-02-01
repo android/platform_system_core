@@ -125,6 +125,24 @@
       "message": "also it looks like we\u0027re not getting what we asked for from this file anyway:\n```\ncrw------- 1 root root 10, 183 1970-10-01 03:17 /dev/hw_random\n```\n/dev/random and /dev/urandom look right though, as does /dev/ashmem.\n\n+adelva in case there\u0027s some known issue with /dev/hw_random and ueventd? (i see this on cuttlefish as well as bramble...)",
       "revId": "dda3ab1afa40926a0d9ee63bb078b11c51fd0c35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "301068c4_87b4e4a5",
+        "filename": "rootdir/ueventd.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-02-01T23:25:21Z",
+      "side": 1,
+      "message": "seems like hw_random arrived *later* than the other two?\n```\n$ adb shell stat /dev/*random*\n  File: /dev/random\n  Size: 0\t Blocks: 0\t IO Blocks: 512\t character device\nDevice: 10h/16d\t Inode: 7\t Links: 1\t Device type: 1,8\nAccess: (0666/crw-rw-rw-)\tUid: (    0/    root)\tGid: (    0/    root)\nAccess: 2021-02-01 23:13:55.167999992 +0000\nModify: 2021-02-01 23:13:55.167999992 +0000\nChange: 2021-02-01 23:13:59.875999939 +0000\n  File: /dev/urandom\n  Size: 0\t Blocks: 0\t IO Blocks: 512\t character device\nDevice: 10h/16d\t Inode: 8\t Links: 1\t Device type: 1,9\nAccess: (0666/crw-rw-rw-)\tUid: (    0/    root)\tGid: (    0/    root)\nAccess: 2021-02-01 23:13:55.167999992 +0000\nModify: 2021-02-01 23:13:55.167999992 +0000\nChange: 2021-02-01 23:13:59.887999939 +0000\n  File: /dev/hw_random\n  Size: 0\t Blocks: 0\t IO Blocks: 512\t character device\nDevice: 10h/16d\t Inode: 366\t Links: 1\t Device type: a,b7\nAccess: (0600/crw-------)\tUid: (    0/    root)\tGid: (    0/    root)\nAccess: 2021-02-01 23:13:59.879999939 +0000\nModify: 2021-02-01 23:13:59.879999939 +0000\nChange: 2021-02-01 23:13:59.879999939 +0000\n$ \n```\ni\u0027d have thought that would make it more likely that ueventd would correctly set the permissions, though, not less likely.",
+      "parentUuid": "6232e8ff_38f19f11",
+      "revId": "dda3ab1afa40926a0d9ee63bb078b11c51fd0c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
