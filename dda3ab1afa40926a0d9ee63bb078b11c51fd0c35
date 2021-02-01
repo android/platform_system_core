@@ -108,6 +108,23 @@
       "parentUuid": "8c71e946_a5871a61",
       "revId": "dda3ab1afa40926a0d9ee63bb078b11c51fd0c35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6232e8ff_38f19f11",
+        "filename": "rootdir/ueventd.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-02-01T20:22:15Z",
+      "side": 1,
+      "message": "also it looks like we\u0027re not getting what we asked for from this file anyway:\n```\ncrw------- 1 root root 10, 183 1970-10-01 03:17 /dev/hw_random\n```\n/dev/random and /dev/urandom look right though, as does /dev/ashmem.\n\n+adelva in case there\u0027s some known issue with /dev/hw_random and ueventd? (i see this on cuttlefish as well as bramble...)",
+      "revId": "dda3ab1afa40926a0d9ee63bb078b11c51fd0c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
