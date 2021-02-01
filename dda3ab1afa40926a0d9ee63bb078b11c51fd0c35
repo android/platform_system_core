@@ -179,6 +179,24 @@
       "parentUuid": "24fd426f_115970ef",
       "revId": "dda3ab1afa40926a0d9ee63bb078b11c51fd0c35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c5e9ad3_1057208d",
+        "filename": "rootdir/ueventd.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-02-01T23:36:34Z",
+      "side": 1,
+      "message": "commenting out that line from device/google/cuttlefish/shared/config/ueventd.rc fixes /dev/hw_random\u0027s permissions for me and lets EntropyMixer work again:\n```\n02-01 23:35:07.572   552   552 I SystemServerTiming: StartEntropyMixer\n02-01 23:35:07.576   552   552 I EntropyMixer: Added HW RNG output to entropy pool\n02-01 23:35:07.576   552   552 I EntropyMixer: Writing entropy...\n```\n\nlet me try the CTS test that inspired this change...",
+      "parentUuid": "789c98b3_8a27aca4",
+      "revId": "dda3ab1afa40926a0d9ee63bb078b11c51fd0c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
