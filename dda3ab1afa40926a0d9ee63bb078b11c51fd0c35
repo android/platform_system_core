@@ -73,6 +73,23 @@
       "message": "Considered that EntropyMixer is very old code and no one has touched it for 4 years, would it be good to revert the commit that causes the issue(https://cs.android.com/android/_/android/platform/frameworks/base/+/6ab3d20d3c2de01a342450d83103e9f5e89e670e)?",
       "revId": "dda3ab1afa40926a0d9ee63bb078b11c51fd0c35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c8b6f1a_48e0bfce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-02-01T19:58:19Z",
+      "side": 1,
+      "message": "i\u0027m seeing this on my Pixel 4 5G running a dogfood build from last week:\n```\n02-01 11:09:36.832  2073  2287 W EntropyMixer: Failed to add HW RNG output to entropy pool\n02-01 11:09:36.832  2073  2287 W EntropyMixer: java.io.FileNotFoundException: /dev/hw_random: open failed: EACCES (Permission denied)\n02-01 11:09:36.832  2073  2287 W EntropyMixer: \tat libcore.io.IoBridge.open(IoBridge.java:499)\n02-01 11:09:36.832  2073  2287 W EntropyMixer: \tat java.io.FileInputStream.\u003cinit\u003e(FileInputStream.java:160)\n02-01 11:09:36.832  2073  2287 W EntropyMixer: \tat java.io.FileInputStream.\u003cinit\u003e(FileInputStream.java:115)\n02-01 11:09:36.832  2073  2287 W EntropyMixer: \tat com.android.server.RandomBlock.fromFile(RandomBlock.java:45)\n02-01 11:09:36.832  2073  2287 W EntropyMixer: \tat com.android.server.EntropyMixer.addHwRandomEntropy(EntropyMixer.java:205)\n02-01 11:09:36.832  2073  2287 W EntropyMixer: \tat com.android.server.EntropyMixer.access$000(EntropyMixer.java:59)\n02-01 11:09:36.832  2073  2287 W EntropyMixer: \tat com.android.server.EntropyMixer$1.handleMessage(EntropyMixer.java:83)\n02-01 11:09:36.832  2073  2287 W EntropyMixer: \tat android.os.Handler.dispatchMessage(Handler.java:106)\n02-01 11:09:36.832  2073  2287 W EntropyMixer: \tat android.os.Looper.loopOnce(Looper.java:201)\n02-01 11:09:36.832  2073  2287 W EntropyMixer: \tat android.os.Looper.loop(Looper.java:288)\n02-01 11:09:36.832  2073  2287 W EntropyMixer: \tat android.os.HandlerThread.run(HandlerThread.java:67)\n02-01 11:09:36.832  2073  2287 W EntropyMixer: \tat com.android.server.ServiceThread.run(ServiceThread.java:44)\n02-01 11:09:36.832  2073  2287 W EntropyMixer: Caused by: android.system.ErrnoException: open failed: EACCES (Permission denied)\n02-01 11:09:36.832  2073  2287 W EntropyMixer: \tat libcore.io.Linux.open(Native Method)\n02-01 11:09:36.832  2073  2287 W EntropyMixer: \tat libcore.io.ForwardingOs.open(ForwardingOs.java:166)\n02-01 11:09:36.832  2073  2287 W EntropyMixer: \tat libcore.io.BlockGuardOs.open(BlockGuardOs.java:272)\n02-01 11:09:36.832  2073  2287 W EntropyMixer: \tat libcore.io.IoBridge.open(IoBridge.java:485)\n02-01 11:09:36.832  2073  2287 W EntropyMixer: \t... 11 more\n02-01 11:09:36.832  2073  2287 I EntropyMixer: Writing entropy...\n```\nso it does seem like _something\u0027s_ not right here, even if i\u0027m not qualified to say _which_ piece is wrong...",
+      "revId": "dda3ab1afa40926a0d9ee63bb078b11c51fd0c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
