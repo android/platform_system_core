@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4367a94d_57f101a9",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1084624
+      },
+      "writtenOn": "2021-02-04T17:40:21Z",
+      "side": 1,
+      "message": "Makes sense, thanks!\nWill make it \"system system\"",
+      "parentUuid": "87b07986_31c87634",
+      "revId": "9f5254690a7e8b1a92882cc3aa8a5e1e510d6f0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e320740_f8da277b",
         "filename": "rootdir/init.rc",
         "patchSetId": 1
@@ -65,6 +83,30 @@
       "writtenOn": "2021-02-04T16:48:52Z",
       "side": 1,
       "message": "is this big enough or can this grow in future?",
+      "range": {
+        "startLine": 586,
+        "startChar": 53,
+        "endLine": 586,
+        "endChar": 69
+      },
+      "revId": "9f5254690a7e8b1a92882cc3aa8a5e1e510d6f0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea2137ea_33ad0c06",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1084624
+      },
+      "writtenOn": "2021-02-04T17:40:21Z",
+      "side": 1,
+      "message": "I was wrong thinking that buffer_size_kb affects the trace_pipe buffer.\nIt is actually the size of the per-CPU ring buffer used by ftrace to store kernel events.\nWe do not care much about overflowing it, because the presence of data in the pipe is just a signal for us to pick the last report from dmesg.\nTherefore we set the size to minimum.\n\nWe set the pipe up to watch only error_report_end events, which are emitted by KASAN and KFENCE only (this might indeed change in the future if we choose to add more tools to production kernels).\nEach tracing event is represented by a short (~100 bytes) string that identifies that event, e.g.:\n```\n\u003c...\u003e-11210   [004] d..1   285.322307: error_report_end: [kfence] ffffff8938a05000\n```",
+      "parentUuid": "1e320740_f8da277b",
       "range": {
         "startLine": 586,
         "startChar": 53,
