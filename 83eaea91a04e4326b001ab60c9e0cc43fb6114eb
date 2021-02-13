@@ -16,6 +16,24 @@
       "message": "note that if you want to try harder to actively seek out these issues, ubsan can help. you can enable signed/unsigned checks independently:\n```\n    sanitize: {\n        misc_undefined: [\n            \"unsigned-integer-overflow\",\n            \"signed-integer-overflow\",\n```\nor get both at once with `\"integer\"`. (you\u0027ll still need to test on LP32 because these are *runtime* checks, but you\u0027ll get an abort on overflow.)",
       "revId": "83eaea91a04e4326b001ab60c9e0cc43fb6114eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5bfe1b7_2155d1df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-02-13T07:25:20Z",
+      "side": 1,
+      "message": "Well I only discovered this bug while browsing codesearch. I know this is a real bug because I was affected by aosp/1585024. Thus I didn\u0027t add a test line to this change, as I just applied the same fix directly. I\u0027ll need to modify some BoardConfigs to actually trigger the problematic line, and I don\u0027t want to went through the hassle...\n\nQQ Is there any performance implications on enabling ubsan? Are ubsan-enabled binaries shipped on products directly, or need a special build target for ubsan?",
+      "parentUuid": "2ca8263a_00a6c864",
+      "revId": "83eaea91a04e4326b001ab60c9e0cc43fb6114eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
