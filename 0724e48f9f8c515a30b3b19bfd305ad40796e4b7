@@ -16,6 +16,24 @@
       "message": "What does MERGED mean in this context? Can we safely write to a merged extent?",
       "revId": "0724e48f9f8c515a30b3b19bfd305ad40796e4b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7539579_b0af13d4",
+        "filename": "fs_mgr/libfiemap/fiemap_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1176763
+      },
+      "writtenOn": "2021-02-16T21:55:12Z",
+      "side": 1,
+      "message": "* FIEMAP_EXTENT_MERGED\nThis will be set when a file does not support extents.\n\nSo, literally F2FS doesn\u0027t support extents stored in the disk. Instead, we have an extent cache. It doesn\u0027t really matter to support it or not here, since in either cases, fiemap should work. This fixes # adb remount failure.",
+      "parentUuid": "e4cf6870_1f579eb3",
+      "revId": "0724e48f9f8c515a30b3b19bfd305ad40796e4b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
