@@ -34,6 +34,24 @@
       "parentUuid": "2ca8263a_00a6c864",
       "revId": "83eaea91a04e4326b001ab60c9e0cc43fb6114eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14d3198d_7fce0561",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-02-16T21:40:08Z",
+      "side": 1,
+      "message": "\u003e I\u0027ll need to modify some BoardConfigs to actually trigger the problematic line\n\nwell, that\u0027s the beauty of ubsan --- anyone who _is_ working on a 32-bit device (aka \"gkaiser\" :-) ) will be running with these overflow checks enabled.\n\n\u003e QQ Is there any performance implications on enabling ubsan?\n\nthere\u0027s a check of the overflow flag after relevant arithmetic. so \"yes, but tiny\". (the bigger cost would be decent diagnostics, which is why by default ubsan is really terse. there\u0027s an option to anable clear diagnostics, but it\u0027s off by default to avoid the code size increase.)\n\n\u003e Are ubsan-enabled binaries shipped on products directly, or need a special build target for ubsan?\n\nthey\u0027re shipped directly. (which is why it\u0027s usually seen as a security mitigation rather than a debugging tool :-) )",
+      "parentUuid": "d5bfe1b7_2155d1df",
+      "revId": "83eaea91a04e4326b001ab60c9e0cc43fb6114eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
