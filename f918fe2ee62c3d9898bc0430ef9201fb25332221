@@ -33,6 +33,24 @@
       "message": "is access() sufficient here to avoid needing the temporary?",
       "revId": "f918fe2ee62c3d9898bc0430ef9201fb25332221",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6f3c88c_ff997e19",
+        "filename": "init/first_stage_init.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-02-16T18:07:15Z",
+      "side": 1,
+      "message": "is there a reason not to just make the chmod() call and ignore ENOENT?\n\n(there\u0027s no selinux denials this early in boot, right, the avoidance of which would be the usual reason to add TOCTOU issues?)",
+      "parentUuid": "897ded50_a2be05fb",
+      "revId": "f918fe2ee62c3d9898bc0430ef9201fb25332221",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
