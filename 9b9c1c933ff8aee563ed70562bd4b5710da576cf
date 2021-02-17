@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0bec113_af16004e",
+        "filename": "libutils/include/utils/StrongPointer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1299481
+      },
+      "writtenOn": "2021-02-17T20:13:16Z",
+      "side": 1,
+      "message": "Thanks for the discussion. I couldn\u0027t find any usages of std::enable_shared_from_this in android.\n\nTo make the docs simple, I added only bare minimum. RefBase.h contains more details.",
+      "parentUuid": "5e51d16a_4a44d8a8",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 12
+      },
+      "revId": "9b9c1c933ff8aee563ed70562bd4b5710da576cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d87bae91_c0a9b8f2",
@@ -109,6 +133,30 @@
       "writtenOn": "2021-02-05T18:30:37Z",
       "side": 1,
       "message": "We should expand on this a bit:\n- the primary use of sp in Android is for binder, and since in the general case these objects use wps, any user of binder must use RefBase\n- if LightRefBase is exposed as the parent class in an API, then this could potentially forever restrict the possibility of using wps, and so for future compatibility, in many cases, it might make sense to use RefBase (though I suspect in libgui, this is from a performance perspective)\n- upon inspection, LightRefBase is missing many of the other features in RefBase (some detection logic for common errors, debugging functionality), and it is certainly used/tested less.\n\nFor these reasons, I wonder if we should promote RefBase entirely (or - promote less errorprone std::shared_ptr/std::weak_ptr for non-legacy uses)",
+      "range": {
+        "startLine": 32,
+        "startChar": 60,
+        "endLine": 33,
+        "endChar": 51
+      },
+      "revId": "9b9c1c933ff8aee563ed70562bd4b5710da576cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e737af2_f7e0fcf9",
+        "filename": "libutils/include/utils/StrongPointer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1299481
+      },
+      "writtenOn": "2021-02-17T20:13:16Z",
+      "side": 1,
+      "message": "these are good points, but unfortunately my short c++/android experience doesn\u0027t allow commenting more on these. \n\nI updated the docs. Let\u0027s make it as minimal but useful possible. WDYT?",
+      "parentUuid": "d87bae91_c0a9b8f2",
       "range": {
         "startLine": 32,
         "startChar": 60,
