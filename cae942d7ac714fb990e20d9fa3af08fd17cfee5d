@@ -33,6 +33,24 @@
       "message": "OWNERS +1\n\nPS: Jeffv had requested an opt-out for apps wanting to not be profileable -- is that due in a future change ?",
       "revId": "cae942d7ac714fb990e20d9fa3af08fd17cfee5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "840ea7e7_78098120",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-02-18T11:14:00Z",
+      "side": 1,
+      "message": "There are two things here:\n1. Profileablity for profilers (native heap, java heap, callstack sampling). What the flag really was about in the first place. \n\n2. Atrace instrumentation, which ended up gated by profilable as well, more by accident than as conscious choice.\n\nThis CL is only about 2 (more CLs will follow soon for 1 separately, and those will have the opt-out logic). For os.trace instrumentation points there is no opt-in or opt-out, as that is something that the developer has full control of.\nMore context:\n- go/profiling-in-s\n- go/profiling-s-meeting-notes",
+      "parentUuid": "14bcd4e5_f5806bb4",
+      "revId": "cae942d7ac714fb990e20d9fa3af08fd17cfee5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
