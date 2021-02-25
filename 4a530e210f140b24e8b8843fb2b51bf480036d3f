@@ -183,6 +183,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ec67309_54425540",
+        "filename": "fastboot/bootimg_utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-02-25T00:53:31Z",
+      "side": 1,
+      "message": "https://linux.die.net/man/3/snprintf\n\nIt actually didn\u0027t specify that errno may be mutated or not. But since snprintf requires memory allocation, which is a syscall, errno could be changed. I think it is a good practice to record errno immediately after a syscall if it is used later, because one might accidentally call other syscalls before the errno is used.\n\nWe really should have used libbase\u0027s PLOG(FATAL) and not worry about recording errnos for logging. 😞",
+      "parentUuid": "310c1d2b_ac6a999c",
+      "range": {
+        "startLine": 218,
+        "startChar": 8,
+        "endLine": 218,
+        "endChar": 32
+      },
+      "revId": "4a530e210f140b24e8b8843fb2b51bf480036d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "472d3aa9_82824931",
         "filename": "fastboot/bootimg_utils.cpp",
         "patchSetId": 2
