@@ -325,6 +325,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a91abc0_1ad99651",
+        "filename": "fastboot/bootimg_utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-02-25T11:47:42Z",
+      "side": 1,
+      "message": "We should have a single entry in the vendor_ramdisk_table namely,\n\n.vendor_ramdisk_table_size \u003d sizeof(vendor_ramdisk_table_entry_v4);\n.vendor_ramdisk_table_entry_num \u003d 1;\n.vendor_ramdisk_table_entry_size \u003d sizeof(vendor_ramdisk_table_entry_v4);\n\nand the only entry would be:\nvendor_ramdisk_table_entry_v4 {\n.ramdisk_size \u003d \u003cramdisk_size\u003e;\n.ramdisk_name \u003d \u003cprobably empty string or \"default\\0\"?\u003e;\n\u003cother fields could be null-pad I suppose\u003e;\n}",
+      "range": {
+        "startLine": 269,
+        "startChar": 8,
+        "endLine": 271,
+        "endChar": 56
+      },
+      "revId": "4a530e210f140b24e8b8843fb2b51bf480036d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1528c964_62c6feeb",
+        "filename": "fastboot/bootimg_utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-02-25T11:47:42Z",
+      "side": 1,
+      "message": "Devin added bootconfig recently, so there\u0027s that to handle too... aosp/1580903\n\nIt\u0027s also possible that there is a VBMETA footer, you would probably want to copy this vbmeta struct to the new vendor_boot.img if you\u0027re not re-signing the vendor_boot.img.\nEven if the bootloader is unlocked, it still checks the integrity of vbmeta descriptor; integrity error (digest mismatch) is non-fatal, but fail to check integrity (no digest to read) is fatal...",
+      "revId": "4a530e210f140b24e8b8843fb2b51bf480036d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3618a4a_8eebf758",
         "filename": "fastboot/bootimg_utils.cpp",
         "patchSetId": 2
