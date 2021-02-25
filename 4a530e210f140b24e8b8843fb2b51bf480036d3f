@@ -207,6 +207,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3cd6d27b_e50047a5",
+        "filename": "fastboot/bootimg_utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-02-25T05:58:47Z",
+      "side": 1,
+      "message": "\u003e But since snprintf requires memory allocation, which is a syscall, errno could be changed. \n\nFYI, `man 3 strerror 3` says \"No other library function, including perror(3), will modify this string.\"\n\nThat\u0027s exactly the reason I advertised saving the result of strerror() instead of |errno|, cause snprintf() shouldn\u0027t alter the return value of strerror(), but may or may not alter |errno|. However strerror() might not be thread-safe, in contrast |errno| is TLS... 😞\n\nThat said, die() is a function, not a macro, so the strerror() must be evaluated before snprintf() within die() is called (CMIIW). So I think \n  die(..., strerror(saved_errno))\nis exact same to\n  die(..., strerror(errno))\nright?\n\n\u003e I think it is a good practice to record errno immediately after a syscall if it is used later, because one might accidentally call other syscalls before the errno is used.\n\nagreed",
+      "parentUuid": "3ec67309_54425540",
+      "range": {
+        "startLine": 218,
+        "startChar": 8,
+        "endLine": 218,
+        "endChar": 32
+      },
+      "revId": "4a530e210f140b24e8b8843fb2b51bf480036d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "472d3aa9_82824931",
         "filename": "fastboot/bootimg_utils.cpp",
         "patchSetId": 2
@@ -265,6 +289,30 @@
       "side": 1,
       "message": "That\u0027s the format string for size_t\u0027s",
       "parentUuid": "caceabcd_b1fa0605",
+      "range": {
+        "startLine": 227,
+        "startChar": 69,
+        "endLine": 227,
+        "endChar": 74
+      },
+      "revId": "4a530e210f140b24e8b8843fb2b51bf480036d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aed876d9_a49a6841",
+        "filename": "fastboot/bootimg_utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-02-25T05:58:47Z",
+      "side": 1,
+      "message": "yeah I had to look it up, and that\u0027s why it scares me. It scares me even more that %z is defined by C99 and not C++.* standard, though in practice the C++ toolchain we use do support %z. (I\u0027m not sure if this is a toolchain thing or runtime (libc/libc++) thing)",
+      "parentUuid": "daf26b95_e1420d92",
       "range": {
         "startLine": 227,
         "startChar": 69,
