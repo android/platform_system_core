@@ -33,6 +33,29 @@
       "message": "Tested with want_console forced to CONSOLE_ON_FAILURE and my device flashed and booted. Thanks!",
       "revId": "d96d0f7d58b947ae7e65a565f6e0ab13f2edbf73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caea0d58_60e271ae",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-26T07:53:08Z",
+      "side": 1,
+      "message": "I was affected by this.\n\nWith this change, FirstStageMount::Create() where fstab is searched is called twice: once before root is changed to /first_stage_ramdisk, and after the root is switched to /first_stage_ramdisk.\n\nWhen fstab is provided as a file, (e.g. /first_stage_ramdisk/fstab.xxx in the initramfs), during the first call to Create(), init fails to find the file because it\u0027s not at /fstab.xxx. As a result, dm linear devices are not created (because it couldn\u0027t find an entry with \"logical\"), but create_devices is set to true anyway.\n\nThen after /first_stage_ramdisk becomes /, DoFirstStageMount() is called. But DoCreateDevices() was successful in the previous run, so it is not called this time. As a result, dm linear device is not created. Mounting /system fails.\n\nI will send a fix, but wanted to give you an early notice.",
+      "range": {
+        "startLine": 838,
+        "startChar": 0,
+        "endLine": 845,
+        "endChar": 1
+      },
+      "revId": "d96d0f7d58b947ae7e65a565f6e0ab13f2edbf73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
