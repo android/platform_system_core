@@ -253,6 +253,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cabe437b_b109d455",
+        "filename": "fastboot/bootimg_utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-03-04T02:04:54Z",
+      "side": 1,
+      "message": "just to clarify a few things:\n\n\u003e snprintf requires memory allocation, which is a syscall, errno could be changed\n\nit doesn\u0027t _require_ memory allocation, and normally _won\u0027t_ allocate memory. the exceptions are things like formatting floating point or if you use numbered arguments (which i\u0027ve literally never seen used outside of the libc unit tests).\n\n\u003e However strerror() might not be thread-safe\n\nagain, strictly true, but not true in practice on Android (ever; it\u0027ll use TLS behind the scenes if necessary) or on glibc (unless you supplied an _invalid_ errno value; otherwise you\u0027re just getting a constant string back).",
+      "parentUuid": "cf3cff57_58e4965a",
+      "range": {
+        "startLine": 218,
+        "startChar": 8,
+        "endLine": 218,
+        "endChar": 32
+      },
+      "revId": "4a530e210f140b24e8b8843fb2b51bf480036d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "472d3aa9_82824931",
@@ -385,6 +409,30 @@
       "side": 1,
       "message": "Question to enh@:\n\nIf %z is a C99 not C++.* standard, can we rely on it?\n\nCode search shows about 5000 instances of %z.",
       "parentUuid": "aed876d9_a49a6841",
+      "range": {
+        "startLine": 227,
+        "startChar": 69,
+        "endLine": 227,
+        "endChar": 74
+      },
+      "revId": "4a530e210f140b24e8b8843fb2b51bf480036d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eda11f52_50887242",
+        "filename": "fastboot/bootimg_utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-03-04T02:04:54Z",
+      "side": 1,
+      "message": "(sorry, didn\u0027t see this earlier.)\n\nyes, the printf family uses %zd for ssize_t, %zu for size_t. this is in libc, so any time the C++ standard doesn\u0027t say something, you should just look at the C standard (things only really get interesting when they disagree).\n\nbut:\n\n* note that it is mentioned on https://en.cppreference.com/w/cpp/io/c/fprintf (search for `size_t`), which although a wiki is usually pretty good.\n\n* note also that the C++ standard actually explicitly says \"The contents and meaning of the header \u003ccstdio\u003e are the same as the C standard library header \u003cstdio.h\u003e\" (30.12.1.1).\n\nso you\u0027re definitely in the clear :-)",
+      "parentUuid": "32ff6c25_9d2d3d67",
       "range": {
         "startLine": 227,
         "startChar": 69,
