@@ -16,6 +16,24 @@
       "message": "It\u0027s intentional that this value can be repeated, since the other key (boot_devices) is comma-delimited, which doesn\u0027t work when paths have a comma.",
       "revId": "2d02948b16605c03b944044b2a6e5a5f3932cc31",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56a581de_cb1aecfc",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-03-04T22:52:23Z",
+      "side": 0,
+      "message": "Ah! That makes a lot of sense...\nI\u0027ll keep the kernel cmdline handling the way it is.\n\nBootconfig doesn\u0027t allow for repeated params as it considers it a redefinition. So boot_devices has to be used and can be used in two ways that will have to be documented for this purpose.\n\n```\nandroidboot.boot_devices\u003ddev1,dev2,dev3\n\n\u003e androidboot.boot_devices \u003d \"dev1\", \"dev2\", \"dev3\"\n\nandroidboot.boot_devices\u003d\\\"dev1,contains,commas\\\",\\\"dev2,also,contains,commas\\\"\n\n\u003e androidboot.boot_devices \u003d \"dev1,contains,commas\", \"dev2,also,contains,commas\"\n```\n\nIf Cuttlefish ever needs to handle multiple boot_devices with commas while supporting 4.19, it will need more work in the repacker, but I don\u0027t think it\u0027s needed now.\n\nI don\u0027t see any uses of ro.boot.boot_device: https://source.corp.google.com/search?q\u003dro%5C.boot%5C.boot_dev\u0026sq\u003dpackage:%5Eandroid$\nOnly one instance of ro.boot.boot_devices which is assuming it only contains one device: https://source.corp.google.com/android/vendor/google_testing/pts/libs/utils/src/com/google/android/utils/pts/StorageTestUtil.java;rcl\u003d75431b4841c564502d91f9050c914c93a79e5e24;l\u003d815\nSo I think the case added to the tests should be OK as far as the properties are concerned?",
+      "parentUuid": "44551c26_c2e3ef59",
+      "revId": "2d02948b16605c03b944044b2a6e5a5f3932cc31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
