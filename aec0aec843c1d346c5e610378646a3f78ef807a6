@@ -3,6 +3,142 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ccb20a80_d4d3bda0",
+        "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-03-09T06:07:50Z",
+      "side": 1,
+      "message": "This name is a little awkward, since there\u0027s nothing really involving threads or workers here.",
+      "revId": "aec0aec843c1d346c5e610378646a3f78ef807a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0697a33f_c94103fb",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1330,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-03-09T06:07:50Z",
+      "side": 1,
+      "message": "Are these timeout/sleep changes related to this patch? (I\u0027m guessing disconnect takes a little longer?)",
+      "revId": "aec0aec843c1d346c5e610378646a3f78ef807a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ff42840_195068a3",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-03-09T06:07:50Z",
+      "side": 1,
+      "message": "Is thread_bits_.count() different from thread_ids_.size()?",
+      "revId": "aec0aec843c1d346c5e610378646a3f78ef807a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ba62dc8_b9240d0d",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-03-09T06:07:50Z",
+      "side": 1,
+      "message": "Could you explain a bit what this code is doing? Is it necessary to have this sleep-wait loop? Would this work...\n\n 1. Start threads\n 2. Each thread adds its tid and signals main thread (via future or cv)\n 3. Threads wait for ACK from main thread (on future or cv)\n 4. Main thread waits on each futures or a single cv and then broadcasts for the threads to wake up",
+      "revId": "aec0aec843c1d346c5e610378646a3f78ef807a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1270987b_2f9f084b",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-03-09T06:07:50Z",
+      "side": 1,
+      "message": "When would this timeout?",
+      "revId": "aec0aec843c1d346c5e610378646a3f78ef807a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1028101_3f6d01cc",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-03-09T06:07:50Z",
+      "side": 1,
+      "message": "Is unique_ptr needed here? (I didn\u0027t search all the uses but it looks like it might be not needed.)",
+      "revId": "aec0aec843c1d346c5e610378646a3f78ef807a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "999ac751_e1244765",
+        "filename": "fs_mgr/libsnapshot/snapuserd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-03-09T06:07:50Z",
+      "side": 1,
+      "message": "AOSP style would be NUM_THREADS_PER_PARTITION or kNumThreadsPerPartition",
+      "revId": "aec0aec843c1d346c5e610378646a3f78ef807a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0748fdc_9f165fd1",
+        "filename": "fs_mgr/libsnapshot/snapuserd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-03-09T06:07:50Z",
+      "side": 1,
+      "message": "nit: GetId (or just tid() if you want less typing?)",
+      "revId": "aec0aec843c1d346c5e610378646a3f78ef807a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6832820a_4371ba6e",
         "filename": "fs_mgr/libsnapshot/snapuserd.h",
         "patchSetId": 3
