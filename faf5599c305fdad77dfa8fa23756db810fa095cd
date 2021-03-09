@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "99d162a3_2b7292ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1863627
+      },
+      "writtenOn": "2021-03-09T07:06:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06edbd0d_de7412e2",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 44
+      },
+      "revId": "faf5599c305fdad77dfa8fa23756db810fa095cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9596df0a_3ca631c7",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -72,6 +96,30 @@
       "writtenOn": "2021-03-09T04:01:01Z",
       "side": 1,
       "message": "How ever, this will then change vbmeta_system.img and/or vbmeta_vendor.img.\n\nCan we check partition \u003d\u003d \"vbmeta\" + [ro.boot.slot_suffix]?",
+      "range": {
+        "startLine": 1071,
+        "startChar": 28,
+        "endLine": 1071,
+        "endChar": 34
+      },
+      "revId": "faf5599c305fdad77dfa8fa23756db810fa095cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f56b886_e385a1c7",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1863627
+      },
+      "writtenOn": "2021-03-09T07:06:58Z",
+      "side": 1,
+      "message": "I my current project I have no way to get currently active slot in fastboot.\n\nHow about vbmeta name like:\npartition \u003d\u003d \"vbmeta\" or \npartition.find(\"vbmeta_a\") !\u003d std::string::npos or\npartition.find(\"vbmeta_b\") !\u003d std::string::npos\n?\nThis will not match names like vbmeta_system.img, but it will still work in my case.",
+      "parentUuid": "18ce69b8_6c6cd370",
       "range": {
         "startLine": 1071,
         "startChar": 28,
