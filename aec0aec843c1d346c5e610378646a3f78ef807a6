@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6249651_2fd8d0f9",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2021-03-09T06:43:45Z",
+      "side": 1,
+      "message": "thread_bits_.count() returns the number of set bits.\n thread_ids_.size() returns the number of bits.\n\nIn this case, we are checking how many bits are set. When all threads are started, all bits are set.",
+      "parentUuid": "2ff42840_195068a3",
+      "revId": "aec0aec843c1d346c5e610378646a3f78ef807a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ba62dc8_b9240d0d",
         "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
         "patchSetId": 3
@@ -71,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e0126c4_aec526e0",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2021-03-09T06:43:45Z",
+      "side": 1,
+      "message": "This loop is doing essentially what you have described without future or cv; This is just a busy loop but it should exit very quickly.\n\n\u003e 2: Each thread adds its tid and signals main thread (via future or cv)\n\nthread_bits_ is indexed; when tid\u0027s are added to the map, thread_bits_[tid] is set at L1197. Main thread is polling here at L1050. When all the threads are ready and the map is populated, this loop breaks; that is what L1050 is doing.\n\n\n\u003e 3: Threads wait for ACK from main thread (on future or cv)\n\nThis is done at L1058. Main thread will set the future. All threads will wait for this to set. All threads will poll for this value at L1129\n\n\u003e 4: Main thread waits on each futures or a single cv and then broadcasts for the threads to wake up\n\nAs mentioned above, L1058 is essentially a broadcast for all the threads.\n\nWhat I have implemented is a kind of spinning wait rather than using cv. If you look at this entire code flow, it should just zip through as there isn\u0027t much work done here and I felt there was no need for threads to sleep and wake up.\n\nLet me know if you feel this needs to be re-structured.",
+      "parentUuid": "5ba62dc8_b9240d0d",
+      "revId": "aec0aec843c1d346c5e610378646a3f78ef807a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1270987b_2f9f084b",
         "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
         "patchSetId": 3
@@ -82,6 +118,24 @@
       "writtenOn": "2021-03-09T06:07:50Z",
       "side": 1,
       "message": "When would this timeout?",
+      "revId": "aec0aec843c1d346c5e610378646a3f78ef807a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "598b0214_e445c1f2",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2021-03-09T06:43:45Z",
+      "side": 1,
+      "message": "The only error path I see is at L1181 when adding tid\u0027s to the map; If one of the thread fails, it will be terminated immediately forcing this timeout.\n\nWell, I think that error path _should_ never trigger as I have LOG(FATAL). So, I think we can remove this timeout",
+      "parentUuid": "1270987b_2f9f084b",
       "revId": "aec0aec843c1d346c5e610378646a3f78ef807a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
