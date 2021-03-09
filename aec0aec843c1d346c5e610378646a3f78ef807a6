@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88e95b85_0f4e6704",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1330,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2021-03-09T16:08:52Z",
+      "side": 1,
+      "message": "Yes. Since there are multiple threads, it takes a little longer. I think 4s is fine here; but I think we have to bump at L1265 else it will spam the logs with RESOURCE_BUSY messages.",
+      "parentUuid": "0697a33f_c94103fb",
+      "revId": "aec0aec843c1d346c5e610378646a3f78ef807a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ff42840_195068a3",
         "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
         "patchSetId": 3
@@ -153,6 +171,24 @@
       "writtenOn": "2021-03-09T06:07:50Z",
       "side": 1,
       "message": "Is unique_ptr needed here? (I didn\u0027t search all the uses but it looks like it might be not needed.)",
+      "revId": "aec0aec843c1d346c5e610378646a3f78ef807a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05468d30_0327b738",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2021-03-09T16:08:52Z",
+      "side": 1,
+      "message": "ctrl_fd is used per thread while doing READ/WRITES to dm-user. They are used at L859, L872, L882.\n\nAre you referring to using just using std::vector\u003cunique_fd\u003e ? Any concerns here ?",
+      "parentUuid": "d1028101_3f6d01cc",
       "revId": "aec0aec843c1d346c5e610378646a3f78ef807a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
