@@ -16,6 +16,24 @@
       "message": "std::string_view isn\u0027t null-terminated: how would this work?",
       "revId": "d52763634d1e3b16b81a1bbb4248bb6c0929f0d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6391281_3ee358f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-10T22:22:30Z",
+      "side": 1,
+      "message": "The string_view that libunwindstack provides is null-terminated.\nThat is, the string_view is based on std::string.\nThe intention is not the force the std::string to live in the FrameData object.\n(that is not to force string alloc/copy/free for all returned frames)",
+      "parentUuid": "2435f194_8342e0da",
+      "revId": "d52763634d1e3b16b81a1bbb4248bb6c0929f0d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
