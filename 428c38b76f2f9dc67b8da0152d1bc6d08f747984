@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61e7247e_34b6db83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-11T09:48:02Z",
+      "side": 1,
+      "message": "lgtm, modulo the comment about version_script.",
+      "revId": "428c38b76f2f9dc67b8da0152d1bc6d08f747984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4f0929a_bdf7e0f2",
@@ -18,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c81c6f0_84688135",
+        "filename": "libstats/socket_lazy/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-11T09:48:02Z",
+      "side": 1,
+      "message": "This was erring on the side of caution in case it gets used elsewhere, but it\u0027s not necessary.",
+      "parentUuid": "c4f0929a_bdf7e0f2",
+      "revId": "428c38b76f2f9dc67b8da0152d1bc6d08f747984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c7d39a8_7ef5ea3f",
@@ -31,6 +66,24 @@
       "writtenOn": "2021-03-11T06:29:26Z",
       "side": 1,
       "message": "aosp/1570701 also added the version_script here. Did that serve a functional purpose?",
+      "revId": "428c38b76f2f9dc67b8da0152d1bc6d08f747984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe20f23a_7be82fa6",
+        "filename": "libstats/socket_lazy/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-11T09:48:02Z",
+      "side": 1,
+      "message": "libnativehelper already has a .map.txt file for defining it\u0027s exported APIs (apex, NDK). Using the same map.txt as version script means we can check all the same symbols exist in libnativehelper_lazy and libnativehelper at build time.\n\nThe sources for libnativehelper_lazy and libnativehelper are in the same directory which makes this easier. Both go into the ART module sdk (stubs for libnativehelper as the real .so is in the ART Apex). This might make it easier to keep in sync with any future extensions to the API.",
+      "parentUuid": "5c7d39a8_7ef5ea3f",
       "revId": "428c38b76f2f9dc67b8da0152d1bc6d08f747984",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
