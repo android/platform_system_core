@@ -16,6 +16,40 @@
       "message": "Re-factored code to add in new worker thread class; This change set looks big but it is mostly\nre-structuring of snapuserd.cpp; all the worker thread related functions have been moved to snapuserd_worker.cpp.\n\nThere is no change in the IO path - To make the review easy:\n\n1: Start from Snapuserd::Start() - which is the entry point to launch worker threads\n2: Snapuserd.h has the new worker class\n3: Snapuserd_worker.cpp has all the IO path related code - No major changes here apart from the addition of new function RunThread()",
       "revId": "8f0840940e088fc938c51c2d6bb54b4fd50adbb6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4e15eb3_3f32577d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-03-11T00:33:12Z",
+      "side": 1,
+      "message": "This is a great refactoring - glad to see we don\u0027t need the thread id vectors at all anymore.",
+      "revId": "8f0840940e088fc938c51c2d6bb54b4fd50adbb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53b7e856_cde18567",
+        "filename": "fs_mgr/libsnapshot/snapuserd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-03-11T00:33:12Z",
+      "side": 1,
+      "message": "It\u0027s pretty expensive to open readers - do we want to make this a shared_ptr too?",
+      "revId": "8f0840940e088fc938c51c2d6bb54b4fd50adbb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
