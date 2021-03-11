@@ -38,6 +38,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6468d457_32d6589e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-03-11T11:15:00Z",
+      "side": 1,
+      "message": "Half way through...",
+      "revId": "a9fec90c6a164612c909b0c92d27dbbbfa11bf2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c56af2fc_3ba895ff",
         "filename": "fastboot/fastboot.cpp",
         "patchSetId": 7
@@ -78,6 +95,98 @@
         "startChar": 3,
         "endLine": 1314,
         "endChar": 65
+      },
+      "revId": "a9fec90c6a164612c909b0c92d27dbbbfa11bf2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e47205eb_1e858301",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-03-11T11:15:00Z",
+      "side": 1,
+      "message": "Is it intentional to keep the new, replaced, vendor_boot the same size as the old vendor_boot? I assume the vendor_boot_size is exactly the same as the device partition table\u0027s \"vendor_boot\" partition size (and fastboot fetch ensures this)?\n\nThat is, the actual vendor boot layout is:\n\u003cvendor_boot header\u003e\n\u003cvendor_boot pages dtb, ramdisk, bootconfig\u003e\n\u003c*pad to physical partition size\u003e\n\u003cavb footer\u003e\n\nIn other words, the new vendor_boot can grow in size, but only up to the free bytes in the *padding, because the entire vendor_boot must be exactly the same size as specified by the partition table.",
+      "range": {
+        "startLine": 1325,
+        "startChar": 14,
+        "endLine": 1325,
+        "endChar": 30
+      },
+      "revId": "a9fec90c6a164612c909b0c92d27dbbbfa11bf2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97fc12b3_b36e7c38",
+        "filename": "fastboot/vendor_boot_img_utils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-03-11T11:15:00Z",
+      "side": 1,
+      "message": "this is ErrnoErrorf() ?",
+      "range": {
+        "startLine": 169,
+        "startChar": 15,
+        "endLine": 169,
+        "endChar": 77
+      },
+      "revId": "a9fec90c6a164612c909b0c92d27dbbbfa11bf2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23bc902d_99b319a0",
+        "filename": "fastboot/vendor_boot_img_utils_test.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-03-11T11:15:00Z",
+      "side": 1,
+      "message": "Extra blank line or missing license?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 19
+      },
+      "revId": "a9fec90c6a164612c909b0c92d27dbbbfa11bf2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f250f5a3_a2115535",
+        "filename": "fastboot/vendor_boot_img_utils_test.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-03-11T11:15:00Z",
+      "side": 1,
+      "message": "I think this is not used...? (\u003cctrl+f\u003etuple shows no result)",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 16
       },
       "revId": "a9fec90c6a164612c909b0c92d27dbbbfa11bf2f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
