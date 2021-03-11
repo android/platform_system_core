@@ -50,6 +50,24 @@
       "message": "It\u0027s pretty expensive to open readers - do we want to make this a shared_ptr too?",
       "revId": "8f0840940e088fc938c51c2d6bb54b4fd50adbb6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba32278a_0a9544f6",
+        "filename": "fs_mgr/libsnapshot/snapuserd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2021-03-11T00:48:40Z",
+      "side": 1,
+      "message": "No - we can\u0027t make this shared_ptr; each thread has to have a separate COW fd handle as each thread will be reading COW device based on the IO request. If we make this shared, then we will have to synchronize the threads.\n\nAlso, it is not expensive to open readers because, each thread will just open the COW fd and store the handle. They will not read all the ops - This is the reason why I added a new function in cow_reader.cpp (InitForMerge()); this will not call Parseops(). The main thread when reading metadata will call ParseOps().\n\nWhen merge is being done, we will update the \"reader\" of the main thread in CommitMerge(). That is the only place we have lock; we actually don\u0027t need lock as the merge is single threaded but in theory multiple threads can be updating it if merge algorithm in kernel is parallelized.",
+      "parentUuid": "53b7e856_cde18567",
+      "revId": "8f0840940e088fc938c51c2d6bb54b4fd50adbb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
