@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0955c9a9_24996d87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2021-03-12T01:00:15Z",
+      "side": 1,
+      "message": "Anton, Jiyong, Mathew, please let me know if you have any feedback, specifically on the active thread about version script, code location, and module sdk.",
+      "revId": "428c38b76f2f9dc67b8da0152d1bc6d08f747984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da802511_3a8b2ba2",
@@ -94,6 +111,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "830a46d7_a871bf7d",
+        "filename": "libstats/socket_lazy/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2021-03-12T01:00:15Z",
+      "side": 1,
+      "message": "Ack, thanks. I\u0027ll leave it off then.",
+      "parentUuid": "dd1946dc_f4caeda2",
+      "revId": "428c38b76f2f9dc67b8da0152d1bc6d08f747984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c7d39a8_7ef5ea3f",
@@ -131,6 +166,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45cd7a20_c29945a0",
+        "filename": "libstats/socket_lazy/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2021-03-12T01:00:15Z",
+      "side": 1,
+      "message": "So the benefit of using the version script here is that it acts as an additional safety check for making sure the lazy versions provide all of the same APIs?\nMy understanding was that the version script could only be used for libraries that are providing actual APIs, which these libraries technically do not do, since they just wrap the actual APIs.\n\nFor code location, I chose to put it here because advice from modularization folks has been to leave code out of packages/modules/StatsD unless it is shipped as part of the apex, and this library is not. This would make it impossible for libstatssocket and libstatssocket_lazy to share the same parent directory. cc\u0027d anton and mathewi in case they have thoughts on this.\n\nLastly, I still dont have a good understanding of the module sdk. This library isn\u0027t actually a part of the statsd apex, so it doesn\u0027t make sense to me to have it be part of the module sdk.",
+      "parentUuid": "fe20f23a_7be82fa6",
+      "revId": "428c38b76f2f9dc67b8da0152d1bc6d08f747984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "af86a9ee_cdbdd056",
         "filename": "libstats/socket_lazy/libstatssocket_lazy.c",
         "patchSetId": 6
@@ -142,6 +195,30 @@
       "writtenOn": "2021-03-11T21:24:03Z",
       "side": 1,
       "message": "is it better to return nullptr?",
+      "range": {
+        "startLine": 73,
+        "startChar": 15,
+        "endLine": 73,
+        "endChar": 19
+      },
+      "revId": "428c38b76f2f9dc67b8da0152d1bc6d08f747984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cca4222_48f52a4f",
+        "filename": "libstats/socket_lazy/libstatssocket_lazy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2021-03-12T01:00:15Z",
+      "side": 1,
+      "message": "I think nullptr is only cpp not c. Please let me know if I\u0027m wrong.",
+      "parentUuid": "af86a9ee_cdbdd056",
       "range": {
         "startLine": 73,
         "startChar": 15,
