@@ -244,6 +244,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "617d2e9a_3132dd42",
+        "filename": "libstats/socket_lazy/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-12T12:55:04Z",
+      "side": 1,
+      "message": "Android uses map.txt files for both version_script and stubs. The syntax is the same, actions for stubs are inferred from comments in the file (e.g. APEX api). version_script itself controls visibility of symbols and adds library versioning. For a symbol to be visible, it has to be present, so applying a common version_script/stub file ensures the interface matches.\n\nI mentioned module sdk because the lazy variants mirror the .so in the APEX. It\u0027s okay for the .so to export more methods, but not fewer. If you had a module SDK it could include the lazy variant and platform would build using that (possibly as a prebuilt). In general I don\u0027t know how far module sdk is defined for other teams, ART has folks specifically focused on build matters (mast@, paulduffin@).",
+      "parentUuid": "d707c13a_ee984a7a",
+      "revId": "428c38b76f2f9dc67b8da0152d1bc6d08f747984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "af86a9ee_cdbdd056",
         "filename": "libstats/socket_lazy/libstatssocket_lazy.c",
         "patchSetId": 6
@@ -399,6 +417,30 @@
       "side": 1,
       "message": "lmkd right now is written in C++ and is using lots of C++ libraries. I am not forcing you to write this library in C++ (I shouldn\u0027t be really concerned about readability of a library that I don\u0027t own), but just wanted to say that using C++ will simplify many parts of this file and there\u0027s nothing preventing you from using C++ here.",
       "parentUuid": "f6221d35_f08ef0ef",
+      "range": {
+        "startLine": 73,
+        "startChar": 15,
+        "endLine": 73,
+        "endChar": 19
+      },
+      "revId": "428c38b76f2f9dc67b8da0152d1bc6d08f747984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f501d213_609cad0d",
+        "filename": "libstats/socket_lazy/libstatssocket_lazy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-12T12:55:04Z",
+      "side": 1,
+      "message": "The concerns here may be different from libnativehelper. The code in libnativehelper dropped C++ entirely for size since we have faced scrutiny over being the largest module (dropping bionic from the module was a bigger win :-).\n\nMoving lnh to C was several hundred kb difference, but the lazy code would probably use a much smaller subset of C++ libs.",
+      "parentUuid": "f26075c2_7690fe0b",
       "range": {
         "startLine": 73,
         "startChar": 15,
