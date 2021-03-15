@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41dae2eb_92d11d52",
+        "filename": "debuggerd/libdebuggerd/gwp_asan.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2021-03-15T20:53:44Z",
+      "side": 1,
+      "message": "Add guard:   \n  \n  if (!CrashIsMine()) {\n    ALOGE(\"Internal Error: DumpCause() on a non-GWP-ASan crash.\");\n    return;\n  }",
+      "revId": "cf5fa4612fcbab8f509ee9e8d472d3d204b7b572",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a69b8a65_23a99194",
+        "filename": "debuggerd/libdebuggerd/scudo.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2021-03-15T20:53:44Z",
+      "side": 1,
+      "message": "Why 64? Why not just dump all of (de?)allocation_trace?",
+      "range": {
+        "startLine": 109,
+        "startChar": 21,
+        "endLine": 109,
+        "endChar": 27
+      },
+      "revId": "cf5fa4612fcbab8f509ee9e8d472d3d204b7b572",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea92125b_ae6ca29e",
         "filename": "debuggerd/libdebuggerd/scudo.cpp",
         "patchSetId": 5
@@ -14,6 +54,46 @@
       "writtenOn": "2021-03-15T20:47:09Z",
       "side": 1,
       "message": "replace 64 with sizeof(deallocator_trace)/sizeof(deallocation_trace[0])",
+      "revId": "cf5fa4612fcbab8f509ee9e8d472d3d204b7b572",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "948627fc_ac1764b6",
+        "filename": "debuggerd/libdebuggerd/utility.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2021-03-15T20:53:44Z",
+      "side": 1,
+      "message": "Why these changes here? It seems unrelated to the MTE/GWP-ASan changes. It also seems odd to have \"memory around 0xf00\" start at \"0x1000\" without explanation, whereas previously it leaves the breadcrumbs that it wasn\u0027t mapped.",
+      "revId": "cf5fa4612fcbab8f509ee9e8d472d3d204b7b572",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71d3272a_abfeb295",
+        "filename": "debuggerd/libdebuggerd/utility.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2021-03-15T20:53:44Z",
+      "side": 1,
+      "message": "Would be nice to have a kTagGranuleSize instead of constant \u002716\u0027 (and elsewhere). Or, use archMemoryTagGranuleSize() from scudo/memtag.h?",
+      "range": {
+        "startLine": 193,
+        "startChar": 39,
+        "endLine": 193,
+        "endChar": 41
+      },
       "revId": "cf5fa4612fcbab8f509ee9e8d472d3d204b7b572",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
