@@ -70,6 +70,42 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a449122_ed36e655",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2021-03-15T07:42:33Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ve left the code in the current location and changed it to c++.\n\nAnd I\u0027ll also leave the version script out - we can consider putting it if this library gets moved to packages/modules/StatsD in the future.",
+      "parentUuid": "a9e60e1b_c52f7c78",
+      "revId": "428c38b76f2f9dc67b8da0152d1bc6d08f747984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c5d8529_6f8e8663",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2021-03-15T07:42:33Z",
+      "side": 1,
+      "message": "Made it cpp, although I\u0027m not sure I understand the reasoning behind this.\nIf it\u0027s that this library being in C can lead to headaches when it needs to link other libraries, then the statsd team would take responsibility for said headaches - and it\u0027s unlikely that this would happen given the lack of complexity in this library.\n\nAdditionally, system/core is probably not the happiest end place for the library. This is just the best place we have for now while we determine where native mainline compatibility/utility code should live, which is being discussed in https://groups.google.com/a/google.com/g/mainline-module-authors/c/v-R7S2brWbY/m/oKpEv8ouCgAJ",
+      "parentUuid": "ab7ae516_e0a7f65a",
+      "revId": "428c38b76f2f9dc67b8da0152d1bc6d08f747984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da802511_3a8b2ba2",
@@ -107,6 +143,30 @@
       "side": 1,
       "message": "just curious, is this documented somewhere?",
       "parentUuid": "da802511_3a8b2ba2",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 2
+      },
+      "revId": "428c38b76f2f9dc67b8da0152d1bc6d08f747984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf702f12_dbeae0a1",
+        "filename": "libstats/socket_lazy/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2021-03-15T07:42:33Z",
+      "side": 1,
+      "message": "Done, but am also interested if this is documented anywhere/why it\u0027s not needed.",
+      "parentUuid": "9bc8b11b_e9dc93f3",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -273,6 +333,24 @@
       "side": 1,
       "message": "Android uses map.txt files for both version_script and stubs. The syntax is the same, actions for stubs are inferred from comments in the file (e.g. APEX api). version_script itself controls visibility of symbols and adds library versioning. For a symbol to be visible, it has to be present, so applying a common version_script/stub file ensures the interface matches.\n\nI mentioned module sdk because the lazy variants mirror the .so in the APEX. It\u0027s okay for the .so to export more methods, but not fewer. If you had a module SDK it could include the lazy variant and platform would build using that (possibly as a prebuilt). In general I don\u0027t know how far module sdk is defined for other teams, ART has folks specifically focused on build matters (mast@, paulduffin@).",
       "parentUuid": "d707c13a_ee984a7a",
+      "revId": "428c38b76f2f9dc67b8da0152d1bc6d08f747984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d230f17b_94008fd6",
+        "filename": "libstats/socket_lazy/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2021-03-15T07:42:33Z",
+      "side": 1,
+      "message": "For the version scripts, I\u0027m going to follow Jiyong\u0027s advice for now and leave it out. Maybe we can add it later if it get\u0027s moved to p/m/StatsdD.\n\nFor code location, I think we should figure out a real answer in this thread: https://groups.google.com/a/google.com/g/mainline-module-authors/c/v-R7S2brWbY/m/oKpEv8ouCgAJ. I will leave this library here for now. It isn\u0027t a script/tool, and is not code shipped as part of the apex.\n\nAnd for module sdk, I\u0027m not sure if this is important to do right now. I think it will matter more if/when statsd shifts to providing prebuilts for things.",
+      "parentUuid": "617d2e9a_3132dd42",
       "revId": "428c38b76f2f9dc67b8da0152d1bc6d08f747984",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -468,6 +546,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad0a6589_f1636d7d",
+        "filename": "libstats/socket_lazy/libstatssocket_lazy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2021-03-15T07:42:33Z",
+      "side": 1,
+      "message": "I would probably rather have this in C, since libstatssocket is in C. However, since putting C in system/core seems to be an issue and we don\u0027t currently seen have a better place to put this, I\u0027ve made it cpp since it doesn\u0027t matter that much right now. \n\nJiyong, I\u0027ve made the readability improvements you suggested, not typdef\u0027ing each signature is a good improvement.\n\nOrion, I can definitely understand the concerns of linking libc++ in the apex, but this library wont ship in the art apex, so I don\u0027t think using cpp or not in libnativehelper_lazy would make a difference.",
+      "parentUuid": "f501d213_609cad0d",
+      "range": {
+        "startLine": 73,
+        "startChar": 15,
+        "endLine": 73,
+        "endChar": 19
+      },
+      "revId": "428c38b76f2f9dc67b8da0152d1bc6d08f747984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c0aab58_5b1c589c",
@@ -491,6 +593,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bcb2abc_afc97938",
+        "filename": "libstats/socket_lazy/libstatssocket_lazy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2021-03-15T07:42:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c0aab58_5b1c589c",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 47
+      },
+      "revId": "428c38b76f2f9dc67b8da0152d1bc6d08f747984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54aa5033_d190ef03",
@@ -504,6 +630,30 @@
       "writtenOn": "2021-03-12T02:01:37Z",
       "side": 1,
       "message": "reinterpret_cast\u003cdecltype(\u0026##name)\u003e(method)\n\nthen you don\u0027t need to pass method_type",
+      "range": {
+        "startLine": 130,
+        "startChar": 15,
+        "endLine": 130,
+        "endChar": 36
+      },
+      "revId": "428c38b76f2f9dc67b8da0152d1bc6d08f747984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91da7a93_3b516e53",
+        "filename": "libstats/socket_lazy/libstatssocket_lazy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2021-03-15T07:42:33Z",
+      "side": 1,
+      "message": "Done, thanks for the suggestion. It didn\u0027t work with the ##, but I think what it is now is OK.",
+      "parentUuid": "54aa5033_d190ef03",
       "range": {
         "startLine": 130,
         "startChar": 15,
