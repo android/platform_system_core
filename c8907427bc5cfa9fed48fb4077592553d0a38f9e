@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4d0fcd8_fc62ffc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1480079
+      },
+      "writtenOn": "2021-03-18T19:11:17Z",
+      "side": 1,
+      "message": "Using\n\nandroidboot.first_stage_console\u003d2\n\nto ignore modules load failure is confusing.\n\nfirst_stage_console should be used for things related to first stage console. But ignoring modules load failure is completely unrelated.\n\nWhy not introduce androidboot.ignore_modules_load_failure?\n",
+      "revId": "c8907427bc5cfa9fed48fb4077592553d0a38f9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bafdc055_2d0be51a",
+        "filename": "init/first_stage_console.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1480079
+      },
+      "writtenOn": "2021-03-18T19:11:17Z",
+      "side": 1,
+      "message": "In fact, console will be started even if failure not happen. So `CONSOLE_ON_FAILURE` is confusing.",
+      "revId": "c8907427bc5cfa9fed48fb4077592553d0a38f9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
