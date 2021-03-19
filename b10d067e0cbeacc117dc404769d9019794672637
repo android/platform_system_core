@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2e55408_ee01acfc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2021-03-19T16:12:04Z",
+      "side": 1,
+      "message": "I think we have a couple places using a unique_fd after a std::move(), which I believe isn\u0027t going to do what the old behavior was doing.  I\u0027ve put up a follow up fix: https://android-review.googlesource.com/c/platform/system/core/+/1645928",
+      "revId": "b10d067e0cbeacc117dc404769d9019794672637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a2e12b8_f9ef0568",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2021-03-19T16:12:04Z",
+      "side": 1,
+      "message": "We do a std::move() of \u0027fd\u0027 here...",
+      "revId": "b10d067e0cbeacc117dc404769d9019794672637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8315f47c_e94f3aeb",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2021-03-19T16:12:04Z",
+      "side": 1,
+      "message": "...but then use it here.",
+      "revId": "b10d067e0cbeacc117dc404769d9019794672637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de89b86d_6f0888e0",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2021-03-19T16:12:04Z",
+      "side": 1,
+      "message": "We do a std::move() of \u0027fd\u0027 here...",
+      "revId": "b10d067e0cbeacc117dc404769d9019794672637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c9fd655_58c9beae",
+        "filename": "fastboot/fastboot.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2021-03-19T16:12:04Z",
+      "side": 1,
+      "message": "...but then use it here.",
+      "revId": "b10d067e0cbeacc117dc404769d9019794672637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
