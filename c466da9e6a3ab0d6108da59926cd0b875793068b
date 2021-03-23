@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "983b93a4_7c460575",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1557540
+      },
+      "writtenOn": "2021-03-23T23:25:42Z",
+      "side": 1,
+      "message": "Yes I agree it\u0027s weird. Intuitively, I would think that if a modules.blocklist file exists, then it should be used by default. I didn\u0027t change this because I didn\u0027t want to break anything that depended on that. I think Pixel 5 is the first device to utilize the blocklist. So we are probably safe to implement it that way.",
+      "parentUuid": "c82ccbd3_3f14b58a",
+      "revId": "c466da9e6a3ab0d6108da59926cd0b875793068b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbc4e9bf_a645bccb",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4aa6d83_0deb88fd",
+        "filename": "libmodprobe/include/modprobe/modprobe.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1557540
+      },
+      "writtenOn": "2021-03-23T23:25:42Z",
+      "side": 1,
+      "message": "I made it a default argument to maintain the existing functionality. I\u0027m okay with either way.",
+      "parentUuid": "dbc4e9bf_a645bccb",
+      "range": {
+        "startLine": 28,
+        "startChar": 18,
+        "endLine": 28,
+        "endChar": 39
+      },
+      "revId": "c466da9e6a3ab0d6108da59926cd0b875793068b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4fb60ea9_f0a117d1",
         "filename": "libmodprobe/libmodprobe.cpp",
         "patchSetId": 7
@@ -54,6 +96,24 @@
       "writtenOn": "2021-03-23T22:51:06Z",
       "side": 1,
       "message": "why not just expose EnableBlockList() instead? if you only have two callers?",
+      "revId": "c466da9e6a3ab0d6108da59926cd0b875793068b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a80441a_0cb5883d",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1557540
+      },
+      "writtenOn": "2021-03-23T23:25:42Z",
+      "side": 1,
+      "message": "That is something I did think about while waiting for the reviews. I agree that\u0027s probably better. Let me re-work this to have first_stage_init just call EnableBlockList().",
+      "parentUuid": "4fb60ea9_f0a117d1",
       "revId": "c466da9e6a3ab0d6108da59926cd0b875793068b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
