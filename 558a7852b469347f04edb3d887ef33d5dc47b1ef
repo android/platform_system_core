@@ -16,6 +16,24 @@
       "message": "ah, i hadn\u0027t noticed this, and had been mislead by the return type of mkbootimg(). (now i also notice that mkbootimg_v3_and_above() is static.)\n\nthis is weird, but you\u0027re not making things any worse, so...",
       "revId": "558a7852b469347f04edb3d887ef33d5dc47b1ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94cf6e12_936a6744",
+        "filename": "fastboot/bootimg_utils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-03-24T16:21:07Z",
+      "side": 1,
+      "message": "Yeah boot v0-v2 were somewhat compatible each other. v3 breaks the compatibility due to vendor_boot being introduced. boot v3 and v4 is kept compatible.\nThus this mess.. :/\n\nYeah I didn\u0027t notice the cast either. Looking at it now, it is really just out-\u003edata() being cast around.\nThis function (mkbootimg) should probably just return void or bool, and the caller should just call \"out-\u003edata()\" for the result.",
+      "parentUuid": "44338501_dd7e7a78",
+      "revId": "558a7852b469347f04edb3d887ef33d5dc47b1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
