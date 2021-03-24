@@ -153,6 +153,24 @@
       "parentUuid": "a9a8b595_f3471acc",
       "revId": "796cc6e13f9426e308a87def70ffc5b97b87b8aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa69a573_ead7b309",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-03-24T19:34:29Z",
+      "side": 1,
+      "message": "For Rust code itself, this is already done in the language (you need to put `pub` in front of something for it to get exported).\n\nI do agree that we should get the allowlist for bindgen moved to a file rather than Soong arguments someday.\n\nUnless I\u0027m misunderstanding how `.map.txt` is being used, the bindgen-generated-bindings like this should be subject to *both* those restrictions, and those in the explicit allowlist args.\n\nFor C++ API, we\u0027ve had a few people (mostly bluetooth) use it to bind within their own project, but haven\u0027t bound to C++ functions across projects yet.",
+      "parentUuid": "3e8e7efd_37420da5",
+      "revId": "796cc6e13f9426e308a87def70ffc5b97b87b8aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
