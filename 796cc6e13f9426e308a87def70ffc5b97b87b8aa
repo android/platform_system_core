@@ -213,6 +213,24 @@
       "parentUuid": "fa69a573_ead7b309",
       "revId": "796cc6e13f9426e308a87def70ffc5b97b87b8aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcb2236d_5a748116",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-03-24T19:55:42Z",
+      "side": 1,
+      "message": "\u003e For Rust code itself, this is already done in the language (you need to put `pub` in front of something for it to get exported).\n\ni may not be a fan of the PHP-like syntax, but i do like that default :-)\n\n\u003e Unless I\u0027m misunderstanding how `.map.txt` is being used, the bindgen-generated-bindings like this should be subject to *both* those restrictions, and those in the explicit allowlist args.\n\ncorrect. the problem is that most libraries _don\u0027t_ use that. (as a first approximation \"ships in the NDK?\" \u003c\u003d\u003e \"uses .map.txt\", and obviously shipping in the NDK has much stronger API/ABI guarantees [modulo our ability to actually find/enforce such things, but danalbert/gprocida/maennich are working on improving that too].)\n\n\u003e One idea would be to require (either through code review / readability or some hard rule) an allowlist of some sort for all uses of bindgen, although that could be a bit too restrictive.\n\nit\u0027s probably also fine to let a team to explicitly say \"we don\u0027t care\" --- again, cutils is the \"it\u0027s ancient and everyone uses it\" end of the spectrum where fear haunts the shadows, but there are definitely parts of the tree where \"it\u0027s new code and we\u0027re the only users\".",
+      "parentUuid": "ddaa5f39_220ab481",
+      "revId": "796cc6e13f9426e308a87def70ffc5b97b87b8aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
