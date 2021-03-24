@@ -158,6 +158,24 @@
       "parentUuid": "0a80441a_0cb5883d",
       "revId": "c466da9e6a3ab0d6108da59926cd0b875793068b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee83e77_fe116d91",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-03-24T00:49:25Z",
+      "side": 1,
+      "message": "should it default to true though? who needs to EnableBlocklist(false)? there\u0027s only init and modprobe calling this, right?\n\n(and even if we do keep EnableBlocklist() internal [which seems worse than making it public and removing the constructor boolean argument?], it probably shouldn\u0027t be called _inside_ this loop?)\n\ndigging deeper it seems like:\n1. init always wants this enabled?\n2. traditional modprobe(8) has a -b option that determines whether blocklists are enabled (default no).\n\ninit has more call sites, so init wins the API tug of war? or is there reason to believe there will be more callers? or reason to believe that all callers should explicitly think about this? (i guess my assumption was \"if not for legacy reasons, we wouldn\u0027t even have the option to ignore the blocklist\"?)",
+      "parentUuid": "f050a363_00dcd1b8",
+      "revId": "c466da9e6a3ab0d6108da59926cd0b875793068b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
