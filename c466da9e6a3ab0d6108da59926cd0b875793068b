@@ -176,6 +176,24 @@
       "parentUuid": "f050a363_00dcd1b8",
       "revId": "c466da9e6a3ab0d6108da59926cd0b875793068b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "733df5ff_4dffe98b",
+        "filename": "libmodprobe/libmodprobe.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1557540
+      },
+      "writtenOn": "2021-03-25T16:57:26Z",
+      "side": 1,
+      "message": "Okay, I\u0027m happy with that as well. I got the impression originally that you preferred the caller explicitly set use_blocklist or explicitly call EnableBlockList().\n\nRegarding EnableBlocklist(), it is already public and is used by modprobe to enable the blocklist when -b is used. This patch switches modprobe to just use the constructor argument for enabling/disabling the blocklist. So EnableBlocklist() will now only be used by libmodprobe_test.cpp.",
+      "parentUuid": "cee83e77_fe116d91",
+      "revId": "c466da9e6a3ab0d6108da59926cd0b875793068b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
