@@ -193,6 +193,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a41b76c_56d14e5b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-03-29T07:28:04Z",
+      "side": 1,
+      "message": "\u003e I think the entire rollback of all installed /apex is excessive because this is not a boot failure but a failure of a particular function.\n\u003e So we considered fallback within ueventd and also considering this patch to forked ueventd if this is unacceptable.\n\nBut, in general, we don\u0027t want to keep \"problematic\" apexes as activated. In this case, the com.samsung.android.wifi.broadcom apex is activated successfully while its content is invalid, which is what we want to avoid. What if the apex provides more than the firmware or if other apexes rely on the apex?\n\nI agree with the fact that retrying indefinitely with the problematic firmware is a bug, which needs to be fixed. But we\u0027d better hard-fail in case an apex has a problem rather than keep it as if it\u0027s a good one while it isn\u0027t.",
+      "parentUuid": "7e6f1afe_0ad3cde7",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 49
+      },
+      "revId": "248162e477c2c9c25d7147d6127551d407a2a9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "626a2500_fc8564e1",
         "filename": "init/firmware_handler.cpp",
         "patchSetId": 1
