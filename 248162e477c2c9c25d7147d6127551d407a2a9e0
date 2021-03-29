@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71f65655_2a9e8a19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1797945
+      },
+      "writtenOn": "2021-03-29T04:44:48Z",
+      "side": 1,
+      "message": "If we consider to load invalid wifi or BT firmwares from /apex, init services of platform don\u0027t know problem situation.\nOnly kernel can know the failure after getting error from wifi or BT chipset at runtime and it will request firmware again through the uevent.\nSo current rollback condition (setting sys.init.updatable_crashing) isn\u0027t satisfied.\nMoreover, partner apex does not want mainline rollback to be triggered by its module.\nTherefore, we think fallback is a better solution than rollback for firmware.\nFor considering fallback mechanism, we need to install firmwares to both /vendor and /apex.\nThen, if there is some problem to load firmware from /apex, it will reload the default firmware from /vendor.",
+      "parentUuid": "f6da7ab7_91e7e3b9",
+      "range": {
+        "startLine": 20,
+        "startChar": 30,
+        "endLine": 20,
+        "endChar": 54
+      },
+      "revId": "248162e477c2c9c25d7147d6127551d407a2a9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "962fa259_c19cb689",
@@ -71,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af7e4d8e_43202927",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1797945
+      },
+      "writtenOn": "2021-03-29T04:44:48Z",
+      "side": 1,
+      "message": "In the case of BT, WIFI firmware that we are reviewing, boot failure does not occur even if the wrong firmware is loaded. \nThere is just a problem where certain functions do not work. \nSo Rollback does not work because neither native crash nor watchdog occurs. \nAs previously commented, kernel can see this situation, but the platform simply continues to receive a request_firmware uevent, \nso only repeatedly problematic firmware can be loaded, making recovery difficult.",
+      "parentUuid": "e90f876b_c68103d5",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 49
+      },
+      "revId": "248162e477c2c9c25d7147d6127551d407a2a9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "626a2500_fc8564e1",
@@ -84,6 +132,30 @@
       "writtenOn": "2021-03-29T02:19:44Z",
       "side": 1,
       "message": "I think we should compose directories to scan by concatenating apex_firmware_directory and firmware_directories_, and then invoke handler on the directories.",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 5
+      },
+      "revId": "248162e477c2c9c25d7147d6127551d407a2a9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eeea4f8_202ed213",
+        "filename": "init/firmware_handler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1797945
+      },
+      "writtenOn": "2021-03-29T04:44:48Z",
+      "side": 1,
+      "message": "This patch wanted to change two things compared to the original code. \n1) Scan /apex first by default.\n2) Do not scan /apex if there is a problem.\nSo it seems good to concatenate apex_firmware_directory and firmware_directories_, but not the scope of this patch. \nIf necessary, we can upload it again in the next patch. \nHowever, we think it may be unnecessary because the firmware_directories are const value but we want a dynamic scan list, so we have to update the list every time.",
+      "parentUuid": "626a2500_fc8564e1",
       "range": {
         "startLine": 268,
         "startChar": 0,
@@ -117,6 +189,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dfffab8_7268aac7",
+        "filename": "init/firmware_handler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1797945
+      },
+      "writtenOn": "2021-03-29T04:44:48Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "b91b4224_e084f447",
+      "range": {
+        "startLine": 306,
+        "startChar": 4,
+        "endLine": 306,
+        "endChar": 75
+      },
+      "revId": "248162e477c2c9c25d7147d6127551d407a2a9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27b9f88e_d1a4502f",
@@ -130,6 +226,30 @@
       "writtenOn": "2021-03-29T02:00:30Z",
       "side": 1,
       "message": "format: for variables, we use snake_case.",
+      "range": {
+        "startLine": 62,
+        "startChar": 39,
+        "endLine": 62,
+        "endChar": 48
+      },
+      "revId": "248162e477c2c9c25d7147d6127551d407a2a9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aceebe2b_96221fba",
+        "filename": "init/firmware_handler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1797945
+      },
+      "writtenOn": "2021-03-29T04:44:48Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "27b9f88e_d1a4502f",
       "range": {
         "startLine": 62,
         "startChar": 39,
