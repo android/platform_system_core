@@ -169,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e6f1afe_0ad3cde7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1797945
+      },
+      "writtenOn": "2021-03-29T07:11:40Z",
+      "side": 1,
+      "message": "I think the entire rollback of all installed /apex is excessive because this is not a boot failure but a failure of a particular function.\nSo we considered fallback within ueventd and also considering this patch to forked ueventd if this is unacceptable.\n\n[original when loading invalid wifi firmware from /apex]\n03-24 10:49:14.036     0     0 I [5:wifi@1.0-servic:  914] dhdpcie_download_code_file: download firmware bcmdhd_sta.bin_b1\n03-24 10:49:14.037     0     0 I [5:        ueventd: 3145] ueventd: firmware: loading \u0027bcmdhd_sta.bin_b1\u0027 for \u0027/devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/firmware/bcmdhd_sta.bin_b1\u0027\n03-24 10:49:14.038     0     0 I [5:        ueventd: 3145] ueventd: firmware: /apex/com.samsung.android.wifi.broadcom/etc/firmware/bcmdhd_sta.bin_b1 loaded done\n03-24 10:49:14.038     0     0 I [5:        ueventd: 3145] ueventd: loading /devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/firmware/bcmdhd_sta.bin_b1 took 1ms\n\n03-24 10:49:16.689     0     0 I [5:wifi@1.0-servic:  914] dhd_update_fw_nv_path: Couldn\u0027t find the nvram tag. current nvram path \u003d nvram.txt\n03-24 10:49:16.689     0     0 I [5:wifi@1.0-servic:  914] dhd_check_module_bcm: failed to get module infomaion\n\n03-24 10:49:16.703     0     0 I [4:wifi@1.0-servic:  914] dhdpcie_download_code_file: download firmware bcmdhd_sta.bin_b1\n03-24 10:49:16.707     0     0 I [4:        ueventd: 4691] ueventd: firmware: loading \u0027bcmdhd_sta.bin_b1\u0027 for \u0027/devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/firmware/bcmdhd_sta.bin_b1\u0027\n03-24 10:49:16.711     0     0 I [4:        ueventd: 4691] ueventd: firmware: /apex/com.samsung.android.wifi.broadcom/etc/firmware/bcmdhd_sta.bin_b1 loaded done\n03-24 10:49:16.711     0     0 I [4:        ueventd: 4691] ueventd: loading /devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/firmware/bcmdhd_sta.bin_b1 took 4ms\n\n03-24 10:49:19.408     0     0 I [4:wifi@1.0-servic:  914] dhd_update_fw_nv_path: Couldn\u0027t find the nvram tag. current nvram path \u003d nvram.txt\n03-24 10:49:19.408     0     0 I [4:wifi@1.0-servic:  914] dhd_check_module_bcm: failed to get module infomaion\n\n03-24 10:49:19.419     0     0 I [4:        ueventd: 5592] ueventd: firmware: loading \u0027bcmdhd_sta.bin_b1\u0027 for \u0027/devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/firmware/bcmdhd_sta.bin_b1\u0027\n03-24 10:49:19.420     0     0 I [4:        ueventd: 5592] ueventd: firmware: /apex/com.samsung.android.wifi.broadcom/etc/firmware/bcmdhd_sta.bin_b1 loaded done\n03-24 10:49:19.420     0     0 I [4:        ueventd: 5592] ueventd: loading /devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/firmware/bcmdhd_sta.bin_b1 took 1ms\n\n...\n\n03-24 10:49:22.046     0     0 I [3:wifi@1.0-servic:  914] dhd_check_module_bcm: failed to get module infomaion\n03-24 10:49:22.074     0     0 I [1:        ueventd: 6255] ueventd: firmware: /apex/com.samsung.android.wifi.broadcom/etc/firmware/bcmdhd_sta.bin_b1 loaded done\n\n03-24 10:49:24.711     0     0 I [2:wifi@1.0-servic:  914] dhd_check_module_bcm: failed to get module infomaion\n03-24 10:49:24.724     0     0 I [3:        ueventd: 7059] ueventd: firmware: /apex/com.samsung.android.wifi.broadcom/etc/firmware/bcmdhd_sta.bin_b1 loaded done\n\n03-24 10:49:27.342     0     0 I [6:wifi@1.0-servic:  914] dhd_check_module_bcm: failed to get module infomaion\n03-24 10:49:27.349     0     0 I [4:        ueventd: 7586] ueventd: firmware: /apex/com.samsung.android.wifi.broadcom/etc/firmware/bcmdhd_sta.bin_b1 loaded done\n\n03-24 10:49:29.954     0     0 I [3:wifi@1.0-servic:  914] dhd_check_module_bcm: failed to get module infomaion\n03-24 10:49:29.986     0     0 I [6:        ueventd: 8251] ueventd: firmware: /apex/com.samsung.android.wifi.broadcom/etc/firmware/bcmdhd_sta.bin_b1 loaded done\n\n03-24 10:49:32.691     0     0 I [5:wifi@1.0-servic:  914] dhd_check_module_bcm: failed to get module infomaion\n03-24 10:49:32.715     0     0 I [3:        ueventd: 8664] ueventd: firmware: /apex/com.samsung.android.wifi.broadcom/etc/firmware/bcmdhd_sta.bin_b1 loaded done\n\n03-24 10:49:35.366     0     0 I [3:wifi@1.0-servic:  914] dhd_check_module_bcm: failed to get module infomaion\n03-24 10:49:35.400     0     0 I [2:        ueventd: 9399] ueventd: firmware: /apex/com.samsung.android.wifi.broadcom/etc/firmware/bcmdhd_sta.bin_b1 loaded done\n\n03-24 10:49:38.006     0     0 I [3:wifi@1.0-servic:  914] dhd_check_module_bcm: failed to get module infomaion\n03-24 10:49:38.032     0     0 I [0:        ueventd: 9896] ueventd: firmware: /apex/com.samsung.android.wifi.broadcom/etc/firmware/bcmdhd_sta.bin_b1 loaded done\n\n03-24 10:49:40.651     0     0 I [3:wifi@1.0-servic:  914] dhd_check_module_bcm: failed to get module infomaion\n03-24 10:49:40.674     0     0 I [0:        ueventd:10127] ueventd: firmware: /apex/com.samsung.android.wifi.broadcom/etc/firmware/bcmdhd_sta.bin_b1 loaded done\n\n...\n\n\u003d\u003e In this case, it is not known why the problem occurred elsewhere (e.g., in the wifi framework) excepting kernel and ueventd.\n\n\n[with this patch]\n03-25 15:29:22.696     0     0 I [5:wifi@1.0-servic:  931] dhdpcie_download_code_file: download firmware bcmdhd_sta.bin_b1\n\n03-25 15:29:22.698     0     0 I [6:        ueventd: 2122] ueventd: firmware: loading \u0027bcmdhd_sta.bin_b1\u0027 for \u0027/devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/firmware/bcmdhd_sta.bin_b1\u0027\n03-25 15:29:22.698     0     0 I [6:        ueventd: 2122] ueventd: DEBUG firmware: bcmdhd_sta.bin_b1 boot_completed : 0 request count : 1\n03-25 15:29:22.707     0     0 I [6:        ueventd: 2122] ueventd: firmware: /apex/com.samsung.android.wifi.broadcom/etc/firmware/bcmdhd_sta.bin_b1 loaded done\n03-25 15:29:22.708     0     0 I [6:        ueventd: 2122] ueventd: loading /devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/firmware/bcmdhd_sta.bin_b1 took 9ms\n\n03-25 15:29:25.295     0     0 I [5:wifi@1.0-servic:  931] dhd_update_fw_nv_path: Couldn\u0027t find the nvram tag. current nvram path \u003d nvram.txt\n03-25 15:29:25.295     0     0 I [5:wifi@1.0-servic:  931] dhd_check_module_bcm: failed to get module infomaion\n\n03-25 15:29:25.304     0     0 I [1:wifi@1.0-servic:  931] dhdpcie_download_code_file: download firmware bcmdhd_sta.bin_b1\n03-25 15:29:25.313     0     0 I [3:        ueventd: 3151] ueventd: firmware: loading \u0027bcmdhd_sta.bin_b1\u0027 for \u0027/devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/firmware/bcmdhd_sta.bin_b1\u0027\n03-25 15:29:25.313     0     0 I [3:        ueventd: 3151] ueventd: DEBUG firmware: bcmdhd_sta.bin_b1 boot_completed : 0 request count : 2\n03-25 15:29:25.313     0     0 I [3:        ueventd: 3151] ueventd: firmware: bcmdhd_sta.bin_b1 loaded multiple times. Use default without scanning the apex directories\n03-25 15:29:25.328     0     0 I [3:        ueventd: 3151] ueventd: firmware: /vendor/firmware/bcmdhd_sta.bin_b1 loaded done\n03-25 15:29:25.328     0     0 I [3:        ueventd: 3151] ueventd: loading /devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/firmware/bcmdhd_sta.bin_b1 took 15ms\n\n\u003d\u003e work well after reloading firmware from /vendor",
+      "parentUuid": "4913abd8_c124be07",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 49
+      },
+      "revId": "248162e477c2c9c25d7147d6127551d407a2a9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "626a2500_fc8564e1",
         "filename": "init/firmware_handler.cpp",
         "patchSetId": 1
@@ -275,6 +299,30 @@
       "side": 1,
       "message": "nit: isn\u0027t this equivalent to `int request_count \u003d ++firmware_names[uevent.firmware];`",
       "parentUuid": "2dfffab8_7268aac7",
+      "range": {
+        "startLine": 306,
+        "startChar": 4,
+        "endLine": 306,
+        "endChar": 75
+      },
+      "revId": "248162e477c2c9c25d7147d6127551d407a2a9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b81089b_aa3bf385",
+        "filename": "init/firmware_handler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1797945
+      },
+      "writtenOn": "2021-03-29T07:11:40Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "82f3e37a_19729329",
       "range": {
         "startLine": 306,
         "startChar": 4,
