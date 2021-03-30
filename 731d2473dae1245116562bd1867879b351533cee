@@ -34,6 +34,24 @@
       "parentUuid": "f044e615_81a6a2de",
       "revId": "731d2473dae1245116562bd1867879b351533cee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3a2f1cf_e7e9f46f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-03-30T12:17:26Z",
+      "side": 1,
+      "message": "It makes sense. So we need a bunch of modules for system_ext, right?\n\n  se_filegroup {\n    name: \"system_ext_30.0.compat.cil_src\",\n    srcs: \"compat/30.0/30.0.compat.cil\",\n  }\n\n  prebuilt_etc {\n    name: \"system_ext_30.0.compat.cil\",\n    // we may want to introduce tagging to se_filegroup\n    src: \":system_ext_30.0.compat.cil_src{.system_ext}\",\n    filename: \"30.0.compat.cil\",\n    system_ext_specific: true,\n    relative_install_path: \"selinux/mapping\",\n  }",
+      "parentUuid": "14e98350_fb6ec700",
+      "revId": "731d2473dae1245116562bd1867879b351533cee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
