@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62006da5_0f95f69c",
+        "filename": "libutils/Looper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-31T18:02:33Z",
+      "side": 1,
+      "message": "handled in latest PS",
+      "range": {
+        "startLine": 110,
+        "startChar": 11,
+        "endLine": 110,
+        "endChar": 60
+      },
+      "revId": "10aa7f24d92af473876f2f093f56c1cf76b586e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a5f26da_8f473df7",
@@ -38,6 +61,30 @@
       "side": 1,
       "message": "I\u0027m not sure I fully understand yet what you have in mind. What about Line 64?\n\nOtherwise I like the approach. There is the usual concern that repeated and nested includes don\u0027t really work as desired. We probably need a strong recommendation to only define ANDROID_UTILS_SP_DISABLE_IMPLICIT_* at the beginning of .cpp files or with compiler flags. And you may have to clean up a bunch of seemingly unrelated .h files to do that. But it still looks feasible.",
       "parentUuid": "1a5f26da_8f473df7",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 26
+      },
+      "revId": "10aa7f24d92af473876f2f093f56c1cf76b586e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6138b6b_0ff98864",
+        "filename": "libutils/include/utils/StrongPointer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-31T18:02:33Z",
+      "side": 1,
+      "message": "PS3 now has the strongest ownership semantics I can think of. Though, I could revert to PS2 if you think it\u0027s too much.\n\nI might also want to convert another big library to use the correct semantics before merging this.\n\nre re usual concerns - it comes with the trade - any specific place we could document it? For souls unfortunate enough to skip over how the C preprocessor works, I am not sure the most effective way to share this information. For the mentioned libbase flag, people always add it in cflags seemingly without prompt.",
+      "parentUuid": "af9b799d_f2d7c125",
       "range": {
         "startLine": 42,
         "startChar": 0,
