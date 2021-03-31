@@ -16,6 +16,24 @@
       "message": "Hey Jeff and Jiyong, I wasn\u0027t aware of another way to validate that we\u0027re writing to drop_caches or taking any action on user builds for a CTS test. Some others suggested looking at \"free -m\" and \"/proc/meminfo\", but I\u0027m not sure those are reliable. The only log I\u0027ve seen is from \"init: ...\" and doesn\u0027t show up on user builds.",
       "revId": "5815b89989127d8231c61d7c7bbfe36d73ec4ed6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68b5f10d_27b07035",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-31T23:50:05Z",
+      "side": 1,
+      "message": "I am afraid that this is easy to be worked around. What if someone deletes #1146 while leaving #1147?\n\nI think having an app which mmaps a big junk file and accesses the mapped memory, and comparing [Shared|Private]_Clean fields in /proc/self/smaps before and after the drop cache operation would be a lot harder to worked around.",
+      "parentUuid": "536f1391_94b50a51",
+      "revId": "5815b89989127d8231c61d7c7bbfe36d73ec4ed6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
