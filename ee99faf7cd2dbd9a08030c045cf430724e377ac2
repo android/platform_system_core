@@ -16,6 +16,24 @@
       "message": "Why do we need this pre-reserved scratch space, vs putting a 2MB run within data like kCowReplaceOp does?",
       "revId": "ee99faf7cd2dbd9a08030c045cf430724e377ac2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77d0c18b_9faf5294",
+        "filename": "fs_mgr/libsnapshot/include/libsnapshot/cow_format.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2021-03-31T05:30:19Z",
+      "side": 1,
+      "message": "Probably the next patch will add more clarity to it on why we need this scratch space; but here is some explanation:\n\n1: We will mmap this entire region of memory and will explicitly be used by one thread in this region - both read and writes go onto this region.\n\n2: I didn\u0027t want to mess with the existing data section of the COW. The region is not meant to be touched by worker threads.\n\n3: There is very minimal change in the parsing logic.\n\nProbably all of this could be done on the run - something like how kCowClusterOps operation is added while writes are going on and is transparent to update-engine. However, I would like to know what is the drawback of having this scratch space than squeezing somewhere in the COW file on the run ?",
+      "parentUuid": "598d2bfe_547c0953",
+      "revId": "ee99faf7cd2dbd9a08030c045cf430724e377ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
