@@ -34,6 +34,24 @@
       "parentUuid": "598d2bfe_547c0953",
       "revId": "ee99faf7cd2dbd9a08030c045cf430724e377ac2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04c0e562_81bb7b69",
+        "filename": "fs_mgr/libsnapshot/include/libsnapshot/cow_format.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-03-31T20:26:46Z",
+      "side": 1,
+      "message": "The drawback is it makes the format more idiosyncratic. If inlined into data, no parsing changes are needed since it\u0027d fit into the existing structure. Whereas if hardcoded at the beginning, ParseOps(), InitPos(), and AddOperation() all get more special cases. It\u0027s true it\u0027s not huge in LoC but the complexity of the format is getting high. Especially if we ever want to change the buffer size, it looks like it could get dicey.\n\nI _think_ with inlining, and putting the buffer op first in the first cluter, we\u0027d get:\n\n[Header][Cluster #1][2MB BUFFER][Data for Cluster #1 Replace Ops][Cluster#2]...\n\nWhich is pretty similar structurally, just with less parsing changes needed.",
+      "parentUuid": "77d0c18b_9faf5294",
+      "revId": "ee99faf7cd2dbd9a08030c045cf430724e377ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
