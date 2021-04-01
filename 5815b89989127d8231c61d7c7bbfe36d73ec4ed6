@@ -69,6 +69,24 @@
       "message": "aiui you\u0027re saying that the regular init logging of _successful_ commands is missing in user builds? i wonder whether we should add something akin to the Makefile distinction between `foo` and `@foo` so a command can explicitly request that init log regardless? (so the _opposite_ of what @ means in a Makefile, but ykwim.)\n\n+adelva as init maintainer.",
       "revId": "5815b89989127d8231c61d7c7bbfe36d73ec4ed6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32615041_b0e607db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-04-01T20:02:50Z",
+      "side": 1,
+      "message": "(fwiw, i don\u0027t think it\u0027s true that we don\u0027t log on user builds --- i think it\u0027s that we don\u0027t log if it takes less than 50ms:\n```\n    // Any action longer than 50ms will be warned to user as slow operation\n    if (!result.has_value() || duration \u003e 50ms ||\n        android::base::GetMinimumLogSeverity() \u003c\u003d android::base::DEBUG) {\n        std::string trigger_name \u003d BuildTriggersString();\n        std::string cmd_str \u003d command.BuildCommandString();\n\n        LOG(INFO) \u003c\u003c \"Command \u0027\" \u003c\u003c cmd_str \u003c\u003c \"\u0027 action\u003d\" \u003c\u003c trigger_name \u003c\u003c \" (\" \u003c\u003c filename_\n                  \u003c\u003c \":\" \u003c\u003c command.line() \u003c\u003c \") took \" \u003c\u003c duration.count() \u003c\u003c \"ms and \"\n                  \u003c\u003c (result.ok() ? \"succeeded\" : \"failed: \" + result.error().message());\n    }\n```\n)",
+      "parentUuid": "d875e9a9_d8c3253f",
+      "revId": "5815b89989127d8231c61d7c7bbfe36d73ec4ed6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
