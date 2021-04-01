@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b4ac167_eaf2eb95",
+        "filename": "fs_mgr/libsnapshot/snapuserd_server.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-04-01T22:49:34Z",
+      "side": 1,
+      "message": "I\u0027m curious if this is needed. Once we return, the main thread will join(), and the last reference to the handler will be removed.\n\nIf there\u0027s a reference cycle between the std::thread and std::bind-ed handler, we could resolve that by using std::weak_ptr.",
+      "revId": "0b2066bb732ba92ec9ea80dcb5661c9609901434",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "446d2213_044b44e1",
+        "filename": "fs_mgr/libsnapshot/snapuserd_server.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-04-01T22:49:34Z",
+      "side": 1,
+      "message": "I wonder, is it safe to |dm_users_.erase(iter)| after we call FreeResources? I *think* it might be.\n\nWaitForDelete exists so that libsnapshot can reliably create a new dm-user device with the same name. As long as we\u0027ve closed fds and stuff on the snapuserd thread, I think it\u0027s okay for WaitForDelete to early return.\n\nAnd if we can remove it from the list here, we won\u0027t have memory leaks if callers forget or fail to call WaitForDelete.",
+      "revId": "0b2066bb732ba92ec9ea80dcb5661c9609901434",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
