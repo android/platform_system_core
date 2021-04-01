@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d6ab30b_65909013",
+        "filename": "fs_mgr/libsnapshot/snapuserd_server.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2021-04-01T23:10:55Z",
+      "side": 1,
+      "message": "Each snapuserd shared_ptr has following references:\n\n1: One reference _per_ worker thread (In total 4 as we have 4 threads per partition) - These references are released as part of L216.\n2: One reference when snapuserd was created. This is the reference which is released here. - Yes, you are right about the main thread when it calls join(), last reference to handler will terminate it.\n\nNow, the problem I see is that if callers fail to call WaitForDeviceDelete(), the last reference will not be released. Snapuserd object is a big chunk of memory consumed and hence release it upfront here; there is no cycle here. Hope it is clear.",
+      "parentUuid": "6b4ac167_eaf2eb95",
+      "revId": "0b2066bb732ba92ec9ea80dcb5661c9609901434",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "446d2213_044b44e1",
         "filename": "fs_mgr/libsnapshot/snapuserd_server.cpp",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-01T22:49:34Z",
       "side": 1,
       "message": "I wonder, is it safe to |dm_users_.erase(iter)| after we call FreeResources? I *think* it might be.\n\nWaitForDelete exists so that libsnapshot can reliably create a new dm-user device with the same name. As long as we\u0027ve closed fds and stuff on the snapuserd thread, I think it\u0027s okay for WaitForDelete to early return.\n\nAnd if we can remove it from the list here, we won\u0027t have memory leaks if callers forget or fail to call WaitForDelete.",
+      "revId": "0b2066bb732ba92ec9ea80dcb5661c9609901434",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b389cbb_7d93d2d3",
+        "filename": "fs_mgr/libsnapshot/snapuserd_server.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2021-04-01T23:10:55Z",
+      "side": 1,
+      "message": "Yes. I did have that code to remove the handler here itself and do a early return in WaitForDelete(); but I didn\u0027t have that change in this patch because I am still chasing a other bug where the handler referece seems to be messed up. Also, the leak is not coming for here as the WaitForDeviceDelete() is clearly getting called.\n\nThat said, It looks like there is other theoretical leak as well - when --no-postinstall is run, this entire function is never called; WaitForDeviceDelete will not release worker-threads memory... but --no-postinstall will never be used in release. Will try to fix it.",
+      "parentUuid": "446d2213_044b44e1",
       "revId": "0b2066bb732ba92ec9ea80dcb5661c9609901434",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
