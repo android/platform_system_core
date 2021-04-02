@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "588be6ad_5160428d",
+        "filename": "libutils/include/utils/RefBase.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-02T22:56:27Z",
+      "side": 1,
+      "message": "This is done a lot in JNI/NDK code to save an allocation, for instance\n\n    // some header\n    struct Foo;\n    Foo* getFoo(...);\n\n    // impl\n    Foo* getFoo(...) { ... something-\u003eincStrong(); return something; }\n\nThe alternative is always:\n\n    // some header\n    struct FooHolder;\n    FooHolder* getFoo(...);\n\n    // impl\n    struct FooHolder { sp\u003cFoo\u003e foo; };\n    Foo* getFoo(...) { ... return new FooHolder { .foo \u003d myFooSp, }; }\n\nBut still... the existing mess frequently provides a counterbalancing cost.",
+      "range": {
+        "startLine": 185,
+        "startChar": 53,
+        "endLine": 187,
+        "endChar": 10
+      },
+      "revId": "b307e67627eeb138944c3cc60e4bd1e106df54be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
