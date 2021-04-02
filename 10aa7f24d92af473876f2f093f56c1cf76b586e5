@@ -261,6 +261,30 @@
       },
       "revId": "10aa7f24d92af473876f2f093f56c1cf76b586e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad7bb6e0_fd0d7592",
+        "filename": "libutils/include/utils/StrongPointer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-02T23:12:20Z",
+      "side": 1,
+      "message": "There are three cases - either the object returned from this factory is intended to be used with RefBase or not or the API expects both are possible:\n- if it is, then the correct thing to do would be to update the factory function to reflect this (I accept this may be a viral change, but otherwise I cannot imagine how to disambiguate the hapless T*).\n- if it is not, then \u0027fromExisting\u0027 would correctly assert in clients when they make the not-quite-fatal mistake of double-ownership\n- if the API expects both usages are possible (and I have never seen someone do this), I would say we should change the API to use RefBase ownership which would add negligible overhead given that we are already allocating this data, but it could be split into two factory functions (one which returns an explicitly owned object and one which returns an explicitly unowned object).\n\n\u003e whether we have a lot of factory functions that return raw pointers to objects without other references.\n\nIf we do, one option available to us would be to add an escape hatch. Someone might be able to twist my arm enough to not -2 \u0027sp::unsafeTakeOwnership(T*)\u0027. The less user friendly alternative would be to undef the flag in a specific file, but in certain cases it could cause linking errors that would be difficult to fix.\n\nAlso, yes, I know I\u0027m disagreeing with the C++ standard library (not the first time). Maybe you know why we have `shared_ptr( Y* ptr, Deleter d );` \u0026 friends, yet we don\u0027t have something similar for std::vector? Is it historical? I am - now for over a year - mentally preparing myself to fork libc++ in Android to fix the very annoying bug b/131868573.",
+      "parentUuid": "78383d15_f7a93427",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 26
+      },
+      "revId": "10aa7f24d92af473876f2f093f56c1cf76b586e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
