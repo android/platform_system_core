@@ -70,6 +70,24 @@
       "parentUuid": "04c0e562_81bb7b69",
       "revId": "ee99faf7cd2dbd9a08030c045cf430724e377ac2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b2d76bd_b565f1f3",
+        "filename": "fs_mgr/libsnapshot/include/libsnapshot/cow_format.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2021-04-02T00:25:16Z",
+      "side": 1,
+      "message": "Yeah.. My idea was to avoid adding that to ops_ buffer when parsing in ParseOps(); in that way, none of the readers will every encounter this buffer and only one thread (read-ahead therad) will just read this op.\n\nBut I get the consistency aspect as mentioned by David. \n\nOne of the other point of having this upfront is that I pack the header and the new buffer op into a single 4k page - This is required when flushing the data to scratch space. This was carefully crafted as the order of operation is important. That logic is in next patch - \n\nhttps://android-review.googlesource.com/c/platform/system/core/+/1656315/3\n\nLook for function:\n\nbool Snapuserd::ReadAheadIOCompleted()\n\n--------\n\nI will have to re-visit to see how it impacts that logic with the above change in\nthe COW format.",
+      "parentUuid": "aceea3dc_781bfb25",
+      "revId": "ee99faf7cd2dbd9a08030c045cf430724e377ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
