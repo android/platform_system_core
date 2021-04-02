@@ -189,6 +189,30 @@
       },
       "revId": "10aa7f24d92af473876f2f093f56c1cf76b586e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e5fb196_f0bf990c",
+        "filename": "libutils/include/utils/StrongPointer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-02T22:36:40Z",
+      "side": 1,
+      "message": "\u003e Any factory function that now returns a C pointer would now have to return an sp instead\n\nThis is intentional. I want the APIs to include the proper lifetime information. You can see an example of what you\u0027re talking about here (where I started to convert libbinder to use this - still WIP - I wanted a smaller initial project):\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1663086/1/libs/binder/include/binder/BpBinder.h#43\n\nIn this case, I am able to fix the API to correctly reflect the type since it has too few clients. In cases where there are many clients - well first of all, shame on that API! but a gradual conversion is always possible like such (yes - slightly more annoying than an atomic conversion b/c of inability to overload based on return types in C++):\n\n    Foo* errorProneFactoryFunction();\n    +sp\u003cFoo\u003e greatFactoryFunction() {\n    +    return sp\u003cFoo\u003e::fromExisting(errorProneFactoryFunction());\n    +}\n\n\u003e tempted to just add a comment at the top of this file explaining what ANDROID_UTILS_REF_BASE_DISABLE_IMPLICIT_CONSTRUCTION\n\nWill do.",
+      "parentUuid": "e032cadc_59eaeaa9",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 26
+      },
+      "revId": "10aa7f24d92af473876f2f093f56c1cf76b586e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
