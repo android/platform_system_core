@@ -88,6 +88,24 @@
       "parentUuid": "aceea3dc_781bfb25",
       "revId": "ee99faf7cd2dbd9a08030c045cf430724e377ac2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12fa7cd5_69c539fa",
+        "filename": "fs_mgr/libsnapshot/include/libsnapshot/cow_format.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-04-02T01:26:58Z",
+      "side": 1,
+      "message": "Ah - okay. If we want to fuse it with the header, I think it\u0027d be better to do that explicitly, with a \"buffer_size\" in the header. That does require some parsing changes (we\u0027d have to start respecting header_size) but I think that\u0027s it. Old COWs would effectively have a buffer_size of 0.\n\nMy main concern is avoiding new edge cases to all the op handling code (eg InitPos/ParseOps/etc).",
+      "parentUuid": "5b2d76bd_b565f1f3",
+      "revId": "ee99faf7cd2dbd9a08030c045cf430724e377ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
