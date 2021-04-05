@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a55add4_548b388e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1814885
+      },
+      "writtenOn": "2021-04-05T01:17:03Z",
+      "side": 1,
+      "message": "When I tried to use external firmware handler for a Broadcom device, I got the following devpaths from uevent:\n\n/devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/firmware/bcmdhd_clm.blob\n/devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/firmware/bcmdhd_sta.bin_b1\n/devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/firmware/nvram.txt_1rh_es43_b1\n\nEven if they comes from the same device, they must all be specified separately in ueventd.rc:\n\nexternal_firmware_handler /devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/firmware/bcmdhd_clm.blob root /vendor/bin/wifi_firmware_handler\nexternal_firmware_handler /devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/firmware/bcmdhd_sta.bin_b1 root /vendor/bin/wifi_firmware_handler\nexternal_firmware_handler /devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/firmware/nvram.txt_1rh_es43_b1 root /vendor/bin/wifi_firmware_handler\n\nIf pattern matching is allowed on the external_firmware_handler line, it can be simplified to one line;\nexternal_firmware_handler /devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/firmware/* root /vendor/bin/wifi_firmware_handler\n\nThis is the reason why I submit this patch.",
+      "revId": "85e83c41170a57434962a4b249c5dea33f9d5338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
