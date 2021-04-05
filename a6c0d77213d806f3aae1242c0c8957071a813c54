@@ -190,6 +190,30 @@
       },
       "revId": "a6c0d77213d806f3aae1242c0c8957071a813c54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37214e6a_235bc5e2",
+        "filename": "libstats/pull_rust/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-04-05T17:09:04Z",
+      "side": 1,
+      "message": "I am suspicious about the idea of breaking up the library into many submodules, even in the C++ case.\n\nUnless a small percentage of atoms are actually used *anywhere* on the device, I expect the extra overhead from having many distinct libraries and being unable to pack atom code into the same page (since they\u0027re in different modules now) will end up increasing rather than decreasing memory usage.\n\nThe library is currently ~300k. There are ~10092 atoms today. If we assume the per-atom code is similar in size, that\u0027s about 30 bytes per atom. Even if we assume that only 10% of those atoms are actually in use, modules would need to be on average at least 14 atoms before you\u0027d break even.\n\nI expect that in reality, more than 10% of atoms are in use, which means that the average module size would need to be *even higher* before you\u0027d even hit break-even. If we assume 50% of atoms are in use, you will waste space until modules are at least 69 atoms on average.\n\nIn the Rust case, all these calculations get worse. Since we don\u0027t have actual headers, the course taken here was to convert the \"header\" into an additional crate. That crate will take up a minimum of one additional page per process simply because it\u0027s another library loaded. That brings the minimum break-even module size to 28 for 10% of atoms in use, and 209 (!) for 50% of atoms in use.\n\ntl;dr splitting into modules seems like it will waste a nontrivial amount of space in practical usage, adds complexity, and the maximum gain for all the effort you\u0027re describing is the percentage of atoms not in use * 300k, which seems very slim...",
+      "parentUuid": "7b531a92_ce1c15d6",
+      "range": {
+        "startLine": 52,
+        "startChar": 9,
+        "endLine": 52,
+        "endChar": 25
+      },
+      "revId": "a6c0d77213d806f3aae1242c0c8957071a813c54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
