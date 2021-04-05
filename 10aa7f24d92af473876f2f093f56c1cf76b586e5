@@ -285,6 +285,30 @@
       },
       "revId": "10aa7f24d92af473876f2f093f56c1cf76b586e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c0f2468_8e75b6cd",
+        "filename": "libutils/include/utils/StrongPointer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-04-05T18:07:10Z",
+      "side": 1,
+      "message": "I\u0027m OK with that as is, even if it might on occasion force a larger follow-up CL. It clearly doesn\u0027t make sense to preemptively add ugly workarounds for possible problems.\n\nI wasn\u0027t in on the discussions about explicit deleters. I think they largely predate my presence on the committee. I assume the difference is that shared_ptr requires a raw pointer, and thus there is no way to wrap it in a class with a different destructor. I believe the C++ committee only really started thinking about the \"exceptions disabled\" case fairly recently. That seems to be common practice elsewhere, too. But the arguments for turning off exceptions seem to be hazy enough and diverge enough to make it harder to push for changes to support this mode.",
+      "parentUuid": "ad7bb6e0_fd0d7592",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 26
+      },
+      "revId": "10aa7f24d92af473876f2f093f56c1cf76b586e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
