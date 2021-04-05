@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e3bc569_d973356f",
+        "filename": "fs_mgr/fs_mgr.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-04-05T20:20:15Z",
+      "side": 1,
+      "message": "Is this to strip the \"1\" off something like \"/dev/block/sda1\"? If so, can we derive this from sysfs instead? It looks like maybe we could test if \"queue\" is missing (or \"partition\" is present), read the symlink for /sys/class/block/X to get the \"sda/sda1\" path and then chop off the tail?",
+      "revId": "8890201f2c76bf85d80a34d020ed1918d8a0b018",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0665e819_ab549310",
+        "filename": "fs_mgr/fs_mgr_fstab.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-04-05T20:20:15Z",
+      "side": 1,
+      "message": "Can you add a short test to tests/fs_mgr_test.cpp for this? (It has some parsing tests at the end.)",
+      "revId": "8890201f2c76bf85d80a34d020ed1918d8a0b018",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
