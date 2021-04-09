@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f880f45_f1f8eb18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1472644
+      },
+      "writtenOn": "2021-04-09T06:08:20Z",
+      "side": 1,
+      "message": "There are some limitations with Fastbootd SELinux, as you can see in system/sepolicy/public/fastbootd.te:\n########################################\nuserdebug_or_eng(\n   ...\n   allow fastbootd labeledfs:filesystem { mount unmount };\n   ...\n )\n########################################\nThe above ensures that filesystem can only be mounted in FastBootd mode on the userdebug or eng builds but not the user builds. In this case, when we unlock the device to flash partition on user builds, the /metadata will be earsed. and because of these limitations, it cannot be mounted, so it will be reformatted, which leads to userdata incorresponds to it, then affect normal boot. I don\u0027t know if my explanation is clear, thx.",
+      "parentUuid": "4c2f9ad6_ca6b6afa",
+      "revId": "014719a0bdcbe232732bdf495d1d55aac49cf6dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f7b822e_e53fd68a",
