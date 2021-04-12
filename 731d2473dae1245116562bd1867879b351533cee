@@ -247,6 +247,24 @@
       "parentUuid": "8c2e94a0_60ccf2ce",
       "revId": "731d2473dae1245116562bd1867879b351533cee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19fcdb33_591fbc64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-04-12T07:25:09Z",
+      "side": 1,
+      "message": "\u003e I thought b/33691272 is for any new changes to system/sepolicy/build/soong/?\n\nNot actually. The purpose of b/33691272 is to remove system/sepolicy/Android.mk, not to include all Soong changes related to sepolicy.\n\n\u003e I think generating the compat.cil itself is probably trivial (just need some genrule magic) but the hash changes are more tricky (this part I still not figure out)\n\nYeah I agree. Taking a look at Android.mk again, I found that precompiling sepolicy from different versions (new system vs old vendor) is difficult for now. So I think we can leave the hash changes as-is.",
+      "parentUuid": "ccac51da_1d80a496",
+      "revId": "731d2473dae1245116562bd1867879b351533cee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
