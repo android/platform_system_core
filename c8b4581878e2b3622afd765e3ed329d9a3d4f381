@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cfeb79f_f7ccaedb",
+        "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-04-15T18:18:22Z",
+      "side": 1,
+      "message": "This means we will fail to parse v1 COWs if the new OS has a v2 library. If that\u0027s intentional, then libsnapshot/update_engine must be in agreement that a v1 -\u003e v2 upgrade path cannot use VABC. Then our compatibility check would look something like:\n\n    if ((old \u003d\u003d 1 \u0026\u0026 new \u003d\u003d 2) || (new \u003c old))\n        vabc_enabled \u003d false;",
+      "revId": "c8b4581878e2b3622afd765e3ed329d9a3d4f381",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
