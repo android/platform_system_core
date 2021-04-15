@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dfbfcee_ddba602d",
+        "filename": "fs_mgr/libsnapshot/android/snapshot/snapshot.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-15T20:55:46Z",
+      "side": 1,
+      "message": "Maybe add comment here:\n\nTo understand the source of each failure, read snapshot.cpp. To handle new sources of failure, avoid reusing an existing code; add a new code instead.\n\n... assuming that if we are going to add a new `return ...`, we\u0027ll always add a new code.\n\nAlternatively, document what each failure means, and allow reusing code for errors of the same category.",
+      "revId": "e5ea62f8e37f862e46379c5922f54b91914a53dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb439128_029eb55b",
+        "filename": "fs_mgr/libsnapshot/include/libsnapshot/snapshot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-15T20:55:46Z",
+      "side": 1,
+      "message": "Use a struct directly, since \"first\" / \"second\" aren\u0027t very good names.",
+      "range": {
+        "startLine": 578,
+        "startChar": 53,
+        "endLine": 578,
+        "endChar": 64
+      },
+      "revId": "e5ea62f8e37f862e46379c5922f54b91914a53dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53fdee99_2b57fa8a",
+        "filename": "fs_mgr/libsnapshot/snapshot.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-15T20:55:46Z",
+      "side": 1,
+      "message": "So in this case, it is possible that we report multiple codes?\n\nDoes that mean we should use a bitfield instead?",
+      "range": {
+        "startLine": 750,
+        "startChar": 4,
+        "endLine": 750,
+        "endChar": 7
+      },
+      "revId": "e5ea62f8e37f862e46379c5922f54b91914a53dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
