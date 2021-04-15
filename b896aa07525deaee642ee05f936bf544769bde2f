@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c9eebe2_e421c213",
+        "filename": "trusty/metrics/include/trusty/metrics/metrics.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2021-04-15T00:45:29Z",
+      "side": 1,
+      "message": "what is the purpose of this class? It seems to only support a dedicated thread with two functions to handle the current events. Why are these function pointers and not a pure virtual member function? Every time we add a metric type are we expected to pass a new function pointer in? Also we really need the app that uses this interface to be multithreaded, or can we have a single threaded app that uses epoll (or select/poll) to handle all its communication?",
+      "revId": "b896aa07525deaee642ee05f936bf544769bde2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "216c0f4f_0f8ea94c",
+        "filename": "trusty/metrics/include/trusty/metrics/tipc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2021-04-15T00:45:29Z",
+      "side": 1,
+      "message": "I did not notice this in trusty side changes, but this does not match what you send from the kernel. You send up to 37 + 256, it looks like this will get truncated, then put the metrics kernel library in the wrong state as it thinks the message was not sent.",
+      "revId": "b896aa07525deaee642ee05f936bf544769bde2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4510accd_61158a73",
+        "filename": "trusty/metrics/metrics.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2021-04-15T00:45:29Z",
+      "side": 1,
+      "message": "Why are you not sending METRICS_ERR_UNKNOWN_CMD back?",
+      "revId": "b896aa07525deaee642ee05f936bf544769bde2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27c31946_840c3a76",
+        "filename": "trusty/metrics/metrics_test.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2021-04-15T00:45:29Z",
+      "side": 1,
+      "message": "why are you using an alarm here and not epoll wait with a timeout? If the alarm fires I don\u0027t see a signal handler that would mark the test as failed.",
+      "revId": "b896aa07525deaee642ee05f936bf544769bde2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
