@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c80537b_91e82046",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2021-04-19T18:19:08Z",
+      "side": 1,
+      "message": "I avoided this because we\u0027d have to create a nonzero sentinel value. Given that reserving a value might hurt our extensibility (i.e. in the future we might look into using TBI bits for the short granule scheme that\u0027s used in HWASan, and assumedly it would back onto this schema), I\u0027m hesitant. From a \"person who looks a lot at hwasan dumps\" perspective - there\u0027s no difference between \u0027zero tag\u0027 and \u0027undefined tag\u0027, it\u0027s the difference between adjacent tags that\u0027s the important piece.\n\nPeter - WDYT here?",
+      "parentUuid": "ba57c207_4b126793",
+      "range": {
+        "startLine": 19,
+        "startChar": 22,
+        "endLine": 19,
+        "endChar": 65
+      },
+      "revId": "d1a346c1db0140c3d8967c7f2f2a9b2d795d7745",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fc51b624_cffea558",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-04-19T17:18:23Z",
       "side": 1,
       "message": "Should this just be a memory dump (including tags) around the fault address, as if the fault address was another register? I imagine the actual memory contents could be useful for diagnosing the problem in some cases.",
+      "revId": "d1a346c1db0140c3d8967c7f2f2a9b2d795d7745",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93683f6a_9df05894",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2021-04-19T18:19:08Z",
+      "side": 1,
+      "message": "I considered this, but chose not to for two reasons:\n 1. 256 granules is 4KiB of memory, which is half the size of all the register dumps combined.\n 2. Displaying the memory contents and tag contents inline increases privacy sanitization more tricky, and generally simpler is better.\n\nI\u0027d be happy to add maybe ~256B of memory around the fault address (like the other registers), but I think it should be displayed in a separate section and can be addressed in a follow-up patch.",
+      "parentUuid": "fc51b624_cffea558",
       "revId": "d1a346c1db0140c3d8967c7f2f2a9b2d795d7745",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
