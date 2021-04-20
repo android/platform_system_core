@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d9117fd_a1252947",
+        "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-04-20T00:46:28Z",
+      "side": 1,
+      "message": "Looks (almost) identical to the loop above - worth making a helper? (Or modify copy_ops_ directly?)",
+      "revId": "be1cabcfe995bfc3e916da662d5d2824a8a8fcd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee3a1dcc_c792d1c6",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-04-20T00:46:28Z",
+      "side": 1,
+      "message": "Should be header.header_size instead of sizeof(CowHeader) I think? If v3 increases sizeof(header) then a v2-\u003ev3 OTA will result in v2 code building the snapshot and v3 code performing the merge.",
+      "revId": "be1cabcfe995bfc3e916da662d5d2824a8a8fcd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd2ca082_66054d8b",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-04-20T00:46:28Z",
+      "side": 1,
+      "message": "nit: invert the check to save some indentation?",
+      "revId": "be1cabcfe995bfc3e916da662d5d2824a8a8fcd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "210e077a_ec099f56",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-04-20T00:46:28Z",
+      "side": 1,
+      "message": "header.header_size",
+      "revId": "be1cabcfe995bfc3e916da662d5d2824a8a8fcd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77c11877_fc0d7713",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-04-20T00:46:28Z",
+      "side": 1,
+      "message": "On functions like this, it\u0027s useful to document the locking requirements or thread interactions. For example in libsnapshot, anything that requires a lock to be taken has a \"proof of lock\" argument. It makes it very obvious which functions must/can/cannot be called under a lock.",
+      "revId": "be1cabcfe995bfc3e916da662d5d2824a8a8fcd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da129611_c5755442",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-04-20T00:46:28Z",
+      "side": 1,
+      "message": "header.header_size (This pattern comes up a bit, maybe a GetBufferState() helper function?)",
+      "revId": "be1cabcfe995bfc3e916da662d5d2824a8a8fcd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "599b3c66_3eb335ec",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-04-20T00:46:28Z",
+      "side": 1,
+      "message": "Bonus points for an infallible version of this method someday (we already just ignore the return value...)",
+      "revId": "be1cabcfe995bfc3e916da662d5d2824a8a8fcd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3a8d408_9a8f98e8",
+        "filename": "fs_mgr/libsnapshot/snapuserd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-04-20T00:46:28Z",
+      "side": 1,
+      "message": "A description of each of these states and their valid transitions would be really helpful for understanding the transition code.",
+      "revId": "be1cabcfe995bfc3e916da662d5d2824a8a8fcd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0ed5c84_ffae76f2",
+        "filename": "fs_mgr/libsnapshot/snapuserd_worker.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-04-20T00:46:28Z",
+      "side": 1,
+      "message": "Bit unusual control flow here.",
+      "revId": "be1cabcfe995bfc3e916da662d5d2824a8a8fcd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b72b8be_84e2dd62",
+        "filename": "fs_mgr/libsnapshot/snapuserd_worker.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-04-20T00:46:28Z",
+      "side": 1,
+      "message": "nit: else not needed after return",
+      "revId": "be1cabcfe995bfc3e916da662d5d2824a8a8fcd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
