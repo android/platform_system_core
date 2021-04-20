@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad5eddd4_2c62a11a",
+        "filename": "trusty/metrics/include/trusty/metrics/metrics.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2021-04-20T06:02:12Z",
+      "side": 1,
+      "message": "Open(), WaitForEvent(), HandleEvent(), and GetRawFd() may be called by the service that will be on real devices. In the setup where the service only handles metrics events (like the test does), the event loop will call WaitForEvent() then HandleEvent() in a loop.",
+      "parentUuid": "da059c25_4c82eece",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "d48606522b7fb2379e149d073e1369ae47f69c62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2cc5c05_0c877091",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "22faf3f9_36dfd2e6",
+        "filename": "trusty/metrics/metrics.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2021-04-20T06:02:12Z",
+      "side": 1,
+      "message": "I\u0027m planning to add a service that pipes the event to statsd on real devices. For now, metrics events are the only thing it will be listening to. So, it will be calling WaitForEvent() and HandleEvent() in a loop.",
+      "parentUuid": "d2cc5c05_0c877091",
+      "revId": "d48606522b7fb2379e149d073e1369ae47f69c62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bafce236_ab17dd5a",
         "filename": "trusty/metrics/metrics_test.cpp",
         "patchSetId": 8
@@ -54,6 +96,24 @@
       "writtenOn": "2021-04-20T01:39:12Z",
       "side": 1,
       "message": "would it be easier if this is also a subclass of TrustyMetrics?",
+      "revId": "d48606522b7fb2379e149d073e1369ae47f69c62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4c122e9_c91c012a",
+        "filename": "trusty/metrics/metrics_test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2021-04-20T06:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bafce236_ab17dd5a",
       "revId": "d48606522b7fb2379e149d073e1369ae47f69c62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
