@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6590dcd_f2d63f30",
+        "filename": "trusty/metrics/include/trusty/metrics/metrics.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2021-04-22T23:02:22Z",
+      "side": 1,
+      "message": "I would prefer to compose the service using a TrustyMetrics objects. IMO making the service a subclass this can make it confusing as to which function belongs should where. Generally speaking, composition is recommended over inheritance \nhttps://google.github.io/styleguide/cppguide.html#Inheritance",
+      "parentUuid": "ec587256_59627b69",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "d48606522b7fb2379e149d073e1369ae47f69c62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2cc5c05_0c877091",
         "filename": "trusty/metrics/metrics.cpp",
         "patchSetId": 8
@@ -121,6 +145,24 @@
       "side": 1,
       "message": "Would that service not use binder at all? If it does I would expect you need both the binder and metrics fd in the same poll set.",
       "parentUuid": "22faf3f9_36dfd2e6",
+      "revId": "d48606522b7fb2379e149d073e1369ae47f69c62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f57c70a_952a6eca",
+        "filename": "trusty/metrics/metrics.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2021-04-22T23:02:22Z",
+      "side": 1,
+      "message": "Yes, the service will need to use binder to report events to statsd. I\u0027m not familiar enough with binder, but does it expose the poll set? \n\nThe way statsd interface is used in our code base there is usually no need to manage a binder fd. For example, ag/14286216 is what I was thinking we do.",
+      "parentUuid": "418b76ff_6cfa6981",
       "revId": "d48606522b7fb2379e149d073e1369ae47f69c62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
