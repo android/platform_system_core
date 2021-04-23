@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4861ae7_d1df34ed",
+        "filename": "trusty/metrics/include/trusty/metrics/metrics.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2021-04-23T19:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dd1674c_16c1d76b",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "d48606522b7fb2379e149d073e1369ae47f69c62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2cc5c05_0c877091",
@@ -205,6 +229,24 @@
       "side": 1,
       "message": "It exposes a file descriptor for you to add to the poll set if you don\u0027t let lib binder create and manage the thread pool. Your process in ag/14286216 seem to not have any threads handling binder work though, which may or may not work correctly depending on what you send.",
       "parentUuid": "8f57c70a_952a6eca",
+      "revId": "d48606522b7fb2379e149d073e1369ae47f69c62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a684e106_54e30950",
+        "filename": "trusty/metrics/metrics.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2021-04-23T19:34:25Z",
+      "side": 1,
+      "message": "\u003e may or may not work correctly depending on what you send\n\nI don\u0027t know what exactly binder does under the hood. But calling reportVendorAtom() should be the only thing we ever need to do to report metrics events. If that doesn\u0027t require any binder threads, then our service can be single-threaded and only poll on Trusty metrics fd.",
+      "parentUuid": "c9d3ceb8_39300158",
       "revId": "d48606522b7fb2379e149d073e1369ae47f69c62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
