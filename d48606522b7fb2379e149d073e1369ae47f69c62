@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6dd1674c_16c1d76b",
+        "filename": "trusty/metrics/include/trusty/metrics/metrics.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2021-04-23T00:08:37Z",
+      "side": 1,
+      "message": "OK. If you expect the subclass to be composed into another service, having HandleEvent() and GetRawFd() public is useful. I would expect an open call to me made on the subclass though, not a call that only opens the base class.",
+      "parentUuid": "c6590dcd_f2d63f30",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "d48606522b7fb2379e149d073e1369ae47f69c62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2cc5c05_0c877091",
         "filename": "trusty/metrics/metrics.cpp",
         "patchSetId": 8
@@ -163,6 +187,24 @@
       "side": 1,
       "message": "Yes, the service will need to use binder to report events to statsd. I\u0027m not familiar enough with binder, but does it expose the poll set? \n\nThe way statsd interface is used in our code base there is usually no need to manage a binder fd. For example, ag/14286216 is what I was thinking we do.",
       "parentUuid": "418b76ff_6cfa6981",
+      "revId": "d48606522b7fb2379e149d073e1369ae47f69c62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9d3ceb8_39300158",
+        "filename": "trusty/metrics/metrics.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2021-04-23T00:08:37Z",
+      "side": 1,
+      "message": "It exposes a file descriptor for you to add to the poll set if you don\u0027t let lib binder create and manage the thread pool. Your process in ag/14286216 seem to not have any threads handling binder work though, which may or may not work correctly depending on what you send.",
+      "parentUuid": "8f57c70a_952a6eca",
       "revId": "d48606522b7fb2379e149d073e1369ae47f69c62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
