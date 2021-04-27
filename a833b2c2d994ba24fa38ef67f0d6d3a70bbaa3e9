@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4e35ca6b_ff8b59b9",
+        "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2021-04-27T17:42:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e922f68a_64e5bb46",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 5
+      },
+      "revId": "a833b2c2d994ba24fa38ef67f0d6d3a70bbaa3e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1453c039_304dfe74",
         "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
         "patchSetId": 9
@@ -126,6 +150,30 @@
       "writtenOn": "2021-04-27T04:50:31Z",
       "side": 1,
       "message": "Isn\u0027t this value going to read some random value for v1 files? If the header was v1, this ought to be 0.",
+      "range": {
+        "startLine": 170,
+        "startChar": 37,
+        "endLine": 170,
+        "endChar": 56
+      },
+      "revId": "a833b2c2d994ba24fa38ef67f0d6d3a70bbaa3e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "871be34d_253f76e7",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2021-04-27T17:42:56Z",
+      "side": 1,
+      "message": "This is in the write path - In the write path, this will always write v2 COW version. There is nothing about v1 in this code path.\n\nThe value of header_.buffer_size is set in OpenForWrite() at L194.",
+      "parentUuid": "440c4ea7_3a08df86",
       "range": {
         "startLine": 170,
         "startChar": 37,
