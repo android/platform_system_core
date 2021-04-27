@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e922f68a_64e5bb46",
+        "filename": "fs_mgr/libsnapshot/cow_reader.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1045980
+      },
+      "writtenOn": "2021-04-27T04:50:31Z",
+      "side": 1,
+      "message": "This is a bit redundant in the v2 verseion. We don\u0027t use this position before the seek for the vs+ case. We could move this into an else afterwards to avoid an unnecessary seek.",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 5
+      },
+      "revId": "a833b2c2d994ba24fa38ef67f0d6d3a70bbaa3e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1453c039_304dfe74",
@@ -86,6 +109,29 @@
       "side": 1,
       "message": "Since we\u0027re reading it into a separate object, it should be fine? (header_ isn\u0027t mmap\u0027d memory or anything I think?)",
       "parentUuid": "171ac987_0b289f74",
+      "revId": "a833b2c2d994ba24fa38ef67f0d6d3a70bbaa3e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "440c4ea7_3a08df86",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1045980
+      },
+      "writtenOn": "2021-04-27T04:50:31Z",
+      "side": 1,
+      "message": "Isn\u0027t this value going to read some random value for v1 files? If the header was v1, this ought to be 0.",
+      "range": {
+        "startLine": 170,
+        "startChar": 37,
+        "endLine": 170,
+        "endChar": 56
+      },
       "revId": "a833b2c2d994ba24fa38ef67f0d6d3a70bbaa3e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
