@@ -253,6 +253,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1dd2fff7_4315d1e8",
+        "filename": "trusty/metrics/metrics.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2021-04-27T20:44:05Z",
+      "side": 1,
+      "message": "The service can definitely be single threaded, but whether it is safe to not poll on the binder-fd from that single threaded service depends on what the libraries call into do. Without a binder thread poll or calls to handlePolledCommands, work queued to the process by libbinder or the binder driver will not be processed. Usually this will cause leaks. It is possible that your simple process will never have anything on these queues, but it is difficult to tell without checking. If you want to be notified of any async events (e.g. that the service you called into has exited) you will definitely need one of the two ways to start/register a binder looper.",
+      "parentUuid": "a684e106_54e30950",
+      "revId": "d48606522b7fb2379e149d073e1369ae47f69c62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bafce236_ab17dd5a",
         "filename": "trusty/metrics/metrics_test.cpp",
         "patchSetId": 8
