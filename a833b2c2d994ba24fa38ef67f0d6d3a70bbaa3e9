@@ -206,6 +206,30 @@
       },
       "revId": "a833b2c2d994ba24fa38ef67f0d6d3a70bbaa3e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "889b4711_81c1703a",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2021-04-27T22:59:00Z",
+      "side": 1,
+      "message": "Even for the append path, there should _always_ be one version and it should be the latest v2 version. How is it possible to swap between multiple versions when there is an on-going update? \n\nIIUC, what you are suggesting is this flow:\n\n1: Start OTA from v1 version (update engine calls OpenForWrite())\n2: Reboot device in middle of update; and now device has v2 version of the library\n3: Update engine resumes OTA by calling OpenForAppend(); but header is from v1\n\nIs this flow valid ?",
+      "parentUuid": "c16b3ab2_dc4bda3c",
+      "range": {
+        "startLine": 170,
+        "startChar": 37,
+        "endLine": 170,
+        "endChar": 56
+      },
+      "revId": "a833b2c2d994ba24fa38ef67f0d6d3a70bbaa3e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
