@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e932811_bea21777",
+        "filename": "init/selinux.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2021-04-29T15:12:17Z",
+      "side": 1,
+      "message": "IIRC, we still generate .sha256 file even if the system_ext/product sepolicy is empty.\n\ne.g., search `system_ext/etc/selinux/` only find one file:\n\nhttps://android-build.googleplex.com/builds/submitted/7323636/aosp_crosshatch-userdebug/latest/view/installed-files-system_ext.txt\n\nSo checking \"both of them shouldn\u0027t exist\" here probably has the same effect as checking the actual/precompiled .sha256 that are generated from \"empty\" sepolicy.\n\ni.e., It probably has the same effect before aosp/1626229 (the left-hand side of the following):\n\nhttps://android-review.googlesource.com/c/platform/system/core/+/1626229/4/init/selinux.cpp",
+      "range": {
+        "startLine": 253,
+        "startChar": 40,
+        "endLine": 253,
+        "endChar": 68
+      },
+      "revId": "28fdb6794cbee7bbfa1f261466acb7c3f6689904",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
