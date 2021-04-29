@@ -46,6 +46,30 @@
       },
       "revId": "9d349b66ca50f80a4085a68127f7e6059bc75c52",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce3f610d_54575167",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2021-04-29T16:00:42Z",
+      "side": 1,
+      "message": "`stop` only sends SIGKILL in init.  SIGTERM is only used in shutdown.  \n\nThere\u0027s no concrete reason why it\u0027s done this way, other than that\u0027s what init did historically and I didn\u0027t want to change the behavior to first send SIGTERM because there were no known issues that it would fix and there\u0027s always risk to behavior changes.  \n\nIf you do need the SIGTERM then SIGKILL behavior for stop, adding it SGTM  as long as you verify that the behavior change isn\u0027t breaking and/or only apply it for new devices.",
+      "parentUuid": "7c003a7f_ea7c0368",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 51
+      },
+      "revId": "9d349b66ca50f80a4085a68127f7e6059bc75c52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
