@@ -289,6 +289,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82baed2e_87944184",
+        "filename": "trusty/metrics/metrics.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000205
+      },
+      "writtenOn": "2021-04-30T23:27:10Z",
+      "side": 1,
+      "message": "There might be clients that have to handle events on the binder_fd (not sure yet if you server needs that or not) or other fd, so I think it would be good to test that interface from the test instead of (or in addition to) providing an implementation here that can only work with one fd. I think your interface should support both types of clients as is though, so if you really want to keep this function I think the only ask is to add a test where the client uses the exported fd (which is not an exact match for what you use here)",
+      "parentUuid": "5c81b168_3dc75dab",
+      "revId": "d48606522b7fb2379e149d073e1369ae47f69c62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bafce236_ab17dd5a",
         "filename": "trusty/metrics/metrics_test.cpp",
         "patchSetId": 8
