@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d7cd1c5_d91adfbd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2021-05-04T04:32:10Z",
+      "side": 1,
+      "message": "I\u0027m looking into changing init to first send SIGTERM, but it doesn\u0027t look very straightforward because we\u0027d still need to fall back to SIGKILL after a timeout (as SIGTERM can be ignored), and there are multiple \"kinds\" of stopping that we\u0027d need to consider (timeout, terminate, stop, and reset).  Also, to avoid slowing things down, we probably can\u0027t just poll for processes to exit, like init does during reboots.  Polling every 50ms works okay for reboots since in that case all processes are being stopped together, but here we\u0027re talking about individual services being stopped.  A 50ms overhead for each one would be significant.  So we\u0027d need to make it event-driven by wait() returning, which would add some complexity.\n\nAs Paul said, it does seem like this fix for reboot_on_failure is something we should do anyway, so maybe we should just do this for now.  We would also need this anyway if we wanted to make reboot_on_failure work in the expected way even for services that don\u0027t override SIGTERM.",
+      "parentUuid": "97652aeb_cf5f168c",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 51
+      },
+      "revId": "9d349b66ca50f80a4085a68127f7e6059bc75c52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "73e647ef_1c4351e2",
