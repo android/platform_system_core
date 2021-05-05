@@ -70,6 +70,30 @@
       },
       "revId": "5ee63f071fa8397d58eff386e39dccd6206992e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4042eb2_d7cf6648",
+        "filename": "libcutils/fs_config.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2021-05-05T19:39:45Z",
+      "side": 1,
+      "message": "+1 on Satya\u0027s point. Init drops the CAP_SYS_ADMIN when starting the keystore service. So keystore cannot pass on the capability to this new process. The only way to do that without giving keystore the DAC CAP_SYS_ADMIN is to use filesystem capabilities. Alternatively we could use the ambient capabilities by granting keystore CAP_SYS_ADMIN and use selinux to prevent it from actually being used.",
+      "parentUuid": "a1cacabb_8a27a228",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 34
+      },
+      "revId": "5ee63f071fa8397d58eff386e39dccd6206992e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
