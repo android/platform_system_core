@@ -22,6 +22,29 @@
       },
       "revId": "a12cf3edf33ee8e08327bebdf8c40f628e78a209",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4bedee3_d8691a97",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1103,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-05-06T07:02:08Z",
+      "side": 1,
+      "message": "Why are you adding a \"new\" \"ro.build.legacy.fingerprint\" prop that contains the \"old\" value, and assigning the \"new\" fingerprint value to the \"old\" \"ro.build.fingerprint\" prop. Even more confusing is that if \"ro.build.legacy.id\" isn\u0027t set, then \"ro.build.legacy.fingerprint\" would be empty, and \"ro.build.fingerprint\" would fallback to contain the \"old\" fingerprint value again?\n\nCan we consider to instead add a new prop \"ro.build.\u003cnew prop directive\u003e.fingerprint\" that contains the new fingerprint, and don\u0027t alter the value of \"ro.build.fingerprint\"? I think it could be less confusing and less mental burden for test writers, if we made the fingerprint change a conscious decision by the test owner, that is the test has to explicitly read the new prop to get the new value. Right now, a test could read \"ro.build.fingerprint\" and get the new or old fingerprint, depending on the BOARD variable BOARD_USE_VBMETA_DIGTEST_IN_FINGERPRINT, which isn\u0027t available to the test to read during runtime?",
+      "range": {
+        "startLine": 1102,
+        "startChar": 4,
+        "endLine": 1103,
+        "endChar": 47
+      },
+      "revId": "a12cf3edf33ee8e08327bebdf8c40f628e78a209",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
