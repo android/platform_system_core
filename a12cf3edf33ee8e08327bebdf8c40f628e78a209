@@ -69,6 +69,30 @@
       },
       "revId": "a12cf3edf33ee8e08327bebdf8c40f628e78a209",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e2f65dc_f4e7409f",
+        "filename": "init/property_service.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1103,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2021-05-06T17:11:52Z",
+      "side": 1,
+      "message": "That\u0027s actually the entire purpose of http://go/compatible-build-fingerprint. We want to make the value of \"ro.build.fingerprint\" unique. So most of the existing clients can continue to use the fingerprint without switching to read the new property. For example, APFE who approves build based on fingerprints.\n\nThe legacy fingerprint is really designed as a saftey measurement. In rare case, if you still want the old fingerprint, here is the place to find it. But that client should understand what it\u0027s doing; and make code changes in itself. \n\nWhich test rely on the behavior of \"ro.build.fingerprint\"? I think the test should just use the fingerprint value as is; and it doesn\u0027t need to differentiate how the build.id is set.",
+      "parentUuid": "29b841cb_bd9b87ac",
+      "range": {
+        "startLine": 1102,
+        "startChar": 4,
+        "endLine": 1103,
+        "endChar": 47
+      },
+      "revId": "a12cf3edf33ee8e08327bebdf8c40f628e78a209",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
