@@ -33,6 +33,24 @@
       "message": "Do we want an IO error in this case?",
       "revId": "6cc6dc307b13b3eb8b6762a367f5f3e6b547ed4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e488cf4_0475d2cc",
+        "filename": "fs_mgr/libsnapshot/snapuserd_worker.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2021-05-18T19:49:09Z",
+      "side": 1,
+      "message": "No. This is the interface problem I was talking about; We can\u0027t send the IO error at this point as it is too late.\n\nHere is the problem summary:\n\nLet\u0027s say we get payload of 1G from dm-user\n\n1: User space can\u0027t read entire 1G in one shot. So, it will break the IO requests. Let\u0027 say 1G is broken into 1M chunks. So, essentially we will have 1G/1M number of IO operations done.\n\n2: Dm-user expects the response from daemon in the following format:\n\n-\u003e Header {Success or failure}\n-\u003e Payload 1\n-\u003e Payload 2\n..\n..\n-\u003e Payload n\n\nNow, dm-user expects that header is sent just once with the success or failure message for entire 1G; but that can\u0027t be done as user-space would not have processed all the payload in one shot.\n\nThe interface should be something like:\n\n-\u003e Header\n-\u003e Payload-1\n\n-\u003e Header\n-\u003e Payload-2\n...\n...\n\nThis gives more fine grain control wherein daemon can respond to dm-user that a particular IO chunk failed thereby informing dm-user to fail the entire IO.\n\nNow, coming back to this CHECK; What this is saying is that we are in the middle of  processing the payload. Unfortuantely, we ran into a some kind of IO error; now, we can\u0027t send some random data to dm-user as it will lead to corruption. Rather, assert the daemon. Once the daemon terminates, dm-user will fail the IO marking the entire IO as failure.",
+      "parentUuid": "25ff87ea_85388005",
+      "revId": "6cc6dc307b13b3eb8b6762a367f5f3e6b547ed4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
