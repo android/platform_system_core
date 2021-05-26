@@ -16,6 +16,24 @@
       "message": "Is there a reason we need to parse this in both locations? What happens if it\u0027s set in both?",
       "revId": "3925ff2ab2adb60ff02662ba6b87ffb572f2fcf3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c557f91_9c5dbeea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-05-26T06:22:49Z",
+      "side": 1,
+      "message": "\u003e set in both?\n\nThe one specified in fs_mgr flags takes precedence, because fs_mgr flags are parsed last.\n\n\u003e reason?\n\nI thought it\u0027s confusing that \"lowerdir\u003d\" specified in filesystem flags is ignored during first stage mount, but when mounting via mount(2) or mount(8), \"lowerdir\u003d\" is specified in the filesystem mount flags.\n\nFirst I tried making it an error, assuming \"lowerdir\u003d\" in filesystem flags must be a typo. But this breaks ReadFstabFromFile(/proc/mounts), because successfully mounting this line in the fstab:\n\n\u003e none /mnt/product/test1 overlay ro lowerdir\u003d/1:/2,first_stage_mount\n\ncaused /proc/mounts to have this record:\n\n\u003e none /mnt/product/test1 overlay ro,noatime,seclabel,lowerdir\u003d/1:/2 \n\nThen I tried making it a warning instead, but then it just becomes too noisy due to the same reason and ReadFstabFromFile(/proc/mounts) would emit too many false positives.\n\nSo in the end I just parse \"lowerdir\u003d\" in filesystem flags and make it an alias to \"lowerdir\u003d\" in fs_mgr flags. This way we\u0027re not silently ignoring \"lowerdir\u003d\" in filesystem flags during first stage mount, and we don\u0027t disrupt fs_mgr usages outside of first stage mount.",
+      "parentUuid": "62151d8f_ca558ff9",
+      "revId": "3925ff2ab2adb60ff02662ba6b87ffb572f2fcf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
