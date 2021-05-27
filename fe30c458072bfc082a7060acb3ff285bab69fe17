@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67340d97_40c6480e",
+        "filename": "init/first_stage_mount.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-05-27T14:42:44Z",
+      "side": 1,
+      "message": "This is copied from prepare_fs_for_mount(), however I strongly suspect we don\u0027t need this anymore?\n\nThe \"unlink symlink before mkdir\" code is added back in 2014 (https://android.googlesource.com/platform/system/core/+/f67d6bd3c0fb41d167c675b9d2b5d377b6f38a74%5E%21/) before we have treble...\n\nHowever I\u0027m not very comfortable to just drop this. Even if our CI doesn\u0027t break, I can\u0027t say for sure that there is no obscure device configuration out there that depends on this behavior...",
+      "range": {
+        "startLine": 423,
+        "startChar": 4,
+        "endLine": 428,
+        "endChar": 5
+      },
+      "revId": "fe30c458072bfc082a7060acb3ff285bab69fe17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
