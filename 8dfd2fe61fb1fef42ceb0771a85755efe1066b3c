@@ -16,6 +16,24 @@
       "message": "Can you show what your fstab and/or /proc/mounts looks like?",
       "revId": "8dfd2fe61fb1fef42ceb0771a85755efe1066b3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a799a309_8871a0ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118600
+      },
+      "writtenOn": "2021-06-02T07:33:11Z",
+      "side": 1,
+      "message": "Hi David,\n\nBelow the the fstab I am using:\n\n# Android fstab file.\n#\u003csrc\u003e                                                  \u003cmnt_point\u003e         \u003ctype\u003e    \u003cmnt_flags and options\u003e                               \u003cfs_mgr_flags\u003e\n# The filesystem that contains the filesystem checker binary (typically /system) cannot\n# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK\n\n#/dev/block/platform/soc/ff3b0000.ufs/by-name/system_a    /system    ext4    ro                                                                   wait\n#/dev/block/platform/soc/ff3b0000.ufs/by-name/cache       /cache     ext4    discard,noauto_da_alloc,data\u003dordered,user_xattr,barrier\u003d1    wait\n#/dev/block/platform/soc/ff3b0000.ufs/by-name/userdata    /data      ext4    discard,noauto_da_alloc,data\u003dordered,user_xattr,barrier\u003d1    wait\n/dev/block/by-name/userdata    /data      f2fs    discard,noatime,nosuid,nodev                                 wait,check,fileencryption\u003dsoftware,quota\n/dev/block/by-name/userdata    /data      ext4    discard,noatime,nosuid,nodev,noauto_da_alloc,data\u003dordered,user_xattr,barrier\u003d1,inlinecrypt    wait,formattable,fileencryption\u003daes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,quota\n/devices/platform/soc/ff37f000.dwmmc1/mmc_host/mmc*      auto       auto    defaults    voldmanaged\u003dsdcard1:auto,encryptable\u003duserdata\n/devices/platform/soc/ff200000.hisi_usb/ff100000.dwc3/xhci-hcd.*.auto/usb*               auto               auto      defaults  voldmanaged\u003dusbdisk:auto,encryptable\u003duserdata\n/devices/platform/soc/f4000000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0/nvme/nvme*      auto       auto    defaults    voldmanaged\u003dnvmedisk:auto,encryptable\u003duserdata\n/dev/block/by-name/system /system ext4 ro,errors\u003dpanic wait,first_stage_mount\n/dev/block/by-name/vendor /vendor ext4 ro,errors\u003dpanic wait,first_stage_mount",
+      "parentUuid": "a9316f47_f8c05914",
+      "revId": "8dfd2fe61fb1fef42ceb0771a85755efe1066b3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
