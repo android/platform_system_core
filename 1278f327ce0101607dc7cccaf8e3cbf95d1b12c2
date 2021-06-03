@@ -16,6 +16,24 @@
       "message": "The test result with patch set 2 is as belows;\n1. FDE device without Secure start-up\n[   16.110623 02-14 03:30:14.629] [4:   Binder:671_2: 1382] Cryptfs: unmounting /data succeeded\n[   16.379968 02-14 03:30:14.889] [4:   Binder:671_2: 1382] Cryptfs: Just triggered post_fs_data\n[   16.455523 02-14 03:30:14.969] [4:           init:    1] init: processing action (ro.crypto.type\u003dblock \u0026\u0026 vold.decrypt\u003dtrigger_post_fs_data) from (/system/etc/init/tombstoned.rc:16)\n[   16.456538 02-14 03:30:14.969] [4:           init:    1] init: starting service \u0027tombstoned\u0027...\n... ...\n[   17.143217 02-14 03:30:15.659] [4:   Binder:671_2: 1382] Cryptfs: post_fs_data done\n[   17.144050 02-14 03:30:15.659] [4:   Binder:671_2: 1382] Cryptfs: Just triggered restart_framework\n\n2. FDE device with Secure start-up\n[   15.225419 02-14 03:25:31.619] [4:   Binder:673_2: 1381] Cryptfs: Password is not default - starting min framework to prompt\n[   38.971467 06-02 04:55:34.409] [4:   Binder:673_2:  673] Cryptfs: cryptfs_check_passwd  // unlock Secure start-up\n[   40.834311 06-02 04:55:36.269] [1:   Binder:673_2: 3559] Cryptfs: Just asked init to shut down class main\n[   42.839898 06-02 04:55:38.269] [5:   Binder:673_2: 3559] Cryptfs: unmounting /data succeeded\n[   43.141065 06-02 04:55:38.579] [5:   Binder:673_2: 3559] Cryptfs: Just triggered post_fs_data\n[   43.358267 06-02 04:55:38.789] [4:           init:    1] init: processing action (ro.crypto.type\u003dblock \u0026\u0026 vold.decrypt\u003dtrigger_post_fs_data) from (/system/etc/init/tombstoned.rc:16)\n[   43.372358 06-02 04:55:38.809] [4:           init:    1] init: starting service \u0027tombstoned\u0027...\n... ...\n[   44.339675 06-02 04:55:39.769] [5:   Binder:673_2: 3559] Cryptfs: post_fs_data done\n[   44.343272 06-02 04:55:39.779] [5:   Binder:673_2: 3559] Cryptfs: Just triggered restart_framework\n\n3. FBE device\n[   22.832884 01-19 05:48:23.939] [5:           init:    1] init: [libfs_mgr]__mount(source\u003d/dev/block/bootdevice/by-name/userdata,target\u003d/data,type\u003df2fs)\u003d0: Success\n[   22.833518 01-19 05:48:23.939] [6:           init:    1] init: [libfs_mgr]/data is file encrypted\n[   22.882080 01-19 05:48:23.989] [6:           init:    1] init: processing action (post-fs-data) from (/system/etc/init/hw/init.rc:554)\n... ...\n[   24.363123 01-19 05:48:25.469] [6:           init:    1] init: processing action (ro.crypto.type\u003dfile \u0026\u0026 post-fs-data) from (/system/etc/init/tombstoned.rc:10)\n[   24.363659 01-19 05:48:25.469] [6:           init:    1] init: starting service \u0027tombstoned\u0027...\n[   24.364820 01-19 05:48:25.469] [6:           init:    1] init: Created socket \u0027/dev/socket/tombstoned_crash\u0027, mode 666, user 1000, group 1000\n[   24.365673 01-19 05:48:25.469] [6:           init:    1] init: Created socket \u0027/dev/socket/tombstoned_intercept\u0027, mode 666, user 1000, group 1000\n[   24.366518 01-19 05:48:25.469] [6:           init:    1] init: Created socket \u0027/dev/socket/tombstoned_java_trace\u0027, mode 666, user 1000, group 1000\n\n",
       "revId": "1278f327ce0101607dc7cccaf8e3cbf95d1b12c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caf3be77_1f672158",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2021-06-03T10:12:14Z",
+      "side": 1,
+      "message": "I\u0027m still confused why this is different.\n\nIn FDE, is post-fs-data being triggered before \"Cryptfs: Just triggered post_fs_data\" is logged? If so, that seems like the real bug we should fix. If not, this should have identical behavior?",
+      "parentUuid": "83ea609d_ab302a1b",
+      "revId": "1278f327ce0101607dc7cccaf8e3cbf95d1b12c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
