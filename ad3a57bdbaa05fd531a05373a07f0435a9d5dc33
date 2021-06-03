@@ -22,6 +22,30 @@
       },
       "revId": "ad3a57bdbaa05fd531a05373a07f0435a9d5dc33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe247ac2_235ba721",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-06-03T07:20:15Z",
+      "side": 1,
+      "message": "I recall Mark said this script should accommodate for various host runtime environments and also partner devices. we should be able to invoke this script out-of-tree, that is without a lunch-ed environment, or without a platform tree at all.\n\nI tried not to add dependencies like `${TOP}/prebuilts/build-tools/`, as I want to keep the dependencies to be \"standard\" shell utilities like grep, sed, awk, sh ...\n\nBTW, neither the in tree one-true-awk can parse `[/]`.\nThis seems to be an ambiguous expression for one-true-awk. Quoting the book \"The AWK Programming Language\" page 29 (yes I happen to have the actual book...), \"Inside a character class, all characters have their literal meaning, except for the quoting character \u0027\\\u0027, \u0027^\u0027 at the beginning, and \u0027-\u0027 between two characters.\"; page 31, \"awk uses escape sequences to specify characters for which there may be no other notation.\" without giving a definition of \"no other notation\".\n \nPage 29 sounds to me that `[/]` is a valid expression, but in reality one-true-awk treats \u0027/\u0027 as end of regex marker even within a character class, thus slash \"has no other notation in one-true-awk\u0027s implementation\", thus needs to be escaped.\n\nAnyway, rewriting `[/]` to `[\\/]` or `\\/` seems to be more \"parser-friendly\", regardless of awk implementations (I tested on gawk, mawk-v1.3.3, mawk-v1.3.4, in-tree one-true-awk)",
+      "parentUuid": "aaec9d99_1a4e49a9",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "ad3a57bdbaa05fd531a05373a07f0435a9d5dc33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
