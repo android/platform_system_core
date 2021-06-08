@@ -46,6 +46,30 @@
       },
       "revId": "ad3a57bdbaa05fd531a05373a07f0435a9d5dc33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1262d632_faae5f10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-06-08T00:24:08Z",
+      "side": 1,
+      "message": "\u003e I recall Mark said this script should accommodate for various host runtime environments and also partner devices.\n\nthat\u0027s a good goal, but that\u0027s _why_ we have the hermetic one true awk --- so you can know exactly what version you\u0027re using. and don\u0027t have to fix things for every single possible combination of implementation and version out there. (at some point we plan on preventing CI from \"accidentally\" picking up its own versions of things.)\n\n\u003e I tried not to add dependencies like `${TOP}/prebuilts/build-tools/`, as I want to keep the dependencies to be \"standard\" shell utilities like grep, sed, awk, sh ...\n\nthey\u0027re in prebuilts/build-tools/ too. and since you have to be compatible with those during the build, it\u0027s reasonable that the same should apply during tests. (again, one of the things on the build team\u0027s to-do list is to _remove_ differences between CI and local runs, and the way to do that is again to enforce running a _known_ version of everything.)\n\n\u003e yes I happen to have the actual book\n\n(heh. that was my favorite CS book as a kid. i learned so much from that book, and to this day i don\u0027t think i\u0027ve read a better programming language manual. i don\u0027t know why people speak so highly of K\u0026R when A\u0026W\u0026K is so much better.)\n\n\u003e BTW, neither the in tree one-true-awk can parse `[/]`.\n\nthat would probably have been a better title for this CL then --- i\u0027m definitely not going to argue with that change :-)\n\nif you decide to report that upstream to https://github.com/onetrueawk/awk/issues i\u0027d be curious to know whether they think it\u0027s a bug or WAI.",
+      "parentUuid": "fe247ac2_235ba721",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "ad3a57bdbaa05fd531a05373a07f0435a9d5dc33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
