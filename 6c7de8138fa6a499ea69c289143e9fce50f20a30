@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "515d6b7e_e5f63cd6",
+        "filename": "debuggerd/client/debuggerd_client.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-06-18T15:53:10Z",
+      "side": 1,
+      "message": "stylistically you\u0027d be better off copying the https://man7.org/linux/man-pages/man3/error.3.html style at this point --- that would collapse three functions down to one, and fix the potential issue here of StringAppendV clobbering errno before you use it.\n\n(also, no `std::` on libc functions.)",
+      "revId": "6c7de8138fa6a499ea69c289143e9fce50f20a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88607c4b_47f21886",
+        "filename": "debuggerd/client/debuggerd_client.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-06-18T15:53:10Z",
+      "side": 1,
+      "message": "(if we do go this route, it gives us an opportunity to factor out the \"libdebuggerd_client: \" prefix to every message rather than perpetuate that copy and paste...)",
+      "range": {
+        "startLine": 157,
+        "startChar": 63,
+        "endLine": 157,
+        "endChar": 66
+      },
+      "revId": "6c7de8138fa6a499ea69c289143e9fce50f20a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57307ea4_fcd27a2c",
+        "filename": "debuggerd/client/debuggerd_client.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-06-18T15:53:10Z",
+      "side": 1,
+      "message": "i\u0027m still not happy with this because the choice of which logging to duplicate seems arbitrary...",
+      "revId": "6c7de8138fa6a499ea69c289143e9fce50f20a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f197b96_70afe192",
+        "filename": "debuggerd/client/debuggerd_client.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-06-18T15:53:10Z",
+      "side": 1,
+      "message": "...and still includes cases where we basically have \"write failed, so let\u0027s try to write something else to the same fd\".",
+      "revId": "6c7de8138fa6a499ea69c289143e9fce50f20a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
