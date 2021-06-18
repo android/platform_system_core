@@ -180,6 +180,30 @@
       },
       "revId": "2e4466ce8ec29dad188b4b9bb4339dc59bbe1e0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5359577c_67be75e4",
+        "filename": "init/Android.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-06-18T09:02:25Z",
+      "side": 1,
+      "message": "I think \"default\" is not needed, the manual of soong_config says soong_config_module_type.module_type can be any module, not limited to defaultable module types. I think the pattern to put soong_config related stuff in a *_default is just for encapsulating the conditional logic and to avoid repeating lines.\n\nI tested this and works:\n\nsoong_config_module_type {\n   name: \"init_first_stage_phony\",\n   module_type: \"type\",\n   config_namespace: \"ANDROID\",\n   bool_variables: [\"BOARD_USES_RECOVERY_AS_BOOT\"],\n   properties: [\"required\"],\n}\n\ninit_first_stage_phony {\n  name: \"test_init_vendor_phony\",\n  soong_config_variables: {\n    BOARD_USES_RECOVERY_AS_BOOT: {\n      required: [\"init_first_stage\"],\n    },\n  },\n}",
+      "parentUuid": "82ced6b8_470ae964",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 27
+      },
+      "revId": "2e4466ce8ec29dad188b4b9bb4339dc59bbe1e0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
