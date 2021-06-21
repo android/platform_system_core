@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ee6c216_69621ede",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-06-21T19:48:09Z",
+      "side": 1,
+      "message": "true or false? alternatives include: retry, or just having a better-crafted error message. if we think this is a race, rather than there\u0027s some other reason to get EPERM.\n\nhere\u0027s the kernel:\n```\n\u003e-retval \u003d -EPERM;\n\u003e-if (unlikely(task-\u003eflags \u0026 PF_KTHREAD))\n\u003e-\u003e-goto out;\n\u003e-if (same_thread_group(task, current))\n\u003e-\u003e-goto out;\n...\n\u003e-retval \u003d -EPERM;\n\u003e-if (unlikely(task-\u003eexit_state))\n\u003e-\u003e-goto unlock_tasklist;\n\u003e-if (task-\u003eptrace)\n\u003e-\u003e-goto unlock_tasklist;\n```\n\nwe can probably rule out kernel thread, and same thread group (does crash_dump guarantee that?), but that also leaves \"is exiting\".\n\npart of me\u0027s tempted to add more diagnostics, but part of me thinks we\u0027ll never see this again anyway, so...\n\n(fact-checking that belief, buganizer thinks we see ~2/year: https://b.corp.google.com/issues?q\u003d%22already%20traced%20by%200%20()%22 so probably below the threshold where we\u0027ll get to the bottom of this.)",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 69
+      },
+      "revId": "a029d98ad05a9435874bbef1f9cd97a152f5bb9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
