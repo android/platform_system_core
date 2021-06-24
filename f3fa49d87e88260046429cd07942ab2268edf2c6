@@ -33,6 +33,40 @@
       "message": "Is this device not using metadata encryption?",
       "revId": "f3fa49d87e88260046429cd07942ab2268edf2c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd0de7c6_3bf67116",
+        "filename": "init/mount_handler.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-06-24T02:44:13Z",
+      "side": 1,
+      "message": "Special-casing this feels a bit hacky. I\u0027d rather we generalized it, by doing something like...",
+      "revId": "f3fa49d87e88260046429cd07942ab2268edf2c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d454177_5f507182",
+        "filename": "init/mount_handler.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-06-24T02:44:13Z",
+      "side": 1,
+      "message": "... This:\n\n    auto blk_mount_prop \u003d \"dev.mnt.blk\" + mount_prop;\n    auto dev_mount_prop \u003d \"dev.mnt.dev\" + mount_prop;\n    ...\n    if (value.empty() \u0026\u0026 android::base::GetProperty(blk_mount_prop, \"\").empty()) return;\n    android::base::SetProperty(blk_mount_prop, value);\n    if (!value.empty()) {\n        android::base::SetProperty(dev_mount_prop, entry.blk_device.substr(strlen(devblock)));\n    } else {\n        android::base::SetProperty(dev_mount_prop, \"\");\n    }\n\nThen, we have \"dev.mnt.blk.userdata\" containing \"sda\" and \"dev.mnt.dev.userdata\" containing \"sda11\".",
+      "revId": "f3fa49d87e88260046429cd07942ab2268edf2c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
