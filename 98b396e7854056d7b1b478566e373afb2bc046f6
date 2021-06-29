@@ -22,6 +22,30 @@
       },
       "revId": "98b396e7854056d7b1b478566e373afb2bc046f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b860bb1_b0019989",
+        "filename": "libutils/include/utils/String16.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-06-29T23:54:31Z",
+      "side": 1,
+      "message": "\u003e    explicit constexpr String16(const StaticString16\u003cN\u003e\u0026 s) : mString(s.mString) {}\n\nYeah, since acquire() checks isStaticString(), we could rely on it without having this specialized conversion constructor. I was a bit surprised as well when I found this one. I just wanted to keep the original one, that\u0027s why I added another specialized operator\u003d() here.\n\n\u003e Is this purely an optimization?\n\nIt looks like it\u0027s for optimization. I\u0027m all for removing this specializations. I guess you agree as well.",
+      "parentUuid": "cc777281_356d5b32",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 5
+      },
+      "revId": "98b396e7854056d7b1b478566e373afb2bc046f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
