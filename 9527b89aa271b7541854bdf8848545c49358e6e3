@@ -22,6 +22,30 @@
       },
       "revId": "9527b89aa271b7541854bdf8848545c49358e6e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3450cb20_e016d143",
+        "filename": "fs_mgr/libsnapshot/cow_writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-06-29T19:19:11Z",
+      "side": 1,
+      "message": "I think 2^14? But either one I think we\u0027d easily breeze past in a large incremental OTA. A 4GB partition will have 2^20 blocks. So I think we need to CHECK() here that data_length won\u0027t overflow, and split things up in the same way EmitRawBlocks does.",
+      "parentUuid": "fb353d73_76a2c95b",
+      "range": {
+        "startLine": 344,
+        "startChar": 21,
+        "endLine": 344,
+        "endChar": 28
+      },
+      "revId": "9527b89aa271b7541854bdf8848545c49358e6e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
