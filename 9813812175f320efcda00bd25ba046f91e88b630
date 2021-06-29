@@ -70,6 +70,30 @@
       },
       "revId": "9813812175f320efcda00bd25ba046f91e88b630",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c7ec69f_d01cb832",
+        "filename": "rootdir/init.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1880185
+      },
+      "writtenOn": "2021-06-29T18:09:18Z",
+      "side": 1,
+      "message": "vold_seed_binding must be done (and finished) before /data is mounted (mount_all /vendor/etc/fstab.qcom --late) and  vold_seed_binding must be started after  class_start early_hal.\n\nCurrently /data is mounted in on  vendor\u0027s hw/init.target.rc \"on late-fs\" section which execute after the main init.rc \"on late-fs\" section.\n\nI cannot find a way to make it auto  specific without changing the main init.rc. \nAny suggestions to do that.",
+      "parentUuid": "79691011_11e29c1e",
+      "range": {
+        "startLine": 618,
+        "startChar": 0,
+        "endLine": 618,
+        "endChar": 32
+      },
+      "revId": "9813812175f320efcda00bd25ba046f91e88b630",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
