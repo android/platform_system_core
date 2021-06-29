@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc777281_356d5b32",
+        "filename": "libutils/include/utils/String16.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-29T17:08:11Z",
+      "side": 1,
+      "message": "String16 acquire already check to see if the string is static:\n\n    void String16::acquire()\n    {\n        if (!isStaticString()) {\n            SharedBuffer::bufferFromData(mString)-\u003eacquire();\n        }\n    }\n\nIs it worth it to add this extra function/6 loc in order to avoid this case? Note - many times StaticString16 will be used as a const String16\u0026 (it\u0027s a child class), so we\u0027ll be using the String16::acquire anyway.\n\nIs this purely an optimization? If it\u0027s needed for correctness, then there are bigger problems.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 5
+      },
+      "revId": "98b396e7854056d7b1b478566e373afb2bc046f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
