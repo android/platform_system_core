@@ -16,6 +16,41 @@
       "message": "Don\u0027t we have bootconfig parsing in a few places now? Can we start centralizing that in fs_mgr (or somewhere else) so we don\u0027t have to keep duplicating it?",
       "revId": "7480d124d6c8ece445af2fc0ad80b430355fa97b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44c74ba7_3f2e9ca8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-06-29T15:54:10Z",
+      "side": 1,
+      "message": "There are already a few places parsing cmdline and bootconfig in system/core/\nfs_mgr: https://source.corp.google.com/android/system/core/fs_mgr/fs_mgr_boot_config.cpp;rcl\u003dbc1319148e67fe59357ecfa650c57f5a554a2ea4;l\u003d125\ninit: https://source.corp.google.com/android/system/core/init/util.cpp;rcl\u003dbc1319148e67fe59357ecfa650c57f5a554a2ea4;l\u003d249\nreboot_utils parses cmdline but reuses init/until.h `ImportBootconfig()` for bootconfig.\n",
+      "revId": "7480d124d6c8ece445af2fc0ad80b430355fa97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e275622b_8f01140f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-06-29T15:54:10Z",
+      "side": 1,
+      "message": "Yeah, we have /proc/cmdline parsing in a few more places as well. They should really all use the same things.\nIt\u0027s probably easiest to move the fs_mgr_priv_boot_config.h file to no longer be private and just use those APIs? Would that be ok David?\nI can change the rest of the uses to use those those APIs after.",
+      "parentUuid": "4e67bcce_bdf32374",
+      "revId": "7480d124d6c8ece445af2fc0ad80b430355fa97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
