@@ -87,6 +87,30 @@
       },
       "revId": "43e98de0048cf80c3dac58574e852ffdfc6ba73e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca91a691_817fe953",
+        "filename": "libutils/String16_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-06-29T01:24:52Z",
+      "side": 1,
+      "message": "Oh, \"static\" is that \"static\", ;-)\n\nBut I found that, copy from StaticString16 is specialized and we probably don\u0027t need to provide move from StaticString16 (it falls back to copy from StaticString16). We\u0027ll have the same efficiency for move from copy fallback behavior. (Note that copy from StaticString16 only copies the handle and no \"acquire\", and also note that after std::move() the object is not supposed to be read, so not emptying the static string after move doesn\u0027t violate the contract.)",
+      "parentUuid": "e046e8f1_8d72feec",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 12
+      },
+      "revId": "43e98de0048cf80c3dac58574e852ffdfc6ba73e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
