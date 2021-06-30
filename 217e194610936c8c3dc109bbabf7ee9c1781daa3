@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb510692_4ac41569",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-30T16:50:25Z",
+      "side": 1,
+      "message": "The main benefit of this libandroid_runtime hooking business is that in non-zygote processes, the hooks do nothing, and in zygote-forked processes, the hooks attach the Java VM (second is that one copy of the logic doing this for most things). We could move these hooks to being in libbinder, but as other things take a dependency on the existing libutils API, I\u0027d rather see the existing API made more generic (between libutils and libandroid_runtime, even at the cost of what should be one new method here) rather than a new API which requires maintaining both the libutils \u003c-\u003e libandroid_runtime surface and the new one.",
+      "parentUuid": "3870c150_379f799a",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 60
+      },
+      "revId": "217e194610936c8c3dc109bbabf7ee9c1781daa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "952fec5b_732e77c7",
         "filename": "libutils/Threads.cpp",
         "patchSetId": 5
