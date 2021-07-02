@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a405701e_6925d25e",
+        "filename": "fs_mgr/libsnapshot/snapuserd.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2021-07-02T18:30:10Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem right.. lifetime of this object will end once the function is terminated. However, we are holding cow_op* reference at L415. The cow_op pointer is obtained from this object iterator at L383.\n\nIn cow_reader.h, there is a code comment at L120 regarding the lifetime of this iterator object.",
+      "revId": "8ab4637fed2bcc5336870f3e4b713859c6af0cfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
