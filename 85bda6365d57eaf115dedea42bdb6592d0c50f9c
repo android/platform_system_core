@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e08cfaa1_3ecab38e",
+        "filename": "fs_mgr/libsnapshot/snapuserd_readahead.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1045980
+      },
+      "writtenOn": "2021-07-14T00:13:54Z",
+      "side": 1,
+      "message": "Yeah, that should\u0027ve been source_block for this and the next one",
+      "parentUuid": "db10752d_8ecbeaf2",
+      "revId": "85bda6365d57eaf115dedea42bdb6592d0c50f9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "201f8db5_2de97846",
         "filename": "fs_mgr/libsnapshot/snapuserd_readahead.cpp",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-13T18:27:35Z",
       "side": 1,
       "message": "This will fail with xor ops..\n\nThe assumption here is that all the ops are COPS ops and hence we read them in one-shot from the base device.\n\nNow with XOR ops, we can have the following sequence:\n\nCOPY, COPY, XOR, COPY, XOR\n\nwith this, the current logic will fail.",
+      "revId": "85bda6365d57eaf115dedea42bdb6592d0c50f9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dbbdeb3_5b2cd147",
+        "filename": "fs_mgr/libsnapshot/snapuserd_readahead.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1045980
+      },
+      "writtenOn": "2021-07-14T00:13:54Z",
+      "side": 1,
+      "message": "That\u0027s fine, as long as the offset of those XOR ops are the same. That should be handled by https://android-review.googlesource.com/c/platform/system/core/+/1763354/1/fs_mgr/libsnapshot/snapuserd_readahead.cpp#223",
+      "parentUuid": "201f8db5_2de97846",
       "revId": "85bda6365d57eaf115dedea42bdb6592d0c50f9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
